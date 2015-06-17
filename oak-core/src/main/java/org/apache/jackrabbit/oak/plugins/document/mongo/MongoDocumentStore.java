@@ -203,6 +203,20 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|locks
+operator|.
+name|ReentrantReadWriteLock
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -1918,6 +1932,8 @@ init|=
 name|acquire
 argument_list|(
 name|key
+argument_list|,
+name|collection
 argument_list|)
 decl_stmt|;
 try|try
@@ -2256,6 +2272,8 @@ init|=
 name|acquire
 argument_list|(
 name|key
+argument_list|,
+name|collection
 argument_list|)
 decl_stmt|;
 try|try
@@ -4119,6 +4137,8 @@ name|updateOp
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|collection
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -4923,6 +4943,8 @@ name|doc
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|collection
 argument_list|)
 decl_stmt|;
 try|try
@@ -5200,6 +5222,8 @@ name|entry
 operator|.
 name|getKey
 argument_list|()
+argument_list|,
+name|collection
 argument_list|)
 decl_stmt|;
 try|try
@@ -7002,14 +7026,29 @@ return|return
 name|parentId
 return|;
 block|}
-comment|/**      * Acquires a log for the given key. The returned tree lock will also hold      * a shared lock on the parent key.      *      * @param key a key.      * @return the acquired lock for the given key.      */
+comment|/**      * Acquires a log for the given key. The returned tree lock will also hold      * a shared lock on the parent key.      *      * @param key a key.      * @param collection the collection for which the lock is acquired.      * @return the acquired lock for the given key.      */
 specifier|private
 name|TreeLock
 name|acquire
 parameter_list|(
 name|String
 name|key
+parameter_list|,
+name|Collection
+argument_list|<
+name|?
+argument_list|>
+name|collection
 parameter_list|)
+block|{
+if|if
+condition|(
+name|collection
+operator|==
+name|Collection
+operator|.
+name|NODES
+condition|)
 block|{
 return|return
 name|TreeLock
@@ -7034,6 +7073,21 @@ name|key
 argument_list|)
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+comment|// return a dummy lock
+return|return
+name|TreeLock
+operator|.
+name|exclusive
+argument_list|(
+operator|new
+name|ReentrantReadWriteLock
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 comment|/**      * Acquires an exclusive lock on the given parent key. Use this method to      * block cache access for child keys of the given parent key.      *      * @param parentKey the parent key.      * @return the acquired lock for the given parent key.      */
 specifier|private
