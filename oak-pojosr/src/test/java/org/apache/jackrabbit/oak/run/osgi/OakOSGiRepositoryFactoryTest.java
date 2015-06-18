@@ -173,13 +173,13 @@ end_import
 
 begin_import
 import|import
-name|de
+name|org
 operator|.
-name|kalpatec
+name|apache
 operator|.
-name|pojosr
+name|felix
 operator|.
-name|framework
+name|connect
 operator|.
 name|launch
 operator|.
