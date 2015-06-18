@@ -4508,6 +4508,12 @@ operator|+
 literal|", transaction isolation level: "
 operator|+
 name|isolationDiags
+operator|+
+literal|", detected size of DATA column: "
+operator|+
+name|this
+operator|.
+name|dataLimitInOctets
 argument_list|)
 expr_stmt|;
 if|if
