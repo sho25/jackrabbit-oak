@@ -393,7 +393,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Rule
 import|;
 end_import
 
@@ -404,6 +404,18 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TemporaryFolder
 import|;
 end_import
 
@@ -448,11 +460,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1522"
-argument_list|)
 specifier|public
 class|class
 name|OakOSGiRepositoryFactoryTest
@@ -482,6 +489,17 @@ name|String
 name|newPassword
 decl_stmt|;
 annotation|@
+name|Rule
+specifier|public
+specifier|final
+name|TemporaryFolder
+name|tmpFolder
+init|=
+operator|new
+name|TemporaryFolder
+argument_list|()
+decl_stmt|;
+annotation|@
 name|Before
 specifier|public
 name|void
@@ -492,13 +510,13 @@ name|IOException
 block|{
 name|repositoryHome
 operator|=
-name|concat
-argument_list|(
-name|getBaseDir
+name|tmpFolder
+operator|.
+name|getRoot
 argument_list|()
-argument_list|,
-literal|"target/repository"
-argument_list|)
+operator|.
+name|getAbsolutePath
+argument_list|()
 expr_stmt|;
 name|config
 operator|.
