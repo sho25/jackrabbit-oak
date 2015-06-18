@@ -22,7 +22,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Convenience class that dumps the table creation statements for various database types.  */
+comment|/**  * Convenience class that dumps the table creation statements for various  * database types.  */
 end_comment
 
 begin_class
@@ -116,6 +116,17 @@ argument_list|(
 name|database
 argument_list|)
 decl_stmt|;
+for|for
+control|(
+name|String
+name|table
+range|:
+name|RDBDocumentStore
+operator|.
+name|getTableNames
+argument_list|()
+control|)
+block|{
 name|System
 operator|.
 name|out
@@ -128,41 +139,17 @@ name|ddb
 operator|.
 name|getTableCreationStatement
 argument_list|(
-literal|"CLUSTERNODES"
+name|table
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|System
 operator|.
 name|out
 operator|.
 name|println
-argument_list|(
-literal|"  "
-operator|+
-name|ddb
-operator|.
-name|getTableCreationStatement
-argument_list|(
-literal|"NODES"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"  "
-operator|+
-name|ddb
-operator|.
-name|getTableCreationStatement
-argument_list|(
-literal|"SETTINGS"
-argument_list|)
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|System
 operator|.
