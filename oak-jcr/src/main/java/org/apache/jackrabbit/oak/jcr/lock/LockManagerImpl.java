@@ -992,8 +992,6 @@ if|if
 condition|(
 name|canUnlock
 argument_list|(
-name|path
-argument_list|,
 name|node
 argument_list|)
 condition|)
@@ -1044,17 +1042,33 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|private
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_comment
+comment|/**      * Verifies if the current<tt>sessionContext</tt> can unlock the specified<tt>node</tt>      *       * @param node the node state to check      *       * @return true if the current<tt>sessionContext</tt> can unlock the specified<tt>node</tt>      */
+end_comment
+
+begin_function
+specifier|public
 name|boolean
 name|canUnlock
 parameter_list|(
-name|String
-name|path
-parameter_list|,
 name|NodeDelegate
 name|node
 parameter_list|)
 block|{
+name|String
+name|path
+init|=
+name|node
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|sessionContext
@@ -1134,10 +1148,6 @@ return|return
 literal|false
 return|;
 block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 

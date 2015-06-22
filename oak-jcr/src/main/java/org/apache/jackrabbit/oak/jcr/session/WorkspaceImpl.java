@@ -1166,7 +1166,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|LockManager
+name|LockManagerImpl
 name|getLockManager
 parameter_list|()
 block|{
