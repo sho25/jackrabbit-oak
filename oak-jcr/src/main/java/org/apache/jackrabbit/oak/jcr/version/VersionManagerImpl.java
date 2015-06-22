@@ -536,6 +536,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"restore"
 argument_list|,
@@ -973,6 +976,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"restore"
 argument_list|,
@@ -1719,6 +1725,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"checkout"
 argument_list|,

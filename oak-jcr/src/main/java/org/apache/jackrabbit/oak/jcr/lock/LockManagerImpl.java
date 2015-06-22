@@ -408,6 +408,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|LockOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 name|sessionContext
 argument_list|,
@@ -952,6 +955,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|LockOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 name|sessionContext
 argument_list|,
