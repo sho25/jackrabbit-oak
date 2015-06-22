@@ -979,6 +979,42 @@ argument_list|,
 name|branch
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Branch created with base revision {} and "
+operator|+
+literal|"modifications on {}"
+argument_list|,
+name|baseRevision
+argument_list|,
+name|operations
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Branch created"
+argument_list|,
+operator|new
+name|Exception
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
