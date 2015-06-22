@@ -39,6 +39,18 @@ end_import
 
 begin_import
 import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -126,6 +138,8 @@ comment|/**  * A "select" or "union" query.  *<p>  * Lifecycle: use the construc
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|Query
@@ -287,6 +301,11 @@ parameter_list|(
 name|boolean
 name|internal
 parameter_list|)
+function_decl|;
+comment|/**      * Returns whether the results will be sorted by index. The query must already be prepared.      *      * @return if sorted by index      */
+name|boolean
+name|isSortedByIndex
+parameter_list|()
 function_decl|;
 block|}
 end_interface
