@@ -294,6 +294,24 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStateUtils
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -618,6 +636,21 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
+if|if
+condition|(
+name|NodeStateUtils
+operator|.
+name|isHidden
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+comment|// stop comparison
+return|return
+literal|false
+return|;
+block|}
 name|Node
 name|node
 init|=
@@ -695,7 +728,13 @@ name|builder
 argument_list|,
 name|Collections
 operator|.
-name|EMPTY_MAP
+expr|<
+name|String
+argument_list|,
+name|Object
+operator|>
+name|emptyMap
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
