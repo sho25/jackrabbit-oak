@@ -9561,6 +9561,15 @@ name|RDBRow
 argument_list|>
 argument_list|()
 decl_stmt|;
+name|long
+name|dataTotal
+init|=
+literal|0
+decl_stmt|,
+name|bdataTotal
+init|=
+literal|0
+decl_stmt|;
 try|try
 block|{
 name|int
@@ -9800,6 +9809,25 @@ name|bdata
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|dataTotal
+operator|+=
+name|data
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
+name|bdataTotal
+operator|+=
+name|bdata
+operator|==
+literal|null
+condition|?
+literal|0
+else|:
+name|bdata
+operator|.
+name|length
+expr_stmt|;
 block|}
 block|}
 finally|finally
@@ -9898,7 +9926,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Long running query with %d hits (limited to %d), elapsed time %dms (configured QUERYTIMELIMIT %d), params minid '%s' maxid '%s' indexedProperty %s startValue %d limit %d. Check calling method."
+literal|"Long running query with %d hits (limited to %d), elapsed time %dms (configured QUERYTIMELIMIT %d), params minid '%s' maxid '%s' indexedProperty %s startValue %d limit %d. Read %d chars from DATA and %d bytes from BDATA. Check calling method."
 argument_list|,
 name|result
 operator|.
@@ -9920,6 +9948,10 @@ argument_list|,
 name|startValue
 argument_list|,
 name|limit
+argument_list|,
+name|dataTotal
+argument_list|,
+name|bdataTotal
 argument_list|)
 decl_stmt|;
 name|LOG
