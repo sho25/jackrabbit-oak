@@ -3446,7 +3446,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"could not perform count countQuery {}"
+literal|"could not perform count query {}"
 argument_list|,
 name|countQuery
 argument_list|)
