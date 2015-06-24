@@ -427,24 +427,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|denotesRoot
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|index
