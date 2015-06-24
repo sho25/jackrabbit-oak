@@ -171,6 +171,28 @@ name|solr
 operator|.
 name|configuration
 operator|.
+name|OakSolrConfigurationDefaults
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|solr
+operator|.
+name|configuration
+operator|.
 name|SolrServerConfigurationDefaults
 import|;
 end_import
@@ -446,7 +468,7 @@ name|Properties
 operator|.
 name|PATH_FIELD
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PATH_FIELD_NAME
 argument_list|)
@@ -488,7 +510,7 @@ name|Properties
 operator|.
 name|DESCENDANTS_FIELD
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|DESC_FIELD_NAME
 argument_list|)
@@ -507,7 +529,7 @@ name|Properties
 operator|.
 name|CHILDREN_FIELD
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|CHILD_FIELD_NAME
 argument_list|)
@@ -526,7 +548,7 @@ name|Properties
 operator|.
 name|PATH_FIELD
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PATH_FIELD_NAME
 argument_list|)
@@ -545,7 +567,7 @@ name|Properties
 operator|.
 name|PARENT_FIELD
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|ANC_FIELD_NAME
 argument_list|)
@@ -577,7 +599,7 @@ name|Properties
 operator|.
 name|CATCHALL_FIELD
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|CATCHALL_FIELD
 argument_list|)
@@ -730,7 +752,7 @@ name|Properties
 operator|.
 name|ROWS
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|ROWS
 argument_list|)
@@ -750,7 +772,7 @@ name|Properties
 operator|.
 name|PROPERTY_RESTRICIONS
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PROPERTY_RESTRICTIONS
 argument_list|)
@@ -770,7 +792,7 @@ name|Properties
 operator|.
 name|PRIMARY_TYPES
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PRIMARY_TYPES
 argument_list|)
@@ -790,7 +812,7 @@ name|Properties
 operator|.
 name|PATH_RESTRICTIONS
 argument_list|,
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PATH_RESTRICTIONS
 argument_list|)
@@ -864,7 +886,7 @@ else|else
 block|{
 name|ignoredProperties
 operator|=
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|IGNORED_PROPERTIES
 expr_stmt|;

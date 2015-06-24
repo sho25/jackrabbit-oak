@@ -45,7 +45,6 @@ block|{
 comment|/**      * Provides a Solr configuration for Oak      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration}      */
 annotation|@
 name|Nonnull
-specifier|public
 name|OakSolrConfiguration
 name|getConfiguration
 parameter_list|()

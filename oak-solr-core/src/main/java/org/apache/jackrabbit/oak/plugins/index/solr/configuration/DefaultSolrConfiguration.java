@@ -127,7 +127,7 @@ name|String
 argument_list|>
 name|ignoredProperties
 init|=
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|IGNORED_PROPERTIES
 decl_stmt|;
@@ -172,7 +172,7 @@ name|getPathField
 parameter_list|()
 block|{
 return|return
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PATH_FIELD_NAME
 return|;
@@ -207,7 +207,7 @@ case|:
 block|{
 name|fieldName
 operator|=
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|DESC_FIELD_NAME
 expr_stmt|;
@@ -219,7 +219,7 @@ case|:
 block|{
 name|fieldName
 operator|=
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|CHILD_FIELD_NAME
 expr_stmt|;
@@ -231,7 +231,7 @@ case|:
 block|{
 name|fieldName
 operator|=
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PATH_FIELD_NAME
 expr_stmt|;
@@ -243,7 +243,7 @@ case|:
 block|{
 name|fieldName
 operator|=
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|ANC_FIELD_NAME
 expr_stmt|;
@@ -299,7 +299,7 @@ name|getCatchAllField
 parameter_list|()
 block|{
 return|return
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|CATCHALL_FIELD
 return|;
@@ -312,7 +312,7 @@ name|getRows
 parameter_list|()
 block|{
 return|return
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|ROWS
 return|;
@@ -325,7 +325,7 @@ name|useForPropertyRestrictions
 parameter_list|()
 block|{
 return|return
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PROPERTY_RESTRICTIONS
 return|;
@@ -338,7 +338,7 @@ name|useForPrimaryTypes
 parameter_list|()
 block|{
 return|return
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PRIMARY_TYPES
 return|;
@@ -351,7 +351,7 @@ name|useForPathRestrictions
 parameter_list|()
 block|{
 return|return
-name|SolrServerConfigurationDefaults
+name|OakSolrConfigurationDefaults
 operator|.
 name|PATH_RESTRICTIONS
 return|;
