@@ -5717,7 +5717,6 @@ throws|throws
 name|DocumentStoreException
 block|{
 comment|// use batch commit when there are only revision and modified updates
-comment|// and collision checks
 name|boolean
 name|batch
 init|=
@@ -5767,15 +5766,6 @@ operator|||
 name|NodeDocument
 operator|.
 name|MODIFIED_IN_SECS
-operator|.
-name|equals
-argument_list|(
-name|name
-argument_list|)
-operator|||
-name|NodeDocument
-operator|.
-name|COLLISIONS
 operator|.
 name|equals
 argument_list|(

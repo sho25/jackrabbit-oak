@@ -1812,13 +1812,8 @@ name|commit
 init|=
 name|commitRoot
 operator|.
-name|shallowCopy
-argument_list|(
-name|commitRoot
-operator|.
-name|getId
+name|copy
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|commit
 operator|.
