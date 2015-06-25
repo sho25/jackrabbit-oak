@@ -635,7 +635,6 @@ name|newIds
 decl_stmt|;
 comment|/**      * flag marking a reindex, case in which we don't need to keep track of the      * newIds set      */
 specifier|private
-specifier|final
 name|boolean
 name|isReindex
 decl_stmt|;
@@ -740,14 +739,6 @@ name|newIds
 operator|=
 name|newHashSet
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|isReindex
-operator|=
-name|MISSING_NODE
-operator|==
-name|root
 expr_stmt|;
 block|}
 specifier|private
@@ -920,7 +911,24 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-block|{     }
+block|{
+if|if
+condition|(
+name|MISSING_NODE
+operator|==
+name|before
+operator|&&
+name|parent
+operator|==
+literal|null
+condition|)
+block|{
+name|isReindex
+operator|=
+literal|true
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 specifier|public
