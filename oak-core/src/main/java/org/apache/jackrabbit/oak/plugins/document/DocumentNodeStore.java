@@ -305,7 +305,51 @@ name|util
 operator|.
 name|Utils
 operator|.
+name|asStringValueIterable
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
 name|getIdFromPath
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
+name|pathToId
 import|;
 end_import
 
@@ -8649,6 +8693,14 @@ argument_list|()
 condition|)
 block|{
 comment|// invalidate caches
+if|if
+condition|(
+name|externalSort
+operator|==
+literal|null
+condition|)
+block|{
+comment|// if no externalSort available, then invalidate the classic way: everything
 name|stats
 operator|.
 name|cacheStats
@@ -8658,12 +8710,134 @@ operator|.
 name|invalidateCache
 argument_list|()
 expr_stmt|;
-comment|// TODO only invalidate affected items
 name|docChildrenCache
 operator|.
 name|invalidateAll
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+try|try
+block|{
+name|externalSort
+operator|.
+name|sort
+argument_list|()
+expr_stmt|;
+name|stats
+operator|.
+name|cacheStats
+operator|=
+name|store
+operator|.
+name|invalidateCache
+argument_list|(
+name|pathToId
+argument_list|(
+name|externalSort
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// OAK-3002: only invalidate affected items (using journal)
+name|long
+name|origSize
+init|=
+name|docChildrenCache
+operator|.
+name|size
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|origSize
+operator|==
+literal|0
+condition|)
+block|{
+comment|// if docChildrenCache is empty, don't bother
+comment|// calling invalidateAll either way
+comment|// (esp calling invalidateAll(Iterable) will
+comment|// potentially iterate over all keys even though
+comment|// there's nothing to be deleted)
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"backgroundRead: docChildrenCache nothing to invalidate"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// however, if the docChildrenCache is not empty,
+comment|// use the invalidateAll(Iterable) variant,
+comment|// passing it a Iterable<StringValue>, as that's
+comment|// what is contained in the cache
+name|docChildrenCache
+operator|.
+name|invalidateAll
+argument_list|(
+name|asStringValueIterable
+argument_list|(
+name|externalSort
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|long
+name|newSize
+init|=
+name|docChildrenCache
+operator|.
+name|size
+argument_list|()
+decl_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"backgroundRead: docChildrenCache invalidation result: orig: {}, new: {} "
+argument_list|,
+name|origSize
+argument_list|,
+name|newSize
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ioe
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"backgroundRead: got IOException during external sorting/cache invalidation (as a result, invalidating entire cache): "
+operator|+
+name|ioe
+argument_list|,
+name|ioe
+argument_list|)
+expr_stmt|;
+name|stats
+operator|.
+name|cacheStats
+operator|=
+name|store
+operator|.
+name|invalidateCache
+argument_list|()
+expr_stmt|;
+name|docChildrenCache
+operator|.
+name|invalidateAll
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 name|stats
 operator|.
 name|cacheInvalidationTime

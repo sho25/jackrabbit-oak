@@ -385,6 +385,19 @@ name|CacheInvalidationStats
 name|invalidateCache
 parameter_list|()
 function_decl|;
+comment|/**      * Invalidate the document cache but only with entries that match one      * of the keys provided.      */
+annotation|@
+name|CheckForNull
+name|CacheInvalidationStats
+name|invalidateCache
+parameter_list|(
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|keys
+parameter_list|)
+function_decl|;
 comment|/**      * Invalidate the document cache for the given key.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      */
 parameter_list|<
 name|T

@@ -1393,6 +1393,25 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|CacheInvalidationStats
+name|invalidateCache
+parameter_list|(
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|keys
+parameter_list|)
+block|{
+comment|//TODO: optimize me
+return|return
+name|invalidateCache
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 parameter_list|<
 name|T
 extends|extends

@@ -555,11 +555,6 @@ argument_list|,
 name|to
 argument_list|)
 expr_stmt|;
-name|externalSort
-operator|.
-name|sort
-argument_list|()
-expr_stmt|;
 comment|// note that it is not de-duplicated yet
 name|LOG
 operator|.

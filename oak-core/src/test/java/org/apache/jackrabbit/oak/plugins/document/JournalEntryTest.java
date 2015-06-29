@@ -353,6 +353,11 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+name|sort
+operator|.
+name|sort
+argument_list|()
+expr_stmt|;
 name|JournalEntry
 operator|.
 name|applyTo

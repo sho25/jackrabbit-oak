@@ -1095,7 +1095,7 @@ operator|.
 name|newHashMap
 argument_list|()
 decl_stmt|;
-comment|// Fetch only the lastRev map and id
+comment|// Fetch only the modCount and id
 specifier|final
 name|BasicDBObject
 name|keys
@@ -1284,7 +1284,7 @@ argument_list|(
 name|idBatch
 argument_list|)
 decl_stmt|;
-comment|// Fetch lastRev and modCount for each such nodes
+comment|// Fetch modCount for each such nodes
 name|DBCursor
 name|cursor
 init|=
