@@ -1686,6 +1686,7 @@ name|FileStore
 name|store
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|SegmentNodeStore
 name|delegate
 decl_stmt|;
@@ -1802,7 +1803,6 @@ decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
-specifier|synchronized
 name|SegmentNodeStore
 name|getNodeStore
 parameter_list|()
@@ -2895,7 +2895,6 @@ block|}
 annotation|@
 name|Deactivate
 specifier|public
-specifier|synchronized
 name|void
 name|deactivate
 parameter_list|()
@@ -2903,6 +2902,11 @@ block|{
 name|unregisterNodeStore
 argument_list|()
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 if|if
 condition|(
 name|observerTracker
@@ -2949,6 +2953,7 @@ name|store
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected
