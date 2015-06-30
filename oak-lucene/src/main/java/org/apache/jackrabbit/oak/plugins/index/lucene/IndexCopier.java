@@ -455,22 +455,6 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
 name|concurrent
 operator|.
 name|NotifyingFutureTask
@@ -574,6 +558,20 @@ operator|.
 name|store
 operator|.
 name|IndexOutput
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|store
+operator|.
+name|NoLockFactory
 import|;
 end_import
 
@@ -1214,6 +1212,8 @@ name|newVersion
 argument_list|)
 expr_stmt|;
 block|}
+comment|//By design indexing in Oak is single threaded so Lucene locking
+comment|//can be disabled
 name|Directory
 name|dir
 init|=
@@ -1222,6 +1222,11 @@ operator|.
 name|open
 argument_list|(
 name|indexWriterDir
+argument_list|,
+name|NoLockFactory
+operator|.
+name|getNoLockFactory
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|log
