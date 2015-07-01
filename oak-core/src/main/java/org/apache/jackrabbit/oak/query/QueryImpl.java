@@ -4729,6 +4729,14 @@ block|{
 name|double
 name|cost
 decl_stmt|;
+name|String
+name|indexName
+init|=
+name|index
+operator|.
+name|getIndexName
+argument_list|()
+decl_stmt|;
 name|IndexPlan
 name|indexPlan
 init|=
@@ -5010,6 +5018,28 @@ name|cost
 operator|=
 name|c
 expr_stmt|;
+if|if
+condition|(
+name|p
+operator|.
+name|getPlanName
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|indexName
+operator|+=
+literal|"["
+operator|+
+name|p
+operator|.
+name|getPlanName
+argument_list|()
+operator|+
+literal|"]"
+expr_stmt|;
+block|}
 name|indexPlan
 operator|=
 name|p
@@ -5043,10 +5073,7 @@ name|logDebug
 argument_list|(
 literal|"cost for "
 operator|+
-name|index
-operator|.
-name|getIndexName
-argument_list|()
+name|indexName
 operator|+
 literal|" is "
 operator|+
@@ -5067,10 +5094,7 @@ name|error
 argument_list|(
 literal|"cost below 0 for "
 operator|+
-name|index
-operator|.
-name|getIndexName
-argument_list|()
+name|indexName
 operator|+
 literal|" is "
 operator|+

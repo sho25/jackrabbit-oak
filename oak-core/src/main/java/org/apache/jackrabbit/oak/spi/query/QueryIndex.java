@@ -61,6 +61,18 @@ end_import
 
 begin_import
 import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -277,6 +289,8 @@ parameter_list|)
 function_decl|;
 block|}
 comment|/**      * An index plan.      */
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|IndexPlan
@@ -366,6 +380,13 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**          * Get the unique plan name.          *          * @return the plan name          */
+annotation|@
+name|CheckForNull
+name|String
+name|getPlanName
+parameter_list|()
+function_decl|;
 comment|/**          * A builder for index plans.          */
 specifier|public
 class|class
@@ -439,6 +460,12 @@ name|Maps
 operator|.
 name|newHashMap
 argument_list|()
+decl_stmt|;
+specifier|protected
+name|String
+name|planName
+init|=
+literal|null
 decl_stmt|;
 specifier|public
 name|Builder
@@ -668,6 +695,24 @@ name|this
 return|;
 block|}
 specifier|public
+name|Builder
+name|setPlanName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|planName
+operator|=
+name|name
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+specifier|public
 name|IndexPlan
 name|build
 parameter_list|()
@@ -832,6 +877,17 @@ operator|.
 name|this
 operator|.
 name|attributes
+decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|planName
+init|=
+name|Builder
+operator|.
+name|this
+operator|.
+name|planName
 decl_stmt|;
 annotation|@
 name|Override
@@ -1099,6 +1155,17 @@ name|get
 argument_list|(
 name|name
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getPlanName
+parameter_list|()
+block|{
+return|return
+name|planName
 return|;
 block|}
 block|}

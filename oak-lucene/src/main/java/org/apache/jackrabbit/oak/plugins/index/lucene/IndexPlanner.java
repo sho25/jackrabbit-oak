@@ -1800,6 +1800,11 @@ argument_list|(
 name|estimatedEntryCount
 argument_list|()
 argument_list|)
+operator|.
+name|setPlanName
+argument_list|(
+name|indexPath
+argument_list|)
 return|;
 block|}
 specifier|private
