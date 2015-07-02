@@ -1969,6 +1969,11 @@ name|context
 argument_list|)
 return|;
 block|}
+name|readerRemoteReadCount
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
 return|return
 name|remote
 operator|.
