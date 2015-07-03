@@ -1397,13 +1397,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"{} => Indexed {} nodes..."
+literal|"[{}] => Indexed {} nodes..."
 argument_list|,
-name|context
-operator|.
-name|getDefinition
-argument_list|()
-operator|.
 name|getIndexName
 argument_list|()
 argument_list|,
@@ -1478,13 +1473,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"{} => Indexed {} nodes, done."
+literal|"[{}] => Indexed {} nodes, done."
 argument_list|,
-name|context
-operator|.
-name|getDefinition
-argument_list|()
-operator|.
 name|getIndexName
 argument_list|()
 argument_list|,
@@ -1919,7 +1909,10 @@ name|log
 operator|.
 name|trace
 argument_list|(
-literal|"Indexed document for {} is {}"
+literal|"[{}] Indexed document for {} is {}"
+argument_list|,
+name|getIndexName
+argument_list|()
 argument_list|,
 name|path
 argument_list|,
@@ -3028,7 +3021,10 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Ignoring ordered property {} of type {} for path {} as multivalued ordered property not supported"
+literal|"[{}] Ignoring ordered property {} of type {} for path {} as multivalued ordered property not supported"
+argument_list|,
+name|getIndexName
+argument_list|()
 argument_list|,
 name|pname
 argument_list|,
@@ -3086,9 +3082,12 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ordered property defined with type {} differs from property {} with type {} in "
+literal|"[{}] Ordered property defined with type {} differs from property {} with type {} in "
 operator|+
 literal|"path {}"
+argument_list|,
+name|getIndexName
+argument_list|()
 argument_list|,
 name|Type
 operator|.
@@ -3351,9 +3350,10 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Ignoring ordered property. Could not convert property {} of type {} to type "
-operator|+
-literal|"{} for path {}"
+literal|"[{}] Ignoring ordered property. Could not convert property {} of type {} to type {} for path {}"
+argument_list|,
+name|getIndexName
+argument_list|()
 argument_list|,
 name|pname
 argument_list|,
@@ -3482,9 +3482,10 @@ name|log
 operator|.
 name|trace
 argument_list|(
-literal|"Ignoring binary content for node {} due to unsupported "
-operator|+
-literal|"(or null) jcr:mimeType [{}]"
+literal|"[{}] Ignoring binary content for node {} due to unsupported (or null) jcr:mimeType [{}]"
+argument_list|,
+name|getIndexName
+argument_list|()
 argument_list|,
 name|nodePath
 argument_list|,
@@ -4970,15 +4971,18 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to extract text from a binary property: "
-operator|+
-name|path
+literal|"[{}] Failed to extract text from a binary property: {}."
 operator|+
 literal|" This is a fairly common case, and nothing to"
 operator|+
 literal|" worry about. The stack trace is included to"
 operator|+
 literal|" help improve the text extraction feature."
+argument_list|,
+name|getIndexName
+argument_list|()
+argument_list|,
+name|path
 argument_list|,
 name|t
 argument_list|)
@@ -5012,6 +5016,21 @@ argument_list|)
 expr_stmt|;
 return|return
 name|result
+return|;
+block|}
+specifier|private
+name|String
+name|getIndexName
+parameter_list|()
+block|{
+return|return
+name|context
+operator|.
+name|getDefinition
+argument_list|()
+operator|.
+name|getIndexName
+argument_list|()
 return|;
 block|}
 block|}
