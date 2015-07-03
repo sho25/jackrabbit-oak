@@ -33,12 +33,26 @@ name|TabularData
 import|;
 end_import
 
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_interface
 annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"UnusedDeclaration"
 argument_list|)
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|CopyOnReadStatsMBean
@@ -50,6 +64,10 @@ literal|"IndexCopierStats"
 decl_stmt|;
 name|TabularData
 name|getIndexPathMapping
+parameter_list|()
+function_decl|;
+name|boolean
+name|isPrefetchEnabled
 parameter_list|()
 function_decl|;
 name|int
