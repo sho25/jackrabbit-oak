@@ -2498,6 +2498,17 @@ operator|.
 name|markValid
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|trace
+argument_list|(
+literal|"[{}] found local copy of file {}"
+argument_list|,
+name|indexPath
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|success
@@ -2803,9 +2814,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Following files have been removed from Lucene "
-operator|+
-literal|"index directory [{}]"
+literal|"[{}] Following files have been removed from Lucene index directory {}"
+argument_list|,
+name|indexPath
 argument_list|,
 name|filesToBeDeleted
 argument_list|)

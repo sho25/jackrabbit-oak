@@ -3487,7 +3487,7 @@ argument_list|,
 name|getIndexName
 argument_list|()
 argument_list|,
-name|nodePath
+name|path
 argument_list|,
 name|type
 argument_list|)

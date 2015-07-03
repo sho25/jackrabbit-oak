@@ -752,7 +752,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|"Index found to be updated at [{}]. Reopening the IndexNode"
+literal|"[{}] Index found to be updated. Reopening the IndexNode"
 argument_list|,
 name|path
 argument_list|)
