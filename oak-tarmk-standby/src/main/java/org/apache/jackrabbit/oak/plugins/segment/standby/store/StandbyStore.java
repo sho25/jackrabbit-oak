@@ -1238,8 +1238,6 @@ operator|instanceof
 name|FileStore
 condition|)
 block|{
-try|try
-block|{
 return|return
 operator|(
 operator|(
@@ -1251,23 +1249,6 @@ operator|.
 name|size
 argument_list|()
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Error getting delegate size"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 return|return
 operator|-

@@ -3085,8 +3085,6 @@ specifier|synchronized
 name|long
 name|size
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|long
 name|size
