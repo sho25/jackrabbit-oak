@@ -419,6 +419,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Get the underlying value as stream so we can collect
+comment|// the segments ids involved in storing the value.
+comment|// This works as primitives are stored as strings and strings
+comment|// as binaries of their UTF-8 encoding.
 for|for
 control|(
 name|Blob
