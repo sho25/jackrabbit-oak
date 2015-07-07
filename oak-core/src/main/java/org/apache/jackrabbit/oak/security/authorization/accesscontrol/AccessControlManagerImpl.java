@@ -4225,7 +4225,10 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Attempt to create an ACE for the admin principal which always has full access."
+literal|"Attempt to create an ACE for an administrative principal which always has full access:"
+operator|+
+name|getPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 switch|switch
@@ -4248,7 +4251,7 @@ throw|throw
 operator|new
 name|AccessControlException
 argument_list|(
-literal|"Attempt to create an ACE for the admin principal which always has full access."
+literal|"Attempt to create an ACE for an administrative principal which always has full access."
 argument_list|)
 throw|;
 case|case
