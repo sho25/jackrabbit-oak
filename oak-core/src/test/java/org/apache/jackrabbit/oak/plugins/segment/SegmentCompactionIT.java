@@ -485,18 +485,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -1932,7 +1920,7 @@ parameter_list|()
 block|{
 name|scheduler
 operator|.
-name|schedule
+name|scheduleAtFixedRate
 argument_list|(
 operator|new
 name|Runnable
@@ -1957,8 +1945,8 @@ block|}
 argument_list|,
 literal|1
 argument_list|,
-name|TimeUnit
-operator|.
+literal|1
+argument_list|,
 name|MINUTES
 argument_list|)
 expr_stmt|;
