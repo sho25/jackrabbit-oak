@@ -181,6 +181,71 @@ name|int
 name|getMaxPropertyCount
 parameter_list|()
 function_decl|;
+comment|/**      * Set the ration of remove node operations wrt. all other operations.      * @param ratio  ratio of node remove operations      */
+name|void
+name|setNodeRemoveRatio
+parameter_list|(
+name|int
+name|ratio
+parameter_list|)
+function_decl|;
+comment|/**      * @return  Ratio of node remove operations      */
+name|int
+name|getNodeRemoveRatio
+parameter_list|()
+function_decl|;
+comment|/**      * Set the ration of remove property operations wrt. all other operations.      * @param ratio  ratio of property remove operations      */
+name|void
+name|setPropertyRemoveRatio
+parameter_list|(
+name|int
+name|ratio
+parameter_list|)
+function_decl|;
+comment|/**      * @return  Ratio of property remove operations      */
+name|int
+name|getPropertyRemoveRatio
+parameter_list|()
+function_decl|;
+comment|/**      * Set the ration of add node operations wrt. all other operations.      * @param ratio  ratio of node add operations      */
+name|void
+name|setNodeAddRatio
+parameter_list|(
+name|int
+name|ratio
+parameter_list|)
+function_decl|;
+comment|/**      * @return  Ratio of node add operations      */
+name|int
+name|getNodeAddRatio
+parameter_list|()
+function_decl|;
+comment|/**      * Set the ration of add string property operations wrt. all other operations.      * @param ratio  ratio of string property add operations      */
+name|void
+name|setAddStringRatio
+parameter_list|(
+name|int
+name|ratio
+parameter_list|)
+function_decl|;
+comment|/**      * @return  Ratio of string property add operations      */
+name|int
+name|getAddStringRatio
+parameter_list|()
+function_decl|;
+comment|/**      * Set the ration of add binary property operations wrt. all other operations.      * @param ratio  ratio of binary property add operations      */
+name|void
+name|setAddBinaryRatio
+parameter_list|(
+name|int
+name|ratio
+parameter_list|)
+function_decl|;
+comment|/**      * @return  Ratio of binary property add operations      */
+name|int
+name|getAddBinaryRatio
+parameter_list|()
+function_decl|;
 comment|/**      * Add a reference to the current root or release a held reference.      * @param set  add a reference if {@code true}, otherwise release any held reference      */
 name|void
 name|setRootReference
