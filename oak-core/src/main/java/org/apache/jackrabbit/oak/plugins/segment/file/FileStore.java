@@ -3429,11 +3429,7 @@ expr_stmt|;
 name|newWriter
 argument_list|()
 expr_stmt|;
-name|tracker
-operator|.
-name|clearCache
-argument_list|()
-expr_stmt|;
+comment|//        tracker.clearCache();
 comment|// Suggest to the JVM that now would be a good time
 comment|// to clear stale weak references in the SegmentTracker
 name|System
