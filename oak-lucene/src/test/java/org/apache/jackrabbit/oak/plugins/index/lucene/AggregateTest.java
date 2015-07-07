@@ -3141,8 +3141,6 @@ parameter_list|(
 name|NodeIncludeResult
 name|result
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|nodeResults
 operator|.
@@ -3165,8 +3163,6 @@ parameter_list|(
 name|PropertyIncludeResult
 name|result
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|propResults
 operator|.

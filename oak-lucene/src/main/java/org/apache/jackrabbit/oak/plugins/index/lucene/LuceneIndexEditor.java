@@ -1973,21 +1973,17 @@ name|IllegalArgumentException
 name|ie
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|CommitFailedException
+name|log
+operator|.
+name|warn
 argument_list|(
-literal|"Lucene"
+literal|"Failed to index the node [{}]"
 argument_list|,
-literal|3
-argument_list|,
-literal|"Failed to index the node "
-operator|+
 name|path
 argument_list|,
 name|ie
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 return|return
 literal|false
@@ -2006,8 +2002,6 @@ parameter_list|,
 name|boolean
 name|isUpdate
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 if|if
 condition|(
@@ -2401,8 +2395,6 @@ parameter_list|,
 name|PropertyDefinition
 name|pd
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|boolean
 name|includeTypeForFullText
@@ -2731,8 +2723,6 @@ parameter_list|,
 name|String
 name|pname
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|int
 name|tag
@@ -3002,8 +2992,6 @@ parameter_list|,
 name|PropertyDefinition
 name|pd
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 comment|// Ignore and warn if property multi-valued as not supported
 if|if
@@ -4092,8 +4080,6 @@ specifier|final
 name|NodeState
 name|state
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 specifier|final
 name|AtomicBoolean
@@ -4129,8 +4115,6 @@ operator|.
 name|NodeIncludeResult
 name|result
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|boolean
 name|dirty
@@ -4169,8 +4153,6 @@ operator|.
 name|PropertyIncludeResult
 name|result
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|boolean
 name|dirty
@@ -4253,7 +4235,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * Create the fulltext field from the aggregated nodes. If result is for aggregate for a relative node      * include then      * @param path current node path      * @param fields indexed fields      * @param result aggregate result      * @return true if a field was created for passed node result      * @throws CommitFailedException      */
+comment|/**      * Create the fulltext field from the aggregated nodes. If result is for aggregate for a relative node      * include then      * @param path current node path      * @param fields indexed fields      * @param result aggregate result      * @return true if a field was created for passed node result      */
 specifier|private
 name|boolean
 name|indexAggregatedNode
@@ -4272,8 +4254,6 @@ operator|.
 name|NodeIncludeResult
 name|result
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 comment|//rule for node being aggregated might be null if such nodes
 comment|//are not indexed on there own. In such cases we rely in current

@@ -515,8 +515,6 @@ parameter_list|,
 name|ResultCollector
 name|collector
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 if|if
 condition|(
@@ -678,8 +676,6 @@ parameter_list|,
 name|ResultCollector
 name|collector
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 for|for
 control|(
@@ -1108,8 +1104,6 @@ parameter_list|,
 name|ResultCollector
 name|results
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|collectResults
 argument_list|(
@@ -1134,8 +1128,6 @@ parameter_list|,
 name|ResultCollector
 name|results
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{          }
 specifier|public
 specifier|abstract
@@ -1340,8 +1332,6 @@ parameter_list|,
 name|ResultCollector
 name|results
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 comment|//For supporting jcr:contains(jcr:content, 'foo')
 if|if
@@ -1671,8 +1661,6 @@ parameter_list|,
 name|ResultCollector
 name|results
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 if|if
 condition|(
@@ -1827,8 +1815,6 @@ parameter_list|(
 name|NodeIncludeResult
 name|result
 parameter_list|)
-throws|throws
-name|CommitFailedException
 function_decl|;
 name|void
 name|onResult
@@ -1836,8 +1822,6 @@ parameter_list|(
 name|PropertyIncludeResult
 name|result
 parameter_list|)
-throws|throws
-name|CommitFailedException
 function_decl|;
 block|}
 specifier|public
@@ -2718,8 +2702,6 @@ parameter_list|(
 name|ResultCollector
 name|results
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|checkArgument
 argument_list|(
