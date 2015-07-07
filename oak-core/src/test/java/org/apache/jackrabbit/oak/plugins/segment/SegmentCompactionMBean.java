@@ -33,6 +33,19 @@ name|void
 name|stop
 parameter_list|()
 function_decl|;
+comment|/**      * Set the core pool size of the scheduler used to execute concurrent      * operations.      * @param corePoolSize      */
+name|void
+name|setCorePoolSize
+parameter_list|(
+name|int
+name|corePoolSize
+parameter_list|)
+function_decl|;
+comment|/**      * @return the core pool size of the scheduler used to execute concurrent      * operations.      */
+name|int
+name|getCorePoolSize
+parameter_list|()
+function_decl|;
 comment|/**      * Set the compaction interval      * @param minutes  number of minutes to wait between compaction cycles.      */
 name|void
 name|setCompactionInterval

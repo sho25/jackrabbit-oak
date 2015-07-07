@@ -3776,6 +3776,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCorePoolSize
@@ -3792,6 +3794,8 @@ name|corePoolSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getCorePoolSize
