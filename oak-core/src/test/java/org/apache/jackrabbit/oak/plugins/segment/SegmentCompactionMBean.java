@@ -155,6 +155,19 @@ name|int
 name|getMaxReferences
 parameter_list|()
 function_decl|;
+comment|/**      * Maximal number of write operations per scheduled writer      * @param count  maximal number of operations      */
+name|void
+name|setMaxWriteOps
+parameter_list|(
+name|int
+name|count
+parameter_list|)
+function_decl|;
+comment|/**      * @return  maximal number of operations      */
+name|int
+name|getMaxWriteOps
+parameter_list|()
+function_decl|;
 comment|/**      * Set the maximal number of child node of a node      * @param count  maximal number of child nodes      */
 name|void
 name|setMaxNodeCount
