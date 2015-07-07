@@ -155,6 +155,32 @@ name|int
 name|getMaxReferences
 parameter_list|()
 function_decl|;
+comment|/**      * Set the maximal number of child node of a node      * @param count  maximal number of child nodes      */
+name|void
+name|setMaxNodeCount
+parameter_list|(
+name|int
+name|count
+parameter_list|)
+function_decl|;
+comment|/**      * @return  Maximal number of child nodes of a node      */
+name|int
+name|getMaxNodeCount
+parameter_list|()
+function_decl|;
+comment|/**      * Set the maximal number of properties of a node      * @param count  maximal number of properties      */
+name|void
+name|setMaxPropertyCount
+parameter_list|(
+name|int
+name|count
+parameter_list|)
+function_decl|;
+comment|/**      * @return  Maximal number of properties of a node      */
+name|int
+name|getMaxPropertyCount
+parameter_list|()
+function_decl|;
 comment|/**      * Add a reference to the current root or release a held reference.      * @param set  add a reference if {@code true}, otherwise release any held reference      */
 name|void
 name|setRootReference
