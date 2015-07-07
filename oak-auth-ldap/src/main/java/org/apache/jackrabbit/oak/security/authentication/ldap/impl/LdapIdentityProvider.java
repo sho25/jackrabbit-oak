@@ -2751,6 +2751,28 @@ name|getGroupMemberAttribute
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|attr
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"LDAP group does not have configured attribute: {}"
+argument_list|,
+name|config
+operator|.
+name|getGroupMemberAttribute
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 for|for
 control|(
 name|Value
@@ -2788,6 +2810,7 @@ argument_list|,
 name|memberRef
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|timer
 operator|.
