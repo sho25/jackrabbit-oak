@@ -116,6 +116,19 @@ name|long
 name|getMaxStoreSize
 parameter_list|()
 function_decl|;
+comment|/**      * Set the maximal size of string properties      * @param size  size in bytes      */
+name|void
+name|setMaxStringSize
+parameter_list|(
+name|int
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * @return  maximal size of string properties in bytes      */
+name|int
+name|getMaxStringSize
+parameter_list|()
+function_decl|;
 comment|/**      * Set the maximal size of binary properties      * @param size  size in bytes      */
 name|void
 name|setMaxBlobSize
