@@ -13946,6 +13946,11 @@ argument_list|(
 name|a
 argument_list|)
 expr_stmt|;
+name|a
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|logMessages
