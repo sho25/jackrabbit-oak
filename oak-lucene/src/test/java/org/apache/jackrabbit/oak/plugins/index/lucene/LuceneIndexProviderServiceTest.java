@@ -391,7 +391,7 @@ argument_list|,
 name|indexCopier
 argument_list|)
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|indexCopier
 operator|.

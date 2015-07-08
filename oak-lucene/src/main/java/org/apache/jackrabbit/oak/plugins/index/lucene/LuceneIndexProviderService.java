@@ -916,7 +916,7 @@ specifier|final
 name|boolean
 name|PROP_PREFETCH_INDEX_FILES_DEFAULT
 init|=
-literal|false
+literal|true
 decl_stmt|;
 annotation|@
 name|Property
