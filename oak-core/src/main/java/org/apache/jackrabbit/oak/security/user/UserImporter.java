@@ -1258,6 +1258,37 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|existing
+operator|==
+literal|null
+condition|)
+block|{
+name|String
+name|msg
+init|=
+literal|"Cannot handle protected PropInfo "
+operator|+
+name|propInfo
+operator|+
+literal|". Invalid rep:authorizableId."
+decl_stmt|;
+name|log
+operator|.
+name|warn
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|ConstraintViolationException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|a
 operator|.
 name|getPath
