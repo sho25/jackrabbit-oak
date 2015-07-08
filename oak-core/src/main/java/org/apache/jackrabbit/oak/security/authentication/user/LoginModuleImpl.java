@@ -683,6 +683,18 @@ name|userId
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// ensure that we don't commit (OAK-2998, OAK-3032)
+name|credentials
+operator|=
+literal|null
+expr_stmt|;
+name|userId
+operator|=
+literal|null
+expr_stmt|;
+block|}
 return|return
 name|success
 return|;
