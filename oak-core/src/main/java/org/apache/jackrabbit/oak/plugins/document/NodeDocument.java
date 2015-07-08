@@ -3587,7 +3587,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Returns update operations to split this document. The implementation may      * decide to not return any operations if no splitting is required.      *      * @param context the revision context.      * @return the split operations.      */
+comment|/**      * Returns update operations to split this document. The implementation may      * decide to not return any operations if no splitting is required. A caller      * must explicitly pass a head revision even though it is available through      * the {@link RevisionContext}. The given head revision must reflect a head      * state before {@code doc} was retrieved from the document store. This is      * important in order to maintain consistency. See OAK-3081 for details.      *      * @param context the revision context.      * @param head    the head revision before this document was retrieved from      *                the document store.      * @return the split operations.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -3601,6 +3601,11 @@ annotation|@
 name|Nonnull
 name|RevisionContext
 name|context
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Revision
+name|head
 parameter_list|)
 block|{
 return|return
@@ -3611,6 +3616,8 @@ argument_list|(
 name|this
 argument_list|,
 name|context
+argument_list|,
+name|head
 argument_list|)
 return|;
 block|}

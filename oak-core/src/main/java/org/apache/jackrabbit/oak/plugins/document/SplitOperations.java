@@ -634,6 +634,11 @@ name|id
 decl_stmt|;
 specifier|private
 specifier|final
+name|Revision
+name|headRevision
+decl_stmt|;
+specifier|private
+specifier|final
 name|RevisionContext
 name|context
 decl_stmt|;
@@ -725,6 +730,11 @@ annotation|@
 name|Nonnull
 name|RevisionContext
 name|context
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Revision
+name|headRevision
 parameter_list|)
 block|{
 name|this
@@ -763,8 +773,17 @@ operator|.
 name|getId
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|headRevision
+operator|=
+name|checkNotNull
+argument_list|(
+name|headRevision
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Creates a list of update operations in case the given document requires      * a split.      *      * @param doc a main document.      * @param context the revision context.      * @return list of update operations. An empty list indicates the document      *          does not require a split.      * @throws IllegalArgumentException if the given document is a split      *                                  document.      */
+comment|/**      * Creates a list of update operations in case the given document requires      * a split. A caller must explicitly pass a head revision even though it      * is available through the {@link RevisionContext}. The given head revision      * must reflect a head state before {@code doc} was retrieved from the      * document store. This is important in order to maintain consistency.      * See OAK-3081 for details.      *      * @param doc a main document.      * @param context the revision context.      * @param headRevision the head revision before the document was retrieved      *                     from the document store.      * @return list of update operations. An empty list indicates the document      *          does not require a split.      * @throws IllegalArgumentException if the given document is a split      *                                  document.      */
 annotation|@
 name|Nonnull
 specifier|static
@@ -783,6 +802,11 @@ annotation|@
 name|Nonnull
 name|RevisionContext
 name|context
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Revision
+name|headRevision
 parameter_list|)
 block|{
 if|if
@@ -813,6 +837,8 @@ argument_list|(
 name|doc
 argument_list|,
 name|context
+argument_list|,
+name|headRevision
 argument_list|)
 operator|.
 name|create
@@ -2346,14 +2372,6 @@ name|Revision
 name|rev
 parameter_list|)
 block|{
-name|Revision
-name|head
-init|=
-name|context
-operator|.
-name|getHeadRevision
-argument_list|()
-decl_stmt|;
 name|Comparator
 argument_list|<
 name|Revision
@@ -2365,13 +2383,15 @@ operator|.
 name|getRevisionComparator
 argument_list|()
 decl_stmt|;
+comment|// use headRevision as passed in the constructor instead
+comment|// of the head revision from the RevisionContext. see OAK-3081
 if|if
 condition|(
 name|comp
 operator|.
 name|compare
 argument_list|(
-name|head
+name|headRevision
 argument_list|,
 name|rev
 argument_list|)

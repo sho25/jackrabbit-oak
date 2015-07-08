@@ -272,6 +272,16 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
+name|Revision
+name|head
+init|=
+name|DummyRevisionContext
+operator|.
+name|INSTANCE
+operator|.
+name|getHeadRevision
+argument_list|()
+decl_stmt|;
 name|doc
 operator|.
 name|split
@@ -279,6 +289,8 @@ argument_list|(
 name|DummyRevisionContext
 operator|.
 name|INSTANCE
+argument_list|,
+name|head
 argument_list|)
 expr_stmt|;
 block|}

@@ -9445,6 +9445,12 @@ name|void
 name|backgroundSplit
 parameter_list|()
 block|{
+name|Revision
+name|head
+init|=
+name|getHeadRevision
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Iterator
@@ -9509,6 +9515,8 @@ operator|.
 name|split
 argument_list|(
 name|this
+argument_list|,
+name|head
 argument_list|)
 control|)
 block|{
