@@ -6725,9 +6725,9 @@ name|RepositoryConfig
 operator|.
 name|create
 argument_list|(
-name|dir
-argument_list|,
 name|xml
+argument_list|,
+name|dir
 argument_list|)
 argument_list|)
 decl_stmt|;
