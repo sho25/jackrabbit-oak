@@ -1634,6 +1634,11 @@ name|commitRoot
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|success
+init|=
+literal|false
+decl_stmt|;
 try|try
 block|{
 if|if
@@ -1871,6 +1876,10 @@ throw|;
 block|}
 else|else
 block|{
+name|success
+operator|=
+literal|true
+expr_stmt|;
 comment|// if we get here the commit was successful and
 comment|// the commit revision is set on the commitRoot
 comment|// document for this commit.
@@ -1920,6 +1929,24 @@ name|DocumentStoreException
 name|e
 parameter_list|)
 block|{
+comment|// OAK-3084 do not roll back if already committed
+if|if
+condition|(
+name|success
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Exception occurred after commit. Rollback will be suppressed."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|rollback
 argument_list|(
 name|newNodes
@@ -1932,6 +1959,7 @@ expr_stmt|;
 throw|throw
 name|e
 throw|;
+block|}
 block|}
 block|}
 specifier|private
