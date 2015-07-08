@@ -180,6 +180,14 @@ name|PERSIST_COMPACTION_MAP_DEFAULT
 init|=
 literal|true
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|byte
+name|GAIN_THRESHOLD_DEFAULT
+init|=
+literal|10
+decl_stmt|;
 comment|/**      * Default value for {@link #getRetryCount()}      */
 specifier|public
 specifier|static
@@ -293,6 +301,13 @@ name|compactionStart
 init|=
 name|currentTimeMillis
 argument_list|()
+decl_stmt|;
+comment|/**      * Compaction gain estimate threshold beyond which compaction should run      */
+specifier|private
+name|byte
+name|gainThreshold
+init|=
+name|GAIN_THRESHOLD_DEFAULT
 decl_stmt|;
 specifier|protected
 name|CompactionStrategy
@@ -668,6 +683,32 @@ operator|.
 name|retryCount
 operator|=
 name|retryCount
+expr_stmt|;
+block|}
+comment|/**      * Get the compaction gain estimate threshold beyond which compaction should      * run      * @return gainThreshold      */
+specifier|public
+name|byte
+name|getGainThreshold
+parameter_list|()
+block|{
+return|return
+name|gainThreshold
+return|;
+block|}
+comment|/**      * Set the compaction gain estimate threshold beyond which compaction should      * run      * @param gainThreshold      */
+specifier|public
+name|void
+name|setGainThreshold
+parameter_list|(
+name|byte
+name|gainThreshold
+parameter_list|)
+block|{
+name|this
+operator|.
+name|gainThreshold
+operator|=
+name|gainThreshold
 expr_stmt|;
 block|}
 specifier|public

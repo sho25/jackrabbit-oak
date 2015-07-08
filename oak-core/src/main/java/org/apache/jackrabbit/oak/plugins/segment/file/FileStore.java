@@ -2441,7 +2441,10 @@ if|if
 condition|(
 name|gain
 operator|>=
-literal|10
+name|compactionStrategy
+operator|.
+name|getGainThreshold
+argument_list|()
 condition|)
 block|{
 name|gcMonitor

@@ -112,6 +112,19 @@ name|int
 name|retryCount
 parameter_list|)
 function_decl|;
+comment|/**      * Get the compaction gain estimate threshold beyond which compaction should      * run      * @return gainThreshold      */
+name|byte
+name|getGainThreshold
+parameter_list|()
+function_decl|;
+comment|/**      * Set the compaction gain estimate threshold beyond which compaction should      * run      * @param gainThreshold      */
+name|void
+name|setGainThreshold
+parameter_list|(
+name|byte
+name|gainThreshold
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
