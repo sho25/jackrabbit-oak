@@ -79,6 +79,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -152,6 +162,20 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
 import|;
 end_import
 
@@ -405,20 +429,24 @@ name|logout
 argument_list|()
 expr_stmt|;
 block|}
-comment|// MergingNodeStateDif debug: [MergingNodeStateDiff]
-comment|// NodeConflictHandler<DELETE_CHANGED_NODE> resolved conflict of
-comment|// type DELETE_CHANGED_NODE with resolution THEIRS, conflict
-comment|// trace ^"/metadata/updated":"myself"
-name|List
+comment|// MergingNodeStateDif debug: NodeConflictHandler<DELETE_CHANGED_NODE>
+comment|// resolved conflict of type DELETE_CHANGED_NODE with resolution THEIRS
+comment|// on node jcr:content, conflict trace ^"/metadata/updated":"myself"
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|mnsdLogs
 init|=
+name|Sets
+operator|.
+name|newHashSet
+argument_list|(
 name|logMergingNodeStateDiff
 operator|.
 name|getLogs
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
@@ -477,16 +505,21 @@ argument_list|)
 expr_stmt|;
 comment|// ConflictValidator debug: Commit failed due to unresolved
 comment|// conflicts in /node = {deleteChangedNode = {jcr:content}}
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|cvLogs
 init|=
+name|Sets
+operator|.
+name|newHashSet
+argument_list|(
 name|logConflictValidator
 operator|.
 name|getLogs
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(

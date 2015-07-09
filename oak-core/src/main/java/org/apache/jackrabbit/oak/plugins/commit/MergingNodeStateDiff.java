@@ -911,13 +911,15 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"{} resolved conflict of type {} with resolution {}, conflict trace {}"
+literal|"{} resolved conflict of type {} with resolution {} on node {}, conflict trace {}"
 argument_list|,
 name|nodeConflictHandler
 argument_list|,
 name|conflictType
 argument_list|,
 name|resolution
+argument_list|,
+name|name
 argument_list|,
 name|diff
 argument_list|)
