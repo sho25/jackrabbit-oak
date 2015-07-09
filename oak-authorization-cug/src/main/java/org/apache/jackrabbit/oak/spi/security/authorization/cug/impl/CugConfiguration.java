@@ -1174,6 +1174,16 @@ name|principals
 argument_list|,
 name|supportedPaths
 argument_list|,
+name|getSecurityProvider
+argument_list|()
+operator|.
+name|getConfiguration
+argument_list|(
+name|AuthorizationConfiguration
+operator|.
+name|class
+argument_list|)
+operator|.
 name|getContext
 argument_list|()
 argument_list|)

@@ -1494,7 +1494,6 @@ name|boolean
 name|testForCtxRoot
 parameter_list|)
 block|{
-comment|// FIXME: this should also take other ac-configurations into considerations
 return|return
 operator|(
 name|testForCtxRoot
@@ -1525,7 +1524,6 @@ name|TreeLocation
 name|location
 parameter_list|)
 block|{
-comment|// FIXME: this should also take other ac-configurations into considerations
 return|return
 name|ctx
 operator|.

@@ -2852,7 +2852,7 @@ argument_list|,
 name|falseCugTp
 argument_list|)
 expr_stmt|;
-comment|// ac content
+comment|// cug content
 name|TreePermission
 name|cugTp
 init|=
@@ -2879,7 +2879,6 @@ argument_list|,
 name|cugTp
 argument_list|)
 expr_stmt|;
-comment|// TODO: for regular acl-node
 comment|// paths that may not contain cugs anyway
 name|assertSame
 argument_list|(

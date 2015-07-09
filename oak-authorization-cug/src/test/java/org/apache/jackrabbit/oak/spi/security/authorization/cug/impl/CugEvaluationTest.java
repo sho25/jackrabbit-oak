@@ -1099,19 +1099,6 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertFalse
-argument_list|(
-name|r
-operator|.
-name|getTree
-argument_list|(
-literal|"/content2/rep:cugPolicy"
-argument_list|)
-operator|.
-name|exists
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -1122,12 +1109,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"FIXME: cugpolicy not detected as ac-content"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public
@@ -1568,12 +1549,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"FIXME: cugpolicy not detected as ac-content"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public
