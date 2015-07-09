@@ -1506,7 +1506,7 @@ block|{
 if|if
 condition|(
 name|maxMemory
-operator|<=
+operator|<
 literal|0
 condition|)
 block|{
@@ -1514,7 +1514,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Max memory must be larger than 0"
+literal|"Max memory must not be negative"
 argument_list|)
 throw|;
 block|}
