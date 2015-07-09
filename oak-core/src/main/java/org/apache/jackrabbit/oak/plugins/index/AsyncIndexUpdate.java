@@ -3898,7 +3898,11 @@ literal|"Async"
 argument_list|,
 literal|2
 argument_list|,
-literal|"Missing index provider detected"
+literal|"Missing index provider detected for type ["
+operator|+
+name|type
+operator|+
+literal|"]"
 argument_list|)
 throw|;
 block|}
