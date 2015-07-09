@@ -237,7 +237,7 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"Exclude Principals from CUG"
+literal|"Apache Jackrabbit Oak CUG Exclude List"
 argument_list|,
 name|description
 operator|=
