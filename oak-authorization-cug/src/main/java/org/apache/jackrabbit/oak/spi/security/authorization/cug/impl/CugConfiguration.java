@@ -861,7 +861,7 @@ literal|"Apache Jackrabbit Oak CUG Configuration"
 argument_list|,
 name|description
 operator|=
-literal|"Authorization configuration dedicated to setup and evaluation 'closed user group' permissions."
+literal|"Authorization configuration dedicated to setup and evaluate 'Closed User Group' permissions."
 argument_list|,
 name|policy
 operator|=
