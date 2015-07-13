@@ -100,7 +100,7 @@ name|ExtractedText
 argument_list|(
 name|ExtractionResult
 operator|.
-name|ERROR
+name|EMPTY
 argument_list|,
 literal|""
 argument_list|)
