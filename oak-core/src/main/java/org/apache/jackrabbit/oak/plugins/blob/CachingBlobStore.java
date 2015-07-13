@@ -124,6 +124,12 @@ name|cache
 operator|=
 name|CacheLIRS
 operator|.
+expr|<
+name|String
+operator|,
+name|byte
+index|[]
+operator|>
 name|newBuilder
 argument_list|()
 operator|.

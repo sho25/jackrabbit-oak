@@ -22,6 +22,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterators
+operator|.
+name|filter
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterators
+operator|.
+name|transform
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -461,54 +509,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-operator|.
-name|filter
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-operator|.
-name|transform
-import|;
-end_import
-
 begin_comment
 comment|/**  * BlobStore wrapper for DataStore. Wraps Jackrabbit 2 DataStore and expose them as BlobStores  * It also handles inlining binaries if there size is smaller than  * {@link org.apache.jackrabbit.core.data.DataStore#getMinRecordLength()}  */
 end_comment
@@ -646,6 +646,12 @@ name|cache
 operator|=
 name|CacheLIRS
 operator|.
+expr|<
+name|String
+operator|,
+name|byte
+index|[]
+operator|>
 name|newBuilder
 argument_list|()
 operator|.
