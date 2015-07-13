@@ -459,8 +459,17 @@ operator|.
 name|getContentIdentity
 argument_list|()
 decl_stmt|;
+comment|//Check for ref being non null to ensure its not an inlined binary
+comment|//For Segment ContentIdentity defaults to RecordId
 if|if
 condition|(
+name|blob
+operator|.
+name|getReference
+argument_list|()
+operator|==
+literal|null
+operator|||
 name|blobId
 operator|==
 literal|null
