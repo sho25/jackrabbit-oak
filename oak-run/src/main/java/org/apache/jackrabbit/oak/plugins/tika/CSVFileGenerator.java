@@ -148,31 +148,6 @@ specifier|public
 class|class
 name|CSVFileGenerator
 block|{
-comment|/*         Instead of using the FORMAT from CSVFileBinaryResourceProvider         defining our own without header. Otherwise commons-csv was always         adding the header      */
-specifier|private
-specifier|static
-specifier|final
-name|CSVFormat
-name|FORMAT
-init|=
-name|CSVFormat
-operator|.
-name|DEFAULT
-operator|.
-name|withCommentMarker
-argument_list|(
-literal|'#'
-argument_list|)
-operator|.
-name|withNullString
-argument_list|(
-literal|""
-argument_list|)
-comment|//Empty string are considered as null
-operator|.
-name|withIgnoreSurroundingSpaces
-argument_list|()
-decl_stmt|;
 specifier|private
 specifier|final
 name|Logger
@@ -249,6 +224,8 @@ operator|.
 name|UTF_8
 argument_list|)
 argument_list|,
+name|CSVFileBinaryResourceProvider
+operator|.
 name|FORMAT
 argument_list|)
 decl_stmt|;

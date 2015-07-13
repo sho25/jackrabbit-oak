@@ -791,6 +791,17 @@ annotation|@
 name|Override
 specifier|public
 name|String
+name|getReference
+parameter_list|()
+block|{
+return|return
+name|id
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
 name|getContentIdentity
 parameter_list|()
 block|{
