@@ -1344,12 +1344,7 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-operator|new
-name|LuceneIndexEditorProvider
-argument_list|(
-name|createIndexCopier
-argument_list|()
-argument_list|)
+name|editorProvider
 argument_list|)
 operator|.
 name|with
