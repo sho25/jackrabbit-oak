@@ -1876,7 +1876,7 @@ name|MINUTES
 operator|.
 name|toMillis
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -2032,7 +2032,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|" %d (Time Taken %s, Bytes Read %s, Extracted text size %d)"
+literal|" %d (Time Taken %s, Bytes Read %s, Extracted text size %s)"
 argument_list|,
 name|count
 argument_list|,
@@ -2046,7 +2046,10 @@ argument_list|(
 name|totalBytesRead
 argument_list|)
 argument_list|,
+name|humanReadableByteCount
+argument_list|(
 name|totalTextLength
+argument_list|)
 argument_list|)
 return|;
 block|}
