@@ -49,16 +49,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|atomic
@@ -74,18 +64,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|Subject
 import|;
 end_import
 
