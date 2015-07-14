@@ -18,6 +18,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|IOUtils
+operator|.
+name|humanReadableByteCount
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -100,7 +118,7 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|apache
@@ -111,9 +129,9 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|IOUtils
+name|jmx
 operator|.
-name|humanReadableByteCount
+name|AnnotatedStandardMBean
 import|;
 end_import
 
@@ -125,6 +143,8 @@ begin_class
 specifier|public
 class|class
 name|CacheStats
+extends|extends
+name|AnnotatedStandardMBean
 implements|implements
 name|CacheStatsMBean
 block|{
@@ -225,6 +245,13 @@ name|long
 name|maxWeight
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|CacheStatsMBean
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|cache
