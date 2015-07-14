@@ -141,27 +141,17 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
 import|;
 end_import
 
@@ -267,6 +257,26 @@ name|UncheckedExecutionException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A scan resistant cache. It is meant to cache objects that are relatively  * costly to acquire, for example file content.  *<p>  * This implementation is multi-threading safe and supports concurrent access.  * Null keys or null values are not allowed. The map fill factor is at most 75%.  *<p>  * Each entry is assigned a distinct memory size, and the cache will try to use  * at most the specified amount of memory. The memory unit is not relevant,  * however it is suggested to use bytes as the unit.  *<p>  * This class implements an approximation of the the LIRS replacement algorithm  * invented by Xiaodong Zhang and Song Jiang as described in  * http://www.cse.ohio-state.edu/~zhang/lirs-sigmetrics-02.html with a few  * smaller changes: An additional queue for non-resident entries is used, to  * prevent unbound memory usage. The maximum size of this queue is at most the  * size of the rest of the stack. About 6.25% of the mapped entries are cold.  *<p>  * Internally, the cache is split into a number of segments, and each segment is  * an individual LIRS cache.  *<p>  * Accessed entries are only moved to the top of the stack if at least a number  * of other entries have been moved to the front (1% by default). Write access  * and moving entries to the top of the stack is synchronized per segment.  *  * @author Thomas Mueller  * @param<K> the key type  * @param<V> the value type  */
 end_comment
@@ -303,6 +313,32 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * Listener for items that are evicted from the cache. The listener      * is called for both, resident and non-resident items. In the      * latter case the passed value is {@code null}.      * @param<K>  type of the key      * @param<V>  type of the value      */
+specifier|public
+interface|interface
+name|EvictionCallback
+parameter_list|<
+name|K
+parameter_list|,
+name|V
+parameter_list|>
+block|{
+comment|/**          * Indicates eviction of an item.          *<p>          *<em>Note:</em> It is not safe to call any of {@code CacheLIRS}'s method          * from withing this callback. Any such call might result in undefined          * behaviour.          *          * @param key    the evicted item's key          * @param value  the evicted item's value or {@code null} if non-resident          */
+name|void
+name|evicted
+parameter_list|(
+annotation|@
+name|Nonnull
+name|K
+name|key
+parameter_list|,
+annotation|@
+name|Nullable
+name|V
+name|value
+parameter_list|)
+function_decl|;
+block|}
 comment|/**      * The maximum memory this cache should use.      */
 specifier|private
 name|long
@@ -364,6 +400,17 @@ name|V
 argument_list|>
 name|loader
 decl_stmt|;
+comment|/**      * The eviction listener of this cache or {@code null} if none.      */
+specifier|private
+specifier|final
+name|EvictionCallback
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|evicted
+decl_stmt|;
 comment|/**      * A concurrent hash map of keys where loading is in progress. Key: the      * cache key. Value: a synchronization object. The threads that wait for the      * value to be loaded need to wait on the synchronization object. The      * loading thread will notify all waiting threads once loading is done.      */
 specifier|final
 name|ConcurrentHashMap
@@ -406,10 +453,12 @@ operator|/
 literal|100
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new cache with the given memory size.      *      * @param maxMemory the maximum memory to use (1 or larger)      * @param averageMemory the average memory (1 or larger)      * @param segmentCount the number of cache segments (must be a power of 2)      * @param stackMoveDistance how many other item are to be moved to the top      *        of the stack before the current item is moved      */
+comment|/**      * Create a new cache with the given memory size.      *      * @param maxMemory the maximum memory to use (1 or larger)      * @param averageMemory the average memory (1 or larger)      * @param segmentCount the number of cache segments (must be a power of 2)      * @param stackMoveDistance how many other item are to be moved to the top      *        of the stack before the current item is moved      * @param  evicted the eviction listener of this segment or {@code null} if none.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -445,6 +494,14 @@ argument_list|,
 name|V
 argument_list|>
 name|loader
+parameter_list|,
+name|EvictionCallback
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|evicted
 parameter_list|)
 block|{
 name|this
@@ -512,6 +569,12 @@ name|Segment
 index|[
 name|segmentCount
 index|]
+expr_stmt|;
+name|this
+operator|.
+name|evicted
+operator|=
+name|evicted
 expr_stmt|;
 name|invalidateAll
 argument_list|()
@@ -614,6 +677,8 @@ argument_list|,
 name|averageMemory
 argument_list|,
 name|stackMoveDistance
+argument_list|,
+name|evicted
 argument_list|)
 decl_stmt|;
 if|if
@@ -671,6 +736,57 @@ name|old
 operator|.
 name|evictionCount
 expr_stmt|;
+if|if
+condition|(
+name|evicted
+operator|!=
+literal|null
+condition|)
+block|{
+for|for
+control|(
+name|Entry
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|entry
+range|:
+name|old
+operator|.
+name|entries
+control|)
+block|{
+while|while
+condition|(
+name|entry
+operator|!=
+literal|null
+condition|)
+block|{
+name|evicted
+operator|.
+name|evicted
+argument_list|(
+name|entry
+operator|.
+name|key
+argument_list|,
+name|entry
+operator|.
+name|value
+argument_list|)
+expr_stmt|;
+name|entry
+operator|=
+name|entry
+operator|.
+name|mapNext
+expr_stmt|;
+block|}
+block|}
+block|}
 block|}
 name|segments
 index|[
@@ -875,7 +991,7 @@ name|valueLoader
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the value, loading it if needed.      *<p>      * If there is an exception loading, an UncheckedExecutionException is      * thrown.      *       * @param key the key      * @return the value      * @throws UncheckedExecutionException      */
+comment|/**      * Get the value, loading it if needed.      *<p>      * If there is an exception loading, an UncheckedExecutionException is      * thrown.      *      * @param key the key      * @return the value      * @throws UncheckedExecutionException      */
 annotation|@
 name|Override
 specifier|public
@@ -910,7 +1026,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Get the value, loading it if needed.      *       * @param key the key      * @return the value      * @throws ExecutionException      */
+comment|/**      * Get the value, loading it if needed.      *      * @param key the key      * @return the value      * @throws ExecutionException      */
 annotation|@
 name|Override
 specifier|public
@@ -947,7 +1063,7 @@ name|loader
 argument_list|)
 return|;
 block|}
-comment|/**      * Re-load the value for the given key.      *<p>      * If there is an exception while loading, it is logged and ignored. This      * method calls CacheLoader.reload, but synchronously replaces the old      * value.      *       * @param key the key      */
+comment|/**      * Re-load the value for the given key.      *<p>      * If there is an exception while loading, it is logged and ignored. This      * method calls CacheLoader.reload, but synchronously replaces the old      * value.      *      * @param key the key      */
 annotation|@
 name|Override
 specifier|public
@@ -2365,7 +2481,18 @@ specifier|private
 name|int
 name|stackMoveCounter
 decl_stmt|;
-comment|/**          * Create a new cache.          *          * @param maxMemory the maximum memory to use          * @param averageMemory the average memory usage of an object          * @param stackMoveDistance the number of other entries to be moved to          *        the top of the stack before moving an entry to the top          */
+comment|/**          * The eviction listener of this segment or {@code null} if none.          */
+specifier|private
+specifier|final
+name|EvictionCallback
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|evicted
+decl_stmt|;
+comment|/**          * Create a new cache.          *  @param maxMemory the maximum memory to use          * @param averageMemory the average memory usage of an object          * @param stackMoveDistance the number of other entries to be moved to          *        the top of the stack before moving an entry to the top          * @param evicted  the eviction listener of this segment or {@code null} if none.          */
 name|Segment
 parameter_list|(
 name|CacheLIRS
@@ -2384,6 +2511,14 @@ name|averageMemory
 parameter_list|,
 name|int
 name|stackMoveDistance
+parameter_list|,
+name|EvictionCallback
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|evicted
 parameter_list|)
 block|{
 name|this
@@ -2407,6 +2542,12 @@ operator|.
 name|stackMoveDistance
 operator|=
 name|stackMoveDistance
+expr_stmt|;
+name|this
+operator|.
+name|evicted
+operator|=
+name|evicted
 expr_stmt|;
 name|clear
 argument_list|()
@@ -4170,6 +4311,33 @@ block|}
 name|pruneStack
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|evicted
+operator|!=
+literal|null
+operator|&&
+name|e
+operator|.
+name|key
+operator|!=
+literal|null
+condition|)
+block|{
+name|evicted
+operator|.
+name|evicted
+argument_list|(
+name|e
+operator|.
+name|key
+argument_list|,
+name|e
+operator|.
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**          * Evict cold entries (resident and non-resident) until the memory limit is          * reached. The new entry is added as a cold entry, except if it is the only          * entry.          *          * @param newCold a new cold entry          */
 specifier|private
@@ -4262,6 +4430,27 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|evicted
+operator|!=
+literal|null
+condition|)
+block|{
+name|evicted
+operator|.
+name|evicted
+argument_list|(
+name|e
+operator|.
+name|key
+argument_list|,
+name|e
+operator|.
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 name|e
 operator|.
 name|value
@@ -5220,6 +5409,15 @@ name|stackMoveDistance
 init|=
 literal|16
 decl_stmt|;
+specifier|private
+name|EvictionCallback
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|evicted
+decl_stmt|;
 specifier|public
 name|Builder
 argument_list|<
@@ -5443,6 +5641,34 @@ name|this
 return|;
 block|}
 specifier|public
+name|Builder
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|evictionCallback
+parameter_list|(
+name|EvictionCallback
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|evicted
+parameter_list|)
+block|{
+name|this
+operator|.
+name|evicted
+operator|=
+name|evicted
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+specifier|public
 name|CacheLIRS
 argument_list|<
 name|K
@@ -5497,11 +5723,13 @@ argument_list|,
 name|stackMoveDistance
 argument_list|,
 name|cacheLoader
+argument_list|,
+name|evicted
 argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Create a builder.      *       * @return the builder      */
+comment|/**      * Create a builder.      *      * @return the builder      */
 specifier|public
 specifier|static
 parameter_list|<
