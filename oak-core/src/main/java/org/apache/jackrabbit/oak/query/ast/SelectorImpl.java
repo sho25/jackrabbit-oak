@@ -3452,7 +3452,7 @@ if|if
 condition|(
 operator|!
 operator|(
-name|this
+name|other
 operator|instanceof
 name|SelectorImpl
 operator|)
