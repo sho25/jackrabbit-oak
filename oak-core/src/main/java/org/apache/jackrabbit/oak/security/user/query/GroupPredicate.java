@@ -435,9 +435,6 @@ argument_list|,
 name|authorizable
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -482,9 +479,6 @@ argument_list|,
 name|authorizable
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

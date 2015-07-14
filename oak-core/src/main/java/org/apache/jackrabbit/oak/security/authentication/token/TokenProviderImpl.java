@@ -1011,7 +1011,7 @@ block|{
 name|String
 name|error
 init|=
-literal|"Failed to create login token. "
+literal|"Failed to create login token. {}"
 decl_stmt|;
 name|User
 name|user
@@ -1875,7 +1875,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Cannot determine userID from token: "
+literal|"Cannot determine userID from token: {}"
 argument_list|,
 name|e
 operator|.
@@ -2066,7 +2066,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Error while creating token node "
+literal|"Error while creating token node {}"
 argument_list|,
 name|e
 operator|.
@@ -2087,7 +2087,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Conflict while creating token store -> retrying"
+literal|"Conflict while creating token store -> retrying {}"
 argument_list|,
 name|e
 operator|.
@@ -2723,7 +2723,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to reset token expiration"
+literal|"Failed to reset token expiration {}"
 argument_list|,
 name|e
 operator|.
@@ -2806,7 +2806,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Error while removing expired token"
+literal|"Error while removing expired token {}"
 argument_list|,
 name|e
 operator|.

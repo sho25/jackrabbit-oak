@@ -407,7 +407,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Invalid password constraint: "
+literal|"Invalid password constraint: {}"
 argument_list|,
 name|e
 operator|.

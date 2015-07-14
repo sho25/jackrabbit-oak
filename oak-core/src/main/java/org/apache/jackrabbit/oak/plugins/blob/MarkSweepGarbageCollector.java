@@ -1222,7 +1222,7 @@ operator|.
 name|debug
 argument_list|(
 literal|"Sweeping blobs with modified time> than the configured max deleted time ({}). "
-operator|+
+argument_list|,
 name|timestampToString
 argument_list|(
 name|getLastMaxModifiedTime

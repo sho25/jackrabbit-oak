@@ -575,7 +575,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Can't check for pre-authenticated subject. Reason:"
+literal|"Can't check for pre-authenticated subject. Reason: {}"
 argument_list|,
 name|e
 operator|.

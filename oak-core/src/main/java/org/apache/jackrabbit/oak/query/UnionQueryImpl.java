@@ -308,7 +308,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|QueryImpl
+name|UnionQueryImpl
 operator|.
 name|class
 argument_list|)

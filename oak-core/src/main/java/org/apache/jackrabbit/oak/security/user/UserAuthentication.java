@@ -1244,7 +1244,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Error while validating impersonation"
+literal|"Error while validating impersonation: {}"
 argument_list|,
 name|e
 operator|.

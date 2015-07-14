@@ -915,7 +915,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Error while retrieving principal: "
+literal|"Error while retrieving principal: {}"
 argument_list|,
 name|e
 operator|.

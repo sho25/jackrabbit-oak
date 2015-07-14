@@ -726,7 +726,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Mark failed for blob %s: %s"
+literal|"Mark failed for blob {}: {}"
 argument_list|,
 name|id
 argument_list|,
@@ -793,7 +793,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Sweep failed: %s"
+literal|"Sweep failed: {}"
 argument_list|,
 name|writeResult
 operator|.

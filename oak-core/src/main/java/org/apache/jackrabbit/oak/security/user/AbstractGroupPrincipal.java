@@ -399,7 +399,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to determine group membership"
+literal|"Failed to determine group membership: {}"
 argument_list|,
 name|e
 operator|.
