@@ -334,6 +334,11 @@ operator|<
 name|end
 condition|)
 block|{
+name|ids
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|List
 argument_list|<
 name|UpdateOp
