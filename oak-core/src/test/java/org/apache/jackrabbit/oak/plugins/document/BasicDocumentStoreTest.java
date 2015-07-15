@@ -878,6 +878,8 @@ specifier|public
 name|void
 name|testInterestingPropLengths
 parameter_list|()
+throws|throws
+name|UnsupportedEncodingException
 block|{
 name|int
 name|lengths
@@ -1146,15 +1148,13 @@ name|up
 argument_list|)
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|assertTrue
 argument_list|(
 literal|"failed to insert a document with property of length "
 operator|+
 name|test
 operator|+
-literal|"(potentially non-ASCII, actual octet length in UTF-8: "
+literal|" (potentially non-ASCII, actual octet length with UTF-8 encoding: "
 operator|+
 name|pval
 operator|.
@@ -1174,14 +1174,68 @@ argument_list|,
 name|success
 argument_list|)
 expr_stmt|;
+comment|// check that update works as well
+if|if
+condition|(
+name|success
+condition|)
+block|{
+try|try
+block|{
+name|super
+operator|.
+name|ds
+operator|.
+name|findAndUpdate
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|up
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UnsupportedEncodingException
-name|e
+name|Exception
+name|ex
 parameter_list|)
 block|{
-comment|// outch
+name|ex
+operator|.
+name|printStackTrace
+argument_list|(
+name|System
+operator|.
+name|err
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"failed to update a document with property of length "
+operator|+
+name|test
+operator|+
+literal|" (potentially non-ASCII, actual octet length with UTF-8 encoding: "
+operator|+
+name|pval
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+operator|.
+name|length
+operator|+
+literal|") in "
+operator|+
+name|super
+operator|.
+name|dsname
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|super
 operator|.
