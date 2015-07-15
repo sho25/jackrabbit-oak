@@ -442,9 +442,6 @@ name|getProperty
 argument_list|(
 name|property
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 if|if
