@@ -2183,10 +2183,9 @@ argument_list|(
 name|fileStore
 argument_list|)
 decl_stmt|;
-name|fileStore
-operator|.
-name|setCompactionStrategy
-argument_list|(
+name|CompactionStrategy
+name|strategy
+init|=
 operator|new
 name|CompactionStrategy
 argument_list|(
@@ -2231,6 +2230,20 @@ argument_list|)
 return|;
 block|}
 block|}
+decl_stmt|;
+comment|// CLEAN_ALL and persisted compaction map results in SNFE in compaction map segments
+name|strategy
+operator|.
+name|setPersistCompactionMap
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|fileStore
+operator|.
+name|setCompactionStrategy
+argument_list|(
+name|strategy
 argument_list|)
 expr_stmt|;
 comment|// Add a property
