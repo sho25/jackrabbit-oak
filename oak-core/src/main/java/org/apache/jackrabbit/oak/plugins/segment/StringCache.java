@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -56,6 +66,22 @@ operator|.
 name|cache
 operator|.
 name|CacheLIRS
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|cache
+operator|.
+name|CacheStats
 import|;
 end_import
 
@@ -121,6 +147,28 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Nonnull
+specifier|public
+name|CacheStats
+name|getStats
+parameter_list|()
+block|{
+return|return
+operator|new
+name|CacheStats
+argument_list|(
+name|cache
+argument_list|,
+literal|"String Cache"
+argument_list|,
+literal|null
+argument_list|,
+operator|-
+literal|1
+argument_list|)
+return|;
 block|}
 comment|/**      * Get the string, loading it if necessary.      *      * @param msb the msb of the segment      * @param lsb the lsb of the segment      * @param offset the offset      * @param loader the string loader function      * @return the string (never null)      */
 specifier|public
