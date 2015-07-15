@@ -3663,11 +3663,15 @@ name|data
 operator|.
 name|length
 decl_stmt|;
+comment|// When writing a binary ID, the four most significant bits of the
+comment|// length field should be "1110", leaving 12 other bits to store the
+comment|// length itself. This means that the values of the length field can
+comment|// only range between 0 and 2^12 - 1.
 name|checkArgument
 argument_list|(
 name|length
 operator|<
-literal|8192
+literal|4096
 argument_list|)
 expr_stmt|;
 name|RecordId
