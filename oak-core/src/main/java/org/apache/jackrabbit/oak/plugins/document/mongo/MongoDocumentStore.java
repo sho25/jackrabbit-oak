@@ -4957,17 +4957,56 @@ name|seal
 argument_list|()
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|upsert
+condition|)
 block|{
-name|applyToCache
-argument_list|(
+if|if
+condition|(
 name|collection
-argument_list|,
-literal|null
+operator|==
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
+name|NodeDocument
+name|doc
+init|=
+operator|(
+name|NodeDocument
+operator|)
+name|collection
+operator|.
+name|newDocument
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
+name|UpdateUtils
+operator|.
+name|applyChanges
+argument_list|(
+name|doc
 argument_list|,
 name|updateOp
+argument_list|,
+name|comparator
 argument_list|)
 expr_stmt|;
+name|addToCache
+argument_list|(
+name|doc
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// updateOp without conditions and not an upsert
+comment|// this means the document does not exist
 block|}
 return|return
 name|oldDoc
@@ -5818,7 +5857,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|applyToCache
+name|updateCache
 argument_list|(
 name|Collection
 operator|.
@@ -6828,7 +6867,7 @@ return|return
 name|doc
 return|;
 block|}
-comment|/**      * Applies an update to the nodes cache. This method does not acquire      * a lock for the document. The caller must ensure it holds a lock for      * the updated document. See striped {@link #locks}.      *      * @param<T> the document type.      * @param collection the document collection.      * @param oldDoc the old document or<code>null</code> if the update is for      *               a new document (insert).      * @param updateOp the update operation.      */
+comment|/**      * Applies an update to the nodes cache. This method does not acquire      * a lock for the document. The caller must ensure it holds a lock for      * the updated document. See striped {@link #locks}.      *      * @param<T> the document type.      * @param collection the document collection.      * @param oldDoc the old document.      * @param updateOp the update operation.      */
 specifier|private
 parameter_list|<
 name|T
@@ -6836,7 +6875,7 @@ extends|extends
 name|Document
 parameter_list|>
 name|void
-name|applyToCache
+name|updateCache
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -6847,7 +6886,7 @@ argument_list|>
 name|collection
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|T
 name|oldDoc
 parameter_list|,
@@ -6867,6 +6906,19 @@ operator|.
 name|NODES
 condition|)
 block|{
+name|checkNotNull
+argument_list|(
+name|oldDoc
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|updateOp
+argument_list|)
+expr_stmt|;
+comment|// we can only update the cache based on the oldDoc if we
+comment|// still have the oldDoc in the cache, otherwise we may
+comment|// update the cache with an outdated document
 name|CacheValue
 name|key
 init|=
@@ -6879,29 +6931,6 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|NodeDocument
-name|newDoc
-init|=
-operator|(
-name|NodeDocument
-operator|)
-name|collection
-operator|.
-name|newDocument
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|oldDoc
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// we can only update the cache based on the oldDoc if we
-comment|// still have the oldDoc in the cache, otherwise we may
-comment|// update the cache with an outdated document
 name|NodeDocument
 name|cached
 init|=
@@ -6922,60 +6951,7 @@ block|{
 comment|// cannot use oldDoc to update cache
 return|return;
 block|}
-name|oldDoc
-operator|.
-name|deepCopy
-argument_list|(
-name|newDoc
-argument_list|)
-expr_stmt|;
-block|}
-name|UpdateUtils
-operator|.
-name|applyChanges
-argument_list|(
-name|newDoc
-argument_list|,
-name|updateOp
-argument_list|,
-name|comparator
-argument_list|)
-expr_stmt|;
-name|newDoc
-operator|.
-name|seal
-argument_list|()
-expr_stmt|;
-name|NodeDocument
-name|cached
-init|=
-name|addToCache
-argument_list|(
-name|newDoc
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|cached
-operator|==
-name|newDoc
-condition|)
-block|{
-comment|// successful
-return|return;
-block|}
-if|if
-condition|(
-name|oldDoc
-operator|==
-literal|null
-condition|)
-block|{
-comment|// this is an insert and some other thread was quicker
-comment|// loading it into the cache -> return now
-return|return;
-block|}
-comment|// this is an update (oldDoc != null)
+comment|// check if the currently cached document matches oldDoc
 if|if
 condition|(
 name|Objects
@@ -6994,6 +6970,42 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|NodeDocument
+name|newDoc
+init|=
+operator|(
+name|NodeDocument
+operator|)
+name|collection
+operator|.
+name|newDocument
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
+name|oldDoc
+operator|.
+name|deepCopy
+argument_list|(
+name|newDoc
+argument_list|)
+expr_stmt|;
+name|UpdateUtils
+operator|.
+name|applyChanges
+argument_list|(
+name|newDoc
+argument_list|,
+name|updateOp
+argument_list|,
+name|comparator
+argument_list|)
+expr_stmt|;
+name|newDoc
+operator|.
+name|seal
+argument_list|()
+expr_stmt|;
 name|nodesCache
 operator|.
 name|put
