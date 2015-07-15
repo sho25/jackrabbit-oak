@@ -683,21 +683,9 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"changed node during upgrade copy not expected: "
-operator|+
-name|state
-operator|.
-name|path
-operator|+
-literal|"/"
-operator|+
-name|name
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
 annotation|@
 name|Override
