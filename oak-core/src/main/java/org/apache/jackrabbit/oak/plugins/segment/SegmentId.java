@@ -20,6 +20,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|Integer
+operator|.
+name|getInteger
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|Integer
+operator|.
+name|rotateLeft
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|Math
+operator|.
+name|abs
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -79,6 +115,20 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * Sample rate of {@link SegmentTracker#segmentCache}. Lower values will cause      * more frequent accesses to that cache instead of the short circuit through      * {@link SegmentId#segment}. Access to that cache is slower but allows tracking      * access statistics.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|SEGMENT_CACHE_SAMPLE_RATE
+init|=
+name|getInteger
+argument_list|(
+literal|"SegmentCacheSampleRate"
+argument_list|,
+literal|1000
+argument_list|)
+decl_stmt|;
 comment|/**      * Checks whether this is a data segment identifier.      *      * @return {@code true} for a data segment, {@code false} otherwise      */
 specifier|public
 specifier|static
@@ -118,8 +168,7 @@ specifier|private
 name|long
 name|creationTime
 decl_stmt|;
-comment|/**      * A reference to the segment object, if it is available in memory. It is      * used for fast lookup. The segment tracker will set or reset this field.      */
-comment|// TODO: possibly we could remove the volatile
+comment|/**      * A reference to the segment object, if it is available in memory. It is      * used for fast lookup. The segment tracker will set or reset this field.      *<p>      * Needs to be volatile so {@link #setSegment(Segment)} doesn't need to      * be synchronized as this would lead to deadlocks.      */
 specifier|private
 specifier|volatile
 name|Segment
@@ -277,11 +326,84 @@ return|return
 name|lsb
 return|;
 block|}
+specifier|private
+specifier|static
+specifier|volatile
+name|int
+name|RND
+init|=
+literal|0
+decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|randomInt
+parameter_list|(
+name|int
+name|bound
+parameter_list|)
+block|{
+comment|// There is a race here on concurrent access. However, given the usage the resulting
+comment|// bias seems preferable to the performance penalty of synchronization
+name|RND
+operator|=
+literal|0xc3e157c1
+operator|-
+name|rotateLeft
+argument_list|(
+name|RND
+argument_list|,
+literal|19
+argument_list|)
+expr_stmt|;
+return|return
+name|abs
+argument_list|(
+name|RND
+argument_list|)
+operator|%
+literal|1000
+return|;
+block|}
 specifier|public
 name|Segment
 name|getSegment
 parameter_list|()
 block|{
+comment|// Sample the segment cache once in a while to get some cache hit/miss statistics
+if|if
+condition|(
+name|randomInt
+argument_list|(
+name|SEGMENT_CACHE_SAMPLE_RATE
+argument_list|)
+operator|==
+literal|0
+condition|)
+block|{
+name|Segment
+name|segment
+init|=
+name|tracker
+operator|.
+name|getCachedSegment
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|segment
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|segment
+return|;
+block|}
+block|}
+comment|// Fall back to short circuit via this.segment if not in the cache
 name|Segment
 name|segment
 init|=
@@ -327,7 +449,7 @@ name|segment
 operator|=
 name|tracker
 operator|.
-name|getSegment
+name|readSegment
 argument_list|(
 name|this
 argument_list|)
@@ -344,7 +466,6 @@ return|return
 name|segment
 return|;
 block|}
-specifier|synchronized
 name|void
 name|setSegment
 parameter_list|(
