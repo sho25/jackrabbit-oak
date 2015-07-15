@@ -1085,6 +1085,22 @@ return|return
 name|lockFactory
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Directory for "
+operator|+
+name|definition
+operator|.
+name|getIndexName
+argument_list|()
+return|;
+block|}
 specifier|private
 name|Set
 argument_list|<

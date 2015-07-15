@@ -1177,6 +1177,8 @@ name|deactivate
 parameter_list|()
 throws|throws
 name|InterruptedException
+throws|,
+name|IOException
 block|{
 for|for
 control|(
@@ -1234,6 +1236,20 @@ expr_stmt|;
 name|indexProvider
 operator|=
 literal|null
+expr_stmt|;
+block|}
+comment|//Close the copier first i.e. before executorService
+if|if
+condition|(
+name|indexCopier
+operator|!=
+literal|null
+condition|)
+block|{
+name|indexCopier
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 if|if
