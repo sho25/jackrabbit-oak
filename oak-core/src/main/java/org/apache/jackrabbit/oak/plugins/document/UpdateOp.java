@@ -163,6 +163,7 @@ argument_list|>
 name|conditions
 decl_stmt|;
 comment|/**      * Create an update operation for the document with the given id. The commit      * root is assumed to be the path, unless this is changed later on.      *      * @param id the primary key      * @param isNew whether this is a new document      */
+specifier|public
 name|UpdateOp
 parameter_list|(
 name|String
@@ -676,6 +677,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Set the property to the given value.      *      * @param property the property name      * @param value the value      */
+specifier|public
 name|void
 name|set
 parameter_list|(
