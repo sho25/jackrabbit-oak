@@ -66,6 +66,24 @@ name|int
 name|getSecondsSinceLastSuccess
 parameter_list|()
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Local timestamp of the moment when the last sync cycle was started"
+argument_list|)
+name|long
+name|getSyncStartTimestamp
+parameter_list|()
+function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Local timestamp of the moment when the last sync cycle ended"
+argument_list|)
+name|long
+name|getSyncEndTimestamp
+parameter_list|()
+function_decl|;
 comment|// expose the informations as operations, too
 annotation|@
 name|Description
