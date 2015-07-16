@@ -4744,6 +4744,15 @@ name|dataTypeName
 parameter_list|,
 name|int
 name|dataPrecision
+parameter_list|,
+name|int
+name|bdataType
+parameter_list|,
+name|String
+name|bdataTypeName
+parameter_list|,
+name|int
+name|bdataPrecision
 parameter_list|)
 block|{
 return|return
@@ -4751,7 +4760,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"type of ID: %d (%s) precision %d (-> %s), type of DATA: %d (%s) precision %d"
+literal|"type of ID: %d (%s) precision %d (-> %s), type of DATA: %d (%s) precision %d, type of BDATA: %d (%s) precision %d"
 argument_list|,
 name|idType
 argument_list|,
@@ -4773,6 +4782,12 @@ argument_list|,
 name|dataTypeName
 argument_list|,
 name|dataPrecision
+argument_list|,
+name|bdataType
+argument_list|,
+name|bdataTypeName
+argument_list|,
+name|bdataPrecision
 argument_list|)
 return|;
 block|}
@@ -4878,7 +4893,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select ID, DATA from "
+literal|"select ID, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -4993,6 +5008,27 @@ operator|.
 name|getPrecision
 argument_list|(
 literal|2
+argument_list|)
+argument_list|,
+name|met
+operator|.
+name|getColumnType
+argument_list|(
+literal|3
+argument_list|)
+argument_list|,
+name|met
+operator|.
+name|getColumnTypeName
+argument_list|(
+literal|3
+argument_list|)
+argument_list|,
+name|met
+operator|.
+name|getPrecision
+argument_list|(
+literal|3
 argument_list|)
 argument_list|)
 argument_list|)
@@ -5112,7 +5148,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select ID, DATA from "
+literal|"select ID, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -5215,6 +5251,27 @@ operator|.
 name|getPrecision
 argument_list|(
 literal|2
+argument_list|)
+argument_list|,
+name|met
+operator|.
+name|getColumnType
+argument_list|(
+literal|3
+argument_list|)
+argument_list|,
+name|met
+operator|.
+name|getColumnTypeName
+argument_list|(
+literal|3
+argument_list|)
+argument_list|,
+name|met
+operator|.
+name|getPrecision
+argument_list|(
+literal|3
 argument_list|)
 argument_list|)
 argument_list|)
