@@ -689,6 +689,9 @@ argument_list|(
 name|root
 argument_list|,
 name|aggrPermissionProviders
+argument_list|,
+name|getContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
