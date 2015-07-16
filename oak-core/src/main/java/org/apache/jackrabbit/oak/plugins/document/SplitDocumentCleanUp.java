@@ -439,10 +439,18 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|String
+name|splitDocPath
+init|=
+name|splitDoc
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
 name|int
 name|slashIdx
 init|=
-name|splitId
+name|splitDocPath
 operator|.
 name|lastIndexOf
 argument_list|(
@@ -456,7 +464,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|splitId
+name|splitDocPath
 operator|.
 name|substring
 argument_list|(
@@ -473,11 +481,11 @@ name|Revision
 operator|.
 name|fromString
 argument_list|(
-name|splitId
+name|splitDocPath
 operator|.
 name|substring
 argument_list|(
-name|splitId
+name|splitDocPath
 operator|.
 name|lastIndexOf
 argument_list|(
@@ -516,9 +524,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Split document {} not referenced anymore. Main document is {}"
+literal|"Split document {} for path {} not referenced anymore. Main document is {}"
 argument_list|,
 name|splitId
+argument_list|,
+name|splitDocPath
 argument_list|,
 name|mainId
 argument_list|)
