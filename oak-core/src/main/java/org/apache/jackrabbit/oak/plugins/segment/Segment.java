@@ -456,6 +456,17 @@ operator|)
 operator|+
 name|SMALL_LIMIT
 decl_stmt|;
+comment|/**      * Maximum size of small blob IDs. A small blob ID is stored in a value      * record whose length field contains the pattern "1110" in its most      * significant bits. Since two bytes are used to store both the bit pattern      * and the actual length of the blob ID, a maximum of 2^12 values can be      * stored in the length field.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|BLOB_ID_SMALL_LIMIT
+init|=
+literal|1
+operator|<<
+literal|12
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
