@@ -64,7 +64,6 @@ comment|/**  * Credentials implementation to cover  * {@link org.apache.jackrabb
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|CredentialsImpl
 implements|implements

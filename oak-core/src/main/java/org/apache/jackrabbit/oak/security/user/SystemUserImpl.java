@@ -102,7 +102,6 @@ comment|/**  * Default implementation for a system user.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|SystemUserImpl
 extends|extends
