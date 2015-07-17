@@ -514,10 +514,8 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
-name|withCacheSize
-argument_list|(
-literal|1
-argument_list|)
+name|withNoCache
+argument_list|()
 operator|.
 name|withBlobStore
 argument_list|(
