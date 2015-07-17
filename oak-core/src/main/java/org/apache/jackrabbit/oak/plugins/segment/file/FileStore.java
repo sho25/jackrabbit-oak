@@ -2514,6 +2514,30 @@ block|}
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|estimate
+operator|.
+name|getTotalSize
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|gcMonitor
+operator|.
+name|skipped
+argument_list|(
+literal|"Estimated compaction in {}. Skipping compaction for now as repository "
+operator|+
+literal|"consists of a single tar file only"
+argument_list|,
+name|watch
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|gcMonitor
 operator|.
 name|skipped
@@ -2551,6 +2575,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
