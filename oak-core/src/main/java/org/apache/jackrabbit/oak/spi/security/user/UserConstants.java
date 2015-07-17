@@ -151,6 +151,11 @@ name|REP_PWD
 init|=
 literal|"rep:pwd"
 decl_stmt|;
+name|String
+name|REP_PWD_HISTORY
+init|=
+literal|"rep:pwdHistory"
+decl_stmt|;
 name|Collection
 argument_list|<
 name|String
@@ -374,6 +379,18 @@ name|String
 name|CREDENTIALS_ATTRIBUTE_NEWPASSWORD
 init|=
 literal|"user.newpassword"
+decl_stmt|;
+comment|/**      * Optional configuration parameter indicating the maximum number of passwords recorded for a user after      * password changes. If the value specified is> 0, password history checking during password change is implicitly      * enabled and the new password provided during a password change must not be found in the already recorded      * history.      *      * @since Oak 1.3.3      */
+name|String
+name|PARAM_PASSWORD_HISTORY_SIZE
+init|=
+literal|"passwordHistorySize"
+decl_stmt|;
+comment|/**      * Constant to indicate disabled password history, which is the default.      *      * @since Oak 1.3.3      */
+name|int
+name|PASSWORD_HISTORY_DISABLED_SIZE
+init|=
+literal|0
 decl_stmt|;
 block|}
 end_interface

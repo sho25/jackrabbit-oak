@@ -883,6 +883,30 @@ name|UserConstants
 operator|.
 name|DEFAULT_PASSWORD_INITIAL_CHANGE
 argument_list|)
+block|,
+annotation|@
+name|Property
+argument_list|(
+name|name
+operator|=
+name|UserConstants
+operator|.
+name|PARAM_PASSWORD_HISTORY_SIZE
+argument_list|,
+name|label
+operator|=
+literal|"Maximum Password History Size"
+argument_list|,
+name|description
+operator|=
+literal|"Maximum number of passwords recorded for a user after changing her password (NOTE: upper limit is 1000). When changing the password the new password must not be present in the password history. A value of 0 indicates no password history is recorded."
+argument_list|,
+name|intValue
+operator|=
+name|UserConstants
+operator|.
+name|PASSWORD_HISTORY_DISABLED_SIZE
+argument_list|)
 block|}
 argument_list|)
 specifier|public

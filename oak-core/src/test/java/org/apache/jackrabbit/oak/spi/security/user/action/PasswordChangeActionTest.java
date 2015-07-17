@@ -115,18 +115,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -173,14 +161,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|ConstraintViolationException
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|void
 name|testNullPassword
 parameter_list|()
 throws|throws
 name|Exception
-block|{
-try|try
 block|{
 name|pwChangeAction
 operator|.
@@ -197,31 +190,22 @@ name|getNamePathMapper
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"ConstraintViolationException expected."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ConstraintViolationException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|ConstraintViolationException
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|void
 name|testSamePassword
 parameter_list|()
 throws|throws
 name|Exception
-block|{
-try|try
 block|{
 name|User
 name|user
@@ -251,20 +235,6 @@ name|getNamePathMapper
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"ConstraintViolationException expected."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ConstraintViolationException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
 block|}
 annotation|@
 name|Test
@@ -325,6 +295,8 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|pwChangeAction
 operator|.
 name|onPasswordChange
@@ -339,6 +311,15 @@ name|getNamePathMapper
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|user
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
