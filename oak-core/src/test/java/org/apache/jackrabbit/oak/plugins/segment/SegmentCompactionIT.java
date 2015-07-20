@@ -155,6 +155,18 @@ name|java
 operator|.
 name|lang
 operator|.
+name|Boolean
+operator|.
+name|getBoolean
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
 name|Integer
 operator|.
 name|MAX_VALUE
@@ -1056,11 +1068,10 @@ specifier|final
 name|boolean
 name|PERSIST_COMPACTION_MAP
 init|=
-name|Boolean
-operator|.
+operator|!
 name|getBoolean
 argument_list|(
-literal|"persist-compaction-map"
+literal|"in-memory-compaction-map"
 argument_list|)
 decl_stmt|;
 comment|/** Only run if explicitly asked to via -Dtest=SegmentCompactionIT */
