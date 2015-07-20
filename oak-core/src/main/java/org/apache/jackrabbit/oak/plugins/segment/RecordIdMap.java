@@ -73,14 +73,44 @@ class|class
 name|RecordIdMap
 block|{
 specifier|private
+specifier|static
+specifier|final
+name|short
+index|[]
+name|NO_KEYS
+init|=
+operator|new
+name|short
+index|[
+literal|0
+index|]
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|RecordId
+index|[]
+name|NO_VALUES
+init|=
+operator|new
+name|RecordId
+index|[
+literal|0
+index|]
+decl_stmt|;
+specifier|private
 name|short
 index|[]
 name|keys
+init|=
+name|NO_KEYS
 decl_stmt|;
 specifier|private
 name|RecordId
 index|[]
 name|values
+init|=
+name|NO_VALUES
 decl_stmt|;
 comment|/**      * Associates {@code key} with {@code value} if not already present      * @param key      * @param value      * @return  {@code true} if added, {@code false} if already present      */
 specifier|public
@@ -99,8 +129,10 @@ block|{
 if|if
 condition|(
 name|keys
+operator|.
+name|length
 operator|==
-literal|null
+literal|0
 condition|)
 block|{
 name|keys
@@ -353,10 +385,6 @@ name|key
 parameter_list|)
 block|{
 return|return
-name|keys
-operator|!=
-literal|null
-operator|&&
 name|binarySearch
 argument_list|(
 name|keys
@@ -379,7 +407,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/**      * Retrieve the key at a given index. Keys are ordered according      * the natural ordering of shorts.      * @param index      * @return the key at {@code index}      */
+comment|/**      * Retrieve the key at a given index. Keys are ordered according      * the natural ordering of shorts.      * @param index      * @return the key at {@code index}      * @throws ArrayIndexOutOfBoundsException if not {@code 0<= index< size()}      */
 specifier|public
 name|short
 name|getKey
@@ -395,7 +423,7 @@ name|index
 index|]
 return|;
 block|}
-comment|/**      * Retrieve the value at a given index. Keys are ordered according      * the natural ordering of shorts.      * @param index      * @return the value at {@code index}      */
+comment|/**      * Retrieve the value at a given index. Keys are ordered according      * the natural ordering of shorts.      * @param index      * @return the value at {@code index}      * @throws ArrayIndexOutOfBoundsException if not {@code 0<= index< size()}      */
 annotation|@
 name|Nonnull
 specifier|public
