@@ -429,6 +429,14 @@ name|BRANCH_COMMITS
 init|=
 literal|"_bc"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MODIFIED
+init|=
+literal|"_modified"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -1287,6 +1295,20 @@ name|getChanges
 argument_list|()
 operator|.
 name|serialize
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// OAK-3085 : introduce a timestamp property
+comment|// for later being used by OAK-3001
+name|op
+operator|.
+name|set
+argument_list|(
+name|MODIFIED
+argument_list|,
+name|revision
+operator|.
+name|getTimestamp
 argument_list|()
 argument_list|)
 expr_stmt|;
