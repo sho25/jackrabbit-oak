@@ -255,6 +255,15 @@ return|return
 name|blobId
 return|;
 block|}
+specifier|public
+name|BlobStore
+name|getBlobStore
+parameter_list|()
+block|{
+return|return
+name|blobStore
+return|;
+block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
