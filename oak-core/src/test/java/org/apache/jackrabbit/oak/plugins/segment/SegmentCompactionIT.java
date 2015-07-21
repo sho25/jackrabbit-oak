@@ -1763,6 +1763,11 @@ argument_list|(
 name|directory
 argument_list|)
 operator|.
+name|withMemoryMapping
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|withGCMonitor
 argument_list|(
 name|gcMonitor
