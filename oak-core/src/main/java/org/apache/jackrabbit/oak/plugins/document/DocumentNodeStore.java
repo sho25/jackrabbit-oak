@@ -1616,9 +1616,16 @@ name|fairBackgroundOperationLock
 init|=
 name|Boolean
 operator|.
-name|getBoolean
+name|parseBoolean
+argument_list|(
+name|System
+operator|.
+name|getProperty
 argument_list|(
 literal|"oak.fairBackgroundOperationLock"
+argument_list|,
+literal|"true"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * How long to remember the relative order of old revision of all cluster      * nodes, in milliseconds. The default is one hour.      */
