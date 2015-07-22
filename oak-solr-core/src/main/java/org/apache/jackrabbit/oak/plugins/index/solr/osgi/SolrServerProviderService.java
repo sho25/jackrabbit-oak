@@ -510,14 +510,6 @@ specifier|private
 name|SolrServer
 name|cachedSolrServer
 decl_stmt|;
-specifier|private
-name|SolrServer
-name|cachedSearchingSolrServer
-decl_stmt|;
-specifier|private
-name|SolrServer
-name|cachedIndexingSolrServer
-decl_stmt|;
 annotation|@
 name|Activate
 specifier|protected
