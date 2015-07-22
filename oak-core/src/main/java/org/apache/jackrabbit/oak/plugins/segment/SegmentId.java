@@ -44,18 +44,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
-name|Math
-operator|.
-name|abs
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -115,18 +103,37 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Sample rate of {@link SegmentTracker#segmentCache}. Lower values will cause      * more frequent accesses to that cache instead of the short circuit through      * {@link SegmentId#segment}. Access to that cache is slower but allows tracking      * access statistics.      */
+comment|/**      * Sample rate bit mask of {@link SegmentTracker#segmentCache}. Lower values      * will cause more frequent accesses to that cache instead of the short      * circuit through {@link SegmentId#segment}. Access to that cache is slower      * but allows tracking access statistics. Should be 2^x - 1 (for example      * 1023, 255, 15,...).      */
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|SEGMENT_CACHE_SAMPLE_RATE
+name|SEGMENT_CACHE_SAMPLE_MASK
 init|=
 name|getInteger
 argument_list|(
 literal|"SegmentCacheSampleRate"
 argument_list|,
-literal|1000
+literal|1023
+argument_list|)
+decl_stmt|;
+comment|/**      * The initial random value for the pseudo random number generator. Initial      * values of 0 - 0xffff will ensure a long period, but other values don't.      */
+specifier|private
+specifier|static
+specifier|volatile
+name|int
+name|random
+init|=
+call|(
+name|int
+call|)
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|&
+literal|0xffff
 argument_list|)
 decl_stmt|;
 comment|/**      * Checks whether this is a data segment identifier.      *      * @return {@code true} for a data segment, {@code false} otherwise      */
@@ -326,43 +333,26 @@ return|return
 name|lsb
 return|;
 block|}
-specifier|private
-specifier|static
-specifier|volatile
-name|int
-name|RND
-init|=
-literal|0
-decl_stmt|;
+comment|/**      * Get a random integer. A fast, but lower quality pseudo random number      * generator is used.      *       * @return a random value.      */
 specifier|private
 specifier|static
 name|int
 name|randomInt
-parameter_list|(
-name|int
-name|bound
-parameter_list|)
+parameter_list|()
 block|{
 comment|// There is a race here on concurrent access. However, given the usage the resulting
 comment|// bias seems preferable to the performance penalty of synchronization
-name|RND
+return|return
+name|random
 operator|=
 literal|0xc3e157c1
 operator|-
 name|rotateLeft
 argument_list|(
-name|RND
+name|random
 argument_list|,
 literal|19
 argument_list|)
-expr_stmt|;
-return|return
-name|abs
-argument_list|(
-name|RND
-argument_list|)
-operator|%
-literal|1000
 return|;
 block|}
 specifier|public
@@ -373,10 +363,12 @@ block|{
 comment|// Sample the segment cache once in a while to get some cache hit/miss statistics
 if|if
 condition|(
+operator|(
 name|randomInt
-argument_list|(
-name|SEGMENT_CACHE_SAMPLE_RATE
-argument_list|)
+argument_list|()
+operator|&
+name|SEGMENT_CACHE_SAMPLE_MASK
+operator|)
 operator|==
 literal|0
 condition|)
