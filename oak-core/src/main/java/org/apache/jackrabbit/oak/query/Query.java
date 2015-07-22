@@ -264,7 +264,7 @@ index|[]
 name|orderings
 parameter_list|)
 function_decl|;
-comment|/**      * Initialize the query. This will 'wire' selectors into constraints bind      * variables into expressions. It will also simplify expressions if      * possible, but will not prepare the query.      */
+comment|/**      * Initialize the query. This will 'wire' selectors into constraints, and      * collect bind variable names. It will also simplify expressions if      * possible, but will not prepare the query.      */
 name|void
 name|init
 parameter_list|()
