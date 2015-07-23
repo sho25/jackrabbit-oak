@@ -1139,9 +1139,17 @@ name|useForPrimaryTypes
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|match
+operator|>
+literal|0
+condition|)
+block|{
 name|match
 operator|++
 expr_stmt|;
+block|}
 block|}
 return|return
 name|match
