@@ -2457,6 +2457,17 @@ argument_list|(
 name|offset
 argument_list|)
 decl_stmt|;
+name|runCompaction
+operator|=
+name|gain
+operator|>=
+name|gainThreshold
+expr_stmt|;
+if|if
+condition|(
+name|runCompaction
+condition|)
+block|{
 name|gcMonitor
 operator|.
 name|info
@@ -2494,17 +2505,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|runCompaction
-operator|=
-name|gain
-operator|>=
-name|gainThreshold
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|runCompaction
-condition|)
+block|}
+else|else
 block|{
 if|if
 condition|(
@@ -2520,7 +2522,9 @@ name|gcMonitor
 operator|.
 name|skipped
 argument_list|(
-literal|"Estimated compaction in {}. Skipping compaction for now as repository consists of a single tar file only"
+literal|"Estimated compaction in {}. Skipping compaction for now as repository consists "
+operator|+
+literal|"of a single tar file only"
 argument_list|,
 name|watch
 argument_list|)
@@ -2574,7 +2578,7 @@ name|gcMonitor
 operator|.
 name|info
 argument_list|(
-literal|"Compaction estimation is skipped due to threshold value ({})."
+literal|"Compaction estimation is skipped due to threshold value ({}). Running compaction"
 argument_list|,
 name|gainThreshold
 argument_list|)
