@@ -1823,9 +1823,29 @@ specifier|private
 name|Thread
 name|backgroundReadThread
 decl_stmt|;
+comment|/**      * Monitor object to synchronize background reads.      */
+specifier|private
+specifier|final
+name|Object
+name|backgroundReadMonitor
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
 specifier|private
 name|Thread
 name|backgroundUpdateThread
+decl_stmt|;
+comment|/**      * Monitor object to synchronize background writes.      */
+specifier|private
+specifier|final
+name|Object
+name|backgroundWriteMonitor
+init|=
+operator|new
+name|Object
+argument_list|()
 decl_stmt|;
 comment|/**      * Background thread performing the clusterId lease renew.      * Will be {@code null} if {@link #clusterNodeInfo} is {@code null}.      */
 specifier|private
@@ -7963,10 +7983,14 @@ throw|;
 block|}
 block|}
 specifier|private
-specifier|synchronized
 name|void
 name|internalRunBackgroundUpdateOperations
 parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|backgroundWriteMonitor
+init|)
 block|{
 name|long
 name|start
@@ -8086,6 +8110,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|//----------------------< background read operations>----------------------
 specifier|private
 name|void
@@ -8145,10 +8170,14 @@ block|}
 block|}
 comment|/** OAK-2624 : background read operations are split from background update ops */
 specifier|private
-specifier|synchronized
 name|void
 name|internalRunBackgroundReadOperations
 parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|backgroundReadMonitor
+init|)
 block|{
 name|long
 name|start
@@ -8227,6 +8256,7 @@ argument_list|,
 name|readStats
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Renews the cluster lease if necessary.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
