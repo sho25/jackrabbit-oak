@@ -194,6 +194,18 @@ argument_list|>
 name|getUsedProperties
 parameter_list|()
 function_decl|;
+comment|/**      * Make all nodes / documents matching a query that are descendants of a 'jcr:content' node collapse into such a      * node. That will result in resultsets being tipically much more compact in cases where most / all of the matching      * nodes match such a hierarchy.      *      * @return {@code true} if only the 'jcr:content' node should be returned for all its the matching descendants,      * {@code false} otherwise      */
+name|boolean
+name|collapseJcrContentNodes
+parameter_list|()
+function_decl|;
+comment|/**      * Provide the name of the field to be used for indexing the collapsed path of each node when {@link #collapseJcrContentNodes()}      * is set to {@code true}.      *      * @return the name of the Solr field to be used for indexing and searching on collapsed paths.      */
+annotation|@
+name|Nonnull
+name|String
+name|getCollapsedPathField
+parameter_list|()
+function_decl|;
 comment|/**      * Enum for describing Solr commit policy used in a certain instance      */
 enum|enum
 name|CommitPolicy

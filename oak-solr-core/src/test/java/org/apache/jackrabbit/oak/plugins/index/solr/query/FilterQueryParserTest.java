@@ -112,6 +112,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -132,6 +142,18 @@ operator|.
 name|Assert
 operator|.
 name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -340,7 +362,25 @@ argument_list|(
 name|solrQuery
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|String
+index|[]
+name|filterQueries
+init|=
+name|solrQuery
+operator|.
+name|getFilterQueries
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|filterQueries
+argument_list|)
+operator|.
+name|contains
 argument_list|(
 name|configuration
 operator|.
@@ -350,12 +390,6 @@ name|pathRestriction
 argument_list|)
 operator|+
 literal|":\\/"
-argument_list|,
-name|solrQuery
-operator|.
-name|get
-argument_list|(
-literal|"fq"
 argument_list|)
 argument_list|)
 expr_stmt|;

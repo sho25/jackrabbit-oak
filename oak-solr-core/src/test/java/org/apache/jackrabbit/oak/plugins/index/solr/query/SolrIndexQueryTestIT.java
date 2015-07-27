@@ -2042,7 +2042,7 @@ name|setProperty
 argument_list|(
 literal|"text"
 argument_list|,
-literal|"Hello World Hello World"
+literal|"the quick brown fox jumped over the lazy white dog"
 argument_list|)
 expr_stmt|;
 name|test
@@ -2056,7 +2056,7 @@ name|setProperty
 argument_list|(
 literal|"text"
 argument_list|,
-literal|"Hello World"
+literal|"I am a dog"
 argument_list|)
 expr_stmt|;
 name|test
@@ -2070,7 +2070,7 @@ name|setProperty
 argument_list|(
 literal|"text"
 argument_list|,
-literal|"World"
+literal|"dogs don't hurt"
 argument_list|)
 expr_stmt|;
 name|test
@@ -2084,7 +2084,7 @@ name|setProperty
 argument_list|(
 literal|"text"
 argument_list|,
-literal|"Hello"
+literal|"white men can't jump"
 argument_list|)
 expr_stmt|;
 name|test
@@ -2098,7 +2098,7 @@ name|setProperty
 argument_list|(
 literal|"text"
 argument_list|,
-literal|"World"
+literal|"the fox is brown"
 argument_list|)
 expr_stmt|;
 name|test
@@ -2112,7 +2112,7 @@ name|setProperty
 argument_list|(
 literal|"text"
 argument_list|,
-literal|"Hello"
+literal|"a quickest dog jumped over the quick white dog"
 argument_list|)
 expr_stmt|;
 name|test
@@ -2126,7 +2126,7 @@ name|setProperty
 argument_list|(
 literal|"text"
 argument_list|,
-literal|"World"
+literal|"hello world"
 argument_list|)
 expr_stmt|;
 name|test
@@ -2140,7 +2140,7 @@ name|setProperty
 argument_list|(
 literal|"text"
 argument_list|,
-literal|"Hello"
+literal|"over the lazy top"
 argument_list|)
 expr_stmt|;
 name|root
@@ -2192,11 +2192,73 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/test/c"
+literal|"/test/d"
 argument_list|,
 name|result
 operator|.
 name|next
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|result
+operator|.
+name|hasNext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/test/e"
+argument_list|,
+name|result
+operator|.
+name|next
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|result
+operator|.
+name|hasNext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/test/f"
+argument_list|,
+name|result
+operator|.
+name|next
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|result
+operator|.
+name|hasNext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/test/h"
+argument_list|,
+name|result
+operator|.
+name|next
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|result
+operator|.
+name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;

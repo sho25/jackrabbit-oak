@@ -181,6 +181,22 @@ name|PROPERTY_MAPPINGS
 init|=
 literal|""
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|COLLAPSE_JCR_CONTENT_NODES
+init|=
+literal|false
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COLLAPSED_PATH_FIELD
+init|=
+literal|"path_collapsed"
+decl_stmt|;
 block|}
 end_class
 
