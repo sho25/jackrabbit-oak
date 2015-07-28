@@ -129,9 +129,8 @@ name|IndexFormatVersion
 name|getDefault
 parameter_list|()
 block|{
-comment|//TODO FIXME Should be V2 or above once OAK-2290 is fixed
 return|return
-name|V1
+name|V2
 return|;
 block|}
 specifier|public
