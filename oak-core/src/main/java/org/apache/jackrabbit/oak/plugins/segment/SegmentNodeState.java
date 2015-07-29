@@ -1665,7 +1665,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|segment
+name|Segment
 operator|.
 name|readString
 argument_list|(
@@ -1920,7 +1920,7 @@ block|{
 return|return
 name|singletonList
 argument_list|(
-name|segment
+name|Segment
 operator|.
 name|readString
 argument_list|(
@@ -1966,7 +1966,7 @@ name|values
 operator|.
 name|add
 argument_list|(
-name|segment
+name|Segment
 operator|.
 name|readString
 argument_list|(

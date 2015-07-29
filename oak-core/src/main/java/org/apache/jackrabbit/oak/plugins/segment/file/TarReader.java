@@ -1049,8 +1049,6 @@ parameter_list|,
 name|boolean
 name|memoryMapping
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 for|for
 control|(
@@ -2022,7 +2020,6 @@ argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
-continue|continue;
 block|}
 block|}
 comment|// The header checksum passes, so read the entry name and size

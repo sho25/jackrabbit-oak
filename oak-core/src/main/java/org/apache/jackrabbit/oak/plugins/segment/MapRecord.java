@@ -821,7 +821,7 @@ name|name
 operator|.
 name|equals
 argument_list|(
-name|segment
+name|Segment
 operator|.
 name|readString
 argument_list|(
@@ -1238,7 +1238,7 @@ argument_list|)
 decl_stmt|;
 name|diff
 operator|=
-name|segment
+name|Segment
 operator|.
 name|readString
 argument_list|(
@@ -1949,7 +1949,7 @@ index|[
 name|i
 index|]
 operator|=
-name|segment
+name|Segment
 operator|.
 name|readString
 argument_list|(
@@ -2346,7 +2346,7 @@ block|{
 name|String
 name|name
 init|=
-name|segment
+name|Segment
 operator|.
 name|readString
 argument_list|(
@@ -2469,7 +2469,7 @@ specifier|final
 name|String
 name|key
 init|=
-name|segment
+name|Segment
 operator|.
 name|readString
 argument_list|(
@@ -2762,7 +2762,7 @@ specifier|final
 name|String
 name|key
 init|=
-name|beforeSegment
+name|Segment
 operator|.
 name|readString
 argument_list|(

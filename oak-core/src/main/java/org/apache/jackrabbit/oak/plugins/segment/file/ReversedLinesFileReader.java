@@ -656,6 +656,8 @@ name|line
 return|;
 block|}
 comment|/**      * Closes underlying resources.      *      * @throws IOException  if an I/O error occurs      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close

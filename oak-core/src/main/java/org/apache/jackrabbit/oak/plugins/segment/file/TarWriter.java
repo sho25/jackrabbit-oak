@@ -1943,6 +1943,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|byte
 index|[]
 name|newEntryHeader
@@ -1953,8 +1954,6 @@ parameter_list|,
 name|int
 name|size
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|byte
 index|[]
@@ -2270,8 +2269,6 @@ name|UUID
 argument_list|>
 name|referencedIds
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 for|for
 control|(
