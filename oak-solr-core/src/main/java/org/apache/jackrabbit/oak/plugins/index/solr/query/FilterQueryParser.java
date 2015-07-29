@@ -1811,7 +1811,14 @@ operator|.
 name|getCollapsedPathField
 argument_list|()
 operator|+
-literal|"}"
+literal|" min="
+operator|+
+name|configuration
+operator|.
+name|getPathDepthField
+argument_list|()
+operator|+
+literal|" hint=top_fc nullPolicy=expand}"
 argument_list|)
 expr_stmt|;
 block|}

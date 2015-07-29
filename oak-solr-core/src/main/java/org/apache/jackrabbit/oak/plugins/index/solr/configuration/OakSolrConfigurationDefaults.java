@@ -197,6 +197,14 @@ name|COLLAPSED_PATH_FIELD
 init|=
 literal|"path_collapsed"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PATH_DEPTH_FIELD
+init|=
+literal|"path_depth"
+decl_stmt|;
 block|}
 end_class
 

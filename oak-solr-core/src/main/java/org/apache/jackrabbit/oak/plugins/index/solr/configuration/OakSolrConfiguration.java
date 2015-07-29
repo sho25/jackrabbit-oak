@@ -206,6 +206,11 @@ name|String
 name|getCollapsedPathField
 parameter_list|()
 function_decl|;
+comment|/**      * Provide the name of the field containing information about the depth of a certain path / node      *      * @return the name of the Solr field to be used for indexing and searching on path depth.      */
+name|String
+name|getPathDepthField
+parameter_list|()
+function_decl|;
 comment|/**      * Enum for describing Solr commit policy used in a certain instance      */
 enum|enum
 name|CommitPolicy

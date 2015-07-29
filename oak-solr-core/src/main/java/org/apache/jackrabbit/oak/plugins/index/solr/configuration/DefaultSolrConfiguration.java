@@ -406,6 +406,19 @@ operator|.
 name|COLLAPSED_PATH_FIELD
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getPathDepthField
+parameter_list|()
+block|{
+return|return
+name|OakSolrConfigurationDefaults
+operator|.
+name|PATH_DEPTH_FIELD
+return|;
+block|}
 block|}
 end_class
 
