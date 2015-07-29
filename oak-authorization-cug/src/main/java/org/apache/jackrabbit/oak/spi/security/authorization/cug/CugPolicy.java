@@ -81,6 +81,24 @@ name|JackrabbitAccessControlPolicy
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|PrincipalSetPolicy
+import|;
+end_import
+
 begin_comment
 comment|/**  * Denies read access for all principals except for the specified principals.  */
 end_comment
@@ -90,6 +108,8 @@ specifier|public
 interface|interface
 name|CugPolicy
 extends|extends
+name|PrincipalSetPolicy
+extends|,
 name|JackrabbitAccessControlPolicy
 block|{
 comment|/**      * Returns the set of {@code Principal}s that are allowed to access the items      * in the restricted area defined by this policy.      *      * @return The set of {@code Principal}s that are allowed to access the      * restricted area.      */
