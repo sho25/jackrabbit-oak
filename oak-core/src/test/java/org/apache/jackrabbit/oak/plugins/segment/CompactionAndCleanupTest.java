@@ -605,16 +605,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1203,7 +1193,7 @@ comment|// 5. Cleanup, expecting store size:
 comment|// no data content =>
 comment|// fileStore.size() == blobSize
 comment|// some data content =>
-comment|// fileStore.size() in [blobSize + dataSize, blobSize + 2xdataSize]
+comment|// fileStore.size() in [blobSize + dataSize, blobSize + 2 x dataSize]
 name|assertTrue
 argument_list|(
 name|fileStore
@@ -1352,12 +1342,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3139"
-argument_list|)
-comment|// FIXME OAK-3139
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1383,7 +1367,6 @@ name|dataNodes
 init|=
 literal|10000
 decl_stmt|;
-comment|// really long time span, no binary cloning
 name|FileStore
 name|fileStore
 init|=
@@ -1634,46 +1617,6 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"File store pre removal {}, expecting {}"
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|blobSize
-operator|+
-name|dataSize
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|mb
-argument_list|(
-name|blobSize
-operator|+
-name|dataSize
-argument_list|)
-argument_list|,
-name|mb
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// 2. Now remove the property
 name|builder
 operator|=
@@ -1708,14 +1651,11 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// 3. Compact
-name|assertTrue
-argument_list|(
 name|fileStore
 operator|.
 name|maybeCompact
 argument_list|(
 literal|false
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// 4. Add some more property to flush the current TarWriter
@@ -1758,6 +1698,20 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
+comment|// There should be no SNFE when running cleanup as compaction map segments
+comment|// should be pinned and thus not collected
+name|fileStore
+operator|.
+name|maybeCompact
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|fileStore
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
 comment|// refresh the ts ref, to simulate a long wait time
 name|custom
 operator|.
@@ -1775,7 +1729,6 @@ argument_list|(
 literal|5
 argument_list|)
 expr_stmt|;
-comment|// This should not lead to a SNFE in the persisted compaction map (See OAK-3139)
 name|boolean
 name|needsCompaction
 init|=
@@ -1798,11 +1751,6 @@ name|i
 operator|++
 control|)
 block|{
-name|fileStore
-operator|.
-name|cleanup
-argument_list|()
-expr_stmt|;
 name|needsCompaction
 operator|=
 name|fileStore
@@ -1811,6 +1759,11 @@ name|maybeCompact
 argument_list|(
 literal|false
 argument_list|)
+expr_stmt|;
+name|fileStore
+operator|.
+name|cleanup
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -2639,8 +2592,6 @@ throws|throws
 name|IOException
 throws|,
 name|CommitFailedException
-throws|,
-name|InterruptedException
 block|{
 name|FileStore
 name|fileStore
