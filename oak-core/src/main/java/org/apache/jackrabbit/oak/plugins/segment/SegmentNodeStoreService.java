@@ -419,6 +419,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -3009,7 +3021,14 @@ argument_list|()
 argument_list|,
 name|executor
 argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
 name|blobGcMaxAgeInSecs
+argument_list|)
 argument_list|,
 name|ClusterRepositoryInfo
 operator|.
