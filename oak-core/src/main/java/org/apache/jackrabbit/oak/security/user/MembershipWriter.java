@@ -237,7 +237,7 @@ operator|=
 name|membershipSizeThreshold
 expr_stmt|;
 block|}
-comment|/**      * Adds a new member to the given {@code groupTree}.      * @param groupTree the group to add the member to      * @param memberContentId the id of the new member      * @return {@code true} if the member was added      * @throws RepositoryException if an error occurs      */
+comment|/**      * Adds a new member to the given {@code groupTree}.      *      * @param groupTree the group to add the member to      * @param memberContentId the id of the new member      * @return {@code true} if the member was added      * @throws RepositoryException if an error occurs      */
 name|boolean
 name|addMember
 parameter_list|(
