@@ -1159,6 +1159,11 @@ name|QueryEngineSettings
 name|queryEngineSettings
 decl_stmt|;
 specifier|private
+specifier|final
+name|Descriptors
+name|baseDescriptors
+decl_stmt|;
+specifier|private
 name|GenericDescriptors
 name|descriptors
 decl_stmt|;
@@ -1193,6 +1198,11 @@ annotation|@
 name|Nonnull
 name|SecurityProvider
 name|securityProvider
+parameter_list|,
+annotation|@
+name|Nullable
+name|Descriptors
+name|baseDescriptors
 parameter_list|)
 block|{
 name|this
@@ -1258,6 +1268,12 @@ else|:
 operator|new
 name|CompositeQueryIndexProvider
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|baseDescriptors
+operator|=
+name|baseDescriptors
 expr_stmt|;
 block|}
 annotation|@
@@ -1447,7 +1463,9 @@ name|gd
 init|=
 operator|new
 name|GenericDescriptors
-argument_list|()
+argument_list|(
+name|baseDescriptors
+argument_list|)
 operator|.
 name|put
 argument_list|(
