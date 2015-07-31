@@ -1645,6 +1645,12 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+comment|// start collecting runtime statistics
+name|preAsyncRunStatsStats
+argument_list|(
+name|indexStats
+argument_list|)
+expr_stmt|;
 comment|// find the last indexed state, and check if there are recent changes
 name|NodeState
 name|before
@@ -1721,6 +1727,11 @@ argument_list|(
 literal|"[{}] No changes since last checkpoint; skipping the index update"
 argument_list|,
 name|name
+argument_list|)
+expr_stmt|;
+name|postAsyncRunStatsStatus
+argument_list|(
+name|indexStats
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1822,6 +1833,7 @@ argument_list|,
 name|afterCheckpoint
 argument_list|)
 expr_stmt|;
+comment|//Do not update the status as technically the run is not complete
 return|return;
 block|}
 name|String
@@ -1829,8 +1841,15 @@ name|checkpointToRelease
 init|=
 name|afterCheckpoint
 decl_stmt|;
+name|boolean
+name|updatePostRunStatus
+init|=
+literal|false
+decl_stmt|;
 try|try
 block|{
+name|updatePostRunStatus
+operator|=
 name|updateIndex
 argument_list|(
 name|before
@@ -1999,10 +2018,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|updatePostRunStatus
+condition|)
+block|{
+name|postAsyncRunStatsStatus
+argument_list|(
+name|indexStats
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
-name|void
+name|boolean
 name|updateIndex
 parameter_list|(
 name|NodeState
@@ -2032,16 +2062,15 @@ name|createStarted
 argument_list|()
 decl_stmt|;
 name|boolean
+name|updatePostRunStatus
+init|=
+literal|true
+decl_stmt|;
+name|boolean
 name|progressLogged
 init|=
 literal|false
 decl_stmt|;
-comment|// start collecting runtime statistics
-name|preAsyncRunStatsStats
-argument_list|(
-name|indexStats
-argument_list|)
-expr_stmt|;
 comment|// create an update callback for tracking index updates
 comment|// and maintaining the update lease
 name|AsyncUpdateCallback
@@ -2171,11 +2200,6 @@ name|DATE
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|boolean
-name|updatePostRunStatus
-init|=
-literal|true
-decl_stmt|;
 if|if
 condition|(
 name|callback
@@ -2318,17 +2342,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|updatePostRunStatus
-condition|)
-block|{
-name|postAsyncRunStatsStatus
-argument_list|(
-name|indexStats
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|indexUpdate
 operator|.
 name|isReindexingPerformed
@@ -2426,6 +2439,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+name|updatePostRunStatus
+return|;
 block|}
 specifier|private
 name|void
