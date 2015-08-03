@@ -406,7 +406,7 @@ argument_list|()
 operator|.
 name|addAppenderFilter
 argument_list|(
-literal|"console"
+literal|"file"
 argument_list|,
 literal|"warn"
 argument_list|)
