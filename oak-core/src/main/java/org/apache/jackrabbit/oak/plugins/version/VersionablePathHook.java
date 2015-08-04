@@ -648,7 +648,7 @@ condition|)
 block|{
 comment|// stop comparison
 return|return
-literal|false
+literal|true
 return|;
 block|}
 name|Node
