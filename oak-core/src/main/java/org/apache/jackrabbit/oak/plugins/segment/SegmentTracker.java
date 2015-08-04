@@ -617,6 +617,13 @@ name|Segment
 name|segment
 parameter_list|)
 block|{
+if|if
+condition|(
+name|segment
+operator|!=
+literal|null
+condition|)
+block|{
 name|segmentId
 operator|.
 name|setSegment
@@ -624,6 +631,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
