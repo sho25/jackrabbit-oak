@@ -717,10 +717,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|test
-operator|.
-name|api
-operator|.
 name|util
 operator|.
 name|Text
