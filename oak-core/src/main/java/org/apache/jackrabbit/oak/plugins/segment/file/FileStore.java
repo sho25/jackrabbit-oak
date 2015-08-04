@@ -4589,7 +4589,7 @@ comment|// Cleanup might already have closed the file.
 comment|// The segment should be available from another file.
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Skipping closed tar file {}"
 argument_list|,
