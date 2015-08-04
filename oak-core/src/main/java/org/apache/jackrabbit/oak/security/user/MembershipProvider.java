@@ -1203,6 +1203,32 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * Removes the member with the specified contentID from the given group.      *      * @param groupTree group to remove the member from      * @param memberContentId the contentID of the member to remove      * @return {@code true} if the member was removed.      */
+name|boolean
+name|removeMember
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Tree
+name|groupTree
+parameter_list|,
+annotation|@
+name|Nonnull
+name|String
+name|memberContentId
+parameter_list|)
+block|{
+return|return
+name|writer
+operator|.
+name|removeMember
+argument_list|(
+name|groupTree
+argument_list|,
+name|memberContentId
+argument_list|)
+return|;
+block|}
 comment|/**      * Iterator that provides member references based on the rep:members properties of a underlying tree iterator.      */
 specifier|private
 specifier|static
