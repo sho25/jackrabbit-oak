@@ -3461,7 +3461,6 @@ block|}
 block|}
 comment|/**      * Runs garbage collection on the segment level, which could write new      * generations of tar files. It checks which segments are still reachable,      * and throws away those that are not.      *<p>      * A new generation of a tar file is created (and segments are only      * discarded) if doing so releases more than 25% of the space in a tar file.      */
 specifier|public
-specifier|synchronized
 name|void
 name|cleanup
 parameter_list|()
@@ -3482,6 +3481,28 @@ init|=
 name|size
 argument_list|()
 decl_stmt|;
+name|CompactionMap
+name|cm
+init|=
+name|tracker
+operator|.
+name|getCompactionMap
+argument_list|()
+decl_stmt|;
+name|Set
+argument_list|<
+name|UUID
+argument_list|>
+name|cleanedIds
+init|=
+name|newHashSet
+argument_list|()
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|gcMonitor
 operator|.
 name|info
@@ -3556,14 +3577,6 @@ argument_list|(
 name|ids
 argument_list|)
 expr_stmt|;
-name|CompactionMap
-name|cm
-init|=
-name|tracker
-operator|.
-name|getCompactionMap
-argument_list|()
-decl_stmt|;
 name|List
 argument_list|<
 name|TarReader
@@ -3577,15 +3590,6 @@ operator|.
 name|size
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|Set
-argument_list|<
-name|UUID
-argument_list|>
-name|cleanedIds
-init|=
-name|newHashSet
-argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -3674,6 +3678,8 @@ name|readers
 operator|=
 name|list
 expr_stmt|;
+block|}
+comment|// Do this outside sync to avoid deadlock with SegmentId.getSegment(). See OAK-3179
 name|cm
 operator|.
 name|remove
