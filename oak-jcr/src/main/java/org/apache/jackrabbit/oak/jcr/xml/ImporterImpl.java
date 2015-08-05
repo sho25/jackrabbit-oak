@@ -2659,6 +2659,14 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|tree
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
 name|parents
 operator|.
 name|push
@@ -2666,6 +2674,7 @@ argument_list|(
 name|tree
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

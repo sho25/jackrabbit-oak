@@ -103,18 +103,6 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
-name|ConstraintViolationException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|nodetype
-operator|.
 name|PropertyDefinition
 import|;
 end_import
@@ -827,11 +815,41 @@ parameter_list|)
 throws|throws
 name|IllegalStateException
 throws|,
-name|ConstraintViolationException
-throws|,
 name|RepositoryException
 block|{
-comment|// nothing to do
+if|if
+condition|(
+name|CugUtil
+operator|.
+name|definesCug
+argument_list|(
+name|protectedParent
+argument_list|)
+operator|&&
+operator|!
+name|protectedParent
+operator|.
+name|hasProperty
+argument_list|(
+name|REP_PRINCIPAL_NAMES
+argument_list|)
+condition|)
+block|{
+comment|// remove the rep:cugPolicy node if mandatory property is missing
+comment|// (which may also happen upon an attempt to create a cug at an unsupported path).
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Removing incomplete rep:cugPolicy node (due to missing mandatory property or unsupported path)."
+argument_list|)
+expr_stmt|;
+name|protectedParent
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|//--------------------------------------------------------------------------
 specifier|private
