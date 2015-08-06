@@ -1786,9 +1786,13 @@ specifier|static
 name|long
 name|getPermissions
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|jcrActions
 parameter_list|,
+annotation|@
+name|Nonnull
 name|TreeLocation
 name|location
 parameter_list|,
