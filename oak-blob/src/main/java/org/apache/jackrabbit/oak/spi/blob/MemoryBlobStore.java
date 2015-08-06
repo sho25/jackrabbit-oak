@@ -368,8 +368,8 @@ comment|/**      * Ignores the maxlastModifiedTime      */
 annotation|@
 name|Override
 specifier|public
-name|boolean
-name|deleteChunks
+name|long
+name|countDeleteChunks
 parameter_list|(
 name|List
 argument_list|<
@@ -383,6 +383,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -424,6 +429,9 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+name|count
+operator|++
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -443,10 +451,13 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+name|count
+operator|++
+expr_stmt|;
 block|}
 block|}
 return|return
-literal|true
+name|count
 return|;
 block|}
 comment|/**      * Ignores the maxlastModifiedTime      */

@@ -848,7 +848,7 @@ operator|!
 name|markOnly
 condition|)
 block|{
-name|int
+name|long
 name|deleteCount
 init|=
 name|sweep
@@ -862,9 +862,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Blob garbage collection completed in {}. Number of blobs identified for deletion [{}] (This "
-operator|+
-literal|"includes blobs newer than configured interval [{}] which are ignored for deletion)"
+literal|"Blob garbage collection completed in {}. Number of blobs deleted [{}]"
 argument_list|,
 name|sw
 operator|.
@@ -1136,7 +1134,7 @@ expr_stmt|;
 block|}
 comment|/**      * Sweep phase of gc candidate deletion.      *<p>      * Performs the following steps depending upon the type of the blob store refer      * {@link org.apache.jackrabbit.oak.plugins.blob.SharedDataStore.Type}:      *      *<ul>      *<li>Shared</li>      *<ul>      *<li> Merge all marked references (from the mark phase run independently) available in the data store meta      *          store (from all configured independent repositories).      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (earliest time stamp of the marked references - #maxLastModifiedInterval) from the above set.      *</ul>      *      *<li>Default</li>      *<ul>      *<li> Mark phase already run.      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (time stamp of the marked references - #maxLastModifiedInterval).      *</ul>      *</ul>      *      * @return the number of blobs deleted      * @throws Exception the exception      */
 specifier|private
-name|int
+name|long
 name|sweep
 parameter_list|()
 throws|throws
@@ -1199,8 +1197,13 @@ comment|// Calculate the references not used
 name|difference
 argument_list|()
 expr_stmt|;
-name|int
+name|long
 name|count
+init|=
+literal|0
+decl_stmt|;
+name|long
+name|deleted
 init|=
 literal|0
 decl_stmt|;
@@ -1300,7 +1303,7 @@ name|ids
 operator|.
 name|size
 argument_list|()
-operator|>
+operator|>=
 name|getBatchCount
 argument_list|()
 condition|)
@@ -1312,6 +1315,8 @@ operator|.
 name|size
 argument_list|()
 expr_stmt|;
+name|deleted
+operator|+=
 name|sweepInternal
 argument_list|(
 name|ids
@@ -1346,6 +1351,8 @@ operator|.
 name|size
 argument_list|()
 expr_stmt|;
+name|deleted
+operator|+=
 name|sweepInternal
 argument_list|(
 name|ids
@@ -1356,13 +1363,6 @@ name|earliestRefAvailTime
 argument_list|)
 expr_stmt|;
 block|}
-name|count
-operator|-=
-name|exceptionQueue
-operator|.
-name|size
-argument_list|()
-expr_stmt|;
 name|BufferedWriter
 name|writer
 init|=
@@ -1439,17 +1439,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to delete some blobs entries from the blob store. This may happen if blob modified time is> "
+literal|"Unable to delete some blobs entries from the blob store. Details around such blob entries can "
 operator|+
-literal|"than the max deleted time ({}). Details around such blob entries can be found in [{}]"
-argument_list|,
-name|timestampToString
-argument_list|(
-name|getLastMaxModifiedTime
-argument_list|(
-name|earliestRefAvailTime
-argument_list|)
-argument_list|)
+literal|"be found in [{}]"
 argument_list|,
 name|fs
 operator|.
@@ -1458,6 +1450,37 @@ argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|count
+operator|!=
+name|deleted
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Deleted only [{}] blobs entries from the [{}] candidates identified. This may happen if blob "
+operator|+
+literal|"modified time is> "
+operator|+
+literal|"than the max deleted time ({})"
+argument_list|,
+name|deleted
+argument_list|,
+name|count
+argument_list|,
+name|timestampToString
+argument_list|(
+name|getLastMaxModifiedTime
+argument_list|(
+name|earliestRefAvailTime
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1482,7 +1505,7 @@ literal|"Ending sweep phase of the garbage collector"
 argument_list|)
 expr_stmt|;
 return|return
-name|count
+name|deleted
 return|;
 block|}
 specifier|private
@@ -1581,7 +1604,7 @@ expr_stmt|;
 block|}
 comment|/**      * Deletes a batch of blobs from blob store.      *       * @param ids      * @param exceptionQueue      * @param maxModified      */
 specifier|private
-name|void
+name|long
 name|sweepInternal
 parameter_list|(
 name|List
@@ -1600,23 +1623,27 @@ name|long
 name|maxModified
 parameter_list|)
 block|{
+name|long
+name|deleted
+init|=
+literal|0
+decl_stmt|;
 try|try
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"Blob ids to be deleted {}"
 argument_list|,
 name|ids
 argument_list|)
 expr_stmt|;
-name|boolean
 name|deleted
-init|=
+operator|=
 name|blobStore
 operator|.
-name|deleteChunks
+name|countDeleteChunks
 argument_list|(
 name|ids
 argument_list|,
@@ -1625,11 +1652,15 @@ argument_list|(
 name|maxModified
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
-operator|!
 name|deleted
+operator|!=
+name|ids
+operator|.
+name|size
+argument_list|()
 condition|)
 block|{
 comment|// Only log and do not add to exception queue since some blobs may not match the
@@ -1638,7 +1669,14 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Some blobs were not deleted from the batch : [{}]"
+literal|"Some [{}] blobs were not deleted from the batch : [{}]"
+argument_list|,
+name|ids
+operator|.
+name|size
+argument_list|()
+operator|-
+name|deleted
 argument_list|,
 name|ids
 argument_list|)
@@ -1670,6 +1708,9 @@ name|ids
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|deleted
+return|;
 block|}
 comment|/**      * Iterates the complete node tree and collect all blob references      */
 specifier|private

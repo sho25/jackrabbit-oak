@@ -3278,8 +3278,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|boolean
-name|deleteChunks
+name|long
+name|countDeleteChunks
 parameter_list|(
 name|List
 argument_list|<
@@ -3293,6 +3293,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|long
+name|count
+init|=
+literal|0
+decl_stmt|;
 comment|// sanity check
 if|if
 condition|(
@@ -3304,7 +3309,7 @@ condition|)
 block|{
 comment|// sanity check, nothing to do
 return|return
-literal|true
+name|count
 return|;
 block|}
 name|Connection
@@ -3559,9 +3564,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|count
+operator|=
 name|prepMeta
 operator|.
-name|execute
+name|executeUpdate
 argument_list|()
 expr_stmt|;
 name|prepData
@@ -3624,7 +3631,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-literal|true
+name|count
 return|;
 block|}
 annotation|@

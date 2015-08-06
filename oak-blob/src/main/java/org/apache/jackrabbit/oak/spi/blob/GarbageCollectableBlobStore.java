@@ -21,6 +21,18 @@ end_package
 
 begin_import
 import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -54,6 +66,8 @@ comment|/**  * A blob store that supports garbage collection.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|GarbageCollectableBlobStore
@@ -121,8 +135,26 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Deletes the blobs with the given ids.      *      * @param chunkIds the chunk ids      * @param maxLastModifiedTime the max last modified time to consider for retrieval      * @return true, if successful      * @throws Exception the exception      */
+annotation|@
+name|Deprecated
 name|boolean
 name|deleteChunks
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|chunkIds
+parameter_list|,
+name|long
+name|maxLastModifiedTime
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Deletes the blobs with the given ids.      *      * @param chunkIds the chunk ids      * @param maxLastModifiedTime the max last modified time to consider for retrieval      * @return long the count of successful deletions      * @throws Exception the exception      */
+name|long
+name|countDeleteChunks
 parameter_list|(
 name|List
 argument_list|<
