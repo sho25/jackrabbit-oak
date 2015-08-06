@@ -422,6 +422,8 @@ argument_list|(
 name|current
 argument_list|,
 name|source
+argument_list|,
+name|current
 argument_list|)
 decl_stmt|;
 name|store
@@ -485,6 +487,9 @@ name|before
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|NodeState
+name|onto
 parameter_list|)
 block|{
 return|return
@@ -495,6 +500,8 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|onto
 argument_list|)
 return|;
 block|}

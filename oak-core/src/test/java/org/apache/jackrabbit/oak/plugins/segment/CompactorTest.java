@@ -277,6 +277,8 @@ name|store
 operator|.
 name|getRoot
 argument_list|()
+argument_list|,
+name|initial
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -310,6 +312,8 @@ name|store
 operator|.
 name|getRoot
 argument_list|()
+argument_list|,
+name|initial
 argument_list|)
 expr_stmt|;
 name|Assert
