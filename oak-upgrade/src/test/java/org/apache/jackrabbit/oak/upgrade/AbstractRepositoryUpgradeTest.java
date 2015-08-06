@@ -311,7 +311,7 @@ specifier|abstract
 class|class
 name|AbstractRepositoryUpgradeTest
 block|{
-specifier|protected
+specifier|public
 specifier|static
 specifier|final
 name|Credentials
