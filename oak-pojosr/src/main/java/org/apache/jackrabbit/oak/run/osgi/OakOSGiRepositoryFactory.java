@@ -307,6 +307,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PropertiesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|framework
@@ -414,7 +430,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * RepositoryFactory which constructs an instance of Oak repository. Thi factory supports following  * parameters  *  *<dl>  *<dt>org.osgi.framework.BundleActivator</dt>  *<dd>(Optional) BundleActivator instance which would be notified about the startup and shutdown</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.config</dt>  *<dd>(Optional) Config key which refers to the map of config where key in that map refers to OSGi config</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.configFile</dt>  *<dd>  *          Comma separated list of file names which referred to config stored in form of JSON. The  *          JSON content consist of pid as the key and config map as the value  *</dd>  *  *<dt>org.apache.jackrabbit.repository.home</dt>  *<dd>Used to specify the absolute path of the repository home directory</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.bundleFilter</dt>  *<dd>Used to specify the bundle filter string which is passed to ClasspathScanner</dd>  *</dl>  */
+comment|/**  * RepositoryFactory which constructs an instance of Oak repository. Thi factory supports following  * parameters  *  *<dl>  *<dt>org.osgi.framework.BundleActivator</dt>  *<dd>(Optional) BundleActivator instance which would be notified about the startup and shutdown</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.config</dt>  *<dd>(Optional) Config key which refers to the map of config where key in that map refers to OSGi config</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.configFile</dt>  *<dd>  *          Comma separated list of file names which referred to config stored in form of JSON. The  *          JSON content consist of pid as the key and config map as the value  *</dd>  *  *<dt>org.apache.jackrabbit.repository.home</dt>  *<dd>Used to specify the absolute path of the repository home directory</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.bundleFilter</dt>  *<dd>Used to specify the bundle filter string which is passed to ClasspathScanner</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.startupTimeout</dt>  *<dd>Timeout in seconds for the repository startup should wait. Defaults to 10 minutes</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.shutDownOnTimeout</dt>  *<dd>Boolean flag to determine if the OSGi container should be shutdown upon timeout. Defaults to false</dd>  *</dl>  */
 end_comment
 
 begin_class
@@ -454,7 +470,7 @@ specifier|final
 name|String
 name|REPOSITORY_STARTUP_TIMEOUT
 init|=
-literal|"org.apache.jackrabbit.oak.repository.startupTimeOut"
+literal|"org.apache.jackrabbit.oak.repository.startupTimeout"
 decl_stmt|;
 comment|/**      * Config key which refers to the map of config where key in that map refers to OSGi      * config      */
 specifier|public
@@ -481,6 +497,14 @@ name|String
 name|REPOSITORY_BUNDLE_FILTER
 init|=
 literal|"org.apache.jackrabbit.oak.repository.bundleFilter"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REPOSITORY_SHUTDOWN_ON_TIMEOUT
+init|=
+literal|"org.apache.jackrabbit.oak.repository.shutDownOnTimeout"
 decl_stmt|;
 comment|/**      * Default timeout for repository creation      */
 specifier|private
@@ -739,11 +763,50 @@ parameter_list|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|PropertiesUtil
+operator|.
+name|toBoolean
+argument_list|(
+name|config
+operator|.
+name|get
+argument_list|(
+name|REPOSITORY_SHUTDOWN_ON_TIMEOUT
+argument_list|)
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 name|shutdown
 argument_list|(
 name|registry
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"OSGi container shutdown after waiting for repository initialization for {} sec"
+argument_list|,
+name|timeout
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"[{}] found to be false. Container is not stopped"
+argument_list|,
+name|REPOSITORY_SHUTDOWN_ON_TIMEOUT
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
