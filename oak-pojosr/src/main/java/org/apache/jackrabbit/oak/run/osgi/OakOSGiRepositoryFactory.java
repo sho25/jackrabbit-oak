@@ -414,7 +414,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * RepositoryFactory which constructs an instance of Oak repository. Thi factory supports following  * parameters  *  *<dl>  *<dt>org.osgi.framework.BundleActivator</dt>  *<dd>(Optional) BundleActivator instance which would be notified about the startup and shutdown</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.config</dt>  *<dd>(Optional) Config key which refers to the map of config where key in that map refers to OSGi config</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.configFile</dt>  *<dd>  *          Comma separated list of file names which referred to config stored in form of JSON. The  *          JSON content consist of pid as the key and config map as the value  *</dd>  *  *<dt>org.apache.jackrabbit.repository.home</dt>  *<dd>Used to specify the absolute path of the repository home directory</dd>  *</dl>  */
+comment|/**  * RepositoryFactory which constructs an instance of Oak repository. Thi factory supports following  * parameters  *  *<dl>  *<dt>org.osgi.framework.BundleActivator</dt>  *<dd>(Optional) BundleActivator instance which would be notified about the startup and shutdown</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.config</dt>  *<dd>(Optional) Config key which refers to the map of config where key in that map refers to OSGi config</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.configFile</dt>  *<dd>  *          Comma separated list of file names which referred to config stored in form of JSON. The  *          JSON content consist of pid as the key and config map as the value  *</dd>  *  *<dt>org.apache.jackrabbit.repository.home</dt>  *<dd>Used to specify the absolute path of the repository home directory</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.bundleFilter</dt>  *<dd>Used to specify the bundle filter string which is passed to ClasspathScanner</dd>  *</dl>  */
 end_comment
 
 begin_class
@@ -473,6 +473,14 @@ name|String
 name|REPOSITORY_CONFIG_FILE
 init|=
 literal|"org.apache.jackrabbit.oak.repository.configFile"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REPOSITORY_BUNDLE_FILTER
+init|=
+literal|"org.apache.jackrabbit.oak.repository.bundleFilter"
 decl_stmt|;
 comment|/**      * Default timeout for repository creation      */
 specifier|private
@@ -810,6 +818,16 @@ expr_stmt|;
 name|startBundles
 argument_list|(
 name|registry
+argument_list|,
+operator|(
+name|String
+operator|)
+name|config
+operator|.
+name|get
+argument_list|(
+name|REPOSITORY_BUNDLE_FILTER
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|postProcessRegistry
@@ -1205,6 +1223,9 @@ name|startBundles
 parameter_list|(
 name|PojoServiceRegistry
 name|registry
+parameter_list|,
+name|String
+name|bundleFilter
 parameter_list|)
 block|{
 try|try
@@ -1220,7 +1241,9 @@ name|ClasspathScanner
 argument_list|()
 operator|.
 name|scanForBundles
-argument_list|()
+argument_list|(
+name|bundleFilter
+argument_list|)
 decl_stmt|;
 name|descriptors
 operator|=
