@@ -1483,8 +1483,8 @@ name|create
 argument_list|()
 decl_stmt|;
 specifier|private
-name|boolean
-name|initialized
+name|ContentRepository
+name|contentRepository
 decl_stmt|;
 comment|/**      * Default {@code ScheduledExecutorService} used for scheduling background tasks.      * This default spawns up to 32 background thread on an as need basis. Idle      * threads are pruned after one minute.      * @return  fresh ScheduledExecutorService      */
 specifier|public
@@ -2995,17 +2995,34 @@ operator|.
 name|whiteboard
 return|;
 block|}
+comment|/**      * Returns the content repository instance created with the given      * configuration. If the repository doesn't exist yet, a new instance will      * be created and returned for each subsequent call of this method.      *      * @return content repository      */
 specifier|public
 name|ContentRepository
 name|createContentRepository
 parameter_list|()
 block|{
-comment|//TODO FIXME OAK-2736
-comment|//checkState(!initialized, "Oak instance should be used only once to create the ContentRepository instance");
-name|initialized
+if|if
+condition|(
+name|contentRepository
+operator|==
+literal|null
+condition|)
+block|{
+name|contentRepository
 operator|=
-literal|true
+name|createNewContentRepository
+argument_list|()
 expr_stmt|;
+block|}
+return|return
+name|contentRepository
+return|;
+block|}
+specifier|private
+name|ContentRepository
+name|createNewContentRepository
+parameter_list|()
+block|{
 specifier|final
 name|List
 argument_list|<
@@ -3174,7 +3191,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO verify how this fits in with OAK-2749
 name|PropertyIndexAsyncReindex
 name|asyncPI
 init|=
