@@ -256,10 +256,7 @@ name|bundleContext
 expr_stmt|;
 block|}
 specifier|public
-name|Set
-argument_list|<
-name|String
-argument_list|>
+name|void
 name|installConfigs
 parameter_list|(
 name|Map
@@ -278,17 +275,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|processedPids
-init|=
-name|Sets
-operator|.
-name|newHashSet
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|Map
@@ -540,18 +526,8 @@ argument_list|(
 name|current
 argument_list|)
 expr_stmt|;
-name|processedPids
-operator|.
-name|add
-argument_list|(
-name|pidString
-argument_list|)
-expr_stmt|;
 block|}
 block|}
-return|return
-name|processedPids
-return|;
 block|}
 specifier|public
 name|void
@@ -620,7 +596,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Configuration belonging to following pids have been removed "
+literal|"Configuration belonging to following pids have been removed {}"
 argument_list|,
 name|pidsToBeRemoved
 argument_list|)

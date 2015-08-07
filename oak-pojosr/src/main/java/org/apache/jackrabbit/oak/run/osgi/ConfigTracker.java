@@ -507,19 +507,17 @@ name|runtimeConfig
 argument_list|)
 expr_stmt|;
 block|}
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|processedPids
-init|=
 name|configInstaller
 operator|.
 name|installConfigs
 argument_list|(
 name|configs
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+comment|//Find out the config *installed by ConfigInstaller* and are not present in
+comment|//current config files. Such configs must be remove. Note it does not lead to
+comment|//removal of configs added by using ConfigAdmin directly, say using WebConsole
+comment|//ui
 name|Set
 argument_list|<
 name|String
@@ -532,7 +530,10 @@ name|difference
 argument_list|(
 name|existingPids
 argument_list|,
-name|processedPids
+name|configs
+operator|.
+name|keySet
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|configInstaller
