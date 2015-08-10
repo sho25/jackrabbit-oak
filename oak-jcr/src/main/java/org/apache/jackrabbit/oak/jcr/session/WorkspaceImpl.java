@@ -907,16 +907,6 @@ name|checkProtectedNode
 argument_list|(
 name|getParentPath
 argument_list|(
-name|srcOakPath
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|sessionDelegate
-operator|.
-name|checkProtectedNode
-argument_list|(
-name|getParentPath
-argument_list|(
 name|destOakPath
 argument_list|)
 argument_list|)
