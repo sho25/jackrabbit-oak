@@ -334,12 +334,17 @@ name|append
 argument_list|(
 name|QueryUtil
 operator|.
+name|escapeForQuery
+argument_list|(
+name|QueryUtil
+operator|.
 name|escapeNodeName
 argument_list|(
 name|condition
 operator|.
 name|getPattern
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 operator|.
