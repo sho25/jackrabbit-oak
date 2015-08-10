@@ -88,14 +88,10 @@ operator|.
 name|println
 argument_list|()
 expr_stmt|;
-name|RDBDocumentStore
-operator|.
-name|DB
+name|RDBDocumentStoreDB
 name|ddb
 init|=
-name|RDBDocumentStore
-operator|.
-name|DB
+name|RDBDocumentStoreDB
 operator|.
 name|getValue
 argument_list|(
