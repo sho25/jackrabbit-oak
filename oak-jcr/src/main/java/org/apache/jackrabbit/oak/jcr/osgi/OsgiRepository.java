@@ -179,6 +179,9 @@ name|observationQueueLength
 parameter_list|,
 name|CommitRateLimiter
 name|commitRateLimiter
+parameter_list|,
+name|boolean
+name|fastQueryResultSize
 parameter_list|)
 block|{
 name|super
@@ -192,6 +195,8 @@ argument_list|,
 name|observationQueueLength
 argument_list|,
 name|commitRateLimiter
+argument_list|,
+name|fastQueryResultSize
 argument_list|)
 expr_stmt|;
 block|}

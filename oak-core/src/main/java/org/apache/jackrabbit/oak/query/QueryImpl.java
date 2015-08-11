@@ -2840,6 +2840,65 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|orderBy
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// this will force the rows to be read, so that the size is known
+name|it
+operator|.
+name|hasNext
+argument_list|()
+expr_stmt|;
+comment|// we need the size, and there is no other way to get it right now
+comment|// but we also have to take limit and offset into account
+name|long
+name|read
+init|=
+name|rowIt
+operator|.
+name|getReadCount
+argument_list|()
+decl_stmt|;
+comment|// we will ignore whatever is behind 'limit+offset'
+name|read
+operator|=
+name|Math
+operator|.
+name|min
+argument_list|(
+name|saturatedAdd
+argument_list|(
+name|limit
+argument_list|,
+name|offset
+argument_list|)
+argument_list|,
+name|read
+argument_list|)
+expr_stmt|;
+comment|// and we will skip 'offset' entries
+name|read
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|read
+operator|-
+name|offset
+argument_list|)
+expr_stmt|;
+name|size
+operator|=
+name|read
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|measure
 condition|)
 block|{
@@ -5604,6 +5663,19 @@ name|max
 parameter_list|)
 block|{
 comment|// Note: DISTINCT is ignored
+if|if
+condition|(
+name|size
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+comment|// "order by" was used, so we know the size
+return|return
+name|size
+return|;
+block|}
 return|return
 name|Math
 operator|.

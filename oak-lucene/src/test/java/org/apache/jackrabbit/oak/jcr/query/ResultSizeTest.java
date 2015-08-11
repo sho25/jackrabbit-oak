@@ -429,13 +429,12 @@ name|StringBuilder
 name|buff
 decl_stmt|;
 comment|// fast (insecure) case
+comment|// enabled by default now, in LuceneOakRepositoryStub
 name|System
 operator|.
-name|setProperty
+name|clearProperty
 argument_list|(
 literal|"oak.fastQuerySize"
-argument_list|,
-literal|"true"
 argument_list|)
 expr_stmt|;
 name|q
@@ -574,11 +573,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// default (secure) case
+comment|// manually disabled
 name|System
 operator|.
-name|clearProperty
+name|setProperty
 argument_list|(
 literal|"oak.fastQuerySize"
+argument_list|,
+literal|"false"
 argument_list|)
 expr_stmt|;
 name|q
@@ -668,6 +670,13 @@ argument_list|(
 name|regularResult
 argument_list|,
 name|fastSizeResult
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|clearProperty
+argument_list|(
+literal|"oak.fastQuerySize"
 argument_list|)
 expr_stmt|;
 block|}
