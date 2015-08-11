@@ -46,6 +46,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -218,7 +230,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests measuring the performance of various {@link RDBDocumentStore}  * operations.  */
+comment|/**  * Tests measuring the performance of various {@link RDBDocumentStore}  * operations.  *<p>  * These tests are disabled by default due to their long running time. On the command line  * specify {@code -DRDBDocumentStorePerformanceTest=true} to enable them.  */
 end_comment
 
 begin_class
@@ -243,6 +255,24 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|ENABLED
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+name|DocumentStorePerformanceTest
+operator|.
+name|class
+operator|.
+name|getSimpleName
+argument_list|()
+argument_list|)
+decl_stmt|;
 specifier|public
 name|RDBDocumentStorePerformanceTest
 parameter_list|(
@@ -253,6 +283,11 @@ block|{
 name|super
 argument_list|(
 name|dsf
+argument_list|)
+expr_stmt|;
+name|assumeTrue
+argument_list|(
+name|ENABLED
 argument_list|)
 expr_stmt|;
 block|}
