@@ -1186,12 +1186,6 @@ name|Query
 operator|.
 name|JCR_SQL2
 argument_list|,
-name|Long
-operator|.
-name|MAX_VALUE
-argument_list|,
-literal|0
-argument_list|,
 name|bindings
 argument_list|,
 name|NO_MAPPINGS
@@ -1727,12 +1721,6 @@ argument_list|,
 name|Query
 operator|.
 name|JCR_SQL2
-argument_list|,
-name|Long
-operator|.
-name|MAX_VALUE
-argument_list|,
-literal|0
 argument_list|,
 name|bindings
 argument_list|,

@@ -69,11 +69,25 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * The query engine allows to parse and execute queries.  *<p>  * What query languages are supported depends on the registered query parsers.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|QueryEngine
@@ -155,6 +169,37 @@ name|limit
 parameter_list|,
 name|long
 name|offset
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|?
+extends|extends
+name|PropertyValue
+argument_list|>
+name|bindings
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|mappings
+parameter_list|)
+throws|throws
+name|ParseException
+function_decl|;
+comment|/**      * Execute a query and get the result.      * This is a convenience method: no limit, and offset 0.      *      * @param statement the query statement      * @param language the language      * @param bindings the bind variable value bindings      * @param mappings namespace prefix mappings      * @return the result      * @throws ParseException if the statement could not be parsed      * @throws IllegalArgumentException if there was an error executing the query      */
+name|Result
+name|executeQuery
+parameter_list|(
+name|String
+name|statement
+parameter_list|,
+name|String
+name|language
 parameter_list|,
 name|Map
 argument_list|<

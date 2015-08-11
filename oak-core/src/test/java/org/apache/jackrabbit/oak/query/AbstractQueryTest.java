@@ -905,12 +905,6 @@ name|statement
 argument_list|,
 name|language
 argument_list|,
-name|Long
-operator|.
-name|MAX_VALUE
-argument_list|,
-literal|0
-argument_list|,
 name|sv
 argument_list|,
 name|NO_MAPPINGS

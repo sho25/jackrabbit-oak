@@ -4195,12 +4195,6 @@ name|Query
 operator|.
 name|XPATH
 argument_list|,
-name|Long
-operator|.
-name|MAX_VALUE
-argument_list|,
-literal|0
-argument_list|,
 name|QueryEngine
 operator|.
 name|NO_BINDINGS
