@@ -1420,7 +1420,15 @@ throw|throw
 operator|new
 name|ConstraintViolationException
 argument_list|(
-literal|"Attempt to create authorizable outside of configured tree"
+literal|"Attempt to create authorizable at '"
+operator|+
+name|intermediatePath
+operator|+
+literal|"' outside of the configured root '"
+operator|+
+name|authRoot
+operator|+
+literal|'\''
 argument_list|)
 throw|;
 block|}
