@@ -91,6 +91,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -907,6 +921,34 @@ name|UserConstants
 operator|.
 name|PASSWORD_HISTORY_DISABLED_SIZE
 argument_list|)
+block|,
+annotation|@
+name|Property
+argument_list|(
+name|name
+operator|=
+name|UserPrincipalProvider
+operator|.
+name|PARAM_CACHE_EXPIRATION
+argument_list|,
+name|label
+operator|=
+literal|"Principal Cache Expiration"
+argument_list|,
+name|description
+operator|=
+literal|"Optional configuration defining the number of milliseconds "
+operator|+
+literal|"until the principal cache expires (NOTE: currently only respected for principal resolution with the internal system session such as used for login). "
+operator|+
+literal|"If not set or equal/lower than zero no caches are created/evaluated."
+argument_list|,
+name|longValue
+operator|=
+name|UserPrincipalProvider
+operator|.
+name|EXPIRATION_NO_CACHE
+argument_list|)
 block|}
 argument_list|)
 specifier|public
@@ -1120,15 +1162,21 @@ name|moveTracker
 parameter_list|)
 block|{
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-name|singletonList
+name|of
 argument_list|(
 operator|new
 name|UserValidatorProvider
 argument_list|(
 name|getParameters
 argument_list|()
+argument_list|)
+argument_list|,
+operator|new
+name|CacheValidatorProvider
+argument_list|(
+name|principals
 argument_list|)
 argument_list|)
 return|;

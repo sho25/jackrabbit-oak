@@ -204,6 +204,9 @@ name|noIterations
 parameter_list|,
 name|int
 name|numberOfMembers
+parameter_list|,
+name|long
+name|expiration
 parameter_list|)
 block|{
 name|super
@@ -213,6 +216,8 @@ argument_list|,
 name|runWithToken
 argument_list|,
 name|noIterations
+argument_list|,
+name|expiration
 argument_list|)
 expr_stmt|;
 name|this
