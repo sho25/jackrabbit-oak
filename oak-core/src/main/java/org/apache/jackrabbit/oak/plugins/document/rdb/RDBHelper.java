@@ -98,14 +98,10 @@ argument_list|(
 name|database
 argument_list|)
 decl_stmt|;
-name|RDBBlobStore
-operator|.
-name|DB
+name|RDBBlobStoreDB
 name|bdb
 init|=
-name|RDBBlobStore
-operator|.
-name|DB
+name|RDBBlobStoreDB
 operator|.
 name|getValue
 argument_list|(
