@@ -8357,7 +8357,7 @@ comment|// 1 - OakServer
 name|ContentRepository
 name|repository
 init|=
-name|oak
+name|jcr
 operator|.
 name|createContentRepository
 argument_list|()
