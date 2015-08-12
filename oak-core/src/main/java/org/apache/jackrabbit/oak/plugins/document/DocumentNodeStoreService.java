@@ -2811,7 +2811,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|AssertionError
 argument_list|(
 literal|"Server clock seems off ("
 operator|+
