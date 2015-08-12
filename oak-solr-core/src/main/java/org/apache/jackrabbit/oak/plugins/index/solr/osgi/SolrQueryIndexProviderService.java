@@ -421,6 +421,11 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Reference
+argument_list|(
+name|target
+operator|=
+literal|"(|(server.type=embedded)(server.type=remote))"
+argument_list|)
 specifier|private
 name|SolrServerProvider
 name|solrServerProvider
