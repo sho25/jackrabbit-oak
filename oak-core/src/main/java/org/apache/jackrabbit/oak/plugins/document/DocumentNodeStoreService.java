@@ -2750,7 +2750,8 @@ operator|.
 name|getDocumentStore
 argument_list|()
 decl_stmt|;
-comment|// OAK-2682: time difference detection applied at startup with a default max time diff of 2000 millis (2sec)
+comment|// OAK-2682: time difference detection applied at startup with a default
+comment|// max time diff of 2000 millis (2sec)
 specifier|final
 name|long
 name|maxDiff
