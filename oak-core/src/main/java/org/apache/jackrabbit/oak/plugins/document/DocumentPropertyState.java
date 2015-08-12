@@ -557,6 +557,17 @@ name|count
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns the raw un-parsed value as passed to the constructor of this      * property state.      *      * @return the raw un-parsed value.      */
+annotation|@
+name|Nonnull
+name|String
+name|getValue
+parameter_list|()
+block|{
+return|return
+name|value
+return|;
+block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override

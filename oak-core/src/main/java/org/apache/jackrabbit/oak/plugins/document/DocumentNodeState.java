@@ -569,6 +569,28 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
+name|estimateMemoryUsage
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|memory
 operator|.
 name|EmptyNodeState
@@ -1912,6 +1934,26 @@ return|return
 literal|null
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|prop
+operator|instanceof
+name|DocumentPropertyState
+condition|)
+block|{
+return|return
+operator|(
+operator|(
+name|DocumentPropertyState
+operator|)
+name|prop
+operator|)
+operator|.
+name|getValue
+argument_list|()
+return|;
+block|}
 name|JsopBuilder
 name|builder
 init|=
@@ -2288,14 +2330,12 @@ block|{
 name|int
 name|size
 init|=
-literal|212
+literal|164
 operator|+
+name|estimateMemoryUsage
+argument_list|(
 name|path
-operator|.
-name|length
-argument_list|()
-operator|*
-literal|2
+argument_list|)
 decl_stmt|;
 comment|// rough approximation for properties
 for|for
@@ -2319,17 +2359,13 @@ block|{
 comment|// name
 name|size
 operator|+=
-literal|48
-operator|+
+name|estimateMemoryUsage
+argument_list|(
 name|entry
 operator|.
 name|getKey
 argument_list|()
-operator|.
-name|length
-argument_list|()
-operator|*
-literal|2
+argument_list|)
 expr_stmt|;
 name|PropertyState
 name|propState
@@ -2360,7 +2396,6 @@ operator|.
 name|BINARIES
 condition|)
 block|{
-comment|// assume binaries go into blob store
 for|for
 control|(
 name|int
@@ -2397,6 +2432,28 @@ operator|*
 literal|2
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+comment|// calculate size based on blobId value
+comment|// referencing the binary in the blob store
+comment|// double the size because the parsed PropertyState
+comment|// will have a similarly sized blobId as well
+name|size
+operator|+=
+name|estimateMemoryUsage
+argument_list|(
+name|getPropertyAsString
+argument_list|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+argument_list|)
+operator|*
+literal|2
+expr_stmt|;
 block|}
 block|}
 return|return
@@ -3090,14 +3147,12 @@ control|)
 block|{
 name|size
 operator|+=
+name|estimateMemoryUsage
+argument_list|(
 name|c
-operator|.
-name|length
-argument_list|()
-operator|*
-literal|2
+argument_list|)
 operator|+
-literal|56
+literal|8
 expr_stmt|;
 block|}
 block|}
