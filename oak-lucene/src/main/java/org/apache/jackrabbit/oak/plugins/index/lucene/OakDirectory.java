@@ -1221,36 +1221,43 @@ literal|32
 operator|*
 literal|1024
 decl_stmt|;
+comment|/**      * A file, which might be split into multiple blobs.      */
 specifier|private
 specifier|static
 class|class
 name|OakIndexFile
 block|{
+comment|/**          * The file name.          */
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
+comment|/**          * The node that contains the data for this file.          */
 specifier|private
 specifier|final
 name|NodeBuilder
 name|file
 decl_stmt|;
+comment|/**          * The maximum size of each blob.          */
 specifier|private
 specifier|final
 name|int
 name|blobSize
 decl_stmt|;
+comment|/**          * The current position within the file (for positioned read and write          * operations).          */
 specifier|private
 name|long
 name|position
 init|=
 literal|0
 decl_stmt|;
+comment|/**          * The length of the file.          */
 specifier|private
 name|long
 name|length
 decl_stmt|;
+comment|/**          * The list of blobs (might be empty).          * The last blob has a size of 1 up to blobSize.          * All other blobs have a size of blobSize.          */
 specifier|private
 name|List
 argument_list|<
@@ -1258,12 +1265,14 @@ name|Blob
 argument_list|>
 name|data
 decl_stmt|;
+comment|/**          * Whether the data was modified since it was last flushed. If yes, on a          * flush, the metadata, and the list of blobs need to be stored.          */
 specifier|private
 name|boolean
 name|dataModified
 init|=
 literal|false
 decl_stmt|;
+comment|/**          * The index of the currently loaded blob.          */
 specifier|private
 name|int
 name|index
@@ -1271,11 +1280,13 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+comment|/**          * The data of the currently loaded blob.          */
 specifier|private
 name|byte
 index|[]
 name|blob
 decl_stmt|;
+comment|/**          * Whether the currently loaded blob was modified since the blob was          * flushed.          */
 specifier|private
 name|boolean
 name|blobModified
