@@ -2688,7 +2688,7 @@ name|LUCENE_47
 argument_list|,
 name|FieldNames
 operator|.
-name|FULLTEXT
+name|SUGGEST
 argument_list|,
 name|indexNode
 operator|.
@@ -2716,7 +2716,7 @@ name|createPhraseQuery
 argument_list|(
 name|FieldNames
 operator|.
-name|FULLTEXT
+name|SUGGEST
 argument_list|,
 name|suggestion
 operator|.
