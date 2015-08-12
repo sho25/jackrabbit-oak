@@ -69,9 +69,7 @@ name|compaction
 operator|.
 name|CompactionStrategy
 operator|.
-name|CleanupType
-operator|.
-name|CLEAN_OLD
+name|MEMORY_THRESHOLD_DEFAULT
 import|;
 end_import
 
@@ -93,7 +91,9 @@ name|compaction
 operator|.
 name|CompactionStrategy
 operator|.
-name|MEMORY_THRESHOLD_DEFAULT
+name|CleanupType
+operator|.
+name|CLEAN_OLD
 import|;
 end_import
 
@@ -116,6 +116,18 @@ operator|.
 name|FileStore
 operator|.
 name|newFileStore
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
 import|;
 end_import
 
@@ -178,20 +190,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
 import|;
 end_import
 
@@ -383,16 +381,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -417,16 +405,25 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+import|;
+end_import
+
 begin_comment
-comment|/**  * Test for reproducing OAK-2662. This test will never terminate unless it fails,  * thus it is marked as @Ignored for now.  */
+comment|/**  *<p>Tests verifying if the repository gets corrupted or not: {@code OAK-2662 SegmentOverflowException in HeavyWriteIT on Jenkins}</p>  *  *<p><b>This test will never terminate unless it fails</b>, thus it is disabled by default. On the  * command line specify {@code -DSegmentOverflowExceptionIT=true} to enable  * them.</p>  *  *<p>If you only want to run this test:<br>  * {@code mvn verify -Dsurefire.skip.ut=true -PintegrationTesting -Dit.test=SegmentOverflowExceptionIT -DSegmentOverflowExceptionIT=true}  *</p>  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"long running"
-argument_list|)
 specifier|public
 class|class
 name|SegmentOverflowExceptionIT
@@ -444,6 +441,24 @@ argument_list|(
 name|SegmentOverflowExceptionIT
 operator|.
 name|class
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|ENABLED
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+name|SegmentOverflowExceptionIT
+operator|.
+name|class
+operator|.
+name|getSimpleName
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -468,6 +483,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|assumeTrue
+argument_list|(
+name|ENABLED
+argument_list|)
+expr_stmt|;
 name|directory
 operator|=
 name|File
@@ -509,11 +529,19 @@ parameter_list|()
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|directory
+operator|!=
+literal|null
+condition|)
+block|{
 name|deleteDirectory
 argument_list|(
 name|directory
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
