@@ -232,6 +232,19 @@ name|description
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getCurrentTimeStampInMsSyntax
+parameter_list|()
+block|{
+return|return
+literal|"CURRENT_TIMESTAMP"
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|allowsCaseInSelect
@@ -1318,6 +1331,17 @@ annotation|@
 name|Override
 specifier|public
 name|String
+name|getCurrentTimeStampInMsSyntax
+parameter_list|()
+block|{
+return|return
+literal|"CURRENT_TIMESTAMP"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
 name|getAdditionalDiagnostics
 parameter_list|(
 name|RDBConnectionHandler
@@ -1566,6 +1590,16 @@ return|return
 name|FETCHFIRSTSYNTAX
 operator|.
 name|FETCHFIRST
+return|;
+block|}
+comment|/**      * Query syntax for current time in ms      */
+specifier|public
+name|String
+name|getCurrentTimeStampInMsSyntax
+parameter_list|()
+block|{
+return|return
+literal|"CURRENT_TIMESTAMP(4)"
 return|;
 block|}
 comment|/**      * Returns the CONCAT function or its equivalent function or sub-query. Note      * that the function MUST NOT cause a truncated value to be written!      *      * @param dataOctetLimit      *            expected capacity of data column      * @param dataLength      *            length of string to be inserted      *       * @return the concat query string      */

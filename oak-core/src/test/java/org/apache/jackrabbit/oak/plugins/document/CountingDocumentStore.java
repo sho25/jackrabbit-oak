@@ -1143,6 +1143,20 @@ name|getMetadata
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|determineServerTimeDifferenceMillis
+parameter_list|()
+block|{
+return|return
+name|delegate
+operator|.
+name|determineServerTimeDifferenceMillis
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

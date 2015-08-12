@@ -87,6 +87,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -1166,6 +1176,11 @@ name|journal
 decl_stmt|;
 specifier|private
 specifier|final
+name|DB
+name|db
+decl_stmt|;
+specifier|private
+specifier|final
 name|Cache
 argument_list|<
 name|CacheValue
@@ -1370,6 +1385,12 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|db
+operator|=
+name|db
 expr_stmt|;
 name|nodes
 operator|=
@@ -8205,6 +8226,96 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|determineServerTimeDifferenceMillis
+parameter_list|()
+block|{
+comment|// the assumption is that the network delay from this instance
+comment|// to the server, and from the server back to this instance
+comment|// are (more or less) equal.
+comment|// taking this assumption into account allows to remove
+comment|// the network delays from the picture: the difference
+comment|// between end and start time is exactly this network
+comment|// delay (plus some server time, but that's neglected).
+comment|// so if the clocks are in perfect sync and the above
+comment|// mentioned assumption holds, then the server time should
+comment|// be exactly at the midPoint between start and end.
+comment|// this should allow a more accurate picture of the diff.
+specifier|final
+name|long
+name|start
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
+comment|// assumption here: server returns UTC - ie the returned
+comment|// date object is correctly taking care of time zones.
+specifier|final
+name|Date
+name|serverLocalTime
+init|=
+name|db
+operator|.
+name|command
+argument_list|(
+literal|"serverStatus"
+argument_list|)
+operator|.
+name|getDate
+argument_list|(
+literal|"localTime"
+argument_list|)
+decl_stmt|;
+specifier|final
+name|long
+name|end
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
+specifier|final
+name|long
+name|midPoint
+init|=
+operator|(
+name|start
+operator|+
+name|end
+operator|)
+operator|/
+literal|2
+decl_stmt|;
+specifier|final
+name|long
+name|serverLocalTimeMillis
+init|=
+name|serverLocalTime
+operator|.
+name|getTime
+argument_list|()
+decl_stmt|;
+comment|// the difference should be
+comment|// * positive when local instance is ahead
+comment|// * and negative when the local instance is behind
+specifier|final
+name|long
+name|diff
+init|=
+name|midPoint
+operator|-
+name|serverLocalTimeMillis
+decl_stmt|;
+return|return
+name|diff
+return|;
 block|}
 block|}
 end_class

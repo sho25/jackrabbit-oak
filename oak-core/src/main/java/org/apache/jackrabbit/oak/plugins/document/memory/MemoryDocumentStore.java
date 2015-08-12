@@ -2244,6 +2244,18 @@ return|return
 name|metadata
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|determineServerTimeDifferenceMillis
+parameter_list|()
+block|{
+comment|// the MemoryDocumentStore has no delays, thus return 0
+return|return
+literal|0
+return|;
+block|}
 block|}
 end_class
 
