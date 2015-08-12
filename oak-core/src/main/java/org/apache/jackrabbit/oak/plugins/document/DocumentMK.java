@@ -3038,16 +3038,13 @@ specifier|public
 name|Builder
 parameter_list|()
 block|{         }
-comment|/**          * Use the given MongoDB as backend storage for the DocumentNodeStore.          *          * @param db the MongoDB connection          * @param changesSizeMB the size in MB of the capped collection backing          *                      the MongoDiffCache.          * @return this          */
+comment|/**          * Use the given MongoDB as backend storage for the DocumentNodeStore.          *          * @param db the MongoDB connection          * @return this          */
 specifier|public
 name|Builder
 name|setMongoDB
 parameter_list|(
 name|DB
 name|db
-parameter_list|,
-name|int
-name|changesSizeMB
 parameter_list|,
 name|int
 name|blobCacheSizeMB
@@ -3154,8 +3151,6 @@ return|return
 name|setMongoDB
 argument_list|(
 name|db
-argument_list|,
-literal|8
 argument_list|,
 literal|16
 argument_list|)

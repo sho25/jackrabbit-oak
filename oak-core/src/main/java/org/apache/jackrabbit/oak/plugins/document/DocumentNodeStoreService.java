@@ -1027,14 +1027,6 @@ specifier|private
 specifier|static
 specifier|final
 name|int
-name|DEFAULT_CHANGES_SIZE
-init|=
-literal|256
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|int
 name|DEFAULT_BLOB_CACHE_SIZE
 init|=
 literal|16
@@ -1355,31 +1347,6 @@ name|String
 name|PROP_OFF_HEAP_CACHE
 init|=
 literal|"offHeapCache"
-decl_stmt|;
-annotation|@
-name|Property
-argument_list|(
-name|intValue
-operator|=
-name|DEFAULT_CHANGES_SIZE
-argument_list|,
-name|label
-operator|=
-literal|"Mongo Changes Collection Size (in MB)"
-argument_list|,
-name|description
-operator|=
-literal|"With the MongoDB backend, the DocumentNodeStore uses a capped collection to cache the diff. "
-operator|+
-literal|"This value is used to determine the size of that capped collection"
-argument_list|)
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|PROP_CHANGES_SIZE
-init|=
-literal|"changesSize"
 decl_stmt|;
 annotation|@
 name|Property
@@ -2214,19 +2181,6 @@ name|DEFAULT_DIFF_CACHE_PERCENTAGE
 argument_list|)
 decl_stmt|;
 name|int
-name|changesSize
-init|=
-name|toInteger
-argument_list|(
-name|prop
-argument_list|(
-name|PROP_CHANGES_SIZE
-argument_list|)
-argument_list|,
-name|DEFAULT_CHANGES_SIZE
-argument_list|)
-decl_stmt|;
-name|int
 name|blobCacheSize
 init|=
 name|toInteger
@@ -2507,7 +2461,7 @@ name|info
 argument_list|(
 literal|"Starting DocumentNodeStore with host={}, db={}, cache size (MB)={}, persistentCache={}, "
 operator|+
-literal|"'changes' collection size (MB)={}, blobCacheSize (MB)={}, maxReplicationLagInSecs={}"
+literal|"blobCacheSize (MB)={}, maxReplicationLagInSecs={}"
 argument_list|,
 name|mongoURI
 operator|.
@@ -2519,8 +2473,6 @@ argument_list|,
 name|cacheSize
 argument_list|,
 name|persistentCache
-argument_list|,
-name|changesSize
 argument_list|,
 name|blobCacheSize
 argument_list|,
@@ -2580,8 +2532,6 @@ operator|.
 name|setMongoDB
 argument_list|(
 name|mongoDB
-argument_list|,
-name|changesSize
 argument_list|,
 name|blobCacheSize
 argument_list|)
