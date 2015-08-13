@@ -176,11 +176,12 @@ comment|// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 end_comment
 
 begin_comment
-comment|/**  * The<code>PropertiesUtil</code> is a utility class providing some  * useful utility methods for converting property types.  */
+comment|/**  * The {@code PropertiesUtil} is a utility class providing some  * useful utility methods for converting property types.  */
 end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|PropertiesUtil
 block|{
@@ -198,7 +199,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Returns the boolean value of the parameter or the      *<code>defaultValue</code> if the parameter is<code>null</code>.      * If the parameter is not a<code>Boolean</code> it is converted      * by calling<code>Boolean.valueOf</code> on the string value of the      * object.      * @param propValue the property value or<code>null</code>      * @param defaultValue the default boolean value      */
+specifier|private
+name|PropertiesUtil
+parameter_list|()
+block|{}
+comment|/**      * Returns the boolean value of the parameter or the      * {@code defaultValue} if the parameter is {@code null}.      * If the parameter is not a {@code Boolean} it is converted      * by calling {@code Boolean.valueOf} on the string value of the      * object.      *      * @param propValue the property value or {@code null}      * @param defaultValue the default boolean value      */
 specifier|public
 specifier|static
 name|boolean
@@ -258,7 +263,7 @@ return|return
 name|defaultValue
 return|;
 block|}
-comment|/**      * Returns the parameter as a string or the      *<code>defaultValue</code> if the parameter is<code>null</code>.      * @param propValue the property value or<code>null</code>      * @param defaultValue the default string value      */
+comment|/**      * Returns the parameter as a string or the      * {@code defaultValue} if the parameter is {@code null}.      * @param propValue the property value or {@code null}      * @param defaultValue the default string value      */
 specifier|public
 specifier|static
 name|String
@@ -293,7 +298,7 @@ else|:
 name|defaultValue
 return|;
 block|}
-comment|/**      * Returns the parameter as a long or the      *<code>defaultValue</code> if the parameter is<code>null</code> or if      * the parameter is not a<code>Long</code> and cannot be converted to      * a<code>Long</code> from the parameter's string value.      * @param propValue the property value or<code>null</code>      * @param defaultValue the default long value      */
+comment|/**      * Returns the parameter as a long or the      * {@code defaultValue} if the parameter is {@code null} or if      * the parameter is not a {@code Long} and cannot be converted to      * a {@code Long} from the parameter's string value.      *      * @param propValue the property value or {@code null}      * @param defaultValue the default long value      */
 specifier|public
 specifier|static
 name|long
@@ -364,7 +369,7 @@ return|return
 name|defaultValue
 return|;
 block|}
-comment|/**      * Returns the parameter as an integer or the      *<code>defaultValue</code> if the parameter is<code>null</code> or if      * the parameter is not an<code>Integer</code> and cannot be converted to      * an<code>Integer</code> from the parameter's string value.      * @param propValue the property value or<code>null</code>      * @param defaultValue the default integer value      */
+comment|/**      * Returns the parameter as an integer or the      * {@code defaultValue} if the parameter is {@code null} or if      * the parameter is not an {@code Integer} and cannot be converted to      * an {@code Integer} from the parameter's string value.      *      * @param propValue the property value or {@code null}      * @param defaultValue the default integer value      */
 specifier|public
 specifier|static
 name|int
@@ -435,7 +440,7 @@ return|return
 name|defaultValue
 return|;
 block|}
-comment|/**      * Returns the parameter as a double or the      *<code>defaultValue</code> if the parameter is<code>null</code> or if      * the parameter is not a<code>Double</code> and cannot be converted to      * a<code>Double</code> from the parameter's string value.      * @param propValue the property value or<code>null</code>      * @param defaultValue the default double value      */
+comment|/**      * Returns the parameter as a double or the      * {@code defaultValue} if the parameter is {@code null} or if      * the parameter is not a {@code Double} and cannot be converted to      * a {@code Double} from the parameter's string value.      *      * @param propValue the property value or {@code null}      * @param defaultValue the default double value      */
 specifier|public
 specifier|static
 name|double
@@ -506,7 +511,7 @@ return|return
 name|defaultValue
 return|;
 block|}
-comment|/**      * Returns the parameter as a single value. If the      * parameter is neither an array nor a<code>java.util.Collection</code> the      * parameter is returned unmodified. If the parameter is a non-empty array,      * the first array element is returned. If the property is a non-empty      *<code>java.util.Collection</code>, the first collection element is returned.      * Otherwise<code>null</code> is returned.      * @param propValue the parameter to convert.      */
+comment|/**      * Returns the parameter as a single value. If the      * parameter is neither an array nor a {@code java.util.Collection} the      * parameter is returned unmodified. If the parameter is a non-empty array,      * the first array element is returned. If the property is a non-empty      * {@code java.util.Collection}, the first collection element is returned.      * Otherwise {@code null} is returned.      *      * @param propValue the parameter to convert.      */
 specifier|public
 specifier|static
 name|Object
@@ -613,7 +618,7 @@ name|propValue
 return|;
 block|}
 block|}
-comment|/**      * Returns the parameter as an array of Strings. If      * the parameter is a scalar value its string value is returned as a single      * element array. If the parameter is an array, the elements are converted to      * String objects and returned as an array. If the parameter is a collection, the      * collection elements are converted to String objects and returned as an array.      * Otherwise (if the parameter is<code>null</code>)<code>null</code> is      * returned.      * @param propValue The object to convert.      */
+comment|/**      * Returns the parameter as an array of Strings. If      * the parameter is a scalar value its string value is returned as a single      * element array. If the parameter is an array, the elements are converted to      * String objects and returned as an array. If the parameter is a collection, the      * collection elements are converted to String objects and returned as an array.      * Otherwise (if the parameter is {@code null}) {@code null} is      * returned.      *      * @param propValue The object to convert.      */
 specifier|public
 specifier|static
 name|String
@@ -633,7 +638,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the parameter as an array of Strings. If      * the parameter is a scalar value its string value is returned as a single      * element array. If the parameter is an array, the elements are converted to      * String objects and returned as an array. If the parameter is a collection, the      * collection elements are converted to String objects and returned as an array.      * Otherwise (if the property is<code>null</code>) a provided default value is      * returned.      * @param propValue The object to convert.      * @param defaultArray The default array to return.      */
+comment|/**      * Returns the parameter as an array of Strings. If      * the parameter is a scalar value its string value is returned as a single      * element array. If the parameter is an array, the elements are converted to      * String objects and returned as an array. If the parameter is a collection, the      * collection elements are converted to String objects and returned as an array.      * Otherwise (if the property is {@code null}) a provided default value is      * returned.      *      * @param propValue The object to convert.      * @param defaultArray The default array to return.      */
 specifier|public
 specifier|static
 name|String
@@ -876,7 +881,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Populates the bean properties from config instance. It supports coercing      *  values for simple types like Number, Integer, Long, Boolean etc. Complex      *  objects are not supported      *      * @param instance bean to populate      * @param config propertires to set in the passed bean      * @param validate Flag to validate the configured bean property names against      *                 the configured bean class      */
+comment|/**      * Populates the bean properties from config instance. It supports coercing      *  values for simple types like Number, Integer, Long, Boolean etc. Complex      *  objects are not supported      *      * @param instance bean to populate      * @param config properties to set in the passed bean      * @param validate Flag to validate the configured bean property names against      *                 the configured bean class      */
 end_comment
 
 begin_function
@@ -1527,7 +1532,7 @@ literal|" can not be set to \""
 operator|+
 name|value
 operator|+
-literal|"\""
+literal|'"'
 argument_list|,
 name|e
 argument_list|)

@@ -521,6 +521,8 @@ literal|null
 decl_stmt|;
 name|NodeTypeTemplateImpl
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NameMapper
 name|mapper
 parameter_list|)
@@ -533,9 +535,13 @@ expr_stmt|;
 block|}
 name|NodeTypeTemplateImpl
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NameMapper
 name|mapper
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeTypeDefinition
 name|definition
 parameter_list|)
@@ -718,6 +724,8 @@ comment|/**      * Writes this node type as an {@code nt:nodeType} child of the 
 name|Tree
 name|writeTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|parent
 parameter_list|,
@@ -733,6 +741,21 @@ init|=
 name|getOakName
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|oakName
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Cannot register node type: name is missing."
+argument_list|)
+throw|;
+block|}
 name|Tree
 name|type
 init|=
