@@ -2722,6 +2722,13 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|maxDiff
+operator|>=
+literal|0
+condition|)
+block|{
 specifier|final
 name|long
 name|timeDiff
@@ -2751,12 +2758,7 @@ argument_list|(
 name|timeDiff
 argument_list|)
 operator|>
-name|Math
-operator|.
-name|abs
-argument_list|(
 name|maxDiff
-argument_list|)
 condition|)
 block|{
 throw|throw
@@ -2774,6 +2776,7 @@ operator|+
 literal|"ms)"
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 catch|catch
