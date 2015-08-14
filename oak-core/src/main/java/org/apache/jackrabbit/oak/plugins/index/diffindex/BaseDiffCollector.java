@@ -159,6 +159,10 @@ name|BaseDiffCollector
 implements|implements
 name|DiffCollector
 block|{
+specifier|protected
+name|boolean
+name|init
+decl_stmt|;
 specifier|private
 specifier|final
 name|NodeState
@@ -176,11 +180,10 @@ name|String
 argument_list|>
 name|results
 decl_stmt|;
-specifier|protected
-name|boolean
-name|init
-init|=
-literal|false
+comment|/**      * The filter that was used to generate the result.      */
+specifier|private
+name|Filter
+name|resultFilter
 decl_stmt|;
 comment|/**      * @param before initial state      * @param after after state      */
 specifier|public
@@ -215,6 +218,8 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -242,6 +247,8 @@ return|return
 name|results
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|double
 name|getCost
@@ -254,6 +261,10 @@ if|if
 condition|(
 operator|!
 name|init
+operator|||
+name|filter
+operator|!=
+name|resultFilter
 condition|)
 block|{
 name|collect
@@ -276,7 +287,7 @@ operator|.
 name|POSITIVE_INFINITY
 return|;
 block|}
-comment|// TODO probably the number of read nodes during the diff
+comment|// no read operations needed
 return|return
 literal|0
 return|;
@@ -325,6 +336,12 @@ operator|.
 name|getResults
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|resultFilter
+operator|=
+name|filter
 expr_stmt|;
 name|this
 operator|.

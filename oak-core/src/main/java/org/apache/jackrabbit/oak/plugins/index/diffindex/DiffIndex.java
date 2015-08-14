@@ -209,9 +209,13 @@ name|NodeState
 name|rootState
 parameter_list|)
 block|{
-comment|// //TODO ?
 return|return
-literal|null
+literal|"diffIndex "
+operator|+
+name|filter
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}

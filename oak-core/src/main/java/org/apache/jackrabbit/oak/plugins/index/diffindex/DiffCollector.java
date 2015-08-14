@@ -58,18 +58,20 @@ specifier|public
 interface|interface
 name|DiffCollector
 block|{
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|getResults
+comment|/**      * Get the cost for the given filter, and prepare the result if the index      * can be used.      *       * @param filter the filter      * @return the cost      */
+name|double
+name|getCost
 parameter_list|(
 name|Filter
 name|filter
 parameter_list|)
 function_decl|;
-name|double
-name|getCost
+comment|/**      * Get the result for this filter.      *       * @param filter the filter      * @return the result      */
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getResults
 parameter_list|(
 name|Filter
 name|filter
