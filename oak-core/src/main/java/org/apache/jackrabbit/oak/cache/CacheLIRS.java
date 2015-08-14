@@ -337,6 +337,22 @@ operator|new
 name|AtomicInteger
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|ThreadLocal
+argument_list|<
+name|Integer
+argument_list|>
+name|CURRENTLY_LOADING
+init|=
+operator|new
+name|ThreadLocal
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|()
+decl_stmt|;
 comment|/**      * Listener for items that are evicted from the cache. The listener      * is called for both, resident and non-resident items. In the      * latter case the passed value is {@code null}.      * @param<K>  type of the key      * @param<V>  type of the value      */
 specifier|public
 interface|interface
@@ -3366,6 +3382,41 @@ return|return
 name|value
 return|;
 block|}
+comment|// if we are within a loader, and are currently loading
+comment|// an entry, then we need to avoid a possible deadlock
+comment|// (we ensure that while loading an entry, we only load
+comment|// entries with a higher hash code, so there is a clear order)
+name|Integer
+name|outer
+init|=
+name|CURRENTLY_LOADING
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|outer
+operator|!=
+literal|null
+operator|&&
+name|hash
+operator|<=
+name|outer
+condition|)
+block|{
+comment|// to prevent a deadlock, we also load the value ourselves
+return|return
+name|load
+argument_list|(
+name|key
+argument_list|,
+name|hash
+argument_list|,
+name|valueLoader
+argument_list|)
+return|;
+block|}
 name|ConcurrentHashMap
 argument_list|<
 name|K
@@ -3421,6 +3472,13 @@ block|{
 comment|// we are loading ourselves
 try|try
 block|{
+name|CURRENTLY_LOADING
+operator|.
+name|set
+argument_list|(
+name|hash
+argument_list|)
+expr_stmt|;
 return|return
 name|load
 argument_list|(
@@ -3445,6 +3503,11 @@ comment|// notify other threads
 name|loadNow
 operator|.
 name|notifyAll
+argument_list|()
+expr_stmt|;
+name|CURRENTLY_LOADING
+operator|.
+name|remove
 argument_list|()
 expr_stmt|;
 block|}
