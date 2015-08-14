@@ -555,6 +555,11 @@ operator|>
 name|newBuilder
 argument_list|()
 operator|.
+name|module
+argument_list|(
+literal|"SegmentTracker"
+argument_list|)
+operator|.
 name|maximumSize
 argument_list|(
 operator|(

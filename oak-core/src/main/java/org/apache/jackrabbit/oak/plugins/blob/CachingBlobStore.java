@@ -133,6 +133,11 @@ operator|>
 name|newBuilder
 argument_list|()
 operator|.
+name|module
+argument_list|(
+literal|"CachingBlobStore"
+argument_list|)
+operator|.
 name|maximumWeight
 argument_list|(
 name|cacheSize

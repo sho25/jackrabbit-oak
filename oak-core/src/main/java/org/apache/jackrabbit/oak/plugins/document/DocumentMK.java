@@ -4289,6 +4289,11 @@ name|cache
 init|=
 name|buildCache
 argument_list|(
+name|cacheType
+operator|.
+name|name
+argument_list|()
+argument_list|,
 name|maxWeight
 argument_list|)
 decl_stmt|;
@@ -4420,6 +4425,9 @@ name|V
 argument_list|>
 name|buildCache
 parameter_list|(
+name|String
+name|module
+parameter_list|,
 name|long
 name|maxWeight
 parameter_list|)
@@ -4461,6 +4469,11 @@ name|V
 operator|>
 name|newBuilder
 argument_list|()
+operator|.
+name|module
+argument_list|(
+name|module
+argument_list|)
 operator|.
 name|weigher
 argument_list|(

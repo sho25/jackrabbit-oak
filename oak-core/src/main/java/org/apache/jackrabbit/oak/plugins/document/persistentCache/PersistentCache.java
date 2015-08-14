@@ -397,7 +397,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"start version 1"
+literal|"start, url={}"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 name|String
@@ -1707,6 +1709,17 @@ name|GarbageCollectableBlobStore
 name|base
 parameter_list|)
 block|{
+if|if
+condition|(
+name|maxBinaryEntry
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+name|base
+return|;
+block|}
 name|BlobCache
 name|c
 init|=
