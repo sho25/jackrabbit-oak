@@ -1652,6 +1652,11 @@ literal|"failed to determine server timestamp"
 argument_list|)
 throw|;
 block|}
+name|connection
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 return|return
 name|result
 return|;
