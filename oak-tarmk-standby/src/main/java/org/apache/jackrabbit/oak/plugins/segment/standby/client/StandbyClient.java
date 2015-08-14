@@ -1045,8 +1045,6 @@ name|this
 operator|.
 name|store
 argument_list|,
-name|executor
-argument_list|,
 name|observer
 argument_list|,
 name|running

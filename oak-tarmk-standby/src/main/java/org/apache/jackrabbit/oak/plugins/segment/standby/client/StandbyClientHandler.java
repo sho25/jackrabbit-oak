@@ -307,11 +307,6 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
-name|EventExecutorGroup
-name|executor
-decl_stmt|;
-specifier|private
-specifier|final
 name|CommunicationObserver
 name|observer
 decl_stmt|;
@@ -345,9 +340,6 @@ specifier|final
 name|StandbyStore
 name|store
 parameter_list|,
-name|EventExecutorGroup
-name|executor
-parameter_list|,
 name|CommunicationObserver
 name|observer
 parameter_list|,
@@ -366,12 +358,6 @@ operator|.
 name|store
 operator|=
 name|store
-expr_stmt|;
-name|this
-operator|.
-name|executor
-operator|=
-name|executor
 expr_stmt|;
 name|this
 operator|.
