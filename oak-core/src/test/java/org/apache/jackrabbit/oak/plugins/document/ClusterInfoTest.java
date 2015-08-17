@@ -223,6 +223,11 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
+name|setLeaseCheck
+argument_list|(
+literal|false
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
@@ -243,6 +248,11 @@ operator|.
 name|setAsyncDelay
 argument_list|(
 literal|0
+argument_list|)
+operator|.
+name|setLeaseCheck
+argument_list|(
+literal|false
 argument_list|)
 operator|.
 name|getNodeStore
@@ -579,6 +589,11 @@ operator|.
 name|setAsyncDelay
 argument_list|(
 literal|0
+argument_list|)
+operator|.
+name|setLeaseCheck
+argument_list|(
+literal|false
 argument_list|)
 operator|.
 name|getNodeStore
