@@ -1466,7 +1466,7 @@ name|put
 argument_list|(
 name|OakOSGiRepositoryFactory
 operator|.
-name|REPOSITORY_STARTUP_TIMEOUT
+name|REPOSITORY_TIMEOUT_IN_SECS
 argument_list|,
 name|getBootstrapConfig
 argument_list|()
