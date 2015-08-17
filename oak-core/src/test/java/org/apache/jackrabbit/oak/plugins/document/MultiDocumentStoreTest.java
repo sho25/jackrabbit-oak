@@ -203,6 +203,13 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|removeMe
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 name|long
 name|increments
 init|=
@@ -305,13 +312,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|removeMe
-operator|.
-name|add
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
 comment|// read uncached
 name|nd
 operator|=
@@ -451,6 +451,13 @@ argument_list|(
 name|up
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|removeMe
+operator|.
+name|add
+argument_list|(
+name|id
 argument_list|)
 expr_stmt|;
 name|nd1
@@ -1069,6 +1076,13 @@ argument_list|(
 name|up
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|removeMe
+operator|.
+name|add
+argument_list|(
+name|id
 argument_list|)
 expr_stmt|;
 comment|// fill both caches
