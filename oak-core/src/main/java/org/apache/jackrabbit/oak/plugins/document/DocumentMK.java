@@ -2922,7 +2922,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|leaseCheck
+init|=
+literal|true
 decl_stmt|;
+comment|// OAK-2739 is enabled by default also for non-osgi
 specifier|private
 name|Weigher
 argument_list|<
