@@ -574,11 +574,6 @@ parameter_list|()
 throws|throws
 name|ServletException
 block|{
-name|super
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
 comment|// check if servlet is defined twice
 if|if
 condition|(
@@ -689,6 +684,21 @@ name|registerRMI
 argument_list|()
 expr_stmt|;
 name|registerJNDI
+argument_list|()
+expr_stmt|;
+block|}
+comment|//Once repository is initialized get its instances bounded to ServletContext
+comment|//via super class init
+if|if
+condition|(
+name|repository
+operator|!=
+literal|null
+condition|)
+block|{
+name|super
+operator|.
+name|init
 argument_list|()
 expr_stmt|;
 block|}
