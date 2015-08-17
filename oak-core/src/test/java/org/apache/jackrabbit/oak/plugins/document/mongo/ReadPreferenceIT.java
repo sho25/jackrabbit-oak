@@ -489,6 +489,11 @@ argument_list|(
 literal|1
 argument_list|)
 operator|.
+name|setLeaseCheck
+argument_list|(
+literal|false
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 expr_stmt|;
