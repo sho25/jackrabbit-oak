@@ -458,6 +458,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * The time (in milliseconds UTC) where the lease of this instance ends.      */
 specifier|private
+specifier|volatile
 name|long
 name|leaseEndTime
 decl_stmt|;
@@ -470,6 +471,17 @@ comment|/**      * The state of the cluter node.      */
 specifier|private
 name|ClusterNodeState
 name|state
+decl_stmt|;
+comment|/**      * Whether or not the OAK-2739/leaseCheck failed and thus a System.exit was already triggered      * (is used to avoid calling System.exit a hundred times when it then happens)      */
+specifier|private
+specifier|volatile
+name|boolean
+name|systemExitTriggered
+decl_stmt|;
+comment|/**      * Tracks the fact whether the lease has *ever* been renewed by this instance      * or has just be read from the document store at initialization time.      */
+specifier|private
+name|boolean
+name|renewed
 decl_stmt|;
 comment|/**      * The revLock value of the cluster;      */
 specifier|private
@@ -545,6 +557,13 @@ operator|=
 name|leaseEnd
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|renewed
+operator|=
+literal|false
+expr_stmt|;
+comment|// will be updated once we renew it the first time
 name|this
 operator|.
 name|store
@@ -1204,6 +1223,145 @@ name|newEntry
 argument_list|)
 return|;
 block|}
+specifier|public
+name|void
+name|performLeaseCheck
+parameter_list|()
+block|{
+if|if
+condition|(
+operator|!
+name|renewed
+condition|)
+block|{
+comment|// the 'renewed' flag indicates if this instance *ever* renewed the lease after startup
+comment|// until that is not set, we cannot do the lease check (otherwise startup wouldn't work)
+return|return;
+block|}
+specifier|final
+name|long
+name|now
+init|=
+name|getCurrentTime
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|now
+operator|<
+name|leaseEndTime
+condition|)
+block|{
+comment|// then all is good
+return|return;
+block|}
+comment|// OAK-2739 : when the lease is not current, we must stop
+comment|// the instance immediately to avoid any cluster inconsistency
+specifier|final
+name|String
+name|errorMsg
+init|=
+literal|"performLeaseCheck: this instance failed to update the lease in time "
+operator|+
+literal|"(leaseEndTime: "
+operator|+
+name|leaseEndTime
+operator|+
+literal|", now: "
+operator|+
+name|now
+operator|+
+literal|", leaseTime: "
+operator|+
+name|leaseTime
+operator|+
+literal|") "
+operator|+
+literal|"and is thus no longer eligible for taking part in the cluster. Shutting down NOW!"
+decl_stmt|;
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|errorMsg
+argument_list|)
+expr_stmt|;
+comment|// now here comes the thing: we should a) call System.exit in a separate thread
+comment|// to avoid any deadlock when calling from eg within the shutdown hook
+comment|// AND b) we should not call system.exit hundred times.
+comment|// so for b) we use 'systemExitTriggered' to avoid calling it over and over
+comment|// BUT it doesn't have to be 100% ensured that system.exit is called only once.
+comment|// it is fine if it gets called once, twice - but just not hundred times.
+comment|// which is a long way of saying: volatile is fine here - and the 'if' too
+if|if
+condition|(
+operator|!
+name|systemExitTriggered
+condition|)
+block|{
+name|systemExitTriggered
+operator|=
+literal|true
+expr_stmt|;
+specifier|final
+name|Runnable
+name|r
+init|=
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|System
+operator|.
+name|exit
+argument_list|(
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+decl_stmt|;
+specifier|final
+name|Thread
+name|th
+init|=
+operator|new
+name|Thread
+argument_list|(
+name|r
+argument_list|,
+literal|"FailedLeaseCheckShutdown-Thread"
+argument_list|)
+decl_stmt|;
+name|th
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|th
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+name|errorMsg
+argument_list|)
+throw|;
+block|}
 comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when half of the lease time passed. That is,      * with a lease time of 60 seconds, the lease is renewed every 30 seconds.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
 specifier|public
 name|boolean
@@ -1327,6 +1485,10 @@ name|mode
 argument_list|)
 expr_stmt|;
 block|}
+name|renewed
+operator|=
+literal|true
+expr_stmt|;
 return|return
 literal|true
 return|;

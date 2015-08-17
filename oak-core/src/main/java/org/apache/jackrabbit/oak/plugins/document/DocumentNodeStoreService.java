@@ -2279,6 +2279,12 @@ name|offHeapCache
 operator|*
 name|MB
 argument_list|)
+operator|.
+name|setLeaseCheck
+argument_list|(
+literal|true
+comment|/* OAK-2739: enabled by default */
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
