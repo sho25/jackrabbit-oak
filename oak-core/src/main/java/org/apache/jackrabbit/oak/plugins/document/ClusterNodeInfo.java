@@ -478,6 +478,12 @@ specifier|volatile
 name|boolean
 name|systemExitTriggered
 decl_stmt|;
+comment|/**      * OAK-2739: for development it would be useful to be able to disable the      * lease check - hence there's a system property that does that:      * oak.documentMK.disableLeaseCheck      */
+specifier|private
+specifier|final
+name|boolean
+name|leaseCheckDisabled
+decl_stmt|;
 comment|/**      * Tracks the fact whether the lease has *ever* been renewed by this instance      * or has just be read from the document store at initialization time.      */
 specifier|private
 name|boolean
@@ -599,6 +605,24 @@ operator|.
 name|newEntry
 operator|=
 name|newEntry
+expr_stmt|;
+name|this
+operator|.
+name|leaseCheckDisabled
+operator|=
+name|Boolean
+operator|.
+name|valueOf
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"oak.documentMK.disableLeaseCheck"
+argument_list|,
+literal|"false"
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -1230,10 +1254,13 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|leaseCheckDisabled
+operator|||
 operator|!
 name|renewed
 condition|)
 block|{
+comment|// if leaseCheckDisabled is set we never do the check, so return fast
 comment|// the 'renewed' flag indicates if this instance *ever* renewed the lease after startup
 comment|// until that is not set, we cannot do the lease check (otherwise startup wouldn't work)
 return|return;
