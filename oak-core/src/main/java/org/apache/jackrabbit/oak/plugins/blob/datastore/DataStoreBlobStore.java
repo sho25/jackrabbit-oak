@@ -574,7 +574,7 @@ specifier|private
 name|int
 name|maxCachedBinarySize
 init|=
-literal|17
+literal|1024
 operator|*
 literal|1024
 decl_stmt|;
