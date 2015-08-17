@@ -163,6 +163,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|util
+operator|.
+name|OakVersion
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -220,6 +236,15 @@ name|String
 name|MACHINE_ID_KEY
 init|=
 literal|"machine"
+decl_stmt|;
+comment|/**      * The Oak version.      */
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|OAK_VERSION_KEY
+init|=
+literal|"oakVersion"
 decl_stmt|;
 comment|/**      * The unique instance id within this machine (the current working directory      * if not set).      */
 specifier|private
@@ -880,6 +905,18 @@ operator|.
 name|revRecoveryLock
 operator|.
 name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|set
+argument_list|(
+name|OAK_VERSION_KEY
+argument_list|,
+name|OakVersion
+operator|.
+name|getVersion
 argument_list|()
 argument_list|)
 expr_stmt|;
