@@ -502,6 +502,13 @@ name|entryName
 argument_list|)
 decl_stmt|;
 comment|/*                   JarEntry here is instance of org.springframework.boot.loader.jar.JarEntry                   However as that class is loaded in different classloader and not visible                   actual invocation has to be done via reflection. URL returned here has proper                   Handler configured to allow reverse access via URL connection                  */
+if|if
+condition|(
+name|jarEntry
+operator|!=
+literal|null
+condition|)
+block|{
 return|return
 operator|(
 name|URL
@@ -516,6 +523,7 @@ argument_list|(
 name|jarEntry
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
