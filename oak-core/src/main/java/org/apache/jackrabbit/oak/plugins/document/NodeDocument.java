@@ -2317,6 +2317,35 @@ block|}
 else|else
 block|{
 comment|// check full history (only needed in rare cases)
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"getNewestRevision() with changeRev {} on {}, "
+operator|+
+literal|"_revisions {}, _commitRoot {}"
+argument_list|,
+name|changeRev
+argument_list|,
+name|getId
+argument_list|()
+argument_list|,
+name|getLocalRevisions
+argument_list|()
+argument_list|,
+name|getLocalCommitRoot
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|it
 operator|=
 name|filter
