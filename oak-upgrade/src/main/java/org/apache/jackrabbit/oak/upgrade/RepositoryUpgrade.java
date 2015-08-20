@@ -2228,7 +2228,7 @@ name|logger
 operator|.
 name|info
 argument_list|(
-literal|"Initializing initial repository content"
+literal|"Initializing initial repository content from {}"
 argument_list|,
 name|config
 operator|.
@@ -2264,7 +2264,7 @@ name|logger
 operator|.
 name|debug
 argument_list|(
-literal|"InitialContent completed"
+literal|"InitialContent completed from {}"
 argument_list|,
 name|config
 operator|.
