@@ -65,16 +65,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|GuestCredentials
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|NoSuchWorkspaceException
 import|;
 end_import
@@ -446,9 +436,7 @@ block|{
 name|Credentials
 name|credentials
 init|=
-operator|new
-name|GuestCredentials
-argument_list|()
+literal|null
 decl_stmt|;
 name|String
 name|authorization
