@@ -3373,6 +3373,10 @@ argument_list|(
 name|after
 argument_list|)
 expr_stmt|;
+block|}
+comment|// Needs to happen outside the synchronization block above to
+comment|// prevent the flush from stopping concurrent reads and writes
+comment|// by the persisted compaction map. See OAK-3264
 if|if
 condition|(
 name|cleanup
@@ -3381,7 +3385,6 @@ block|{
 name|cleanup
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 synchronized|synchronized
