@@ -2967,7 +2967,7 @@ specifier|final
 name|boolean
 name|MONGO_DB
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|List
