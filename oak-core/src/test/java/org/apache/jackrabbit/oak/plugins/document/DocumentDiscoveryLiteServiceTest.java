@@ -712,11 +712,6 @@ comment|/**  * Tests for the DocumentDiscoveryLiteService  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2844 : user.dir trick messes up with the other tests"
-argument_list|)
 specifier|public
 class|class
 name|DocumentDiscoveryLiteServiceTest
@@ -3217,15 +3212,6 @@ throws|,
 name|Exception
 block|{
 comment|// ensure that we always get a fresh cluster[node]id
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"user.dir"
-argument_list|,
-name|workingDir
-argument_list|)
-expr_stmt|;
 name|setFinalStatic
 argument_list|(
 name|ClusterNodeInfo
