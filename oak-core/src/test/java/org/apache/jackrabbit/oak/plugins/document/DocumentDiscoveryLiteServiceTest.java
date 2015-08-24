@@ -577,6 +577,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -702,6 +712,11 @@ comment|/**  * Tests for the DocumentDiscoveryLiteService  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-2844 : user.dir trick messes up with the other tests"
+argument_list|)
 specifier|public
 class|class
 name|DocumentDiscoveryLiteServiceTest
