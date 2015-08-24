@@ -1163,13 +1163,24 @@ argument_list|(
 name|suspects
 argument_list|)
 expr_stmt|;
-comment|// Relinquish the lock on the recovery for the cluster on the clusterInfo
+comment|// Relinquish the lock on the recovery for the cluster on the
+comment|// clusterInfo
+comment|// TODO: in case recover throws a RuntimeException (or Error..) then
+comment|// the recovery might have failed, yet the instance is marked
+comment|// as 'recovered' (by setting the state to NONE).
+comment|// is this really fine here? or should we not retry - or at least
+comment|// log the throwable?
 name|missingLastRevUtil
 operator|.
 name|releaseRecoveryLock
 argument_list|(
 name|clusterId
 argument_list|)
+expr_stmt|;
+name|nodeStore
+operator|.
+name|signalClusterStateChange
+argument_list|()
 expr_stmt|;
 block|}
 block|}

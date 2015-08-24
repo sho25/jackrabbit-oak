@@ -257,6 +257,24 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * the root-revision of the last background write (of unsaved modifications)      **/
+specifier|public
+name|String
+name|getLastWrittenRootRev
+parameter_list|()
+block|{
+return|return
+operator|(
+name|String
+operator|)
+name|get
+argument_list|(
+name|ClusterNodeInfo
+operator|.
+name|LAST_WRITTEN_ROOT_REV_KEY
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

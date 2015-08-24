@@ -1963,6 +1963,11 @@ specifier|final
 name|BlobStore
 name|blobStore
 decl_stmt|;
+comment|/**      * The clusterStateChangeListener is invoked on any noticed change in the      * clusterNodes collection.      *<p>      * Note that there is no synchronization between setting this one and using      * it, but arguably that is not necessary since it will be set at startup      * time and then never be changed.      */
+specifier|private
+name|ClusterStateChangeListener
+name|clusterStateChangeListener
+decl_stmt|;
 comment|/**      * The BlobSerializer.      */
 specifier|private
 specifier|final
@@ -7965,7 +7970,7 @@ name|runBackgroundReadOperations
 argument_list|()
 expr_stmt|;
 block|}
-specifier|private
+comment|/** Note: made package-protected for testing purpose, would otherwise be private **/
 name|void
 name|runBackgroundUpdateOperations
 parameter_list|()
@@ -8151,7 +8156,7 @@ block|}
 block|}
 block|}
 comment|//----------------------< background read operations>----------------------
-specifier|private
+comment|/** Note: made package-protected for testing purpose, would otherwise be private **/
 name|void
 name|runBackgroundReadOperations
 parameter_list|()
@@ -8314,11 +8319,16 @@ name|renewLease
 argument_list|()
 return|;
 block|}
-comment|/**      * Updates the state about cluster nodes in {@link #activeClusterNodes}      * and {@link #inactiveClusterNodes}.      */
-name|void
+comment|/**      * Updates the state about cluster nodes in {@link #activeClusterNodes}      * and {@link #inactiveClusterNodes}.      * @return true if the cluster state has changed, false if the cluster state      * remained unchanged      */
+name|boolean
 name|updateClusterState
 parameter_list|()
 block|{
+name|boolean
+name|hasChanged
+init|=
+literal|false
+decl_stmt|;
 name|long
 name|now
 init|=
@@ -8384,6 +8394,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|hasChanged
+operator||=
 name|activeClusterNodes
 operator|.
 name|put
@@ -8395,9 +8407,13 @@ operator|.
 name|getLeaseEndTime
 argument_list|()
 argument_list|)
+operator|==
+literal|null
 expr_stmt|;
 block|}
 block|}
+name|hasChanged
+operator||=
 name|activeClusterNodes
 operator|.
 name|keySet
@@ -8408,6 +8424,8 @@ argument_list|(
 name|inactive
 argument_list|)
 expr_stmt|;
+name|hasChanged
+operator||=
 name|inactiveClusterNodes
 operator|.
 name|keySet
@@ -8426,6 +8444,8 @@ range|:
 name|inactive
 control|)
 block|{
+name|hasChanged
+operator||=
 name|inactiveClusterNodes
 operator|.
 name|putIfAbsent
@@ -8434,8 +8454,13 @@ name|clusterId
 argument_list|,
 name|now
 argument_list|)
+operator|==
+literal|null
 expr_stmt|;
 block|}
+return|return
+name|hasChanged
+return|;
 block|}
 comment|/**      * Returns the cluster nodes currently known to be inactive.      *      * @return a map with the cluster id as key and the time in millis when it      *          was first seen inactive.      */
 name|Map
@@ -12000,6 +12025,38 @@ return|return
 name|blobGC
 return|;
 block|}
+name|void
+name|setClusterStateChangeListener
+parameter_list|(
+name|ClusterStateChangeListener
+name|clusterStateChangeListener
+parameter_list|)
+block|{
+name|this
+operator|.
+name|clusterStateChangeListener
+operator|=
+name|clusterStateChangeListener
+expr_stmt|;
+block|}
+name|void
+name|signalClusterStateChange
+parameter_list|()
+block|{
+if|if
+condition|(
+name|clusterStateChangeListener
+operator|!=
+literal|null
+condition|)
+block|{
+name|clusterStateChangeListener
+operator|.
+name|handleClusterStateChange
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 comment|//-----------------------------< DocumentNodeStoreMBean>---------------------------------
 specifier|public
 name|DocumentNodeStoreMBean
@@ -12699,17 +12756,26 @@ name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
 block|{
-if|if
-condition|(
+comment|// first renew the clusterId lease
 name|nodeStore
 operator|.
 name|renewClusterIdLease
 argument_list|()
-condition|)
-block|{
+expr_stmt|;
+comment|// then, independently if the lease had to be updated or not, check
+comment|// the status:
+if|if
+condition|(
 name|nodeStore
 operator|.
 name|updateClusterState
+argument_list|()
+condition|)
+block|{
+comment|// then inform the discovery lite listener - if it is registered
+name|nodeStore
+operator|.
+name|signalClusterStateChange
 argument_list|()
 expr_stmt|;
 block|}

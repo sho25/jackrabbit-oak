@@ -2850,6 +2850,9 @@ name|ds
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// OAK-2844: in order to allow DocumentDiscoveryLiteService to directly
+comment|// require a service DocumentNodeStore (instead of having to do an 'instanceof')
+comment|// the registration is now done for both NodeStore and DocumentNodeStore here.
 name|reg
 operator|=
 name|context
@@ -2859,12 +2862,24 @@ argument_list|()
 operator|.
 name|registerService
 argument_list|(
+operator|new
+name|String
+index|[]
+block|{
 name|NodeStore
 operator|.
 name|class
 operator|.
 name|getName
 argument_list|()
+block|,
+name|DocumentNodeStore
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+block|}
 argument_list|,
 name|store
 argument_list|,
