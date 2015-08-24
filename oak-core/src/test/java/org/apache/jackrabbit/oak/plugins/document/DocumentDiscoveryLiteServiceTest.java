@@ -2960,6 +2960,7 @@ name|isFinal
 expr_stmt|;
 block|}
 block|}
+comment|//    private static final boolean MONGO_DB = true;
 specifier|private
 specifier|static
 specifier|final
@@ -2968,7 +2969,6 @@ name|MONGO_DB
 init|=
 literal|true
 decl_stmt|;
-comment|// private static final boolean MONGO_DB = true;
 specifier|private
 name|List
 argument_list|<
