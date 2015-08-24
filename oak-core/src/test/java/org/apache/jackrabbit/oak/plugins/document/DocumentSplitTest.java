@@ -5472,6 +5472,8 @@ operator|.
 name|INSTANCE
 argument_list|,
 name|head
+argument_list|,
+name|NUM_REVS_THRESHOLD
 argument_list|)
 expr_stmt|;
 block|}
@@ -6261,6 +6263,8 @@ argument_list|,
 name|rc
 argument_list|,
 name|head
+argument_list|,
+name|NUM_REVS_THRESHOLD
 argument_list|)
 decl_stmt|;
 name|Set

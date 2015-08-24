@@ -319,26 +319,6 @@ name|document
 operator|.
 name|NodeDocument
 operator|.
-name|NUM_REVS_THRESHOLD
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|NodeDocument
-operator|.
 name|PREV_SPLIT_FACTOR
 import|;
 end_import
@@ -643,6 +623,11 @@ name|RevisionContext
 name|context
 decl_stmt|;
 specifier|private
+specifier|final
+name|int
+name|numRevsThreshold
+decl_stmt|;
+specifier|private
 name|Revision
 name|high
 decl_stmt|;
@@ -735,6 +720,9 @@ annotation|@
 name|Nonnull
 name|Revision
 name|headRevision
+parameter_list|,
+name|int
+name|numRevsThreshold
 parameter_list|)
 block|{
 name|this
@@ -782,8 +770,14 @@ argument_list|(
 name|headRevision
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|numRevsThreshold
+operator|=
+name|numRevsThreshold
+expr_stmt|;
 block|}
-comment|/**      * Creates a list of update operations in case the given document requires      * a split. A caller must explicitly pass a head revision even though it      * is available through the {@link RevisionContext}. The given head revision      * must reflect a head state before {@code doc} was retrieved from the      * document store. This is important in order to maintain consistency.      * See OAK-3081 for details.      *      * @param doc a main document.      * @param context the revision context.      * @param headRevision the head revision before the document was retrieved      *                     from the document store.      * @return list of update operations. An empty list indicates the document      *          does not require a split.      * @throws IllegalArgumentException if the given document is a split      *                                  document.      */
+comment|/**      * Creates a list of update operations in case the given document requires      * a split. A caller must explicitly pass a head revision even though it      * is available through the {@link RevisionContext}. The given head revision      * must reflect a head state before {@code doc} was retrieved from the      * document store. This is important in order to maintain consistency.      * See OAK-3081 for details.      *      * @param doc a main document.      * @param context the revision context.      * @param headRevision the head revision before the document was retrieved      *                     from the document store.      * @param numRevsThreshold only split off at least this number of revisions.      * @return list of update operations. An empty list indicates the document      *          does not require a split.      * @throws IllegalArgumentException if the given document is a split      *                                  document.      */
 annotation|@
 name|Nonnull
 specifier|static
@@ -807,6 +801,9 @@ annotation|@
 name|Nonnull
 name|Revision
 name|headRevision
+parameter_list|,
+name|int
+name|numRevsThreshold
 parameter_list|)
 block|{
 if|if
@@ -839,6 +836,8 @@ argument_list|,
 name|context
 argument_list|,
 name|headRevision
+argument_list|,
+name|numRevsThreshold
 argument_list|)
 operator|.
 name|create
@@ -1001,7 +1000,7 @@ operator|.
 name|size
 argument_list|()
 operator|>
-name|NUM_REVS_THRESHOLD
+name|numRevsThreshold
 operator|||
 name|doc
 operator|.
@@ -1750,7 +1749,7 @@ operator|&&
 operator|(
 name|numValues
 operator|>=
-name|NUM_REVS_THRESHOLD
+name|numRevsThreshold
 operator|||
 name|doc
 operator|.
@@ -2023,7 +2022,7 @@ name|SPLIT_RATIO
 operator|||
 name|numValues
 operator|>=
-name|NUM_REVS_THRESHOLD
+name|numRevsThreshold
 condition|)
 block|{
 name|splitOps
