@@ -567,13 +567,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|commons
 operator|.
-name|document
-operator|.
-name|util
-operator|.
-name|Utils
+name|StringUtils
 operator|.
 name|estimateMemoryUsage
 import|;
