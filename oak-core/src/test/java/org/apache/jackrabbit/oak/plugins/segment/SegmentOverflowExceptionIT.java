@@ -69,7 +69,9 @@ name|compaction
 operator|.
 name|CompactionStrategy
 operator|.
-name|MEMORY_THRESHOLD_DEFAULT
+name|CleanupType
+operator|.
+name|CLEAN_OLD
 import|;
 end_import
 
@@ -91,9 +93,7 @@ name|compaction
 operator|.
 name|CompactionStrategy
 operator|.
-name|CleanupType
-operator|.
-name|CLEAN_OLD
+name|MEMORY_THRESHOLD_DEFAULT
 import|;
 end_import
 
@@ -190,6 +190,20 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
 import|;
 end_import
 
@@ -405,22 +419,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
-import|;
-end_import
-
 begin_comment
-comment|/**  *<p>Tests verifying if the repository gets corrupted or not: {@code OAK-2662 SegmentOverflowException in HeavyWriteIT on Jenkins}</p>  *  *<p><b>This test will never terminate unless it fails</b>, thus it is disabled by default. On the  * command line specify {@code -DSegmentOverflowExceptionIT=true} to enable  * them.</p>  *  *<p>If you only want to run this test:<br>  * {@code mvn verify -Dsurefire.skip.ut=true -PintegrationTesting -Dit.test=SegmentOverflowExceptionIT -DSegmentOverflowExceptionIT=true}  *</p>  */
+comment|/**  *<p>Tests verifying if the repository gets corrupted or not: {@code OAK-2662 SegmentOverflowException in HeavyWriteIT on Jenkins}</p>  *  *<p><b>This test will run for one hour unless it fails</b>, thus it is disabled by default. On the  * command line specify {@code -DSegmentOverflowExceptionIT=true} to enable it. To specify a different  * time out {@code t} value use {@code -Dtimeout=t}  *</p>  *  *<p>If you only want to run this test:<br>  * {@code mvn verify -Dsurefire.skip.ut=true -PintegrationTesting -Dit.test=SegmentOverflowExceptionIT -DSegmentOverflowExceptionIT=true}  *</p>  */
 end_comment
 
 begin_class
@@ -459,6 +459,25 @@ name|class
 operator|.
 name|getSimpleName
 argument_list|()
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|TIMEOUT
+init|=
+name|Long
+operator|.
+name|getLong
+argument_list|(
+literal|"timeout"
+argument_list|,
+literal|60
+operator|*
+literal|60
+operator|*
+literal|1000
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -705,9 +724,24 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|long
+name|start
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 while|while
 condition|(
-literal|true
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|start
+operator|<
+name|TIMEOUT
 condition|)
 block|{
 name|NodeBuilder
