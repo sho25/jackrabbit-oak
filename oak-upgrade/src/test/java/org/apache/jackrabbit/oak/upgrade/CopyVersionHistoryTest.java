@@ -1337,6 +1337,13 @@ argument_list|)
 expr_stmt|;
 name|upgrade
 operator|.
+name|setEarlyShutdown
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|upgrade
+operator|.
 name|copy
 argument_list|(
 literal|null
