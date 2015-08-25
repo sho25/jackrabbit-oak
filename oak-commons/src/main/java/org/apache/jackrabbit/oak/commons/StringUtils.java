@@ -333,6 +333,27 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Estimates the memory usage of the given string.      *      * @param s the string to estimate.      * @return the estimated memory usage.      */
+specifier|public
+specifier|static
+name|int
+name|estimateMemoryUsage
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+return|return
+literal|48
+operator|+
+name|s
+operator|.
+name|length
+argument_list|()
+operator|*
+literal|2
+return|;
+block|}
 block|}
 end_class
 
