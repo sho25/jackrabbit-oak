@@ -1082,7 +1082,7 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
-name|int
+name|long
 name|createdBy
 init|=
 name|doc

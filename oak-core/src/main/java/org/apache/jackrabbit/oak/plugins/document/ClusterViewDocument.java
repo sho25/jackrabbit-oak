@@ -360,7 +360,7 @@ decl_stmt|;
 comment|/** the id of the instance that created this view, for debugging only **/
 specifier|private
 specifier|final
-name|Integer
+name|Long
 name|createdBy
 decl_stmt|;
 comment|/**      * Main method by which the ClusterViewDocument is updated in the settings      * collection      *       * @return the resulting ClusterViewDocument as just updated in the settings      *         collection - or null if another instance was updating the      *         clusterview concurrently (in which case the caller should re-read      *         first and possibly re-update if needed)      */
@@ -573,6 +573,9 @@ name|set
 argument_list|(
 name|CREATOR_KEY
 argument_list|,
+operator|(
+name|long
+operator|)
 name|localClusterId
 argument_list|)
 expr_stmt|;
@@ -1855,7 +1858,7 @@ operator|.
 name|createdBy
 operator|=
 operator|(
-name|Integer
+name|Long
 operator|)
 name|doc
 operator|.
@@ -2267,7 +2270,7 @@ name|createdAt
 return|;
 block|}
 comment|/**      * Returns the id of the instance that created this view, for debugging      * purpose only      **/
-name|int
+name|long
 name|getCreatedBy
 parameter_list|()
 block|{
