@@ -663,7 +663,7 @@ name|class
 argument_list|)
 specifier|public
 class|class
-name|VersionGarbageCollectorTest
+name|VersionGarbageCollectorIT
 block|{
 specifier|private
 name|DocumentStoreFixture
@@ -686,7 +686,7 @@ name|ExecutorService
 name|execService
 decl_stmt|;
 specifier|public
-name|VersionGarbageCollectorTest
+name|VersionGarbageCollectorIT
 parameter_list|(
 name|DocumentStoreFixture
 name|fixture
