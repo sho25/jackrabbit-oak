@@ -5729,7 +5729,7 @@ name|waitFor
 argument_list|(
 name|e
 argument_list|,
-literal|20000
+literal|60000
 argument_list|,
 literal|"checkFiestaState failed for "
 operator|+
