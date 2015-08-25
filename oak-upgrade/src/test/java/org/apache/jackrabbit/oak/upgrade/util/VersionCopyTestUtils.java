@@ -20,50 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|version
-operator|.
-name|VersionConstants
-operator|.
-name|MIX_REP_VERSIONABLE_PATHS
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -90,26 +46,6 @@ operator|.
 name|jcr
 operator|.
 name|Node
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Property
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|PropertyType
 import|;
 end_import
 
@@ -207,7 +143,9 @@ name|oak
 operator|.
 name|upgrade
 operator|.
-name|RepositoryUpgrade
+name|version
+operator|.
+name|VersionCopyConfiguration
 import|;
 end_import
 
@@ -439,13 +377,13 @@ return|;
 block|}
 specifier|public
 interface|interface
-name|RepositoryUpgradeSetup
+name|VersionCopySetup
 block|{
 name|void
 name|setup
 parameter_list|(
-name|RepositoryUpgrade
-name|upgrade
+name|VersionCopyConfiguration
+name|config
 parameter_list|)
 function_decl|;
 block|}
