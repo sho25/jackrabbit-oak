@@ -3084,7 +3084,7 @@ init|=
 operator|new
 name|LogDumper
 argument_list|(
-literal|10000
+literal|50000
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -3120,7 +3120,7 @@ name|setLoggerLevel
 argument_list|(
 literal|"org.apache.jackrabbit.oak"
 argument_list|,
-literal|"trace"
+literal|"debug"
 argument_list|)
 decl_stmt|;
 annotation|@
