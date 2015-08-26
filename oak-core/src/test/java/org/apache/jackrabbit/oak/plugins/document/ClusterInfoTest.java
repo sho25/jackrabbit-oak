@@ -621,7 +621,7 @@ argument_list|(
 name|ns
 argument_list|)
 decl_stmt|;
-comment|// wait a bit, but not more than half of the lease time
+comment|// wait a bit, but not more than a third of the lease time
 name|clock
 operator|.
 name|waitUntil
@@ -640,7 +640,7 @@ operator|.
 name|getLeaseTime
 argument_list|()
 operator|/
-literal|2
+literal|3
 operator|)
 operator|-
 literal|1000

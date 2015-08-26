@@ -1771,8 +1771,11 @@ operator|+
 operator|(
 name|leaseTime
 operator|/
-literal|2
+literal|3
 operator|)
+operator|-
+literal|10
+comment|/* 10ms safety margin */
 argument_list|)
 expr_stmt|;
 name|boolean

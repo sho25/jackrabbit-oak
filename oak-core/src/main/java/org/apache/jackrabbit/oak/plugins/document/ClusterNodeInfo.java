@@ -1322,9 +1322,16 @@ if|if
 condition|(
 name|now
 operator|<
+operator|(
 name|leaseEndTime
+operator|-
+name|leaseTime
+operator|/
+literal|3
+operator|)
 condition|)
 block|{
+comment|// OAK-3238 : put the barrier 1/3 before lease end
 comment|// then all is good
 return|return;
 block|}
@@ -1435,7 +1442,7 @@ name|errorMsg
 argument_list|)
 throw|;
 block|}
-comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when half of the lease time passed. That is,      * with a lease time of 60 seconds, the lease is renewed every 30 seconds.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
+comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when a third of the lease time passed. That is,      * with a lease time of 60 seconds, the lease is renewed every 20 seconds.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
 specifier|public
 name|boolean
 name|renewLease
@@ -1451,9 +1458,11 @@ if|if
 condition|(
 name|now
 operator|+
+literal|2
+operator|*
 name|leaseTime
 operator|/
-literal|2
+literal|3
 operator|<
 name|leaseEndTime
 condition|)
