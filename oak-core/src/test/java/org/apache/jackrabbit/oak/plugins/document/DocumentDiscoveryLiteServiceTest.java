@@ -5402,6 +5402,20 @@ argument_list|(
 name|newInstance
 argument_list|)
 expr_stmt|;
+comment|// OAK-3292 : in case a previously crashed or shut-down instance is created again here
+comment|//            make sure to remove it from inactive (if it in the inactive list at all)
+name|inactiveIds
+operator|.
+name|remove
+argument_list|(
+name|newInstance
+operator|.
+name|ns
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 break|break;
 block|}
