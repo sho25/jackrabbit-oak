@@ -244,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The SegmentDiscoveryLiteService is taking care of providing a repository  * descriptor that contains the current cluster-view details.  *<p>  * Note that since currently the SegmentNodeStore is not cluster-based,  * the provided clusterView is a hard-coded one consisting only of the  * local instance. But it is nevertheless useful for upper layer discovery.oak.  *<p>  * @see DocumentDiscoveryLiteService for a more in-depth description of the descriptor  */
+comment|/**  * The SegmentDiscoveryLiteService is taking care of providing a repository  * descriptor that contains the current cluster-view details.  *<p>  * Note that since currently the SegmentNodeStore is not cluster-based,  * the provided clusterView is a hard-coded one consisting only of the  * local instance. But it is nevertheless useful for upper layer discovery.oak.  *<p>  * @see DocumentDiscoveryLiteService for a more in-depth description of the discovery-lite descriptor  */
 end_comment
 
 begin_class
