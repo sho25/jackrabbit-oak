@@ -1056,6 +1056,11 @@ argument_list|(
 name|clock
 argument_list|)
 expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|statisticManager
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|sessionStats
@@ -1078,6 +1083,8 @@ argument_list|,
 name|refreshStrategy
 argument_list|,
 name|this
+argument_list|,
+name|statisticManager
 argument_list|)
 expr_stmt|;
 name|this
@@ -1088,11 +1095,6 @@ name|sessionStats
 operator|.
 name|getCounters
 argument_list|()
-expr_stmt|;
-name|checkNotNull
-argument_list|(
-name|statisticManager
-argument_list|)
 expr_stmt|;
 name|readCounter
 operator|=
