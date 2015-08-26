@@ -169,6 +169,37 @@ name|ILoggingEvent
 argument_list|>
 name|appender
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|logBufferSize
+decl_stmt|;
+comment|/**      * Creates a new LogDumper with default log buffer size (1000)      */
+specifier|public
+name|LogDumper
+parameter_list|()
+block|{
+name|this
+argument_list|(
+name|LOG_BUFFER_SIZE
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Creates a new LogDumper with the given log buffer size      * @param logBufferSize      */
+specifier|public
+name|LogDumper
+parameter_list|(
+name|int
+name|logBufferSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|logBufferSize
+operator|=
+name|logBufferSize
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|protected
@@ -414,7 +445,7 @@ name|appender
 operator|.
 name|setMaxSize
 argument_list|(
-name|LOG_BUFFER_SIZE
+name|logBufferSize
 argument_list|)
 expr_stmt|;
 name|appender
