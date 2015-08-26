@@ -3083,7 +3083,9 @@ name|logDumper
 init|=
 operator|new
 name|LogDumper
-argument_list|()
+argument_list|(
+literal|10000
+argument_list|)
 decl_stmt|;
 annotation|@
 name|Rule
@@ -3104,14 +3106,14 @@ name|addAppenderFilter
 argument_list|(
 literal|"console"
 argument_list|,
-literal|"warn"
+literal|"info"
 argument_list|)
 operator|.
 name|addAppenderFilter
 argument_list|(
 literal|"file"
 argument_list|,
-literal|"warn"
+literal|"info"
 argument_list|)
 operator|.
 name|setLoggerLevel
@@ -4979,6 +4981,13 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"testLargeStartStopFiesta: start"
+argument_list|)
+expr_stmt|;
 specifier|final
 name|List
 argument_list|<
@@ -5743,6 +5752,19 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"checkFiestaState: checking state. expected active: "
+operator|+
+name|activeIds
+operator|+
+literal|", inactive: "
+operator|+
+name|inactiveIds
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Iterator
