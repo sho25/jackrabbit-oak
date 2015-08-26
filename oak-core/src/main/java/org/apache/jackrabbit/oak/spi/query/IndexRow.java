@@ -44,6 +44,11 @@ specifier|public
 interface|interface
 name|IndexRow
 block|{
+comment|/**      * Marks if the row is virtual and behavior of {@code getPath} is undefined. The implementation may      * choose to return {@code null} or empty string. User of a virtual row should now rely of value of      * {@code getPath} returned from virtual rows.      * @return if path is available for the current row      */
+name|boolean
+name|isVirtualRow
+parameter_list|()
+function_decl|;
 comment|/**      * The path of the node, if available.      *      * @return the path      */
 name|String
 name|getPath

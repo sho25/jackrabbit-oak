@@ -3335,6 +3335,17 @@ block|{
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|isVirtualRow
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|String
 name|getPath
 parameter_list|()

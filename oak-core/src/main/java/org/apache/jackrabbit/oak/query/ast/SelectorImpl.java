@@ -1898,6 +1898,20 @@ comment|// where [b].[jcr:path] = $path"
 comment|// because if we did, we would filter out
 comment|// correct results
 block|}
+elseif|else
+if|if
+condition|(
+name|currentRow
+operator|.
+name|isVirtualRow
+argument_list|()
+condition|)
+block|{
+comment|// this is a virtual row and should be selected as is
+return|return
+literal|true
+return|;
+block|}
 else|else
 block|{
 comment|// we must check whether the _child_ is readable
@@ -1964,6 +1978,19 @@ name|boolean
 name|evaluateCurrentRow
 parameter_list|()
 block|{
+if|if
+condition|(
+name|currentRow
+operator|.
+name|isVirtualRow
+argument_list|()
+condition|)
+block|{
+comment|//null path implies that all checks are already done -- we just need to pass it through
+return|return
+literal|true
+return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -2842,6 +2869,7 @@ name|result
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|t
 operator|==
 literal|null
@@ -2851,6 +2879,19 @@ name|t
 operator|.
 name|exists
 argument_list|()
+operator|)
+operator|&&
+operator|(
+name|currentRow
+operator|==
+literal|null
+operator|||
+operator|!
+name|currentRow
+operator|.
+name|isVirtualRow
+argument_list|()
+operator|)
 condition|)
 block|{
 return|return
