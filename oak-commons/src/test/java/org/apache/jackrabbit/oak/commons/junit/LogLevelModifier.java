@@ -667,6 +667,11 @@ name|getContext
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|c
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|rootLogger
 argument_list|()
 operator|.
