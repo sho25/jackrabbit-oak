@@ -732,6 +732,11 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+name|int
+name|snfeCount
+init|=
+literal|0
+decl_stmt|;
 while|while
 condition|(
 name|System
@@ -743,6 +748,8 @@ name|start
 operator|<
 name|TIMEOUT
 condition|)
+block|{
+try|try
 block|{
 name|NodeBuilder
 name|root
@@ -806,6 +813,28 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|SegmentNotFoundException
+name|snfe
+parameter_list|)
+block|{
+comment|// Usually this can be ignored as SNFEs are somewhat expected here
+comment|// due the small retention value for segments.
+if|if
+condition|(
+name|snfeCount
+operator|++
+operator|>
+literal|100
+condition|)
+block|{
+throw|throw
+name|snfe
+throw|;
+block|}
 block|}
 block|}
 block|}
