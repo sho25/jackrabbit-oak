@@ -3031,6 +3031,33 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|int
+name|SEED
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+name|DocumentDiscoveryLiteServiceTest
+operator|.
+name|class
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|"-seed"
+argument_list|,
+operator|new
+name|Random
+argument_list|()
+operator|.
+name|nextInt
+argument_list|()
+argument_list|)
+decl_stmt|;
+specifier|private
 name|List
 argument_list|<
 name|DocumentMK
@@ -4988,7 +5015,9 @@ name|logger
 operator|.
 name|info
 argument_list|(
-literal|"testLargeStartStopFiesta: start"
+literal|"testLargeStartStopFiesta: start, seed="
+operator|+
+name|SEED
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -5029,7 +5058,9 @@ name|random
 init|=
 operator|new
 name|Random
-argument_list|()
+argument_list|(
+name|SEED
+argument_list|)
 decl_stmt|;
 specifier|final
 name|int
@@ -5888,6 +5919,15 @@ name|void
 name|clear
 parameter_list|()
 block|{
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"clear: seed="
+operator|+
+name|SEED
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|SimplifiedInstance
