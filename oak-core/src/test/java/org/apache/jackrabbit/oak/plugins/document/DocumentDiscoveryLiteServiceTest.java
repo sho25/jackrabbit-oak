@@ -2552,6 +2552,28 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/** OAK-3292 : when on a machine without a mac address, the 'random:' prefix is used and instances          * that have timed out are automagially removed by ClusterNodeInfo.createInstance - that poses          * a problem to testing - so this method exposes whether the instance has such a 'random:' prefix          * and thus allows to take appropriate action          */
+specifier|public
+name|boolean
+name|hasRandomMachineId
+parameter_list|()
+block|{
+comment|//TODO: this might not be the most stable way - but avoids having to change ClusterNodeInfo
+return|return
+name|ns
+operator|.
+name|getClusterInfo
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"random:"
+argument_list|)
+return|;
+block|}
 block|}
 interface|interface
 name|Expectation
@@ -5277,6 +5299,26 @@ argument_list|(
 name|workingDir
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|newInstance
+operator|.
+name|hasRandomMachineId
+argument_list|()
+condition|)
+block|{
+comment|// OAK-3292 : on an instance which has no networkInterface with a mac address,
+comment|// the machineId chosen by ClusterNodeInfo will be 'random:'.. and
+comment|// ClusterNodeInfo.createInstance will feel free to remove it when the lease
+comment|// has timed out
+comment|// that really renders it very difficult to continue testing here,
+comment|// since this test is all about keeping track who became inactive etc
+comment|// and ClusterNodeInfo.createInstance removing it 'at a certain point' is difficult
+comment|// and not very useful to test..
+comment|//
+comment|// so: stop testing at this point:
+return|return;
+block|}
 name|newInstance
 operator|.
 name|setLeastTimeout
@@ -5398,6 +5440,26 @@ argument_list|(
 name|workingDir
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|newInstance
+operator|.
+name|hasRandomMachineId
+argument_list|()
+condition|)
+block|{
+comment|// OAK-3292 : on an instance which has no networkInterface with a mac address,
+comment|// the machineId chosen by ClusterNodeInfo will be 'random:'.. and
+comment|// ClusterNodeInfo.createInstance will feel free to remove it when the lease
+comment|// has timed out
+comment|// that really renders it very difficult to continue testing here,
+comment|// since this test is all about keeping track who became inactive etc
+comment|// and ClusterNodeInfo.createInstance removing it 'at a certain point' is difficult
+comment|// and not very useful to test..
+comment|//
+comment|// so: stop testing at this point:
+return|return;
+block|}
 name|newInstance
 operator|.
 name|setLeastTimeout
