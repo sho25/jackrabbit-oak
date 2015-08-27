@@ -299,7 +299,6 @@ literal|"yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 argument_list|)
 decl_stmt|;
 comment|/** number of elements kept in the CLUSTERVIEW_HISTORY_KEY field **/
-specifier|private
 specifier|static
 specifier|final
 name|int
@@ -631,7 +630,7 @@ name|mapClone
 operator|.
 name|size
 argument_list|()
-operator|>
+operator|>=
 name|HISTORY_LIMIT
 condition|)
 block|{
@@ -654,7 +653,7 @@ break|break;
 block|}
 name|updateOp
 operator|.
-name|unsetMapEntry
+name|removeMapEntry
 argument_list|(
 name|CLUSTER_VIEW_HISTORY_KEY
 argument_list|,
@@ -668,9 +667,6 @@ operator|.
 name|remove
 argument_list|(
 name|oldestRevision
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 operator|==
 literal|null
@@ -2261,7 +2257,6 @@ argument_list|)
 return|;
 block|}
 comment|/** Returns the history map **/
-specifier|private
 name|Map
 argument_list|<
 name|Object
