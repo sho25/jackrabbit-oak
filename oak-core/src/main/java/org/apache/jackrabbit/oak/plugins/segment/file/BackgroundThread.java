@@ -37,6 +37,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Date
@@ -72,6 +82,8 @@ class|class
 name|BackgroundThread
 extends|extends
 name|Thread
+implements|implements
+name|Closeable
 block|{
 comment|/** Logger instance */
 specifier|private
@@ -298,6 +310,9 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|close
 parameter_list|()

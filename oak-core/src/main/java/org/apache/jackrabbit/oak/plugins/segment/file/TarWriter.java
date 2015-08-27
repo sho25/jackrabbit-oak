@@ -227,6 +227,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|File
 import|;
 end_import
@@ -394,6 +404,8 @@ end_comment
 begin_class
 class|class
 name|TarWriter
+implements|implements
+name|Closeable
 block|{
 comment|/** Logger instance */
 specifier|private
@@ -1273,6 +1285,9 @@ literal|null
 return|;
 block|}
 comment|/**      * Closes this tar file.      *      * @throws IOException if the tar file could not be closed      */
+annotation|@
+name|Override
+specifier|public
 name|void
 name|close
 parameter_list|()
