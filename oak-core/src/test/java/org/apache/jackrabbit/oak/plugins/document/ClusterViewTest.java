@@ -1829,15 +1829,7 @@ operator|.
 name|asDescriptorValue
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|json
-argument_list|)
-expr_stmt|;
+comment|//        System.out.println(json);
 name|JsopTokenizer
 name|t
 init|=
