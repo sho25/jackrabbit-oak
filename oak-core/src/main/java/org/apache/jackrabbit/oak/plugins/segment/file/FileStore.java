@@ -4611,7 +4611,7 @@ argument_list|)
 expr_stmt|;
 name|closeAndLogOnFail
 argument_list|(
-name|lockFile
+name|journalFile
 argument_list|)
 expr_stmt|;
 block|}
