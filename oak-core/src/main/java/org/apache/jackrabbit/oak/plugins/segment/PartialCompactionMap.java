@@ -148,6 +148,11 @@ name|long
 name|getRecordCount
 parameter_list|()
 function_decl|;
+comment|/**      * Determine whether this map contains keys at all.      * @return  {@code true} iff this map is empty      */
+name|boolean
+name|isEmpty
+parameter_list|()
+function_decl|;
 comment|/**      * The weight of the compaction map is its heap memory consumption in bytes.      * @return  Estimated weight of the compaction map      */
 name|long
 name|getEstimatedWeight
