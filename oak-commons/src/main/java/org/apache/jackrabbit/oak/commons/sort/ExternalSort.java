@@ -2620,9 +2620,6 @@ return|return
 name|this
 operator|.
 name|cache
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 specifier|public
