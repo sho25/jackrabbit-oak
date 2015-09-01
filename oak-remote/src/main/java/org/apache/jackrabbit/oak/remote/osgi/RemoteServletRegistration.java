@@ -233,9 +233,9 @@ name|metatype
 operator|=
 literal|true
 argument_list|,
-name|policy
+name|immediate
 operator|=
-name|REQUIRE
+literal|true
 argument_list|,
 name|label
 operator|=
