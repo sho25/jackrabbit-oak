@@ -234,7 +234,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/"
 argument_list|)
@@ -250,7 +250,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -266,7 +266,7 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc"
 argument_list|)
@@ -282,7 +282,7 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/workflow"
 argument_list|)
@@ -327,7 +327,7 @@ name|TRAVERSE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/"
 argument_list|)
@@ -343,7 +343,7 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/var"
 argument_list|)
@@ -359,7 +359,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/content"
 argument_list|)
@@ -375,7 +375,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/content/example"
 argument_list|)
@@ -391,7 +391,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc"
 argument_list|)
@@ -407,7 +407,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/workflow"
 argument_list|)
@@ -423,7 +423,7 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/workflow/instance"
 argument_list|)
@@ -439,9 +439,57 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/workflow/instance/1"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|PathFilter
+operator|.
+name|Result
+operator|.
+name|EXCLUDE
+argument_list|,
+name|p
+operator|.
+name|filter
+argument_list|(
+literal|"/x"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|PathFilter
+operator|.
+name|Result
+operator|.
+name|EXCLUDE
+argument_list|,
+name|p
+operator|.
+name|filter
+argument_list|(
+literal|"/e"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|PathFilter
+operator|.
+name|Result
+operator|.
+name|EXCLUDE
+argument_list|,
+name|p
+operator|.
+name|filter
+argument_list|(
+literal|"/etcx"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -483,7 +531,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/"
 argument_list|)
@@ -499,7 +547,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -581,7 +629,7 @@ name|TRAVERSE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/"
 argument_list|)
@@ -597,7 +645,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc"
 argument_list|)
@@ -613,7 +661,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/a"
 argument_list|)
@@ -629,7 +677,7 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/workflow"
 argument_list|)
@@ -645,7 +693,7 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/workflow/1"
 argument_list|)
@@ -708,7 +756,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/"
 argument_list|)
@@ -724,7 +772,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc"
 argument_list|)
@@ -740,7 +788,7 @@ name|INCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/a"
 argument_list|)
@@ -756,7 +804,7 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/workflow"
 argument_list|)
@@ -772,7 +820,7 @@ name|EXCLUDE
 argument_list|,
 name|p
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 literal|"/etc/workflow/1"
 argument_list|)
@@ -816,7 +864,9 @@ parameter_list|(
 name|IllegalStateException
 name|ignore
 parameter_list|)
-block|{          }
+block|{
+comment|// expected
+block|}
 try|try
 block|{
 operator|new
@@ -842,7 +892,9 @@ parameter_list|(
 name|IllegalStateException
 name|ignore
 parameter_list|)
-block|{          }
+block|{
+comment|// expected
+block|}
 try|try
 block|{
 operator|new
@@ -874,7 +926,9 @@ parameter_list|(
 name|IllegalStateException
 name|ignore
 parameter_list|)
-block|{          }
+block|{
+comment|// expected
+block|}
 block|}
 block|}
 end_class

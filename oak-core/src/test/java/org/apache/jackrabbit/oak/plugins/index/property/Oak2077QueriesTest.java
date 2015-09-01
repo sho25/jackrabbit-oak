@@ -497,6 +497,24 @@ name|plugins
 operator|.
 name|index
 operator|.
+name|PathFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
 name|property
 operator|.
 name|OrderedIndex
@@ -1293,6 +1311,11 @@ name|parent
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|PathFilter
+operator|.
+name|Result
+name|pathFilterResult
 parameter_list|)
 block|{
 name|super
@@ -1300,6 +1323,8 @@ argument_list|(
 name|parent
 argument_list|,
 name|name
+argument_list|,
+name|pathFilterResult
 argument_list|)
 expr_stmt|;
 name|this
@@ -1371,6 +1396,11 @@ name|parent
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|PathFilter
+operator|.
+name|Result
+name|pathFilterResult
 parameter_list|)
 block|{
 return|return
@@ -1380,6 +1410,8 @@ argument_list|(
 name|this
 argument_list|,
 name|name
+argument_list|,
+name|pathFilterResult
 argument_list|)
 return|;
 block|}
@@ -1821,7 +1853,7 @@ return|return
 name|nodes
 return|;
 block|}
-comment|/**      * truncate the {@link AbstractQueryTest#TEST_INDEX_NAME} index at the 4th element of the      * provided lane returning the previous value      *       * @param lane the desired lane. Must be 0<= {@code lane}< {@link OrderedIndex#LANES}      * @param inexistent the derired value to be injected      * @return the value before the change      * @throws Exception      */
+comment|/**      * truncate the {@link AbstractQueryTest#TEST_INDEX_NAME} index at the 4th element of the      * provided lane returning the previous value      *      * @param lane the desired lane. Must be 0<= {@code lane}< {@link OrderedIndex#LANES}      * @param inexistent the derired value to be injected      * @return the value before the change      * @throws Exception      */
 annotation|@
 name|Nullable
 specifier|private
