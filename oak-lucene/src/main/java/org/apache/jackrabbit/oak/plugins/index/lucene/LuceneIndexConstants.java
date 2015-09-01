@@ -419,6 +419,12 @@ name|PROP_NOT_NULL_CHECK_ENABLED
 init|=
 literal|"notNullCheckEnabled"
 decl_stmt|;
+comment|/**      * IndexRule level config to indicate that Node name should also be index      * to support fn:name() queries      */
+name|String
+name|INDEX_NODE_NAME
+init|=
+literal|"indexNodeName"
+decl_stmt|;
 comment|/**      * Boolean property indicating that Lucene directory content      * should be saved as part of NodeState itself as a multi value property      * to allow faster reads (OAK-2809)      */
 name|String
 name|SAVE_DIR_LISTING

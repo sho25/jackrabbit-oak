@@ -675,7 +675,7 @@ literal|10
 argument_list|)
 expr_stmt|;
 name|NodeBuilder
-name|props
+name|ntBase
 init|=
 name|index
 operator|.
@@ -690,6 +690,23 @@ name|child
 argument_list|(
 literal|"nt:base"
 argument_list|)
+decl_stmt|;
+comment|//Enable nodeName index support
+name|ntBase
+operator|.
+name|setProperty
+argument_list|(
+name|LuceneIndexConstants
+operator|.
+name|INDEX_NODE_NAME
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|NodeBuilder
+name|props
+init|=
+name|ntBase
 operator|.
 name|child
 argument_list|(

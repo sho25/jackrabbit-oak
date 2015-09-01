@@ -3604,6 +3604,11 @@ specifier|final
 name|boolean
 name|indexesAllNodesOfMatchingType
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|nodeNameIndexed
+decl_stmt|;
 specifier|final
 name|float
 name|boost
@@ -3831,6 +3836,21 @@ operator|=
 name|allMatchingNodeByTypeIndexed
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|nodeNameIndexed
+operator|=
+name|getOptionalValue
+argument_list|(
+name|config
+argument_list|,
+name|LuceneIndexConstants
+operator|.
+name|INDEX_NODE_NAME
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|validateRuleDefinition
 argument_list|()
 expr_stmt|;
@@ -3962,6 +3982,14 @@ name|indexesAllNodesOfMatchingType
 operator|=
 name|allMatchingNodeByTypeIndexed
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|nodeNameIndexed
+operator|=
+name|original
+operator|.
+name|nodeNameIndexed
 expr_stmt|;
 block|}
 comment|/**          * Returns<code>true</code> if the property with the given name is          * indexed according to this rule.          *          * @param propertyName the name of a property.          * @return<code>true</code> if the property is indexed;          *<code>false</code> otherwise.          */
@@ -4133,6 +4161,15 @@ comment|//TODO Once condition support is done return false
 comment|//return condition == null || condition.evaluate(state);
 return|return
 literal|true
+return|;
+block|}
+specifier|public
+name|boolean
+name|isNodeNameIndexed
+parameter_list|()
+block|{
+return|return
+name|nodeNameIndexed
 return|;
 block|}
 specifier|public

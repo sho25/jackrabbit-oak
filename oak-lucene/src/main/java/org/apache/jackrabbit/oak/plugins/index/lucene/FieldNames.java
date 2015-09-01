@@ -156,6 +156,15 @@ name|NOT_NULL_PROPS
 init|=
 literal|":notNullProps"
 decl_stmt|;
+comment|/**      * Name of the field that contains the node name      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NODE_NAME
+init|=
+literal|":nodeName"
+decl_stmt|;
 comment|/**      * Used to select only the PATH field from the lucene documents      */
 specifier|public
 specifier|static
