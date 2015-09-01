@@ -354,6 +354,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -370,6 +390,21 @@ specifier|public
 class|class
 name|NodeStoreDiffTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|NodeStoreDiffTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|NodeStore
 name|ns
@@ -881,13 +916,11 @@ operator|)
 name|ns
 operator|)
 decl_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|printf
+name|info
 argument_list|(
-literal|"Root at %s (%s) %n"
+literal|"Root at {} ({})"
 argument_list|,
 name|dns
 operator|.

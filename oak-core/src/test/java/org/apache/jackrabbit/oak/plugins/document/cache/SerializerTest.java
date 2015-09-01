@@ -208,6 +208,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -236,6 +256,21 @@ specifier|public
 class|class
 name|SerializerTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|SerializerTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|DocumentStore
 name|store
@@ -584,13 +619,11 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|printf
+name|info
 argument_list|(
-literal|"Size %d %s %n"
+literal|"Size {} {}"
 argument_list|,
 name|o
 operator|.
