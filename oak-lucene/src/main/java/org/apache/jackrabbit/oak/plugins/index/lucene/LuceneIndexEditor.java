@@ -1139,7 +1139,7 @@ operator|.
 name|getPathFilter
 argument_list|()
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 name|getPath
 argument_list|()
@@ -4976,7 +4976,7 @@ operator|.
 name|getPathFilter
 argument_list|()
 operator|.
-name|doFiler
+name|filter
 argument_list|(
 name|concat
 argument_list|(
