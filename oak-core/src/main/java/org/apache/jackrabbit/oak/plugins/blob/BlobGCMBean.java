@@ -21,6 +21,42 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|jmx
+operator|.
+name|Description
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|jmx
+operator|.
+name|Name
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -38,6 +74,18 @@ operator|.
 name|openmbean
 operator|.
 name|CompositeData
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|TabularData
 import|;
 end_import
 
@@ -59,6 +107,20 @@ comment|/**      * Initiate a data store garbage collection operation.      *   
 name|CompositeData
 name|startBlobGC
 parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"markOnly"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"Set to true to only mark references and not sweep in the mark and sweep operation. "
+operator|+
+literal|"This mode is to be used when the underlying BlobStore is shared between multiple "
+operator|+
+literal|"different repositories. For all other cases set it to false to perform full garbage collection"
+argument_list|)
 name|boolean
 name|markOnly
 parameter_list|)
@@ -68,6 +130,11 @@ annotation|@
 name|Nonnull
 name|CompositeData
 name|getBlobGCStatus
+parameter_list|()
+function_decl|;
+comment|/**      * Show details of the data Store garbage collection process.      *       * @return List of available repositories and their status      */
+name|TabularData
+name|getGlobalMarkStats
 parameter_list|()
 function_decl|;
 block|}

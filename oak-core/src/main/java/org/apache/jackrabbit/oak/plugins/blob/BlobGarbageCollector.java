@@ -19,6 +19,16 @@ name|blob
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface for blob garbage collector  */
 end_comment
@@ -35,6 +45,16 @@ parameter_list|(
 name|boolean
 name|markOnly
 parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Retuns the list of stats      *       * @return stats      * @throws Exception      */
+name|List
+argument_list|<
+name|GarbageCollectionRepoStats
+argument_list|>
+name|getStats
+parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
