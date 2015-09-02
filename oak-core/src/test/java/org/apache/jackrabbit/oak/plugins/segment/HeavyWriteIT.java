@@ -49,7 +49,7 @@ name|commons
 operator|.
 name|CIHelper
 operator|.
-name|travisIntegrationTesting
+name|travis
 import|;
 end_import
 
@@ -556,7 +556,7 @@ block|{
 name|assumeTrue
 argument_list|(
 operator|!
-name|travisIntegrationTesting
+name|travis
 argument_list|()
 argument_list|)
 expr_stmt|;
