@@ -1324,6 +1324,11 @@ name|getRevisionComparator
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|boolean
+name|mostRecent
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|Map
@@ -1401,8 +1406,20 @@ name|r
 argument_list|)
 condition|)
 block|{
-comment|// OAK-2528: _commitRoot entry without associated
-comment|// change -> consider as garbage
+comment|// OAK-2528: _commitRoot entry without associated change
+comment|// consider all but most recent as garbage (OAK-3333)
+if|if
+condition|(
+name|mostRecent
+condition|)
+block|{
+name|mostRecent
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
+block|{
 name|addGarbage
 argument_list|(
 name|r
@@ -1410,6 +1427,7 @@ argument_list|,
 name|COMMIT_ROOT
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|committedChanges
