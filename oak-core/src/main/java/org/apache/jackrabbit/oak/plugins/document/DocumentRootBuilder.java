@@ -583,7 +583,6 @@ name|reset
 argument_list|()
 return|;
 block|}
-specifier|private
 name|void
 name|purge
 parameter_list|()

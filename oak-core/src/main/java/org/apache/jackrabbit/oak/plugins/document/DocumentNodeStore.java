@@ -2738,6 +2738,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+name|checkLastRevRecovery
+argument_list|()
+expr_stmt|;
+comment|// Renew the lease because it may have been stale
+name|renewClusterIdLease
+argument_list|()
+expr_stmt|;
 name|getRevisionComparator
 argument_list|()
 operator|.
@@ -2854,13 +2861,6 @@ name|setDaemon
 argument_list|(
 literal|true
 argument_list|)
-expr_stmt|;
-name|checkLastRevRecovery
-argument_list|()
-expr_stmt|;
-comment|// Renew the lease because it may have been stale
-name|renewClusterIdLease
-argument_list|()
 expr_stmt|;
 name|backgroundReadThread
 operator|.
