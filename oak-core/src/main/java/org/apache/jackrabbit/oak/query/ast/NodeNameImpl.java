@@ -589,6 +589,54 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|PathUtils
+operator|.
+name|isAbsolute
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Not a valid JCR name: "
+operator|+
+name|name
+operator|+
+literal|" (absolute paths are not names)"
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+name|PathUtils
+operator|.
+name|getDepth
+argument_list|(
+name|name
+argument_list|)
+operator|>
+literal|1
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Not a valid JCR name: "
+operator|+
+name|name
+operator|+
+literal|" (relative path with depth> 1 are not names)"
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
 name|name
 operator|.
 name|startsWith
