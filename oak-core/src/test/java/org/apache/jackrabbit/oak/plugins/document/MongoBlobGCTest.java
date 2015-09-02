@@ -1382,13 +1382,6 @@ argument_list|,
 name|repoId
 argument_list|)
 decl_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|4000
-argument_list|)
-expr_stmt|;
 name|gc
 operator|.
 name|collectGarbage
