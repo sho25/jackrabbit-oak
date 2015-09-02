@@ -88,7 +88,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * @return  {@code true} iff running on with {@code PROFILE=pedantic}      */
+comment|/**      * @return  {@code true} iff running on with {@code PROFILE=pedantic}      * @deprecated Travis builds do not use PROFILE anymore. Use {@link #travis()} instead.      */
 specifier|public
 specifier|static
 name|boolean
@@ -107,7 +107,7 @@ literal|"pedantic"
 argument_list|)
 return|;
 block|}
-comment|/**      * @return  {@code true} iff running on with {@code PROFILE=unittesting}      */
+comment|/**      * @return  {@code true} iff running on with {@code PROFILE=unittesting}      * @deprecated Travis builds do not use PROFILE anymore. Use {@link #travis()} instead.      */
 specifier|public
 specifier|static
 name|boolean
@@ -126,7 +126,7 @@ literal|"unittesting"
 argument_list|)
 return|;
 block|}
-comment|/**      * @return  {@code true} iff running on with {@code PROFILE=integrationTesting}      */
+comment|/**      * @return  {@code true} iff running on with {@code PROFILE=integrationTesting}      * @deprecated Travis builds do not use PROFILE anymore. Use {@link #travis()} instead.      */
 specifier|public
 specifier|static
 name|boolean
