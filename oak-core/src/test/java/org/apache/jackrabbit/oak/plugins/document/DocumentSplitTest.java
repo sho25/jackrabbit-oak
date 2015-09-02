@@ -3139,7 +3139,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 name|ns
 operator|.
 name|merge
