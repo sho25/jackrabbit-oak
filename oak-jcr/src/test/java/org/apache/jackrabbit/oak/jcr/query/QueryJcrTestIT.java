@@ -522,12 +522,12 @@ end_import
 begin_class
 specifier|public
 class|class
-name|QueryJcrTest
+name|QueryJcrTestIT
 extends|extends
 name|TCKBase
 block|{
 specifier|public
-name|QueryJcrTest
+name|QueryJcrTestIT
 parameter_list|()
 block|{
 name|super
@@ -544,7 +544,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|QueryJcrTest
+name|QueryJcrTestIT
 argument_list|()
 return|;
 block|}
