@@ -966,6 +966,11 @@ argument_list|(
 name|clock
 argument_list|)
 operator|.
+name|setLeaseCheck
+argument_list|(
+literal|false
+argument_list|)
+operator|.
 name|setDocumentStore
 argument_list|(
 name|fixture
