@@ -600,12 +600,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3281"
-argument_list|)
-comment|// FIXME See OAK-3281
 specifier|public
 name|void
 name|sql2
