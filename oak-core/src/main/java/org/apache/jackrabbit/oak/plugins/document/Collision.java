@@ -338,8 +338,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|commitRootPath
-init|=
-literal|null
 decl_stmt|;
 comment|// first check if we can mark the commit with the given revision
 if|if
@@ -483,11 +481,65 @@ argument_list|,
 name|revision
 argument_list|)
 expr_stmt|;
+name|String
+name|commitValue
+init|=
+name|commitRoot
+operator|.
+name|getLocalRevisions
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|revision
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|commitValue
+operator|==
+literal|null
+condition|)
+block|{
+comment|// no revision entry yet
+comment|// apply collision marker only if entry is still not there
+name|op
+operator|.
+name|containsMapEntry
+argument_list|(
+name|NodeDocument
+operator|.
+name|REVISIONS
+argument_list|,
+name|revision
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// not yet merged branch commit
+comment|// apply collision marker only if branch commit is still not merged
+name|op
+operator|.
+name|equals
+argument_list|(
+name|NodeDocument
+operator|.
+name|REVISIONS
+argument_list|,
+name|revision
+argument_list|,
+name|commitValue
+argument_list|)
+expr_stmt|;
+block|}
 name|commitRoot
 operator|=
 name|store
 operator|.
-name|createOrUpdate
+name|findAndUpdate
 argument_list|(
 name|Collection
 operator|.
@@ -496,17 +548,15 @@ argument_list|,
 name|op
 argument_list|)
 expr_stmt|;
-comment|// check again on old document right before our update was applied
 if|if
 condition|(
 name|commitRoot
-operator|.
-name|isCommitted
-argument_list|(
-name|revision
-argument_list|)
+operator|==
+literal|null
 condition|)
 block|{
+comment|// commit state changed meanwhile
+comment|// -> assume revision is now committed
 return|return
 literal|false
 return|;
@@ -518,16 +568,11 @@ name|debug
 argument_list|(
 literal|"Marked collision on: {} for {} ({})"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|commitRootPath
-block|,
+argument_list|,
 name|p
-block|,
+argument_list|,
 name|revision
-block|}
 argument_list|)
 expr_stmt|;
 return|return
