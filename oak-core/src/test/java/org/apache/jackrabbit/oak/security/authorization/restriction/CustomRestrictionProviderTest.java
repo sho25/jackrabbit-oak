@@ -603,16 +603,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -668,6 +658,10 @@ operator|.
 name|fail
 import|;
 end_import
+
+begin_comment
+comment|/**  * Test suite for a custom restriction provider. The restriction is enabled based on the (non) existence of a property.  * The test creates nodes along '/testRoot/a/b/c/d/e' and sets the 'protect-me' property on '/testRoot/a/b/c'.  */
+end_comment
 
 begin_class
 specifier|public
@@ -1208,11 +1202,6 @@ block|}
 comment|/**      * Tests the custom restriction provider that checks on the existence of a property.      * @throws Exception      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3324"
-argument_list|)
 specifier|public
 name|void
 name|testProtectByRestriction
@@ -1220,9 +1209,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// create permissions
 comment|// allow rep:write      /testroot
-comment|// deny  jcr:removeNode /testroot/a  hasProperty = protect-me
+comment|// deny  jcr:removeNode /testroot/a  hasProperty=protect-me
 name|addEntry
 argument_list|(
 name|TEST_ROOT_PATH
@@ -1421,9 +1409,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// create permissions
-comment|// allow rep:write          /testroot
-comment|// deny  jcr:modifyProperties /testroot/a  hasProperty = protect-me
+comment|// allow rep:write            /testroot
+comment|// deny  jcr:modifyProperties /testroot/a  hasProperty=protect-me
 name|addEntry
 argument_list|(
 name|TEST_ROOT_PATH
@@ -1563,14 +1550,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Tests the custom restriction provider that checks on the existence of a property.      * @throws Exception      */
+comment|/**      * Tests the custom restriction provider that checks on the absence of a property.      * @throws Exception      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3324"
-argument_list|)
 specifier|public
 name|void
 name|testUnProtectByRestriction
@@ -1578,10 +1560,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// create permissions
 comment|// allow rep:write      /testroot
 comment|// deny  jcr:removeNode /testroot
-comment|// allow jcr:removeNode /testroot/a  hasProperty = !protect-me
+comment|// allow jcr:removeNode /testroot/a  hasProperty=!protect-me
 name|addEntry
 argument_list|(
 name|TEST_ROOT_PATH
@@ -1736,6 +1717,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Customs restriction provider that matches restrictions based on the existence of a property.      */
 specifier|public
 specifier|static
 class|class
