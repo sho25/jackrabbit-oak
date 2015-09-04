@@ -877,6 +877,11 @@ return|;
 block|}
 finally|finally
 block|{
+comment|// Explicitly give up reference to the previous root state
+comment|// otherwise they would block cleanup. See OAK-3347
+name|refreshHead
+argument_list|()
+expr_stmt|;
 name|commitSemaphore
 operator|.
 name|release

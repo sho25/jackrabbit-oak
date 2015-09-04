@@ -3583,6 +3583,16 @@ condition|(
 name|cleanup
 condition|)
 block|{
+comment|// Explicitly give up reference to the previous root state
+comment|// otherwise they would block cleanup. See OAK-3347
+name|before
+operator|=
+literal|null
+expr_stmt|;
+name|after
+operator|=
+literal|null
+expr_stmt|;
 name|cleanup
 argument_list|()
 expr_stmt|;
