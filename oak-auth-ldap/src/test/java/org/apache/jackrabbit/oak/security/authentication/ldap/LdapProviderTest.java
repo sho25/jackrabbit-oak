@@ -342,6 +342,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
 import|import static
 name|junit
 operator|.
@@ -991,6 +1001,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-3144"
+argument_list|)
 specifier|public
 name|void
 name|testGetUserProperties
