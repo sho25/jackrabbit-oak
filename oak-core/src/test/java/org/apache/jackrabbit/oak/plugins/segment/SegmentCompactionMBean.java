@@ -64,6 +64,19 @@ name|String
 name|getLastCompaction
 parameter_list|()
 function_decl|;
+comment|/**      * Determine whether to compaction should run exclusively wrt. concurrent writers.      * @param value  run compaction exclusively iff {@code true}      */
+name|void
+name|setUseCompactionLock
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+function_decl|;
+comment|/**      * @return  Compaction runs exclusively wrt. concurrent writers iff {@code true}      */
+name|boolean
+name|getUseCompactionLock
+parameter_list|()
+function_decl|;
 comment|/**      * Time to wait for the commit lock for committing the compacted head.      * @param seconds  number of seconds to wait      * @see SegmentNodeStore#locked(java.util.concurrent.Callable, long, java.util.concurrent.TimeUnit)      */
 name|void
 name|setLockWaitTime
