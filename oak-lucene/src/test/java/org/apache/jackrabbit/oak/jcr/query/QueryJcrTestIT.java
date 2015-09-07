@@ -514,7 +514,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|QueryJcrTest
+name|QueryJcrTestIT
 extends|extends
 name|TestCase
 block|{
