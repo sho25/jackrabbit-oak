@@ -1181,6 +1181,11 @@ name|REFRESH_INTERVAL
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|session
+operator|.
+name|logout
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test

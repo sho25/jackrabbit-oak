@@ -4705,6 +4705,11 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|session
+operator|.
+name|logout
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -4834,6 +4839,11 @@ operator|.
 name|hasNext
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|session
+operator|.
+name|logout
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -5017,6 +5027,11 @@ operator|.
 name|hasNext
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|session
+operator|.
+name|logout
+argument_list|()
 expr_stmt|;
 block|}
 block|}
