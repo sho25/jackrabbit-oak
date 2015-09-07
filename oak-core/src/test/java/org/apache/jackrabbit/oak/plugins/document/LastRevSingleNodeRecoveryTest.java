@@ -183,6 +183,10 @@ specifier|private
 name|DocumentMK
 name|mk
 decl_stmt|;
+specifier|private
+name|DocumentMK
+name|mk2
+decl_stmt|;
 specifier|public
 name|LastRevSingleNodeRecoveryTest
 parameter_list|(
@@ -538,7 +542,8 @@ literal|1000
 argument_list|)
 expr_stmt|;
 comment|// Recreate mk instance, to simulate fail condition and recovery on start
-name|mk
+comment|// Make sure to use a different variable for cleanup ; mk should not be disposed here
+name|mk2
 operator|=
 name|openMK
 argument_list|(
@@ -556,7 +561,7 @@ expr_stmt|;
 name|int
 name|pendingCount
 init|=
-name|mk
+name|mk2
 operator|.
 name|getPendingWriteCount
 argument_list|()
@@ -565,7 +570,7 @@ comment|// Immediately check again, now should not have done any changes.
 name|LastRevRecoveryAgent
 name|recoveryAgent
 init|=
-name|mk
+name|mk2
 operator|.
 name|getNodeStore
 argument_list|()
@@ -582,7 +587,7 @@ name|recoveryAgent
 operator|.
 name|recover
 argument_list|(
-name|mk
+name|mk2
 operator|.
 name|getClusterInfo
 argument_list|()
@@ -1195,6 +1200,19 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|mk2
+operator|!=
+literal|null
+condition|)
+block|{
+name|mk2
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
 name|fixture
 operator|.
 name|dispose
