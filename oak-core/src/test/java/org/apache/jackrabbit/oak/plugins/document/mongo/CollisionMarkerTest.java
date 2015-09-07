@@ -640,8 +640,6 @@ name|MongoConnection
 name|c
 parameter_list|)
 block|{
-comment|// set async delay to a high value to make sure
-comment|// the commit root is outdated when ns2 commits
 name|DocumentMK
 name|mk
 init|=
@@ -653,7 +651,7 @@ argument_list|()
 operator|.
 name|setAsyncDelay
 argument_list|(
-literal|60000
+literal|0
 argument_list|)
 operator|.
 name|setLeaseCheck
