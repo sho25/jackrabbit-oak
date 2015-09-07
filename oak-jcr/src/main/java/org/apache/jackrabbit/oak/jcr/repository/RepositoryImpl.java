@@ -766,6 +766,8 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Clock
+operator|.
+name|Fast
 name|clock
 decl_stmt|;
 specifier|private
@@ -1557,6 +1559,11 @@ expr_stmt|;
 name|gcMonitorRegistration
 operator|.
 name|unregister
+argument_list|()
+expr_stmt|;
+name|clock
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 name|closeExecutor
