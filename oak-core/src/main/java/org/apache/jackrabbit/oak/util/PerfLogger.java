@@ -175,11 +175,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|delegate
-operator|.
-name|isDebugEnabled
-argument_list|()
+name|start
+operator|<
+literal|0
 condition|)
 block|{
 return|return;
@@ -225,11 +223,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|delegate
-operator|.
-name|isDebugEnabled
-argument_list|()
+name|start
+operator|<
+literal|0
 condition|)
 block|{
 return|return;
@@ -274,44 +270,14 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|delegate
-operator|.
-name|isDebugEnabled
-argument_list|()
+name|start
+operator|<
+literal|0
 condition|)
 block|{
-comment|// if log level is not at least DEBUG, then return fast, no-op
+comment|// if start is negative, we assume that start() returned -1 because the log level is above DEBUG
 return|return;
 block|}
-if|if
-condition|(
-name|start
-operator|==
-operator|-
-literal|1
-condition|)
-block|{
-comment|// start was never set
-comment|// -> then log at trace as we have no diff available
-name|delegate
-operator|.
-name|trace
-argument_list|(
-name|logMessagePrefix
-operator|+
-literal|" [start not set]"
-argument_list|,
-operator|(
-name|Object
-index|[]
-operator|)
-name|arguments
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 specifier|final
 name|long
 name|diff
@@ -392,7 +358,6 @@ operator|)
 name|arguments
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/** Whether or not the delegate has log level DEBUG configured **/
