@@ -107,9 +107,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|memory
+name|segment
 operator|.
-name|MemoryNodeStore
+name|SegmentNodeStore
 import|;
 end_import
 
@@ -1345,7 +1345,7 @@ name|NodeStore
 name|targetNodeStore
 init|=
 operator|new
-name|MemoryNodeStore
+name|SegmentNodeStore
 argument_list|()
 decl_stmt|;
 try|try
