@@ -664,7 +664,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Starting revision garbage collection. Revisions older than [{}] would be "
+literal|"Starting revision garbage collection. Revisions older than [{}] will be "
 operator|+
 literal|"removed"
 argument_list|,
@@ -706,9 +706,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Ignoring version gc as valid checkpoint [{}] found while "
+literal|"Ignoring revision garbage collection because a valid "
 operator|+
-literal|"need to collect versions older than [{}]"
+literal|"checkpoint [{}] was found, which is older than [{}]."
 argument_list|,
 name|checkpoint
 operator|.
@@ -758,7 +758,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Version garbage collected in {}. {}"
+literal|"Revision garbage collection finished in {}. {}"
 argument_list|,
 name|sw
 argument_list|,
