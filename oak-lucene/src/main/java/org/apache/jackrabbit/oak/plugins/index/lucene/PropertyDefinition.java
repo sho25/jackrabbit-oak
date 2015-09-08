@@ -518,6 +518,26 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+comment|//If boost is specified then that field MUST be analyzed
+if|if
+condition|(
+name|defn
+operator|.
+name|hasProperty
+argument_list|(
+name|FIELD_BOOST
+argument_list|)
+condition|)
+block|{
+name|this
+operator|.
+name|analyzed
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
+block|{
 name|this
 operator|.
 name|analyzed
@@ -533,6 +553,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 comment|//If node is not set for full text then a property definition indicates that definition is for property index
 name|this
 operator|.

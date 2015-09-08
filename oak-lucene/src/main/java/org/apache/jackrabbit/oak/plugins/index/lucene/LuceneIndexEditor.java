@@ -2752,15 +2752,6 @@ argument_list|(
 name|value
 argument_list|)
 decl_stmt|;
-name|field
-operator|.
-name|setBoost
-argument_list|(
-name|pd
-operator|.
-name|boost
-argument_list|)
-expr_stmt|;
 name|fields
 operator|.
 name|add
