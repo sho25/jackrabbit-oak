@@ -11747,6 +11747,18 @@ name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 block|}
+name|updates
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|throttleUpdates
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 comment|// start new store with clusterId 2
 name|DocumentNodeStore
 name|store2
@@ -11872,13 +11884,6 @@ name|builder
 argument_list|)
 expr_stmt|;
 block|}
-name|throttleUpdates
-operator|.
-name|set
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 block|}
 comment|// OAK-2695
 annotation|@
