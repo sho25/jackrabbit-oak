@@ -4649,14 +4649,6 @@ name|nodeScopeIndex
 operator|&&
 name|pd
 operator|.
-name|boost
-operator|!=
-name|PropertyDefinition
-operator|.
-name|DEFAULT_BOOST
-operator|&&
-name|pd
-operator|.
 name|analyzed
 operator|&&
 operator|!
