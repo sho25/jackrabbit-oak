@@ -173,7 +173,7 @@ name|ID
 init|=
 literal|"_id"
 decl_stmt|;
-comment|/**      * The modification count on the document. This is an long value      * incremented on every modification.      */
+comment|/**      * The modification count on the document. This field is optional and a      * {@link DocumentStore} implementation may use it to keep track of how many      * times a document is modified. See also {@link #getModCount()}.      */
 specifier|public
 specifier|static
 specifier|final
