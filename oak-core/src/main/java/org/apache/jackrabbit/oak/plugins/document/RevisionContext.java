@@ -78,6 +78,13 @@ name|Revision
 name|getHeadRevision
 parameter_list|()
 function_decl|;
+comment|/**      * @return a new revision for the local document node store instance.      */
+annotation|@
+name|Nonnull
+name|Revision
+name|newRevision
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

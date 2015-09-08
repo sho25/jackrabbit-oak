@@ -228,6 +228,8 @@ name|document
 argument_list|,
 name|theirRev
 argument_list|,
+name|ourRev
+argument_list|,
 name|store
 argument_list|)
 condition|)
@@ -279,6 +281,8 @@ name|newDoc
 argument_list|,
 name|ourRev
 argument_list|,
+name|theirRev
+argument_list|,
 name|store
 argument_list|)
 condition|)
@@ -306,7 +310,7 @@ return|return
 name|ourRev
 return|;
 block|}
-comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *      * @param document the document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param store the document store.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
+comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *      * @param document the document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param other the revision which detected the collision.      * @param store the document store.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
 specifier|private
 specifier|static
 name|boolean
@@ -321,6 +325,11 @@ annotation|@
 name|Nonnull
 name|Revision
 name|revision
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Revision
+name|other
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -479,6 +488,8 @@ argument_list|(
 name|op
 argument_list|,
 name|revision
+argument_list|,
+name|other
 argument_list|)
 expr_stmt|;
 name|String
