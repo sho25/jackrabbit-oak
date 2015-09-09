@@ -1099,16 +1099,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -7736,8 +7726,6 @@ expr_stmt|;
 block|}
 comment|// OAK-2929
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -8070,8 +8058,6 @@ comment|// expected
 block|}
 block|}
 comment|// OAK-2929
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 specifier|public
@@ -9018,29 +9004,7 @@ operator|.
 name|getRoot
 argument_list|()
 expr_stmt|;
-comment|//The hidden node itself should be creatable across cluster concurrently
-name|builder
-operator|=
-name|root
-operator|.
-name|builder
-argument_list|()
-expr_stmt|;
-name|builder
-operator|.
-name|child
-argument_list|(
-literal|":dynHidden"
-argument_list|)
-expr_stmt|;
-name|merge
-argument_list|(
-name|store2
-argument_list|,
-name|builder
-argument_list|)
-expr_stmt|;
-comment|//Children of hidden node should be creatable across cluster concurrently
+comment|//The hidden node and children should be creatable across cluster concurrently
 name|builder
 operator|=
 name|root
