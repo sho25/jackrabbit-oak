@@ -309,6 +309,13 @@ name|gainThreshold
 init|=
 name|GAIN_THRESHOLD_DEFAULT
 decl_stmt|;
+comment|/**      * Flag that allows turning on an optimized version of the compaction      * process in the case of offline compaction      */
+specifier|private
+name|boolean
+name|offlineCompaction
+init|=
+literal|false
+decl_stmt|;
 specifier|protected
 name|CompactionStrategy
 parameter_list|(
@@ -569,6 +576,10 @@ literal|", compactionStart="
 operator|+
 name|compactionStart
 operator|+
+literal|", offlineCompaction="
+operator|+
+name|offlineCompaction
+operator|+
 literal|'}'
 return|;
 block|}
@@ -727,6 +738,30 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+specifier|public
+name|boolean
+name|isOfflineCompaction
+parameter_list|()
+block|{
+return|return
+name|offlineCompaction
+return|;
+block|}
+specifier|public
+name|void
+name|setOfflineCompaction
+parameter_list|(
+name|boolean
+name|offlineCompaction
+parameter_list|)
+block|{
+name|this
+operator|.
+name|offlineCompaction
+operator|=
+name|offlineCompaction
+expr_stmt|;
+block|}
 block|}
 end_class
 

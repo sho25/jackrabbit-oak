@@ -3674,6 +3674,13 @@ return|;
 block|}
 block|}
 decl_stmt|;
+name|compactionStrategy
+operator|.
+name|setOfflineCompaction
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|store
 operator|.
 name|setCompactionStrategy
