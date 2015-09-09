@@ -231,6 +231,36 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"\"hello\" \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello  world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"hello\" \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello   world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"hello\" \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello \t  world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"\"hello\" \"or\" \"world\""
 argument_list|,
 name|convertPattern
