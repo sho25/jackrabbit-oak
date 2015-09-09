@@ -1182,7 +1182,6 @@ argument_list|)
 return|;
 block|}
 comment|//TODO Support for property existence queries
-comment|//TODO support for nodeName queries
 return|return
 literal|null
 return|;
