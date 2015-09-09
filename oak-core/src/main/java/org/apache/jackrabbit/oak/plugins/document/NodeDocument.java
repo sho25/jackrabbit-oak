@@ -950,7 +950,6 @@ return|;
 block|}
 comment|/**      * A document which is created from splitting a main document can be classified      * into multiple types depending on the content i.e. weather it contains      * REVISIONS, COMMIT_ROOT, property history etc      */
 specifier|public
-specifier|static
 enum|enum
 name|SplitDocType
 block|{
@@ -1005,7 +1004,6 @@ specifier|final
 name|int
 name|type
 decl_stmt|;
-specifier|private
 name|SplitDocType
 parameter_list|(
 name|int
@@ -1486,18 +1484,11 @@ argument_list|(
 name|HAS_BINARY_FLAG
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+return|return
 name|flag
-operator|==
+operator|!=
 literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-return|return
+operator|&&
 name|flag
 operator|.
 name|intValue
@@ -7176,8 +7167,6 @@ parameter_list|,
 name|Map
 argument_list|<
 name|?
-extends|extends
-name|Object
 argument_list|,
 name|Object
 argument_list|>
@@ -7189,8 +7178,6 @@ control|(
 name|Entry
 argument_list|<
 name|?
-extends|extends
-name|Object
 argument_list|,
 name|Object
 argument_list|>
