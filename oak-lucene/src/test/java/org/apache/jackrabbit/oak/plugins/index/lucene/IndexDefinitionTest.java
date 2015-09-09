@@ -5320,7 +5320,7 @@ literal|2
 argument_list|,
 name|rule1
 operator|.
-name|getBoostedProps
+name|getNodeScopeAnalyzedProps
 argument_list|()
 operator|.
 name|size

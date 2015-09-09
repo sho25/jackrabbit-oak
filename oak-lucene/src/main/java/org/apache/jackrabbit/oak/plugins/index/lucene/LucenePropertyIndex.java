@@ -7844,7 +7844,7 @@ operator|&&
 operator|!
 name|indexingRule
 operator|.
-name|getBoostedProps
+name|getNodeScopeAnalyzedProps
 argument_list|()
 operator|.
 name|isEmpty
@@ -7865,7 +7865,7 @@ name|pd
 range|:
 name|indexingRule
 operator|.
-name|getBoostedProps
+name|getNodeScopeAnalyzedProps
 argument_list|()
 control|)
 block|{
