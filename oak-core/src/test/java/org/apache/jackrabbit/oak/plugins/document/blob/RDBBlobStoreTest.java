@@ -601,9 +601,24 @@ condition|(
 name|max
 operator|-
 name|min
-operator|>=
-literal|2
+operator|>
+literal|256
 condition|)
+block|{
+if|if
+condition|(
+name|test
+operator|==
+literal|0
+condition|)
+block|{
+name|test
+operator|=
+name|max
+expr_stmt|;
+comment|// try largest first
+block|}
+else|else
 block|{
 name|test
 operator|=
@@ -615,6 +630,7 @@ operator|)
 operator|/
 literal|2
 expr_stmt|;
+block|}
 name|byte
 index|[]
 name|data
