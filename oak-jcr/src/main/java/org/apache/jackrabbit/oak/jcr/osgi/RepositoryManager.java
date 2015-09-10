@@ -510,13 +510,6 @@ name|DEFAULT_FAST_QUERY_RESULT_SIZE
 init|=
 literal|false
 decl_stmt|;
-comment|//TODO Exposed for testing purpose due to SLING-4472
-specifier|static
-name|boolean
-name|ignoreFrameworkProperties
-init|=
-literal|false
-decl_stmt|;
 specifier|private
 specifier|final
 name|WhiteboardEditorProvider
@@ -815,12 +808,6 @@ name|String
 name|name
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
-name|ignoreFrameworkProperties
-condition|)
-block|{
 comment|//Prefer framework property first
 name|Object
 name|value
@@ -842,7 +829,6 @@ block|{
 return|return
 name|value
 return|;
-block|}
 block|}
 comment|//Fallback to one from config
 return|return
