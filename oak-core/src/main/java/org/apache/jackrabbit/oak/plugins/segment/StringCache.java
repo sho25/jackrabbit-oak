@@ -118,7 +118,7 @@ decl_stmt|;
 comment|/**      * Create a new string cache.      *      * @param maxSize the maximum memory in bytes.      */
 name|StringCache
 parameter_list|(
-name|int
+name|long
 name|maxSize
 parameter_list|)
 block|{
@@ -139,7 +139,7 @@ argument_list|(
 literal|"StringCache"
 argument_list|)
 operator|.
-name|maximumSize
+name|maximumWeight
 argument_list|(
 name|maxSize
 argument_list|)

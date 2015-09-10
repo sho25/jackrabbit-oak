@@ -5829,7 +5829,7 @@ name|V
 argument_list|>
 name|maximumSize
 parameter_list|(
-name|int
+name|long
 name|maxSize
 parameter_list|)
 block|{

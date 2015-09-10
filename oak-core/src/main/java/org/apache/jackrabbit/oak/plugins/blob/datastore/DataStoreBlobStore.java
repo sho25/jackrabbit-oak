@@ -678,6 +678,9 @@ argument_list|)
 operator|.
 name|maximumWeight
 argument_list|(
+operator|(
+name|long
+operator|)
 name|cacheSizeInMB
 operator|*
 name|FileUtils
