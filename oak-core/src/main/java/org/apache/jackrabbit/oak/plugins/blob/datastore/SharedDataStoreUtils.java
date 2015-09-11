@@ -455,6 +455,11 @@ name|REPOSITORY
 argument_list|(
 literal|"repository"
 argument_list|)
+block|,
+name|MARKED_START_MARKER
+argument_list|(
+literal|"markedTimestamp"
+argument_list|)
 block|;
 specifier|private
 specifier|final

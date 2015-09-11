@@ -769,7 +769,7 @@ block|,
 operator|(
 name|statObj
 operator|.
-name|getLastModified
+name|getStartTime
 argument_list|()
 operator|==
 literal|0
@@ -782,7 +782,32 @@ name|Date
 argument_list|(
 name|statObj
 operator|.
-name|getLastModified
+name|getStartTime
+argument_list|()
+argument_list|)
+operator|)
+operator|)
+operator|.
+name|toString
+argument_list|()
+block|,
+operator|(
+name|statObj
+operator|.
+name|getEndTime
+argument_list|()
+operator|==
+literal|0
+condition|?
+literal|""
+else|:
+operator|(
+operator|new
+name|Date
+argument_list|(
+name|statObj
+operator|.
+name|getEndTime
 argument_list|()
 argument_list|)
 operator|)
@@ -835,7 +860,9 @@ index|[]
 block|{
 literal|"repositoryId"
 block|,
-literal|"referencesLastModifiedTime"
+literal|"markStartTime"
+block|,
+literal|"markEndTime"
 block|,
 literal|"referenceFileSizeBytes"
 block|,
@@ -857,7 +884,9 @@ index|[]
 block|{
 literal|"Repository ID"
 block|,
-literal|"Last modified time of references"
+literal|"Start time of mark"
+block|,
+literal|"End time of mark"
 block|,
 literal|"References file size in bytes"
 block|,
@@ -877,6 +906,10 @@ operator|new
 name|OpenType
 index|[]
 block|{
+name|SimpleType
+operator|.
+name|STRING
+block|,
 name|SimpleType
 operator|.
 name|STRING
