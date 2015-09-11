@@ -799,7 +799,7 @@ operator|.
 name|assertTrue
 argument_list|(
 name|minRefTime
-operator|>
+operator|>=
 name|minMarkerTime
 argument_list|)
 expr_stmt|;
