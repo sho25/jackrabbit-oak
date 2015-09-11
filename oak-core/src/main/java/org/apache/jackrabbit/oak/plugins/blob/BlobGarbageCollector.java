@@ -58,6 +58,13 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Checks for consistency in the blob store and reporting the number of missing blobs.      *       * @return number of inconsistencies      * @throws Exception      */
+name|long
+name|checkConsistency
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
 block|}
 end_interface
 

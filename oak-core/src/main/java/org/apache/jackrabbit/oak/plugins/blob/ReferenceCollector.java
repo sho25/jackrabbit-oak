@@ -19,6 +19,16 @@ name|blob
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Callback interface for collecting all blob references that are  * potentially accessible. Useful for marking referenced blobs as  * in use when collecting garbage in an external data store.  */
 end_comment
@@ -28,11 +38,17 @@ specifier|public
 interface|interface
 name|ReferenceCollector
 block|{
+comment|/**      * Adds the reference detected with the node Id.      *       * @param reference      * @param nodeId      */
 name|void
 name|addReference
 parameter_list|(
 name|String
 name|reference
+parameter_list|,
+annotation|@
+name|Nullable
+name|String
+name|nodeId
 parameter_list|)
 function_decl|;
 block|}

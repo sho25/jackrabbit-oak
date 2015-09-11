@@ -937,6 +937,9 @@ name|addReference
 parameter_list|(
 name|String
 name|reference
+parameter_list|,
+name|String
+name|nodeId
 parameter_list|)
 block|{
 name|assertNotNull

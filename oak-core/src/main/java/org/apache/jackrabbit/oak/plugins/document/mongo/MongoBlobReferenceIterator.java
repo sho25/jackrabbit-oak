@@ -119,9 +119,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|plugins
 operator|.
-name|Blob
+name|blob
+operator|.
+name|ReferencedBlob
 import|;
 end_import
 
@@ -204,7 +206,7 @@ name|MongoBlobReferenceIterator
 extends|extends
 name|AbstractIterator
 argument_list|<
-name|Blob
+name|ReferencedBlob
 argument_list|>
 implements|implements
 name|Closeable
@@ -223,7 +225,7 @@ specifier|private
 specifier|final
 name|Queue
 argument_list|<
-name|Blob
+name|ReferencedBlob
 argument_list|>
 name|blobs
 init|=
@@ -266,7 +268,7 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|Blob
+name|ReferencedBlob
 name|computeNext
 parameter_list|()
 block|{

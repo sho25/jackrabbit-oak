@@ -69,9 +69,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|plugins
 operator|.
-name|Blob
+name|blob
+operator|.
+name|ReferencedBlob
 import|;
 end_import
 
@@ -86,7 +88,7 @@ name|BlobReferenceIterator
 implements|implements
 name|Iterator
 argument_list|<
-name|Blob
+name|ReferencedBlob
 argument_list|>
 block|{
 specifier|private
@@ -110,21 +112,21 @@ decl_stmt|;
 specifier|private
 name|HashSet
 argument_list|<
-name|Blob
+name|ReferencedBlob
 argument_list|>
 name|batch
 init|=
 operator|new
 name|HashSet
 argument_list|<
-name|Blob
+name|ReferencedBlob
 argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
 name|Iterator
 argument_list|<
-name|Blob
+name|ReferencedBlob
 argument_list|>
 name|batchIterator
 decl_stmt|;
@@ -207,7 +209,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Blob
+name|ReferencedBlob
 name|next
 parameter_list|()
 block|{

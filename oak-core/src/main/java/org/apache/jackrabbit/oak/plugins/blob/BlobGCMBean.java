@@ -137,6 +137,11 @@ name|TabularData
 name|getGlobalMarkStats
 parameter_list|()
 function_decl|;
+comment|/**      * Data Store consistency check      *       * @return the missing blobs      */
+name|CompositeData
+name|checkConsistency
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
