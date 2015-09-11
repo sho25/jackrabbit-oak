@@ -124,6 +124,7 @@ comment|/**  * Represents binary data which is backed by a byte[] (in memory).  
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|InMemoryDataRecord
 implements|implements
@@ -242,6 +243,7 @@ return|;
 block|}
 block|}
 comment|/**      * Checks if String can be converted to an instance of this class.      * @param id DataRecord identifier      * @return true if it can be converted      */
+specifier|public
 specifier|static
 name|boolean
 name|isInstance

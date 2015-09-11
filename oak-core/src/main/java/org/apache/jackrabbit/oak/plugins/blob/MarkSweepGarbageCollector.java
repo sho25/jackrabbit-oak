@@ -529,6 +529,26 @@ name|blob
 operator|.
 name|datastore
 operator|.
+name|InMemoryDataRecord
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|blob
+operator|.
+name|datastore
+operator|.
 name|SharedDataStoreUtils
 import|;
 end_import
@@ -2715,6 +2735,15 @@ argument_list|(
 literal|"Ending difference phase of the consistency check"
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Consistency check found [{}] missing blobs"
+argument_list|,
+name|candidates
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|candidates
@@ -2750,7 +2779,7 @@ name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
-operator|||
+operator|&&
 name|candidates
 operator|==
 literal|0
@@ -2965,7 +2994,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Number of blobs present in BlobStore : [{}] "
 argument_list|,
@@ -3288,9 +3317,32 @@ else|else
 block|{
 comment|//This entry is not found in marked entries
 comment|//hence part of diff
+if|if
+condition|(
+operator|!
+name|InMemoryDataRecord
+operator|.
+name|isInstance
+argument_list|(
+name|getKey
+argument_list|(
+name|diff
+argument_list|)
+argument_list|)
+condition|)
+block|{
 return|return
 name|diff
 return|;
+block|}
+else|else
+block|{
+name|diff
+operator|=
+literal|null
+expr_stmt|;
+break|break;
+block|}
 block|}
 block|}
 block|}

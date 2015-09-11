@@ -709,9 +709,7 @@ name|checkConsistency
 argument_list|()
 decl_stmt|;
 return|return
-name|missing
-operator|+
-literal|"missing blobs found (details in the log). Consistency check completed in "
+literal|"Consistency check completed in "
 operator|+
 name|formatTime
 argument_list|(
@@ -720,6 +718,13 @@ argument_list|()
 operator|-
 name|t0
 argument_list|)
+operator|+
+literal|" "
+operator|+
+operator|+
+name|missing
+operator|+
+literal|"missing blobs found (details in the log)."
 return|;
 block|}
 block|}
@@ -733,6 +738,20 @@ name|consistencyOp
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|getConsistencyCheckStatus
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|CompositeData
+name|getConsistencyCheckStatus
+parameter_list|()
+block|{
 return|return
 name|consistencyOp
 operator|.
