@@ -3065,6 +3065,11 @@ name|unregister
 argument_list|()
 expr_stmt|;
 block|}
+name|registrations
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|reg
@@ -3076,6 +3081,10 @@ name|reg
 operator|.
 name|unregister
 argument_list|()
+expr_stmt|;
+name|reg
+operator|=
+literal|null
 expr_stmt|;
 block|}
 if|if
@@ -3089,6 +3098,10 @@ name|mk
 operator|.
 name|dispose
 argument_list|()
+expr_stmt|;
+name|mk
+operator|=
+literal|null
 expr_stmt|;
 block|}
 if|if
