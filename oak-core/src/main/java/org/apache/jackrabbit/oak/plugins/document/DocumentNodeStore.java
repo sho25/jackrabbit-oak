@@ -2989,9 +2989,36 @@ comment|// ignore
 block|}
 comment|// do a final round of background operations after
 comment|// the background thread stopped
+try|try
+block|{
 name|internalRunBackgroundUpdateOperations
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AssertionError
+name|ae
+parameter_list|)
+block|{
+comment|// OAK-3250 : when a lease check fails, subsequent modifying requests
+comment|// to the DocumentStore will throw an AssertionError. Since as a result
+comment|// of a failing lease check a bundle.stop is done and thus a dispose of the
+comment|// DocumentNodeStore happens, it is very likely that in that case
+comment|// you run into an AssertionError. We should still continue with disposing
+comment|// though - thus catching and logging..
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"dispose: an AssertionError happened during dispose's last background ops: "
+operator|+
+name|ae
+argument_list|,
+name|ae
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|leaseUpdateThread

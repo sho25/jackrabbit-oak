@@ -838,10 +838,11 @@ block|{
 comment|// this is debatable whether or not a lease check should be done on dispose.
 comment|// I'd say the lease must still be valid as on dispose there could be
 comment|// stuff written to the document store which should only be done
-comment|// when the lease is valid
-name|performLeaseCheck
-argument_list|()
-expr_stmt|;
+comment|// when the lease is valid.
+comment|// however.. dispose() is also called as a result of the 'failed lease check stopping'
+comment|// mechanism - and in that case this would just throw an exception and the
+comment|// DocumentNodeStore.dispose() would not correctly finish.
+comment|// so: let's let the dispose ignore the lease state
 name|delegate
 operator|.
 name|dispose

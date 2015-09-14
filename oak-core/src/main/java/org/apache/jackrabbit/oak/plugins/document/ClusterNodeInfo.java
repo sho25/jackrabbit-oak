@@ -179,6 +179,44 @@ begin_import
 import|import
 name|org
 operator|.
+name|osgi
+operator|.
+name|framework
+operator|.
+name|Bundle
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|framework
+operator|.
+name|BundleException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|service
+operator|.
+name|component
+operator|.
+name|ComponentContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -204,6 +242,16 @@ specifier|public
 class|class
 name|ClusterNodeInfo
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|LEASE_CHECK_FAILED_MSG
+init|=
+literal|"performLeaseCheck: this oak instance failed to update "
+operator|+
+literal|"the lease in time and can therefore no longer access this DocumentNodeStore."
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -506,11 +554,12 @@ specifier|private
 name|ClusterNodeState
 name|state
 decl_stmt|;
-comment|/**      * Whether or not the OAK-2739/leaseCheck failed and thus a System.exit was already triggered      * (is used to avoid calling System.exit a hundred times when it then happens)      */
+comment|/**      * OAK-2739 / OAK-3397 : once a lease check turns out negative, this flag      * is set to prevent any further checks to succeed. Also, only the first      * one to change this flag will take the appropriate action that results      * from a failed leaseCheck (which is currently to stop oak-core bundle)      */
 specifier|private
-specifier|volatile
 name|boolean
-name|systemExitTriggered
+name|leaseCheckFailed
+init|=
+literal|false
 decl_stmt|;
 comment|/**      * OAK-2739: for development it would be useful to be able to disable the      * lease check - hence there's a system property that does that:      * oak.documentMK.disableLeaseCheck      */
 specifier|private
@@ -532,6 +581,11 @@ comment|/**      * In memory flag indicating that this ClusterNode is entry is n
 specifier|private
 name|boolean
 name|newEntry
+decl_stmt|;
+comment|/** OAK-3397 : this context is used to stop the oak-core bundle in case of lease failure **/
+specifier|private
+name|ComponentContext
+name|cc
 decl_stmt|;
 specifier|private
 name|ClusterNodeInfo
@@ -1304,6 +1358,12 @@ name|leaseCheckDisabled
 operator|||
 operator|!
 name|renewed
+operator|||
+operator|(
+name|cc
+operator|==
+literal|null
+operator|)
 condition|)
 block|{
 comment|// if leaseCheckDisabled is set we never do the check, so return fast
@@ -1311,7 +1371,35 @@ comment|// the 'renewed' flag indicates if this instance *ever* renewed the leas
 comment|// until that is not set, we cannot do the lease check (otherwise startup wouldn't work)
 return|return;
 block|}
-specifier|final
+if|if
+condition|(
+name|leaseCheckFailed
+condition|)
+block|{
+comment|// unsynchronized access to leaseCheckFailed is fine
+comment|// since it only ever changes from false to true once
+comment|// and should the current thread read it erroneously
+comment|// as false here, it would further down find out that
+comment|// the lease has indeed still expired and then
+comment|// go into the synchronized.
+comment|// (note that once a lease check failed it would not
+comment|// be updated again, ever, as guaranteed by checking
+comment|// for leaseCheckFailed in renewLease() )
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+throw|;
+block|}
 name|long
 name|now
 init|=
@@ -1335,54 +1423,123 @@ comment|// OAK-3238 : put the barrier 1/3 before lease end
 comment|// then all is good
 return|return;
 block|}
-comment|// OAK-2739 : when the lease is not current, we must stop
-comment|// the instance immediately to avoid any cluster inconsistency
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+if|if
+condition|(
+name|leaseCheckFailed
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+throw|;
+block|}
+comment|// synchronized could have delayed the 'now', so
+comment|// set it again..
+name|now
+operator|=
+name|getCurrentTime
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|now
+operator|<
+operator|(
+name|leaseEndTime
+operator|-
+name|leaseTime
+operator|/
+literal|3
+operator|)
+condition|)
+block|{
+comment|// OAK-3238 : put the barrier 1/3 before lease end
+comment|// if lease is OK here, then there was a race
+comment|// between performLeaseCheck and renewLease()
+comment|// where the winner was: renewLease().
+comment|// so: luckily we can continue here
+return|return;
+block|}
+name|leaseCheckFailed
+operator|=
+literal|true
+expr_stmt|;
+comment|// make sure only one thread 'wins', ie goes any further
+block|}
+comment|// OAK-3397 : unlike previously, when the lease check fails we should not
+comment|// do a hard System exit here but rather stop the oak-core bundle
+comment|// (or if that fails just deactivate DocumentNodeStore) - with the
+comment|// goals to prevent this instance to continue to operate
+comment|// give that a lease failure is a strong indicator of a faulty
+comment|// instance - and to stop the background threads of DocumentNodeStore,
+comment|// specifically the BackgroundLeaseUpdate and the BackgroundOperation.
 specifier|final
 name|String
-name|errorMsg
+name|restarterErrorMsg
 init|=
-literal|"performLeaseCheck: this instance failed to update the lease in time "
+name|LEASE_CHECK_FAILED_MSG
 operator|+
-literal|"(leaseEndTime: "
+literal|" (leaseEndTime: "
 operator|+
 name|leaseEndTime
-operator|+
-literal|", now: "
-operator|+
-name|now
 operator|+
 literal|", leaseTime: "
 operator|+
 name|leaseTime
 operator|+
-literal|") "
+literal|", lease check end time (1/3 before lease end): "
 operator|+
-literal|"and is thus no longer eligible for taking part in the cluster. Shutting down NOW!"
+operator|(
+name|leaseEndTime
+operator|-
+name|leaseTime
+operator|/
+literal|3
+operator|)
+operator|+
+literal|", now: "
+operator|+
+name|now
+operator|+
+literal|", remaining: "
+operator|+
+operator|(
+operator|(
+name|leaseEndTime
+operator|-
+name|leaseTime
+operator|/
+literal|3
+operator|)
+operator|-
+name|now
+operator|)
+operator|+
+literal|") Need to stop oak-core/DocumentNodeStoreService."
 decl_stmt|;
 name|LOG
 operator|.
 name|error
 argument_list|(
-name|errorMsg
+name|restarterErrorMsg
 argument_list|)
 expr_stmt|;
-comment|// now here comes the thing: we should a) call System.exit in a separate thread
-comment|// to avoid any deadlock when calling from eg within the shutdown hook
-comment|// AND b) we should not call system.exit hundred times.
-comment|// so for b) we use 'systemExitTriggered' to avoid calling it over and over
-comment|// BUT it doesn't have to be 100% ensured that system.exit is called only once.
-comment|// it is fine if it gets called once, twice - but just not hundred times.
-comment|// which is a long way of saying: volatile is fine here - and the 'if' too
-if|if
-condition|(
-operator|!
-name|systemExitTriggered
-condition|)
-block|{
-name|systemExitTriggered
-operator|=
-literal|true
-expr_stmt|;
+comment|// actual stopping should be done in a separate thread, so:
 specifier|final
 name|Runnable
 name|r
@@ -1398,13 +1555,8 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|System
-operator|.
-name|exit
-argument_list|(
-operator|-
-literal|1
-argument_list|)
+name|handleLeaseCheckFailed
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1418,7 +1570,7 @@ name|Thread
 argument_list|(
 name|r
 argument_list|,
-literal|"FailedLeaseCheckShutdown-Thread"
+literal|"FailedLeaseCheck-Thread"
 argument_list|)
 decl_stmt|;
 name|th
@@ -1433,14 +1585,100 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-block|}
 throw|throw
 operator|new
 name|AssertionError
 argument_list|(
-name|errorMsg
+name|restarterErrorMsg
 argument_list|)
 throw|;
+block|}
+specifier|private
+name|void
+name|handleLeaseCheckFailed
+parameter_list|()
+block|{
+try|try
+block|{
+comment|// plan A: try stopping oak-core
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"handleLeaseCheckFailed: stopping oak-core..."
+argument_list|)
+expr_stmt|;
+name|Bundle
+name|bundle
+init|=
+name|cc
+operator|.
+name|getBundleContext
+argument_list|()
+operator|.
+name|getBundle
+argument_list|()
+decl_stmt|;
+name|bundle
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"handleLeaseCheckFailed: stopped oak-core."
+argument_list|)
+expr_stmt|;
+comment|// plan A worked, perfect!
+block|}
+catch|catch
+parameter_list|(
+name|BundleException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"handleLeaseCheckFailed: exception while stopping oak-core: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+comment|// plan B: stop only DocumentNodeStoreService (to stop the background threads)
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"handleLeaseCheckFailed: stopping DocumentNodeStoreService..."
+argument_list|)
+expr_stmt|;
+name|cc
+operator|.
+name|disableComponent
+argument_list|(
+name|DocumentNodeStoreService
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"handleLeaseCheckFailed: stopped DocumentNodeStoreService"
+argument_list|)
+expr_stmt|;
+comment|// plan B succeeded.
+block|}
 block|}
 comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when a third of the lease time passed. That is,      * with a lease time of 60 seconds, the lease is renewed every 20 seconds.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
 specifier|public
@@ -1471,6 +1709,46 @@ return|return
 literal|false
 return|;
 block|}
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+if|if
+condition|(
+name|leaseCheckFailed
+condition|)
+block|{
+comment|// prevent lease renewal after it failed
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+throw|;
+block|}
+comment|// synchronized could have delayed the 'now', so
+comment|// set it again..
+name|now
+operator|=
+name|getCurrentTime
+argument_list|()
+expr_stmt|;
+name|leaseEndTime
+operator|=
+name|now
+operator|+
+name|leaseTime
+expr_stmt|;
+block|}
 name|UpdateOp
 name|update
 init|=
@@ -1484,12 +1762,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|leaseEndTime
-operator|=
-name|now
-operator|+
-name|leaseTime
-expr_stmt|;
 name|update
 operator|.
 name|set
@@ -1575,6 +1847,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/** for testing purpose only, not to be changed at runtime! */
 specifier|public
 name|void
 name|setLeaseTime
@@ -1601,9 +1874,44 @@ return|;
 block|}
 specifier|public
 name|void
+name|setComponentContext
+parameter_list|(
+name|ComponentContext
+name|cc
+parameter_list|)
+block|{
+name|this
+operator|.
+name|cc
+operator|=
+name|cc
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|dispose
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+if|if
+condition|(
+name|leaseCheckFailed
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"dispose: lease check failed, thus not marking instance as cleanly shut down."
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+block|}
 name|UpdateOp
 name|update
 init|=
