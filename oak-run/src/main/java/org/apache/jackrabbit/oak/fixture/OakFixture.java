@@ -1681,6 +1681,12 @@ name|memoryCacheSize
 argument_list|(
 name|cacheSize
 argument_list|)
+comment|// FIXME: OAK-3389
+operator|.
+name|setLeaseCheck
+argument_list|(
+literal|false
+argument_list|)
 operator|.
 name|setClusterId
 argument_list|(
