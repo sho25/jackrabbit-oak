@@ -2885,6 +2885,18 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// OAK-3398 : make lease updating more robust by ensuring it
+comment|// has higher likelihood of succeeding than other threads
+comment|// on a very busy machine - so as to prevent lease timeout.
+name|leaseUpdateThread
+operator|.
+name|setPriority
+argument_list|(
+name|Thread
+operator|.
+name|MAX_PRIORITY
+argument_list|)
+expr_stmt|;
 name|leaseUpdateThread
 operator|.
 name|start
