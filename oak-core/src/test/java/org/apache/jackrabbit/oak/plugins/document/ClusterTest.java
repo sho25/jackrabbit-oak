@@ -951,6 +951,13 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+name|c1
+operator|.
+name|setLeaseUpdateInterval
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 comment|// this will quickly expire
 name|c1
 operator|.

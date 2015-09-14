@@ -477,6 +477,7 @@ name|Clock
 operator|.
 name|SIMPLE
 decl_stmt|;
+comment|/** OAK-3398 : default lease duration 120sec **/
 specifier|public
 specifier|static
 specifier|final
@@ -485,14 +486,50 @@ name|DEFAULT_LEASE_DURATION_MILLIS
 init|=
 literal|1000
 operator|*
-literal|60
+literal|120
 decl_stmt|;
-comment|/**      * The number of milliseconds for a lease (1 minute by default, and      * initially).      */
+comment|/** OAK-3398 : default update interval 10sec **/
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_LEASE_UPDATE_INTERVAL_MILLIS
+init|=
+literal|1000
+operator|*
+literal|10
+decl_stmt|;
+comment|/** OAK-3398 : default failure margin 20sec before actual lease timeout **/
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_LEASE_FAILURE_MARGIN_MILLIS
+init|=
+literal|1000
+operator|*
+literal|20
+decl_stmt|;
+comment|/**      * The number of milliseconds for a lease (2 minute by default, and      * initially).      */
 specifier|private
 name|long
 name|leaseTime
 init|=
 name|DEFAULT_LEASE_DURATION_MILLIS
+decl_stmt|;
+comment|/**      * The number of milliseconds after which a lease will be updated      * (should not be every second as that would increase number of       * writes towards DocumentStore considerably - but it should also      * not be too low as that would eat into the lease duration on average.      */
+specifier|private
+name|long
+name|leaseUpdateInterval
+init|=
+name|DEFAULT_LEASE_UPDATE_INTERVAL_MILLIS
+decl_stmt|;
+comment|/**      * The number of milliseconds that a lease must still be valid      * before prematurely declaring it as failed. The default is 20sec.      * The idea of declaring a lease as failed before it actually failed      * is to avoid a race condition where the local instance assumes      * things are all fine but another instance in the cluster will      * 'in the same moment' declare it as failed. The lease should be       * checked every second and updated after 10sec, so it should always      * have a validity of at least 110sec - if that's down to this margin      * of 20sec then things are not good and we have to give up.      */
+specifier|private
+name|long
+name|leaseFailureMargin
+init|=
+name|DEFAULT_LEASE_FAILURE_MARGIN_MILLIS
 decl_stmt|;
 comment|/**      * The assigned cluster id.      */
 specifier|private
@@ -1406,6 +1443,8 @@ init|=
 name|getCurrentTime
 argument_list|()
 decl_stmt|;
+comment|// OAK-3238 put the barrier 1/3 of 60sec=20sec before the end
+comment|// OAK-3398 keeps this the same but uses an explicit leaseFailureMargin for this
 if|if
 condition|(
 name|now
@@ -1413,13 +1452,10 @@ operator|<
 operator|(
 name|leaseEndTime
 operator|-
-name|leaseTime
-operator|/
-literal|3
+name|leaseFailureMargin
 operator|)
 condition|)
 block|{
-comment|// OAK-3238 : put the barrier 1/3 before lease end
 comment|// then all is good
 return|return;
 block|}
@@ -1462,13 +1498,10 @@ operator|<
 operator|(
 name|leaseEndTime
 operator|-
-name|leaseTime
-operator|/
-literal|3
+name|leaseFailureMargin
 operator|)
 condition|)
 block|{
-comment|// OAK-3238 : put the barrier 1/3 before lease end
 comment|// if lease is OK here, then there was a race
 comment|// between performLeaseCheck and renewLease()
 comment|// where the winner was: renewLease().
@@ -1502,14 +1535,16 @@ literal|", leaseTime: "
 operator|+
 name|leaseTime
 operator|+
-literal|", lease check end time (1/3 before lease end): "
+literal|", leaseFailureMargin: "
+operator|+
+name|leaseFailureMargin
+operator|+
+literal|", lease check end time (leaseEndTime-leaseFailureMargin): "
 operator|+
 operator|(
 name|leaseEndTime
 operator|-
-name|leaseTime
-operator|/
-literal|3
+name|leaseFailureMargin
 operator|)
 operator|+
 literal|", now: "
@@ -1522,9 +1557,7 @@ operator|(
 operator|(
 name|leaseEndTime
 operator|-
-name|leaseTime
-operator|/
-literal|3
+name|leaseFailureMargin
 operator|)
 operator|-
 name|now
@@ -1680,7 +1713,7 @@ expr_stmt|;
 comment|// plan B succeeded.
 block|}
 block|}
-comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when a third of the lease time passed. That is,      * with a lease time of 60 seconds, the lease is renewed every 20 seconds.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
+comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when after leaseUpdateInterval millis      * since last lease update - default being every 10 sec.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
 specifier|public
 name|boolean
 name|renewLease
@@ -1695,14 +1728,12 @@ decl_stmt|;
 if|if
 condition|(
 name|now
-operator|+
-literal|2
-operator|*
-name|leaseTime
-operator|/
-literal|3
 operator|<
 name|leaseEndTime
+operator|-
+name|leaseTime
+operator|+
+name|leaseUpdateInterval
 condition|)
 block|{
 return|return
@@ -1848,7 +1879,6 @@ literal|true
 return|;
 block|}
 comment|/** for testing purpose only, not to be changed at runtime! */
-specifier|public
 name|void
 name|setLeaseTime
 parameter_list|(
@@ -1861,6 +1891,21 @@ operator|.
 name|leaseTime
 operator|=
 name|leaseTime
+expr_stmt|;
+block|}
+comment|/** for testing purpose only, not to be changed at runtime! */
+name|void
+name|setLeaseUpdateInterval
+parameter_list|(
+name|long
+name|leaseUpdateInterval
+parameter_list|)
+block|{
+name|this
+operator|.
+name|leaseUpdateInterval
+operator|=
+name|leaseUpdateInterval
 expr_stmt|;
 block|}
 specifier|public

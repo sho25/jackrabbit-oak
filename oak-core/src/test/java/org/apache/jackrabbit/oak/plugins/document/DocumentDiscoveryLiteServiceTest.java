@@ -1680,6 +1680,9 @@ name|setLeaseTime
 argument_list|(
 literal|1000
 comment|/* 1 sec */
+argument_list|,
+literal|10
+comment|/*10ms*/
 argument_list|)
 decl_stmt|;
 if|if
@@ -1738,6 +1741,10 @@ parameter_list|(
 specifier|final
 name|int
 name|leaseTime
+parameter_list|,
+specifier|final
+name|int
+name|leaseUpdateInterval
 parameter_list|)
 throws|throws
 name|NoSuchFieldException
@@ -1750,6 +1757,16 @@ operator|.
 name|setLeaseTime
 argument_list|(
 name|leaseTime
+argument_list|)
+expr_stmt|;
+name|ns
+operator|.
+name|getClusterInfo
+argument_list|()
+operator|.
+name|setLeaseUpdateInterval
+argument_list|(
+name|leaseUpdateInterval
 argument_list|)
 expr_stmt|;
 name|PrivateAccessor
@@ -2337,6 +2354,9 @@ name|setLeastTimeout
 parameter_list|(
 name|long
 name|timeoutInMs
+parameter_list|,
+name|long
+name|updateIntervalInMs
 parameter_list|)
 throws|throws
 name|NoSuchFieldException
@@ -2349,6 +2369,16 @@ operator|.
 name|setLeaseTime
 argument_list|(
 name|timeoutInMs
+argument_list|)
+expr_stmt|;
+name|ns
+operator|.
+name|getClusterInfo
+argument_list|()
+operator|.
+name|setLeaseUpdateInterval
+argument_list|(
+name|updateIntervalInMs
 argument_list|)
 expr_stmt|;
 name|PrivateAccessor
@@ -5324,6 +5354,8 @@ operator|.
 name|setLeastTimeout
 argument_list|(
 literal|5000
+argument_list|,
+literal|1000
 argument_list|)
 expr_stmt|;
 name|newInstance
@@ -5465,6 +5497,8 @@ operator|.
 name|setLeastTimeout
 argument_list|(
 literal|5000
+argument_list|,
+literal|1000
 argument_list|)
 expr_stmt|;
 name|newInstance
