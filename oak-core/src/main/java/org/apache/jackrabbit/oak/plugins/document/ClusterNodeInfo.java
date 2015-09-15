@@ -210,7 +210,7 @@ specifier|final
 name|String
 name|LEASE_CHECK_FAILED_MSG
 init|=
-literal|"performLeaseCheck: this oak instance failed to update "
+literal|"This oak instance failed to update "
 operator|+
 literal|"the lease in time and can therefore no longer access this DocumentNodeStore."
 decl_stmt|;
@@ -542,6 +542,11 @@ specifier|private
 specifier|volatile
 name|long
 name|leaseEndTime
+decl_stmt|;
+comment|/**      * The value of leaseEnd last updated towards DocumentStore -      * this one is used to compare against (for OAK-3398) when checking      * if any other instance updated the lease or if the lease is unchanged.      * (This is kind of a duplication of the leaseEndTime field, yes - but the semantics      * are that previousLeaseEndTime exactly only serves the purpose of      * keeping the value of what was stored in the previous lease update.      * leaseEndTime on the other hand serves the purpose of *defining the lease end*,      * these are two different concerns, thus justify two different fields.      * the leaseEndTime for example can be manipulated during tests therefore,      * without interfering with previousLeaseEndTime)      */
+specifier|private
+name|long
+name|previousLeaseEndTime
 decl_stmt|;
 comment|/**      * The read/write mode.      */
 specifier|private
@@ -1415,6 +1420,9 @@ block|{
 comment|// then all is good
 return|return;
 block|}
+comment|// synchronized: we need to guard leaseCheckFailed in order to ensure
+comment|//               that it is only set by 1 thread - thus handleLeaseFailure
+comment|//               is guaranteed to be only called once
 synchronized|synchronized
 init|(
 name|this
@@ -1425,6 +1433,7 @@ condition|(
 name|leaseCheckFailed
 condition|)
 block|{
+comment|// someone else won and marked leaseCheckFailed - so we only log/throw
 name|LOG
 operator|.
 name|error
@@ -1470,16 +1479,9 @@ literal|true
 expr_stmt|;
 comment|// make sure only one thread 'wins', ie goes any further
 block|}
-comment|// OAK-3397 : unlike previously, when the lease check fails we should not
-comment|// do a hard System exit here but rather stop the oak-core bundle
-comment|// (or if that fails just deactivate DocumentNodeStore) - with the
-comment|// goals to prevent this instance to continue to operate
-comment|// give that a lease failure is a strong indicator of a faulty
-comment|// instance - and to stop the background threads of DocumentNodeStore,
-comment|// specifically the BackgroundLeaseUpdate and the BackgroundOperation.
 specifier|final
 name|String
-name|restarterErrorMsg
+name|errorMsg
 init|=
 name|LEASE_CHECK_FAILED_MSG
 operator|+
@@ -1525,9 +1527,31 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-name|restarterErrorMsg
+name|errorMsg
 argument_list|)
 expr_stmt|;
+name|handleLeaseFailure
+argument_list|(
+name|errorMsg
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|handleLeaseFailure
+parameter_list|(
+specifier|final
+name|String
+name|errorMsg
+parameter_list|)
+block|{
+comment|// OAK-3397 : unlike previously, when the lease check fails we should not
+comment|// do a hard System exit here but rather stop the oak-core bundle
+comment|// (or if that fails just deactivate DocumentNodeStore) - with the
+comment|// goals to prevent this instance to continue to operate
+comment|// give that a lease failure is a strong indicator of a faulty
+comment|// instance - and to stop the background threads of DocumentNodeStore,
+comment|// specifically the BackgroundLeaseUpdate and the BackgroundOperation.
 comment|// actual stopping should be done in a separate thread, so:
 if|if
 condition|(
@@ -1596,11 +1620,11 @@ throw|throw
 operator|new
 name|AssertionError
 argument_list|(
-name|restarterErrorMsg
+name|errorMsg
 argument_list|)
 throw|;
 block|}
-comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when after leaseUpdateInterval millis      * since last lease update - default being every 10 sec.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
+comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed after 'leaseUpdateInterval' millis      * since last lease update - default being every 10 sec (this used to be 30sec).      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
 specifier|public
 name|boolean
 name|renewLease
@@ -1623,15 +1647,22 @@ operator|+
 name|leaseUpdateInterval
 condition|)
 block|{
+comment|// no need to renew the lease - it is still within 'leaseUpdateInterval'
 return|return
 literal|false
 return|;
 block|}
+comment|// lease requires renewal
 synchronized|synchronized
 init|(
 name|this
 init|)
 block|{
+comment|// this is synchronized since access to leaseCheckFailed and leaseEndTime
+comment|// are both normally synchronzied to propagate values between renewLease()
+comment|// and performLeaseCheck().
+comment|// (there are unsychronized accesses to both of these as well - however
+comment|// they are both double-checked - and with both reading a stale value is thus OK)
 if|if
 condition|(
 name|leaseCheckFailed
@@ -1706,6 +1737,85 @@ expr_stmt|;
 name|ClusterNodeInfoDocument
 name|doc
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|renewed
+operator|&&
+operator|!
+name|leaseCheckDisabled
+condition|)
+block|{
+comment|// if leaseCheckDisabled, then we just update the lease without checking
+comment|// OAK-3398:
+comment|// if we renewed the lease ever with this instance/ClusterNodeInfo
+comment|// (which is the normal case.. except for startup),
+comment|// then we can now make an assertion that the lease is unchanged
+comment|// and the incremental update must only succeed if no-one else
+comment|// did a recover/inactivation in the meantime
+name|update
+operator|.
+name|setNew
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+comment|// in this case it is *not* a new document
+comment|// make two assertions: the leaseEnd must match ..
+name|update
+operator|.
+name|equals
+argument_list|(
+name|LEASE_END_KEY
+argument_list|,
+literal|null
+argument_list|,
+name|previousLeaseEndTime
+argument_list|)
+expr_stmt|;
+comment|// plus it must still be active ..
+name|update
+operator|.
+name|equals
+argument_list|(
+name|STATE
+argument_list|,
+literal|null
+argument_list|,
+name|ClusterNodeState
+operator|.
+name|ACTIVE
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// @TODO: to make it 100% failure proof we could introduce
+comment|// yet another field to clusterNodes: a runtimeId that we
+comment|// create (UUID) at startup each time - and against that
+comment|// we could also check here - but that goes a bit far IMO
+name|doc
+operator|=
+name|store
+operator|.
+name|findAndUpdate
+argument_list|(
+name|Collection
+operator|.
+name|CLUSTER_NODES
+argument_list|,
+name|update
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// this is only for startup - then we 'just' overwrite
+comment|// the lease - or create it - and don't care a lot about what the
+comment|// status of the lease was
+name|doc
+operator|=
 name|store
 operator|.
 name|createOrUpdate
@@ -1716,7 +1826,86 @@ name|CLUSTER_NODES
 argument_list|,
 name|update
 argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|doc
+operator|==
+literal|null
+condition|)
+block|{
+comment|// should not occur when leaseCheckDisabled
+comment|// OAK-3398 : someone else either started recovering or is already through with that.
+comment|// in both cases the local instance lost the lease-update-game - and hence
+comment|// should behave and must consider itself as 'lease failed'
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+if|if
+condition|(
+name|leaseCheckFailed
+condition|)
+block|{
+comment|// somehow the instance figured out otherwise that the
+comment|// lease check failed - so we don't have to too - so we just log/throw
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+throw|;
+block|}
+name|leaseCheckFailed
+operator|=
+literal|true
+expr_stmt|;
+comment|// make sure only one thread 'wins', ie goes any further
+block|}
+specifier|final
+name|String
+name|errorMsg
+init|=
+name|LEASE_CHECK_FAILED_MSG
+operator|+
+literal|" (Could not update lease anymore, someone else in the cluster "
+operator|+
+literal|"must have noticed this instance' slowness already. "
+operator|+
+literal|"Going to invoke leaseFailureHandler!)"
 decl_stmt|;
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|errorMsg
+argument_list|)
+expr_stmt|;
+name|handleLeaseFailure
+argument_list|(
+name|errorMsg
+argument_list|)
+expr_stmt|;
+comment|// should never be reached: handleLeaseFailure throws an AssertionError
+return|return
+literal|false
+return|;
+block|}
+name|previousLeaseEndTime
+operator|=
+name|leaseEndTime
+expr_stmt|;
+comment|// store previousLeaseEndTime for reference for next time
 name|String
 name|mode
 init|=
