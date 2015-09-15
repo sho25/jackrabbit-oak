@@ -461,7 +461,7 @@ literal|1000
 operator|*
 literal|10
 decl_stmt|;
-comment|/** OAK-3398 : default failure margin 20sec before actual lease timeout **/
+comment|/** OAK-3398 : default failure margin 20sec before actual lease timeout      * (note that OAK-3399 / MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE eats      * off another few seconds from this margin, by default 5sec,      * so the actual default failure-margin is down to 15sec - and that is high-noon!)      */
 specifier|public
 specifier|static
 specifier|final
@@ -471,6 +471,15 @@ init|=
 literal|1000
 operator|*
 literal|20
+decl_stmt|;
+comment|/** OAK-3399 : max number of times we're doing a 1sec retry loop just before declaring lease failure **/
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE
+init|=
+literal|5
 decl_stmt|;
 comment|/**      * The number of milliseconds for a lease (2 minute by default, and      * initially).      */
 specifier|private
@@ -1449,8 +1458,21 @@ name|LEASE_CHECK_FAILED_MSG
 argument_list|)
 throw|;
 block|}
-comment|// synchronized could have delayed the 'now', so
-comment|// set it again..
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE
+condition|;
+name|i
+operator|++
+control|)
+block|{
 name|now
 operator|=
 name|getCurrentTime
@@ -1472,6 +1494,84 @@ comment|// between performLeaseCheck and renewLease()
 comment|// where the winner was: renewLease().
 comment|// so: luckily we can continue here
 return|return;
+block|}
+comment|// OAK-3399 : in case of running into the leaseFailureMargin
+comment|// (shortly, 20sec, before the lease times out), we're now doing
+comment|// a short retry loop of 1sec sleeps (default 5x1sec=5sec),
+comment|// to give this instance 'one last chance' before we have to
+comment|// declare the lease as failed.
+comment|// This sort of retry loop would allow situations such as
+comment|// when running a single-node cluster and interrupting/pausing
+comment|// the process temporarily: in this case when waking up, the
+comment|// lease might momentarily be timed out, but the lease would
+comment|// still be 'updateable' and that would happen pretty soon
+comment|// after waking up. So in that case, doing these retry-sleeps
+comment|// would help.
+comment|// in most other cases where the local instance is not doing
+comment|// lease updates due to 'GC-death' or 'lease-thread-crashed'
+comment|// or the like, it would not help. But it would also not hurt
+comment|// as the margin is 20sec and we're just reducing it by 5sec
+comment|// (in the un-paused case)
+try|try
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"performLeaseCheck: lease within "
+operator|+
+name|leaseFailureMargin
+operator|+
+literal|"ms of failing ("
+operator|+
+operator|(
+name|leaseEndTime
+operator|-
+name|now
+operator|)
+operator|+
+literal|" ms precisely) - "
+operator|+
+literal|"waiting 1sec to retry (up to another "
+operator|+
+operator|(
+name|MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE
+operator|-
+literal|1
+operator|-
+name|i
+operator|)
+operator|+
+literal|" times)..."
+argument_list|)
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"performLeaseCheck: got interrupted - giving up: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
 block|}
 name|leaseCheckFailed
 operator|=
