@@ -1545,13 +1545,12 @@ operator|+
 literal|" times)..."
 argument_list|)
 expr_stmt|;
-name|Thread
-operator|.
-name|sleep
+name|wait
 argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+comment|// directly use this to sleep on - to allow renewLease() to work
 block|}
 catch|catch
 parameter_list|(
