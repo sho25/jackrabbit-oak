@@ -2856,6 +2856,16 @@ operator|.
 name|getDatabaseMinorVersion
 argument_list|()
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[\r\n\t]"
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
+name|trim
+argument_list|()
 decl_stmt|;
 name|String
 name|driverDesc
@@ -2886,6 +2896,16 @@ operator|.
 name|getDriverMinorVersion
 argument_list|()
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[\r\n\t]"
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
+name|trim
+argument_list|()
 decl_stmt|;
 name|String
 name|dbUrl
