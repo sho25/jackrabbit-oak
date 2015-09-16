@@ -1053,11 +1053,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3395"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
