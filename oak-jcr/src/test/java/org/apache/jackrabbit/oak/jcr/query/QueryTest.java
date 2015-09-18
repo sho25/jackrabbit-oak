@@ -493,11 +493,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3416"
-argument_list|)
 specifier|public
 name|void
 name|join
@@ -586,6 +581,26 @@ operator|+
 literal|"inner join [nt:unstructured] as [b] "
 operator|+
 literal|"on [a].[jcr:uuid] = [b].[join] where issamenode([a], '/a')"
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/a"
+argument_list|,
+name|getNodeList
+argument_list|(
+name|session
+argument_list|,
+literal|"select [a].* from [nt:unstructured] as [a] "
+operator|+
+literal|"inner join [nt:unstructured] as [b] "
+operator|+
+literal|"on [b].[join] = [a].[jcr:uuid] where issamenode([a], '/a')"
 argument_list|,
 name|Query
 operator|.

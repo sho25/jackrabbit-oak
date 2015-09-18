@@ -248,6 +248,8 @@ name|boolean
 name|evaluate
 parameter_list|()
 block|{
+comment|// 6.7.8 EquiJoinCondition
+comment|// A node-tuple satisfies the constraint only if:
 name|PropertyValue
 name|p1
 init|=
@@ -265,6 +267,7 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// the selector1Name node has a property named property1Name, and
 return|return
 literal|false
 return|;
@@ -286,10 +289,18 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// the selector2Name node has a property named property2Name, and
 return|return
 literal|false
 return|;
 block|}
+comment|// the value of property property1Name is equal to the value of property property2Name,
+comment|// as defined in §3.6.5 Comparison of Values.
+comment|// -> that can be interpreted as follows: if the property types
+comment|// don't match, then they don't match, however for compatibility
+comment|// with Jackrabbit 2.x, we try to convert the values so the property types match
+comment|// (for example, convert reference to string)
+comment|// See OAK-3416
 if|if
 condition|(
 operator|!
@@ -306,6 +317,17 @@ argument_list|()
 condition|)
 block|{
 comment|// both are single valued
+comment|// "the value of operand2 is converted to the
+comment|// property type of the value of operand1"
+name|p2
+operator|=
+name|convertValueToType
+argument_list|(
+name|p2
+argument_list|,
+name|p1
+argument_list|)
+expr_stmt|;
 return|return
 name|PropertyValues
 operator|.
