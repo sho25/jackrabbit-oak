@@ -508,14 +508,14 @@ name|leaseTime
 init|=
 name|DEFAULT_LEASE_DURATION_MILLIS
 decl_stmt|;
-comment|/**      * The number of milliseconds after which a lease will be updated      * (should not be every second as that would increase number of       * writes towards DocumentStore considerably - but it should also      * not be too low as that would eat into the lease duration on average.      */
+comment|/**      * The number of milliseconds after which a lease will be updated      * (should not be every second as that would increase number of      * writes towards DocumentStore considerably - but it should also      * not be too low as that would eat into the lease duration on average.      */
 specifier|private
 name|long
 name|leaseUpdateInterval
 init|=
 name|DEFAULT_LEASE_UPDATE_INTERVAL_MILLIS
 decl_stmt|;
-comment|/**      * The number of milliseconds that a lease must still be valid      * before prematurely declaring it as failed. The default is 20sec.      * The idea of declaring a lease as failed before it actually failed      * is to avoid a race condition where the local instance assumes      * things are all fine but another instance in the cluster will      * 'in the same moment' declare it as failed. The lease should be       * checked every second and updated after 10sec, so it should always      * have a validity of at least 110sec - if that's down to this margin      * of 20sec then things are not good and we have to give up.      */
+comment|/**      * The number of milliseconds that a lease must still be valid      * before prematurely declaring it as failed. The default is 20sec.      * The idea of declaring a lease as failed before it actually failed      * is to avoid a race condition where the local instance assumes      * things are all fine but another instance in the cluster will      * 'in the same moment' declare it as failed. The lease should be      * checked every second and updated after 10sec, so it should always      * have a validity of at least 110sec - if that's down to this margin      * of 20sec then things are not good and we have to give up.      */
 specifier|private
 name|long
 name|leaseFailureMargin
@@ -582,7 +582,7 @@ specifier|private
 name|String
 name|readWriteMode
 decl_stmt|;
-comment|/**      * The state of the cluter node.      */
+comment|/**      * The state of the cluster node.      */
 specifier|private
 name|ClusterNodeState
 name|state
@@ -755,7 +755,7 @@ return|return
 name|id
 return|;
 block|}
-comment|/**      * Create a cluster node info instance for the store, with the      *       * @param store the document store (for the lease)      * @return the cluster node info      */
+comment|/**      * Create a cluster node info instance for the store, with the      *      * @param store the document store (for the lease)      * @return the cluster node info      */
 specifier|public
 specifier|static
 name|ClusterNodeInfo
@@ -778,7 +778,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a cluster node info instance for the store.      *       * @param store the document store (for the lease)      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @return the cluster node info      */
+comment|/**      * Create a cluster node info instance for the store.      *      * @param store the document store (for the lease)      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @return the cluster node info      */
 specifier|public
 specifier|static
 name|ClusterNodeInfo
@@ -1802,9 +1802,9 @@ name|this
 init|)
 block|{
 comment|// this is synchronized since access to leaseCheckFailed and leaseEndTime
-comment|// are both normally synchronzied to propagate values between renewLease()
+comment|// are both normally synchronized to propagate values between renewLease()
 comment|// and performLeaseCheck().
-comment|// (there are unsychronized accesses to both of these as well - however
+comment|// (there are unsynchronized accesses to both of these as well - however
 comment|// they are both double-checked - and with both reading a stale value is thus OK)
 if|if
 condition|(
@@ -2381,7 +2381,7 @@ literal|0
 return|;
 block|}
 block|}
-comment|/**      * Calculate the unique machine id. This is the lowest MAC address if      * available. As an alternative, a randomly generated UUID is used.      *       * @return the unique id      */
+comment|/**      * Calculate the unique machine id. This is the lowest MAC address if      * available. As an alternative, a randomly generated UUID is used.      *      * @return the unique id      */
 specifier|private
 specifier|static
 name|String
