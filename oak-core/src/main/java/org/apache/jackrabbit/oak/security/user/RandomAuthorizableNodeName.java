@@ -194,6 +194,12 @@ argument_list|,
 name|description
 operator|=
 literal|"Generates a random name for the authorizable node."
+argument_list|,
+name|policy
+operator|=
+name|ConfigurationPolicy
+operator|.
+name|REQUIRE
 argument_list|)
 annotation|@
 name|Service

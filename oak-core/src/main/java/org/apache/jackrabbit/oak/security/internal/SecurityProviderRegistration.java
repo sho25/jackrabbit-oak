@@ -871,8 +871,6 @@ literal|"org.apache.jackrabbit.oak.security.principal.PrincipalConfigurationImpl
 block|,
 literal|"org.apache.jackrabbit.oak.security.authentication.token.TokenConfigurationImpl"
 block|,
-literal|"org.apache.jackrabbit.oak.security.user.RandomAuthorizableNodeName"
-block|,
 literal|"org.apache.jackrabbit.oak.spi.security.user.action.DefaultAuthorizableActionProvider"
 block|,
 literal|"org.apache.jackrabbit.oak.security.authorization.restriction.RestrictionProviderImpl"
