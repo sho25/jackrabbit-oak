@@ -501,6 +501,18 @@ name|MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE
 init|=
 literal|5
 decl_stmt|;
+comment|/**      * The Oak version.      */
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|OAK_VERSION
+init|=
+name|OakVersion
+operator|.
+name|getVersion
+argument_list|()
+decl_stmt|;
 comment|/**      * The number of milliseconds for a lease (2 minute by default, and      * initially).      */
 specifier|private
 name|long
@@ -1010,10 +1022,7 @@ name|set
 argument_list|(
 name|OAK_VERSION_KEY
 argument_list|,
-name|OakVersion
-operator|.
-name|getVersion
-argument_list|()
+name|OAK_VERSION
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -2287,6 +2296,12 @@ operator|+
 literal|"revLock: "
 operator|+
 name|revRecoveryLock
+operator|+
+literal|",\n"
+operator|+
+literal|"oakVersion: "
+operator|+
+name|OAK_VERSION
 return|;
 block|}
 comment|/**      * Specify a custom clock to be used for determining current time.      *      *<b>Only Used For Testing</b>      */

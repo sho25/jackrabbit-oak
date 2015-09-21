@@ -2914,9 +2914,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Initialized DocumentNodeStore with clusterNodeId: {}"
+literal|"Initialized DocumentNodeStore with clusterNodeId: {} ({})"
 argument_list|,
 name|clusterId
+argument_list|,
+name|getClusterNodeInfoDisplayString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2939,6 +2942,18 @@ name|void
 name|dispose
 parameter_list|()
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting disposal of DocumentNodeStore with clusterNodeId: {} ({})"
+argument_list|,
+name|clusterId
+argument_list|,
+name|getClusterNodeInfoDisplayString
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isDisposed
@@ -3133,6 +3148,34 @@ argument_list|,
 name|clusterId
 argument_list|)
 expr_stmt|;
+block|}
+specifier|private
+name|String
+name|getClusterNodeInfoDisplayString
+parameter_list|()
+block|{
+return|return
+name|clusterNodeInfo
+operator|==
+literal|null
+condition|?
+literal|"no cluster node info"
+else|:
+name|clusterNodeInfo
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[\r\n\t]"
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+return|;
 block|}
 name|Revision
 name|setHeadRevision
