@@ -523,7 +523,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|setAuthenticationConfiguration
 parameter_list|(
@@ -541,7 +541,7 @@ name|authenticationConfiguration
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|setAuthorizationConfiguration
 parameter_list|(
@@ -556,7 +556,7 @@ operator|=
 name|authorizationConfiguration
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|setUserConfiguration
 parameter_list|(
@@ -571,7 +571,7 @@ operator|=
 name|userConfiguration
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|setPrincipalConfiguration
 parameter_list|(
@@ -586,7 +586,7 @@ operator|=
 name|principalConfiguration
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|setPrivilegeConfiguration
 parameter_list|(
@@ -601,7 +601,7 @@ operator|=
 name|privilegeConfiguration
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|setTokenConfiguration
 parameter_list|(

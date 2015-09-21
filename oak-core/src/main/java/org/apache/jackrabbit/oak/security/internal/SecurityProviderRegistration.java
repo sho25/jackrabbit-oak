@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|security
+operator|.
+name|internal
 package|;
 end_package
 
@@ -222,6 +224,22 @@ operator|.
 name|osgi
 operator|.
 name|OsgiWhiteboard
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
+name|SecurityProviderImpl
 import|;
 end_import
 
@@ -1030,6 +1048,11 @@ operator|.
 name|DYNAMIC
 argument_list|)
 block|}
+argument_list|)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
 argument_list|)
 specifier|public
 class|class

@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|security
+operator|.
+name|internal
 package|;
 end_package
 
