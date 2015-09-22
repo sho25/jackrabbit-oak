@@ -25,18 +25,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|InvocationTargetException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|sql
 operator|.
 name|Connection
@@ -140,16 +128,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|sql
-operator|.
-name|DataSource
 import|;
 end_import
 
@@ -1258,6 +1236,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|rs
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|stmt
 operator|.
 name|close
