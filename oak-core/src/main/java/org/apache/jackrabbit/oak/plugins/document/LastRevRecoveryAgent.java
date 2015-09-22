@@ -410,7 +410,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Recover the correct _lastRev updates for potentially missing candidate nodes.      *       * @param clusterId the cluster id for which the _lastRev are to be recovered      * @return the int the number of restored nodes      */
+comment|/**      * Recover the correct _lastRev updates for potentially missing candidate nodes.      *      * @param clusterId the cluster id for which the _lastRev are to be recovered      * @return the number of restored nodes      */
 specifier|public
 name|int
 name|recover
@@ -593,7 +593,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Recover the correct _lastRev updates for the given candidate nodes.      *       * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @param dryRun if {@code true}, this method will only perform a check      *               but not apply the changes to the _lastRev fields.      * @return the number of documents that required recovery. This method      *          returns the number of the affected documents even if      *          {@code dryRun} is set true and no document was changed.      */
+comment|/**      * Recover the correct _lastRev updates for the given candidate nodes.      *      * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @param dryRun if {@code true}, this method will only perform a check      *               but not apply the changes to the _lastRev fields.      * @return the number of documents that required recovery. This method      *          returns the number of the affected documents even if      *          {@code dryRun} is set true and no document was changed.      */
 specifier|public
 name|int
 name|recover
@@ -1165,7 +1165,7 @@ return|return
 name|size
 return|;
 block|}
-comment|/**      * Retrieves possible candidates which have been modified after the given      * {@code startTime} and recovers the missing updates.      *       * @param clusterId the cluster id      * @param startTime the start time      * @return the int the number of restored nodes      */
+comment|/**      * Retrieves possible candidates which have been modified after the given      * {@code startTime} and recovers the missing updates.      *      * @param clusterId the cluster id      * @param startTime the start time      * @return the number of restored nodes      */
 specifier|private
 name|int
 name|recoverCandidates
@@ -1276,7 +1276,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Determines the last committed modification to the given document by      * a {@code clusterId}.      *       * @param doc a document.      * @param clusterId clusterId for which the last committed modification is      *                  looked up.      * @return the commit revision of the last modification by {@code clusterId}      *          to the given document.      */
+comment|/**      * Determines the last committed modification to the given document by      * a {@code clusterId}.      *      * @param doc a document.      * @param clusterId clusterId for which the last committed modification is      *                  looked up.      * @return the commit revision of the last modification by {@code clusterId}      *          to the given document.      */
 annotation|@
 name|CheckForNull
 specifier|private
