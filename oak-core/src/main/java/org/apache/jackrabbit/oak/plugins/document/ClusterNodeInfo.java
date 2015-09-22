@@ -395,6 +395,15 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * Flag indicating which cluster node is running the recovery.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REV_RECOVERY_BY
+init|=
+literal|"recoveryBy"
+decl_stmt|;
 comment|/**      * Additional info, such as the process id, for support.      */
 specifier|private
 specifier|static

@@ -4448,6 +4448,9 @@ name|acquireRecoveryLock
 argument_list|(
 name|anyInt
 argument_list|()
+argument_list|,
+name|anyInt
+argument_list|()
 argument_list|)
 argument_list|)
 operator|.
@@ -4505,6 +4508,17 @@ name|getArguments
 argument_list|()
 index|[
 literal|0
+index|]
+argument_list|,
+operator|(
+name|Integer
+operator|)
+name|invocation
+operator|.
+name|getArguments
+argument_list|()
+index|[
+literal|1
 index|]
 argument_list|)
 return|;

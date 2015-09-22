@@ -61,6 +61,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -150,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utils to retrieve _lastRev missing update candidates.  */
+comment|/**  * Utilities to retrieve _lastRev missing update candidates.  */
 end_comment
 
 begin_class
@@ -158,6 +178,21 @@ specifier|public
 class|class
 name|MissingLastRevSeeker
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MissingLastRevSeeker
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|final
 name|String
@@ -327,10 +362,16 @@ name|acquireRecoveryLock
 parameter_list|(
 name|int
 name|clusterId
+parameter_list|,
+name|int
+name|recoveredBy
 parameter_list|)
 block|{
-comment|//This approach has a race condition where two different cluster nodes
-comment|//can acquire the lock simultaneously.
+try|try
+block|{
+comment|// This approach has a race condition where two different cluster
+comment|// nodes
+comment|// can acquire the lock simultaneously.
 name|UpdateOp
 name|update
 init|=
@@ -363,6 +404,25 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|recoveredBy
+operator|!=
+literal|0
+condition|)
+block|{
+name|update
+operator|.
+name|set
+argument_list|(
+name|ClusterNodeInfo
+operator|.
+name|REV_RECOVERY_BY
+argument_list|,
+name|recoveredBy
+argument_list|)
+expr_stmt|;
+block|}
 name|store
 operator|.
 name|createOrUpdate
@@ -378,6 +438,30 @@ return|return
 literal|true
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Failed to acquire the recovery lock for clusterNodeId "
+operator|+
+name|clusterId
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|(
+name|ex
+operator|)
+throw|;
+block|}
+block|}
 specifier|public
 name|void
 name|releaseRecoveryLock
@@ -385,6 +469,8 @@ parameter_list|(
 name|int
 name|clusterId
 parameter_list|)
+block|{
+try|try
 block|{
 name|UpdateOp
 name|update
@@ -419,6 +505,17 @@ name|set
 argument_list|(
 name|ClusterNodeInfo
 operator|.
+name|REV_RECOVERY_BY
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|set
+argument_list|(
+name|ClusterNodeInfo
+operator|.
 name|STATE
 argument_list|,
 literal|null
@@ -435,6 +532,30 @@ argument_list|,
 name|update
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Failed to release the recovery lock for clusterNodeId "
+operator|+
+name|clusterId
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|(
+name|ex
+operator|)
+throw|;
+block|}
 block|}
 specifier|public
 name|NodeDocument
