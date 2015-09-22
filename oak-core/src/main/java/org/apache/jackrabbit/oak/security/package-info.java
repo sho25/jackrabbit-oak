@@ -11,7 +11,7 @@ begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"2.0.0"
+literal|"1.0.1"
 argument_list|)
 end_annotation
 
@@ -47,7 +47,7 @@ name|bnd
 operator|.
 name|annotation
 operator|.
-name|Version
+name|Export
 import|;
 end_import
 
@@ -59,7 +59,7 @@ name|bnd
 operator|.
 name|annotation
 operator|.
-name|Export
+name|Version
 import|;
 end_import
 
