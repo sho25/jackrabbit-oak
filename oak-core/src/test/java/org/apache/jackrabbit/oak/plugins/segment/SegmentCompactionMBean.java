@@ -335,6 +335,11 @@ name|String
 name|getLastError
 parameter_list|()
 function_decl|;
+comment|/**      * @return  Number of commits      */
+name|long
+name|getCommitCount
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
