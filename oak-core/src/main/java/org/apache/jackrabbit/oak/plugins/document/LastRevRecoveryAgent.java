@@ -1060,7 +1060,10 @@ name|Override
 specifier|public
 name|void
 name|acquiring
-parameter_list|()
+parameter_list|(
+name|Revision
+name|mostRecent
+parameter_list|)
 block|{
 if|if
 condition|(

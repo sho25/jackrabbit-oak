@@ -9991,7 +9991,10 @@ name|Override
 specifier|public
 name|void
 name|acquiring
-parameter_list|()
+parameter_list|(
+name|Revision
+name|mostRecent
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -10007,8 +10010,7 @@ name|changes
 operator|.
 name|asUpdateOp
 argument_list|(
-name|getHeadRevision
-argument_list|()
+name|mostRecent
 argument_list|)
 argument_list|)
 argument_list|)

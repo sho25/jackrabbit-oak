@@ -259,29 +259,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
 import|;
 end_import
 
@@ -405,8 +383,6 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// OAK-3433
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 specifier|public
@@ -573,7 +549,7 @@ comment|// the first merge attempt will fail with a conflict
 comment|// because /a/b/c is seen as changed in the future
 comment|// without the fix for OAK-3433:
 comment|// the second merge attempt succeeds because now the
-comment|// /a/b/c change is visible and happened before the commit
+comment|// /a/b/c change revision is visible and happened before the commit
 comment|// revision but before the base revision
 name|b2
 operator|=
@@ -644,6 +620,26 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|builder
+operator|.
+name|getChildNode
+argument_list|(
+literal|"a"
+argument_list|)
+operator|.
+name|getChildNode
+argument_list|(
+literal|"b"
+argument_list|)
+operator|.
+name|hasChildNode
+argument_list|(
+literal|"c"
+argument_list|)
+condition|)
+block|{
 name|builder
 operator|.
 name|child
@@ -666,6 +662,23 @@ argument_list|(
 literal|"bar"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+name|CommitFailedException
+operator|.
+name|OAK
+argument_list|,
+literal|0
+argument_list|,
+literal|"/a/b/c does not exist anymore"
+argument_list|)
+throw|;
+block|}
 return|return
 name|builder
 operator|.
@@ -692,11 +705,6 @@ name|CommitFailedException
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 comment|// expected
 block|}
 block|}
