@@ -293,7 +293,14 @@ specifier|final
 name|int
 name|wait
 init|=
+name|Math
+operator|.
+name|min
+argument_list|(
 name|key
+argument_list|,
+literal|100
+argument_list|)
 decl_stmt|;
 name|Callable
 argument_list|<
