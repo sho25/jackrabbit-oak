@@ -487,10 +487,6 @@ operator|.
 name|INDEX_DEFINITIONS_NAME
 argument_list|,
 literal|"counter"
-argument_list|,
-name|NodeCounterEditor
-operator|.
-name|DATA_NODE_NAME
 argument_list|)
 expr_stmt|;
 if|if
@@ -498,6 +494,12 @@ condition|(
 name|s
 operator|==
 literal|null
+operator|||
+operator|!
+name|s
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// no index
@@ -506,6 +508,17 @@ operator|-
 literal|1
 return|;
 block|}
+name|s
+operator|=
+name|child
+argument_list|(
+name|s
+argument_list|,
+name|NodeCounterEditor
+operator|.
+name|DATA_NODE_NAME
+argument_list|)
+expr_stmt|;
 name|s
 operator|=
 name|child

@@ -279,6 +279,11 @@ name|String
 name|getPlan
 parameter_list|()
 function_decl|;
+comment|/**      * Get the index cost. The query must already be prepared.      *       * @return the index cost      */
+name|String
+name|getIndexCost
+parameter_list|()
+function_decl|;
 comment|/**      * Get the estimated cost.      *       * @return the estimated cost      */
 name|double
 name|getEstimatedCost

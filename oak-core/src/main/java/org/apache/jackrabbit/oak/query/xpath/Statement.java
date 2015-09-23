@@ -525,7 +525,6 @@ literal|"explain "
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
 if|if
 condition|(
 name|measure
@@ -1256,8 +1255,6 @@ decl_stmt|;
 comment|// explain | measure ...
 if|if
 condition|(
-name|this
-operator|.
 name|explain
 condition|)
 block|{
@@ -1269,7 +1266,6 @@ literal|"explain "
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
 if|if
 condition|(
 name|measure

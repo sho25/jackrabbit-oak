@@ -2692,6 +2692,21 @@ init|=
 name|getPlan
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|measure
+condition|)
+block|{
+name|plan
+operator|+=
+literal|" cost: { "
+operator|+
+name|getIndexCost
+argument_list|()
+operator|+
+literal|" }"
+expr_stmt|;
+block|}
 name|columns
 operator|=
 operator|new
@@ -3235,6 +3250,25 @@ return|return
 name|source
 operator|.
 name|getPlan
+argument_list|(
+name|context
+operator|.
+name|getBaseState
+argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getIndexCost
+parameter_list|()
+block|{
+return|return
+name|source
+operator|.
+name|getIndexCost
 argument_list|(
 name|context
 operator|.

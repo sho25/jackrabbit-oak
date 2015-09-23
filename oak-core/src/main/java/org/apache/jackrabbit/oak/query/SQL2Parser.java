@@ -904,7 +904,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-elseif|else
 if|if
 condition|(
 name|readIf

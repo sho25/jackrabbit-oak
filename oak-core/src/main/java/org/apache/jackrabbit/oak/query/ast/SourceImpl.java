@@ -217,6 +217,16 @@ name|NodeState
 name|rootState
 parameter_list|)
 function_decl|;
+comment|/**      * Get the index cost as a JSON string.      *      * @param rootState the root      * @return the cost      */
+specifier|public
+specifier|abstract
+name|String
+name|getIndexCost
+parameter_list|(
+name|NodeState
+name|rootState
+parameter_list|)
+function_decl|;
 comment|/**      * Prepare executing the query (recursively). This will 'wire' the      * selectors with the join constraints, and decide which index to use.      *       * @return the execution plan      */
 specifier|public
 specifier|abstract
