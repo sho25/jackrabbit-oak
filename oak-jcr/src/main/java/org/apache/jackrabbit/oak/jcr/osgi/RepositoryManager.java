@@ -566,11 +566,6 @@ name|fastQueryResultSize
 decl_stmt|;
 annotation|@
 name|Reference
-argument_list|(
-name|target
-operator|=
-literal|"(type=default)"
-argument_list|)
 specifier|private
 name|SecurityProvider
 name|securityProvider
