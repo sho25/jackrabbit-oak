@@ -1734,6 +1734,12 @@ specifier|private
 name|Whiteboard
 name|whiteboard
 decl_stmt|;
+specifier|private
+name|long
+name|deactivationTimestamp
+init|=
+literal|0
+decl_stmt|;
 comment|/**      * Revisions older than this time would be garbage collected      */
 specifier|private
 specifier|static
@@ -2037,6 +2043,30 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// disallow attempts to restart (OAK-3420)
+if|if
+condition|(
+name|deactivationTimestamp
+operator|!=
+literal|0
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"DocumentNodeStore was already unregistered ({}ms ago)"
+argument_list|,
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|deactivationTimestamp
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|context
@@ -3258,6 +3288,13 @@ name|void
 name|unregisterNodeStore
 parameter_list|()
 block|{
+name|deactivationTimestamp
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Registration
