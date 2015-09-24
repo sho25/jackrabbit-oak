@@ -279,9 +279,9 @@ name|String
 name|getPlan
 parameter_list|()
 function_decl|;
-comment|/**      * Get the index cost. The query must already be prepared.      *       * @return the index cost      */
+comment|/**      * Get the index cost as a JSON string. The query must already be prepared.      *       * @return the index cost      */
 name|String
-name|getIndexCost
+name|getIndexCostInfo
 parameter_list|()
 function_decl|;
 comment|/**      * Get the estimated cost.      *       * @return the estimated cost      */

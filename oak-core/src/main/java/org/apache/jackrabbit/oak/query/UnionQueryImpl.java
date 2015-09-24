@@ -1219,7 +1219,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getIndexCost
+name|getIndexCostInfo
 parameter_list|()
 block|{
 name|StringBuilder
@@ -1242,7 +1242,7 @@ name|append
 argument_list|(
 name|left
 operator|.
-name|getIndexCost
+name|getIndexCostInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1259,7 +1259,7 @@ name|append
 argument_list|(
 name|right
 operator|.
-name|getIndexCost
+name|getIndexCostInfo
 argument_list|()
 argument_list|)
 expr_stmt|;

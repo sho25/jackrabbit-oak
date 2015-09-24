@@ -2701,7 +2701,7 @@ name|plan
 operator|+=
 literal|" cost: { "
 operator|+
-name|getIndexCost
+name|getIndexCostInfo
 argument_list|()
 operator|+
 literal|" }"
@@ -3262,13 +3262,13 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getIndexCost
+name|getIndexCostInfo
 parameter_list|()
 block|{
 return|return
 name|source
 operator|.
-name|getIndexCost
+name|getIndexCostInfo
 argument_list|(
 name|context
 operator|.

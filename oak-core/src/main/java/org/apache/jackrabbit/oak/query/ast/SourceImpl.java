@@ -221,7 +221,7 @@ comment|/**      * Get the index cost as a JSON string.      *      * @param roo
 specifier|public
 specifier|abstract
 name|String
-name|getIndexCost
+name|getIndexCostInfo
 parameter_list|(
 name|NodeState
 name|rootState

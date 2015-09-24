@@ -1689,7 +1689,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getIndexCost
+name|getIndexCostInfo
 parameter_list|(
 name|NodeState
 name|rootState

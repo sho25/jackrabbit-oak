@@ -492,7 +492,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getIndexCost
+name|getIndexCostInfo
 parameter_list|(
 name|NodeState
 name|rootState
@@ -526,7 +526,7 @@ name|append
 argument_list|(
 name|left
 operator|.
-name|getIndexCost
+name|getIndexCostInfo
 argument_list|(
 name|rootState
 argument_list|)
@@ -545,7 +545,7 @@ name|append
 argument_list|(
 name|right
 operator|.
-name|getIndexCost
+name|getIndexCostInfo
 argument_list|(
 name|rootState
 argument_list|)
