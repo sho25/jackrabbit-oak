@@ -374,7 +374,7 @@ argument_list|(
 operator|new
 name|ReadOnlyBuilder
 argument_list|(
-name|data
+name|defnNodeState
 argument_list|)
 argument_list|,
 name|definition

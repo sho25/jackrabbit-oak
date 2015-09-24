@@ -80,6 +80,11 @@ name|INDEX_DATA_CHILD_NAME
 init|=
 literal|":data"
 decl_stmt|;
+name|String
+name|TRASH_CHILD_NAME
+init|=
+literal|":trash"
+decl_stmt|;
 name|Version
 name|VERSION
 init|=
@@ -162,6 +167,12 @@ name|String
 name|ORDERED_PROP_NAMES
 init|=
 literal|"orderedProps"
+decl_stmt|;
+comment|/**      * Actively the data store files after this many hours.      */
+name|String
+name|ACTIVE_DELETE
+init|=
+literal|"activeDelete"
 decl_stmt|;
 comment|/**      * Size in bytes used for splitting the index files when storing them in NodeStore      */
 name|String

@@ -768,11 +768,6 @@ operator|new
 name|OakDirectory
 argument_list|(
 name|builder
-operator|.
-name|child
-argument_list|(
-name|INDEX_DATA_CHILD_NAME
-argument_list|)
 argument_list|,
 operator|new
 name|IndexDefinition
