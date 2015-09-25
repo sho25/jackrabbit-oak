@@ -153,6 +153,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|double
+name|getMinimumCost
+parameter_list|()
+block|{
+return|return
+literal|1e-3
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|List
 argument_list|<
 name|IndexPlan
@@ -214,7 +225,8 @@ argument_list|)
 operator|.
 name|setCostPerExecution
 argument_list|(
-literal|1e-3
+name|getMinimumCost
+argument_list|()
 argument_list|)
 operator|.
 name|setAttribute

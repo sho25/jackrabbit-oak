@@ -423,7 +423,7 @@ class|class
 name|PropertyIndexLookup
 block|{
 comment|/**      * The cost overhead to use the index in number of read operations.      */
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|double

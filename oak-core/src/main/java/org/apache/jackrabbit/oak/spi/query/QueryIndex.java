@@ -168,6 +168,11 @@ specifier|public
 interface|interface
 name|QueryIndex
 block|{
+comment|/**      * Returns the minimum cost which {@link #getCost(Filter, NodeState)} would return in the best possible case.      *<p>      * The implementation should return a static/cached value because it is called very often.      *      * @return the minimum cost for the index      */
+name|double
+name|getMinimumCost
+parameter_list|()
+function_decl|;
 comment|/**      * Estimate the worst-case cost to query with the given filter. The returned      * cost is a value between 1 (very fast; lookup of a unique node) and the      * estimated number of entries to traverse, if the cursor would be fully      * read, and if there could in theory be one network roundtrip or disk read      * operation per node (this method may return a lower number if the data is      * known to be fully in memory).      *<p>      * The returned value is supposed to be an estimate and doesn't have to be      * very accurate. Please note this method is called on each index whenever a      * query is run, so the method should be reasonably fast (not read any data      * itself, or at least not read too much data).      *<p>      * If an index implementation can not query the data, it has to return      * {@code Double.MAX_VALUE}.      *       * @param filter the filter      * @param rootState root state of the current repository snapshot      * @return the estimated cost in number of read nodes      */
 name|double
 name|getCost
@@ -464,8 +469,6 @@ decl_stmt|;
 specifier|protected
 name|String
 name|planName
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|Builder

@@ -3290,7 +3290,11 @@ name|index
 init|=
 operator|new
 name|OrderedPropertyIndex
+argument_list|(
+operator|new
+name|OrderedPropertyIndexProvider
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|final
 name|String
@@ -3828,7 +3832,11 @@ name|index
 init|=
 operator|new
 name|OrderedPropertyIndex
+argument_list|(
+operator|new
+name|OrderedPropertyIndexProvider
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|final
 name|String
@@ -4067,7 +4075,11 @@ name|index
 init|=
 operator|new
 name|OrderedPropertyIndex
+argument_list|(
+operator|new
+name|OrderedPropertyIndexProvider
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|final
 name|String

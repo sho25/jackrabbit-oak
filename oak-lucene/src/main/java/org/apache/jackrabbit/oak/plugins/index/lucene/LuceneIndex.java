@@ -1481,6 +1481,13 @@ name|NATIVE_QUERY_FUNCTION
 init|=
 literal|"native*lucene"
 decl_stmt|;
+specifier|private
+specifier|static
+name|double
+name|MIN_COST
+init|=
+literal|2.2
+decl_stmt|;
 comment|/**      * IndexPaln Attribute name which refers to the path of Lucene index to be used      * to perform query      */
 specifier|static
 specifier|final
@@ -1541,6 +1548,17 @@ name|aggregator
 operator|=
 name|aggregator
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|double
+name|getMinimumCost
+parameter_list|()
+block|{
+return|return
+name|MIN_COST
+return|;
 block|}
 annotation|@
 name|Override

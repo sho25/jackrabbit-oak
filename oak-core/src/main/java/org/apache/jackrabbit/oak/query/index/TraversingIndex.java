@@ -199,6 +199,17 @@ block|{
 annotation|@
 name|Override
 specifier|public
+name|double
+name|getMinimumCost
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|Cursor
 name|query
 parameter_list|(

@@ -133,6 +133,16 @@ name|NodeTypeIndexLookup
 implements|implements
 name|JcrConstants
 block|{
+comment|/**      * Derived from {@link #getCost(Filter)}      */
+specifier|static
+specifier|final
+name|double
+name|MINIMUM_COST
+init|=
+name|PropertyIndexLookup
+operator|.
+name|COST_OVERHEAD
+decl_stmt|;
 specifier|private
 specifier|final
 name|NodeState

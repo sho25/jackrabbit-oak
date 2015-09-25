@@ -327,6 +327,45 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * We're local. Low-cost      */
+specifier|private
+specifier|static
+specifier|final
+name|double
+name|COST_PER_EXECUTION
+init|=
+literal|3
+decl_stmt|;
+specifier|private
+specifier|final
+name|OrderedPropertyIndexProvider
+name|indexProvider
+decl_stmt|;
+specifier|public
+name|OrderedPropertyIndex
+parameter_list|(
+name|OrderedPropertyIndexProvider
+name|indexProvider
+parameter_list|)
+block|{
+name|this
+operator|.
+name|indexProvider
+operator|=
+name|indexProvider
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|double
+name|getMinimumCost
+parameter_list|()
+block|{
+return|return
+name|COST_PER_EXECUTION
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -349,6 +388,8 @@ return|return
 operator|new
 name|OrderedPropertyIndexLookup
 argument_list|(
+name|indexProvider
+argument_list|,
 name|root
 argument_list|)
 return|;
@@ -402,10 +443,9 @@ name|b
 operator|.
 name|setCostPerExecution
 argument_list|(
-literal|1
+name|COST_PER_EXECUTION
 argument_list|)
 expr_stmt|;
-comment|// we're local. Low-cost
 comment|// we're local but slightly more expensive than a standard PropertyIndex
 name|b
 operator|.

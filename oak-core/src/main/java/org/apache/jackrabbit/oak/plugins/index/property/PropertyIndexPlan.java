@@ -253,26 +253,6 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|PathFilter
-operator|.
-name|Result
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
 name|property
 operator|.
 name|strategy
@@ -587,7 +567,6 @@ class|class
 name|PropertyIndexPlan
 block|{
 comment|/**      * The cost overhead to use the index in number of read operations.      */
-specifier|private
 specifier|static
 specifier|final
 name|double
@@ -1502,6 +1481,14 @@ expr_stmt|;
 block|}
 return|return
 name|cursor
+return|;
+block|}
+name|Filter
+name|getFilter
+parameter_list|()
+block|{
+return|return
+name|filter
 return|;
 block|}
 comment|//------------------------------------------------------------< Object>--
