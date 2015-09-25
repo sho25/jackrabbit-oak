@@ -1829,11 +1829,6 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|IndexNode
-name|indexNode
-init|=
-literal|null
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -1842,6 +1837,11 @@ range|:
 name|indexPaths
 control|)
 block|{
+name|IndexNode
+name|indexNode
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|indexNode
