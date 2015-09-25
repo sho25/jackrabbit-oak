@@ -959,6 +959,8 @@ operator|=
 name|recordSizeMapping
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLength
