@@ -1310,7 +1310,7 @@ name|stats
 return|;
 block|}
 comment|/**      * Mark and sweep. Main entry method for GC.      *      * @param markOnly whether to mark only      * @throws Exception the exception      */
-specifier|private
+specifier|protected
 name|void
 name|markAndSweep
 parameter_list|(
@@ -1351,6 +1351,14 @@ argument_list|(
 literal|"Starting Blob garbage collection"
 argument_list|)
 expr_stmt|;
+name|long
+name|markStart
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|mark
 argument_list|(
 name|fs
@@ -1368,6 +1376,8 @@ init|=
 name|sweep
 argument_list|(
 name|fs
+argument_list|,
+name|markStart
 argument_list|)
 decl_stmt|;
 name|threw
@@ -1416,7 +1426,7 @@ block|}
 block|}
 block|}
 comment|/**      * Mark phase of the GC.      * @param fs the garbage collector file state      */
-specifier|private
+specifier|protected
 name|void
 name|mark
 parameter_list|(
@@ -1681,13 +1691,16 @@ return|return
 name|numCandidates
 return|;
 block|}
-comment|/**      * Sweep phase of gc candidate deletion.      *<p>      * Performs the following steps depending upon the type of the blob store refer      * {@link org.apache.jackrabbit.oak.plugins.blob.SharedDataStore.Type}:      *      *<ul>      *<li>Shared</li>      *<ul>      *<li> Merge all marked references (from the mark phase run independently) available in the data store meta      *          store (from all configured independent repositories).      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (earliest time stamp of the marked references - #maxLastModifiedInterval) from the above set.      *</ul>      *      *<li>Default</li>      *<ul>      *<li> Mark phase already run.      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (time stamp of the marked references - #maxLastModifiedInterval).      *</ul>      *</ul>      *      * @return the number of blobs deleted      * @throws Exception the exception      * @param fs the garbage collector file state      */
-specifier|private
+comment|/**      * Sweep phase of gc candidate deletion.      *<p>      * Performs the following steps depending upon the type of the blob store refer      * {@link org.apache.jackrabbit.oak.plugins.blob.SharedDataStore.Type}:      *      *<ul>      *<li>Shared</li>      *<ul>      *<li> Merge all marked references (from the mark phase run independently) available in the data store meta      *          store (from all configured independent repositories).      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (earliest time stamp of the marked references - #maxLastModifiedInterval) from the above set.      *</ul>      *      *<li>Default</li>      *<ul>      *<li> Mark phase already run.      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (time stamp of the marked references - #maxLastModifiedInterval).      *</ul>      *</ul>      *      * @return the number of blobs deleted      * @throws Exception the exception      * @param fs the garbage collector file state      * @param markStart the start time of mark to take as reference for deletion      */
+specifier|protected
 name|long
 name|sweep
 parameter_list|(
 name|GarbageCollectorFileState
 name|fs
+parameter_list|,
+name|long
+name|markStart
 parameter_list|)
 throws|throws
 name|Exception
@@ -1723,6 +1736,18 @@ literal|"Earliest reference available for timestamp [{}]"
 argument_list|,
 name|earliestRefAvailTime
 argument_list|)
+expr_stmt|;
+name|earliestRefAvailTime
+operator|=
+operator|(
+name|earliestRefAvailTime
+operator|<
+name|markStart
+condition|?
+name|earliestRefAvailTime
+else|:
+name|markStart
+operator|)
 expr_stmt|;
 block|}
 catch|catch
@@ -1763,6 +1788,14 @@ name|deleted
 init|=
 literal|0
 decl_stmt|;
+name|long
+name|lastMaxModifiedTime
+init|=
+name|getLastMaxModifiedTime
+argument_list|(
+name|earliestRefAvailTime
+argument_list|)
+decl_stmt|;
 name|LOG
 operator|.
 name|debug
@@ -1778,10 +1811,7 @@ literal|"Sweeping blobs with modified time> than the configured max deleted time
 argument_list|,
 name|timestampToString
 argument_list|(
-name|getLastMaxModifiedTime
-argument_list|(
-name|earliestRefAvailTime
-argument_list|)
+name|lastMaxModifiedTime
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1871,7 +1901,7 @@ name|ids
 argument_list|,
 name|exceptionQueue
 argument_list|,
-name|earliestRefAvailTime
+name|lastMaxModifiedTime
 argument_list|)
 expr_stmt|;
 name|ids
@@ -1905,7 +1935,7 @@ name|ids
 argument_list|,
 name|exceptionQueue
 argument_list|,
-name|earliestRefAvailTime
+name|lastMaxModifiedTime
 argument_list|)
 expr_stmt|;
 block|}
@@ -2020,10 +2050,7 @@ name|count
 argument_list|,
 name|timestampToString
 argument_list|(
-name|getLastMaxModifiedTime
-argument_list|(
-name|earliestRefAvailTime
-argument_list|)
+name|lastMaxModifiedTime
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2191,10 +2218,7 @@ name|countDeleteChunks
 argument_list|(
 name|ids
 argument_list|,
-name|getLastMaxModifiedTime
-argument_list|(
 name|maxModified
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2257,7 +2281,7 @@ name|deleted
 return|;
 block|}
 comment|/**      * Iterates the complete node tree and collect all blob references      * @param fs the garbage collector file state      */
-specifier|private
+specifier|protected
 name|void
 name|iterateNodeTree
 parameter_list|(

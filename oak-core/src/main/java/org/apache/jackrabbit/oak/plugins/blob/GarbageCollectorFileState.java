@@ -156,6 +156,7 @@ comment|/**  * Class for keeping the file system state of the garbage collection
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|GarbageCollectorFileState
 implements|implements
