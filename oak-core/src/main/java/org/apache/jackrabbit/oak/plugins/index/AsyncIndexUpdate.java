@@ -3931,19 +3931,6 @@ name|DefaultMissingIndexProviderStrategy
 extends|extends
 name|MissingIndexProviderStrategy
 block|{
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|ignore
-init|=
-name|newHashSet
-argument_list|(
-literal|"disabled"
-argument_list|)
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -3955,15 +3942,16 @@ name|type
 parameter_list|,
 name|NodeBuilder
 name|definition
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
 if|if
 condition|(
-name|ignore
-operator|.
-name|contains
+name|isDisabled
 argument_list|(
 name|type
 argument_list|)
@@ -3982,6 +3970,10 @@ argument_list|,
 literal|"Missing index provider detected for type ["
 operator|+
 name|type
+operator|+
+literal|"] on index ["
+operator|+
+name|path
 operator|+
 literal|"]"
 argument_list|)
