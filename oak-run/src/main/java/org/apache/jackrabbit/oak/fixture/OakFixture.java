@@ -1093,6 +1093,8 @@ operator|.
 name|setClusterId
 argument_list|(
 name|i
+operator|+
+literal|1
 argument_list|)
 operator|.
 name|setLogging
@@ -1691,6 +1693,8 @@ operator|.
 name|setClusterId
 argument_list|(
 name|i
+operator|+
+literal|1
 argument_list|)
 operator|.
 name|setLogging
