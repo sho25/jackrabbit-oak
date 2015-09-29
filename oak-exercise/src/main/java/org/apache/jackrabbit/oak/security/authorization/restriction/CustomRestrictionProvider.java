@@ -361,7 +361,7 @@ name|Tree
 name|tree
 parameter_list|)
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 literal|null
 return|;
@@ -388,7 +388,7 @@ argument_list|>
 name|restrictions
 parameter_list|)
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 literal|null
 return|;
