@@ -714,53 +714,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|FailedWithConflictException
-name|e
-parameter_list|)
-block|{
-comment|// suspend until conflicting revision is visible
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Suspending until {} is visible. Current head {}."
-argument_list|,
-name|e
-operator|.
-name|getConflictRevision
-argument_list|()
-argument_list|,
-name|store
-operator|.
-name|getHeadRevision
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|store
-operator|.
-name|suspendUntil
-argument_list|(
-name|e
-operator|.
-name|getConflictRevision
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Resumed. Current head {}."
-argument_list|,
-name|store
-operator|.
-name|getHeadRevision
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
 name|CommitFailedException
 name|e
 parameter_list|)
@@ -860,6 +813,11 @@ name|ex
 init|=
 literal|null
 decl_stmt|;
+name|Revision
+name|conflictRevision
+init|=
+literal|null
+decl_stmt|;
 name|long
 name|time
 init|=
@@ -910,6 +868,57 @@ operator|.
 name|start
 argument_list|()
 decl_stmt|;
+comment|// suspend until conflict revision is visible
+comment|// or as a fallback sleep for a while
+if|if
+condition|(
+name|conflictRevision
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// suspend until conflicting revision is visible
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Suspending until {} is visible. Current head {}."
+argument_list|,
+name|conflictRevision
+argument_list|,
+name|store
+operator|.
+name|getHeadRevision
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
+name|suspendUntil
+argument_list|(
+name|conflictRevision
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Resumed. Current head {}."
+argument_list|,
+name|store
+operator|.
+name|getHeadRevision
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// reset conflict revision
+name|conflictRevision
+operator|=
+literal|null
+expr_stmt|;
+block|}
+else|else
+block|{
 name|Thread
 operator|.
 name|sleep
@@ -936,6 +945,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|perfLogger
 operator|.
 name|end
@@ -998,10 +1008,17 @@ name|FailedWithConflictException
 name|e
 parameter_list|)
 block|{
-comment|// let caller decide what to do with conflicting revision
-throw|throw
+name|ex
+operator|=
 name|e
-throw|;
+expr_stmt|;
+name|conflictRevision
+operator|=
+name|e
+operator|.
+name|getConflictRevision
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1009,18 +1026,19 @@ name|CommitFailedException
 name|e
 parameter_list|)
 block|{
+name|ex
+operator|=
+name|e
+expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|trace
 argument_list|(
 literal|"Merge Error"
 argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
 name|ex
-operator|=
-name|e
+argument_list|)
 expr_stmt|;
 comment|// only retry on merge failures. these may be caused by
 comment|// changes introduce by a commit hook and may be resolved
@@ -1028,7 +1046,7 @@ comment|// by a rebase and running the hook again
 if|if
 condition|(
 operator|!
-name|e
+name|ex
 operator|.
 name|isOfType
 argument_list|(
@@ -1037,9 +1055,8 @@ argument_list|)
 condition|)
 block|{
 throw|throw
-name|e
+name|ex
 throw|;
-block|}
 block|}
 block|}
 comment|// if we get here retrying failed
@@ -2377,6 +2394,19 @@ parameter_list|)
 block|{
 throw|throw
 name|e
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|ConflictException
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|e
+operator|.
+name|asCommitFailedException
+argument_list|()
 throw|;
 block|}
 catch|catch
