@@ -98,6 +98,12 @@ name|REP_PREFIXES
 init|=
 literal|"rep:prefixes"
 decl_stmt|;
+comment|/**      * Name of the optional multivalued access control restriction by item name.      * The corresponding restriction type is {@link org.apache.jackrabbit.oak.api.Type#NAMES}.      *      * @since OAK 1.3.8      */
+name|String
+name|REP_ITEM_NAMES
+init|=
+literal|"rep:itemNames"
+decl_stmt|;
 comment|/**      * @since OAK 1.0      */
 name|String
 name|REP_RESTRICTIONS
