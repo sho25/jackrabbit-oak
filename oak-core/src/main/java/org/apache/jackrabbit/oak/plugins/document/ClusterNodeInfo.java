@@ -776,7 +776,7 @@ return|return
 name|id
 return|;
 block|}
-comment|/**      * Create a cluster node info instance for the store, with the      *      * @param store the document store (for the lease)      * @return the cluster node info      */
+comment|/**      * Create a cluster node info instance for the store, with the      *      * @param store the document store (for the lease)      * @param configuredClusterId the configured cluster id (or 0 for dynamic assignment)      * @return the cluster node info      */
 specifier|public
 specifier|static
 name|ClusterNodeInfo
@@ -784,6 +784,9 @@ name|getInstance
 parameter_list|(
 name|DocumentStore
 name|store
+parameter_list|,
+name|int
+name|configuredClusterId
 parameter_list|)
 block|{
 return|return
@@ -794,6 +797,8 @@ argument_list|,
 name|MACHINE_ID
 argument_list|,
 name|WORKING_DIR
+argument_list|,
+name|configuredClusterId
 argument_list|,
 literal|false
 argument_list|)
@@ -824,11 +829,13 @@ name|machineId
 argument_list|,
 name|instanceId
 argument_list|,
+literal|0
+argument_list|,
 literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a cluster node info instance for the store.      *      * @param store the document store (for the lease)      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @param updateLease whether to update the lease      * @return the cluster node info      */
+comment|/**      * Create a cluster node info instance for the store.      *      * @param store the document store (for the lease)      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @param configuredClusterId the configured cluster id (or 0 for dynamic assignment)      * @param updateLease whether to update the lease      * @return the cluster node info      */
 specifier|public
 specifier|static
 name|ClusterNodeInfo
@@ -843,10 +850,14 @@ parameter_list|,
 name|String
 name|instanceId
 parameter_list|,
+name|int
+name|configuredClusterId
+parameter_list|,
 name|boolean
 name|updateLease
 parameter_list|)
 block|{
+comment|// defaults for machineId and instanceID
 if|if
 condition|(
 name|machineId
@@ -871,6 +882,11 @@ operator|=
 name|WORKING_DIR
 expr_stmt|;
 block|}
+name|int
+name|retries
+init|=
+literal|10
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -880,7 +896,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+name|retries
 condition|;
 name|i
 operator|++
@@ -896,6 +912,20 @@ argument_list|,
 name|machineId
 argument_list|,
 name|instanceId
+argument_list|,
+name|configuredClusterId
+argument_list|)
+decl_stmt|;
+name|String
+name|key
+init|=
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|clusterNode
+operator|.
+name|id
 argument_list|)
 decl_stmt|;
 name|UpdateOp
@@ -904,11 +934,7 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-literal|""
-operator|+
-name|clusterNode
-operator|.
-name|id
+name|key
 argument_list|,
 literal|true
 argument_list|)
@@ -919,14 +945,7 @@ name|set
 argument_list|(
 name|ID
 argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|clusterNode
-operator|.
-name|id
-argument_list|)
+name|key
 argument_list|)
 expr_stmt|;
 name|update
@@ -1045,8 +1064,8 @@ operator|.
 name|newEntry
 condition|)
 block|{
-comment|//For new entry do a create. This ensures that if two nodes create
-comment|//entry with same id then only one would succeed
+comment|// For new entry do a create. This ensures that if two nodes
+comment|// create entry with same id then only one would succeed
 name|success
 operator|=
 name|store
@@ -1099,7 +1118,11 @@ throw|throw
 operator|new
 name|DocumentStoreException
 argument_list|(
-literal|"Could not get cluster node info"
+literal|"Could not get cluster node info (retried "
+operator|+
+name|retries
+operator|+
+literal|" times)"
 argument_list|)
 throw|;
 block|}
@@ -1116,6 +1139,9 @@ name|machineId
 parameter_list|,
 name|String
 name|instanceId
+parameter_list|,
+name|int
+name|configuredClusterId
 parameter_list|)
 block|{
 name|long
@@ -1123,19 +1149,6 @@ name|now
 init|=
 name|getCurrentTime
 argument_list|()
-decl_stmt|;
-name|List
-argument_list|<
-name|ClusterNodeInfoDocument
-argument_list|>
-name|list
-init|=
-name|ClusterNodeInfoDocument
-operator|.
-name|all
-argument_list|(
-name|store
-argument_list|)
 decl_stmt|;
 name|int
 name|clusterNodeId
@@ -1164,9 +1177,27 @@ name|newEntry
 init|=
 literal|false
 decl_stmt|;
+name|ClusterNodeInfoDocument
+name|alreadyExistingConfigured
+init|=
+literal|null
+decl_stmt|;
+name|List
+argument_list|<
+name|ClusterNodeInfoDocument
+argument_list|>
+name|list
+init|=
+name|ClusterNodeInfoDocument
+operator|.
+name|all
+argument_list|(
+name|store
+argument_list|)
+decl_stmt|;
 for|for
 control|(
-name|Document
+name|ClusterNodeInfoDocument
 name|doc
 range|:
 name|list
@@ -1187,12 +1218,10 @@ try|try
 block|{
 name|id
 operator|=
-name|Integer
+name|doc
 operator|.
-name|parseInt
-argument_list|(
-name|key
-argument_list|)
+name|getClusterId
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -1201,7 +1230,15 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// not an integer - ignore
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Skipping cluster node info document {} because ID is invalid"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 name|maxId
@@ -1215,6 +1252,32 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
+comment|// if a cluster id was configured: check that and abort if it does
+comment|// not match
+if|if
+condition|(
+name|configuredClusterId
+operator|!=
+literal|0
+condition|)
+block|{
+if|if
+condition|(
+name|configuredClusterId
+operator|!=
+name|id
+condition|)
+block|{
+continue|continue;
+block|}
+else|else
+block|{
+name|alreadyExistingConfigured
+operator|=
+name|doc
+expr_stmt|;
+block|}
+block|}
 name|Long
 name|leaseEnd
 init|=
@@ -1239,6 +1302,7 @@ operator|>
 name|now
 condition|)
 block|{
+comment|// TODO wait for lease end, see OAK-3449
 continue|continue;
 block|}
 name|String
@@ -1335,8 +1399,8 @@ block|{
 comment|// a different machine or instance
 continue|continue;
 block|}
-comment|//and cluster node which matches current machine identity but
-comment|//not being used
+comment|// a cluster node which matches current machine identity but
+comment|// not being used
 if|if
 condition|(
 name|clusterNodeId
@@ -1376,8 +1440,8 @@ name|leaseEnd
 expr_stmt|;
 block|}
 block|}
-comment|//No existing entry with matching signature found so
-comment|//create a new entry
+comment|// No usable existing entry with matching signature found so
+comment|// create a new entry
 if|if
 condition|(
 name|clusterNodeId
@@ -1385,16 +1449,52 @@ operator|==
 literal|0
 condition|)
 block|{
+name|newEntry
+operator|=
+literal|true
+expr_stmt|;
+if|if
+condition|(
+name|configuredClusterId
+operator|!=
+literal|0
+condition|)
+block|{
+if|if
+condition|(
+name|alreadyExistingConfigured
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+literal|"Configured cluster node id "
+operator|+
+name|configuredClusterId
+operator|+
+literal|" already in use: "
+operator|+
+name|alreadyExistingConfigured
+argument_list|)
+throw|;
+block|}
+name|clusterNodeId
+operator|=
+name|configuredClusterId
+expr_stmt|;
+block|}
+else|else
+block|{
 name|clusterNodeId
 operator|=
 name|maxId
 operator|+
 literal|1
 expr_stmt|;
-name|newEntry
-operator|=
-literal|true
-expr_stmt|;
+block|}
 block|}
 comment|// Do not expire entries and stick on the earlier state, and leaseEnd so,
 comment|// that _lastRev recovery if needed is done.

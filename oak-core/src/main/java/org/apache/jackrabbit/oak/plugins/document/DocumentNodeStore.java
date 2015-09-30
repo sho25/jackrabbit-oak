@@ -1703,6 +1703,8 @@ name|AtomicBoolean
 argument_list|()
 decl_stmt|;
 comment|/**      * The cluster instance info.      */
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|ClusterNodeInfo
@@ -1853,7 +1855,9 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
-comment|/**      * Background thread performing the clusterId lease renew.      * Will be {@code null} if {@link #clusterNodeInfo} is {@code null}.      */
+comment|/**      * Background thread performing the clusterId lease renew.      */
+annotation|@
+name|Nonnull
 specifier|private
 name|Thread
 name|leaseUpdateThread
@@ -2276,13 +2280,6 @@ argument_list|,
 name|cid
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|cid
-operator|==
-literal|0
-condition|)
-block|{
 name|clusterNodeInfo
 operator|=
 name|ClusterNodeInfo
@@ -2290,6 +2287,8 @@ operator|.
 name|getInstance
 argument_list|(
 name|s
+argument_list|,
+name|cid
 argument_list|)
 expr_stmt|;
 comment|// TODO we should ensure revisions generated from now on
@@ -2302,14 +2301,6 @@ operator|.
 name|getId
 argument_list|()
 expr_stmt|;
-block|}
-else|else
-block|{
-name|clusterNodeInfo
-operator|=
-literal|null
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|builder
@@ -2328,13 +2319,6 @@ argument_list|,
 name|clusterNodeInfo
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|clusterNodeInfo
-operator|!=
-literal|null
-condition|)
-block|{
 name|clusterNodeInfo
 operator|.
 name|setLeaseFailureHandler
@@ -2345,7 +2329,6 @@ name|getLeaseFailureHandler
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|this
 operator|.
@@ -2863,13 +2846,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|clusterNodeInfo
-operator|!=
-literal|null
-condition|)
-block|{
 name|leaseUpdateThread
 operator|=
 operator|new
@@ -2912,7 +2888,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-block|}
 name|this
 operator|.
 name|mbean
@@ -3079,19 +3054,11 @@ block|}
 block|}
 comment|// now mark this cluster node as inactive by
 comment|// disposing the clusterNodeInfo
-if|if
-condition|(
-name|clusterNodeInfo
-operator|!=
-literal|null
-condition|)
-block|{
 name|clusterNodeInfo
 operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
 name|store
 operator|.
 name|dispose
@@ -3165,12 +3132,6 @@ name|getClusterNodeInfoDisplayString
 parameter_list|()
 block|{
 return|return
-name|clusterNodeInfo
-operator|==
-literal|null
-condition|?
-literal|"no cluster node info"
-else|:
 name|clusterNodeInfo
 operator|.
 name|toString
@@ -3653,7 +3614,7 @@ name|enableConcurrentAddRemove
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|public
 name|ClusterNodeInfo
 name|getClusterInfo
@@ -8496,10 +8457,6 @@ name|renewClusterIdLease
 parameter_list|()
 block|{
 return|return
-name|clusterNodeInfo
-operator|!=
-literal|null
-operator|&&
 name|clusterNodeInfo
 operator|.
 name|renewLease
