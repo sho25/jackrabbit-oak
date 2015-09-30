@@ -3028,13 +3028,6 @@ name|ae
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|leaseUpdateThread
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 block|{
 name|leaseUpdateThread
@@ -3050,7 +3043,6 @@ name|e
 parameter_list|)
 block|{
 comment|// ignore
-block|}
 block|}
 comment|// now mark this cluster node as inactive by
 comment|// disposing the clusterNodeInfo
