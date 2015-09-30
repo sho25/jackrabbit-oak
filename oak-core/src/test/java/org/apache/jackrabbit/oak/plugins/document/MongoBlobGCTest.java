@@ -2569,7 +2569,7 @@ name|sleep
 argument_list|(
 name|maxLastModifiedInterval
 operator|+
-literal|100
+literal|1000
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -2580,7 +2580,7 @@ literal|"Slept {} to make blobs old"
 argument_list|,
 name|maxLastModifiedInterval
 operator|+
-literal|100
+literal|1000
 argument_list|)
 expr_stmt|;
 name|long
