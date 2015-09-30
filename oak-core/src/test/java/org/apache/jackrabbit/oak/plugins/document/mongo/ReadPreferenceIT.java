@@ -519,6 +519,13 @@ name|void
 name|clearDB
 parameter_list|()
 block|{
+if|if
+condition|(
+name|mongoDS
+operator|!=
+literal|null
+condition|)
+block|{
 name|MongoUtils
 operator|.
 name|dropCollections
@@ -534,6 +541,7 @@ name|getDB
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
