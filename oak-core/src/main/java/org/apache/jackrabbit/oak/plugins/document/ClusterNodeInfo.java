@@ -1182,6 +1182,11 @@ name|alreadyExistingConfigured
 init|=
 literal|null
 decl_stmt|;
+name|String
+name|reuseFailureReason
+init|=
+literal|""
+decl_stmt|;
 name|List
 argument_list|<
 name|ClusterNodeInfoDocument
@@ -1303,6 +1308,26 @@ name|now
 condition|)
 block|{
 comment|// TODO wait for lease end, see OAK-3449
+name|reuseFailureReason
+operator|=
+literal|"leaseEnd "
+operator|+
+name|leaseEnd
+operator|+
+literal|"> "
+operator|+
+name|now
+operator|+
+literal|" - "
+operator|+
+operator|(
+name|leaseEnd
+operator|-
+name|now
+operator|)
+operator|+
+literal|"ms in the future"
+expr_stmt|;
 continue|continue;
 block|}
 name|String
@@ -1397,6 +1422,24 @@ argument_list|)
 condition|)
 block|{
 comment|// a different machine or instance
+name|reuseFailureReason
+operator|=
+literal|"machineId/instanceId do not match: "
+operator|+
+name|mId
+operator|+
+literal|"/"
+operator|+
+name|iId
+operator|+
+literal|" != "
+operator|+
+name|machineId
+operator|+
+literal|"/"
+operator|+
+name|instanceId
+expr_stmt|;
 continue|continue;
 block|}
 comment|// a cluster node which matches current machine identity but
@@ -1477,7 +1520,7 @@ name|configuredClusterId
 operator|+
 literal|" already in use: "
 operator|+
-name|alreadyExistingConfigured
+name|reuseFailureReason
 argument_list|)
 throw|;
 block|}
