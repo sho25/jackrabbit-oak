@@ -3310,7 +3310,7 @@ expr_stmt|;
 block|}
 comment|/**      * Borrowed from      * http://stackoverflow.com/questions/3301635/change-private-static-final-      * field-using-java-reflection      */
 specifier|static
-name|void
+name|Object
 name|setFinalStatic
 parameter_list|(
 name|Field
@@ -3365,6 +3365,16 @@ operator|.
 name|FINAL
 argument_list|)
 expr_stmt|;
+name|Object
+name|prev
+init|=
+name|field
+operator|.
+name|get
+argument_list|(
+literal|null
+argument_list|)
+decl_stmt|;
 name|field
 operator|.
 name|set
@@ -3374,6 +3384,9 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
+return|return
+name|prev
+return|;
 block|}
 comment|// subsequent tests should get a DocumentDiscoveryLiteService setup from the
 comment|// start
@@ -3389,7 +3402,23 @@ name|SecurityException
 throws|,
 name|Exception
 block|{
+name|Object
+name|prevWorkingDir
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"user.dir"
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+try|try
+block|{
 comment|// ensure that we always get a fresh cluster[node]id
+name|prevWorkingDir
+operator|=
 name|setFinalStatic
 argument_list|(
 name|ClusterNodeInfo
@@ -3440,6 +3469,24 @@ name|mk1
 operator|.
 name|nodeStore
 return|;
+block|}
+finally|finally
+block|{
+name|setFinalStatic
+argument_list|(
+name|ClusterNodeInfo
+operator|.
+name|class
+operator|.
+name|getDeclaredField
+argument_list|(
+literal|"WORKING_DIR"
+argument_list|)
+argument_list|,
+name|prevWorkingDir
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|SimplifiedInstance
