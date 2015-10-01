@@ -12,6 +12,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
+operator|.
+name|benchmark
 package|;
 end_package
 
@@ -78,22 +80,6 @@ operator|.
 name|base
 operator|.
 name|Stopwatch
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|benchmark
-operator|.
-name|RevisionGCTest
 import|;
 end_import
 
