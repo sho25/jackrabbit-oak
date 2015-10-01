@@ -207,6 +207,20 @@ return|return
 name|rawText
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isNot
+parameter_list|()
+block|{
+return|return
+name|base
+operator|.
+name|isNot
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
