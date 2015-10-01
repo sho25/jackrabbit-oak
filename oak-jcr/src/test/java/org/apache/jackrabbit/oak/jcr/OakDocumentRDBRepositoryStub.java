@@ -450,11 +450,6 @@ operator|.
 name|Builder
 argument_list|()
 operator|.
-name|setClusterId
-argument_list|(
-literal|1
-argument_list|)
-operator|.
 name|memoryCacheSize
 argument_list|(
 literal|64
