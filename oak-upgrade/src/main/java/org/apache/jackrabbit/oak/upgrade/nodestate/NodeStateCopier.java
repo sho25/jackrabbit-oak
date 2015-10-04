@@ -604,13 +604,13 @@ annotation|@
 name|Nonnull
 specifier|final
 name|NodeState
-name|source
+name|sourceRoot
 parameter_list|,
 annotation|@
 name|Nonnull
 specifier|final
 name|NodeBuilder
-name|target
+name|targetRoot
 parameter_list|)
 block|{
 specifier|final
@@ -623,7 +623,7 @@ name|wrap
 argument_list|(
 literal|"/"
 argument_list|,
-name|source
+name|sourceRoot
 argument_list|,
 name|this
 operator|.
@@ -653,9 +653,9 @@ name|hasChanges
 operator|=
 name|copyMissingAncestors
 argument_list|(
-name|source
+name|sourceRoot
 argument_list|,
-name|target
+name|targetRoot
 argument_list|,
 name|includePath
 argument_list|)
@@ -689,7 +689,7 @@ name|targetBuilder
 init|=
 name|getChildNodeBuilder
 argument_list|(
-name|target
+name|targetRoot
 argument_list|,
 name|includePath
 argument_list|)
@@ -1028,7 +1028,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Ensure that all ancestors of {@code path} are present in {@code target}. Copies any      * missing ancestors from {@code source}.      *      * @param source NodeState to copy from      * @param target NodeBuilder to copy to      * @param path The path along which ancestors should be copied.      */
+comment|/**      * Ensure that all ancestors of {@code path} are present in {@code targetRoot}. Copies any      * missing ancestors from {@code sourceRoot}.      *      * @param sourceRoot NodeState to copy from      * @param targetRoot NodeBuilder to copy to      * @param path The path along which ancestors should be copied.      */
 specifier|private
 specifier|static
 name|boolean
@@ -1036,11 +1036,11 @@ name|copyMissingAncestors
 parameter_list|(
 specifier|final
 name|NodeState
-name|source
+name|sourceRoot
 parameter_list|,
 specifier|final
 name|NodeBuilder
-name|target
+name|targetRoot
 parameter_list|,
 specifier|final
 name|String
@@ -1050,12 +1050,12 @@ block|{
 name|NodeState
 name|current
 init|=
-name|source
+name|sourceRoot
 decl_stmt|;
 name|NodeBuilder
 name|currentBuilder
 init|=
-name|target
+name|targetRoot
 decl_stmt|;
 name|boolean
 name|hasChanges
@@ -1440,7 +1440,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**          * Creates a NodeStateCopier to copy the {@code source} NodeState to the          * {@code target} NodeBuilder, using any include, exclude and merge paths          * set on this NodeStateCopier.Builder.          *<br>          * It is the responsibility of the caller to persist any changes using e.g.          * {@link NodeStore#merge(NodeBuilder, CommitHook, CommitInfo)}.          *          * @param source NodeState to copy from          * @param target NodeBuilder to copy to          * @return true if there were any changes, false if source and target represent          *         the same content          */
+comment|/**          * Creates a NodeStateCopier to copy the {@code sourceRoot} NodeState to the          * {@code targetRoot} NodeBuilder, using any include, exclude and merge paths          * set on this NodeStateCopier.Builder.          *<br>          * It is the responsibility of the caller to persist any changes using e.g.          * {@link NodeStore#merge(NodeBuilder, CommitHook, CommitInfo)}.          *          * @param sourceRoot NodeState to copy from          * @param targetRoot NodeBuilder to copy to          * @return true if there were any changes, false if sourceRoot and targetRoot represent          *         the same content          */
 specifier|public
 name|boolean
 name|copy
@@ -1449,13 +1449,13 @@ annotation|@
 name|Nonnull
 specifier|final
 name|NodeState
-name|source
+name|sourceRoot
 parameter_list|,
 annotation|@
 name|Nonnull
 specifier|final
 name|NodeBuilder
-name|target
+name|targetRoot
 parameter_list|)
 block|{
 specifier|final
@@ -1479,12 +1479,12 @@ name|copyNodeState
 argument_list|(
 name|checkNotNull
 argument_list|(
-name|source
+name|sourceRoot
 argument_list|)
 argument_list|,
 name|checkNotNull
 argument_list|(
-name|target
+name|targetRoot
 argument_list|)
 argument_list|)
 return|;
@@ -1511,7 +1511,7 @@ name|CommitFailedException
 block|{
 specifier|final
 name|NodeBuilder
-name|targetBuilder
+name|targetRoot
 init|=
 name|checkNotNull
 argument_list|(
@@ -1536,7 +1536,7 @@ operator|.
 name|getRoot
 argument_list|()
 argument_list|,
-name|targetBuilder
+name|targetRoot
 argument_list|)
 condition|)
 block|{
@@ -1544,7 +1544,7 @@ name|target
 operator|.
 name|merge
 argument_list|(
-name|targetBuilder
+name|targetRoot
 argument_list|,
 name|EmptyHook
 operator|.

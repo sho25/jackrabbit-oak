@@ -313,7 +313,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|NodeBuilder
-name|rootBuilder
+name|targetRoot
 decl_stmt|;
 specifier|public
 name|VersionCopier
@@ -322,7 +322,7 @@ name|NodeState
 name|sourceRoot
 parameter_list|,
 name|NodeBuilder
-name|rootBuilder
+name|targetRoot
 parameter_list|)
 block|{
 name|this
@@ -332,7 +332,7 @@ operator|=
 operator|new
 name|TypePredicate
 argument_list|(
-name|rootBuilder
+name|targetRoot
 operator|.
 name|getNodeState
 argument_list|()
@@ -348,9 +348,9 @@ name|sourceRoot
 expr_stmt|;
 name|this
 operator|.
-name|rootBuilder
+name|targetRoot
 operator|=
-name|rootBuilder
+name|targetRoot
 expr_stmt|;
 block|}
 specifier|public
@@ -359,10 +359,10 @@ name|void
 name|copyVersionStorage
 parameter_list|(
 name|NodeState
-name|sourceState
+name|sourceRoot
 parameter_list|,
 name|NodeBuilder
-name|builder
+name|targetRoot
 parameter_list|,
 name|VersionCopyConfiguration
 name|config
@@ -372,7 +372,7 @@ specifier|final
 name|NodeState
 name|versionStorage
 init|=
-name|sourceState
+name|sourceRoot
 operator|.
 name|getChildNode
 argument_list|(
@@ -406,9 +406,9 @@ init|=
 operator|new
 name|VersionCopier
 argument_list|(
-name|sourceState
+name|sourceRoot
 argument_list|,
-name|builder
+name|targetRoot
 argument_list|)
 decl_stmt|;
 while|while
@@ -531,7 +531,7 @@ name|copy
 argument_list|(
 name|sourceRoot
 argument_list|,
-name|rootBuilder
+name|targetRoot
 argument_list|)
 expr_stmt|;
 return|return
