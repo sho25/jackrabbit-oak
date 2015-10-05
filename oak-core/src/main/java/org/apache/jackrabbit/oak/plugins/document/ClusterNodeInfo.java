@@ -442,10 +442,9 @@ init|=
 name|getProcessId
 argument_list|()
 decl_stmt|;
-comment|/**      * The current working directory.      */
-specifier|private
+comment|/**      * The current working directory.      * Note: marked protected non-final for testing purpose only.      */
+specifier|protected
 specifier|static
-specifier|final
 name|String
 name|WORKING_DIR
 init|=
