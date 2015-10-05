@@ -407,6 +407,28 @@ name|SPLIT_CANDIDATE_THRESHOLD
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
+name|isRevisionNewer
+import|;
+end_import
+
 begin_comment
 comment|/**  * A higher level object representing a commit.  */
 end_comment
@@ -2524,7 +2546,10 @@ argument_list|()
 operator|+
 literal|" was already added in revision\n"
 operator|+
+name|formatConflictRevision
+argument_list|(
 name|newestRev
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -2565,7 +2590,10 @@ argument_list|()
 operator|+
 literal|" was changed in revision\n"
 operator|+
+name|formatConflictRevision
+argument_list|(
 name|newestRev
+argument_list|)
 operator|+
 literal|", which was applied after the base revision\n"
 operator|+
@@ -2667,7 +2695,10 @@ argument_list|()
 operator|+
 literal|" was changed in revision\n"
 operator|+
+name|formatConflictRevision
+argument_list|(
 name|r
+argument_list|)
 operator|+
 literal|", which was applied after the base revision\n"
 operator|+
@@ -2743,6 +2774,45 @@ name|conflictRevision
 argument_list|)
 throw|;
 block|}
+block|}
+block|}
+specifier|private
+name|String
+name|formatConflictRevision
+parameter_list|(
+name|Revision
+name|r
+parameter_list|)
+block|{
+if|if
+condition|(
+name|isRevisionNewer
+argument_list|(
+name|nodeStore
+argument_list|,
+name|r
+argument_list|,
+name|nodeStore
+operator|.
+name|getHeadRevision
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+name|r
+operator|+
+literal|" (not yet visible)"
+return|;
+block|}
+else|else
+block|{
+return|return
+name|r
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 block|}
 comment|/**      * Checks whether the given<code>UpdateOp</code> conflicts with the      * existing content in<code>doc</code>. The check is done based on the      * {@link #baseRevision} of this commit. An<code>UpdateOp</code> conflicts      * when there were changes after {@link #baseRevision} on properties also      * contained in<code>UpdateOp</code>.      *      * @param doc the contents of the nodes before the update.      * @param op the update to perform.      * @return<code>true</code> if the update conflicts;<code>false</code>      *         otherwise.      */
