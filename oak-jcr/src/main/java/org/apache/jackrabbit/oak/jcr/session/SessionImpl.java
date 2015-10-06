@@ -1202,7 +1202,8 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Returns the node at the specified absolute path in the workspace or      * {@code null} if no such node exists.      *      * @param absPath An absolute path.      * @return the specified {@code Node} or {@code null}.      * @throws RepositoryException If another error occurs.      */
+annotation|@
+name|Override
 annotation|@
 name|CheckForNull
 specifier|public
@@ -1280,7 +1281,8 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the property at the specified absolute path in the workspace or      * {@code null} if no such node exists.      *      * @param absPath An absolute path.      * @return the specified {@code Property} or {@code null}.      * @throws RepositoryException if another error occurs.      */
+annotation|@
+name|Override
 annotation|@
 name|CheckForNull
 specifier|public
@@ -1397,7 +1399,8 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Returns the node at the specified absolute path in the workspace. If no      * such node exists, then it returns the property at the specified path.      * If no such property exists, then it return {@code null}.      *      * @param absPath An absolute path.      * @return the specified {@code Item} or {@code null}.      * @throws RepositoryException if another error occurs.      */
+annotation|@
+name|Override
 annotation|@
 name|CheckForNull
 specifier|public
