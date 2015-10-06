@@ -2418,6 +2418,11 @@ operator|new
 name|LastRevRecoveryAgent
 argument_list|(
 name|this
+argument_list|,
+name|builder
+operator|.
+name|createMissingLastRevSeeker
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
