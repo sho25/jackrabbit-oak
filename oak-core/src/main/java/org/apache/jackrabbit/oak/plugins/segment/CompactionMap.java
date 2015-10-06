@@ -121,6 +121,8 @@ name|PartialCompactionMap
 operator|>
 name|emptyList
 argument_list|()
+argument_list|,
+literal|0
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -130,6 +132,12 @@ argument_list|<
 name|PartialCompactionMap
 argument_list|>
 name|maps
+decl_stmt|;
+comment|/**      * Generation represents the number of compaction cycles since the system      * came online. This is not persisted so it will be reset to 0 on each      * restart      */
+specifier|private
+specifier|final
+name|int
+name|generation
 decl_stmt|;
 specifier|private
 name|CompactionMap
@@ -141,6 +149,9 @@ argument_list|<
 name|PartialCompactionMap
 argument_list|>
 name|maps
+parameter_list|,
+name|int
+name|generation
 parameter_list|)
 block|{
 name|this
@@ -148,6 +159,12 @@ operator|.
 name|maps
 operator|=
 name|maps
+expr_stmt|;
+name|this
+operator|.
+name|generation
+operator|=
+name|generation
 expr_stmt|;
 block|}
 comment|/**      * Checks whether the record with the given {@code before} identifier was      * compacted to a new record with the given {@code after} identifier.      *      * @param before before record identifier      * @param after  after record identifier      * @return whether {@code before} was compacted to {@code after}      */
@@ -368,6 +385,10 @@ operator|new
 name|CompactionMap
 argument_list|(
 name|maps
+argument_list|,
+name|generation
+operator|+
+literal|1
 argument_list|)
 return|;
 block|}
@@ -415,6 +436,15 @@ name|maps
 operator|.
 name|size
 argument_list|()
+return|;
+block|}
+specifier|public
+name|int
+name|getGeneration
+parameter_list|()
+block|{
+return|return
+name|generation
 return|;
 block|}
 comment|/**      * The weight of the compaction map is its  memory consumption bytes      * @return Estimated weight of the compaction map      */
