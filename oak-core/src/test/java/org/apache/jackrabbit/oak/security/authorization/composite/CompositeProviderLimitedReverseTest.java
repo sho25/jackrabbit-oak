@@ -21,28 +21,27 @@ name|composite
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|AbstractSecurityTest
-import|;
-end_import
+begin_comment
+comment|/**  * Same as {@link CompositeProviderLimitedTest}  * with reverse order of the aggregated providers.  */
+end_comment
 
 begin_class
 specifier|public
 class|class
-name|CompositePermissionProviderTest
+name|CompositeProviderLimitedReverseTest
 extends|extends
-name|AbstractSecurityTest
+name|CompositeProviderLimitedTest
 block|{
-comment|// TODO
+annotation|@
+name|Override
+name|boolean
+name|reverseOrder
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

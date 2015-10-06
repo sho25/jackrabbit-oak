@@ -1019,6 +1019,8 @@ return|;
 block|}
 comment|//---------------------------------------< AggregatedPermissionProvider>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|PrivilegeBits

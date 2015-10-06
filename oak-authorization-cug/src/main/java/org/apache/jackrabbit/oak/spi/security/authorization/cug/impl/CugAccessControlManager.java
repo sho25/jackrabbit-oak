@@ -1375,7 +1375,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// editing by 'principal' is not supported
 return|return
 operator|new
 name|JackrabbitAccessControlPolicy
@@ -1395,7 +1395,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// editing by 'principal' is not supported
 return|return
 operator|new
 name|JackrabbitAccessControlPolicy
@@ -1418,7 +1418,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// editing by 'principal' is not supported
 return|return
 operator|new
 name|AccessControlPolicy

@@ -640,11 +640,11 @@ name|immutableTree
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// make sure privs denied by a previous provider are substracted
+comment|// add the granted privileges to the result
 if|if
 condition|(
 operator|!
-name|denied
+name|granted
 operator|.
 name|isEmpty
 argument_list|()
@@ -655,29 +655,11 @@ operator|.
 name|add
 argument_list|(
 name|granted
-operator|.
-name|modifiable
-argument_list|()
-operator|.
-name|diff
-argument_list|(
-name|denied
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|result
-operator|.
-name|add
-argument_list|(
-name|granted
 argument_list|)
 expr_stmt|;
 block|}
 comment|// update the set of denied privs by comparing the granted privs
-comment|// the complete set of supported privileges.
+comment|// with the complete set of supported privileges
 name|denied
 operator|.
 name|add
@@ -691,6 +673,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|// subtract all denied privileges from the result
+if|if
+condition|(
+operator|!
+name|denied
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|result
+operator|.
+name|diff
+argument_list|(
+name|denied
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|privilegeBitsProvider
@@ -741,6 +741,18 @@ argument_list|(
 name|privilegeNames
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|privilegeBits
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 name|boolean
 name|hasPrivileges
 init|=
@@ -825,7 +837,6 @@ argument_list|(
 name|supported
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 if|if
 condition|(
 operator|!
@@ -1285,11 +1296,6 @@ name|tree
 decl_stmt|;
 specifier|private
 specifier|final
-name|CompositeTreePermission
-name|parentPermission
-decl_stmt|;
-specifier|private
-specifier|final
 name|Map
 argument_list|<
 name|AggregatedPermissionProvider
@@ -1307,10 +1313,6 @@ name|CompositeTreePermission
 parameter_list|()
 block|{
 name|tree
-operator|=
-literal|null
-expr_stmt|;
-name|parentPermission
 operator|=
 literal|null
 expr_stmt|;
@@ -1343,12 +1345,6 @@ name|tree
 operator|=
 name|tree
 expr_stmt|;
-name|this
-operator|.
-name|parentPermission
-operator|=
-name|parentPermission
-expr_stmt|;
 name|map
 operator|=
 operator|new
@@ -1373,6 +1369,7 @@ range|:
 name|pps
 control|)
 block|{
+comment|// TODO: stop aggregation for providers that don't support evaluation within this path
 name|TreePermission
 name|tp
 init|=
@@ -1384,6 +1381,8 @@ name|tree
 argument_list|,
 name|getParentPermission
 argument_list|(
+name|parentPermission
+argument_list|,
 name|provider
 argument_list|)
 argument_list|)
@@ -1823,6 +1822,13 @@ specifier|private
 name|TreePermission
 name|getParentPermission
 parameter_list|(
+annotation|@
+name|Nonnull
+name|CompositeTreePermission
+name|compositeParent
+parameter_list|,
+annotation|@
+name|Nonnull
 name|AggregatedPermissionProvider
 name|provider
 parameter_list|)
@@ -1830,18 +1836,7 @@ block|{
 name|TreePermission
 name|parent
 init|=
-literal|null
-decl_stmt|;
-if|if
-condition|(
-name|parentPermission
-operator|!=
-literal|null
-condition|)
-block|{
-name|parent
-operator|=
-name|parentPermission
+name|compositeParent
 operator|.
 name|map
 operator|.
@@ -1849,8 +1844,7 @@ name|get
 argument_list|(
 name|provider
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 return|return
 operator|(
 name|parent
