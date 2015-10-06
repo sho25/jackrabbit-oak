@@ -292,7 +292,10 @@ name|maxQueueLength
 operator|=
 operator|new
 name|TimeSeriesMax
-argument_list|()
+argument_list|(
+operator|-
+literal|1
+argument_list|)
 expr_stmt|;
 name|registration
 operator|=
