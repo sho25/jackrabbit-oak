@@ -509,7 +509,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
+name|AfterClass
 import|;
 end_import
 
@@ -519,7 +519,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|BeforeClass
 import|;
 end_import
 
@@ -568,8 +568,9 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Before
+name|BeforeClass
 specifier|public
+specifier|static
 name|void
 name|disableCaching
 parameter_list|()
@@ -583,8 +584,9 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|After
+name|AfterClass
 specifier|public
+specifier|static
 name|void
 name|enableCaching
 parameter_list|()
