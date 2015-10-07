@@ -123,6 +123,18 @@ name|mockito
 operator|.
 name|Mockito
 operator|.
+name|doAnswer
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
 name|mock
 import|;
 end_import
@@ -160,30 +172,6 @@ operator|.
 name|Mockito
 operator|.
 name|when
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Field
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Modifier
 import|;
 end_import
 
@@ -340,16 +328,6 @@ operator|.
 name|jcr
 operator|.
 name|ValueFormatException
-import|;
-end_import
-
-begin_import
-import|import
-name|junitx
-operator|.
-name|util
-operator|.
-name|PrivateAccessor
 import|;
 end_import
 
@@ -752,6 +730,16 @@ operator|.
 name|mongodb
 operator|.
 name|DB
+import|;
+end_import
+
+begin_import
+import|import
+name|junitx
+operator|.
+name|util
+operator|.
+name|PrivateAccessor
 import|;
 end_import
 
@@ -1670,7 +1658,7 @@ name|logger
 operator|.
 name|info
 argument_list|(
-literal|"crash: stopped lastrev thread, now setting least to end within 1 sec"
+literal|"crash: stopped lastrev thread, now setting lease to end within 1 sec"
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -4384,21 +4372,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|when
-argument_list|(
-name|mockedLongduringMissingLastRevUtil
-operator|.
-name|acquireRecoveryLock
-argument_list|(
-name|anyInt
-argument_list|()
-argument_list|,
-name|anyInt
-argument_list|()
-argument_list|)
-argument_list|)
-operator|.
-name|then
+name|doAnswer
 argument_list|(
 operator|new
 name|Answer
@@ -4468,6 +4442,20 @@ argument_list|)
 return|;
 block|}
 block|}
+argument_list|)
+operator|.
+name|when
+argument_list|(
+name|mockedLongduringMissingLastRevUtil
+argument_list|)
+operator|.
+name|acquireRecoveryLock
+argument_list|(
+name|anyInt
+argument_list|()
+argument_list|,
+name|anyInt
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|PrivateAccessor
