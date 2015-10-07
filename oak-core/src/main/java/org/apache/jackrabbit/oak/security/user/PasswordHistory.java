@@ -540,7 +540,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ConstraintViolationException
+name|PasswordHistoryException
 argument_list|(
 literal|"New password is identical to the current password."
 argument_list|)
@@ -619,7 +619,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ConstraintViolationException
+name|PasswordHistoryException
 argument_list|(
 literal|"New password was found in password history."
 argument_list|)
