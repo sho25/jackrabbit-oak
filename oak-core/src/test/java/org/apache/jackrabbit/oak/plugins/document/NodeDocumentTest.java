@@ -2838,7 +2838,7 @@ operator|.
 name|size
 argument_list|()
 operator|<=
-literal|4
+literal|5
 argument_list|)
 expr_stmt|;
 name|ns
