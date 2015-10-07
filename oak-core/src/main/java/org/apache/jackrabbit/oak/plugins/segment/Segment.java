@@ -952,6 +952,15 @@ literal|3
 index|]
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|id
+operator|.
+name|setSegment
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 name|SegmentVersion
 name|getSegmentVersion
