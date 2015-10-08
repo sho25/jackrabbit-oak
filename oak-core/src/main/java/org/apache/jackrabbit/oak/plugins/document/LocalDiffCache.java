@@ -221,7 +221,7 @@ begin_class
 specifier|public
 class|class
 name|LocalDiffCache
-implements|implements
+extends|extends
 name|DiffCache
 block|{
 comment|/**      * Limit is arbitrary for now i.e. 16 MB. Same as in MongoDiffCache      */

@@ -157,7 +157,7 @@ begin_class
 specifier|public
 class|class
 name|MemoryDiffCache
-implements|implements
+extends|extends
 name|DiffCache
 block|{
 comment|/**      * Diff cache.      *      * Key: PathRev, value: StringValue      */

@@ -76,7 +76,7 @@ end_comment
 begin_class
 class|class
 name|TieredDiffCache
-implements|implements
+extends|extends
 name|DiffCache
 block|{
 specifier|private

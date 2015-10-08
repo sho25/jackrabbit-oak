@@ -72,7 +72,7 @@ end_comment
 begin_class
 class|class
 name|AmnesiaDiffCache
-implements|implements
+extends|extends
 name|DiffCache
 block|{
 specifier|static
