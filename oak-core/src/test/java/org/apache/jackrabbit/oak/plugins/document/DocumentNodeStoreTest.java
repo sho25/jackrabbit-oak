@@ -6179,8 +6179,8 @@ block|}
 block|}
 decl_stmt|;
 specifier|final
-name|DocumentNodeStore
-name|ns
+name|DocumentMK
+name|mk
 init|=
 name|builderProvider
 operator|.
@@ -6191,6 +6191,15 @@ name|setDocumentStore
 argument_list|(
 name|store
 argument_list|)
+operator|.
+name|open
+argument_list|()
+decl_stmt|;
+specifier|final
+name|DocumentNodeStore
+name|ns
+init|=
+name|mk
 operator|.
 name|getNodeStore
 argument_list|()
@@ -6354,7 +6363,7 @@ operator|.
 name|await
 argument_list|()
 expr_stmt|;
-name|ns
+name|mk
 operator|.
 name|diff
 argument_list|(
@@ -6369,6 +6378,8 @@ name|toString
 argument_list|()
 argument_list|,
 literal|"/"
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}

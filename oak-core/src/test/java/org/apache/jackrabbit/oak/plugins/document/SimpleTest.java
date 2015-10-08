@@ -1298,7 +1298,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"+\"/t2\":{}\n+\"/t3\":{}"
+literal|"+\"/t2\":{}+\"/t3\":{}"
 argument_list|,
 name|diff13
 argument_list|)
