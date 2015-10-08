@@ -723,26 +723,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Marker
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|MarkerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * TODO document  */
 end_comment
@@ -2816,19 +2796,6 @@ name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|Marker
-name|sessionMarker
-init|=
-name|MarkerFactory
-operator|.
-name|getMarker
-argument_list|(
-name|session
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|Logger
 name|log
 init|=
@@ -2845,8 +2812,6 @@ name|log
 operator|.
 name|trace
 argument_list|(
-name|sessionMarker
-argument_list|,
 literal|"[{}] {}"
 argument_list|,
 name|session
@@ -2885,8 +2850,6 @@ name|auditLogger
 operator|.
 name|debug
 argument_list|(
-name|sessionMarker
-argument_list|,
 literal|"[{}] [{}] {}"
 argument_list|,
 name|session
