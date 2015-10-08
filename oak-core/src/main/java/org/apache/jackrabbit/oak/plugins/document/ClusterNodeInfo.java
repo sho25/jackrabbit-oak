@@ -268,7 +268,6 @@ init|=
 literal|"machine"
 decl_stmt|;
 comment|/**      * The Oak version.      */
-specifier|private
 specifier|static
 specifier|final
 name|String
