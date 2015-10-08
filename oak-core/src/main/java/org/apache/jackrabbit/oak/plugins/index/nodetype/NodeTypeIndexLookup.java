@@ -139,9 +139,7 @@ specifier|final
 name|double
 name|MINIMUM_COST
 init|=
-name|PropertyIndexLookup
-operator|.
-name|COST_OVERHEAD
+literal|2.05
 decl_stmt|;
 specifier|private
 specifier|final

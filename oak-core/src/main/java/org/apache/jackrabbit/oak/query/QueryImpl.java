@@ -4870,7 +4870,6 @@ literal|null
 decl_stmt|;
 comment|// Sort the indexes according to their minimum cost to be able to skip the remaining indexes if the cost of the
 comment|// current index is below the minimum cost of the next index.
-specifier|final
 name|List
 argument_list|<
 name|?
@@ -4909,7 +4908,6 @@ name|i
 operator|++
 control|)
 block|{
-specifier|final
 name|QueryIndex
 name|index
 init|=
@@ -4920,28 +4918,24 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-specifier|final
-name|QueryIndex
-name|nextIndex
+name|double
+name|minCost
 init|=
-operator|(
-name|i
-operator|<
-name|queryIndexes
+name|index
 operator|.
-name|size
+name|getMinimumCost
 argument_list|()
-operator|)
-condition|?
-name|queryIndexes
-operator|.
-name|get
-argument_list|(
-name|i
-argument_list|)
-else|:
-literal|null
 decl_stmt|;
+if|if
+condition|(
+name|minCost
+operator|>
+name|bestCost
+condition|)
+block|{
+comment|// Stop looking if the minimum cost is higher than the current best cost
+break|break;
+block|}
 name|double
 name|cost
 decl_stmt|;
@@ -5337,23 +5331,6 @@ name|bestPlan
 operator|=
 name|indexPlan
 expr_stmt|;
-block|}
-comment|// Stop looking for a better index if the current best cost is lower than the next minimum cost
-if|if
-condition|(
-name|nextIndex
-operator|!=
-literal|null
-operator|&&
-name|bestCost
-operator|<=
-name|nextIndex
-operator|.
-name|getMinimumCost
-argument_list|()
-condition|)
-block|{
-break|break;
 block|}
 block|}
 if|if
