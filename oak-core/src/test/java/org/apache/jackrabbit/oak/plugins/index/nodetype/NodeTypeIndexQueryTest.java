@@ -754,10 +754,16 @@ argument_list|<
 name|String
 argument_list|>
 name|plan
-init|=
+decl_stmt|;
+name|plan
+operator|=
 name|executeQuery
 argument_list|(
-literal|"explain SELECT * FROM [nt:unstructured] WHERE ISDESCENDANTNODE([/test]) AND NOT CONTAINS(foo, 'bar')"
+literal|"explain SELECT * FROM [nt:unstructured] "
+operator|+
+literal|"WHERE ISDESCENDANTNODE([/test]) "
+operator|+
+literal|"AND CONTAINS(foo, 'bar')"
 argument_list|,
 name|Query
 operator|.
@@ -765,7 +771,7 @@ name|JCR_SQL2
 argument_list|,
 literal|false
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|1
@@ -788,6 +794,138 @@ operator|.
 name|contains
 argument_list|(
 literal|"no-index"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"[nt:unstructured] as [nt:unstructured] /* no-index\n"
+operator|+
+literal|"  where (isdescendantnode([nt:unstructured], [/test]))\n"
+operator|+
+literal|"  and (contains([nt:unstructured].[foo], 'bar')) */"
+argument_list|,
+name|plan
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|plan
+operator|=
+name|executeQuery
+argument_list|(
+literal|"explain SELECT * FROM [nt:unstructured] "
+operator|+
+literal|"WHERE ISDESCENDANTNODE([/test]) "
+operator|+
+literal|"AND NOT CONTAINS(foo, 'bar')"
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|plan
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|plan
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"no-index"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"[nt:unstructured] as [nt:unstructured] /* no-index\n"
+operator|+
+literal|"  where (isdescendantnode([nt:unstructured], [/test]))\n"
+operator|+
+literal|"  and (not contains([nt:unstructured].[foo], 'bar')) */"
+argument_list|,
+name|plan
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|plan
+operator|=
+name|executeQuery
+argument_list|(
+literal|"explain SELECT * FROM [nt:unstructured] "
+operator|+
+literal|"WHERE ISDESCENDANTNODE([/test]) "
+operator|+
+literal|"AND NOT NOT CONTAINS(foo, 'bar')"
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|plan
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|plan
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"no-index"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"[nt:unstructured] as [nt:unstructured] /* no-index\n"
+operator|+
+literal|"  where (isdescendantnode([nt:unstructured], [/test]))\n"
+operator|+
+literal|"  and (contains([nt:unstructured].[foo], 'bar')) */"
+argument_list|,
+name|plan
+operator|.
+name|get
+argument_list|(
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;

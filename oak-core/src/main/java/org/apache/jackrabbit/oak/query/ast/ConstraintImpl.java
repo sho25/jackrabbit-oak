@@ -87,6 +87,15 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Get the negative constraint, if it is simpler, or null. For example,      * "not x = 1" returns "x = 1", but "x = 1" returns null.      *       * @return the negative constraint, or null      */
+name|ConstraintImpl
+name|not
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|/**      * Evaluate the result using the currently set values.      *      * @return true if the constraint matches      */
 specifier|public
 specifier|abstract

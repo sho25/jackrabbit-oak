@@ -162,7 +162,7 @@ name|FullTextVisitor
 name|v
 parameter_list|)
 function_decl|;
-comment|/**      * whether the current {@link FullTextExpression} is a {@code NOT} condition or not. Default is      * false      *       * @return true if the current condition represent a NOT, false otherwise.      */
+comment|/**      * Whether the current {@link FullTextExpression} is a {@code NOT} condition or not. Default is      * false      *       * @return true if the current condition represent a NOT, false otherwise.      */
 specifier|public
 name|boolean
 name|isNot
