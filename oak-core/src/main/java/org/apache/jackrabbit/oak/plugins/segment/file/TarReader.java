@@ -3138,6 +3138,23 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|String
+name|name
+init|=
+name|file
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Cleaning up {}"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 name|Set
 argument_list|<
 name|UUID
@@ -3544,7 +3561,15 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// none of the entries within this tar file are referenceable
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"None of the entries of {} are referenceable."
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 name|removed
 operator|.
 name|addAll
@@ -3584,18 +3609,31 @@ comment|// the space savings are not worth it at less than 25%,
 comment|// unless this tar file lacks a pre-compiled segment graph
 comment|// in which case we'll always generate a new tar file with
 comment|// the graph to speed up future garbage collection runs.
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Not enough space savings. ({}/{}). Skipping clean up of {}"
+argument_list|,
+name|access
+operator|.
+name|length
+argument_list|()
+operator|-
+name|size
+argument_list|,
+name|access
+operator|.
+name|length
+argument_list|()
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 return|return
 name|this
 return|;
 block|}
-name|String
-name|name
-init|=
-name|file
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
 name|int
 name|pos
 init|=
@@ -3626,7 +3664,15 @@ operator|==
 literal|'z'
 condition|)
 block|{
-comment|// no garbage collection after reaching generation z
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"No garbage collection after reaching generation z: {}"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 return|return
 name|this
 return|;
@@ -3663,6 +3709,18 @@ operator|+
 literal|".tar"
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Writing new generation {}"
+argument_list|,
+name|newFile
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|TarWriter
 name|writer
 init|=
@@ -3674,29 +3732,12 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|sorted
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
 name|TarEntry
 name|entry
-init|=
+range|:
 name|sorted
-index|[
-name|i
-index|]
-decl_stmt|;
+control|)
+block|{
 if|if
 condition|(
 name|entry
