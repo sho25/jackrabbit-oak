@@ -91,6 +91,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Suppliers
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -518,7 +532,14 @@ argument_list|(
 name|fileStore
 operator|.
 name|estimateCompactionGain
-argument_list|()
+argument_list|(
+name|Suppliers
+operator|.
+name|ofInstance
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
 operator|.
 name|estimateCompactionGain
 argument_list|(
