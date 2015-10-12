@@ -2159,6 +2159,16 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
+name|String
+name|head
+init|=
+name|heads
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+try|try
+block|{
 name|RecordId
 name|last
 init|=
@@ -2168,10 +2178,7 @@ name|fromString
 argument_list|(
 name|tracker
 argument_list|,
-name|heads
-operator|.
-name|next
-argument_list|()
+name|head
 argument_list|)
 decl_stmt|;
 name|SegmentId
@@ -2212,6 +2219,23 @@ argument_list|(
 literal|"Unable to access revision {}, rewinding..."
 argument_list|,
 name|last
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Skipping invalid record id {}"
+argument_list|,
+name|head
 argument_list|)
 expr_stmt|;
 block|}

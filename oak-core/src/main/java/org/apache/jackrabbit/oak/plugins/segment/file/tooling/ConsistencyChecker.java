@@ -498,6 +498,8 @@ range|:
 name|journal
 control|)
 block|{
+try|try
+block|{
 name|print
 argument_list|(
 literal|"Checking revision {}"
@@ -580,6 +582,21 @@ expr_stmt|;
 name|print
 argument_list|(
 literal|"Broken revision {}"
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|print
+argument_list|(
+literal|"Skipping invalid record id {}"
 argument_list|,
 name|revision
 argument_list|)
