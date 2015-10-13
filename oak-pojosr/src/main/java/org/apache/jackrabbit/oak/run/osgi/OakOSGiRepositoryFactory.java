@@ -1077,7 +1077,6 @@ return|return
 name|descriptors
 return|;
 block|}
-specifier|private
 specifier|static
 name|void
 name|shutdown
