@@ -237,7 +237,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"SyncedIdentityImpl{"
+literal|"DefaultSyncedIdentity{"
 argument_list|)
 decl_stmt|;
 name|sb

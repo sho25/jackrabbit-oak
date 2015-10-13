@@ -150,6 +150,16 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
+comment|/**      * Checks if the identity requires sync based on the configuration, type and last sync time.      * @param identity the identity to check      * @return {@code true} if the identity requires synchronization.      */
+name|boolean
+name|requiresSync
+parameter_list|(
+annotation|@
+name|Nonnull
+name|SyncedIdentity
+name|identity
+parameter_list|)
+function_decl|;
 comment|/**      * Lists all externally synced identities.      * @param userManager the user manager      * @return an iterator over all authorizable that are externally synced.      * @throws RepositoryException if an error occurs      */
 annotation|@
 name|Nonnull

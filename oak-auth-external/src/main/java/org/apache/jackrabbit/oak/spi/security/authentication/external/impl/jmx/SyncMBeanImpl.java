@@ -2026,11 +2026,11 @@ name|getProviderName
 argument_list|()
 decl_stmt|;
 return|return
-operator|(
 name|providerName
-operator|==
+operator|!=
 literal|null
-operator|||
+operator|&&
+operator|(
 name|providerName
 operator|.
 name|isEmpty
