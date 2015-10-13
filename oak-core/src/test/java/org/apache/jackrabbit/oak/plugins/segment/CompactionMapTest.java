@@ -345,16 +345,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1412,12 +1402,6 @@ block|}
 comment|/**      * See OAK-3511      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3511"
-argument_list|)
-comment|// FIXME OAK-3511
 specifier|public
 name|void
 name|removeRecentKey

@@ -1219,12 +1219,12 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+block|}
 name|recent
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|recordCount
