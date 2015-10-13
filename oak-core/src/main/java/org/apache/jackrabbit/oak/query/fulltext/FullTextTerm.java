@@ -806,6 +806,8 @@ return|return
 name|boost
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isNot
