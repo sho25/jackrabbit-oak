@@ -685,6 +685,36 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      *<p>      * The value of this flag determines the behavior of the IndexUpdate when      * dealing with {@code reindex} flags.      *</p>      *<p>      * If {@code false} (default value), the indexer will start reindexing      * immediately in the current thread, blocking a commit until this operation      * is done.      *</p>      *<p>      * If {@code true}, the indexer will ignore the flag, therefore ignoring any      * reindex requests.      *</p>      *<p>      * This is only provided as a support tool (see OAK-3505) so it should be      * used with extreme caution!      *</p>      */
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|IGNORE_REINDEX_FLAGS
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.indexUpdate.ignoreReindexFlags"
+argument_list|)
+decl_stmt|;
+static|static
+block|{
+if|if
+condition|(
+name|IGNORE_REINDEX_FLAGS
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Reindexing is disabled by configuration. This value is configurable via the 'oak.indexUpdate.ignoreReindexFlags' system property."
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 specifier|private
 specifier|final
 name|IndexUpdateRootState
@@ -1051,7 +1081,8 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|true
+operator|!
+name|IGNORE_REINDEX_FLAGS
 return|;
 block|}
 comment|// reindex in the case this is a new node, even though the reindex flag
@@ -1958,6 +1989,18 @@ specifier|static
 class|class
 name|MissingIndexProviderStrategy
 block|{
+comment|/**          * The value of this flag determines the behavior of          * {@link #onMissingIndex(String, NodeBuilder, String)}. If          * {@code false} (default value), the method will set the          * {@code reindex} flag to true and log a warning. if {@code true}, the          * method will throw a {@link CommitFailedException} failing the commit.          */
+specifier|private
+name|boolean
+name|failOnMissingIndexProvider
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.indexUpdate.failOnMissingIndexProvider"
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|Set
@@ -2025,6 +2068,33 @@ block|{
 comment|// already true, skip the update
 return|return;
 block|}
+if|if
+condition|(
+name|failOnMissingIndexProvider
+condition|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+literal|"IndexUpdate"
+argument_list|,
+literal|1
+argument_list|,
+literal|"Missing index provider detected for type ["
+operator|+
+name|type
+operator|+
+literal|"] on index ["
+operator|+
+name|indexPath
+operator|+
+literal|"]"
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
 name|log
 operator|.
 name|warn
@@ -2046,6 +2116,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|boolean
 name|isDisabled
 parameter_list|(
@@ -2061,6 +2132,20 @@ argument_list|(
 name|type
 argument_list|)
 return|;
+block|}
+name|void
+name|setFailOnMissingIndexProvider
+parameter_list|(
+name|boolean
+name|failOnMissingIndexProvider
+parameter_list|)
+block|{
+name|this
+operator|.
+name|failOnMissingIndexProvider
+operator|=
+name|failOnMissingIndexProvider
+expr_stmt|;
 block|}
 block|}
 specifier|public
