@@ -22,15 +22,15 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Same as {@link CompositeProviderLimitedTest}  * with reverse order of the aggregated providers.  */
+comment|/**  * Same as {@link CompositeProviderFullScopeTest}  * with reverse order of the aggregated providers.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|CompositeProviderLimitedReverseTest
+name|CompositeProviderFullScopeReverseTest
 extends|extends
-name|CompositeProviderLimitedTest
+name|CompositeProviderFullScopeTest
 block|{
 annotation|@
 name|Override

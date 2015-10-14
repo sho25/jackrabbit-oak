@@ -940,6 +940,11 @@ name|Nonnull
 name|TreePermission
 name|treePermission
 parameter_list|,
+annotation|@
+name|Nullable
+name|PropertyState
+name|propertyState
+parameter_list|,
 name|long
 name|permissions
 parameter_list|)

@@ -1926,6 +1926,9 @@ name|cugPermProvider
 operator|.
 name|supportedPermissions
 argument_list|(
+operator|(
+name|Tree
+operator|)
 literal|null
 argument_list|,
 literal|null
@@ -1946,6 +1949,9 @@ name|cugPermProvider
 operator|.
 name|supportedPermissions
 argument_list|(
+operator|(
+name|Tree
+operator|)
 literal|null
 argument_list|,
 literal|null
@@ -1966,6 +1972,9 @@ name|cugPermProvider
 operator|.
 name|supportedPermissions
 argument_list|(
+operator|(
+name|Tree
+operator|)
 literal|null
 argument_list|,
 literal|null
@@ -1986,6 +1995,9 @@ name|cugPermProvider
 operator|.
 name|supportedPermissions
 argument_list|(
+operator|(
+name|Tree
+operator|)
 literal|null
 argument_list|,
 literal|null
@@ -2006,6 +2018,9 @@ name|cugPermProvider
 operator|.
 name|supportedPermissions
 argument_list|(
+operator|(
+name|Tree
+operator|)
 literal|null
 argument_list|,
 literal|null
@@ -2030,6 +2045,9 @@ name|cugPermProvider
 operator|.
 name|supportedPermissions
 argument_list|(
+operator|(
+name|Tree
+operator|)
 literal|null
 argument_list|,
 literal|null
@@ -2050,6 +2068,9 @@ name|cugPermProvider
 operator|.
 name|supportedPermissions
 argument_list|(
+operator|(
+name|Tree
+operator|)
 literal|null
 argument_list|,
 literal|null
@@ -2074,6 +2095,9 @@ name|cugPermProvider
 operator|.
 name|supportedPermissions
 argument_list|(
+operator|(
+name|Tree
+operator|)
 literal|null
 argument_list|,
 literal|null
@@ -2425,7 +2449,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @see org.apache.jackrabbit.oak.spi.security.authorization.permission.AggregatedPermissionProvider#supportedPermissions(org.apache.jackrabbit.oak.spi.security.authorization.permission.TreePermission, long)      */
+comment|/**      * @see org.apache.jackrabbit.oak.spi.security.authorization.permission.AggregatedPermissionProvider#supportedPermissions(org.apache.jackrabbit.oak.spi.security.authorization.permission.TreePermission, org.apache.jackrabbit.oak.api.PropertyState, long)      */
 annotation|@
 name|Test
 specifier|public
@@ -2743,6 +2767,8 @@ name|supportedPermissions
 argument_list|(
 name|tp
 argument_list|,
+literal|null
+argument_list|,
 name|Permissions
 operator|.
 name|READ
@@ -2760,6 +2786,8 @@ operator|.
 name|supportedPermissions
 argument_list|(
 name|tp
+argument_list|,
+literal|null
 argument_list|,
 name|Permissions
 operator|.
@@ -2779,6 +2807,8 @@ name|supportedPermissions
 argument_list|(
 name|tp
 argument_list|,
+literal|null
+argument_list|,
 name|Permissions
 operator|.
 name|READ_PROPERTY
@@ -2796,6 +2826,8 @@ operator|.
 name|supportedPermissions
 argument_list|(
 name|tp
+argument_list|,
+literal|null
 argument_list|,
 name|Permissions
 operator|.
@@ -2814,6 +2846,8 @@ operator|.
 name|supportedPermissions
 argument_list|(
 name|tp
+argument_list|,
+literal|null
 argument_list|,
 name|Permissions
 operator|.
@@ -2840,6 +2874,8 @@ name|supportedPermissions
 argument_list|(
 name|tp
 argument_list|,
+literal|null
+argument_list|,
 name|Permissions
 operator|.
 name|READ
@@ -2857,6 +2893,8 @@ operator|.
 name|supportedPermissions
 argument_list|(
 name|tp
+argument_list|,
+literal|null
 argument_list|,
 name|Permissions
 operator|.
@@ -2876,6 +2914,8 @@ name|supportedPermissions
 argument_list|(
 name|tp
 argument_list|,
+literal|null
+argument_list|,
 name|Permissions
 operator|.
 name|READ_PROPERTY
@@ -2894,6 +2934,8 @@ name|supportedPermissions
 argument_list|(
 name|tp
 argument_list|,
+literal|null
+argument_list|,
 name|Permissions
 operator|.
 name|ALL
@@ -2911,6 +2953,8 @@ operator|.
 name|supportedPermissions
 argument_list|(
 name|tp
+argument_list|,
+literal|null
 argument_list|,
 name|Permissions
 operator|.
@@ -2934,6 +2978,8 @@ operator|.
 name|supportedPermissions
 argument_list|(
 name|tp
+argument_list|,
+literal|null
 argument_list|,
 name|Permissions
 operator|.
