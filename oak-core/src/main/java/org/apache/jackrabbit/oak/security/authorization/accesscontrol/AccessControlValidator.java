@@ -1440,7 +1440,14 @@ block|{
 name|String
 name|msg
 init|=
-literal|"Isolated policy node. Parent is not of type "
+literal|"Isolated policy node ("
+operator|+
+name|accessControlledTree
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"). Parent is not of type "
 operator|+
 name|requiredMixin
 decl_stmt|;
