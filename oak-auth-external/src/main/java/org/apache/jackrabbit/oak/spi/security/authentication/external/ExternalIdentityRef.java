@@ -106,6 +106,19 @@ name|this
 operator|.
 name|providerName
 operator|=
+operator|(
+name|providerName
+operator|==
+literal|null
+operator|||
+name|providerName
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
+condition|?
+literal|null
+else|:
 name|providerName
 expr_stmt|;
 name|StringBuilder
@@ -124,16 +137,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|providerName
 operator|!=
 literal|null
-operator|&&
-name|providerName
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|b
@@ -147,6 +155,8 @@ name|escape
 argument_list|(
 name|b
 argument_list|,
+name|this
+operator|.
 name|providerName
 argument_list|)
 expr_stmt|;
@@ -196,6 +206,8 @@ name|string
 return|;
 block|}
 comment|/**      * Creates an external identity reference from a string representation.      * @param str the string      * @return the reference      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|ExternalIdentityRef
@@ -278,12 +290,17 @@ block|}
 block|}
 comment|/**      * Escapes the given string and appends it to the builder.      * @param builder the builder      * @param str the string      */
 specifier|private
+specifier|static
 name|void
 name|escape
 parameter_list|(
+annotation|@
+name|Nonnull
 name|StringBuilder
 name|builder
 parameter_list|,
+annotation|@
+name|Nonnull
 name|CharSequence
 name|str
 parameter_list|)
@@ -390,7 +407,7 @@ operator|+
 literal|'}'
 return|;
 block|}
-comment|/**      * Tests if the given object is an external identity reference and if it's getString() is equal to this.      */
+comment|/**      * Tests if the given object is an external identity reference and if it's      * getString() is equal to this. Note, that there is no need to      * include {@code id} and {@code provider} fields in the comparison as      * the string representation already incorporates both.      */
 annotation|@
 name|Override
 specifier|public
@@ -401,14 +418,25 @@ name|Object
 name|o
 parameter_list|)
 block|{
-try|try
-block|{
-comment|// assuming that we never compare other types of classes
-return|return
+if|if
+condition|(
 name|this
 operator|==
 name|o
-operator|||
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
+name|o
+operator|instanceof
+name|ExternalIdentityRef
+condition|)
+block|{
+return|return
 name|string
 operator|.
 name|equals
@@ -424,16 +452,9 @@ name|string
 argument_list|)
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
 return|return
 literal|false
 return|;
-block|}
 block|}
 comment|/**      * @return same as {@code this.getString().hashCode()}      */
 annotation|@
