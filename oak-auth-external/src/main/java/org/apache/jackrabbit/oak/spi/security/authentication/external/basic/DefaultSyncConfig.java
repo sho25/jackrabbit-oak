@@ -121,6 +121,8 @@ name|name
 return|;
 block|}
 comment|/**      * Sets the name      * @param name the name      * @return {@code this}      * @see #getName()      */
+annotation|@
+name|Nonnull
 specifier|public
 name|DefaultSyncConfig
 name|setName
@@ -261,6 +263,8 @@ specifier|public
 name|Authorizable
 name|setAutoMembership
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 modifier|...
 name|autoMembership
@@ -353,6 +357,8 @@ specifier|public
 name|Authorizable
 name|setPropertyMapping
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
@@ -397,6 +403,8 @@ specifier|public
 name|Authorizable
 name|setPathPrefix
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|pathPrefix
 parameter_list|)

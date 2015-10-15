@@ -47,6 +47,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -94,9 +104,13 @@ decl_stmt|;
 specifier|public
 name|DefaultSyncResultImpl
 parameter_list|(
+annotation|@
+name|Nullable
 name|DefaultSyncedIdentity
 name|id
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Status
 name|status
 parameter_list|)
@@ -115,6 +129,8 @@ name|status
 expr_stmt|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|CheckForNull
 specifier|public
 name|DefaultSyncedIdentity
@@ -125,6 +141,8 @@ return|return
 name|id
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -140,6 +158,8 @@ specifier|public
 name|void
 name|setStatus
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Status
 name|status
 parameter_list|)
