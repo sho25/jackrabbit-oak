@@ -184,12 +184,7 @@ argument_list|(
 name|authorizationConfiguration
 argument_list|)
 expr_stmt|;
-operator|(
-operator|(
-name|CugSecurityProvider
-operator|)
 name|this
-operator|)
 operator|.
 name|bindAuthorizationConfiguration
 argument_list|(

@@ -499,6 +499,18 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -3453,6 +3465,28 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see PermissionProvider#getPrivileges(org.apache.jackrabbit.oak.api.Tree)      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testGetPrivilegesNullPath
+parameter_list|()
+block|{
+name|assertTrue
+argument_list|(
+name|cugPermProvider
+operator|.
+name|getPrivileges
+argument_list|(
+literal|null
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|//------------------------------------------------------< hasPrivileges>---
 comment|/**      * @see PermissionProvider#hasPrivileges(org.apache.jackrabbit.oak.api.Tree, String...)      */
 annotation|@
@@ -3653,7 +3687,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|hasNonReadPrivileges
+name|testHasNonReadPrivileges
 parameter_list|()
 block|{
 for|for
@@ -3765,6 +3799,29 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|/**      * @see PermissionProvider#hasPrivileges(org.apache.jackrabbit.oak.api.Tree, String...)      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testHasPrivilegesNullPath
+parameter_list|()
+block|{
+name|assertFalse
+argument_list|(
+name|cugPermProvider
+operator|.
+name|hasPrivileges
+argument_list|(
+literal|null
+argument_list|,
+name|PrivilegeConstants
+operator|.
+name|JCR_READ
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|//--------------------------------------------< getRepositoryPermission>---
 comment|/**      * @see org.apache.jackrabbit.oak.spi.security.authorization.permission.PermissionProvider#getRepositoryPermission()      */
@@ -4091,7 +4148,7 @@ name|assertSame
 argument_list|(
 name|TreePermission
 operator|.
-name|EMPTY
+name|NO_RECOURSE
 argument_list|,
 name|cugTp
 argument_list|)
@@ -4101,7 +4158,7 @@ name|assertSame
 argument_list|(
 name|TreePermission
 operator|.
-name|EMPTY
+name|NO_RECOURSE
 argument_list|,
 name|cugPermProvider
 operator|.
@@ -4118,12 +4175,9 @@ name|rootTp
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertSame
-argument_list|(
 name|TreePermission
-operator|.
-name|EMPTY
-argument_list|,
+name|unsupportedPathTp
+init|=
 name|cugPermProvider
 operator|.
 name|getTreePermission
@@ -4137,8 +4191,46 @@ argument_list|)
 argument_list|,
 name|rootTp
 argument_list|)
+decl_stmt|;
+name|assertSame
+argument_list|(
+name|TreePermission
+operator|.
+name|NO_RECOURSE
+argument_list|,
+name|unsupportedPathTp
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+name|cugPermProvider
+operator|.
+name|getTreePermission
+argument_list|(
+name|root
+operator|.
+name|getTree
+argument_list|(
+name|UNSUPPORTED_PATH
+operator|+
+literal|"/child"
+argument_list|)
+argument_list|,
+name|unsupportedPathTp
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalStateException
+name|e
+parameter_list|)
+block|{
+comment|// success
+block|}
 block|}
 comment|//-------------------------------< isGranted(Tree, PropertyState, long)>---
 comment|/**      * @see PermissionProvider#isGranted(org.apache.jackrabbit.oak.api.Tree, org.apache.jackrabbit.oak.api.PropertyState, long)      */

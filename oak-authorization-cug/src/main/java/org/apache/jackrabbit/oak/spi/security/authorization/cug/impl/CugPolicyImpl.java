@@ -377,6 +377,13 @@ argument_list|>
 name|principals
 parameter_list|)
 block|{
+name|ImportBehavior
+operator|.
+name|nameFromValue
+argument_list|(
+name|importBehavior
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|oakPath
@@ -741,7 +748,7 @@ break|break;
 default|default:
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|IllegalStateException
 argument_list|(
 literal|"Unsupported import behavior "
 operator|+
