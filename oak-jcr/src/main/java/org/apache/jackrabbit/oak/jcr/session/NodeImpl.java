@@ -1877,7 +1877,7 @@ argument_list|()
 operator|.
 name|checkPermissions
 argument_list|(
-name|dlg
+name|parent
 operator|.
 name|getTree
 argument_list|()
