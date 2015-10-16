@@ -368,6 +368,11 @@ annotation|@
 name|Parameterized
 operator|.
 name|Parameters
+argument_list|(
+name|name
+operator|=
+literal|"{0}"
+argument_list|)
 specifier|public
 specifier|static
 name|Collection
