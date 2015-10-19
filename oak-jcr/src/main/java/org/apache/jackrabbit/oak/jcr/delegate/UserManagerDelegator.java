@@ -407,9 +407,6 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-operator|(
-name|T
-operator|)
 name|sessionDelegate
 operator|.
 name|performNullable
@@ -417,7 +414,7 @@ argument_list|(
 operator|new
 name|UserManagerOperation
 argument_list|<
-name|Authorizable
+name|T
 argument_list|>
 argument_list|(
 name|sessionDelegate
@@ -428,7 +425,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Authorizable
+name|T
 name|performNullable
 parameter_list|()
 throws|throws
