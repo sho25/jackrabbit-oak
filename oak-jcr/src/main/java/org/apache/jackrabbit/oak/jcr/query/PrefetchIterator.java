@@ -144,7 +144,7 @@ name|size
 decl_stmt|,
 name|position
 decl_stmt|;
-comment|/**      * Create a new iterator.      *       * @param it the base iterator      * @param options the prefetch options to use      * @param result (optional) the result to get the size from      */
+comment|/**      * Create a new iterator.      *       * @param it the base iterator      * @param options the prefetch options to use      */
 name|PrefetchIterator
 parameter_list|(
 name|Iterator

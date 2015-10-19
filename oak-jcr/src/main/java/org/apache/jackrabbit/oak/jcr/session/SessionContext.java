@@ -1213,7 +1213,7 @@ return|return
 name|workspace
 return|;
 block|}
-comment|/**      * Factory method for creating the {@link Session} instance for this      * context. Called by {@link #getSession()} when first accessed. Can be      * overridden by subclasses to customize the session implementation.      *      * @return session instance      */
+comment|/**      * Factory method for creating the {@link javax.jcr.Session} instance for this      * context. Called by {@link #getSession()} when first accessed. Can be      * overridden by subclasses to customize the session implementation.      *      * @return session instance      */
 specifier|protected
 name|SessionImpl
 name|createSession
@@ -1227,7 +1227,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * Factory method for creating the {@link Workspace} instance for this      * context. Called by {@link #getWorkspace()} when first accessed. Can be      * overridden by subclasses to customize the workspace implementation.      *      * @return session instance      */
+comment|/**      * Factory method for creating the {@link javax.jcr.Workspace} instance for this      * context. Called by {@link #getWorkspace()} when first accessed. Can be      * overridden by subclasses to customize the workspace implementation.      *      * @return session instance      */
 specifier|protected
 name|WorkspaceImpl
 name|createWorkspace

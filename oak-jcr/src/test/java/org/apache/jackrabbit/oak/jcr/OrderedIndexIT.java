@@ -973,7 +973,7 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * add a bunch of sequential nodes with the provided property values pick-up randomly and start      * numerating nodes from {@code startFrom}.      *       * The caller will have to perform the {@link Session#save()} after the method call.      *       * @param values the property values to set      * @param father under whom we should add the nodes      * @param propertyType the type of the property to be stored      * @return      * @throws RepositoryException       * @throws LockException       * @throws ConstraintViolationException       * @throws VersionException       * @throws PathNotFoundException       * @throws ItemExistsException       */
+comment|/**      * add a bunch of sequential nodes with the provided property values pick-up randomly and start      * numerating nodes from {@code startFrom}.      *       * The caller will have to perform the {@link Session#save()} after the method call.      *       * @param values the property values to set      * @param father under whom we should add the nodes      * @param propertyType the type of the property to be stored      * @return      * @throws RepositoryException       */
 specifier|private
 name|List
 argument_list|<
