@@ -425,6 +425,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"changePassword"
 argument_list|)
@@ -474,6 +477,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"changePassword"
 argument_list|)
@@ -521,6 +527,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"disable"
 argument_list|)

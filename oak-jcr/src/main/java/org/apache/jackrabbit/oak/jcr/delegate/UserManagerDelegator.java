@@ -1504,6 +1504,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|UserManagerOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 name|sessionDelegate
 argument_list|,

@@ -1342,6 +1342,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"save"
 argument_list|)
@@ -1465,6 +1468,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"refresh"
 argument_list|)

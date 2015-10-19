@@ -2002,6 +2002,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"unlockAllSessionScopedLocks"
 argument_list|)

@@ -1010,10 +1010,13 @@ specifier|private
 specifier|abstract
 class|class
 name|WriteOperation
+parameter_list|<
+name|T
+parameter_list|>
 extends|extends
 name|SessionOperation
 argument_list|<
-name|Void
+name|T
 argument_list|>
 block|{
 specifier|protected
@@ -2178,6 +2181,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|WriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"move"
 argument_list|)
@@ -2276,6 +2282,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|WriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"removeItem"
 argument_list|)
@@ -2382,6 +2391,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|WriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"save"
 argument_list|)
@@ -2440,6 +2452,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|WriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"refresh"
 argument_list|)

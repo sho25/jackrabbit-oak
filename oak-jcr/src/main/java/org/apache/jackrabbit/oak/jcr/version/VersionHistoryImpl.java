@@ -852,6 +852,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"addVersionLabel"
 argument_list|,
@@ -925,6 +928,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"removeVersionLabel"
 argument_list|,
@@ -1273,6 +1279,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"removeVersion"
 argument_list|,

@@ -1536,6 +1536,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"remove"
 argument_list|)
@@ -1974,6 +1977,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"orderBefore"
 argument_list|)
@@ -5025,6 +5031,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"setPrimaryType"
 argument_list|)
@@ -5108,6 +5117,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"addMixin"
 argument_list|)
@@ -5194,6 +5206,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"removeMixin"
 argument_list|)
@@ -5627,6 +5642,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"update"
 argument_list|)
@@ -6312,6 +6330,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"removeSharedSet"
 argument_list|)
@@ -7337,6 +7358,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"rename"
 argument_list|)
@@ -7616,6 +7640,9 @@ name|performVoid
 argument_list|(
 operator|new
 name|ItemWriteOperation
+argument_list|<
+name|Void
+argument_list|>
 argument_list|(
 literal|"setMixins"
 argument_list|)
