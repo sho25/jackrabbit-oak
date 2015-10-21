@@ -1162,7 +1162,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-literal|"Segment Content Refs"
+literal|"Segment Refs"
 argument_list|)
 decl_stmt|;
 name|menuSCR
@@ -1204,9 +1204,9 @@ name|showInputDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"Segment Content Ref\nUsage:<segmentId>"
+literal|"Segment References\nUsage:<segmentId>"
 argument_list|,
-literal|"Segment Content Ref"
+literal|"Segment References"
 argument_list|,
 name|JOptionPane
 operator|.
