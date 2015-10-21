@@ -1465,6 +1465,25 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|FullTextSearchImpl
+argument_list|(
+name|selectorName
+argument_list|,
+name|propertyName
+argument_list|,
+name|fullTextSearchExpression
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

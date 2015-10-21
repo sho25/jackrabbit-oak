@@ -512,6 +512,23 @@ return|return
 name|expression
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|SuggestImpl
+argument_list|(
+name|selectorName
+argument_list|,
+name|expression
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

@@ -20,6 +20,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|newArrayList
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|ast
+operator|.
+name|AstElementFactory
+operator|.
+name|copyElementAndCheckReference
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -296,6 +332,27 @@ parameter_list|)
 block|{
 comment|// ignore
 comment|// TODO convert NOT conditions
+block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|NotImpl
+argument_list|(
+operator|(
+name|ConstraintImpl
+operator|)
+name|copyElementAndCheckReference
+argument_list|(
+name|constraint
+argument_list|)
+argument_list|)
+return|;
 block|}
 block|}
 end_class

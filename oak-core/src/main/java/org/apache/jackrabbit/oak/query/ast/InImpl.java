@@ -821,6 +821,26 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|InImpl
+argument_list|(
+name|operand1
+operator|.
+name|createCopy
+argument_list|()
+argument_list|,
+name|operand2
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

@@ -734,6 +734,23 @@ name|b
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|PropertyInexistenceImpl
+argument_list|(
+name|selectorName
+argument_list|,
+name|propertyName
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

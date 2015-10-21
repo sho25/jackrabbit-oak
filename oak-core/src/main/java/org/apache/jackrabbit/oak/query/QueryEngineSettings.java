@@ -111,6 +111,17 @@ name|fullTextComparisonWithoutIndex
 init|=
 name|DEFAULT_FULL_TEXT_COMPARISON_WITHOUT_INDEX
 decl_stmt|;
+specifier|private
+name|boolean
+name|sql2Optimisation
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.query.sql2optimisation"
+argument_list|)
+decl_stmt|;
 comment|/**      * Get the limit on how many nodes a query may read at most into memory, for      * "order by" and "distinct" queries. If this limit is exceeded, the query      * throws an exception.      *       * @return the limit      */
 annotation|@
 name|Override
@@ -193,6 +204,15 @@ parameter_list|()
 block|{
 return|return
 name|fullTextComparisonWithoutIndex
+return|;
+block|}
+specifier|public
+name|boolean
+name|isSql2Optimisation
+parameter_list|()
+block|{
+return|return
+name|sql2Optimisation
 return|;
 block|}
 block|}

@@ -434,6 +434,25 @@ return|return
 name|nativeSearchExpression
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|NativeFunctionImpl
+argument_list|(
+name|selectorName
+argument_list|,
+name|language
+argument_list|,
+name|nativeSearchExpression
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

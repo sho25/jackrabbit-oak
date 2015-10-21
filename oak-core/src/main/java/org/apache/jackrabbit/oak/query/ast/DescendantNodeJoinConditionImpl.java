@@ -403,6 +403,23 @@ name|ancestorSelector
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|DescendantNodeJoinConditionImpl
+argument_list|(
+name|descendantSelectorName
+argument_list|,
+name|ancestorSelectorName
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

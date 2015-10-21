@@ -814,6 +814,27 @@ name|selector2
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|EquiJoinConditionImpl
+argument_list|(
+name|selector1Name
+argument_list|,
+name|property1Name
+argument_list|,
+name|selector2Name
+argument_list|,
+name|property2Name
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

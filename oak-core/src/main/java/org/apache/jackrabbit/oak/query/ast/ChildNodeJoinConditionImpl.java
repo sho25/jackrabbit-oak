@@ -484,6 +484,23 @@ name|parentSelector
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ChildNodeJoinConditionImpl
+argument_list|(
+name|childSelectorName
+argument_list|,
+name|parentSelectorName
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

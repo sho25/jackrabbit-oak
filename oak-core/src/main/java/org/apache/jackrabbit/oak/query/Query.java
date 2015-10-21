@@ -39,6 +39,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|aQute
 operator|.
 name|bnd
@@ -310,6 +330,47 @@ function_decl|;
 comment|/**      * Returns whether the results will be sorted by index. The query must already be prepared.      *      * @return if sorted by index      */
 name|boolean
 name|isSortedByIndex
+parameter_list|()
+function_decl|;
+comment|/**      * Perform optimisation on the object itself. To avoid any potential error due to state      * variables perfom the optimisation before the {@link #init()}.      *       * @return {@code this} if no optimisations are possible or a new instance of a {@link Query}.      *         Cannot return null.      */
+annotation|@
+name|Nonnull
+name|Query
+name|optimise
+parameter_list|()
+function_decl|;
+comment|/**      *<p>      * returns a clone of the current object. Will throw an exception in case it's invoked in a non      * appropriate moment. For example the default {@link QueryImpl} cannot be cloned once the      * {@link #init()} has been executed.      *</p>      *       *<p>      *<strong>May return null if not implemented.</strong>      *</p>      * @return a clone of self      * @throws IllegalStateException      */
+annotation|@
+name|Nullable
+name|Query
+name|copyOf
+parameter_list|()
+throws|throws
+name|IllegalStateException
+function_decl|;
+comment|/**      * @return {@code true} if the query has been already initialised. {@code false} otherwise.      */
+name|boolean
+name|isInit
+parameter_list|()
+function_decl|;
+comment|/**      * @return {@code true} if the query is a result of optimisations. {@code false} if it's the      *         originally computed one.      */
+name|boolean
+name|isOptimised
+parameter_list|()
+function_decl|;
+comment|/**      * @return the original statement as it was used to construct the object. If not provided the      *         {@link #toString()} will be used instead.      */
+name|String
+name|getStatement
+parameter_list|()
+function_decl|;
+comment|/**      *       * @return {@code true} if the current query is internal. {@code false} otherwise.      */
+name|boolean
+name|isInternal
+parameter_list|()
+function_decl|;
+comment|/**      *<p>      * Some queries can bring with them a cost overhead that the query engine could consider when      * electing the best query between the original SQL2 and the possible available optimisations.      *</p>      *<p>      * For example for the case of<a href="https://issues.apache.org/jira/browse/OAK-2660" /> if      * you have a case where {@code (a = 'v' OR CONTAINS(b, 'v1') OR CONTAINS(c, 'v2')) AND (...)}      * currently the query engine does not know how to leverage indexes and post conditions and the      * query is better suited with a UNION.      *</p>      *       * @return a positive number or 0.<strong>Cannot be negative.</strong>      */
+name|double
+name|getCostOverhead
 parameter_list|()
 function_decl|;
 block|}

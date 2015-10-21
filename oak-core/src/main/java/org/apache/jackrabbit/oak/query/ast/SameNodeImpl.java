@@ -322,6 +322,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+operator|new
+name|SameNodeImpl
+argument_list|(
+name|selectorName
+argument_list|,
+name|path
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

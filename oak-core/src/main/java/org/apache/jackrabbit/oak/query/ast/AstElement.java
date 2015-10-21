@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -575,6 +585,18 @@ parameter_list|)
 block|{
 return|return
 name|path
+return|;
+block|}
+comment|/**      * @return a clone of self. Default implementation in {@link AstElement} returns same reference      *         to {@code this}.      */
+annotation|@
+name|Nonnull
+specifier|public
+name|AstElement
+name|copyOf
+parameter_list|()
+block|{
+return|return
+name|this
 return|;
 block|}
 block|}
