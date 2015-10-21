@@ -3135,7 +3135,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|printDependenciesToSegment
+name|printSegmentReferences
 parameter_list|(
 name|String
 name|sid
@@ -3254,9 +3254,16 @@ name|append
 argument_list|(
 literal|"Tar file: "
 operator|+
+operator|new
+name|File
+argument_list|(
 name|e
 operator|.
 name|getKey
+argument_list|()
+argument_list|)
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;

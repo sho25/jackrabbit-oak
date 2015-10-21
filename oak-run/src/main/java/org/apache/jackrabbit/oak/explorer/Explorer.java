@@ -1222,7 +1222,7 @@ condition|)
 block|{
 name|treePanel
 operator|.
-name|printDependenciesToSegment
+name|printSegmentReferences
 argument_list|(
 name|s
 argument_list|)
