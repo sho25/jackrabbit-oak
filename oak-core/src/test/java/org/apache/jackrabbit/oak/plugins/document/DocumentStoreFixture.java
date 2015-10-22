@@ -590,6 +590,24 @@ literal|true
 return|;
 block|}
 specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|getName
+argument_list|()
+return|;
+block|}
+specifier|public
 name|void
 name|dispose
 parameter_list|()
