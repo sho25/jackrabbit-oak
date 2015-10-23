@@ -1170,6 +1170,8 @@ name|CugPermissionProvider
 argument_list|(
 name|root
 argument_list|,
+name|workspaceName
+argument_list|,
 name|principals
 argument_list|,
 name|supportedPaths
