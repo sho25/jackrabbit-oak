@@ -835,9 +835,15 @@ argument_list|)
 argument_list|,
 name|supportedPaths
 argument_list|,
-name|CugContext
+name|getConfig
+argument_list|(
+name|AuthorizationConfiguration
 operator|.
-name|INSTANCE
+name|class
+argument_list|)
+operator|.
+name|getContext
+argument_list|()
 argument_list|)
 return|;
 block|}

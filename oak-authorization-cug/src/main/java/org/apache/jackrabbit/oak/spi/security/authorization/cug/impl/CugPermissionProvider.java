@@ -1313,14 +1313,9 @@ argument_list|)
 operator|||
 name|NodeStateUtils
 operator|.
-name|isHidden
-argument_list|(
-name|PathUtils
-operator|.
-name|getName
+name|isHiddenPath
 argument_list|(
 name|oakPath
-argument_list|)
 argument_list|)
 condition|)
 block|{
