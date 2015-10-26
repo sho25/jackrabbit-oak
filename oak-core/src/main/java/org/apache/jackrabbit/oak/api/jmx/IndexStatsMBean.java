@@ -157,6 +157,11 @@ name|CompositeData
 name|getExecutionTime
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the number of indexed nodes as a {@link org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the indexed nodes time series      */
+name|CompositeData
+name|getIndexedNodesCount
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the consolidated execution stats since last reset      * @return consolidated execution stats      */
 name|CompositeData
 name|getConsolidatedExecutionStats
@@ -218,6 +223,31 @@ argument_list|)
 name|long
 name|delayInSeconds
 parameter_list|)
+function_decl|;
+comment|/**      * @return true if the indexing job is failing      */
+name|boolean
+name|isFailing
+parameter_list|()
+function_decl|;
+comment|/**      * @return The time the indexing job stared failing, or {@code ""} if the      *         job is not currently failing.      */
+name|String
+name|getFailingSince
+parameter_list|()
+function_decl|;
+comment|/**      * @return the number of consecutive failed executions or {@code 0} if the      *         job is not currently failing.      */
+name|long
+name|getConsecutiveFailedExecutions
+parameter_list|()
+function_decl|;
+comment|/**      * @return the latest indexing error seen, will not be reset once the job      *         starts working again      */
+name|String
+name|getLatestError
+parameter_list|()
+function_decl|;
+comment|/**      * @return the time when the latest indexing error has been seen, will not      *         be reset once the job starts working again      */
+name|String
+name|getLatestErrorTime
+parameter_list|()
 function_decl|;
 block|}
 end_interface
