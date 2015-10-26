@@ -133,16 +133,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -185,8 +175,6 @@ name|DocumentMKBuilderProvider
 argument_list|()
 decl_stmt|;
 comment|// OAK-3549
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 specifier|public

@@ -914,9 +914,7 @@ block|{
 name|nodeStore
 operator|.
 name|backgroundRead
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 name|void
