@@ -3552,10 +3552,24 @@ operator|==
 name|STRING
 condition|)
 block|{
-comment|// only shows the first value, do we need more?
 name|String
 name|val
 init|=
+literal|""
+decl_stmt|;
+if|if
+condition|(
+name|ps
+operator|.
+name|count
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+comment|// only shows the first value, do we need more?
+name|val
+operator|=
 name|displayString
 argument_list|(
 name|ps
@@ -3569,7 +3583,8 @@ argument_list|,
 literal|0
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 name|localPaths
 operator|.
 name|add
