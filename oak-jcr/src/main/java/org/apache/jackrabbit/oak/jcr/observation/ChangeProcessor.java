@@ -853,6 +853,12 @@ specifier|final
 name|CommitRateLimiter
 name|commitRateLimiter
 decl_stmt|;
+comment|/**      * Lazy initialization via the {@link #start(Whiteboard)} method      */
+specifier|private
+name|String
+name|listenerId
+decl_stmt|;
+comment|/**      * Lazy initialization via the {@link #start(Whiteboard)} method      */
 specifier|private
 name|CompositeRegistration
 name|registration
@@ -1027,6 +1033,15 @@ argument_list|(
 name|executor
 argument_list|)
 decl_stmt|;
+name|listenerId
+operator|=
+name|COUNTER
+operator|.
+name|incrementAndGet
+argument_list|()
+operator|+
+literal|""
+expr_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -1041,15 +1056,7 @@ name|of
 argument_list|(
 name|LISTENER_ID
 argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|COUNTER
-operator|.
-name|incrementAndGet
-argument_list|()
-argument_list|)
+name|listenerId
 argument_list|)
 decl_stmt|;
 name|String
@@ -2134,6 +2141,50 @@ operator|!
 name|wasStopped
 return|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ChangeProcessor ["
+operator|+
+literal|"listenerId="
+operator|+
+name|listenerId
+operator|+
+literal|", tracker="
+operator|+
+name|tracker
+operator|+
+literal|", contentSession="
+operator|+
+name|contentSession
+operator|+
+literal|", eventCount="
+operator|+
+name|eventCount
+operator|+
+literal|", eventDuration="
+operator|+
+name|eventDuration
+operator|+
+literal|", commitRateLimiter="
+operator|+
+name|commitRateLimiter
+operator|+
+literal|", running="
+operator|+
+name|running
+operator|.
+name|isSatisfied
+argument_list|()
+operator|+
+literal|"]"
+return|;
 block|}
 block|}
 end_class

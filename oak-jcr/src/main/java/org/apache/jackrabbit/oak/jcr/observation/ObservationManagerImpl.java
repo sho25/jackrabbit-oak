@@ -2043,7 +2043,9 @@ literal|"Timed out waiting for change processor to stop after "
 operator|+
 name|STOP_TIME_OUT
 operator|+
-literal|" milliseconds. Falling back to asynchronous stop."
+literal|" milliseconds. Falling back to asynchronous stop on "
+operator|+
+name|processor
 argument_list|)
 expr_stmt|;
 name|processor
