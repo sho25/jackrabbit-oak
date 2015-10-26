@@ -4494,7 +4494,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: cleanup completed in {} ({} ms). Post cleanup size is {} ({} bytes)"
 operator|+
-literal|"and space reclaimed {} ({} bytes). Compaction map weight/depth is {}/{} ({} bytes/{})."
+literal|" and space reclaimed {} ({} bytes). Compaction map weight/depth is {}/{} ({} bytes/{})."
 argument_list|,
 name|gcCount
 argument_list|,
