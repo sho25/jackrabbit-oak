@@ -4563,7 +4563,10 @@ comment|/**      * @return  a new {@link SegmentWriter} instance for writing to 
 specifier|public
 name|SegmentWriter
 name|createSegmentWriter
-parameter_list|()
+parameter_list|(
+name|String
+name|wid
+parameter_list|)
 block|{
 return|return
 operator|new
@@ -4575,6 +4578,8 @@ name|tracker
 argument_list|,
 name|getVersion
 argument_list|()
+argument_list|,
+name|wid
 argument_list|)
 return|;
 block|}

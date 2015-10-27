@@ -115,6 +115,20 @@ name|concurrent
 operator|.
 name|atomic
 operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
 name|AtomicReference
 import|;
 end_import
@@ -419,6 +433,16 @@ name|Segment
 argument_list|>
 name|segmentCache
 decl_stmt|;
+comment|/**      * Number of segments      */
+specifier|private
+specifier|final
+name|AtomicInteger
+name|segmentCounter
+init|=
+operator|new
+name|AtomicInteger
+argument_list|()
+decl_stmt|;
 specifier|public
 name|SegmentTracker
 parameter_list|(
@@ -494,6 +518,8 @@ argument_list|,
 name|this
 argument_list|,
 name|version
+argument_list|,
+literal|"sys"
 argument_list|)
 expr_stmt|;
 name|StringCache
@@ -650,6 +676,18 @@ operator|.
 name|V_11
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Increment and get the number of segments      * @return      */
+name|int
+name|getNextSegmentNo
+parameter_list|()
+block|{
+return|return
+name|segmentCounter
+operator|.
+name|incrementAndGet
+argument_list|()
+return|;
 block|}
 annotation|@
 name|Nonnull
