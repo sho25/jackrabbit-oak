@@ -211,6 +211,28 @@ name|authorization
 operator|.
 name|permission
 operator|.
+name|PermissionConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|permission
+operator|.
 name|PermissionProvider
 import|;
 end_import
@@ -458,13 +480,7 @@ expr_stmt|;
 name|setupCugsAndAcls
 argument_list|()
 expr_stmt|;
-comment|// cugs at
-comment|// - /content/a     : allow testGroup, deny everyone
-comment|// - /content/aa/bb : allow testGroup, deny everyone
-comment|// - /content/a/b/c : allow everyone,  deny testGroup (isolated)
-comment|// - /content2      : allow everyone,  deny testGroup (isolated)
-comment|// regular acl at
-comment|// - /content
+comment|/**          * regular acl at          *   - /content          *          * permission store (internal content)          *   - /jcr:system/rep:permissionStore          *          * cugs at          *   - /content/a     : allow testGroup, deny everyone          *   - /content/aa/bb : allow testGroup, deny everyone          *   - /content/a/b/c : allow everyone,  deny testGroup (isolated)          *   - /content2      : allow everyone,  deny testGroup (isolated)          *          */
 name|acPaths
 operator|=
 name|ImmutableList
@@ -472,6 +488,10 @@ operator|.
 name|of
 argument_list|(
 literal|"/content/rep:policy"
+argument_list|,
+name|PermissionConstants
+operator|.
+name|PERMISSIONS_STORE_PATH
 argument_list|,
 literal|"/content/a/rep:cugPolicy"
 argument_list|,
