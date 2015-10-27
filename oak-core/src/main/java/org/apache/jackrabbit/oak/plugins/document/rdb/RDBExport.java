@@ -2287,7 +2287,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|" --from-DB2-dump file [--lobdir lobdir] [-o/--out file] [--jsonArray]"
+literal|" --from-db2-dump file [--lobdir lobdir] [-o/--out file] [--jsonArray]"
 argument_list|)
 expr_stmt|;
 name|System
@@ -2465,7 +2465,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  --from-DB2-dump file               name of DB2 DEL export file"
+literal|"  --from-db2-dump file               name of DB2 DEL export file"
 argument_list|)
 expr_stmt|;
 name|System
