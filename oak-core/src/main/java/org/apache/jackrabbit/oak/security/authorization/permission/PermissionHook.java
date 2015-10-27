@@ -435,6 +435,7 @@ operator|=
 name|restrictionProvider
 expr_stmt|;
 block|}
+comment|//---------------------------------------------------------< CommitHook>---
 annotation|@
 name|Nonnull
 annotation|@
@@ -541,6 +542,7 @@ name|getNodeState
 argument_list|()
 return|;
 block|}
+comment|//-------------------------------------------------------------< Object>---
 annotation|@
 name|Override
 specifier|public
@@ -552,6 +554,7 @@ return|return
 literal|"PermissionHook"
 return|;
 block|}
+comment|//------------------------------------------------------------< private>---
 specifier|private
 name|void
 name|apply
@@ -741,7 +744,8 @@ name|put
 argument_list|(
 name|psEditor
 operator|.
-name|accessControlledPath
+name|getPath
+argument_list|()
 argument_list|,
 name|psEditor
 argument_list|)
@@ -843,7 +847,8 @@ name|put
 argument_list|(
 name|psEditor
 operator|.
-name|accessControlledPath
+name|getPath
+argument_list|()
 argument_list|,
 name|psEditor
 argument_list|)
@@ -861,27 +866,15 @@ argument_list|)
 decl_stmt|;
 name|beforeEditor
 operator|.
-name|entries
-operator|.
-name|keySet
-argument_list|()
-operator|.
-name|removeAll
+name|removePermissionEntries
 argument_list|(
 name|psEditor
-operator|.
-name|entries
-operator|.
-name|keySet
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
 operator|!
 name|beforeEditor
-operator|.
-name|entries
 operator|.
 name|isEmpty
 argument_list|()
@@ -916,7 +909,8 @@ name|put
 argument_list|(
 name|psEditor
 operator|.
-name|accessControlledPath
+name|getPath
+argument_list|()
 argument_list|,
 name|psEditor
 argument_list|)
@@ -950,7 +944,8 @@ name|put
 argument_list|(
 name|psEditor
 operator|.
-name|accessControlledPath
+name|getPath
+argument_list|()
 argument_list|,
 name|psEditor
 argument_list|)
@@ -1039,7 +1034,8 @@ name|put
 argument_list|(
 name|psEditor
 operator|.
-name|accessControlledPath
+name|getPath
+argument_list|()
 argument_list|,
 name|psEditor
 argument_list|)

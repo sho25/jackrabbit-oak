@@ -2843,7 +2843,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|boolean
-name|readableTree
+name|isReadableTree
 decl_stmt|;
 specifier|private
 name|Collection
@@ -2914,7 +2914,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-name|readableTree
+name|isReadableTree
 operator|=
 name|readPolicy
 operator|.
@@ -2989,7 +2989,7 @@ condition|(
 operator|!
 name|isAcTree
 operator|&&
-name|readableTree
+name|isReadableTree
 condition|)
 block|{
 return|return
@@ -3153,7 +3153,7 @@ condition|(
 operator|!
 name|isAcTree
 operator|&&
-name|readableTree
+name|isReadableTree
 condition|)
 block|{
 return|return
@@ -3844,6 +3844,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isReadableTree
@@ -3995,6 +3997,8 @@ name|DEFAULT_READ_PATHS
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isReadableTree
@@ -4021,7 +4025,7 @@ if|if
 condition|(
 name|parent
 operator|.
-name|readableTree
+name|isReadableTree
 condition|)
 block|{
 return|return
@@ -4077,6 +4081,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isReadableTree
@@ -4155,6 +4161,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isReadablePath

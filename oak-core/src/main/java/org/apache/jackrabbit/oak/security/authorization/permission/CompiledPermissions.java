@@ -148,7 +148,6 @@ comment|/**  * Internal interface to process methods defined by  * {@link org.ap
 end_comment
 
 begin_interface
-specifier|public
 interface|interface
 name|CompiledPermissions
 block|{
@@ -237,7 +236,7 @@ name|Tree
 name|tree
 parameter_list|)
 function_decl|;
-comment|/**      * Retruns true if all privileges identified by the given {@code privilegeNames}      * are granted at the given {@code tree}.      *      *      * @param tree The target tree.      * @param privilegeNames The privilege names to be tested.      * @return {@code true} if the tree has privileges      */
+comment|/**      * Returns {@code true} if all privileges identified by the given {@code privilegeNames}      * are granted at the given {@code tree}.      *      *      * @param tree The target tree.      * @param privilegeNames The privilege names to be tested.      * @return {@code true} if the tree has privileges      */
 name|boolean
 name|hasPrivileges
 parameter_list|(

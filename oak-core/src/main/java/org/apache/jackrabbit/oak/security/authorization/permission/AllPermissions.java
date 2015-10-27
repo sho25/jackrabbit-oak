@@ -178,7 +178,6 @@ comment|/**  * Implementation of the {@code CompiledPermissions} interface that 
 end_comment
 
 begin_class
-specifier|public
 specifier|final
 class|class
 name|AllPermissions
@@ -199,7 +198,6 @@ specifier|private
 name|AllPermissions
 parameter_list|()
 block|{     }
-specifier|public
 specifier|static
 name|CompiledPermissions
 name|getInstance

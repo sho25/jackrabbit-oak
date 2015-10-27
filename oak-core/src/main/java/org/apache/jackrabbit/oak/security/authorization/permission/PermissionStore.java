@@ -33,16 +33,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -76,7 +66,6 @@ comment|/**  * The permission store is used to store and provide access control 
 end_comment
 
 begin_interface
-specifier|public
 interface|interface
 name|PermissionStore
 block|{
@@ -112,28 +101,6 @@ annotation|@
 name|Nonnull
 name|String
 name|path
-parameter_list|)
-function_decl|;
-name|void
-name|load
-parameter_list|(
-annotation|@
-name|Nonnull
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Collection
-argument_list|<
-name|PermissionEntry
-argument_list|>
-argument_list|>
-name|entries
-parameter_list|,
-annotation|@
-name|Nonnull
-name|String
-name|principalName
 parameter_list|)
 function_decl|;
 annotation|@

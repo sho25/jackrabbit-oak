@@ -518,6 +518,9 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+comment|//--------------------------------------------< PermissionEntryProvider>---
+annotation|@
+name|Override
 specifier|public
 name|void
 name|flush
@@ -534,6 +537,8 @@ name|init
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -575,6 +580,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -679,9 +686,10 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|//------------------------------------------------------------< private>---
 annotation|@
 name|Nonnull
-specifier|public
+specifier|private
 name|Collection
 argument_list|<
 name|PermissionEntry

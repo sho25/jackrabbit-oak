@@ -275,7 +275,6 @@ operator|=
 name|restriction
 expr_stmt|;
 block|}
-specifier|public
 name|boolean
 name|matches
 parameter_list|(
@@ -307,7 +306,6 @@ name|property
 argument_list|)
 return|;
 block|}
-specifier|public
 name|boolean
 name|matches
 parameter_list|(
@@ -332,7 +330,6 @@ name|treePath
 argument_list|)
 return|;
 block|}
-specifier|public
 name|boolean
 name|matches
 parameter_list|()
@@ -350,7 +347,6 @@ name|matches
 argument_list|()
 return|;
 block|}
-specifier|public
 name|boolean
 name|matchesParent
 parameter_list|(

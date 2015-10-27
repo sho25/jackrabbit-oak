@@ -96,7 +96,6 @@ comment|/**  * {@code PermissionEntryCache} caches the permission entries of pri
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|PermissionEntryCache
 block|{
@@ -121,7 +120,6 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Nonnull
-specifier|public
 name|PrincipalPermissionEntries
 name|getEntries
 parameter_list|(
@@ -207,7 +205,6 @@ return|return
 name|ppe
 return|;
 block|}
-specifier|public
 name|void
 name|load
 parameter_list|(
@@ -335,7 +332,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|public
 name|void
 name|load
 parameter_list|(
@@ -384,9 +380,7 @@ name|ppe
 operator|=
 operator|new
 name|PrincipalPermissionEntries
-argument_list|(
-name|principalName
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|entries
 operator|.
@@ -483,7 +477,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
 name|long
 name|getNumEntries
 parameter_list|(
@@ -534,7 +527,6 @@ name|size
 argument_list|()
 return|;
 block|}
-specifier|public
 name|void
 name|flush
 parameter_list|(
