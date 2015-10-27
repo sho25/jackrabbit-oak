@@ -173,16 +173,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|WriteResult
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1039,9 +1029,7 @@ name|query
 argument_list|)
 expr_stmt|;
 block|}
-name|WriteResult
-name|writeResult
-init|=
+return|return
 name|getNodeCollection
 argument_list|()
 operator|.
@@ -1049,33 +1037,6 @@ name|remove
 argument_list|(
 name|query
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|writeResult
-operator|.
-name|getError
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-comment|//TODO This might be temporary error or we fail fast and let next cycle try again
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Error occurred while deleting old split documents from Mongo {}"
-argument_list|,
-name|writeResult
-operator|.
-name|getError
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|writeResult
 operator|.
 name|getN
 argument_list|()

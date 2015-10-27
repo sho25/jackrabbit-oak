@@ -198,7 +198,7 @@ decl_stmt|;
 comment|// options.put("unique", Boolean.TRUE);
 name|nodes
 operator|.
-name|ensureIndex
+name|createIndex
 argument_list|(
 name|index
 argument_list|,
@@ -596,7 +596,7 @@ decl_stmt|;
 comment|// options.put("unique", Boolean.TRUE);
 name|nodes
 operator|.
-name|ensureIndex
+name|createIndex
 argument_list|(
 name|index
 argument_list|,
