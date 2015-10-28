@@ -267,7 +267,7 @@ name|Exception
 block|{
 name|mongoConnection
 operator|=
-name|MongoUtils
+name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()

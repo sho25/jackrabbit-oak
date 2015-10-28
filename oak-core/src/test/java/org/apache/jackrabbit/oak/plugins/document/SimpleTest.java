@@ -254,6 +254,16 @@ operator|new
 name|DocumentMKBuilderProvider
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Rule
+specifier|public
+name|MongoConnectionFactory
+name|connectionFactory
+init|=
+operator|new
+name|MongoConnectionFactory
+argument_list|()
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -3524,7 +3534,7 @@ block|{
 name|DB
 name|db
 init|=
-name|MongoUtils
+name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()

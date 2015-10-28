@@ -391,6 +391,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|ds
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 name|dsf
 operator|.
 name|dispose

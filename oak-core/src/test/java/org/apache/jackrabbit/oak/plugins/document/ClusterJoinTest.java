@@ -124,7 +124,7 @@ argument_list|)
 operator|.
 name|setMongoDB
 argument_list|(
-name|MongoUtils
+name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()

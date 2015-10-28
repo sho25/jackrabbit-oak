@@ -752,6 +752,16 @@ specifier|public
 class|class
 name|DocumentDiscoveryLiteServiceTest
 block|{
+annotation|@
+name|Rule
+specifier|public
+name|MongoConnectionFactory
+name|connectionFactory
+init|=
+operator|new
+name|MongoConnectionFactory
+argument_list|()
+decl_stmt|;
 comment|/**      * container for what should represent an instance, but is not a complete      * one, hence 'simplified'. it contains most importantly the      * DocuemntNodeStore and the discoveryLite service      */
 class|class
 name|SimplifiedInstance
@@ -6011,7 +6021,7 @@ block|{
 name|MongoConnection
 name|connection
 init|=
-name|MongoUtils
+name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()
@@ -6068,7 +6078,7 @@ block|{
 name|DB
 name|db
 init|=
-name|MongoUtils
+name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()

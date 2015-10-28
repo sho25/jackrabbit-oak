@@ -243,6 +243,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -321,6 +331,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Rule
+specifier|public
+name|MongoConnectionFactory
+name|connectionFactory
+init|=
+operator|new
+name|MongoConnectionFactory
+argument_list|()
+decl_stmt|;
 comment|//    private static final boolean MONGO_DB = true;
 comment|//    private static final int NODE_COUNT = 2000;
 specifier|private
@@ -352,7 +372,7 @@ return|return
 operator|new
 name|MongoDocumentStore
 argument_list|(
-name|MongoUtils
+name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()
@@ -387,7 +407,7 @@ name|MongoUtils
 operator|.
 name|dropCollections
 argument_list|(
-name|MongoUtils
+name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()
@@ -1710,7 +1730,7 @@ expr_stmt|;
 name|DBCollection
 name|collection
 init|=
-name|MongoUtils
+name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()
