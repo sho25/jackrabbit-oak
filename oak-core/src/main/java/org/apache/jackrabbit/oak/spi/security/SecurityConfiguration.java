@@ -436,11 +436,9 @@ name|getContext
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Context
 operator|.
-name|Default
-argument_list|()
+name|DEFAULT
 return|;
 block|}
 block|}

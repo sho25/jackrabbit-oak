@@ -133,6 +133,13 @@ name|TreeLocation
 name|location
 parameter_list|)
 function_decl|;
+name|Context
+name|DEFAULT
+init|=
+operator|new
+name|Default
+argument_list|()
+decl_stmt|;
 comment|/**      * Default implementation of the {@code Context} interface that always returns      * {@code false}.      */
 class|class
 name|Default

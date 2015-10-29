@@ -428,7 +428,7 @@ return|return
 operator|new
 name|FullScopeProvider
 argument_list|(
-name|root
+name|readOnlyRoot
 argument_list|)
 return|;
 block|}
@@ -447,7 +447,7 @@ init|=
 operator|new
 name|PrivilegeBitsProvider
 argument_list|(
-name|root
+name|readOnlyRoot
 argument_list|)
 decl_stmt|;
 name|PrivilegeBits
@@ -500,7 +500,7 @@ decl_stmt|;
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -565,15 +565,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|PrivilegeBitsProvider
-name|pbp
-init|=
-operator|new
-name|PrivilegeBitsProvider
-argument_list|(
-name|root
-argument_list|)
-decl_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -598,7 +589,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -704,7 +695,7 @@ init|=
 operator|new
 name|PrivilegeBitsProvider
 argument_list|(
-name|root
+name|readOnlyRoot
 argument_list|)
 decl_stmt|;
 name|PrivilegeBits
@@ -754,7 +745,7 @@ decl_stmt|;
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -913,7 +904,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1157,7 +1148,7 @@ decl_stmt|;
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1246,7 +1237,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1347,7 +1338,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1412,7 +1403,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1530,7 +1521,7 @@ name|TreeLocation
 operator|.
 name|create
 argument_list|(
-name|root
+name|readOnlyRoot
 argument_list|,
 name|p
 argument_list|)
@@ -1841,7 +1832,7 @@ block|{
 name|boolean
 name|expectedRead
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2075,7 +2066,7 @@ name|cppTestUser
 operator|.
 name|getTreePermission
 argument_list|(
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2230,7 +2221,7 @@ name|cppTestUser
 operator|.
 name|getTreePermission
 argument_list|(
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2423,7 +2414,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2497,7 +2488,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2559,7 +2550,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(

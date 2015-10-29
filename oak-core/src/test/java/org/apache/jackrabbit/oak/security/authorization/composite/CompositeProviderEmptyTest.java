@@ -459,7 +459,7 @@ name|cpp
 operator|.
 name|getPrivileges
 argument_list|(
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -516,7 +516,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -603,7 +603,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -688,7 +688,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -976,7 +976,7 @@ name|cpp
 operator|.
 name|getTreePermission
 argument_list|(
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1059,7 +1059,7 @@ name|cpp
 operator|.
 name|getTreePermission
 argument_list|(
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1130,7 +1130,7 @@ block|{
 name|Tree
 name|t
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1190,7 +1190,7 @@ block|{
 name|Tree
 name|t
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(

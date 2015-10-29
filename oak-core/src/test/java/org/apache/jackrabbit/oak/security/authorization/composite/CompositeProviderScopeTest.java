@@ -376,7 +376,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test the effect of the combination of  *  * - default permission provider  * - custom provider that  *> supports namespace-management and nodetype-def-mgt permission on repository level  *> write permission below {@link #TEST_A_PATH}.  *  * The tests are executed both for the set of principals associated with the test  * user and with the admin session.  *  * The expected outcome is that the custom provider only takes effect at the repo  * level. The effective permissions are the as defined for the default provider  * outside of the scope of the custom provider.  *  * At the repository level, the effective result is as follows:  * - admin has full access at repo-level without namespace management (which is denied)  * - test user has only nodetype-definition-mgt left as namespace management is  *   denied by the custom provider.  *  * Below {@link #TEST_A_PATH} the effective result is as follows:  * - any permissions not covered by the custom provider are defined by the default  * - {@link Permissions#ADD_PROPERTY} and {@link Permissions#ADD_NODE} are denied  *   for both admin and test user (due to deny in the custom provider)  * - the other aggregates of the write permission are allowed if the default  *   provider allows them (different for admin and test user).  *  * All paths outside of the scope of the custom provider have the following  * characteristics:  * - admin has full access (all permissions granted)  * - effective permissions for the test user are define by the default setup.  */
+comment|/**  * Test the effect of the combination of  *  * - default permission provider  * - custom provider that  *> supports namespace-management and nodetype-def-mgt permission on repository level  *> write permission below {@link #TEST_A_PATH}.  *  * The tests are executed both for the set of principals associated with the test  * user and with the admin session.  *  * At the repository level, the effective result is as follows:  * - admin has full access at repo-level without namespace management (which is denied)  * - test user has only nodetype-definition-mgt left as namespace management is  *   denied by the custom provider.  *  * Below {@link #TEST_A_PATH} the effective result is as follows:  * - any permissions not covered by the custom provider are defined by the default  * - {@link Permissions#ADD_PROPERTY} and {@link Permissions#ADD_NODE} are denied  *   for both admin and test user (due to deny in the custom provider)  * - the other aggregates of the write permission are allowed if the default  *   provider allows them (different for admin and test user).  *  * All paths outside of the scope of the custom provider have the following  * characteristics:  * - admin has full access (all permissions granted)  * - effective permissions for the test user are define by the default setup.  */
 end_comment
 
 begin_class
@@ -476,7 +476,7 @@ operator|=
 operator|new
 name|PrivilegeBitsProvider
 argument_list|(
-name|root
+name|readOnlyRoot
 argument_list|)
 expr_stmt|;
 name|denied
@@ -510,7 +510,7 @@ operator|=
 operator|new
 name|LimitedScopeProvider
 argument_list|(
-name|root
+name|readOnlyRoot
 argument_list|)
 expr_stmt|;
 block|}
@@ -533,7 +533,7 @@ init|=
 operator|new
 name|PrivilegeBitsProvider
 argument_list|(
-name|root
+name|readOnlyRoot
 argument_list|)
 decl_stmt|;
 for|for
@@ -550,7 +550,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -661,7 +661,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -865,20 +865,10 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-name|PrivilegeBits
-name|defaultBits
-init|=
-name|pbp
-operator|.
-name|getBits
-argument_list|(
-name|defaultPrivs
-argument_list|)
-decl_stmt|;
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1074,7 +1064,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1397,7 +1387,7 @@ decl_stmt|;
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1550,7 +1540,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1719,7 +1709,7 @@ decl_stmt|;
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -1856,7 +1846,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2079,7 +2069,7 @@ name|TreeLocation
 operator|.
 name|create
 argument_list|(
-name|root
+name|readOnlyRoot
 argument_list|,
 name|p
 argument_list|)
@@ -2651,7 +2641,7 @@ name|cppTestUser
 operator|.
 name|getTreePermission
 argument_list|(
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2800,7 +2790,7 @@ name|cppAdminUser
 operator|.
 name|getTreePermission
 argument_list|(
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2919,7 +2909,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -2989,7 +2979,7 @@ name|cppTestUser
 operator|.
 name|getTreePermission
 argument_list|(
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -3206,7 +3196,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -3348,7 +3338,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -3417,7 +3407,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -3489,7 +3479,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -3518,7 +3508,7 @@ name|canReadAll
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|nodePath
 argument_list|,
@@ -3550,7 +3540,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|root
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
@@ -3579,7 +3569,7 @@ name|canReadAll
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|nodePath
 argument_list|,

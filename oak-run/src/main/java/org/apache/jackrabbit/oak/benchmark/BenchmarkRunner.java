@@ -2008,7 +2008,7 @@ argument_list|)
 argument_list|)
 block|,
 operator|new
-name|CompositeAuthorizationReadTest
+name|CompositeAuthorizationTest
 argument_list|(
 name|runAsAdmin
 operator|.
