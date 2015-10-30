@@ -356,6 +356,7 @@ block|}
 argument_list|)
 return|;
 block|}
+comment|/**      * Acquire a recovery lock for the given cluster node info document      *       * @param clusterId      *            id of the cluster that is going to be recovered      * @param recoveredBy      *            id of cluster doing the recovery ({@code 0} when unknown)      * @return whether the lock has been acquired      */
 specifier|public
 name|boolean
 name|acquireRecoveryLock
@@ -369,9 +370,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|// This approach has a race condition where two different cluster
-comment|// nodes
-comment|// can acquire the lock simultaneously.
 name|UpdateOp
 name|update
 init|=
@@ -385,9 +383,25 @@ argument_list|(
 name|clusterId
 argument_list|)
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 decl_stmt|;
+name|update
+operator|.
+name|notEquals
+argument_list|(
+name|ClusterNodeInfo
+operator|.
+name|REV_RECOVERY_LOCK
+argument_list|,
+name|RecoverLockState
+operator|.
+name|ACQUIRED
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|update
 operator|.
 name|set
@@ -423,9 +437,12 @@ name|recoveredBy
 argument_list|)
 expr_stmt|;
 block|}
+name|ClusterNodeInfoDocument
+name|old
+init|=
 name|store
 operator|.
-name|createOrUpdate
+name|findAndUpdate
 argument_list|(
 name|Collection
 operator|.
@@ -433,9 +450,11 @@ name|CLUSTER_NODES
 argument_list|,
 name|update
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 return|return
-literal|true
+name|old
+operator|!=
+literal|null
 return|;
 block|}
 catch|catch
@@ -485,7 +504,7 @@ argument_list|(
 name|clusterId
 argument_list|)
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -496,7 +515,12 @@ name|ClusterNodeInfo
 operator|.
 name|REV_RECOVERY_LOCK
 argument_list|,
-literal|null
+name|RecoverLockState
+operator|.
+name|NONE
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|update
@@ -521,9 +545,12 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|ClusterNodeInfoDocument
+name|old
+init|=
 name|store
 operator|.
-name|createOrUpdate
+name|findAndUpdate
 argument_list|(
 name|Collection
 operator|.
@@ -531,7 +558,26 @@ name|CLUSTER_NODES
 argument_list|,
 name|update
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+if|if
+condition|(
+name|old
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"ClusterNodeInfo document for "
+operator|+
+name|clusterId
+operator|+
+literal|" missing."
+argument_list|)
+throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(

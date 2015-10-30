@@ -2027,7 +2027,7 @@ literal|""
 operator|+
 name|id
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -2137,7 +2137,7 @@ name|doc
 operator|=
 name|store
 operator|.
-name|createOrUpdate
+name|findAndUpdate
 argument_list|(
 name|Collection
 operator|.
@@ -2389,7 +2389,12 @@ name|set
 argument_list|(
 name|REV_RECOVERY_LOCK
 argument_list|,
-literal|null
+name|RecoverLockState
+operator|.
+name|NONE
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|store
