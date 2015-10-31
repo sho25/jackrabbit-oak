@@ -248,7 +248,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An observer that uses a change queue and a background thread to forward  * content changes to another observer. The mechanism is designed so that  * the {@link #contentChanged(NodeState, CommitInfo)} method will never block,  * regardless of the behavior of the other observer. If that observer blocks  * or is too slow to consume all content changes, causing the change queue  * to fill up, any further update will automatically be merged into just one  * external content change, causing potential loss of local commit information.  * To help prevent such cases, any sequential external content changes that  * the background observer thread has yet to process are automatically merged  * to just one change.  */
+comment|/**  * An observer that uses a change queue and a background thread to forward  * content changes to another observer. The mechanism is designed so that  * the {@link #contentChanged(NodeState, CommitInfo)} method will never block,  * regardless of the behavior of the other observer. If that observer blocks  * or is too slow to consume all content changes, causing the change queue  * to fill up, any further update will automatically be merged into just one  * external content change, causing potential loss of local commit information.  * To help prevent such cases, any sequential external content changes that  * the background observer thread has yet to process are optionally  * (see {@code alwaysCollapseExternalEvents} and {@code oak.observation.alwaysCollapseExternal})  * automatically merged to just one change.  */
 end_comment
 
 begin_class
@@ -307,6 +307,26 @@ specifier|private
 specifier|final
 name|int
 name|maxQueueLength
+decl_stmt|;
+comment|/**      * Whether external events should be collapsed even if queue isn't full yet.      */
+specifier|private
+specifier|final
+name|boolean
+name|alwaysCollapseExternalEvents
+init|=
+name|Boolean
+operator|.
+name|parseBoolean
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"oak.observation.alwaysCollapseExternal"
+argument_list|,
+literal|"false"
+argument_list|)
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static
@@ -873,6 +893,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|alwaysCollapseExternalEvents
+operator|&&
 name|info
 operator|==
 literal|null
