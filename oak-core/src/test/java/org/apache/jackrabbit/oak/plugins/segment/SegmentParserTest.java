@@ -386,6 +386,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|withSettings
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1058,6 +1070,12 @@ argument_list|(
 name|SegmentStore
 operator|.
 name|class
+argument_list|,
+name|withSettings
+argument_list|()
+operator|.
+name|stubOnly
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|SegmentTracker
