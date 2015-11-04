@@ -864,7 +864,7 @@ literal|"the following interfaces are checked: "
 operator|+
 literal|"PrincipalConfiguration, TokenConfiguration, "
 operator|+
-literal|"AuthorizableNodeName, AuthorizableActionProvider, "
+literal|"AuthorizableActionProvider, "
 operator|+
 literal|"RestrictionProvider and UserAuthenticationFactory."
 argument_list|,
