@@ -63,6 +63,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -157,7 +167,7 @@ name|Revision
 name|revision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|Object
 name|value
 parameter_list|)
@@ -175,10 +185,7 @@ name|this
 operator|.
 name|value
 operator|=
-name|checkNotNull
-argument_list|(
 name|value
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
