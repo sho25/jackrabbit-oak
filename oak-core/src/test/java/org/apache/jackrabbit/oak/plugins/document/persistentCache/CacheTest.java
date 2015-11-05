@@ -322,6 +322,11 @@ operator|new
 name|CacheLIRS
 operator|.
 name|Builder
+argument_list|<
+name|PathRev
+argument_list|,
+name|StringValue
+argument_list|>
 argument_list|()
 operator|.
 name|maximumSize
