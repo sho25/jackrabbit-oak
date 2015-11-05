@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code GlobPattern} defines a simplistic pattern matching. It consists  * of a mandatory (leading) path and an optional "glob" that may contain one or  * more wildcard characters ("{@code *}") according to the glob matching  * defined by {@link javax.jcr.Node#getNodes(String[])}. In contrast to that  * method the {@code GlobPattern} operates on path (not only names).  *<p>  *  *<p>  * Please note the following special cases:  *<pre>  * NodePath     |   Restriction   |   Matches  * -----------------------------------------------------------------------------  * /foo         |   null          |   matches /foo and all children of /foo  * /foo         |   ""            |   matches /foo only  *</pre>  *</p>  *  *<p>  * Examples including wildcard char:  *<pre>  * NodePath = "/foo"  * Restriction   |   Matches  * -----------------------------------------------------------------------------  *&#42;         |   all siblings of foo and foo's and the siblings' descendants  * /&#42;cat     |   all children of /foo whose path ends with "cat"  * /&#42;/cat    |   all non-direct descendants of /foo named "cat"  * /cat&#42;     |   all descendant path of /foo that have the direct foo-descendant segment starting with "cat"  *&#42;cat      |   all siblings and descendants of foo that have a name ending with cat  *&#42;/cat     |   all descendants of /foo and foo's siblings that have a name segment "cat"  * cat/&#42;     |   all descendants of '/foocat'  * /cat/&#42;    |   all descendants of '/foo/cat'  *&#42;cat/&#42;    |   all descendants of /foo that have an intermediate segment ending with 'cat'  *</pre>  *</p>  */
+comment|/**  * {@code GlobPattern} defines a simplistic pattern matching. It consists  * of a mandatory (leading) path and an optional "glob" that may contain one or  * more wildcard characters ("{@code *}") according to the glob matching  * defined by {@link javax.jcr.Node#getNodes(String[])}. In contrast to that  * method the {@code GlobPattern} operates on path (not only names).  *<p>  *  *<p>  * Please note the following special cases:  *<pre>  * NodePath     |   Restriction   |   Matches  * -----------------------------------------------------------------------------  * /foo         |   null          |   matches /foo and all children of /foo  * /foo         |   ""            |   matches /foo only  *</pre>  *</p>  *  *<p>  * Examples without wildcard char:  *<pre>  * NodePath = "/foo"  * Restriction   |   Matches  * -----------------------------------------------------------------------------  * /cat          |   the node /foo/cat and all it's children  * /cat/         |   the descendants of the node /foo/cat  * cat           |   the node /foocat and all it's children  * cat/          |   all descendants of the node /foocat  *</pre>  *</p>  *  *<p>  * Examples including wildcard char:  *<pre>  * NodePath = "/foo"  * Restriction   |   Matches  * -----------------------------------------------------------------------------  *&#42;         |   foo, all siblings of foo and their descendants  * /&#42;cat     |   all children of /foo whose path ends with "cat"  * /&#42;/cat    |   all non-direct descendants of /foo named "cat"  * /cat&#42;     |   all descendant path of /foo that have the direct foo-descendant segment starting with "cat"  *&#42;cat      |   all siblings and descendants of foo that have a name ending with cat  *&#42;/cat     |   all descendants of /foo and foo's siblings that have a name segment "cat"  * cat/&#42;     |   all descendants of '/foocat'  * /cat/&#42;    |   all descendants of '/foo/cat'  *&#42;cat/&#42;    |   all siblings and descendants of foo that have an intermediate segment ending with 'cat'  * /&#42;cat/&#42;   |   all descendants of /foo that have an intermediate segment ending with 'cat'  *</pre>  *</p>  */
 end_comment
 
 begin_class
@@ -240,12 +240,11 @@ name|restriction
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|restriction
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|StringBuilder
