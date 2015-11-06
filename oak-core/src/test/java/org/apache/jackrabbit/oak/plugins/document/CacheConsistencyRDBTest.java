@@ -633,6 +633,18 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+name|store
+operator|.
+name|invalidateNodeDocument
+argument_list|(
+name|Utils
+operator|.
+name|getIdFromPath
+argument_list|(
+literal|"/node"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// release thread
 name|store
 operator|.
