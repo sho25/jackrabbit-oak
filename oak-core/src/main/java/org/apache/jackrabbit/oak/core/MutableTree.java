@@ -512,7 +512,10 @@ name|super
 operator|.
 name|getProperty
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -536,7 +539,10 @@ name|super
 operator|.
 name|hasProperty
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -579,7 +585,10 @@ name|super
 operator|.
 name|getPropertyStatus
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -629,7 +638,10 @@ name|super
 operator|.
 name|getChild
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -653,7 +665,10 @@ name|super
 operator|.
 name|hasChild
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 return|;
 block|}
