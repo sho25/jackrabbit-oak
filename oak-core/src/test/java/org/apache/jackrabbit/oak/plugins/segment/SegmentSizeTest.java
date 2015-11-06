@@ -962,7 +962,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|352
+literal|368
 argument_list|,
 name|getSize
 argument_list|(
@@ -1230,7 +1230,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|27568
+literal|27584
 argument_list|,
 name|segment
 operator|.
@@ -1292,7 +1292,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|544
+literal|560
 argument_list|,
 name|segment
 operator|.
