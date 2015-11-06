@@ -477,6 +477,22 @@ name|oak
 operator|.
 name|commons
 operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
 name|concurrent
 operator|.
 name|NotifyingFutureTask
@@ -4532,11 +4548,18 @@ name|perfStart
 argument_list|,
 literal|0
 argument_list|,
-literal|"[COW][{}] Copied to remote {} "
+literal|"[COW][{}] Copied to remote {} -- size: {}"
 argument_list|,
 name|indexPathForLogging
 argument_list|,
 name|name
+argument_list|,
+name|IOUtils
+operator|.
+name|humanReadableByteCount
+argument_list|(
+name|fileSize
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
