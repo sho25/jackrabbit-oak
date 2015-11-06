@@ -83,18 +83,6 @@ name|newHashSet
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test the PathUtils class.  */
 end_comment
@@ -996,6 +984,18 @@ literal|"/"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+name|PathUtils
+operator|.
+name|denotesRoot
+argument_list|(
+name|PathUtils
+operator|.
+name|ROOT_PATH
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 name|PathUtils
@@ -1018,6 +1018,22 @@ operator|.
 name|getName
 argument_list|(
 literal|"/"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|PathUtils
+operator|.
+name|ROOT_NAME
+argument_list|,
+name|PathUtils
+operator|.
+name|getName
+argument_list|(
+name|PathUtils
+operator|.
+name|ROOT_PATH
 argument_list|)
 argument_list|)
 expr_stmt|;
