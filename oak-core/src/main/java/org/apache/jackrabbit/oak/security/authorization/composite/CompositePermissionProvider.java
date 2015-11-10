@@ -159,6 +159,24 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|TreeTypeProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
 name|impl
 operator|.
 name|ImmutableTree
@@ -392,6 +410,10 @@ specifier|private
 name|PrivilegeBitsProvider
 name|privilegeBitsProvider
 decl_stmt|;
+specifier|private
+name|TreeTypeProvider
+name|typeProvider
+decl_stmt|;
 name|CompositePermissionProvider
 parameter_list|(
 annotation|@
@@ -464,6 +486,14 @@ operator|new
 name|PrivilegeBitsProvider
 argument_list|(
 name|immutableRoot
+argument_list|)
+expr_stmt|;
+name|typeProvider
+operator|=
+operator|new
+name|TreeTypeProvider
+argument_list|(
+name|ctx
 argument_list|)
 expr_stmt|;
 block|}
@@ -878,6 +908,8 @@ name|create
 argument_list|(
 name|immutableTree
 argument_list|,
+name|typeProvider
+argument_list|,
 name|pps
 argument_list|)
 return|;
@@ -1213,6 +1245,7 @@ return|;
 block|}
 block|}
 comment|//------------------------------------------------------------< private>---
+specifier|private
 specifier|static
 name|boolean
 name|doEvaluate
