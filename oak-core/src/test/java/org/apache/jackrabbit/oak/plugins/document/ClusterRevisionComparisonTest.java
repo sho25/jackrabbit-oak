@@ -576,8 +576,6 @@ argument_list|(
 name|c1ns2
 argument_list|,
 operator|new
-name|ClusterTest
-operator|.
 name|TrackingDiff
 argument_list|()
 argument_list|)
