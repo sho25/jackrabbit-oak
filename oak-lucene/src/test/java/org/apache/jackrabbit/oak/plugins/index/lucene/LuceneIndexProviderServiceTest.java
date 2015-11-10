@@ -454,7 +454,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|assertNull
+name|assertNotNull
 argument_list|(
 name|editorProvider
 operator|.
