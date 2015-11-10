@@ -12793,7 +12793,7 @@ block|}
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|protected
 parameter_list|<
 name|T
@@ -12817,6 +12817,7 @@ name|RDBRow
 name|row
 parameter_list|)
 block|{
+comment|// this method is present here in order to facilitate unit testing for OAK-3566
 return|return
 name|SR
 operator|.

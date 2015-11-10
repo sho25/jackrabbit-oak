@@ -1208,6 +1208,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Reconstructs a {@link Document) based on the persisted {@link RDBRow}.      */
+annotation|@
+name|Nonnull
 specifier|public
 parameter_list|<
 name|T
