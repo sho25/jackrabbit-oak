@@ -499,7 +499,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertNotNull
 argument_list|(
 name|context
 operator|.

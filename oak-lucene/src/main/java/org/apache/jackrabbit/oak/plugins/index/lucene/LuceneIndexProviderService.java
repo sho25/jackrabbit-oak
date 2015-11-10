@@ -1064,7 +1064,7 @@ specifier|final
 name|int
 name|PROP_EXTRACTED_TEXT_CACHE_SIZE_DEFAULT
 init|=
-literal|0
+literal|20
 decl_stmt|;
 annotation|@
 name|Property
