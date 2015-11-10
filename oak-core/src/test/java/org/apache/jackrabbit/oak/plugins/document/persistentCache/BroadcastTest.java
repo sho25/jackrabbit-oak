@@ -208,7 +208,7 @@ name|Exception
 block|{
 name|broadcast
 argument_list|(
-literal|"udp:"
+literal|"udp:sendTo localhost"
 argument_list|,
 literal|50
 argument_list|)
@@ -225,7 +225,7 @@ name|Exception
 block|{
 name|broadcast
 argument_list|(
-literal|"udp:group:228.6.7.9;key:test;port:9876;aes"
+literal|"udp:group FF7E:230::1234;key test;port 9876;sendTo localhost;aes"
 argument_list|,
 literal|50
 argument_list|)

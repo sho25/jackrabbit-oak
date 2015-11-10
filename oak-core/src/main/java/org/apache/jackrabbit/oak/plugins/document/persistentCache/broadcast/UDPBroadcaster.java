@@ -260,6 +260,11 @@ name|group
 decl_stmt|;
 specifier|private
 specifier|final
+name|InetAddress
+name|sendTo
+decl_stmt|;
+specifier|private
+specifier|final
 name|Thread
 name|thread
 decl_stmt|;
@@ -322,7 +327,7 @@ decl_stmt|;
 name|String
 name|group
 init|=
-literal|"228.6.7.8"
+literal|"FF7E:230::1234"
 decl_stmt|;
 name|int
 name|port
@@ -339,6 +344,11 @@ name|aes
 init|=
 literal|false
 decl_stmt|;
+name|String
+name|sendTo
+init|=
+literal|null
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -353,7 +363,7 @@ name|p
 operator|.
 name|startsWith
 argument_list|(
-literal|"port:"
+literal|"port "
 argument_list|)
 condition|)
 block|{
@@ -367,7 +377,7 @@ name|p
 operator|.
 name|split
 argument_list|(
-literal|":"
+literal|" "
 argument_list|)
 index|[
 literal|1
@@ -382,7 +392,7 @@ name|p
 operator|.
 name|startsWith
 argument_list|(
-literal|"group:"
+literal|"group "
 argument_list|)
 condition|)
 block|{
@@ -392,7 +402,7 @@ name|p
 operator|.
 name|split
 argument_list|(
-literal|":"
+literal|" "
 argument_list|)
 index|[
 literal|1
@@ -406,7 +416,7 @@ name|p
 operator|.
 name|startsWith
 argument_list|(
-literal|"key:"
+literal|"key "
 argument_list|)
 condition|)
 block|{
@@ -416,7 +426,7 @@ name|p
 operator|.
 name|split
 argument_list|(
-literal|":"
+literal|" "
 argument_list|)
 index|[
 literal|1
@@ -437,6 +447,30 @@ block|{
 name|aes
 operator|=
 literal|true
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|p
+operator|.
+name|startsWith
+argument_list|(
+literal|"sendTo "
+argument_list|)
+condition|)
+block|{
+name|sendTo
+operator|=
+name|p
+operator|.
+name|split
+argument_list|(
+literal|" "
+argument_list|)
+index|[
+literal|1
+index|]
 expr_stmt|;
 block|}
 block|}
@@ -576,6 +610,25 @@ operator|.
 name|getByName
 argument_list|(
 name|group
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|sendTo
+operator|=
+name|sendTo
+operator|==
+literal|null
+condition|?
+name|this
+operator|.
+name|group
+else|:
+name|InetAddress
+operator|.
+name|getByName
+argument_list|(
+name|sendTo
 argument_list|)
 expr_stmt|;
 name|this
@@ -994,7 +1047,7 @@ name|sendData
 operator|.
 name|length
 argument_list|,
-name|group
+name|sendTo
 argument_list|,
 name|port
 argument_list|)
