@@ -4624,6 +4624,10 @@ name|PreparedStatement
 name|checkStatement
 init|=
 literal|null
+decl_stmt|,
+name|checkStatement2
+init|=
+literal|null
 decl_stmt|;
 name|ResultSet
 name|checkResultSet
@@ -4666,7 +4670,7 @@ operator|.
 name|executeQuery
 argument_list|()
 expr_stmt|;
-comment|// try to discover size of DATA column
+comment|// try to discover size of DATA column and binary-ness of ID
 name|ResultSetMetaData
 name|met
 init|=
@@ -4685,13 +4689,10 @@ expr_stmt|;
 if|if
 condition|(
 name|col
-operator|.
-name|equals
-argument_list|(
+operator|==
 name|Collection
 operator|.
 name|NODES
-argument_list|)
 condition|)
 block|{
 name|String
@@ -4844,21 +4845,8 @@ argument_list|(
 name|tableName
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|col
-operator|.
-name|equals
-argument_list|(
-name|Collection
-operator|.
-name|NODES
-argument_list|)
-condition|)
-block|{
-name|PreparedStatement
-name|pstmt
-init|=
+name|checkStatement2
+operator|=
 name|con
 operator|.
 name|prepareStatement
@@ -4869,8 +4857,8 @@ name|tableName
 operator|+
 literal|" where ID = ?"
 argument_list|)
-decl_stmt|;
-name|pstmt
+expr_stmt|;
+name|checkStatement2
 operator|.
 name|setString
 argument_list|(
@@ -4882,11 +4870,12 @@ expr_stmt|;
 name|ResultSet
 name|rs
 init|=
-name|pstmt
+name|checkStatement2
 operator|.
 name|executeQuery
 argument_list|()
 decl_stmt|;
+comment|// try to discover size of DATA column and binary-ness of ID
 name|ResultSetMetaData
 name|met
 init|=
@@ -4902,6 +4891,15 @@ argument_list|,
 name|tmd
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|col
+operator|==
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
 name|String
 name|tableInfo
 init|=
@@ -4994,6 +4992,11 @@ expr_stmt|;
 name|closeStatement
 argument_list|(
 name|checkStatement
+argument_list|)
+expr_stmt|;
+name|closeStatement
+argument_list|(
+name|checkStatement2
 argument_list|)
 expr_stmt|;
 name|closeStatement
