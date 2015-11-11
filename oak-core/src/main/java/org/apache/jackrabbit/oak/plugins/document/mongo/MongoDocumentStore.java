@@ -1689,13 +1689,18 @@ name|info
 argument_list|(
 literal|"Configuration maxReplicationLagMillis {}, "
 operator|+
-literal|"maxDeltaForModTimeIdxSecs {}, disableIndexHint {}"
+literal|"maxDeltaForModTimeIdxSecs {}, disableIndexHint {}, {}"
 argument_list|,
 name|maxReplicationLagMillis
 argument_list|,
 name|maxDeltaForModTimeIdxSecs
 argument_list|,
 name|disableIndexHint
+argument_list|,
+name|db
+operator|.
+name|getWriteConcern
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
