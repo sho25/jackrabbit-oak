@@ -2031,7 +2031,7 @@ argument_list|()
 argument_list|,
 name|tp
 operator|instanceof
-name|EmptyCugTreePermission
+name|CugTreePermission
 argument_list|)
 expr_stmt|;
 block|}

@@ -644,11 +644,11 @@ argument_list|()
 argument_list|)
 control|)
 block|{
-name|assertTrue
+name|assertCugPermission
 argument_list|(
 name|tp
-operator|instanceof
-name|EmptyCugTreePermission
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|t

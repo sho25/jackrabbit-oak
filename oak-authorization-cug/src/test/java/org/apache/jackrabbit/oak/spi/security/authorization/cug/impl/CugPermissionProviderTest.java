@@ -3962,7 +3962,7 @@ name|assertTrue
 argument_list|(
 name|contentTp
 operator|instanceof
-name|EmptyCugTreePermission
+name|CugTreePermission
 argument_list|)
 expr_stmt|;
 name|TreePermission
@@ -4058,7 +4058,7 @@ name|assertTrue
 argument_list|(
 name|aaTp
 operator|instanceof
-name|EmptyCugTreePermission
+name|CugTreePermission
 argument_list|)
 expr_stmt|;
 name|TreePermission
@@ -4156,7 +4156,7 @@ name|assertTrue
 argument_list|(
 name|aaTp2
 operator|instanceof
-name|EmptyCugTreePermission
+name|CugTreePermission
 argument_list|)
 expr_stmt|;
 name|TreePermission
