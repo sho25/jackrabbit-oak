@@ -327,7 +327,7 @@ decl_stmt|;
 name|String
 name|group
 init|=
-literal|"FF7E:230::1234"
+literal|"FF78:230::1234"
 decl_stmt|;
 name|int
 name|port
