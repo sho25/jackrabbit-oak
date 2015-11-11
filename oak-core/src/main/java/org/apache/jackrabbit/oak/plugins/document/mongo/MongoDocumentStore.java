@@ -1133,7 +1133,7 @@ name|Striped
 operator|.
 name|lock
 argument_list|(
-literal|128
+literal|4096
 argument_list|)
 decl_stmt|;
 comment|/**      * ReadWriteLocks to synchronize cache access when child documents are      * requested from MongoDB and put into the cache. Accessing a single      * document in the cache will acquire a read (shared) lock for the parent      * key in addition to the lock (from {@link #locks}) for the individual      * document. Reading multiple sibling documents will acquire a write      * (exclusive) lock for the parent key. See OAK-1897.      */
@@ -1149,7 +1149,7 @@ name|Striped
 operator|.
 name|readWriteLock
 argument_list|(
-literal|64
+literal|2048
 argument_list|)
 decl_stmt|;
 comment|/**      * Counts how many times {@link TreeLock}s were acquired.      */
