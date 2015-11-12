@@ -1540,7 +1540,7 @@ argument_list|)
 expr_stmt|;
 name|ace
 operator|.
-name|setStrings
+name|setNames
 argument_list|(
 name|AccessControlConstants
 operator|.
@@ -1695,7 +1695,7 @@ argument_list|)
 expr_stmt|;
 name|ace
 operator|.
-name|setStrings
+name|setNames
 argument_list|(
 name|AccessControlConstants
 operator|.

@@ -2197,7 +2197,7 @@ try|try
 block|{
 name|nested
 operator|.
-name|setString
+name|setName
 argument_list|(
 name|JcrConstants
 operator|.
