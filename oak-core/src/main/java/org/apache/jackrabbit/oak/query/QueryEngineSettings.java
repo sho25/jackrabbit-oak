@@ -46,6 +46,15 @@ name|QueryEngineSettings
 implements|implements
 name|QueryEngineSettingsMBean
 block|{
+comment|/**      * the flag used to turn on/off the optimisations on top of the {@link Query} object.      * {@code -Doak.query.sql2optimisation}      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SQL2_OPTIMISATION_FLAG
+init|=
+literal|"oak.query.sql2optimisation"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -119,7 +128,7 @@ name|Boolean
 operator|.
 name|getBoolean
 argument_list|(
-literal|"oak.query.sql2optimisation"
+name|SQL2_OPTIMISATION_FLAG
 argument_list|)
 decl_stmt|;
 comment|/**      * Get the limit on how many nodes a query may read at most into memory, for      * "order by" and "distinct" queries. If this limit is exceeded, the query      * throws an exception.      *       * @return the limit      */
