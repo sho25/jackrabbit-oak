@@ -8369,6 +8369,11 @@ name|success
 init|=
 literal|false
 decl_stmt|;
+name|boolean
+name|shouldRetry
+init|=
+literal|true
+decl_stmt|;
 comment|// every 16th update is a full rewrite
 if|if
 condition|(
@@ -8441,6 +8446,14 @@ argument_list|,
 name|appendData
 argument_list|)
 expr_stmt|;
+comment|// if we get here, a retry is not going to help (the SQL
+comment|// operation succeeded but simply did not select a row
+comment|// that could be updated, likely because of the check on
+comment|// MODCOUNT
+name|shouldRetry
+operator|=
+literal|false
+expr_stmt|;
 name|connection
 operator|.
 name|commit
@@ -8478,6 +8491,8 @@ if|if
 condition|(
 operator|!
 name|success
+operator|&&
+name|shouldRetry
 condition|)
 block|{
 name|data
