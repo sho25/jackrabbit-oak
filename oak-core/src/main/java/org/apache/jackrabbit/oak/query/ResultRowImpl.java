@@ -478,7 +478,7 @@ return|;
 block|}
 comment|// OAK-318:
 comment|// somebody might call rep:excerpt(text)
-comment|// even thought the query doesn't contain that column
+comment|// even though the query doesn't contain that column
 if|if
 condition|(
 name|columnName
@@ -490,6 +490,58 @@ operator|.
 name|REP_EXCERPT
 argument_list|)
 condition|)
+block|{
+name|int
+name|columnIndex
+init|=
+name|query
+operator|.
+name|getColumnIndex
+argument_list|(
+name|QueryImpl
+operator|.
+name|REP_EXCERPT
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|columnIndex
+operator|>=
+literal|0
+operator|&&
+name|QueryImpl
+operator|.
+name|REP_EXCERPT
+operator|.
+name|equals
+argument_list|(
+name|columnName
+argument_list|)
+operator|||
+name|SimpleExcerptProvider
+operator|.
+name|REP_EXCERPT_FN
+operator|.
+name|equals
+argument_list|(
+name|columnName
+argument_list|)
+condition|)
+block|{
+return|return
+name|SimpleExcerptProvider
+operator|.
+name|getExcerpt
+argument_list|(
+name|values
+index|[
+name|columnIndex
+index|]
+argument_list|)
+return|;
+comment|// TODO : make it possible to extract property level excerpts, e.g. rep:excerpt(text) from indexes
+block|}
+else|else
 block|{
 comment|// missing excerpt, generate a default value
 name|String
@@ -534,6 +586,7 @@ name|getPath
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 throw|throw
 operator|new

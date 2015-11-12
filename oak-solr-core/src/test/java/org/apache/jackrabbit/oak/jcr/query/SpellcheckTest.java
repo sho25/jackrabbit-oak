@@ -501,7 +501,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[voting in ontario]"
+literal|"voting in ontario"
 argument_list|,
 name|result
 argument_list|)
