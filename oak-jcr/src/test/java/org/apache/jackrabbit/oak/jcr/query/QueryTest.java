@@ -37,25 +37,13 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
 name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -68,6 +56,18 @@ operator|.
 name|Assert
 operator|.
 name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -1616,6 +1616,149 @@ operator|+
 literal|"and ([a].[content/lastMod]> '2001-02-01') "
 operator|+
 literal|"and (isdescendantnode([a], [/test])) */"
+argument_list|,
+name|rit
+operator|.
+name|nextRow
+argument_list|()
+operator|.
+name|getValue
+argument_list|(
+literal|"plan"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|propertyIndexWithDeclaringNodeTypeAndRelativQuery
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|Session
+name|session
+init|=
+name|getAdminSession
+argument_list|()
+decl_stmt|;
+name|RowIterator
+name|rit
+decl_stmt|;
+name|QueryResult
+name|r
+decl_stmt|;
+name|String
+name|query
+decl_stmt|;
+name|query
+operator|=
+literal|"//element(*, rep:Authorizable)[@rep:principalName = 'admin']"
+expr_stmt|;
+name|r
+operator|=
+name|session
+operator|.
+name|getWorkspace
+argument_list|()
+operator|.
+name|getQueryManager
+argument_list|()
+operator|.
+name|createQuery
+argument_list|(
+literal|"explain "
+operator|+
+name|query
+argument_list|,
+literal|"xpath"
+argument_list|)
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
+name|rit
+operator|=
+name|r
+operator|.
+name|getRows
+argument_list|()
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"[rep:Authorizable] as [a] /* property principalName = admin "
+operator|+
+literal|"where [a].[rep:principalName] = 'admin' */"
+argument_list|,
+name|rit
+operator|.
+name|nextRow
+argument_list|()
+operator|.
+name|getValue
+argument_list|(
+literal|"plan"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|query
+operator|=
+literal|"//element(*, rep:Authorizable)[admin/@rep:principalName = 'admin']"
+expr_stmt|;
+name|r
+operator|=
+name|session
+operator|.
+name|getWorkspace
+argument_list|()
+operator|.
+name|getQueryManager
+argument_list|()
+operator|.
+name|createQuery
+argument_list|(
+literal|"explain "
+operator|+
+name|query
+argument_list|,
+literal|"xpath"
+argument_list|)
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
+name|rit
+operator|=
+name|r
+operator|.
+name|getRows
+argument_list|()
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"[rep:Authorizable] as [a] /* nodeType "
+operator|+
+literal|"Filter(query=explain select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [rep:Authorizable] as a "
+operator|+
+literal|"where [admin/rep:principalName] = 'admin' "
+operator|+
+literal|"/* xpath: //element(*, rep:Authorizable)["
+operator|+
+literal|"admin/@rep:principalName = 'admin'] */, path=*, "
+operator|+
+literal|"property=[admin/rep:principalName=[admin]]) "
+operator|+
+literal|"where [a].[admin/rep:principalName] = 'admin' */"
 argument_list|,
 name|rit
 operator|.

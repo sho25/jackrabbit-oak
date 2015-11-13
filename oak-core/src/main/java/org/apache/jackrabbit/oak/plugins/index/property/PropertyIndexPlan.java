@@ -938,6 +938,22 @@ block|{
 comment|// covering indexes are not currently supported
 continue|continue;
 block|}
+if|if
+condition|(
+name|depth
+operator|!=
+literal|1
+operator|&&
+operator|!
+name|matchesAllTypes
+condition|)
+block|{
+comment|// OAK-3589
+comment|// index has a nodetype condition, and the property condition is
+comment|// relative: can not use this index, as we don't know the nodetype
+comment|// of the child node (well, we could, for some node types)
+continue|continue;
+block|}
 name|Set
 argument_list|<
 name|String
