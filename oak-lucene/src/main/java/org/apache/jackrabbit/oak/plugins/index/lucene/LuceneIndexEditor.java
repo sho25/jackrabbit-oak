@@ -2299,7 +2299,7 @@ condition|(
 operator|!
 name|indexingRule
 operator|.
-name|isFulltextEnabled
+name|indexesAllNodesOfMatchingType
 argument_list|()
 operator|&&
 operator|!

@@ -492,7 +492,7 @@ name|this
 operator|.
 name|stored
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -507,7 +507,7 @@ name|this
 operator|.
 name|nodeScopeIndex
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -542,7 +542,7 @@ name|this
 operator|.
 name|analyzed
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -559,7 +559,7 @@ name|this
 operator|.
 name|propertyIndex
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -574,7 +574,7 @@ name|this
 operator|.
 name|ordered
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -622,7 +622,7 @@ name|this
 operator|.
 name|useInSuggest
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -637,7 +637,7 @@ name|this
 operator|.
 name|useInSpellcheck
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -652,7 +652,7 @@ name|this
 operator|.
 name|nullCheckEnabled
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -667,7 +667,7 @@ name|this
 operator|.
 name|notNullCheckEnabled
 operator|=
-name|getOptionalValue
+name|getOptionalValueIfIndexed
 argument_list|(
 name|defn
 argument_list|,
@@ -900,6 +900,43 @@ literal|0
 return|;
 block|}
 comment|//~---------------------------------------------< internal>
+specifier|private
+name|boolean
+name|getOptionalValueIfIndexed
+parameter_list|(
+name|NodeState
+name|definition
+parameter_list|,
+name|String
+name|propName
+parameter_list|,
+name|boolean
+name|defaultVal
+parameter_list|)
+block|{
+comment|//If property is not to be indexed then all other config would be
+comment|//set to false ignoring whatever is defined in config for them
+if|if
+condition|(
+operator|!
+name|index
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+name|getOptionalValue
+argument_list|(
+name|definition
+argument_list|,
+name|propName
+argument_list|,
+name|defaultVal
+argument_list|)
+return|;
+block|}
 specifier|private
 name|void
 name|validate
