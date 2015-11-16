@@ -398,7 +398,7 @@ literal|"unbindSolrServerConfigurationProvider"
 argument_list|,
 name|updated
 operator|=
-literal|"updateSolrServerConfigurationProvider"
+literal|"updatedSolrServerConfigurationProvider"
 argument_list|)
 block|}
 argument_list|)
