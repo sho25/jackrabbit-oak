@@ -458,6 +458,7 @@ operator|.
 name|DYNAMIC
 argument_list|)
 specifier|private
+specifier|volatile
 name|NodeAggregator
 name|nodeAggregator
 decl_stmt|;
