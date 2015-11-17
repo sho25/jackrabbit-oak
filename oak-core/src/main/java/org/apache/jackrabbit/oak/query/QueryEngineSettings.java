@@ -126,9 +126,16 @@ name|sql2Optimisation
 init|=
 name|Boolean
 operator|.
-name|getBoolean
+name|parseBoolean
+argument_list|(
+name|System
+operator|.
+name|getProperty
 argument_list|(
 name|SQL2_OPTIMISATION_FLAG
+argument_list|,
+literal|"true"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * Get the limit on how many nodes a query may read at most into memory, for      * "order by" and "distinct" queries. If this limit is exceeded, the query      * throws an exception.      *       * @return the limit      */
