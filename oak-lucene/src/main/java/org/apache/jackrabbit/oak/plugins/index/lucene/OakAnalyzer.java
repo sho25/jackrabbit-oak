@@ -103,7 +103,7 @@ name|analysis
 operator|.
 name|standard
 operator|.
-name|ClassicTokenizer
+name|StandardTokenizer
 import|;
 end_import
 
@@ -163,11 +163,11 @@ name|Reader
 name|reader
 parameter_list|)
 block|{
-name|ClassicTokenizer
+name|StandardTokenizer
 name|src
 init|=
 operator|new
-name|ClassicTokenizer
+name|StandardTokenizer
 argument_list|(
 name|matchVersion
 argument_list|,
