@@ -89,6 +89,26 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|UpdateOp
+operator|.
+name|Condition
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
 name|cache
 operator|.
 name|CacheInvalidationStats
@@ -289,7 +309,7 @@ argument_list|>
 name|toRemove
 parameter_list|)
 function_decl|;
-comment|/**      * Try to create a list of documents. This method returns {@code true} iff      * none of the documents existed before and the create was successful. This      * method will return {@code false} if one of the documents already exists      * in the store. Some documents may still have been created in the store.      * An implementation does not have to guarantee an atomic create of all the      * documents described in the {@code updateOps}. It is the responsibility of      * the caller to check, which documents were created and take appropriate      * action. The same is true when this method throws an exception (e.g. when      * a communication error occurs). In this case only some documents may have      * been created.      *      * @param<T> the document type      * @param collection the collection      * @param updateOps the list of documents to add      * @return true if this worked (if none of the documents already existed)      */
+comment|/**      * Try to create a list of documents. This method returns {@code true} iff      * none of the documents existed before and the create was successful. This      * method will return {@code false} if one of the documents already exists      * in the store. Some documents may still have been created in the store.      * An implementation does not have to guarantee an atomic create of all the      * documents described in the {@code updateOps}. It is the responsibility of      * the caller to check, which documents were created and take appropriate      * action. The same is true when this method throws an exception (e.g. when      * a communication error occurs). In this case only some documents may have      * been created.      *      * @param<T> the document type      * @param collection the collection      * @param updateOps the list of documents to add (where {@link Condition}s are not allowed)      * @return true if this worked (if none of the documents already existed)      * @throws IllegalArgumentException when at least one of the {@linkplain UpdateOp}s is conditional      */
 parameter_list|<
 name|T
 extends|extends
@@ -311,7 +331,7 @@ argument_list|>
 name|updateOps
 parameter_list|)
 function_decl|;
-comment|/**      * Update documents with the given keys. Only existing documents are      * updated and keys for documents that do not exist are simply ignored. If      * this method fails with an exception, then only some of the documents      * identified by {@code keys} may have been updated. There is no guarantee      * in which sequence the updates are performed.      *      * @param<T> the document type.      * @param collection the collection.      * @param keys the keys of the documents to update.      * @param updateOp the update operation to apply to each of the documents.      */
+comment|/**      * Update documents with the given keys. Only existing documents are      * updated and keys for documents that do not exist are simply ignored. If      * this method fails with an exception, then only some of the documents      * identified by {@code keys} may have been updated. There is no guarantee      * in which sequence the updates are performed.      *      * @param<T> the document type.      * @param collection the collection.      * @param keys the keys of the documents to update.      * @param updateOp the update operation to apply to each of the documents      *        (where {@link Condition}s are not allowed)      * @throws IllegalArgumentException when the {@linkplain UpdateOp} is conditional      */
 parameter_list|<
 name|T
 extends|extends
@@ -336,7 +356,7 @@ name|UpdateOp
 name|updateOp
 parameter_list|)
 function_decl|;
-comment|/**      * Create or update a document. For MongoDB, this is using "findAndModify" with      * the "upsert" flag (insert or update). The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation      * @return the old document or<code>null</code> if it didn't exist before.      */
+comment|/**      * Create or update a document. For MongoDB, this is using "findAndModify" with      * the "upsert" flag (insert or update). The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation (where {@link Condition}s are not allowed)      * @return the old document or<code>null</code> if it didn't exist before.      * @throws IllegalArgumentException when the {@linkplain UpdateOp} is conditional      */
 annotation|@
 name|CheckForNull
 argument_list|<
