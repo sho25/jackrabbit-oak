@@ -1939,6 +1939,7 @@ parameter_list|>
 name|Registration
 name|register
 parameter_list|(
+specifier|final
 name|Class
 argument_list|<
 name|T
@@ -2202,7 +2203,21 @@ name|JMException
 name|e
 parameter_list|)
 block|{
-comment|// ignore
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Unexpected exception while registering MBean of type [{}] "
+operator|+
+literal|"against name [{}]"
+argument_list|,
+name|type
+argument_list|,
+name|objectName
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|final
@@ -2270,7 +2285,21 @@ name|JMException
 name|e
 parameter_list|)
 block|{
-comment|// ignore
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Unexpected exception while unregistering MBean of type {} "
+operator|+
+literal|"against name {} "
+argument_list|,
+name|type
+argument_list|,
+name|on
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 try|try
