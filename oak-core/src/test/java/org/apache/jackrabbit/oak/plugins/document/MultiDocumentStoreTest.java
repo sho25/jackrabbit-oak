@@ -886,7 +886,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// verify that _modified can indeed be *set* to a smaller value, see
-comment|// https://jira.corp.adobe.com/browse/GRANITE-8903
+comment|// https://issues.apache.org/jira/browse/OAK-2940
 name|upds1
 operator|=
 operator|new
