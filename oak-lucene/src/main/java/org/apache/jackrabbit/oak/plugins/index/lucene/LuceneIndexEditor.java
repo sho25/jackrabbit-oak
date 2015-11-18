@@ -3701,6 +3701,8 @@ argument_list|(
 name|nodePath
 argument_list|,
 name|value
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3714,6 +3716,8 @@ argument_list|(
 name|newFulltextField
 argument_list|(
 name|value
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
