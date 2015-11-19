@@ -724,6 +724,10 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+name|stop
+operator|=
+literal|true
+expr_stmt|;
 return|return;
 block|}
 while|while
@@ -1377,6 +1381,16 @@ block|{
 comment|// ignore
 block|}
 block|}
+block|}
+specifier|public
+name|boolean
+name|isRunning
+parameter_list|()
+block|{
+return|return
+operator|!
+name|stop
+return|;
 block|}
 block|}
 end_class
