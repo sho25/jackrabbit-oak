@@ -338,6 +338,43 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|requiresFullTextIndex
+parameter_list|()
+block|{
+return|return
+name|constraint
+operator|.
+name|requiresFullTextIndex
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|containsUnfilteredFullTextCondition
+parameter_list|()
+block|{
+comment|// If the constraint is a fulltext condition,
+comment|// then we can not apply it, as in "not contains(., 'x')".
+comment|// Also, if the constraint _contains_ a unfiltered fulltext condition, as in
+comment|// "not (x=1 or contains(., 'x')".
+return|return
+name|constraint
+operator|.
+name|requiresFullTextIndex
+argument_list|()
+operator|||
+name|constraint
+operator|.
+name|requiresFullTextIndex
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

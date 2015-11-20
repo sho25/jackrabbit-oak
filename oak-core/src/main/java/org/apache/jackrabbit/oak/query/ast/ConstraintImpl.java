@@ -35,16 +35,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -56,16 +46,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
 import|;
 end_import
 
@@ -270,22 +250,27 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-comment|/**      *       * @return the list of {@link ConstraintImpl} that the current constraint could hold. Default      *         implementation returns {@code null}.      */
-annotation|@
-name|Nullable
+comment|/**      * Whether the constraint contains a fulltext condition that requires      * using a fulltext index, because the condition can only be evaluated there.      *       * @return true if yes      */
 specifier|public
-name|List
-argument_list|<
-name|ConstraintImpl
-argument_list|>
-name|getConstraints
+name|boolean
+name|requiresFullTextIndex
 parameter_list|()
 block|{
 return|return
-literal|null
+literal|false
 return|;
 block|}
-comment|/**      *<p>      * Compute a Set of sub-constraints that could be used for composing UNION statements. For      * example in case of {@code OR (c1, c2)} it will return to the caller {@code [c1, c2]}. Those      * can be later on used for re-composing conditions.      *</p>      *<p>      * If no union optimisations are possible it must return an empty set.      *</p>      *<p>      * Default implementation in {@link ConstraintImpl#simplifyForUnion()} always return an empty      * set.      *</p>      *       * @return      */
+comment|/**      * Whether the condition contains a fulltext condition that can not be       * applied to the filter, for example because it is part of an "or" condition      * of the form "where a=1 or contains(., 'x')".      *       * @return true if yes      */
+specifier|public
+name|boolean
+name|containsUnfilteredFullTextCondition
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|/**      *<p>      * Compute a Set of sub-constraints that could be used for composing UNION statements. For      * example in case of {@code OR (c1, c2)} it will return to the caller {@code [c1, c2]}. Those      * can be later on used for re-composing conditions.      *</p>      *<p>      * If no union optimisations are possible it must return an empty set.      *</p>      *<p>      * Default implementation in {@link ConstraintImpl#simplifyForUnion()} always return an empty      * set.      *</p>      *       * @return the set of constraints, if available      */
 annotation|@
 name|Nonnull
 specifier|public

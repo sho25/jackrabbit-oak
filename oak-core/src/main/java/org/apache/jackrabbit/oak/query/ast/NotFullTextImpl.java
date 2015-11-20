@@ -190,6 +190,8 @@ name|SelectorImpl
 name|s
 parameter_list|)
 block|{
+comment|// TODO is this correct?
+empty_stmt|;
 return|return
 name|getConstraint
 argument_list|()
@@ -198,6 +200,17 @@ name|getFullTextConstraint
 argument_list|(
 name|s
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|requiresFullTextIndex
+parameter_list|()
+block|{
+return|return
+literal|true
 return|;
 block|}
 block|}

@@ -763,7 +763,11 @@ name|double
 name|getEstimatedCost
 parameter_list|()
 block|{
+comment|// the cost is higher than the cost of both parts, so that
+comment|// non-union queries are preferred over union ones
 return|return
+literal|10
+operator|+
 name|left
 operator|.
 name|getEstimatedCost
@@ -2010,13 +2014,20 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|double
-name|getCostOverhead
+name|boolean
+name|containsUnfilteredFullTextCondition
 parameter_list|()
 block|{
-comment|// for now we don't really have any case where a union query should suffer from overheads.
 return|return
-literal|0
+name|left
+operator|.
+name|containsUnfilteredFullTextCondition
+argument_list|()
+operator|||
+name|right
+operator|.
+name|containsUnfilteredFullTextCondition
+argument_list|()
 return|;
 block|}
 block|}

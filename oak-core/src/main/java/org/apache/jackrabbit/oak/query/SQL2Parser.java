@@ -1098,7 +1098,7 @@ return|return
 name|q
 return|;
 block|}
-comment|/**      * as {@link #parse(String, boolean)} by providing {@code true} to the initialisation flag.      *       * @param query      * @return      * @throws ParseException      */
+comment|/**      * as {@link #parse(String, boolean)} by providing {@code true} to the initialisation flag.      *       * @param query      * @return the parsed query      * @throws ParseException      */
 specifier|public
 name|Query
 name|parse
