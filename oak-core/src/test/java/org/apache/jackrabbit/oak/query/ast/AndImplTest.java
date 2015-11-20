@@ -207,7 +207,7 @@ name|assertThat
 argument_list|(
 name|and
 operator|.
-name|simplifyForUnion
+name|convertToUnion
 argument_list|()
 argument_list|,
 name|is
@@ -296,7 +296,7 @@ name|assertThat
 argument_list|(
 name|and
 operator|.
-name|simplifyForUnion
+name|convertToUnion
 argument_list|()
 argument_list|,
 name|is
@@ -413,7 +413,7 @@ name|assertThat
 argument_list|(
 name|and
 operator|.
-name|simplifyForUnion
+name|convertToUnion
 argument_list|()
 argument_list|,
 name|is

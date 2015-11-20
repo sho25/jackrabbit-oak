@@ -51,22 +51,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-operator|.
-name|newHashSet
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -106,6 +90,16 @@ operator|.
 name|text
 operator|.
 name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
 import|;
 end_import
 
@@ -349,20 +343,20 @@ name|QueryEngineImpl
 implements|implements
 name|QueryEngine
 block|{
-comment|/**      * used to instruct the {@link QueryEngineImpl} on how to act with respect of the SQL2      * optimisation.      */
+comment|/**      * Used to instruct the {@link QueryEngineImpl} on how to act with respect of the SQL2      * optimisation.      */
 specifier|public
 specifier|static
 enum|enum
-name|ForceOptimised
+name|QuerySelectionMode
 block|{
-comment|/**          * will force the original SQL2 query to be executed          */
+comment|/**          * Will execute the cheapest (default).          */
+name|CHEAPEST
+block|,
+comment|/**          * Will use the original SQL2 query.          */
 name|ORIGINAL
 block|,
-comment|/**          * will force the computed optimised query to be executed. If available.          */
-name|OPTIMISED
-block|,
-comment|/**          * will execute the cheapest.          */
-name|CHEAPEST
+comment|/**          * Will force the computed alternate query to be executed. If available.          */
+name|ALTERNATIVE
 block|}
 specifier|private
 specifier|static
@@ -478,12 +472,12 @@ name|traversalEnabled
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Whether the query engine should be forced to use the optimised version of the query if      * available.      */
+comment|/**      * Which query to select in case multiple options are available. Whether the      * query engine should pick the one with the lowest expected cost (default),      * or the original, or the alternative.      */
 specifier|private
-name|ForceOptimised
-name|forceOptimised
+name|QuerySelectionMode
+name|querySelectionMode
 init|=
-name|ForceOptimised
+name|QuerySelectionMode
 operator|.
 name|CHEAPEST
 decl_stmt|;
@@ -535,7 +529,7 @@ parameter_list|)
 throws|throws
 name|ParseException
 block|{
-name|Set
+name|List
 argument_list|<
 name|Query
 argument_list|>
@@ -566,9 +560,10 @@ name|getBindVariableNames
 argument_list|()
 return|;
 block|}
+comment|/**      * Parse the query.      *       * @param statement the statement      * @param language the language      * @param context the context      * @param mappings the mappings      * @return the list of queries, where the first is the original, and all      *         others are alternatives (for example, a "union" query)      */
 specifier|private
 specifier|static
-name|Set
+name|List
 argument_list|<
 name|Query
 argument_list|>
@@ -736,13 +731,17 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|Set
+name|ArrayList
 argument_list|<
 name|Query
 argument_list|>
 name|queries
 init|=
-name|newHashSet
+operator|new
+name|ArrayList
+argument_list|<
+name|Query
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|Query
@@ -961,7 +960,7 @@ name|q2
 init|=
 name|q
 operator|.
-name|optimise
+name|buildAlternativeQuery
 argument_list|()
 decl_stmt|;
 if|if
@@ -975,7 +974,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Optimised query available. {}"
+literal|"Alternative query available: {}"
 argument_list|,
 name|q2
 argument_list|)
@@ -1206,7 +1205,7 @@ init|=
 name|getExecutionContext
 argument_list|()
 decl_stmt|;
-name|Set
+name|List
 argument_list|<
 name|Query
 argument_list|>
@@ -1312,7 +1311,7 @@ block|{
 name|Query
 name|query
 init|=
-name|prepareAndGetCheapest
+name|prepareAndSelect
 argument_list|(
 name|queries
 argument_list|)
@@ -1344,17 +1343,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * will prepare all the available queries and by based on the {@link ForceOptimised} flag return      * the appropriate.      *       * @param queries the list of queries to be executed. cannot be null      * @return      */
+comment|/**      * Prepare all the available queries and by based on the {@link QuerySelectionMode} flag return      * the appropriate.      *       * @param queries the list of queries to be executed. Cannot be null.      *      If there are multiple, the first one is the original, and the second the alternative.      * @return the query      */
 annotation|@
 name|Nonnull
 specifier|private
 name|Query
-name|prepareAndGetCheapest
+name|prepareAndSelect
 parameter_list|(
 annotation|@
 name|Nonnull
-specifier|final
-name|Set
+name|List
 argument_list|<
 name|Query
 argument_list|>
@@ -1399,7 +1397,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"No optimisations found. Query: {}"
+literal|"No alternatives found. Query: {}"
 argument_list|,
 name|result
 argument_list|)
@@ -1414,21 +1412,10 @@ name|Double
 operator|.
 name|POSITIVE_INFINITY
 decl_stmt|;
-name|double
-name|originalCost
-init|=
-name|Double
-operator|.
-name|POSITIVE_INFINITY
-decl_stmt|;
-name|Query
-name|original
-init|=
-literal|null
-decl_stmt|;
-comment|// always prepare all of the queries and compute the cheapest as it's the default behaviour.
-comment|// It should trigger more errors during unit and integration testing. Changing
-comment|// `forceOptimised` flag should be in case used only during testing.
+comment|// Always prepare all of the queries and compute the cheapest as
+comment|// it's the default behaviour. That way, we always log the cost and
+comment|// can more easily analyze problems. The querySelectionMode flag can
+comment|// be used to override the cheapest.
 for|for
 control|(
 name|Query
@@ -1506,57 +1493,10 @@ operator|=
 name|cost
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|q
-operator|.
-name|isOptimised
-argument_list|()
-condition|)
-block|{
-name|original
-operator|=
-name|q
-expr_stmt|;
-name|originalCost
-operator|=
-name|cost
-expr_stmt|;
-block|}
-block|}
-if|if
-condition|(
-name|original
-operator|!=
-literal|null
-operator|&&
-name|bestCost
-operator|==
-name|originalCost
-operator|&&
-name|result
-operator|!=
-name|original
-condition|)
-block|{
-comment|// if the optimised cost is the same as the original SQL2 query we prefer the original. As
-comment|// we deal with references the `cheapest!=original` should work.
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"Same cost for original and optimised. Using original"
-argument_list|)
-expr_stmt|;
-name|result
-operator|=
-name|original
-expr_stmt|;
 block|}
 switch|switch
 condition|(
-name|forceOptimised
+name|querySelectionMode
 condition|)
 block|{
 case|case
@@ -1569,116 +1509,41 @@ argument_list|(
 literal|"Forcing the original SQL2 query to be executed by flag"
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|Query
-name|q
-range|:
-name|checkNotNull
-argument_list|(
-name|queries
-argument_list|)
-control|)
-block|{
-if|if
-condition|(
-operator|!
-name|q
-operator|.
-name|isOptimised
-argument_list|()
-condition|)
-block|{
 name|result
 operator|=
-name|q
+name|queries
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
 expr_stmt|;
-block|}
-block|}
 break|break;
 case|case
-name|OPTIMISED
+name|ALTERNATIVE
 case|:
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Forcing the optimised SQL2 query to be executed by flag"
+literal|"Forcing the alternative SQL2 query to be executed by flag"
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|Query
-name|q
-range|:
-name|checkNotNull
-argument_list|(
-name|queries
-argument_list|)
-control|)
-block|{
-if|if
-condition|(
-name|q
-operator|.
-name|isOptimised
-argument_list|()
-condition|)
-block|{
 name|result
 operator|=
-name|q
+name|queries
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
 expr_stmt|;
-block|}
-block|}
 break|break;
 comment|// CHEAPEST is the default behaviour
 case|case
 name|CHEAPEST
 case|:
 default|default:
-if|if
-condition|(
-name|result
-operator|==
-literal|null
-condition|)
-block|{
-comment|// this should not really happen. Defensive coding.
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Cheapest is null. Returning the original SQL2 query."
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|Query
-name|q
-range|:
-name|checkNotNull
-argument_list|(
-name|queries
-argument_list|)
-control|)
-block|{
-if|if
-condition|(
-operator|!
-name|q
-operator|.
-name|isOptimised
-argument_list|()
-condition|)
-block|{
-name|result
-operator|=
-name|q
-expr_stmt|;
-block|}
-block|}
-block|}
 block|}
 block|}
 return|return
@@ -1796,22 +1661,22 @@ name|OAK_QUERY_ANALYZE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Instruct the query engine on how to behave with regards to the SQL2 optimised query if      * available.      *       * @param forceOptimised cannot be null      */
+comment|/**      * Instruct the query engine on how to behave with regards to the SQL2 optimised query if      * available.      *       * @param querySelectionMode cannot be null      */
 specifier|protected
 name|void
-name|setForceOptimised
+name|setQuerySelectionMode
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ForceOptimised
-name|forceOptimised
+name|QuerySelectionMode
+name|querySelectionMode
 parameter_list|)
 block|{
 name|this
 operator|.
-name|forceOptimised
+name|querySelectionMode
 operator|=
-name|forceOptimised
+name|querySelectionMode
 expr_stmt|;
 block|}
 block|}

@@ -1014,7 +1014,7 @@ name|Set
 argument_list|<
 name|ConstraintImpl
 argument_list|>
-name|simplifyForUnion
+name|convertToUnion
 parameter_list|()
 block|{
 name|Set
@@ -1062,16 +1062,16 @@ name|Set
 argument_list|<
 name|ConstraintImpl
 argument_list|>
-name|ccc
+name|converted
 init|=
 name|c
 operator|.
-name|simplifyForUnion
+name|convertToUnion
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|ccc
+name|converted
 operator|.
 name|isEmpty
 argument_list|()
@@ -1091,7 +1091,7 @@ name|union
 operator|.
 name|addAll
 argument_list|(
-name|ccc
+name|converted
 argument_list|)
 expr_stmt|;
 block|}
@@ -1150,7 +1150,7 @@ block|}
 block|}
 else|else
 block|{
-comment|// in this case prefer to be conservative and don't optimise. This could happen when for
+comment|// in this case prefer to be conservative and don't optimize. This could happen when for
 comment|// example: WHERE (a OR b) AND (c OR d).
 comment|// This should be translated into a AND c, a AND d, b AND c, b AND d.
 block|}

@@ -163,7 +163,7 @@ name|query
 operator|.
 name|QueryEngineImpl
 operator|.
-name|ForceOptimised
+name|QuerySelectionMode
 operator|.
 name|CHEAPEST
 import|;
@@ -183,9 +183,9 @@ name|query
 operator|.
 name|QueryEngineImpl
 operator|.
-name|ForceOptimised
+name|QuerySelectionMode
 operator|.
-name|OPTIMISED
+name|ALTERNATIVE
 import|;
 end_import
 
@@ -203,7 +203,7 @@ name|query
 operator|.
 name|QueryEngineImpl
 operator|.
-name|ForceOptimised
+name|QuerySelectionMode
 operator|.
 name|ORIGINAL
 import|;
@@ -779,7 +779,7 @@ argument_list|,
 literal|"/test2/a"
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|ORIGINAL
 argument_list|)
@@ -795,9 +795,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
-name|OPTIMISED
+name|ALTERNATIVE
 argument_list|)
 expr_stmt|;
 name|optimised
@@ -811,7 +811,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|CHEAPEST
 argument_list|)
@@ -866,7 +866,7 @@ argument_list|,
 literal|"/test2/a"
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|ORIGINAL
 argument_list|)
@@ -882,9 +882,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
-name|OPTIMISED
+name|ALTERNATIVE
 argument_list|)
 expr_stmt|;
 name|optimised
@@ -898,7 +898,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|CHEAPEST
 argument_list|)
@@ -945,7 +945,7 @@ argument_list|,
 literal|"/test/b"
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|ORIGINAL
 argument_list|)
@@ -961,9 +961,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
-name|OPTIMISED
+name|ALTERNATIVE
 argument_list|)
 expr_stmt|;
 name|optimised
@@ -977,7 +977,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|CHEAPEST
 argument_list|)
@@ -1024,7 +1024,7 @@ argument_list|,
 literal|"/test/b"
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|ORIGINAL
 argument_list|)
@@ -1040,9 +1040,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
-name|OPTIMISED
+name|ALTERNATIVE
 argument_list|)
 expr_stmt|;
 name|optimised
@@ -1056,7 +1056,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|CHEAPEST
 argument_list|)
@@ -1108,7 +1108,7 @@ argument_list|,
 literal|"/test/c"
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|ORIGINAL
 argument_list|)
@@ -1124,9 +1124,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
-name|OPTIMISED
+name|ALTERNATIVE
 argument_list|)
 expr_stmt|;
 name|optimised
@@ -1140,7 +1140,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|CHEAPEST
 argument_list|)
@@ -1414,7 +1414,7 @@ name|optimised
 operator|=
 name|original
 operator|.
-name|optimise
+name|buildAlternativeQuery
 argument_list|()
 expr_stmt|;
 name|assertNotNull
@@ -1468,7 +1468,7 @@ name|optimised
 operator|=
 name|original
 operator|.
-name|optimise
+name|buildAlternativeQuery
 argument_list|()
 expr_stmt|;
 name|assertNotNull
@@ -1515,7 +1515,7 @@ name|optimised
 operator|=
 name|original
 operator|.
-name|optimise
+name|buildAlternativeQuery
 argument_list|()
 expr_stmt|;
 name|assertNotNull

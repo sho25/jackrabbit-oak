@@ -35,9 +35,9 @@ name|query
 operator|.
 name|QueryEngineImpl
 operator|.
-name|ForceOptimised
+name|QuerySelectionMode
 operator|.
-name|OPTIMISED
+name|ALTERNATIVE
 import|;
 end_import
 
@@ -78,9 +78,9 @@ operator|.
 name|before
 argument_list|()
 expr_stmt|;
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
-name|OPTIMISED
+name|ALTERNATIVE
 argument_list|)
 expr_stmt|;
 name|setTraversalEnabled

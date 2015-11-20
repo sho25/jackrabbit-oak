@@ -270,7 +270,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      *<p>      * Compute a Set of sub-constraints that could be used for composing UNION statements. For      * example in case of {@code OR (c1, c2)} it will return to the caller {@code [c1, c2]}. Those      * can be later on used for re-composing conditions.      *</p>      *<p>      * If no union optimisations are possible it must return an empty set.      *</p>      *<p>      * Default implementation in {@link ConstraintImpl#simplifyForUnion()} always return an empty      * set.      *</p>      *       * @return the set of constraints, if available      */
+comment|/**      * Compute a set of sub-constraints that could be used for composing UNION      * statements. For example in case of "c=1 or c=2", it will return to the      * caller {@code [c=1, c=2]}. Those can be later on used for re-composing      * conditions.      *<p>      * If it is not possible to convert to a union, it must return an empty set.      *<p>      * The default implementation in {@link ConstraintImpl#convertToUnion()}      * always return an empty set.      *       * @return the set of union constraints, if available, or an empty set if      *         conversion is not possible      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -278,7 +278,7 @@ name|Set
 argument_list|<
 name|ConstraintImpl
 argument_list|>
-name|simplifyForUnion
+name|convertToUnion
 parameter_list|()
 block|{
 return|return

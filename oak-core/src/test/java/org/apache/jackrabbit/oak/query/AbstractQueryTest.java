@@ -527,7 +527,7 @@ name|query
 operator|.
 name|QueryEngineImpl
 operator|.
-name|ForceOptimised
+name|QuerySelectionMode
 import|;
 end_import
 
@@ -2349,12 +2349,12 @@ expr_stmt|;
 block|}
 specifier|protected
 name|void
-name|setForceOptimised
+name|setQuerySelectionMode
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ForceOptimised
-name|forceOptimised
+name|QuerySelectionMode
+name|querySelectionMode
 parameter_list|)
 block|{
 operator|(
@@ -2364,11 +2364,11 @@ operator|)
 name|qe
 operator|)
 operator|.
-name|setForceOptimised
+name|setQuerySelectionMode
 argument_list|(
 name|checkNotNull
 argument_list|(
-name|forceOptimised
+name|querySelectionMode
 argument_list|)
 argument_list|)
 expr_stmt|;

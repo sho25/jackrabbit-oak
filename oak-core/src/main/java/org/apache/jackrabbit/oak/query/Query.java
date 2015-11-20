@@ -332,11 +332,11 @@ name|boolean
 name|isSortedByIndex
 parameter_list|()
 function_decl|;
-comment|/**      * Perform optimisation on the object itself. To avoid any potential error due to state      * variables perfom the optimisation before the {@link #init()}.      *       * @return {@code this} if no optimisations are possible or a new instance of a {@link Query}.      *         Cannot return null.      */
+comment|/**      * Try to convert the query to an alternative form, specially a "union". To      * avoid any potential error due to state variables perform the conversion      * before the {@link #init()}.      *       * @return {@code this} if no conversions are possible or a new instance of      *         a {@link Query}. Cannot return null.      */
 annotation|@
 name|Nonnull
 name|Query
-name|optimise
+name|buildAlternativeQuery
 parameter_list|()
 function_decl|;
 comment|/**      *<p>      * returns a clone of the current object. Will throw an exception in case it's invoked in a non      * appropriate moment. For example the default {@link QueryImpl} cannot be cloned once the      * {@link #init()} has been executed.      *</p>      *       *<p>      *<strong>May return null if not implemented.</strong>      *</p>      * @return a clone of self      * @throws IllegalStateException      */
@@ -351,11 +351,6 @@ function_decl|;
 comment|/**      * @return {@code true} if the query has been already initialised. {@code false} otherwise.      */
 name|boolean
 name|isInit
-parameter_list|()
-function_decl|;
-comment|/**      * @return {@code true} if the query is a result of optimisations. {@code false} if it's the      *         originally computed one.      */
-name|boolean
-name|isOptimised
 parameter_list|()
 function_decl|;
 comment|/**      * @return the original statement as it was used to construct the object. If not provided the      *         {@link #toString()} will be used instead.      */
