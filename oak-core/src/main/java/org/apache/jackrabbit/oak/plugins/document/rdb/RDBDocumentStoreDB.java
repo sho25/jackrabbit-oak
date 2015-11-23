@@ -1570,7 +1570,7 @@ parameter_list|)
 block|{
 comment|/*              * To avoid truncation when concatenating force an error when limit              * is above the octet limit              */
 return|return
-literal|"CASE WHEN LEN(DATA)<= "
+literal|"CASE WHEN LEN(DATA)< "
 operator|+
 operator|(
 name|dataOctetLimit
