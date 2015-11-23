@@ -847,7 +847,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|File
 name|path
 decl_stmt|;
 specifier|private
@@ -898,7 +898,7 @@ decl_stmt|;
 specifier|public
 name|NodeStoreTree
 parameter_list|(
-name|String
+name|File
 name|path
 parameter_list|,
 name|JTextArea
@@ -1011,11 +1011,7 @@ operator|=
 operator|new
 name|ReadOnlyStore
 argument_list|(
-operator|new
-name|File
-argument_list|(
 name|path
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
