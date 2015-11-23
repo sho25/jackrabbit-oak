@@ -418,14 +418,14 @@ name|activeSessionCount
 init|=
 name|statisticManager
 operator|.
-name|getCounter
+name|getStatsCounter
 argument_list|(
 name|Type
 operator|.
 name|SESSION_COUNT
 argument_list|)
 operator|.
-name|get
+name|getCount
 argument_list|()
 decl_stmt|;
 name|initStackTrace

@@ -139,9 +139,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|atomic
-operator|.
-name|AtomicLong
+name|TimeUnit
 import|;
 end_import
 
@@ -389,6 +387,38 @@ name|PropertyValues
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|MeterStats
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|TimerStats
+import|;
+end_import
+
 begin_comment
 comment|/**  * The implementation of the corresponding JCR interface.  */
 end_comment
@@ -437,12 +467,12 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|AtomicLong
+name|MeterStats
 name|queryCount
 decl_stmt|;
 specifier|private
 specifier|final
-name|AtomicLong
+name|TimerStats
 name|queryDuration
 decl_stmt|;
 specifier|public
@@ -498,7 +528,7 @@ name|queryCount
 operator|=
 name|sessionContext
 operator|.
-name|getCounter
+name|getMeter
 argument_list|(
 name|QUERY_COUNT
 argument_list|)
@@ -507,7 +537,7 @@ name|queryDuration
 operator|=
 name|sessionContext
 operator|.
-name|getCounter
+name|getTimer
 argument_list|(
 name|QUERY_DURATION
 argument_list|)
@@ -847,7 +877,7 @@ argument_list|)
 decl_stmt|;
 name|queryCount
 operator|.
-name|incrementAndGet
+name|mark
 argument_list|()
 expr_stmt|;
 name|long
@@ -866,9 +896,13 @@ literal|1000000
 decl_stmt|;
 name|queryDuration
 operator|.
-name|addAndGet
+name|update
 argument_list|(
 name|dt
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 name|sessionContext

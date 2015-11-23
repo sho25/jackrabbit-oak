@@ -216,6 +216,15 @@ specifier|public
 class|class
 name|WhiteboardUtils
 block|{
+comment|/**      * JMX Domain name under which Oak related JMX MBeans are registered      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|JMX_OAK_DOMAIN
+init|=
+literal|"org.apache.jackrabbit.oak"
+decl_stmt|;
 specifier|public
 specifier|static
 name|Registration
@@ -480,7 +489,7 @@ argument_list|,
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.jackrabbit.oak"
+name|JMX_OAK_DOMAIN
 argument_list|,
 name|table
 argument_list|)
