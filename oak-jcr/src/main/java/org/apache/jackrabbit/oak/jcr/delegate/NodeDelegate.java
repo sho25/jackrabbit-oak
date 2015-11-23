@@ -1045,6 +1045,20 @@ name|TreeUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|value
+operator|.
+name|ValueHelper
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeDelegate} serve as internal representations of {@code Node}s.  * Most methods of this class throw an {@code InvalidItemStateException}  * exception if the instance is stale. An instance is stale if the underlying  * items does not exist anymore.  */
 end_comment
@@ -3105,6 +3119,24 @@ name|getArrayType
 argument_list|()
 expr_stmt|;
 block|}
+name|ValueHelper
+operator|.
+name|checkSupportedConversion
+argument_list|(
+name|propertyState
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|tag
+argument_list|()
+argument_list|,
+name|requiredType
+operator|.
+name|tag
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|propertyState
 operator|=
 name|PropertyStates
