@@ -515,7 +515,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"java -jar oak-diff-*.jar<path/to/repository> [–-list] [–-diff=R0..R1] [–-incremental] [–-ignore-snfes] [–-output=/path/to/output/file]"
+literal|"java -jar oak-diff-*.jar<path/to/repository> [--list] [--diff=R0..R1] [--incremental] [--ignore-snfes] [--output=/path/to/output/file]"
 argument_list|)
 expr_stmt|;
 name|System
@@ -646,7 +646,7 @@ name|accepts
 argument_list|(
 literal|"diff"
 argument_list|,
-literal|"Revision diff interval. Ex '–-diff=R0..R1'. 'HEAD' can be used to reference the latest head revision, ie. '–-diff=R0..HEAD'"
+literal|"Revision diff interval. Ex '--diff=R0..R1'. 'HEAD' can be used to reference the latest head revision, ie. '--diff=R0..HEAD'"
 argument_list|)
 operator|.
 name|withRequiredArg
