@@ -407,21 +407,6 @@ name|millis
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the counter of the specified {@code type}.      * @param type  type of the counter      * @return  counter for the given {@code type}      * @see org.apache.jackrabbit.stats.RepositoryStatisticsImpl#getCounter(org.apache.jackrabbit.api.stats.RepositoryStatistics.Type)      */
-specifier|public
-name|AtomicLong
-name|getCounter
-parameter_list|(
-name|Type
-name|type
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
-block|}
 specifier|public
 name|MeterStats
 name|getMeter
