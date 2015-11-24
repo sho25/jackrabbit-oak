@@ -657,6 +657,7 @@ name|TIMER
 argument_list|)
 return|;
 block|}
+specifier|public
 name|MetricRegistry
 name|getRegistry
 parameter_list|()
