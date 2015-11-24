@@ -121,7 +121,7 @@ name|long
 name|getBlockSizeMin
 parameter_list|()
 function_decl|;
-comment|/**      * Gets all the identifiers.      *       * @param maxLastModifiedTime      *            the max last modified time to consider for retrieval      * @return the identifiers      * @throws Exception      *             the exception      */
+comment|/**      * Gets all the identifiers.      *       * @param maxLastModifiedTime      *            the max last modified time to consider for retrieval,      *            with the special value '0' meaning no filtering by time      * @return the identifiers      * @throws Exception      *             the exception      */
 name|Iterator
 argument_list|<
 name|String
@@ -134,7 +134,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Deletes the blobs with the given ids.      *      * @param chunkIds the chunk ids      * @param maxLastModifiedTime the max last modified time to consider for retrieval      * @return true, if successful      * @throws Exception the exception      */
+comment|/**      * Deletes the blobs with the given ids.      *      * @param chunkIds the chunk ids      * @param maxLastModifiedTime the max last modified time to consider for retrieval,      *            with the special value '0' meaning no filtering by time      * @return true, if successful      * @throws Exception the exception      */
 annotation|@
 name|Deprecated
 name|boolean
@@ -152,7 +152,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Deletes the blobs with the given ids.      *      * @param chunkIds the chunk ids      * @param maxLastModifiedTime the max last modified time to consider for retrieval      * @return long the count of successful deletions      * @throws Exception the exception      */
+comment|/**      * Deletes the blobs with the given ids.      *      * @param chunkIds the chunk ids      * @param maxLastModifiedTime the max last modified time to consider for retrieval,      *            with the special value '0' meaning no filtering by time      * @return long the count of successful deletions      * @throws Exception the exception      */
 name|long
 name|countDeleteChunks
 parameter_list|(
