@@ -2963,6 +2963,11 @@ name|SuggestHelper
 operator|.
 name|getSuggestions
 argument_list|(
+name|indexNode
+operator|.
+name|getLookup
+argument_list|()
+argument_list|,
 name|suggestQuery
 argument_list|)
 decl_stmt|;
