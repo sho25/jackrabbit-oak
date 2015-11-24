@@ -35,6 +35,24 @@ name|QueryEngineSettingsMBean
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|jmx
+operator|.
+name|AnnotatedStandardMBean
+import|;
+end_import
+
 begin_comment
 comment|/**  * Settings of the query engine.  */
 end_comment
@@ -43,6 +61,8 @@ begin_class
 specifier|public
 class|class
 name|QueryEngineSettings
+extends|extends
+name|AnnotatedStandardMBean
 implements|implements
 name|QueryEngineSettingsMBean
 block|{
@@ -138,6 +158,18 @@ literal|"true"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|public
+name|QueryEngineSettings
+parameter_list|()
+block|{
+name|super
+argument_list|(
+name|QueryEngineSettingsMBean
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Get the limit on how many nodes a query may read at most into memory, for      * "order by" and "distinct" queries. If this limit is exceeded, the query      * throws an exception.      *       * @return the limit      */
 annotation|@
 name|Override
