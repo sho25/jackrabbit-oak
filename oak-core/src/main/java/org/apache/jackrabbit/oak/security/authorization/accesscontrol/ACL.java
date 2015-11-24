@@ -1249,6 +1249,11 @@ block|}
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|boolean
+name|addEntry
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|ACE
@@ -1363,9 +1368,10 @@ name|existingBits
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-literal|true
-return|;
+name|addEntry
+operator|=
+literal|false
+expr_stmt|;
 block|}
 block|}
 else|else
@@ -1454,6 +1460,11 @@ block|}
 block|}
 block|}
 comment|// finally add the new entry at the end of the list
+if|if
+condition|(
+name|addEntry
+condition|)
+block|{
 name|entries
 operator|.
 name|add
@@ -1461,6 +1472,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|true
 return|;
