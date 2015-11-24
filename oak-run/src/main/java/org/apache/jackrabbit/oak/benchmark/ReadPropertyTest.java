@@ -629,11 +629,11 @@ name|metric
 parameter_list|)
 block|{
 return|return
-literal|"SESSION_READ_DURATION"
-operator|.
-name|equals
-argument_list|(
 name|name
+operator|.
+name|startsWith
+argument_list|(
+literal|"SESSION_READ"
 argument_list|)
 return|;
 block|}
