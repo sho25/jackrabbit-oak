@@ -17,41 +17,15 @@ name|stats
 package|;
 end_package
 
-begin_import
-import|import
-name|aQute
-operator|.
-name|bnd
-operator|.
-name|annotation
-operator|.
-name|ProviderType
-import|;
-end_import
+begin_comment
+comment|/**  * A tag interface to indicate that a class is a Stat.  */
+end_comment
 
 begin_interface
-annotation|@
-name|ProviderType
 specifier|public
 interface|interface
-name|MeterStats
-extends|extends
 name|Stats
-block|{
-comment|/**      * Mark the occurrence of an event.      */
-name|void
-name|mark
-parameter_list|()
-function_decl|;
-comment|/**      * Mark the occurrence of a given number of events.      *      * @param n the number of events      */
-name|void
-name|mark
-parameter_list|(
-name|long
-name|n
-parameter_list|)
-function_decl|;
-block|}
+block|{ }
 end_interface
 
 end_unit

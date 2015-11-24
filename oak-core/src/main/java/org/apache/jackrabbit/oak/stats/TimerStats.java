@@ -47,6 +47,8 @@ name|ProviderType
 specifier|public
 interface|interface
 name|TimerStats
+extends|extends
+name|Stats
 block|{
 comment|/**      * Adds a recorded duration.      *      * @param duration the length of the duration      * @param unit     the scale unit of {@code duration}      */
 name|void
