@@ -2704,7 +2704,7 @@ name|dt
 argument_list|,
 name|TimeUnit
 operator|.
-name|MILLISECONDS
+name|NANOSECONDS
 argument_list|)
 expr_stmt|;
 name|updateCount
@@ -2737,7 +2737,7 @@ name|dt
 argument_list|,
 name|TimeUnit
 operator|.
-name|MILLISECONDS
+name|NANOSECONDS
 argument_list|)
 expr_stmt|;
 block|}
