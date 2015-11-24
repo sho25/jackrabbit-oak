@@ -630,7 +630,7 @@ name|getMeter
 argument_list|(
 name|Type
 operator|.
-name|QUERY_COUNT
+name|SESSION_COUNT
 operator|.
 name|name
 argument_list|()
@@ -656,7 +656,7 @@ name|getCounter
 argument_list|(
 name|Type
 operator|.
-name|QUERY_COUNT
+name|SESSION_COUNT
 argument_list|)
 operator|.
 name|get
