@@ -218,6 +218,16 @@ operator|-
 literal|1
 expr_stmt|;
 block|}
+comment|/**      * @return  {@code true} iff this builder has been acquired from a root node state.      */
+name|boolean
+name|isRootBuilder
+parameter_list|()
+block|{
+return|return
+name|isRoot
+argument_list|()
+return|;
+block|}
 comment|//-------------------------------------------------< MemoryNodeBuilder>--
 annotation|@
 name|Override
