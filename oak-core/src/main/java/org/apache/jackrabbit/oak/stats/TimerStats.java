@@ -21,6 +21,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -50,6 +60,18 @@ name|TimerStats
 extends|extends
 name|Stats
 block|{
+comment|/**      * A timing context.      *      * @see TimerStats#time()      */
+interface|interface
+name|Context
+extends|extends
+name|Closeable
+block|{
+comment|/**          * Updates the timer with the difference between current and start time. Call to this method will          * not reset the start time. Multiple calls result in multiple updates.          * @return the elapsed time in nanoseconds          */
+name|long
+name|stop
+parameter_list|()
+function_decl|;
+block|}
 comment|/**      * Adds a recorded duration.      *      * @param duration the length of the duration      * @param unit     the scale unit of {@code duration}      */
 name|void
 name|update
@@ -60,6 +82,11 @@ parameter_list|,
 name|TimeUnit
 name|unit
 parameter_list|)
+function_decl|;
+comment|/**      * Returns a new {@link Context}.      *      * @return a new {@link Context}      * @see Context      */
+name|Context
+name|time
+parameter_list|()
 function_decl|;
 block|}
 end_interface
