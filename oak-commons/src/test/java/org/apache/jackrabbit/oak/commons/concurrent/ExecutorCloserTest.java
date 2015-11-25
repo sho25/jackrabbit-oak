@@ -254,14 +254,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|assertFalse
-argument_list|(
-name|executorService
-operator|.
-name|isTerminated
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 name|executorService
