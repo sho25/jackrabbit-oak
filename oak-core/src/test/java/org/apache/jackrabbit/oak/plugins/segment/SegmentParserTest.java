@@ -695,6 +695,10 @@ name|SegmentVersion
 name|segmentVersion
 decl_stmt|;
 specifier|private
+name|SegmentStore
+name|store
+decl_stmt|;
+specifier|private
 name|SegmentWriter
 name|writer
 decl_stmt|;
@@ -1062,9 +1066,8 @@ name|void
 name|setup
 parameter_list|()
 block|{
-name|SegmentStore
 name|store
-init|=
+operator|=
 name|mock
 argument_list|(
 name|SegmentStore
@@ -1077,7 +1080,7 @@ operator|.
 name|stubOnly
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|SegmentTracker
 name|tracker
 init|=
@@ -2233,7 +2236,7 @@ name|k
 argument_list|,
 name|newRecordId
 argument_list|(
-name|writer
+name|store
 operator|.
 name|getTracker
 argument_list|()
@@ -3228,7 +3231,7 @@ name|listId
 init|=
 name|newRecordId
 argument_list|(
-name|writer
+name|store
 operator|.
 name|getTracker
 argument_list|()
@@ -3335,7 +3338,7 @@ name|add
 argument_list|(
 name|newRecordId
 argument_list|(
-name|writer
+name|store
 operator|.
 name|getTracker
 argument_list|()

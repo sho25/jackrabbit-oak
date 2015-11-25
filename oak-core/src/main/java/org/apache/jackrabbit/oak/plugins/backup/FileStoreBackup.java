@@ -431,12 +431,6 @@ operator|new
 name|Compactor
 argument_list|(
 name|backup
-operator|.
-name|getTracker
-argument_list|()
-operator|.
-name|getWriter
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|SegmentNodeState

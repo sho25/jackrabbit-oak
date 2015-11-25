@@ -1150,17 +1150,6 @@ operator|=
 name|wid
 expr_stmt|;
 block|}
-name|SegmentTracker
-name|getTracker
-parameter_list|()
-block|{
-return|return
-name|store
-operator|.
-name|getTracker
-argument_list|()
-return|;
-block|}
 specifier|public
 name|void
 name|flush

@@ -20,16 +20,14 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|org
 operator|.
-name|google
+name|junit
 operator|.
-name|common
+name|Assert
 operator|.
-name|base
-operator|.
-name|Supplier
+name|assertFalse
 import|;
 end_import
 
@@ -245,18 +243,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -323,12 +309,6 @@ operator|new
 name|Compactor
 argument_list|(
 name|segmentStore
-operator|.
-name|getTracker
-argument_list|()
-operator|.
-name|getWriter
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|addTestContent
@@ -443,12 +423,6 @@ operator|new
 name|Compactor
 argument_list|(
 name|segmentStore
-operator|.
-name|getTracker
-argument_list|()
-operator|.
-name|getWriter
-argument_list|()
 argument_list|,
 name|Suppliers
 operator|.

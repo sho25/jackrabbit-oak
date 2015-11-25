@@ -822,7 +822,7 @@ return|return
 operator|new
 name|InMemoryCompactionMap
 argument_list|(
-name|writer
+name|segmentStore
 operator|.
 name|getTracker
 argument_list|()

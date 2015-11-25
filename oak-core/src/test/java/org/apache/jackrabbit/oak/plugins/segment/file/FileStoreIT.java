@@ -960,7 +960,7 @@ init|=
 operator|new
 name|Compactor
 argument_list|(
-name|writer
+name|store
 argument_list|)
 decl_stmt|;
 name|SegmentNodeState
@@ -1141,7 +1141,7 @@ operator|=
 operator|new
 name|Compactor
 argument_list|(
-name|writer
+name|store
 argument_list|)
 expr_stmt|;
 name|compacted

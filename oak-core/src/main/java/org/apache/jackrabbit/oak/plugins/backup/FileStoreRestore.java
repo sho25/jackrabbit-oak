@@ -123,7 +123,7 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|SegmentWriter
+name|SegmentStore
 import|;
 end_import
 
@@ -325,17 +325,6 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|SegmentWriter
-name|writer
-init|=
-name|restore
-operator|.
-name|getTracker
-argument_list|()
-operator|.
-name|getWriter
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 name|SegmentNodeState
@@ -357,7 +346,7 @@ argument_list|)
 argument_list|,
 name|store
 argument_list|,
-name|writer
+name|restore
 argument_list|)
 expr_stmt|;
 block|}
@@ -381,8 +370,8 @@ parameter_list|,
 name|NodeStore
 name|store
 parameter_list|,
-name|SegmentWriter
-name|writer
+name|SegmentStore
+name|restore
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -409,7 +398,7 @@ init|=
 operator|new
 name|RestoreCompactor
 argument_list|(
-name|writer
+name|restore
 argument_list|)
 decl_stmt|;
 name|SegmentNodeBuilder
@@ -466,13 +455,13 @@ block|{
 specifier|public
 name|RestoreCompactor
 parameter_list|(
-name|SegmentWriter
-name|writer
+name|SegmentStore
+name|store
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|writer
+name|store
 argument_list|)
 expr_stmt|;
 block|}
