@@ -1269,6 +1269,17 @@ condition|)
 block|{
 try|try
 block|{
+name|delegate
+operator|.
+name|getTracker
+argument_list|()
+operator|.
+name|getWriter
+argument_list|()
+operator|.
+name|dropCache
+argument_list|()
+expr_stmt|;
 operator|(
 operator|(
 name|FileStore
