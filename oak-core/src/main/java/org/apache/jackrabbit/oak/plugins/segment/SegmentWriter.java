@@ -1086,11 +1086,6 @@ specifier|final
 name|SegmentStore
 name|store
 decl_stmt|;
-specifier|private
-specifier|final
-name|SegmentTracker
-name|tracker
-decl_stmt|;
 comment|/**      * Version of the segment storage format.      */
 specifier|private
 specifier|final
@@ -1108,9 +1103,6 @@ parameter_list|(
 name|SegmentStore
 name|store
 parameter_list|,
-name|SegmentTracker
-name|tracker
-parameter_list|,
 name|SegmentVersion
 name|version
 parameter_list|)
@@ -1119,23 +1111,18 @@ name|this
 argument_list|(
 name|store
 argument_list|,
-name|tracker
-argument_list|,
 name|version
 argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param store     store to write to      * @param tracker   segment tracker for that {@code store}      * @param version   segment version to write      * @param wid       id of this writer      */
+comment|/**      * @param store     store to write to      * @param version   segment version to write      * @param wid       id of this writer      */
 specifier|public
 name|SegmentWriter
 parameter_list|(
 name|SegmentStore
 name|store
-parameter_list|,
-name|SegmentTracker
-name|tracker
 parameter_list|,
 name|SegmentVersion
 name|version
@@ -1149,12 +1136,6 @@ operator|.
 name|store
 operator|=
 name|store
-expr_stmt|;
-name|this
-operator|.
-name|tracker
-operator|=
-name|tracker
 expr_stmt|;
 name|this
 operator|.
@@ -1174,7 +1155,10 @@ name|getTracker
 parameter_list|()
 block|{
 return|return
-name|tracker
+name|store
+operator|.
+name|getTracker
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -5994,7 +5978,10 @@ block|{
 name|RecordId
 name|id
 init|=
-name|tracker
+name|store
+operator|.
+name|getTracker
+argument_list|()
 operator|.
 name|getCompactionMap
 argument_list|()
@@ -6340,8 +6327,6 @@ operator|new
 name|SegmentBuilder
 argument_list|(
 name|store
-argument_list|,
-name|tracker
 argument_list|,
 name|version
 argument_list|,

@@ -800,9 +800,6 @@ name|SegmentWriter
 argument_list|(
 name|segmentStore
 argument_list|,
-name|getTracker
-argument_list|()
-argument_list|,
 name|V_11
 argument_list|)
 decl_stmt|;

@@ -1107,11 +1107,6 @@ name|SegmentWriter
 argument_list|(
 name|store
 argument_list|,
-name|store
-operator|.
-name|getTracker
-argument_list|()
-argument_list|,
 name|segmentVersion
 argument_list|)
 expr_stmt|;

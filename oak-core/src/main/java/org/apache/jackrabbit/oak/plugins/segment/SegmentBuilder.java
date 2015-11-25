@@ -409,11 +409,6 @@ specifier|final
 name|SegmentStore
 name|store
 decl_stmt|;
-specifier|private
-specifier|final
-name|SegmentTracker
-name|tracker
-decl_stmt|;
 comment|/**      * Version of the segment storage format.      */
 specifier|private
 specifier|final
@@ -425,6 +420,11 @@ specifier|private
 specifier|final
 name|String
 name|wid
+decl_stmt|;
+specifier|private
+specifier|final
+name|SegmentTracker
+name|tracker
 decl_stmt|;
 comment|/**      * The segment write buffer, filled from the end to the beginning      * (see OAK-629).      */
 specifier|private
@@ -452,9 +452,6 @@ parameter_list|(
 name|SegmentStore
 name|store
 parameter_list|,
-name|SegmentTracker
-name|tracker
-parameter_list|,
 name|SegmentVersion
 name|version
 parameter_list|,
@@ -467,12 +464,6 @@ operator|.
 name|store
 operator|=
 name|store
-expr_stmt|;
-name|this
-operator|.
-name|tracker
-operator|=
-name|tracker
 expr_stmt|;
 name|this
 operator|.
@@ -498,6 +489,15 @@ argument_list|)
 else|:
 name|wid
 operator|)
+expr_stmt|;
+name|this
+operator|.
+name|tracker
+operator|=
+name|store
+operator|.
+name|getTracker
+argument_list|()
 expr_stmt|;
 name|this
 operator|.

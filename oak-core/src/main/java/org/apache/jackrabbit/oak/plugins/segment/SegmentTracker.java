@@ -515,8 +515,6 @@ name|SegmentWriter
 argument_list|(
 name|store
 argument_list|,
-name|this
-argument_list|,
 name|version
 argument_list|,
 literal|"sys"
