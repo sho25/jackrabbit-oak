@@ -225,7 +225,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|96
+literal|112
 argument_list|,
 name|getSize
 argument_list|(
@@ -261,7 +261,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|96
+literal|112
 argument_list|,
 name|getSize
 argument_list|(
@@ -306,7 +306,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|128
+literal|144
 argument_list|,
 name|getSize
 argument_list|(
@@ -340,7 +340,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|112
+literal|128
 argument_list|,
 name|getSize
 argument_list|(
@@ -381,7 +381,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|144
+literal|160
 argument_list|,
 name|getSize
 argument_list|(
@@ -816,7 +816,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|96
+literal|112
 argument_list|,
 name|getSize
 argument_list|(
@@ -891,7 +891,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|224
+literal|240
 argument_list|,
 name|getSize
 argument_list|(
@@ -1046,7 +1046,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|464
+literal|480
 argument_list|,
 name|getSize
 argument_list|(
@@ -1117,7 +1117,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|528
+literal|544
 argument_list|,
 name|getSize
 argument_list|(

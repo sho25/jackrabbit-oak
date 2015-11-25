@@ -446,7 +446,7 @@ name|byte
 index|[]
 name|buffer
 init|=
-name|SegmentWriter
+name|SegmentBuilder
 operator|.
 name|createNewBuffer
 argument_list|(
