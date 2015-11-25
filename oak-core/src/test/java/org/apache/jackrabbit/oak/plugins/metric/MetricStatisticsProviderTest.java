@@ -349,9 +349,11 @@ argument_list|,
 name|executorService
 argument_list|)
 expr_stmt|;
+comment|//By default avg counters would be configured. So check if they are
+comment|//configured
 name|assertEquals
 argument_list|(
-literal|2
+literal|1
 argument_list|,
 name|statsProvider
 operator|.
@@ -367,7 +369,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+literal|1
 argument_list|,
 name|statsProvider
 operator|.
@@ -769,6 +771,23 @@ argument_list|(
 name|Type
 operator|.
 name|SESSION_WRITE_DURATION
+operator|.
+name|name
+argument_list|()
+argument_list|)
+operator|instanceof
+name|SimpleStats
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|statsProvider
+operator|.
+name|getTimer
+argument_list|(
+name|Type
+operator|.
+name|QUERY_COUNT
 operator|.
 name|name
 argument_list|()
