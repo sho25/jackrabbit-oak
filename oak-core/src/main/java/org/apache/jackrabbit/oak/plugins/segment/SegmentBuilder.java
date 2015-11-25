@@ -348,7 +348,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO document: not thread safe!  * TODO find a better name for SegmentBuilder  */
+comment|/**  * This class encapsulates the state of a segment being written. It provides methods  * for writing primitive data types and for pre-allocating buffer space in the current  * segment. Should the current segment not have enough space left the current segment  * is flushed and a fresh one is allocated.  *<p>  * The common usage pattern is:  *<pre>  *    SegmentBuilder builder = ...  *    builder.prepare(...)  // allocate buffer  *    builder.writeXYZ(...)  *</pre>  * The behaviour of this class is undefined should the pre-allocated buffer be  * overrun be calling any of the write methods.  *  * TODO find a better name for SegmentBuilder  */
 end_comment
 
 begin_class

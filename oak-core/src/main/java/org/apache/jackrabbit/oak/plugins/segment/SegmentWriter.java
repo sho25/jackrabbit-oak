@@ -972,7 +972,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts nodes, properties, and values to records, which are written to a  * byte array, in order to create segments.  *<p>  * The same writer is used to create multiple segments (data is automatically  * split: new segments are automatically created if and when needed).  */
+comment|/**  * Converts nodes, properties, and values to records, which are written to segments.  */
 end_comment
 
 begin_class
