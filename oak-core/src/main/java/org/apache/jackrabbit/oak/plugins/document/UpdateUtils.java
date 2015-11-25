@@ -41,16 +41,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -170,7 +160,7 @@ specifier|public
 class|class
 name|UpdateUtils
 block|{
-comment|/**      * Apply the changes to the in-memory document.      *      * @param doc      *            the target document.      * @param update      *            the changes to apply.      * @param comparator      *            the revision comparator.      */
+comment|/**      * Apply the changes to the in-memory document.      *      * @param doc      *            the target document.      * @param update      *            the changes to apply.      */
 specifier|public
 specifier|static
 name|void
@@ -185,14 +175,6 @@ annotation|@
 name|Nonnull
 name|UpdateOp
 name|update
-parameter_list|,
-annotation|@
-name|Nonnull
-name|Comparator
-argument_list|<
-name|Revision
-argument_list|>
-name|comparator
 parameter_list|)
 block|{
 for|for
@@ -438,7 +420,9 @@ argument_list|,
 name|Object
 argument_list|>
 argument_list|(
-name|comparator
+name|StableRevisionComparator
+operator|.
+name|REVERSE
 argument_list|)
 expr_stmt|;
 name|doc

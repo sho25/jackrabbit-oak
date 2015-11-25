@@ -77,16 +77,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Date
 import|;
 end_import
@@ -1139,19 +1129,6 @@ init|=
 operator|new
 name|AtomicLong
 argument_list|()
-decl_stmt|;
-comment|/**      * Comparator for maps with {@link Revision} keys. The maps are ordered      * descending, newest revisions first!      */
-specifier|private
-specifier|final
-name|Comparator
-argument_list|<
-name|Revision
-argument_list|>
-name|comparator
-init|=
-name|StableRevisionComparator
-operator|.
-name|REVERSE
 decl_stmt|;
 specifier|private
 name|Clock
@@ -4922,8 +4899,6 @@ argument_list|(
 name|doc
 argument_list|,
 name|updateOp
-argument_list|,
-name|comparator
 argument_list|)
 expr_stmt|;
 name|addToCache
@@ -5219,8 +5194,6 @@ argument_list|(
 name|target
 argument_list|,
 name|update
-argument_list|,
-name|comparator
 argument_list|)
 expr_stmt|;
 name|docs
@@ -6398,7 +6371,9 @@ argument_list|,
 name|Object
 argument_list|>
 argument_list|(
-name|comparator
+name|StableRevisionComparator
+operator|.
+name|REVERSE
 argument_list|)
 decl_stmt|;
 for|for
@@ -6970,8 +6945,6 @@ argument_list|(
 name|newDoc
 argument_list|,
 name|updateOp
-argument_list|,
-name|comparator
 argument_list|)
 expr_stmt|;
 name|newDoc
@@ -7215,8 +7188,6 @@ argument_list|(
 name|newDoc
 argument_list|,
 name|updateOp
-argument_list|,
-name|comparator
 argument_list|)
 expr_stmt|;
 name|newDoc

@@ -617,10 +617,6 @@ argument_list|(
 name|doc
 argument_list|,
 name|op
-argument_list|,
-name|StableRevisionComparator
-operator|.
-name|INSTANCE
 argument_list|)
 expr_stmt|;
 name|Revision
@@ -1114,10 +1110,6 @@ argument_list|(
 name|doc
 argument_list|,
 name|op
-argument_list|,
-name|StableRevisionComparator
-operator|.
-name|INSTANCE
 argument_list|)
 expr_stmt|;
 name|branchCommits

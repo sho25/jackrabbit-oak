@@ -2650,8 +2650,6 @@ argument_list|,
 name|op
 argument_list|,
 name|revision
-argument_list|,
-name|nodeStore
 argument_list|)
 decl_stmt|;
 if|if

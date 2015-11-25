@@ -2005,11 +2005,6 @@ argument_list|(
 name|oldDoc
 argument_list|,
 name|old
-argument_list|,
-name|context
-operator|.
-name|getRevisionComparator
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|setSplitDocProps
