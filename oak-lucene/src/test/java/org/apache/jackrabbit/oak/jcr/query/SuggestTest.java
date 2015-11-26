@@ -111,6 +111,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -156,16 +166,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -611,6 +611,28 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//    public void testSuggestAnalyzed() throws Exception {
+comment|//        superuser.getNode("/oak:index/luceneGlobal").setProperty("suggestAnalyzed", true);
+comment|//
+comment|//        try {
+comment|//            Session session = superuser;
+comment|//            QueryManager qm = session.getWorkspace().getQueryManager();
+comment|//            Node n1 = testRootNode.addNode("node1");
+comment|//            n1.setProperty("jcr:title", "all along 2015 my fox has been red, like mike's fox and john's fox");
+comment|//            Node n2 = testRootNode.addNode("node2");
+comment|//            n2.setProperty("jcr:title", "in 2015 a red fox is still a fox, although not jeff's fox");
+comment|//            session.save();
+comment|//
+comment|//            String xpath = "/jcr:root[rep:suggest('al')]/(rep:suggest())";
+comment|//            Query q = qm.createQuery(xpath, Query.XPATH);
+comment|//            List<String> result = getResult(q.execute(), "rep:suggest()");
+comment|//            assertNotNull(result);
+comment|//            assertTrue(result.contains("all"));
+comment|//            assertTrue(result.contains("although"));
+comment|//        } finally {
+comment|//            superuser.getNode("/oak:index/luceneGlobal").setProperty("suggestAnalyzed", false);
+comment|//        }
+comment|//    }
 specifier|public
 name|void
 name|testNoSuggestions

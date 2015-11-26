@@ -464,6 +464,12 @@ name|INDEX_PATH
 init|=
 literal|"indexPath"
 decl_stmt|;
+comment|/**      * Optional property to set the suggest field to be analyzed and therefore allow more fine      * grained and flexible suggestions.      */
+name|String
+name|SUGGEST_ANALYZED
+init|=
+literal|"suggestAnalyzed"
+decl_stmt|;
 block|}
 end_interface
 

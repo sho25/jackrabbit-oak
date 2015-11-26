@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link org.apache.lucene.analysis.util.CharTokenizer} dividing tokens at<code>\n</code>.  *<p/>  * This should be deprecated/removed and not used anymore in {@link org.apache.jackrabbit.oak.plugins.index.lucene.util.SuggestHelper}  * (and related 'suggest fields merging code' removed in {@link org.apache.jackrabbit.oak.plugins.index.lucene.LuceneIndexEditor})  * if / once LUCENE-5833 fix gets included in the Lucene version we ship.  */
+comment|/**  * A {@link org.apache.lucene.analysis.util.CharTokenizer} dividing tokens at<code>\n</code>.  *  * This should be deprecated if / once LUCENE-5833 fix gets included in the Lucene version we ship.  */
 end_comment
 
 begin_class
