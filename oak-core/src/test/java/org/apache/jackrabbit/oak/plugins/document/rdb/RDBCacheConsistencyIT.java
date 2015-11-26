@@ -267,16 +267,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -348,6 +338,7 @@ argument_list|,
 name|PASSWD
 argument_list|)
 expr_stmt|;
+comment|// /*"jdbc:derby:foo;create=true"*/
 name|DocumentMK
 operator|.
 name|Builder
@@ -434,11 +425,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3659"
-argument_list|)
 specifier|public
 name|void
 name|evictWhileUpdateLoop
@@ -637,7 +623,22 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-comment|/*"last modified by: " + doc.get("mb"),*/
+literal|"Unexpected result after update-then-find sequence, last modification of document by '"
+operator|+
+name|doc
+operator|.
+name|get
+argument_list|(
+literal|"mb"
+argument_list|)
+operator|+
+literal|"' thread @"
+operator|+
+name|doc
+operator|.
+name|getModCount
+argument_list|()
+argument_list|,
 name|v
 argument_list|,
 operator|(
@@ -651,6 +652,7 @@ name|longValue
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// System.out.println("u @" + doc.getModCount() + " p=" + v + "; q=" + doc.get("q"));
 block|}
 catch|catch
 parameter_list|(
@@ -707,6 +709,11 @@ argument_list|)
 decl_stmt|;
 name|long
 name|v
+init|=
+literal|0
+decl_stmt|;
+name|long
+name|lastWrittenV
 init|=
 literal|0
 decl_stmt|;
@@ -781,9 +788,23 @@ condition|)
 block|{
 name|assertEquals
 argument_list|(
-name|v
-operator|-
-literal|1
+literal|"Unexpected result after findAndUpdate, last modification of document by '"
+operator|+
+name|old
+operator|.
+name|get
+argument_list|(
+literal|"mb"
+argument_list|)
+operator|+
+literal|"' thread @"
+operator|+
+name|old
+operator|.
+name|getModCount
+argument_list|()
+argument_list|,
+name|lastWrittenV
 argument_list|,
 operator|(
 operator|(
@@ -797,6 +818,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|lastWrittenV
+operator|=
+name|v
+expr_stmt|;
+comment|// System.out.println("f @" + old.getModCount() + " p=" + old.get("p") + "; q=" + q);
 block|}
 catch|catch
 parameter_list|(
@@ -804,7 +830,9 @@ name|DocumentStoreException
 name|e
 parameter_list|)
 block|{
-comment|// keep going, RDBDocumentStore might have given up due to race conditions
+comment|// System.err.println("f update of v to " + v + " failed: " + e.getMessage());
+comment|// keep going, RDBDocumentStore might have given up due
+comment|// to race conditions
 block|}
 catch|catch
 parameter_list|(
@@ -869,6 +897,11 @@ name|q
 init|=
 literal|0
 decl_stmt|;
+name|long
+name|mc
+init|=
+literal|0
+decl_stmt|;
 while|while
 condition|(
 name|exceptions
@@ -917,6 +950,34 @@ condition|)
 block|{
 name|assertTrue
 argument_list|(
+literal|"reader thread at @"
+operator|+
+name|doc
+operator|.
+name|getModCount
+argument_list|()
+operator|+
+literal|": observed property value for 'p' (incremented by 'update' thread) decreased, last change by '"
+operator|+
+name|doc
+operator|.
+name|get
+argument_list|(
+literal|"mb"
+argument_list|)
+operator|+
+literal|"' thread; previous: "
+operator|+
+name|p
+operator|+
+literal|" (at @"
+operator|+
+name|mc
+operator|+
+literal|"), now: "
+operator|+
+name|value
+argument_list|,
 operator|(
 name|Long
 operator|)
@@ -951,11 +1012,31 @@ condition|)
 block|{
 name|assertTrue
 argument_list|(
-literal|"previous: "
+literal|"reader thread at @"
+operator|+
+name|doc
+operator|.
+name|getModCount
+argument_list|()
+operator|+
+literal|": observed property value for 'q' (incremented by 'findAndUpdate' thread) decreased, last change by '"
+operator|+
+name|doc
+operator|.
+name|get
+argument_list|(
+literal|"mb"
+argument_list|)
+operator|+
+literal|"' thread; previous: "
 operator|+
 name|q
 operator|+
-literal|", now: "
+literal|" (at @"
+operator|+
+name|mc
+operator|+
+literal|"), now: "
 operator|+
 name|value
 argument_list|,
@@ -976,6 +1057,16 @@ name|value
 expr_stmt|;
 block|}
 block|}
+name|mc
+operator|=
+name|doc
+operator|.
+name|getModCount
+argument_list|()
+operator|.
+name|longValue
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1103,6 +1194,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// simulate eviction
+comment|// System.out.println("EVICT");
 name|cache
 operator|.
 name|invalidate
