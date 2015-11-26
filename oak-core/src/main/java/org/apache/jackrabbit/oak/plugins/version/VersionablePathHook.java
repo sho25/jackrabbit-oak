@@ -646,7 +646,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// stop comparison
+comment|// do not traverse into hidden trees
 return|return
 literal|true
 return|;
