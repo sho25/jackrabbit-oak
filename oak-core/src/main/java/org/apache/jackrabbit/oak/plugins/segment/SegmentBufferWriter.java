@@ -348,12 +348,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class encapsulates the state of a segment being written. It provides methods  * for writing primitive data types and for pre-allocating buffer space in the current  * segment. Should the current segment not have enough space left the current segment  * is flushed and a fresh one is allocated.  *<p>  * The common usage pattern is:  *<pre>  *    SegmentBuilder builder = ...  *    builder.prepare(...)  // allocate buffer  *    builder.writeXYZ(...)  *</pre>  * The behaviour of this class is undefined should the pre-allocated buffer be  * overrun be calling any of the write methods.  *  * TODO find a better name for SegmentBuilder  */
+comment|/**  * This class encapsulates the state of a segment being written. It provides methods  * for writing primitive data types and for pre-allocating buffer space in the current  * segment. Should the current segment not have enough space left the current segment  * is flushed and a fresh one is allocated.  *<p>  * The common usage pattern is:  *<pre>  *    SegmentBufferWriter writer = ...  *    writer.prepare(...)  // allocate buffer  *    writer.writeXYZ(...)  *</pre>  * The behaviour of this class is undefined should the pre-allocated buffer be  * overrun be calling any of the write methods.  */
 end_comment
 
 begin_class
 class|class
-name|SegmentBuilder
+name|SegmentBufferWriter
 block|{
 specifier|private
 specifier|static
@@ -365,7 +365,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|SegmentBuilder
+name|SegmentBufferWriter
 operator|.
 name|class
 argument_list|)
@@ -439,7 +439,7 @@ name|int
 name|position
 decl_stmt|;
 specifier|public
-name|SegmentBuilder
+name|SegmentBufferWriter
 parameter_list|(
 name|SegmentStore
 name|store

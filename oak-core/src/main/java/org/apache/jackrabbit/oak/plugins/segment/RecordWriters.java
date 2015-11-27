@@ -454,14 +454,14 @@ specifier|final
 name|T
 name|write
 parameter_list|(
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
 name|RecordId
 name|id
 init|=
-name|builder
+name|writer
 operator|.
 name|prepare
 argument_list|(
@@ -477,7 +477,7 @@ name|writeRecordContent
 argument_list|(
 name|id
 argument_list|,
-name|builder
+name|writer
 argument_list|)
 return|;
 block|}
@@ -489,8 +489,8 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 function_decl|;
 block|}
@@ -1049,8 +1049,8 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
 if|if
@@ -1068,7 +1068,7 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
-name|builder
+name|writer
 operator|.
 name|writeInt
 argument_list|(
@@ -1111,7 +1111,7 @@ range|:
 name|array
 control|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeInt
 argument_list|(
@@ -1130,7 +1130,7 @@ range|:
 name|array
 control|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -1140,7 +1140,7 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -1154,7 +1154,7 @@ block|}
 block|}
 else|else
 block|{
-name|builder
+name|writer
 operator|.
 name|writeInt
 argument_list|(
@@ -1282,12 +1282,12 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
 comment|// -1 to encode a map diff (if level == 0 and entryCount == -1)
-name|builder
+name|writer
 operator|.
 name|writeInt
 argument_list|(
@@ -1300,7 +1300,7 @@ operator||
 name|entryCount
 argument_list|)
 expr_stmt|;
-name|builder
+name|writer
 operator|.
 name|writeInt
 argument_list|(
@@ -1315,7 +1315,7 @@ range|:
 name|ids
 control|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -1414,11 +1414,11 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeInt
 argument_list|(
@@ -1432,7 +1432,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -1485,8 +1485,8 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
 for|for
@@ -1497,7 +1497,7 @@ range|:
 name|ids
 control|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -1575,11 +1575,11 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeBytes
 argument_list|(
@@ -1657,18 +1657,18 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeLong
 argument_list|(
 name|len
 argument_list|)
 expr_stmt|;
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -1790,8 +1790,8 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
 if|if
@@ -1802,7 +1802,7 @@ name|length
 argument_list|)
 condition|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeByte
 argument_list|(
@@ -1815,7 +1815,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|builder
+name|writer
 operator|.
 name|writeShort
 argument_list|(
@@ -1834,7 +1834,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|builder
+name|writer
 operator|.
 name|writeBytes
 argument_list|(
@@ -1898,14 +1898,14 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
 comment|// The length uses a fake "length" field that is always equal to
 comment|// 0xF0.
 comment|// This allows the code to take apart small from a large blob IDs.
-name|builder
+name|writer
 operator|.
 name|writeByte
 argument_list|(
@@ -1915,14 +1915,14 @@ operator|)
 literal|0xF0
 argument_list|)
 expr_stmt|;
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
 name|stringRecord
 argument_list|)
 expr_stmt|;
-name|builder
+name|writer
 operator|.
 name|addBlobRef
 argument_list|(
@@ -1997,8 +1997,8 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
 name|int
@@ -2008,7 +2008,7 @@ name|blobId
 operator|.
 name|length
 decl_stmt|;
-name|builder
+name|writer
 operator|.
 name|writeShort
 argument_list|(
@@ -2022,7 +2022,7 @@ literal|0xE000
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|builder
+name|writer
 operator|.
 name|writeBytes
 argument_list|(
@@ -2033,7 +2033,7 @@ argument_list|,
 name|length
 argument_list|)
 expr_stmt|;
-name|builder
+name|writer
 operator|.
 name|addBlobRef
 argument_list|(
@@ -2211,11 +2211,11 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeInt
 argument_list|(
@@ -2229,7 +2229,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -2252,7 +2252,7 @@ range|:
 name|mixinIds
 control|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -2268,7 +2268,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -2293,7 +2293,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -2331,7 +2331,7 @@ argument_list|)
 condition|)
 block|{
 comment|// V10 only
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
@@ -2342,7 +2342,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-name|builder
+name|writer
 operator|.
 name|writeByte
 argument_list|(
@@ -2398,8 +2398,8 @@ parameter_list|(
 name|RecordId
 name|id
 parameter_list|,
-name|SegmentBuilder
-name|builder
+name|SegmentBufferWriter
+name|writer
 parameter_list|)
 block|{
 for|for
@@ -2410,7 +2410,7 @@ range|:
 name|ids
 control|)
 block|{
-name|builder
+name|writer
 operator|.
 name|writeRecordId
 argument_list|(
