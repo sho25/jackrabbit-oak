@@ -2143,13 +2143,6 @@ operator|=
 name|initialService
 expr_stmt|;
 block|}
-name|checkNotNull
-argument_list|(
-name|obj
-argument_list|,
-literal|"Repository service is not available"
-argument_list|)
-expr_stmt|;
 specifier|final
 name|String
 name|name
@@ -2159,23 +2152,6 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-literal|"getServiceRegistry"
-operator|.
-name|equals
-argument_list|(
-name|name
-argument_list|)
-condition|)
-block|{
-return|return
-name|tracker
-operator|.
-name|getRegistry
-argument_list|()
-return|;
-block|}
 comment|//If shutdown then close the framework and return
 comment|//Repository would be shutdown by the owning OSGi
 comment|//component like RepositoryManager
@@ -2198,6 +2174,30 @@ return|return
 literal|null
 return|;
 block|}
+if|if
+condition|(
+literal|"getServiceRegistry"
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+return|return
+name|tracker
+operator|.
+name|getRegistry
+argument_list|()
+return|;
+block|}
+name|checkNotNull
+argument_list|(
+name|obj
+argument_list|,
+literal|"Repository service is not available"
+argument_list|)
+expr_stmt|;
 return|return
 name|method
 operator|.
