@@ -233,7 +233,7 @@ name|SimpleWebdavServlet
 operator|.
 name|INIT_PARAM_RESOURCE_CONFIG
 argument_list|,
-literal|"webdav-config.xml"
+literal|"remoting/webdav-config.xml"
 argument_list|)
 expr_stmt|;
 return|return
@@ -292,7 +292,7 @@ name|JcrRemotingServlet
 operator|.
 name|INIT_PARAM_BATCHREAD_CONFIG
 argument_list|,
-literal|"batchread.properties"
+literal|"remoting/batchread.properties"
 argument_list|)
 expr_stmt|;
 comment|//TODO By docs this is meant to point to a file which gets loaded
