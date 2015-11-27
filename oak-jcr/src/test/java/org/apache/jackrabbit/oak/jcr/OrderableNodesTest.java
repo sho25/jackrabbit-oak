@@ -45,24 +45,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|NodeStoreFixture
-operator|.
-name|DOCUMENT_RDB
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -494,14 +476,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|DOCUMENT_RDB
-argument_list|)
-expr_stmt|;
-comment|// FIXME this keeps failing on DOCUMENT_RDB. See OAK-2655
 operator|new
 name|TestContentLoader
 argument_list|()
