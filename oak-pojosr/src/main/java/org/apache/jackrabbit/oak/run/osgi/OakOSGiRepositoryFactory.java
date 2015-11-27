@@ -2176,19 +2176,9 @@ name|getRegistry
 argument_list|()
 return|;
 block|}
-name|Object
-name|result
-init|=
-name|method
-operator|.
-name|invoke
-argument_list|(
-name|obj
-argument_list|,
-name|args
-argument_list|)
-decl_stmt|;
-comment|//If shutdown then close the framework *after* repository shutdown
+comment|//If shutdown then close the framework and return
+comment|//Repository would be shutdown by the owning OSGi
+comment|//component like RepositoryManager
 if|if
 condition|(
 literal|"shutdown"
@@ -2204,9 +2194,19 @@ operator|.
 name|shutdownRepository
 argument_list|()
 expr_stmt|;
+return|return
+literal|null
+return|;
 block|}
 return|return
-name|result
+name|method
+operator|.
+name|invoke
+argument_list|(
+name|obj
+argument_list|,
+name|args
+argument_list|)
 return|;
 block|}
 specifier|public
