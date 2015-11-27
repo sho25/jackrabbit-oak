@@ -4325,7 +4325,27 @@ parameter_list|)
 block|{
 comment|// well it was best-effort
 return|return
-literal|""
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"/* exception while retrieving index information: %s, code %d, state %s */"
+argument_list|,
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|ex
+operator|.
+name|getErrorCode
+argument_list|()
+argument_list|,
+name|ex
+operator|.
+name|getSQLState
+argument_list|()
+argument_list|)
 return|;
 block|}
 finally|finally
