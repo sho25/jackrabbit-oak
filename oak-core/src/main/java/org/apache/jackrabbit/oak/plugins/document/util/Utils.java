@@ -546,7 +546,7 @@ literal|350
 argument_list|)
 decl_stmt|;
 comment|/**      * The maximum size a node name, in bytes. This is only a problem for long path.      */
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int

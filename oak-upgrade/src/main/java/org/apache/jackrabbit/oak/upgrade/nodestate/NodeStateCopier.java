@@ -21,20 +21,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -832,42 +818,6 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-comment|// OAK-1589: maximum supported length of name for DocumentNodeStore
-comment|// is 150 bytes. Skip the sub tree if the the name is too long
-if|if
-condition|(
-name|childName
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|37
-operator|&&
-name|childName
-operator|.
-name|getBytes
-argument_list|(
-name|Charsets
-operator|.
-name|UTF_8
-argument_list|)
-operator|.
-name|length
-operator|>
-literal|150
-condition|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Node name too long. Skipping {}"
-argument_list|,
-name|source
-argument_list|)
-expr_stmt|;
-continue|continue;
-block|}
 specifier|final
 name|NodeState
 name|childSource
