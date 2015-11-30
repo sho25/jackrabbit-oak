@@ -254,7 +254,7 @@ operator|new
 name|ServletRegistrationBean
 argument_list|(
 operator|new
-name|DavexServletService
+name|JcrRemotingServlet
 argument_list|()
 block|{
 annotation|@
