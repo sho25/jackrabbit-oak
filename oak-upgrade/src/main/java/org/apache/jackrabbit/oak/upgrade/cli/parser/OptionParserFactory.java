@@ -146,6 +146,22 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|SRC_S3
+init|=
+literal|"src-s3datastore"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SRC_S3_CONFIG
+init|=
+literal|"src-s3config"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|DST_FDS
 init|=
 literal|"datastore"
@@ -257,8 +273,6 @@ argument_list|(
 name|op
 argument_list|)
 expr_stmt|;
-comment|//        op.nonOptions(
-comment|//                "[/path/to/oak/repository|/path/to/crx2/repository|mongodb://host:port|<Jdbc URI>] [/path/to/repository.xml] {/path/to/oak/repository|mongodb://host:port|<Jdbc URI>}");
 return|return
 name|op
 return|;
@@ -352,6 +366,44 @@ name|op
 operator|.
 name|accepts
 argument_list|(
+name|SRC_S3
+argument_list|,
+literal|"Datastore directory to be used for the source S3"
+argument_list|)
+operator|.
+name|withRequiredArg
+argument_list|()
+operator|.
+name|ofType
+argument_list|(
+name|String
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|SRC_S3_CONFIG
+argument_list|,
+literal|"Configuration file for the source S3DataStore"
+argument_list|)
+operator|.
+name|withRequiredArg
+argument_list|()
+operator|.
+name|ofType
+argument_list|(
+name|String
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
 name|DST_FDS
 argument_list|,
 literal|"Datastore directory to be used as a target FileDataStore"
@@ -392,7 +444,7 @@ name|accepts
 argument_list|(
 name|DST_S3
 argument_list|,
-literal|"Repository home to be used for the target S3"
+literal|"Datastore directory to be used for the target S3"
 argument_list|)
 operator|.
 name|withRequiredArg

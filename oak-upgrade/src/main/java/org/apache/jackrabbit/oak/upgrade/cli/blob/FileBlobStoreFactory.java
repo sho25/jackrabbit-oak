@@ -115,6 +115,24 @@ name|directory
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"FileBlobStore[%s]"
+argument_list|,
+name|directory
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
