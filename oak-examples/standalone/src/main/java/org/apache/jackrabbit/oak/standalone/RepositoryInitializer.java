@@ -719,6 +719,8 @@ argument_list|,
 literal|10
 argument_list|)
 expr_stmt|;
+comment|//Set of properties used to perform property substitution in
+comment|//OSGi configs
 name|config
 operator|.
 name|put
@@ -750,6 +752,8 @@ name|getMongoURI
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//Configures BundleActivator to get notified of
+comment|//OSGi startup and shutdown
 name|configureActivator
 argument_list|(
 name|config
