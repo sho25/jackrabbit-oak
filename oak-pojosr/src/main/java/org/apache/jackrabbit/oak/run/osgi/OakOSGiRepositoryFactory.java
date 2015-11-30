@@ -177,6 +177,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -1199,6 +1213,9 @@ expr_stmt|;
 comment|//Wait for framework shutdown to complete
 try|try
 block|{
+name|boolean
+name|shutdownWithinTimeout
+init|=
 name|shutdownLatch
 operator|.
 name|await
@@ -1209,7 +1226,27 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|shutdownWithinTimeout
+condition|)
+block|{
+throw|throw
+operator|new
+name|BundleException
+argument_list|(
+literal|"Timed out while waiting for repository "
+operator|+
+literal|"shutdown for "
+operator|+
+name|timeoutInSecs
+operator|+
+literal|" secs"
+argument_list|)
+throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2082,6 +2119,15 @@ name|Repository
 name|initialService
 decl_stmt|;
 specifier|private
+specifier|final
+name|AtomicBoolean
+name|shutdownInitiated
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
+decl_stmt|;
+specifier|private
 name|RepositoryProxy
 parameter_list|(
 name|RepositoryTracker
@@ -2165,11 +2211,23 @@ name|name
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|shutdownInitiated
+operator|.
+name|getAndSet
+argument_list|(
+literal|true
+argument_list|)
+condition|)
+block|{
 name|tracker
 operator|.
 name|shutdownRepository
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 literal|null
 return|;
