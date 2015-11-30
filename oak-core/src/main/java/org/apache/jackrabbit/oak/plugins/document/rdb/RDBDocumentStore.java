@@ -4831,6 +4831,8 @@ specifier|protected
 name|void
 name|finalize
 parameter_list|()
+throws|throws
+name|Throwable
 block|{
 if|if
 condition|(
@@ -4861,6 +4863,11 @@ name|callStack
 argument_list|)
 expr_stmt|;
 block|}
+name|super
+operator|.
+name|finalize
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 parameter_list|<
