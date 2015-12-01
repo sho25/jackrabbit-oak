@@ -299,6 +299,25 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Unhandled exception in background thread"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 name|void
 name|trigger
