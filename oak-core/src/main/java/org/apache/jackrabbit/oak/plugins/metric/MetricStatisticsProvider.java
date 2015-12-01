@@ -443,7 +443,7 @@ name|JMX_TYPE_METRICS
 init|=
 literal|"Metrics"
 decl_stmt|;
-comment|/**      * Types for which Noop Variant has to be used      */
+comment|/**      * Types for which Metrics based stats would not be collected      * and only default stats would be collected      */
 specifier|private
 specifier|static
 specifier|final
@@ -451,12 +451,19 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|NOOPS_TYPES
+name|NOOP_METRIC_TYPES
 init|=
 name|ImmutableSet
 operator|.
 name|of
 argument_list|(
+name|Type
+operator|.
+name|SESSION_READ_COUNTER
+operator|.
+name|name
+argument_list|()
+argument_list|,
 name|Type
 operator|.
 name|SESSION_READ_DURATION
@@ -851,7 +858,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|NOOPS_TYPES
+name|NOOP_METRIC_TYPES
 operator|.
 name|contains
 argument_list|(
