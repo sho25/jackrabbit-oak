@@ -2461,8 +2461,9 @@ condition|)
 block|{
 name|flushThread
 operator|=
-operator|new
 name|BackgroundThread
+operator|.
+name|run
 argument_list|(
 literal|"TarMK flush thread ["
 operator|+
@@ -2514,8 +2515,9 @@ argument_list|)
 expr_stmt|;
 name|compactionThread
 operator|=
-operator|new
 name|BackgroundThread
+operator|.
+name|run
 argument_list|(
 literal|"TarMK compaction thread ["
 operator|+
@@ -2548,8 +2550,9 @@ argument_list|)
 expr_stmt|;
 name|diskSpaceThread
 operator|=
-operator|new
 name|BackgroundThread
+operator|.
+name|run
 argument_list|(
 literal|"TarMK disk space check ["
 operator|+
