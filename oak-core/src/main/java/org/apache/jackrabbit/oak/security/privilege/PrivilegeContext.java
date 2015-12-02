@@ -274,6 +274,22 @@ name|PRIVILEGES_PATH
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|definesInternal
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Tree
+name|tree
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 
