@@ -306,7 +306,7 @@ name|JcrRemotingServlet
 operator|.
 name|INIT_PARAM_PROTECTED_HANDLERS_CONFIG
 argument_list|,
-literal|"org.apache.jackrabbit.server.remoting.davex.AclRemoveHandler"
+literal|"remoting/protectedHandlersConfig.xml"
 argument_list|)
 expr_stmt|;
 name|bean
