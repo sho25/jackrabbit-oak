@@ -111,6 +111,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -122,6 +136,16 @@ operator|.
 name|query
 operator|.
 name|AbstractQueryTest
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -221,7 +245,10 @@ operator|.
 name|SQL
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|result
 init|=
 name|getResult
@@ -241,11 +268,32 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[{term=in 2015 a red fox is still a fox,weight=1}, "
-operator|+
-literal|"{term=in 2015 my fox is red, like mike's fox and john's fox,weight=1}]"
+literal|2
 argument_list|,
 name|result
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|result
+operator|.
+name|contains
+argument_list|(
+literal|"in 2015 a red fox is still a fox"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|result
+operator|.
+name|contains
+argument_list|(
+literal|"in 2015 my fox is red, like mike's fox and john's fox"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -334,7 +382,10 @@ operator|.
 name|XPATH
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|result
 init|=
 name|getResult
@@ -354,11 +405,32 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[{term=in 2015 a red fox is still a fox,weight=1}, "
-operator|+
-literal|"{term=in 2015 my fox is red, like mike's fox and john's fox,weight=1}]"
+literal|2
 argument_list|,
 name|result
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|result
+operator|.
+name|contains
+argument_list|(
+literal|"in 2015 a red fox is still a fox"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|result
+operator|.
+name|contains
+argument_list|(
+literal|"in 2015 my fox is red, like mike's fox and john's fox"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -447,7 +519,10 @@ operator|.
 name|SQL
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|result
 init|=
 name|getResult
@@ -467,14 +542,22 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[]"
+literal|"There shouldn't be any suggestions"
+argument_list|,
+literal|0
 argument_list|,
 name|result
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 specifier|static
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|getResult
 parameter_list|(
 name|QueryResult
@@ -486,11 +569,15 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|StringBuilder
-name|buff
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|results
 init|=
-operator|new
-name|StringBuilder
+name|Lists
+operator|.
+name|newArrayList
 argument_list|()
 decl_stmt|;
 name|RowIterator
@@ -509,24 +596,6 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|buff
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-name|buff
-operator|.
-name|append
-argument_list|(
-literal|", "
-argument_list|)
-expr_stmt|;
-block|}
 name|Row
 name|row
 init|=
@@ -535,9 +604,9 @@ operator|.
 name|nextRow
 argument_list|()
 decl_stmt|;
-name|buff
+name|results
 operator|.
-name|append
+name|add
 argument_list|(
 name|row
 operator|.
@@ -552,10 +621,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|buff
-operator|.
-name|toString
-argument_list|()
+name|results
 return|;
 block|}
 block|}
