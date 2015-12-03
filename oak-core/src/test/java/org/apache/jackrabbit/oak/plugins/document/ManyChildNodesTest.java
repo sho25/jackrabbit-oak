@@ -531,6 +531,15 @@ name|int
 name|limit
 parameter_list|)
 block|{
+if|if
+condition|(
+name|collection
+operator|==
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
 name|queries
 operator|.
 name|put
@@ -540,6 +549,7 @@ argument_list|,
 name|limit
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|super
 operator|.
