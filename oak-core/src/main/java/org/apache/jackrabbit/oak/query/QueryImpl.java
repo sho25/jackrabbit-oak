@@ -1352,6 +1352,15 @@ name|REP_EXCERPT
 init|=
 literal|"rep:excerpt"
 decl_stmt|;
+comment|/**      * The "oak:explainScore" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OAK_SCORE_EXPLANATION
+init|=
+literal|"oak:scoreExplanation"
+decl_stmt|;
 comment|/**      * The "rep:spellcheck" pseudo-property.      */
 specifier|public
 specifier|static
