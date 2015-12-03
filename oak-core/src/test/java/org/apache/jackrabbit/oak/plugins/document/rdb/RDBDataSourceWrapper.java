@@ -155,6 +155,8 @@ class|class
 name|RDBDataSourceWrapper
 implements|implements
 name|DataSource
+implements|,
+name|Closeable
 block|{
 comment|// sample use in BasicDocumentStoreTest:
 comment|// to start
