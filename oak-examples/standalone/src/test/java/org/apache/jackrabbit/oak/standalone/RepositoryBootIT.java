@@ -161,7 +161,7 @@ block|}
 argument_list|)
 specifier|public
 class|class
-name|RepositoryTest
+name|RepositoryBootIT
 block|{
 annotation|@
 name|Autowired
