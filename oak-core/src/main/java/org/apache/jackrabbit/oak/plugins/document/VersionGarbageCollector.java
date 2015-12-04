@@ -795,6 +795,13 @@ name|long
 name|oldestRevTimeStamp
 parameter_list|)
 block|{
+name|stats
+operator|.
+name|collectAndDeleteSplitDocs
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|versionStore
 operator|.
 name|deleteSplitDocuments
@@ -805,6 +812,13 @@ name|oldestRevTimeStamp
 argument_list|,
 name|stats
 argument_list|)
+expr_stmt|;
+name|stats
+operator|.
+name|collectAndDeleteSplitDocs
+operator|.
+name|stop
+argument_list|()
 expr_stmt|;
 block|}
 specifier|private
@@ -1009,6 +1023,15 @@ operator|.
 name|createUnstarted
 argument_list|()
 decl_stmt|;
+specifier|final
+name|Stopwatch
+name|collectAndDeleteSplitDocs
+init|=
+name|Stopwatch
+operator|.
+name|createUnstarted
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1039,9 +1062,13 @@ literal|", timeToCollectDeletedDocs="
 operator|+
 name|collectDeletedDocs
 operator|+
-literal|", timeTakenToDeleteDocs="
+literal|", timeTakenToDeleteDeletedDocs="
 operator|+
 name|deleteDeletedDocs
+operator|+
+literal|", timeTakenToCollectAndDeleteSplitDocs="
+operator|+
+name|collectAndDeleteSplitDocs
 operator|+
 literal|'}'
 return|;
