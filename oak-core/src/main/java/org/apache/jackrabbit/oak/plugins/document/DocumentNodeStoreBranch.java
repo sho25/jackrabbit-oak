@@ -129,6 +129,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Random
 import|;
 end_import
@@ -813,10 +823,18 @@ name|ex
 init|=
 literal|null
 decl_stmt|;
+name|Set
+argument_list|<
 name|Revision
-name|conflictRevision
+argument_list|>
+name|conflictRevisions
 init|=
-literal|null
+operator|new
+name|HashSet
+argument_list|<
+name|Revision
+argument_list|>
+argument_list|()
 decl_stmt|;
 name|long
 name|time
@@ -872,9 +890,11 @@ comment|// suspend until conflict revision is visible
 comment|// or as a fallback sleep for a while
 if|if
 condition|(
-name|conflictRevision
-operator|!=
-literal|null
+operator|!
+name|conflictRevisions
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// suspend until conflicting revision is visible
@@ -884,7 +904,7 @@ name|debug
 argument_list|(
 literal|"Suspending until {} is visible. Current head {}."
 argument_list|,
-name|conflictRevision
+name|conflictRevisions
 argument_list|,
 name|store
 operator|.
@@ -894,10 +914,15 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
-name|suspendUntil
+name|suspendUntilAll
 argument_list|(
-name|conflictRevision
+name|conflictRevisions
 argument_list|)
+expr_stmt|;
+name|conflictRevisions
+operator|.
+name|clear
+argument_list|()
 expr_stmt|;
 name|LOG
 operator|.
@@ -910,11 +935,6 @@ operator|.
 name|getHeadRevision
 argument_list|()
 argument_list|)
-expr_stmt|;
-comment|// reset conflict revision
-name|conflictRevision
-operator|=
-literal|null
 expr_stmt|;
 block|}
 else|else
@@ -1012,12 +1032,15 @@ name|ex
 operator|=
 name|e
 expr_stmt|;
-name|conflictRevision
-operator|=
+name|conflictRevisions
+operator|.
+name|addAll
+argument_list|(
 name|e
 operator|.
-name|getConflictRevision
+name|getConflictRevisions
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch

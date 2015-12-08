@@ -81,6 +81,16 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -100,8 +110,6 @@ operator|new
 name|ConflictException
 argument_list|(
 literal|"conflict"
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|CommitFailedException
@@ -139,8 +147,6 @@ operator|new
 name|ConflictException
 argument_list|(
 literal|"conflict"
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|CommitFailedException
@@ -227,11 +233,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|singleton
+argument_list|(
 name|r
+argument_list|)
 argument_list|,
 name|fwce
 operator|.
-name|getConflictRevision
+name|getConflictRevisions
 argument_list|()
 argument_list|)
 expr_stmt|;
