@@ -2105,6 +2105,12 @@ return|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-3348"
+argument_list|)
+comment|// FIXME OAK-3348
 specifier|public
 name|void
 name|testMixedSegments
