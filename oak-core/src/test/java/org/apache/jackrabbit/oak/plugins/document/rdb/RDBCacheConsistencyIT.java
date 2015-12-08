@@ -115,22 +115,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|cache
-operator|.
-name|CacheValue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|document
@@ -225,9 +209,9 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|util
+name|cache
 operator|.
-name|StringValue
+name|NodeDocumentCache
 import|;
 end_import
 
@@ -268,20 +252,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|cache
-operator|.
-name|Cache
 import|;
 end_import
 
@@ -1094,12 +1064,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|Cache
-argument_list|<
-name|CacheValue
-argument_list|,
-name|NodeDocument
-argument_list|>
+name|NodeDocumentCache
 name|cache
 init|=
 name|store
@@ -1126,15 +1091,6 @@ operator|.
 name|getIdFromPath
 argument_list|(
 literal|"/test/foo"
-argument_list|)
-decl_stmt|;
-name|CacheValue
-name|key
-init|=
-operator|new
-name|StringValue
-argument_list|(
-name|id
 argument_list|)
 decl_stmt|;
 while|while
@@ -1168,7 +1124,7 @@ name|cache
 operator|.
 name|getIfPresent
 argument_list|(
-name|key
+name|id
 argument_list|)
 operator|!=
 literal|null
@@ -1194,12 +1150,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// simulate eviction
-comment|// System.out.println("EVICT");
 name|cache
 operator|.
 name|invalidate
 argument_list|(
-name|key
+name|id
 argument_list|)
 expr_stmt|;
 block|}

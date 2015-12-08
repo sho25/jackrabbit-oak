@@ -448,14 +448,11 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|long
-name|lockCount
-init|=
 name|store
 operator|.
-name|getLockAcquisitionCount
+name|resetLockAcquisitionCount
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|List
 argument_list|<
 name|NodeDocument
@@ -508,8 +505,6 @@ condition|)
 block|{
 name|assertEquals
 argument_list|(
-name|lockCount
-operator|+
 literal|1
 argument_list|,
 name|store
