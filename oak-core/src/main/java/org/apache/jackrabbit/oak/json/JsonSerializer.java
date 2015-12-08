@@ -300,6 +300,14 @@ specifier|public
 class|class
 name|JsonSerializer
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_FILTER_EXPRESSION
+init|=
+literal|"{\"properties\":[\"*\", \"-:childNodeCount\"]}"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -309,7 +317,7 @@ init|=
 operator|new
 name|JsonFilter
 argument_list|(
-literal|"{\"properties\":[\"*\", \"-:childNodeCount\"]}"
+name|DEFAULT_FILTER_EXPRESSION
 argument_list|)
 decl_stmt|;
 specifier|private
