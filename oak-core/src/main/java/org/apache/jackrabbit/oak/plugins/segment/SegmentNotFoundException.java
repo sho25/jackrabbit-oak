@@ -19,6 +19,22 @@ name|segment
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|IllegalRepositoryStateException
+import|;
+end_import
+
 begin_comment
 comment|/**  * This exception is thrown when there the segment does not exist in the store  */
 end_comment
@@ -28,7 +44,7 @@ specifier|public
 class|class
 name|SegmentNotFoundException
 extends|extends
-name|IllegalStateException
+name|IllegalRepositoryStateException
 block|{
 specifier|private
 specifier|final
