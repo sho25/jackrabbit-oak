@@ -697,6 +697,9 @@ literal|"authorizableId"
 argument_list|)
 condition|)
 block|{
+name|NodeUtil
+name|authorizableId
+init|=
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -716,6 +719,17 @@ block|}
 argument_list|,
 literal|null
 argument_list|)
+decl_stmt|;
+name|authorizableId
+operator|.
+name|setString
+argument_list|(
+literal|"info"
+argument_list|,
+literal|"Oak index used by the user management "
+operator|+
+literal|"to quickly search an authorizable by id."
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -729,6 +743,9 @@ literal|"principalName"
 argument_list|)
 condition|)
 block|{
+name|NodeUtil
+name|principalName
+init|=
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -752,6 +769,17 @@ index|[]
 block|{
 name|NT_REP_AUTHORIZABLE
 block|}
+argument_list|)
+decl_stmt|;
+name|principalName
+operator|.
+name|setString
+argument_list|(
+literal|"info"
+argument_list|,
+literal|"Oak index used by the user management "
+operator|+
+literal|"to quickly search a prinipal by name."
 argument_list|)
 expr_stmt|;
 block|}

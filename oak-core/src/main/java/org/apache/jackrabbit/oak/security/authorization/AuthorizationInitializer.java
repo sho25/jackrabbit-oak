@@ -236,6 +236,9 @@ literal|"acPrincipalName"
 argument_list|)
 condition|)
 block|{
+name|NodeBuilder
+name|acPrincipalName
+init|=
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -271,6 +274,15 @@ name|NT_REP_GRANT_ACE
 argument_list|,
 name|NT_REP_ACE
 argument_list|)
+argument_list|)
+decl_stmt|;
+name|acPrincipalName
+operator|.
+name|setProperty
+argument_list|(
+literal|"info"
+argument_list|,
+literal|"Oak index used by authorization to quickly search a principal by name."
 argument_list|)
 expr_stmt|;
 block|}

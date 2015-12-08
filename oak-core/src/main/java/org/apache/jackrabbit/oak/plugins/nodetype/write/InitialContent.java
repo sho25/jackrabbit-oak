@@ -745,6 +745,9 @@ argument_list|(
 name|builder
 argument_list|)
 decl_stmt|;
+name|NodeBuilder
+name|uuid
+init|=
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -769,7 +772,19 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|)
+decl_stmt|;
+name|uuid
+operator|.
+name|setProperty
+argument_list|(
+literal|"info"
+argument_list|,
+literal|"Oak index for UUID lookup (direct lookup of nodes with the mixin 'mix:referenceable')."
+argument_list|)
 expr_stmt|;
+name|NodeBuilder
+name|nodetype
+init|=
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -792,6 +807,17 @@ name|JCR_MIXINTYPES
 argument_list|)
 argument_list|,
 literal|null
+argument_list|)
+decl_stmt|;
+name|nodetype
+operator|.
+name|setProperty
+argument_list|(
+literal|"info"
+argument_list|,
+literal|"Oak index for queries with node type, and possibly path restrictions, "
+operator|+
+literal|"for example \"/jcr:root/content//element(*, mix:language)\"."
 argument_list|)
 expr_stmt|;
 name|IndexUtils
@@ -835,6 +861,17 @@ argument_list|,
 name|IndexConstants
 operator|.
 name|ASYNC_PROPERTY_NAME
+argument_list|)
+operator|.
+name|setProperty
+argument_list|(
+literal|"info"
+argument_list|,
+literal|"Oak index that allows to estimate "
+operator|+
+literal|"how many nodes are stored below a given path, "
+operator|+
+literal|"to decide whether traversing or using an index is faster."
 argument_list|)
 expr_stmt|;
 block|}

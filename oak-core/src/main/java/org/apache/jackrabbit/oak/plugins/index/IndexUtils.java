@@ -645,7 +645,7 @@ block|}
 comment|/**      * Create a new property2 index definition below the given {@code indexNode}.      *      * @param indexNode      * @param indexDefName      * @param unique      * @param propertyNames      * @param declaringNodeTypeNames      */
 specifier|public
 specifier|static
-name|void
+name|NodeUtil
 name|createIndexDefinition
 parameter_list|(
 annotation|@
@@ -676,6 +676,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+return|return
 name|createIndexDefinition
 argument_list|(
 name|indexNode
@@ -692,12 +693,12 @@ name|PropertyIndexEditorProvider
 operator|.
 name|TYPE
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/**      * Create a new property index definition below the given {@code indexNode} of the provided {@code propertyIndexType}.      *       * @param indexNode      * @param indexDefName      * @param unique      * @param propertyNames      * @param declaringNodeTypeNames      * @param propertyIndexType      * @throws RepositoryException      */
 specifier|public
 specifier|static
-name|void
+name|NodeUtil
 name|createIndexDefinition
 parameter_list|(
 annotation|@
@@ -733,6 +734,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+return|return
 name|createIndexDefinition
 argument_list|(
 name|indexNode
@@ -749,7 +751,7 @@ name|propertyIndexType
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 specifier|public
 specifier|static
@@ -787,6 +789,13 @@ argument_list|,
 name|NodeReferenceConstants
 operator|.
 name|TYPE
+argument_list|)
+operator|.
+name|setProperty
+argument_list|(
+literal|"info"
+argument_list|,
+literal|"Oak index for reference lookup."
 argument_list|)
 expr_stmt|;
 block|}
@@ -891,7 +900,7 @@ block|}
 comment|/**      * Create a new property index definition below the given {@code indexNode} of the provided      * {@code propertyIndexType}.      *       * @param indexNode      * @param indexDefName      * @param unique      * @param propertyNames      * @param declaringNodeTypeNames      * @param propertyIndexType      * @param properties any additional property to be added to the index definition.      * @throws RepositoryException      */
 specifier|public
 specifier|static
-name|void
+name|NodeUtil
 name|createIndexDefinition
 parameter_list|(
 annotation|@
@@ -1046,11 +1055,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+name|entry
+return|;
 block|}
 comment|/**      * Create a new property index definition below the given {@code indexNode} of the provided      * {@code propertyIndexType}.      *       * @param indexNode                 the oak:index      * @param indexDefName              the node for the index definition      * @param unique                    true if uniqueness      * @param propertyNames             the list of properties to be indexed      * @param declaringNodeTypeNames      * @param propertyIndexType         the type of the PropertyIndex      * @param properties                any additional property to be added to the index definition.      * @throws RepositoryException      */
 specifier|public
 specifier|static
-name|void
+name|NodeBuilder
 name|createIndexDefinition
 parameter_list|(
 annotation|@
@@ -1225,6 +1237,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+name|entry
+return|;
 block|}
 block|}
 end_class
