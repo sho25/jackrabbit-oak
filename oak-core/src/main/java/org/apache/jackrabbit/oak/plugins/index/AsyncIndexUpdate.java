@@ -1342,6 +1342,15 @@ argument_list|,
 name|lease
 argument_list|)
 expr_stmt|;
+name|updateTempCheckpoints
+argument_list|(
+name|async
+argument_list|,
+name|checkpoint
+argument_list|,
+name|afterCheckpoint
+argument_list|)
+expr_stmt|;
 name|mergeWithConcurrencyCheck
 argument_list|(
 name|store
@@ -1353,15 +1362,6 @@ argument_list|,
 name|beforeLease
 argument_list|,
 name|name
-argument_list|)
-expr_stmt|;
-name|updateTempCheckpoints
-argument_list|(
-name|async
-argument_list|,
-name|checkpoint
-argument_list|,
-name|afterCheckpoint
 argument_list|)
 expr_stmt|;
 comment|// reset updates counter
