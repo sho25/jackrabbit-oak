@@ -167,24 +167,6 @@ name|CheckpointMBean
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentCheckpointMBean
-import|;
-end_import
-
 begin_comment
 comment|/**  * Abstract base class for {@code CheckpointMBean} implementations.  * This class provides the basic functionality for converting checkpoints  * into tabular data.  */
 end_comment
@@ -254,15 +236,6 @@ block|}
 decl_stmt|;
 specifier|private
 specifier|static
-specifier|final
-name|CompositeType
-name|TYPE
-init|=
-name|createCompositeType
-argument_list|()
-decl_stmt|;
-specifier|private
-specifier|static
 name|ArrayType
 argument_list|<
 name|String
@@ -301,7 +274,6 @@ throw|;
 block|}
 block|}
 specifier|private
-specifier|static
 name|CompositeType
 name|createCompositeType
 parameter_list|()
@@ -312,11 +284,7 @@ return|return
 operator|new
 name|CompositeType
 argument_list|(
-name|SegmentCheckpointMBean
-operator|.
-name|class
-operator|.
-name|getName
+name|getTypeName
 argument_list|()
 argument_list|,
 literal|"Checkpoints"
@@ -374,16 +342,13 @@ argument_list|(
 operator|new
 name|TabularType
 argument_list|(
-name|SegmentCheckpointMBean
-operator|.
-name|class
-operator|.
-name|getName
+name|getTypeName
 argument_list|()
 argument_list|,
 literal|"Checkpoints"
 argument_list|,
-name|TYPE
+name|createCompositeType
+argument_list|()
 argument_list|,
 operator|new
 name|String
@@ -418,9 +383,9 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Utility method for converting the fields associated with a checkpoint to the      * composite data format.      *      * @param id        id of the checkpoint      * @param created   creation data of the checkpoint      * @param expires   expiry data of the checkpoint      * @return          composite data representation of the fields associated with the      *                  checkpoint      * @throws OpenDataException      */
+comment|/**      * Utility method for converting the fields associated with a checkpoint to      * the composite data format.      *      * @param id      id of the checkpoint      * @param created creation data of the checkpoint      * @param expires expiry data of the checkpoint      * @return composite data representation of the fields associated with the      * checkpoint      * @throws OpenDataException      */
 specifier|protected
-specifier|static
+specifier|final
 name|CompositeDataSupport
 name|toCompositeData
 parameter_list|(
@@ -448,7 +413,8 @@ return|return
 operator|new
 name|CompositeDataSupport
 argument_list|(
-name|TYPE
+name|createCompositeType
+argument_list|()
 argument_list|,
 name|FIELD_NAMES
 argument_list|,
@@ -540,6 +506,19 @@ expr_stmt|;
 block|}
 return|return
 name|value
+return|;
+block|}
+specifier|private
+name|String
+name|getTypeName
+parameter_list|()
+block|{
+return|return
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 return|;
 block|}
 block|}
