@@ -1212,11 +1212,6 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-name|progress
-operator|.
-name|onNode
-argument_list|()
-expr_stmt|;
 name|RecordId
 name|id
 init|=
@@ -1276,6 +1271,11 @@ literal|true
 return|;
 block|}
 block|}
+name|progress
+operator|.
+name|onNode
+argument_list|()
+expr_stmt|;
 name|NodeBuilder
 name|child
 init|=
@@ -1399,11 +1399,6 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-name|progress
-operator|.
-name|onNode
-argument_list|()
-expr_stmt|;
 name|RecordId
 name|id
 init|=
@@ -1463,6 +1458,11 @@ literal|true
 return|;
 block|}
 block|}
+name|progress
+operator|.
+name|onNode
+argument_list|()
+expr_stmt|;
 name|NodeBuilder
 name|child
 init|=
@@ -1756,14 +1756,9 @@ name|SegmentBlob
 operator|)
 name|blob
 decl_stmt|;
-name|progress
-operator|.
-name|onBinary
-argument_list|()
-expr_stmt|;
 try|try
 block|{
-comment|// else check if we've already cloned this specific record
+comment|// Check if we've already cloned this specific record
 name|RecordId
 name|id
 init|=
@@ -1797,6 +1792,11 @@ name|compactedId
 argument_list|)
 return|;
 block|}
+name|progress
+operator|.
+name|onBinary
+argument_list|()
+expr_stmt|;
 comment|// if the blob is inlined or external, just clone it
 if|if
 condition|(
