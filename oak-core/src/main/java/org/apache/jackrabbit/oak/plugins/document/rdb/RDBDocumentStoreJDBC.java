@@ -2713,6 +2713,12 @@ name|maxId
 parameter_list|,
 name|List
 argument_list|<
+name|String
+argument_list|>
+name|excludeKeyPatterns
+parameter_list|,
+name|List
+argument_list|<
 name|QueryCondition
 argument_list|>
 name|conditions
@@ -2839,6 +2845,80 @@ expr_stmt|;
 name|whereSep
 operator|=
 literal|" and "
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|excludeKeyPatterns
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|whereClause
+operator|.
+name|append
+argument_list|(
+name|whereSep
+argument_list|)
+expr_stmt|;
+name|whereSep
+operator|=
+literal|" and "
+expr_stmt|;
+name|whereClause
+operator|.
+name|append
+argument_list|(
+literal|"not ("
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|excludeKeyPatterns
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|whereClause
+operator|.
+name|append
+argument_list|(
+name|i
+operator|==
+literal|0
+condition|?
+literal|""
+else|:
+literal|" or "
+argument_list|)
+expr_stmt|;
+name|whereClause
+operator|.
+name|append
+argument_list|(
+literal|"ID like ?"
+argument_list|)
+expr_stmt|;
+block|}
+name|whereClause
+operator|.
+name|append
+argument_list|(
+literal|")"
+argument_list|)
 expr_stmt|;
 block|}
 for|for
@@ -3127,6 +3207,27 @@ name|si
 operator|++
 argument_list|,
 name|maxId
+argument_list|)
+expr_stmt|;
+block|}
+for|for
+control|(
+name|String
+name|keyPattern
+range|:
+name|excludeKeyPatterns
+control|)
+block|{
+name|setIdInStatement
+argument_list|(
+name|tmd
+argument_list|,
+name|stmt
+argument_list|,
+name|si
+operator|++
+argument_list|,
+name|keyPattern
 argument_list|)
 expr_stmt|;
 block|}
@@ -3421,7 +3522,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Potentially excessive query with %d hits (limited to %d, configured QUERYHITSLIMIT %d), elapsed time %dms, params minid '%s' maxid '%s' condition %s limit %d. Check calling method."
+literal|"Potentially excessive query with %d hits (limited to %d, configured QUERYHITSLIMIT %d), elapsed time %dms, params minid '%s' maxid '%s' excludeKeyPatterns %s condition %s limit %d. Check calling method."
 argument_list|,
 name|result
 operator|.
@@ -3439,6 +3540,8 @@ argument_list|,
 name|minId
 argument_list|,
 name|maxId
+argument_list|,
+name|excludeKeyPatterns
 argument_list|,
 name|conditions
 argument_list|,
@@ -3482,7 +3585,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Long running query with %d hits (limited to %d), elapsed time %dms (configured QUERYTIMELIMIT %d), params minid '%s' maxid '%s' condition %s limit %d. Read %d chars from DATA and %d bytes from BDATA. Check calling method."
+literal|"Long running query with %d hits (limited to %d), elapsed time %dms (configured QUERYTIMELIMIT %d), params minid '%s' maxid '%s' excludeKeyPatterns %s conditions %s limit %d. Read %d chars from DATA and %d bytes from BDATA. Check calling method."
 argument_list|,
 name|result
 operator|.
@@ -3500,6 +3603,8 @@ argument_list|,
 name|minId
 argument_list|,
 name|maxId
+argument_list|,
+name|excludeKeyPatterns
 argument_list|,
 name|conditions
 argument_list|,
