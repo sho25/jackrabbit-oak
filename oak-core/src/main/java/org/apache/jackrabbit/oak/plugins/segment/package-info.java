@@ -7,7 +7,7 @@ begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"7.0.0"
+literal|"8.0.0"
 argument_list|)
 end_annotation
 
