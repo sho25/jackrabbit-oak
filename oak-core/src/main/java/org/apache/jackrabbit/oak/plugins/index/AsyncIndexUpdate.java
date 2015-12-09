@@ -2756,6 +2756,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|checkpoint
 operator|==
 literal|null
@@ -2773,6 +2774,7 @@ argument_list|(
 name|name
 argument_list|)
 argument_list|)
+operator|)
 operator|&&
 name|lease
 operator|==
