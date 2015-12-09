@@ -728,7 +728,7 @@ literal|"info"
 argument_list|,
 literal|"Oak index used by the user management "
 operator|+
-literal|"to quickly search an authorizable by id."
+literal|"to enforce uniqueness of rep:authorizableId property values."
 argument_list|)
 expr_stmt|;
 block|}
@@ -779,7 +779,9 @@ literal|"info"
 argument_list|,
 literal|"Oak index used by the user management "
 operator|+
-literal|"to quickly search a prinipal by name."
+literal|"to enforce uniqueness of rep:principalName property values, "
+operator|+
+literal|"and to quickly search a principal by name if it was constructed manually."
 argument_list|)
 expr_stmt|;
 block|}
