@@ -1620,6 +1620,15 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+operator|!
+name|user
+operator|.
+name|isSystemUser
+argument_list|()
+condition|)
+block|{
 for|for
 control|(
 name|AuthorizableAction
@@ -1644,6 +1653,17 @@ argument_list|,
 name|root
 argument_list|,
 name|namePathMapper
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Omit onCreate action for system users."
 argument_list|)
 expr_stmt|;
 block|}

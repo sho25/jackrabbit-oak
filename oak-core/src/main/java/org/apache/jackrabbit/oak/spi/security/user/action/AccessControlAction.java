@@ -690,7 +690,7 @@ throw|;
 block|}
 if|if
 condition|(
-name|isSystemUser
+name|isBuiltInUser
 argument_list|(
 name|authorizable
 argument_list|)
@@ -964,7 +964,7 @@ block|}
 block|}
 specifier|private
 name|boolean
-name|isSystemUser
+name|isBuiltInUser
 parameter_list|(
 annotation|@
 name|Nonnull
