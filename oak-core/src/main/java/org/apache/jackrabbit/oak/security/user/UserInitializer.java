@@ -717,7 +717,12 @@ block|{
 name|REP_AUTHORIZABLE_ID
 block|}
 argument_list|,
-literal|null
+operator|new
+name|String
+index|[]
+block|{
+name|NT_REP_AUTHORIZABLE
+block|}
 argument_list|)
 decl_stmt|;
 name|authorizableId
