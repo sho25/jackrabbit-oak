@@ -641,11 +641,10 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// OAK-3743: withAsyncIndexing temporarily disabled
+comment|// return jcr.withAsyncIndexing().with(qs);
 return|return
 name|jcr
-operator|.
-name|withAsyncIndexing
-argument_list|()
 operator|.
 name|with
 argument_list|(
