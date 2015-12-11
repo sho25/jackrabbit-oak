@@ -110,12 +110,7 @@ name|Parallelized
 extends|extends
 name|Parameterized
 block|{
-comment|/**      * Logger instance. Unused by this class, but present to force early      * auto-initialization of the logging system and thus to avoid warnings      * about concurrent initialization.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
+comment|/**      * Logger instance. Present to force early auto-initialization of the      * logging system and thus to avoid warnings about concurrent      * initialization.      */
 specifier|private
 specifier|static
 specifier|final
@@ -192,17 +187,31 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+while|while
+condition|(
+operator|!
 name|executor
 operator|.
 name|awaitTermination
 argument_list|(
-literal|10
+literal|1
 argument_list|,
 name|TimeUnit
 operator|.
 name|MINUTES
 argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Awaiting for the task termination in {}"
+argument_list|,
+name|executor
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
