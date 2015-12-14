@@ -634,12 +634,18 @@ operator|new
 name|QueryEngineSettings
 argument_list|()
 decl_stmt|;
-comment|// OAK-3743: fullTextComparisonWithoutIndex temporarily disabled
-comment|// qs.setFullTextComparisonWithoutIndex(true);
-comment|// OAK-3743: withAsyncIndexing temporarily disabled
-comment|// return jcr.withAsyncIndexing().with(qs);
+name|qs
+operator|.
+name|setFullTextComparisonWithoutIndex
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 name|jcr
+operator|.
+name|withAsyncIndexing
+argument_list|()
 operator|.
 name|with
 argument_list|(

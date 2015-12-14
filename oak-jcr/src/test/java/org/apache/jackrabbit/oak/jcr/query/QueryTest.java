@@ -1887,11 +1887,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3743"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -4819,11 +4814,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3743"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
