@@ -784,6 +784,15 @@ literal|1
 argument_list|)
 operator|==
 literal|0
+operator|&&
+operator|(
+name|exists
+operator|==
+name|that
+operator|.
+name|exists
+argument_list|()
+operator|)
 return|;
 block|}
 else|else
