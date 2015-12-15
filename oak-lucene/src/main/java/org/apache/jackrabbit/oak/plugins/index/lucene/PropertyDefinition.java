@@ -875,6 +875,10 @@ literal|", index="
 operator|+
 name|index
 operator|+
+literal|", skipDefaultIndexing="
+operator|+
+name|skipDefaultIndexing
+operator|+
 literal|", stored="
 operator|+
 name|stored
