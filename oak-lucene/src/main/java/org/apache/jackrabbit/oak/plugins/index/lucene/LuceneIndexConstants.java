@@ -288,6 +288,11 @@ init|=
 literal|"ordered"
 decl_stmt|;
 name|String
+name|PROP_SKIP_DEFAULT_INDEXING
+init|=
+literal|"skipDefaultIndexing"
+decl_stmt|;
+name|String
 name|PROP_SCORER_PROVIDER
 init|=
 literal|"scorerProviderName"
