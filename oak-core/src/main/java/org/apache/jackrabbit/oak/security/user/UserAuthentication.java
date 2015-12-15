@@ -1093,7 +1093,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|.
-name|getName
+name|getSimpleName
 argument_list|()
 argument_list|,
 name|e
