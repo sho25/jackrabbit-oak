@@ -5095,7 +5095,9 @@ name|column
 operator|.
 name|propertyName
 operator|=
-literal|"rep:excerpt"
+name|QueryImpl
+operator|.
+name|REP_EXCERPT
 expr_stmt|;
 name|read
 argument_list|(
@@ -5157,7 +5159,9 @@ name|propertyName
 operator|.
 name|equals
 argument_list|(
-literal|"rep:spellcheck"
+name|QueryImpl
+operator|.
+name|REP_SPELLCHECK
 argument_list|)
 condition|)
 block|{

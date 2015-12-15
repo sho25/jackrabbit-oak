@@ -1352,6 +1352,15 @@ name|REP_EXCERPT
 init|=
 literal|"rep:excerpt"
 decl_stmt|;
+comment|/**      * The "rep:facet" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REP_FACET
+init|=
+literal|"rep:facet"
+decl_stmt|;
 comment|/**      * The "oak:explainScore" pseudo-property.      */
 specifier|public
 specifier|static
