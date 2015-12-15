@@ -45,6 +45,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|ByteBuffer
@@ -354,6 +364,8 @@ parameter_list|(
 name|NodeState
 name|root
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -403,6 +415,8 @@ block|}
 specifier|public
 name|MemoryStore
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|this
 argument_list|(
@@ -568,6 +582,8 @@ parameter_list|,
 name|int
 name|length
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|ByteBuffer
 name|buffer
@@ -624,7 +640,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|IOException
 argument_list|(
 literal|"Segment override: "
 operator|+

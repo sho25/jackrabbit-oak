@@ -299,6 +299,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collection
@@ -457,6 +467,8 @@ parameter_list|(
 name|SegmentBufferWriter
 name|writer
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|id

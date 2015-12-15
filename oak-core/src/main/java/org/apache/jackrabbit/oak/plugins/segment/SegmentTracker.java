@@ -67,6 +67,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|security
 operator|.
 name|SecureRandom
@@ -1007,6 +1017,8 @@ name|ReferenceCollector
 name|collector
 parameter_list|)
 block|{
+try|try
+block|{
 name|Set
 argument_list|<
 name|SegmentId
@@ -1118,6 +1130,32 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error while flushing pending segments"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unexpected IOException"
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 comment|/**      *       * @param msb      * @param lsb      * @return the segment id      */

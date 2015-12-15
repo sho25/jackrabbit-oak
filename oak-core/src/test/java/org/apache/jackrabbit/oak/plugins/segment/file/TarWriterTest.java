@@ -973,7 +973,24 @@ specifier|private
 specifier|final
 name|SegmentStore
 name|store
-init|=
+decl_stmt|;
+specifier|private
+specifier|final
+name|SegmentWriter
+name|writer
+decl_stmt|;
+specifier|private
+name|int
+name|nextNodeNo
+decl_stmt|;
+specifier|public
+name|SegmentGraphBuilder
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|store
+operator|=
 operator|new
 name|MemoryStore
 argument_list|()
@@ -997,6 +1014,8 @@ parameter_list|,
 name|int
 name|length
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|super
 operator|.
@@ -1046,12 +1065,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-decl_stmt|;
-specifier|private
-specifier|final
-name|SegmentWriter
+expr_stmt|;
 name|writer
-init|=
+operator|=
 operator|new
 name|SegmentWriter
 argument_list|(
@@ -1059,11 +1075,8 @@ name|store
 argument_list|,
 name|V_11
 argument_list|)
-decl_stmt|;
-specifier|private
-name|int
-name|nextNodeNo
-decl_stmt|;
+expr_stmt|;
+block|}
 specifier|public
 class|class
 name|Node
@@ -1280,6 +1293,8 @@ parameter_list|(
 name|SegmentWriter
 name|writer
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 comment|// Need to write a proper list as singleton lists are optimised
 comment|// to just returning the recordId of its single element
@@ -1310,6 +1325,8 @@ name|Node
 modifier|...
 name|refs
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|selfId

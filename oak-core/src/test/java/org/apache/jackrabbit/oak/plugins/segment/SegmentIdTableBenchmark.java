@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|lang
 operator|.
 name|ref
@@ -75,6 +85,8 @@ name|String
 modifier|...
 name|args
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|test
 argument_list|()
@@ -100,6 +112,8 @@ specifier|static
 name|void
 name|test
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|long
 name|time

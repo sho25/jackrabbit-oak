@@ -59,6 +59,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -258,6 +268,8 @@ name|testSequentialMerge
 parameter_list|()
 throws|throws
 name|CommitFailedException
+throws|,
+name|IOException
 block|{
 name|NodeStore
 name|store
@@ -427,6 +439,8 @@ name|testOptimisticMerge
 parameter_list|()
 throws|throws
 name|CommitFailedException
+throws|,
+name|IOException
 block|{
 name|NodeStore
 name|store

@@ -279,6 +279,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -548,6 +558,8 @@ specifier|public
 name|void
 name|emptyNode
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|SegmentNodeState
 name|node
@@ -591,6 +603,8 @@ specifier|public
 name|void
 name|nodeWithInt
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -654,6 +668,8 @@ specifier|public
 name|void
 name|nodeWithString
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -717,6 +733,8 @@ specifier|public
 name|void
 name|nodeWithMultipleProperties
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -824,6 +842,8 @@ specifier|public
 name|void
 name|nodeWithMediumString
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -894,6 +914,8 @@ specifier|public
 name|void
 name|nodeWithLargeString
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -964,6 +986,8 @@ specifier|public
 name|void
 name|nodeWithSameString
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1027,6 +1051,8 @@ specifier|public
 name|void
 name|nodeWithInts
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1103,6 +1129,8 @@ specifier|public
 name|void
 name|nodeWithManyInts
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1175,6 +1203,8 @@ specifier|public
 name|void
 name|nodeWithManyIntsAndOne
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1247,6 +1277,8 @@ specifier|public
 name|void
 name|nodeWithStrings
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1325,6 +1357,8 @@ specifier|public
 name|void
 name|nodeWithBlob
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1391,6 +1425,8 @@ specifier|public
 name|void
 name|nodeWithMediumBlob
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1459,6 +1495,8 @@ specifier|public
 name|void
 name|nodeWithLargeBlob
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1527,6 +1565,8 @@ specifier|public
 name|void
 name|nodeWithPrimaryType
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1592,6 +1632,8 @@ specifier|public
 name|void
 name|nodeWithMixinTypes
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1664,6 +1706,8 @@ specifier|public
 name|void
 name|singleChild
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1725,6 +1769,8 @@ specifier|public
 name|void
 name|multiChild
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1793,6 +1839,8 @@ specifier|public
 name|void
 name|manyChild
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1876,6 +1924,8 @@ specifier|public
 name|void
 name|changedChild
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -2021,6 +2071,8 @@ specifier|public
 name|void
 name|counts
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder

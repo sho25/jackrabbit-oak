@@ -2066,8 +2066,8 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|LoggingBenchmark
 extends|extends
@@ -2325,6 +2325,8 @@ specifier|public
 name|void
 name|run
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 for|for
 control|(

@@ -33,6 +33,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -258,6 +268,8 @@ specifier|public
 name|void
 name|openSegmentStore
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|segmentStore
 operator|=

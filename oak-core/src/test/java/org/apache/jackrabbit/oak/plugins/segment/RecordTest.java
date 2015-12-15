@@ -185,6 +185,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|Segment
+operator|.
+name|readString
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -435,12 +455,14 @@ class|class
 name|RecordTest
 block|{
 specifier|private
+specifier|final
 name|String
 name|hello
 init|=
 literal|"Hello, World!"
 decl_stmt|;
 specifier|private
+specifier|final
 name|byte
 index|[]
 name|bytes
@@ -455,24 +477,14 @@ name|UTF_8
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|SegmentStore
 name|store
-init|=
-operator|new
-name|MemoryStore
-argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|SegmentWriter
 name|writer
-init|=
-name|store
-operator|.
-name|getTracker
-argument_list|()
-operator|.
-name|getWriter
-argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -485,12 +497,37 @@ argument_list|(
 literal|0xcafefaceL
 argument_list|)
 decl_stmt|;
+specifier|public
+name|RecordTest
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|store
+operator|=
+operator|new
+name|MemoryStore
+argument_list|()
+expr_stmt|;
+name|writer
+operator|=
+name|store
+operator|.
+name|getTracker
+argument_list|()
+operator|.
+name|getWriter
+argument_list|()
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 specifier|public
 name|void
 name|testBlockRecord
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|blockId
@@ -676,6 +713,8 @@ specifier|public
 name|void
 name|testListRecord
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|blockId
@@ -986,6 +1025,8 @@ parameter_list|,
 name|RecordId
 name|id
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|List
 argument_list|<
@@ -1023,6 +1064,8 @@ specifier|public
 name|void
 name|testListWithLotsOfReferences
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 comment|// OAK-1184
 name|SegmentTracker
@@ -1338,6 +1381,8 @@ specifier|public
 name|void
 name|testStringRecord
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|empty
@@ -1442,8 +1487,6 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|segment
-operator|.
 name|readString
 argument_list|(
 name|empty
@@ -1454,8 +1497,6 @@ name|assertEquals
 argument_list|(
 literal|" "
 argument_list|,
-name|segment
-operator|.
 name|readString
 argument_list|(
 name|space
@@ -1466,8 +1507,6 @@ name|assertEquals
 argument_list|(
 literal|"Hello, World!"
 argument_list|,
-name|segment
-operator|.
 name|readString
 argument_list|(
 name|hello
@@ -1481,8 +1520,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|segment
-operator|.
 name|readString
 argument_list|(
 name|large
@@ -1496,6 +1533,8 @@ specifier|public
 name|void
 name|testMapRecord
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|blockId
@@ -2069,6 +2108,8 @@ specifier|public
 name|void
 name|testMapRemoveNonExisting
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|blockId
@@ -2135,6 +2176,8 @@ specifier|public
 name|void
 name|testWorstCaseMap
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|blockId
@@ -2334,6 +2377,8 @@ specifier|public
 name|void
 name|testEmptyNode
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeState
 name|before
@@ -2364,6 +2409,8 @@ specifier|public
 name|void
 name|testSimpleNode
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeState
 name|before
@@ -2423,6 +2470,8 @@ specifier|public
 name|void
 name|testDeepNode
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|root
@@ -2494,6 +2543,8 @@ specifier|public
 name|void
 name|testManyMapDeletes
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -2768,6 +2819,8 @@ specifier|public
 name|void
 name|testStringPrimaryType
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -2818,6 +2871,8 @@ specifier|public
 name|void
 name|testStringMixinTypes
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder

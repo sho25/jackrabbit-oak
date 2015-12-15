@@ -35,6 +35,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -233,6 +243,8 @@ specifier|public
 name|void
 name|endlessSearchLoop
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|SegmentTracker
 name|tracker
@@ -427,6 +439,8 @@ specifier|public
 name|void
 name|randomized
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|SegmentTracker
 name|tracker
@@ -641,6 +655,8 @@ specifier|public
 name|void
 name|clearTable
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|SegmentTracker
 name|tracker
@@ -917,6 +933,8 @@ specifier|public
 name|void
 name|justHashCollisions
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|SegmentTracker
 name|tracker
@@ -1081,6 +1099,8 @@ specifier|public
 name|void
 name|gc
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|SegmentTracker
 name|tracker

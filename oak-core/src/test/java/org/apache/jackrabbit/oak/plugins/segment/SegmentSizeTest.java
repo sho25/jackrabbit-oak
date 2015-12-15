@@ -55,6 +55,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Calendar
@@ -214,6 +224,8 @@ specifier|public
 name|void
 name|testNodeSize
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -385,6 +397,8 @@ specifier|public
 name|void
 name|testDuplicateStrings
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|String
 name|string
@@ -574,6 +588,8 @@ specifier|public
 name|void
 name|testDuplicateDates
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|String
 name|now
@@ -771,6 +787,8 @@ specifier|public
 name|void
 name|testAccessControlNodes
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1100,6 +1118,8 @@ specifier|public
 name|void
 name|testFlatNodeUpdate
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|SegmentStore
 name|store
@@ -1270,6 +1290,8 @@ parameter_list|,
 name|NodeBuilder
 name|builder
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|SegmentWriter
 name|writer
@@ -1358,6 +1380,8 @@ parameter_list|,
 name|NodeBuilder
 name|builder
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|SegmentWriter
 name|writer

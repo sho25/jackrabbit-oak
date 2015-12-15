@@ -101,6 +101,26 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A node builder that keeps track of the number of updates  * (set property calls and so on). If there are too many updates,  * getNodeState() is called, which will write the records to the segment,  * and that might persist the changes (if the segment is flushed).  */
 end_comment
@@ -112,6 +132,21 @@ name|SegmentNodeBuilder
 extends|extends
 name|MemoryNodeBuilder
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|SegmentNodeBuilder
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the underlying segments.      */
 specifier|private
 specifier|static
@@ -287,6 +322,8 @@ name|SegmentNodeState
 name|getNodeState
 parameter_list|()
 block|{
+try|try
+block|{
 name|NodeState
 name|state
 init|=
@@ -325,6 +362,32 @@ block|}
 return|return
 name|sstate
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Error flushing changes"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unexpected IOException"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override

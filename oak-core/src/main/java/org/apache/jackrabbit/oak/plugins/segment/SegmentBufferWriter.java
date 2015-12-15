@@ -271,6 +271,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|ByteBuffer
@@ -450,6 +460,8 @@ parameter_list|,
 name|String
 name|wid
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|this
 operator|.
@@ -516,6 +528,8 @@ parameter_list|(
 name|String
 name|wid
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|this
 operator|.
@@ -1090,6 +1104,8 @@ specifier|public
 name|void
 name|flush
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -1578,6 +1594,8 @@ name|RecordId
 argument_list|>
 name|ids
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|checkArgument
 argument_list|(

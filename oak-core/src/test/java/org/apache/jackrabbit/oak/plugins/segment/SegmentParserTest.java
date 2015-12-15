@@ -1120,6 +1120,8 @@ specifier|public
 name|void
 name|emptyNode
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|SegmentNodeState
 name|node
@@ -1209,6 +1211,8 @@ specifier|public
 name|void
 name|singleChildNode
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1329,6 +1333,8 @@ specifier|public
 name|void
 name|node
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 specifier|final
 name|NodeBuilder
@@ -1534,6 +1540,8 @@ specifier|public
 name|void
 name|template
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -1791,6 +1799,8 @@ specifier|public
 name|void
 name|emptyMap
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Map
 argument_list|<
@@ -1883,6 +1893,8 @@ specifier|public
 name|void
 name|nonEmptyMap
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|Random
 name|rnd
@@ -2256,6 +2268,8 @@ specifier|public
 name|void
 name|singleValueProperty
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -2438,6 +2452,8 @@ specifier|public
 name|void
 name|multiValueProperty
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|NodeBuilder
 name|builder
@@ -3016,6 +3032,8 @@ specifier|public
 name|void
 name|shortString
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|stringId
@@ -3075,6 +3093,8 @@ specifier|public
 name|void
 name|mediumString
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|stringId
@@ -3141,6 +3161,8 @@ specifier|public
 name|void
 name|longString
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|RecordId
 name|stringId
@@ -3293,6 +3315,8 @@ specifier|public
 name|void
 name|nonEmptyList
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|int
 name|count

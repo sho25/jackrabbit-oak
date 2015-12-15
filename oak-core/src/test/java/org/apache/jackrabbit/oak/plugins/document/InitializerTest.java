@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -366,6 +376,8 @@ name|testInitializerSegment
 parameter_list|()
 throws|throws
 name|CommitFailedException
+throws|,
+name|IOException
 block|{
 name|NodeStore
 name|store

@@ -375,6 +375,8 @@ name|restore
 parameter_list|)
 throws|throws
 name|CommitFailedException
+throws|,
+name|IOException
 block|{
 name|long
 name|s
@@ -480,6 +482,8 @@ parameter_list|,
 name|NodeState
 name|onto
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 return|return
 name|super

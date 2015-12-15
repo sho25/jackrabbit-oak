@@ -1152,6 +1152,8 @@ parameter_list|,
 name|int
 name|length
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|delegate
 operator|.

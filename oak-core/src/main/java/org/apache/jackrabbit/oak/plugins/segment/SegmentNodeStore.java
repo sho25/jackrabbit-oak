@@ -706,6 +706,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Flag controlling the commit lock fairness      */
 specifier|private
+specifier|final
 name|boolean
 name|commitFairLock
 init|=
@@ -830,6 +831,8 @@ block|}
 specifier|public
 name|SegmentNodeStore
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|this
 argument_list|(

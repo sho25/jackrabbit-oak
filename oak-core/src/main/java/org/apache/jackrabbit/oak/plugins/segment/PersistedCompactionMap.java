@@ -87,6 +87,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -195,6 +205,26 @@ name|FileStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A {@code PartialCompactionMap} implementation persisting its entries  * to segments.  *  * TODO In theory we could also compact the compaction map. Is there any need to do so?  */
 end_comment
@@ -206,6 +236,21 @@ name|PersistedCompactionMap
 implements|implements
 name|PartialCompactionMap
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|PersistedCompactionMap
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Rough estimate of the number of bytes of disk space of a map entry.      * Used by the compaction gain estimator to offset its estimate.      */
 specifier|public
 specifier|static
@@ -837,6 +882,8 @@ argument_list|>
 name|removed
 parameter_list|)
 block|{
+try|try
+block|{
 if|if
 condition|(
 name|recent
@@ -1242,6 +1289,32 @@ name|entries
 operator|=
 literal|null
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Error compression compaction map"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unexpected IOException"
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 annotation|@

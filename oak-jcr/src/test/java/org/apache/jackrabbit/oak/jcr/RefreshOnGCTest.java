@@ -730,6 +730,8 @@ throws|,
 name|InterruptedException
 throws|,
 name|ExecutionException
+throws|,
+name|IOException
 block|{
 name|Session
 name|session
