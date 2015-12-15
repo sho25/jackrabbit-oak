@@ -2181,6 +2181,15 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+name|NodeState
+name|getDefinitionNodeState
+parameter_list|()
+block|{
+return|return
+name|definition
+return|;
+block|}
+specifier|public
 name|boolean
 name|isFullTextEnabled
 parameter_list|()
