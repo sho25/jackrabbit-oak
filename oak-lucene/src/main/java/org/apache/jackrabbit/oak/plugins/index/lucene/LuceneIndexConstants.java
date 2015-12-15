@@ -27,6 +27,22 @@ name|org
 operator|.
 name|apache
 operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|lucene
 operator|.
 name|analysis
@@ -464,11 +480,23 @@ name|INDEX_PATH
 init|=
 literal|"indexPath"
 decl_stmt|;
+comment|/**      * Optional (property definition) property indicating facet can be retrieved together with plain queries.      * Default is false      */
+name|String
+name|PROP_FACET
+init|=
+literal|"facets"
+decl_stmt|;
 comment|/**      * Optional property to set the suggest field to be analyzed and therefore allow more fine      * grained and flexible suggestions.      */
 name|String
 name|SUGGEST_ANALYZED
 init|=
 literal|"suggestAnalyzed"
+decl_stmt|;
+comment|/**      * Optional (index definition) property indicating whether facets should be ACL checked.      * Default is true      */
+name|String
+name|PROP_SECURE_FACETS
+init|=
+literal|"secureFacets"
 decl_stmt|;
 block|}
 end_interface
