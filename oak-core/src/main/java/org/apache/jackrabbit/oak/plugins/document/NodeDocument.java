@@ -2679,6 +2679,16 @@ block|{
 comment|// check if we can stop going through changes
 if|if
 condition|(
+name|clusterIds
+operator|.
+name|contains
+argument_list|(
+name|r
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
+operator|&&
 name|isRevisionNewer
 argument_list|(
 name|context
@@ -2696,18 +2706,6 @@ name|r
 operator|.
 name|getClusterId
 argument_list|()
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
-name|isRevisionNewer
-argument_list|(
-name|context
-argument_list|,
-name|lower
-argument_list|,
-name|r
 argument_list|)
 condition|)
 block|{
@@ -2732,7 +2730,6 @@ block|{
 comment|// all remaining revisions are older than
 comment|// the lower bound
 break|break;
-block|}
 block|}
 block|}
 block|}
