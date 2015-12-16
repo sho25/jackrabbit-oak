@@ -2798,11 +2798,6 @@ expr_stmt|;
 block|}
 comment|// OAK-3798
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3798"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
