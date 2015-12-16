@@ -78,6 +78,24 @@ specifier|public
 interface|interface
 name|OrderedIndex
 block|{
+comment|/**      * Deprecation message tracked when using the ordered index.      */
+name|String
+name|DEPRECATION_MESSAGE
+init|=
+literal|"Ordered Index has been deprecated since Oak 1.1.8. "
+operator|+
+literal|"Please replace the index definitions with Lucene Property index "
+operator|+
+literal|"and remove the index providers from the repository. "
+operator|+
+literal|"See docs at http://jackrabbit.apache.org/oak/docs"
+decl_stmt|;
+comment|/**      * the deprecation message will be tracked every N times      */
+name|int
+name|TRACK_DEPRECATION_EVERY
+init|=
+literal|10000
+decl_stmt|;
 comment|/**      * enum for easing the order direction of the index      */
 enum|enum
 name|OrderDirection
@@ -312,60 +330,6 @@ name|OrderDirection
 operator|.
 name|ASC
 decl_stmt|;
-comment|/**      * defines the default distribution of items across the skip list. It's with a factor of 10%      * having therefore      *       *<dl>      *<dt>lane 0:</dt><dd>100.0% (the base linked list)</dd>      *<dt>lane 1:</dt><dd>10.0%</dd>      *<dt>lane 2:</dt><dd>1.0%</dd>      *<dt>lane 3:</dt><dd>0.1%</dd>      *</dl>      */
-name|double
-name|DEFAULT_PROBABILITY
-init|=
-name|Integer
-operator|.
-name|getInteger
-argument_list|(
-literal|"oak.orderedIndex.prob"
-argument_list|,
-literal|3
-argument_list|)
-operator|/
-literal|10.0
-decl_stmt|;
-comment|/**      * the number of lanes used in the SkipList       */
-name|int
-name|LANES
-init|=
-name|Integer
-operator|.
-name|getInteger
-argument_list|(
-literal|"oak.orderedIndex.lanes"
-argument_list|,
-literal|15
-argument_list|)
-decl_stmt|;
-comment|/**      * Convenience Predicate that will force the implementor to expose what we're searching for      *      * @param<T>      */
-interface|interface
-name|Predicate
-parameter_list|<
-name|T
-parameter_list|>
-extends|extends
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Predicate
-argument_list|<
-name|T
-argument_list|>
-block|{
-comment|/**          * @return the string we're searching for during this predicate          */
-name|String
-name|getSearchFor
-parameter_list|()
-function_decl|;
-block|}
 block|}
 end_interface
 
