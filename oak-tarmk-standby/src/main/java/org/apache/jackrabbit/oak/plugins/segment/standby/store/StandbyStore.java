@@ -25,6 +25,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+operator|.
+name|newHashSet
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -507,6 +523,15 @@ name|maxKeys
 init|=
 literal|0
 decl_stmt|;
+name|Set
+argument_list|<
+name|SegmentId
+argument_list|>
+name|visited
+init|=
+name|newHashSet
+argument_list|()
+decl_stmt|;
 while|while
 condition|(
 operator|!
@@ -524,6 +549,13 @@ operator|.
 name|remove
 argument_list|()
 decl_stmt|;
+name|visited
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -692,6 +724,13 @@ operator|||
 name|id
 operator|.
 name|equals
+argument_list|(
+name|nr
+argument_list|)
+operator|||
+name|visited
+operator|.
+name|contains
 argument_list|(
 name|nr
 argument_list|)
