@@ -1189,6 +1189,24 @@ name|spi
 operator|.
 name|state
 operator|.
+name|Clusterable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
 name|NodeBuilder
 import|;
 end_import
@@ -1529,6 +1547,10 @@ decl_stmt|;
 specifier|private
 name|ContentRepository
 name|contentRepository
+decl_stmt|;
+specifier|private
+name|Clusterable
+name|clusterable
 decl_stmt|;
 comment|/**      * Default {@code ScheduledExecutorService} used for scheduling background tasks.      * This default spawns up to 32 background thread on an as need basis. Idle      * threads are pruned after one minute.      * @return  fresh ScheduledExecutorService      */
 specifier|public
@@ -2453,6 +2475,32 @@ argument_list|)
 expr_stmt|;
 comment|// this(new DocumentMK.Builder().open());
 comment|// this(new LogWrapper(new DocumentMK.Builder().open()));
+block|}
+comment|/**      * Define the current repository as being a {@link Clusterable} one.      *       * @param c      * @return      */
+annotation|@
+name|Nonnull
+specifier|public
+name|Oak
+name|with
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Clusterable
+name|c
+parameter_list|)
+block|{
+name|this
+operator|.
+name|clusterable
+operator|=
+name|checkNotNull
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**      * Sets the default workspace name that should be used in case of login      * with {@code null} workspace name. If this method has not been called      * some internal default value will be used.      *      * @param defaultWorkspaceName The name of the default workspace.      * @return this builder.      */
 annotation|@
