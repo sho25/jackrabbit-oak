@@ -486,6 +486,14 @@ operator|.
 name|before
 argument_list|()
 expr_stmt|;
+comment|// create cugs
+comment|// - /content/a     : allow testGroup, deny everyone
+comment|// - /content/aa/bb : allow testGroup, deny everyone
+comment|// - /content/a/b/c : allow everyone,  deny testGroup (isolated)
+comment|// - /content2      : allow everyone,  deny testGroup (isolated)
+comment|// regular acl:
+comment|// - /content       : allow testUser, jcr:read
+comment|// - /content       : allow testGroup, jcr:read, jcr:write, jcr:readAccessControl
 name|setupCugsAndAcls
 argument_list|()
 expr_stmt|;

@@ -51,6 +51,18 @@ name|REP_CUG_POLICY
 init|=
 literal|"rep:cugPolicy"
 decl_stmt|;
+comment|/**      * The name of the hidden property that stores information about nested      * CUG policy nodes.      */
+name|String
+name|HIDDEN_NESTED_CUGS
+init|=
+literal|":nestedCugs"
+decl_stmt|;
+comment|/**      * The name of the hidden property that stores information about the number      * of CUG roots located close to the root node.      */
+name|String
+name|HIDDEN_TOP_CUG_CNT
+init|=
+literal|":topCugCnt"
+decl_stmt|;
 comment|/**      * The name of the property that stores the principal names that are allowed      * to access the restricted area defined by the CUG (closed user group).      */
 name|String
 name|REP_PRINCIPAL_NAMES

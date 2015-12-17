@@ -1490,14 +1490,7 @@ name|CugConstants
 operator|.
 name|PARAM_CUG_SUPPORTED_PATHS
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
-name|SUPPORTED_PATH
-block|,
-name|SUPPORTED_PATH2
-block|}
+name|SUPPORTED_PATHS
 argument_list|,
 name|CugConstants
 operator|.

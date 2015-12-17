@@ -510,7 +510,9 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-literal|"/"
+name|PathUtils
+operator|.
+name|ROOT_PATH
 argument_list|)
 argument_list|,
 name|EveryonePrincipal
