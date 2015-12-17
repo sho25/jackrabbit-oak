@@ -6022,6 +6022,16 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
+name|setClusterId
+argument_list|(
+name|ns1
+operator|.
+name|getClusterId
+argument_list|()
+operator|+
+literal|1
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;

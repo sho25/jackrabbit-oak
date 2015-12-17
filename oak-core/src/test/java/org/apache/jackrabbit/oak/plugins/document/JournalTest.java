@@ -1877,8 +1877,7 @@ name|mk1
 init|=
 name|createMK
 argument_list|(
-literal|0
-comment|/*clusterId via clusterNodes collection*/
+literal|1
 argument_list|,
 literal|0
 argument_list|)
@@ -1904,8 +1903,7 @@ name|mk2
 init|=
 name|createMK
 argument_list|(
-literal|0
-comment|/*clusterId via clusterNodes collection*/
+literal|2
 argument_list|,
 literal|0
 argument_list|)

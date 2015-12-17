@@ -384,6 +384,8 @@ name|mongoConnection
 operator|.
 name|getDB
 argument_list|()
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 name|ns1
@@ -466,6 +468,8 @@ argument_list|()
 operator|.
 name|getDB
 argument_list|()
+argument_list|,
+literal|3
 argument_list|)
 operator|.
 name|getNodeStore
@@ -634,6 +638,9 @@ name|newDocumentMK
 parameter_list|(
 name|DB
 name|db
+parameter_list|,
+name|int
+name|clusterId
 parameter_list|)
 block|{
 name|DocumentMK
@@ -658,6 +665,11 @@ operator|.
 name|setMongoDB
 argument_list|(
 name|db
+argument_list|)
+operator|.
+name|setClusterId
+argument_list|(
+name|clusterId
 argument_list|)
 operator|.
 name|open

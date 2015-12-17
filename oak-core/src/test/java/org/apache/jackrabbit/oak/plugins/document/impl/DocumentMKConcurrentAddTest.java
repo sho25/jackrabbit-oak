@@ -245,7 +245,10 @@ decl_stmt|;
 specifier|private
 name|DocumentMK
 name|createMicroKernel
-parameter_list|()
+parameter_list|(
+name|int
+name|clusterId
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -282,6 +285,11 @@ argument_list|(
 name|mongoDB
 argument_list|)
 operator|.
+name|setClusterId
+argument_list|(
+name|clusterId
+argument_list|)
+operator|.
 name|open
 argument_list|()
 return|;
@@ -313,7 +321,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Creates NB_THREADS microkernels, each commiting two nodes (one parent,      * one child) in its own thread. The nodes being committed by separate      * threads do not overlap / conflict.      *      * @throws Exception      */
+comment|/**      * Creates NB_THREADS microkernels, each committing two nodes (one parent,      * one child) in its own thread. The nodes being committed by separate      * threads do not overlap / conflict.      *      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public
@@ -359,12 +367,27 @@ operator|++
 control|)
 block|{
 comment|// each callable has its own microkernel
+comment|// (try to assign a cluster id different from all other already existing nodes stores)
 specifier|final
 name|DocumentMK
 name|mk
 init|=
 name|createMicroKernel
+argument_list|(
+name|super
+operator|.
+name|mk
+operator|.
+name|getNodeStore
 argument_list|()
+operator|.
+name|getClusterId
+argument_list|()
+operator|+
+literal|1
+operator|+
+name|i
+argument_list|)
 decl_stmt|;
 name|mks
 operator|.

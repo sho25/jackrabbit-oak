@@ -419,6 +419,8 @@ operator|=
 name|newDocumentNodeStore
 argument_list|(
 name|store
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|ns2
@@ -426,6 +428,8 @@ operator|=
 name|newDocumentNodeStore
 argument_list|(
 name|store
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 block|}
@@ -435,6 +439,9 @@ name|newDocumentNodeStore
 parameter_list|(
 name|DocumentStore
 name|store
+parameter_list|,
+name|int
+name|clusterId
 parameter_list|)
 block|{
 comment|// use high async delay and run background ops manually
@@ -460,6 +467,11 @@ argument_list|(
 literal|false
 argument_list|)
 comment|// disabled for debugging purposes
+operator|.
+name|setClusterId
+argument_list|(
+name|clusterId
+argument_list|)
 operator|.
 name|getNodeStore
 argument_list|()

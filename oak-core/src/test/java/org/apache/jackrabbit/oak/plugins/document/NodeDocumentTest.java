@@ -1761,6 +1761,13 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
+name|setClusterId
+argument_list|(
+name|i
+operator|+
+literal|1
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
@@ -2872,6 +2879,8 @@ name|createTestStore
 argument_list|(
 name|store
 argument_list|,
+literal|1
+argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
@@ -2881,6 +2890,8 @@ init|=
 name|createTestStore
 argument_list|(
 name|store
+argument_list|,
+literal|2
 argument_list|,
 literal|0
 argument_list|)
@@ -3500,6 +3511,8 @@ argument_list|(
 name|store
 argument_list|,
 literal|0
+argument_list|,
+literal|0
 argument_list|)
 decl_stmt|;
 name|NodeBuilder
@@ -3831,6 +3844,8 @@ name|createTestStore
 argument_list|(
 name|store
 argument_list|,
+literal|1
+argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
@@ -3840,6 +3855,8 @@ init|=
 name|createTestStore
 argument_list|(
 name|store
+argument_list|,
+literal|2
 argument_list|,
 literal|0
 argument_list|)
@@ -4208,6 +4225,8 @@ name|createTestStore
 argument_list|(
 name|store
 argument_list|,
+literal|0
+argument_list|,
 name|numChanges
 argument_list|)
 decl_stmt|;
@@ -4353,6 +4372,8 @@ operator|new
 name|MemoryDocumentStore
 argument_list|()
 argument_list|,
+literal|0
+argument_list|,
 name|numChanges
 argument_list|)
 return|;
@@ -4363,6 +4384,9 @@ name|createTestStore
 parameter_list|(
 name|DocumentStore
 name|store
+parameter_list|,
+name|int
+name|clusterId
 parameter_list|,
 name|int
 name|numChanges
@@ -4387,6 +4411,11 @@ operator|.
 name|setAsyncDelay
 argument_list|(
 literal|0
+argument_list|)
+operator|.
+name|setClusterId
+argument_list|(
+name|clusterId
 argument_list|)
 operator|.
 name|getNodeStore

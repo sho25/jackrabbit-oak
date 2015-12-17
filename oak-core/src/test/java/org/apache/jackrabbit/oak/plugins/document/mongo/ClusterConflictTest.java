@@ -307,6 +307,11 @@ name|getDB
 argument_list|()
 argument_list|)
 operator|.
+name|setClusterId
+argument_list|(
+literal|2
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 expr_stmt|;

@@ -422,6 +422,11 @@ argument_list|(
 name|sharedStore
 argument_list|)
 operator|.
+name|setClusterId
+argument_list|(
+literal|1
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 expr_stmt|;
@@ -457,6 +462,11 @@ operator|.
 name|setDocumentStore
 argument_list|(
 name|sharedStore
+argument_list|)
+operator|.
+name|setClusterId
+argument_list|(
+literal|2
 argument_list|)
 operator|.
 name|getNodeStore
