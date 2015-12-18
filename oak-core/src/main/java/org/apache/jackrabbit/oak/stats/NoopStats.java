@@ -40,6 +40,8 @@ implements|,
 name|MeterStats
 implements|,
 name|CounterStats
+implements|,
+name|HistogramStats
 block|{
 specifier|public
 specifier|static
@@ -123,6 +125,16 @@ operator|.
 name|INSTANCE
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|update
+parameter_list|(
+name|long
+name|value
+parameter_list|)
+block|{      }
 specifier|private
 specifier|static
 specifier|final
