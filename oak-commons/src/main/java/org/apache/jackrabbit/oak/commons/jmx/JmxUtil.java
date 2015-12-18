@@ -96,6 +96,11 @@ name|unquotedValue
 argument_list|)
 condition|)
 block|{
+name|ObjectName
+name|on
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 comment|//Quoting logic in ObjectName does not escape ',', '='
@@ -103,6 +108,8 @@ comment|//etc. So try now by constructing ObjectName. If that
 comment|//passes then value can be used as safely
 comment|//Also we cannot just rely on ObjectName as it treats
 comment|//*, ? as pattern chars and which should ideally be escaped
+name|on
+operator|=
 operator|new
 name|ObjectName
 argument_list|(
@@ -113,16 +120,28 @@ argument_list|,
 name|unquotedValue
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MalformedObjectNameException
+name|ignore
+parameter_list|)
+block|{
+comment|//ignore
+block|}
+if|if
+condition|(
+name|on
+operator|!=
+literal|null
+condition|)
+block|{
 name|result
 operator|=
 name|unquotedValue
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|MalformedObjectNameException
-name|e
-parameter_list|)
+else|else
 block|{
 name|result
 operator|=
