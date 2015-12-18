@@ -480,7 +480,7 @@ name|INDEX_PATH
 init|=
 literal|"indexPath"
 decl_stmt|;
-comment|/**      * Optional (property definition) property indicating facet can be retrieved together with plain queries.      * Default is false      */
+comment|/**      * Optional property definition subnode holding configuration for facets.      */
 name|String
 name|PROP_FACET
 init|=

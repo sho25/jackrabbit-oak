@@ -246,6 +246,21 @@ operator|+
 name|nodeRelativePath
 return|;
 block|}
+specifier|public
+specifier|static
+name|String
+name|createFacetFieldName
+parameter_list|(
+name|String
+name|pname
+parameter_list|)
+block|{
+return|return
+name|pname
+operator|+
+literal|"_facet"
+return|;
+block|}
 block|}
 end_class
 
