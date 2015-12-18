@@ -515,7 +515,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"java -jar oak-diff-*.jar<path/to/repository> [--list] [--diff=R0..R1] [--incremental] [--ignore-snfes] [--output=/path/to/output/file]"
+literal|"java -jar oak-run-*.jar tarmkdiff<path/to/repository> [--list] [--diff=R0..R1] [--incremental] [--ignore-snfes] [--output=/path/to/output/file]"
 argument_list|)
 expr_stmt|;
 name|System
