@@ -2287,7 +2287,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// if facet path doesn't exist in the node state, filter the facets
+comment|// if facet path doesn't exist for the calling user, filter the facet for this doc
 for|for
 control|(
 name|FacetField
@@ -2497,7 +2497,7 @@ name|facetField
 parameter_list|)
 block|{
 comment|// facet filtering by value requires that the facet values match the stored values
-comment|// a *_facet field must exist, storing docValues to be used for faceting and at filtering time
+comment|// a *_facet field must exist, stored (or /w docValues) to be used for faceting and at filtering time
 if|if
 condition|(
 name|doc
