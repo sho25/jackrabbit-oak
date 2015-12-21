@@ -437,6 +437,24 @@ literal|"geheim"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|getName
+argument_list|()
+return|;
+block|}
 specifier|private
 specifier|static
 class|class
