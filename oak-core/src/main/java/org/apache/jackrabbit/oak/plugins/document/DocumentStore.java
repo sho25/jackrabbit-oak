@@ -377,6 +377,31 @@ name|UpdateOp
 name|update
 parameter_list|)
 function_decl|;
+comment|/**      * Create or unconditionally update a number of documents.      *<p>      * An implementation does not have to guarantee that all changes are applied      * atomically, together. In case of an exception (e.g. when a communication      * error occurs) only some changes may have been applied. In this case it is the      * responsibility of the caller to check which {@linkplain UpdateOp}s were applied and      * take appropriate action.      *      * @param<T> the document type      * @param collection the collection      * @param updateOps the update operation list      * @return the list containing old documents or<code>null</code> values if they didn't exist      *         before (see {@linkplain #createOrUpdate(Collection, UpdateOp)}), where the order      *         reflects the order in the "updateOps" parameter      */
+parameter_list|<
+name|T
+extends|extends
+name|Document
+parameter_list|>
+name|List
+argument_list|<
+name|T
+argument_list|>
+name|createOrUpdate
+parameter_list|(
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|collection
+parameter_list|,
+name|List
+argument_list|<
+name|UpdateOp
+argument_list|>
+name|updateOps
+parameter_list|)
+function_decl|;
 comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Condition.Type#EXISTS} and only updates the      * document if the condition is<code>true</code>. The returned document is      * immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met or      *         if the document wasn't found      */
 annotation|@
 name|CheckForNull
