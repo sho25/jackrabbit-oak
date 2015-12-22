@@ -1842,7 +1842,7 @@ name|defn
 operator|.
 name|hasChildNode
 argument_list|(
-name|PROP_FACET
+name|FACETS
 argument_list|)
 operator|&&
 name|getOptionalValue
@@ -1851,7 +1851,7 @@ name|defn
 operator|.
 name|getChildNode
 argument_list|(
-name|PROP_FACET
+name|FACETS
 argument_list|)
 argument_list|,
 name|PROP_SECURE_FACETS

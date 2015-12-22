@@ -480,9 +480,9 @@ name|INDEX_PATH
 init|=
 literal|"indexPath"
 decl_stmt|;
-comment|/**      * Optional property definition subnode holding configuration for facets.      */
+comment|/**      * Optional subnode holding configuration for facets.      */
 name|String
-name|PROP_FACET
+name|FACETS
 init|=
 literal|"facets"
 decl_stmt|;
@@ -496,7 +496,13 @@ comment|/**      * Optional (index definition) property indicating whether facet
 name|String
 name|PROP_SECURE_FACETS
 init|=
-literal|"secureFacets"
+literal|"secure"
+decl_stmt|;
+comment|/**      * Optional (property definition) property indicating whether facets should be created      * for this property      */
+name|String
+name|PROP_FACETS
+init|=
+literal|"facets"
 decl_stmt|;
 block|}
 end_interface
