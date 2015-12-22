@@ -247,6 +247,9 @@ decl_stmt|;
 name|ScorerProviderFactory
 name|scorerFactory
 decl_stmt|;
+name|IndexAugmentorFactory
+name|augmentorFactory
+decl_stmt|;
 specifier|public
 name|LuceneIndexProvider
 parameter_list|()
@@ -273,10 +276,6 @@ name|IndexTracker
 argument_list|(
 name|indexCopier
 argument_list|)
-argument_list|,
-name|ScorerProviderFactory
-operator|.
-name|DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
@@ -294,6 +293,8 @@ argument_list|,
 name|ScorerProviderFactory
 operator|.
 name|DEFAULT
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -305,6 +306,9 @@ name|tracker
 parameter_list|,
 name|ScorerProviderFactory
 name|scorerFactory
+parameter_list|,
+name|IndexAugmentorFactory
+name|augmentorFactory
 parameter_list|)
 block|{
 name|this
@@ -318,6 +322,12 @@ operator|.
 name|scorerFactory
 operator|=
 name|scorerFactory
+expr_stmt|;
+name|this
+operator|.
+name|augmentorFactory
+operator|=
+name|augmentorFactory
 expr_stmt|;
 block|}
 specifier|public
@@ -416,6 +426,8 @@ argument_list|(
 name|tracker
 argument_list|,
 name|scorerFactory
+argument_list|,
+name|augmentorFactory
 argument_list|)
 return|;
 block|}

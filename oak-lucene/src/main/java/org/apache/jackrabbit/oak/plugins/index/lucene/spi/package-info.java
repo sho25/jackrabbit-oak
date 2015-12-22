@@ -7,7 +7,7 @@ begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"3.0.0"
+literal|"1.0.0"
 argument_list|)
 end_annotation
 
@@ -36,6 +36,8 @@ operator|.
 name|index
 operator|.
 name|lucene
+operator|.
+name|spi
 package|;
 end_package
 
@@ -47,7 +49,7 @@ name|bnd
 operator|.
 name|annotation
 operator|.
-name|Version
+name|Export
 import|;
 end_import
 
@@ -59,7 +61,7 @@ name|bnd
 operator|.
 name|annotation
 operator|.
-name|Export
+name|Version
 import|;
 end_import
 

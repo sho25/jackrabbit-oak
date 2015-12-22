@@ -1033,6 +1033,11 @@ specifier|final
 name|ExtractedTextCache
 name|extractedTextCache
 decl_stmt|;
+specifier|private
+specifier|final
+name|IndexAugmentorFactory
+name|augmentorFactory
+decl_stmt|;
 comment|/**      * The media types supported by the parser used.      */
 specifier|private
 name|Set
@@ -1059,6 +1064,9 @@ name|indexCopier
 parameter_list|,
 name|ExtractedTextCache
 name|extractedTextCache
+parameter_list|,
+name|IndexAugmentorFactory
+name|augmentorFactory
 parameter_list|)
 block|{
 name|this
@@ -1102,6 +1110,12 @@ operator|.
 name|extractedTextCache
 operator|=
 name|extractedTextCache
+expr_stmt|;
+name|this
+operator|.
+name|augmentorFactory
+operator|=
+name|augmentorFactory
 expr_stmt|;
 if|if
 condition|(
@@ -2038,6 +2052,14 @@ parameter_list|()
 block|{
 return|return
 name|extractedTextCache
+return|;
+block|}
+name|IndexAugmentorFactory
+name|getAugmentorFactory
+parameter_list|()
+block|{
+return|return
+name|augmentorFactory
 return|;
 block|}
 specifier|public
