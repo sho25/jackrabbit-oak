@@ -2151,11 +2151,29 @@ argument_list|>
 name|length
 condition|)
 block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Invalid seek request for [%s], "
+operator|+
+literal|"position: %d, file length: %d"
+argument_list|,
+name|name
+argument_list|,
+name|pos
+argument_list|,
+name|length
+argument_list|)
+decl_stmt|;
 throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Invalid seek request"
+name|msg
 argument_list|)
 throw|;
 block|}
@@ -2220,9 +2238,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Invalid byte range request [%s] : position : %d, length : "
+literal|"Invalid byte range request for [%s], "
 operator|+
-literal|"%d, len : %d"
+literal|"position: %d, file length: %d, len: %d"
 argument_list|,
 name|name
 argument_list|,
