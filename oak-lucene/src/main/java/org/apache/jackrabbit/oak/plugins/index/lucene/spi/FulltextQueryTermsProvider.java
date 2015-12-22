@@ -57,6 +57,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -134,6 +144,8 @@ block|}
 block|}
 decl_stmt|;
 comment|/**      * This method would get called while forming full text clause for full text clause not constrained on a particular      * field.      * @param text full text term      * @param analyzer {@link Analyzer} being used while forming the query. Can be used to analyze text consistently.      * @return {@link Query} object to be OR'ed with query being prepared. {@code null}, if nothing is to be added.      */
+annotation|@
+name|CheckForNull
 name|Query
 name|getQueryTerm
 parameter_list|(
