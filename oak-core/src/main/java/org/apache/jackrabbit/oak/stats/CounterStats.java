@@ -53,6 +53,22 @@ name|void
 name|dec
 parameter_list|()
 function_decl|;
+comment|/**      * Increment the counter by {@code n}.      *      * @param n the amount by which the counter will be increased      */
+name|void
+name|inc
+parameter_list|(
+name|long
+name|n
+parameter_list|)
+function_decl|;
+comment|/**      * Decrement the counter by {@code n}.      *      * @param n the amount by which the counter will be decreased      */
+name|void
+name|dec
+parameter_list|(
+name|long
+name|n
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

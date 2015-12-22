@@ -86,6 +86,26 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|inc
+parameter_list|(
+name|long
+name|n
+parameter_list|)
+block|{      }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|dec
+parameter_list|(
+name|long
+name|n
+parameter_list|)
+block|{      }
+annotation|@
+name|Override
+specifier|public
+name|void
 name|mark
 parameter_list|()
 block|{      }
