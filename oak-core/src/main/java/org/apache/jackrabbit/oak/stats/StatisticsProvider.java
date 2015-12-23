@@ -80,6 +80,9 @@ name|getMeter
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|StatsOptions
+name|options
 parameter_list|)
 block|{
 return|return
@@ -96,6 +99,9 @@ name|getCounterStats
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|StatsOptions
+name|options
 parameter_list|)
 block|{
 return|return
@@ -112,6 +118,9 @@ name|getTimer
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|StatsOptions
+name|options
 parameter_list|)
 block|{
 return|return
@@ -128,6 +137,9 @@ name|getHistogram
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|StatsOptions
+name|options
 parameter_list|)
 block|{
 return|return
@@ -147,6 +159,9 @@ name|getMeter
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|StatsOptions
+name|options
 parameter_list|)
 function_decl|;
 name|CounterStats
@@ -154,6 +169,9 @@ name|getCounterStats
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|StatsOptions
+name|options
 parameter_list|)
 function_decl|;
 name|TimerStats
@@ -161,6 +179,9 @@ name|getTimer
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|StatsOptions
+name|options
 parameter_list|)
 function_decl|;
 name|HistogramStats
@@ -168,6 +189,9 @@ name|getHistogram
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|StatsOptions
+name|options
 parameter_list|)
 function_decl|;
 block|}
