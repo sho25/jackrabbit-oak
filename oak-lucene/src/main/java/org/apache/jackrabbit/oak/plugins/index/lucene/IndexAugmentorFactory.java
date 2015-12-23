@@ -984,6 +984,9 @@ parameter_list|,
 specifier|final
 name|Analyzer
 name|analyzer
+parameter_list|,
+name|NodeState
+name|indexDefinition
 parameter_list|)
 block|{
 name|List
@@ -1024,6 +1027,8 @@ argument_list|(
 name|text
 argument_list|,
 name|analyzer
+argument_list|,
+name|indexDefinition
 argument_list|)
 decl_stmt|;
 name|PERFLOG

@@ -760,6 +760,8 @@ argument_list|(
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 if|if
@@ -1137,6 +1139,9 @@ name|text
 parameter_list|,
 name|Analyzer
 name|analyzer
+parameter_list|,
+name|NodeState
+name|indexDefinition
 parameter_list|)
 block|{
 return|return
