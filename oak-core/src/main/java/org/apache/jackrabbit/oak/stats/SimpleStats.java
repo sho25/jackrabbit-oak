@@ -75,9 +75,18 @@ name|AtomicLong
 name|statsHolder
 decl_stmt|;
 specifier|private
+name|long
+name|counter
+decl_stmt|;
+comment|/*         Using 2 different variables for managing the sum in meter calls         1. Primitive variant is used for just increment         2. AtomicLong variant is used for increment by 'n'          This is done to ensure that more frequent mark() is fast (used for Session reads)         and overhead of AtomicLong is used only for less critical flows          Once we move to JDK 8 we can probably use LongAdder from that has lesser         impact on performance      */
+specifier|private
+name|long
+name|meterSum
+decl_stmt|;
+specifier|private
 specifier|final
 name|AtomicLong
-name|counter
+name|meterSumRef
 init|=
 operator|new
 name|AtomicLong
@@ -133,20 +142,35 @@ comment|//For timer and histogram we need to manage explicit
 comment|//invocation count
 return|return
 name|counter
-operator|.
-name|get
-argument_list|()
 return|;
-default|default :
-comment|//For meter and counter the statsHolder value is
-comment|//same as count
+case|case
+name|COUNTER
+case|:
 return|return
 name|statsHolder
 operator|.
 name|get
 argument_list|()
 return|;
+case|case
+name|METER
+case|:
+comment|//For Meter it can happen that backing statsHolder gets
+comment|//reset each second. So need to manage that sum separately
+return|return
+name|meterSum
+operator|+
+name|meterSumRef
+operator|.
+name|get
+argument_list|()
+return|;
 block|}
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|()
+throw|;
 block|}
 annotation|@
 name|Override
@@ -221,6 +245,9 @@ block|{
 name|inc
 argument_list|()
 expr_stmt|;
+name|meterSum
+operator|++
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -232,6 +259,13 @@ name|long
 name|n
 parameter_list|)
 block|{
+name|meterSumRef
+operator|.
+name|getAndAdd
+argument_list|(
+name|n
+argument_list|)
+expr_stmt|;
 name|statsHolder
 operator|.
 name|getAndAdd
@@ -254,9 +288,7 @@ name|unit
 parameter_list|)
 block|{
 name|counter
-operator|.
-name|incrementAndGet
-argument_list|()
+operator|++
 expr_stmt|;
 name|statsHolder
 operator|.
@@ -297,9 +329,7 @@ name|value
 parameter_list|)
 block|{
 name|counter
-operator|.
-name|incrementAndGet
-argument_list|()
+operator|++
 expr_stmt|;
 name|statsHolder
 operator|.
