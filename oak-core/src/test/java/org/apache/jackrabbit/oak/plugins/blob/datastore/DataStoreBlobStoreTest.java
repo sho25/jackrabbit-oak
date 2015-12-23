@@ -919,24 +919,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|ds
-operator|.
-name|getInputStream
-argument_list|(
-name|dr
-operator|.
-name|getIdentifier
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-operator|instanceof
-name|BufferedInputStream
-argument_list|)
-expr_stmt|;
+comment|//        assertTrue(ds.getInputStream(dr.getIdentifier().toString()) instanceof BufferedInputStream);
 name|assertEquals
 argument_list|(
 name|actualSize
