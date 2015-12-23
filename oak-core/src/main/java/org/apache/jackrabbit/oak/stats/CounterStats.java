@@ -37,12 +37,9 @@ interface|interface
 name|CounterStats
 extends|extends
 name|Stats
+extends|,
+name|Counting
 block|{
-comment|/**      * Returns the counter's current value.      *      * @return the counter's current value      */
-name|long
-name|getCount
-parameter_list|()
-function_decl|;
 comment|/**      * Increment the counter by one.      */
 name|void
 name|inc

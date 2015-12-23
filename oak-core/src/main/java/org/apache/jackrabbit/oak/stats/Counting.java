@@ -17,40 +17,15 @@ name|stats
 package|;
 end_package
 
-begin_import
-import|import
-name|aQute
-operator|.
-name|bnd
-operator|.
-name|annotation
-operator|.
-name|ProviderType
-import|;
-end_import
-
-begin_comment
-comment|/**  * /**  * A metric which calculates the distribution of a value.  */
-end_comment
-
 begin_interface
-annotation|@
-name|ProviderType
 specifier|public
 interface|interface
-name|HistogramStats
-extends|extends
-name|Stats
-extends|,
 name|Counting
 block|{
-comment|/**      * Adds a recorded value.      *      * @param value the length of the value      */
-name|void
-name|update
-parameter_list|(
+comment|/**      * Returns the current count.      *      * @return the current count      */
 name|long
-name|value
-parameter_list|)
+name|getCount
+parameter_list|()
 function_decl|;
 block|}
 end_interface

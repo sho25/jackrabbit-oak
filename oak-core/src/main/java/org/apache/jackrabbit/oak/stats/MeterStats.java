@@ -37,6 +37,8 @@ interface|interface
 name|MeterStats
 extends|extends
 name|Stats
+extends|,
+name|Counting
 block|{
 comment|/**      * Mark the occurrence of an event.      */
 name|void

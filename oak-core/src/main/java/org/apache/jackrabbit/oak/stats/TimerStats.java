@@ -59,6 +59,8 @@ interface|interface
 name|TimerStats
 extends|extends
 name|Stats
+extends|,
+name|Counting
 block|{
 comment|/**      * A timing context.      *      * @see TimerStats#time()      */
 interface|interface

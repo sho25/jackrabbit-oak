@@ -137,6 +137,12 @@ operator|new
 name|SimpleStats
 argument_list|(
 name|counter
+argument_list|,
+name|SimpleStats
+operator|.
+name|Type
+operator|.
+name|COUNTER
 argument_list|)
 decl_stmt|;
 name|stats
