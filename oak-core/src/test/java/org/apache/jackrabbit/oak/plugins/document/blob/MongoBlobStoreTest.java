@@ -172,6 +172,17 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Override
+specifier|protected
+name|boolean
+name|supportsStatsCollection
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
 name|Before
 annotation|@
 name|Override

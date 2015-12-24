@@ -114,7 +114,7 @@ name|long
 name|size
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a binary content is read from BlobStore      *      * @param blobId id of blob whose content are being read      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of binary content being read      */
+comment|/**      * Called when a binary content is read from BlobStore      *      * @param blobId id of blob whose content are being read. For BlobStore      *               which break up file in chunks it would be chunkId      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of binary content being read      */
 name|void
 name|downloaded
 parameter_list|(

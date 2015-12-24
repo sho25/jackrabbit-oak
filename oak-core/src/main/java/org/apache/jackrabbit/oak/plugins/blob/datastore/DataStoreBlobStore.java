@@ -613,7 +613,6 @@ name|DataStore
 name|delegate
 decl_stmt|;
 specifier|private
-specifier|final
 name|BlobStatsCollector
 name|stats
 decl_stmt|;
@@ -2424,6 +2423,21 @@ operator|.
 name|maxCachedBinarySize
 operator|=
 name|maxCachedBinarySize
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setBlobStatsCollector
+parameter_list|(
+name|BlobStatsCollector
+name|stats
+parameter_list|)
+block|{
+name|this
+operator|.
+name|stats
+operator|=
+name|stats
 expr_stmt|;
 block|}
 comment|//~---------------------------------------------< Internal>

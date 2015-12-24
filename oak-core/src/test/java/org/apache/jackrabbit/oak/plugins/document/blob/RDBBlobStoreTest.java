@@ -288,6 +288,17 @@ extends|extends
 name|AbstractBlobStoreTest
 block|{
 annotation|@
+name|Override
+specifier|protected
+name|boolean
+name|supportsStatsCollection
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
 name|Parameterized
 operator|.
 name|Parameters
