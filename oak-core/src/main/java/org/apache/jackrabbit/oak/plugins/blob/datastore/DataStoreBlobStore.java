@@ -615,6 +615,10 @@ decl_stmt|;
 specifier|private
 name|BlobStatsCollector
 name|stats
+init|=
+name|BlobStatsCollector
+operator|.
+name|NOOP
 decl_stmt|;
 comment|/**      * If set to true then the blob length information would be encoded as part of blobId      * and thus no extra call would be made to DataStore to determine the length      *      *<b>Implementation Note</b>If enabled the length would be encoded in blobid by appending it at the end.      * This would be done for the methods which are part of BlobStore and GarbageCollectableBlobStore interface      *      * DataIdentifiers which are part of DataStore would not be affected by this as DataStore interface      * is not used in Oak and all access is via BlobStore interface      */
 specifier|private
