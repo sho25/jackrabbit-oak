@@ -664,10 +664,6 @@ argument_list|,
 literal|true
 argument_list|,
 name|DEFAULT_CACHE_SIZE
-argument_list|,
-name|BlobStatsCollector
-operator|.
-name|NOOP
 argument_list|)
 expr_stmt|;
 block|}
@@ -688,10 +684,6 @@ argument_list|,
 name|encodeLengthInId
 argument_list|,
 name|DEFAULT_CACHE_SIZE
-argument_list|,
-name|BlobStatsCollector
-operator|.
-name|NOOP
 argument_list|)
 expr_stmt|;
 block|}
@@ -706,9 +698,6 @@ name|encodeLengthInId
 parameter_list|,
 name|int
 name|cacheSizeInMB
-parameter_list|,
-name|BlobStatsCollector
-name|stats
 parameter_list|)
 block|{
 name|this
@@ -722,12 +711,6 @@ operator|.
 name|encodeLengthInId
 operator|=
 name|encodeLengthInId
-expr_stmt|;
-name|this
-operator|.
-name|stats
-operator|=
-name|stats
 expr_stmt|;
 name|this
 operator|.

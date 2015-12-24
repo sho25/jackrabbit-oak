@@ -437,7 +437,7 @@ name|StatisticsProvider
 name|statisticsProvider
 decl_stmt|;
 specifier|private
-name|DataStore
+name|DataStoreBlobStore
 name|dataStore
 decl_stmt|;
 specifier|protected
@@ -571,7 +571,14 @@ argument_list|,
 name|encodeLengthInId
 argument_list|,
 name|cacheSizeInMB
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|dataStore
+operator|.
+name|setBlobStatsCollector
+argument_list|(
 name|stats
 argument_list|)
 expr_stmt|;
