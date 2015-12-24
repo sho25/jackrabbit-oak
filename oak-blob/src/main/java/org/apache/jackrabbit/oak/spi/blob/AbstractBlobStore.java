@@ -853,6 +853,13 @@ argument_list|(
 name|blobId
 argument_list|)
 expr_stmt|;
+name|statsCollector
+operator|.
+name|uploadCompleted
+argument_list|(
+name|blobId
+argument_list|)
+expr_stmt|;
 return|return
 name|blobId
 return|;
@@ -1858,6 +1865,13 @@ operator|-
 literal|1
 condition|)
 block|{
+name|statsCollector
+operator|.
+name|downloadCompleted
+argument_list|(
+name|blobId
+argument_list|)
+expr_stmt|;
 return|return
 operator|-
 literal|1

@@ -98,6 +98,26 @@ name|long
 name|size
 parameter_list|)
 block|{          }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|uploadCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{          }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|downloadCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{          }
 block|}
 decl_stmt|;
 comment|/**      * Called when a binary content is written to BlobStore      *      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of binary content being written      */
@@ -129,6 +149,22 @@ name|unit
 parameter_list|,
 name|long
 name|size
+parameter_list|)
+function_decl|;
+comment|/**      * Invoked when upload for a binary file get completed. In case of chunked      * BlobStore this invoked when all the chunks have been uploaded      *      * @param blobId id of the blob which got uploaded. Even in case of chunked      *               blobStores its the id of main blob      */
+name|void
+name|uploadCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+function_decl|;
+comment|/**      * Invoked when download for a binary file get completed. In case of chunked      * BlobStore this invoked when all the chunks have been downloaded      *      * @param blobId id of the blob which got downloaded. Even in case of chunked      *               blobStores its the id of main blob      */
+name|void
+name|downloadCompleted
+parameter_list|(
+name|String
+name|blobId
 parameter_list|)
 function_decl|;
 block|}

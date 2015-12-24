@@ -1133,6 +1133,13 @@ name|getLength
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|stats
+operator|.
+name|uploadCompleted
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 return|return
 name|id
 return|;

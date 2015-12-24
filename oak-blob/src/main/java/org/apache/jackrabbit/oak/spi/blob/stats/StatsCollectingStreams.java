@@ -169,6 +169,13 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|collector
+operator|.
+name|downloadCompleted
+argument_list|(
+name|blobId
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 return|;
