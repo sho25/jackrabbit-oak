@@ -108,7 +108,7 @@ name|nodeBuilder
 operator|.
 name|child
 argument_list|(
-literal|"config"
+literal|":facet-config"
 argument_list|)
 expr_stmt|;
 for|for
