@@ -93,6 +93,22 @@ name|CompositeData
 name|getDownloadSizeHistory
 parameter_list|()
 function_decl|;
+name|CompositeData
+name|getUploadRateHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getDownloadRateHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getUploadCountHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getDownloadCountHistory
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
