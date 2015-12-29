@@ -189,6 +189,28 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|rdb
+operator|.
+name|RDBJDBCTools
+operator|.
+name|PreparedStatementComponent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1903,34 +1925,6 @@ block|,
 name|TOP
 block|}
 block|;
-comment|/**      * Provides a component for a {@link PreparedStatement} and a method for setting the      * parameters within this component      */
-specifier|public
-interface|interface
-name|PreparedStatementComponent
-block|{
-comment|/**          * @return a string suitable for inclusion into a {@link PreparedStatement}          */
-annotation|@
-name|Nonnull
-specifier|public
-name|String
-name|getStatementComponent
-parameter_list|()
-function_decl|;
-comment|/**          * Set the parameters need by the statement component returned by {@link #getStatementComponent()}          * @param stmt the statement          * @param index of first parameter to set          * @return index of next parameter to set          * @throws SQLException          */
-specifier|public
-name|int
-name|setParameters
-parameter_list|(
-name|PreparedStatement
-name|stmt
-parameter_list|,
-name|int
-name|startIndex
-parameter_list|)
-throws|throws
-name|SQLException
-function_decl|;
-block|}
 comment|/**      * Check the database brand and version      */
 specifier|public
 name|String
