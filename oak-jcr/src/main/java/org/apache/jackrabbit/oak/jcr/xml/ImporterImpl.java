@@ -1865,8 +1865,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Protected property "
-operator|+
+literal|"Protected property {}"
+argument_list|,
 name|pi
 operator|.
 name|getName
@@ -2170,8 +2170,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Skipping node: "
-operator|+
+literal|"Skipping node: {}"
+argument_list|,
 name|nodeName
 argument_list|)
 expr_stmt|;
@@ -2232,8 +2232,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Skipping protected node: "
-operator|+
+literal|"Skipping protected node: {}"
+argument_list|,
 name|nodeName
 argument_list|)
 expr_stmt|;
@@ -2370,8 +2370,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Skipping protected node: "
-operator|+
+literal|"Skipping protected node: {}"
+argument_list|,
 name|existing
 argument_list|)
 expr_stmt|;
@@ -2621,8 +2621,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Skipping existing node "
-operator|+
+literal|"Skipping existing node {}"
+argument_list|,
 name|nodeInfo
 operator|.
 name|getName

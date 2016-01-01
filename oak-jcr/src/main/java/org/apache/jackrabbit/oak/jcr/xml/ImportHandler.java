@@ -414,21 +414,17 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"warning encountered at line: "
-operator|+
+literal|"warning encountered at line: {}, column: {} while parsing XML stream"
+argument_list|,
 name|e
 operator|.
 name|getLineNumber
 argument_list|()
-operator|+
-literal|", column: "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getColumnNumber
 argument_list|()
-operator|+
-literal|" while parsing XML stream"
 argument_list|,
 name|e
 argument_list|)
@@ -451,26 +447,19 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"error encountered at line: "
-operator|+
+literal|"error encountered at line: {}, column: {} while parsing XML stream"
+argument_list|,
 name|e
 operator|.
 name|getLineNumber
 argument_list|()
-operator|+
-literal|", column: "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getColumnNumber
 argument_list|()
-operator|+
-literal|" while parsing XML stream: "
-operator|+
+argument_list|,
 name|e
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -491,26 +480,19 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"fatal error encountered at line: "
-operator|+
+literal|"fatal error encountered at line: {}, column: {} while parsing XML stream"
+argument_list|,
 name|e
 operator|.
 name|getLineNumber
 argument_list|()
-operator|+
-literal|", column: "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getColumnNumber
 argument_list|()
-operator|+
-literal|" while parsing XML stream: "
-operator|+
+argument_list|,
 name|e
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 throw|throw
