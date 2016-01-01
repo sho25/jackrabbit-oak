@@ -123,7 +123,7 @@ name|boolean
 name|evaluate
 parameter_list|()
 function_decl|;
-comment|/**      * Whether this condition will, from now on, always evaluate to false. This      * is the case for example for full-text constraints if there is no      * full-text index (unless FullTextComparisonWithoutIndex is enabled). This      * will also allow is to add conditions that stop further processing for      * other reasons, similar to "WHERE ROWNUM< 10" in Oracle.      *       * @return true if further processing should be stopped      */
+comment|/**      * Whether this condition will, from now on, always evaluate to false. This      * is the case for example for full-text constraints if there is no      * full-text index (unless FullTextComparisonWithoutIndex is enabled). This      * will also allow is to add conditions that stop further processing for      * other reasons, similar to {@code "WHERE ROWNUM< 10"} in Oracle.      *       * @return true if further processing should be stopped      */
 specifier|public
 name|boolean
 name|evaluateStop

@@ -1853,7 +1853,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**          * Parses a value string into a duration. the String has the following format:          *<xmp>          *     format:= (value [ unit ])+;          *     value:= float value;          *     unit: "ms" | "s" | "m" | "h" | "d";          *</xmp>          *          * Example:          *<xmp>          *     "100", "100ms" : 100 milliseconds          *     "1s 50ms": 1050 milliseconds          *     "1.5d":  1 1/2 days == 36 hours.          *</xmp>          *          * @param str the string to parse          * @return the new Milliseconds object or null.          */
+comment|/**          * Parses a value string into a duration. the String has the following format:          * {@code          *<xmp>          *     format:= (value [ unit ])+;          *     value:= float value;          *     unit: "ms" | "s" | "m" | "h" | "d";          *</xmp>          *          * Example:          *<xmp>          *     "100", "100ms" : 100 milliseconds          *     "1s 50ms": 1050 milliseconds          *     "1.5d":  1 1/2 days == 36 hours.          *</xmp>          * }          *          * @param str the string to parse          * @return the new Milliseconds object or null.          */
 annotation|@
 name|CheckForNull
 specifier|public

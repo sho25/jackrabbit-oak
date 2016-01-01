@@ -3074,7 +3074,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      *<p>      * Enable the asynchronous (background) indexing behavior.      *</p>      *<p>      * Please note that when enabling the background indexer, you need to take      * care of calling      *<code>#shutdown<code> on the<code>executor<code> provided for this Oak instance.      *</p>      * @deprecated Use {@link Oak#withAsyncIndexing(String, long)} instead      */
+comment|/**      *<p>      * Enable the asynchronous (background) indexing behavior.      *</p>      *<p>      * Please note that when enabling the background indexer, you need to take      * care of calling      *<code>#shutdown</code> on the<code>executor</code> provided for this Oak instance.      *</p>      * @deprecated Use {@link Oak#withAsyncIndexing(String, long)} instead      */
 annotation|@
 name|Deprecated
 specifier|public
@@ -3091,7 +3091,7 @@ literal|5
 argument_list|)
 return|;
 block|}
-comment|/**      *<p>      * Enable the asynchronous (background) indexing behavior for the provided      * task name.      *</p>      *<p>      * Please note that when enabling the background indexer, you need to take      * care of calling      *<code>#shutdown<code> on the<code>executor<code> provided for this Oak instance.      *</p>      */
+comment|/**      *<p>      * Enable the asynchronous (background) indexing behavior for the provided      * task name.      *</p>      *<p>      * Please note that when enabling the background indexer, you need to take      * care of calling      *<code>#shutdown</code> on the<code>executor</code> provided for this Oak instance.      *</p>      */
 specifier|public
 name|Oak
 name|withAsyncIndexing

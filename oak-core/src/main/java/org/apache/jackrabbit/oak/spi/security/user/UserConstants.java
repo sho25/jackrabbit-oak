@@ -350,7 +350,7 @@ name|PARAM_SUPPORT_AUTOSAVE
 init|=
 literal|"supportAutoSave"
 decl_stmt|;
-comment|/**      * Optional configuration parameter indicating the maximum age in days a password may have      * before it expires. If the value specified is> 0, password expiry is implicitly enabled.      */
+comment|/**      * Optional configuration parameter indicating the maximum age in days a password may have      * before it expires. If the value specified is {@code> 0}, password expiry is implicitly enabled.      */
 name|String
 name|PARAM_PASSWORD_MAX_AGE
 init|=
@@ -380,7 +380,7 @@ name|CREDENTIALS_ATTRIBUTE_NEWPASSWORD
 init|=
 literal|"user.newpassword"
 decl_stmt|;
-comment|/**      * Optional configuration parameter indicating the maximum number of passwords recorded for a user after      * password changes. If the value specified is> 0, password history checking during password change is implicitly      * enabled and the new password provided during a password change must not be found in the already recorded      * history.      *      * @since Oak 1.3.3      */
+comment|/**      * Optional configuration parameter indicating the maximum number of passwords recorded for a user after      * password changes. If the value specified is {@code> 0}, password history checking during password change is implicitly      * enabled and the new password provided during a password change must not be found in the already recorded      * history.      *      * @since Oak 1.3.3      */
 name|String
 name|PARAM_PASSWORD_HISTORY_SIZE
 init|=

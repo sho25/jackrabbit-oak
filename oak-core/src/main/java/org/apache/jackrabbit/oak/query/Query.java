@@ -353,7 +353,7 @@ name|boolean
 name|isInit
 parameter_list|()
 function_decl|;
-comment|/**      * @return the original statement as it was used to construct the object. If not provided the      *         {@link #toString()} will be used instead.      */
+comment|/**      * @return the original statement as it was used to construct the object. If not provided the      *         toString() will be used instead.      */
 name|String
 name|getStatement
 parameter_list|()

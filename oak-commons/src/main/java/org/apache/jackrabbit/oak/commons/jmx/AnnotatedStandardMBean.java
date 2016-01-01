@@ -90,7 +90,7 @@ name|AnnotatedStandardMBean
 extends|extends
 name|StandardMBean
 block|{
-comment|/**      * Make a DynamicMBean out of the object implementation, using the specified      * mbeanInterface class.      *      * @see {@link javax.management.StandardMBean#StandardMBean(Object, Class)}      */
+comment|/**      * Make a DynamicMBean out of the object implementation, using the specified      * mbeanInterface class.      *      * @see javax.management.StandardMBean#StandardMBean(Object, Class)      */
 specifier|public
 parameter_list|<
 name|T

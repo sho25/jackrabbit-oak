@@ -268,7 +268,7 @@ name|boolean
 name|next
 parameter_list|()
 function_decl|;
-comment|/**      *<b>!Test purpose only!<b>      *       * this creates a filter for the given query      *       * @param preparing whether this this the prepare phase      * @return a new filter      */
+comment|/**      *<b>!Test purpose only!</b>      *       * this creates a filter for the given query      *       * @param preparing whether this this the prepare phase      * @return a new filter      */
 specifier|public
 specifier|abstract
 name|Filter

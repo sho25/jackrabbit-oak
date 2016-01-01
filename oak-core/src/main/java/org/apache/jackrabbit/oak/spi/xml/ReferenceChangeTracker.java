@@ -132,7 +132,7 @@ name|oldUUID
 argument_list|)
 return|;
 block|}
-comment|/**      * Store the given id mapping for later lookup using      * {@code }{@link #get(String)}</code>.      *      * @param oldUUID old node id      * @param newUUID new node id      */
+comment|/**      * Store the given id mapping for later lookup using      * {@link #get(String)}.      *      * @param oldUUID old node id      * @param newUUID new node id      */
 specifier|public
 name|void
 name|put
@@ -171,7 +171,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Store the given reference property for later retrieval using      * {@code }{@link #getProcessedReferences()}</code>.      *      * @param refProp reference property      */
+comment|/**      * Store the given reference property for later retrieval using      * {@link #getProcessedReferences()}.      *      * @param refProp reference property      */
 specifier|public
 name|void
 name|processedReference

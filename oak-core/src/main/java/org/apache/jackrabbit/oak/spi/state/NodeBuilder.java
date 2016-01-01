@@ -312,7 +312,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the boolean value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = builder.getProperty(name);      * return property != null      *&& property.getType() == Type.BOOLEAN      *&& property.getValue(Type.BOOLEAN);      *</pre>      *      * @param name property name      * @return boolean value of the named property, or {@code false}      */
+comment|/**      * Returns the boolean value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = builder.getProperty(name);      * return property != null      *&& property.getType() == Type.BOOLEAN      *&& property.getValue(Type.BOOLEAN);      * }      *</pre>      *      * @param name property name      * @return boolean value of the named property, or {@code false}      */
 name|boolean
 name|getBoolean
 parameter_list|(
@@ -322,7 +322,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.STRING) {      *     return property.getValue(Type.STRING);      * } else {      *     return null;      * }      *</pre>      *      * @param name property name      * @return string value of the named property, or {@code null}      */
+comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.STRING) {      *     return property.getValue(Type.STRING);      * } else {      *     return null;      * }      * }      *</pre>      *      * @param name property name      * @return string value of the named property, or {@code null}      */
 annotation|@
 name|CheckForNull
 name|String
@@ -332,7 +332,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.NAME) {      *     return property.getValue(Type.NAME);      * } else {      *     return null;      * }      *</pre>      *      * @param name property name      * @return name value of the named property, or {@code null}      */
+comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.NAME) {      *     return property.getValue(Type.NAME);      * } else {      *     return null;      * }      * }      *</pre>      *      * @param name property name      * @return name value of the named property, or {@code null}      */
 annotation|@
 name|CheckForNull
 name|String
@@ -344,7 +344,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the name values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.NAMES) {      *     return property.getValue(Type.NAMES);      * } else {      *     return Collections.emptyList();      * }      *</pre>      *      * @param name property name      * @return name values of the named property, or an empty collection      */
+comment|/**      * Returns the name values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.NAMES) {      *     return property.getValue(Type.NAMES);      * } else {      *     return Collections.emptyList();      * }      * }      *</pre>      *      * @param name property name      * @return name values of the named property, or an empty collection      */
 annotation|@
 name|Nonnull
 name|Iterable

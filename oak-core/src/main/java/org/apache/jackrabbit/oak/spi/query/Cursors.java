@@ -547,7 +547,7 @@ name|rootState
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a cursor wrapper, which returns the ancestor rows at the given      *<code>level</code> of the wrapped cursor<code>c</code>. With      *<code>level</code> e.g. set to<code>1</code>, the returned cursor      * iterates over the parent rows of the passed cursor<code>c</code>. The      * returned cursor guarantees distinct rows.      *      * @param c the cursor to wrap.      * @param level the ancestor level. Must be>= 1.      * @return cursor over the ancestors of<code>c</code> at<code>level</code>.      */
+comment|/**      * Returns a cursor wrapper, which returns the ancestor rows at the given      *<code>level</code> of the wrapped cursor<code>c</code>. With      *<code>level</code> e.g. set to<code>1</code>, the returned cursor      * iterates over the parent rows of the passed cursor<code>c</code>. The      * returned cursor guarantees distinct rows.      *      * @param c the cursor to wrap.      * @param level the ancestor level. Must be {@code>= 1}.      * @return cursor over the ancestors of<code>c</code> at<code>level</code>.      */
 specifier|public
 specifier|static
 name|Cursor
