@@ -2720,12 +2720,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
-name|pnImporter
-operator|!=
-literal|null
-operator|)
-operator|&&
 name|getDefinition
 argument_list|(
 name|parent
@@ -2733,6 +2727,13 @@ argument_list|)
 operator|.
 name|isProtected
 argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|pnImporter
+operator|!=
+literal|null
 condition|)
 block|{
 name|pnImporter
@@ -2748,6 +2749,7 @@ name|pnImporter
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 name|idLookup
 operator|.
