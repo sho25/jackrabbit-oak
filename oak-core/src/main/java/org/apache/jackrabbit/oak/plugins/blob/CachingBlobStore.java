@@ -21,17 +21,11 @@ end_package
 
 begin_import
 import|import
-name|com
+name|javax
 operator|.
-name|sun
+name|annotation
 operator|.
-name|javafx
-operator|.
-name|beans
-operator|.
-name|annotations
-operator|.
-name|NonNull
+name|Nonnull
 import|;
 end_import
 
@@ -183,12 +177,12 @@ name|int
 name|weigh
 parameter_list|(
 annotation|@
-name|NonNull
+name|Nonnull
 name|String
 name|key
 parameter_list|,
 annotation|@
-name|NonNull
+name|Nonnull
 name|byte
 index|[]
 name|value
