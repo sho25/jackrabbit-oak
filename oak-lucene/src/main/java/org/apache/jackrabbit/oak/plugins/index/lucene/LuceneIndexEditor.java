@@ -5021,7 +5021,7 @@ operator|&&
 operator|!
 name|pdForRootNode
 operator|.
-name|index
+name|nodeScopeIndex
 condition|)
 block|{
 continue|continue;

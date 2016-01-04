@@ -12840,9 +12840,20 @@ name|setProperty
 argument_list|(
 name|LuceneIndexConstants
 operator|.
-name|PROP_INDEX
+name|PROP_NODE_SCOPE_INDEX
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+name|prop1
+operator|.
+name|setProperty
+argument_list|(
+name|LuceneIndexConstants
+operator|.
+name|PROP_PROPERTY_INDEX
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|newNodeAggregator
@@ -12982,6 +12993,20 @@ name|String
 operator|>
 name|emptyList
 argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//Check that property index is being used
+name|assertThat
+argument_list|(
+name|explain
+argument_list|(
+literal|"select [jcr:path] from [oak:TestNode] where [original/jcr:content/type] = 'foo'"
+argument_list|)
+argument_list|,
+name|containsString
+argument_list|(
+literal|"original/jcr:content/type:foo"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
