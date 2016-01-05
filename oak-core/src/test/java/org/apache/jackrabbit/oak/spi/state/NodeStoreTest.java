@@ -839,6 +839,15 @@ operator|.
 name|DOCUMENT_NS
 argument_list|)
 expr_stmt|;
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|DOCUMENT_RDB
+argument_list|)
+expr_stmt|;
 name|CommitHook
 name|hook
 init|=
