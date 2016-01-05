@@ -22,6 +22,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -551,9 +563,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|fixture
 operator|.
-name|AbstractRepositoryTest
+name|NodeStoreFixture
 import|;
 end_import
 
@@ -569,7 +581,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|NodeStoreFixture
+name|AbstractRepositoryTest
 import|;
 end_import
 
@@ -590,18 +602,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 

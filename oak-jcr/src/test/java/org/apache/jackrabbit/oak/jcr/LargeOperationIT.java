@@ -515,11 +515,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|fixture
 operator|.
-name|NodeStoreFixture
-operator|.
-name|DocumentFixture
+name|DocumentMongoFixture
 import|;
 end_import
 
@@ -533,9 +531,23 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|fixture
 operator|.
 name|NodeStoreFixture
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|fixture
 operator|.
 name|SegmentFixture
 import|;
@@ -1048,11 +1060,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-name|DocumentFixture
+name|DocumentMongoFixture
 name|documentFixture
 init|=
 operator|new
-name|DocumentFixture
+name|DocumentMongoFixture
 argument_list|()
 decl_stmt|;
 if|if
@@ -1824,7 +1836,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|DocumentFixture
+name|DocumentMongoFixture
 operator|.
 name|class
 decl_stmt|;
@@ -2005,7 +2017,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|DocumentFixture
+name|DocumentMongoFixture
 operator|.
 name|class
 decl_stmt|;
@@ -2186,7 +2198,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|DocumentFixture
+name|DocumentMongoFixture
 operator|.
 name|class
 decl_stmt|;
@@ -2399,7 +2411,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|DocumentFixture
+name|DocumentMongoFixture
 operator|.
 name|class
 decl_stmt|;
@@ -2591,7 +2603,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|DocumentFixture
+name|DocumentMongoFixture
 operator|.
 name|class
 decl_stmt|;
@@ -2747,7 +2759,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|DocumentFixture
+name|DocumentMongoFixture
 operator|.
 name|class
 decl_stmt|;

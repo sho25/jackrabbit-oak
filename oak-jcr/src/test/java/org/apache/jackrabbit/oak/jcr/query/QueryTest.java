@@ -441,9 +441,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|fixture
 operator|.
-name|AbstractRepositoryTest
+name|NodeStoreFixture
 import|;
 end_import
 
@@ -459,7 +459,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|NodeStoreFixture
+name|AbstractRepositoryTest
 import|;
 end_import
 

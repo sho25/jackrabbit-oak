@@ -109,9 +109,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|fixture
 operator|.
-name|Jcr
+name|NodeStoreFixture
 import|;
 end_import
 
@@ -127,7 +127,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|NodeStoreFixture
+name|Jcr
 import|;
 end_import
 

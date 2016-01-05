@@ -61,7 +61,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|NodeStoreFixture
+name|OakBaseTest
 import|;
 end_import
 
@@ -75,7 +75,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|OakBaseTest
+name|fixture
+operator|.
+name|NodeStoreFixture
 import|;
 end_import
 

@@ -20,6 +20,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|AbstractRepositoryTest
+operator|.
+name|dispose
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -89,9 +107,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|fixture
 operator|.
-name|Jcr
+name|NodeStoreFixture
 import|;
 end_import
 
@@ -107,7 +125,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|NodeStoreFixture
+name|Jcr
 import|;
 end_import
 
@@ -164,24 +182,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|AbstractRepositoryTest
-operator|.
-name|dispose
 import|;
 end_import
 
