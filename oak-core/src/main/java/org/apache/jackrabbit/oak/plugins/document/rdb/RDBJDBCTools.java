@@ -159,6 +159,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -1626,7 +1636,7 @@ name|String
 name|fieldName
 parameter_list|,
 specifier|final
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>

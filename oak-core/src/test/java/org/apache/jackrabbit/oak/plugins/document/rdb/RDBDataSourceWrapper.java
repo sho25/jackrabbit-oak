@@ -173,6 +173,12 @@ specifier|final
 name|DataSource
 name|ds
 decl_stmt|;
+specifier|private
+name|boolean
+name|batchResultPrecise
+init|=
+literal|true
+decl_stmt|;
 comment|// Logging
 specifier|private
 name|Map
@@ -293,6 +299,33 @@ operator|.
 name|currentThread
 argument_list|()
 argument_list|)
+return|;
+block|}
+comment|/**      * Set to {@code false} to simulate drivers/DBs that do not return the number of affected rows in {@link Statement#executeBatch()}.      */
+specifier|public
+name|void
+name|setBatchResultPrecise
+parameter_list|(
+name|boolean
+name|precise
+parameter_list|)
+block|{
+name|this
+operator|.
+name|batchResultPrecise
+operator|=
+name|precise
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isBatchResultPrecise
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|batchResultPrecise
 return|;
 block|}
 comment|// DataSource
