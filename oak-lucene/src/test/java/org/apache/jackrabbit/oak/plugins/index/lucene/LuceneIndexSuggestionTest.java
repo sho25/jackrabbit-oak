@@ -1246,7 +1246,7 @@ specifier|final
 name|boolean
 name|shouldSuggest
 init|=
-literal|false
+literal|true
 decl_stmt|;
 name|checkSuggestions
 argument_list|(
