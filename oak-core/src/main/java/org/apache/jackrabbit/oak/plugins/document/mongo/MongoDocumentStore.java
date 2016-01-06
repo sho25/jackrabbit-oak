@@ -1068,7 +1068,7 @@ literal|1
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * Duration in milliseconds after a mongo query with an additional      * constraint (e.g. _modified) on the NODES collection times out and is      * executed again without holding a {@link TreeLock} and without updating      * the cache with data retrieved from MongoDB.      *<p>      * Default is 3000 (three seconds).      */
+comment|/**      * Duration in milliseconds after a mongo query with an additional      * constraint (e.g. _modified) on the NODES collection times out and is      * executed again without holding a {@link TreeNodeDocumentLocks.TreeLock}      * and without updating the cache with data retrieved from MongoDB.      *<p>      * Default is 3000 (three seconds).      */
 specifier|private
 name|long
 name|maxLockedQueryTimeMS
