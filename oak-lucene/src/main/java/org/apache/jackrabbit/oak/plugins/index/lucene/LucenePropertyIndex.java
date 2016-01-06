@@ -9269,7 +9269,6 @@ throw|;
 block|}
 block|}
 comment|/**      * Following logic is taken from org.apache.jackrabbit.core.query.lucene.JackrabbitQueryParser#parse(java.lang.String)      */
-specifier|private
 specifier|static
 name|String
 name|rewriteQueryText
@@ -9333,14 +9332,19 @@ name|i
 operator|++
 control|)
 block|{
-if|if
-condition|(
+name|char
+name|c
+init|=
 name|textsearch
 operator|.
 name|charAt
 argument_list|(
 name|i
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|c
 operator|==
 literal|'\\'
 condition|)
@@ -9373,12 +9377,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|textsearch
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
+name|c
 operator|==
 literal|'\''
 condition|)
@@ -9397,34 +9396,35 @@ name|rewritten
 operator|.
 name|append
 argument_list|(
-name|textsearch
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
+name|c
 argument_list|)
 expr_stmt|;
 block|}
 elseif|else
 if|if
 condition|(
-name|textsearch
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
+name|c
 operator|==
 literal|':'
+operator|||
+name|c
+operator|==
+literal|'/'
 condition|)
 block|{
-comment|// fields as known in lucene are not supported
+comment|//TODO Some other chars are also considered special See OAK-3769 for details
+comment|//':' fields as known in lucene are not supported
+comment|//'/' its a special char used for regex search in Lucene
 name|rewritten
 operator|.
 name|append
 argument_list|(
-literal|"\\:"
+literal|'\\'
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|c
 argument_list|)
 expr_stmt|;
 block|}
@@ -9451,12 +9451,7 @@ name|rewritten
 operator|.
 name|append
 argument_list|(
-name|textsearch
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
+name|c
 argument_list|)
 expr_stmt|;
 block|}
