@@ -10945,7 +10945,7 @@ name|Document
 name|doc
 parameter_list|)
 block|{
-name|Number
+name|Long
 name|n
 init|=
 name|doc
@@ -10959,9 +10959,6 @@ operator|!=
 literal|null
 condition|?
 name|n
-operator|.
-name|longValue
-argument_list|()
 else|:
 operator|-
 literal|1
@@ -11066,7 +11063,7 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-name|Number
+name|Long
 name|modCount
 init|=
 name|row
@@ -11090,7 +11087,7 @@ name|NULL
 condition|)
 block|{
 comment|// check mod count
-name|Number
+name|Long
 name|cachedModCount
 init|=
 name|inCache
@@ -11120,14 +11117,8 @@ block|}
 if|if
 condition|(
 name|modCount
-operator|.
-name|longValue
-argument_list|()
 operator|<=
 name|cachedModCount
-operator|.
-name|longValue
-argument_list|()
 condition|)
 block|{
 comment|// we can use the cached document

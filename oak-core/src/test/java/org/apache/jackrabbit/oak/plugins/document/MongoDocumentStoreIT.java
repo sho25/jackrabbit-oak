@@ -951,7 +951,7 @@ argument_list|(
 name|doc
 argument_list|)
 expr_stmt|;
-name|Number
+name|Long
 name|mc1
 init|=
 name|doc
@@ -1012,7 +1012,7 @@ argument_list|(
 name|doc
 argument_list|)
 expr_stmt|;
-name|Number
+name|Long
 name|mc2
 init|=
 name|doc
@@ -1028,14 +1028,8 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|mc2
-operator|.
-name|longValue
-argument_list|()
 operator|>
 name|mc1
-operator|.
-name|longValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

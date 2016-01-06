@@ -398,7 +398,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Number
+name|Long
 argument_list|>
 name|modCounts
 parameter_list|)
@@ -414,7 +414,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|Number
+name|Long
 argument_list|>
 name|e
 range|:
@@ -432,7 +432,7 @@ operator|.
 name|getKey
 argument_list|()
 decl_stmt|;
-name|Number
+name|Long
 name|modCount
 init|=
 name|e
@@ -694,7 +694,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Number
+name|Long
 name|cachedModCount
 init|=
 name|cachedDoc
@@ -702,7 +702,7 @@ operator|.
 name|getModCount
 argument_list|()
 decl_stmt|;
-name|Number
+name|Long
 name|modCount
 init|=
 name|doc
@@ -736,14 +736,8 @@ block|}
 if|if
 condition|(
 name|modCount
-operator|.
-name|longValue
-argument_list|()
 operator|>
 name|cachedModCount
-operator|.
-name|longValue
-argument_list|()
 condition|)
 block|{
 name|newerDoc

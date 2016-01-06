@@ -1033,9 +1033,6 @@ name|doc
 operator|.
 name|getModCount
 argument_list|()
-operator|.
-name|longValue
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch

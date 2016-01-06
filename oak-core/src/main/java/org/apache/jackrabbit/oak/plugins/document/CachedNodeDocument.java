@@ -28,7 +28,7 @@ specifier|public
 interface|interface
 name|CachedNodeDocument
 block|{
-name|Number
+name|Long
 name|getModCount
 parameter_list|()
 function_decl|;

@@ -341,6 +341,9 @@ name|doc
 operator|.
 name|getModCount
 argument_list|()
+operator|.
+name|longValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -425,6 +428,9 @@ name|doc
 operator|.
 name|getModCount
 argument_list|()
+operator|.
+name|longValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -508,6 +514,9 @@ argument_list|,
 name|doc
 operator|.
 name|getModCount
+argument_list|()
+operator|.
+name|longValue
 argument_list|()
 argument_list|)
 expr_stmt|;

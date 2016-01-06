@@ -669,9 +669,6 @@ name|nd1
 operator|.
 name|getModCount
 argument_list|()
-operator|.
-name|longValue
-argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1569,9 +1566,6 @@ name|orig
 operator|.
 name|getModCount
 argument_list|()
-operator|.
-name|longValue
-argument_list|()
 decl_stmt|;
 name|UpdateOp
 name|up2
@@ -1644,9 +1638,6 @@ init|=
 name|ds2doc
 operator|.
 name|getModCount
-argument_list|()
-operator|.
-name|longValue
 argument_list|()
 decl_stmt|;
 name|assertTrue
@@ -1735,9 +1726,6 @@ init|=
 name|ds1doc
 operator|.
 name|getModCount
-argument_list|()
-operator|.
-name|longValue
 argument_list|()
 decl_stmt|;
 name|assertTrue
@@ -2145,9 +2133,6 @@ init|=
 name|d
 operator|.
 name|getModCount
-argument_list|()
-operator|.
-name|longValue
 argument_list|()
 decl_stmt|;
 name|NodeDocument

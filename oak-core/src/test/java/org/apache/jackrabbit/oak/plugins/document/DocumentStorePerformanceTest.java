@@ -2832,9 +2832,6 @@ name|nd
 operator|.
 name|getModCount
 argument_list|()
-operator|.
-name|longValue
-argument_list|()
 decl_stmt|;
 name|String
 name|msg

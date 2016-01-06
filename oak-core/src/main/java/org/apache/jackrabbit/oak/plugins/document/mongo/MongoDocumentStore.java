@@ -1873,7 +1873,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Number
+name|Long
 argument_list|>
 name|modCounts
 init|=
@@ -4235,7 +4235,7 @@ decl_stmt|;
 try|try
 block|{
 comment|// get modCount of cached document
-name|Number
+name|Long
 name|modCount
 init|=
 literal|null
@@ -5486,7 +5486,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Number
+name|Long
 argument_list|>
 name|modCounts
 init|=
@@ -5537,7 +5537,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|Number
+name|Long
 name|postUpdateModCount
 init|=
 name|modCounts
@@ -5574,9 +5574,6 @@ name|NULL
 operator|&&
 operator|(
 name|postUpdateModCount
-operator|.
-name|longValue
-argument_list|()
 operator|-
 literal|1
 operator|)
@@ -5715,7 +5712,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Number
+name|Long
 argument_list|>
 name|getModCounts
 parameter_list|(
@@ -5800,7 +5797,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Number
+name|Long
 argument_list|>
 name|modCounts
 init|=
@@ -5832,9 +5829,13 @@ operator|.
 name|ID
 argument_list|)
 decl_stmt|;
-name|Number
+name|Long
 name|modCount
 init|=
+name|Utils
+operator|.
+name|asLong
+argument_list|(
 operator|(
 name|Number
 operator|)
@@ -5845,6 +5846,7 @@ argument_list|(
 name|Document
 operator|.
 name|MOD_COUNT
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|modCounts
