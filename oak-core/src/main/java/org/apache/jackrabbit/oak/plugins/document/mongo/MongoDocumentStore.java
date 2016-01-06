@@ -5572,12 +5572,17 @@ name|NodeDocument
 operator|.
 name|NULL
 operator|&&
-operator|(
+name|Long
+operator|.
+name|valueOf
+argument_list|(
 name|postUpdateModCount
 operator|-
 literal|1
-operator|)
-operator|==
+argument_list|)
+operator|.
+name|equals
+argument_list|(
 name|entry
 operator|.
 name|getValue
@@ -5585,6 +5590,7 @@ argument_list|()
 operator|.
 name|getModCount
 argument_list|()
+argument_list|)
 condition|)
 block|{
 comment|// post update modCount is one higher than
