@@ -399,6 +399,20 @@ name|AbstractIterator
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -2831,20 +2845,26 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-comment|// sanity check
-if|if
-condition|(
-name|chunkIds
+for|for
+control|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|chunk
+range|:
+name|Lists
 operator|.
-name|isEmpty
-argument_list|()
-condition|)
+name|partition
+argument_list|(
+name|chunkIds
+argument_list|,
+name|RDBJDBCTools
+operator|.
+name|MAX_IN_CLAUSE
+argument_list|)
+control|)
 block|{
-comment|// sanity check, nothing to do
-return|return
-name|count
-return|;
-block|}
 name|Connection
 name|con
 init|=
@@ -2876,7 +2896,7 @@ name|createInStatement
 argument_list|(
 literal|"ID"
 argument_list|,
-name|chunkIds
+name|chunk
 argument_list|,
 literal|false
 argument_list|)
@@ -3037,7 +3057,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|count
-operator|=
+operator|+=
 name|prepMeta
 operator|.
 name|executeUpdate
@@ -3075,6 +3095,7 @@ argument_list|(
 name|con
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|count

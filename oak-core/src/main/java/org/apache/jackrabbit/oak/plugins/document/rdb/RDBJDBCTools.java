@@ -1626,6 +1626,22 @@ literal|')'
 argument_list|)
 expr_stmt|;
 block|}
+comment|// see<https://issues.apache.org/jira/browse/OAK-3843>
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|MAX_IN_CLAUSE
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBJDBCTools.MAX_IN_CLAUSE"
+argument_list|,
+literal|2048
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|static
 name|PreparedStatementComponent
@@ -1647,6 +1663,35 @@ name|boolean
 name|binary
 parameter_list|)
 block|{
+if|if
+condition|(
+name|values
+operator|.
+name|size
+argument_list|()
+operator|>
+name|MAX_IN_CLAUSE
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Maximum size of IN clause allowed is "
+operator|+
+name|MAX_IN_CLAUSE
+operator|+
+literal|", but "
+operator|+
+name|values
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" was requested"
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|PreparedStatementComponent
