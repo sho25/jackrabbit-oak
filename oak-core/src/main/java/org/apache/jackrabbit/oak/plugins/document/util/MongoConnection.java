@@ -567,6 +567,20 @@ block|}
 elseif|else
 if|if
 condition|(
+name|wObj
+operator|==
+literal|null
+condition|)
+block|{
+comment|// default acknowledged
+name|w
+operator|=
+literal|1
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|WriteConcern
 operator|.
 name|MAJORITY
