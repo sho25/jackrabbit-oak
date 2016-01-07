@@ -525,6 +525,14 @@ name|ns1
 operator|.
 name|getHeadRevision
 argument_list|()
+operator|.
+name|getRevision
+argument_list|(
+name|ns1
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
 decl_stmt|;
 name|NodeBuilder
 name|b2

@@ -360,6 +360,11 @@ annotation|@
 name|Parameterized
 operator|.
 name|Parameters
+argument_list|(
+name|name
+operator|=
+literal|"{0}"
+argument_list|)
 specifier|public
 specifier|static
 name|java
@@ -1178,7 +1183,14 @@ name|branches
 operator|.
 name|getBranch
 argument_list|(
+operator|new
+name|RevisionVector
+argument_list|(
 name|branchRev
+operator|.
+name|asBranchRevision
+argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertNotNull

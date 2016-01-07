@@ -99,7 +99,7 @@ parameter_list|(
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|,
-name|Revision
+name|RevisionVector
 name|baseRevision
 parameter_list|,
 name|SortedSet
@@ -191,7 +191,7 @@ specifier|public
 name|void
 name|applyToCache
 parameter_list|(
-name|Revision
+name|RevisionVector
 name|before
 parameter_list|,
 name|boolean

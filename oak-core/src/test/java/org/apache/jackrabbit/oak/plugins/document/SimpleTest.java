@@ -467,10 +467,10 @@ operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
-name|Revision
+name|RevisionVector
 name|rev
 init|=
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(
@@ -509,7 +509,15 @@ name|n
 operator|.
 name|asOperation
 argument_list|(
-literal|true
+name|rev
+operator|.
+name|getRevision
+argument_list|(
+name|ns
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// mark as commit root
@@ -520,6 +528,14 @@ argument_list|(
 name|op
 argument_list|,
 name|rev
+operator|.
+name|getRevision
+argument_list|(
+name|ns
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
 argument_list|,
 literal|"c"
 argument_list|)
@@ -2101,7 +2117,7 @@ name|getNode
 argument_list|(
 literal|"/"
 argument_list|,
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(
@@ -2148,7 +2164,7 @@ name|getNode
 argument_list|(
 literal|"/test"
 argument_list|,
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(
@@ -2316,7 +2332,7 @@ name|getNode
 argument_list|(
 literal|"/testDel"
 argument_list|,
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(
@@ -2381,7 +2397,7 @@ name|getNode
 argument_list|(
 literal|"/testDel"
 argument_list|,
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(
@@ -2445,7 +2461,7 @@ name|getNode
 argument_list|(
 literal|"/testDel"
 argument_list|,
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(

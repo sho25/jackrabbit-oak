@@ -503,23 +503,6 @@ name|getLastRevision
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//Revision comparator purge by moving in future
-name|clock
-operator|.
-name|waitUntil
-argument_list|(
-name|clock
-operator|.
-name|getTime
-argument_list|()
-operator|+
-name|DocumentNodeStore
-operator|.
-name|REMEMBER_REVISION_ORDER_MILLIS
-operator|*
-literal|2
-argument_list|)
-expr_stmt|;
 name|runBgOps
 argument_list|(
 name|c1
@@ -726,23 +709,6 @@ operator|)
 operator|.
 name|getLastRevision
 argument_list|()
-argument_list|)
-expr_stmt|;
-comment|//Revision comparator purge by moving in future
-name|clock
-operator|.
-name|waitUntil
-argument_list|(
-name|clock
-operator|.
-name|getTime
-argument_list|()
-operator|+
-name|DocumentNodeStore
-operator|.
-name|REMEMBER_REVISION_ORDER_MILLIS
-operator|*
-literal|2
 argument_list|)
 expr_stmt|;
 name|runBgOps

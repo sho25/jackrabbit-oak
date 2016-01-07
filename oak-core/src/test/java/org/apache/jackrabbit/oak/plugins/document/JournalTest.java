@@ -353,6 +353,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertNull
 import|;
 end_import
@@ -2175,6 +2187,14 @@ name|ds2
 operator|.
 name|getHeadRevision
 argument_list|()
+operator|.
+name|getRevision
+argument_list|(
+name|ds2
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
 decl_stmt|;
 comment|//lastRev should not be updated for C #2
 name|assertNull
@@ -2715,7 +2735,20 @@ name|ns2
 operator|.
 name|getHeadRevision
 argument_list|()
+operator|.
+name|getRevision
+argument_list|(
+name|ns2
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|h2
+argument_list|)
+expr_stmt|;
 name|ns2
 operator|.
 name|runBackgroundReadOperations

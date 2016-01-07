@@ -1494,7 +1494,7 @@ name|getNode
 argument_list|(
 literal|"/"
 argument_list|,
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(
@@ -1516,7 +1516,7 @@ name|getNode
 argument_list|(
 literal|"/"
 argument_list|,
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(

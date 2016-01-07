@@ -721,6 +721,11 @@ name|ds2
 operator|.
 name|getHeadRevision
 argument_list|()
+operator|.
+name|getRevision
+argument_list|(
+name|c2Id
+argument_list|)
 decl_stmt|;
 comment|//lastRev should not be updated for C #2
 name|assertNull

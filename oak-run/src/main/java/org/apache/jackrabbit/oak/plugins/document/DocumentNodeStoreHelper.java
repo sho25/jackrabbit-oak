@@ -717,7 +717,7 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-name|Revision
+name|RevisionVector
 name|head
 init|=
 name|ns

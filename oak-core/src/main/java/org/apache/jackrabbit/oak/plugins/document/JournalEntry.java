@@ -541,12 +541,12 @@ name|diffCache
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|from
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|to
 parameter_list|)
 throws|throws

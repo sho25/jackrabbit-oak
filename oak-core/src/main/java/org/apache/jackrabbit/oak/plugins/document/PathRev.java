@@ -46,6 +46,22 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|StringUtils
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -80,7 +96,7 @@ name|path
 decl_stmt|;
 specifier|private
 specifier|final
-name|Revision
+name|RevisionVector
 name|revision
 decl_stmt|;
 specifier|public
@@ -93,7 +109,7 @@ name|path
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|revision
 parameter_list|)
 block|{
@@ -127,17 +143,18 @@ return|return
 literal|24
 comment|// shallow size
 operator|+
-literal|40
-operator|+
-name|path
+name|StringUtils
 operator|.
-name|length
-argument_list|()
-operator|*
-literal|2
+name|estimateMemoryUsage
+argument_list|(
+name|path
+argument_list|)
 comment|// path
 operator|+
-literal|32
+name|revision
+operator|.
+name|getMemory
+argument_list|()
 return|;
 comment|// revision
 block|}
@@ -279,7 +296,7 @@ argument_list|,
 name|index
 argument_list|)
 argument_list|,
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(

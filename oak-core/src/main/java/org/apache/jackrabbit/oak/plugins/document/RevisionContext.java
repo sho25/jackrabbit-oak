@@ -58,14 +58,6 @@ name|UnsavedModifications
 name|getPendingModifications
 parameter_list|()
 function_decl|;
-comment|/**      * @return the revision comparator.      */
-name|Comparator
-argument_list|<
-name|Revision
-argument_list|>
-name|getRevisionComparator
-parameter_list|()
-function_decl|;
 comment|/**      * @return the cluster id of the local DocumentMK instance.      */
 name|int
 name|getClusterId
@@ -74,7 +66,7 @@ function_decl|;
 comment|/**      * @return the current head revision.      */
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|getHeadRevision
 parameter_list|()
 function_decl|;

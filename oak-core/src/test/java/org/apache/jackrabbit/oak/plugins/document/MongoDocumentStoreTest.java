@@ -1607,7 +1607,11 @@ literal|"/node-"
 operator|+
 name|i
 argument_list|,
+operator|new
+name|RevisionVector
+argument_list|(
 name|rev
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|inserts
@@ -1618,7 +1622,7 @@ name|n
 operator|.
 name|asOperation
 argument_list|(
-literal|true
+name|rev
 argument_list|)
 argument_list|)
 expr_stmt|;

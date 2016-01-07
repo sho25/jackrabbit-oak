@@ -314,10 +314,14 @@ name|ns
 argument_list|,
 literal|"/foo/baz"
 argument_list|,
+operator|new
+name|RevisionVector
+argument_list|(
 name|c
 operator|.
 name|getRevision
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

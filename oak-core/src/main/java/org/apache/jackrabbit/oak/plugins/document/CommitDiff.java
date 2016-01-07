@@ -452,10 +452,14 @@ name|store
 argument_list|,
 name|p
 argument_list|,
+operator|new
+name|RevisionVector
+argument_list|(
 name|commit
 operator|.
 name|getRevision
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -563,6 +567,8 @@ operator|.
 name|removeNode
 argument_list|(
 name|p
+argument_list|,
+name|before
 argument_list|)
 expr_stmt|;
 return|return

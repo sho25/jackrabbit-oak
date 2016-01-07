@@ -652,7 +652,7 @@ operator|-
 name|maxRevisionAgeInMillis
 decl_stmt|;
 specifier|final
-name|Revision
+name|RevisionVector
 name|headRevision
 init|=
 name|nodeStore
@@ -828,7 +828,7 @@ parameter_list|(
 name|VersionGCStats
 name|stats
 parameter_list|,
-name|Revision
+name|RevisionVector
 name|headRevision
 parameter_list|,
 name|long
@@ -1083,7 +1083,7 @@ name|Closeable
 block|{
 specifier|private
 specifier|final
-name|Revision
+name|RevisionVector
 name|headRevision
 decl_stmt|;
 specifier|private
@@ -1126,7 +1126,7 @@ name|DeletedDocsGC
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|headRevision
 parameter_list|)
 block|{

@@ -665,14 +665,14 @@ name|String
 name|path
 decl_stmt|;
 specifier|final
-name|Revision
-name|rev
+name|RevisionVector
+name|readRevision
 decl_stmt|;
-name|Revision
+name|RevisionVector
 name|lastRevision
 decl_stmt|;
 specifier|final
-name|Revision
+name|RevisionVector
 name|rootRevision
 decl_stmt|;
 specifier|final
@@ -711,8 +711,8 @@ name|path
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Revision
-name|rev
+name|RevisionVector
+name|readRevision
 parameter_list|)
 block|{
 name|this
@@ -721,7 +721,7 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|rev
+name|readRevision
 argument_list|,
 literal|false
 argument_list|)
@@ -741,8 +741,8 @@ name|path
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Revision
-name|rev
+name|RevisionVector
+name|readRevision
 parameter_list|,
 name|boolean
 name|hasChildren
@@ -754,7 +754,7 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|rev
+name|readRevision
 argument_list|,
 operator|new
 name|HashMap
@@ -790,8 +790,8 @@ name|path
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Revision
-name|rev
+name|RevisionVector
+name|readRevision
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -808,12 +808,12 @@ name|hasChildren
 parameter_list|,
 annotation|@
 name|Nullable
-name|Revision
+name|RevisionVector
 name|lastRevision
 parameter_list|,
 annotation|@
 name|Nullable
-name|Revision
+name|RevisionVector
 name|rootRevision
 parameter_list|,
 name|boolean
@@ -840,11 +840,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|rev
+name|readRevision
 operator|=
 name|checkNotNull
 argument_list|(
-name|rev
+name|readRevision
 argument_list|)
 expr_stmt|;
 name|this
@@ -863,7 +863,7 @@ literal|null
 condition|?
 name|rootRevision
 else|:
-name|rev
+name|readRevision
 expr_stmt|;
 name|this
 operator|.
@@ -894,7 +894,7 @@ name|withRootRevision
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|root
 parameter_list|,
 name|boolean
@@ -929,7 +929,7 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|rev
+name|readRevision
 argument_list|,
 name|properties
 argument_list|,
@@ -959,7 +959,7 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|rev
+name|readRevision
 argument_list|,
 name|properties
 argument_list|,
@@ -984,18 +984,18 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|getRevision
 parameter_list|()
 block|{
 return|return
-name|rev
+name|readRevision
 return|;
 block|}
 comment|/**      * Returns the root revision for this node state. This is the read revision      * passed from the parent node state. This revision therefore reflects the      * revision of the root node state where the traversal down the tree      * started. The returned revision is only maintained on a best effort basis      * and may be the same as {@link #getRevision()} if this node state is      * retrieved directly from the {@code DocumentNodeStore}.      *      * @return the revision of the root node state is available, otherwise the      *          same value as returned by {@link #getRevision()}.      */
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|getRootRevision
 parameter_list|()
 block|{
@@ -1518,7 +1518,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|rev
+name|readRevision
 operator|.
 name|isBranch
 argument_list|()
@@ -1535,7 +1535,7 @@ argument_list|()
 operator|.
 name|getBranch
 argument_list|(
-name|rev
+name|readRevision
 argument_list|)
 decl_stmt|;
 if|if
@@ -1592,7 +1592,7 @@ name|IllegalStateException
 argument_list|(
 literal|"No branch for revision: "
 operator|+
-name|rev
+name|readRevision
 argument_list|)
 throw|;
 block|}
@@ -1603,7 +1603,10 @@ name|b
 operator|.
 name|isHead
 argument_list|(
-name|rev
+name|readRevision
+operator|.
+name|getBranchRevision
+argument_list|()
 argument_list|)
 operator|&&
 name|DocumentNodeStoreBranch
@@ -1798,11 +1801,11 @@ name|start
 argument_list|,
 literal|1
 argument_list|,
-literal|"compareAgainstBaseState, path={}, rev={}, lastRevision={}, base.path={}, base.rev={}, base.lastRevision={}"
+literal|"compareAgainstBaseState, path={}, readRevision={}, lastRevision={}, base.path={}, base.readRevision={}, base.lastRevision={}"
 argument_list|,
 name|path
 argument_list|,
-name|rev
+name|readRevision
 argument_list|,
 name|lastRevision
 argument_list|,
@@ -1812,7 +1815,7 @@ name|path
 argument_list|,
 name|mBase
 operator|.
-name|rev
+name|readRevision
 argument_list|,
 name|mBase
 operator|.
@@ -2055,12 +2058,12 @@ name|buff
 operator|.
 name|append
 argument_list|(
-literal|"rev: '"
+literal|"readRevision: '"
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|rev
+name|readRevision
 argument_list|)
 operator|.
 name|append
@@ -2095,12 +2098,14 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Create an add node operation for this node.      */
+comment|/**      * Create an add operation for this node at the given revision.      *      * @param revision the revision this node is created.      */
 name|UpdateOp
 name|asOperation
 parameter_list|(
-name|boolean
-name|isNew
+annotation|@
+name|Nonnull
+name|Revision
+name|revision
 parameter_list|)
 block|{
 name|String
@@ -2121,7 +2126,7 @@ name|UpdateOp
 argument_list|(
 name|id
 argument_list|,
-name|isNew
+literal|true
 argument_list|)
 decl_stmt|;
 name|op
@@ -2163,7 +2168,7 @@ name|setModified
 argument_list|(
 name|op
 argument_list|,
-name|rev
+name|revision
 argument_list|)
 expr_stmt|;
 name|NodeDocument
@@ -2172,7 +2177,7 @@ name|setDeleted
 argument_list|(
 name|op
 argument_list|,
-name|rev
+name|revision
 argument_list|,
 literal|false
 argument_list|)
@@ -2204,7 +2209,7 @@ name|setMapEntry
 argument_list|(
 name|key
 argument_list|,
-name|rev
+name|revision
 argument_list|,
 name|getPropertyAsString
 argument_list|(
@@ -2297,7 +2302,7 @@ block|}
 name|void
 name|setLastRevision
 parameter_list|(
-name|Revision
+name|RevisionVector
 name|lastRevision
 parameter_list|)
 block|{
@@ -2308,7 +2313,7 @@ operator|=
 name|lastRevision
 expr_stmt|;
 block|}
-name|Revision
+name|RevisionVector
 name|getLastRevision
 parameter_list|()
 block|{
@@ -2326,7 +2331,31 @@ block|{
 name|int
 name|size
 init|=
-literal|164
+literal|40
+comment|// shallow
+operator|+
+name|readRevision
+operator|.
+name|getMemory
+argument_list|()
+operator|+
+operator|(
+name|lastRevision
+operator|!=
+literal|null
+condition|?
+name|lastRevision
+operator|.
+name|getMemory
+argument_list|()
+else|:
+literal|0
+operator|)
+operator|+
+name|rootRevision
+operator|.
+name|getMemory
+argument_list|()
 operator|+
 name|estimateMemoryUsage
 argument_list|(
@@ -2411,11 +2440,13 @@ operator|++
 control|)
 block|{
 comment|// size() returns length of string
-comment|// overhead:
+comment|// shallow memory:
 comment|// - 8 bytes per reference in values list
 comment|// - 48 bytes per string
+comment|// double useage per property because of parsed PropertyState
 name|size
 operator|+=
+operator|(
 literal|56
 operator|+
 name|propState
@@ -2424,6 +2455,9 @@ name|size
 argument_list|(
 name|i
 argument_list|)
+operator|*
+literal|2
+operator|)
 operator|*
 literal|2
 expr_stmt|;
@@ -2457,7 +2491,7 @@ name|size
 return|;
 block|}
 comment|//------------------------------< internal>--------------------------------
-comment|/**      * Returns {@code true} if this state has the same revision as the      * {@code other} state. This method first compares the read {@link #rev}      * and then the {@link #lastRevision}.      *      * @param other the other state to compare with.      * @return {@code true} if the revisions are equal, {@code false} otherwise.      */
+comment|/**      * Returns {@code true} if this state has the same revision as the      * {@code other} state. This method first compares the {@link #readRevision}      * and then the {@link #lastRevision}.      *      * @param other the other state to compare with.      * @return {@code true} if the revisions are equal, {@code false} otherwise.      */
 specifier|private
 name|boolean
 name|revisionEquals
@@ -2469,13 +2503,13 @@ block|{
 return|return
 name|this
 operator|.
-name|rev
+name|readRevision
 operator|.
 name|equals
 argument_list|(
 name|other
 operator|.
-name|rev
+name|readRevision
 argument_list|)
 operator|||
 name|this
@@ -2639,7 +2673,7 @@ argument_list|)
 operator|.
 name|value
 argument_list|(
-name|rev
+name|readRevision
 operator|.
 name|toString
 argument_list|()
@@ -2682,7 +2716,7 @@ argument_list|)
 operator|.
 name|value
 argument_list|(
-name|hasChildren
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2772,12 +2806,12 @@ name|path
 init|=
 literal|null
 decl_stmt|;
-name|Revision
+name|RevisionVector
 name|rev
 init|=
 literal|null
 decl_stmt|;
-name|Revision
+name|RevisionVector
 name|lastRev
 init|=
 literal|null
@@ -2860,7 +2894,7 @@ condition|)
 block|{
 name|rev
 operator|=
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(
@@ -2884,7 +2918,7 @@ condition|)
 block|{
 name|lastRev
 operator|=
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(

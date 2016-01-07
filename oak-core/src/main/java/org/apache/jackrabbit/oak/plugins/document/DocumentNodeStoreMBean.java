@@ -52,6 +52,8 @@ name|TYPE
 init|=
 literal|"DocumentNodeStore"
 decl_stmt|;
+annotation|@
+name|Deprecated
 name|String
 name|getRevisionComparatorState
 parameter_list|()

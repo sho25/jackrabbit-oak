@@ -287,7 +287,7 @@ decl_stmt|;
 comment|/**      * The initial base revision of this branch.      */
 specifier|private
 specifier|final
-name|Revision
+name|RevisionVector
 name|base
 decl_stmt|;
 comment|/**      * The branch reference.      */
@@ -309,7 +309,7 @@ name|commits
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|base
 parameter_list|,
 annotation|@
@@ -433,7 +433,7 @@ block|}
 comment|/**      * @return the initial base of this branch.      */
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|getBase
 parameter_list|()
 block|{
@@ -444,7 +444,7 @@ block|}
 comment|/**      * Returns the base revision for the given branch revision<code>r</code>.      *      * @param r revision of a commit in this branch.      * @return the base revision for<code>r</code>.      * @throws IllegalArgumentException if<code>r</code> is not a commit of      *                                  this branch.      */
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|getBase
 parameter_list|(
 annotation|@
@@ -506,7 +506,7 @@ name|head
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Revision
+name|RevisionVector
 name|base
 parameter_list|)
 block|{
@@ -551,15 +551,10 @@ argument_list|()
 decl_stmt|;
 name|checkArgument
 argument_list|(
-name|commits
-operator|.
-name|comparator
-argument_list|()
-operator|.
-name|compare
-argument_list|(
 name|head
-argument_list|,
+operator|.
+name|compareRevisionTime
+argument_list|(
 name|last
 argument_list|)
 operator|>
@@ -1135,7 +1130,7 @@ name|LastRevTracker
 block|{
 specifier|protected
 specifier|final
-name|Revision
+name|RevisionVector
 name|base
 decl_stmt|;
 specifier|protected
@@ -1145,7 +1140,7 @@ name|commit
 decl_stmt|;
 name|BranchCommit
 parameter_list|(
-name|Revision
+name|RevisionVector
 name|base
 parameter_list|,
 name|Revision
@@ -1165,7 +1160,7 @@ operator|=
 name|commit
 expr_stmt|;
 block|}
-name|Revision
+name|RevisionVector
 name|getBase
 parameter_list|()
 block|{
@@ -1230,7 +1225,7 @@ argument_list|()
 decl_stmt|;
 name|BranchCommitImpl
 parameter_list|(
-name|Revision
+name|RevisionVector
 name|base
 parameter_list|,
 name|Revision
@@ -1376,7 +1371,7 @@ name|previous
 decl_stmt|;
 name|RebaseCommit
 parameter_list|(
-name|Revision
+name|RevisionVector
 name|base
 parameter_list|,
 name|Revision
