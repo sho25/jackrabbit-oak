@@ -1021,6 +1021,15 @@ name|selectorName
 return|;
 block|}
 specifier|public
+name|String
+name|getNodeType
+parameter_list|()
+block|{
+return|return
+name|nodeTypeName
+return|;
+block|}
+specifier|public
 name|boolean
 name|matchesAllTypes
 parameter_list|()

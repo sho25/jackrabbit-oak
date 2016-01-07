@@ -235,6 +235,13 @@ name|String
 name|getPathPlan
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the name of the filter node type.      *      * @return nodetype name      */
+annotation|@
+name|Nullable
+name|String
+name|getNodeType
+parameter_list|()
+function_decl|;
 comment|/**      * Checks whether nodes of all types can match this filter.      *      * @return {@code true} iff there are no type restrictions      */
 name|boolean
 name|matchesAllTypes
