@@ -1134,6 +1134,8 @@ argument_list|(
 name|store
 argument_list|,
 name|V_11
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 name|compactor

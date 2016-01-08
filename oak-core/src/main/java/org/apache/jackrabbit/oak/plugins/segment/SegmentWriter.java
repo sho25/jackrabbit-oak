@@ -1163,26 +1163,6 @@ specifier|final
 name|String
 name|wid
 decl_stmt|;
-specifier|public
-name|SegmentWriter
-parameter_list|(
-name|SegmentStore
-name|store
-parameter_list|,
-name|SegmentVersion
-name|version
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|store
-argument_list|,
-name|version
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * @param store     store to write to      * @param version   segment version to write      * @param wid       id of this writer      */
 specifier|public
 name|SegmentWriter
