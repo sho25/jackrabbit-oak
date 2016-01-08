@@ -1179,7 +1179,7 @@ name|store
 argument_list|,
 name|version
 argument_list|,
-literal|null
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
