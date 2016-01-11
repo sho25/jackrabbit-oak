@@ -7826,6 +7826,8 @@ condition|(
 name|isAppendableUpdate
 argument_list|(
 name|update
+argument_list|,
+literal|true
 argument_list|)
 operator|&&
 operator|!
@@ -9832,6 +9834,8 @@ condition|(
 name|isAppendableUpdate
 argument_list|(
 name|update
+argument_list|,
+literal|false
 argument_list|)
 operator|&&
 name|modcount
@@ -10221,7 +10225,6 @@ block|}
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/*      * Detect update operations that contains changes to column properties not handled by the current appending code.      */
 specifier|private
 specifier|static
 name|boolean
@@ -10229,8 +10232,17 @@ name|isAppendableUpdate
 parameter_list|(
 name|UpdateOp
 name|update
+parameter_list|,
+name|boolean
+name|batched
 parameter_list|)
 block|{
+if|if
+condition|(
+name|batched
+condition|)
+block|{
+comment|// Detect update operations not supported when doing batch updates
 for|for
 control|(
 name|Key
@@ -10258,6 +10270,7 @@ block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 block|}
 return|return
