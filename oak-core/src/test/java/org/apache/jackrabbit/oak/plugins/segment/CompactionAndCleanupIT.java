@@ -2845,6 +2845,7 @@ operator|.
 name|cleanup
 argument_list|()
 expr_stmt|;
+comment|// Traversal after cleanup might result in an SNFE
 name|traverse
 argument_list|(
 name|fileStore
