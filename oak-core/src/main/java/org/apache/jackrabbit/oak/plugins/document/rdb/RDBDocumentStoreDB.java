@@ -274,6 +274,28 @@ name|description
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getInitializationStatement
+parameter_list|()
+block|{
+return|return
+literal|"create alias if not exists unix_timestamp as $$ long unix_timestamp() { return System.currentTimeMillis()/1000L; } $$;"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getCurrentTimeStampInSecondsSyntax
+parameter_list|()
+block|{
+return|return
+literal|"select unix_timestamp()"
+return|;
+block|}
 block|}
 block|,
 name|DERBY
@@ -306,17 +328,6 @@ literal|11
 argument_list|,
 name|description
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getCurrentTimeStampInMsSyntax
-parameter_list|()
-block|{
-return|return
-literal|"CURRENT_TIMESTAMP"
 return|;
 block|}
 annotation|@
@@ -362,6 +373,17 @@ literal|3
 argument_list|,
 name|description
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getCurrentTimeStampInSecondsSyntax
+parameter_list|()
+block|{
+return|return
+literal|"select extract(epoch from now())::integer"
 return|;
 block|}
 annotation|@
@@ -594,6 +616,17 @@ literal|1
 argument_list|,
 name|description
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getCurrentTimeStampInSecondsSyntax
+parameter_list|()
+block|{
+return|return
+literal|"select cast (days(current_timestamp - current_timezone) - days('1970-01-01') as integer) * 86400 + midnight_seconds(current_timestamp - current_timezone) from sysibm.sysdummy1"
 return|;
 block|}
 specifier|public
@@ -1030,6 +1063,17 @@ annotation|@
 name|Override
 specifier|public
 name|String
+name|getCurrentTimeStampInSecondsSyntax
+parameter_list|()
+block|{
+return|return
+literal|"select (trunc(sys_extract_utc(systimestamp)) - to_date('01/01/1970', 'MM/DD/YYYY')) * 24 * 60 * 60 + to_number(to_char(sys_extract_utc(systimestamp), 'SSSSS')) from dual"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
 name|getInitializationStatement
 parameter_list|()
 block|{
@@ -1246,6 +1290,17 @@ literal|5
 argument_list|,
 name|description
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getCurrentTimeStampInSecondsSyntax
+parameter_list|()
+block|{
+return|return
+literal|"select unix_timestamp()"
 return|;
 block|}
 annotation|@
@@ -1710,11 +1765,11 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getCurrentTimeStampInMsSyntax
+name|getCurrentTimeStampInSecondsSyntax
 parameter_list|()
 block|{
 return|return
-literal|"CURRENT_TIMESTAMP"
+literal|"select datediff(second, dateadd(second, datediff(second, getutcdate(), getdate()), '1970-01-01'), getdate())"
 return|;
 block|}
 annotation|@
@@ -1967,14 +2022,15 @@ operator|.
 name|FETCHFIRST
 return|;
 block|}
-comment|/**      * Query syntax for current time in ms      */
+comment|/**      * Query syntax for current time in ms since the epoch      *       * @return the query syntax or empty string when no such syntax is available      */
 specifier|public
 name|String
-name|getCurrentTimeStampInMsSyntax
+name|getCurrentTimeStampInSecondsSyntax
 parameter_list|()
 block|{
+comment|// unfortunately, we don't have a portable statement for this
 return|return
-literal|"CURRENT_TIMESTAMP(4)"
+literal|""
 return|;
 block|}
 comment|/**      * Returns the CONCAT function or its equivalent function or sub-query. Note      * that the function MUST NOT cause a truncated value to be written!      *      * @param appendData      *            string to be inserted      * @param dataOctetLimit      *            expected capacity of data column      */

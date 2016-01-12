@@ -2985,13 +2985,6 @@ operator|.
 name|determineServerTimeDifferenceMillis
 argument_list|(
 name|connection
-argument_list|,
-name|getTable
-argument_list|(
-name|Collection
-operator|.
-name|NODES
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|connection
