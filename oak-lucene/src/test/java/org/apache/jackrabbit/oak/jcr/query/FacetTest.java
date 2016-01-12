@@ -555,7 +555,7 @@ decl_stmt|;
 name|String
 name|facetResult
 init|=
-literal|"text:[hallo (1), hello (1), oh hallo (1)]"
+literal|"{\"text\":[\"hallo\":1,\"hello\":1,\"oh hallo\":1]}"
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -768,7 +768,7 @@ decl_stmt|;
 name|String
 name|facetResult
 init|=
-literal|"tags:[repository (2), software (2), aem (1), apache (1), cosmetics (1), furniture (1)], tags:[repository (2), software (2), aem (1), apache (1), cosmetics (1), furniture (1)], tags:[repository (2), software (2), aem (1), apache (1), cosmetics (1), furniture (1)], tags:[repository (2), software (2), aem (1), apache (1), cosmetics (1), furniture (1)]"
+literal|"{\"tags\":[\"repository\":2,\"software\":2,\"aem\":1,\"apache\":1,\"cosmetics\":1,\"furniture\":1]}, {\"tags\":[\"repository\":2,\"software\":2,\"aem\":1,\"apache\":1,\"cosmetics\":1,\"furniture\":1]}, {\"tags\":[\"repository\":2,\"software\":2,\"aem\":1,\"apache\":1,\"cosmetics\":1,\"furniture\":1]}, {\"tags\":[\"repository\":2,\"software\":2,\"aem\":1,\"apache\":1,\"cosmetics\":1,\"furniture\":1]}"
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -908,7 +908,7 @@ decl_stmt|;
 name|String
 name|facetResult
 init|=
-literal|"text:[hallo (1), hello (1), oh hallo (1)]"
+literal|"{\"text\":[\"hallo\":1,\"hello\":1,\"oh hallo\":1]}"
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1061,9 +1061,7 @@ decl_stmt|;
 name|String
 name|facetResult
 init|=
-name|pn
-operator|+
-literal|":[hallo (1), oh hallo (1)]"
+literal|"{\"jcr:title\":[\"hallo\":1,\"oh hallo\":1]}"
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1252,24 +1250,14 @@ decl_stmt|;
 name|String
 name|facetResult
 init|=
-name|pn
-operator|+
-literal|":[hallo (1), oh hallo (1)], "
-operator|+
-name|pn2
-operator|+
-literal|":[a (1), b (1)], "
-operator|+
-name|pn
-operator|+
-literal|":[hallo (1), oh hallo (1)], "
-operator|+
-name|pn2
-operator|+
-literal|":[a (1), b (1)]"
+literal|"{\"jcr:title\":[\"hallo\":1,\"oh hallo\":1]}, {\"jcr:description\":[\"a\":1,\"b\":1]}"
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|facetResult
+operator|+
+literal|", "
+operator|+
 name|facetResult
 argument_list|,
 name|getResult
