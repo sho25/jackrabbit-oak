@@ -961,6 +961,9 @@ operator|new
 name|Compactor
 argument_list|(
 name|store
+operator|.
+name|getTracker
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|SegmentNodeState
@@ -1144,6 +1147,9 @@ operator|new
 name|Compactor
 argument_list|(
 name|store
+operator|.
+name|getTracker
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|compacted

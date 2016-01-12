@@ -549,6 +549,9 @@ operator|new
 name|PersistedCompactionMap
 argument_list|(
 name|store
+operator|.
+name|getTracker
+argument_list|()
 argument_list|)
 return|;
 block|}

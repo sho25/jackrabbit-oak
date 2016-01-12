@@ -321,6 +321,9 @@ operator|new
 name|Compactor
 argument_list|(
 name|segmentStore
+operator|.
+name|getTracker
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|addTestContent
@@ -435,6 +438,9 @@ operator|new
 name|Compactor
 argument_list|(
 name|segmentStore
+operator|.
+name|getTracker
+argument_list|()
 argument_list|,
 name|Suppliers
 operator|.

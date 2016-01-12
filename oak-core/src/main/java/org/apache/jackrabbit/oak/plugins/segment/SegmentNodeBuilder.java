@@ -220,6 +220,7 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+specifier|private
 name|SegmentNodeBuilder
 parameter_list|(
 name|SegmentNodeBuilder

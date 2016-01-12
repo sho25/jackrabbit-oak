@@ -815,6 +815,9 @@ operator|new
 name|PersistedCompactionMap
 argument_list|(
 name|segmentStore
+operator|.
+name|getTracker
+argument_list|()
 argument_list|)
 return|;
 block|}
