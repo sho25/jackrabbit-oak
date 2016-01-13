@@ -4397,14 +4397,6 @@ expr_stmt|;
 block|}
 comment|// Do actual cleanup outside of the lock to prevent blocking
 comment|// concurrent writers for a long time
-name|CompactionMap
-name|cm
-init|=
-name|tracker
-operator|.
-name|getCompactionMap
-argument_list|()
-decl_stmt|;
 name|LinkedList
 argument_list|<
 name|File
@@ -4445,8 +4437,6 @@ operator|.
 name|cleanup
 argument_list|(
 name|referencedIds
-argument_list|,
-name|cm
 argument_list|,
 name|cleanedIds
 argument_list|)
@@ -4630,6 +4620,14 @@ name|file
 argument_list|)
 expr_stmt|;
 block|}
+name|CompactionMap
+name|cm
+init|=
+name|tracker
+operator|.
+name|getCompactionMap
+argument_list|()
+decl_stmt|;
 name|cm
 operator|.
 name|remove
