@@ -2435,10 +2435,16 @@ name|conflictMessage
 init|=
 literal|null
 decl_stmt|;
+name|Set
+argument_list|<
 name|Revision
-name|conflictRevision
+argument_list|>
+name|conflictRevisions
 init|=
-name|newestRev
+name|Sets
+operator|.
+name|newHashSet
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2498,8 +2504,10 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|conflictRevision
-operator|=
+name|conflictRevisions
+operator|.
+name|add
+argument_list|(
 name|before
 operator|.
 name|getLocalDeleted
@@ -2507,12 +2515,20 @@ argument_list|()
 operator|.
 name|firstKey
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
 else|else
 block|{
+name|conflictRevisions
+operator|.
+name|add
+argument_list|(
+name|newestRev
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|op
@@ -2598,28 +2614,26 @@ condition|(
 name|conflictMessage
 operator|==
 literal|null
+operator|&&
+name|before
+operator|!=
+literal|null
 condition|)
 block|{
 comment|// the modification was successful
 comment|// -> check for collisions and conflict (concurrent updates
 comment|// on a node are possible if property updates do not overlap)
 comment|// TODO: unify above conflict detection and isConflicting()
-if|if
-condition|(
-operator|!
-name|collisions
-operator|.
-name|isEmpty
-argument_list|()
-operator|&&
-name|isConflicting
+name|boolean
+name|allowConflictingDeleteChange
+init|=
+name|allowConcurrentAddRemove
 argument_list|(
 name|before
 argument_list|,
 name|op
 argument_list|)
-condition|)
-block|{
+decl_stmt|;
 for|for
 control|(
 name|Revision
@@ -2628,7 +2642,6 @@ range|:
 name|collisions
 control|)
 block|{
-comment|// mark collisions on commit root
 name|Collision
 name|c
 init|=
@@ -2644,6 +2657,18 @@ argument_list|,
 name|revision
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|c
+operator|.
+name|isConflicting
+argument_list|()
+operator|&&
+operator|!
+name|allowConflictingDeleteChange
+condition|)
+block|{
+comment|// mark collisions on commit root
 if|if
 condition|(
 name|c
@@ -2694,9 +2719,12 @@ literal|", which was applied after the base revision\n"
 operator|+
 name|baseRevision
 expr_stmt|;
-name|conflictRevision
-operator|=
+name|conflictRevisions
+operator|.
+name|add
+argument_list|(
 name|r
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2753,7 +2781,7 @@ name|ConflictException
 argument_list|(
 name|conflictMessage
 argument_list|,
-name|conflictRevision
+name|conflictRevisions
 argument_list|)
 throw|;
 block|}

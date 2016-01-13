@@ -2744,7 +2744,9 @@ condition|(
 name|branch
 operator|.
 name|getBase
-argument_list|()
+argument_list|(
+name|changeRev
+argument_list|)
 operator|.
 name|isRevisionNewer
 argument_list|(
@@ -8036,7 +8038,6 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-specifier|private
 name|Map
 argument_list|<
 name|Revision
