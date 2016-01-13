@@ -2659,12 +2659,6 @@ block|}
 comment|/**      * Set a root node referring to a child node that lives in a different segments. Depending      * on the order how the SegmentBufferWriters associated with the threads used to create the      * nodes are flushed, this will introduce a forward reference between the segments.      * The current cleanup mechanism cannot handle forward references and removes the referenced      * segment causing a SNFE.      * This is a regression introduced with OAK-1828.      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3864"
-argument_list|)
-comment|// FIXME OAK-3864
 specifier|public
 name|void
 name|cleanupCyclicGraph
