@@ -2954,6 +2954,7 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// delete only if the last modified is OLDER than x
 name|metaStatement
 operator|.
 name|append
@@ -2961,6 +2962,7 @@ argument_list|(
 literal|" and LASTMOD<= ?"
 argument_list|)
 expr_stmt|;
+comment|// delete if there is NO entry where the last modified of the meta is YOUNGER than x
 name|dataStatement
 operator|.
 name|append
@@ -2971,7 +2973,7 @@ name|this
 operator|.
 name|tnMeta
 operator|+
-literal|" m where ID = m.ID and m.LASTMOD<= ?)"
+literal|" m where ID = m.ID and m.LASTMOD> ?)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3056,17 +3058,54 @@ name|maxLastModifiedTime
 argument_list|)
 expr_stmt|;
 block|}
-name|count
-operator|+=
+name|int
+name|deletedMeta
+init|=
 name|prepMeta
 operator|.
 name|executeUpdate
 argument_list|()
-expr_stmt|;
+decl_stmt|;
+name|int
+name|deletedData
+init|=
 name|prepData
 operator|.
-name|execute
+name|executeUpdate
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|deletedMeta
+operator|!=
+name|deletedData
+condition|)
+block|{
+name|String
+name|message
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"chunk deletion affected different numbers of DATA records (%s) and META records (%s)"
+argument_list|,
+name|deletedMeta
+argument_list|,
+name|deletedData
+argument_list|)
+decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+name|count
+operator|+=
+name|deletedMeta
 expr_stmt|;
 block|}
 finally|finally
