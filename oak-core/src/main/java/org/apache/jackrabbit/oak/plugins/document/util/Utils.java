@@ -229,16 +229,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|BasicDBObject
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -904,31 +894,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-if|if
-condition|(
-name|map
-operator|instanceof
-name|BasicDBObject
-condition|)
-block|{
-comment|// Based on empirical testing using JAMM
-name|size
-operator|+=
-literal|176
-expr_stmt|;
-name|size
-operator|+=
-name|map
-operator|.
-name|size
-argument_list|()
-operator|*
-literal|136
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// overhead for some other kind of map
+comment|// overhead for map object
 comment|// TreeMap (80) + unmodifiable wrapper (32)
 name|size
 operator|+=
@@ -944,7 +910,6 @@ argument_list|()
 operator|*
 literal|64
 expr_stmt|;
-block|}
 return|return
 name|size
 return|;
