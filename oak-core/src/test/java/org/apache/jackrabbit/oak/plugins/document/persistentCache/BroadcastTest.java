@@ -1055,7 +1055,7 @@ name|Exception
 block|{
 name|broadcast
 argument_list|(
-literal|"tcp:key 123"
+literal|"tcp:sendTo localhost;key 123"
 argument_list|,
 literal|90
 argument_list|)

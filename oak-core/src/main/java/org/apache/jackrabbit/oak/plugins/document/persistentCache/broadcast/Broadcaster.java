@@ -42,6 +42,14 @@ specifier|public
 interface|interface
 name|Broadcaster
 block|{
+comment|/**      * Change the dynamic broadcasting configuration.      *       * @param broadcastConfig the new configuration      */
+name|void
+name|setBroadcastConfig
+parameter_list|(
+name|DynamicBroadcastConfig
+name|broadcastConfig
+parameter_list|)
+function_decl|;
 comment|/**      * Send a message.      *       * @param buff the buffer      */
 name|void
 name|send

@@ -5088,7 +5088,7 @@ return|return
 name|cache
 return|;
 block|}
-specifier|private
+specifier|public
 name|PersistentCache
 name|getPersistentCache
 parameter_list|()

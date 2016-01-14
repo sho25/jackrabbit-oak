@@ -166,6 +166,18 @@ parameter_list|()
 block|{
 comment|// ignore
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setBroadcastConfig
+parameter_list|(
+name|DynamicBroadcastConfig
+name|broadcastConfig
+parameter_list|)
+block|{
+comment|// not yet implemented
+block|}
 block|}
 end_class
 
