@@ -3644,6 +3644,8 @@ argument_list|,
 name|toKey
 argument_list|,
 name|indexedProperty
+operator|!=
+literal|null
 argument_list|,
 name|resultSize
 argument_list|,
@@ -4726,6 +4728,10 @@ name|getId
 argument_list|()
 argument_list|,
 name|newEntry
+argument_list|,
+literal|true
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}

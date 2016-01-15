@@ -1013,7 +1013,7 @@ parameter_list|,
 name|String
 name|toKey
 parameter_list|,
-name|String
+name|boolean
 name|indexedProperty
 parameter_list|,
 name|int
@@ -1040,8 +1040,6 @@ name|TimerStats
 name|timer
 init|=
 name|indexedProperty
-operator|!=
-literal|null
 condition|?
 name|queryNodesWithFilterTimer
 else|:
@@ -1319,6 +1317,12 @@ name|key
 parameter_list|,
 name|boolean
 name|newEntry
+parameter_list|,
+name|boolean
+name|success
+parameter_list|,
+name|int
+name|retryCount
 parameter_list|)
 block|{
 if|if
@@ -1330,6 +1334,7 @@ operator|.
 name|NODES
 condition|)
 block|{
+comment|//TODO Meter for success and retryCount
 if|if
 condition|(
 name|newEntry

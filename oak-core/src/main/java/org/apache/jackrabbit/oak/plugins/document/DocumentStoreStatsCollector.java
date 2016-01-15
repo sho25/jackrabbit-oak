@@ -29,16 +29,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
 begin_interface
 specifier|public
 interface|interface
@@ -75,7 +65,7 @@ name|boolean
 name|isSlaveOk
 parameter_list|)
 function_decl|;
-comment|/**      * Called when query with given parameters is performed      *  @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty the name of the indexed property (optional)      * @param resultSize number of documents found for given query      * @param lockTime time in millis to acquire any lock. If no lock was required then its -1      * @param isSlaveOk true if find was performed against a secondary instance      */
+comment|/**      * Called when query with given parameters is performed      * @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty true if indexProperty was specified      * @param resultSize number of documents found for given query      * @param lockTime time in millis to acquire any lock. If no lock was required then its -1      * @param isSlaveOk true if find was performed against a secondary instance      */
 name|void
 name|doneQuery
 parameter_list|(
@@ -91,9 +81,7 @@ parameter_list|,
 name|String
 name|toKey
 parameter_list|,
-annotation|@
-name|Nullable
-name|String
+name|boolean
 name|indexedProperty
 parameter_list|,
 name|int
@@ -140,7 +128,7 @@ name|int
 name|updateCount
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a update operation was completed which affected single      * document.      *  @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param key collection which got updated or inserted      * @param newEntry true if the document was newly created due to given operation      */
+comment|/**      * Called when a update operation was completed which affected single      * document.      * @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param key collection which got updated or inserted      * @param newEntry true if the document was newly created due to given operation      * @param success true if the update was success      * @param retryCount number of retries done to get the update      */
 name|void
 name|doneFindAndModify
 parameter_list|(
@@ -155,6 +143,12 @@ name|key
 parameter_list|,
 name|boolean
 name|newEntry
+parameter_list|,
+name|boolean
+name|success
+parameter_list|,
+name|int
+name|retryCount
 parameter_list|)
 function_decl|;
 block|}

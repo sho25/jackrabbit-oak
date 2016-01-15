@@ -579,7 +579,7 @@ literal|"foo"
 argument_list|,
 literal|"bar"
 argument_list|,
-literal|null
+literal|false
 argument_list|,
 literal|5
 argument_list|,
@@ -633,7 +633,7 @@ literal|"foo"
 argument_list|,
 literal|"bar"
 argument_list|,
-literal|null
+literal|false
 argument_list|,
 literal|7
 argument_list|,
@@ -687,7 +687,7 @@ literal|"foo"
 argument_list|,
 literal|"bar"
 argument_list|,
-literal|null
+literal|false
 argument_list|,
 literal|7
 argument_list|,
@@ -750,7 +750,7 @@ literal|"foo"
 argument_list|,
 literal|"bar"
 argument_list|,
-literal|null
+literal|false
 argument_list|,
 literal|5
 argument_list|,
@@ -876,6 +876,10 @@ argument_list|,
 literal|"foo"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -924,6 +928,10 @@ argument_list|,
 literal|"foo"
 argument_list|,
 literal|false
+argument_list|,
+literal|true
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1029,6 +1037,10 @@ argument_list|,
 literal|"foo"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1064,6 +1076,10 @@ argument_list|,
 literal|"foo"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1102,6 +1118,10 @@ argument_list|,
 literal|"foo"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1137,6 +1157,10 @@ argument_list|,
 literal|"foo"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1175,6 +1199,10 @@ argument_list|,
 literal|"foo"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|assertEquals

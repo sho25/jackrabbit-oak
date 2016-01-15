@@ -165,6 +165,18 @@ name|mockito
 operator|.
 name|Matchers
 operator|.
+name|anyInt
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Matchers
+operator|.
 name|anyLong
 import|;
 end_import
@@ -178,18 +190,6 @@ operator|.
 name|Matchers
 operator|.
 name|eq
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Matchers
-operator|.
-name|isNull
 import|;
 end_import
 
@@ -660,11 +660,9 @@ operator|+
 literal|"A"
 argument_list|)
 argument_list|,
-name|isNull
+name|eq
 argument_list|(
-name|String
-operator|.
-name|class
+literal|false
 argument_list|)
 argument_list|,
 comment|//indexedProperty
@@ -674,10 +672,8 @@ literal|5
 argument_list|)
 argument_list|,
 comment|// resultSize
-name|eq
-argument_list|(
-literal|0L
-argument_list|)
+name|anyLong
+argument_list|()
 argument_list|,
 comment|//lockTime
 name|eq
@@ -975,6 +971,14 @@ name|eq
 argument_list|(
 literal|false
 argument_list|)
+argument_list|,
+name|eq
+argument_list|(
+literal|true
+argument_list|)
+argument_list|,
+name|anyInt
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
