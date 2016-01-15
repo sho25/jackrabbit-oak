@@ -394,7 +394,7 @@ name|label
 init|=
 literal|null
 decl_stmt|;
-name|Integer
+name|int
 name|count
 decl_stmt|;
 while|while
@@ -543,7 +543,7 @@ name|label
 decl_stmt|;
 specifier|private
 specifier|final
-name|Integer
+name|int
 name|count
 decl_stmt|;
 specifier|private
@@ -552,7 +552,7 @@ parameter_list|(
 name|String
 name|label
 parameter_list|,
-name|Integer
+name|int
 name|count
 parameter_list|)
 block|{
@@ -582,10 +582,8 @@ name|label
 return|;
 block|}
 comment|/**          * get the facet count          * @return an integer          */
-annotation|@
-name|Nonnull
 specifier|public
-name|Integer
+name|int
 name|getCount
 parameter_list|()
 block|{
