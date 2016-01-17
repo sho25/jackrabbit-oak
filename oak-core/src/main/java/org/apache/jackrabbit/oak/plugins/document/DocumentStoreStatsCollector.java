@@ -39,13 +39,18 @@ name|void
 name|doneFindCached
 parameter_list|(
 name|Collection
+argument_list|<
+name|?
+extends|extends
+name|Document
+argument_list|>
 name|collection
 parameter_list|,
 name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a document with given key is looked from remote store      *  @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param key collection key      * @param docFound true if document is found      * @param isSlaveOk true if find was performed against a secondary instance      */
+comment|/**      * Called when a document with given key is read from remote store      * @param timeTakenNanos time taken      * @param collection the collection      * @param key collection key      * @param docFound true if document is found      * @param isSlaveOk true if find was performed against a secondary instance      */
 name|void
 name|doneFindUncached
 parameter_list|(
@@ -53,6 +58,11 @@ name|long
 name|timeTakenNanos
 parameter_list|,
 name|Collection
+argument_list|<
+name|?
+extends|extends
+name|Document
+argument_list|>
 name|collection
 parameter_list|,
 name|String
@@ -65,7 +75,7 @@ name|boolean
 name|isSlaveOk
 parameter_list|)
 function_decl|;
-comment|/**      * Called when query with given parameters is performed      * @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty true if indexProperty was specified      * @param resultSize number of documents found for given query      * @param lockTime time in millis to acquire any lock. If no lock was required then its -1      * @param isSlaveOk true if find was performed against a secondary instance      */
+comment|/**      * Called when query with given parameters is performed      * @param timeTakenNanos time taken      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty true if indexedProperty was specified      * @param resultSize number of documents found for given query      * @param lockTime time in millis to acquire any lock ({@code -1} if no lock was required)      * @param isSlaveOk true if find was performed against a secondary instance      */
 name|void
 name|doneQuery
 parameter_list|(
@@ -73,6 +83,11 @@ name|long
 name|timeTakenNanos
 parameter_list|,
 name|Collection
+argument_list|<
+name|?
+extends|extends
+name|Document
+argument_list|>
 name|collection
 parameter_list|,
 name|String
@@ -94,7 +109,7 @@ name|boolean
 name|isSlaveOk
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a document is created in the given collection      * @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param ids list of ids which were sent for creation      * @param insertSuccess true if the insert was successful      */
+comment|/**      * Called when a document is created in the given collection      * @param timeTakenNanos time taken      * @param collection the collection      * @param ids list of ids request to be created      * @param insertSuccess true if the insert was successful      */
 name|void
 name|doneCreate
 parameter_list|(
@@ -102,6 +117,11 @@ name|long
 name|timeTakenNanos
 parameter_list|,
 name|Collection
+argument_list|<
+name|?
+extends|extends
+name|Document
+argument_list|>
 name|collection
 parameter_list|,
 name|List
@@ -114,7 +134,7 @@ name|boolean
 name|insertSuccess
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a given updated has modified multiple documents      *  @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param updateCount number of updates performed      */
+comment|/**      * Called when a given updated has modified multiple documents      * @param timeTakenNanos time taken      * @param collection the collection      * @param updateCount number of updates performed      */
 name|void
 name|doneUpdate
 parameter_list|(
@@ -122,13 +142,18 @@ name|long
 name|timeTakenNanos
 parameter_list|,
 name|Collection
+argument_list|<
+name|?
+extends|extends
+name|Document
+argument_list|>
 name|collection
 parameter_list|,
 name|int
 name|updateCount
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a update operation was completed which affected single      * document.      * @param timeTakenNanos watch for determining time taken      * @param collection the collection      * @param key collection which got updated or inserted      * @param newEntry true if the document was newly created due to given operation      * @param success true if the update was success      * @param retryCount number of retries done to get the update      */
+comment|/**      * Called when a update operation was completed which affected single      * document.      * @param timeTakenNanos time taken      * @param collection the collection      * @param key collection which got updated or inserted      * @param newEntry true if the document was newly created due to given operation      * @param success true if the update was success      * @param retryCount number of retries done to get the update      */
 name|void
 name|doneFindAndModify
 parameter_list|(
@@ -136,6 +161,11 @@ name|long
 name|timeTakenNanos
 parameter_list|,
 name|Collection
+argument_list|<
+name|?
+extends|extends
+name|Document
+argument_list|>
 name|collection
 parameter_list|,
 name|String
