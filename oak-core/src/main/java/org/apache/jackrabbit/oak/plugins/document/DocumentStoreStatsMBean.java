@@ -127,6 +127,14 @@ name|CompositeData
 name|getUpdateNodesHistory
 parameter_list|()
 function_decl|;
+name|CompositeData
+name|getUpdateNodesRetryHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getUpdateNodesFailureHistory
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
