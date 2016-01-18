@@ -727,6 +727,62 @@ return|return
 literal|false
 return|;
 block|}
+else|else
+block|{
+comment|// check again if revision is still not committed
+comment|// See OAK-3882
+if|if
+condition|(
+name|commitRoot
+operator|.
+name|isCommitted
+argument_list|(
+name|revision
+argument_list|)
+condition|)
+block|{
+comment|// meanwhile the change was committed and
+comment|// already moved to a previous document
+comment|// -> remove collision marker again
+name|UpdateOp
+name|revert
+init|=
+operator|new
+name|UpdateOp
+argument_list|(
+name|op
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
+name|NodeDocument
+operator|.
+name|removeCollision
+argument_list|(
+name|revert
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
+name|findAndUpdate
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|op
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+block|}
 comment|// otherwise collision marker was set successfully
 name|LOG
 operator|.
