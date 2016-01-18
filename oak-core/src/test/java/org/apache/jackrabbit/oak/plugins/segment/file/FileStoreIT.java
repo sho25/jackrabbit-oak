@@ -1280,7 +1280,31 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-comment|// first 1kB
+name|RandomAccessFile
+name|data0
+init|=
+operator|new
+name|RandomAccessFile
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|directory
+argument_list|,
+literal|"data00000a.tar"
+argument_list|)
+argument_list|,
+literal|"r"
+argument_list|)
+decl_stmt|;
+name|long
+name|pos0
+init|=
+name|data0
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
 name|SegmentNodeState
 name|base
 init|=
@@ -1323,7 +1347,14 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-comment|// second 1kB
+name|long
+name|pos1
+init|=
+name|data0
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
 name|base
 operator|=
 name|store
@@ -1364,7 +1395,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|// third 1kB
 name|store
 operator|=
 operator|new
@@ -1418,7 +1448,7 @@ name|file
 operator|.
 name|setLength
 argument_list|(
-literal|2048
+name|pos1
 argument_list|)
 expr_stmt|;
 name|file
@@ -1478,7 +1508,7 @@ name|file
 operator|.
 name|setLength
 argument_list|(
-literal|1024
+name|pos0
 argument_list|)
 expr_stmt|;
 name|file
@@ -1512,6 +1542,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|store
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|data0
 operator|.
 name|close
 argument_list|()
