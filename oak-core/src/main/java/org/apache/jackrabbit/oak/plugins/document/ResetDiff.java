@@ -394,6 +394,16 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
+name|NodeDocument
+operator|.
+name|removeCommitRoot
+argument_list|(
+name|getUpdateOp
+argument_list|()
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
 name|String
 name|p
 init|=
