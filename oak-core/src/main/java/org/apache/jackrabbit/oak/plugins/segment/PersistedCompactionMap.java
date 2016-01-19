@@ -1304,6 +1304,7 @@ block|{
 return|return
 literal|"cm-"
 operator|+
+operator|(
 name|tracker
 operator|.
 name|getCompactionMap
@@ -1313,6 +1314,7 @@ name|getGeneration
 argument_list|()
 operator|+
 literal|1
+operator|)
 return|;
 block|}
 comment|/**      * @return 0      */

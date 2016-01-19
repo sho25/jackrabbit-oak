@@ -695,6 +695,7 @@ name|wid
 init|=
 literal|"c-"
 operator|+
+operator|(
 name|tracker
 operator|.
 name|getCompactionMap
@@ -704,6 +705,7 @@ name|getGeneration
 argument_list|()
 operator|+
 literal|1
+operator|)
 decl_stmt|;
 name|this
 operator|.
