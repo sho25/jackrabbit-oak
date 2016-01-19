@@ -5881,6 +5881,33 @@ argument_list|,
 literal|"Write the gc generation graph instead of the full graph"
 argument_list|)
 decl_stmt|;
+name|OptionSpec
+argument_list|<
+name|String
+argument_list|>
+name|regExpArg
+init|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"pattern"
+argument_list|,
+literal|"Regular exception specifying which nodes to include (optional). "
+operator|+
+literal|"Ignore when --gc is specified."
+argument_list|)
+operator|.
+name|withRequiredArg
+argument_list|()
+operator|.
+name|ofType
+argument_list|(
+name|String
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 name|OptionSet
 name|options
 init|=
@@ -5966,6 +5993,16 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|String
+name|regExp
+init|=
+name|regExpArg
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+decl_stmt|;
 name|File
 name|outFile
 init|=
@@ -6135,6 +6172,9 @@ argument_list|(
 literal|"Writing graph to "
 operator|+
 name|outFile
+operator|.
+name|getAbsolutePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|FileOutputStream
@@ -6173,6 +6213,8 @@ argument_list|,
 name|out
 argument_list|,
 name|epoch
+argument_list|,
+name|regExp
 argument_list|)
 expr_stmt|;
 block|}
