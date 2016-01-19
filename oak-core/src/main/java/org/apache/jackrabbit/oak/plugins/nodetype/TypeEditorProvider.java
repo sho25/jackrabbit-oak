@@ -686,6 +686,17 @@ name|builder
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Node type changes: "
+operator|+
+name|modifiedTypes
+operator|+
+literal|" appear not to be trivial, starting repository scan"
+argument_list|)
+expr_stmt|;
 name|CommitFailedException
 name|exception
 init|=
