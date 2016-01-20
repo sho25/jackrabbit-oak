@@ -764,11 +764,9 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// allow the cluster to align
-name|Thread
-operator|.
-name|sleep
+name|alignCluster
 argument_list|(
-literal|1500
+name|mks
 argument_list|)
 expr_stmt|;
 comment|// asserting the initial state

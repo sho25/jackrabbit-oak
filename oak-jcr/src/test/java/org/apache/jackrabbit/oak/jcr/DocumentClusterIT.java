@@ -49,6 +49,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -168,6 +178,26 @@ operator|.
 name|util
 operator|.
 name|MongoConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
 import|;
 end_import
 
@@ -589,7 +619,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      *<p>       * ensures that the cluster is aligned by running all the background operations      *</p>      *       *<p>      * In order to use this you have to initialise the cluster with {@code setAsyncDelay(0)}.      *</p>      *       * @param mks the list of {@link DocumentMK} composing the cluster. Cannot be null.      */
+comment|/**      *<p>       * ensures that the cluster is aligned by running all the background operations      *</p>      *      * @param mks the list of {@link DocumentMK} composing the cluster. Cannot be null.      */
 specifier|static
 name|void
 name|alignCluster
@@ -604,21 +634,7 @@ argument_list|>
 name|mks
 parameter_list|)
 block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|2
-condition|;
-name|i
-operator|++
-control|)
-block|{
+comment|// in a first round let all MKs run their background update
 for|for
 control|(
 name|DocumentMK
@@ -636,6 +652,50 @@ name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
 block|}
+name|String
+name|id
+init|=
+name|Utils
+operator|.
+name|getIdFromPath
+argument_list|(
+literal|"/"
+argument_list|)
+decl_stmt|;
+comment|// in the second round each MK will pick up changes from the others
+for|for
+control|(
+name|DocumentMK
+name|mk
+range|:
+name|mks
+control|)
+block|{
+comment|// invalidate root document to make sure background read
+comment|// is forced to fetch the document from the store
+name|mk
+operator|.
+name|getDocumentStore
+argument_list|()
+operator|.
+name|invalidateCache
+argument_list|(
+name|Collections
+operator|.
+name|singleton
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|mk
+operator|.
+name|getNodeStore
+argument_list|()
+operator|.
+name|runBackgroundOperations
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|/**      * set up the cluster connections. Same as {@link #setUpCluster(Class, List, List, int)}      * providing {@link #NOT_PROVIDED} as {@code asyncDelay}      *       * @param clazz class used for logging into Mongo itself      * @param mks the list of mks to work on.      * @param repos list of {@link Repository} created on each {@code mks}      * @throws Exception      */
