@@ -1881,6 +1881,8 @@ operator|.
 name|updateCommitRoot
 argument_list|(
 name|commit
+argument_list|,
+name|revision
 argument_list|)
 decl_stmt|;
 if|if
@@ -2033,6 +2035,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+try|try
+block|{
 name|rollback
 argument_list|(
 name|newNodes
@@ -2042,6 +2046,25 @@ argument_list|,
 name|commitRoot
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+comment|// catch any exception caused by the rollback, log it
+comment|// and throw the original exception
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Rollback failed"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
 throw|throw
 name|e
 throw|;
