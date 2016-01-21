@@ -13,6 +13,10 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
 name|fixture
 package|;
 end_package
@@ -24,6 +28,22 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|fixture
+operator|.
+name|NodeStoreFixture
 import|;
 end_import
 
