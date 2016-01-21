@@ -6693,7 +6693,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Error occurred while closing Off Heap Cache"
+literal|"Error occurred while closing nodes cache"
 argument_list|,
 name|e
 argument_list|)
