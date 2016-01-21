@@ -468,6 +468,12 @@ name|INDEX_NODE_NAME
 init|=
 literal|"indexNodeName"
 decl_stmt|;
+comment|/**      * Property definition name to indicate indexing node name      * Its value should match {@link FieldNames#NODE_NAME}      */
+name|String
+name|PROPDEF_PROP_NODE_NAME
+init|=
+literal|":nodeName"
+decl_stmt|;
 comment|/**      * Boolean property indicating that Lucene directory content      * should be saved as part of NodeState itself as a multi value property      * to allow faster reads (OAK-2809)      */
 name|String
 name|SAVE_DIR_LISTING
