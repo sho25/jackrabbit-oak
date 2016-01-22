@@ -15,7 +15,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|blob
+name|segment
 operator|.
 name|migration
 package|;
@@ -38,6 +38,26 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|blob
+operator|.
+name|migration
+operator|.
+name|AbstractMigratorTest
 import|;
 end_import
 

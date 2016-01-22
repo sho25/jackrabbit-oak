@@ -15,7 +15,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|blob
+name|segment
 operator|.
 name|migration
 package|;
@@ -23,9 +23,9 @@ end_package
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -35,9 +35,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -47,9 +47,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -100,6 +100,26 @@ operator|.
 name|api
 operator|.
 name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|blob
+operator|.
+name|migration
+operator|.
+name|DepthFirstNodeIterator
 import|;
 end_import
 
