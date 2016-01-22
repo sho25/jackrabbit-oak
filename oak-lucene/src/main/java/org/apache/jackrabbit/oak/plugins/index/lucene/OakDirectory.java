@@ -1954,6 +1954,9 @@ name|blobSize
 argument_list|,
 name|length
 operator|-
+operator|(
+name|long
+operator|)
 name|i
 operator|*
 name|blobSize
@@ -2028,6 +2031,9 @@ name|blobSize
 argument_list|,
 name|length
 operator|-
+operator|(
+name|long
+operator|)
 name|index
 operator|*
 name|blobSize
