@@ -1255,7 +1255,7 @@ block|{
 name|long
 name|delay
 init|=
-literal|0
+literal|500
 decl_stmt|;
 name|ConsolidatorTask
 name|t
@@ -1285,7 +1285,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"[{}] Scheduling process by {}secs"
+literal|"[{}] Scheduling process by {}ms"
 argument_list|,
 name|t
 operator|.
@@ -1305,7 +1305,7 @@ name|delay
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 block|}
@@ -1322,13 +1322,30 @@ argument_list|<
 name|Void
 argument_list|>
 block|{
+comment|/**          * millis over which the task will timeout          */
 specifier|public
 specifier|static
 specifier|final
 name|long
 name|MAX_TIMEOUT
 init|=
-literal|32
+name|Long
+operator|.
+name|getLong
+argument_list|(
+literal|"oak.atomiccounter.task.timeout"
+argument_list|,
+literal|32000
+argument_list|)
+decl_stmt|;
+comment|/**          * millis below which the next delay will schedule at this amount.           */
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|MIN_TIMEOUT
+init|=
+literal|500
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1874,7 +1891,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"[{}] The consolidator task for '{}' time out. Cancelling the retry."
+literal|"[{}] The consolidator task for '{}' timed out. Cancelling the retry."
 argument_list|,
 name|name
 argument_list|,
@@ -1898,7 +1915,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"[{}] Rescheduling '{}' by {}sec"
+literal|"[{}] Rescheduling '{}' by {}ms"
 argument_list|,
 name|task
 operator|.
@@ -1920,7 +1937,7 @@ name|d
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 block|}
@@ -1937,22 +1954,11 @@ if|if
 condition|(
 name|currentDelay
 operator|<
-literal|0
+name|MIN_TIMEOUT
 condition|)
 block|{
 return|return
-literal|0
-return|;
-block|}
-if|if
-condition|(
-name|currentDelay
-operator|==
-literal|0
-condition|)
-block|{
-return|return
-literal|1
+name|MIN_TIMEOUT
 return|;
 block|}
 if|if
@@ -1983,19 +1989,10 @@ name|long
 name|delay
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 name|delay
 operator|>
 name|MAX_TIMEOUT
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 specifier|public
