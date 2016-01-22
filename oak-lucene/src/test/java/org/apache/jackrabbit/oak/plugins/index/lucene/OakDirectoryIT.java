@@ -388,7 +388,11 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//    @Ignore("OAK-3911")
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-3911"
+argument_list|)
 annotation|@
 name|Test
 specifier|public
