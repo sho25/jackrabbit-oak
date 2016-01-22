@@ -438,6 +438,12 @@ name|PROP_USE_IN_SUGGEST
 init|=
 literal|"useInSuggest"
 decl_stmt|;
+comment|/**      * subnode holding configuration for suggestions      */
+name|String
+name|SUGGESTION_CONFIG
+init|=
+literal|"suggestion"
+decl_stmt|;
 comment|/**      * update frequency of the suggester in minutes      */
 name|String
 name|SUGGEST_UPDATE_FREQUENCY_MINUTES

@@ -660,6 +660,13 @@ condition|)
 block|{
 name|def
 operator|.
+name|addNode
+argument_list|(
+name|LuceneIndexConstants
+operator|.
+name|SUGGESTION_CONFIG
+argument_list|)
+operator|.
 name|setProperty
 argument_list|(
 literal|"suggestAnalyzed"
