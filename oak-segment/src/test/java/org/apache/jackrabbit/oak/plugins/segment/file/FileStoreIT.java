@@ -55,9 +55,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -67,9 +67,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -79,9 +79,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -1355,6 +1355,11 @@ operator|.
 name|length
 argument_list|()
 decl_stmt|;
+name|data0
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|base
 operator|=
 name|store
@@ -1542,11 +1547,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|store
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|data0
 operator|.
 name|close
 argument_list|()
