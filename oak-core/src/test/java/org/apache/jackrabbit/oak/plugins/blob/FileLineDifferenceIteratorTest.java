@@ -711,6 +711,8 @@ literal|"a,d"
 argument_list|,
 name|asList
 argument_list|(
+literal|"0xb"
+argument_list|,
 literal|"e"
 argument_list|,
 literal|"f"
@@ -723,13 +725,10 @@ literal|"a,0xb,d,e,f"
 argument_list|,
 literal|"a,d,e,f,g"
 argument_list|,
-name|Collections
-operator|.
-expr|<
-name|String
-operator|>
-name|emptyList
-argument_list|()
+name|asList
+argument_list|(
+literal|"0xb"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

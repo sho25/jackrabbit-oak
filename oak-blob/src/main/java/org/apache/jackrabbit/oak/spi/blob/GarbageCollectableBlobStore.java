@@ -168,7 +168,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Resolve chunks from the given Id.      *       * @param blobId the blob id      * @return the iterator      * @throws IOException      *             Signals that an I/O exception has occurred.      */
+comment|/**      * Resolve chunks stored in the blob store from the given Id.      * This will not return any chunks stored in-line in the id.      *       * @param blobId the blob id      * @return the iterator      * @throws IOException      *             Signals that an I/O exception has occurred.      */
 name|Iterator
 argument_list|<
 name|String
