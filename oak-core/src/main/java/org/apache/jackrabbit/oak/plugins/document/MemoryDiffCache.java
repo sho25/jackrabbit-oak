@@ -134,6 +134,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -214,6 +234,21 @@ name|MemoryDiffCache
 extends|extends
 name|DiffCache
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MemoryDiffCache
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Diff cache.      *      * Key: PathRev, value: StringValue      */
 specifier|protected
 specifier|final
@@ -584,6 +619,19 @@ argument_list|,
 name|to
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Adding cache entry for {} from {} to {}"
+argument_list|,
+name|path
+argument_list|,
+name|from
+argument_list|,
+name|to
+argument_list|)
+expr_stmt|;
 name|diffCache
 operator|.
 name|put

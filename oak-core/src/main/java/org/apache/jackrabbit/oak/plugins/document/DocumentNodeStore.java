@@ -10743,7 +10743,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Diff performed via '{}' at [{}] between revisions [{}] => [{}] took {} ms ({} ms), diff '{}'"
+literal|"Diff performed via '{}' at [{}] between revisions [{}] => [{}] took {} ms ({} ms), diff '{}', external '{}"
 argument_list|,
 name|diffAlgo
 argument_list|,
@@ -10765,6 +10765,11 @@ operator|-
 name|start
 argument_list|,
 name|diff
+argument_list|,
+name|to
+operator|.
+name|isFromExternalChange
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

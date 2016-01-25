@@ -213,6 +213,26 @@ name|StringValue
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A diff cache, which is pro-actively filled after a commit.  */
 end_comment
@@ -224,6 +244,21 @@ name|LocalDiffCache
 extends|extends
 name|DiffCache
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|LocalDiffCache
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Limit is arbitrary for now i.e. 16 MB. Same as in MongoDiffCache      */
 specifier|private
 specifier|static
@@ -516,6 +551,17 @@ name|changesPerPath
 argument_list|,
 name|size
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Adding cache entry from {} to {}"
+argument_list|,
+name|from
+argument_list|,
+name|to
 argument_list|)
 expr_stmt|;
 return|return
