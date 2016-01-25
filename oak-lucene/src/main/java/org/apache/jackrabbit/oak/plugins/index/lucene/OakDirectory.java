@@ -801,6 +801,15 @@ name|this
 operator|.
 name|directoryBuilder
 operator|=
+name|readOnly
+condition|?
+name|builder
+operator|.
+name|getChildNode
+argument_list|(
+name|dataNodeName
+argument_list|)
+else|:
 name|builder
 operator|.
 name|child
