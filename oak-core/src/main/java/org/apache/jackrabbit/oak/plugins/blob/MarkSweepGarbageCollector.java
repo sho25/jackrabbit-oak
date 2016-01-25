@@ -1402,6 +1402,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Blob garbage collection error"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 finally|finally
 block|{
 if|if
@@ -2508,6 +2527,32 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|count
+operator|.
+name|get
+argument_list|()
+operator|%
+name|getBatchCount
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Collected ({}) blob references"
+argument_list|,
+name|count
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2963,9 +3008,9 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
-literal|"retrieved {} blobs"
+literal|"Retrieved ({}) blobs"
 argument_list|,
 name|blobsCount
 argument_list|)
@@ -2997,9 +3042,9 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
-literal|"retrieved {} blobs"
+literal|"Retrieved ({}) blobs"
 argument_list|,
 name|blobsCount
 argument_list|)
