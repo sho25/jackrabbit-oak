@@ -5037,11 +5037,7 @@ condition|)
 block|{
 comment|// The write operations below can only performed with the segment version
 comment|// matching the tool version
-name|System
-operator|.
-name|err
-operator|.
-name|println
+name|failWith
 argument_list|(
 literal|"Segment version mismatch. "
 operator|+
@@ -5056,14 +5052,6 @@ operator|+
 literal|". "
 operator|+
 literal|"Please use the respective version of this tool"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
