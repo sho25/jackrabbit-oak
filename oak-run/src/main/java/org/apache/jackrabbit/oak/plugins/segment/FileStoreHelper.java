@@ -237,6 +237,32 @@ specifier|private
 name|FileStoreHelper
 parameter_list|()
 block|{     }
+comment|/**      * Helper method to determine the segment version of the segment      * containing the current root node state.      * @param fileStore      * @return      */
+specifier|public
+specifier|static
+name|SegmentVersion
+name|getSegmentVersion
+parameter_list|(
+name|FileStore
+name|fileStore
+parameter_list|)
+block|{
+return|return
+name|fileStore
+operator|.
+name|getHead
+argument_list|()
+operator|.
+name|getRecordId
+argument_list|()
+operator|.
+name|getSegment
+argument_list|()
+operator|.
+name|getSegmentVersion
+argument_list|()
+return|;
+block|}
 specifier|public
 specifier|static
 name|List
