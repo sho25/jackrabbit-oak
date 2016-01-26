@@ -4699,6 +4699,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|SegmentVersion
+name|segmentVersion
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|args
@@ -4865,6 +4870,13 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
+name|segmentVersion
+operator|=
+name|getSegmentVersion
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -4967,6 +4979,51 @@ literal|" checkpoints"
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|segmentVersion
+operator|!=
+literal|null
+operator|&&
+name|segmentVersion
+operator|!=
+name|LATEST_VERSION
+condition|)
+block|{
+comment|// The write operations below can only performed with the segment version
+comment|// matching the tool version
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Segment version mismatch. "
+operator|+
+literal|"Found "
+operator|+
+name|segmentVersion
+operator|+
+literal|", expected "
+operator|+
+name|LATEST_VERSION
+operator|+
+literal|". "
+operator|+
+literal|"Please use the respective version of this tool"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|exit
+argument_list|(
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 literal|"rm-all"
@@ -5037,6 +5094,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+elseif|else
 if|if
 condition|(
 literal|"rm-unreferenced"
@@ -5107,6 +5165,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+elseif|else
 if|if
 condition|(
 literal|"rm"
