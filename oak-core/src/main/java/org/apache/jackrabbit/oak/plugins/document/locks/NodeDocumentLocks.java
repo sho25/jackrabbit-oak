@@ -27,6 +27,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|locks
@@ -40,12 +50,23 @@ specifier|public
 interface|interface
 name|NodeDocumentLocks
 block|{
-comment|/**      * Acquires a log for the given key.      *      * @param key a key.      * @return the acquired lock for the given key.      */
+comment|/**      * Acquires a lock for the given key.      *      * @param key a key.      * @return the acquired lock for the given key.      */
 name|Lock
 name|acquire
 parameter_list|(
 name|String
 name|key
+parameter_list|)
+function_decl|;
+comment|/**      * Acquires locks for the given keys. Locks are sorted before the operation      * to avoid deadlocks.      *      * @param keys keys      * @return the object wrapping the acquired locks      */
+name|Lock
+name|acquire
+parameter_list|(
+name|Collection
+argument_list|<
+name|String
+argument_list|>
+name|keys
 parameter_list|)
 function_decl|;
 block|}
