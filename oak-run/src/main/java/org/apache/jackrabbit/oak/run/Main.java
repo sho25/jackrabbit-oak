@@ -2420,6 +2420,8 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
+argument_list|,
+name|LATEST_VERSION
 argument_list|)
 decl_stmt|;
 name|FileStoreBackup
@@ -2500,6 +2502,8 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
+argument_list|,
+name|LATEST_VERSION
 argument_list|)
 decl_stmt|;
 name|FileStoreRestore
@@ -3440,6 +3444,9 @@ name|closer
 parameter_list|,
 name|String
 name|h
+parameter_list|,
+name|SegmentVersion
+name|expectedSegmentVersion
 parameter_list|)
 throws|throws
 name|IOException
@@ -3746,6 +3753,43 @@ argument_list|,
 name|TAR_STORAGE_MEMORY_MAPPED
 argument_list|)
 decl_stmt|;
+name|SegmentVersion
+name|segmentVersion
+init|=
+name|getSegmentVersion
+argument_list|(
+name|fs
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|expectedSegmentVersion
+operator|!=
+literal|null
+operator|&&
+name|expectedSegmentVersion
+operator|!=
+name|segmentVersion
+condition|)
+block|{
+name|failWith
+argument_list|(
+literal|"Segment version mismatch. "
+operator|+
+literal|"Found "
+operator|+
+name|segmentVersion
+operator|+
+literal|", expected "
+operator|+
+name|expectedSegmentVersion
+operator|+
+literal|". "
+operator|+
+literal|"Please use the respective version of this tool"
+argument_list|)
+expr_stmt|;
+block|}
 name|closer
 operator|.
 name|register
@@ -5395,6 +5439,8 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 if|if
@@ -5605,6 +5651,8 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 if|if
@@ -5766,6 +5814,8 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 if|if
