@@ -4046,6 +4046,14 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|Stopwatch
+name|watch
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 name|FileStore
 name|store
 init|=
@@ -4054,6 +4062,8 @@ argument_list|(
 name|directory
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|SegmentVersion
 name|segmentVersion
 init|=
@@ -4105,11 +4115,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
+name|failWith
 argument_list|(
 literal|"Segment version mismatch. "
 operator|+
@@ -4128,14 +4134,6 @@ operator|+
 name|LATEST_VERSION
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 name|boolean
@@ -4147,14 +4145,6 @@ name|getBoolean
 argument_list|(
 literal|"tar.PersistCompactionMap"
 argument_list|)
-decl_stmt|;
-name|Stopwatch
-name|watch
-init|=
-name|Stopwatch
-operator|.
-name|createStarted
-argument_list|()
 decl_stmt|;
 name|System
 operator|.
@@ -4227,8 +4217,6 @@ argument_list|(
 literal|"    -> compacting"
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|CompactionStrategy
 name|compactionStrategy
 init|=
