@@ -4386,7 +4386,7 @@ name|GC_LOG
 operator|.
 name|info
 argument_list|(
-literal|"Cleaned segments from {}: {}"
+literal|"TarMK cleaned segments from {}: {}"
 argument_list|,
 name|file
 operator|.
