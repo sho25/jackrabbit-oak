@@ -41,17 +41,5 @@ name|Version
 import|;
 end_import
 
-begin_import
-import|import
-name|aQute
-operator|.
-name|bnd
-operator|.
-name|annotation
-operator|.
-name|Export
-import|;
-end_import
-
 end_unit
 
