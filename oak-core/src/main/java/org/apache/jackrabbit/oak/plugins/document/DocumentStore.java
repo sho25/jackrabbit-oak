@@ -467,7 +467,7 @@ name|void
 name|dispose
 parameter_list|()
 function_decl|;
-comment|/**      * Fetches the cached document. If document is not present in cache<code>null</code> would be returned      *      * @param<T> the document type      * @param collection the collection      * @param key the key      * @return cached document if present. Otherwise null      */
+comment|/**      * Fetches the cached document. If the document is not present in the cache      * {@code null} will be returned. This method is consistent with other find      * methods that may return cached documents and will return {@code null}      * even when the implementation has a negative cache for documents that      * do not exist. This method will never return {@link NodeDocument#NULL}.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      * @return cached document if present. Otherwise {@code null}.      */
 annotation|@
 name|CheckForNull
 argument_list|<
