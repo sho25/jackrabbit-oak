@@ -784,6 +784,17 @@ name|statObj
 operator|.
 name|getRepositoryId
 argument_list|()
+operator|+
+operator|(
+name|statObj
+operator|.
+name|isLocal
+argument_list|()
+condition|?
+literal|" *"
+else|:
+literal|""
+operator|)
 block|,
 operator|(
 name|statObj
