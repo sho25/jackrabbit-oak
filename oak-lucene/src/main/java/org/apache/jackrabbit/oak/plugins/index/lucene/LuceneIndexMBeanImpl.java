@@ -55,6 +55,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|management
 operator|.
 name|NotCompliantMBeanException
@@ -455,6 +465,11 @@ argument_list|()
 operator|.
 name|getIndexReader
 argument_list|()
+argument_list|,
+name|indexNode
+operator|.
+name|getSuggestDirectory
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|tds
@@ -666,6 +681,10 @@ literal|"indexSizeStr"
 block|,
 literal|"indexSize"
 block|,
+literal|"suggesterSizeStr"
+block|,
+literal|"suggesterSize"
+block|,
 literal|"numDocs"
 block|,
 literal|"maxDoc"
@@ -688,6 +707,10 @@ block|,
 literal|"Index size in human readable format"
 block|,
 literal|"Index size in bytes"
+block|,
+literal|"Suggester size in human readable format"
+block|,
+literal|"Suggester size in bytes"
 block|,
 literal|"Number of documents in this index."
 block|,
@@ -714,6 +737,14 @@ block|{
 name|SimpleType
 operator|.
 name|STRING
+block|,
+name|SimpleType
+operator|.
+name|STRING
+block|,
+name|SimpleType
+operator|.
+name|LONG
 block|,
 name|SimpleType
 operator|.
@@ -823,6 +854,16 @@ specifier|final
 name|String
 name|indexSizeStr
 decl_stmt|;
+specifier|private
+specifier|final
+name|long
+name|suggesterSize
+decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|suggesterSizeStr
+decl_stmt|;
 specifier|public
 name|IndexStats
 parameter_list|(
@@ -831,6 +872,11 @@ name|path
 parameter_list|,
 name|IndexReader
 name|indexReader
+parameter_list|,
+annotation|@
+name|Nullable
+name|Directory
+name|suggestDirectory
 parameter_list|)
 throws|throws
 name|IOException
@@ -879,6 +925,20 @@ argument_list|(
 name|indexSize
 argument_list|)
 expr_stmt|;
+name|suggesterSize
+operator|=
+name|dirSize
+argument_list|(
+name|suggestDirectory
+argument_list|)
+expr_stmt|;
+name|suggesterSizeStr
+operator|=
+name|humanReadableByteCount
+argument_list|(
+name|suggesterSize
+argument_list|)
+expr_stmt|;
 block|}
 name|CompositeDataSupport
 name|toCompositeData
@@ -897,6 +957,10 @@ block|,
 name|indexSizeStr
 block|,
 name|indexSize
+block|,
+name|suggesterSizeStr
+block|,
+name|suggesterSize
 block|,
 name|numDocs
 block|,
@@ -984,6 +1048,18 @@ name|totalFileSize
 init|=
 literal|0L
 decl_stmt|;
+if|if
+condition|(
+name|directory
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+operator|-
+literal|1
+return|;
+block|}
 name|String
 index|[]
 name|files
