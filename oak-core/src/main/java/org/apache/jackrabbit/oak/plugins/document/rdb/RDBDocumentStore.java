@@ -7450,6 +7450,9 @@ init|=
 name|startWatch
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
 name|insertDocuments
 argument_list|(
 name|collection
@@ -7461,7 +7464,21 @@ argument_list|(
 name|doc
 argument_list|)
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+literal|"Can't insert the document: "
+operator|+
+name|doc
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|collection
