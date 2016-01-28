@@ -2753,6 +2753,17 @@ name|memoryMapping
 argument_list|)
 expr_stmt|;
 block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"TarMK readers {}"
+argument_list|,
+name|this
+operator|.
+name|readers
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
