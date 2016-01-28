@@ -2641,8 +2641,6 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
-argument_list|,
-name|LATEST_VERSION
 argument_list|)
 decl_stmt|;
 name|FileStoreBackup
@@ -2723,8 +2721,6 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
-argument_list|,
-name|LATEST_VERSION
 argument_list|)
 decl_stmt|;
 name|FileStoreRestore
@@ -3122,6 +3118,8 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|FileStore
@@ -3526,6 +3524,8 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|List
@@ -3685,9 +3685,6 @@ name|closer
 parameter_list|,
 name|String
 name|h
-parameter_list|,
-name|SegmentVersion
-name|expectedSegmentVersion
 parameter_list|)
 throws|throws
 name|IOException
@@ -3977,6 +3974,13 @@ return|return
 name|store
 return|;
 block|}
+name|checkFileStoreVersionOrFail
+argument_list|(
+name|src
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|FileStore
 name|fs
 init|=
@@ -3994,43 +3998,6 @@ argument_list|,
 name|TAR_STORAGE_MEMORY_MAPPED
 argument_list|)
 decl_stmt|;
-name|SegmentVersion
-name|segmentVersion
-init|=
-name|getSegmentVersion
-argument_list|(
-name|fs
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|expectedSegmentVersion
-operator|!=
-literal|null
-operator|&&
-name|expectedSegmentVersion
-operator|!=
-name|segmentVersion
-condition|)
-block|{
-name|failWith
-argument_list|(
-literal|"Segment version mismatch. "
-operator|+
-literal|"Found "
-operator|+
-name|segmentVersion
-operator|+
-literal|", expected "
-operator|+
-name|expectedSegmentVersion
-operator|+
-literal|". "
-operator|+
-literal|"Please use the respective version of this tool"
-argument_list|)
-expr_stmt|;
-block|}
 name|closer
 operator|.
 name|register
@@ -4287,6 +4254,18 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|checkFileStoreVersionOrFail
+argument_list|(
+name|directory
+argument_list|,
+name|options
+operator|.
+name|has
+argument_list|(
+name|forceFlag
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|Stopwatch
 name|watch
 init|=
@@ -4305,78 +4284,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|SegmentVersion
-name|segmentVersion
-init|=
-name|getSegmentVersion
-argument_list|(
-name|store
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|segmentVersion
-operator|!=
-name|LATEST_VERSION
-condition|)
-block|{
-if|if
-condition|(
-name|options
-operator|.
-name|has
-argument_list|(
-name|forceFlag
-argument_list|)
-condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Segment version mismatch. "
-operator|+
-literal|"Found "
-operator|+
-name|segmentVersion
-operator|+
-literal|", expected "
-operator|+
-name|LATEST_VERSION
-operator|+
-literal|". "
-operator|+
-literal|"Upgrading the file store to segment version "
-operator|+
-name|LATEST_VERSION
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|failWith
-argument_list|(
-literal|"Segment version mismatch. "
-operator|+
-literal|"Found "
-operator|+
-name|segmentVersion
-operator|+
-literal|", expected "
-operator|+
-name|LATEST_VERSION
-operator|+
-literal|". "
-operator|+
-literal|"Specify --force to upgrade the file store to segment version "
-operator|+
-name|LATEST_VERSION
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 name|boolean
 name|persistCM
 init|=
@@ -4883,6 +4790,9 @@ name|checkFileStoreVersionOrFail
 parameter_list|(
 name|String
 name|directory
+parameter_list|,
+name|boolean
+name|force
 parameter_list|)
 throws|throws
 name|IOException
@@ -4894,6 +4804,8 @@ name|File
 argument_list|(
 name|directory
 argument_list|)
+argument_list|,
+name|force
 argument_list|)
 expr_stmt|;
 block|}
@@ -4904,6 +4816,9 @@ name|checkFileStoreVersionOrFail
 parameter_list|(
 name|File
 name|directory
+parameter_list|,
+name|boolean
+name|force
 parameter_list|)
 throws|throws
 name|IOException
@@ -4955,6 +4870,27 @@ operator|!=
 name|LATEST_VERSION
 condition|)
 block|{
+if|if
+condition|(
+name|force
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|printf
+argument_list|(
+literal|"Segment version mismatch. Found %s, expected %s. Forcing execution.\n"
+argument_list|,
+name|segmentVersion
+argument_list|,
+name|LATEST_VERSION
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|failWith
 argument_list|(
 name|String
@@ -4969,6 +4905,7 @@ name|LATEST_VERSION
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 finally|finally
@@ -5214,6 +5151,16 @@ index|]
 argument_list|)
 condition|)
 block|{
+name|checkFileStoreVersionOrFail
+argument_list|(
+name|args
+index|[
+literal|0
+index|]
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 specifier|final
 name|FileStore
 name|store
@@ -5266,13 +5213,6 @@ operator|=
 name|Checkpoints
 operator|.
 name|onTarMK
-argument_list|(
-name|store
-argument_list|)
-expr_stmt|;
-name|segmentVersion
-operator|=
-name|getSegmentVersion
 argument_list|(
 name|store
 argument_list|)
@@ -5376,38 +5316,6 @@ operator|+
 name|cnt
 operator|+
 literal|" checkpoints"
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|segmentVersion
-operator|!=
-literal|null
-operator|&&
-name|segmentVersion
-operator|!=
-name|LATEST_VERSION
-condition|)
-block|{
-comment|// The write operations below can only performed with the segment version
-comment|// matching the tool version
-name|failWith
-argument_list|(
-literal|"Segment version mismatch. "
-operator|+
-literal|"Found "
-operator|+
-name|segmentVersion
-operator|+
-literal|", expected "
-operator|+
-name|LATEST_VERSION
-operator|+
-literal|". "
-operator|+
-literal|"Please use the respective version of this tool"
 argument_list|)
 expr_stmt|;
 block|}
@@ -5783,8 +5691,6 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 if|if
@@ -5995,8 +5901,6 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 if|if
@@ -6158,8 +6062,6 @@ argument_list|,
 name|closer
 argument_list|,
 name|h
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 if|if

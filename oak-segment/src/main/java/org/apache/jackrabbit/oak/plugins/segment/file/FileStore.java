@@ -1337,12 +1337,6 @@ operator|.
 name|NOOP
 decl_stmt|;
 specifier|private
-name|boolean
-name|readOnly
-init|=
-literal|false
-decl_stmt|;
-specifier|private
 name|Builder
 parameter_list|(
 name|File
