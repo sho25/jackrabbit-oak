@@ -550,6 +550,20 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Service {} of type {} unregistered multiple times"
+argument_list|,
+name|service
+argument_list|,
+name|type
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
