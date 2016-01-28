@@ -2073,6 +2073,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// OAK-3938
+name|assumeTrue
+argument_list|(
+name|dsf
+operator|==
+name|DocumentStoreFixture
+operator|.
+name|MONGO
+argument_list|)
+expr_stmt|;
 name|String
 name|id
 init|=
