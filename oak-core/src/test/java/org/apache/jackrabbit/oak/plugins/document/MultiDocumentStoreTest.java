@@ -1490,6 +1490,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// OAK-3924
 name|assumeTrue
 argument_list|(
 name|dsf
