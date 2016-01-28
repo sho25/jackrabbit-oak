@@ -5036,11 +5036,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|SegmentVersion
-name|segmentVersion
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|args
