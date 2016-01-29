@@ -2102,6 +2102,9 @@ name|afterCheckpoint
 parameter_list|,
 name|AsyncIndexStats
 name|indexStats
+parameter_list|,
+name|AtomicBoolean
+name|stopFlag
 parameter_list|)
 block|{
 return|return
@@ -2119,6 +2122,8 @@ argument_list|,
 name|afterCheckpoint
 argument_list|,
 name|indexStats
+argument_list|,
+name|stopFlag
 argument_list|,
 name|listener
 argument_list|)
@@ -2157,6 +2162,9 @@ parameter_list|,
 name|AsyncIndexStats
 name|indexStats
 parameter_list|,
+name|AtomicBoolean
+name|stopFlag
+parameter_list|,
 name|IndexStatusListener
 name|listener
 parameter_list|)
@@ -2174,6 +2182,8 @@ argument_list|,
 name|afterCheckpoint
 argument_list|,
 name|indexStats
+argument_list|,
+name|stopFlag
 argument_list|)
 expr_stmt|;
 name|this

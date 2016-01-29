@@ -3500,6 +3500,13 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|closer
+operator|.
+name|register
+argument_list|(
+name|task
+argument_list|)
+expr_stmt|;
 block|}
 name|PropertyIndexAsyncReindex
 name|asyncPI
