@@ -243,6 +243,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|primitives
+operator|.
+name|Chars
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -9304,6 +9318,34 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Following chars are used as operators in Lucene Query and should be escaped      */
+specifier|private
+specifier|static
+specifier|final
+name|char
+index|[]
+name|LUCENE_QUERY_OPERATORS
+init|=
+block|{
+literal|':'
+block|,
+literal|'/'
+block|,
+literal|'!'
+block|,
+literal|'&'
+block|,
+literal|'|'
+block|,
+literal|'['
+block|,
+literal|']'
+block|,
+literal|'{'
+block|,
+literal|'}'
+block|}
+decl_stmt|;
 comment|/**      * Following logic is taken from org.apache.jackrabbit.core.query.lucene.JackrabbitQueryParser#parse(java.lang.String)      */
 specifier|static
 name|String
@@ -9439,18 +9481,16 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Chars
+operator|.
+name|contains
+argument_list|(
+name|LUCENE_QUERY_OPERATORS
+argument_list|,
 name|c
-operator|==
-literal|':'
-operator|||
-name|c
-operator|==
-literal|'/'
+argument_list|)
 condition|)
 block|{
-comment|//TODO Some other chars are also considered special See OAK-3769 for details
-comment|//':' fields as known in lucene are not supported
-comment|//'/' its a special char used for regex search in Lucene
 name|rewritten
 operator|.
 name|append
