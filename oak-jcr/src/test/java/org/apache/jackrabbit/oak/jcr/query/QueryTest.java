@@ -4529,7 +4529,7 @@ name|createQuery
 argument_list|(
 literal|"/jcr:root/etc//*["
 operator|+
-literal|"(@jcr:primaryType = 'a'  or @jcr:primaryType = 'b') "
+literal|"(@jcr:primaryType = 'nt:file'  or @jcr:primaryType = 'nt:folder') "
 operator|+
 literal|"or @nt:resourceType = 'test']"
 argument_list|,
