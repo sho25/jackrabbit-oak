@@ -522,6 +522,7 @@ name|Registration
 argument_list|()
 block|{
 specifier|private
+specifier|volatile
 name|boolean
 name|unregistered
 decl_stmt|;
