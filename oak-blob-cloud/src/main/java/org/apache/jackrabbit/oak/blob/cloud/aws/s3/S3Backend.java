@@ -3180,6 +3180,13 @@ operator|<
 name|min
 condition|)
 block|{
+name|store
+operator|.
+name|deleteFromCache
+argument_list|(
+name|identifier
+argument_list|)
+expr_stmt|;
 name|LOG
 operator|.
 name|debug
