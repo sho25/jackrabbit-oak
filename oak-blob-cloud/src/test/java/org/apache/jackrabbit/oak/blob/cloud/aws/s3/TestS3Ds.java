@@ -283,7 +283,7 @@ name|TestCaseBase
 operator|.
 name|CONFIG
 argument_list|,
-literal|"C:/src/apache/jackrabbit-encryp-changes/jackrabbit/jackrabbit-aws-ext/src/test/resources/aws.properties"
+literal|"./src/test/resources/aws.properties"
 argument_list|)
 expr_stmt|;
 name|config
