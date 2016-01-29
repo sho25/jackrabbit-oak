@@ -1484,6 +1484,24 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Set memory mapping to the default value based on OS properties          * @return this instance          */
+annotation|@
+name|Nonnull
+specifier|public
+name|Builder
+name|withDefaultMemoryMapping
+parameter_list|()
+block|{
+name|this
+operator|.
+name|memoryMapping
+operator|=
+name|MEMORY_MAPPING_DEFAULT
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 comment|/**          * {@link GCMonitor} for monitoring this files store's gc process.          * @param gcMonitor          * @return this instance          */
 annotation|@
 name|Nonnull

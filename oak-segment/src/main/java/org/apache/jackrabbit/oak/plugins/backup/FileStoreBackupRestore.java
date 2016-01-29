@@ -61,26 +61,6 @@ name|management
 operator|.
 name|ManagementOperation
 operator|.
-name|Status
-operator|.
-name|formatTime
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|management
-operator|.
-name|ManagementOperation
-operator|.
 name|done
 import|;
 end_import
@@ -113,13 +93,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|management
 operator|.
-name|backup
+name|ManagementOperation
 operator|.
-name|FileStoreBackup
+name|Status
 operator|.
-name|backup
+name|formatTime
 import|;
 end_import
 
@@ -137,9 +117,9 @@ name|plugins
 operator|.
 name|backup
 operator|.
-name|FileStoreRestore
+name|FileStoreBackup
 operator|.
-name|restore
+name|backup
 import|;
 end_import
 
@@ -251,26 +231,6 @@ name|NodeStore
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Default implementation of {@link FileStoreBackupRestoreMBean} based on a file.  */
 end_comment
@@ -282,21 +242,6 @@ name|FileStoreBackupRestore
 implements|implements
 name|FileStoreBackupRestoreMBean
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|FileStoreBackupRestore
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -539,29 +484,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|long
-name|t0
-init|=
-name|nanoTime
-argument_list|()
-decl_stmt|;
-name|restore
-argument_list|(
-name|file
-argument_list|,
-name|store
-argument_list|)
-expr_stmt|;
 return|return
-literal|"Restore completed in "
-operator|+
-name|formatTime
-argument_list|(
-name|nanoTime
-argument_list|()
-operator|-
-name|t0
-argument_list|)
+literal|"Restore not available as an online operation."
 return|;
 block|}
 block|}
