@@ -2115,7 +2115,10 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|Iterable
+argument_list|<
 name|CacheStats
+argument_list|>
 name|getCacheStats
 parameter_list|()
 block|{
@@ -2127,7 +2130,10 @@ init|=
 name|now
 argument_list|()
 decl_stmt|;
+name|Iterable
+argument_list|<
 name|CacheStats
+argument_list|>
 name|result
 init|=
 name|base

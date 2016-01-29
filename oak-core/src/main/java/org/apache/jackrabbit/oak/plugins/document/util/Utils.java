@@ -1970,6 +1970,30 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * Determines if the passed id belongs to a leaf level previous doc      *      * @param id id to check      * @return true if the id belongs to a leaf level previous doc      */
+specifier|public
+specifier|static
+name|boolean
+name|isLeafPreviousDocId
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+return|return
+name|isPreviousDocId
+argument_list|(
+name|id
+argument_list|)
+operator|&&
+name|id
+operator|.
+name|endsWith
+argument_list|(
+literal|"/0"
+argument_list|)
+return|;
+block|}
 comment|/**      * Deep copy of a map that may contain map values.      *      * @param source the source map      * @param target the target map      * @param<K> the type of the map key      */
 specifier|public
 specifier|static

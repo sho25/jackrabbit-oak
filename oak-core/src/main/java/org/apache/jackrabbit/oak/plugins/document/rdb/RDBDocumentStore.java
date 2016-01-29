@@ -2972,9 +2972,6 @@ name|nd
 range|:
 name|nodesCache
 operator|.
-name|asMap
-argument_list|()
-operator|.
 name|values
 argument_list|()
 control|)
@@ -3853,7 +3850,10 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|Iterable
+argument_list|<
 name|CacheStats
+argument_list|>
 name|getCacheStats
 parameter_list|()
 block|{

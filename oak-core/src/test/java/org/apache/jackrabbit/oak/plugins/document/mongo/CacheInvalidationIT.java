@@ -287,6 +287,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -548,6 +564,8 @@ name|totalPaths
 operator|-
 literal|2
 argument_list|,
+name|size
+argument_list|(
 name|ds
 argument_list|(
 name|c1
@@ -556,11 +574,9 @@ operator|.
 name|getNodeDocumentCache
 argument_list|()
 operator|.
-name|asMap
+name|keys
 argument_list|()
-operator|.
-name|size
-argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -820,6 +836,8 @@ name|ds
 parameter_list|)
 block|{
 return|return
+name|size
+argument_list|(
 name|ds
 argument_list|(
 name|ds
@@ -828,11 +846,9 @@ operator|.
 name|getNodeDocumentCache
 argument_list|()
 operator|.
-name|asMap
+name|keys
 argument_list|()
-operator|.
-name|size
-argument_list|()
+argument_list|)
 return|;
 block|}
 specifier|private

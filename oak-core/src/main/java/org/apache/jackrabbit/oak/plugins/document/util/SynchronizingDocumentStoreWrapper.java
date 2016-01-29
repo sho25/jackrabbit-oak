@@ -826,7 +826,10 @@ annotation|@
 name|Override
 specifier|public
 specifier|synchronized
+name|Iterable
+argument_list|<
 name|CacheStats
+argument_list|>
 name|getCacheStats
 parameter_list|()
 block|{

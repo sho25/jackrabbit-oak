@@ -708,7 +708,10 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|Iterable
+argument_list|<
 name|CacheStats
+argument_list|>
 name|getCacheStats
 parameter_list|()
 block|{

@@ -499,7 +499,10 @@ function_decl|;
 comment|/**      * @return status information about the cache      */
 annotation|@
 name|CheckForNull
+name|Iterable
+argument_list|<
 name|CacheStats
+argument_list|>
 name|getCacheStats
 parameter_list|()
 function_decl|;
