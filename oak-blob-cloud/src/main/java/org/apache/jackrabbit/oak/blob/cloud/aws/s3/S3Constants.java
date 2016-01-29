@@ -168,6 +168,24 @@ name|S3_ENCRYPTION_SSE_S3
 init|=
 literal|"SSE_S3"
 decl_stmt|;
+comment|/**      *  Constant to set proxy host.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROXY_HOST
+init|=
+literal|"proxyHost"
+decl_stmt|;
+comment|/**      *  Constant to set proxy port.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROXY_PORT
+init|=
+literal|"proxyPort"
+decl_stmt|;
 comment|/**      * private constructor so that class cannot initialized from outside.      */
 specifier|private
 name|S3Constants
