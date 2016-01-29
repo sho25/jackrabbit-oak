@@ -2411,9 +2411,11 @@ name|position
 operator|+=
 name|l
 expr_stmt|;
+comment|// next block
 name|i
 operator|++
 expr_stmt|;
+comment|// for the next block, we read from the beginning
 name|o
 operator|=
 literal|0
@@ -2508,6 +2510,8 @@ name|length
 operator|)
 condition|)
 block|{
+comment|// loadBlob first flushes the previous block,
+comment|// and it sets the index
 name|loadBlob
 argument_list|(
 name|i
@@ -2516,6 +2520,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// we don't need to load the block,
+comment|// as we anyway overwrite it fully, if:
+comment|// o == 0 (start writing at a block boundary)
+comment|// and either: l is the blockSize, or
+comment|// we write at least to the end of the file
 name|flushBlob
 argument_list|()
 expr_stmt|;
