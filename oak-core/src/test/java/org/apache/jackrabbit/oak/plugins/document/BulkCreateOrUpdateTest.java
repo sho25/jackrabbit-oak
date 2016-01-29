@@ -104,18 +104,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -204,36 +192,6 @@ operator|.
 name|rdb
 operator|.
 name|RDBDataSourceWrapper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|rdb
-operator|.
-name|RDBDocumentStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -1598,17 +1556,6 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-comment|// see OAK-3924
-name|assumeTrue
-argument_list|(
-operator|!
-operator|(
-name|ds
-operator|instanceof
-name|RDBDocumentStore
-operator|)
-argument_list|)
-expr_stmt|;
 name|int
 name|threadCount
 init|=
