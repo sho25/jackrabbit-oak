@@ -1420,7 +1420,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"exists [{}]: [true] took [{}] ms."
 argument_list|,
@@ -2132,7 +2132,7 @@ else|else
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"[{}] touch not required. time taken [{}] ms "
 argument_list|,
