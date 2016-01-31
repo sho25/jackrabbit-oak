@@ -501,6 +501,8 @@ name|secure
 argument_list|)
 argument_list|,
 literal|10000
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 if|if
