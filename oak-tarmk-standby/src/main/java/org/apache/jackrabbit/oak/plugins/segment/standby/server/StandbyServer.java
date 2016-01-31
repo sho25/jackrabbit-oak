@@ -1105,9 +1105,9 @@ name|bossGroup
 operator|.
 name|shutdownGracefully
 argument_list|(
-literal|1
+literal|0
 argument_list|,
-literal|2
+literal|1
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1135,9 +1135,9 @@ name|workerGroup
 operator|.
 name|shutdownGracefully
 argument_list|(
-literal|1
+literal|0
 argument_list|,
-literal|2
+literal|1
 argument_list|,
 name|TimeUnit
 operator|.

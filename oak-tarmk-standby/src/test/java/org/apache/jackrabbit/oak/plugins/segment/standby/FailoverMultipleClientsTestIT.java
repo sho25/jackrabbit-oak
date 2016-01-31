@@ -151,9 +151,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -257,26 +257,16 @@ comment|// this speeds up the test a little bit...
 name|StandbyClient
 name|cl1
 init|=
-operator|new
-name|StandbyClient
+name|newStandbyClient
 argument_list|(
-literal|"127.0.0.1"
-argument_list|,
-name|port
-argument_list|,
 name|storeC
 argument_list|)
 decl_stmt|;
 name|StandbyClient
 name|cl2
 init|=
-operator|new
-name|StandbyClient
+name|newStandbyClient
 argument_list|(
-literal|"127.0.0.1"
-argument_list|,
-name|port
-argument_list|,
 name|storeC2
 argument_list|)
 decl_stmt|;
@@ -380,6 +370,11 @@ name|store
 argument_list|,
 literal|"test"
 argument_list|)
+expr_stmt|;
+name|storeS
+operator|.
+name|flush
+argument_list|()
 expr_stmt|;
 name|cl1
 operator|.

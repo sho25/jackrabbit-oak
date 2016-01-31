@@ -756,13 +756,8 @@ comment|// this speeds up the test a little bit...
 name|StandbyClient
 name|cl
 init|=
-operator|new
-name|StandbyClient
+name|newStandbyClient
 argument_list|(
-name|host
-argument_list|,
-name|port
-argument_list|,
 name|storeC
 argument_list|)
 decl_stmt|;
