@@ -134,6 +134,28 @@ name|boolean
 name|insertSuccess
 parameter_list|)
 function_decl|;
+comment|/**      * Called when multiple document are either created or updated.      *      * @param timeTakenNanos time taken      * @param collection the collection      * @param ids list of ids request to be created or updated      */
+name|void
+name|doneCreateOrUpdate
+parameter_list|(
+name|long
+name|timeTakenNanos
+parameter_list|,
+name|Collection
+argument_list|<
+name|?
+extends|extends
+name|Document
+argument_list|>
+name|collection
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|ids
+parameter_list|)
+function_decl|;
 comment|/**      * Called when a given updated has modified multiple documents      * @param timeTakenNanos time taken      * @param collection the collection      * @param updateCount number of updates performed      */
 name|void
 name|doneUpdate
