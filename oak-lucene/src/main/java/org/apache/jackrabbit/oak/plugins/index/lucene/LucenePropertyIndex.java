@@ -9336,14 +9336,6 @@ block|,
 literal|'&'
 block|,
 literal|'|'
-block|,
-literal|'['
-block|,
-literal|']'
-block|,
-literal|'{'
-block|,
-literal|'}'
 block|}
 decl_stmt|;
 comment|/**      * Following logic is taken from org.apache.jackrabbit.core.query.lucene.JackrabbitQueryParser#parse(java.lang.String)      */
