@@ -507,13 +507,14 @@ parameter_list|()
 block|{
 comment|// since currently segment node store is not running in a cluster
 comment|// we can hard-code a single-vm descriptor here:
-comment|// {"seq":4,"final":true,"id":"d8cb272f-28d8-4c2b-bacd-e8f20feec6db","me":1,"active":[1],"deactivating":[],"inactive":[2]}
+comment|// {"seq":4,"final":true,"me":1,"active":[1],"deactivating":[],"inactive":[2]}
+comment|// OAK-3672 : 'id' is now allowed to be null (supported by upper layers),
+comment|//            and for tarMk we're doing exactly that (id==null) - indicating
+comment|//            to upper layers that we're not really in a cluster and that
+comment|//            this low level descriptor doesn't manage the 'cluster id'
+comment|//            in such a case.
 return|return
-literal|"{\"seq\":1,\"final\":true,\"id\":\""
-operator|+
-name|runtimeClusterId
-operator|+
-literal|"\",\"me\":1,\"active\":[1],\"deactivating\":[],\"inactive\":[]}"
+literal|"{\"seq\":1,\"final\":true,\"me\":1,\"active\":[1],\"deactivating\":[],\"inactive\":[]}"
 return|;
 block|}
 comment|/**      * On activate the SegmentDiscoveryLiteService registers       * the descriptor      */

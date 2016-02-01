@@ -483,18 +483,7 @@ argument_list|(
 name|viewFinal
 argument_list|)
 expr_stmt|;
-name|builder
-operator|.
-name|key
-argument_list|(
-literal|"id"
-argument_list|)
-operator|.
-name|value
-argument_list|(
-name|clusterViewId
-argument_list|)
-expr_stmt|;
+comment|//        builder.key("id").value(clusterViewId);
 name|builder
 operator|.
 name|key
