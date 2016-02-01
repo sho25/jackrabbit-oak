@@ -264,7 +264,7 @@ name|getInteger
 argument_list|(
 literal|"standby.test.timeout"
 argument_list|,
-literal|300
+literal|500
 argument_list|)
 decl_stmt|;
 specifier|private
