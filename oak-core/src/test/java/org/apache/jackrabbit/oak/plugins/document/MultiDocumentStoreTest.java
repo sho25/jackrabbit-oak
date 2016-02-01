@@ -92,18 +92,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -1490,16 +1478,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// OAK-3924 and OAK-3937
-name|assumeTrue
-argument_list|(
-name|dsf
-operator|==
-name|DocumentStoreFixture
-operator|.
-name|MONGO
-argument_list|)
-expr_stmt|;
 specifier|final
 name|CountDownLatch
 name|ready
@@ -1774,6 +1752,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+argument_list|,
+literal|"t1"
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1964,6 +1944,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+argument_list|,
+literal|"t2"
 argument_list|)
 decl_stmt|;
 name|t1
@@ -2058,6 +2040,12 @@ else|else
 block|{
 name|assertNotNull
 argument_list|(
+literal|"id "
+operator|+
+name|id
+operator|+
+literal|" is in neither result set"
+argument_list|,
 name|d2
 argument_list|)
 expr_stmt|;
