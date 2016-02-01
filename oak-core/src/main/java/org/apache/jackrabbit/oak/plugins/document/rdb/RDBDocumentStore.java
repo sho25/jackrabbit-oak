@@ -1663,6 +1663,13 @@ if|if
 condition|(
 operator|!
 name|BATCHUPDATES
+operator|||
+name|dbInfo
+operator|==
+name|RDBDocumentStoreDB
+operator|.
+name|ORACLE
+comment|/* see OAK-3938 */
 condition|)
 block|{
 name|List
@@ -9464,7 +9471,7 @@ block|}
 block|}
 annotation|@
 name|Nonnull
-specifier|private
+specifier|protected
 parameter_list|<
 name|T
 extends|extends
