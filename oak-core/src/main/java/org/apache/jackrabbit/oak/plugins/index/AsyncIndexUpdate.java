@@ -1868,6 +1868,13 @@ name|void
 name|close
 parameter_list|()
 block|{
+if|if
+condition|(
+name|closed
+condition|)
+block|{
+return|return;
+block|}
 name|int
 name|hardTimeOut
 init|=

@@ -6696,6 +6696,11 @@ operator|.
 name|finished
 argument_list|()
 expr_stmt|;
+name|async
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
