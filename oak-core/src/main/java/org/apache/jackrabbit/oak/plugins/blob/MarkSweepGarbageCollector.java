@@ -1350,7 +1350,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Starting Blob garbage collection"
+literal|"Starting Blob garbage collection with markOnly [{}]"
+argument_list|,
+name|markOnly
 argument_list|)
 expr_stmt|;
 name|long
@@ -1386,11 +1388,22 @@ name|threw
 operator|=
 literal|false
 expr_stmt|;
+name|long
+name|maxTime
+init|=
+name|maxLastModifiedInterval
+operator|>
+literal|0
+condition|?
+name|maxLastModifiedInterval
+else|:
+name|markStart
+decl_stmt|;
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Blob garbage collection completed in {}. Number of blobs deleted [{}]"
+literal|"Blob garbage collection completed in {}. Number of blobs deleted [{}] with max modification time of [{}]"
 argument_list|,
 name|sw
 operator|.
@@ -1399,7 +1412,10 @@ argument_list|()
 argument_list|,
 name|deleteCount
 argument_list|,
-name|maxLastModifiedInterval
+name|timestampToString
+argument_list|(
+name|maxTime
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
