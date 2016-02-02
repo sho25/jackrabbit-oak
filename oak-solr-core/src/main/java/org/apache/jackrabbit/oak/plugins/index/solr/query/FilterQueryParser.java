@@ -1257,8 +1257,6 @@ operator|.
 name|isIgnoredProperty
 argument_list|(
 name|pr
-operator|.
-name|propertyName
 argument_list|,
 name|configuration
 argument_list|)

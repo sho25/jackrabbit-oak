@@ -1258,8 +1258,6 @@ condition|(
 name|isIgnoredProperty
 argument_list|(
 name|pr
-operator|.
-name|propertyName
 argument_list|,
 name|configuration
 argument_list|)
@@ -3279,20 +3277,23 @@ specifier|static
 name|boolean
 name|isIgnoredProperty
 parameter_list|(
-name|String
-name|propertyName
+name|Filter
+operator|.
+name|PropertyRestriction
+name|property
 parameter_list|,
 name|OakSolrConfiguration
 name|configuration
 parameter_list|)
 block|{
-return|return
-operator|!
-operator|(
+if|if
+condition|(
 name|NATIVE_LUCENE_QUERY
 operator|.
 name|equals
 argument_list|(
+name|property
+operator|.
 name|propertyName
 argument_list|)
 operator|||
@@ -3300,10 +3301,18 @@ name|NATIVE_SOLR_QUERY
 operator|.
 name|equals
 argument_list|(
+name|property
+operator|.
 name|propertyName
 argument_list|)
-operator|)
-operator|&&
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+else|else
+return|return
 operator|(
 operator|!
 name|configuration
@@ -3331,11 +3340,15 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
+name|property
+operator|.
 name|propertyName
 argument_list|)
 operator|)
 comment|// not explicitly contained in the used properties
 operator|||
+name|property
+operator|.
 name|propertyName
 operator|.
 name|contains
@@ -3350,6 +3363,8 @@ name|REP_EXCERPT
 operator|.
 name|equals
 argument_list|(
+name|property
+operator|.
 name|propertyName
 argument_list|)
 comment|// rep:excerpt is not handled at the property level
@@ -3360,6 +3375,8 @@ name|OAK_SCORE_EXPLANATION
 operator|.
 name|equals
 argument_list|(
+name|property
+operator|.
 name|propertyName
 argument_list|)
 comment|// score explain is not handled at the property level
@@ -3370,6 +3387,8 @@ name|REP_FACET
 operator|.
 name|equals
 argument_list|(
+name|property
+operator|.
 name|propertyName
 argument_list|)
 comment|// rep:facet is not handled at the property level
@@ -3380,6 +3399,8 @@ name|RESTRICTION_LOCAL_NAME
 operator|.
 name|equals
 argument_list|(
+name|property
+operator|.
 name|propertyName
 argument_list|)
 operator|||
@@ -3390,6 +3411,8 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
+name|property
+operator|.
 name|propertyName
 argument_list|)
 operator|)
