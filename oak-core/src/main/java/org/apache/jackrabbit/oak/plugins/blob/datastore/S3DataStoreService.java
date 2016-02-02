@@ -81,13 +81,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|aws
+name|core
 operator|.
-name|ext
+name|data
 operator|.
-name|ds
-operator|.
-name|S3DataStore
+name|DataStore
 import|;
 end_import
 
@@ -99,11 +97,17 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|core
+name|oak
 operator|.
-name|data
+name|blob
 operator|.
-name|DataStore
+name|cloud
+operator|.
+name|aws
+operator|.
+name|s3
+operator|.
+name|S3DataStore
 import|;
 end_import
 
