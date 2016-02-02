@@ -1547,6 +1547,18 @@ argument_list|(
 name|ids
 argument_list|)
 expr_stmt|;
+comment|// make sure not present before test run
+name|ds1
+operator|.
+name|remove
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|ids
+argument_list|)
+expr_stmt|;
 specifier|final
 name|List
 argument_list|<
@@ -2030,11 +2042,35 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|assertNull
-argument_list|(
+if|if
+condition|(
 name|d2
+operator|!=
+literal|null
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"found "
+operator|+
+name|id
+operator|+
+literal|" in both result sets, modcounts are: "
+operator|+
+name|d1
+operator|.
+name|getModCount
+argument_list|()
+operator|+
+literal|"/"
+operator|+
+name|d2
+operator|.
+name|getModCount
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
