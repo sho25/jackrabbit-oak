@@ -4534,7 +4534,12 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Potentially excessive query with %d hits (limited to %d, configured QUERYHITSLIMIT %d), elapsed time %dms, params minid '%s' maxid '%s' excludeKeyPatterns %s condition %s limit %d. Check calling method."
+literal|"Potentially excessive query on %s with %d hits (limited to %d, configured QUERYHITSLIMIT %d), elapsed time %dms, params minid '%s' maxid '%s' excludeKeyPatterns %s condition %s limit %d. Read %d chars from DATA and %d bytes from BDATA. Check calling method."
+argument_list|,
+name|tmd
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|result
 operator|.
@@ -4558,6 +4563,10 @@ argument_list|,
 name|conditions
 argument_list|,
 name|limit
+argument_list|,
+name|dataTotal
+argument_list|,
+name|bdataTotal
 argument_list|)
 decl_stmt|;
 name|LOG
@@ -4597,7 +4606,12 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Long running query with %d hits (limited to %d), elapsed time %dms (configured QUERYTIMELIMIT %d), params minid '%s' maxid '%s' excludeKeyPatterns %s conditions %s limit %d. Read %d chars from DATA and %d bytes from BDATA. Check calling method."
+literal|"Long running query on %s with %d hits (limited to %d), elapsed time %dms (configured QUERYTIMELIMIT %d), params minid '%s' maxid '%s' excludeKeyPatterns %s conditions %s limit %d. Read %d chars from DATA and %d bytes from BDATA. Check calling method."
+argument_list|,
+name|tmd
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|result
 operator|.
