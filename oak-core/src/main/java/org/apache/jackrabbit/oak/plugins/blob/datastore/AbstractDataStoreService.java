@@ -538,7 +538,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// change to mutable map. may be modified in createDSCall
+comment|// change to mutable map. may be modified in createDS call
 name|config
 operator|=
 name|Maps
@@ -863,8 +863,6 @@ name|Object
 argument_list|>
 name|config
 parameter_list|)
-throws|throws
-name|RepositoryException
 function_decl|;
 specifier|protected
 name|StatisticsProvider
