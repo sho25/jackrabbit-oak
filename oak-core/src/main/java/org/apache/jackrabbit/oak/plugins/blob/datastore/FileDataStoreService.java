@@ -23,6 +23,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -224,8 +238,6 @@ name|Object
 argument_list|>
 name|config
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|long
 name|cacheSize
@@ -266,27 +278,20 @@ argument_list|(
 name|PATH
 argument_list|)
 argument_list|,
-literal|""
+literal|null
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-literal|""
+name|Preconditions
 operator|.
-name|equals
+name|checkNotNull
 argument_list|(
 name|fsBackendPath
+argument_list|,
+literal|"Cannot create "
+operator|+
+literal|"FileDataStoreService with caching. [{path}] property not configured."
 argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"Cannot create FileDataStoreService with caching. [{path}] property not configured."
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|CachingFDS
 name|dataStore
 init|=
@@ -340,18 +345,14 @@ argument_list|(
 name|CACHE_PATH
 argument_list|)
 argument_list|,
-literal|""
+literal|null
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|cachePath
-argument_list|)
+operator|!=
+literal|null
 condition|)
 block|{
 name|config
