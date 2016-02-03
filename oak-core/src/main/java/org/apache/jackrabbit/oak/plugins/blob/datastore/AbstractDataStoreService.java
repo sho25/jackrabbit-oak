@@ -63,6 +63,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Maps
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -524,6 +538,16 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// change to mutable map. may be modified in createDSCall
+name|config
+operator|=
+name|Maps
+operator|.
+name|newHashMap
+argument_list|(
+name|config
+argument_list|)
+expr_stmt|;
 name|DataStore
 name|ds
 init|=
@@ -839,6 +863,8 @@ name|Object
 argument_list|>
 name|config
 parameter_list|)
+throws|throws
+name|RepositoryException
 function_decl|;
 specifier|protected
 name|StatisticsProvider
