@@ -618,7 +618,7 @@ parameter_list|()
 throws|throws
 name|SQLException
 block|{
-comment|// https://issues.apache.org/jira/browse/OAK-3937
+comment|// https://issues.apache.org/jira/browse/OAK-3937 and https://issues.apache.org/jira/browse/OAK-3977
 name|assumeTrue
 argument_list|(
 name|super
@@ -671,6 +671,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+comment|// remove key-1, key-2, key-3
 name|PreparedStatement
 name|st
 init|=
@@ -734,6 +735,7 @@ argument_list|(
 literal|"key-3"
 argument_list|)
 expr_stmt|;
+comment|// insert key-3
 name|st
 operator|=
 name|con
@@ -785,6 +787,7 @@ argument_list|(
 literal|"key-2"
 argument_list|)
 expr_stmt|;
+comment|// try to insert key-1, key-2, key-3
 name|PreparedStatement
 name|batchSt
 init|=
@@ -885,19 +888,22 @@ name|commit
 argument_list|()
 expr_stmt|;
 comment|// System.out.println(super.dsname + " " + Arrays.toString(batchResult));
-name|assertTrue
-argument_list|(
+name|boolean
+name|partialSuccess
+init|=
+literal|false
+decl_stmt|;
+if|if
+condition|(
 name|batchResult
 operator|.
 name|length
 operator|>=
 literal|2
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Row should be inserted correctly."
-argument_list|,
+condition|)
+block|{
+if|if
+condition|(
 name|isSuccess
 argument_list|(
 name|batchResult
@@ -905,12 +911,7 @@ index|[
 literal|0
 index|]
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Row should be inserted correctly."
-argument_list|,
+operator|&&
 name|isSuccess
 argument_list|(
 name|batchResult
@@ -918,8 +919,14 @@ index|[
 literal|1
 index|]
 argument_list|)
-argument_list|)
+condition|)
+block|{
+name|partialSuccess
+operator|=
+literal|true
 expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|batchResult
@@ -1037,6 +1044,11 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|partialSuccess
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|"Some of the rows weren't inserted."
@@ -1053,6 +1065,22 @@ argument_list|,
 name|ids
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|assertEquals
+argument_list|(
+literal|"Failure reported, but rows inserted."
+argument_list|,
+name|of
+argument_list|(
+literal|"key-3"
+argument_list|)
+argument_list|,
+name|ids
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
