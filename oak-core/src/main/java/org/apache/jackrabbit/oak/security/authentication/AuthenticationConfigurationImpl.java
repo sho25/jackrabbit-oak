@@ -508,7 +508,6 @@ argument_list|,
 name|DEFAULT_APP_NAME
 argument_list|)
 decl_stmt|;
-comment|// todo: temporary workaround
 name|SecurityProvider
 name|provider
 init|=
