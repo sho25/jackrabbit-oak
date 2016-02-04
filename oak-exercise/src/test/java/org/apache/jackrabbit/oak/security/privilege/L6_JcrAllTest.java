@@ -131,7 +131,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TODO: fix the test case such that it passes.
+comment|// EXERCISE: fix the test case such that it passes.
 name|Tree
 name|jcrAllTree
 init|=

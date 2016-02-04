@@ -304,7 +304,7 @@ name|name
 init|=
 literal|null
 decl_stmt|;
-comment|// TODO
+comment|// EXERCISE
 name|assertEquals
 argument_list|(
 name|name
@@ -320,7 +320,7 @@ name|primaryType
 init|=
 literal|null
 decl_stmt|;
-comment|// TODO
+comment|// EXERCISE
 name|assertEquals
 argument_list|(
 name|primaryType
@@ -333,7 +333,7 @@ name|privilegesRoot
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO: look at the node type definition in the file 'builtin-nodetypes.cnd'
+comment|// EXERCISE: look at the node type definition in the file 'builtin-nodetypes.cnd'
 comment|// Question: can you predict how the tree defined the 'privilegesRoot' tree looks like?
 block|}
 annotation|@
@@ -377,7 +377,7 @@ name|expectedName
 init|=
 literal|null
 decl_stmt|;
-comment|// TODO
+comment|// EXERCISE
 name|assertEquals
 argument_list|(
 name|expectedName
@@ -393,7 +393,7 @@ name|isAbstract
 init|=
 literal|false
 decl_stmt|;
-comment|// TODO
+comment|// EXERCISE
 name|assertEquals
 argument_list|(
 name|isAbstract
@@ -412,7 +412,7 @@ name|expectedAggregates
 init|=
 literal|null
 decl_stmt|;
-comment|// TODO
+comment|// EXERCISE
 name|assertEquals
 argument_list|(
 name|expectedAggregates
@@ -423,7 +423,7 @@ name|getDeclaredAggregateNames
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO: compare the internal privilege definition (and it's tree representation) with the privilege itself.
+comment|// EXERCISE: compare the internal privilege definition (and it's tree representation) with the privilege itself.
 name|Privilege
 name|repWritePrivilege
 init|=
@@ -526,8 +526,8 @@ argument_list|(
 name|jcrReadTree
 argument_list|)
 decl_stmt|;
-comment|// TODO: play with 'PrivilegeBits' methods to compare 'privilegeBits' with 'readBits' and 'writeBits'
-comment|// TODO: retrieve the property that stores the long representation of each privilege above
+comment|// EXERCISE: play with 'PrivilegeBits' methods to compare 'privilegeBits' with 'readBits' and 'writeBits'
+comment|// EXERCISE: retrieve the property that stores the long representation of each privilege above
 block|}
 annotation|@
 name|Test
@@ -584,7 +584,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|// TODO: compare the 'next' property state with rep:bits property of the newly created privilege.
+comment|// EXERCISE: compare the 'next' property state with rep:bits property of the newly created privilege.
 name|PropertyState
 name|nextAgain
 init|=
@@ -602,8 +602,8 @@ operator|.
 name|REP_NEXT
 argument_list|)
 decl_stmt|;
-comment|// TODO: look at the new value of rep:next and explain it. Q: where did it get modified?
-comment|// TODO: try to modify rep:next manually and explain what happens.
+comment|// EXERCISE: look at the new value of rep:next and explain it. Q: where did it get modified?
+comment|// EXERCISE: try to modify rep:next manually and explain what happens.
 block|}
 block|}
 end_class
