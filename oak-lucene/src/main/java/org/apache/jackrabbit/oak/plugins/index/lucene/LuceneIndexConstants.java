@@ -516,6 +516,12 @@ name|PROP_FACETS
 init|=
 literal|"facets"
 decl_stmt|;
+comment|/**      * Boolean property indicate that property should not be included in aggregation      */
+name|String
+name|PROP_EXCLUDE_FROM_AGGREGATE
+init|=
+literal|"excludeFromAggregation"
+decl_stmt|;
 block|}
 end_interface
 

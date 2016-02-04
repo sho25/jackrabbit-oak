@@ -410,6 +410,10 @@ name|String
 index|[]
 name|ancestors
 decl_stmt|;
+specifier|final
+name|boolean
+name|excludeFromAggregate
+decl_stmt|;
 comment|/**      * Property name excluding the relativePath. For regular expression based definition      * its set to null      */
 annotation|@
 name|CheckForNull
@@ -678,6 +682,21 @@ argument_list|,
 name|LuceneIndexConstants
 operator|.
 name|PROP_NOT_NULL_CHECK_ENABLED
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|excludeFromAggregate
+operator|=
+name|getOptionalValueIfIndexed
+argument_list|(
+name|defn
+argument_list|,
+name|LuceneIndexConstants
+operator|.
+name|PROP_EXCLUDE_FROM_AGGREGATE
 argument_list|,
 literal|false
 argument_list|)

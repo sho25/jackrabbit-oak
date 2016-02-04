@@ -5053,7 +5053,10 @@ block|{
 continue|continue;
 block|}
 comment|//Check if any explicit property defn is defined via relative path
-comment|// and is marked to exclude this property from being indexed
+comment|// and is marked to exclude this property from being indexed. We exclude
+comment|//it from aggregation if
+comment|// 1. Its not to be indexed i.e. index=false
+comment|// 2. Its explicitly excluded from aggregation i.e. excludeFromAggregation=true
 name|PropertyDefinition
 name|pdForRootNode
 init|=
@@ -5070,10 +5073,16 @@ name|pdForRootNode
 operator|!=
 literal|null
 operator|&&
+operator|(
 operator|!
 name|pdForRootNode
 operator|.
-name|nodeScopeIndex
+name|index
+operator|||
+name|pdForRootNode
+operator|.
+name|excludeFromAggregate
+operator|)
 condition|)
 block|{
 continue|continue;
