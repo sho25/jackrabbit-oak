@@ -1054,7 +1054,7 @@ parameter_list|,
 annotation|@
 name|Nullable
 name|PropertyState
-name|propertyState
+name|property
 parameter_list|,
 name|long
 name|permissions
