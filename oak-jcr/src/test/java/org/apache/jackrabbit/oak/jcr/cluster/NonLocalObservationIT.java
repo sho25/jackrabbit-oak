@@ -698,6 +698,11 @@ argument_list|)
 decl_stmt|;
 comment|// phase 2 is 10 times measuring how long subsequent 10000 iterations take
 comment|//  (this used to fail due to 'many commit roots')
+name|boolean
+name|ignoreFirstSpike
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -707,7 +712,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+literal|15
 condition|;
 name|i
 operator|++
@@ -767,7 +772,7 @@ call|)
 argument_list|(
 name|scaleMeasurement
 operator|*
-literal|1.2
+literal|1.5
 argument_list|)
 decl_stmt|;
 name|System
@@ -793,6 +798,34 @@ operator|+
 name|max
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|testMeasurement
+operator|>=
+name|max
+operator|&&
+name|ignoreFirstSpike
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+operator|new
+name|Date
+argument_list|()
+operator|+
+literal|": this iteration would have failed, but we're now allowing one spike (ignoreFirstSpike)"
+argument_list|)
+expr_stmt|;
+name|ignoreFirstSpike
+operator|=
+literal|false
+expr_stmt|;
+continue|continue;
+block|}
 name|assertTrue
 argument_list|(
 literal|"test run ("
