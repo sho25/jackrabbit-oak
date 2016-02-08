@@ -1161,7 +1161,7 @@ name|put
 argument_list|(
 name|cId
 argument_list|,
-name|r
+name|checkpoint
 argument_list|)
 expr_stmt|;
 block|}
