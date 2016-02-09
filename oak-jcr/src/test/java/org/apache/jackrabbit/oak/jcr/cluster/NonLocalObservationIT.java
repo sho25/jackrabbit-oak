@@ -760,7 +760,7 @@ throw|throw
 name|e
 throw|;
 block|}
-comment|// the testMeasurement should now take less than 100% in relation to
+comment|// the testMeasurement should now take less than 200% in relation to
 comment|// the
 comment|// scaleMeasurement
 name|long
@@ -772,7 +772,7 @@ call|)
 argument_list|(
 name|scaleMeasurement
 operator|*
-literal|2
+literal|3
 argument_list|)
 decl_stmt|;
 name|System
@@ -793,7 +793,7 @@ literal|", scaleMeasurement="
 operator|+
 name|scaleMeasurement
 operator|+
-literal|", plus 100% margin: "
+literal|", plus 200% margin: "
 operator|+
 name|max
 argument_list|)
@@ -832,7 +832,7 @@ literal|"test run ("
 operator|+
 name|testMeasurement
 operator|+
-literal|") took more than 50% longer than initial measurement ("
+literal|") took more than 200% longer than initial measurement ("
 operator|+
 name|scaleMeasurement
 operator|+
