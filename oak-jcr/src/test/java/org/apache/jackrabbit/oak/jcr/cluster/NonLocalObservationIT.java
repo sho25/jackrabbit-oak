@@ -712,7 +712,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|15
+literal|14
 condition|;
 name|i
 operator|++
@@ -760,7 +760,7 @@ throw|throw
 name|e
 throw|;
 block|}
-comment|// the testMeasurement should now take less than 50% in relation to
+comment|// the testMeasurement should now take less than 100% in relation to
 comment|// the
 comment|// scaleMeasurement
 name|long
@@ -772,7 +772,7 @@ call|)
 argument_list|(
 name|scaleMeasurement
 operator|*
-literal|1.5
+literal|2
 argument_list|)
 decl_stmt|;
 name|System
@@ -793,7 +793,7 @@ literal|", scaleMeasurement="
 operator|+
 name|scaleMeasurement
 operator|+
-literal|", plus 50% margin: "
+literal|", plus 100% margin: "
 operator|+
 name|max
 argument_list|)
