@@ -661,7 +661,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// todo: make configurable
+comment|// todo: make configurable (OAK-4001)
 specifier|private
 specifier|static
 specifier|final
@@ -2314,7 +2314,7 @@ argument_list|>
 name|getSupportedCredentials
 parameter_list|()
 block|{
-comment|// TODO: maybe delegate getSupportedCredentials to IDP
+comment|// TODO: delegate getSupportedCredentials to IDP (OAK-4000)
 name|Class
 name|scClass
 init|=
