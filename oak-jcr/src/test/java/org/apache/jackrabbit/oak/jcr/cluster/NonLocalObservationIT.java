@@ -259,6 +259,16 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test for external events from another cluster node.  */
 end_comment
@@ -569,6 +579,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-3986 - disabling for now as in-memory fixture causes OOME in this or following tests"
+argument_list|)
 specifier|public
 name|void
 name|randomized
