@@ -1328,8 +1328,10 @@ operator|)
 name|delegate
 operator|)
 operator|.
-name|cleanup
-argument_list|()
+name|flush
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
