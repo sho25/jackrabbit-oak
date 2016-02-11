@@ -449,7 +449,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|private
+specifier|protected
 name|DB
 name|getDb
 parameter_list|(
