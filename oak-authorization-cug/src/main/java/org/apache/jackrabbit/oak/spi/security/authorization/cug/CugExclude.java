@@ -134,7 +134,7 @@ argument_list|>
 name|principals
 parameter_list|)
 function_decl|;
-comment|/**      * Default implementation of the {@link CugExclude} interface that exclude      * the following principal classes from CUG evaluation:      *<ul>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.AdminPrincipal AdminPrincipals}</li>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.SystemPrincipal SystemPrincipal}</li>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.SystemUserPrincipal SystemUserPrincipal}</li>      *</ul>      */
+comment|/**      * Default implementation of the {@link CugExclude} interface that excludes      * the following principal classes from CUG evaluation:      *<ul>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.AdminPrincipal AdminPrincipals}</li>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.SystemPrincipal SystemPrincipal}</li>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.SystemUserPrincipal SystemUserPrincipal}</li>      *</ul>      */
 class|class
 name|Default
 implements|implements
