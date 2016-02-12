@@ -367,7 +367,7 @@ literal|"User Membership Expiration"
 argument_list|,
 name|description
 operator|=
-literal|"Time after which membership expires (eg. '1h 30m' or '1d')."
+literal|"Time after which membership expires (eg. '1h 30m' or '1d'). Note however, that a membership sync is aways bound to a sync of the user."
 argument_list|,
 name|value
 operator|=
