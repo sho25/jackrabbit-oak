@@ -646,9 +646,9 @@ specifier|static
 name|Delegatee
 name|createInstance
 parameter_list|(
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|Repository
 name|repository
 parameter_list|,
