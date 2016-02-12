@@ -661,7 +661,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// todo: make configurable (OAK-4001)
 specifier|private
 specifier|static
 specifier|final
