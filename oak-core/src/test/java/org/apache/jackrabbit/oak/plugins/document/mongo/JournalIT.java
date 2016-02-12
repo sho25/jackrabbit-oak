@@ -1230,7 +1230,7 @@ name|gc
 argument_list|(
 literal|0
 argument_list|,
-literal|150
+literal|100
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1299,7 +1299,7 @@ name|gc
 argument_list|(
 literal|0
 argument_list|,
-literal|150
+literal|100
 argument_list|,
 name|TimeUnit
 operator|.
