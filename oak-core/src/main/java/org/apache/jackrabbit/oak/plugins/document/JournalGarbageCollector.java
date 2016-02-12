@@ -94,15 +94,6 @@ specifier|public
 class|class
 name|JournalGarbageCollector
 block|{
-comment|//copied from VersionGarbageCollector:
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|DELETE_BATCH_SIZE
-init|=
-literal|450
-decl_stmt|;
 specifier|private
 specifier|final
 name|DocumentStore
@@ -148,6 +139,9 @@ parameter_list|(
 name|long
 name|maxRevisionAge
 parameter_list|,
+name|int
+name|batchSize
+parameter_list|,
 name|TimeUnit
 name|unit
 parameter_list|)
@@ -174,7 +168,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"gc: Journal garbage collection starts with maxAge: {} min."
+literal|"gc: Journal garbage collection starts with maxAge: {} min., batch size: {}."
 argument_list|,
 name|TimeUnit
 operator|.
@@ -184,6 +178,8 @@ name|toMinutes
 argument_list|(
 name|maxRevisionAgeInMillis
 argument_list|)
+argument_list|,
+name|batchSize
 argument_list|)
 expr_stmt|;
 block|}
@@ -321,11 +317,6 @@ name|branch
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|int
-name|limit
-init|=
-name|DELETE_BATCH_SIZE
-decl_stmt|;
 name|List
 argument_list|<
 name|JournalEntry
@@ -344,7 +335,7 @@ name|fromKey
 argument_list|,
 name|toKey
 argument_list|,
-name|limit
+name|batchSize
 argument_list|)
 decl_stmt|;
 if|if
@@ -386,7 +377,7 @@ operator|.
 name|size
 argument_list|()
 operator|<
-name|limit
+name|batchSize
 condition|)
 block|{
 if|if

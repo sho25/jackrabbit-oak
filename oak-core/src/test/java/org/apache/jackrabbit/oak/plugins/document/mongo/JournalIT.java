@@ -1230,6 +1230,8 @@ name|gc
 argument_list|(
 literal|0
 argument_list|,
+literal|150
+argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
@@ -1296,6 +1298,8 @@ operator|.
 name|gc
 argument_list|(
 literal|0
+argument_list|,
+literal|150
 argument_list|,
 name|TimeUnit
 operator|.

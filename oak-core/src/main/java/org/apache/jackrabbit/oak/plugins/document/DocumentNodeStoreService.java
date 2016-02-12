@@ -1642,6 +1642,44 @@ name|PROP_JOURNAL_GC_MAX_AGE_MILLIS
 init|=
 literal|"journalGCMaxAge"
 decl_stmt|;
+comment|/**      * Batch size used during to lookup and delete journal entries during journalGC      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_JOURNAL_GC_BATCH_SIZE
+init|=
+literal|100
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|intValue
+operator|=
+name|DEFAULT_JOURNAL_GC_BATCH_SIZE
+argument_list|,
+name|label
+operator|=
+literal|"Batch size used for journalGC"
+argument_list|,
+name|description
+operator|=
+literal|"The journal gc queries the journal for entries older than configured to delete them. "
+operator|+
+literal|"It does so in batches to speed up the process. The batch size can be configured via this "
+operator|+
+literal|" property. The trade-off is between reducing number of operations with a larger batch size, "
+operator|+
+literal|" and consuming more memory less memory with a smaller batch size."
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROP_JOURNAL_GC_BATCH_SIZE
+init|=
+literal|"journalGcBatchSize"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -4178,6 +4216,25 @@ argument_list|,
 name|DEFAULT_JOURNAL_GC_MAX_AGE_MILLIS
 argument_list|)
 decl_stmt|;
+specifier|final
+name|int
+name|journalGCBatchSize
+init|=
+name|toInteger
+argument_list|(
+name|context
+operator|.
+name|getProperties
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|PROP_JOURNAL_GC_BATCH_SIZE
+argument_list|)
+argument_list|,
+name|DEFAULT_JOURNAL_GC_BATCH_SIZE
+argument_list|)
+decl_stmt|;
 name|Runnable
 name|journalGCJob
 init|=
@@ -4200,6 +4257,8 @@ operator|.
 name|gc
 argument_list|(
 name|journalGCMaxAge
+argument_list|,
+name|journalGCBatchSize
 argument_list|,
 name|TimeUnit
 operator|.
