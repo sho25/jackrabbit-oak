@@ -838,6 +838,8 @@ block|{
 if|if
 condition|(
 name|closed
+operator|||
+name|readOnlyMode
 condition|)
 block|{
 return|return;
