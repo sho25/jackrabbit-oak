@@ -164,7 +164,7 @@ specifier|final
 name|boolean
 name|PAUSE_DEFAULT
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|public
 specifier|static
