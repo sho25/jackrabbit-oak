@@ -10111,7 +10111,13 @@ name|PathCursor
 argument_list|(
 name|pathIterator
 argument_list|,
-literal|false
+name|getPlanResult
+argument_list|(
+name|plan
+argument_list|)
+operator|.
+name|isUniquePathsRequired
+argument_list|()
 argument_list|,
 name|settings
 argument_list|)

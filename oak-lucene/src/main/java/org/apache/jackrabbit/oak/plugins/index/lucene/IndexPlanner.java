@@ -1461,6 +1461,18 @@ literal|false
 expr_stmt|;
 block|}
 block|}
+comment|//Suggestion and SpellCheck use virtual paths which is same for all results
+if|if
+condition|(
+name|canHandleNativeFunction
+condition|)
+block|{
+name|result
+operator|.
+name|disableUniquePaths
+argument_list|()
+expr_stmt|;
+block|}
 comment|//If native function can be handled by this index then ensure
 comment|// that lowest cost if returned
 return|return
@@ -2774,6 +2786,12 @@ specifier|private
 name|boolean
 name|nodeNameRestriction
 decl_stmt|;
+specifier|private
+name|boolean
+name|uniquePathsRequired
+init|=
+literal|true
+decl_stmt|;
 specifier|public
 name|PlanResult
 parameter_list|(
@@ -2849,6 +2867,15 @@ parameter_list|()
 block|{
 return|return
 name|relativize
+return|;
+block|}
+specifier|public
+name|boolean
+name|isUniquePathsRequired
+parameter_list|()
+block|{
+return|return
+name|uniquePathsRequired
 return|;
 block|}
 comment|/**          * Transforms the given path if the query involved relative properties and index          * is not making use of aggregated properties. If the path          *          * @param path path to transform          * @return transformed path. Returns null if the path does not confirm to relative          * path requirements          */
@@ -2997,6 +3024,16 @@ block|{
 name|nodeNameRestriction
 operator|=
 literal|true
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|disableUniquePaths
+parameter_list|()
+block|{
+name|uniquePathsRequired
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}
