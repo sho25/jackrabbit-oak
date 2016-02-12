@@ -2198,7 +2198,7 @@ argument_list|)
 expr_stmt|;
 name|log
 operator|.
-name|trace
+name|info
 argument_list|(
 literal|"Deleted blob [{}]"
 argument_list|,
