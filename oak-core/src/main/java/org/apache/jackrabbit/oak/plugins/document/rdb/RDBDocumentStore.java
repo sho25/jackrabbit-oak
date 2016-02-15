@@ -7368,7 +7368,10 @@ decl_stmt|;
 if|if
 condition|(
 name|done
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|collection
 operator|==
 name|Collection
@@ -7394,6 +7397,7 @@ operator|)
 name|doc
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
