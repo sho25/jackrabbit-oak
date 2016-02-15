@@ -228,6 +228,15 @@ name|DumpDataStoreReferencesCommand
 argument_list|()
 argument_list|)
 block|,
+name|RESETCLUSTERID
+argument_list|(
+literal|"resetclusterid"
+argument_list|,
+operator|new
+name|ResetClusterIdCommand
+argument_list|()
+argument_list|)
+block|,
 name|HELP
 argument_list|(
 literal|"help"
