@@ -277,6 +277,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|identifier
+operator|.
+name|ClusterRepositoryInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|commit
@@ -318,24 +336,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
 import|;
 end_import
 
@@ -386,7 +386,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The DocumentDiscoveryLiteService is taking care of providing a repository  * descriptor that contains the current cluster-view details.  *<p>  * The clusterView is provided via a repository descriptor (see  * OAK_DISCOVERYLITE_CLUSTERVIEW)  *<p>  * The cluster-view lists all instances (ever) known in the cluster in one of  * the following states:  *<ul>  *<li>active: the instance is currently running and has an up-to-date lease  *</li>  *<li>deactivating: the instance failed to update the lease recently thus a  * recovery is happening - or it has just finished and the local instance is yet  * to do a backgroundRead before it has finished reading the crashed/shutdown  * instance's last changes</li>  *<li>inactive: the instance is currently not running and all its changes have  * been seen by the local instance</li>  *</ul>  *<p>  * Additionally, the cluster-view is assigned a monotonically increasing  * sequence number to. This sequence number is persisted, thus all instances in  * the cluster will show the same sequence number for a particular cluster-view  * in time.  *<p>  * Note that the 'deactivating' state might be hiding some complexity that is  * deliberately not shown: for the documentNS the state 'deactivating' consists  * of two substates: 'recovering' as in _lastRevs are updated, and 'backlog  * processing' for a pending backgroundRead to get the latest head state of a  * crashed/shutdown instance. So when an instance is in 'deactivating' state, it  * is not indicated via the cluster-view whether it is recovering or has backlog  * to process. However, the fact that an instance has to yet do a backgroundRead  * to get changes is a per-instance story: other instances might already have  * done the backgroundRead and thus no longer have a backlog for the instance(s)  * that left. Even though 'deactivating' therefore is dependent on the instance  * you get the information from, the cluster-view must have a sequence number  * that uniquely identifies it in the cluster. These two constraints conflict.  * As a simple solution to handle this case nevertheless, the 'final' flag has  * been introduced: the cluster-view has this flag 'final' set to true when the  * view is final and nothing will be changed in this sequence number anymore. If  * the 'final' flag is false however it indicates that the cluster-view with  * this particular sequence number might still experience a change (more  * concretely: the deactivating instances might change). Note that there  * alternatives to this 'final' flag have been discussed, such as using  * vector-counters, but there was no obvious gain achieve using an alternative  * approach.  *<p>  * In other words: whenever the 'final' flag is false, the view must be  * interpreted as 'in flux' wrt the deactivating/inactive instances and any  * action that depends on stable deactivating/inactive instances must not yet be  * done until the 'final' flag becomes true.  *<p>  * Underneath, the DocumentDiscoveryLiteService uses the clusterNodes collection  * to derive the clusterView, which it stores in the settings collection.  * Whenever it updates the clusterView it increments the sequence number by 1.  *<p>  * While this new 'clusterView' document in the settings collection sounds like  * redundant data (since it is just derived from the clusterNodes), it actually  * is not. By persisting the clusterView it becomes the new source of truth wrt  * what the clusterView looks like. And no two instances in the same cluster can  * make different conclusions based eg on different clocks they have or based on  * reading the clusterNodes in a slightly different moment etc. Also, the  * clusterView allows to store the currently two additional attributes: the  * clusterViewId (which is the permanent id for this cluster similar to the  * slingId being a permanent id for an instance) as well as the sequence number  * (which allows the instances to make reference to the same clusterView, and be  * able to simply detect whether anything has changed)  *<p>  * Prerequisites that the clusterView mechanism is stable:  *<ul>  *<li>the machine clocks are reasonably in sync - that is, they should be off  * by magnitudes less than the lease updateFrequency/timeout</li>  *<li>the write-delays from any instance to the mongo server where the  * clusterNodes and settings collections are stored should be very fast - at  * least orders of magnitudes lower again than the lease timeout</li>  *<li>when this instance notices that others have kicked it out of the  * clusterView (which it can find out when either its clusterNodes document is  * set to recovering or it is not in the clusterView anymore, although it just  * was - ie not just because of a fresh start), then this instance must step  * back gracefully. The exact definition is to be applied elsewhere - but it  * should include: stopping to update its own lease, waiting for the view to  * have stabilized - waiting for recovery of its own instance by the remaining  * instances in the cluster to have finished - and then probably waiting for  * another gracePeriod until it might rejoin the cluster. In between, any commit  * should fail with BannedFromClusterException</li>  *</ul>  *   * @see #OAK_DISCOVERYLITE_CLUSTERVIEW  */
+comment|/**  * The DocumentDiscoveryLiteService is taking care of providing a repository  * descriptor that contains the current cluster-view details.  *<p>  * The clusterView is provided via a repository descriptor (see  * OAK_DISCOVERYLITE_CLUSTERVIEW)  *<p>  * The cluster-view lists all instances (ever) known in the cluster in one of  * the following states:  *<ul>  *<li>active: the instance is currently running and has an up-to-date lease  *</li>  *<li>deactivating: the instance failed to update the lease recently thus a  * recovery is happening - or it has just finished and the local instance is yet  * to do a backgroundRead before it has finished reading the crashed/shutdown  * instance's last changes</li>  *<li>inactive: the instance is currently not running and all its changes have  * been seen by the local instance</li>  *</ul>  *<p>  * Additionally, the cluster-view is assigned a monotonically increasing  * sequence number to. This sequence number is persisted, thus all instances in  * the cluster will show the same sequence number for a particular cluster-view  * in time.  *<p>  * Note that the 'deactivating' state might be hiding some complexity that is  * deliberately not shown: for the documentNS the state 'deactivating' consists  * of two substates: 'recovering' as in _lastRevs are updated, and 'backlog  * processing' for a pending backgroundRead to get the latest head state of a  * crashed/shutdown instance. So when an instance is in 'deactivating' state, it  * is not indicated via the cluster-view whether it is recovering or has backlog  * to process. However, the fact that an instance has to yet do a backgroundRead  * to get changes is a per-instance story: other instances might already have  * done the backgroundRead and thus no longer have a backlog for the instance(s)  * that left. Even though 'deactivating' therefore is dependent on the instance  * you get the information from, the cluster-view must have a sequence number  * that uniquely identifies it in the cluster. These two constraints conflict.  * As a simple solution to handle this case nevertheless, the 'final' flag has  * been introduced: the cluster-view has this flag 'final' set to true when the  * view is final and nothing will be changed in this sequence number anymore. If  * the 'final' flag is false however it indicates that the cluster-view with  * this particular sequence number might still experience a change (more  * concretely: the deactivating instances might change). Note that there  * alternatives to this 'final' flag have been discussed, such as using  * vector-counters, but there was no obvious gain achieve using an alternative  * approach.  *<p>  * In other words: whenever the 'final' flag is false, the view must be  * interpreted as 'in flux' wrt the deactivating/inactive instances and any  * action that depends on stable deactivating/inactive instances must not yet be  * done until the 'final' flag becomes true.  *<p>  * Underneath, the DocumentDiscoveryLiteService uses the clusterNodes collection  * to derive the clusterView, which it stores in the settings collection.  * Whenever it updates the clusterView it increments the sequence number by 1.  *<p>  * While this new 'clusterView' document in the settings collection sounds like  * redundant data (since it is just derived from the clusterNodes), it actually  * is not. By persisting the clusterView it becomes the new source of truth wrt  * what the clusterView looks like. And no two instances in the same cluster can  * make different conclusions based eg on different clocks they have or based on  * reading the clusterNodes in a slightly different moment etc. Also, the  * clusterView allows to store a the sequence number  * (which allows the instances to make reference to the same clusterView, and be  * able to simply detect whether anything has changed)  *<p>  * Prerequisites that the clusterView mechanism is stable:  *<ul>  *<li>the machine clocks are reasonably in sync - that is, they should be off  * by magnitudes less than the lease updateFrequency/timeout</li>  *<li>the write-delays from any instance to the mongo server where the  * clusterNodes and settings collections are stored should be very fast - at  * least orders of magnitudes lower again than the lease timeout</li>  *<li>when this instance notices that others have kicked it out of the  * clusterView (which it can find out when either its clusterNodes document is  * set to recovering or it is not in the clusterView anymore, although it just  * was - ie not just because of a fresh start), then this instance must step  * back gracefully. The exact definition is to be applied elsewhere - but it  * should include: stopping to update its own lease, waiting for the view to  * have stabilized - waiting for recovery of its own instance by the remaining  * instances in the cluster to have finished - and then probably waiting for  * another gracePeriod until it might rejoin the cluster. In between, any commit  * should fail with BannedFromClusterException</li>  *</ul>  *   * @see #OAK_DISCOVERYLITE_CLUSTERVIEW  */
 end_comment
 
 begin_class
@@ -1626,6 +1626,16 @@ condition|(
 name|changed
 condition|)
 block|{
+name|String
+name|clusterId
+init|=
+name|ClusterRepositoryInfo
+operator|.
+name|getOrCreateId
+argument_list|(
+name|documentNodeStore
+argument_list|)
+decl_stmt|;
 name|ClusterView
 name|v
 init|=
@@ -1634,6 +1644,8 @@ operator|.
 name|fromDocument
 argument_list|(
 name|clusterNodeId
+argument_list|,
+name|clusterId
 argument_list|,
 name|newView
 argument_list|,

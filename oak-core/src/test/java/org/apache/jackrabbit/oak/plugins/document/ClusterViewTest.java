@@ -721,7 +721,7 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|clusterViewId
+name|clusterId
 init|=
 name|UUID
 operator|.
@@ -739,8 +739,6 @@ name|ClusterViewBuilder
 argument_list|(
 literal|10
 argument_list|,
-name|clusterViewId
-argument_list|,
 literal|21
 argument_list|)
 decl_stmt|;
@@ -755,7 +753,9 @@ literal|21
 argument_list|)
 operator|.
 name|asView
-argument_list|()
+argument_list|(
+name|clusterId
+argument_list|)
 decl_stmt|;
 comment|// {"seq":10,"id":"35f60ed3-508d-4a81-b812-89f07f57db20","me":2,"active":[2],"deactivating":[],"inactive":[3]}
 name|JsonObject
@@ -791,7 +791,21 @@ literal|"seq"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//        assertEquals(clusterViewId, unwrapString(props.get("id")));
+name|assertEquals
+argument_list|(
+name|clusterId
+argument_list|,
+name|unwrapString
+argument_list|(
+name|props
+operator|.
+name|get
+argument_list|(
+literal|"id"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"21"
@@ -856,7 +870,7 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|clusterViewId
+name|clusterId
 init|=
 name|UUID
 operator|.
@@ -873,8 +887,6 @@ operator|new
 name|ClusterViewBuilder
 argument_list|(
 literal|10
-argument_list|,
-name|clusterViewId
 argument_list|,
 literal|2
 argument_list|)
@@ -895,7 +907,9 @@ literal|3
 argument_list|)
 operator|.
 name|asView
-argument_list|()
+argument_list|(
+name|clusterId
+argument_list|)
 decl_stmt|;
 comment|// {"seq":10,"id":"35f60ed3-508d-4a81-b812-89f07f57db20","me":2,"active":[2],"deactivating":[],"inactive":[3]}
 name|JsonObject
@@ -931,7 +945,21 @@ literal|"seq"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//        assertEquals(clusterViewId, unwrapString(props.get("id")));
+name|assertEquals
+argument_list|(
+name|clusterId
+argument_list|,
+name|unwrapString
+argument_list|(
+name|props
+operator|.
+name|get
+argument_list|(
+literal|"id"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"2"
@@ -998,7 +1026,7 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|clusterViewId
+name|clusterId
 init|=
 name|UUID
 operator|.
@@ -1015,8 +1043,6 @@ operator|new
 name|ClusterViewBuilder
 argument_list|(
 literal|10
-argument_list|,
-name|clusterViewId
 argument_list|,
 literal|2
 argument_list|)
@@ -1041,7 +1067,9 @@ literal|3
 argument_list|)
 operator|.
 name|asView
-argument_list|()
+argument_list|(
+name|clusterId
+argument_list|)
 decl_stmt|;
 comment|// {"seq":10,"id":"35f60ed3-508d-4a81-b812-89f07f57db20","me":2,"active":[2],"deactivating":[],"inactive":[3]}
 name|JsonObject
@@ -1089,7 +1117,21 @@ literal|"final"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//        assertEquals(clusterViewId, unwrapString(props.get("id")));
+name|assertEquals
+argument_list|(
+name|clusterId
+argument_list|,
+name|unwrapString
+argument_list|(
+name|props
+operator|.
+name|get
+argument_list|(
+literal|"id"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"2"
@@ -1160,7 +1202,7 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|clusterViewId
+name|clusterId
 init|=
 name|UUID
 operator|.
@@ -1177,8 +1219,6 @@ operator|new
 name|ClusterViewBuilder
 argument_list|(
 literal|10
-argument_list|,
-name|clusterViewId
 argument_list|,
 literal|2
 argument_list|)
@@ -1205,7 +1245,9 @@ literal|6
 argument_list|)
 operator|.
 name|asView
-argument_list|()
+argument_list|(
+name|clusterId
+argument_list|)
 decl_stmt|;
 comment|// {"seq":10,"id":"35f60ed3-508d-4a81-b812-89f07f57db20","me":2,"active":[2],"deactivating":[],"inactive":[3]}
 name|JsonObject
@@ -1253,7 +1295,21 @@ literal|"final"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//        assertEquals(clusterViewId, unwrapString(props.get("id")));
+name|assertEquals
+argument_list|(
+name|clusterId
+argument_list|,
+name|unwrapString
+argument_list|(
+name|props
+operator|.
+name|get
+argument_list|(
+literal|"id"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"2"
@@ -1326,7 +1382,7 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|clusterViewId
+name|clusterId
 init|=
 name|UUID
 operator|.
@@ -1343,8 +1399,6 @@ operator|new
 name|ClusterViewBuilder
 argument_list|(
 literal|10
-argument_list|,
-name|clusterViewId
 argument_list|,
 literal|2
 argument_list|)
@@ -1374,7 +1428,9 @@ literal|6
 argument_list|)
 operator|.
 name|asView
-argument_list|()
+argument_list|(
+name|clusterId
+argument_list|)
 decl_stmt|;
 name|JsonObject
 name|o
@@ -1421,7 +1477,21 @@ literal|"final"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//        assertEquals(clusterViewId, unwrapString(props.get("id")));
+name|assertEquals
+argument_list|(
+name|clusterId
+argument_list|,
+name|unwrapString
+argument_list|(
+name|props
+operator|.
+name|get
+argument_list|(
+literal|"id"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"2"
@@ -1494,7 +1564,7 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|clusterViewId
+name|clusterId
 init|=
 name|UUID
 operator|.
@@ -1511,8 +1581,6 @@ operator|new
 name|ClusterViewBuilder
 argument_list|(
 literal|10
-argument_list|,
-name|clusterViewId
 argument_list|,
 literal|2
 argument_list|)
@@ -1547,7 +1615,9 @@ literal|5
 argument_list|)
 operator|.
 name|asView
-argument_list|()
+argument_list|(
+name|clusterId
+argument_list|)
 decl_stmt|;
 name|JsonObject
 name|o
@@ -1582,7 +1652,21 @@ literal|"seq"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//        assertEquals(clusterViewId, unwrapString(props.get("id")));
+name|assertEquals
+argument_list|(
+name|clusterId
+argument_list|,
+name|unwrapString
+argument_list|(
+name|props
+operator|.
+name|get
+argument_list|(
+literal|"id"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"2"
@@ -1667,7 +1751,7 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|clusterViewId
+name|clusterId
 init|=
 name|UUID
 operator|.
@@ -1684,8 +1768,6 @@ operator|new
 name|ClusterViewBuilder
 argument_list|(
 literal|10
-argument_list|,
-name|clusterViewId
 argument_list|,
 literal|2
 argument_list|)
@@ -1710,7 +1792,9 @@ literal|5
 argument_list|)
 operator|.
 name|asView
-argument_list|()
+argument_list|(
+name|clusterId
+argument_list|)
 decl_stmt|;
 name|fail
 argument_list|(

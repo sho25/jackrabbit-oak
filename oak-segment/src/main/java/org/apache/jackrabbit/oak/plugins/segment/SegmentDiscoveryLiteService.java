@@ -201,6 +201,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|identifier
+operator|.
+name|ClusterRepositoryInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -513,8 +531,24 @@ comment|//            and for tarMk we're doing exactly that (id==null) - indica
 comment|//            to upper layers that we're not really in a cluster and that
 comment|//            this low level descriptor doesn't manage the 'cluster id'
 comment|//            in such a case.
+comment|// OAK-4006: but ClusterRepositoryInfo now provides a persistent clusterId,
+comment|//           so that is now used also for discovery-lite via exactly below 'id'
+name|String
+name|clusterId
+init|=
+name|ClusterRepositoryInfo
+operator|.
+name|getOrCreateId
+argument_list|(
+name|nodeStore
+argument_list|)
+decl_stmt|;
 return|return
-literal|"{\"seq\":1,\"final\":true,\"me\":1,\"active\":[1],\"deactivating\":[],\"inactive\":[]}"
+literal|"{\"seq\":1,\"final\":true,\"me\":1,\"id\":\""
+operator|+
+name|clusterId
+operator|+
+literal|"\",\"active\":[1],\"deactivating\":[],\"inactive\":[]}"
 return|;
 block|}
 comment|/**      * On activate the SegmentDiscoveryLiteService registers       * the descriptor      */

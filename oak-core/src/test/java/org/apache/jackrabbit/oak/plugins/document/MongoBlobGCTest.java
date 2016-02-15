@@ -1967,7 +1967,7 @@ name|repoId
 operator|=
 name|ClusterRepositoryInfo
 operator|.
-name|createId
+name|getOrCreateId
 argument_list|(
 name|store
 argument_list|)
@@ -2201,7 +2201,7 @@ name|repoId
 operator|=
 name|ClusterRepositoryInfo
 operator|.
-name|createId
+name|getOrCreateId
 argument_list|(
 name|store
 argument_list|)

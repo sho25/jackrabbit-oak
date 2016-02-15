@@ -121,16 +121,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|UUID
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -200,14 +190,6 @@ init|=
 literal|"clusterView"
 decl_stmt|;
 comment|// keys that we store in the root document - and in the history
-comment|/**      * document key that stores the stable id of the cluster (will never change)      * (Note: a better term would have been just clusterId - but that one is      * already occupied with what should actually be called clusterNodeId or      * just nodeId)      **/
-specifier|static
-specifier|final
-name|String
-name|CLUSTER_VIEW_ID_KEY
-init|=
-literal|"clusterViewId"
-decl_stmt|;
 comment|/**      * document key that stores the monotonically incrementing sequence number      * of the cluster view. Any update will increase this by 1      **/
 specifier|static
 specifier|final
@@ -311,12 +293,6 @@ specifier|private
 specifier|final
 name|long
 name|viewSeqNum
-decl_stmt|;
-comment|/** the stable id of this cluster **/
-specifier|private
-specifier|final
-name|String
-name|clusterViewId
 decl_stmt|;
 comment|/** the ids of instances that are active at this moment **/
 specifier|private
@@ -764,27 +740,6 @@ argument_list|,
 name|newViewSeqNum
 argument_list|)
 expr_stmt|;
-comment|// first view ever => choose a new unique clusterViewId
-name|String
-name|clusterViewId
-init|=
-name|UUID
-operator|.
-name|randomUUID
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
-name|updateOp
-operator|.
-name|set
-argument_list|(
-name|CLUSTER_VIEW_ID_KEY
-argument_list|,
-name|clusterViewId
-argument_list|)
-expr_stmt|;
 name|updateOps
 operator|.
 name|add
@@ -796,15 +751,11 @@ name|logger
 operator|.
 name|debug
 argument_list|(
-literal|"updateAndRead: trying to create the first ever clusterView - hence {}={} and {}={}"
+literal|"updateAndRead: trying to create the first ever clusterView - hence {}={}"
 argument_list|,
 name|VIEW_SEQ_NUM_KEY
 argument_list|,
 name|newViewSeqNum
-argument_list|,
-name|CLUSTER_VIEW_ID_KEY
-argument_list|,
-name|clusterViewId
 argument_list|)
 expr_stmt|;
 if|if
@@ -1825,20 +1776,6 @@ throw|;
 block|}
 name|this
 operator|.
-name|clusterViewId
-operator|=
-operator|(
-name|String
-operator|)
-name|doc
-operator|.
-name|get
-argument_list|(
-name|CLUSTER_VIEW_ID_KEY
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
 name|viewSeqNum
 operator|=
 operator|(
@@ -2269,10 +2206,6 @@ literal|", viewSeqNum="
 operator|+
 name|viewSeqNum
 operator|+
-literal|", clusterViewId="
-operator|+
-name|clusterViewId
-operator|+
 literal|", activeIds="
 operator|+
 name|arrayToCsv
@@ -2342,15 +2275,6 @@ parameter_list|()
 block|{
 return|return
 name|viewSeqNum
-return|;
-block|}
-comment|/**      * Returns a UUID representing this cluster - will never change, propagates      * from view to view      **/
-name|String
-name|getClusterViewId
-parameter_list|()
-block|{
-return|return
-name|clusterViewId
 return|;
 block|}
 specifier|private

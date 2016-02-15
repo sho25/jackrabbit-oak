@@ -89,6 +89,9 @@ parameter_list|(
 name|int
 name|localInstanceId
 parameter_list|,
+name|String
+name|clusterId
+parameter_list|,
 name|ClusterViewDocument
 name|clusterViewDoc
 parameter_list|,
@@ -203,6 +206,10 @@ literal|")"
 argument_list|)
 throw|;
 block|}
+comment|// clusterViewDoc.getClusterViewId() used to provide the 'clusterViewId'
+comment|// as defined within the settings collection of the DocumentStore.
+comment|// with OAK-4006 however we're changing this to use one clusterId
+comment|// within oak - provided and controlled by ClusterRepositoryInfo.
 return|return
 operator|new
 name|ClusterView
@@ -219,10 +226,7 @@ argument_list|()
 operator|==
 literal|0
 argument_list|,
-name|clusterViewDoc
-operator|.
-name|getClusterViewId
-argument_list|()
+name|clusterId
 argument_list|,
 name|localInstanceId
 argument_list|,
@@ -246,7 +250,7 @@ name|viewFinal
 parameter_list|,
 specifier|final
 name|String
-name|clusterViewId
+name|clusterId
 parameter_list|,
 specifier|final
 name|int
@@ -293,11 +297,11 @@ throw|;
 block|}
 if|if
 condition|(
-name|clusterViewId
+name|clusterId
 operator|==
 literal|null
 operator|||
-name|clusterViewId
+name|clusterId
 operator|.
 name|length
 argument_list|()
@@ -309,9 +313,9 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"clusterViewId must not be zero or empty: "
+literal|"clusterId must not be zero or empty: "
 operator|+
-name|clusterViewId
+name|clusterId
 argument_list|)
 throw|;
 block|}
@@ -392,7 +396,7 @@ name|viewSeqNum
 argument_list|,
 name|viewFinal
 argument_list|,
-name|clusterViewId
+name|clusterId
 argument_list|,
 name|localId
 argument_list|,
@@ -419,7 +423,7 @@ name|viewFinal
 parameter_list|,
 specifier|final
 name|String
-name|clusterViewId
+name|clusterId
 parameter_list|,
 specifier|final
 name|int
@@ -483,7 +487,18 @@ argument_list|(
 name|viewFinal
 argument_list|)
 expr_stmt|;
-comment|//        builder.key("id").value(clusterViewId);
+name|builder
+operator|.
+name|key
+argument_list|(
+literal|"id"
+argument_list|)
+operator|.
+name|value
+argument_list|(
+name|clusterId
+argument_list|)
+expr_stmt|;
 name|builder
 operator|.
 name|key

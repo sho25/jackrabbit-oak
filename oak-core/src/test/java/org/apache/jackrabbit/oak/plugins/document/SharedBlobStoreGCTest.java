@@ -705,7 +705,7 @@ name|repoId1
 init|=
 name|ClusterRepositoryInfo
 operator|.
-name|createId
+name|getOrCreateId
 argument_list|(
 name|ds1
 argument_list|)
@@ -787,7 +787,7 @@ name|repoId2
 init|=
 name|ClusterRepositoryInfo
 operator|.
-name|createId
+name|getOrCreateId
 argument_list|(
 name|ds2
 argument_list|)
