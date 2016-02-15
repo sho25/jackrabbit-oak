@@ -1252,6 +1252,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|columns
+operator|!=
+literal|null
+condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -1268,6 +1275,7 @@ operator|+
 literal|": column names ignored when using JDBC"
 argument_list|)
 expr_stmt|;
+block|}
 name|dumpJDBC
 argument_list|(
 name|url
