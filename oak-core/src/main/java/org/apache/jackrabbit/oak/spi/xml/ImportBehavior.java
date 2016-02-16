@@ -64,7 +64,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * If a value cannot be set due to constraints      * enforced by the API implementation, the failure is logged as      * warning but otherwise ignored.      */
+comment|/**      * If a value cannot be set due to constraints      * enforced by the API implementation, the failure is logged as      * warning and the value is ignored.      */
 specifier|public
 specifier|static
 specifier|final
@@ -73,7 +73,7 @@ name|IGNORE
 init|=
 literal|1
 decl_stmt|;
-comment|/**      * Same as {@link #IGNORE} but in addition tries to circumvent the      * problem. This option should only be used with validated and trusted      * XML passed to the SessionImporter.      */
+comment|/**      * Same as {@link #IGNORE} but in addition tries to circumvent the      * problem. This option should only be used with validated and trusted      * XML passed to the {@code Session} and {@code Workspace} import API.      */
 specifier|public
 specifier|static
 specifier|final
