@@ -271,6 +271,20 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
+name|RemovalCause
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tracker of references to segment identifiers and segment instances  * that are currently kept in memory.  *<p>  * It is also responsible to cache segment objects in memory.  */
 end_comment
@@ -646,6 +660,9 @@ name|segmentId
 parameter_list|,
 name|Segment
 name|segment
+parameter_list|,
+name|RemovalCause
+name|cause
 parameter_list|)
 block|{
 if|if

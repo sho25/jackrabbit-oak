@@ -221,6 +221,20 @@ name|common
 operator|.
 name|cache
 operator|.
+name|RemovalCause
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
 name|Weigher
 import|;
 end_import
@@ -363,7 +377,7 @@ parameter_list|,
 name|V
 parameter_list|>
 block|{
-comment|/**          * Indicates eviction of an item.          *<p>          *<em>Note:</em> It is not safe to call any of {@code CacheLIRS}'s          * method from withing this callback. Any such call might result in          * undefined behaviour and Java level deadlocks.          *<p>          * The method may be called twice for the same key (first if the entry          * is resident, and later if the entry is non-resident).          *           * @param key the evicted item's key          * @param value the evicted item's value or {@code null} if non-resident          */
+comment|/**          * Indicates eviction of an item.          *<p>          *<em>Note:</em> It is not safe to call any of {@code CacheLIRS}'s          * method from withing this callback. Any such call might result in          * undefined behaviour and Java level deadlocks.          *<p>          * The method may be called twice for the same key (first if the entry          * is resident, and later if the entry is non-resident).          *           * @param key the evicted item's key          * @param value the evicted item's value or {@code null} if non-resident          * @param cause the cause of the eviction          */
 name|void
 name|evicted
 parameter_list|(
@@ -376,6 +390,11 @@ annotation|@
 name|Nullable
 name|V
 name|value
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RemovalCause
+name|cause
 parameter_list|)
 function_decl|;
 block|}
@@ -870,7 +889,11 @@ block|{
 name|old
 operator|.
 name|evictedAll
-argument_list|()
+argument_list|(
+name|RemovalCause
+operator|.
+name|EXPLICIT
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -884,6 +907,9 @@ argument_list|,
 name|V
 argument_list|>
 name|entry
+parameter_list|,
+name|RemovalCause
+name|cause
 parameter_list|)
 block|{
 if|if
@@ -918,6 +944,8 @@ argument_list|,
 name|entry
 operator|.
 name|value
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 block|}
@@ -1504,6 +1532,10 @@ argument_list|(
 name|key
 argument_list|,
 name|hash
+argument_list|,
+name|RemovalCause
+operator|.
+name|EXPLICIT
 argument_list|)
 expr_stmt|;
 block|}
@@ -2322,7 +2354,11 @@ block|{
 name|s
 operator|.
 name|evictedAll
-argument_list|()
+argument_list|(
+name|RemovalCause
+operator|.
+name|EXPLICIT
+argument_list|)
 expr_stmt|;
 block|}
 name|s
@@ -2675,7 +2711,10 @@ block|}
 specifier|public
 name|void
 name|evictedAll
-parameter_list|()
+parameter_list|(
+name|RemovalCause
+name|cause
+parameter_list|)
 block|{
 for|for
 control|(
@@ -2716,6 +2755,8 @@ operator|.
 name|evicted
 argument_list|(
 name|e
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 block|}
@@ -2759,6 +2800,8 @@ operator|.
 name|evicted
 argument_list|(
 name|e
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 block|}
@@ -2793,6 +2836,8 @@ operator|.
 name|evicted
 argument_list|(
 name|e
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 block|}
@@ -3974,6 +4019,10 @@ argument_list|(
 name|key
 argument_list|,
 name|hash
+argument_list|,
+name|RemovalCause
+operator|.
+name|EXPLICIT
 argument_list|)
 expr_stmt|;
 return|return
@@ -4011,6 +4060,10 @@ argument_list|(
 name|key
 argument_list|,
 name|hash
+argument_list|,
+name|RemovalCause
+operator|.
+name|EXPLICIT
 argument_list|)
 expr_stmt|;
 return|return
@@ -4299,6 +4352,10 @@ argument_list|(
 name|key
 argument_list|,
 name|hash
+argument_list|,
+name|RemovalCause
+operator|.
+name|REPLACED
 argument_list|)
 expr_stmt|;
 block|}
@@ -4419,6 +4476,9 @@ name|key
 parameter_list|,
 name|int
 name|hash
+parameter_list|,
+name|RemovalCause
+name|cause
 parameter_list|)
 block|{
 name|Entry
@@ -4637,6 +4697,8 @@ operator|.
 name|evicted
 argument_list|(
 name|e
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 block|}
@@ -4736,6 +4798,10 @@ operator|.
 name|evicted
 argument_list|(
 name|e
+argument_list|,
+name|RemovalCause
+operator|.
+name|SIZE
 argument_list|)
 expr_stmt|;
 name|e
@@ -4790,6 +4856,10 @@ operator|.
 name|key
 argument_list|,
 name|hash
+argument_list|,
+name|RemovalCause
+operator|.
+name|SIZE
 argument_list|)
 expr_stmt|;
 block|}
