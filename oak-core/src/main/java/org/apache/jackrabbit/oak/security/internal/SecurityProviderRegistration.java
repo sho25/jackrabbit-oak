@@ -888,7 +888,7 @@ literal|"requiredServicePids"
 argument_list|,
 name|label
 operator|=
-literal|"Required service PIDs"
+literal|"Required Service PIDs"
 argument_list|,
 name|description
 operator|=
