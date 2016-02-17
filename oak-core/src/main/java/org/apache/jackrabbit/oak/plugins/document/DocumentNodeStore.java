@@ -9725,6 +9725,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
+comment|// success: start with a new document
 name|changes
 operator|=
 name|JOURNAL
@@ -9733,6 +9734,24 @@ name|newDocument
 argument_list|(
 name|getDocumentStore
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// fail: log and keep the changes
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Failed to write to journal, accumulating changes for future write (~"
+operator|+
+name|changes
+operator|.
+name|getMemory
+argument_list|()
+operator|+
+literal|" bytes)."
 argument_list|)
 expr_stmt|;
 block|}
