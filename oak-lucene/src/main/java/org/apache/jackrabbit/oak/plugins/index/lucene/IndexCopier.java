@@ -1997,7 +1997,6 @@ name|indexPath
 return|;
 block|}
 comment|/**      * Directory implementation which lazily copies the index files from a      * remote directory in background.      */
-specifier|private
 class|class
 name|CopyOnReadDirectory
 extends|extends
@@ -2452,6 +2451,14 @@ name|name
 argument_list|,
 name|context
 argument_list|)
+return|;
+block|}
+name|Directory
+name|getLocal
+parameter_list|()
+block|{
+return|return
+name|local
 return|;
 block|}
 specifier|private

@@ -976,7 +976,6 @@ name|createDefaultParser
 argument_list|()
 decl_stmt|;
 specifier|private
-specifier|final
 name|IndexDefinition
 name|definition
 decl_stmt|;
@@ -1038,6 +1037,11 @@ specifier|final
 name|IndexAugmentorFactory
 name|augmentorFactory
 decl_stmt|;
+specifier|private
+specifier|final
+name|NodeState
+name|root
+decl_stmt|;
 comment|/**      * The media types supported by the parser used.      */
 specifier|private
 name|Set
@@ -1069,6 +1073,12 @@ name|IndexAugmentorFactory
 name|augmentorFactory
 parameter_list|)
 block|{
+name|this
+operator|.
+name|root
+operator|=
+name|root
+expr_stmt|;
 name|this
 operator|.
 name|definitionBuilder
@@ -1901,6 +1911,17 @@ name|version
 operator|.
 name|getVersion
 argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//Refresh the index definition based on update builder state
+name|definition
+operator|=
+operator|new
+name|IndexDefinition
+argument_list|(
+name|root
+argument_list|,
+name|definitionBuilder
 argument_list|)
 expr_stmt|;
 block|}
