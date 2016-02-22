@@ -991,7 +991,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|error
 argument_list|(
 name|versionDiags
 argument_list|)
