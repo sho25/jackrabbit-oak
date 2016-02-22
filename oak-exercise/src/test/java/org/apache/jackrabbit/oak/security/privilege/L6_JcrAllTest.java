@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<pre>  * Module: Privilege Management  * =============================================================================  *  * Title: The Privilege 'jcr:all'  * -----------------------------------------------------------------------------  *  * Goal:  * Understand the meaning of the jcr:all privilege and how it is maintained  * in the Oak repository.  *  * Exercises:  *  * - Overview  *   Read again what JSR 283 states about {@link Privilege#JCR_ALL) and review  *   again the result of {@link L4_CustomPrivilegeTest#testJcrAll()}  *  * - {@link #testManualModification()}  *   This test case tries to modify the tree storing the jcr:all privilege  *   definition. Walk through the test and explain what happens.  *   Fix the test case such that it passes.  *  *   Question: Can you identify the relevant class in the Oak code base?  *   Question: Can you explain what it does and why?  *  *  * Advanced Exercise  * -----------------------------------------------------------------------------  *  * - {@link #testJcrAllInPermissionStore()}  *   Due to the dynamic nature of jcr:all the long-representation of this privilege  *   may change over time.  *   This exercise aim to show you how granting|denying jcr:all is reflected  *   in the permission store.  *  *  *</pre>  */
+comment|/**  *<pre>  * Module: Privilege Management  * =============================================================================  *  * Title: The Privilege 'jcr:all'  * -----------------------------------------------------------------------------  *  * Goal:  * Understand the meaning of the jcr:all privilege and how it is maintained  * in the Oak repository.  *  * Exercises:  *  * - Overview  *   Read again what JSR 283 states about {@link Privilege#JCR_ALL) and review  *   again the result of {@link L4_CustomPrivilegeTest#testJcrAll()}  *  * - {@link #testManualModification()}  *   This test case tries to modify the tree storing the jcr:all privilege  *   definition. Walk through the test and explain what happens.  *   Fix the test case such that it passes.  *  *   Question: Can you identify the relevant class in the Oak code base?  *   Question: Can you explain what it does and why?  *  *  * Advanced Exercise  * -----------------------------------------------------------------------------  *  * Mapping jcr:all in the permission store:  *  * - Due to the dynamic nature of jcr:all the long-representation of this privilege  *   in the permission store may change over time. This exercise aims to illustrate  *   how granting|denying jcr:all is reflected in the permission store.  *  *   In your preferred repository browser:  *   Create multiple access control entries for different principals including  *   on granting/denying jcr:all at a given existing path. Identify the corresponding  *   entries in the permission store and describe the nature of the 'rep:privileges'  *   properties.  *  *   Question: How is jcr:all represented?  *   Question: What is the difference compared to entries granting/denying other privileges?  *  *   Discuss your findings and explain the special behavior for jcr:all.  *  *</pre>  */
 end_comment
 
 begin_class
@@ -163,15 +163,6 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testJcrAllInPermissionStore
-parameter_list|()
-block|{
-comment|// TODO
 block|}
 block|}
 end_class
