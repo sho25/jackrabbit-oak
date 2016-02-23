@@ -1165,7 +1165,12 @@ name|accessViolation
 argument_list|(
 literal|2
 argument_list|,
-literal|"Access control entry node expected."
+literal|"Access control entry node expected at "
+operator|+
+name|tree
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1269,6 +1274,13 @@ name|policyTree
 operator|.
 name|getName
 argument_list|()
+operator|+
+literal|" at "
+operator|+
+name|parent
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1290,7 +1302,14 @@ name|accessViolation
 argument_list|(
 literal|4
 argument_list|,
-literal|"Invalid policy node: Order of children is not stable."
+literal|"Invalid policy node at "
+operator|+
+name|policyTree
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|": Order of children is not stable."
 argument_list|)
 throw|;
 block|}
@@ -1349,7 +1368,14 @@ name|accessViolation
 argument_list|(
 literal|13
 argument_list|,
-literal|"Duplicate ACE found in policy"
+literal|"Duplicate ACE '"
+operator|+
+name|child
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"' found in policy"
 argument_list|)
 throw|;
 block|}
@@ -1519,26 +1545,12 @@ throw|;
 block|}
 name|checkValidPrincipal
 argument_list|(
-name|TreeUtil
-operator|.
-name|getString
-argument_list|(
 name|aceNode
-argument_list|,
-name|REP_PRINCIPAL_NAME
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|checkValidPrivileges
 argument_list|(
-name|TreeUtil
-operator|.
-name|getStrings
-argument_list|(
 name|aceNode
-argument_list|,
-name|REP_PRIVILEGES
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|checkValidRestrictions
@@ -1552,13 +1564,25 @@ name|void
 name|checkValidPrincipal
 parameter_list|(
 annotation|@
-name|CheckForNull
-name|String
-name|principalName
+name|Nonnull
+name|Tree
+name|aceNode
 parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+name|String
+name|principalName
+init|=
+name|TreeUtil
+operator|.
+name|getString
+argument_list|(
+name|aceNode
+argument_list|,
+name|REP_PRINCIPAL_NAME
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|principalName
@@ -1576,7 +1600,12 @@ name|accessViolation
 argument_list|(
 literal|8
 argument_list|,
-literal|"Missing principal name."
+literal|"Missing principal name at "
+operator|+
+name|aceNode
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1587,15 +1616,29 @@ specifier|private
 name|void
 name|checkValidPrivileges
 parameter_list|(
+annotation|@
+name|Nonnull
+name|Tree
+name|aceNode
+parameter_list|)
+throws|throws
+name|CommitFailedException
+block|{
 name|Iterable
 argument_list|<
 name|String
 argument_list|>
 name|privilegeNames
-parameter_list|)
-throws|throws
-name|CommitFailedException
-block|{
+init|=
+name|TreeUtil
+operator|.
+name|getStrings
+argument_list|(
+name|aceNode
+argument_list|,
+name|REP_PRIVILEGES
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|privilegeNames
@@ -1615,7 +1658,12 @@ name|accessViolation
 argument_list|(
 literal|9
 argument_list|,
-literal|"Missing privileges."
+literal|"Missing privileges at "
+operator|+
+name|aceNode
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1655,6 +1703,13 @@ argument_list|,
 literal|"Abstract privilege "
 operator|+
 name|privilegeName
+operator|+
+literal|" at "
+operator|+
+name|aceNode
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1673,6 +1728,13 @@ argument_list|,
 literal|"Invalid privilege "
 operator|+
 name|privilegeName
+operator|+
+literal|" at "
+operator|+
+name|aceNode
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1698,6 +1760,8 @@ specifier|private
 name|void
 name|checkValidRestrictions
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -1885,7 +1949,14 @@ name|accessViolation
 argument_list|(
 literal|12
 argument_list|,
-literal|"Only root can store repository level policies."
+literal|"Only root can store repository level policies ("
+operator|+
+name|accessControlledTree
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|')'
 argument_list|)
 throw|;
 block|}
