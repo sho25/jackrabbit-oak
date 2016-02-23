@@ -2297,9 +2297,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|sInfo
-operator|==
-literal|null
+operator|.
+name|containsKey
+argument_list|(
+literal|"t"
+argument_list|)
 condition|)
 block|{
 name|writer
