@@ -3600,6 +3600,35 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|e
+operator|==
+name|INTERRUPTED
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"[{}] The index update interrupted"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"[{}] The index update interrupted"
+argument_list|,
+name|name
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|latestError
 operator|=
 name|getStackTraceAsString

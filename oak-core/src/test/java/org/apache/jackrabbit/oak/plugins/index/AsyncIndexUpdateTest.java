@@ -7350,22 +7350,26 @@ operator|.
 name|join
 argument_list|()
 expr_stmt|;
-comment|//Async run would have failed with exception
-name|assertNotNull
+comment|//Async run would have exited with log message logged
+name|assertLogPhrase
 argument_list|(
-name|async
+name|lc
 operator|.
-name|getIndexStats
+name|getLogs
 argument_list|()
-operator|.
-name|getLatestError
-argument_list|()
+argument_list|,
+literal|"The index update interrupted"
 argument_list|)
 expr_stmt|;
 comment|//Wait for close call to complete
 name|closer
 operator|.
 name|join
+argument_list|()
+expr_stmt|;
+name|lc
+operator|.
+name|finished
 argument_list|()
 expr_stmt|;
 block|}
