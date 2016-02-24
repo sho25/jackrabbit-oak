@@ -272,7 +272,7 @@ name|SessionStats
 implements|implements
 name|SessionMBean
 block|{
-comment|/**      * The threshold of active sessions from where on it should record the stack trace for new sessions. The reason why      * this is not enabled by default is because recording stack traces is rather expensive and can significantly      * slow down the code if sessions are created and thrown away in a loop.      *      * Once this threshold is exceeded, we assume that there is a session leak which should be fixed and start recording      * the stack traces to make it easier to find the cause of it.      */
+comment|/**      * The threshold of active sessions from where on it should record the stack trace for new sessions. The reason why      * this is not enabled by default is because recording stack traces is rather expensive and can significantly      * slow down the code if sessions are created and thrown away in a loop.      *      * Once this threshold is exceeded, we assume that there is a session leak which should be fixed and start recording      * the stack traces to make it easier to find the cause of it.      *      * Configurable by the "oak.sessionStats.initStackTraceThreshold" system property. Set to "0" to record stack trace      * information on each session creation.      *      */
 specifier|static
 specifier|final
 name|int
