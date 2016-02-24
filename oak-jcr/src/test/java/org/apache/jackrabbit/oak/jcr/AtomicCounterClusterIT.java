@@ -363,7 +363,7 @@ name|commons
 operator|.
 name|concurrent
 operator|.
-name|ExecutorUtils
+name|ExecutorCloser
 import|;
 end_import
 
@@ -652,12 +652,20 @@ range|:
 name|executors
 control|)
 block|{
-name|ExecutorUtils
-operator|.
-name|shutdownIn10s
+operator|new
+name|ExecutorCloser
 argument_list|(
 name|exec
+argument_list|,
+literal|10
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
 argument_list|)
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 block|}

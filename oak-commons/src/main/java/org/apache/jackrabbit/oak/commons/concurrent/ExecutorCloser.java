@@ -84,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class to properly close any ExecutorService. It ensures  * that executor is properly closed once the call from close is returned  */
+comment|/**  *<p>  * Utility class to properly close any ExecutorService.  *</p>  *   *<p>  * It will attempt a graceful close within the provided timeout. If after such any of the contained  * tasks are not terminated yet, it will force a shutdown and track a warning in the logs.  *</p>  *   */
 end_comment
 
 begin_class
@@ -96,16 +96,18 @@ implements|implements
 name|Closeable
 block|{
 specifier|private
+specifier|static
 specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|getClass
-argument_list|()
+name|ExecutorCloser
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -123,6 +125,7 @@ specifier|final
 name|TimeUnit
 name|timeUnit
 decl_stmt|;
+comment|/**      * will attempt a graceful close in 5 seconds      *       * @param executorService      */
 specifier|public
 name|ExecutorCloser
 parameter_list|(
@@ -144,6 +147,7 @@ name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * will attempt a graceful close by the provided time.      *       * @param executorService the executor to close      * @param timeout the time to wait for      * @param unit the unit of time      */
 specifier|public
 name|ExecutorCloser
 parameter_list|(
@@ -217,11 +221,11 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Error while shutting down the executorService"
+literal|"Error while shutting down the ExecutorService"
 argument_list|,
 name|e
 argument_list|)
@@ -242,15 +246,17 @@ condition|(
 operator|!
 name|executorService
 operator|.
-name|isTerminated
+name|isShutdown
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"ExecutorService didn't shutdown properly. Will be forced now."
+literal|"ExecutorService `{}` didn't shutdown property. Will be forced now."
+argument_list|,
+name|executorService
 argument_list|)
 expr_stmt|;
 block|}
