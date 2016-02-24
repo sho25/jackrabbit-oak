@@ -1381,10 +1381,17 @@ argument_list|)
 condition|)
 block|{
 comment|// OAK-2528: _commitRoot entry without associated change
-comment|// consider all but most recent as garbage (OAK-3333)
+comment|// consider all but most recent as garbage (OAK-3333, OAK-4050)
 if|if
 condition|(
 name|mostRecent
+operator|&&
+name|doc
+operator|.
+name|isCommitted
+argument_list|(
+name|r
+argument_list|)
 condition|)
 block|{
 name|mostRecent
@@ -1392,7 +1399,14 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|isGarbage
+argument_list|(
+name|r
+argument_list|)
+condition|)
 block|{
 name|addGarbage
 argument_list|(
