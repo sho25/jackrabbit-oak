@@ -659,7 +659,7 @@ name|waitFor
 argument_list|(
 name|expectation1AfterShutdown
 argument_list|,
-literal|2000
+literal|4000
 argument_list|,
 literal|"first should only see itself after shutdown"
 argument_list|)
