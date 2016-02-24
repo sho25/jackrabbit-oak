@@ -85,16 +85,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|ItemExistsException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Node
 import|;
 end_import
@@ -136,18 +126,6 @@ operator|.
 name|jcr
 operator|.
 name|ValueFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|nodetype
-operator|.
-name|ConstraintViolationException
 import|;
 end_import
 
