@@ -259,6 +259,20 @@ name|ServiceRegistration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|service
+operator|.
+name|component
+operator|.
+name|ComponentContext
+import|;
+end_import
+
 begin_comment
 comment|/**  * An OSGi service for {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.nodestate.NodeStateSolrServersObserver}.  * This allows correct cleanup of any persisted Solr server configurations once they get changed or deleted.  */
 end_comment
@@ -343,8 +357,8 @@ specifier|protected
 name|void
 name|activate
 parameter_list|(
-name|BundleContext
-name|bundleContext
+name|ComponentContext
+name|componentContext
 parameter_list|)
 throws|throws
 name|Exception
@@ -356,7 +370,15 @@ name|PropertiesUtil
 operator|.
 name|toBoolean
 argument_list|(
+name|componentContext
+operator|.
+name|getProperties
+argument_list|()
+operator|.
+name|get
+argument_list|(
 name|ENABLED
+argument_list|)
 argument_list|,
 literal|false
 argument_list|)
@@ -366,6 +388,14 @@ condition|(
 name|enabled
 condition|)
 block|{
+name|BundleContext
+name|bundleContext
+init|=
+name|componentContext
+operator|.
+name|getBundleContext
+argument_list|()
+decl_stmt|;
 name|Whiteboard
 name|whiteboard
 init|=
