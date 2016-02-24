@@ -1483,6 +1483,8 @@ argument_list|,
 name|currentPropType
 argument_list|,
 name|currentPropValues
+argument_list|,
+name|currentPropMultipleStatus
 argument_list|)
 decl_stmt|;
 name|state
