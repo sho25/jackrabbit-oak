@@ -406,7 +406,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|1l
+literal|1L
 argument_list|,
 name|estimate
 argument_list|)

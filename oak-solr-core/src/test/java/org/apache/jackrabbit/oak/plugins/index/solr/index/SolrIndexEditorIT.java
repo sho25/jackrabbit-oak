@@ -116,13 +116,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Integration test for {@link org.apache.jackrabbit.oak.plugins.index.solr.index.SolrCommitHook}  */
+comment|/**  * Integration test for {@link SolrIndexEditor}  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|SolrCommitHookIT
+name|SolrIndexEditorIT
 extends|extends
 name|SolrBaseTest
 block|{

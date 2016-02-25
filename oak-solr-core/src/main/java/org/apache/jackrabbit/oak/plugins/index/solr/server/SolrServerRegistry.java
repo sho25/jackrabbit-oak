@@ -317,6 +317,9 @@ init|(
 name|indexingServerRegistry
 init|)
 block|{
+name|SolrServer
+name|removed
+init|=
 name|indexingServerRegistry
 operator|.
 name|remove
@@ -326,7 +329,23 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|removed
+operator|.
+name|shutdown
+argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// ignore
+block|}
 block|}
 break|break;
 case|case
@@ -337,6 +356,9 @@ init|(
 name|searchingServerRegistry
 init|)
 block|{
+name|SolrServer
+name|removed
+init|=
 name|searchingServerRegistry
 operator|.
 name|remove
@@ -346,7 +368,23 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|removed
+operator|.
+name|shutdown
+argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// ignore
+block|}
 block|}
 break|break;
 block|}

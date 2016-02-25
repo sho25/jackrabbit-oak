@@ -376,7 +376,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|SolrIndexQueryTestIT
+name|SolrIndexIT
 extends|extends
 name|AbstractQueryTest
 block|{
@@ -1693,7 +1693,7 @@ expr_stmt|;
 name|String
 name|nativeQueryString
 init|=
-literal|"select [jcr:path] from [nt:base] where native('solr', 'mlt?q=name:World&mlt.fl=name&mlt.mindf=0&mlt.mintf=0')"
+literal|"select [jcr:path] from [nt:base] where native('solr', 'mlt?q=text:World&mlt.fl=text&mlt.mindf=0&mlt.mintf=0')"
 decl_stmt|;
 name|Tree
 name|tree
@@ -1724,7 +1724,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"name"
+literal|"text"
 argument_list|,
 literal|"Hello World, today weather is nice"
 argument_list|)
@@ -1738,7 +1738,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"name"
+literal|"text"
 argument_list|,
 literal|"Cheers World, today weather is quite nice"
 argument_list|)
@@ -1752,7 +1752,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"name"
+literal|"text"
 argument_list|,
 literal|"Halo Welt, today sky is cloudy"
 argument_list|)
@@ -1852,7 +1852,7 @@ expr_stmt|;
 name|String
 name|nativeQueryString
 init|=
-literal|"select [jcr:path] from [nt:base] where native('solr', 'mlt?stream.body=world is nice today&mlt.fl=name&mlt.mindf=0&mlt.mintf=0')"
+literal|"select [jcr:path] from [nt:base] where native('solr', 'mlt?stream.body=world is nice today&mlt.fl=text&mlt.mindf=0&mlt.mintf=0')"
 decl_stmt|;
 name|Tree
 name|tree
@@ -1883,7 +1883,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"name"
+literal|"text"
 argument_list|,
 literal|"Hello World, today weather is nice"
 argument_list|)
@@ -1897,7 +1897,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"name"
+literal|"text"
 argument_list|,
 literal|"Cheers World, today weather is quite nice"
 argument_list|)
@@ -1911,7 +1911,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"name"
+literal|"text"
 argument_list|,
 literal|"Halo Welt, today sky is cloudy"
 argument_list|)

@@ -91,6 +91,24 @@ name|org
 operator|.
 name|apache
 operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryIndex
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|solr
 operator|.
 name|client
@@ -182,7 +200,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Testcase for {@link org.apache.jackrabbit.oak.plugins.index.solr.query.FilterQueryParser}  */
+comment|/**  * Testcase for {@link FilterQueryParser}  */
 end_comment
 
 begin_class
@@ -219,6 +237,20 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+name|QueryIndex
+operator|.
+name|IndexPlan
+name|plan
+init|=
+name|mock
+argument_list|(
+name|QueryIndex
+operator|.
+name|IndexPlan
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 name|SolrQuery
 name|solrQuery
 init|=
@@ -228,7 +260,7 @@ name|getQuery
 argument_list|(
 name|filter
 argument_list|,
-literal|null
+name|plan
 argument_list|,
 name|configuration
 argument_list|)
@@ -343,6 +375,20 @@ argument_list|(
 literal|"/"
 argument_list|)
 expr_stmt|;
+name|QueryIndex
+operator|.
+name|IndexPlan
+name|plan
+init|=
+name|mock
+argument_list|(
+name|QueryIndex
+operator|.
+name|IndexPlan
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 name|SolrQuery
 name|solrQuery
 init|=
@@ -352,7 +398,7 @@ name|getQuery
 argument_list|(
 name|filter
 argument_list|,
-literal|null
+name|plan
 argument_list|,
 name|configuration
 argument_list|)
@@ -463,6 +509,20 @@ argument_list|(
 name|query
 argument_list|)
 expr_stmt|;
+name|QueryIndex
+operator|.
+name|IndexPlan
+name|plan
+init|=
+name|mock
+argument_list|(
+name|QueryIndex
+operator|.
+name|IndexPlan
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 name|SolrQuery
 name|solrQuery
 init|=
@@ -472,7 +532,7 @@ name|getQuery
 argument_list|(
 name|filter
 argument_list|,
-literal|null
+name|plan
 argument_list|,
 name|configuration
 argument_list|)
