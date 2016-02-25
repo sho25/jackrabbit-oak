@@ -189,6 +189,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -200,6 +210,28 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|TestUtil
+operator|.
+name|shutdown
 import|;
 end_import
 
@@ -296,6 +328,19 @@ name|jcr
 operator|.
 name|createRepository
 argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|After
+specifier|public
+name|void
+name|after
+parameter_list|()
+block|{
+name|shutdown
+argument_list|(
+name|repository
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
@@ -547,6 +592,11 @@ block|{
 comment|// Thread.sleep(100);
 comment|// System.out.println("session " + node + " work");
 block|}
+name|s
+operator|.
+name|logout
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
