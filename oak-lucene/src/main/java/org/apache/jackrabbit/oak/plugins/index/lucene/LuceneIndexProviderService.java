@@ -1147,6 +1147,39 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|boolean
+name|PROP_PRE_EXTRACTED_TEXT_ALWAYS_USE_DEFAULT
+init|=
+literal|false
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|boolValue
+operator|=
+name|PROP_PRE_EXTRACTED_TEXT_ALWAYS_USE_DEFAULT
+argument_list|,
+name|label
+operator|=
+literal|"Always use pre-extracted text cache"
+argument_list|,
+name|description
+operator|=
+literal|"By default pre extracted text cache would only be used for reindex case. If this setting "
+operator|+
+literal|"is enabled then it would also be used in normal incremental indexing"
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PROP_PRE_EXTRACTED_TEXT_ALWAYS_USE
+init|=
+literal|"alwaysUsePreExtractedCache"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|int
 name|PROP_BOOLEAN_CLAUSE_LIMIT_DEFAULT
 init|=
@@ -2507,6 +2540,23 @@ argument_list|,
 name|PROP_EXTRACTED_TEXT_CACHE_EXPIRY_DEFAULT
 argument_list|)
 decl_stmt|;
+name|boolean
+name|alwaysUsePreExtractedCache
+init|=
+name|PropertiesUtil
+operator|.
+name|toBoolean
+argument_list|(
+name|config
+operator|.
+name|get
+argument_list|(
+name|PROP_PRE_EXTRACTED_TEXT_ALWAYS_USE
+argument_list|)
+argument_list|,
+name|PROP_PRE_EXTRACTED_TEXT_ALWAYS_USE_DEFAULT
+argument_list|)
+decl_stmt|;
 name|extractedTextCache
 operator|=
 operator|new
@@ -2517,6 +2567,8 @@ operator|*
 name|ONE_MB
 argument_list|,
 name|cacheExpiryInSecs
+argument_list|,
+name|alwaysUsePreExtractedCache
 argument_list|)
 expr_stmt|;
 if|if
@@ -2607,13 +2659,29 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|String
+name|usage
+init|=
+name|extractedTextCache
+operator|.
+name|isAlwaysUsePreExtractedCache
+argument_list|()
+condition|?
+literal|"always"
+else|:
+literal|"only during reindexing phase"
+decl_stmt|;
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Registering PreExtractedTextProvider {} with extracted text cache"
+literal|"Registering PreExtractedTextProvider {} with extracted text cache. "
+operator|+
+literal|"It would be used {}"
 argument_list|,
 name|provider
+argument_list|,
+name|usage
 argument_list|)
 expr_stmt|;
 block|}

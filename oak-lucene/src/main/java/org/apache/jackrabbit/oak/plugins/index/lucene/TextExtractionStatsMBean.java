@@ -49,6 +49,10 @@ name|boolean
 name|isPreExtractedTextProviderConfigured
 parameter_list|()
 function_decl|;
+name|boolean
+name|isAlwaysUsePreExtractedCache
+parameter_list|()
+function_decl|;
 name|int
 name|getTextExtractionCount
 parameter_list|()

@@ -296,6 +296,11 @@ specifier|final
 name|CacheStats
 name|cacheStats
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|alwaysUsePreExtractedCache
+decl_stmt|;
 specifier|public
 name|ExtractedTextCache
 parameter_list|(
@@ -304,6 +309,29 @@ name|maxWeight
 parameter_list|,
 name|long
 name|expiryTimeInSecs
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|maxWeight
+argument_list|,
+name|expiryTimeInSecs
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|ExtractedTextCache
+parameter_list|(
+name|long
+name|maxWeight
+parameter_list|,
+name|long
+name|expiryTimeInSecs
+parameter_list|,
+name|boolean
+name|alwaysUsePreExtractedCache
 parameter_list|)
 block|{
 if|if
@@ -375,6 +403,12 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|alwaysUsePreExtractedCache
+operator|=
+name|alwaysUsePreExtractedCache
+expr_stmt|;
 block|}
 comment|/**      * Get the pre extracted text for given blob      * @return null if no pre extracted text entry found. Otherwise returns the pre extracted      *  text      */
 annotation|@
@@ -404,15 +438,6 @@ decl_stmt|;
 comment|//Consult the PreExtractedTextProvider only in reindex mode and not in
 comment|//incremental indexing mode. As that would only contain older entries
 comment|//That also avoid loading on various state (See DataStoreTextWriter)
-if|if
-condition|(
-name|reindexMode
-operator|&&
-name|extractedTextProvider
-operator|!=
-literal|null
-condition|)
-block|{
 name|String
 name|propertyPath
 init|=
@@ -423,6 +448,33 @@ argument_list|,
 name|propertyName
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|trace
+argument_list|(
+literal|"Looking for extracted text for [{}] with blobId [{}]"
+argument_list|,
+name|propertyPath
+argument_list|,
+name|blob
+operator|.
+name|getContentIdentity
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|(
+name|reindexMode
+operator|||
+name|alwaysUsePreExtractedCache
+operator|)
+operator|&&
+name|extractedTextProvider
+operator|!=
+literal|null
+condition|)
+block|{
 try|try
 block|{
 name|ExtractedText
@@ -738,6 +790,17 @@ name|totalBytesRead
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isAlwaysUsePreExtractedCache
+parameter_list|()
+block|{
+return|return
+name|alwaysUsePreExtractedCache
+return|;
+block|}
 block|}
 return|;
 block|}
@@ -793,6 +856,14 @@ name|invalidateAll
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+name|boolean
+name|isAlwaysUsePreExtractedCache
+parameter_list|()
+block|{
+return|return
+name|alwaysUsePreExtractedCache
+return|;
 block|}
 comment|//Taken from DocumentNodeStore and cache packages as they are private
 specifier|private
