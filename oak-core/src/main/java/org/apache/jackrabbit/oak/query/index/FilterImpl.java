@@ -831,8 +831,6 @@ return|return
 name|alwaysFalse
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|SelectorImpl
 name|getSelector

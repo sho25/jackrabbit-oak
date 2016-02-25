@@ -795,17 +795,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|&&
-name|filter
-operator|.
-name|getSelector
-argument_list|()
-operator|.
-name|getSelectorConstraints
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 comment|// not an appropriate index for no property restrictions& selector constraints

@@ -707,7 +707,29 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-literal|"property xyz IN (foo, bar)"
+literal|"property xyz = foo"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|lines
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|,
+name|lines
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"property xyz = bar"
 argument_list|)
 argument_list|)
 expr_stmt|;

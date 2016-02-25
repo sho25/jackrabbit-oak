@@ -123,24 +123,6 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ast
-operator|.
-name|SelectorImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
 name|fulltext
 operator|.
 name|FullTextExpression
@@ -156,11 +138,6 @@ specifier|public
 interface|interface
 name|Filter
 block|{
-comment|/**      * Get the selector associated with this filter.      *      * @return selector      */
-name|SelectorImpl
-name|getSelector
-parameter_list|()
-function_decl|;
 comment|/**      * Get the list of property restrictions, if any. Each property may contain      * multiple restrictions, for example x=1 and x=2. For this case, only      * multi-valued properties match that contain both 1 and 2.      *       * @return the conditions (an empty collection if not used)      */
 name|Collection
 argument_list|<
