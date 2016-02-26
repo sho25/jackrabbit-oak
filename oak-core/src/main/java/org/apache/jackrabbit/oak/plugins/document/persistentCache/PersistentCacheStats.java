@@ -281,7 +281,7 @@ name|getProperty
 argument_list|(
 literal|"PersistentCacheStats.readTimer"
 argument_list|,
-literal|"true"
+literal|"false"
 argument_list|)
 decl_stmt|;
 name|String
