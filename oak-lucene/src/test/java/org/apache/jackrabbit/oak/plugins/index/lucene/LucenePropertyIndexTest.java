@@ -15440,11 +15440,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4067"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -15501,6 +15496,17 @@ name|setProperty
 argument_list|(
 name|LuceneIndexConstants
 operator|.
+name|PROP_PROPERTY_INDEX
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|prop1
+operator|.
+name|setProperty
+argument_list|(
+name|LuceneIndexConstants
+operator|.
 name|PROP_NAME
 argument_list|,
 literal|"tag"
@@ -15536,7 +15542,7 @@ expr_stmt|;
 name|String
 name|query
 init|=
-literal|"select * from [nt:base] where tag='foo'"
+literal|"select * from [nt:base] where [tag] = 'foo'"
 decl_stmt|;
 name|assertPlanAndQuery
 argument_list|(
