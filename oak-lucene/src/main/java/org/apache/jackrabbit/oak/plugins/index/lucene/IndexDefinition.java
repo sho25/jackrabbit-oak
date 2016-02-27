@@ -1086,6 +1086,14 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+comment|/**      * Deafult suggesterUpdateFrequencyMinutes      */
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_SUGGESTER_UPDATE_FREQUENCY_MINUTES
+init|=
+literal|10
+decl_stmt|;
 comment|/**      * native sort order      */
 specifier|static
 specifier|final
@@ -1757,7 +1765,7 @@ name|evaluateSuggesterUpdateFrequencyMinutes
 argument_list|(
 name|defn
 argument_list|,
-literal|60
+name|DEFAULT_SUGGESTER_UPDATE_FREQUENCY_MINUTES
 argument_list|)
 expr_stmt|;
 name|this
