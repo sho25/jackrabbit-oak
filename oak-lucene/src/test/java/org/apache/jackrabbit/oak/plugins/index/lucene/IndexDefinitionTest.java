@@ -5151,7 +5151,7 @@ name|assertEquals
 argument_list|(
 literal|"Default config"
 argument_list|,
-literal|10
+literal|60
 argument_list|,
 name|idxDefn
 operator|.
@@ -5206,7 +5206,7 @@ name|assertEquals
 argument_list|(
 literal|"Namespaced config node should shadow global config"
 argument_list|,
-literal|10
+literal|60
 argument_list|,
 name|idxDefn
 operator|.
