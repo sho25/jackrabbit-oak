@@ -71,6 +71,18 @@ begin_import
 import|import static
 name|java
 operator|.
+name|lang
+operator|.
+name|String
+operator|.
+name|format
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -1582,8 +1594,6 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|String
-operator|.
 name|format
 argument_list|(
 literal|"Removing node [%s]"
@@ -1915,7 +1925,17 @@ block|{
 throw|throw
 operator|new
 name|ItemExistsException
+argument_list|(
+name|format
+argument_list|(
+literal|"Node [%s/%s] exists"
+argument_list|,
+name|getNodePath
 argument_list|()
+argument_list|,
+name|oakName
+argument_list|)
+argument_list|)
 throw|;
 block|}
 return|return
@@ -1935,8 +1955,6 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|String
-operator|.
 name|format
 argument_list|(
 literal|"Adding node [%s/%s]"
@@ -4069,7 +4087,13 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"Node is not referenceable."
+name|format
+argument_list|(
+literal|"Node [%s] is not referenceable."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -4673,7 +4697,7 @@ name|RepositoryException
 argument_list|(
 literal|"Unable to retrieve primary type for Node "
 operator|+
-name|getPath
+name|getNodePath
 argument_list|()
 argument_list|)
 throw|;
@@ -4956,7 +4980,13 @@ throw|throw
 operator|new
 name|VersionException
 argument_list|(
-literal|"Cannot set primary type. Node is checked in."
+name|format
+argument_list|(
+literal|"Cannot set primary type. Node [%s] is checked in."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -5042,7 +5072,13 @@ throw|throw
 operator|new
 name|VersionException
 argument_list|(
-literal|"Cannot add mixin type. Node is checked in."
+name|format
+argument_list|(
+literal|"Cannot add mixin type. Node [%s] is checked in."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -5131,7 +5167,13 @@ throw|throw
 operator|new
 name|VersionException
 argument_list|(
-literal|"Cannot remove mixin type. Node is checked in."
+name|format
+argument_list|(
+literal|"Cannot remove mixin type. Node [%s] is checked in."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -5506,7 +5548,10 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"OAK-118: Node.getCorrespondingNodePath"
+literal|"OAK-118: Node.getCorrespondingNodePath at "
+operator|+
+name|getNodePath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -5568,7 +5613,13 @@ block|{
 name|String
 name|msg
 init|=
-literal|"Unable to perform operation. Session has pending changes."
+name|format
+argument_list|(
+literal|"Unable to perform operation. Session has pending changes. Node [%s]"
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
@@ -5603,7 +5654,10 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"OAK-118: Node.update"
+literal|"OAK-118: Node.update at "
+operator|+
+name|getNodePath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -5805,7 +5859,13 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"Node is not mix:versionable"
+name|format
+argument_list|(
+literal|"Node [%s] is not mix:versionable"
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -5854,7 +5914,13 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"Node is not mix:versionable"
+name|format
+argument_list|(
+literal|"Node [%s] is not mix:versionable"
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -5897,9 +5963,15 @@ throw|throw
 operator|new
 name|VersionException
 argument_list|(
+name|format
+argument_list|(
 literal|"Version does not belong to the "
 operator|+
-literal|"VersionHistory of this node."
+literal|"VersionHistory of this node [%s]."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -6813,7 +6885,10 @@ block|{
 throw|throw
 operator|new
 name|ConstraintViolationException
+argument_list|(
+name|getNodePath
 argument_list|()
+argument_list|)
 throw|;
 block|}
 comment|// TODO: END
@@ -6947,7 +7022,13 @@ throw|throw
 operator|new
 name|VersionException
 argument_list|(
-literal|"Cannot set property. Node is checked in."
+name|format
+argument_list|(
+literal|"Cannot set property. Node [%s] is checked in."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -6990,8 +7071,6 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|String
-operator|.
 name|format
 argument_list|(
 literal|"Setting property [%s/%s]"
@@ -7133,7 +7212,13 @@ throw|throw
 operator|new
 name|VersionException
 argument_list|(
-literal|"Cannot set property. Node is checked in."
+name|format
+argument_list|(
+literal|"Cannot set property. Node [%s] is checked in."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -7176,8 +7261,6 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|String
-operator|.
 name|format
 argument_list|(
 literal|"Setting property [%s/%s]"
@@ -7312,7 +7395,13 @@ throw|throw
 operator|new
 name|VersionException
 argument_list|(
-literal|"Cannot remove property. Node is checked in."
+name|format
+argument_list|(
+literal|"Cannot remove property. Node [%s] is checked in."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -7382,8 +7471,6 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|String
-operator|.
 name|format
 argument_list|(
 literal|"Removing property [%s]"
@@ -7767,7 +7854,13 @@ throw|throw
 operator|new
 name|VersionException
 argument_list|(
-literal|"Cannot set mixin types. Node is checked in."
+name|format
+argument_list|(
+literal|"Cannot set mixin types. Node [%s] is checked in."
+argument_list|,
+name|getNodePath
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -7836,6 +7929,19 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Provide current node path. Should be invoked from within      * the SessionDelegate#perform and preferred instead of getPath      * as it provides direct access to path      */
+specifier|private
+name|String
+name|getNodePath
+parameter_list|()
+block|{
+return|return
+name|dlg
+operator|.
+name|getPath
+argument_list|()
+return|;
 block|}
 specifier|private
 specifier|static
