@@ -220,6 +220,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -269,6 +289,18 @@ name|BlobStoreStatsMBean
 implements|,
 name|BlobStatsCollector
 block|{
+specifier|private
+specifier|final
+name|Logger
+name|opsLogger
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+literal|"org.apache.jackrabbit.oak.operations.blobs"
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -582,6 +614,22 @@ name|unit
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|opsLogger
+operator|.
+name|debug
+argument_list|(
+literal|"Uploaded {} bytes in {} ms"
+argument_list|,
+name|size
+argument_list|,
+name|unit
+operator|.
+name|toMillis
+argument_list|(
+name|timeTaken
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -630,6 +678,24 @@ name|unit
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|opsLogger
+operator|.
+name|debug
+argument_list|(
+literal|"Downloaded {} - {} bytes in {} ms"
+argument_list|,
+name|blobId
+argument_list|,
+name|size
+argument_list|,
+name|unit
+operator|.
+name|toMillis
+argument_list|(
+name|timeTaken
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -646,6 +712,15 @@ operator|.
 name|mark
 argument_list|()
 expr_stmt|;
+name|opsLogger
+operator|.
+name|debug
+argument_list|(
+literal|"Upload completed - {}"
+argument_list|,
+name|blobId
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -661,6 +736,15 @@ name|downloadCount
 operator|.
 name|mark
 argument_list|()
+expr_stmt|;
+name|opsLogger
+operator|.
+name|debug
+argument_list|(
+literal|"Download completed - {}"
+argument_list|,
+name|blobId
+argument_list|)
 expr_stmt|;
 block|}
 comment|//~--------------------------------------< BlobStoreMBean>
