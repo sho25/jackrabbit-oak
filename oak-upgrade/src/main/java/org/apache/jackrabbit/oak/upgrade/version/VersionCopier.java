@@ -583,7 +583,7 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|NodeState
-name|versionHistory
+name|sourceVersionHistory
 init|=
 name|getVersionHistoryNodeState
 argument_list|(
@@ -598,11 +598,17 @@ name|lastModified
 init|=
 name|getVersionHistoryLastModified
 argument_list|(
-name|versionHistory
+name|sourceVersionHistory
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|sourceVersionHistory
+operator|.
+name|exists
+argument_list|()
+operator|&&
+operator|(
 name|lastModified
 operator|.
 name|after
@@ -616,6 +622,7 @@ name|getTimeInMillis
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|NodeStateCopier
