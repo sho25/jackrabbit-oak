@@ -189,6 +189,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Constructs the version history path based on the versionable's UUID.      *      * @param root The root NodeState below which to look for the version.      * @param versionableUuid The String representation of the versionable's UUID.      * @return The NodeState corresponding to the version history, or {@code null}      *         if it does not exist.      */
 specifier|static
 name|NodeState
 name|getVersionHistoryNodeState
