@@ -1983,6 +1983,10 @@ name|SimpleSearchTest
 argument_list|()
 block|,
 operator|new
+name|UUIDLookupTest
+argument_list|()
+block|,
+operator|new
 name|SQL2SearchTest
 argument_list|()
 block|,
