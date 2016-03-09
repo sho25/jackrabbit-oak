@@ -2498,11 +2498,6 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ClusterNodeInfoDocument
-name|doc
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|renewed
@@ -2511,21 +2506,14 @@ operator|!
 name|leaseCheckDisabled
 condition|)
 block|{
-comment|// if leaseCheckDisabled, then we just update the lease without checking
+comment|// if leaseCheckDisabled, then we just update the lease without
+comment|// checking
 comment|// OAK-3398:
 comment|// if we renewed the lease ever with this instance/ClusterNodeInfo
 comment|// (which is the normal case.. except for startup),
 comment|// then we can now make an assertion that the lease is unchanged
 comment|// and the incremental update must only succeed if no-one else
 comment|// did a recover/inactivation in the meantime
-name|update
-operator|.
-name|setNew
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-comment|// in this case it is *not* a new document
 comment|// make two assertions: the leaseEnd must match ..
 name|update
 operator|.
@@ -2559,27 +2547,32 @@ comment|// @TODO: to make it 100% failure proof we could introduce
 comment|// yet another field to clusterNodes: a runtimeId that we
 comment|// create (UUID) at startup each time - and against that
 comment|// we could also check here - but that goes a bit far IMO
-name|doc
-operator|=
-name|store
-operator|.
-name|findAndUpdate
-argument_list|(
-name|Collection
-operator|.
-name|CLUSTER_NODES
-argument_list|,
-name|update
-argument_list|)
-expr_stmt|;
 block|}
-else|else
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
 block|{
-comment|// this is only for startup - then we 'just' overwrite
-comment|// the lease - or create it - and don't care a lot about what the
-comment|// status of the lease was
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Renewing lease for for cluster id "
+operator|+
+name|id
+operator|+
+literal|" with UpdateOp "
+operator|+
+name|update
+argument_list|)
+expr_stmt|;
+block|}
+name|ClusterNodeInfoDocument
 name|doc
-operator|=
+init|=
 name|store
 operator|.
 name|findAndUpdate
@@ -2590,8 +2583,7 @@ name|CLUSTER_NODES
 argument_list|,
 name|update
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 if|if
 condition|(
 name|doc
