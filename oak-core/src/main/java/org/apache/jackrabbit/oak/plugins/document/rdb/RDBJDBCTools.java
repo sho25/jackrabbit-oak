@@ -1333,11 +1333,11 @@ operator|||
 operator|(
 name|maj
 operator|==
-name|dbmax
+name|drmax
 operator|&&
 name|min
 operator|<
-name|dbmin
+name|drmin
 operator|)
 condition|)
 block|{
@@ -1384,11 +1384,11 @@ name|min
 operator|+
 literal|", expected at least "
 operator|+
-name|dbmax
+name|drmax
 operator|+
 literal|"."
 operator|+
-name|dbmin
+name|drmin
 argument_list|)
 expr_stmt|;
 block|}
