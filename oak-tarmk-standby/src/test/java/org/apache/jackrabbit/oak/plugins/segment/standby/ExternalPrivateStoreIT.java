@@ -105,26 +105,6 @@ name|After
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -235,26 +215,6 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 return|;
-block|}
-annotation|@
-name|Override
-annotation|@
-name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4110"
-argument_list|)
-specifier|public
-name|void
-name|testProxySkippedBytesIntermediateChange
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// overriddign for allowing the ignore of the specific test class
-comment|// remove the whole method once test no longer fails on jenkins
-comment|// https://issues.apache.org/jira/browse/OAK-4110
 block|}
 block|}
 end_class
