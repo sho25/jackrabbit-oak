@@ -2339,7 +2339,7 @@ block|{
 name|String
 name|newThreadName
 init|=
-literal|"aysnc-index-update-"
+literal|"async-index-update-"
 operator|+
 name|name
 decl_stmt|;
