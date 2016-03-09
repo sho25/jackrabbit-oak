@@ -618,18 +618,6 @@ parameter_list|()
 throws|throws
 name|SQLException
 block|{
-comment|// https://issues.apache.org/jira/browse/OAK-3937 and https://issues.apache.org/jira/browse/OAK-3977
-name|assumeTrue
-argument_list|(
-name|super
-operator|.
-name|dsf
-operator|!=
-name|DocumentStoreFixture
-operator|.
-name|RDB_PG
-argument_list|)
-expr_stmt|;
 name|String
 name|table
 init|=
