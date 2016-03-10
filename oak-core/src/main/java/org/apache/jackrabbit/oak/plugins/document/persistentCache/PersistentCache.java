@@ -729,7 +729,7 @@ decl_stmt|;
 name|String
 name|broadcast
 init|=
-literal|"tcp:"
+literal|"disabled"
 decl_stmt|;
 for|for
 control|(
