@@ -578,6 +578,16 @@ name|credentials
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|beforeSuite
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|Session
 name|s
 init|=
@@ -658,7 +668,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|tearDown
+name|afterSuite
 parameter_list|()
 throws|throws
 name|Exception
@@ -713,11 +723,6 @@ block|{
 name|s
 operator|.
 name|logout
-argument_list|()
-expr_stmt|;
-name|super
-operator|.
-name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
