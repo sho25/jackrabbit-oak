@@ -2693,6 +2693,36 @@ name|options
 argument_list|)
 argument_list|)
 block|,
+comment|// benchmarks removing multiple or single members
+operator|new
+name|RemoveMembersTest
+argument_list|(
+name|numberOfUsers
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|,
+name|batchSize
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
+block|,
+operator|new
+name|RemoveMemberTest
+argument_list|(
+name|numberOfUsers
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
+block|,
 comment|// benchmark testing isMember/isDeclared member; each user only being member of 1 group
 operator|new
 name|IsMemberTest
