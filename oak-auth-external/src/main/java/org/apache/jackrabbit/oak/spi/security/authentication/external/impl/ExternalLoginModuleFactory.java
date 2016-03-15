@@ -861,6 +861,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+comment|//-------------------------------------------------< LoginModuleFactory>---
 comment|/**      * {@inheritDoc}      *      * @return a new {@link ExternalLoginModule} instance.      */
 annotation|@
 name|Override
