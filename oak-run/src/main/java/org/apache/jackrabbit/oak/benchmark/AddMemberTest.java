@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test the performance of adding a configured number of members to groups. The  * following parameters can be used to run the benchmark:  *  * - numberOfMembers : the number of members that should be added in the test run  *  * In contrast to {@link AddMembersTest}, this benchmark will always call  * {@link Group#addMember(Authorizable)}.  */
+comment|/**  * Test the performance of adding a configured number of members to groups. The  * following parameters can be used to run the benchmark:  *  * - numberOfMembers : the number of members that should be added in the test run  * - batchSize : the number of users to be added as membes before {@link Session#save()} is called.  *  * In contrast to {@link AddMembersTest}, this benchmark will always call  * {@link Group#addMember(Authorizable)}.  */
 end_comment
 
 begin_class
@@ -191,13 +191,16 @@ name|AddMemberTest
 parameter_list|(
 name|int
 name|numberOfMembers
+parameter_list|,
+name|int
+name|batchSize
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|numberOfMembers
 argument_list|,
-literal|1
+name|batchSize
 argument_list|,
 name|ImportBehavior
 operator|.
@@ -306,6 +309,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|int
+name|j
+init|=
+literal|1
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -348,11 +356,29 @@ name|userPath
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|j
+operator|==
+name|batchSize
+condition|)
+block|{
 name|s
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|j
+operator|=
+literal|1
+expr_stmt|;
+block|}
+else|else
+block|{
+name|j
+operator|++
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}

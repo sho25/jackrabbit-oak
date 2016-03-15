@@ -485,7 +485,6 @@ specifier|final
 name|int
 name|numberOfMembers
 decl_stmt|;
-specifier|private
 specifier|final
 name|int
 name|batchSize
