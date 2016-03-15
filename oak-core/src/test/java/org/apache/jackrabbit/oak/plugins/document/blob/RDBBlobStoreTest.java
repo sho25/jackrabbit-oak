@@ -1111,6 +1111,16 @@ parameter_list|)
 block|{             }
 block|}
 comment|// Force update to update timestamp
+name|long
+name|beforeUpdateTs
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+literal|100
+decl_stmt|;
 name|RDBBlobStoreFriend
 operator|.
 name|storeBlock
@@ -1129,6 +1139,8 @@ name|Assert
 operator|.
 name|assertFalse
 argument_list|(
+literal|"entry was cleaned although it shouldn't have"
+argument_list|,
 name|blobStore
 operator|.
 name|deleteChunks
@@ -1140,12 +1152,7 @@ argument_list|(
 name|id
 argument_list|)
 argument_list|,
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-operator|-
-literal|100
+name|beforeUpdateTs
 argument_list|)
 argument_list|)
 expr_stmt|;
