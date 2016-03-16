@@ -367,7 +367,7 @@ specifier|static
 name|int
 name|NUM_USERS
 init|=
-literal|100
+literal|2222
 decl_stmt|;
 specifier|protected
 specifier|static
