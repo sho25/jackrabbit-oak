@@ -282,6 +282,12 @@ name|MIX_ATOMIC_COUNTER
 init|=
 literal|"mix:atomicCounter"
 decl_stmt|;
+comment|/**      * adding such mixin will allow the {@link JcrConstants#NT_UNSTRUCTURED} type under restricting      * nodes such {@link JcrConstants#NT_FOLDER}      */
+name|String
+name|MIX_INDEXABLE
+init|=
+literal|"mix:indexable"
+decl_stmt|;
 block|}
 end_interface
 
