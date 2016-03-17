@@ -2402,6 +2402,32 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"renewLease - leaseEndTime: "
+operator|+
+name|leaseEndTime
+operator|+
+literal|", leaseTime: "
+operator|+
+name|leaseTime
+operator|+
+literal|", leaseUpdateInterval: "
+operator|+
+name|leaseUpdateInterval
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|now
 operator|<
 name|leaseEndTime
@@ -2560,7 +2586,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Renewing lease for for cluster id "
+literal|"Renewing lease for cluster id "
 operator|+
 name|id
 operator|+
@@ -2584,6 +2610,28 @@ argument_list|,
 name|update
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Lease renewal for cluster id "
+operator|+
+name|id
+operator|+
+literal|" resulted in: "
+operator|+
+name|doc
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|doc
