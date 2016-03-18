@@ -2883,6 +2883,12 @@ name|workspaceName
 argument_list|,
 name|versionCopyConfiguration
 argument_list|)
+argument_list|,
+operator|new
+name|SameNameSiblingsEditor
+operator|.
+name|Provider
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
