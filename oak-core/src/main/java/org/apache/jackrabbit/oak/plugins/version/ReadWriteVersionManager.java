@@ -734,6 +734,7 @@ comment|/**  * Extends the {@link ReadOnlyVersionManager} with methods to modify
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|ReadWriteVersionManager
 extends|extends
@@ -753,6 +754,7 @@ specifier|private
 name|ReadOnlyNodeTypeManager
 name|ntMgr
 decl_stmt|;
+specifier|public
 name|ReadWriteVersionManager
 parameter_list|(
 name|NodeBuilder
@@ -861,6 +863,7 @@ block|}
 comment|/**      * Gets or creates the version history for the given      * {@code versionable} node.      *      * @param versionable the versionable node.      * @param infoMap The additional information as provided by {@link org.apache.jackrabbit.oak.spi.commit.CommitInfo#getInfo()}      * @return the version history node.      * @throws IllegalArgumentException if the given node does not have a      *                                  {@code jcr:uuid} property.      */
 annotation|@
 name|Nonnull
+specifier|public
 name|NodeBuilder
 name|getOrCreateVersionHistory
 parameter_list|(
@@ -2362,7 +2365,8 @@ name|versionable
 argument_list|,
 name|this
 argument_list|,
-name|ntMgr
+name|getNodeTypeManager
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
