@@ -2759,6 +2759,10 @@ operator|.
 name|getLuceneRequest
 argument_list|()
 decl_stmt|;
+name|noDocs
+operator|=
+literal|true
+expr_stmt|;
 name|SuggestWord
 index|[]
 name|suggestWords
@@ -2920,10 +2924,6 @@ name|suggestedWords
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|noDocs
-operator|=
-literal|true
-expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -2953,6 +2953,10 @@ operator|.
 name|getLuceneRequest
 argument_list|()
 decl_stmt|;
+name|noDocs
+operator|=
+literal|true
+expr_stmt|;
 name|List
 argument_list|<
 name|Lookup
@@ -3138,10 +3142,6 @@ argument_list|(
 name|suggestedWords
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|noDocs
-operator|=
-literal|true
 expr_stmt|;
 block|}
 block|}
