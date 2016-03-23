@@ -2237,6 +2237,27 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+if|if
+condition|(
+name|leaseCheckFailed
+condition|)
+block|{
+comment|// someone else won and marked leaseCheckFailed - so we only log/throw
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|)
+throw|;
+block|}
 name|leaseCheckFailed
 operator|=
 literal|true
