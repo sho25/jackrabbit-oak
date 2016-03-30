@@ -91,6 +91,26 @@ name|boolean
 name|purge
 parameter_list|)
 function_decl|;
+comment|/**       * Synchronizes the local users with the given user ids.       * @param userIds the user ids       * @param purge if {@code true} users that don't exist in the IDP are deleted.       * @param forceGroupSync if synchronization of containing groups shall be forced       * @return result messages.       */
+annotation|@
+name|Nonnull
+name|String
+index|[]
+name|syncUsers
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+index|[]
+name|userIds
+parameter_list|,
+name|boolean
+name|purge
+parameter_list|,
+name|boolean
+name|forceGroupSync
+parameter_list|)
+function_decl|;
 comment|/**      * Synchronizes all local users with the given user ids. Note that this can be an expensive operation since all      * potential users need to be examined.      *      * @param purge if {@code true} users that don't exist in the IDP are deleted.      * @return result messages.      */
 annotation|@
 name|Nonnull
@@ -100,6 +120,20 @@ name|syncAllUsers
 parameter_list|(
 name|boolean
 name|purge
+parameter_list|)
+function_decl|;
+comment|/**      * Synchronizes all local users with the given user ids. Note that this can be an expensive operation since all      * potential users need to be examined.      *      * @param purge if {@code true} users that don't exist in the IDP are deleted.      * @param forceGroupSync if synchronization of containing groups shall be forced      * @return result messages.      */
+annotation|@
+name|Nonnull
+name|String
+index|[]
+name|syncAllUsers
+parameter_list|(
+name|boolean
+name|purge
+parameter_list|,
+name|boolean
+name|forceGroupSync
 parameter_list|)
 function_decl|;
 comment|/**      * Synchronizes the external users with the given external ids.      * @param externalIds the external id      * @return result messages.      */
@@ -116,6 +150,23 @@ index|[]
 name|externalIds
 parameter_list|)
 function_decl|;
+comment|/**      * Synchronizes the external users with the given external ids.      * @param externalIds the external id      * @param forceGroupSync if synchronization of containing groups shall be forced      * @return result messages.      */
+annotation|@
+name|Nonnull
+name|String
+index|[]
+name|syncExternalUsers
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+index|[]
+name|externalIds
+parameter_list|,
+name|boolean
+name|forceGroupSync
+parameter_list|)
+function_decl|;
 comment|/**      * Synchronizes all the external users, i.e. basically imports the entire IDP. Note that this can be an expensive      * operation.      *      * @return result messages.      */
 annotation|@
 name|Nonnull
@@ -123,6 +174,17 @@ name|String
 index|[]
 name|syncAllExternalUsers
 parameter_list|()
+function_decl|;
+comment|/**      * Synchronizes all the external users, i.e. basically imports the entire IDP. Note that this can be an expensive      * operation.      *      * @param forceGroupSync if synchronization of containing groups shall be forced      * @return result messages.      */
+annotation|@
+name|Nonnull
+name|String
+index|[]
+name|syncAllExternalUsers
+parameter_list|(
+name|boolean
+name|forceGroupSync
+parameter_list|)
 function_decl|;
 comment|/**      * Returns a list of orphaned users, i.e. users that don't exist anymore on the IDP. Note that this can be an      * expensive operation since all potential users need to be examined.      * @return a list of the user ids of orphaned users.      */
 annotation|@
