@@ -425,6 +425,13 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|numDeleted
+operator|>
+literal|0
+condition|)
+block|{
 name|log
 operator|.
 name|info
@@ -445,6 +452,7 @@ name|maxRevisionAgeInMillis
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|numDeleted
 return|;
