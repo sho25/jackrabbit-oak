@@ -1041,6 +1041,9 @@ argument_list|(
 name|indexProvider
 argument_list|)
 operator|.
+name|withFailOnMissingIndexProvider
+argument_list|()
+operator|.
 name|withAsyncIndexing
 argument_list|()
 decl_stmt|;
