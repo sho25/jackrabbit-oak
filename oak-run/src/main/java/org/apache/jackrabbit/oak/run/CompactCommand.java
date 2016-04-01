@@ -649,7 +649,14 @@ operator|.
 name|next
 argument_list|()
 operator|+
-literal|" root\n"
+literal|" root "
+operator|+
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|+
+literal|"\n"
 expr_stmt|;
 block|}
 finally|finally
