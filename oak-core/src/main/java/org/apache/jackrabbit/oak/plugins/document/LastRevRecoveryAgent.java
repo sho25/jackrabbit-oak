@@ -458,6 +458,10 @@ specifier|final
 name|long
 name|startTime
 decl_stmt|;
+specifier|final
+name|String
+name|reason
+decl_stmt|;
 comment|//lastRev can be null if other cluster node did not got
 comment|//chance to perform lastRev rollup even once
 if|if
@@ -474,6 +478,15 @@ operator|.
 name|getTimestamp
 argument_list|()
 expr_stmt|;
+name|reason
+operator|=
+literal|"lastRev: "
+operator|+
+name|lastRev
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -485,12 +498,27 @@ name|leaseTime
 operator|-
 name|asyncDelay
 expr_stmt|;
+name|reason
+operator|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"no lastRev for root, using timestamp based on leaseEnd %d - leaseTime %d - asyncDelay %d"
+argument_list|,
+name|leaseEnd
+argument_list|,
+name|leaseTime
+argument_list|,
+name|asyncDelay
+argument_list|)
+expr_stmt|;
 block|}
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Recovering candidates modified after: [{}] for clusterId [{}]"
+literal|"Recovering candidates modified after: [{}] for clusterId [{}] [{}]"
 argument_list|,
 name|Utils
 operator|.
@@ -500,6 +528,8 @@ name|startTime
 argument_list|)
 argument_list|,
 name|clusterId
+argument_list|,
+name|reason
 argument_list|)
 expr_stmt|;
 return|return
