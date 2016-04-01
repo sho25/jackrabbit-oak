@@ -250,7 +250,7 @@ name|journalReader
 init|=
 name|createJournalReader
 argument_list|(
-literal|"one 1\ntwo 2\nthree 3"
+literal|"one 1\ntwo 2\nthree 3 456"
 argument_list|)
 decl_stmt|;
 try|try

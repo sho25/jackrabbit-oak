@@ -4149,7 +4149,14 @@ operator|.
 name|toString10
 argument_list|()
 operator|+
-literal|" root\n"
+literal|" root "
+operator|+
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|+
+literal|"\n"
 argument_list|)
 expr_stmt|;
 name|journalFile
