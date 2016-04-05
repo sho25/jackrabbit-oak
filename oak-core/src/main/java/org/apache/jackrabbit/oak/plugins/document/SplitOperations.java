@@ -187,6 +187,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Lists
@@ -234,6 +248,22 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+operator|.
+name|any
 import|;
 end_import
 
@@ -592,6 +622,14 @@ name|context
 decl_stmt|;
 specifier|private
 specifier|final
+name|Predicate
+argument_list|<
+name|String
+argument_list|>
+name|isBinaryValue
+decl_stmt|;
+specifier|private
+specifier|final
 name|int
 name|numRevsThreshold
 decl_stmt|;
@@ -606,6 +644,10 @@ decl_stmt|;
 specifier|private
 name|int
 name|numValues
+decl_stmt|;
+specifier|private
+name|boolean
+name|hasBinary
 decl_stmt|;
 specifier|private
 name|Map
@@ -689,6 +731,14 @@ name|Nonnull
 name|RevisionVector
 name|headRevision
 parameter_list|,
+annotation|@
+name|Nonnull
+name|Predicate
+argument_list|<
+name|String
+argument_list|>
+name|isBinaryValue
+parameter_list|,
 name|int
 name|numRevsThreshold
 parameter_list|)
@@ -709,6 +759,15 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|context
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|isBinaryValue
+operator|=
+name|checkNotNull
+argument_list|(
+name|isBinaryValue
 argument_list|)
 expr_stmt|;
 name|this
@@ -753,7 +812,7 @@ operator|=
 name|numRevsThreshold
 expr_stmt|;
 block|}
-comment|/**      * Creates a list of update operations in case the given document requires      * a split. A caller must explicitly pass a head revision even though it      * is available through the {@link RevisionContext}. The given head revision      * must reflect a head state before {@code doc} was retrieved from the      * document store. This is important in order to maintain consistency.      * See OAK-3081 for details.      *      * @param doc a main document.      * @param context the revision context.      * @param headRevision the head revision before the document was retrieved      *                     from the document store.      * @param numRevsThreshold only split off at least this number of revisions.      * @return list of update operations. An empty list indicates the document      *          does not require a split.      * @throws IllegalArgumentException if the given document is a split      *                                  document.      */
+comment|/**      * Creates a list of update operations in case the given document requires      * a split. A caller must explicitly pass a head revision even though it      * is available through the {@link RevisionContext}. The given head revision      * must reflect a head state before {@code doc} was retrieved from the      * document store. This is important in order to maintain consistency.      * See OAK-3081 for details.      *      * @param doc a main document.      * @param context the revision context.      * @param headRevision the head revision before the document was retrieved      *                     from the document store.      * @param isBinaryValue a predicate that returns {@code true} if the given      *                      String value is considered a binary; {@code false}      *                      otherwise.      * @param numRevsThreshold only split off at least this number of revisions.      * @return list of update operations. An empty list indicates the document      *          does not require a split.      * @throws IllegalArgumentException if the given document is a split      *                                  document.      */
 annotation|@
 name|Nonnull
 specifier|static
@@ -777,6 +836,14 @@ annotation|@
 name|Nonnull
 name|RevisionVector
 name|headRevision
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Predicate
+argument_list|<
+name|String
+argument_list|>
+name|isBinaryValue
 parameter_list|,
 name|int
 name|numRevsThreshold
@@ -812,6 +879,8 @@ argument_list|,
 name|context
 argument_list|,
 name|headRevision
+argument_list|,
+name|isBinaryValue
 argument_list|,
 name|numRevsThreshold
 argument_list|)
@@ -1000,6 +1069,11 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
+operator|||
+name|doc
+operator|.
+name|hasBinary
+argument_list|()
 return|;
 block|}
 comment|/**      * Populate the {@link #splitRevs} with the revisions of the committed      * changes that will be moved to a previous document. For each property,      * all but the most recent change will be moved.      */
@@ -1059,6 +1133,16 @@ name|keySet
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|hasBinary
+operator||=
+name|hasBinaryProperty
+argument_list|(
+name|splitMap
+operator|.
+name|values
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|mostRecentRevs
 operator|.
 name|add
@@ -1102,6 +1186,31 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+specifier|private
+name|boolean
+name|hasBinaryProperty
+parameter_list|(
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|values
+parameter_list|)
+block|{
+return|return
+name|doc
+operator|.
+name|hasBinary
+argument_list|()
+operator|&&
+name|any
+argument_list|(
+name|values
+argument_list|,
+name|isBinaryValue
+argument_list|)
+return|;
 block|}
 comment|/**      * Collect _revisions and _commitRoot entries that can be moved to a      * previous document.      */
 specifier|private
@@ -1763,6 +1872,8 @@ name|getMemory
 argument_list|()
 operator|>
 name|DOC_SIZE_THRESHOLD
+operator|||
+name|hasBinary
 operator|)
 condition|)
 block|{
@@ -2007,6 +2118,7 @@ name|high
 argument_list|)
 expr_stmt|;
 comment|// only split if enough of the data can be moved to old document
+comment|// or there are binaries to split off
 if|if
 condition|(
 name|oldDoc
@@ -2024,6 +2136,8 @@ operator|||
 name|numValues
 operator|>=
 name|numRevsThreshold
+operator|||
+name|hasBinary
 condition|)
 block|{
 name|splitOps
