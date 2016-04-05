@@ -465,7 +465,7 @@ decl_stmt|;
 name|assertTrue
 argument_list|(
 name|entryTime
-operator|>
+operator|>=
 name|startTime
 argument_list|)
 expr_stmt|;
