@@ -1443,7 +1443,7 @@ literal|"Apache Jackrabbit Oak Segment NodeStore Service"
 argument_list|,
 name|description
 operator|=
-literal|"NodeStore implementation based on Document model. For configuration option refer "
+literal|"NodeStore implementation based on Segment model. For configuration option refer "
 operator|+
 literal|"to http://jackrabbit.apache.org/oak/docs/osgi_config.html#SegmentNodeStore. Note that for system "
 operator|+
