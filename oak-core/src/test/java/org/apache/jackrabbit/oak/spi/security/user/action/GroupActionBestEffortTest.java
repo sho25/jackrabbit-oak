@@ -33,7 +33,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
+name|ImmutableSet
 import|;
 end_import
 
@@ -85,7 +85,19 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Set
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -129,13 +141,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|nonExisting
 init|=
-name|ImmutableList
+name|ImmutableSet
 operator|.
 name|of
 argument_list|(
@@ -200,13 +212,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|nonExisting
 init|=
-name|ImmutableList
+name|ImmutableSet
 operator|.
 name|of
 argument_list|(
@@ -247,18 +259,13 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|Iterables
-operator|.
-name|elementsEqual
+name|assertEquals
 argument_list|(
 name|nonExisting
 argument_list|,
 name|groupAction
 operator|.
 name|failedIds
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -779,7 +779,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|afterValues
+name|addedValues
 init|=
 name|Sets
 operator|.
@@ -795,7 +795,7 @@ name|STRINGS
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|afterValues
+name|addedValues
 operator|.
 name|removeAll
 argument_list|(
@@ -816,7 +816,7 @@ argument_list|)
 expr_stmt|;
 name|checkForCyclicMembership
 argument_list|(
-name|afterValues
+name|addedValues
 argument_list|)
 expr_stmt|;
 block|}
@@ -1262,9 +1262,7 @@ name|isMember
 argument_list|(
 name|memberTree
 argument_list|,
-name|groupContentId
-argument_list|,
-literal|true
+name|parentAfter
 argument_list|)
 condition|)
 block|{
