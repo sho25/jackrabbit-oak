@@ -98,6 +98,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -174,6 +186,16 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
 import|;
 end_import
 
@@ -466,6 +488,39 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4170"
+argument_list|)
+annotation|@
+name|Test
+specifier|public
+name|void
+name|fulltext
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Filter
+name|f
+init|=
+name|createFilterSQL
+argument_list|(
+literal|"select * from [nt:unstructured] where CONTAINS([jcr:content/metadata/comment], 'december')"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|f
+operator|.
+name|getPropertyRestriction
+argument_list|(
+literal|"jcr:content/metadata/comment"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
