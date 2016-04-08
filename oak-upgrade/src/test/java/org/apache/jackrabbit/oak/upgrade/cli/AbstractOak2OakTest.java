@@ -531,6 +531,11 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
+literal|"oak.sling"
+argument_list|)
+operator|.
+name|with
+argument_list|(
 operator|new
 name|ReferenceIndexProvider
 argument_list|()

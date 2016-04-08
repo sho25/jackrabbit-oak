@@ -100,8 +100,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Ignore
 specifier|public
 class|class
 name|SegmentToJdbcTest
