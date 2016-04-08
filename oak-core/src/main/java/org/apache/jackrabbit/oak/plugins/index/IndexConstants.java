@@ -112,6 +112,12 @@ name|QUERY_PATHS
 init|=
 literal|"queryPaths"
 decl_stmt|;
+comment|/**      * Hidden property which stores the indexPath which can be used by      * IndexEditors      */
+name|String
+name|INDEX_PATH
+init|=
+literal|":indexPath"
+decl_stmt|;
 block|}
 end_interface
 
