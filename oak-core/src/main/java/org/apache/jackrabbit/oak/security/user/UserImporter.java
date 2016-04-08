@@ -3302,6 +3302,15 @@ index|]
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|failed
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|handleFailure
 argument_list|(
 literal|"Failed removing members "
@@ -3318,6 +3327,7 @@ operator|+
 name|gr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -3356,6 +3366,15 @@ index|]
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|failed
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|handleFailure
 argument_list|(
 literal|"Failed add members "
@@ -3372,6 +3391,7 @@ operator|+
 name|gr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// handling non-existing members in case of best-effort
 if|if
