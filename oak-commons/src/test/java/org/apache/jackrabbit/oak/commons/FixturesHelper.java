@@ -93,6 +93,8 @@ block|,
 name|DOCUMENT_RDB
 block|,
 name|MEMORY_NS
+block|,
+name|DOCUMENT_MEM
 block|}
 specifier|private
 specifier|static
