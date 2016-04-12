@@ -247,7 +247,7 @@ name|builder
 init|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 operator|new
 name|File
@@ -290,7 +290,7 @@ name|fs
 init|=
 name|builder
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 name|closer

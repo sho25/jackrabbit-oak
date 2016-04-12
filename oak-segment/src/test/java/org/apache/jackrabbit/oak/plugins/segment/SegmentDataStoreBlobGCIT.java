@@ -924,7 +924,7 @@ name|builder
 init|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|getWorkDir
 argument_list|()
@@ -954,7 +954,7 @@ name|store
 operator|=
 name|builder
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 name|CompactionStrategy

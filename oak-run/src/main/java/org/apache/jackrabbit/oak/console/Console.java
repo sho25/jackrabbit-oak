@@ -743,8 +743,9 @@ operator|=
 operator|new
 name|SegmentFixture
 argument_list|(
-operator|new
 name|FileStore
+operator|.
+name|builder
 argument_list|(
 operator|new
 name|File
@@ -756,9 +757,15 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
-argument_list|,
+argument_list|)
+operator|.
+name|withMaxFileSize
+argument_list|(
 literal|256
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

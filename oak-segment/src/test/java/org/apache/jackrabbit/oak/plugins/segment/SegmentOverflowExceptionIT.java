@@ -101,28 +101,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|FileStore
-operator|.
-name|newFileStore
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assume
@@ -652,7 +630,9 @@ block|{
 name|FileStore
 name|fileStore
 init|=
-name|newFileStore
+name|FileStore
+operator|.
+name|builder
 argument_list|(
 name|directory
 argument_list|)
@@ -662,7 +642,7 @@ argument_list|(
 name|gcMonitor
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 try|try

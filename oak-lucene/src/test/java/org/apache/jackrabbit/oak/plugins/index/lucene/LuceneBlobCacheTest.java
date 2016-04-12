@@ -456,7 +456,7 @@ name|fileStoreBuilder
 init|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|tempFolder
 operator|.
@@ -492,7 +492,7 @@ name|store
 operator|=
 name|fileStoreBuilder
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 name|NodeStore

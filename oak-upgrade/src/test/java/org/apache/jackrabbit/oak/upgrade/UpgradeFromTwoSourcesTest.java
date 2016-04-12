@@ -279,7 +279,7 @@ name|fileStore
 operator|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|dir
 argument_list|)
@@ -289,7 +289,7 @@ argument_list|(
 literal|128
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 name|upgradeComplete

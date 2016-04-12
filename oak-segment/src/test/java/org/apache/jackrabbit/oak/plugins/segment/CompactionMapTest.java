@@ -632,12 +632,12 @@ name|store
 operator|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|directory
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 name|compactionMap1

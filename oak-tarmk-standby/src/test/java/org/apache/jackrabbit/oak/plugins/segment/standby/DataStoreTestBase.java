@@ -499,7 +499,7 @@ decl_stmt|;
 return|return
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|d
 argument_list|)
@@ -522,7 +522,7 @@ argument_list|(
 name|blobStore
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 return|;
 block|}

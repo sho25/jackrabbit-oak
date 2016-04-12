@@ -2157,7 +2157,7 @@ name|store
 init|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|tempFolder
 operator|.
@@ -2177,7 +2177,7 @@ name|BlackHoleBlobStore
 argument_list|()
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 name|SegmentNodeStore
@@ -2505,7 +2505,7 @@ name|store
 init|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|tempFolder
 operator|.
@@ -2523,7 +2523,7 @@ argument_list|(
 name|blobStore
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 name|SegmentNodeStore

@@ -215,7 +215,7 @@ name|builder
 init|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|segmentDir
 argument_list|)
@@ -239,7 +239,7 @@ name|segmentStore
 operator|=
 name|builder
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 return|return

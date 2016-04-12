@@ -59,28 +59,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|FileStore
-operator|.
-name|newFileStore
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -427,7 +405,9 @@ block|{
 name|FileStore
 name|source
 init|=
-name|newFileStore
+name|FileStore
+operator|.
+name|builder
 argument_list|(
 name|src
 argument_list|)
@@ -437,7 +417,7 @@ argument_list|(
 literal|8
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 name|NodeStore
@@ -512,7 +492,9 @@ block|{
 name|FileStore
 name|source
 init|=
-name|newFileStore
+name|FileStore
+operator|.
+name|builder
 argument_list|(
 name|src
 argument_list|)
@@ -522,7 +504,7 @@ argument_list|(
 literal|8
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 name|NodeStore
@@ -571,7 +553,9 @@ argument_list|)
 expr_stmt|;
 name|source
 operator|=
-name|newFileStore
+name|FileStore
+operator|.
+name|builder
 argument_list|(
 name|src
 argument_list|)
@@ -581,7 +565,7 @@ argument_list|(
 literal|8
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 name|compare
@@ -757,7 +741,9 @@ block|{
 name|FileStore
 name|backup
 init|=
-name|newFileStore
+name|FileStore
+operator|.
+name|builder
 argument_list|(
 name|destination
 argument_list|)
@@ -767,7 +753,7 @@ argument_list|(
 literal|8
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 name|assertEquals

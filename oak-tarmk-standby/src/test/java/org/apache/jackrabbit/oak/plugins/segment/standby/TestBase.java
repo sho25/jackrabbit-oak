@@ -407,7 +407,7 @@ block|{
 return|return
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|directory
 argument_list|)
@@ -425,7 +425,7 @@ operator|.
 name|withNoCache
 argument_list|()
 operator|.
-name|create
+name|build
 argument_list|()
 return|;
 block|}

@@ -212,7 +212,7 @@ name|segmentStore
 operator|=
 name|FileStore
 operator|.
-name|newFileStore
+name|builder
 argument_list|(
 name|segmentDir
 argument_list|)
@@ -222,7 +222,7 @@ argument_list|(
 name|blobStore
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 return|return

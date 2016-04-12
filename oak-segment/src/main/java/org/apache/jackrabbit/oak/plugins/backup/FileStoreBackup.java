@@ -36,28 +36,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|FileStore
-operator|.
-name|newFileStore
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -322,7 +300,9 @@ operator|.
 name|Builder
 name|builder
 init|=
-name|newFileStore
+name|FileStore
+operator|.
+name|builder
 argument_list|(
 name|destination
 argument_list|)
@@ -350,7 +330,7 @@ name|backup
 init|=
 name|builder
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 try|try

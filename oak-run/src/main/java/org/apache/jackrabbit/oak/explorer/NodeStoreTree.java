@@ -1008,11 +1008,15 @@ name|this
 operator|.
 name|store
 operator|=
-operator|new
-name|ReadOnlyStore
+name|FileStore
+operator|.
+name|builder
 argument_list|(
 name|path
 argument_list|)
+operator|.
+name|buildReadOnly
+argument_list|()
 expr_stmt|;
 block|}
 specifier|private
