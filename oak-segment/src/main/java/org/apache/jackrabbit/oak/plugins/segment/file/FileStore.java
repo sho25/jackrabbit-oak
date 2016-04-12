@@ -1700,8 +1700,7 @@ name|this
 argument_list|,
 literal|0
 argument_list|,
-name|getVersion
-argument_list|()
+name|version
 argument_list|)
 expr_stmt|;
 block|}
@@ -1728,8 +1727,7 @@ name|builder
 operator|.
 name|cacheSize
 argument_list|,
-name|getVersion
-argument_list|()
+name|version
 argument_list|)
 expr_stmt|;
 block|}
@@ -1744,8 +1742,7 @@ name|SegmentTracker
 argument_list|(
 name|this
 argument_list|,
-name|getVersion
-argument_list|()
+name|version
 argument_list|)
 expr_stmt|;
 block|}
