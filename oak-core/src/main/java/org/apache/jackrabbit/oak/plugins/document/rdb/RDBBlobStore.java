@@ -3218,9 +3218,9 @@ name|format
 argument_list|(
 literal|"chunk deletion affected different numbers of DATA records (%s) and META records (%s)"
 argument_list|,
-name|deletedMeta
-argument_list|,
 name|deletedData
+argument_list|,
+name|deletedMeta
 argument_list|)
 decl_stmt|;
 name|LOG
