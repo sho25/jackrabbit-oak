@@ -850,6 +850,15 @@ name|fixture
 operator|!=
 name|NodeStoreFixtures
 operator|.
+name|DOCUMENT_MEM
+argument_list|)
+expr_stmt|;
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixtures
+operator|.
 name|DOCUMENT_NS
 argument_list|)
 expr_stmt|;
