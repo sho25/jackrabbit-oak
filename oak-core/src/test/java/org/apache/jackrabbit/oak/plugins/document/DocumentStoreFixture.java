@@ -275,6 +275,26 @@ name|FixturesHelper
 operator|.
 name|Fixture
 operator|.
+name|DOCUMENT_MEM
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|FixturesHelper
+operator|.
+name|Fixture
+operator|.
 name|DOCUMENT_NS
 import|;
 end_import
@@ -296,26 +316,6 @@ operator|.
 name|Fixture
 operator|.
 name|DOCUMENT_RDB
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|FixturesHelper
-operator|.
-name|Fixture
-operator|.
-name|MEMORY_NS
 import|;
 end_import
 
@@ -672,7 +672,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|MEMORY_NS
+name|DOCUMENT_MEM
 argument_list|)
 condition|)
 block|{
