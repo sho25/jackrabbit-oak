@@ -801,6 +801,11 @@ argument_list|,
 name|newPassword
 argument_list|)
 expr_stmt|;
+name|session
+operator|.
+name|logout
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
