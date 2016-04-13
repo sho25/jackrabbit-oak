@@ -334,15 +334,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"derby.stream.error.file"
-argument_list|,
-literal|"target/derby.log"
-argument_list|)
-expr_stmt|;
 name|jackrabbitRepository
 operator|=
 name|JcrUtils
