@@ -144,27 +144,19 @@ name|Event
 operator|.
 name|NODE_REMOVED
 argument_list|,
-name|path
+name|testRoot
 argument_list|,
 literal|true
 argument_list|,
-operator|new
-name|String
-index|[
-literal|0
-index|]
+literal|null
 argument_list|,
-operator|new
-name|String
-index|[
-literal|0
-index|]
+literal|null
 argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// superuser removes the node with childNPath in order to provoke
-comment|// events being generated
+comment|// superuser removes the node with childNPath& siblingPath in
+comment|// order to provoke events being generated
 name|superuser
 operator|.
 name|getItem
@@ -177,18 +169,21 @@ argument_list|()
 expr_stmt|;
 name|superuser
 operator|.
+name|getItem
+argument_list|(
+name|siblingPath
+argument_list|)
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+name|superuser
+operator|.
 name|save
 argument_list|()
 expr_stmt|;
-name|obsMgr
-operator|.
-name|removeEventListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
 comment|// since the testUser does not have read-permission on the removed
-comment|// node, no corresponding event must be generated.
+comment|// childNPath, no corresponding event must be generated.
 name|Event
 index|[]
 name|evts
