@@ -343,28 +343,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
-name|LuceneIndexConstants
-operator|.
-name|INDEX_DATA_CHILD_NAME
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -498,11 +476,15 @@ expr_stmt|;
 name|NodeStore
 name|nodeStore
 init|=
-operator|new
 name|SegmentNodeStore
+operator|.
+name|builder
 argument_list|(
 name|store
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|root
 operator|=

@@ -457,11 +457,15 @@ decl_stmt|;
 name|SegmentNodeStore
 name|nodeStore
 init|=
-operator|new
 name|SegmentNodeStore
+operator|.
+name|builder
 argument_list|(
 name|fileStore
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|NodeBuilder
 name|root

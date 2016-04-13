@@ -227,11 +227,15 @@ argument_list|(
 operator|new
 name|Oak
 argument_list|(
-operator|new
 name|SegmentNodeStore
+operator|.
+name|builder
 argument_list|(
 name|store
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;

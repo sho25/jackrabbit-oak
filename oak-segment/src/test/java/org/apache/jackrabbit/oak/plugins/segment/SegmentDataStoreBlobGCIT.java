@@ -1022,11 +1022,15 @@ argument_list|)
 expr_stmt|;
 name|nodeStore
 operator|=
-operator|new
 name|SegmentNodeStore
+operator|.
+name|builder
 argument_list|(
 name|store
 argument_list|)
+operator|.
+name|build
+argument_list|()
 expr_stmt|;
 block|}
 return|return

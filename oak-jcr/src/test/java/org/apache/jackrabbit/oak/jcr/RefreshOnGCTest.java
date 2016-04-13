@@ -633,11 +633,15 @@ expr_stmt|;
 name|NodeStore
 name|nodeStore
 init|=
-operator|new
 name|SegmentNodeStore
+operator|.
+name|builder
 argument_list|(
 name|fileStore
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|Oak
 name|oak

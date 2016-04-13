@@ -619,11 +619,15 @@ decl_stmt|;
 name|NodeStore
 name|store
 init|=
-operator|new
 name|SegmentNodeStore
+operator|.
+name|builder
 argument_list|(
 name|primary
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 specifier|final
 name|StandbyServer

@@ -267,12 +267,12 @@ name|store
 init|=
 name|SegmentNodeStore
 operator|.
-name|newSegmentNodeStore
+name|builder
 argument_list|(
 name|fs
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 decl_stmt|;
 name|FileStoreBackup

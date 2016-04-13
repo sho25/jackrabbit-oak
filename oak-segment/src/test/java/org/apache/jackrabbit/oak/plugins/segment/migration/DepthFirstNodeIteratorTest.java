@@ -277,14 +277,14 @@ name|store
 operator|=
 name|SegmentNodeStore
 operator|.
-name|newSegmentNodeStore
+name|builder
 argument_list|(
 operator|new
 name|MemoryStore
 argument_list|()
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 name|NodeBuilder

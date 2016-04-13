@@ -613,12 +613,12 @@ name|store
 operator|=
 name|SegmentNodeStore
 operator|.
-name|newSegmentNodeStore
+name|builder
 argument_list|(
 name|fs
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 block|}

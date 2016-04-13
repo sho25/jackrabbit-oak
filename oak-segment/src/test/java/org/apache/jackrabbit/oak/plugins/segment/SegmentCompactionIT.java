@@ -1780,12 +1780,14 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
+name|SegmentNodeStore
+operator|.
 name|SegmentNodeStoreBuilder
 name|nodeStoreBuilder
 init|=
 name|SegmentNodeStore
 operator|.
-name|newSegmentNodeStore
+name|builder
 argument_list|(
 name|fileStore
 argument_list|)
@@ -1832,7 +1834,7 @@ name|nodeStore
 operator|=
 name|nodeStoreBuilder
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 name|compactionStrategy

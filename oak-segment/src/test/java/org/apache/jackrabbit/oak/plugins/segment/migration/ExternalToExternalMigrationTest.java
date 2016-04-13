@@ -228,12 +228,12 @@ expr_stmt|;
 return|return
 name|SegmentNodeStore
 operator|.
-name|newSegmentNodeStore
+name|builder
 argument_list|(
 name|segmentStore
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 return|;
 block|}

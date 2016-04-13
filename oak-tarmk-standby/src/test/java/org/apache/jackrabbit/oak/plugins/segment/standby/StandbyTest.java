@@ -25,26 +25,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentTestUtils
-operator|.
-name|createTmpTargetDir
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -96,16 +76,6 @@ operator|.
 name|io
 operator|.
 name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
 import|;
 end_import
 
@@ -464,11 +434,15 @@ decl_stmt|;
 name|NodeStore
 name|store
 init|=
-operator|new
 name|SegmentNodeStore
+operator|.
+name|builder
 argument_list|(
 name|primary
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 specifier|final
 name|StandbyServer

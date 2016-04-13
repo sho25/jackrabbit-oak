@@ -670,11 +670,15 @@ specifier|final
 name|SegmentNodeStore
 name|nodeStore
 init|=
-operator|new
 name|SegmentNodeStore
+operator|.
+name|builder
 argument_list|(
 name|store
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|CompactionStrategy
 name|custom

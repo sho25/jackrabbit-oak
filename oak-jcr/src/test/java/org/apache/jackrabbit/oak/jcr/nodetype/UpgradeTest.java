@@ -277,7 +277,7 @@ name|segment
 operator|.
 name|SegmentNodeStore
 operator|.
-name|newSegmentNodeStore
+name|builder
 import|;
 end_import
 
@@ -454,12 +454,12 @@ init|=
 operator|new
 name|Jcr
 argument_list|(
-name|newSegmentNodeStore
+name|builder
 argument_list|(
 name|store
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
 argument_list|)
 operator|.

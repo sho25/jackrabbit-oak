@@ -3023,12 +3023,14 @@ name|getBundleContext
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|SegmentNodeStore
+operator|.
 name|SegmentNodeStoreBuilder
 name|nodeStoreBuilder
 init|=
 name|SegmentNodeStore
 operator|.
-name|newSegmentNodeStore
+name|builder
 argument_list|(
 name|store
 argument_list|)
@@ -3044,7 +3046,7 @@ name|segmentNodeStore
 operator|=
 name|nodeStoreBuilder
 operator|.
-name|create
+name|build
 argument_list|()
 expr_stmt|;
 name|observerTracker
