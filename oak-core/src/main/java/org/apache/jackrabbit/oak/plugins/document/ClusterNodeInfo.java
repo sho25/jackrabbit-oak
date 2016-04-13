@@ -1970,10 +1970,13 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|Thread
+name|clock
 operator|.
-name|sleep
+name|waitUntil
 argument_list|(
+name|getCurrentTime
+argument_list|()
+operator|+
 literal|5000
 argument_list|)
 expr_stmt|;
