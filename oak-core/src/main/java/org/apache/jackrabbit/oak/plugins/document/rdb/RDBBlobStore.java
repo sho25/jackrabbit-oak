@@ -3072,7 +3072,8 @@ argument_list|(
 literal|" and LASTMOD<= ?"
 argument_list|)
 expr_stmt|;
-comment|// delete if there is NO entry where the last modified of the meta is YOUNGER than x
+comment|// delete if there is NO entry where the last modified of
+comment|// the meta is YOUNGER than x
 name|dataStatement
 operator|.
 name|append
@@ -3083,7 +3084,19 @@ name|this
 operator|.
 name|tnMeta
 operator|+
-literal|" m where ID = m.ID and m.LASTMOD> ?)"
+literal|" where "
+operator|+
+name|this
+operator|.
+name|tnMeta
+operator|+
+literal|".ID = "
+operator|+
+name|this
+operator|.
+name|tnData
+operator|+
+literal|".ID and LASTMOD> ?)"
 argument_list|)
 expr_stmt|;
 block|}
