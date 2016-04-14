@@ -241,6 +241,13 @@ argument_list|(
 name|host
 argument_list|)
 decl_stmt|;
+name|cloudSolrServer
+operator|.
+name|setZkConnectTimeout
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 name|NamedList
 argument_list|<
 name|Object
