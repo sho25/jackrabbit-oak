@@ -57,18 +57,6 @@ begin_import
 import|import static
 name|java
 operator|.
-name|io
-operator|.
-name|File
-operator|.
-name|createTempFile
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
 name|nio
 operator|.
 name|ByteBuffer
@@ -347,7 +335,29 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TemporaryFolder
 import|;
 end_import
 
@@ -356,6 +366,16 @@ specifier|public
 class|class
 name|TarWriterTest
 block|{
+annotation|@
+name|Rule
+specifier|public
+name|TemporaryFolder
+name|folder
+init|=
+operator|new
+name|TemporaryFolder
+argument_list|()
+decl_stmt|;
 comment|/**      * Regression test for OAK-2800      */
 annotation|@
 name|Test
@@ -505,15 +525,17 @@ expr_stmt|;
 name|File
 name|tar
 init|=
-name|createTempFile
+name|folder
+operator|.
+name|newFile
 argument_list|(
 name|getClass
 argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|,
-literal|"tar"
+operator|+
+literal|".tar"
 argument_list|)
 decl_stmt|;
 name|TarWriter
