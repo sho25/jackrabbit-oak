@@ -23,18 +23,6 @@ end_package
 
 begin_import
 import|import static
-name|java
-operator|.
-name|io
-operator|.
-name|File
-operator|.
-name|createTempFile
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -121,7 +109,29 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TemporaryFolder
 import|;
 end_import
 
@@ -130,6 +140,16 @@ specifier|public
 class|class
 name|JournalReaderTest
 block|{
+annotation|@
+name|Rule
+specifier|public
+name|TemporaryFolder
+name|folder
+init|=
+operator|new
+name|TemporaryFolder
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -543,7 +563,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
-specifier|static
 name|JournalReader
 name|createJournalReader
 parameter_list|(
@@ -556,11 +575,11 @@ block|{
 name|File
 name|journalFile
 init|=
-name|createTempFile
+name|folder
+operator|.
+name|newFile
 argument_list|(
 literal|"jrt"
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|write
