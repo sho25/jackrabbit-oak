@@ -489,6 +489,11 @@ name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|jr
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|List
