@@ -55,18 +55,6 @@ begin_import
 import|import static
 name|java
 operator|.
-name|io
-operator|.
-name|File
-operator|.
-name|createTempFile
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
 name|util
 operator|.
 name|Collections
@@ -372,36 +360,6 @@ operator|.
 name|FileStore
 operator|.
 name|ReadOnlyStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|principal
-operator|.
-name|SystemPrincipal
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|After
 import|;
 end_import
 

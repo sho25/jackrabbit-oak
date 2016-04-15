@@ -22,18 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|java
-operator|.
-name|io
-operator|.
-name|File
-operator|.
-name|createTempFile
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -350,6 +338,9 @@ specifier|static
 name|File
 name|createFile
 parameter_list|(
+name|File
+name|file
+parameter_list|,
 name|byte
 index|[]
 name|data
@@ -357,21 +348,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|File
-name|file
-init|=
-name|createTempFile
-argument_list|(
-name|ReversedLinesReaderTestData
-operator|.
-name|class
-operator|.
-name|getSimpleName
-argument_list|()
-argument_list|,
-literal|null
-argument_list|)
-decl_stmt|;
 name|FileOutputStream
 name|os
 init|=
