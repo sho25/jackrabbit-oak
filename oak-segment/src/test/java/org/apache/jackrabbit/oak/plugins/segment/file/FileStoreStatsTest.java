@@ -316,6 +316,11 @@ name|void
 name|shutDown
 parameter_list|()
 block|{
+name|fileStore
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 operator|new
 name|ExecutorCloser
 argument_list|(
