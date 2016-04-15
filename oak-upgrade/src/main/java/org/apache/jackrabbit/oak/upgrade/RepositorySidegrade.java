@@ -647,6 +647,12 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+name|boolean
+name|skipInitialization
+init|=
+literal|false
+decl_stmt|;
+specifier|private
 name|List
 argument_list|<
 name|CommitHook
@@ -851,6 +857,22 @@ operator|=
 name|skipLongNames
 expr_stmt|;
 block|}
+comment|/**      * Skip the new repository initialization. Only copy content passed in the      * {@link #includePaths}.      *      * @param skipInitialization      */
+specifier|public
+name|void
+name|setSkipInitialization
+parameter_list|(
+name|boolean
+name|skipInitialization
+parameter_list|)
+block|{
+name|this
+operator|.
+name|skipInitialization
+operator|=
+name|skipInitialization
+expr_stmt|;
+block|}
 comment|/**      * Same as {@link #copy(RepositoryInitializer)}, but with no custom initializer.       */
 specifier|public
 name|void
@@ -889,6 +911,21 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|skipInitialization
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Skipping the repository initialization"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 operator|new
 name|InitialContent
 argument_list|()
@@ -912,6 +949,7 @@ argument_list|(
 name|targetRoot
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|final
 name|NodeState

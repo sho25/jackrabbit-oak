@@ -1902,6 +1902,12 @@ name|skipLongNames
 init|=
 literal|true
 decl_stmt|;
+specifier|private
+name|boolean
+name|skipInitialization
+init|=
+literal|false
+decl_stmt|;
 name|VersionCopyConfiguration
 name|versionCopyConfiguration
 init|=
@@ -2108,6 +2114,30 @@ operator|.
 name|skipLongNames
 operator|=
 name|skipLongNames
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isSkipInitialization
+parameter_list|()
+block|{
+return|return
+name|skipInitialization
+return|;
+block|}
+specifier|public
+name|void
+name|setSkipInitialization
+parameter_list|(
+name|boolean
+name|skipInitialization
+parameter_list|)
+block|{
+name|this
+operator|.
+name|skipInitialization
+operator|=
+name|skipInitialization
 expr_stmt|;
 block|}
 comment|/**      * Returns the list of custom CommitHooks to be applied before the final      * type validation, reference and indexing hooks.      *      * @return the list of custom CommitHooks      */
@@ -2331,6 +2361,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|skipInitialization
+condition|)
+block|{
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Skipping the repository initialization"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|// init target repository first
 name|logger
 operator|.
@@ -2480,6 +2525,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|HashBiMap
 argument_list|<
 name|String
@@ -2514,6 +2560,21 @@ argument_list|(
 literal|"Namespace registration completed."
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|skipInitialization
+condition|)
+block|{
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Skipping registering node types and privileges"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|logger
 operator|.
 name|info
@@ -2647,6 +2708,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 specifier|final
 name|NodeState
 name|reportingSourceRoot

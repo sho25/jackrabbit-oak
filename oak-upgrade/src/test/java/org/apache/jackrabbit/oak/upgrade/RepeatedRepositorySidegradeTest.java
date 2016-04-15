@@ -356,6 +356,8 @@ argument_list|(
 name|sourceDir
 argument_list|,
 name|target
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|fileStore
@@ -450,6 +452,8 @@ argument_list|(
 name|sourceDir
 argument_list|,
 name|target
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|fileStore
@@ -474,6 +478,9 @@ name|source
 parameter_list|,
 name|NodeStore
 name|target
+parameter_list|,
+name|boolean
+name|skipInit
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -520,6 +527,13 @@ argument_list|,
 name|target
 argument_list|)
 decl_stmt|;
+name|repositoryUpgrade
+operator|.
+name|setSkipInitialization
+argument_list|(
+name|skipInit
+argument_list|)
+expr_stmt|;
 name|repositoryUpgrade
 operator|.
 name|copy

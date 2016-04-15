@@ -166,6 +166,11 @@ specifier|final
 name|boolean
 name|earlyShutdown
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|skipInitialization
+decl_stmt|;
 specifier|public
 name|MigrationOptions
 parameter_list|(
@@ -401,6 +406,19 @@ operator|.
 name|EARLY_SHUTDOWN
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|skipInitialization
+operator|=
+name|args
+operator|.
+name|hasOption
+argument_list|(
+name|OptionParserFactory
+operator|.
+name|SKIP_INIT
+argument_list|)
+expr_stmt|;
 name|logOptions
 argument_list|()
 expr_stmt|;
@@ -496,6 +514,15 @@ parameter_list|()
 block|{
 return|return
 name|earlyShutdown
+return|;
+block|}
+specifier|public
+name|boolean
+name|isSkipInitialization
+parameter_list|()
+block|{
+return|return
+name|skipInitialization
 return|;
 block|}
 specifier|private
@@ -672,6 +699,19 @@ operator|.
 name|info
 argument_list|(
 literal|"Source repository would be shutdown post copying of nodes"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|skipInitialization
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"The repository initialization will be skipped"
 argument_list|)
 expr_stmt|;
 block|}

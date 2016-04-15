@@ -232,6 +232,14 @@ literal|"merge-paths"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|String
+name|SKIP_INIT
+init|=
+literal|"skip-init"
+decl_stmt|;
+specifier|public
+specifier|static
 name|OptionParser
 name|create
 parameter_list|()
@@ -736,6 +744,15 @@ operator|.
 name|defaultsTo
 argument_list|(
 literal|256
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|SKIP_INIT
+argument_list|,
+literal|"Skip the repository initialization; only copy data"
 argument_list|)
 expr_stmt|;
 block|}
