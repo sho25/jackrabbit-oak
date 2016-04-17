@@ -6138,6 +6138,11 @@ name|result
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|i
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 specifier|static
