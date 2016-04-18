@@ -30,6 +30,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -207,6 +217,7 @@ operator|.
 name|ACTIVE
 return|;
 block|}
+comment|/**      * @return {@code true} if the recovery lock state is      *          {@link RecoverLockState#ACQUIRED ACQUIRED}.      */
 specifier|public
 name|boolean
 name|isBeingRecovered
@@ -219,6 +230,50 @@ operator|==
 name|RecoverLockState
 operator|.
 name|ACQUIRED
+return|;
+block|}
+comment|/**      * Returns {@code true} if the cluster node represented by this document      * is currently being recovered by the given {@code clusterId}.      *      * @param clusterId the id of a cluster node.      * @return {@code true} if being recovered by the given id; {@code false}      *          otherwise.      */
+specifier|public
+name|boolean
+name|isBeingRecoveredBy
+parameter_list|(
+name|int
+name|clusterId
+parameter_list|)
+block|{
+return|return
+name|Long
+operator|.
+name|valueOf
+argument_list|(
+name|clusterId
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+name|getRecoveryBy
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * @return the id of the cluster node performing recovery or {@code null} if      *          currently not set.      */
+annotation|@
+name|CheckForNull
+specifier|public
+name|Long
+name|getRecoveryBy
+parameter_list|()
+block|{
+return|return
+operator|(
+name|Long
+operator|)
+name|get
+argument_list|(
+name|ClusterNodeInfo
+operator|.
+name|REV_RECOVERY_BY
+argument_list|)
 return|;
 block|}
 specifier|public

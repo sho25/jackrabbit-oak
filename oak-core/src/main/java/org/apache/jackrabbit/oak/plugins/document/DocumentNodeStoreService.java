@@ -4290,7 +4290,7 @@ argument_list|)
 argument_list|,
 name|ClusterNodeInfo
 operator|.
-name|DEFAULT_LEASE_DURATION_MILLIS
+name|DEFAULT_LEASE_UPDATE_INTERVAL_MILLIS
 argument_list|)
 decl_stmt|;
 name|Runnable

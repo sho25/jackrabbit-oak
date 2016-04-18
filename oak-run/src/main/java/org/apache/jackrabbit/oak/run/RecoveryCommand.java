@@ -362,6 +362,11 @@ operator|new
 name|MongoMissingLastRevSeeker
 argument_list|(
 name|docStore
+argument_list|,
+name|dns
+operator|.
+name|getClock
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|CloseableIterable

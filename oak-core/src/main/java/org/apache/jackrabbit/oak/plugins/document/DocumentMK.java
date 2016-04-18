@@ -5018,6 +5018,9 @@ operator|(
 name|MongoDocumentStore
 operator|)
 name|store
+argument_list|,
+name|getClock
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -5028,6 +5031,9 @@ operator|new
 name|MissingLastRevSeeker
 argument_list|(
 name|store
+argument_list|,
+name|getClock
+argument_list|()
 argument_list|)
 return|;
 block|}

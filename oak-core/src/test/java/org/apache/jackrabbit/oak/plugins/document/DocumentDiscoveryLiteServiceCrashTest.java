@@ -183,6 +183,18 @@ name|mockito
 operator|.
 name|Matchers
 operator|.
+name|anyBoolean
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Matchers
+operator|.
 name|anyInt
 import|;
 end_import
@@ -950,6 +962,17 @@ argument_list|()
 index|[
 literal|0
 index|]
+argument_list|,
+operator|(
+name|Boolean
+operator|)
+name|invocation
+operator|.
+name|getArguments
+argument_list|()
+index|[
+literal|1
+index|]
 argument_list|)
 expr_stmt|;
 return|return
@@ -967,6 +990,9 @@ operator|.
 name|releaseRecoveryLock
 argument_list|(
 name|anyInt
+argument_list|()
+argument_list|,
+name|anyBoolean
 argument_list|()
 argument_list|)
 expr_stmt|;

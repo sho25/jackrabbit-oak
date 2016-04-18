@@ -22,6 +22,16 @@ package|;
 end_package
 
 begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -46,26 +56,6 @@ operator|.
 name|QueryBuilder
 operator|.
 name|start
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|ClusterNodeInfo
-operator|.
-name|RecoverLockState
 import|;
 end_import
 
@@ -235,6 +225,22 @@ name|CloseableIterable
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|Clock
+import|;
+end_import
+
 begin_comment
 comment|/**  * Mongo specific version of MissingLastRevSeeker which uses mongo queries  * to fetch candidates which may have missed '_lastRev' updates.  *   * Uses a time range to find documents modified during that interval.  */
 end_comment
@@ -256,11 +262,16 @@ name|MongoMissingLastRevSeeker
 parameter_list|(
 name|MongoDocumentStore
 name|store
+parameter_list|,
+name|Clock
+name|clock
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|store
+argument_list|,
+name|clock
 argument_list|)
 expr_stmt|;
 name|this
@@ -272,6 +283,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|CloseableIterable
 argument_list|<
@@ -398,10 +411,7 @@ name|Override
 specifier|public
 name|boolean
 name|isRecoveryNeeded
-parameter_list|(
-name|long
-name|currentTime
-parameter_list|)
+parameter_list|()
 block|{
 name|QueryBuilder
 name|query
@@ -434,23 +444,9 @@ argument_list|)
 operator|.
 name|lessThan
 argument_list|(
-name|currentTime
-argument_list|)
+name|clock
 operator|.
-name|put
-argument_list|(
-name|ClusterNodeInfo
-operator|.
-name|REV_RECOVERY_LOCK
-argument_list|)
-operator|.
-name|notEquals
-argument_list|(
-name|RecoverLockState
-operator|.
-name|ACQUIRED
-operator|.
-name|name
+name|getTime
 argument_list|()
 argument_list|)
 decl_stmt|;
