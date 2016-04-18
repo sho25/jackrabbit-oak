@@ -553,14 +553,6 @@ extends|extends
 name|ExternalLoginModuleTestBase
 block|{
 specifier|private
-name|String
-name|userId
-init|=
-name|TestIdentityProvider
-operator|.
-name|ID_TEST_USER
-decl_stmt|;
-specifier|private
 name|UserManager
 name|userManager
 decl_stmt|;
@@ -923,7 +915,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 operator|new
 name|char
@@ -950,7 +942,7 @@ name|findIdentity
 argument_list|(
 name|userManager
 argument_list|,
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -982,7 +974,7 @@ name|assertEquals
 argument_list|(
 literal|"external user should have correct external ref.id"
 argument_list|,
-name|userId
+name|USER_ID
 argument_list|,
 name|id
 operator|.
@@ -1071,7 +1063,7 @@ name|Exception
 block|{
 name|sync
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 literal|false
 argument_list|)
@@ -1084,7 +1076,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|authorizable
@@ -1110,7 +1102,7 @@ name|findIdentity
 argument_list|(
 name|userManager
 argument_list|,
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|assertNull
@@ -1136,7 +1128,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 operator|new
 name|char
@@ -1163,7 +1155,7 @@ name|findIdentity
 argument_list|(
 name|userManager
 argument_list|,
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -1200,7 +1192,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 operator|new
 name|char
@@ -1257,7 +1249,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|a
@@ -1285,7 +1277,7 @@ name|findIdentity
 argument_list|(
 name|userManager
 argument_list|,
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -1319,7 +1311,7 @@ name|Exception
 block|{
 name|sync
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 literal|false
 argument_list|)
@@ -1331,7 +1323,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|a
@@ -1357,7 +1349,7 @@ name|findIdentity
 argument_list|(
 name|userManager
 argument_list|,
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -1394,7 +1386,7 @@ argument_list|(
 operator|new
 name|DefaultSyncedIdentity
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 literal|null
 argument_list|,
@@ -1426,13 +1418,13 @@ argument_list|(
 operator|new
 name|DefaultSyncedIdentity
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 name|idp
 operator|.
 name|getUser
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 operator|.
 name|getExternalId
@@ -1559,12 +1551,12 @@ name|Exception
 block|{
 name|sync
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// membership-nesting is 1 => expect only 'userId' plus the declared group-membership
+comment|// membership-nesting is 1 => expect only 'USER_ID' plus the declared group-membership
 name|Set
 argument_list|<
 name|String
@@ -1575,7 +1567,7 @@ name|Sets
 operator|.
 name|newHashSet
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 for|for
@@ -1587,7 +1579,7 @@ name|idp
 operator|.
 name|getUser
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 operator|.
 name|getDeclaredGroups

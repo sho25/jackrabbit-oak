@@ -263,29 +263,6 @@ name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
-specifier|final
-name|String
-name|userId
-init|=
-literal|"testUser"
-decl_stmt|;
-specifier|private
-specifier|final
-specifier|static
-name|String
-name|TEST_CONSTANT_PROPERTY_NAME
-init|=
-literal|"profile/constantProperty"
-decl_stmt|;
-specifier|private
-specifier|final
-specifier|static
-name|String
-name|TEST_CONSTANT_PROPERTY_VALUE
-init|=
-literal|"constant-value"
-decl_stmt|;
 annotation|@
 name|Before
 specifier|public
@@ -403,7 +380,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -439,7 +416,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -450,7 +427,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 operator|new
 name|char
@@ -472,7 +449,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -487,7 +464,7 @@ name|idp
 operator|.
 name|getUser
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 for|for
@@ -586,7 +563,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -597,7 +574,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|userId
+name|USER_ID
 operator|.
 name|toUpperCase
 argument_list|()
@@ -622,7 +599,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -637,7 +614,7 @@ name|idp
 operator|.
 name|getUser
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 for|for
@@ -737,7 +714,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 operator|new
 name|char
@@ -870,7 +847,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 operator|new
 name|char
@@ -965,7 +942,7 @@ name|idp
 operator|.
 name|getUser
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|Authorizable
@@ -1030,7 +1007,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|,
 operator|new
 name|char
@@ -1052,7 +1029,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|USER_ID
 argument_list|)
 decl_stmt|;
 name|assertNotNull
