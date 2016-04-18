@@ -261,7 +261,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * Login with {@link javax.jcr.GuestCredentials} must succeed and result in      * an guest session as the SUFFICIENT      * {@link org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleImpl}      * handles the guest login (in contrast to the ExternalLoginModule).      *      * @throws Exception      */
+comment|/**      * Login with {@link javax.jcr.GuestCredentials} must succeed and result in      * an guest session as the SUFFICIENT      * {@link org.apache.jackrabbit.oak.security.authentication.user.LoginModuleImpl}      * handles the guest login (in contrast to the ExternalLoginModule).      *      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public
