@@ -594,6 +594,12 @@ operator|.
 name|clean
 argument_list|()
 expr_stmt|;
+name|getSourceContainer
+argument_list|()
+operator|.
+name|clean
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
