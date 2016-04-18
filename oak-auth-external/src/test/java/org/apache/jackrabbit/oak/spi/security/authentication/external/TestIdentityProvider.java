@@ -124,6 +124,14 @@ name|TestIdentityProvider
 implements|implements
 name|ExternalIdentityProvider
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ID_TEST_USER
+init|=
+literal|"testUser"
+decl_stmt|;
 specifier|private
 specifier|final
 name|Map
@@ -228,7 +236,7 @@ argument_list|(
 operator|new
 name|TestUser
 argument_list|(
-literal|"testUser"
+name|ID_TEST_USER
 argument_list|)
 operator|.
 name|withProperty
