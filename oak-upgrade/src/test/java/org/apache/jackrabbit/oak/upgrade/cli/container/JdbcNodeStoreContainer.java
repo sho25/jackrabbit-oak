@@ -237,6 +237,8 @@ name|h2Dir
 operator|.
 name|getPath
 argument_list|()
+operator|+
+literal|"/JdbcNodeStoreContainer"
 argument_list|)
 expr_stmt|;
 name|this
