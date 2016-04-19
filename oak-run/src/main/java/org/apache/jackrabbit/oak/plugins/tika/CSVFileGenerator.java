@@ -229,6 +229,13 @@ operator|.
 name|FORMAT
 argument_list|)
 decl_stmt|;
+name|closer
+operator|.
+name|register
+argument_list|(
+name|printer
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|BinaryResource
