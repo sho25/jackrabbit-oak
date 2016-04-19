@@ -3962,7 +3962,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Checks whether this node is locked, either directly or through      * a deep lock on an ancestor.      *      * @return whether this node is locked      */
-comment|// FIXME: access to locking status should not depend on access rights
+comment|// FIXME: access to locking status should not depend on access rights (OAK-4234)
 specifier|public
 name|boolean
 name|isLocked
@@ -4125,7 +4125,7 @@ name|boolean
 name|deep
 parameter_list|)
 block|{
-comment|// FIXME: access to locking status should not depend on access rights
+comment|// FIXME: access to locking status should not depend on access rights (OAK-4234)
 name|PropertyState
 name|property
 init|=
