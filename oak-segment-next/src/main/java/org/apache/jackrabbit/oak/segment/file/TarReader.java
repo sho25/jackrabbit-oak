@@ -4230,6 +4230,23 @@ return|return
 name|this
 return|;
 block|}
+if|if
+condition|(
+operator|!
+name|hasGraph
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Recovering {}, which is missing its graph."
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 name|int
 name|pos
 init|=
