@@ -4678,6 +4678,8 @@ name|index
 operator|.
 name|remaining
 argument_list|()
+operator|+
+literal|16
 argument_list|)
 decl_stmt|;
 name|ByteBuffer
