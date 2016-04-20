@@ -618,6 +618,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+specifier|public
 name|String
 name|getId
 parameter_list|()
