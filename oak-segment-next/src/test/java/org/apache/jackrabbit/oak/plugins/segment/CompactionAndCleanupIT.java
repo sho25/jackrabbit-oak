@@ -2628,6 +2628,12 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
+comment|// (currently hard coded to 2);
+name|fileStore
+operator|.
+name|compact
+argument_list|()
+expr_stmt|;
 name|fileStore
 operator|.
 name|compact
@@ -2722,11 +2728,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-comment|// The 1M blob should get gc-ed. This works for case 1.
-comment|// However it doesn't for case 2 as merging after compaction
-comment|// apparently creates references from the current segment
-comment|// to the pre-compacted segment to which above changes have
-comment|// been pre-written.
+comment|// The 1M blob should get gc-ed
 name|fileStore
 operator|.
 name|cleanup

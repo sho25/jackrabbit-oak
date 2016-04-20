@@ -559,6 +559,7 @@ name|BLOBREF_COUNT_OFFSET
 init|=
 literal|8
 decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|int
@@ -1325,6 +1326,7 @@ operator|&
 literal|0xffff
 return|;
 block|}
+comment|// could we make it part of the tar file index!?
 specifier|public
 name|int
 name|getGcGen
