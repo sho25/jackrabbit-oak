@@ -5543,14 +5543,7 @@ block|{
 name|flush
 argument_list|()
 expr_stmt|;
-name|tracker
-operator|.
-name|getWriter
-argument_list|()
-operator|.
-name|dropCache
-argument_list|()
-expr_stmt|;
+comment|// FIXME OAK-3348 XXX replace with some sort of close call tracker.getWriter().dropCache();
 name|fileStoreLock
 operator|.
 name|writeLock
@@ -7053,17 +7046,6 @@ operator|.
 name|getCompactionMap
 argument_list|()
 argument_list|)
-expr_stmt|;
-comment|// Drop the SegmentWriter caches and flush any existing state
-comment|// in an attempt to prevent new references to old pre-compacted
-comment|// content. TODO: There should be a cleaner way to do this. (implement GCMonitor!?)
-name|tracker
-operator|.
-name|getWriter
-argument_list|()
-operator|.
-name|dropCache
-argument_list|()
 expr_stmt|;
 name|CompactionMap
 name|cm
