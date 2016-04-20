@@ -1773,7 +1773,9 @@ name|bytes
 operator|<
 name|count
 operator|*
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 operator|+
 literal|16
 operator|||
@@ -1809,7 +1811,9 @@ name|allocate
 argument_list|(
 name|count
 operator|*
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 argument_list|)
 decl_stmt|;
 name|file
@@ -1826,7 +1830,9 @@ literal|16
 operator|-
 name|count
 operator|*
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 argument_list|)
 expr_stmt|;
 name|file
@@ -1885,7 +1891,9 @@ init|=
 operator|new
 name|byte
 index|[
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 index|]
 decl_stmt|;
 for|for
@@ -2720,7 +2728,9 @@ operator|.
 name|capacity
 argument_list|()
 operator|/
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 return|;
 block|}
 comment|/**      * Iterates over all entries in this tar file and calls      * {@link TarEntryVisitor#visit(long, long, File, int, int)} on them.      *      * @param visitor entry visitor      */
@@ -2792,7 +2802,9 @@ argument_list|)
 expr_stmt|;
 name|position
 operator|+=
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 expr_stmt|;
 block|}
 block|}
@@ -2816,7 +2828,9 @@ operator|.
 name|remaining
 argument_list|()
 operator|/
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 argument_list|)
 decl_stmt|;
 name|int
@@ -2864,7 +2878,9 @@ argument_list|)
 expr_stmt|;
 name|position
 operator|+=
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 expr_stmt|;
 block|}
 return|return
@@ -2984,7 +3000,9 @@ operator|.
 name|remaining
 argument_list|()
 operator|/
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 operator|-
 literal|1
 decl_stmt|;
@@ -3052,7 +3070,9 @@ argument_list|()
 operator|+
 name|guessIndex
 operator|*
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 decl_stmt|;
 name|long
 name|m
@@ -3188,7 +3208,9 @@ operator|.
 name|remaining
 argument_list|()
 operator|/
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 index|]
 decl_stmt|;
 name|int
@@ -3262,7 +3284,9 @@ argument_list|)
 expr_stmt|;
 name|position
 operator|+=
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 expr_stmt|;
 block|}
 name|Arrays
@@ -4138,7 +4162,9 @@ name|size
 operator|+=
 name|getEntrySize
 argument_list|(
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 operator|*
 name|count
 operator|+

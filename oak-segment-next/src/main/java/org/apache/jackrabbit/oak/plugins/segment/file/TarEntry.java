@@ -39,6 +39,14 @@ begin_class
 class|class
 name|TarEntry
 block|{
+comment|/** Size in bytes a tar entry takes up in the tar file */
+specifier|static
+specifier|final
+name|int
+name|SIZE
+init|=
+literal|24
+decl_stmt|;
 specifier|static
 specifier|final
 name|Comparator

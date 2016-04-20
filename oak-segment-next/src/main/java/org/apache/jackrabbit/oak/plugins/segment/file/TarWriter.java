@@ -1824,7 +1824,9 @@ operator|.
 name|size
 argument_list|()
 operator|*
-literal|24
+name|TarEntry
+operator|.
+name|SIZE
 operator|+
 literal|16
 decl_stmt|;
