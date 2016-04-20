@@ -355,20 +355,8 @@ name|getTracker
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|compactor
-operator|.
-name|setDeepCheckLargeBinaries
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|compactor
-operator|.
-name|setContentEqualityCheck
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|//            compactor.setDeepCheckLargeBinaries(true);
+comment|//            compactor.setContentEqualityCheck(true);
 name|SegmentNodeState
 name|after
 init|=
