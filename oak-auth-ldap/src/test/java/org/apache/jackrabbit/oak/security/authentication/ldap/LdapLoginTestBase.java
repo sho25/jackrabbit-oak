@@ -1039,10 +1039,7 @@ name|Override
 specifier|protected
 name|void
 name|destroyIDP
-parameter_list|(
-name|ExternalIdentityProvider
-name|idp
-parameter_list|)
+parameter_list|()
 block|{
 operator|(
 operator|(
