@@ -4703,7 +4703,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"attempting to read "
 operator|+
@@ -5035,7 +5035,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"attempting to read "
 operator|+
