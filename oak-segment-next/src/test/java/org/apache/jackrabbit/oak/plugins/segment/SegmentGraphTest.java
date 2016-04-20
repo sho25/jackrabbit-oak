@@ -418,6 +418,7 @@ end_import
 begin_class
 annotation|@
 name|Ignore
+comment|// FIXME OAK-3348 fix SegmentGraphTest
 specifier|public
 class|class
 name|SegmentGraphTest

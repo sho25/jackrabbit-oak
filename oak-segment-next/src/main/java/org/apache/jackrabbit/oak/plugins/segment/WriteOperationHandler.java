@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  */
+comment|/**  * FIXME OAK-3348 document  */
 end_comment
 
 begin_interface

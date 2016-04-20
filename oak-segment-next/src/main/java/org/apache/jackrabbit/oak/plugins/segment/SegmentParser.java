@@ -1223,6 +1223,7 @@ operator|.
 name|getOffset
 argument_list|()
 decl_stmt|;
+comment|// FIXME OAK-3348 Call onString for the node id, which was introduced here
 comment|//segment.readRecordId(offset);
 name|offset
 operator|+=

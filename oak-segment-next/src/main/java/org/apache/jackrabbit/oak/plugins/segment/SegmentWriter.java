@@ -955,6 +955,10 @@ begin_comment
 comment|/**  * Converts nodes, properties, and values to records, which are written to segments.  * FIXME OAK-3348 doc thread safety properties  */
 end_comment
 
+begin_comment
+comment|// FIXME OAK-3348 Improve the way how SegmentWriter instances are created.
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -1131,6 +1135,10 @@ name|String
 argument_list|>
 name|nodeCache
 decl_stmt|;
+comment|// FIXME OAK-3348 Do we need a deduplication cache also for binaries?
+comment|// Probably/preferably not as long binaries are already de-duplicated
+comment|// by rewriting its list of block ids and because we should recommend
+comment|// using a data store for big binaries.
 specifier|private
 specifier|final
 name|SegmentStore
@@ -1191,7 +1199,7 @@ operator|=
 name|nodeCache
 expr_stmt|;
 block|}
-comment|/**      * @param store     store to write to      * @param version   segment version to write      */
+comment|/**      * @param store     store to write to      * @param version   segment version to write      * FIXME OAK-3348 document      */
 specifier|public
 name|SegmentWriter
 parameter_list|(
@@ -1222,6 +1230,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-3348 There should be a cleaner way for adding the cached nodes from the compactor
 specifier|public
 name|void
 name|addCachedNodes
@@ -1245,6 +1254,7 @@ argument_list|,
 name|generation
 argument_list|)
 expr_stmt|;
+comment|// FIXME OAK-3348 find a better way to evict the cache from within the cache itself
 name|stringCache
 operator|.
 name|clearUpTo
@@ -1731,6 +1741,13 @@ block|}
 argument_list|)
 argument_list|)
 return|;
+block|}
+specifier|public
+name|void
+name|dropCache
+parameter_list|()
+block|{
+comment|// FIXME OAK-3348 remove
 block|}
 comment|// FIXME OAK-3348 document: not thread safe
 specifier|private
@@ -5710,6 +5727,7 @@ operator|instanceof
 name|SegmentNodeState
 condition|)
 block|{
+comment|// FIXME OAK-3348 offline compaction could remove those ids
 name|byte
 index|[]
 name|id

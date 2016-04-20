@@ -1030,6 +1030,8 @@ name|max
 expr_stmt|;
 block|}
 comment|/**      * Execute the passed callable with trying to acquire this store's commit lock.      * @param c  callable to execute      * @return  {@code false} if the store's commit lock cannot be acquired, the result      *          of {@code c.call()} otherwise.      * @throws Exception      */
+comment|// FIXME OAK-3348 Remove and use an exclusive locking mechanism of the FileStore
+comment|// instead. See FileStore.forceCompact
 name|boolean
 name|locked
 parameter_list|(
@@ -1073,6 +1075,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Execute the passed callable with trying to acquire this store's commit lock.      * @param timeout the maximum time to wait for the store's commit lock      * @param unit the time unit of the {@code timeout} argument      * @param c  callable to execute      * @return  {@code false} if the store's commit lock cannot be acquired, the result      *          of {@code c.call()} otherwise.      * @throws Exception      */
+comment|// FIXME OAK-3348 Remove and use an exclusive locking mechanism of the FileStore
+comment|// instead. See FileStore.forceCompact
 name|boolean
 name|locked
 parameter_list|(

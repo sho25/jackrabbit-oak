@@ -799,6 +799,7 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
+comment|// FIXME OAK-3348 fix failing test compactionNoBinaryClone
 specifier|public
 name|void
 name|compactionNoBinaryClone
@@ -2628,6 +2629,7 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-3348 need to compact twice because of the generation cleanup threshold
 comment|// (currently hard coded to 2);
 name|fileStore
 operator|.
@@ -3380,6 +3382,7 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
+comment|// FIXME OAK-3348 fix failing test propertyRetention
 specifier|public
 name|void
 name|propertyRetention

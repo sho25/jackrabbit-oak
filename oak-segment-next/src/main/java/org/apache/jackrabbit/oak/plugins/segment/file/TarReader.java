@@ -3935,7 +3935,7 @@ name|generation
 operator|)
 condition|)
 block|{
-comment|// non references bulk segment or old data segment
+comment|// non referenced bulk segment or old data segment
 name|reclaim
 operator|.
 name|add

@@ -1019,6 +1019,8 @@ return|return
 literal|true
 return|;
 block|}
+comment|// FIXME OAK-3348 check / test deduplication of large SegmentBlob instances
+comment|// FIXME OAK-3348 Can we do something similar for long strings?
 if|if
 condition|(
 name|object

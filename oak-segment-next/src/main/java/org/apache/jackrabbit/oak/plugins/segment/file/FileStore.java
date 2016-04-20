@@ -1724,6 +1724,13 @@ name|mkdirs
 argument_list|()
 expr_stmt|;
 block|}
+comment|// FIXME OAK-3348 Improve the setup of FileStore and SegmentTracker.
+comment|// SegmentTracker and FileStore have a cyclic dependency, which we should
+comment|// try to break. Here we pass along a not fully initialised instances of the
+comment|// FileStore to the SegmentTracker, which in turn is in later invoked to write
+comment|// the initial node state. Notably before this instance is fully initialised!
+comment|// Once consequence of this is that we cannot reliably determine the current
+comment|// GC generation while writing the initial head state. See further below.
 if|if
 condition|(
 name|builder
@@ -2621,6 +2628,8 @@ name|readers
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-3348 hack: We cannot determine the current GC generation before
+comment|// the FileStore is fully initialised so just return 0 for now.
 specifier|public
 name|int
 name|getGcGen
@@ -2716,6 +2725,7 @@ name|delta
 init|=
 literal|0
 decl_stmt|;
+comment|// FIXME OAK-3348 what value should we use for delta?
 name|long
 name|needed
 init|=
@@ -4293,6 +4303,7 @@ argument_list|()
 operator|-
 literal|1
 decl_stmt|;
+comment|// FIXME OAK-3348 make the generation threshold configurable
 name|Set
 argument_list|<
 name|UUID
@@ -4324,6 +4335,7 @@ argument_list|,
 name|generation
 argument_list|)
 expr_stmt|;
+comment|// FIXME OAK-3348 log at debug level
 name|log
 operator|.
 name|info
@@ -4822,6 +4834,7 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
+comment|// FIXME OAK-3348 Make the capacity and initial depth of the deduplication cache configurable
 specifier|final
 name|DeduplicationCache
 argument_list|<
@@ -4840,6 +4853,7 @@ argument_list|,
 literal|20
 argument_list|)
 decl_stmt|;
+comment|// FIXME OAK-3348 this way of compacting has not progress logging and cannot be cancelled
 name|int
 name|gcGeneration
 init|=
@@ -5097,27 +5111,25 @@ argument_list|(
 name|compactionStrategy
 argument_list|)
 expr_stmt|;
+comment|// FIXME OAK-3348 refactor GCMonitor: there is no more compaction map stats
 name|gcMonitor
 operator|.
 name|compacted
 argument_list|(
 operator|new
 name|long
-index|[
-literal|0
-index|]
+index|[]
+block|{}
 argument_list|,
 operator|new
 name|long
-index|[
-literal|0
-index|]
+index|[]
+block|{}
 argument_list|,
 operator|new
 name|long
-index|[
-literal|0
-index|]
+index|[]
+block|{}
 argument_list|)
 expr_stmt|;
 block|}
@@ -5175,6 +5187,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// FIXME OAK-3348 giving up leaves garbage that will only be cleaned up 2 generations later!
 block|}
 name|gcMonitor
 operator|.
@@ -5505,6 +5518,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|// FIXME OAK-3348 Maybe us a lock implementation that could expedite important commits
+comment|// like compaction and checkpoints. See OAK-4015. Needs to be evaluated.
 specifier|private
 name|ReadWriteLock
 name|rwLock
@@ -5618,7 +5633,8 @@ block|{
 name|flush
 argument_list|()
 expr_stmt|;
-comment|// FIXME OAK-3348 XXX replace with some sort of close call tracker.getWriter().dropCache();
+comment|// FIXME OAK-3348 Replace this with a way to "close" the underlying SegmentBufferWriter(s)
+comment|// tracker.getWriter().dropCache();
 name|fileStoreLock
 operator|.
 name|writeLock

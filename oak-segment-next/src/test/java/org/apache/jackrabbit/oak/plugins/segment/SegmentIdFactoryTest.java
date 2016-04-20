@@ -439,6 +439,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * OAK-2049 - error for data segments      */
+comment|// FIXME OAK-3348 fix test
 comment|//    @Test(expected = IllegalStateException.class)
 comment|//    public void dataAIOOBE() {
 comment|//        SegmentId id = factory.newDataSegmentId();

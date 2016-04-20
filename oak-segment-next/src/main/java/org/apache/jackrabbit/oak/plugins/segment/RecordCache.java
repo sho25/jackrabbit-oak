@@ -176,7 +176,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FIXME OAK-3348 XXX document  */
+comment|/**  * FIXME OAK-3348 document  */
+end_comment
+
+begin_comment
+comment|// FIXME OAK-3348 implement monitoring for this cache
+end_comment
+
+begin_comment
+comment|// FIXME OAK-3348 unit test
 end_comment
 
 begin_class
@@ -202,6 +210,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// FIXME OAK-3348 make this a feature flag
 specifier|private
 specifier|static
 specifier|final
@@ -403,7 +412,7 @@ block|{ }
 block|}
 return|;
 block|}
-comment|/**      */
+comment|/**      * FIXME OAK-3348 The getCache might get called multiple times per generation      * as per the comment below. Either come up with a fix for this race      * or clearly state that API consumers need to be prepared for this.      */
 specifier|protected
 name|Cache
 argument_list|<
@@ -889,6 +898,10 @@ name|int
 name|cost
 parameter_list|)
 block|{
+comment|// FIXME OAK-3348 Validate and optimise the eviction strategy.
+comment|// Nodes with many children should probably get a boost to
+comment|// protecting them from preemptive eviction. Also it might be
+comment|// necessary to implement pinning (e.g. for checkpoints).
 while|while
 condition|(
 name|size

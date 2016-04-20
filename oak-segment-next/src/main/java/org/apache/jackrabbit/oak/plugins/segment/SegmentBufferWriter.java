@@ -687,6 +687,7 @@ operator|=
 literal|0
 expr_stmt|;
 comment|// refcount
+comment|// FIXME OAK-3348 document change in format
 name|buffer
 index|[
 name|GC_GEN_OFFSET
@@ -765,6 +766,9 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+comment|// FIXME OAK-3348 Don't write the GC generation into the segment info
+comment|// as it is now available from the segment header. Update the tooling
+comment|// accordingly (SegmentGraph).
 name|String
 name|metaInfo
 init|=

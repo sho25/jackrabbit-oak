@@ -226,6 +226,7 @@ end_comment
 begin_class
 annotation|@
 name|Ignore
+comment|// FIXME OAK-3348 fix failing test SegmentSizeTest
 specifier|public
 class|class
 name|SegmentSizeTest

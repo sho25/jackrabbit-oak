@@ -113,6 +113,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|// FIXME OAK-3348 Refactor this into a proper AST. Identify and remove "legacy" parts
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -280,6 +284,7 @@ name|forceAfterFail
 init|=
 name|FORCE_AFTER_FAIL_DEFAULT
 decl_stmt|;
+comment|// FIXME OAK-3348 Make the lock wait time configurable
 specifier|private
 name|int
 name|lockWaitTime

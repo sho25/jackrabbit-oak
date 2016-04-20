@@ -325,6 +325,7 @@ operator|.
 name|getHead
 argument_list|()
 decl_stmt|;
+comment|// FIXME OAK-3348 Use dedicated implementation instead of compactor.
 comment|// This is allows us to decouple and fix problems for online compaction independent
 comment|// of backup / restore.
 comment|//            Compactor compactor = new Compactor(backup.getTracker());

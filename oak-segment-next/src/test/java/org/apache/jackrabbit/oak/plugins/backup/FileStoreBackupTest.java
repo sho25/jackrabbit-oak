@@ -322,6 +322,7 @@ end_import
 begin_class
 annotation|@
 name|Ignore
+comment|// FIXME OAK-3348 FileStoreBackupTest
 specifier|public
 class|class
 name|FileStoreBackupTest
