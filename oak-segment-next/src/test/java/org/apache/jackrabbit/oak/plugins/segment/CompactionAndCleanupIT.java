@@ -703,6 +703,26 @@ name|org
 operator|.
 name|junit
 operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -2868,12 +2888,6 @@ block|}
 comment|/**      * Test asserting OAK-3348: Cross gc sessions might introduce references to pre-compacted segments      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-3348"
-argument_list|)
-comment|// FIXME OAK-3348
 specifier|public
 name|void
 name|preCompactionReferences

@@ -7079,14 +7079,6 @@ operator|.
 name|dropCache
 argument_list|()
 expr_stmt|;
-name|tracker
-operator|.
-name|getWriter
-argument_list|()
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 name|CompactionMap
 name|cm
 init|=
