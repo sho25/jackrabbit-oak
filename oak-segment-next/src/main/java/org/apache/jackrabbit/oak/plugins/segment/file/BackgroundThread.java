@@ -337,6 +337,25 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|Error
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Unhandled error in background thread"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
+catch|catch
+parameter_list|(
 name|RuntimeException
 name|e
 parameter_list|)
