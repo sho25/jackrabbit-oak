@@ -1326,11 +1326,14 @@ operator|&
 literal|0xffff
 return|;
 block|}
-comment|// could we make it part of the tar file index!?
 specifier|public
+specifier|static
 name|int
 name|getGcGen
-parameter_list|()
+parameter_list|(
+name|ByteBuffer
+name|data
+parameter_list|)
 block|{
 return|return
 name|data
@@ -1338,6 +1341,18 @@ operator|.
 name|getInt
 argument_list|(
 name|GC_GEN_OFFSET
+argument_list|)
+return|;
+block|}
+specifier|public
+name|int
+name|getGcGen
+parameter_list|()
+block|{
+return|return
+name|getGcGen
+argument_list|(
+name|data
 argument_list|)
 return|;
 block|}

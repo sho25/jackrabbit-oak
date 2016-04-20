@@ -177,6 +177,18 @@ begin_import
 import|import static
 name|java
 operator|.
+name|nio
+operator|.
+name|ByteBuffer
+operator|.
+name|wrap
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -6181,6 +6193,23 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+name|int
+name|generation
+init|=
+name|Segment
+operator|.
+name|getGcGen
+argument_list|(
+name|wrap
+argument_list|(
+name|data
+argument_list|,
+name|offset
+argument_list|,
+name|length
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|long
 name|size
 init|=
@@ -6203,6 +6232,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|length
+argument_list|,
+name|generation
 argument_list|)
 decl_stmt|;
 if|if

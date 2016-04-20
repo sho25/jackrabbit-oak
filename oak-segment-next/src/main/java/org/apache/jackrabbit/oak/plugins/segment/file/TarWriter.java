@@ -835,6 +835,9 @@ name|offset
 parameter_list|,
 name|int
 name|size
+parameter_list|,
+name|int
+name|generation
 parameter_list|)
 throws|throws
 name|IOException
@@ -937,6 +940,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|size
+argument_list|,
+name|generation
 argument_list|)
 return|;
 block|}
@@ -961,6 +966,9 @@ name|offset
 parameter_list|,
 name|int
 name|size
+parameter_list|,
+name|int
+name|generation
 parameter_list|)
 throws|throws
 name|IOException
@@ -1094,6 +1102,8 @@ name|padding
 argument_list|)
 argument_list|,
 name|size
+argument_list|,
+name|generation
 argument_list|)
 decl_stmt|;
 name|index
@@ -1948,6 +1958,16 @@ argument_list|(
 name|entry
 operator|.
 name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|buffer
+operator|.
+name|putInt
+argument_list|(
+name|entry
+operator|.
+name|generation
 argument_list|()
 argument_list|)
 expr_stmt|;
