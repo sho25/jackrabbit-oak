@@ -439,86 +439,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * OAK-2049 - error for data segments      */
-annotation|@
-name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalStateException
-operator|.
-name|class
-argument_list|)
-specifier|public
-name|void
-name|dataAIOOBE
-parameter_list|()
-block|{
-name|SegmentId
-name|id
-init|=
-name|factory
-operator|.
-name|newDataSegmentId
-argument_list|()
-decl_stmt|;
-name|byte
-index|[]
-name|buffer
-init|=
-name|SegmentBufferWriter
-operator|.
-name|createNewBuffer
-argument_list|(
-name|SegmentVersion
-operator|.
-name|V_11
-argument_list|)
-decl_stmt|;
-name|ByteBuffer
-name|data
-init|=
-name|ByteBuffer
-operator|.
-name|allocate
-argument_list|(
-name|Segment
-operator|.
-name|MAX_SEGMENT_SIZE
-argument_list|)
-decl_stmt|;
-name|data
-operator|.
-name|put
-argument_list|(
-name|buffer
-argument_list|)
-expr_stmt|;
-name|data
-operator|.
-name|rewind
-argument_list|()
-expr_stmt|;
-name|Segment
-name|s
-init|=
-operator|new
-name|Segment
-argument_list|(
-name|factory
-argument_list|,
-name|id
-argument_list|,
-name|data
-argument_list|)
-decl_stmt|;
-name|s
-operator|.
-name|getRefId
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
+comment|//    @Test(expected = IllegalStateException.class)
+comment|//    public void dataAIOOBE() {
+comment|//        SegmentId id = factory.newDataSegmentId();
+comment|//        byte[] buffer = SegmentBufferWriter.createNewBuffer(SegmentVersion.V_11);
+comment|//        ByteBuffer data = ByteBuffer.allocate(Segment.MAX_SEGMENT_SIZE);
+comment|//        data.put(buffer);
+comment|//        data.rewind();
+comment|//        Segment s = new Segment(factory, id, data);
+comment|//        s.getRefId(1);
+comment|//    }
 comment|/**      * OAK-2049 - error for bulk segments      */
 annotation|@
 name|Test
