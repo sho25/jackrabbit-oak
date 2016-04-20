@@ -1138,7 +1138,15 @@ name|store
 argument_list|,
 name|segmentVersion
 argument_list|,
+operator|new
+name|SegmentBufferWriter
+argument_list|(
+name|store
+argument_list|,
+name|segmentVersion
+argument_list|,
 literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

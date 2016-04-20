@@ -350,9 +350,6 @@ specifier|abstract
 specifier|static
 class|class
 name|RecordWriter
-parameter_list|<
-name|T
-parameter_list|>
 block|{
 specifier|private
 specifier|final
@@ -461,7 +458,7 @@ expr_stmt|;
 block|}
 specifier|public
 specifier|final
-name|T
+name|RecordId
 name|write
 parameter_list|(
 name|SegmentBufferWriter
@@ -495,7 +492,7 @@ return|;
 block|}
 specifier|protected
 specifier|abstract
-name|T
+name|RecordId
 name|writeRecordContent
 parameter_list|(
 name|RecordId
@@ -509,9 +506,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|MapRecord
-argument_list|>
 name|newMapLeafWriter
 parameter_list|(
 name|int
@@ -537,9 +531,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|MapRecord
-argument_list|>
 name|newMapLeafWriter
 parameter_list|()
 block|{
@@ -552,9 +543,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|MapRecord
-argument_list|>
 name|newMapBranchWriter
 parameter_list|(
 name|int
@@ -590,9 +578,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|MapRecord
-argument_list|>
 name|newMapBranchWriter
 parameter_list|(
 name|int
@@ -618,9 +603,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newListWriter
 parameter_list|(
 name|int
@@ -643,9 +625,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newListWriter
 parameter_list|()
 block|{
@@ -658,9 +637,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newListBucketWriter
 parameter_list|(
 name|List
@@ -681,9 +657,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newBlockWriter
 parameter_list|(
 name|byte
@@ -712,9 +685,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newValueWriter
 parameter_list|(
 name|RecordId
@@ -737,9 +707,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newValueWriter
 parameter_list|(
 name|int
@@ -764,9 +731,6 @@ comment|/**      * Write a large blob ID. A blob ID is considered large if the l
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newBlobIdWriter
 parameter_list|(
 name|RecordId
@@ -785,9 +749,6 @@ comment|/**      * Write a small blob ID. A blob ID is considered small if the l
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newBlobIdWriter
 parameter_list|(
 name|byte
@@ -806,9 +767,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 name|newTemplateWriter
 parameter_list|(
 name|Collection
@@ -874,9 +832,6 @@ block|}
 specifier|public
 specifier|static
 name|RecordWriter
-argument_list|<
-name|SegmentNodeState
-argument_list|>
 name|newNodeStateWriter
 parameter_list|(
 name|List
@@ -901,9 +856,6 @@ class|class
 name|MapLeafWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|MapRecord
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -1055,7 +1007,7 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|MapRecord
+name|RecordId
 name|writeRecordContent
 parameter_list|(
 name|RecordId
@@ -1175,11 +1127,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
-name|MapRecord
-argument_list|(
 name|id
-argument_list|)
 return|;
 block|}
 block|}
@@ -1190,9 +1138,6 @@ class|class
 name|MapBranchWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|MapRecord
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -1288,7 +1233,7 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|MapRecord
+name|RecordId
 name|writeRecordContent
 parameter_list|(
 name|RecordId
@@ -1336,11 +1281,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
-name|MapRecord
-argument_list|(
 name|id
-argument_list|)
 return|;
 block|}
 block|}
@@ -1351,9 +1292,6 @@ class|class
 name|ListWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -1464,9 +1402,6 @@ class|class
 name|ListBucketWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 block|{
 specifier|private
 name|ListBucketWriter
@@ -1529,9 +1464,6 @@ class|class
 name|BlockWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -1614,9 +1546,6 @@ class|class
 name|SingleValueWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -1699,9 +1628,6 @@ class|class
 name|ArrayValueWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -1869,9 +1795,6 @@ class|class
 name|LargeBlobIdWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -1953,9 +1876,6 @@ class|class
 name|SmallBlobIdWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -2064,9 +1984,6 @@ class|class
 name|TemplateWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|RecordId
-argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -2377,9 +2294,6 @@ class|class
 name|NodeStateWriter
 extends|extends
 name|RecordWriter
-argument_list|<
-name|SegmentNodeState
-argument_list|>
 block|{
 specifier|private
 name|NodeStateWriter
@@ -2404,7 +2318,7 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|SegmentNodeState
+name|RecordId
 name|writeRecordContent
 parameter_list|(
 name|RecordId
@@ -2431,11 +2345,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
-name|SegmentNodeState
-argument_list|(
 name|id
-argument_list|)
 return|;
 block|}
 block|}
