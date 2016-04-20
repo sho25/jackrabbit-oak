@@ -256,7 +256,7 @@ else|:
 name|autoMembership
 return|;
 block|}
-comment|/**          * Sets the auto membership          * @param autoMembership the membership          * @return {@code this}          * @see #getAutoMembership()          */
+comment|/**          * Sets the auto membership. Note that the passed group names will be trimmed          * and empty string values will be ignored (along with {@code null} values).          *          * @param autoMembership the membership          * @return {@code this}          * @see #getAutoMembership()          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -291,6 +291,10 @@ control|)
 block|{
 if|if
 condition|(
+name|groupName
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|groupName
 operator|.
