@@ -49,20 +49,6 @@ end_import
 
 begin_import
 import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|SECONDS
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -438,18 +424,6 @@ operator|.
 name|util
 operator|.
 name|Hashtable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Callable
 import|;
 end_import
 
@@ -2818,10 +2792,6 @@ init|=
 name|getGainThreshold
 argument_list|()
 decl_stmt|;
-comment|// This is indeed a dirty hack, but it's needed to break a circular
-comment|// dependency between different components. The FileStore needs the
-comment|// CompactionStrategy, the CompactionStrategy needs the
-comment|// SegmentNodeStore, and the SegmentNodeStore needs the FileStore.
 name|CompactionStrategy
 name|compactionStrategy
 init|=
@@ -2838,38 +2808,6 @@ name|cleanupTs
 argument_list|,
 name|memoryThreshold
 argument_list|)
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|compacted
-parameter_list|(
-name|Callable
-argument_list|<
-name|Boolean
-argument_list|>
-name|setHead
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-comment|// Need to guard against concurrent commits to avoid
-comment|// mixed segments. See OAK-2192.
-return|return
-name|segmentNodeStore
-operator|.
-name|locked
-argument_list|(
-name|setHead
-argument_list|,
-name|lockWaitTime
-argument_list|,
-name|SECONDS
-argument_list|)
-return|;
-block|}
-block|}
 decl_stmt|;
 name|compactionStrategy
 operator|.
@@ -2890,6 +2828,13 @@ operator|.
 name|setGainThreshold
 argument_list|(
 name|gainThreshold
+argument_list|)
+expr_stmt|;
+name|compactionStrategy
+operator|.
+name|setLockWaitTime
+argument_list|(
+name|lockWaitTime
 argument_list|)
 expr_stmt|;
 return|return
