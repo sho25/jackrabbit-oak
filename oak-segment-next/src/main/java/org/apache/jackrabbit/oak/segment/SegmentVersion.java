@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Version of the segment storage format.  *<ul>  *<li>10 = all Oak versions previous to 11</li>  *<li>11 = all Oak versions starting from 1.0.12, 1.1.7 and 1.2</li>  *</ul>  */
+comment|/**  * Version of the segment storage format.  *<ul>  *<li>10 = all Oak versions previous to 11</li>  *<li>11 = all Oak versions starting from 1.0.12, 1.1.7 and 1.2</li>  *<li>12 = all oak-segment-next versions</li>  *</ul>  */
 end_comment
 
 begin_enum
@@ -85,6 +85,9 @@ operator|)
 literal|10
 argument_list|)
 block|,
+comment|/**      * @deprecated Use latest version V11      */
+annotation|@
+name|Deprecated
 name|V_11
 argument_list|(
 operator|(
@@ -92,8 +95,15 @@ name|byte
 operator|)
 literal|11
 argument_list|)
+block|,
+name|V_12
+argument_list|(
+operator|(
+name|byte
+operator|)
+literal|12
+argument_list|)
 block|;
-comment|// FIXME OAK-3348 upgrade to version 12
 comment|/**      * Latest segment version      */
 specifier|public
 specifier|static
@@ -210,6 +220,20 @@ if|if
 condition|(
 name|v
 operator|==
+name|V_12
+operator|.
+name|version
+condition|)
+block|{
+return|return
+name|V_12
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|v
+operator|==
 name|V_11
 operator|.
 name|version
@@ -258,15 +282,27 @@ block|{
 return|return
 name|v
 operator|==
-name|V_10
+name|V_12
 operator|.
 name|version
-operator|||
-name|v
-operator|==
-name|V_11
+return|;
+block|}
+specifier|public
+specifier|static
+name|boolean
+name|isValid
+parameter_list|(
+name|SegmentVersion
+name|version
+parameter_list|)
+block|{
+return|return
+name|isValid
+argument_list|(
+name|version
 operator|.
 name|version
+argument_list|)
 return|;
 block|}
 block|}

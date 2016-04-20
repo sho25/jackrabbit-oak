@@ -318,7 +318,7 @@ literal|16
 argument_list|,
 name|SegmentVersion
 operator|.
-name|V_11
+name|LATEST_VERSION
 argument_list|)
 decl_stmt|;
 specifier|private
