@@ -228,7 +228,10 @@ literal|0
 operator|&&
 name|store
 operator|.
-name|containsSegment
+name|getTracker
+argument_list|()
+operator|.
+name|isTracking
 argument_list|(
 name|id
 operator|.

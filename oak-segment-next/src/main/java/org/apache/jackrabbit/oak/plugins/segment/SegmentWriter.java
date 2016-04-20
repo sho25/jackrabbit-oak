@@ -3239,8 +3239,6 @@ block|{
 name|SegmentId
 name|bulkId
 init|=
-name|store
-operator|.
 name|getTracker
 argument_list|()
 operator|.
@@ -3369,9 +3367,11 @@ operator|instanceof
 name|SegmentBlob
 operator|)
 operator|&&
-name|store
+operator|(
+name|getTracker
+argument_list|()
 operator|.
-name|containsSegment
+name|isTracking
 argument_list|(
 operator|(
 operator|(
@@ -3386,6 +3386,7 @@ operator|.
 name|getSegmentId
 argument_list|()
 argument_list|)
+operator|)
 return|;
 block|}
 specifier|private
@@ -3924,8 +3925,6 @@ block|{
 name|SegmentId
 name|bulkId
 init|=
-name|store
-operator|.
 name|getTracker
 argument_list|()
 operator|.
@@ -5455,9 +5454,10 @@ name|node
 parameter_list|)
 block|{
 return|return
-name|store
+name|getTracker
+argument_list|()
 operator|.
-name|containsSegment
+name|isTracking
 argument_list|(
 name|node
 operator|.
@@ -5484,9 +5484,11 @@ operator|instanceof
 name|SegmentPropertyState
 operator|)
 operator|&&
-name|store
+operator|(
+name|getTracker
+argument_list|()
 operator|.
-name|containsSegment
+name|isTracking
 argument_list|(
 operator|(
 operator|(
@@ -5501,6 +5503,7 @@ operator|.
 name|getSegmentId
 argument_list|()
 argument_list|)
+operator|)
 return|;
 block|}
 comment|/**          * If the given node was compacted, return the compacted node, otherwise          * return the passed node. This is to avoid pointing to old nodes, if they          * have been compacted.          *          * @param state the node          * @return the compacted node (if it was compacted)          */
@@ -5786,6 +5789,18 @@ literal|true
 return|;
 block|}
 block|}
+block|}
+specifier|private
+name|SegmentTracker
+name|getTracker
+parameter_list|()
+block|{
+return|return
+name|store
+operator|.
+name|getTracker
+argument_list|()
+return|;
 block|}
 block|}
 end_class
