@@ -994,6 +994,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// See also the comments in FileStore regarding initialisation and
+comment|// cyclic dependencies.
+specifier|public
 name|int
 name|getGcGen
 parameter_list|()

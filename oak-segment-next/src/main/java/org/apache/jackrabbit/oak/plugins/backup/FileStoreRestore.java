@@ -67,24 +67,6 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|Compactor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
 name|SegmentNodeState
 import|;
 end_import
@@ -260,44 +242,13 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|Compactor
-name|compactor
-init|=
-operator|new
-name|Compactor
-argument_list|(
-name|store
-operator|.
-name|getTracker
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|SegmentNodeState
-name|after
-init|=
-name|compactor
-operator|.
-name|compact
-argument_list|(
-name|current
-argument_list|,
-name|restore
-operator|.
-name|getHead
-argument_list|()
-argument_list|,
-name|current
-argument_list|)
-decl_stmt|;
-name|store
-operator|.
-name|setHead
-argument_list|(
-name|current
-argument_list|,
-name|after
-argument_list|)
-expr_stmt|;
+comment|// This is allows us to decouple and fix problems for online compaction independent
+comment|// of backup / restore.
+comment|// compactor.setDeepCheckLargeBinaries(true);
+comment|//            Compactor compactor = new Compactor(store.getTracker());
+comment|//            SegmentNodeState after = compactor.compact(current,
+comment|//                    restore.getHead(), current);
+comment|//            store.setHead(current, after);
 block|}
 finally|finally
 block|{

@@ -57,19 +57,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|jackrabbit
+name|common
 operator|.
-name|oak
+name|base
 operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|Compactor
+name|Stopwatch
 import|;
 end_import
 
@@ -207,20 +203,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Stopwatch
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -343,43 +325,13 @@ operator|.
 name|getHead
 argument_list|()
 decl_stmt|;
-name|Compactor
-name|compactor
-init|=
-operator|new
-name|Compactor
-argument_list|(
-name|backup
-operator|.
-name|getTracker
-argument_list|()
-argument_list|)
-decl_stmt|;
+comment|// This is allows us to decouple and fix problems for online compaction independent
+comment|// of backup / restore.
+comment|//            Compactor compactor = new Compactor(backup.getTracker());
 comment|//            compactor.setDeepCheckLargeBinaries(true);
 comment|//            compactor.setContentEqualityCheck(true);
-name|SegmentNodeState
-name|after
-init|=
-name|compactor
-operator|.
-name|compact
-argument_list|(
-name|state
-argument_list|,
-name|current
-argument_list|,
-name|state
-argument_list|)
-decl_stmt|;
-name|backup
-operator|.
-name|setHead
-argument_list|(
-name|state
-argument_list|,
-name|after
-argument_list|)
-expr_stmt|;
+comment|//            SegmentNodeState after = compactor.compact(state, current, state);
+comment|//            backup.setHead(state, after);
 block|}
 finally|finally
 block|{
