@@ -210,14 +210,6 @@ decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
-name|boolean
-name|PERSIST_COMPACTION_MAP_DEFAULT
-init|=
-literal|true
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
 name|byte
 name|GAIN_THRESHOLD_DEFAULT
 init|=
@@ -313,12 +305,6 @@ init|=
 name|MEMORY_THRESHOLD_DEFAULT
 decl_stmt|;
 specifier|private
-name|boolean
-name|persistedCompactionMap
-init|=
-name|PERSIST_COMPACTION_MAP_DEFAULT
-decl_stmt|;
-specifier|private
 name|int
 name|retryCount
 init|=
@@ -343,13 +329,6 @@ name|byte
 name|gainThreshold
 init|=
 name|GAIN_THRESHOLD_DEFAULT
-decl_stmt|;
-comment|/**      * Flag that allows turning on an optimized version of the compaction      * process in the case of offline compaction      */
-specifier|private
-name|boolean
-name|offlineCompaction
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|CompactionStrategy
@@ -623,10 +602,6 @@ literal|", memoryThreshold="
 operator|+
 name|memoryThreshold
 operator|+
-literal|", persistedCompactionMap="
-operator|+
-name|persistedCompactionMap
-operator|+
 literal|", retryCount="
 operator|+
 name|retryCount
@@ -638,10 +613,6 @@ operator|+
 literal|", compactionStart="
 operator|+
 name|compactionStart
-operator|+
-literal|", offlineCompaction="
-operator|+
-name|offlineCompaction
 operator|+
 literal|'}'
 return|;
@@ -683,28 +654,6 @@ operator|.
 name|memoryThreshold
 operator|=
 name|memoryThreshold
-expr_stmt|;
-block|}
-specifier|public
-name|boolean
-name|getPersistCompactionMap
-parameter_list|()
-block|{
-return|return
-name|persistedCompactionMap
-return|;
-block|}
-specifier|public
-name|void
-name|setPersistCompactionMap
-parameter_list|(
-name|boolean
-name|persist
-parameter_list|)
-block|{
-name|persistedCompactionMap
-operator|=
-name|persist
 expr_stmt|;
 block|}
 comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
@@ -801,30 +750,6 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-specifier|public
-name|boolean
-name|isOfflineCompaction
-parameter_list|()
-block|{
-return|return
-name|offlineCompaction
-return|;
-block|}
-specifier|public
-name|void
-name|setOfflineCompaction
-parameter_list|(
-name|boolean
-name|offlineCompaction
-parameter_list|)
-block|{
-name|this
-operator|.
-name|offlineCompaction
-operator|=
-name|offlineCompaction
-expr_stmt|;
-block|}
 comment|/**      * Check if the approximate repository size is getting too big compared with      * the available space on disk.      *      * @param repositoryDiskSpace Approximate size of the disk space occupied by      *                            the repository.      * @param availableDiskSpace  Currently available disk space.      * @return {@code true} if the available disk space is considered enough for      * normal repository operations.      */
 specifier|public
 name|boolean

@@ -2492,21 +2492,6 @@ name|SegmentNodeState
 operator|)
 name|base
 decl_stmt|;
-if|if
-condition|(
-name|that
-operator|.
-name|wasCompactedTo
-argument_list|(
-name|this
-argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-comment|// no changes during compaction
-block|}
 name|Template
 name|beforeTemplate
 init|=
