@@ -1223,6 +1223,11 @@ operator|.
 name|getOffset
 argument_list|()
 decl_stmt|;
+comment|//segment.readRecordId(offset);
+name|offset
+operator|+=
+name|RECORD_ID_BYTES
+expr_stmt|;
 name|RecordId
 name|templateId
 init|=

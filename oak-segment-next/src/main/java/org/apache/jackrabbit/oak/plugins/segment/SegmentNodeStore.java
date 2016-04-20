@@ -199,26 +199,6 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|Record
-operator|.
-name|fastEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
 name|compaction
 operator|.
 name|CompactionStrategy
@@ -1502,6 +1482,8 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
+name|SegmentNodeState
+operator|.
 name|fastEquals
 argument_list|(
 name|before
@@ -2624,6 +2606,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|SegmentNodeState
+operator|.
 name|fastEquals
 argument_list|(
 name|before
@@ -3063,6 +3047,8 @@ comment|// only do the merge if there are some changes to commit
 if|if
 condition|(
 operator|!
+name|SegmentNodeState
+operator|.
 name|fastEquals
 argument_list|(
 name|before

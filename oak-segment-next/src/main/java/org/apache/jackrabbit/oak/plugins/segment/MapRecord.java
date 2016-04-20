@@ -2347,6 +2347,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|Record
+operator|.
 name|fastEquals
 argument_list|(
 name|this

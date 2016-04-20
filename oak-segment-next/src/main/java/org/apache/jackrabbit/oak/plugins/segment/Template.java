@@ -101,26 +101,6 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|Record
-operator|.
-name|fastEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
 name|Segment
 operator|.
 name|RECORD_ID_BYTES
@@ -849,6 +829,8 @@ operator|.
 name|getOffset
 argument_list|()
 operator|+
+literal|2
+operator|*
 name|RECORD_ID_BYTES
 decl_stmt|;
 if|if
@@ -975,6 +957,8 @@ operator|.
 name|getOffset
 argument_list|()
 operator|+
+literal|2
+operator|*
 name|RECORD_ID_BYTES
 decl_stmt|;
 name|RecordId
@@ -1092,6 +1076,8 @@ operator|.
 name|getOffset
 argument_list|()
 operator|+
+literal|2
+operator|*
 name|RECORD_ID_BYTES
 decl_stmt|;
 name|RecordId
@@ -1186,6 +1172,8 @@ operator|.
 name|getOffset
 argument_list|()
 operator|+
+literal|2
+operator|*
 name|RECORD_ID_BYTES
 decl_stmt|;
 name|RecordId
@@ -1363,6 +1351,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|Record
+operator|.
 name|fastEquals
 argument_list|(
 name|thisMap
