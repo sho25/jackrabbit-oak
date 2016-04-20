@@ -25,6 +25,22 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Lists
@@ -447,6 +463,8 @@ name|writer
 argument_list|)
 condition|)
 block|{
+name|checkState
+argument_list|(
 name|writers
 operator|.
 name|put
@@ -454,6 +472,9 @@ argument_list|(
 name|key
 argument_list|,
 name|writer
+argument_list|)
+operator|==
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
