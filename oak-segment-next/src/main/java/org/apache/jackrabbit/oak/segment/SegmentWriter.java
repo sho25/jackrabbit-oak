@@ -1474,13 +1474,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-specifier|public
-name|void
-name|dropCache
-parameter_list|()
-block|{
-comment|// FIXME OAK-3348 remove
-block|}
 comment|// FIXME OAK-3348 document: not thread safe
 specifier|private
 specifier|abstract
