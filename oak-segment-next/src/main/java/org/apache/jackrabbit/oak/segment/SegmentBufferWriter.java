@@ -990,31 +990,31 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write a record id, and marks the record id as referenced (removes it from      * the unreferenced set).      *      * @param listId the record id      */
+comment|/**      * Write a record id, and marks the record id as referenced (removes it from      * the unreferenced set).      *      * @param recordId the record id      */
 specifier|public
 name|void
 name|writeRecordId
 parameter_list|(
 name|RecordId
-name|listId
+name|recordId
 parameter_list|)
 block|{
 name|checkNotNull
 argument_list|(
-name|listId
+name|recordId
 argument_list|)
 expr_stmt|;
 name|roots
 operator|.
 name|remove
 argument_list|(
-name|listId
+name|recordId
 argument_list|)
 expr_stmt|;
 name|int
 name|offset
 init|=
-name|listId
+name|recordId
 operator|.
 name|getOffset
 argument_list|()
@@ -1057,7 +1057,7 @@ name|byte
 operator|)
 name|getSegmentRef
 argument_list|(
-name|listId
+name|recordId
 operator|.
 name|getSegmentId
 argument_list|()
