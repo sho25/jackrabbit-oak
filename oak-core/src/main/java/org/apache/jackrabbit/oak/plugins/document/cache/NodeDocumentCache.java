@@ -653,7 +653,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Return the document matching given key, optionally loading it from an      * external source.      *      * @see Cache#get(Object, Callable)      * @param key document key      * @param valueLoader object used to retrieve the document      * @return document matching given key      */
+comment|/**      * Return the document matching given key, optionally loading it from an      * external source.      *<p>      * This method can modify the cache, so it's synchronized. The {@link #getIfPresent(String)}      * is not synchronized and will be faster if you need to get the cached value      * outside the critical section.      *      * @see Cache#get(Object, Callable)      * @param key document key      * @param valueLoader object used to retrieve the document      * @return document matching given key      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -675,6 +675,18 @@ name|valueLoader
 parameter_list|)
 throws|throws
 name|ExecutionException
+block|{
+name|Lock
+name|lock
+init|=
+name|locks
+operator|.
+name|acquire
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+try|try
 block|{
 if|if
 condition|(
@@ -715,6 +727,15 @@ argument_list|,
 name|valueLoader
 argument_list|)
 return|;
+block|}
+block|}
+finally|finally
+block|{
+name|lock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Puts document into cache.      *      * @param doc document to put      */
