@@ -1439,8 +1439,6 @@ comment|// check if we need to deal with this authorizable
 name|ExternalIdentityRef
 name|ref
 init|=
-name|DefaultSyncContext
-operator|.
 name|getIdentityRef
 argument_list|(
 name|auth
@@ -1470,7 +1468,10 @@ name|id
 argument_list|,
 name|ref
 argument_list|,
-literal|false
+name|auth
+operator|.
+name|isGroup
+argument_list|()
 argument_list|,
 operator|-
 literal|1
@@ -1698,8 +1699,6 @@ block|{
 name|DefaultSyncedIdentity
 name|syncId
 init|=
-name|DefaultSyncContext
-operator|.
 name|createSyncedIdentity
 argument_list|(
 name|authorizable
@@ -3922,8 +3921,6 @@ block|{
 name|ExternalIdentityRef
 name|ref
 init|=
-name|DefaultSyncContext
-operator|.
 name|getIdentityRef
 argument_list|(
 name|auth
