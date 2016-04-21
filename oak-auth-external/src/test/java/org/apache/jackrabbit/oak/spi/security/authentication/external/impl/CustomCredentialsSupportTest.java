@@ -783,7 +783,8 @@ name|ExternalIdentityRef
 argument_list|(
 name|uid
 argument_list|,
-literal|"test"
+name|getName
+argument_list|()
 argument_list|)
 return|;
 block|}
