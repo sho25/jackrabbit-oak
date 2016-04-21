@@ -374,6 +374,10 @@ name|tree
 argument_list|)
 decl_stmt|;
 return|return
+name|ntName
+operator|!=
+literal|null
+operator|&&
 name|isNtName
 argument_list|(
 name|ntName

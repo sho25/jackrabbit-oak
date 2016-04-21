@@ -676,6 +676,11 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|exIdentity
+argument_list|)
+expr_stmt|;
 name|SyncResult
 name|res
 init|=
@@ -885,6 +890,19 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
+name|ExternalIdentityRef
+name|ref
+init|=
+name|id
+operator|.
+name|getExternalIdRef
+argument_list|()
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|ref
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"external user should have correct external ref.idp"
@@ -894,10 +912,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|id
-operator|.
-name|getExternalIdRef
-argument_list|()
+name|ref
 operator|.
 name|getProviderName
 argument_list|()
@@ -1038,6 +1053,11 @@ argument_list|,
 name|USER_ID
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|si
+argument_list|)
+expr_stmt|;
 name|assertNull
 argument_list|(
 name|si
