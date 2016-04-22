@@ -1348,7 +1348,8 @@ name|lsb
 argument_list|)
 return|;
 block|}
-comment|// FIXME OAK-3348 with clean brutal we need to remove those ids that have been cleaned
+comment|// FIXME OAK-4285: Align cleanup of segment id tables with the new cleanup strategy
+comment|// ith clean brutal we need to remove those ids that have been cleaned
 comment|// i.e. those whose segment was from an old generation
 specifier|public
 specifier|synchronized
