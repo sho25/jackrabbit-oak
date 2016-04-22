@@ -107,6 +107,7 @@ block|;
 comment|/**      * Latest segment version      */
 specifier|public
 specifier|static
+specifier|final
 name|SegmentVersion
 name|LATEST_VERSION
 init|=

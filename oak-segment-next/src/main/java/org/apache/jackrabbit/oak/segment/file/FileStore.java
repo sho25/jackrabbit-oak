@@ -245,24 +245,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|CommitFailedException
-operator|.
-name|OAK
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|commons
 operator|.
 name|IOUtils
@@ -5508,6 +5490,7 @@ block|}
 comment|// FIXME OAK-4015: Expedite commits from the compactor
 comment|// use a lock that can expedite important commits like compaction and checkpoints.
 specifier|private
+specifier|final
 name|ReadWriteLock
 name|rwLock
 init|=
