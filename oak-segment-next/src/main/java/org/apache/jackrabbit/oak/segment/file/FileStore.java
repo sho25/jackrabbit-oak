@@ -4819,7 +4819,8 @@ argument_list|,
 literal|20
 argument_list|)
 decl_stmt|;
-comment|// FIXME OAK-3348 this way of compacting has not progress logging and cannot be cancelled
+comment|// FIXME OAK-4279: Rework offline compaction
+comment|// This way of compacting has not progress logging and cannot be cancelled
 name|int
 name|gcGeneration
 init|=

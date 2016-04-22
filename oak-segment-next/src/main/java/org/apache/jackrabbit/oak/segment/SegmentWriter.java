@@ -5456,7 +5456,8 @@ operator|instanceof
 name|SegmentNodeState
 condition|)
 block|{
-comment|// FIXME OAK-3348 offline compaction could remove those ids
+comment|// FIXME OAK-4279: Rework offline compaction
+comment|// Offline compaction could remove these ids
 name|byte
 index|[]
 name|id
