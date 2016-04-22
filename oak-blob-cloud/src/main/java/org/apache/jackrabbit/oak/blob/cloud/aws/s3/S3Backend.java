@@ -2040,6 +2040,13 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|callback
+operator|!=
+literal|null
+condition|)
+block|{
 name|callback
 operator|.
 name|onAbort
@@ -2051,6 +2058,7 @@ name|identifier
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|DataStoreException
