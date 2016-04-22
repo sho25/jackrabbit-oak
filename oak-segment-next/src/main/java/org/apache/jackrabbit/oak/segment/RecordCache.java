@@ -1021,6 +1021,7 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// FIXME OAK-4165: Too verbose logging during revision gc
 name|LOG
 operator|.
 name|info
