@@ -871,7 +871,8 @@ name|String
 argument_list|>
 name|nodeCache
 decl_stmt|;
-comment|// FIXME OAK-3348 Do we need a deduplication cache also for binaries?
+comment|// FIXME OAK-4277: Finalise de-duplication caches
+comment|// Do we need a deduplication cache also for binaries?
 comment|// Probably/preferably not as long binaries are already de-duplicated
 comment|// by rewriting its list of block ids and because we should recommend
 comment|// using a data store for big binaries.
@@ -966,7 +967,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-3348 There should be a cleaner way for adding the cached nodes from the compactor
+comment|// FIXME OAK-4277: Finalise de-duplication caches
+comment|// There should be a cleaner way for adding the cached nodes from the compactor
 specifier|public
 name|void
 name|addCachedNodes
@@ -990,7 +992,8 @@ argument_list|,
 name|generation
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-3348 find a better way to evict the cache from within the cache itself
+comment|// FIXME OAK-4277: Finalise de-duplication caches
+comment|// Find a better way to evict the cache from within the cache itself
 name|stringCache
 operator|.
 name|clearUpTo

@@ -4799,7 +4799,8 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
-comment|// FIXME OAK-3348 Make the capacity and initial depth of the deduplication cache configurable
+comment|// FIXME OAK-4277: Finalise de-duplication caches
+comment|// Make the capacity and initial depth of the deduplication cache configurable
 specifier|final
 name|DeduplicationCache
 argument_list|<

@@ -218,15 +218,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FIXME OAK-3348 document  */
+comment|// FIXME OAK-4277: Finalise de-duplication caches
 end_comment
 
 begin_comment
-comment|// FIXME OAK-3348 implement monitoring for this cache
+comment|// implement monitoring for this cache
 end_comment
 
 begin_comment
-comment|// FIXME OAK-3348 unit test
+comment|// add unit tests
 end_comment
 
 begin_class
@@ -252,7 +252,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// FIXME OAK-3348 make this a feature flag
+comment|// FIXME OAK-4277: Finalise de-duplication caches
+comment|// make this configurable
 specifier|private
 specifier|static
 specifier|final
@@ -976,7 +977,8 @@ name|int
 name|cost
 parameter_list|)
 block|{
-comment|// FIXME OAK-3348 Validate and optimise the eviction strategy.
+comment|// FIXME OAK-4277: Finalise de-duplication caches
+comment|// Validate and optimise the eviction strategy.
 comment|// Nodes with many children should probably get a boost to
 comment|// protecting them from preemptive eviction. Also it might be
 comment|// necessary to implement pinning (e.g. for checkpoints).
