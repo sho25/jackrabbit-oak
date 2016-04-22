@@ -4259,8 +4259,7 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Do actual cleanup outside of the lock to prevent blocking
-comment|// concurrent writers for a long time
+comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
 name|int
 name|generation
 init|=
@@ -4269,7 +4268,6 @@ argument_list|()
 operator|-
 literal|1
 decl_stmt|;
-comment|// FIXME OAK-3348 make the generation threshold configurable
 name|Set
 argument_list|<
 name|UUID

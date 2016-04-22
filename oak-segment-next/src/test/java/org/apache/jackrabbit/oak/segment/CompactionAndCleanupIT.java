@@ -2615,7 +2615,8 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-3348 need to compact twice because of the generation cleanup threshold
+comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
+comment|// Need to compact twice because of the generation cleanup threshold
 comment|// (currently hard coded to 2);
 name|fileStore
 operator|.
