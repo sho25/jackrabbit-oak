@@ -653,7 +653,6 @@ operator|=
 literal|0
 expr_stmt|;
 comment|// refcount
-comment|// FIXME OAK-3348 document change in format
 name|buffer
 index|[
 name|GC_GEN_OFFSET
