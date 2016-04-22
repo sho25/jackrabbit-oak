@@ -406,7 +406,8 @@ end_import
 begin_class
 annotation|@
 name|Ignore
-comment|// FIXME OAK-3348 fix SegmentGraphTest
+comment|// FIXME OAK-4288: TarReader.calculateForwardReferences only used by oak-run graph tool
+comment|// Fix test SegmentGraphTest
 specifier|public
 class|class
 name|SegmentGraphTest
