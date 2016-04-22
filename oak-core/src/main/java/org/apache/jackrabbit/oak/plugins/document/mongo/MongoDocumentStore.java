@@ -9296,6 +9296,28 @@ argument_list|(
 literal|"localTime"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|serverLocalTime
+operator|==
+literal|null
+condition|)
+block|{
+comment|// OAK-4107 : looks like this can happen - at least
+comment|// has been seen once on mongo 3.0.9
+comment|// let's handle this gently and issue a log.warn
+comment|// instead of throwing a NPE
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"determineServerTimeDifferenceMillis: db.serverStatus.localTime returned null - cannot determine time difference - assuming 0ms"
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 specifier|final
 name|long
 name|end
