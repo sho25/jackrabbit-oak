@@ -245,6 +245,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|OAK
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|commons
 operator|.
 name|IOUtils
@@ -3913,8 +3931,6 @@ name|before
 argument_list|)
 condition|)
 block|{
-comment|// needs to happen outside the synchronization block below to
-comment|// avoid a deadlock with another thread flushing the writer
 name|tracker
 operator|.
 name|getWriter
@@ -3923,8 +3939,13 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-comment|// needs to happen outside the synchronization block below to
-comment|// prevent the flush from stopping concurrent reads and writes
+comment|// FIXME OAK-4291: FileStore.flush prone to races leading to corruption
+comment|// There is a small windows that could lead to a corrupted store:
+comment|// if we crash right after setting the persisted head but before any delay-flushed
+comment|// SegmentBufferWriter instance flushes (see SegmentBufferWriterPool.returnWriter())
+comment|// then that data is lost although it might be referenced from the persisted head already.
+comment|// Need a test case. Possible fix: return a future from flush() and set the persisted head
+comment|// in the completion handler.
 name|writer
 operator|.
 name|flush
@@ -3999,9 +4020,6 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Needs to happen outside the synchronization block above to
-comment|// prevent the flush from stopping concurrent reads and writes
-comment|// by the persisted compaction map. See OAK-3264
 if|if
 condition|(
 name|cleanup
@@ -5602,7 +5620,8 @@ block|{
 name|flush
 argument_list|()
 expr_stmt|;
-comment|// FIXME OAK-3348 Replace this with a way to "close" the underlying SegmentBufferWriter(s)
+comment|// FIXME OAK-4291: FileStore.flush prone to races leading to corruption
+comment|// Replace this with a way to "close" the underlying SegmentBufferWriter(s)
 comment|// tracker.getWriter().dropCache();
 name|fileStoreLock
 operator|.
