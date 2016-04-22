@@ -1111,7 +1111,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Boolean
+name|boolean
 name|asBoolean
 parameter_list|()
 block|{
@@ -1977,12 +1977,12 @@ return|;
 block|}
 comment|/**      * Read the value of this remote value of type boolean.      *      * @return The value of this remote value if this remote value is of type      * boolean, false otherwise.      */
 specifier|public
-name|Boolean
+name|boolean
 name|asBoolean
 parameter_list|()
 block|{
 return|return
-literal|null
+literal|false
 return|;
 block|}
 comment|/**      * Check if this remote value is a multi-value of type boolean.      *      * @return {@code true} if this remote value is a multi-value of type      * boolean, {@code false} otherwise.      */
