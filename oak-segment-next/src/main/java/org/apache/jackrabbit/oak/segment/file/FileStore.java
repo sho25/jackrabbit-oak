@@ -2685,12 +2685,13 @@ operator|.
 name|freeMemory
 argument_list|()
 decl_stmt|;
+comment|// FIXME OAK-4281: Rework memory estimation for compaction
+comment|// What value should we use for delta?
 name|long
 name|delta
 init|=
 literal|0
 decl_stmt|;
-comment|// FIXME OAK-3348 what value should we use for delta?
 name|long
 name|needed
 init|=
