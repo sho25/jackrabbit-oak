@@ -1014,9 +1014,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-3348 Improve retrieving current GC generation.
-comment|// See also the comments in FileStore regarding initialisation and
-comment|// cyclic dependencies.
+comment|// FIXME OAK-4102: Break cyclic dependency of FileStore and SegmentTracker
+comment|// Improve retrieving current GC generation. (OAK-4102)
+comment|// See also the comments in FileStore regarding initialisation and cyclic dependencies.
 specifier|public
 name|int
 name|getGcGen

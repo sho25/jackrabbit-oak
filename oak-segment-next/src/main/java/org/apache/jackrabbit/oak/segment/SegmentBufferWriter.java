@@ -177,24 +177,6 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|RecordWriters
-operator|.
-name|newValueWriter
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
 name|Segment
 operator|.
 name|GC_GEN_OFFSET

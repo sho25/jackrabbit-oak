@@ -688,7 +688,11 @@ comment|/**  * Converts nodes, properties, and values to records, which are writ
 end_comment
 
 begin_comment
-comment|// FIXME OAK-3348 Improve the way how SegmentWriter instances are created.
+comment|// FIXME OAK-4102: Break cyclic dependency of FileStore and SegmentTracker
+end_comment
+
+begin_comment
+comment|// Improve the way how SegmentWriter instances are created. (OAK-4102)
 end_comment
 
 begin_class

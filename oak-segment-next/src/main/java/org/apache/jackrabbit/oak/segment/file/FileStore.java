@@ -1688,7 +1688,7 @@ name|mkdirs
 argument_list|()
 expr_stmt|;
 block|}
-comment|// FIXME OAK-3348 Improve the setup of FileStore and SegmentTracker.
+comment|// FIXME OAK-4102: Break cyclic dependency of FileStore and SegmentTracker
 comment|// SegmentTracker and FileStore have a cyclic dependency, which we should
 comment|// try to break. Here we pass along a not fully initialised instances of the
 comment|// FileStore to the SegmentTracker, which in turn is in later invoked to write
@@ -2592,8 +2592,9 @@ name|readers
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-3348 hack: We cannot determine the current GC generation before
-comment|// the FileStore is fully initialised so just return 0 for now.
+comment|// FIXME OAK-4102: Break cyclic dependency of FileStore and SegmentTracker
+comment|// We cannot determine the current GC generation before the FileStore is fully
+comment|// initialised so just return 0 for now.
 specifier|public
 name|int
 name|getGcGen
@@ -4299,7 +4300,7 @@ argument_list|,
 name|generation
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-3348 log at debug level
+comment|// FIXME OAK-4165: Too verbose logging during revision gc
 name|log
 operator|.
 name|info
@@ -5482,8 +5483,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|// FIXME OAK-3348 Maybe us a lock implementation that could expedite important commits
-comment|// like compaction and checkpoints. See OAK-4015. Needs to be evaluated.
+comment|// FIXME OAK-4015: Expedite commits from the compactor
+comment|// use a lock that can expedite important commits like compaction and checkpoints.
 specifier|private
 name|ReadWriteLock
 name|rwLock
