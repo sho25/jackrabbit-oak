@@ -732,7 +732,8 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-comment|// FIXME OAK-3348 Don't write the GC generation into the segment info
+comment|// FIXME OAK-4289: Remove the gc generation from the segment meta data
+comment|// Don't write the GC generation into the segment info
 comment|// as it is now available from the segment header. Update the tooling
 comment|// accordingly (SegmentGraph).
 name|String
