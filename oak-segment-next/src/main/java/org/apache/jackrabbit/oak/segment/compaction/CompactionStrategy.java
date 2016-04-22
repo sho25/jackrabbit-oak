@@ -110,7 +110,11 @@ import|;
 end_import
 
 begin_comment
-comment|// FIXME OAK-3348 Refactor this into a proper AST. Identify and remove "legacy" parts
+comment|// FIXME OAK-4276: Refactor / rework compaction strategies
+end_comment
+
+begin_comment
+comment|// Refactor this into a proper AST. Identify and remove "legacy" parts
 end_comment
 
 begin_class
@@ -280,7 +284,8 @@ name|forceAfterFail
 init|=
 name|FORCE_AFTER_FAIL_DEFAULT
 decl_stmt|;
-comment|// FIXME OAK-3348 Make the lock wait time configurable
+comment|// FIXME OAK-4276: Refactor / rework compaction strategies
+comment|// Make the lock wait time configurable
 specifier|private
 name|int
 name|lockWaitTime
