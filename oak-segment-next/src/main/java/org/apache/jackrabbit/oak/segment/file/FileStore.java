@@ -5078,7 +5078,8 @@ argument_list|(
 name|compactionStrategy
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-3348 refactor GCMonitor: there is no more compaction map stats
+comment|// FIXME OAK-4283: Align GCMonitor API with implementation
+comment|// Refactor GCMonitor: there is no more compaction map stats
 name|gcMonitor
 operator|.
 name|compacted
