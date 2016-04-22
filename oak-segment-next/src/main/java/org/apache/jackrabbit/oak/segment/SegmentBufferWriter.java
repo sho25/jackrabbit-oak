@@ -1084,7 +1084,8 @@ name|RECORD_ALIGN_BITS
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-3348 disable/remove this in production
+comment|// FIXME OAK-4287: Disable / remove SegmentBufferWriter#checkGCGen
+comment|// Disable/remove this in production
 specifier|private
 name|void
 name|checkGCGen
