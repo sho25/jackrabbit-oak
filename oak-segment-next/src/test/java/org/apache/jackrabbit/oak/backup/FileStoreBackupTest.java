@@ -316,7 +316,7 @@ end_import
 begin_class
 annotation|@
 name|Ignore
-comment|// FIXME OAK-3348 FileStoreBackupTest
+comment|// FIXME OAK-4278: Fix backup and restore
 specifier|public
 class|class
 name|FileStoreBackupTest
