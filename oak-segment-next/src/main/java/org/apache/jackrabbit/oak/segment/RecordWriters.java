@@ -1520,7 +1520,7 @@ name|id
 return|;
 block|}
 block|}
-comment|/**      * Single RecordId record writer.      * @see SegmentWriter#writeValueRecord      * @see RecordType#VALUE      */
+comment|/**      * Single RecordId record writer.      * @see RecordType#VALUE      */
 specifier|private
 specifier|static
 class|class
@@ -1602,7 +1602,7 @@ name|id
 return|;
 block|}
 block|}
-comment|/**      * Bye array record writer. Used as a special case for short binaries (up to      * about {@code Segment#MEDIUM_LIMIT}): store them directly as small or      * medium-sized value records.      * @see SegmentWriter#writeValueRecord      * @see Segment#MEDIUM_LIMIT      * @see RecordType#VALUE      */
+comment|/**      * Bye array record writer. Used as a special case for short binaries (up to      * about {@code Segment#MEDIUM_LIMIT}): store them directly as small or      * medium-sized value records.      * @see Segment#MEDIUM_LIMIT      * @see RecordType#VALUE      */
 specifier|private
 specifier|static
 class|class
