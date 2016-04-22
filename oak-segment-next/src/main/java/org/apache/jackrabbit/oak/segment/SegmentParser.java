@@ -1187,7 +1187,8 @@ operator|.
 name|getOffset
 argument_list|()
 decl_stmt|;
-comment|// FIXME OAK-3348 Call onString for the node id, which was introduced here
+comment|// FIXME OAK-4290: Update segment parser to work with the new segment format
+comment|// Process the node id (a RecordId) if present calling the respective call back
 comment|//segment.readRecordId(offset);
 name|offset
 operator|+=
