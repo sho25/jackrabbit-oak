@@ -5155,7 +5155,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// FIXME OAK-3348 giving up leaves garbage that will only be cleaned up 2 generations later!
+comment|// FIXME OAK-4284: Garbage left behind when compaction does not succeed
+comment|// Giving up leaves garbage that will only be cleaned up 2 generations later!
 block|}
 name|gcMonitor
 operator|.
