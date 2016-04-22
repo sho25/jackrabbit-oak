@@ -625,7 +625,7 @@ comment|// no more fileparts: we're done, leave line set to null
 break|break;
 block|}
 block|}
-comment|// aligned behaviour wiht BufferedReader that doesn't return a last, emtpy line
+comment|// aligned behaviour with BufferedReader that doesn't return a last, empty line
 if|if
 condition|(
 literal|""

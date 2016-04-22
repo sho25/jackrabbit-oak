@@ -2298,7 +2298,7 @@ name|size
 argument_list|)
 return|;
 block|}
-comment|/**      * Parse a value racrod      * @param parentId  parent of the value record, {@code null} if none      * @param valueId      * @param type      * @return      */
+comment|/**      * Parse a value record      * @param parentId  parent of the value record, {@code null} if none      * @param valueId      * @param type      * @return      */
 specifier|public
 name|ValueInfo
 name|parseValue
