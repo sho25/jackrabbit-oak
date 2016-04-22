@@ -1064,7 +1064,7 @@ specifier|private
 specifier|static
 specifier|final
 name|AtomicLong
-name|gcCount
+name|GC_COUNT
 init|=
 operator|new
 name|AtomicLong
@@ -2658,7 +2658,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: started"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 operator|.
 name|incrementAndGet
 argument_list|()
@@ -2717,7 +2717,7 @@ literal|"TarMK GC #{}: not enough available memory {} ({} bytes), needed {} ({} 
 operator|+
 literal|" last merge delta {} ({} bytes), so skipping compaction for now"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
@@ -2807,7 +2807,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: estimation skipped because gain threshold value ({}<= 0)"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|gainThreshold
 argument_list|)
@@ -2828,7 +2828,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: estimation skipped because compaction is paused"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|)
 expr_stmt|;
 block|}
@@ -2840,7 +2840,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: estimation started"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|)
 expr_stmt|;
 name|Supplier
@@ -2874,7 +2874,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: estimation interrupted. Skipping compaction."
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|)
 expr_stmt|;
 return|return
@@ -2908,7 +2908,7 @@ literal|"TarMK GC #{}: estimation completed in {} ({} ms). "
 operator|+
 literal|"Gain is {}% or {}/{} ({}/{} bytes), so running compaction"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|watch
 argument_list|,
@@ -2969,7 +2969,7 @@ literal|"TarMK GC #{}: estimation completed in {} ({} ms). "
 operator|+
 literal|"Skipping compaction for now as repository consists of a single tar file only"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|watch
 argument_list|,
@@ -2992,7 +2992,7 @@ literal|"TarMK GC #{}: estimation completed in {} ({} ms). "
 operator|+
 literal|"Gain is {}% or {}/{} ({}/{} bytes), so skipping compaction for now"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|watch
 argument_list|,
@@ -3065,7 +3065,7 @@ name|skipped
 argument_list|(
 literal|"TarMK GC #{}: compaction paused"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|)
 expr_stmt|;
 block|}
@@ -4169,7 +4169,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: cleanup started. Current repository size is {} ({} bytes)"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
@@ -4328,7 +4328,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: cleanup interrupted"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4370,7 +4370,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: cleanup interrupted"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4530,7 +4530,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: cleanup marking file for deletion: {}"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|file
 operator|.
@@ -4587,7 +4587,7 @@ literal|"TarMK GC #{}: cleanup completed in {} ({} ms). Post cleanup size is {} 
 operator|+
 literal|" and space reclaimed {} ({} bytes)."
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|watch
 argument_list|,
@@ -4785,7 +4785,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: compaction started, strategy={}"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|compactionStrategy
 argument_list|)
@@ -4924,7 +4924,7 @@ name|warn
 argument_list|(
 literal|"TarMK GC #{}: compaction found {} checkpoints, you might need to run checkpoint cleanup"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|existing
 argument_list|)
@@ -4946,7 +4946,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: compacted {} to {}"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|before
 operator|.
@@ -5005,7 +5005,7 @@ literal|"TarMK GC #{}: compaction detected concurrent commits while compacting. 
 operator|+
 literal|"Compacting these commits. Cycle {}"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|cycles
 argument_list|)
@@ -5031,7 +5031,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: compacted {} against {} to {}"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|head
 operator|.
@@ -5109,7 +5109,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: compaction gave up compacting concurrent commits after {} cycles."
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|cycles
 operator|-
@@ -5130,7 +5130,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: compaction force compacting remaining commits"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|)
 expr_stmt|;
 if|if
@@ -5150,7 +5150,7 @@ literal|"TarMK GC #{}: compaction failed to force compact remaining commits. "
 operator|+
 literal|"Most likely compaction didn't get exclusive access to the store."
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|)
 expr_stmt|;
 block|}
@@ -5164,7 +5164,7 @@ name|info
 argument_list|(
 literal|"TarMK GC #{}: compaction completed in {} ({} ms), after {} cycles"
 argument_list|,
-name|gcCount
+name|GC_COUNT
 argument_list|,
 name|watch
 argument_list|,
@@ -5193,7 +5193,7 @@ name|error
 argument_list|(
 literal|"TarMK GC #"
 operator|+
-name|gcCount
+name|GC_COUNT
 operator|+
 literal|": compaction interrupted"
 argument_list|,
@@ -5219,7 +5219,7 @@ name|error
 argument_list|(
 literal|"TarMK GC #"
 operator|+
-name|gcCount
+name|GC_COUNT
 operator|+
 literal|": compaction encountered an error"
 argument_list|,
