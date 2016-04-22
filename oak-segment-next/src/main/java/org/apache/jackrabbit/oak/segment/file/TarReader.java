@@ -3677,7 +3677,8 @@ block|}
 block|}
 block|}
 comment|/**      * Calculate the ids of the segments directly referenced from {@code referenceIds}      * through forward references.      *      * @param referencedIds  The initial set of ids to start from. On return it      *                       contains the set of direct forward references.      *      * @throws IOException      */
-comment|// FIXME OAK-3348 reference from utilities only. Can we move this somewhere else?
+comment|// FIXME OAK-4288: TarReader.calculateForwardReferences only used by oak-run graph tool
+comment|// Can we move this somewhere else?
 name|void
 name|calculateForwardReferences
 parameter_list|(
