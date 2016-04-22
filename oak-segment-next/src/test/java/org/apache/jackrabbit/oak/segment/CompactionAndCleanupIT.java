@@ -785,7 +785,8 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
-comment|// FIXME OAK-3348 fix failing test compactionNoBinaryClone
+comment|// FIXME OAK-4286: Rework failing tests in CompactionAndCleanupIT
+comment|// Fix failing test compactionNoBinaryClone
 specifier|public
 name|void
 name|compactionNoBinaryClone
@@ -3369,7 +3370,8 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
-comment|// FIXME OAK-3348 fix failing test propertyRetention
+comment|// FIXME OAK-4286: Rework failing tests in CompactionAndCleanupIT
+comment|// Fix failing test propertyRetention
 specifier|public
 name|void
 name|propertyRetention
