@@ -2209,7 +2209,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IllegalArgumentException
-name|e
+name|ignore
 parameter_list|)
 block|{
 name|log
