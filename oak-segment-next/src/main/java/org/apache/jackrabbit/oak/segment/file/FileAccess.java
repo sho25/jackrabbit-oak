@@ -142,6 +142,10 @@ name|FileAccess
 block|{
 specifier|private
 specifier|final
+name|RandomAccessFile
+name|file
+decl_stmt|;
+specifier|private
 name|MappedByteBuffer
 name|buffer
 decl_stmt|;
@@ -153,6 +157,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|this
+operator|.
+name|file
+operator|=
+name|file
+expr_stmt|;
 name|this
 operator|.
 name|buffer
@@ -257,7 +267,19 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-block|{         }
+throws|throws
+name|IOException
+block|{
+name|buffer
+operator|=
+literal|null
+expr_stmt|;
+name|file
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|/**      * The implementation that uses random access file (reads are synchronized).      */
 specifier|static
