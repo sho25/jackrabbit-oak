@@ -28,16 +28,18 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FIXME OAK-3348 document  */
+comment|/**  * A {@code WriteOperationHandler} executes {@link WriteOperation WriteOperation}s and as  * such serves as a bridge between {@link SegmentWriter} and {@link SegmentBufferWriter}.  */
 end_comment
 
 begin_interface
 interface|interface
 name|WriteOperationHandler
 block|{
+comment|/**      * A {@code WriteOperation} encapsulates an operation on a {@link SegmentWriter}.      * Executing it performs the actual act of persisting changes to a      * {@link SegmentBufferWriter}.      */
 interface|interface
 name|WriteOperation
 block|{
+comment|/**          * Persist any changes represented by the {@code WriteOperation} to the          * passed {@code writer}.          * @param writer  writer which must be used to persist any changes          * @return        {@code RecordId} that resulted from persisting the changes.          * @throws IOException          */
 name|RecordId
 name|execute
 parameter_list|(
@@ -48,6 +50,7 @@ throws|throws
 name|IOException
 function_decl|;
 block|}
+comment|/**      * Execute the passed {@code writeOperation} by passing it a {@link SegmentBufferWriter}.      * @param writeOperation  {@link WriteOperation} to execute      * @return                {@code RecordId} that resulted from persisting the changes.      * @throws IOException      */
 name|RecordId
 name|execute
 parameter_list|(
@@ -57,6 +60,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Flush any pending changes on any {@link SegmentBufferWriter} managed by this instance.      * This method<em>does not block</em> to wait for concurrent write operations. However, if      * a write operation is currently in progress a call to this method ensures the respective      * changes are properly flushed at the end of that call.      * @throws IOException      */
 name|void
 name|flush
 parameter_list|()
