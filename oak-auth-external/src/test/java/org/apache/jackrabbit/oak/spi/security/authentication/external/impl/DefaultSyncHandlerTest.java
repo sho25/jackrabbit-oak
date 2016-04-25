@@ -497,6 +497,18 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * DefaultSyncHandlerTest  */
 end_comment
@@ -1467,7 +1479,7 @@ argument_list|(
 name|userManager
 argument_list|)
 decl_stmt|;
-while|while
+if|if
 condition|(
 name|identities
 operator|.
@@ -1483,12 +1495,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|assertNull
+name|fail
 argument_list|(
+literal|"Sync handler returned unexpected identity: "
+operator|+
 name|si
-operator|.
-name|getExternalIdRef
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1613,12 +1624,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|assertNull
+name|fail
 argument_list|(
+literal|"Sync handler returned unexpected identity: "
+operator|+
 name|si
-operator|.
-name|getExternalIdRef
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

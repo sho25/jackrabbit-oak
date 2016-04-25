@@ -746,6 +746,13 @@ condition|(
 name|id
 operator|!=
 literal|null
+operator|&&
+name|id
+operator|.
+name|getExternalIdRef
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 return|return
