@@ -23,21 +23,15 @@ end_package
 
 begin_import
 import|import
-name|java
+name|com
+operator|.
+name|google
+operator|.
+name|common
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
+name|Files
 import|;
 end_import
 
@@ -65,8 +59,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
 name|SegmentNodeStore
@@ -82,8 +74,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|plugins
 operator|.
 name|segment
 operator|.
@@ -113,44 +103,28 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
+name|java
 operator|.
 name|io
 operator|.
-name|Files
+name|File
 import|;
 end_import
 
 begin_import
-import|import static
-name|org
+import|import
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|upgrade
-operator|.
-name|cli
-operator|.
-name|parser
-operator|.
-name|StoreArguments
-operator|.
-name|SEGMENT_OLD_PREFIX
+name|IOException
 import|;
 end_import
 
 begin_class
 specifier|public
 class|class
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 implements|implements
 name|NodeStoreContainer
 block|{
@@ -169,7 +143,7 @@ name|FileStore
 name|fs
 decl_stmt|;
 specifier|public
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 parameter_list|()
 block|{
 name|this
@@ -182,7 +156,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 parameter_list|(
 name|File
 name|directory
@@ -202,7 +176,7 @@ name|directory
 expr_stmt|;
 block|}
 specifier|public
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 parameter_list|(
 name|BlobStoreContainer
 name|blob
@@ -339,8 +313,6 @@ name|getDescription
 parameter_list|()
 block|{
 return|return
-name|SEGMENT_OLD_PREFIX
-operator|+
 name|directory
 operator|.
 name|getPath
