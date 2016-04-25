@@ -92,6 +92,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -778,6 +790,17 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
+name|assumeTrue
+argument_list|(
+name|this
+operator|.
+name|dsf
+operator|!=
+name|DocumentStoreFixture
+operator|.
+name|RDB_DERBY
+argument_list|)
+expr_stmt|;
 name|int
 name|threadCount
 init|=
