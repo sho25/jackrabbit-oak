@@ -684,15 +684,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts nodes, properties, and values to records, which are written to segments.  * FIXME OAK-3348 doc thread safety properties  */
-end_comment
-
-begin_comment
-comment|// FIXME OAK-4102: Break cyclic dependency of FileStore and SegmentTracker
-end_comment
-
-begin_comment
-comment|// Improve the way how SegmentWriter instances are created. (OAK-4102)
+comment|/**  * A {@code SegmentWriter} converts nodes, properties, values, etc. to records and  * persists them with the help of a {@link WriteOperationHandler}.  * All public methods of this class are thread safe if and only if the  * {@code WriteOperationHandler} passed to the constructor is thread safe.  */
 end_comment
 
 begin_class
@@ -700,6 +692,8 @@ specifier|public
 class|class
 name|SegmentWriter
 block|{
+comment|// FIXME OAK-4102: Break cyclic dependency of FileStore and SegmentTracker
+comment|// Improve the way how SegmentWriter instances are created. (OAK-4102)
 specifier|private
 specifier|static
 specifier|final
@@ -892,6 +886,7 @@ specifier|final
 name|WriteOperationHandler
 name|writeOperationHandler
 decl_stmt|;
+comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param version    segment version to write      * @param writeOperationHandler  handler for write operations.      * @param nodeCache  de-duplication cache for nodes      */
 specifier|public
 name|SegmentWriter
 parameter_list|(
@@ -936,7 +931,7 @@ operator|=
 name|nodeCache
 expr_stmt|;
 block|}
-comment|/**      * @param store     store to write to      * @param version   segment version to write      * FIXME OAK-3348 document      */
+comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param version    segment version to write      * @param writeOperationHandler  handler for write operations.      */
 specifier|public
 name|SegmentWriter
 parameter_list|(
@@ -1481,7 +1476,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|// FIXME OAK-3348 document: not thread safe
+comment|/**      * This {@code WriteOperation} implementation is used internally to provide      * context to a recursive chain of calls without having pass the context      * as a separate argument (a poor mans monad). As such it is entirely      *<em>not thread safe</em>.      */
 specifier|private
 specifier|abstract
 class|class
