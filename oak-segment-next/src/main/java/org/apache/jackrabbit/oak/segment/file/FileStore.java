@@ -4008,7 +4008,7 @@ name|cleanup
 condition|)
 block|{
 comment|// Explicitly give up reference to the previous root state
-comment|// otherwise they would block cleanup. See OAK-3347
+comment|// otherwise they could block cleanup. See OAK-3347
 name|before
 operator|=
 literal|null
