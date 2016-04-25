@@ -930,9 +930,10 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Flag controlling the commit lock fairness      */
 specifier|private
+specifier|static
 specifier|final
 name|boolean
-name|commitFairLock
+name|COMMIT_FAIR_LOCK
 init|=
 name|Boolean
 operator|.
@@ -950,7 +951,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|commitFairLock
+name|COMMIT_FAIR_LOCK
 condition|)
 block|{
 name|log
@@ -970,7 +971,7 @@ name|Semaphore
 argument_list|(
 literal|1
 argument_list|,
-name|commitFairLock
+name|COMMIT_FAIR_LOCK
 argument_list|)
 expr_stmt|;
 name|this
