@@ -325,9 +325,9 @@ name|log
 operator|.
 name|error
 argument_list|(
+literal|"{} interrupted"
+argument_list|,
 name|name
-operator|+
-literal|" interrupted"
 argument_list|,
 name|e
 argument_list|)
@@ -418,9 +418,9 @@ name|log
 operator|.
 name|error
 argument_list|(
+literal|"{} join interrupted"
+argument_list|,
 name|name
-operator|+
-literal|" join interrupted"
 argument_list|,
 name|e
 argument_list|)

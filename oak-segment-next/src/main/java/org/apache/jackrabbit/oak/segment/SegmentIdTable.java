@@ -584,12 +584,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unexpected entry count mismatch, expected "
-operator|+
+literal|"Unexpected entry count mismatch, expected {} got {}"
+argument_list|,
 name|entryCount
-operator|+
-literal|" got "
-operator|+
+argument_list|,
 name|ids
 operator|.
 name|size

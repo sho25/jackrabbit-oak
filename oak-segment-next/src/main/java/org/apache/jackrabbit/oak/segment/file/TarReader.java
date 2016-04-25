@@ -1049,11 +1049,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Could not read tar file "
-operator|+
+literal|"Could not read tar file {}, skipping..."
+argument_list|,
 name|file
-operator|+
-literal|", skipping..."
 argument_list|,
 name|e
 argument_list|)
@@ -1096,8 +1094,8 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Regenerating tar file "
-operator|+
+literal|"Regenerating tar file {}"
+argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
@@ -1215,12 +1213,10 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Backing up "
-operator|+
+literal|"Backing up {} to {}"
+argument_list|,
 name|file
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|backup
 operator|.
 name|getName
@@ -1535,31 +1531,19 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to mmap tar file "
+literal|"Failed to mmap tar file {}. Falling back to normal file "
 operator|+
+literal|"IO, which will negatively impact repository performance. "
+operator|+
+literal|"This problem may have been caused by restrictions on the "
+operator|+
+literal|"amount of virtual memory available to the JVM. Please make "
+operator|+
+literal|"sure that a 64-bit JVM is being used and that the process "
+operator|+
+literal|"has access to unlimited virtual memory (ulimit option -v)."
+argument_list|,
 name|name
-operator|+
-literal|". Falling back to normal file IO,"
-operator|+
-literal|" which will negatively impact"
-operator|+
-literal|" repository performance. This"
-operator|+
-literal|" problem may have been caused by"
-operator|+
-literal|" restrictions on the amount of"
-operator|+
-literal|" virtual memory available to the"
-operator|+
-literal|" JVM. Please make sure that a"
-operator|+
-literal|" 64-bit JVM is being used and"
-operator|+
-literal|" that the process has access to"
-operator|+
-literal|" unlimited virtual memory"
-operator|+
-literal|" (ulimit option -v)."
 argument_list|,
 name|e
 argument_list|)
@@ -1623,11 +1607,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Could not read tar file "
-operator|+
+literal|"Could not read tar file {}, skipping..."
+argument_list|,
 name|name
-operator|+
-literal|", skipping..."
 argument_list|,
 name|e
 argument_list|)
