@@ -1277,7 +1277,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Fine next available generation number so that a generated file doesn't      * overwrite another existing file.      *       * @param file      * @throws IOException      */
+comment|/**      * Fine next available generation number so that a generated file doesn't      * overwrite another existing file.      *       * @param file      */
 specifier|private
 specifier|static
 name|File
