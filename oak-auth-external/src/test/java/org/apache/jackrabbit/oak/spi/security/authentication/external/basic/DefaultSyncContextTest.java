@@ -1501,11 +1501,11 @@ throws|throws
 name|Exception
 block|{
 name|ExternalIdentity
-name|externalGroupUser
+name|externalUser
 init|=
 name|idp
 operator|.
-name|listGroups
+name|listUsers
 argument_list|()
 operator|.
 name|next
@@ -1513,7 +1513,7 @@ argument_list|()
 decl_stmt|;
 name|sync
 argument_list|(
-name|externalGroupUser
+name|externalUser
 argument_list|)
 expr_stmt|;
 name|ExternalIdentityRef
@@ -1530,7 +1530,7 @@ argument_list|)
 operator|.
 name|getAuthorizable
 argument_list|(
-name|externalGroupUser
+name|externalUser
 operator|.
 name|getId
 argument_list|()
@@ -1544,7 +1544,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|externalGroupUser
+name|externalUser
 operator|.
 name|getExternalId
 argument_list|()
