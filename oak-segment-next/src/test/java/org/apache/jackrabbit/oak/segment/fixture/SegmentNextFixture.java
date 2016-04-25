@@ -116,7 +116,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|SegmentFixture
+name|SegmentNextFixture
 extends|extends
 name|NodeStoreFixture
 block|{
@@ -126,7 +126,7 @@ name|SegmentStore
 name|store
 decl_stmt|;
 specifier|public
-name|SegmentFixture
+name|SegmentNextFixture
 parameter_list|()
 block|{
 name|this
@@ -136,7 +136,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|SegmentFixture
+name|SegmentNextFixture
 parameter_list|(
 name|SegmentStore
 name|store
@@ -217,7 +217,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"SegmentNodeStore"
+literal|"SegmentNext"
 return|;
 block|}
 block|}

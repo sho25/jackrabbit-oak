@@ -3454,6 +3454,12 @@ name|fixture
 operator|==
 name|NodeStoreFixtures
 operator|.
+name|SEGMENT_NEXT
+operator|||
+name|fixture
+operator|==
+name|NodeStoreFixtures
+operator|.
 name|SEGMENT_MK
 operator|||
 name|fixture

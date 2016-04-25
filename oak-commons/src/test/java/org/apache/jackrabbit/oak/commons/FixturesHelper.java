@@ -95,6 +95,8 @@ block|,
 name|MEMORY_NS
 block|,
 name|DOCUMENT_MEM
+block|,
+name|SEGMENT_NEXT
 block|}
 specifier|private
 specifier|static
