@@ -19,6 +19,10 @@ name|compaction
 package|;
 end_package
 
+begin_comment
+comment|/**  * This MBean exposes the settings from {@link CompactionStrategy}.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -29,72 +33,43 @@ name|TYPE
 init|=
 literal|"CompactionStrategy"
 decl_stmt|;
-name|boolean
-name|isCloneBinaries
-parameter_list|()
-function_decl|;
-name|void
-name|setCloneBinaries
-parameter_list|(
-name|boolean
-name|cloneBinaries
-parameter_list|)
-function_decl|;
+comment|/**      * @return  {@code true} iff revision gc is paused.      */
 name|boolean
 name|isPausedCompaction
 parameter_list|()
 function_decl|;
+comment|/**      * Set revision gc to paused.      * @param paused      * @return this instance      */
 name|void
 name|setPausedCompaction
 parameter_list|(
 name|boolean
-name|pausedCompaction
+name|paused
 parameter_list|)
 function_decl|;
-name|String
-name|getCleanupStrategy
+comment|/**      * Get the gain estimate threshold beyond which revision gc should run      * @return gainThreshold      */
+name|int
+name|getGainThreshold
 parameter_list|()
 function_decl|;
+comment|/**      * Set the revision gain estimate threshold beyond which revision gc should run      * @param gainThreshold      */
 name|void
-name|setCleanupStrategy
+name|setGainThreshold
 parameter_list|(
-name|String
-name|cleanup
+name|int
+name|gainThreshold
 parameter_list|)
 function_decl|;
-name|long
-name|getOlderThan
-parameter_list|()
-function_decl|;
-name|void
-name|setOlderThan
-parameter_list|(
-name|long
-name|olderThan
-parameter_list|)
-function_decl|;
-name|byte
+comment|/**      * @return  the memory threshold below which revision gc will not run.      */
+name|int
 name|getMemoryThreshold
 parameter_list|()
 function_decl|;
+comment|/**      * Set the memory threshold below which revision gc will not run.      * @param memoryThreshold      */
 name|void
 name|setMemoryThreshold
 parameter_list|(
-name|byte
-name|memory
-parameter_list|)
-function_decl|;
-comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
-name|boolean
-name|getForceAfterFail
-parameter_list|()
-function_decl|;
-comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      */
-name|void
-name|setForceAfterFail
-parameter_list|(
-name|boolean
-name|forceAfterFail
+name|int
+name|memoryThreshold
 parameter_list|)
 function_decl|;
 comment|/**      * Get the number of tries to compact concurrent commits on top of already      * compacted commits      * @return  retry count      */
@@ -110,17 +85,30 @@ name|int
 name|retryCount
 parameter_list|)
 function_decl|;
-comment|/**      * Get the compaction gain estimate threshold beyond which compaction should      * run      * @return gainThreshold      */
-name|byte
-name|getGainThreshold
+comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
+name|boolean
+name|getForceAfterFail
 parameter_list|()
 function_decl|;
-comment|/**      * Set the compaction gain estimate threshold beyond which compaction should      * run      * @param gainThreshold      */
+comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      */
 name|void
-name|setGainThreshold
+name|setForceAfterFail
 parameter_list|(
-name|byte
-name|gainThreshold
+name|boolean
+name|forceAfterFail
+parameter_list|)
+function_decl|;
+comment|/**      * Get the time to wait for the lock when force compacting.      * See {@link #setForceAfterFail(boolean)}      * @return lock wait time in seconds.      */
+name|int
+name|getLockWaitTime
+parameter_list|()
+function_decl|;
+comment|/**      * Set the time to wait for the lock when force compacting.      * @param lockWaitTime  lock wait time in seconds      */
+name|void
+name|setLockWaitTime
+parameter_list|(
+name|int
+name|lockWaitTime
 parameter_list|)
 function_decl|;
 block|}
