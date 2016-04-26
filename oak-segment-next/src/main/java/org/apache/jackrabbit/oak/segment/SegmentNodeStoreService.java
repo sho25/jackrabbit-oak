@@ -1701,6 +1701,10 @@ specifier|private
 name|boolean
 name|customBlobStore
 decl_stmt|;
+specifier|private
+name|Registration
+name|discoveryLiteDescriptorRegistration
+decl_stmt|;
 comment|/**      * Blob modified before this time duration would be considered for Blob GC      */
 specifier|private
 specifier|static
@@ -2698,6 +2702,29 @@ name|emptyMap
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Register "discovery lite" descriptors
+name|discoveryLiteDescriptorRegistration
+operator|=
+name|whiteboard
+operator|.
+name|register
+argument_list|(
+name|Descriptors
+operator|.
+name|class
+argument_list|,
+operator|new
+name|SegmentDiscoveryLiteDescriptors
+argument_list|(
+name|segmentNodeStore
+argument_list|)
+argument_list|,
+name|Collections
+operator|.
+name|emptyMap
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// If a shared data store register the repo id in the data store
 name|String
 name|repoId
@@ -2861,6 +2888,23 @@ name|void
 name|unregisterNodeStore
 parameter_list|()
 block|{
+if|if
+condition|(
+name|discoveryLiteDescriptorRegistration
+operator|!=
+literal|null
+condition|)
+block|{
+name|discoveryLiteDescriptorRegistration
+operator|.
+name|unregister
+argument_list|()
+expr_stmt|;
+name|discoveryLiteDescriptorRegistration
+operator|=
+literal|null
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|segmentCacheMBean
