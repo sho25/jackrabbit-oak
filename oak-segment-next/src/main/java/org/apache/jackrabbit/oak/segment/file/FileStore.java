@@ -6291,6 +6291,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Switch to a new tar writer.      * This method may only be called when holding the write lock of {@link #fileStoreLock}      * @throws IOException      */
 specifier|private
 name|void
 name|newWriter
