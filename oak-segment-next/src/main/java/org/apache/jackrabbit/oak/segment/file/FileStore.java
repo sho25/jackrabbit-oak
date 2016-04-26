@@ -2750,7 +2750,11 @@ name|cleanupNeeded
 operator|.
 name|set
 argument_list|(
-literal|true
+operator|!
+name|compactionStrategy
+operator|.
+name|isPaused
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3079,7 +3083,11 @@ name|cleanupNeeded
 operator|.
 name|set
 argument_list|(
-literal|true
+operator|!
+name|compactionStrategy
+operator|.
+name|isPaused
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
