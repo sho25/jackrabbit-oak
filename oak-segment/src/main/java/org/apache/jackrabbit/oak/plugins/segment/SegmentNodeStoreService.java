@@ -2033,6 +2033,10 @@ specifier|private
 name|Registration
 name|discoveryLiteDescriptorRegistration
 decl_stmt|;
+specifier|private
+name|Registration
+name|clusterIdDescriptorRegistration
+decl_stmt|;
 comment|/**      * Blob modified before this time duration would be considered for Blob GC      */
 specifier|private
 specifier|static
@@ -3130,6 +3134,8 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|clusterIdDescriptorRegistration
+operator|=
 name|whiteboard
 operator|.
 name|register
@@ -3345,6 +3351,23 @@ name|unregister
 argument_list|()
 expr_stmt|;
 name|discoveryLiteDescriptorRegistration
+operator|=
+literal|null
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|clusterIdDescriptorRegistration
+operator|!=
+literal|null
+condition|)
+block|{
+name|clusterIdDescriptorRegistration
+operator|.
+name|unregister
+argument_list|()
+expr_stmt|;
+name|clusterIdDescriptorRegistration
 operator|=
 literal|null
 expr_stmt|;
