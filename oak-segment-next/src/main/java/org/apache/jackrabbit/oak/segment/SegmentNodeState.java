@@ -642,8 +642,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the stable id of this node. In contrast to the node's record id      * (which is technically the node's address) the stable id doesn't change      * after an online gc cycle. It might though change after an offline gc cycle.      *      * @return  stable id      */
 name|String
-name|getId
+name|getStableId
 parameter_list|()
 block|{
 name|RecordId
@@ -3336,7 +3337,7 @@ operator|)
 name|a
 operator|)
 operator|.
-name|getId
+name|getStableId
 argument_list|()
 operator|.
 name|equals
@@ -3348,7 +3349,7 @@ operator|)
 name|b
 operator|)
 operator|.
-name|getId
+name|getStableId
 argument_list|()
 argument_list|)
 condition|)
@@ -3369,7 +3370,7 @@ name|hashCode
 parameter_list|()
 block|{
 return|return
-name|getId
+name|getStableId
 argument_list|()
 operator|.
 name|hashCode

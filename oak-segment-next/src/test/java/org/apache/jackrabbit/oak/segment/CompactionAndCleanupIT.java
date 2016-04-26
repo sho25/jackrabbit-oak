@@ -3607,7 +3607,7 @@ operator|)
 name|uncompacted
 operator|)
 operator|.
-name|getId
+name|getStableId
 argument_list|()
 argument_list|,
 operator|(
@@ -3617,7 +3617,7 @@ operator|)
 name|compacted
 operator|)
 operator|.
-name|getId
+name|getStableId
 argument_list|()
 argument_list|)
 expr_stmt|;

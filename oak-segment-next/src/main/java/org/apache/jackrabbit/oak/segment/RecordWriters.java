@@ -811,7 +811,7 @@ name|RecordWriter
 name|newNodeStateWriter
 parameter_list|(
 name|RecordId
-name|nodeId
+name|stableId
 parameter_list|,
 name|List
 argument_list|<
@@ -824,7 +824,7 @@ return|return
 operator|new
 name|NodeStateWriter
 argument_list|(
-name|nodeId
+name|stableId
 argument_list|,
 name|ids
 argument_list|)
@@ -2245,13 +2245,13 @@ block|{
 specifier|private
 specifier|final
 name|RecordId
-name|nodeId
+name|stableId
 decl_stmt|;
 specifier|private
 name|NodeStateWriter
 parameter_list|(
 name|RecordId
-name|nodeId
+name|stableId
 parameter_list|,
 name|List
 argument_list|<
@@ -2271,9 +2271,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|nodeId
+name|stableId
 operator|=
-name|nodeId
+name|stableId
 expr_stmt|;
 block|}
 annotation|@
@@ -2291,7 +2291,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|nodeId
+name|stableId
 operator|==
 literal|null
 condition|)
@@ -2310,7 +2310,7 @@ name|writer
 operator|.
 name|writeRecordId
 argument_list|(
-name|nodeId
+name|stableId
 argument_list|)
 expr_stmt|;
 block|}

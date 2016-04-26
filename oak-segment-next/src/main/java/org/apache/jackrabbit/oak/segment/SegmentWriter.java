@@ -386,6 +386,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|RecordWriters
+operator|.
+name|newNodeStateWriter
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -4739,7 +4757,7 @@ name|get
 argument_list|(
 name|sns
 operator|.
-name|getId
+name|getStableId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -4803,7 +4821,7 @@ name|put
 argument_list|(
 name|sns
 operator|.
-name|getId
+name|getStableId
 argument_list|()
 argument_list|,
 name|recordId
@@ -5396,7 +5414,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|RecordId
-name|nodeId
+name|stableId
 init|=
 literal|null
 decl_stmt|;
@@ -5408,7 +5426,7 @@ name|SegmentNodeState
 condition|)
 block|{
 comment|// FIXME OAK-4279: Rework offline compaction
-comment|// Offline compaction could remove these ids
+comment|// Offline compaction could remove the stable ids again
 name|byte
 index|[]
 name|id
@@ -5426,7 +5444,7 @@ operator|.
 name|toArray
 argument_list|()
 decl_stmt|;
-name|nodeId
+name|stableId
 operator|=
 name|writeBlock
 argument_list|(
@@ -5441,11 +5459,9 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|RecordWriters
-operator|.
 name|newNodeStateWriter
 argument_list|(
-name|nodeId
+name|stableId
 argument_list|,
 name|ids
 argument_list|)
