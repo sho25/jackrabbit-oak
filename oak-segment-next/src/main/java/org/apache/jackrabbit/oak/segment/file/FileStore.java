@@ -1568,6 +1568,9 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * {@link SegmentVersion} the segment version of the store          * @param version          * @return this instance          */
+annotation|@
+name|Nonnull
 specifier|public
 name|Builder
 name|withSegmentVersion
