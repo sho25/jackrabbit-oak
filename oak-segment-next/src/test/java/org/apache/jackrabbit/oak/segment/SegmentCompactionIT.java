@@ -717,7 +717,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 import|;
 end_import
 
@@ -735,7 +735,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|DefaultCompactionStrategyMBean
+name|SegmentRevisionGCMBean
 import|;
 end_import
 
@@ -789,7 +789,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategyMBean
+name|SegmentRevisionGC
 import|;
 end_import
 
@@ -1062,7 +1062,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>This is a longevity test for SegmentMK compaction for {@code OAK-2849 Improve revision gc on SegmentMK}</p>  *  *<p>The test schedules a number of readers, writers, a compactor and holds some references for a certain time.  * All of which can be interactively modified through the accompanying  * {@link SegmentCompactionITMBean}, the  * {@link CompactionStrategyMBean} and the  * {@link GCMonitorMBean}.</p>  *  *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>  * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}  *</p>  *  *<p>TODO Leverage longevity test support from OAK-2771 once we have it.</p>  */
+comment|/**  *<p>This is a longevity test for SegmentMK compaction for {@code OAK-2849 Improve revision gc on SegmentMK}</p>  *  *<p>The test schedules a number of readers, writers, a compactor and holds some references for a certain time.  * All of which can be interactively modified through the accompanying  * {@link SegmentCompactionITMBean}, the  * {@link SegmentRevisionGC} and the  * {@link GCMonitorMBean}.</p>  *  *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>  * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}  *</p>  *  *<p>TODO Leverage longevity test support from OAK-2771 once we have it.</p>  */
 end_comment
 
 begin_class
@@ -1697,10 +1697,10 @@ argument_list|,
 name|SECONDS
 argument_list|)
 expr_stmt|;
-name|CompactionStrategy
+name|SegmentGCOptions
 name|gcOptions
 init|=
-name|CompactionStrategy
+name|SegmentGCOptions
 operator|.
 name|DEFAULT
 operator|.
@@ -1731,7 +1731,7 @@ argument_list|(
 name|gcMonitor
 argument_list|)
 operator|.
-name|withCompactionStrategy
+name|withGCOptions
 argument_list|(
 name|gcOptions
 argument_list|)
@@ -1805,7 +1805,7 @@ argument_list|(
 name|registerMBean
 argument_list|(
 operator|new
-name|DefaultCompactionStrategyMBean
+name|SegmentRevisionGCMBean
 argument_list|(
 name|gcOptions
 argument_list|)
@@ -1813,7 +1813,7 @@ argument_list|,
 operator|new
 name|ObjectName
 argument_list|(
-literal|"IT:TYPE=Compaction Strategy"
+literal|"IT:TYPE=Segment Revision GC"
 argument_list|)
 argument_list|)
 argument_list|)

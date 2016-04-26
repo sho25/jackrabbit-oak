@@ -26,17 +26,17 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|CompactionStrategy
+name|SegmentGCOptions
 block|{
 comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #MEMORY_THRESHOLD_DEFAULT},      * {@link #GAIN_THRESHOLD_DEFAULT}, {@link #RETRY_COUNT_DEFAULT},      * {@link #FORCE_AFTER_FAIL_DEFAULT}, {@link #LOCK_WAIT_TIME_DEFAULT}.      */
 specifier|public
 specifier|static
 specifier|final
-name|CompactionStrategy
+name|SegmentGCOptions
 name|DEFAULT
 init|=
 operator|new
-name|CompactionStrategy
+name|SegmentGCOptions
 argument_list|()
 decl_stmt|;
 comment|/**      * Default value for {@link #isPaused()}      */
@@ -130,7 +130,7 @@ init|=
 name|LOCK_WAIT_TIME_DEFAULT
 decl_stmt|;
 specifier|public
-name|CompactionStrategy
+name|SegmentGCOptions
 parameter_list|(
 name|boolean
 name|paused
@@ -189,7 +189,7 @@ name|lockWaitTime
 expr_stmt|;
 block|}
 specifier|public
-name|CompactionStrategy
+name|SegmentGCOptions
 parameter_list|()
 block|{
 name|this
@@ -220,7 +220,7 @@ return|;
 block|}
 comment|/**      * Set revision gc to paused.      * @param paused      * @return this instance      */
 specifier|public
-name|CompactionStrategy
+name|SegmentGCOptions
 name|setPaused
 parameter_list|(
 name|boolean
@@ -249,7 +249,7 @@ return|;
 block|}
 comment|/**      * Set the memory threshold below which revision gc will not run.      * @param memoryThreshold      * @return this instance      */
 specifier|public
-name|CompactionStrategy
+name|SegmentGCOptions
 name|setMemoryThreshold
 parameter_list|(
 name|int
@@ -278,7 +278,7 @@ return|;
 block|}
 comment|/**      * Set the revision gain estimate threshold beyond which revision gc should run      * @param gainThreshold      * @return this instance      */
 specifier|public
-name|CompactionStrategy
+name|SegmentGCOptions
 name|setGainThreshold
 parameter_list|(
 name|int
@@ -307,7 +307,7 @@ return|;
 block|}
 comment|/**      * Set the number of tries to compact concurrent commits on top of already      * compacted commits      * @param retryCount      * @return this instance      */
 specifier|public
-name|CompactionStrategy
+name|SegmentGCOptions
 name|setRetryCount
 parameter_list|(
 name|int
@@ -336,7 +336,7 @@ return|;
 block|}
 comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      * @return this instance      */
 specifier|public
-name|CompactionStrategy
+name|SegmentGCOptions
 name|setForceAfterFail
 parameter_list|(
 name|boolean
@@ -365,7 +365,7 @@ return|;
 block|}
 comment|/**      * Set the time to wait for the lock when force compacting.      * @param lockWaitTime  lock wait time in seconds      * @return      * @return this instance      */
 specifier|public
-name|CompactionStrategy
+name|SegmentGCOptions
 name|setLockWaitTime
 parameter_list|(
 name|int

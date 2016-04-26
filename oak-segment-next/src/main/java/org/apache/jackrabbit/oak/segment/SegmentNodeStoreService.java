@@ -131,7 +131,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 operator|.
 name|FORCE_AFTER_FAIL_DEFAULT
 import|;
@@ -151,7 +151,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 operator|.
 name|GAIN_THRESHOLD_DEFAULT
 import|;
@@ -171,7 +171,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 operator|.
 name|MEMORY_THRESHOLD_DEFAULT
 import|;
@@ -191,7 +191,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 operator|.
 name|PAUSE_DEFAULT
 import|;
@@ -211,7 +211,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 operator|.
 name|RETRY_COUNT_DEFAULT
 import|;
@@ -767,7 +767,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 import|;
 end_import
 
@@ -785,7 +785,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategyMBean
+name|SegmentRevisionGC
 import|;
 end_import
 
@@ -803,7 +803,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|DefaultCompactionStrategyMBean
+name|SegmentRevisionGCMBean
 import|;
 end_import
 
@@ -1675,7 +1675,7 @@ name|blobGCRegistration
 decl_stmt|;
 specifier|private
 name|Registration
-name|compactionStrategyRegistration
+name|gcOptionsRegistration
 decl_stmt|;
 specifier|private
 name|Registration
@@ -2078,11 +2078,11 @@ argument_list|(
 name|whiteboard
 argument_list|)
 expr_stmt|;
-comment|// Create the compaction strategy
-name|CompactionStrategy
-name|compactionStrategy
+comment|// Create the gc options
+name|SegmentGCOptions
+name|gcOptions
 init|=
-name|newCompactionStrategy
+name|newGCOptions
 argument_list|()
 decl_stmt|;
 comment|// Build the FileStore
@@ -2130,9 +2130,9 @@ argument_list|(
 name|statisticsProvider
 argument_list|)
 operator|.
-name|withCompactionStrategy
+name|withGCOptions
 argument_list|(
-name|compactionStrategy
+name|gcOptions
 argument_list|)
 decl_stmt|;
 if|if
@@ -2164,28 +2164,28 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
-comment|// Expose an MBean to provide information about the compaction strategy
-name|compactionStrategyRegistration
+comment|// Expose an MBean to provide information about the gc options
+name|gcOptionsRegistration
 operator|=
 name|registerMBean
 argument_list|(
 name|whiteboard
 argument_list|,
-name|CompactionStrategyMBean
+name|SegmentRevisionGC
 operator|.
 name|class
 argument_list|,
 operator|new
-name|DefaultCompactionStrategyMBean
+name|SegmentRevisionGCMBean
 argument_list|(
-name|compactionStrategy
+name|gcOptions
 argument_list|)
 argument_list|,
-name|CompactionStrategyMBean
+name|SegmentRevisionGC
 operator|.
 name|TYPE
 argument_list|,
-literal|"Segment node store compaction strategy settings"
+literal|"Segment node store gc options"
 argument_list|)
 expr_stmt|;
 comment|// Expose stats about the segment cache
@@ -2434,8 +2434,8 @@ literal|true
 return|;
 block|}
 specifier|private
-name|CompactionStrategy
-name|newCompactionStrategy
+name|SegmentGCOptions
+name|newGCOptions
 parameter_list|()
 block|{
 name|boolean
@@ -2503,11 +2503,11 @@ init|=
 name|getGainThreshold
 argument_list|()
 decl_stmt|;
-name|CompactionStrategy
+name|SegmentGCOptions
 name|segmentGCOptions
 init|=
 operator|new
-name|CompactionStrategy
+name|SegmentGCOptions
 argument_list|(
 name|pauseCompaction
 argument_list|,
@@ -2982,17 +2982,17 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|compactionStrategyRegistration
+name|gcOptionsRegistration
 operator|!=
 literal|null
 condition|)
 block|{
-name|compactionStrategyRegistration
+name|gcOptionsRegistration
 operator|.
 name|unregister
 argument_list|()
 expr_stmt|;
-name|compactionStrategyRegistration
+name|gcOptionsRegistration
 operator|=
 literal|null
 expr_stmt|;

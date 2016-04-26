@@ -451,7 +451,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 import|;
 end_import
 
@@ -1469,9 +1469,9 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
-name|withCompactionStrategy
+name|withGCOptions
 argument_list|(
-name|CompactionStrategy
+name|SegmentGCOptions
 operator|.
 name|DEFAULT
 operator|.

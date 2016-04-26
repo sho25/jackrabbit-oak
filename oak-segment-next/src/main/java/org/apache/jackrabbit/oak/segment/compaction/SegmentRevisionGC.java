@@ -20,18 +20,18 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This MBean exposes the settings from {@link CompactionStrategy}.  */
+comment|/**  * This MBean exposes the settings from {@link SegmentGCOptions}.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|CompactionStrategyMBean
+name|SegmentRevisionGC
 block|{
 name|String
 name|TYPE
 init|=
-literal|"CompactionStrategy"
+literal|"SegmentRevisionGarbageCollection"
 decl_stmt|;
 comment|/**      * @return  {@code true} iff revision gc is paused.      */
 name|boolean

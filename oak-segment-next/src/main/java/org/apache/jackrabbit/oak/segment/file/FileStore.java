@@ -867,7 +867,7 @@ name|segment
 operator|.
 name|compaction
 operator|.
-name|CompactionStrategy
+name|SegmentGCOptions
 import|;
 end_import
 
@@ -1175,7 +1175,7 @@ specifier|final
 name|BackgroundThread
 name|compactionThread
 decl_stmt|;
-comment|/**      * This background thread periodically asks the {@code CompactionStrategy}      * to compare the approximate size of the repository with the available disk      * space. The result of this comparison is stored in the state of this      * {@code FileStore}.      */
+comment|/**      * This background thread periodically asks the {@code SegmentGCOptions}      * to compare the approximate size of the repository with the available disk      * space. The result of this comparison is stored in the state of this      * {@code FileStore}.      */
 specifier|private
 specifier|final
 name|BackgroundThread
@@ -1183,8 +1183,8 @@ name|diskSpaceThread
 decl_stmt|;
 specifier|private
 specifier|final
-name|CompactionStrategy
-name|compactionStrategy
+name|SegmentGCOptions
+name|gcOptions
 decl_stmt|;
 comment|/**      * Flag to request revision cleanup during the next flush.      */
 specifier|private
@@ -1228,7 +1228,7 @@ specifier|final
 name|AtomicLong
 name|approximateSize
 decl_stmt|;
-comment|/**      * This flag is periodically updated by calling the {@code      * CompactionStrategy} at regular intervals.      */
+comment|/**      * This flag is periodically updated by calling the {@code SegmentGCOptions}      * at regular intervals.      */
 specifier|private
 specifier|final
 name|AtomicBoolean
@@ -1342,10 +1342,10 @@ operator|.
 name|LATEST_VERSION
 decl_stmt|;
 specifier|private
-name|CompactionStrategy
-name|compactionStrategy
+name|SegmentGCOptions
+name|gcOptions
 init|=
-name|CompactionStrategy
+name|SegmentGCOptions
 operator|.
 name|DEFAULT
 decl_stmt|;
@@ -1597,17 +1597,17 @@ annotation|@
 name|Nonnull
 specifier|public
 name|Builder
-name|withCompactionStrategy
+name|withGCOptions
 parameter_list|(
-name|CompactionStrategy
-name|strategy
+name|SegmentGCOptions
+name|gcOptions
 parameter_list|)
 block|{
 name|this
 operator|.
-name|compactionStrategy
+name|gcOptions
 operator|=
-name|strategy
+name|gcOptions
 expr_stmt|;
 return|return
 name|this
@@ -1829,11 +1829,11 @@ name|gcMonitor
 expr_stmt|;
 name|this
 operator|.
-name|compactionStrategy
+name|gcOptions
 operator|=
 name|builder
 operator|.
-name|compactionStrategy
+name|gcOptions
 expr_stmt|;
 if|if
 condition|(
@@ -2729,7 +2729,7 @@ name|needed
 init|=
 name|delta
 operator|*
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|getMemoryThreshold
 argument_list|()
@@ -2783,7 +2783,7 @@ operator|.
 name|set
 argument_list|(
 operator|!
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|isPaused
 argument_list|()
@@ -2810,7 +2810,7 @@ decl_stmt|;
 name|int
 name|gainThreshold
 init|=
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|getGainThreshold
 argument_list|()
@@ -2842,7 +2842,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|isPaused
 argument_list|()
@@ -3069,7 +3069,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|isPaused
 argument_list|()
@@ -3106,7 +3106,7 @@ operator|.
 name|set
 argument_list|(
 operator|!
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|isPaused
 argument_list|()
@@ -4800,11 +4800,11 @@ name|gcMonitor
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction started, strategy={}"
+literal|"TarMK GC #{}: compaction started, gc options={}"
 argument_list|,
 name|GC_COUNT
 argument_list|,
-name|compactionStrategy
+name|gcOptions
 argument_list|)
 expr_stmt|;
 name|Stopwatch
@@ -4993,7 +4993,7 @@ condition|(
 name|cycles
 operator|++
 operator|<
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|getRetryCount
 argument_list|()
@@ -5144,7 +5144,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|getForceAfterFail
 argument_list|()
@@ -5308,7 +5308,7 @@ argument_list|()
 operator|.
 name|tryLock
 argument_list|(
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|getLockWaitTime
 argument_list|()
@@ -6719,7 +6719,7 @@ decl_stmt|;
 name|boolean
 name|updated
 init|=
-name|compactionStrategy
+name|gcOptions
 operator|.
 name|isDiskSpaceSufficient
 argument_list|(
