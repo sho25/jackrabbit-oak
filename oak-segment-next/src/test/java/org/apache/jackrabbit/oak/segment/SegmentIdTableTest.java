@@ -25,6 +25,42 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|fail
 import|;
 end_import
@@ -134,64 +170,6 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentIdTable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentTracker
 import|;
 end_import
 
@@ -420,8 +398,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|Assert
-operator|.
 name|fail
 argument_list|(
 name|e
@@ -431,15 +407,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -450,8 +422,6 @@ name|getMostSignificantBits
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -552,8 +522,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|16
@@ -566,8 +534,6 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|16
@@ -580,8 +546,6 @@ name|getMapSize
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -637,8 +601,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|16
@@ -651,8 +613,6 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|16
@@ -665,8 +625,6 @@ name|getMapSize
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -758,8 +716,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|originalCount
@@ -770,8 +726,6 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -827,8 +781,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -924,8 +876,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|id
@@ -1016,8 +966,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|originalCount
@@ -1028,8 +976,6 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1060,8 +1006,6 @@ argument_list|(
 name|refs2
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|refs
@@ -1075,8 +1019,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|originalCount
@@ -1089,8 +1031,6 @@ argument_list|)
 expr_stmt|;
 comment|// we don't expect that there was a refresh,
 comment|// because there were just hash collisions
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1182,8 +1122,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|originalCount
@@ -1194,8 +1132,6 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1281,8 +1217,6 @@ name|getLeastSignificantBits
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|id2
@@ -1292,8 +1226,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// because we found each entry, we expect the refresh count is the same
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1359,8 +1291,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
