@@ -339,6 +339,12 @@ specifier|final
 name|RecordId
 name|nodeId
 decl_stmt|;
+comment|/** Stable id of this node */
+specifier|public
+specifier|final
+name|String
+name|stableId
+decl_stmt|;
 comment|/** Number of child nodes */
 specifier|public
 specifier|final
@@ -363,6 +369,9 @@ parameter_list|(
 name|RecordId
 name|nodeId
 parameter_list|,
+name|String
+name|stableId
+parameter_list|,
 name|int
 name|nodeCount
 parameter_list|,
@@ -378,6 +387,12 @@ operator|.
 name|nodeId
 operator|=
 name|nodeId
+expr_stmt|;
+name|this
+operator|.
+name|stableId
+operator|=
+name|stableId
 expr_stmt|;
 name|this
 operator|.
@@ -1187,9 +1202,18 @@ operator|.
 name|getOffset
 argument_list|()
 decl_stmt|;
-comment|// FIXME OAK-4290: Update segment parser to work with the new segment format
-comment|// Process the node id (a RecordId) if present calling the respective call back
-comment|//segment.readRecordId(offset);
+name|String
+name|stableId
+init|=
+operator|new
+name|SegmentNodeState
+argument_list|(
+name|nodeId
+argument_list|)
+operator|.
+name|getStableId
+argument_list|()
+decl_stmt|;
 name|offset
 operator|+=
 name|RECORD_ID_BYTES
@@ -1479,6 +1503,8 @@ operator|new
 name|NodeInfo
 argument_list|(
 name|nodeId
+argument_list|,
+name|stableId
 argument_list|,
 name|nodeCount
 argument_list|,
