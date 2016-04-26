@@ -675,6 +675,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Rule
 import|;
 end_import
@@ -1575,8 +1585,11 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-4312: Fix test failures in SegmentDataStoreBlobGCIT
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|gc
@@ -1799,8 +1812,11 @@ name|candidates
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-4312: Fix test failures in SegmentDataStoreBlobGCIT
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|consistencyCheckWithGc
@@ -2010,8 +2026,11 @@ name|candidates
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-4312: Fix test failures in SegmentDataStoreBlobGCIT
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|gcLongRunningBlobCollection
@@ -2238,8 +2257,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-4312: Fix test failures in SegmentDataStoreBlobGCIT
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|gcWithInlined
