@@ -137,6 +137,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|commons
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|jcr
 operator|.
 name|Jcr
@@ -251,7 +267,7 @@ name|cli
 operator|.
 name|container
 operator|.
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 import|;
 end_import
 
@@ -352,7 +368,7 @@ argument_list|)
 decl_stmt|;
 specifier|protected
 specifier|static
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 name|testContent
 decl_stmt|;
 specifier|private
@@ -436,7 +452,7 @@ block|}
 name|testContent
 operator|=
 operator|new
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 argument_list|(
 name|tempDir
 argument_list|)
@@ -572,6 +588,8 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+try|try
+block|{
 name|session
 operator|.
 name|logout
@@ -582,11 +600,16 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|IOUtils
+operator|.
+name|closeQuietly
+argument_list|(
 name|getDestinationContainer
 argument_list|()
-operator|.
-name|close
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|getDestinationContainer
 argument_list|()
@@ -600,6 +623,7 @@ operator|.
 name|clean
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void

@@ -39,18 +39,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|JcrConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|core
 operator|.
 name|RepositoryContext
@@ -131,8 +119,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
 name|SegmentNodeStore
@@ -148,8 +134,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|plugins
 operator|.
 name|segment
 operator|.

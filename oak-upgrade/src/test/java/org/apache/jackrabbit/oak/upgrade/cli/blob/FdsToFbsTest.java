@@ -135,7 +135,7 @@ name|cli
 operator|.
 name|container
 operator|.
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 import|;
 end_import
 
@@ -185,7 +185,7 @@ expr_stmt|;
 name|source
 operator|=
 operator|new
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 argument_list|(
 name|sourceBlob
 argument_list|)
@@ -193,7 +193,7 @@ expr_stmt|;
 name|destination
 operator|=
 operator|new
-name|SegmentNodeStoreContainer
+name|SegmentNextNodeStoreContainer
 argument_list|(
 name|destinationBlob
 argument_list|)

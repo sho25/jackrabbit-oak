@@ -85,8 +85,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
 name|SegmentNodeStore
@@ -102,8 +100,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|plugins
 operator|.
 name|segment
 operator|.
