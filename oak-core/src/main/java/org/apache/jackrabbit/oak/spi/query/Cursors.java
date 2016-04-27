@@ -1115,6 +1115,18 @@ if|if
 condition|(
 name|filter
 operator|.
+name|containsNativeConstraint
+argument_list|()
+condition|)
+block|{
+comment|// OAK-4313: if no other index was found,
+comment|// then, for native queries, we won't match anything
+return|return;
+block|}
+if|if
+condition|(
+name|filter
+operator|.
 name|isAlwaysFalse
 argument_list|()
 condition|)
