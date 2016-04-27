@@ -19,6 +19,22 @@ name|compaction
 package|;
 end_package
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class holds configuration options for segment store revision gc.  */
 end_comment
@@ -93,6 +109,15 @@ name|LOCK_WAIT_TIME_DEFAULT
 init|=
 literal|60000
 decl_stmt|;
+comment|/**      * Default value for {@link #getRetainedGenerations()}      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|RETAINED_GENERATIONS_DEFAULT
+init|=
+literal|2
+decl_stmt|;
 specifier|private
 name|boolean
 name|paused
@@ -128,6 +153,12 @@ name|int
 name|lockWaitTime
 init|=
 name|LOCK_WAIT_TIME_DEFAULT
+decl_stmt|;
+specifier|private
+name|int
+name|retainedGenerations
+init|=
+name|RETAINED_GENERATIONS_DEFAULT
 decl_stmt|;
 specifier|public
 name|SegmentGCOptions
@@ -382,6 +413,46 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Number of segment generations to retain.      * @see #setRetainedGenerations(int)      * @return  number of gc generations.      */
+specifier|public
+name|int
+name|getRetainedGenerations
+parameter_list|()
+block|{
+return|return
+name|retainedGenerations
+return|;
+block|}
+comment|/**      * Set the number of segment generations to retain: each compaction run creates      * a new segment generation. {@code retainGenerations} determines how many of      * those generations are retained during cleanup.      *      * @param retainedGenerations  number of generations to retain. Must be {@code>= 2}.      * @return this instance      * @throws IllegalArgumentException if {@code retainGenerations< 2}      */
+specifier|public
+name|SegmentGCOptions
+name|setRetainedGenerations
+parameter_list|(
+name|int
+name|retainedGenerations
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+name|retainedGenerations
+operator|>
+literal|1
+argument_list|,
+literal|"RetainedGenerations must not be below 2. Got %s"
+argument_list|,
+name|retainedGenerations
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|retainedGenerations
+operator|=
+name|retainedGenerations
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -421,6 +492,10 @@ operator|+
 literal|", lockWaitTime="
 operator|+
 name|lockWaitTime
+operator|+
+literal|", retainedGenerations="
+operator|+
+name|retainedGenerations
 operator|+
 literal|'}'
 return|;

@@ -111,6 +111,19 @@ name|int
 name|lockWaitTime
 parameter_list|)
 function_decl|;
+comment|/**      * Number of segment generations to retain.      * @see #setRetainedGenerations(int)      * @return  number of gc generations.      */
+name|int
+name|getRetainedGenerations
+parameter_list|()
+function_decl|;
+comment|/**      * Set the number of segment generations to retain: each compaction run creates      * a new segment generation. {@code retainGenerations} determines how many of      * those generations are retained during cleanup.      *      * @param retainedGenerations  number of generations to retain. Must be {@code>= 2}.      * @throws IllegalArgumentException if {@code retainGenerations< 2}      */
+name|void
+name|setRetainedGenerations
+parameter_list|(
+name|int
+name|retainedGenerations
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

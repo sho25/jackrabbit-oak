@@ -553,6 +553,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|compaction
+operator|.
+name|SegmentGCOptions
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|file
 operator|.
 name|FileStore
@@ -757,6 +775,13 @@ decl_stmt|;
 name|Date
 name|startDate
 decl_stmt|;
+name|SegmentGCOptions
+name|gcOptions
+init|=
+name|SegmentGCOptions
+operator|.
+name|DEFAULT
+decl_stmt|;
 annotation|@
 name|Rule
 specifier|public
@@ -835,6 +860,11 @@ operator|.
 name|withMemoryMapping
 argument_list|(
 literal|false
+argument_list|)
+operator|.
+name|withGCOptions
+argument_list|(
+name|gcOptions
 argument_list|)
 decl_stmt|;
 name|store
@@ -1380,19 +1410,32 @@ argument_list|(
 literal|5
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
-comment|// Need to compact twice because of the generation cleanup threshold
-comment|// (currently hard coded to 2);
+comment|// Ensure cleanup is efficient by surpassing the number of
+comment|// retained generations
+for|for
+control|(
+name|int
+name|k
+init|=
+literal|0
+init|;
+name|k
+operator|<
+name|gcOptions
+operator|.
+name|getRetainedGenerations
+argument_list|()
+condition|;
+name|k
+operator|++
+control|)
+block|{
 name|store
 operator|.
 name|compact
 argument_list|()
 expr_stmt|;
-name|store
-operator|.
-name|compact
-argument_list|()
-expr_stmt|;
+block|}
 name|store
 operator|.
 name|cleanup

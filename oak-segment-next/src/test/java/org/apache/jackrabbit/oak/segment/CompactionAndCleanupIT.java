@@ -2185,6 +2185,13 @@ literal|"merge-after-compact"
 block|}
 control|)
 block|{
+name|SegmentGCOptions
+name|gcOptions
+init|=
+name|SegmentGCOptions
+operator|.
+name|DEFAULT
+decl_stmt|;
 name|File
 name|repoDir
 init|=
@@ -2210,6 +2217,11 @@ operator|.
 name|withMaxFileSize
 argument_list|(
 literal|2
+argument_list|)
+operator|.
+name|withGCOptions
+argument_list|(
+name|gcOptions
 argument_list|)
 operator|.
 name|build
@@ -2441,19 +2453,32 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
-comment|// Need to compact twice because of the generation cleanup threshold
-comment|// (currently hard coded to 2);
+comment|// Ensure cleanup is efficient by surpassing the number of
+comment|// retained generations
+for|for
+control|(
+name|int
+name|k
+init|=
+literal|0
+init|;
+name|k
+operator|<
+name|gcOptions
+operator|.
+name|getRetainedGenerations
+argument_list|()
+condition|;
+name|k
+operator|++
+control|)
+block|{
 name|fileStore
 operator|.
 name|compact
 argument_list|()
 expr_stmt|;
-name|fileStore
-operator|.
-name|compact
-argument_list|()
-expr_stmt|;
+block|}
 comment|// case 2: merge above changes after compact
 if|if
 condition|(

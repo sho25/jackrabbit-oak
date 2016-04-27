@@ -3843,6 +3843,7 @@ block|}
 block|}
 block|}
 block|}
+comment|/**      * Collect the references of those blobs that are reachable from any segment with a      * generation at or above {@code minGeneration}.      * @param tracker      * @param collector      * @param minGeneration      */
 name|void
 name|collectBlobReferences
 parameter_list|(
@@ -3853,7 +3854,7 @@ name|ReferenceCollector
 name|collector
 parameter_list|,
 name|int
-name|generation
+name|minGeneration
 parameter_list|)
 block|{
 for|for
@@ -3872,7 +3873,7 @@ operator|.
 name|generation
 argument_list|()
 operator|>=
-name|generation
+name|minGeneration
 condition|)
 block|{
 comment|// FIXME OAK-4201: Add an index of binary references in a tar file

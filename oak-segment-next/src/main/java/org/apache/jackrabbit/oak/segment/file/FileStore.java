@@ -4185,15 +4185,17 @@ name|Integer
 argument_list|>
 argument_list|()
 block|{
-comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
 specifier|final
 name|int
-name|retainGeneration
+name|reclaimGeneration
 init|=
 name|getGcGen
 argument_list|()
 operator|-
-literal|1
+name|gcOptions
+operator|.
+name|getRetainedGenerations
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
@@ -4207,8 +4209,8 @@ parameter_list|)
 block|{
 return|return
 name|generation
-operator|<
-name|retainGeneration
+operator|<=
+name|reclaimGeneration
 return|;
 block|}
 block|}
@@ -4786,13 +4788,17 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
 name|int
-name|generation
+name|minGeneration
 init|=
 name|getGcGen
 argument_list|()
 operator|-
+name|gcOptions
+operator|.
+name|getRetainedGenerations
+argument_list|()
+operator|+
 literal|1
 decl_stmt|;
 for|for
@@ -4811,7 +4817,7 @@ name|tracker
 argument_list|,
 name|collector
 argument_list|,
-name|generation
+name|minGeneration
 argument_list|)
 expr_stmt|;
 block|}
