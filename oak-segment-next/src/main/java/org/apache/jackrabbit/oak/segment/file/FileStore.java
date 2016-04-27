@@ -4156,7 +4156,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Runs garbage collection on the segment level, which could write new      * generations of tar files. It checks which segments are still reachable,      * and throws away those that are not.      *<p>      * A new generation of a tar file is created (and segments are only      * discarded) if doing so releases more than 25% of the space in a tar file.      */
+comment|/**      * Run garbage collection on the segment level: reclaim those data segments      * that are from an old segment generation and those bulk segments that are not      * reachable anymore.      * Those tar files that shrink by at least 25% are rewritten to a new tar generation      * skipping the reclaimed segments.      */
 specifier|public
 name|List
 argument_list|<
