@@ -559,6 +559,20 @@ name|common
 operator|.
 name|base
 operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Predicates
 import|;
 end_import
@@ -2834,7 +2848,7 @@ name|getGainThreshold
 argument_list|()
 decl_stmt|;
 name|boolean
-name|runCompaction
+name|sufficientEstimatedGain
 init|=
 literal|true
 decl_stmt|;
@@ -2933,7 +2947,7 @@ operator|.
 name|estimateCompactionGain
 argument_list|()
 decl_stmt|;
-name|runCompaction
+name|sufficientEstimatedGain
 operator|=
 name|gain
 operator|>=
@@ -2941,7 +2955,7 @@ name|gainThreshold
 expr_stmt|;
 if|if
 condition|(
-name|runCompaction
+name|sufficientEstimatedGain
 condition|)
 block|{
 name|gcMonitor
@@ -3081,7 +3095,7 @@ block|}
 block|}
 if|if
 condition|(
-name|runCompaction
+name|sufficientEstimatedGain
 condition|)
 block|{
 if|if
@@ -3093,9 +3107,20 @@ name|isPaused
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
 name|compact
 argument_list|()
+condition|)
+block|{
+name|cleanupNeeded
+operator|.
+name|set
+argument_list|(
+name|cleanup
+argument_list|)
 expr_stmt|;
+block|}
 name|compacted
 operator|=
 literal|true
@@ -3113,23 +3138,6 @@ name|GC_COUNT
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-if|if
-condition|(
-name|cleanup
-condition|)
-block|{
-name|cleanupNeeded
-operator|.
-name|set
-argument_list|(
-operator|!
-name|gcOptions
-operator|.
-name|isPaused
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 name|compacted
@@ -4167,6 +4175,62 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+return|return
+name|cleanup
+argument_list|(
+operator|new
+name|Predicate
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|()
+block|{
+comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
+specifier|final
+name|int
+name|retainGeneration
+init|=
+name|getGcGen
+argument_list|()
+operator|-
+literal|1
+decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|apply
+parameter_list|(
+name|Integer
+name|generation
+parameter_list|)
+block|{
+return|return
+name|generation
+operator|<
+name|retainGeneration
+return|;
+block|}
+block|}
+argument_list|)
+return|;
+block|}
+specifier|private
+name|List
+argument_list|<
+name|File
+argument_list|>
+name|cleanup
+parameter_list|(
+name|Predicate
+argument_list|<
+name|Integer
+argument_list|>
+name|reclaimGeneration
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|Stopwatch
 name|watch
 init|=
@@ -4307,15 +4371,6 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
-name|int
-name|generation
-init|=
-name|getGcGen
-argument_list|()
-operator|-
-literal|1
-decl_stmt|;
 name|Set
 argument_list|<
 name|UUID
@@ -4344,7 +4399,7 @@ name|bulkRefs
 argument_list|,
 name|reclaim
 argument_list|,
-name|generation
+name|reclaimGeneration
 argument_list|)
 expr_stmt|;
 comment|// FIXME OAK-4165: Too verbose logging during revision gc
@@ -4898,9 +4953,9 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * Copy every referenced record in data (non-bulk) segments. Bulk segments      * are fully kept (they are only removed in cleanup, if there is no      * reference to them).      */
+comment|/**      * Copy every referenced record in data (non-bulk) segments. Bulk segments      * are fully kept (they are only removed in cleanup, if there is no      * reference to them).      * @return {@code true} if compaction succeeded, {@code false} otherwise.      */
 specifier|public
-name|void
+name|boolean
 name|compact
 parameter_list|()
 throws|throws
@@ -4948,6 +5003,7 @@ decl_stmt|;
 comment|// FIXME OAK-4280: Compaction cannot be cancelled
 comment|// FIXME OAK-4279: Rework offline compaction
 comment|// This way of compacting has not progress logging and cannot be cancelled
+specifier|final
 name|int
 name|gcGeneration
 init|=
@@ -5284,15 +5340,44 @@ name|warn
 argument_list|(
 literal|"TarMK GC #{}: compaction failed to force compact remaining commits. "
 operator|+
-literal|"Most likely compaction didn't get exclusive access to the store."
+literal|"Most likely compaction didn't get exclusive access to the store. Cleaning up."
 argument_list|,
 name|GC_COUNT
 argument_list|)
 expr_stmt|;
+name|cleanup
+argument_list|(
+operator|new
+name|Predicate
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|apply
+parameter_list|(
+name|Integer
+name|generation
+parameter_list|)
+block|{
+return|return
+name|generation
+operator|==
+name|gcGeneration
+return|;
 block|}
 block|}
-comment|// FIXME OAK-4284: Garbage left behind when compaction does not succeed
-comment|// Giving up leaves garbage that will only be cleaned up 2 generations later!
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+block|}
 block|}
 name|gcMonitor
 operator|.
@@ -5316,6 +5401,9 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -5342,6 +5430,9 @@ operator|.
 name|interrupt
 argument_list|()
 expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -5362,6 +5453,9 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 block|}
 specifier|private
@@ -7177,7 +7271,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|compact
 parameter_list|()
 block|{

@@ -439,6 +439,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -3894,6 +3908,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Collect reclaimable segments.      * A data segment is reclaimable iff its generation is in the {@code reclaimGeneration}      * predicate.      * A bulk segment is reclaimable if it is in {@code bulkRefs} or if it is transitively      * reachable through a non reclaimable data segment.      *      * @param bulkRefs  bulk segment gc roots      * @param reclaim   reclaimable segments      * @param reclaimGeneration  reclaim generation predicate for data segments      * @throws IOException      */
 name|void
 name|mark
 parameter_list|(
@@ -3909,8 +3924,11 @@ name|UUID
 argument_list|>
 name|reclaim
 parameter_list|,
-name|int
-name|generation
+name|Predicate
+argument_list|<
+name|Integer
+argument_list|>
+name|reclaimGeneration
 parameter_list|)
 throws|throws
 name|IOException
@@ -4012,12 +4030,15 @@ name|lsb
 argument_list|()
 argument_list|)
 operator|&&
+name|reclaimGeneration
+operator|.
+name|apply
+argument_list|(
 name|entry
 operator|.
 name|generation
 argument_list|()
-operator|<
-name|generation
+argument_list|)
 operator|)
 condition|)
 block|{
