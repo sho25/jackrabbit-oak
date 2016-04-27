@@ -1188,11 +1188,6 @@ literal|1
 argument_list|)
 return|;
 block|}
-name|read
-argument_list|(
-literal|")"
-argument_list|)
-expr_stmt|;
 block|}
 elseif|else
 if|if
