@@ -1834,6 +1834,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
 name|void
 name|collectBlobReferences
 parameter_list|(

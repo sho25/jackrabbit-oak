@@ -675,16 +675,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -1390,12 +1380,18 @@ argument_list|(
 literal|5
 argument_list|)
 expr_stmt|;
+comment|// FIXME OAK-4282: Make the number of retained gc generation configurable
+comment|// Need to compact twice because of the generation cleanup threshold
+comment|// (currently hard coded to 2);
 name|store
 operator|.
-name|maybeCompact
-argument_list|(
-literal|false
-argument_list|)
+name|compact
+argument_list|()
+expr_stmt|;
+name|store
+operator|.
+name|compact
+argument_list|()
 expr_stmt|;
 name|store
 operator|.
@@ -1585,11 +1581,8 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4312: Fix test failures in SegmentDataStoreBlobGCIT
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|gc
@@ -1812,11 +1805,8 @@ name|candidates
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4312: Fix test failures in SegmentDataStoreBlobGCIT
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|consistencyCheckWithGc
@@ -2026,11 +2016,8 @@ name|candidates
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4312: Fix test failures in SegmentDataStoreBlobGCIT
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|gcLongRunningBlobCollection
@@ -2161,9 +2148,6 @@ operator|new
 name|SegmentBlobReferenceRetriever
 argument_list|(
 name|store
-operator|.
-name|getTracker
-argument_list|()
 argument_list|)
 argument_list|,
 operator|(
@@ -2257,11 +2241,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4312: Fix test failures in SegmentDataStoreBlobGCIT
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|gcWithInlined
@@ -2615,9 +2596,6 @@ operator|new
 name|SegmentBlobReferenceRetriever
 argument_list|(
 name|store
-operator|.
-name|getTracker
-argument_list|()
 argument_list|)
 argument_list|,
 operator|(

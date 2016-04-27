@@ -541,7 +541,7 @@ class|class
 name|ExternalBlobIT
 block|{
 specifier|private
-name|SegmentStore
+name|FileStore
 name|store
 decl_stmt|;
 specifier|private
@@ -961,9 +961,6 @@ name|newArrayList
 argument_list|()
 decl_stmt|;
 name|store
-operator|.
-name|getTracker
-argument_list|()
 operator|.
 name|collectBlobReferences
 argument_list|(
