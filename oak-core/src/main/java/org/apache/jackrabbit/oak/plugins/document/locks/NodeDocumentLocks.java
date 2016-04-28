@@ -27,16 +27,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|locks
@@ -56,17 +46,6 @@ name|acquire
 parameter_list|(
 name|String
 name|key
-parameter_list|)
-function_decl|;
-comment|/**      * Acquires locks for the given keys. Locks are sorted before the operation      * to avoid deadlocks.      *      * @param keys keys      * @return the object wrapping the acquired locks      */
-name|Lock
-name|acquire
-parameter_list|(
-name|Collection
-argument_list|<
-name|String
-argument_list|>
-name|keys
 parameter_list|)
 function_decl|;
 block|}
