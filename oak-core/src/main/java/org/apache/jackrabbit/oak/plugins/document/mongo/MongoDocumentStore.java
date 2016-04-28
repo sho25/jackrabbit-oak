@@ -3466,7 +3466,9 @@ name|nodesCache
 operator|.
 name|registerTracker
 argument_list|(
-name|parentId
+name|fromKey
+argument_list|,
+name|toKey
 argument_list|)
 expr_stmt|;
 block|}
