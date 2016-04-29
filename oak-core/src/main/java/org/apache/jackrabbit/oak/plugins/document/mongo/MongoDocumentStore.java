@@ -1386,6 +1386,20 @@ argument_list|,
 literal|30
 argument_list|)
 decl_stmt|;
+comment|/**      * How many times should be the bulk update request retries in case of      * a conflict.      *<p>      * Default is 0 (no retries).      */
+specifier|private
+name|int
+name|bulkRetries
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.mongo.bulkRetries"
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
 specifier|private
 name|String
 name|lastReadWriteMode
@@ -5094,8 +5108,8 @@ init|=
 literal|0
 init|;
 name|i
-operator|<
-literal|3
+operator|<=
+name|bulkRetries
 condition|;
 name|i
 operator|++
