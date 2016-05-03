@@ -194,7 +194,7 @@ index|[]
 name|listOrphanedUsers
 parameter_list|()
 function_decl|;
-comment|/**      * Purges all orphaned users. this is similar to invoke {@link #syncUsers(String[], boolean)} with the list of      * orphaned users. Note tha this can eb an expensive operation since all potential users need to be examined.      *      * @return result messages.      */
+comment|/**      * Purges all orphaned users. this is similar to invoke {@link #syncUsers(String[], boolean)} with the list of      * orphaned users. Note tha this can be an expensive operation since all potential users need to be examined.      *      * @return result messages.      */
 annotation|@
 name|Nonnull
 name|String
