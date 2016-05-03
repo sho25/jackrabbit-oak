@@ -196,7 +196,7 @@ name|PARAM_NAME
 init|=
 literal|"handler.name"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getExpirationTime()      */
+comment|/**      * @see DefaultSyncConfig.User#getExpirationTime()      */
 specifier|public
 specifier|static
 specifier|final
@@ -205,7 +205,7 @@ name|PARAM_USER_EXPIRATION_TIME_DEFAULT
 init|=
 literal|"1h"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getExpirationTime()      */
+comment|/**      * @see DefaultSyncConfig.User#getExpirationTime()      */
 annotation|@
 name|Property
 argument_list|(
@@ -229,7 +229,7 @@ name|PARAM_USER_EXPIRATION_TIME
 init|=
 literal|"user.expirationTime"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getAutoMembership()      */
+comment|/**      * @see DefaultSyncConfig.User#getAutoMembership()      */
 specifier|public
 specifier|static
 specifier|final
@@ -239,7 +239,7 @@ name|PARAM_USER_AUTO_MEMBERSHIP_DEFAULT
 init|=
 block|{}
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getAutoMembership()      */
+comment|/**      * @see DefaultSyncConfig.User#getAutoMembership()      */
 annotation|@
 name|Property
 argument_list|(
@@ -269,7 +269,7 @@ name|PARAM_USER_AUTO_MEMBERSHIP
 init|=
 literal|"user.autoMembership"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getPropertyMapping()      */
+comment|/**      * @see DefaultSyncConfig.User#getPropertyMapping()      */
 specifier|public
 specifier|static
 specifier|final
@@ -281,7 +281,7 @@ block|{
 literal|"rep:fullname=cn"
 block|}
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getPropertyMapping()      */
+comment|/**      * @see DefaultSyncConfig.User#getPropertyMapping()      */
 annotation|@
 name|Property
 argument_list|(
@@ -315,7 +315,7 @@ name|PARAM_USER_PROPERTY_MAPPING
 init|=
 literal|"user.propertyMapping"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getPathPrefix()      */
+comment|/**      * @see DefaultSyncConfig.User#getPathPrefix()      */
 specifier|public
 specifier|static
 specifier|final
@@ -324,7 +324,7 @@ name|PARAM_USER_PATH_PREFIX_DEFAULT
 init|=
 literal|""
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getPathPrefix()      */
+comment|/**      * @see DefaultSyncConfig.User#getPathPrefix()      */
 annotation|@
 name|Property
 argument_list|(
@@ -348,7 +348,7 @@ name|PARAM_USER_PATH_PREFIX
 init|=
 literal|"user.pathPrefix"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getMembershipExpirationTime()      */
+comment|/**      * @see DefaultSyncConfig.User#getMembershipExpirationTime()      */
 specifier|public
 specifier|static
 specifier|final
@@ -357,7 +357,7 @@ name|PARAM_USER_MEMBERSHIP_EXPIRATION_TIME_DEFAULT
 init|=
 literal|"1h"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.User#getMembershipExpirationTime()      */
+comment|/**      * @see DefaultSyncConfig.User#getMembershipExpirationTime()      */
 annotation|@
 name|Property
 argument_list|(
@@ -381,7 +381,7 @@ name|PARAM_USER_MEMBERSHIP_EXPIRATION_TIME
 init|=
 literal|"user.membershipExpTime"
 decl_stmt|;
-comment|/**      * @see User#getMembershipNestingDepth()      */
+comment|/**      * @see DefaultSyncConfig.User#getMembershipNestingDepth()      */
 specifier|public
 specifier|static
 specifier|final
@@ -390,7 +390,7 @@ name|PARAM_USER_MEMBERSHIP_NESTING_DEPTH_DEFAULT
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * @see User#getMembershipNestingDepth()      */
+comment|/**      * @see DefaultSyncConfig.User#getMembershipNestingDepth()      */
 annotation|@
 name|Property
 argument_list|(
@@ -420,7 +420,7 @@ name|PARAM_USER_MEMBERSHIP_NESTING_DEPTH
 init|=
 literal|"user.membershipNestingDepth"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.Group#getExpirationTime()      */
+comment|/**      * @see DefaultSyncConfig.Group#getExpirationTime()      */
 specifier|public
 specifier|static
 specifier|final
@@ -429,7 +429,7 @@ name|PARAM_GROUP_EXPIRATION_TIME_DEFAULT
 init|=
 literal|"1d"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.Group#getExpirationTime()      */
+comment|/**      * @see DefaultSyncConfig.Group#getExpirationTime()      */
 annotation|@
 name|Property
 argument_list|(
@@ -453,7 +453,7 @@ name|PARAM_GROUP_EXPIRATION_TIME
 init|=
 literal|"group.expirationTime"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.Group#getAutoMembership()      */
+comment|/**      * @see DefaultSyncConfig.Group#getAutoMembership()      */
 specifier|public
 specifier|static
 specifier|final
@@ -463,7 +463,7 @@ name|PARAM_GROUP_AUTO_MEMBERSHIP_DEFAULT
 init|=
 block|{}
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.Group#getAutoMembership()      */
+comment|/**      * @see DefaultSyncConfig.Group#getAutoMembership()      */
 annotation|@
 name|Property
 argument_list|(
@@ -493,7 +493,7 @@ name|PARAM_GROUP_AUTO_MEMBERSHIP
 init|=
 literal|"group.autoMembership"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.Group#getPropertyMapping()      */
+comment|/**      * @see DefaultSyncConfig.Group#getPropertyMapping()      */
 specifier|public
 specifier|static
 specifier|final
@@ -503,7 +503,7 @@ name|PARAM_GROUP_PROPERTY_MAPPING_DEFAULT
 init|=
 block|{}
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.Group#getPropertyMapping()      */
+comment|/**      * @see DefaultSyncConfig.Group#getPropertyMapping()      */
 annotation|@
 name|Property
 argument_list|(
@@ -533,7 +533,7 @@ name|PARAM_GROUP_PROPERTY_MAPPING
 init|=
 literal|"group.propertyMapping"
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.Group#getPathPrefix()      */
+comment|/**      * @see DefaultSyncConfig.Group#getPathPrefix()      */
 specifier|public
 specifier|static
 specifier|final
@@ -542,7 +542,7 @@ name|PARAM_GROUP_PATH_PREFIX_DEFAULT
 init|=
 literal|""
 decl_stmt|;
-comment|/**      * @see DefaultSyncConfigImpl.Group#getPathPrefix()      */
+comment|/**      * @see DefaultSyncConfig.Group#getPathPrefix()      */
 annotation|@
 name|Property
 argument_list|(
