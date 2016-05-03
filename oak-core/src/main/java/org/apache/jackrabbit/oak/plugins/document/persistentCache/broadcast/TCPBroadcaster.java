@@ -1609,7 +1609,7 @@ continue|continue;
 block|}
 comment|// the key is the combination of listener and id,
 comment|// because the same ip address / port combination
-comment|// could be there multiple time for some time
+comment|// could be there multiple times for some time
 comment|// (in case there is a old, orphan entry for the same machine)
 name|String
 name|clientKey
