@@ -2980,7 +2980,7 @@ name|nb
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|IndexConstants
 operator|.
 name|INDEX_PATH
 argument_list|,

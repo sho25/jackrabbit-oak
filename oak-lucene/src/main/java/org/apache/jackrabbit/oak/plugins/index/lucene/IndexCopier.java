@@ -1336,38 +1336,6 @@ name|getIndexPathFromConfig
 argument_list|()
 decl_stmt|;
 name|File
-name|indexWriterDir
-decl_stmt|;
-if|if
-condition|(
-name|indexPath
-operator|==
-literal|null
-condition|)
-block|{
-comment|//If indexPath is not known create a unique directory for work
-name|indexWriterDir
-operator|=
-operator|new
-name|File
-argument_list|(
-name|indexWorkDir
-argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|UNIQUE_COUNTER
-operator|.
-name|incrementAndGet
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|File
 name|indexDir
 init|=
 name|getIndexDir
@@ -1388,8 +1356,9 @@ name|getReindexCount
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|File
 name|indexWriterDir
-operator|=
+init|=
 name|getVersionedDir
 argument_list|(
 name|indexPath
@@ -1398,8 +1367,7 @@ name|indexDir
 argument_list|,
 name|newVersion
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 comment|//By design indexing in Oak is single threaded so Lucene locking
 comment|//can be disabled
 name|Directory
@@ -1426,43 +1394,6 @@ argument_list|,
 name|indexWriterDir
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|indexPath
-operator|==
-literal|null
-condition|)
-block|{
-name|dir
-operator|=
-operator|new
-name|DeleteOldDirOnClose
-argument_list|(
-name|dir
-argument_list|,
-name|indexWriterDir
-argument_list|)
-expr_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"IndexPath [{}] not configured in index definition {}. Writer would create index "
-operator|+
-literal|"files in temporary dir {} which would be deleted upon close. For better performance do "
-operator|+
-literal|"configure the 'indexPath' as part of your index definition"
-argument_list|,
-name|LuceneIndexConstants
-operator|.
-name|INDEX_PATH
-argument_list|,
-name|definition
-argument_list|,
-name|indexWriterDir
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|dir
 return|;
@@ -1851,24 +1782,6 @@ operator|.
 name|getIndexPathFromConfig
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|indexPath
-operator|==
-literal|null
-condition|)
-block|{
-comment|//With indexPath null the working directory would not
-comment|//be shared between COR and COW. So just return a new set
-return|return
-operator|new
-name|HashSet
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
-return|;
-block|}
 name|Set
 argument_list|<
 name|String
