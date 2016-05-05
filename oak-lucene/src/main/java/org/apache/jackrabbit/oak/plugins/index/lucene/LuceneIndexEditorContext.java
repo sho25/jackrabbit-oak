@@ -2353,6 +2353,18 @@ name|hasCustomTikaConfig
 argument_list|()
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"[{}] Using custom tika config"
+argument_list|,
+name|definition
+operator|.
+name|getIndexName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Thread
 operator|.
 name|currentThread
