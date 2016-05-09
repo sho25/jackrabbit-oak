@@ -55,7 +55,7 @@ name|cli
 operator|.
 name|container
 operator|.
-name|SegmentNextNodeStoreContainer
+name|SegmentTarNodeStoreContainer
 import|;
 end_import
 
@@ -82,7 +82,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|SegmentToSegmentNextTest
+name|SegmentToSegmentTarTest
 extends|extends
 name|AbstractOak2OakTest
 block|{
@@ -97,7 +97,7 @@ name|NodeStoreContainer
 name|destination
 decl_stmt|;
 specifier|public
-name|SegmentToSegmentNextTest
+name|SegmentToSegmentTarTest
 parameter_list|()
 block|{
 name|source
@@ -109,7 +109,7 @@ expr_stmt|;
 name|destination
 operator|=
 operator|new
-name|SegmentNextNodeStoreContainer
+name|SegmentTarNodeStoreContainer
 argument_list|()
 expr_stmt|;
 block|}

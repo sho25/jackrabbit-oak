@@ -267,7 +267,7 @@ name|cli
 operator|.
 name|container
 operator|.
-name|SegmentNextNodeStoreContainer
+name|SegmentTarNodeStoreContainer
 import|;
 end_import
 
@@ -368,7 +368,7 @@ argument_list|)
 decl_stmt|;
 specifier|protected
 specifier|static
-name|SegmentNextNodeStoreContainer
+name|SegmentTarNodeStoreContainer
 name|testContent
 decl_stmt|;
 specifier|private
@@ -452,7 +452,7 @@ block|}
 name|testContent
 operator|=
 operator|new
-name|SegmentNextNodeStoreContainer
+name|SegmentTarNodeStoreContainer
 argument_list|(
 name|tempDir
 argument_list|)

@@ -185,7 +185,7 @@ name|segment
 operator|.
 name|fixture
 operator|.
-name|SegmentNextFixture
+name|SegmentTarFixture
 import|;
 end_import
 
@@ -218,10 +218,10 @@ specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|SEGMENT_NEXT
+name|SEGMENT_TAR
 init|=
 operator|new
-name|SegmentNextFixture
+name|SegmentTarFixture
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -405,7 +405,7 @@ name|FixturesHelper
 operator|.
 name|Fixture
 operator|.
-name|SEGMENT_NEXT
+name|SEGMENT_TAR
 argument_list|)
 condition|)
 block|{
@@ -413,7 +413,7 @@ name|configuredFixtures
 operator|.
 name|add
 argument_list|(
-name|SEGMENT_NEXT
+name|SEGMENT_TAR
 argument_list|)
 expr_stmt|;
 block|}

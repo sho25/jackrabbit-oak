@@ -199,7 +199,7 @@ name|cli
 operator|.
 name|node
 operator|.
-name|SegmentNextFactory
+name|SegmentTarFactory
 import|;
 end_import
 
@@ -657,7 +657,7 @@ return|;
 block|}
 block|}
 block|,
-name|SEGMENT_NEXT
+name|SEGMENT_TAR
 block|{
 annotation|@
 name|Override
@@ -695,7 +695,7 @@ operator|new
 name|StoreFactory
 argument_list|(
 operator|new
-name|SegmentNextFactory
+name|SegmentTarFactory
 argument_list|(
 name|paths
 index|[

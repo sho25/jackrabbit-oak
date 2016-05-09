@@ -96,7 +96,7 @@ name|MEMORY_NS
 block|,
 name|DOCUMENT_MEM
 block|,
-name|SEGMENT_NEXT
+name|SEGMENT_TAR
 block|}
 specifier|private
 specifier|static

@@ -115,7 +115,7 @@ name|cli
 operator|.
 name|container
 operator|.
-name|SegmentNextNodeStoreContainer
+name|SegmentTarNodeStoreContainer
 import|;
 end_import
 
@@ -154,7 +154,7 @@ expr_stmt|;
 name|source
 operator|=
 operator|new
-name|SegmentNextNodeStoreContainer
+name|SegmentTarNodeStoreContainer
 argument_list|(
 name|sourceBlob
 argument_list|)
@@ -162,7 +162,7 @@ expr_stmt|;
 name|destination
 operator|=
 operator|new
-name|SegmentNextNodeStoreContainer
+name|SegmentTarNodeStoreContainer
 argument_list|(
 name|sourceBlob
 argument_list|)
