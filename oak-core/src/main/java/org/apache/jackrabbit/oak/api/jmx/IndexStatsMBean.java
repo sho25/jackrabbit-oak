@@ -33,6 +33,18 @@ end_import
 
 begin_import
 import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -68,6 +80,8 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|IndexStatsMBean
@@ -92,6 +106,11 @@ name|STATUS_DONE
 init|=
 literal|"done"
 decl_stmt|;
+name|String
+name|STATUS_INTERRUPTED
+init|=
+literal|"interrupted"
+decl_stmt|;
 comment|/**      * @return The time the indexing job stared at, or {@code ""} if it is      *         not currently running.      */
 name|String
 name|getStart
@@ -115,6 +134,17 @@ function_decl|;
 comment|/**      * Pauses the background indexing process. Future changes are not indexed      * until the {@link #resume()} method is called.      *       * The pause call will take effect on the next run cycle and will affect all      * indexes marked as 'async'.      *       * Note: this is experimental and should only be used for      * debugging/diagnosis purposes!      *       */
 name|void
 name|pause
+parameter_list|()
+function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Aborts any running indexing cycle. It only effects current "
+operator|+
+literal|"running cycle"
+argument_list|)
+name|String
+name|abort
 parameter_list|()
 function_decl|;
 comment|/**      * Resumes the indexing process. All changes from the previous indexed state      * will be indexed.      *       * @see #pause()      */

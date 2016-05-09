@@ -1712,6 +1712,13 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|forcedStop
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 throw|throw
 name|INTERRUPTED
 throw|;
@@ -3607,6 +3614,10 @@ operator|==
 name|INTERRUPTED
 condition|)
 block|{
+name|status
+operator|=
+name|STATUS_INTERRUPTED
+expr_stmt|;
 name|log
 operator|.
 name|info
@@ -3879,6 +3890,39 @@ name|isPaused
 operator|=
 literal|true
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|abort
+parameter_list|()
+block|{
+comment|//Abort if any indexing run is in progress
+if|if
+condition|(
+name|runPermit
+operator|.
+name|availablePermits
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|forcedStopFlag
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+literal|"Abort request placed"
+return|;
+block|}
+return|return
+literal|"No current running indexing found. Nothing to abort!"
+return|;
 block|}
 annotation|@
 name|Override
