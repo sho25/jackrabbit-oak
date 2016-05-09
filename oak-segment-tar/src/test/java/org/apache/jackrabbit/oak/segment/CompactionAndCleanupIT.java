@@ -3218,10 +3218,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME OAK-4286: Rework failing tests in CompactionAndCleanupIT
-comment|// Fix failing test propertyRetention
 specifier|public
 name|void
 name|propertyRetention
@@ -3231,6 +3227,13 @@ name|IOException
 throws|,
 name|CommitFailedException
 block|{
+name|SegmentGCOptions
+name|gcOptions
+init|=
+name|SegmentGCOptions
+operator|.
+name|DEFAULT
+decl_stmt|;
 name|FileStore
 name|fileStore
 init|=
@@ -3245,6 +3248,11 @@ operator|.
 name|withMaxFileSize
 argument_list|(
 literal|1
+argument_list|)
+operator|.
+name|withGCOptions
+argument_list|(
+name|gcOptions
 argument_list|)
 operator|.
 name|build
@@ -3337,6 +3345,11 @@ operator|.
 name|getSegmentId
 argument_list|()
 decl_stmt|;
+name|fileStore
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|fileStore
@@ -3422,11 +3435,32 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+comment|// Ensure cleanup is efficient by surpassing the number of
+comment|// retained generations
+for|for
+control|(
+name|int
+name|k
+init|=
+literal|0
+init|;
+name|k
+operator|<
+name|gcOptions
+operator|.
+name|getRetainedGenerations
+argument_list|()
+condition|;
+name|k
+operator|++
+control|)
+block|{
 name|fileStore
 operator|.
 name|compact
 argument_list|()
 expr_stmt|;
+block|}
 name|fileStore
 operator|.
 name|cleanup
