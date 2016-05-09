@@ -7709,17 +7709,20 @@ name|getStatus
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertThat
 argument_list|(
-literal|"Abort request placed"
-argument_list|,
 name|async
 operator|.
 name|getIndexStats
 argument_list|()
 operator|.
-name|abort
+name|abortAndPause
 argument_list|()
+argument_list|,
+name|containsString
+argument_list|(
+literal|"Abort request placed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|asyncLock
@@ -7770,6 +7773,31 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|//Post abort indexing should be fine
+name|runOneCycle
+argument_list|(
+name|async
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|async
+operator|.
+name|getIndexStats
+argument_list|()
+operator|.
+name|isPaused
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//Now resume indexing
+name|async
+operator|.
+name|getIndexStats
+argument_list|()
+operator|.
+name|resume
+argument_list|()
+expr_stmt|;
 name|runOneCycle
 argument_list|(
 name|async

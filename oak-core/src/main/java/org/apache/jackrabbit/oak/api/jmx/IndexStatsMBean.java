@@ -139,12 +139,12 @@ function_decl|;
 annotation|@
 name|Description
 argument_list|(
-literal|"Aborts any running indexing cycle. It only effects current "
+literal|"Aborts any running indexing cycle and pauses the indexer. Invoke 'resume' once you are read to "
 operator|+
-literal|"running cycle"
+literal|"resume indexing again"
 argument_list|)
 name|String
-name|abort
+name|abortAndPause
 parameter_list|()
 function_decl|;
 comment|/**      * Resumes the indexing process. All changes from the previous indexed state      * will be indexed.      *       * @see #pause()      */

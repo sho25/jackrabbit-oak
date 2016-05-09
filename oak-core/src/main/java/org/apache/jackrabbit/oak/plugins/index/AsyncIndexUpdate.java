@@ -2037,6 +2037,15 @@ name|isPaused
 argument_list|()
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"[{}] Ignoring the run as indexing is paused"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|log
@@ -3895,9 +3904,26 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|abort
+name|abortAndPause
 parameter_list|()
 block|{
+comment|//First pause to avoid any race
+name|pause
+argument_list|()
+expr_stmt|;
+comment|//Set the forcedStop flag anyway. In resume this would be cleared
+name|forcedStopFlag
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|String
+name|msg
+init|=
+literal|""
+decl_stmt|;
 comment|//Abort if any indexing run is in progress
 if|if
 condition|(
@@ -3909,19 +3935,15 @@ operator|==
 literal|0
 condition|)
 block|{
-name|forcedStopFlag
-operator|.
-name|set
-argument_list|(
-literal|true
-argument_list|)
+name|msg
+operator|=
+literal|"Abort request placed for current run. "
 expr_stmt|;
-return|return
-literal|"Abort request placed"
-return|;
 block|}
 return|return
-literal|"No current running indexing found. Nothing to abort!"
+name|msg
+operator|+
+literal|"Indexing is paused now. Invoke 'resume' to resume indexing"
 return|;
 block|}
 annotation|@
@@ -3945,6 +3967,14 @@ operator|.
 name|isPaused
 operator|=
 literal|false
+expr_stmt|;
+comment|//Clear the forcedStop flag as fail safe
+name|forcedStopFlag
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
