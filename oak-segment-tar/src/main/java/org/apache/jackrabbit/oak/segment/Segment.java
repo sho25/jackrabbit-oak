@@ -155,6 +155,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|SegmentId
+operator|.
+name|isDataSegmentId
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|SegmentVersion
 operator|.
 name|isValid
@@ -270,6 +288,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
 import|;
 end_import
 
@@ -1339,6 +1367,7 @@ operator|&
 literal|0xffff
 return|;
 block|}
+comment|/**      * Determine the gc generation a segment from its data. Note that bulk segments don't have      * generations (i.e. stay at 0).      *      * @param data         the date of the segment      * @param segmentId    the id of the segment      * @return  the gc generation of this segment or 0 if this is bulk segment.      */
 specifier|public
 specifier|static
 name|int
@@ -1346,17 +1375,31 @@ name|getGcGen
 parameter_list|(
 name|ByteBuffer
 name|data
+parameter_list|,
+name|UUID
+name|segmentId
 parameter_list|)
 block|{
 return|return
+name|isDataSegmentId
+argument_list|(
+name|segmentId
+operator|.
+name|getLeastSignificantBits
+argument_list|()
+argument_list|)
+condition|?
 name|data
 operator|.
 name|getInt
 argument_list|(
 name|GC_GEN_OFFSET
 argument_list|)
+else|:
+literal|0
 return|;
 block|}
+comment|/**      * Determine the gc generation of this segment. Note that bulk segments don't have      * generations (i.e. stay at 0).      * @return  the gc generation of this segment or 0 if this is bulk segment.      */
 specifier|public
 name|int
 name|getGcGen
@@ -1366,6 +1409,11 @@ return|return
 name|getGcGen
 argument_list|(
 name|data
+argument_list|,
+name|id
+operator|.
+name|asUUID
+argument_list|()
 argument_list|)
 return|;
 block|}

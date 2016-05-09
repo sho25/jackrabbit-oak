@@ -551,16 +551,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -1286,12 +1276,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4353"
-argument_list|)
-comment|// FIXME OAK-4353: IndexOutOfBoundsException in FileStore.writeStream
 specifier|public
 name|void
 name|testStreamRecord

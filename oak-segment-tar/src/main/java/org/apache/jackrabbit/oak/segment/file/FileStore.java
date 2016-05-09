@@ -6431,6 +6431,11 @@ name|offset
 argument_list|,
 name|length
 argument_list|)
+argument_list|,
+name|id
+operator|.
+name|asUUID
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|long

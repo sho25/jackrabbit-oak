@@ -1217,6 +1217,8 @@ name|wrap
 argument_list|(
 name|data
 argument_list|)
+argument_list|,
+name|uuid
 argument_list|)
 decl_stmt|;
 name|writer
