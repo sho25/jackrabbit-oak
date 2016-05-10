@@ -263,7 +263,7 @@ argument_list|)
 expr_stmt|;
 name|expectSize
 argument_list|(
-literal|112
+literal|96
 argument_list|,
 name|builder
 argument_list|)
@@ -934,7 +934,7 @@ argument_list|)
 expr_stmt|;
 name|expectSize
 argument_list|(
-literal|384
+literal|368
 argument_list|,
 name|builder
 argument_list|)
