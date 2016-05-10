@@ -1155,10 +1155,12 @@ name|int
 name|writeNumber
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|File
 name|writeFile
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|TarWriter
 name|writer
 decl_stmt|;
