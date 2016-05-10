@@ -90,7 +90,7 @@ name|String
 name|getIntermediatePath
 parameter_list|()
 function_decl|;
-comment|/**      * Returns an iterable of the declared groups of this external identity.      * @return the declared groups      * @throws ExternalIdentityException if an error occurrs      */
+comment|/**      * Returns an iterable of the declared groups of this external identity.      * @return the declared groups      * @throws ExternalIdentityException if an error occurs      */
 annotation|@
 name|Nonnull
 name|Iterable

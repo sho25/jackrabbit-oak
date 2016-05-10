@@ -101,7 +101,7 @@ parameter_list|)
 throws|throws
 name|SyncException
 function_decl|;
-comment|/**      * Synchronizes an authorizable with the corresponding external identity with the repository based on the respective      * configuration.      *      * @param id the id of the authorizable      * @return the result of the operation      * @throws SyncException if an error occurrs      */
+comment|/**      * Synchronizes an authorizable with the corresponding external identity with the repository based on the respective      * configuration.      *      * @param id the id of the authorizable      * @return the result of the operation      * @throws SyncException if an error occurs      */
 annotation|@
 name|Nonnull
 name|SyncResult

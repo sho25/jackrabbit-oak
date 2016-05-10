@@ -44,7 +44,7 @@ name|ExternalGroup
 extends|extends
 name|ExternalIdentity
 block|{
-comment|/**      * Returns an iterable of the declared (direct) members of this external group.      * @return the declared member      * @throws ExternalIdentityException if an error occurrs      */
+comment|/**      * Returns an iterable of the declared (direct) members of this external group.      * @return the declared member      * @throws ExternalIdentityException if an error occurs      */
 annotation|@
 name|Nonnull
 name|Iterable
