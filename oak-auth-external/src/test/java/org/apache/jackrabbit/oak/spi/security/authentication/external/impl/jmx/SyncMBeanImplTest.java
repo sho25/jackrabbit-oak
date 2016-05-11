@@ -2705,11 +2705,6 @@ expr_stmt|;
 block|}
 comment|/**      * @see<a href="https://issues.apache.org/jira/browse/OAK-4360">OAK-4360</a>      */
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4360"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
