@@ -755,16 +755,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -5632,11 +5622,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see<a href="https://issues.apache.org/jira/browse/OAK-4362">OAK-4362</a>      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4362"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
