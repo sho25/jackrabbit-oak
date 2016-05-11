@@ -2709,7 +2709,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|boolean
+name|void
 name|maybeCompact
 parameter_list|(
 name|boolean
@@ -2824,9 +2824,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-literal|false
-return|;
 block|}
 name|Stopwatch
 name|watch
@@ -2835,11 +2832,6 @@ name|Stopwatch
 operator|.
 name|createStarted
 argument_list|()
-decl_stmt|;
-name|boolean
-name|compacted
-init|=
-literal|false
 decl_stmt|;
 name|int
 name|gainThreshold
@@ -2937,9 +2929,6 @@ argument_list|,
 name|GC_COUNT
 argument_list|)
 expr_stmt|;
-return|return
-literal|false
-return|;
 block|}
 name|long
 name|gain
@@ -3123,10 +3112,6 @@ name|cleanup
 argument_list|)
 expr_stmt|;
 block|}
-name|compacted
-operator|=
-literal|true
-expr_stmt|;
 block|}
 else|else
 block|{
@@ -3141,9 +3126,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-return|return
-name|compacted
-return|;
 block|}
 specifier|static
 name|Map
@@ -5008,9 +4990,8 @@ argument_list|,
 literal|20
 argument_list|)
 decl_stmt|;
-comment|// FIXME OAK-4280: Compaction cannot be cancelled
 comment|// FIXME OAK-4279: Rework offline compaction
-comment|// This way of compacting has not progress logging and cannot be cancelled
+comment|// This way of compacting has no progress logging
 specifier|final
 name|int
 name|gcGeneration
@@ -5121,6 +5102,15 @@ name|existing
 argument_list|)
 expr_stmt|;
 block|}
+name|Supplier
+argument_list|<
+name|Boolean
+argument_list|>
+name|cancel
+init|=
+name|newCancelCompactionCondition
+argument_list|()
+decl_stmt|;
 name|SegmentNodeState
 name|after
 init|=
@@ -5129,8 +5119,30 @@ argument_list|(
 name|writer
 argument_list|,
 name|before
+argument_list|,
+name|cancel
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|after
+operator|==
+literal|null
+condition|)
+block|{
+name|gcMonitor
+operator|.
+name|info
+argument_list|(
+literal|"TarMK GC #{}: compaction cancelled."
+argument_list|,
+name|GC_COUNT
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 name|gcMonitor
 operator|.
 name|info
@@ -5214,8 +5226,30 @@ argument_list|(
 name|writer
 argument_list|,
 name|head
+argument_list|,
+name|cancel
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|after
+operator|==
+literal|null
+condition|)
+block|{
+name|gcMonitor
+operator|.
+name|info
+argument_list|(
+literal|"TarMK GC #{}: compaction cancelled."
+argument_list|,
+name|GC_COUNT
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 name|gcMonitor
 operator|.
 name|info
@@ -5339,6 +5373,8 @@ operator|!
 name|forceCompact
 argument_list|(
 name|writer
+argument_list|,
+name|cancel
 argument_list|)
 condition|)
 block|{
@@ -5348,7 +5384,9 @@ name|warn
 argument_list|(
 literal|"TarMK GC #{}: compaction failed to force compact remaining commits. "
 operator|+
-literal|"Most likely compaction didn't get exclusive access to the store. Cleaning up."
+literal|"Most likely compaction didn't get exclusive access to the store or was "
+operator|+
+literal|"prematurely cancelled. Cleaning up."
 argument_list|,
 name|GC_COUNT
 argument_list|)
@@ -5476,6 +5514,12 @@ name|writer
 parameter_list|,
 name|NodeState
 name|node
+parameter_list|,
+name|Supplier
+argument_list|<
+name|Boolean
+argument_list|>
+name|cancel
 parameter_list|)
 throws|throws
 name|IOException
@@ -5488,13 +5532,23 @@ operator|.
 name|writeNode
 argument_list|(
 name|node
+argument_list|,
+name|cancel
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|compacted
+operator|!=
+literal|null
+condition|)
+block|{
 name|writer
 operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|compacted
 return|;
@@ -5505,6 +5559,12 @@ name|forceCompact
 parameter_list|(
 name|SegmentWriter
 name|writer
+parameter_list|,
+name|Supplier
+argument_list|<
+name|Boolean
+argument_list|>
+name|cancel
 parameter_list|)
 throws|throws
 name|InterruptedException
@@ -5539,19 +5599,49 @@ init|=
 name|getHead
 argument_list|()
 decl_stmt|;
-return|return
-name|setHead
-argument_list|(
-name|head
-argument_list|,
+name|SegmentNodeState
+name|after
+init|=
 name|compact
 argument_list|(
 name|writer
 argument_list|,
 name|head
+argument_list|,
+name|cancel
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|after
+operator|==
+literal|null
+condition|)
+block|{
+name|gcMonitor
+operator|.
+name|info
+argument_list|(
+literal|"TarMK GC #{}: compaction cancelled."
+argument_list|,
+name|GC_COUNT
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+else|else
+block|{
+return|return
+name|setHead
+argument_list|(
+name|head
+argument_list|,
+name|after
 argument_list|)
 return|;
+block|}
 block|}
 finally|finally
 block|{
@@ -7299,7 +7389,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|boolean
+name|void
 name|maybeCompact
 parameter_list|(
 name|boolean
