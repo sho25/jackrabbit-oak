@@ -1087,7 +1087,7 @@ name|this
 return|;
 block|}
 block|}
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|TestUser
@@ -1096,7 +1096,7 @@ name|TestIdentity
 implements|implements
 name|ExternalUser
 block|{
-specifier|private
+specifier|public
 name|TestUser
 parameter_list|(
 name|String
@@ -1128,7 +1128,7 @@ literal|""
 return|;
 block|}
 block|}
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|TestGroup
@@ -1137,7 +1137,7 @@ name|TestIdentity
 implements|implements
 name|ExternalGroup
 block|{
-specifier|private
+specifier|public
 name|TestGroup
 parameter_list|(
 annotation|@
