@@ -3415,11 +3415,6 @@ expr_stmt|;
 block|}
 comment|/**      * @see<a href="https://issues.apache.org/jira/browse/OAK-4346">OAK-4346</a>      */
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4346"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -3471,11 +3466,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see<a href="https://issues.apache.org/jira/browse/OAK-4346">OAK-4346</a>      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4346"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
@@ -3574,9 +3564,21 @@ operator|new
 name|String
 index|[]
 block|{
+operator|new
+name|ExternalIdentityRef
+argument_list|(
 name|TestIdentityProvider
 operator|.
 name|ID_EXCEPTION
+argument_list|,
+name|idp
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|.
+name|getString
+argument_list|()
 block|}
 argument_list|)
 decl_stmt|;
