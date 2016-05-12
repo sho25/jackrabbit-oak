@@ -145,6 +145,20 @@ name|concurrent
 operator|.
 name|atomic
 operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
 name|AtomicInteger
 import|;
 end_import
@@ -326,7 +340,6 @@ argument_list|,
 name|V
 argument_list|>
 block|{
-specifier|private
 specifier|static
 specifier|final
 name|Logger
@@ -341,17 +354,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|AtomicInteger
-name|NEXT_CACHE_ID
-init|=
-operator|new
-name|AtomicInteger
-argument_list|()
-decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|ThreadLocal
@@ -365,6 +367,16 @@ name|ThreadLocal
 argument_list|<
 name|Integer
 argument_list|>
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|AtomicInteger
+name|NEXT_CACHE_ID
+init|=
+operator|new
+name|AtomicInteger
 argument_list|()
 decl_stmt|;
 comment|/**      * Listener for items that are evicted from the cache. The listener      * is called for both, resident and non-resident items. In the      * latter case the passed value is {@code null}.      * @param<K>  type of the key      * @param<V>  type of the value      */
@@ -398,7 +410,6 @@ name|cause
 parameter_list|)
 function_decl|;
 block|}
-specifier|private
 specifier|final
 name|int
 name|cacheId
@@ -486,7 +497,7 @@ name|ConcurrentHashMap
 argument_list|<
 name|K
 argument_list|,
-name|Object
+name|AtomicBoolean
 argument_list|>
 name|loadingInProgress
 init|=
@@ -495,7 +506,7 @@ name|ConcurrentHashMap
 argument_list|<
 name|K
 argument_list|,
-name|Object
+name|AtomicBoolean
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -3466,7 +3477,7 @@ name|ConcurrentHashMap
 argument_list|<
 name|K
 argument_list|,
-name|Object
+name|AtomicBoolean
 argument_list|>
 name|loading
 init|=
@@ -3476,17 +3487,17 @@ name|loadingInProgress
 decl_stmt|;
 comment|// the object we have to wait for in case another thread loads
 comment|// this value
-name|Object
+name|AtomicBoolean
 name|alreadyLoading
 decl_stmt|;
 comment|// synchronized on this object, even before we put it in the
 comment|// cache, so that all other threads that get this object can
 comment|// synchronized and wait for it
-name|Object
+name|AtomicBoolean
 name|loadNow
 init|=
 operator|new
-name|Object
+name|AtomicBoolean
 argument_list|()
 decl_stmt|;
 comment|// we synchronize a bit early here, but that's fine (we don't
@@ -3544,12 +3555,22 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-comment|// notify other threads
+if|if
+condition|(
+name|loadNow
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+comment|// notify other threads, but only if
+comment|// they wait for this to be loaded
 name|loadNow
 operator|.
 name|notifyAll
 argument_list|()
 expr_stmt|;
+block|}
 name|CURRENTLY_LOADING
 operator|.
 name|remove
@@ -3564,8 +3585,15 @@ init|(
 name|alreadyLoading
 init|)
 block|{
+name|alreadyLoading
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 comment|// loading might have been finished, so check again
-name|Object
+name|AtomicBoolean
 name|alreadyLoading2
 init|=
 name|loading
