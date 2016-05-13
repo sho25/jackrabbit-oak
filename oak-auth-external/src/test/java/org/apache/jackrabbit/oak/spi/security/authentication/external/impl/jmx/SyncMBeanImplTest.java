@@ -3509,6 +3509,18 @@ name|groupLastSynced
 argument_list|)
 expr_stmt|;
 block|}
+while|while
+condition|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|<=
+name|lastSynced
+condition|)
+block|{
+comment|// wait for system time to move
+block|}
 comment|// default value for forceGroup sync is defined to be 'true' => verify result
 name|syncMBean
 operator|.
@@ -3553,6 +3565,14 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"lastSynced: "
+operator|+
+name|lastSynced
+operator|+
+literal|", lastSynced2: "
+operator|+
+name|lastSynced2
+argument_list|,
 name|lastSynced
 operator|<
 name|lastSynced2
