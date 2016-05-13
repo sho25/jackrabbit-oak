@@ -258,6 +258,7 @@ comment|/**  * Abstract base class for individual performance benchmarks.  */
 end_comment
 
 begin_class
+specifier|public
 specifier|abstract
 class|class
 name|AbstractTest
