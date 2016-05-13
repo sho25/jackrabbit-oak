@@ -856,7 +856,7 @@ name|List
 argument_list|<
 name|Value
 argument_list|>
-name|values
+name|vs
 init|=
 name|getValues
 argument_list|(
@@ -871,7 +871,7 @@ name|propertyState
 decl_stmt|;
 if|if
 condition|(
-name|values
+name|vs
 operator|.
 name|size
 argument_list|()
@@ -893,7 +893,7 @@ name|createProperty
 argument_list|(
 name|name
 argument_list|,
-name|values
+name|vs
 operator|.
 name|get
 argument_list|(
@@ -912,7 +912,7 @@ name|createProperty
 argument_list|(
 name|name
 argument_list|,
-name|values
+name|vs
 argument_list|)
 expr_stmt|;
 block|}
