@@ -1096,6 +1096,8 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 name|MapRecord
 name|writeMap
 parameter_list|(
@@ -1158,6 +1160,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|RecordId
 name|writeList
@@ -1209,6 +1213,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|RecordId
 name|writeString
@@ -1257,6 +1263,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 name|SegmentBlob
 name|writeBlob
 parameter_list|(
@@ -1309,6 +1317,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Writes a block record containing the given block of bytes.      *      * @param bytes source buffer      * @param offset offset within the source buffer      * @param length number of bytes to write      * @return block record identifier      */
+annotation|@
+name|Nonnull
 name|RecordId
 name|writeBlock
 parameter_list|(
@@ -1370,6 +1380,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Writes a stream value record. The given stream is consumed<em>and closed</em> by      * this method.      *      * @param stream stream to be written      * @return blob for the passed {@code stream}      * @throws IOException if the input stream could not be read or the output could not be written      */
+annotation|@
+name|Nonnull
 specifier|public
 name|SegmentBlob
 name|writeStream
@@ -1422,6 +1434,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 name|SegmentPropertyState
 name|writeProperty
 parameter_list|(
@@ -1617,7 +1631,7 @@ parameter_list|(
 name|SegmentWriteOperation
 operator|.
 name|CancelledWriteException
-name|e
+name|ignore
 parameter_list|)
 block|{
 return|return

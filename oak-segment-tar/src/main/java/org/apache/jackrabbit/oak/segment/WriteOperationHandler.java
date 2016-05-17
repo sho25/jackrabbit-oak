@@ -27,6 +27,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A {@code WriteOperationHandler} executes {@link WriteOperation WriteOperation}s and as  * such serves as a bridge between {@link SegmentWriter} and {@link SegmentBufferWriter}.  */
 end_comment
@@ -40,9 +50,13 @@ interface|interface
 name|WriteOperation
 block|{
 comment|/**          * Persist any changes represented by the {@code WriteOperation} to the          * passed {@code writer}.          * @param writer  writer which must be used to persist any changes          * @return        {@code RecordId} that resulted from persisting the changes.          * @throws IOException          */
+annotation|@
+name|Nonnull
 name|RecordId
 name|execute
 parameter_list|(
+annotation|@
+name|Nonnull
 name|SegmentBufferWriter
 name|writer
 parameter_list|)
@@ -51,9 +65,13 @@ name|IOException
 function_decl|;
 block|}
 comment|/**      * Execute the passed {@code writeOperation} by passing it a {@link SegmentBufferWriter}.      * @param writeOperation  {@link WriteOperation} to execute      * @return                {@code RecordId} that resulted from persisting the changes.      * @throws IOException      */
+annotation|@
+name|Nonnull
 name|RecordId
 name|execute
 parameter_list|(
+annotation|@
+name|Nonnull
 name|WriteOperation
 name|writeOperation
 parameter_list|)
