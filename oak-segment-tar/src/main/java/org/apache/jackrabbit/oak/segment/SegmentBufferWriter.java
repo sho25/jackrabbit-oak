@@ -588,7 +588,7 @@ return|return
 name|generation
 return|;
 block|}
-comment|/**      * Allocate a new segment and write the segment meta data.      * The segment meta data is a string of the format {@code "{wid=W,sno=S,gc=G,t=T}"}      * where:      *<ul>      *<li>{@code W} is the writer id {@code wid},</li>      *<li>{@code S} is a unique, increasing sequence number corresponding to the allocation order      * of the segments in this store,</li>      *<li>{@code G} is the garbage collection generation (i.e. the number of compaction cycles      * that have been run),</li>      *<li>{@code T} is a time stamp according to {@link System#currentTimeMillis()}.</li>      *</ul>      * The segment meta data is guaranteed to be the first string record in a segment.      */
+comment|/**      * Allocate a new segment and write the segment meta data.      * The segment meta data is a string of the format {@code "{wid=W,sno=S,t=T}"}      * where:      *<ul>      *<li>{@code W} is the writer id {@code wid},</li>      *<li>{@code S} is a unique, increasing sequence number corresponding to the allocation order      * of the segments in this store,</li>      *<li>{@code T} is a time stamp according to {@link System#currentTimeMillis()}.</li>      *</ul>      * The segment meta data is guaranteed to be the first string record in a segment.      */
 specifier|private
 name|void
 name|newSegment
