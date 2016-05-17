@@ -423,11 +423,6 @@ operator|new
 name|AtomicInteger
 argument_list|()
 decl_stmt|;
-specifier|private
-specifier|final
-name|SegmentVersion
-name|segmentVersion
-decl_stmt|;
 specifier|public
 name|SegmentTracker
 parameter_list|(
@@ -450,12 +445,6 @@ argument_list|(
 name|version
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|segmentVersion
-operator|=
-name|version
 expr_stmt|;
 for|for
 control|(
@@ -771,15 +760,6 @@ parameter_list|()
 block|{
 return|return
 name|store
-return|;
-block|}
-specifier|public
-name|SegmentVersion
-name|getSegmentVersion
-parameter_list|()
-block|{
-return|return
-name|segmentVersion
 return|;
 block|}
 comment|/**      * Clear the caches      */
