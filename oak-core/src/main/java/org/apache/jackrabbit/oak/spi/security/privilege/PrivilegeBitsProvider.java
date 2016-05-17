@@ -631,9 +631,9 @@ name|Privilege
 index|[]
 name|privileges
 parameter_list|,
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|NameMapper
 name|nameMapper
 parameter_list|)

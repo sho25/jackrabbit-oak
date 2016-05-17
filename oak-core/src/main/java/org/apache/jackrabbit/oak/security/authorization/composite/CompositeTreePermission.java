@@ -812,15 +812,15 @@ specifier|public
 name|TreePermission
 name|getChildPermission
 parameter_list|(
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|String
 name|childName
 parameter_list|,
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|NodeState
 name|childState
 parameter_list|)

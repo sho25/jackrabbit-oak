@@ -596,8 +596,8 @@ return|;
 block|}
 comment|//--------------------------------------------------------------------------
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 class|class
 name|Status
 block|{

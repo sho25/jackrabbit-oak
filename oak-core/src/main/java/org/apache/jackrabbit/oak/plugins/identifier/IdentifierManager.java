@@ -1517,10 +1517,7 @@ name|getType
 argument_list|()
 operator|==
 name|type
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|uuid
 operator|.
 name|equals
@@ -1549,7 +1546,6 @@ name|getName
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 return|return
@@ -1649,9 +1645,9 @@ name|Nonnull
 name|Tree
 name|tree
 parameter_list|,
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|String
 name|propertyName
 parameter_list|,
