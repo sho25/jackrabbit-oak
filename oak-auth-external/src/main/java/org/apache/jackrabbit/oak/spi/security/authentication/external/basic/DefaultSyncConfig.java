@@ -440,6 +440,10 @@ specifier|private
 name|long
 name|membershipNestingDepth
 decl_stmt|;
+specifier|private
+name|boolean
+name|dynamicMembership
+decl_stmt|;
 comment|/**          * Returns the duration in milliseconds until the group membership of a user is expired. If the          * membership information is expired it is re-synced according to the maximum nesting depth.          * Note that the membership is the groups an authorizable is member of, not the list of members of a group.          * Also note, that the group membership expiration time can be higher than the user expiration time itself and          * that value has no effect when syncing individual groups only when syncing a users membership ancestry.          *          * @return the expiration time in milliseconds.          */
 specifier|public
 name|long
@@ -497,6 +501,39 @@ operator|.
 name|membershipNestingDepth
 operator|=
 name|membershipNestingDepth
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Returns {@code true} if a dynamic group membership is enabled.          *          * Turning this option on may alter the behavior of other configuration          * options dealing with synchronization of group accounts and group membership.          * In particular it's an implementation detail if external groups may          * no longer be synchronized into the repository.          *          * @return {@code true} if dynamic group membership for external          * user identities is turn on; {@code false} otherwise.          */
+annotation|@
+name|Nonnull
+specifier|public
+name|boolean
+name|getDynamicMembership
+parameter_list|()
+block|{
+return|return
+name|dynamicMembership
+return|;
+block|}
+comment|/**          * Enable or disable the dynamic group membership. If turned external          * identities and their group membership will be synchronized such that the          * membership information is generated dynamically. External groups may          * or may not be synchronized into the repository if this option is turned          * on.          *          * @param dynamicMembership Boolean flag to enable or disable a dedicated          *                      dynamic group management.          * @return {@code this}          * @see #getDynamicMembership() for details.          */
+annotation|@
+name|Nonnull
+specifier|public
+name|User
+name|setDynamicMembership
+parameter_list|(
+name|boolean
+name|dynamicMembership
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dynamicMembership
+operator|=
+name|dynamicMembership
 expr_stmt|;
 return|return
 name|this

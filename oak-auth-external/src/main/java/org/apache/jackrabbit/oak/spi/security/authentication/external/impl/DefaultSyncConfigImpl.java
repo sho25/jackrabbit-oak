@@ -420,6 +420,41 @@ name|PARAM_USER_MEMBERSHIP_NESTING_DEPTH
 init|=
 literal|"user.membershipNestingDepth"
 decl_stmt|;
+comment|/**      * @see DefaultSyncConfig.User#getDynamicMembership()      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_USER_DYNAMIC_MEMBERSHIP_DEFAULT
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * Configuration option to enable dynamic group membership. If enabled the      * implementation will no longer synchronized group accounts into the repository      * but instead will enable a dedicated principal management: This results in      * external users having their complete principal set as defined external IDP      * synchronized to the repository asserting proper population of the      * {@link javax.security.auth.Subject} upon login. Please note that the external      * groups are reflected through the built-in principal management and thus can      * be retrieved for authorization purposes. However, the information is no      * longer reflected through the Jackrabbit user management API.      *      * @see DefaultSyncConfig.User#getDynamicMembership()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"User Dynamic Membership"
+argument_list|,
+name|description
+operator|=
+literal|"If enabled membership of external identities (user) is no longer fully reflected "
+operator|+
+literal|"within the repositories user management."
+argument_list|,
+name|boolValue
+operator|=
+name|PARAM_USER_DYNAMIC_MEMBERSHIP_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_USER_DYNAMIC_MEMBERSHIP
+init|=
+literal|"user.dynamicMembership"
+decl_stmt|;
 comment|/**      * @see DefaultSyncConfig.Group#getExpirationTime()      */
 specifier|public
 specifier|static
@@ -671,6 +706,18 @@ argument_list|(
 name|PARAM_USER_MEMBERSHIP_NESTING_DEPTH
 argument_list|,
 name|PARAM_USER_MEMBERSHIP_NESTING_DEPTH_DEFAULT
+argument_list|)
+argument_list|)
+operator|.
+name|setDynamicMembership
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_USER_DYNAMIC_MEMBERSHIP
+argument_list|,
+name|PARAM_USER_DYNAMIC_MEMBERSHIP_DEFAULT
 argument_list|)
 argument_list|)
 operator|.
