@@ -4946,6 +4946,8 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// This is a segment node state from an old generation. Check whether
+comment|// an equivalent one of the current generation is in the cache
 name|RecordId
 name|cachedId
 init|=
@@ -4979,6 +4981,8 @@ block|}
 block|}
 else|else
 block|{
+comment|// This segment node state is already in this store,
+comment|// no need to write it again,
 return|return
 name|sns
 operator|.
@@ -5005,6 +5009,9 @@ operator|instanceof
 name|SegmentNodeState
 condition|)
 block|{
+comment|// This node state has been rewritten because it is from an older
+comment|// generation (e.g. due to compaction). Put it into the cache for
+comment|// deduplication of hard links to it (e.g. checkpoints).
 name|SegmentNodeState
 name|sns
 init|=
