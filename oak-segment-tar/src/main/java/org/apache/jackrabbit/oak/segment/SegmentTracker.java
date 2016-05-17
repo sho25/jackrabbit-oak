@@ -941,7 +941,7 @@ comment|// Improve retrieving current GC generation. (OAK-4102)
 comment|// See also the comments in FileStore regarding initialisation and cyclic dependencies.
 specifier|public
 name|int
-name|getGcGen
+name|getGcGeneration
 parameter_list|()
 block|{
 if|if
@@ -959,7 +959,7 @@ operator|)
 name|store
 operator|)
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 return|;
 block|}

@@ -219,7 +219,7 @@ name|segment
 operator|.
 name|Segment
 operator|.
-name|getGcGen
+name|getGcGeneration
 import|;
 end_import
 
@@ -1211,7 +1211,7 @@ decl_stmt|;
 name|int
 name|generation
 init|=
-name|getGcGen
+name|getGcGeneration
 argument_list|(
 name|wrap
 argument_list|(

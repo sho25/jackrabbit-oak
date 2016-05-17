@@ -554,7 +554,7 @@ operator|.
 name|getTracker
 argument_list|()
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1078,11 +1078,11 @@ name|RECORD_ALIGN_BITS
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4287: Disable / remove SegmentBufferWriter#checkGCGen
+comment|// FIXME OAK-4287: Disable / remove SegmentBufferWriter#checkGCGeneration
 comment|// Disable/remove this in production
 specifier|private
 name|void
-name|checkGCGen
+name|checkGCGeneration
 parameter_list|(
 name|SegmentId
 name|id
@@ -1108,7 +1108,7 @@ operator|.
 name|getSegment
 argument_list|()
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 operator|<
 name|generation
@@ -1227,7 +1227,7 @@ name|SegmentId
 name|segmentId
 parameter_list|)
 block|{
-name|checkGCGen
+name|checkGCGeneration
 argument_list|(
 name|segmentId
 argument_list|)

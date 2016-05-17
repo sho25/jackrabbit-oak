@@ -3603,7 +3603,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|isOldGen
+name|isOldGeneration
 argument_list|(
 name|segmentBlob
 operator|.
@@ -3861,7 +3861,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|isOldGen
+name|isOldGeneration
 argument_list|(
 name|id
 argument_list|)
@@ -4992,7 +4992,7 @@ comment|// This is a segment node state from an old generation. Check whether
 comment|// an equivalent one of the current generation is in the cache
 if|if
 condition|(
-name|isOldGen
+name|isOldGeneration
 argument_list|(
 name|sns
 operator|.
@@ -5164,7 +5164,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|isOldGen
+name|isOldGeneration
 argument_list|(
 name|sns
 operator|.
@@ -5469,7 +5469,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|isOldGen
+name|isOldGeneration
 argument_list|(
 name|pid
 argument_list|)
@@ -5789,7 +5789,7 @@ return|;
 block|}
 specifier|private
 name|boolean
-name|isOldGen
+name|isOldGeneration
 parameter_list|(
 name|RecordId
 name|id
@@ -5803,7 +5803,7 @@ operator|.
 name|getSegment
 argument_list|()
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 decl_stmt|;
 name|int

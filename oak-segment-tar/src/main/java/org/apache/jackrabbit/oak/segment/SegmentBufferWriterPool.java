@@ -403,7 +403,7 @@ operator|.
 name|getTracker
 argument_list|()
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 condition|)
 block|{

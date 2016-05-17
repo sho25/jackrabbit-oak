@@ -1371,7 +1371,7 @@ comment|/**      * Determine the gc generation a segment from its data. Note tha
 specifier|public
 specifier|static
 name|int
-name|getGcGen
+name|getGcGeneration
 parameter_list|(
 name|ByteBuffer
 name|data
@@ -1402,11 +1402,11 @@ block|}
 comment|/**      * Determine the gc generation of this segment. Note that bulk segments don't have      * generations (i.e. stay at 0).      * @return  the gc generation of this segment or 0 if this is bulk segment.      */
 specifier|public
 name|int
-name|getGcGen
+name|getGcGeneration
 parameter_list|()
 block|{
 return|return
-name|getGcGen
+name|getGcGeneration
 argument_list|(
 name|data
 argument_list|,
@@ -3553,7 +3553,7 @@ literal|"Info: %s, Generation: %d%n"
 argument_list|,
 name|segmentInfo
 argument_list|,
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;

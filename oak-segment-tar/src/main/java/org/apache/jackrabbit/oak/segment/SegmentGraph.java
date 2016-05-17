@@ -2782,7 +2782,7 @@ name|valueOf
 argument_list|(
 name|segment
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 argument_list|)
 argument_list|)

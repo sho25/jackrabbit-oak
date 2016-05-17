@@ -2663,7 +2663,7 @@ comment|// We cannot determine the current GC generation before the FileStore is
 comment|// initialised so just return 0 for now.
 specifier|public
 name|int
-name|getGcGen
+name|getGcGeneration
 parameter_list|()
 block|{
 if|if
@@ -2704,7 +2704,7 @@ operator|.
 name|getSegment
 argument_list|()
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 return|;
 block|}
@@ -4173,7 +4173,7 @@ specifier|final
 name|int
 name|reclaimGeneration
 init|=
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 operator|-
 name|gcOptions
@@ -4775,7 +4775,7 @@ block|}
 name|int
 name|minGeneration
 init|=
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 operator|-
 name|gcOptions
@@ -4998,7 +4998,7 @@ name|gcGeneration
 init|=
 name|tracker
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|()
 operator|+
 literal|1
@@ -6509,7 +6509,7 @@ name|generation
 init|=
 name|Segment
 operator|.
-name|getGcGen
+name|getGcGeneration
 argument_list|(
 name|wrap
 argument_list|(
