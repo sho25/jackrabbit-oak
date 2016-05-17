@@ -3486,6 +3486,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**          * @param   blob          * @return  {@code true} iff {@code blob} is a {@code SegmentBlob}          *          and this store's tracker has its segment.          */
 specifier|private
 name|boolean
 name|hasSegment
@@ -5697,6 +5698,7 @@ name|writer
 argument_list|)
 return|;
 block|}
+comment|/**          * @param   node          * @return  {@code true} iff this store's tracker has the segment of {@code node}.          */
 specifier|private
 name|boolean
 name|hasSegment
@@ -5721,6 +5723,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**          * @param property          * @return  {@code true} iff {@code property} is a {@code SegmentPropertyState}          *          and this store's tracker has its segment.          */
 specifier|private
 name|boolean
 name|hasSegment
