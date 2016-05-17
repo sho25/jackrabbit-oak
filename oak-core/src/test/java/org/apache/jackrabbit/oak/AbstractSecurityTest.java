@@ -529,7 +529,7 @@ name|plugins
 operator|.
 name|version
 operator|.
-name|VersionEditorProvider
+name|VersionHook
 import|;
 end_import
 
@@ -813,12 +813,8 @@ operator|.
 name|with
 argument_list|(
 operator|new
-name|EditorHook
-argument_list|(
-operator|new
-name|VersionEditorProvider
+name|VersionHook
 argument_list|()
-argument_list|)
 argument_list|)
 operator|.
 name|with

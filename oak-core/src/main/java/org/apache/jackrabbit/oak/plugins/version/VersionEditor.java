@@ -1043,21 +1043,13 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// this is not 100% correct, because t.getPath() will
-comment|// not return the correct path for node after, but is
-comment|// sufficient to check if it is versionable
 name|isVersionable
 operator|=
 name|vMgr
 operator|.
 name|isVersionable
 argument_list|(
-name|TreeFactory
-operator|.
-name|createReadOnlyTree
-argument_list|(
 name|after
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

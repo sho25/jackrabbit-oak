@@ -487,7 +487,7 @@ name|plugins
 operator|.
 name|version
 operator|.
-name|VersionEditorProvider
+name|VersionHook
 import|;
 end_import
 
@@ -574,24 +574,6 @@ operator|.
 name|commit
 operator|.
 name|Editor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|EditorHook
 import|;
 end_import
 
@@ -945,12 +927,8 @@ expr_stmt|;
 name|with
 argument_list|(
 operator|new
-name|EditorHook
-argument_list|(
-operator|new
-name|VersionEditorProvider
+name|VersionHook
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|with
