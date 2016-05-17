@@ -255,14 +255,6 @@ decl_stmt|;
 comment|// FIXME OAK-4277: Finalise de-duplication caches
 comment|// make this configurable
 specifier|private
-specifier|static
-specifier|final
-name|int
-name|RETENTION_THRESHOLD
-init|=
-literal|1
-decl_stmt|;
-specifier|private
 specifier|final
 name|ConcurrentMap
 argument_list|<
