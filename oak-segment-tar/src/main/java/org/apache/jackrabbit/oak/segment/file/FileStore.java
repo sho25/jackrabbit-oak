@@ -5090,6 +5090,8 @@ operator|>
 literal|1
 condition|)
 block|{
+comment|// FIXME OAK-4371: Overly zealous warning about checkpoints on compaction
+comment|// Make the number of checkpoints configurable above which the warning should be issued?
 name|gcMonitor
 operator|.
 name|warn
