@@ -953,8 +953,8 @@ return|;
 block|}
 comment|/**      * Implementation of the {@code PrincipalProvider} interface that never      * returns any principals.      */
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 class|class
 name|EmptyPrincipalProvider
 implements|implements

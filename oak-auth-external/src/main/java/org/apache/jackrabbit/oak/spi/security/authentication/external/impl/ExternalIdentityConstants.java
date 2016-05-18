@@ -69,30 +69,6 @@ name|external
 operator|.
 name|basic
 operator|.
-name|DefaultSyncConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authentication
-operator|.
-name|external
-operator|.
-name|basic
-operator|.
 name|DefaultSyncContext
 import|;
 end_import
@@ -122,7 +98,7 @@ name|DefaultSyncContext
 operator|.
 name|REP_LAST_SYNCED
 decl_stmt|;
-comment|/**      * Name of the property storing the principal names of the external groups      * a given external identity (user) is member. Not that the set depends on      * the configured nesting {@link DefaultSyncConfig.User#getMembershipNestingDepth() depth}.      * The existence of this property is optional and will only be created if      * {@link DefaultSyncConfig.User#getDynamicMembership()} is turned on.      *      * This property is of type {@link org.apache.jackrabbit.oak.api.Type#STRINGS}.      * Please note, that for security reasons is system maintained and protected      * on the Oak level and cannot be manipulated by regular {@code ContentSession}      * objects irrespective of the effective permissions.      */
+comment|/**      * Name of the property storing the principal names of the external groups      * a given external identity (user) is member. Not that the set depends on      * the configured nesting      * {@link org.apache.jackrabbit.oak.spi.security.authentication.external.basic.DefaultSyncConfig.User#getMembershipNestingDepth() depth}.      * The existence of this property is optional and will only be created if      * {@link org.apache.jackrabbit.oak.spi.security.authentication.external.basic.DefaultSyncConfig.User#getDynamicMembership()} is turned on.      *      * This property is of type {@link org.apache.jackrabbit.oak.api.Type#STRINGS}.      * Please note, that for security reasons is system maintained and protected      * on the Oak level and cannot be manipulated by regular {@code ContentSession}      * objects irrespective of the effective permissions.      */
 name|String
 name|REP_EXTERNAL_PRINCIPAL_NAMES
 init|=
