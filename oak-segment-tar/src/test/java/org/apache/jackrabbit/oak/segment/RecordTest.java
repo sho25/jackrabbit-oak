@@ -217,6 +217,24 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentVersion
+operator|.
+name|LATEST_VERSION
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -3283,6 +3301,19 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+name|SegmentBufferWriter
+name|bufferWriter
+init|=
+operator|new
+name|SegmentBufferWriter
+argument_list|(
+name|store
+argument_list|,
+name|LATEST_VERSION
+argument_list|,
+literal|"test"
+argument_list|)
+decl_stmt|;
 name|NodeState
 name|state
 init|=
@@ -3294,6 +3325,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+name|bufferWriter
 argument_list|,
 name|Suppliers
 operator|.
