@@ -684,6 +684,20 @@ name|pathPattern
 operator|+=
 literal|"%"
 expr_stmt|;
+if|if
+condition|(
+name|currentSelector
+operator|.
+name|isDescendant
+condition|)
+block|{
+comment|// the query started with "//", and now "//" was read
+name|nextSelector
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 name|currentSelector
 operator|.
 name|isDescendant
@@ -712,6 +726,20 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|currentSelector
+operator|.
+name|isDescendant
+condition|)
+block|{
+comment|// the query started with "//", and now "/" was read
+name|nextSelector
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 name|currentSelector
 operator|.
 name|isChild
