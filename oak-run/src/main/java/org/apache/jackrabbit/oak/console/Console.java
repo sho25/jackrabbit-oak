@@ -18,12 +18,14 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|Closeable
+name|Arrays
+operator|.
+name|asList
 import|;
 end_import
 
@@ -341,18 +343,6 @@ name|IO
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-operator|.
-name|asList
-import|;
-end_import
-
 begin_comment
 comment|/**  * A command line console.  */
 end_comment
@@ -468,6 +458,18 @@ operator|.
 name|defaultsTo
 argument_list|(
 literal|""
+argument_list|)
+decl_stmt|;
+name|OptionSpec
+name|segmentTar
+init|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"segment-tar"
+argument_list|,
+literal|"Use the new segment store implementation"
 argument_list|)
 decl_stmt|;
 name|OptionSpec
@@ -959,6 +961,40 @@ name|store
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|options
+operator|.
+name|has
+argument_list|(
+name|segmentTar
+argument_list|)
+condition|)
+block|{
+name|fixture
+operator|=
+name|SegmentTarFixture
+operator|.
+name|create
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|nonOptions
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+argument_list|,
+name|readOnly
+argument_list|,
+name|blobStore
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 name|FileStore
@@ -1191,18 +1227,6 @@ argument_list|(
 name|code
 argument_list|)
 expr_stmt|;
-block|}
-specifier|private
-specifier|static
-interface|interface
-name|NodeStoreFixture
-extends|extends
-name|Closeable
-block|{
-name|NodeStore
-name|getStore
-parameter_list|()
-function_decl|;
 block|}
 specifier|private
 specifier|static
