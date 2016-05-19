@@ -282,7 +282,6 @@ comment|/**  * OFFLINE utility to delete the clusterId stored as hidden  * prope
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|ResetClusterIdCommand
 implements|implements
