@@ -225,6 +225,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|super
+operator|.
+name|beforeSuite
+argument_list|()
+expr_stmt|;
 name|bean
 operator|=
 operator|new
