@@ -469,7 +469,7 @@ name|accepts
 argument_list|(
 literal|"segment-tar"
 argument_list|,
-literal|"Use the new segment store implementation"
+literal|"Use oak-segment-tar instead of oak-segment"
 argument_list|)
 decl_stmt|;
 name|OptionSpec
