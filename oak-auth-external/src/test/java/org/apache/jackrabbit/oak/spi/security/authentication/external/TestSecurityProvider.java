@@ -163,6 +163,11 @@ annotation|@
 name|Nonnull
 name|ConfigurationParameters
 name|configuration
+parameter_list|,
+annotation|@
+name|Nonnull
+name|ExternalPrincipalConfiguration
+name|externalPrincipalConfiguration
 parameter_list|)
 block|{
 name|super
@@ -216,13 +221,7 @@ argument_list|)
 decl_stmt|;
 name|bindPrincipalConfiguration
 argument_list|(
-operator|(
-operator|new
-name|ExternalPrincipalConfiguration
-argument_list|(
-name|this
-argument_list|)
-operator|)
+name|externalPrincipalConfiguration
 argument_list|)
 expr_stmt|;
 name|bindPrincipalConfiguration

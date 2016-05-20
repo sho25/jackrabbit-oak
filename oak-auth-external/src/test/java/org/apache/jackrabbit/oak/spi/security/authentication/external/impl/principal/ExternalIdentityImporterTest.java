@@ -422,6 +422,10 @@ name|TestSecurityProvider
 argument_list|(
 name|getConfigurationParameters
 argument_list|()
+argument_list|,
+operator|new
+name|ExternalPrincipalConfiguration
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Jcr
