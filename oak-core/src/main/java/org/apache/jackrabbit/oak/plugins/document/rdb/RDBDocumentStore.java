@@ -10224,6 +10224,8 @@ argument_list|()
 argument_list|,
 name|modified
 argument_list|,
+name|modifiedIsConditional
+argument_list|,
 name|hasBinary
 argument_list|,
 name|deletedOnce

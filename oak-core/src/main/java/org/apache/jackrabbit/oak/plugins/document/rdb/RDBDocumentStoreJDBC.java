@@ -5130,6 +5130,9 @@ parameter_list|,
 name|Long
 name|modified
 parameter_list|,
+name|boolean
+name|setModifiedConditionally
+parameter_list|,
 name|Boolean
 name|hasBinary
 parameter_list|,
@@ -5151,9 +5154,17 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|String
+name|StringBuilder
 name|t
 init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+name|t
+operator|.
+name|append
+argument_list|(
 literal|"update "
 operator|+
 name|tmd
@@ -5161,8 +5172,27 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|" set MODIFIED = ?, HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, BDATA = ? where ID = ?"
-decl_stmt|;
+literal|" set "
+argument_list|)
+expr_stmt|;
+name|t
+operator|.
+name|append
+argument_list|(
+name|setModifiedConditionally
+condition|?
+literal|"MODIFIED = case when ?> MODIFIED then ? else MODIFIED end, "
+else|:
+literal|"MODIFIED = ?, "
+argument_list|)
+expr_stmt|;
+name|t
+operator|.
+name|append
+argument_list|(
+literal|"HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, BDATA = ? where ID = ?"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|oldmodcount
@@ -5171,8 +5201,11 @@ literal|null
 condition|)
 block|{
 name|t
-operator|+=
+operator|.
+name|append
+argument_list|(
 literal|" and MODCOUNT = ?"
+argument_list|)
 expr_stmt|;
 block|}
 name|PreparedStatement
@@ -5183,6 +5216,9 @@ operator|.
 name|prepareStatement
 argument_list|(
 name|t
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try
@@ -5206,6 +5242,26 @@ operator|.
 name|BIGINT
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|setModifiedConditionally
+condition|)
+block|{
+name|stmt
+operator|.
+name|setObject
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|modified
+argument_list|,
+name|Types
+operator|.
+name|BIGINT
+argument_list|)
+expr_stmt|;
+block|}
 name|stmt
 operator|.
 name|setObject
