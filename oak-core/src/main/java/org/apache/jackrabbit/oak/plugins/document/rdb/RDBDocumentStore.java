@@ -10486,6 +10486,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|NOAPPEND
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
 name|batched
 condition|)
 block|{
@@ -10942,6 +10951,20 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBDocumentStore.NOGZIP"
+argument_list|)
+decl_stmt|;
+comment|// Whether to use append operations (string concatenation) in the DATA column
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|NOAPPEND
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBDocumentStore.NOAPPEND"
 argument_list|)
 decl_stmt|;
 comment|// Number of documents to insert at once for batch create
