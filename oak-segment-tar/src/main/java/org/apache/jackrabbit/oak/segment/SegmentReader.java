@@ -66,11 +66,6 @@ name|readMap
 parameter_list|(
 annotation|@
 name|Nonnull
-name|SegmentStore
-name|store
-parameter_list|,
-annotation|@
-name|Nonnull
 name|RecordId
 name|id
 parameter_list|)
@@ -80,11 +75,6 @@ name|Nonnull
 name|Template
 name|readTemplate
 parameter_list|(
-annotation|@
-name|Nonnull
-name|SegmentStore
-name|store
-parameter_list|,
 annotation|@
 name|Nonnull
 name|RecordId

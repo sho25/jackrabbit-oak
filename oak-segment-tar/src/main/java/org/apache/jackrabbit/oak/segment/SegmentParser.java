@@ -1299,8 +1299,6 @@ argument_list|()
 operator|.
 name|readTemplate
 argument_list|(
-name|store
-argument_list|,
 name|templateId
 argument_list|)
 decl_stmt|;
@@ -1337,8 +1335,6 @@ argument_list|()
 operator|.
 name|readMap
 argument_list|(
-name|store
-argument_list|,
 name|childMapId
 argument_list|)
 decl_stmt|;

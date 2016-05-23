@@ -439,7 +439,9 @@ name|segmentReader
 init|=
 operator|new
 name|SegmentReaderImpl
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final

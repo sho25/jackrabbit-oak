@@ -976,8 +976,6 @@ argument_list|()
 operator|.
 name|readMap
 argument_list|(
-name|store
-argument_list|,
 name|childNodesId
 argument_list|)
 return|;

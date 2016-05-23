@@ -1961,6 +1961,8 @@ operator|=
 operator|new
 name|SegmentReaderImpl
 argument_list|(
+name|this
+argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
@@ -1982,6 +1984,8 @@ operator|=
 operator|new
 name|SegmentReaderImpl
 argument_list|(
+name|this
+argument_list|,
 name|builder
 operator|.
 name|cacheSize
@@ -1996,7 +2000,9 @@ name|segmentReader
 operator|=
 operator|new
 name|SegmentReaderImpl
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 name|this

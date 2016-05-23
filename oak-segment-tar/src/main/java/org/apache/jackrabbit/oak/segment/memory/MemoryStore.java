@@ -400,6 +400,8 @@ init|=
 operator|new
 name|SegmentReaderImpl
 argument_list|(
+name|this
+argument_list|,
 literal|16
 argument_list|)
 decl_stmt|;

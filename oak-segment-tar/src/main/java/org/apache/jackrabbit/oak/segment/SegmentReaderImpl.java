@@ -19,6 +19,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|lang
@@ -106,7 +122,16 @@ name|STRING_CACHE_MB
 init|=
 literal|"oak.segment.stringCacheMB"
 decl_stmt|;
+annotation|@
+name|Nonnull
+specifier|private
+specifier|final
+name|SegmentStore
+name|store
+decl_stmt|;
 comment|/**      * Cache for string records      */
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|StringCache
@@ -115,10 +140,24 @@ decl_stmt|;
 specifier|public
 name|SegmentReaderImpl
 parameter_list|(
+annotation|@
+name|Nonnull
+name|SegmentStore
+name|store
+parameter_list|,
 name|long
 name|stringCacheMB
 parameter_list|)
 block|{
+name|this
+operator|.
+name|store
+operator|=
+name|checkNotNull
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
 name|stringCache
 operator|=
 operator|new
@@ -139,10 +178,17 @@ expr_stmt|;
 block|}
 specifier|public
 name|SegmentReaderImpl
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nonnull
+name|SegmentStore
+name|store
+parameter_list|)
 block|{
 name|this
 argument_list|(
+name|store
+argument_list|,
 name|DEFAULT_STRING_CACHE_MB
 argument_list|)
 expr_stmt|;
@@ -247,11 +293,6 @@ name|readMap
 parameter_list|(
 annotation|@
 name|Nonnull
-name|SegmentStore
-name|store
-parameter_list|,
-annotation|@
-name|Nonnull
 name|RecordId
 name|id
 parameter_list|)
@@ -274,11 +315,6 @@ specifier|public
 name|Template
 name|readTemplate
 parameter_list|(
-annotation|@
-name|Nonnull
-name|SegmentStore
-name|store
-parameter_list|,
 annotation|@
 name|Nonnull
 name|RecordId

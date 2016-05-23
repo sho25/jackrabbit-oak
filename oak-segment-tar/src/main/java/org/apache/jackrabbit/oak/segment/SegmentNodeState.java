@@ -611,8 +611,6 @@ argument_list|()
 operator|.
 name|readTemplate
 argument_list|(
-name|store
-argument_list|,
 name|getTemplateId
 argument_list|()
 argument_list|)
@@ -640,8 +638,6 @@ argument_list|()
 operator|.
 name|readMap
 argument_list|(
-name|store
-argument_list|,
 name|segment
 operator|.
 name|readRecordId
