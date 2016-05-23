@@ -547,8 +547,6 @@ name|SegmentWriter
 argument_list|(
 name|store
 argument_list|,
-name|LATEST_VERSION
-argument_list|,
 operator|new
 name|SegmentBufferWriter
 argument_list|(
@@ -568,8 +566,6 @@ name|SegmentWriter
 argument_list|(
 name|store
 argument_list|,
-name|LATEST_VERSION
-argument_list|,
 operator|new
 name|SegmentBufferWriter
 argument_list|(
@@ -588,8 +584,6 @@ operator|new
 name|SegmentWriter
 argument_list|(
 name|store
-argument_list|,
-name|LATEST_VERSION
 argument_list|,
 operator|new
 name|SegmentBufferWriter

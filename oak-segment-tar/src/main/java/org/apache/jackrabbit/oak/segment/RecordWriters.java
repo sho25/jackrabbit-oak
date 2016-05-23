@@ -776,9 +776,6 @@ name|childNameId
 parameter_list|,
 name|RecordId
 name|propNamesId
-parameter_list|,
-name|SegmentVersion
-name|version
 parameter_list|)
 block|{
 return|return
@@ -800,8 +797,6 @@ argument_list|,
 name|childNameId
 argument_list|,
 name|propNamesId
-argument_list|,
-name|version
 argument_list|)
 return|;
 block|}
@@ -2007,11 +2002,6 @@ name|RecordId
 name|propNamesId
 decl_stmt|;
 specifier|private
-specifier|final
-name|SegmentVersion
-name|version
-decl_stmt|;
-specifier|private
 name|TemplateWriter
 parameter_list|(
 name|Collection
@@ -2045,9 +2035,6 @@ name|childNameId
 parameter_list|,
 name|RecordId
 name|propNamesId
-parameter_list|,
-name|SegmentVersion
-name|version
 parameter_list|)
 block|{
 name|super
@@ -2104,12 +2091,6 @@ operator|.
 name|propNamesId
 operator|=
 name|propNamesId
-expr_stmt|;
-name|this
-operator|.
-name|version
-operator|=
-name|version
 expr_stmt|;
 block|}
 annotation|@

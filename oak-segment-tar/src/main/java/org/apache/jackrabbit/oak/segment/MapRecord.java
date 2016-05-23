@@ -228,6 +228,7 @@ comment|/**  * A map. The top level record is either a record of type "BRANCH" o
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|MapRecord
 extends|extends

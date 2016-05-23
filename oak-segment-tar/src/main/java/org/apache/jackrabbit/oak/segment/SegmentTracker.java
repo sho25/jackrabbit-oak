@@ -478,8 +478,6 @@ name|SegmentWriter
 argument_list|(
 name|store
 argument_list|,
-name|version
-argument_list|,
 operator|new
 name|SegmentBufferWriterPool
 argument_list|(

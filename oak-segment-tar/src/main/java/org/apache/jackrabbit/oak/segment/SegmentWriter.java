@@ -791,26 +791,17 @@ specifier|final
 name|SegmentStore
 name|store
 decl_stmt|;
-comment|/**      * Version of the segment storage format.      */
-specifier|private
-specifier|final
-name|SegmentVersion
-name|version
-decl_stmt|;
 specifier|private
 specifier|final
 name|WriteOperationHandler
 name|writeOperationHandler
 decl_stmt|;
-comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param version    segment version to write      * @param writeOperationHandler  handler for write operations.      */
+comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param writeOperationHandler  handler for write operations.      */
 specifier|public
 name|SegmentWriter
 parameter_list|(
 name|SegmentStore
 name|store
-parameter_list|,
-name|SegmentVersion
-name|version
 parameter_list|,
 name|WriteOperationHandler
 name|writeOperationHandler
@@ -821,12 +812,6 @@ operator|.
 name|store
 operator|=
 name|store
-expr_stmt|;
-name|this
-operator|.
-name|version
-operator|=
-name|version
 expr_stmt|;
 name|this
 operator|.
@@ -879,6 +864,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Nonnull
+specifier|public
 name|MapRecord
 name|writeMap
 parameter_list|(
@@ -1046,6 +1032,7 @@ return|;
 block|}
 annotation|@
 name|Nonnull
+specifier|public
 name|SegmentBlob
 name|writeBlob
 parameter_list|(
@@ -1100,6 +1087,7 @@ block|}
 comment|/**      * Writes a block record containing the given block of bytes.      *      * @param bytes source buffer      * @param offset offset within the source buffer      * @param length number of bytes to write      * @return block record identifier      */
 annotation|@
 name|Nonnull
+specifier|public
 name|RecordId
 name|writeBlock
 parameter_list|(
@@ -1217,6 +1205,7 @@ return|;
 block|}
 annotation|@
 name|Nonnull
+specifier|public
 name|SegmentPropertyState
 name|writeProperty
 parameter_list|(
@@ -4682,8 +4671,6 @@ argument_list|,
 name|childNameId
 argument_list|,
 name|propNamesId
-argument_list|,
-name|version
 argument_list|)
 operator|.
 name|write
@@ -5215,6 +5202,11 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+assert|assert
+name|property
+operator|!=
+literal|null
+assert|;
 if|if
 condition|(
 name|hasSegment
