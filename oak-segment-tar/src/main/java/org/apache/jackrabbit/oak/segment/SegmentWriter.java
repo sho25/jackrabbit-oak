@@ -5462,7 +5462,7 @@ operator|.
 name|getRecordId
 argument_list|()
 operator|.
-name|toArray
+name|getBytes
 argument_list|()
 decl_stmt|;
 name|stableId

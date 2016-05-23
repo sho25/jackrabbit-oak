@@ -131,6 +131,16 @@ name|Pattern
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * The record id. This includes the segment id and the offset within the  * segment.  */
 end_comment
@@ -509,9 +519,12 @@ operator|)
 name|value
 expr_stmt|;
 block|}
+comment|/**      * Serialise this record id into an array of bytes: {@code (msb, lsb, offset>> 2)}      * @return  this record id as byte array      */
+annotation|@
+name|Nonnull
 name|byte
 index|[]
-name|toArray
+name|getBytes
 parameter_list|()
 block|{
 name|byte
