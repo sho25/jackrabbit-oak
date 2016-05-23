@@ -225,18 +225,14 @@ return|return
 name|lsb
 return|;
 block|}
+comment|/**      * Get the segment identified by this instance. The segment is memoised in this instance's      * {@link #segment} field.      * @return  the segment identified by this instance.      * @see #loaded(Segment)      * @see #unloaded()      */
+annotation|@
+name|Nonnull
 specifier|public
 name|Segment
 name|getSegment
 parameter_list|()
 block|{
-name|Segment
-name|segment
-init|=
-name|this
-operator|.
-name|segment
-decl_stmt|;
 if|if
 condition|(
 name|segment
@@ -249,12 +245,6 @@ init|(
 name|this
 init|)
 block|{
-name|segment
-operator|=
-name|this
-operator|.
-name|segment
-expr_stmt|;
 if|if
 condition|(
 name|segment
@@ -273,6 +263,8 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|segment
 operator|=
 name|store
@@ -323,6 +315,7 @@ return|return
 name|segment
 return|;
 block|}
+comment|/**      * This method should only be called from lower level caches to notify this instance that the      * passed {@code segment} has been loaded and should be memoised.      * @param segment  segment with this id. If the id doesn't match the behaviour is undefined.      * @see #getSegment()      * @see #unloaded()      */
 name|void
 name|loaded
 parameter_list|(
@@ -339,6 +332,7 @@ operator|=
 name|segment
 expr_stmt|;
 block|}
+comment|/**      * This method should only be called from lower level caches to notify this instance that the      * passed {@code segment} has been unloaded and should no longer be memoised.      * @see #getSegment()      * @see #loaded(Segment)      */
 name|void
 name|unloaded
 parameter_list|()
@@ -350,6 +344,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+comment|/**      * Determine whether this instance belongs to the passed {@code store}      * @param store      * @return  {@code true} iff this instance belongs to {@code store}      */
 specifier|public
 name|boolean
 name|sameStore
