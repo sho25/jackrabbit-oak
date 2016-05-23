@@ -5130,9 +5130,6 @@ parameter_list|,
 name|Long
 name|modified
 parameter_list|,
-name|boolean
-name|setModifiedConditionally
-parameter_list|,
 name|Boolean
 name|hasBinary
 parameter_list|,
@@ -5179,18 +5176,14 @@ name|t
 operator|.
 name|append
 argument_list|(
-name|setModifiedConditionally
-condition|?
-literal|"MODIFIED = case when ?> MODIFIED then ? else MODIFIED end, "
-else|:
-literal|"MODIFIED = ?, "
+literal|"MODIFIED = ?, HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, BDATA = ? "
 argument_list|)
 expr_stmt|;
 name|t
 operator|.
 name|append
 argument_list|(
-literal|"HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, BDATA = ? where ID = ?"
+literal|"where ID = ?"
 argument_list|)
 expr_stmt|;
 if|if
@@ -5242,26 +5235,6 @@ operator|.
 name|BIGINT
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|setModifiedConditionally
-condition|)
-block|{
-name|stmt
-operator|.
-name|setObject
-argument_list|(
-name|si
-operator|++
-argument_list|,
-name|modified
-argument_list|,
-name|Types
-operator|.
-name|BIGINT
-argument_list|)
-expr_stmt|;
-block|}
 name|stmt
 operator|.
 name|setObject
