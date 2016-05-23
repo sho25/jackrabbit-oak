@@ -555,6 +555,8 @@ argument_list|,
 name|LATEST_VERSION
 argument_list|,
 literal|"writer1"
+argument_list|,
+literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -574,6 +576,8 @@ argument_list|,
 name|LATEST_VERSION
 argument_list|,
 literal|"writer2"
+argument_list|,
+literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;

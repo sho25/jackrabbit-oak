@@ -94,6 +94,14 @@ name|SegmentTracker
 name|getTracker
 parameter_list|()
 function_decl|;
+name|SegmentWriter
+name|getWriter
+parameter_list|()
+function_decl|;
+name|SegmentReader
+name|getReader
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the head state.      *      * @return head state      */
 annotation|@
 name|Nonnull

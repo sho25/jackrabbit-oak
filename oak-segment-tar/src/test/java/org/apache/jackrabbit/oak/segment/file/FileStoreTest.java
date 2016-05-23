@@ -146,9 +146,6 @@ operator|new
 name|SegmentId
 argument_list|(
 name|fileStore
-operator|.
-name|getTracker
-argument_list|()
 argument_list|,
 literal|0
 argument_list|,

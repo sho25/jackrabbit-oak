@@ -1800,9 +1800,6 @@ decl_stmt|;
 name|collectSegments
 argument_list|(
 name|store
-operator|.
-name|getHead
-argument_list|()
 argument_list|,
 name|beforeSegments
 argument_list|)
@@ -2065,9 +2062,6 @@ decl_stmt|;
 name|collectSegments
 argument_list|(
 name|store
-operator|.
-name|getHead
-argument_list|()
 argument_list|,
 name|afterSegments
 argument_list|)
@@ -2140,9 +2134,6 @@ name|SegmentWriter
 name|writer
 init|=
 name|fileStore
-operator|.
-name|getTracker
-argument_list|()
 operator|.
 name|getWriter
 argument_list|()
@@ -2896,8 +2887,8 @@ specifier|static
 name|void
 name|collectSegments
 parameter_list|(
-name|SegmentNodeState
-name|s
+name|SegmentStore
+name|store
 parameter_list|,
 specifier|final
 name|Set
@@ -2909,7 +2900,9 @@ parameter_list|)
 block|{
 operator|new
 name|SegmentParser
-argument_list|()
+argument_list|(
+name|store
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -3364,7 +3357,10 @@ block|}
 operator|.
 name|parseNode
 argument_list|(
-name|s
+name|store
+operator|.
+name|getHead
+argument_list|()
 operator|.
 name|getRecordId
 argument_list|()
@@ -3758,7 +3754,7 @@ literal|"Segment "
 operator|+
 name|id
 operator|+
-literal|"should be gc'ed"
+literal|" should be gc'ed"
 argument_list|)
 expr_stmt|;
 block|}

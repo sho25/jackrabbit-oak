@@ -196,19 +196,6 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
-comment|/**      * Returns the tracker of the segment that contains this record.      *      * @return segment tracker      */
-specifier|protected
-name|SegmentTracker
-name|getTracker
-parameter_list|()
-block|{
-return|return
-name|segmentId
-operator|.
-name|getTracker
-argument_list|()
-return|;
-block|}
 comment|/**      * Returns the segment that contains this record.      *      * @return segment that contains this record      */
 specifier|protected
 name|Segment

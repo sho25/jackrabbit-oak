@@ -143,6 +143,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -258,6 +268,13 @@ name|HASH_MASK
 init|=
 literal|0xFFFFFFFFL
 decl_stmt|;
+annotation|@
+name|Nonnull
+specifier|private
+specifier|final
+name|SegmentStore
+name|store
+decl_stmt|;
 comment|/**      * Generates a hash code for the value, using a random number generator      * to improve the distribution of the hash values.      */
 specifier|static
 name|int
@@ -369,6 +386,13 @@ comment|// ~268e6
 specifier|protected
 name|MapRecord
 parameter_list|(
+annotation|@
+name|Nonnull
+name|SegmentStore
+name|store
+parameter_list|,
+annotation|@
+name|Nonnull
 name|RecordId
 name|id
 parameter_list|)
@@ -376,6 +400,15 @@ block|{
 name|super
 argument_list|(
 name|id
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|store
+operator|=
+name|checkNotNull
+argument_list|(
+name|store
 argument_list|)
 expr_stmt|;
 block|}
@@ -429,6 +462,8 @@ return|return
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|base
 argument_list|)
 operator|.
@@ -542,6 +577,8 @@ operator|=
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|segment
 operator|.
 name|readRecordId
@@ -665,6 +702,8 @@ argument_list|(
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -725,6 +764,8 @@ return|return
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|base
 argument_list|)
 operator|.
@@ -820,7 +861,10 @@ name|name
 operator|.
 name|equals
 argument_list|(
-name|Segment
+name|store
+operator|.
+name|getReader
+argument_list|()
 operator|.
 name|readString
 argument_list|(
@@ -848,6 +892,8 @@ return|return
 operator|new
 name|MapEntry
 argument_list|(
+name|store
+argument_list|,
 name|name
 argument_list|,
 name|key
@@ -876,6 +922,8 @@ return|return
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|base
 argument_list|)
 operator|.
@@ -1024,6 +1072,8 @@ return|return
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1237,7 +1287,10 @@ argument_list|)
 decl_stmt|;
 name|diff
 operator|=
-name|Segment
+name|store
+operator|.
+name|getReader
+argument_list|()
 operator|.
 name|readString
 argument_list|(
@@ -1260,6 +1313,8 @@ return|return
 operator|new
 name|MapEntry
 argument_list|(
+name|store
+argument_list|,
 name|name
 argument_list|,
 name|keyId
@@ -1411,6 +1466,8 @@ return|return
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|base
 argument_list|)
 operator|.
@@ -1561,6 +1618,8 @@ return|return
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1767,6 +1826,8 @@ return|return
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|base
 argument_list|)
 operator|.
@@ -1948,7 +2009,10 @@ index|[
 name|i
 index|]
 operator|=
-name|Segment
+name|store
+operator|.
+name|getReader
+argument_list|()
 operator|.
 name|readString
 argument_list|(
@@ -2074,6 +2138,8 @@ return|return
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|base
 argument_list|)
 operator|.
@@ -2301,7 +2367,10 @@ block|}
 name|String
 name|name
 init|=
-name|Segment
+name|store
+operator|.
+name|getReader
+argument_list|()
 operator|.
 name|readString
 argument_list|(
@@ -2316,6 +2385,8 @@ operator|=
 operator|new
 name|MapEntry
 argument_list|(
+name|store
+argument_list|,
 name|name
 argument_list|,
 name|key
@@ -2417,7 +2488,10 @@ specifier|final
 name|String
 name|key
 init|=
-name|Segment
+name|store
+operator|.
+name|getReader
+argument_list|()
 operator|.
 name|readString
 argument_list|(
@@ -2446,6 +2520,8 @@ init|=
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|segment
 operator|.
 name|readRecordId
@@ -2599,6 +2675,8 @@ argument_list|,
 operator|new
 name|SegmentNodeState
 argument_list|(
+name|store
+argument_list|,
 name|value
 argument_list|)
 argument_list|)
@@ -2635,6 +2713,8 @@ argument_list|,
 operator|new
 name|SegmentNodeState
 argument_list|(
+name|store
+argument_list|,
 name|value
 argument_list|)
 argument_list|)
@@ -2710,7 +2790,10 @@ specifier|final
 name|String
 name|key
 init|=
-name|Segment
+name|store
+operator|.
+name|getReader
+argument_list|()
 operator|.
 name|readString
 argument_list|(
@@ -2741,6 +2824,8 @@ init|=
 operator|new
 name|MapRecord
 argument_list|(
+name|store
+argument_list|,
 name|beforeSegment
 operator|.
 name|readRecordId
@@ -2896,6 +2981,8 @@ argument_list|,
 operator|new
 name|SegmentNodeState
 argument_list|(
+name|store
+argument_list|,
 name|value
 argument_list|)
 argument_list|)
@@ -2927,6 +3014,8 @@ argument_list|,
 operator|new
 name|SegmentNodeState
 argument_list|(
+name|store
+argument_list|,
 name|value
 argument_list|)
 argument_list|,

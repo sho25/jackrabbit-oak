@@ -106,8 +106,13 @@ name|SegmentIdFactoryTest
 block|{
 specifier|private
 specifier|final
+name|SegmentStore
+name|store
+decl_stmt|;
+specifier|private
+specifier|final
 name|SegmentTracker
-name|factory
+name|tracker
 decl_stmt|;
 specifier|public
 name|SegmentIdFactoryTest
@@ -115,11 +120,15 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|factory
+name|store
 operator|=
 operator|new
 name|MemoryStore
 argument_list|()
+expr_stmt|;
+name|tracker
+operator|=
+name|store
 operator|.
 name|getTracker
 argument_list|()
@@ -134,7 +143,7 @@ parameter_list|()
 block|{
 name|assertTrue
 argument_list|(
-name|factory
+name|tracker
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -145,7 +154,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|factory
+name|tracker
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -156,7 +165,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|factory
+name|tracker
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -167,7 +176,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|factory
+name|tracker
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -186,7 +195,7 @@ parameter_list|()
 block|{
 name|assertTrue
 argument_list|(
-name|factory
+name|tracker
 operator|.
 name|getSegmentId
 argument_list|(
@@ -195,7 +204,7 @@ argument_list|,
 literal|0
 argument_list|)
 operator|==
-name|factory
+name|tracker
 operator|.
 name|getSegmentId
 argument_list|(
@@ -207,7 +216,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|factory
+name|tracker
 operator|.
 name|getSegmentId
 argument_list|(
@@ -216,7 +225,7 @@ argument_list|,
 literal|2
 argument_list|)
 operator|==
-name|factory
+name|tracker
 operator|.
 name|getSegmentId
 argument_list|(
@@ -228,7 +237,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|factory
+name|tracker
 operator|.
 name|getSegmentId
 argument_list|(
@@ -237,7 +246,7 @@ argument_list|,
 literal|2
 argument_list|)
 operator|!=
-name|factory
+name|tracker
 operator|.
 name|getSegmentId
 argument_list|(
@@ -260,7 +269,7 @@ block|{
 name|SegmentId
 name|a
 init|=
-name|factory
+name|tracker
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -268,7 +277,7 @@ decl_stmt|;
 name|SegmentId
 name|b
 init|=
-name|factory
+name|tracker
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -276,7 +285,7 @@ decl_stmt|;
 name|SegmentId
 name|c
 init|=
-name|factory
+name|tracker
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -287,7 +296,7 @@ name|SegmentId
 argument_list|>
 name|ids
 init|=
-name|factory
+name|tracker
 operator|.
 name|getReferencedSegmentIds
 argument_list|()
@@ -329,7 +338,7 @@ name|ids
 operator|.
 name|contains
 argument_list|(
-name|factory
+name|tracker
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -347,7 +356,7 @@ block|{
 name|SegmentId
 name|a
 init|=
-name|factory
+name|tracker
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -355,7 +364,7 @@ decl_stmt|;
 name|SegmentId
 name|b
 init|=
-name|factory
+name|tracker
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -408,7 +417,7 @@ name|SegmentId
 argument_list|>
 name|ids
 init|=
-name|factory
+name|tracker
 operator|.
 name|getReferencedSegmentIds
 argument_list|()
@@ -508,7 +517,7 @@ expr_stmt|;
 name|SegmentId
 name|id
 init|=
-name|factory
+name|tracker
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -529,7 +538,7 @@ init|=
 operator|new
 name|Segment
 argument_list|(
-name|factory
+name|store
 argument_list|,
 name|id
 argument_list|,
@@ -562,7 +571,7 @@ block|{
 name|SegmentId
 name|id
 init|=
-name|factory
+name|tracker
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -583,7 +592,7 @@ init|=
 operator|new
 name|Segment
 argument_list|(
-name|factory
+name|store
 argument_list|,
 name|id
 argument_list|,

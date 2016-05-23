@@ -627,10 +627,18 @@ decl_stmt|;
 specifier|private
 name|TestParser
 parameter_list|(
+name|SegmentStore
+name|store
+parameter_list|,
 name|String
 name|name
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|name
@@ -950,6 +958,8 @@ argument_list|,
 name|LATEST_VERSION
 argument_list|,
 literal|""
+argument_list|,
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -992,6 +1002,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"emptyNode"
 argument_list|)
 block|{
@@ -1115,6 +1127,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"singleChildNode"
 argument_list|)
 block|{
@@ -1268,6 +1282,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"node"
 argument_list|)
 block|{
@@ -1490,6 +1506,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"template"
 argument_list|)
 block|{
@@ -1686,6 +1704,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"emptyMap"
 argument_list|)
 block|{
@@ -1806,6 +1826,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"nonEmptyMap"
 argument_list|)
 block|{
@@ -2166,6 +2188,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"singleValueProperty"
 argument_list|)
 block|{
@@ -2343,6 +2367,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"multiValueProperty"
 argument_list|)
 block|{
@@ -2489,6 +2515,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"smallBlob"
 argument_list|)
 block|{
@@ -2605,6 +2633,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"mediumBlob"
 argument_list|)
 block|{
@@ -2723,6 +2753,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"longBlob"
 argument_list|)
 block|{
@@ -2890,6 +2922,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"shortString"
 argument_list|)
 operator|.
@@ -2956,6 +2990,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"mediumString"
 argument_list|)
 operator|.
@@ -3024,6 +3060,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"longString"
 argument_list|)
 block|{
@@ -3108,6 +3146,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"emptyList"
 argument_list|)
 operator|.
@@ -3229,6 +3269,8 @@ init|=
 operator|new
 name|TestParser
 argument_list|(
+name|store
+argument_list|,
 literal|"nonEmptyList"
 argument_list|)
 block|{

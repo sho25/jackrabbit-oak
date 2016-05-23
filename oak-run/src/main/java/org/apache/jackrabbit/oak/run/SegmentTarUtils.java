@@ -954,6 +954,7 @@ import|;
 end_import
 
 begin_class
+specifier|final
 class|class
 name|SegmentTarUtils
 block|{
@@ -986,8 +987,8 @@ literal|256
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|MAX_CHAR_DISPLAY
 init|=
@@ -1814,7 +1815,9 @@ name|analyser
 init|=
 operator|new
 name|RecordUsageAnalyser
-argument_list|()
+argument_list|(
+name|store
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -3415,6 +3418,8 @@ init|=
 operator|new
 name|SegmentNodeState
 argument_list|(
+name|store
+argument_list|,
 name|id1
 argument_list|)
 decl_stmt|;
@@ -3509,6 +3514,8 @@ init|=
 operator|new
 name|SegmentNodeState
 argument_list|(
+name|store
+argument_list|,
 name|id1
 argument_list|)
 decl_stmt|;
@@ -3518,6 +3525,8 @@ init|=
 operator|new
 name|SegmentNodeState
 argument_list|(
+name|store
+argument_list|,
 name|id2
 argument_list|)
 decl_stmt|;

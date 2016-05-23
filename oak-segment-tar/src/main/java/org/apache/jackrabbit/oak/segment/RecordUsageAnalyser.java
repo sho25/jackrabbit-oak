@@ -69,6 +69,16 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * This utility breaks down space usage per record type.  * It accounts for value sharing. That is, an instance  * of this class will remember which records it has seen  * already and not count those again. Only the effective  * space taken by the records is taken into account. Slack  * space from aligning records is not accounted for.  */
 end_comment
@@ -173,6 +183,21 @@ specifier|private
 name|long
 name|nodeCount
 decl_stmt|;
+specifier|public
+name|RecordUsageAnalyser
+parameter_list|(
+annotation|@
+name|Nonnull
+name|SegmentStore
+name|store
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * @return number of bytes in {@link RecordType#LEAF leaf} and {@link RecordType#BRANCH branch}      * records.      */
 specifier|public
 name|long

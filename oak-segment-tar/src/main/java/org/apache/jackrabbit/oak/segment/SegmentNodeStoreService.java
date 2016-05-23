@@ -2202,9 +2202,6 @@ name|segmentCacheStats
 init|=
 name|store
 operator|.
-name|getTracker
-argument_list|()
-operator|.
 name|getSegmentCacheStats
 argument_list|()
 decl_stmt|;
@@ -2236,19 +2233,12 @@ name|stringCacheStats
 init|=
 name|store
 operator|.
-name|getTracker
+name|getReader
 argument_list|()
 operator|.
 name|getStringCacheStats
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|stringCacheStats
-operator|!=
-literal|null
-condition|)
-block|{
 name|stringCacheMBean
 operator|=
 name|registerMBean
@@ -2271,7 +2261,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Listen for Executor services on the whiteboard
 name|executor
 operator|=

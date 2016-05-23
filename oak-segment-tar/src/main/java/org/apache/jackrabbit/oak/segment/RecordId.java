@@ -407,6 +407,8 @@ name|asUUID
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Segment
 name|getSegment

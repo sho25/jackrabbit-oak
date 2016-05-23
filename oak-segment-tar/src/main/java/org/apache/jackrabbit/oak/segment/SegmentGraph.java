@@ -811,6 +811,8 @@ name|headGraph
 init|=
 name|parseHeadGraph
 argument_list|(
+name|fileStore
+argument_list|,
 name|root
 operator|.
 name|getRecordId
@@ -1696,7 +1698,7 @@ return|return
 name|graph
 return|;
 block|}
-comment|/**      * Parser the head graph. The head graph is the sub graph of the segment      * graph containing the {@code root}.      * @param root      * @return  the head graph of {@code root}.      */
+comment|/**      * Parser the head graph of a {@code store}. The head graph is the sub graph of the segment      * graph containing the {@code root}.      * @param store      * @param root      * @return  the head graph of {@code root}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1707,6 +1709,11 @@ name|UUID
 argument_list|>
 name|parseHeadGraph
 parameter_list|(
+annotation|@
+name|Nonnull
+name|SegmentStore
+name|store
+parameter_list|,
 annotation|@
 name|Nonnull
 name|RecordId
@@ -1731,7 +1738,9 @@ try|try
 block|{
 operator|new
 name|SegmentParser
-argument_list|()
+argument_list|(
+name|store
+argument_list|)
 block|{
 specifier|private
 name|void
