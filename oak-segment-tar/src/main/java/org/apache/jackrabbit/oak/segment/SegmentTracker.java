@@ -194,6 +194,8 @@ operator|<<
 literal|60
 decl_stmt|;
 comment|/**      * The random number source for generating new segment identifiers.      */
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SecureRandom
@@ -204,6 +206,8 @@ name|SecureRandom
 argument_list|()
 decl_stmt|;
 comment|/**      * Hash table of weak references to segment identifiers that are      * currently being accessed. The size of the table is always a power      * of two, which optimizes the {@code refresh()} operation. The table is      * indexed by the random identifier bits, which guarantees uniform      * distribution of entries. Each table entry is either {@code null}      * (when there are no matching identifiers) or a list of weak references      * to the matching identifiers.      */
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentIdTable
@@ -217,6 +221,8 @@ literal|32
 index|]
 decl_stmt|;
 comment|/**      * Number of segment tracked since this tracker was instantiated      */
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|AtomicInteger

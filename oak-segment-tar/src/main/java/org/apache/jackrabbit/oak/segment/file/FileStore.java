@@ -1219,16 +1219,22 @@ literal|"32"
 argument_list|)
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentTracker
 name|tracker
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentWriter
 name|segmentWriter
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentReader
@@ -2645,6 +2651,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-3468 Replace BackgroundThread with Scheduler
+comment|// Externalise these background operations
 if|if
 condition|(
 operator|!
@@ -2863,6 +2871,8 @@ name|readers
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 specifier|static
 name|RecordId
@@ -6039,6 +6049,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|SegmentTracker
 name|getTracker
@@ -6050,6 +6062,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|SegmentWriter
 name|getWriter
@@ -6061,6 +6075,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|SegmentReader
 name|getReader
@@ -6471,6 +6487,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Segment
 name|readSegment

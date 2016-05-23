@@ -354,6 +354,8 @@ name|MemoryStore
 implements|implements
 name|SegmentStore
 block|{
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentTracker
@@ -365,6 +367,8 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentWriter
@@ -386,6 +390,8 @@ literal|"sys"
 argument_list|)
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentReader
@@ -476,6 +482,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|SegmentTracker
 name|getTracker
@@ -487,6 +495,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|SegmentWriter
 name|getWriter
@@ -498,6 +508,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|SegmentReader
 name|getReader
