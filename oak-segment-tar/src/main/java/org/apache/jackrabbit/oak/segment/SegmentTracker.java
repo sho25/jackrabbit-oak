@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tracker of references to segment identifiers and segment instances  * that are currently kept in memory.  *<p>  * It is also responsible to cache segment objects in memory.  */
+comment|/**  * Tracker of references to segment identifiers and segment instances  * that are currently kept in memory and factory for creating {@link SegmentId}  * instances.  */
 end_comment
 
 begin_class
@@ -322,7 +322,7 @@ return|return
 name|ids
 return|;
 block|}
-comment|/**      *       * @param msb      * @param lsb      * @return the segment id      */
+comment|/**      * Get an existing {@code SegmentId} with the given {@code msb} and {@code lsb}      * or create a new one if no such id exists with this tracker.      * @param msb  most significant bits of the segment id      * @param lsb  least  significant bits of the segment id      * @return the segment id      */
 specifier|public
 name|SegmentId
 name|getSegmentId
@@ -366,6 +366,7 @@ name|lsb
 argument_list|)
 return|;
 block|}
+comment|/**      * Create and track a new segment id for data segments.      * @return the segment id      */
 name|SegmentId
 name|newDataSegmentId
 parameter_list|()
@@ -377,6 +378,7 @@ name|DATA
 argument_list|)
 return|;
 block|}
+comment|/**      * Create and track a new segment id for bulk segments.      * @return the segment id      */
 name|SegmentId
 name|newBulkSegmentId
 parameter_list|()
