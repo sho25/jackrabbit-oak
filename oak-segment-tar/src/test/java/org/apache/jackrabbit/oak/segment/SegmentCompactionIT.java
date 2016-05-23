@@ -1070,18 +1070,6 @@ specifier|public
 class|class
 name|SegmentCompactionIT
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|boolean
-name|PERSIST_COMPACTION_MAP
-init|=
-operator|!
-name|getBoolean
-argument_list|(
-literal|"in-memory-compaction-map"
-argument_list|)
-decl_stmt|;
 comment|/** Only run if explicitly asked to via -Dtest=SegmentCompactionIT */
 specifier|private
 specifier|static
