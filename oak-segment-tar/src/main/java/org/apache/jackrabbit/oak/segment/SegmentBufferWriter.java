@@ -179,7 +179,7 @@ name|segment
 operator|.
 name|Segment
 operator|.
-name|GC_GEN_OFFSET
+name|GC_GENERATION_OFFSET
 import|;
 end_import
 
@@ -655,7 +655,7 @@ expr_stmt|;
 comment|// refcount
 name|buffer
 index|[
-name|GC_GEN_OFFSET
+name|GC_GENERATION_OFFSET
 index|]
 operator|=
 call|(
@@ -669,7 +669,7 @@ argument_list|)
 expr_stmt|;
 name|buffer
 index|[
-name|GC_GEN_OFFSET
+name|GC_GENERATION_OFFSET
 operator|+
 literal|1
 index|]
@@ -685,7 +685,7 @@ argument_list|)
 expr_stmt|;
 name|buffer
 index|[
-name|GC_GEN_OFFSET
+name|GC_GENERATION_OFFSET
 operator|+
 literal|2
 index|]
@@ -701,7 +701,7 @@ argument_list|)
 expr_stmt|;
 name|buffer
 index|[
-name|GC_GEN_OFFSET
+name|GC_GENERATION_OFFSET
 operator|+
 literal|3
 index|]

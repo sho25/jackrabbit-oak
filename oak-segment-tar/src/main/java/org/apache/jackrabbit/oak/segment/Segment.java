@@ -603,7 +603,7 @@ specifier|public
 specifier|static
 specifier|final
 name|int
-name|GC_GEN_OFFSET
+name|GC_GENERATION_OFFSET
 init|=
 literal|10
 decl_stmt|;
@@ -1290,7 +1290,7 @@ name|data
 operator|.
 name|getInt
 argument_list|(
-name|GC_GEN_OFFSET
+name|GC_GENERATION_OFFSET
 argument_list|)
 else|:
 literal|0

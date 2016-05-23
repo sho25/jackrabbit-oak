@@ -170,6 +170,7 @@ name|long
 name|lsb
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|creationTime
 decl_stmt|;
@@ -460,14 +461,9 @@ argument_list|)
 operator|.
 name|compareTo
 argument_list|(
-name|Long
-operator|.
-name|valueOf
-argument_list|(
 name|that
 operator|.
 name|msb
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -490,14 +486,9 @@ argument_list|)
 operator|.
 name|compareTo
 argument_list|(
-name|Long
-operator|.
-name|valueOf
-argument_list|(
 name|that
 operator|.
 name|lsb
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
