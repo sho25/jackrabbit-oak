@@ -744,7 +744,7 @@ literal|",\"sno\":"
 operator|+
 name|tracker
 operator|.
-name|getNextSegmentNo
+name|getSegmentCount
 argument_list|()
 operator|+
 literal|",\"t\":"

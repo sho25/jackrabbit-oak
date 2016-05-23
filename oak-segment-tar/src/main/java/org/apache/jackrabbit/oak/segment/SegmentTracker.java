@@ -413,7 +413,7 @@ name|Segment
 argument_list|>
 name|segmentCache
 decl_stmt|;
-comment|/**      * Number of segments      */
+comment|/**      * Number of segment tracked since this tracker was instantiated      */
 specifier|private
 specifier|final
 name|AtomicInteger
@@ -673,15 +673,15 @@ name|LATEST_VERSION
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Increment and get the number of segments      * @return      */
+comment|/**      * Number of segment tracked since this tracker was instantiated      * @return count      */
 name|int
-name|getNextSegmentNo
+name|getSegmentCount
 parameter_list|()
 block|{
 return|return
 name|segmentCounter
 operator|.
-name|incrementAndGet
+name|get
 argument_list|()
 return|;
 block|}
@@ -1083,6 +1083,11 @@ name|long
 name|type
 parameter_list|)
 block|{
+name|segmentCounter
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
 name|long
 name|msb
 init|=
