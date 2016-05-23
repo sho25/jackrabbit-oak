@@ -712,11 +712,11 @@ argument_list|(
 literal|"oak.segment.disableTemplateCache"
 argument_list|)
 decl_stmt|;
-comment|/**      * Decode a 4 byte aligned segment offset.      * @param offset  4 byte aligned segment offset      * @return decoded segment offset      */
+comment|/**      * Unpacks a 4 byte aligned segment offset.      * @param offset  4 byte aligned segment offset      * @return unpacked segment offset      */
 specifier|public
 specifier|static
 name|int
-name|decode
+name|unpack
 parameter_list|(
 name|short
 name|offset
@@ -732,11 +732,11 @@ operator|<<
 name|RECORD_ALIGN_BITS
 return|;
 block|}
-comment|/**      * Encode a segment offset into a 4 byte aligned address packed into a {@code short}.      * @param offset  segment offset      * @return  encoded segment offset packed into a {@code short}      */
+comment|/**      * Packs a segment offset into a 4 byte aligned address packed into a {@code short}.      * @param offset  segment offset      * @return  encoded segment offset packed into a {@code short}      */
 specifier|public
 specifier|static
 name|short
-name|encode
+name|pack
 parameter_list|(
 name|int
 name|offset

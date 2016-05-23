@@ -93,7 +93,7 @@ name|segment
 operator|.
 name|Segment
 operator|.
-name|encode
+name|pack
 import|;
 end_import
 
@@ -554,7 +554,7 @@ name|buffer
 argument_list|,
 literal|16
 argument_list|,
-name|encode
+name|pack
 argument_list|(
 name|offset
 argument_list|)

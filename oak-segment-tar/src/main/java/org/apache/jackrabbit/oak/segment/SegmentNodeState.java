@@ -279,7 +279,7 @@ name|segment
 operator|.
 name|Segment
 operator|.
-name|decode
+name|readString
 import|;
 end_import
 
@@ -297,7 +297,7 @@ name|segment
 operator|.
 name|Segment
 operator|.
-name|readString
+name|unpack
 import|;
 end_import
 
@@ -720,7 +720,7 @@ decl_stmt|;
 name|int
 name|offset
 init|=
-name|decode
+name|unpack
 argument_list|(
 name|segment
 operator|.
