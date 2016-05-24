@@ -85,20 +85,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|JcrConstants
-operator|.
-name|JCR_SYSTEM
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|api
@@ -106,26 +92,6 @@ operator|.
 name|Type
 operator|.
 name|NAME
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|JCR_NODE_TYPES
 import|;
 end_import
 
@@ -159,13 +125,15 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|plugins
 operator|.
-name|QueryEngineImpl
+name|nodetype
 operator|.
-name|QuerySelectionMode
+name|write
 operator|.
-name|CHEAPEST
+name|InitialContent
+operator|.
+name|INITIAL_CONTENT
 import|;
 end_import
 
@@ -186,6 +154,26 @@ operator|.
 name|QuerySelectionMode
 operator|.
 name|ALTERNATIVE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|QueryEngineImpl
+operator|.
+name|QuerySelectionMode
+operator|.
+name|CHEAPEST
 import|;
 end_import
 
@@ -483,11 +471,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|query
 operator|.
-name|security
+name|ast
 operator|.
-name|OpenSecurityProvider
+name|NodeTypeInfoProvider
 import|;
 end_import
 
@@ -503,9 +491,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|state
+name|security
 operator|.
-name|NodeState
+name|OpenSecurityProvider
 import|;
 end_import
 
@@ -1372,7 +1360,7 @@ argument_list|(
 name|getMappings
 argument_list|()
 argument_list|,
-name|getTypes
+name|getNodeTypes
 argument_list|()
 argument_list|,
 name|qeSettings
@@ -1553,24 +1541,16 @@ argument_list|)
 return|;
 block|}
 specifier|private
-name|NodeState
-name|getTypes
+specifier|static
+name|NodeTypeInfoProvider
+name|getNodeTypes
 parameter_list|()
 block|{
 return|return
-name|store
-operator|.
-name|getRoot
-argument_list|()
-operator|.
-name|getChildNode
+operator|new
+name|NodeStateNodeTypeInfoProvider
 argument_list|(
-name|JCR_SYSTEM
-argument_list|)
-operator|.
-name|getChildNode
-argument_list|(
-name|JCR_NODE_TYPES
+name|INITIAL_CONTENT
 argument_list|)
 return|;
 block|}

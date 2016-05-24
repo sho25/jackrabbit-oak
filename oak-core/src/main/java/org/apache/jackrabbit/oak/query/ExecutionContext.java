@@ -63,6 +63,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|query
+operator|.
+name|ast
+operator|.
+name|NodeTypeInfoProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|query
@@ -206,6 +224,20 @@ parameter_list|()
 block|{
 return|return
 name|baseState
+return|;
+block|}
+comment|/**      * Get the nodetype info provider.      *       * @return the provider      */
+specifier|public
+name|NodeTypeInfoProvider
+name|getNodeTypeInfoProvider
+parameter_list|()
+block|{
+return|return
+operator|new
+name|NodeStateNodeTypeInfoProvider
+argument_list|(
+name|baseState
+argument_list|)
 return|;
 block|}
 comment|/**      * Used to create the actual query results from the indexed paths, needs to      * be a secured version of a tree to take into account ACLs      *       * @return root of the content tree against which the query runs.      */

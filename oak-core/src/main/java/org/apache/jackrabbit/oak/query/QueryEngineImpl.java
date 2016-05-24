@@ -50,40 +50,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|JcrConstants
-operator|.
-name|JCR_SYSTEM
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|JCR_NODE_TYPES
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -277,9 +243,9 @@ name|oak
 operator|.
 name|query
 operator|.
-name|xpath
+name|ast
 operator|.
-name|XPathToSQL2Converter
+name|NodeTypeInfoProvider
 import|;
 end_import
 
@@ -293,11 +259,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|query
 operator|.
-name|state
+name|xpath
 operator|.
-name|NodeState
+name|XPathToSQL2Converter
 import|;
 end_import
 
@@ -648,23 +614,13 @@ name|mappings
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|NodeState
-name|types
+name|NodeTypeInfoProvider
+name|nodeTypes
 init|=
 name|context
 operator|.
-name|getBaseState
+name|getNodeTypeInfoProvider
 argument_list|()
-operator|.
-name|getChildNode
-argument_list|(
-name|JCR_SYSTEM
-argument_list|)
-operator|.
-name|getChildNode
-argument_list|(
-name|JCR_NODE_TYPES
-argument_list|)
 decl_stmt|;
 name|QueryEngineSettings
 name|settings
@@ -682,7 +638,7 @@ name|SQL2Parser
 argument_list|(
 name|mapper
 argument_list|,
-name|types
+name|nodeTypes
 argument_list|,
 name|settings
 argument_list|)
