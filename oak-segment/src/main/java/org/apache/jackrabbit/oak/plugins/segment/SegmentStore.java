@@ -25,6 +25,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -91,6 +101,8 @@ begin_interface
 specifier|public
 interface|interface
 name|SegmentStore
+extends|extends
+name|Closeable
 block|{
 name|SegmentTracker
 name|getTracker
