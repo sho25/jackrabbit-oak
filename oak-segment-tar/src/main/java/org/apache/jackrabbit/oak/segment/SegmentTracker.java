@@ -91,26 +91,6 @@ name|Predicate
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tracker of references to segment identifiers and segment instances  * that are currently kept in memory and factory for creating {@link SegmentId}  * instances.  */
 end_comment
@@ -120,21 +100,6 @@ specifier|public
 class|class
 name|SegmentTracker
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|SegmentTracker
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -323,6 +288,8 @@ name|ids
 return|;
 block|}
 comment|/**      * Get an existing {@code SegmentId} with the given {@code msb} and {@code lsb}      * or create a new one if no such id exists with this tracker.      * @param msb  most significant bits of the segment id      * @param lsb  least  significant bits of the segment id      * @return the segment id      */
+annotation|@
+name|Nonnull
 specifier|public
 name|SegmentId
 name|getSegmentId
@@ -367,6 +334,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Create and track a new segment id for data segments.      * @return the segment id      */
+annotation|@
+name|Nonnull
 name|SegmentId
 name|newDataSegmentId
 parameter_list|()
@@ -379,6 +348,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Create and track a new segment id for bulk segments.      * @return the segment id      */
+annotation|@
+name|Nonnull
 name|SegmentId
 name|newBulkSegmentId
 parameter_list|()
@@ -390,6 +361,8 @@ name|BULK
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 name|SegmentId
 name|newSegmentId

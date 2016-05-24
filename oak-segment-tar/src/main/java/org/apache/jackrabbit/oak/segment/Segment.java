@@ -577,28 +577,38 @@ name|GC_GENERATION_OFFSET
 init|=
 literal|10
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentStore
 name|store
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentId
 name|id
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|ByteBuffer
 name|data
 decl_stmt|;
 comment|/**      * Version of the segment storage format.      */
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|SegmentVersion
 name|version
 decl_stmt|;
 comment|/**      * Referenced segment identifiers. Entries are initialized lazily in      * {@link #getRefId(int)}. Set to {@code null} for bulk segments.      */
+annotation|@
+name|CheckForNull
 specifier|private
 specifier|final
 name|SegmentId
@@ -606,6 +616,8 @@ index|[]
 name|refids
 decl_stmt|;
 comment|/**      * Template records read from segment. Used to avoid duplicate      * copies and repeated parsing of the same templates.      * FIXME OAK-4373 move the template cache to the segment reader along side with the string cache      */
+annotation|@
+name|CheckForNull
 specifier|final
 name|ConcurrentMap
 argument_list|<
@@ -1088,6 +1100,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|SegmentVersion
 name|getSegmentVersion
 parameter_list|()
@@ -1981,7 +1994,6 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-specifier|public
 name|String
 name|readString
 parameter_list|(
@@ -2164,6 +2176,8 @@ argument_list|,
 name|size
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|SegmentStream
 name|stream
 init|=
@@ -2182,8 +2196,7 @@ name|list
 argument_list|,
 name|length
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 return|return
 name|stream
@@ -2191,14 +2204,6 @@ operator|.
 name|getString
 argument_list|()
 return|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 else|else
@@ -2771,7 +2776,6 @@ operator|.
 name|get
 argument_list|(
 name|pos
-operator|++
 argument_list|)
 operator|&
 literal|0xff
@@ -2919,7 +2923,6 @@ operator|.
 name|get
 argument_list|(
 name|pos
-operator|++
 argument_list|)
 operator|&
 literal|0xff
@@ -2946,6 +2949,8 @@ operator|new
 name|StringWriter
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|PrintWriter
 name|writer
 init|=
@@ -2954,7 +2959,8 @@ name|PrintWriter
 argument_list|(
 name|string
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|int
 name|length
 init|=
@@ -3453,17 +3459,13 @@ argument_list|(
 literal|"--------------------------------------------------------------------------"
 argument_list|)
 expr_stmt|;
-name|writer
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 name|string
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 end_class

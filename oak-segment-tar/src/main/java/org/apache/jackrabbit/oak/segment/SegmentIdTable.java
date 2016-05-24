@@ -261,6 +261,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Get the segment id, and reference it in the weak references map.      *       * @param msb      * @param lsb      * @return the segment id      */
+annotation|@
+name|Nonnull
 specifier|synchronized
 name|SegmentId
 name|getSegmentId
@@ -273,17 +275,12 @@ name|lsb
 parameter_list|)
 block|{
 name|int
-name|first
+name|index
 init|=
 name|getIndex
 argument_list|(
 name|lsb
 argument_list|)
-decl_stmt|;
-name|int
-name|index
-init|=
-name|first
 decl_stmt|;
 name|boolean
 name|shouldRefresh
@@ -827,14 +824,6 @@ argument_list|>
 name|canRemove
 parameter_list|)
 block|{
-name|int
-name|size
-init|=
-name|references
-operator|.
-name|size
-argument_list|()
-decl_stmt|;
 name|boolean
 name|dirty
 init|=
