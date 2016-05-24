@@ -4661,7 +4661,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Size of bulk references/reclaim set {}/{}"
+literal|"{}: size of bulk references/reclaim set {}/{}"
+argument_list|,
+name|reader
 argument_list|,
 name|bulkRefs
 operator|.
