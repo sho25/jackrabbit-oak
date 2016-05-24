@@ -504,7 +504,6 @@ import|;
 end_import
 
 begin_class
-specifier|public
 class|class
 name|NodeStoreTree
 extends|extends
@@ -747,7 +746,7 @@ specifier|static
 name|void
 name|printPropertyState
 parameter_list|(
-name|FileStoreWrapper
+name|ExplorerBackend
 name|store
 parameter_list|,
 name|PropertyState
@@ -808,7 +807,7 @@ specifier|static
 name|void
 name|printNodeState
 parameter_list|(
-name|FileStoreWrapper
+name|ExplorerBackend
 name|store
 parameter_list|,
 name|NodeState
@@ -968,8 +967,8 @@ expr_stmt|;
 block|}
 specifier|private
 specifier|final
-name|FileStoreWrapper
-name|store
+name|ExplorerBackend
+name|backend
 decl_stmt|;
 specifier|private
 name|Map
@@ -1014,8 +1013,8 @@ name|skipSizeCheck
 decl_stmt|;
 name|NodeStoreTree
 parameter_list|(
-name|FileStoreWrapper
-name|store
+name|ExplorerBackend
+name|backend
 parameter_list|,
 name|JTextArea
 name|log
@@ -1039,9 +1038,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|store
+name|backend
 operator|=
-name|store
+name|backend
 expr_stmt|;
 name|this
 operator|.
@@ -1120,7 +1119,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|store
+name|backend
 operator|.
 name|open
 argument_list|()
@@ -1133,7 +1132,7 @@ parameter_list|()
 block|{
 name|index
 operator|=
-name|store
+name|backend
 operator|.
 name|getTarReaderIndex
 argument_list|()
@@ -1156,7 +1155,7 @@ literal|"/"
 argument_list|,
 literal|"/"
 argument_list|,
-name|store
+name|backend
 operator|.
 name|getHead
 argument_list|()
@@ -1165,7 +1164,7 @@ name|sizeCache
 argument_list|,
 name|skipSizeCheck
 argument_list|,
-name|store
+name|backend
 argument_list|)
 argument_list|,
 literal|true
@@ -1309,7 +1308,7 @@ decl_stmt|;
 name|String
 name|recordId
 init|=
-name|store
+name|backend
 operator|.
 name|getRecordId
 argument_list|(
@@ -1463,7 +1462,7 @@ name|sizeCache
 argument_list|,
 name|skipSizeCheck
 argument_list|,
-name|store
+name|backend
 argument_list|)
 decl_stmt|;
 name|kids
@@ -1577,7 +1576,7 @@ literal|""
 decl_stmt|;
 if|if
 condition|(
-name|store
+name|backend
 operator|.
 name|isPersisted
 argument_list|(
@@ -1588,7 +1587,7 @@ block|{
 name|String
 name|recordId
 init|=
-name|store
+name|backend
 operator|.
 name|getRecordId
 argument_list|(
@@ -1609,7 +1608,7 @@ argument_list|)
 expr_stmt|;
 name|tarFile
 operator|=
-name|store
+name|backend
 operator|.
 name|getFile
 argument_list|(
@@ -1646,7 +1645,7 @@ expr_stmt|;
 name|String
 name|templateId
 init|=
-name|store
+name|backend
 operator|.
 name|getTemplateRecordId
 argument_list|(
@@ -1656,7 +1655,7 @@ decl_stmt|;
 name|String
 name|f
 init|=
-name|store
+name|backend
 operator|.
 name|getTemplateFile
 argument_list|(
@@ -2064,7 +2063,7 @@ expr_stmt|;
 block|}
 name|printPropertyState
 argument_list|(
-name|store
+name|backend
 argument_list|,
 name|ps
 argument_list|,
@@ -2200,7 +2199,7 @@ argument_list|()
 decl_stmt|;
 name|printNodeState
 argument_list|(
-name|store
+name|backend
 argument_list|,
 name|c
 argument_list|,
@@ -2283,7 +2282,7 @@ control|(
 name|String
 name|path
 range|:
-name|store
+name|backend
 operator|.
 name|getTarFiles
 argument_list|()
@@ -2420,7 +2419,7 @@ name|String
 argument_list|>
 name|e
 range|:
-name|store
+name|backend
 operator|.
 name|getBulkSegmentIds
 argument_list|(
@@ -2790,7 +2789,7 @@ name|inMem
 init|=
 name|intersection
 argument_list|(
-name|store
+name|backend
 operator|.
 name|getReferencedSegmentIds
 argument_list|()
@@ -2851,14 +2850,14 @@ name|uuids
 argument_list|,
 name|paths
 argument_list|,
-name|store
+name|backend
 operator|.
 name|getHead
 argument_list|()
 argument_list|,
 literal|"/"
 argument_list|,
-name|store
+name|backend
 argument_list|)
 expr_stmt|;
 name|printPaths
@@ -2888,7 +2887,7 @@ argument_list|>
 argument_list|>
 name|graph
 init|=
-name|store
+name|backend
 operator|.
 name|getTarGraph
 argument_list|(
@@ -3163,14 +3162,14 @@ argument_list|)
 argument_list|,
 name|paths
 argument_list|,
-name|store
+name|backend
 operator|.
 name|getHead
 argument_list|()
 argument_list|,
 literal|"/"
 argument_list|,
-name|store
+name|backend
 argument_list|)
 expr_stmt|;
 name|printPaths
@@ -3201,7 +3200,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|store
+name|backend
 operator|.
 name|getGcRoots
 argument_list|(
@@ -3304,7 +3303,7 @@ parameter_list|,
 name|String
 name|path
 parameter_list|,
-name|FileStoreWrapper
+name|ExplorerBackend
 name|store
 parameter_list|)
 block|{
@@ -3794,7 +3793,7 @@ try|try
 block|{
 name|node1
 operator|=
-name|store
+name|backend
 operator|.
 name|readNodeState
 argument_list|(
@@ -3806,7 +3805,7 @@ argument_list|)
 expr_stmt|;
 name|node2
 operator|=
-name|store
+name|backend
 operator|.
 name|readNodeState
 argument_list|(
@@ -4053,17 +4052,17 @@ block|{
 name|String
 name|head
 init|=
-name|store
+name|backend
 operator|.
 name|getRecordId
 argument_list|(
-name|store
+name|backend
 operator|.
 name|getHead
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|store
+name|backend
 operator|.
 name|setRevision
 argument_list|(
@@ -4190,7 +4189,7 @@ parameter_list|()
 block|{
 name|setText
 argument_list|(
-name|store
+name|backend
 operator|.
 name|getPersistedCompactionMapStats
 argument_list|()
@@ -4209,8 +4208,8 @@ argument_list|>
 block|{
 specifier|private
 specifier|final
-name|FileStoreWrapper
-name|store
+name|ExplorerBackend
+name|backend
 decl_stmt|;
 specifier|private
 specifier|final
@@ -4269,15 +4268,15 @@ parameter_list|,
 name|boolean
 name|skipSizeCheck
 parameter_list|,
-name|FileStoreWrapper
-name|store
+name|ExplorerBackend
+name|backend
 parameter_list|)
 block|{
 name|this
 operator|.
-name|store
+name|backend
 operator|=
-name|store
+name|backend
 expr_stmt|;
 name|this
 operator|.
@@ -4302,7 +4301,7 @@ condition|(
 operator|!
 name|skipSizeCheck
 operator|&&
-name|store
+name|backend
 operator|.
 name|isPersisted
 argument_list|(
@@ -4320,7 +4319,7 @@ name|state
 argument_list|,
 name|sizeCache
 argument_list|,
-name|store
+name|backend
 argument_list|)
 expr_stmt|;
 block|}
@@ -4451,7 +4450,7 @@ block|{
 name|NodeState
 name|n
 init|=
-name|store
+name|backend
 operator|.
 name|getHead
 argument_list|()
@@ -4626,7 +4625,7 @@ index|[]
 argument_list|>
 name|sizeCache
 parameter_list|,
-name|FileStoreWrapper
+name|ExplorerBackend
 name|store
 parameter_list|)
 block|{
@@ -5011,7 +5010,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|store
+name|backend
 operator|.
 name|close
 argument_list|()
