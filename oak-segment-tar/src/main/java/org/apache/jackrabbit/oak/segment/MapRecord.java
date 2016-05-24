@@ -383,7 +383,6 @@ operator|-
 literal|1
 decl_stmt|;
 comment|// ~268e6
-specifier|protected
 name|MapRecord
 parameter_list|(
 annotation|@

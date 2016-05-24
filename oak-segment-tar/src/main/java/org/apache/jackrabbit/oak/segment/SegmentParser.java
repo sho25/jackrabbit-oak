@@ -2065,11 +2065,13 @@ name|mapId
 argument_list|,
 name|baseId
 argument_list|,
-operator|new
-name|MapRecord
-argument_list|(
 name|store
-argument_list|,
+operator|.
+name|getReader
+argument_list|()
+operator|.
+name|readMap
+argument_list|(
 name|baseId
 argument_list|)
 argument_list|)
