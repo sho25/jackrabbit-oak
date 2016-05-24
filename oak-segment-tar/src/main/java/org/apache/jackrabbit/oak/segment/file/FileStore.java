@@ -4925,6 +4925,7 @@ operator|-
 name|finalSize
 argument_list|)
 expr_stmt|;
+comment|// FIXME OAK-4106: Reclaimed size reported by FileStore.cleanup is off
 name|gcMonitor
 operator|.
 name|cleaned
