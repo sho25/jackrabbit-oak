@@ -2733,6 +2733,11 @@ name|a
 operator|.
 name|isGroup
 argument_list|()
+operator|&&
+name|isSameIDP
+argument_list|(
+name|a
+argument_list|)
 condition|)
 block|{
 name|grp
@@ -2749,11 +2754,16 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Authorizable '{}' is not a group, but should be one."
+literal|"Existing authorizable '{}' is not a group from this IDP '{}'."
 argument_list|,
 name|extGroup
 operator|.
 name|getId
+argument_list|()
+argument_list|,
+name|idp
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
