@@ -925,7 +925,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @see SynchronizationMBean#syncUsers(String[], boolean, boolean)      */
+comment|/**      * @see SynchronizationMBean#syncUsers(String[], boolean)      */
 annotation|@
 name|Nonnull
 name|String
@@ -940,9 +940,6 @@ name|userIds
 parameter_list|,
 name|boolean
 name|purge
-parameter_list|,
-name|boolean
-name|forceGroupSync
 parameter_list|)
 block|{
 name|context
@@ -955,7 +952,7 @@ argument_list|)
 operator|.
 name|setForceGroupSync
 argument_list|(
-name|forceGroupSync
+literal|true
 argument_list|)
 operator|.
 name|setForceUserSync
@@ -1052,7 +1049,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * @see SynchronizationMBean#syncAllUsers(boolean, boolean)      */
+comment|/**      * @see SynchronizationMBean#syncAllUsers(boolean)      */
 annotation|@
 name|Nonnull
 name|String
@@ -1061,9 +1058,6 @@ name|syncAllUsers
 parameter_list|(
 name|boolean
 name|purge
-parameter_list|,
-name|boolean
-name|forceGroupSync
 parameter_list|)
 block|{
 try|try
@@ -1091,7 +1085,7 @@ argument_list|)
 operator|.
 name|setForceGroupSync
 argument_list|(
-name|forceGroupSync
+literal|true
 argument_list|)
 operator|.
 name|setForceUserSync
@@ -1214,7 +1208,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see SynchronizationMBean#syncExternalUsers(String[], boolean)      */
+comment|/**      * @see SynchronizationMBean#syncExternalUsers(String[])      */
 annotation|@
 name|Nonnull
 name|String
@@ -1226,9 +1220,6 @@ name|Nonnull
 name|String
 index|[]
 name|externalIds
-parameter_list|,
-name|boolean
-name|forceGroupSync
 parameter_list|)
 block|{
 name|List
@@ -1248,7 +1239,7 @@ name|context
 operator|.
 name|setForceGroupSync
 argument_list|(
-name|forceGroupSync
+literal|true
 argument_list|)
 operator|.
 name|setForceUserSync
@@ -1463,16 +1454,13 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * @see SynchronizationMBean#syncAllExternalUsers(boolean)      */
+comment|/**      * @see SynchronizationMBean#syncAllExternalUsers()      */
 annotation|@
 name|Nonnull
 name|String
 index|[]
 name|syncAllExternalUsers
-parameter_list|(
-name|boolean
-name|forceGroupSync
-parameter_list|)
+parameter_list|()
 block|{
 name|List
 argument_list|<
@@ -1491,7 +1479,7 @@ name|context
 operator|.
 name|setForceGroupSync
 argument_list|(
-name|forceGroupSync
+literal|true
 argument_list|)
 operator|.
 name|setForceUserSync
