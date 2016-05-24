@@ -685,6 +685,7 @@ return|;
 block|}
 annotation|@
 name|Override
+comment|// FIXME OAK-4396: HttpStore.containsSegment throws SNFE instead of returning false for non existing segments
 specifier|public
 name|boolean
 name|containsSegment
