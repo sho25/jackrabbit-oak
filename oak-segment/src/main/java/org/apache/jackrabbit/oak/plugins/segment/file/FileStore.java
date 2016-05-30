@@ -4672,6 +4672,20 @@ name|gcMonitor
 operator|.
 name|info
 argument_list|(
+literal|"TarMK GC #{}: cleanup found {} forward references"
+argument_list|,
+name|gcCount
+argument_list|,
+name|fRefs
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
 literal|"TarMK GC #{}: cleanup found forward references to {}"
 argument_list|,
 name|gcCount
