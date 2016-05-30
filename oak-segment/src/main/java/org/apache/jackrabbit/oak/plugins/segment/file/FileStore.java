@@ -4298,6 +4298,8 @@ argument_list|(
 name|referencedIds
 argument_list|,
 name|cleanedIds
+argument_list|,
+name|compactionStrategy
 argument_list|)
 argument_list|)
 expr_stmt|;

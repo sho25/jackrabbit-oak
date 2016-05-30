@@ -463,6 +463,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|compaction
+operator|.
+name|CompactionStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -3759,7 +3779,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Garbage collects segments in this file. First it collects the set of      * segments that are referenced / reachable, then (if more than 25% is      * garbage) creates a new generation of the file.      *<p>      * The old generation files are not removed (they can't easily be removed,      * for memory mapped files).      *       * @param referencedIds the referenced segment ids (input and output).      * @param removed a set which will receive the uuids of all segments that      *                have been cleaned.      * @return this (if the file is kept as is), or the new generation file, or      *         null if the file is fully garbage      */
+comment|/**      * Garbage collects segments in this file. First it collects the set of      * segments that are referenced / reachable, then it creates a new      * generation of the file, if more than 25% is garbage. In the case of      * offline compaction, a new tar file will be created no matter how much      * garbage is detected.      *<p>      * The old generation files are not removed (they can't easily be removed,      * for memory mapped files).      *       * @param referencedIds      *            the referenced segment ids (input and output).      * @param removed      *            a set which will receive the uuids of all segments that have      *            been cleaned.      * @return this (if the file is kept as is), or the new generation file, or      *         null if the file is fully garbage      */
 specifier|synchronized
 name|TarReader
 name|cleanup
@@ -3775,6 +3795,9 @@ argument_list|<
 name|UUID
 argument_list|>
 name|removed
+parameter_list|,
+name|CompactionStrategy
+name|strategy
 parameter_list|)
 throws|throws
 name|IOException
@@ -4034,12 +4057,20 @@ operator|&&
 name|graph
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|strategy
+operator|.
+name|isOfflineCompaction
+argument_list|()
 condition|)
 block|{
 comment|// the space savings are not worth it at less than 25%,
 comment|// unless this tar file lacks a pre-compiled segment graph
 comment|// in which case we'll always generate a new tar file with
 comment|// the graph to speed up future garbage collection runs.
+comment|// offline compaction will ignore the savings threshold and create a
+comment|// new tar file on each run.
 name|log
 operator|.
 name|debug
