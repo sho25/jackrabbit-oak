@@ -2233,9 +2233,6 @@ name|stringCacheStats
 init|=
 name|store
 operator|.
-name|getReader
-argument_list|()
-operator|.
 name|getStringCacheStats
 argument_list|()
 decl_stmt|;
@@ -2592,7 +2589,7 @@ argument_list|)
 decl_stmt|;
 name|segmentNodeStore
 operator|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

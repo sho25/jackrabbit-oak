@@ -759,7 +759,10 @@ argument_list|(
 name|fileStore
 argument_list|)
 operator|.
-name|getHead
+name|getReader
+argument_list|()
+operator|.
+name|readHeadState
 argument_list|()
 decl_stmt|;
 name|Predicate
@@ -812,6 +815,9 @@ init|=
 name|parseHeadGraph
 argument_list|(
 name|fileStore
+operator|.
+name|getReader
+argument_list|()
 argument_list|,
 name|root
 operator|.
@@ -1128,7 +1134,10 @@ argument_list|(
 name|fileStore
 argument_list|)
 operator|.
-name|getHead
+name|getReader
+argument_list|()
+operator|.
+name|readHeadState
 argument_list|()
 decl_stmt|;
 name|HashSet
@@ -1378,7 +1387,10 @@ argument_list|(
 name|fileStore
 argument_list|)
 operator|.
-name|getHead
+name|getReader
+argument_list|()
+operator|.
+name|readHeadState
 argument_list|()
 decl_stmt|;
 name|HashSet
@@ -1698,7 +1710,7 @@ return|return
 name|graph
 return|;
 block|}
-comment|/**      * Parser the head graph of a {@code store}. The head graph is the sub graph of the segment      * graph containing the {@code root}.      * @param store      * @param root      * @return  the head graph of {@code root}.      */
+comment|/**      * Parser the head graph of segment store. The head graph is the sub graph of the segment      * graph containing the {@code root}.      * @param reader  segment reader for the store to parse      * @param root      * @return  the head graph of {@code root}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1711,8 +1723,8 @@ name|parseHeadGraph
 parameter_list|(
 annotation|@
 name|Nonnull
-name|SegmentStore
-name|store
+name|SegmentReader
+name|reader
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -1739,7 +1751,7 @@ block|{
 operator|new
 name|SegmentParser
 argument_list|(
-name|store
+name|reader
 argument_list|)
 block|{
 specifier|private

@@ -293,7 +293,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -766,7 +766,7 @@ expr_stmt|;
 name|NodeState
 name|root
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
@@ -920,7 +920,7 @@ name|result
 init|=
 name|traverse
 argument_list|(
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

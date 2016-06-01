@@ -503,7 +503,7 @@ specifier|final
 name|SegmentNodeStore
 name|nodeStore
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

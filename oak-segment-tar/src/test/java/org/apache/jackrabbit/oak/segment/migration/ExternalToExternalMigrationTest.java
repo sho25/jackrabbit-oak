@@ -71,23 +71,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -171,8 +155,8 @@ extends|extends
 name|AbstractMigratorTest
 block|{
 specifier|private
-name|SegmentStore
-name|segmentStore
+name|FileStore
+name|store
 decl_stmt|;
 annotation|@
 name|Override
@@ -200,7 +184,7 @@ argument_list|,
 literal|"segmentstore"
 argument_list|)
 decl_stmt|;
-name|segmentStore
+name|store
 operator|=
 name|FileStore
 operator|.
@@ -218,11 +202,11 @@ name|build
 argument_list|()
 expr_stmt|;
 return|return
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
-name|segmentStore
+name|store
 argument_list|)
 operator|.
 name|build
@@ -236,7 +220,7 @@ name|void
 name|closeNodeStore
 parameter_list|()
 block|{
-name|segmentStore
+name|store
 operator|.
 name|close
 argument_list|()

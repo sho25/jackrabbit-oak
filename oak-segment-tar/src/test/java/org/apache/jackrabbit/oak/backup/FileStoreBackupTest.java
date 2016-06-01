@@ -21,24 +21,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentNodeStore
-operator|.
-name|builder
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -150,6 +132,22 @@ operator|.
 name|write
 operator|.
 name|InitialContent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -397,6 +395,8 @@ decl_stmt|;
 name|NodeStore
 name|store
 init|=
+name|SegmentNodeStoreBuilders
+operator|.
 name|builder
 argument_list|(
 name|source
@@ -484,6 +484,8 @@ decl_stmt|;
 name|NodeStore
 name|store
 init|=
+name|SegmentNodeStoreBuilders
+operator|.
 name|builder
 argument_list|(
 name|source
@@ -734,10 +736,16 @@ name|assertEquals
 argument_list|(
 name|store
 operator|.
+name|getRevisions
+argument_list|()
+operator|.
 name|getHead
 argument_list|()
 argument_list|,
 name|backup
+operator|.
+name|getRevisions
+argument_list|()
 operator|.
 name|getHead
 argument_list|()

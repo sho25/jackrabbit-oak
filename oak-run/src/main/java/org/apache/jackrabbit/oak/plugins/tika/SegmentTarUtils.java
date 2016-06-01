@@ -65,7 +65,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -150,7 +150,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

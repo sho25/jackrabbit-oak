@@ -133,7 +133,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -269,7 +269,7 @@ name|IOException
 block|{
 name|store
 operator|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
@@ -284,6 +284,8 @@ expr_stmt|;
 name|NodeBuilder
 name|rootBuilder
 init|=
+name|this
+operator|.
 name|store
 operator|.
 name|getRoot

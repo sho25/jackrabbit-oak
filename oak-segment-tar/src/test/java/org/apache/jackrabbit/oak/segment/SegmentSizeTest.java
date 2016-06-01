@@ -68,6 +68,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentWriters
+operator|.
+name|segmentWriter
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -303,7 +321,7 @@ name|TemporaryFolder
 argument_list|()
 decl_stmt|;
 specifier|private
-name|SegmentStore
+name|FileStore
 name|store
 decl_stmt|;
 annotation|@
@@ -1223,7 +1241,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -1394,13 +1412,7 @@ block|{
 name|SegmentWriter
 name|writer
 init|=
-operator|new
-name|SegmentWriter
-argument_list|(
-name|store
-argument_list|,
-operator|new
-name|SegmentBufferWriter
+name|segmentWriter
 argument_list|(
 name|store
 argument_list|,
@@ -1409,7 +1421,6 @@ argument_list|,
 literal|"test"
 argument_list|,
 literal|0
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|RecordId
@@ -1479,13 +1490,7 @@ block|{
 name|SegmentWriter
 name|writer
 init|=
-operator|new
-name|SegmentWriter
-argument_list|(
-name|store
-argument_list|,
-operator|new
-name|SegmentBufferWriter
+name|segmentWriter
 argument_list|(
 name|store
 argument_list|,
@@ -1494,7 +1499,6 @@ argument_list|,
 literal|"test"
 argument_list|,
 literal|0
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|NodeState

@@ -77,7 +77,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -280,7 +280,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

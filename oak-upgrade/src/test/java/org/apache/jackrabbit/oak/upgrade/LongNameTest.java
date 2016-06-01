@@ -191,7 +191,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentNodeStore
+name|DocumentMK
 import|;
 end_import
 
@@ -209,7 +209,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
+name|DocumentNodeStore
 import|;
 end_import
 
@@ -241,7 +241,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -765,23 +765,16 @@ name|RepositoryException
 throws|,
 name|IOException
 block|{
-name|SegmentStore
-name|memoryStore
-init|=
-operator|new
-name|MemoryStore
-argument_list|()
-decl_stmt|;
-try|try
-block|{
 name|SegmentNodeStore
 name|nodeStore
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
-name|memoryStore
+operator|new
+name|MemoryStore
+argument_list|()
 argument_list|)
 operator|.
 name|build
@@ -829,15 +822,6 @@ name|TOO_LONG_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|memoryStore
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 specifier|private
 specifier|static

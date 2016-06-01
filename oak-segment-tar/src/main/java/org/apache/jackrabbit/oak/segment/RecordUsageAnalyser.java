@@ -188,13 +188,13 @@ name|RecordUsageAnalyser
 parameter_list|(
 annotation|@
 name|Nonnull
-name|SegmentStore
-name|store
+name|SegmentReader
+name|reader
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|store
+name|reader
 argument_list|)
 expr_stmt|;
 block|}

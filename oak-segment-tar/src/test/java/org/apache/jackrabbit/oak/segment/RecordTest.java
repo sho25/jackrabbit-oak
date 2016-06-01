@@ -640,7 +640,7 @@ name|UTF_8
 argument_list|)
 decl_stmt|;
 specifier|private
-name|SegmentStore
+name|FileStore
 name|store
 decl_stmt|;
 specifier|private
@@ -3051,7 +3051,7 @@ expr_stmt|;
 name|SegmentNodeStore
 name|extStore
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
@@ -3330,6 +3330,16 @@ operator|new
 name|SegmentBufferWriter
 argument_list|(
 name|store
+argument_list|,
+name|store
+operator|.
+name|getTracker
+argument_list|()
+argument_list|,
+name|store
+operator|.
+name|getReader
+argument_list|()
 argument_list|,
 name|LATEST_VERSION
 argument_list|,

@@ -143,27 +143,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
-operator|.
-name|FileStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|JournalReader
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -309,7 +289,7 @@ decl_stmt|;
 name|SegmentNodeStore
 name|nodeStore
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

@@ -79,22 +79,6 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
 name|SegmentNodeStore
 import|;
 end_import
@@ -131,9 +115,9 @@ name|segment
 operator|.
 name|file
 operator|.
-name|tooling
+name|FileStore
 operator|.
-name|BasicReadOnlyBlobStore
+name|Builder
 import|;
 end_import
 
@@ -151,9 +135,9 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|tooling
 operator|.
-name|Builder
+name|BasicReadOnlyBlobStore
 import|;
 end_import
 
@@ -325,15 +309,8 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|SegmentNodeState
-name|state
-init|=
-name|backup
-operator|.
-name|getHead
-argument_list|()
-decl_stmt|;
 comment|// FIXME OAK-4278: Fix backup and restore
+comment|//            SegmentNodeState state = backup.getRevisions().getHead();
 comment|// Use dedicated implementation instead of compactor.
 comment|// This is allows us to decouple and fix problems for online compaction independent
 comment|// of backup / restore.

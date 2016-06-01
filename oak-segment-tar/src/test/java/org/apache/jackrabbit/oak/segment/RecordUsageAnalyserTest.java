@@ -213,6 +213,24 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentWriters
+operator|.
+name|segmentWriter
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -367,7 +385,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -376,13 +394,7 @@ argument_list|()
 decl_stmt|;
 name|writer
 operator|=
-operator|new
-name|SegmentWriter
-argument_list|(
-name|store
-argument_list|,
-operator|new
-name|SegmentBufferWriter
+name|segmentWriter
 argument_list|(
 name|store
 argument_list|,
@@ -392,7 +404,6 @@ literal|""
 argument_list|,
 literal|0
 argument_list|)
-argument_list|)
 expr_stmt|;
 name|analyser
 operator|=
@@ -400,6 +411,9 @@ operator|new
 name|RecordUsageAnalyser
 argument_list|(
 name|store
+operator|.
+name|getReader
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

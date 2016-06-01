@@ -876,7 +876,7 @@ argument_list|()
 expr_stmt|;
 name|nodeStore
 operator|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

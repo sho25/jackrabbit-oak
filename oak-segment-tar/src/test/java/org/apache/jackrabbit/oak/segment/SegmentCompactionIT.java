@@ -141,18 +141,6 @@ name|java
 operator|.
 name|lang
 operator|.
-name|Boolean
-operator|.
-name|getBoolean
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
 name|Integer
 operator|.
 name|MAX_VALUE
@@ -1729,7 +1717,7 @@ argument_list|()
 expr_stmt|;
 name|nodeStore
 operator|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
@@ -1751,9 +1739,6 @@ name|CacheStats
 name|stringCacheStats
 init|=
 name|fileStore
-operator|.
-name|getReader
-argument_list|()
 operator|.
 name|getStringCacheStats
 argument_list|()

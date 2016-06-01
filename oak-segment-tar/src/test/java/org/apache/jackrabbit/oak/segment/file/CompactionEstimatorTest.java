@@ -129,9 +129,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
-operator|.
-name|FileStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -318,7 +316,7 @@ decl_stmt|;
 name|SegmentNodeStore
 name|nodeStore
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
