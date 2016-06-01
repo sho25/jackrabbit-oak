@@ -4145,7 +4145,13 @@ literal|"[COW][{}] CopyOnWrite stats : Skipped copying {} files with total size 
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|reindexMode
+operator|&&
+name|skippedFilesSize
+operator|>
+literal|0
+operator|)
 operator|||
 name|skippedFilesSize
 operator|>
