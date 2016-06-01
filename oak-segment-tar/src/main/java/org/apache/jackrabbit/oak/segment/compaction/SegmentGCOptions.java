@@ -160,6 +160,12 @@ name|retainedGenerations
 init|=
 name|RETAINED_GENERATIONS_DEFAULT
 decl_stmt|;
+specifier|private
+name|boolean
+name|offline
+init|=
+literal|false
+decl_stmt|;
 specifier|public
 name|SegmentGCOptions
 parameter_list|(
@@ -497,7 +503,11 @@ literal|", retainedGenerations="
 operator|+
 name|retainedGenerations
 operator|+
-literal|'}'
+literal|", offline="
+operator|+
+name|offline
+operator|+
+literal|"}"
 return|;
 block|}
 comment|/**      * Check if the approximate repository size is getting too big compared with      * the available space on disk.      *      * @param repositoryDiskSpace Approximate size of the disk space occupied by      *                            the repository.      * @param availableDiskSpace  Currently available disk space.      * @return {@code true} if the available disk space is considered enough for      * normal repository operations.      */
@@ -518,6 +528,37 @@ operator|>
 literal|0.25
 operator|*
 name|repositoryDiskSpace
+return|;
+block|}
+specifier|public
+name|boolean
+name|isOffline
+parameter_list|()
+block|{
+return|return
+name|offline
+return|;
+block|}
+comment|/**      * Enables the offline compaction mode, allowing for certain optimizations,      * like reducing the retained generation to 1.      * @return this instance      */
+specifier|public
+name|SegmentGCOptions
+name|setOffline
+parameter_list|()
+block|{
+name|this
+operator|.
+name|offline
+operator|=
+literal|true
+expr_stmt|;
+name|this
+operator|.
+name|retainedGenerations
+operator|=
+literal|1
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 block|}
