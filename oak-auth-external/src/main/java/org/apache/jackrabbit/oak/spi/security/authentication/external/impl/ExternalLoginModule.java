@@ -710,7 +710,9 @@ specifier|final
 name|String
 name|PARAM_IDP_NAME
 init|=
-literal|"idp.name"
+name|SyncHandlerMapping
+operator|.
+name|PARAM_IDP_NAME
 decl_stmt|;
 comment|/**      * Name of the parameter that configures the name of the synchronization handler.      */
 specifier|public
@@ -719,7 +721,9 @@ specifier|final
 name|String
 name|PARAM_SYNC_HANDLER_NAME
 init|=
-literal|"sync.handlerName"
+name|SyncHandlerMapping
+operator|.
+name|PARAM_SYNC_HANDLER_NAME
 decl_stmt|;
 specifier|private
 name|ExternalIdentityProviderManager

@@ -375,6 +375,11 @@ name|emptyMap
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|setSyncConfig
+argument_list|(
+name|syncConfig
+argument_list|)
+expr_stmt|;
 name|options
 operator|.
 name|put
@@ -383,7 +388,10 @@ name|ExternalLoginModule
 operator|.
 name|PARAM_SYNC_HANDLER_NAME
 argument_list|,
-literal|"default"
+name|syncConfig
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|options
@@ -398,11 +406,6 @@ name|idp
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|setSyncConfig
-argument_list|(
-name|syncConfig
 argument_list|)
 expr_stmt|;
 block|}

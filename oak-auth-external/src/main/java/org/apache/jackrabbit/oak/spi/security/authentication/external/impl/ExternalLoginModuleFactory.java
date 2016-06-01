@@ -81,6 +81,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -405,20 +419,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMap
-import|;
-end_import
-
 begin_comment
 comment|/**  * Implements a LoginModuleFactory that creates {@link ExternalLoginModule}s and allows to configure login modules  * via OSGi config.  */
 end_comment
@@ -452,6 +452,8 @@ class|class
 name|ExternalLoginModuleFactory
 implements|implements
 name|LoginModuleFactory
+implements|,
+name|SyncHandlerMapping
 block|{
 specifier|private
 specifier|static
@@ -581,7 +583,7 @@ specifier|final
 name|String
 name|PARAM_IDP_NAME
 init|=
-name|ExternalLoginModule
+name|SyncHandlerMapping
 operator|.
 name|PARAM_IDP_NAME
 decl_stmt|;
@@ -606,7 +608,7 @@ specifier|final
 name|String
 name|PARAM_SYNC_HANDLER_NAME
 init|=
-name|ExternalLoginModule
+name|SyncHandlerMapping
 operator|.
 name|PARAM_SYNC_HANDLER_NAME
 decl_stmt|;
@@ -638,6 +640,7 @@ specifier|private
 name|Registration
 name|mbeanRegistration
 decl_stmt|;
+comment|//----------------------------------------------------< SCR integration>---
 comment|/**      * Activates the LoginModuleFactory service      * @param context the component context      */
 annotation|@
 name|SuppressWarnings
