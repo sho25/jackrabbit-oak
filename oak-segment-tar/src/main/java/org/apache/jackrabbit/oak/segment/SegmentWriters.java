@@ -105,6 +105,7 @@ specifier|private
 name|SegmentWriters
 parameter_list|()
 block|{}
+comment|/**      * Create a thread safe {@code SegmentWriter} based on a {@link SegmentBufferWriterPool pool}      * of {@link SegmentBufferWriter} instances.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -181,6 +182,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a thread safe {@code SegmentWriter} based on a {@link SegmentBufferWriterPool pool}      * of {@link SegmentBufferWriter} instances.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -257,6 +259,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a thread safe {@code SegmentWriter} based on a {@link SegmentBufferWriterPool pool}      * of {@link SegmentBufferWriter} instances.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -333,6 +336,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a<em>non</em> thread safe {@code SegmentWriter} based on single      * {@link SegmentBufferWriter} instance.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -404,6 +408,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a<em>non</em> thread safe {@code SegmentWriter} based on single      * {@link SegmentBufferWriter} instance.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -475,6 +480,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a<em>non</em> thread safe {@code SegmentWriter} based on single      * {@link SegmentBufferWriter} instance.      */
 annotation|@
 name|Nonnull
 specifier|public

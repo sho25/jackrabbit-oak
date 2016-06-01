@@ -756,7 +756,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code SegmentWriter} converts nodes, properties, values, etc. to records and  * persists them with the help of a {@link WriteOperationHandler}.  * All public methods of this class are thread safe if and only if the  * {@code WriteOperationHandler} passed to the constructor is thread safe.  */
+comment|/**  * A {@code SegmentWriter} converts nodes, properties, values, etc. to records and  * persists them with the help of a {@link WriteOperationHandler}.  * All public methods of this class are thread safe if and only if the  * {@link WriteOperationHandler} passed to the constructor is thread safe.  */
 end_comment
 
 begin_class
