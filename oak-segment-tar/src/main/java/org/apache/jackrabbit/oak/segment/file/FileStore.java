@@ -4090,6 +4090,7 @@ literal|false
 argument_list|)
 condition|)
 block|{
+comment|// FIXME OAK-4138: Decouple revision cleanup from the flush thread
 name|pendingRemove
 operator|.
 name|addAll
