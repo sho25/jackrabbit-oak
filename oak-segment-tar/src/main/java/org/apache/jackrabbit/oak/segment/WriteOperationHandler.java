@@ -78,7 +78,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Flush any pending changes on any {@link SegmentBufferWriter} managed by this instance.      * This method<em>does not block</em> to wait for concurrent write operations. However, if      * a write operation is currently in progress a call to this method ensures the respective      * changes are properly flushed at the end of that call.      * @throws IOException      */
+comment|/**      * Flush any pending changes on any {@link SegmentBufferWriter} managed by this instance.      * @throws IOException      */
 name|void
 name|flush
 parameter_list|()
