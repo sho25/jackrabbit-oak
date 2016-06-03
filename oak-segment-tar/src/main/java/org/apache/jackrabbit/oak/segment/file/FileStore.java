@@ -5624,7 +5624,6 @@ name|isOffline
 argument_list|()
 condition|)
 block|{
-comment|// Capital C to indicate offline compaction
 name|SegmentWriter
 name|writer
 init|=
