@@ -2277,6 +2277,8 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// Write this node's record id to indicate that the stable id is not
+comment|// explicitly stored.
 name|writer
 operator|.
 name|writeRecordId

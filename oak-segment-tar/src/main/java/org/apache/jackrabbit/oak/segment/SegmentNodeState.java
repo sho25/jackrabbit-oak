@@ -757,6 +757,7 @@ name|String
 name|getStableId
 parameter_list|()
 block|{
+comment|// The first record id of this node points to the stable id.
 name|RecordId
 name|id
 init|=
@@ -780,6 +781,9 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// If that id is equal to the record id of this node then the stable
+comment|// id is the string representation of the record id of this node.
+comment|// See RecordWriters.NodeStateWriter.writeRecordContent()
 return|return
 name|id
 operator|.
@@ -789,6 +793,8 @@ return|;
 block|}
 else|else
 block|{
+comment|// Otherwise that id points to the serialised (msb, lsb, offset)
+comment|// stable id.
 name|Segment
 name|segment
 init|=
