@@ -5633,6 +5633,8 @@ argument_list|,
 name|blobStore
 argument_list|,
 name|cancel
+argument_list|,
+name|gcOptions
 argument_list|)
 operator|.
 name|compact
