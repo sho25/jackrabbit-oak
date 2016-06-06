@@ -227,20 +227,6 @@ name|commons
 operator|.
 name|io
 operator|.
-name|FilenameUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|io
-operator|.
 name|IOUtils
 import|;
 end_import
@@ -379,6 +365,22 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|FilenameUtils
+operator|.
+name|normalizeNoEndSeparator
+import|;
+end_import
+
 begin_comment
 comment|/**  *  Oak specific extension of JR2 FileDataStore which enables  *  provisioning the signing key via OSGi config  */
 end_comment
@@ -448,8 +450,6 @@ specifier|final
 name|String
 name|path
 init|=
-name|FilenameUtils
-operator|.
 name|normalizeNoEndSeparator
 argument_list|(
 name|getPath
@@ -498,10 +498,13 @@ name|isFile
 argument_list|()
 operator|&&
 operator|!
+name|normalizeNoEndSeparator
+argument_list|(
 name|input
 operator|.
 name|getParent
 argument_list|()
+argument_list|)
 operator|.
 name|equals
 argument_list|(
