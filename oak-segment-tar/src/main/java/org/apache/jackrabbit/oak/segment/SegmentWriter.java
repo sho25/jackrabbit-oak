@@ -807,17 +807,10 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|SegmentTracker
-name|tracker
-decl_stmt|;
-annotation|@
-name|Nonnull
-specifier|private
-specifier|final
 name|WriteOperationHandler
 name|writeOperationHandler
 decl_stmt|;
-comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param reader     segment reader for the {@code store}      * @param blobStore  the blog store or {@code null} for inlined blobs      * @param tracker    segment tracker for {@code store}      * @param cacheManager  cache manager instance for the de-duplication caches used by this writer      * @param writeOperationHandler  handler for write operations.      */
+comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param reader     segment reader for the {@code store}      * @param blobStore  the blog store or {@code null} for inlined blobs      * @param cacheManager  cache manager instance for the de-duplication caches used by this writer      * @param writeOperationHandler  handler for write operations.      */
 specifier|public
 name|SegmentWriter
 parameter_list|(
@@ -835,11 +828,6 @@ annotation|@
 name|Nullable
 name|BlobStore
 name|blobStore
-parameter_list|,
-annotation|@
-name|Nonnull
-name|SegmentTracker
-name|tracker
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -875,15 +863,6 @@ operator|.
 name|blobStore
 operator|=
 name|blobStore
-expr_stmt|;
-name|this
-operator|.
-name|tracker
-operator|=
-name|checkNotNull
-argument_list|(
-name|tracker
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -3321,7 +3300,7 @@ block|{
 name|SegmentId
 name|bulkId
 init|=
-name|tracker
+name|store
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -4033,7 +4012,7 @@ block|{
 name|SegmentId
 name|bulkId
 init|=
-name|tracker
+name|store
 operator|.
 name|newBulkSegmentId
 argument_list|()

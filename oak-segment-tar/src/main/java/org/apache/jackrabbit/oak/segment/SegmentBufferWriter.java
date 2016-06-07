@@ -792,7 +792,7 @@ operator|=
 operator|new
 name|Segment
 argument_list|(
-name|tracker
+name|store
 argument_list|,
 name|reader
 argument_list|,

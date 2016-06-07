@@ -402,11 +402,6 @@ operator|.
 name|getBlobStore
 argument_list|()
 argument_list|,
-name|store
-operator|.
-name|getTracker
-argument_list|()
-argument_list|,
 name|cacheManager
 argument_list|,
 name|createWriter
@@ -450,11 +445,6 @@ operator|.
 name|getBlobStore
 argument_list|()
 argument_list|,
-name|store
-operator|.
-name|getTracker
-argument_list|()
-argument_list|,
 name|cacheManager
 argument_list|,
 name|createWriter
@@ -496,11 +486,6 @@ argument_list|,
 name|store
 operator|.
 name|getBlobStore
-argument_list|()
-argument_list|,
-name|store
-operator|.
-name|getTracker
 argument_list|()
 argument_list|,
 name|cacheManager

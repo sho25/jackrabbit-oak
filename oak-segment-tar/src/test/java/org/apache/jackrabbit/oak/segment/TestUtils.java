@@ -118,8 +118,8 @@ specifier|static
 name|RecordId
 name|newRecordId
 parameter_list|(
-name|SegmentTracker
-name|factory
+name|SegmentStore
+name|store
 parameter_list|,
 name|Random
 name|random
@@ -128,7 +128,7 @@ block|{
 name|SegmentId
 name|id
 init|=
-name|factory
+name|store
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -228,7 +228,7 @@ operator|<<
 name|RECORD_ALIGN_BITS
 return|;
 block|}
-comment|/**      * Create a random map of record ids.      *      * @param rnd      * @param tracker      * @param segmentCount  number of segments      * @param entriesPerSegment  number of records per segment      * @return  map of record ids      */
+comment|/**      * Create a random map of record ids.      *      * @param rnd      * @param store      * @param segmentCount  number of segments      * @param entriesPerSegment  number of records per segment      * @return  map of record ids      */
 specifier|public
 specifier|static
 name|Map
@@ -242,8 +242,8 @@ parameter_list|(
 name|Random
 name|rnd
 parameter_list|,
-name|SegmentTracker
-name|tracker
+name|SegmentStore
+name|store
 parameter_list|,
 name|int
 name|segmentCount
@@ -281,7 +281,7 @@ block|{
 name|SegmentId
 name|id
 init|=
-name|tracker
+name|store
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -340,7 +340,7 @@ init|=
 operator|new
 name|RecordId
 argument_list|(
-name|tracker
+name|store
 operator|.
 name|newDataSegmentId
 argument_list|()

@@ -199,12 +199,7 @@ argument_list|()
 decl_stmt|;
 specifier|public
 name|SegmentTracker
-parameter_list|(
-annotation|@
-name|Nonnull
-name|SegmentStore
-name|store
-parameter_list|)
+parameter_list|()
 block|{
 for|for
 control|(
@@ -230,9 +225,7 @@ index|]
 operator|=
 operator|new
 name|SegmentIdTable
-argument_list|(
-name|store
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -287,7 +280,7 @@ return|return
 name|ids
 return|;
 block|}
-comment|/**      * Get an existing {@code SegmentId} with the given {@code msb} and {@code lsb}      * or create a new one if no such id exists with this tracker.      * @param msb  most significant bits of the segment id      * @param lsb  least  significant bits of the segment id      * @return the segment id      */
+comment|/**      * Get an existing {@code SegmentId} with the given {@code msb} and {@code      * lsb} or create a new one if no such id exists with this tracker.      *      * @param msb   most significant bits of the segment id      * @param lsb   least  significant bits of the segment id      * @param maker A non-{@code null} instance of {@link SegmentIdFactory}.      * @return the segment id      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -299,6 +292,9 @@ name|msb
 parameter_list|,
 name|long
 name|lsb
+parameter_list|,
+name|SegmentIdFactory
+name|maker
 parameter_list|)
 block|{
 name|int
@@ -330,34 +326,48 @@ argument_list|(
 name|msb
 argument_list|,
 name|lsb
+argument_list|,
+name|maker
 argument_list|)
 return|;
 block|}
-comment|/**      * Create and track a new segment id for data segments.      * @return the segment id      */
+comment|/**      * Create and track a new segment id for data segments.      *      * @param maker A non-{@code null} instance of {@link SegmentIdFactory}.      * @return the segment id      */
 annotation|@
 name|Nonnull
+specifier|public
 name|SegmentId
 name|newDataSegmentId
-parameter_list|()
+parameter_list|(
+name|SegmentIdFactory
+name|maker
+parameter_list|)
 block|{
 return|return
 name|newSegmentId
 argument_list|(
 name|DATA
+argument_list|,
+name|maker
 argument_list|)
 return|;
 block|}
-comment|/**      * Create and track a new segment id for bulk segments.      * @return the segment id      */
+comment|/**      * Create and track a new segment id for bulk segments.      *      * @param maker A non-{@code null} instance of {@link SegmentIdFactory}.      * @return the segment id      */
 annotation|@
 name|Nonnull
+specifier|public
 name|SegmentId
 name|newBulkSegmentId
-parameter_list|()
+parameter_list|(
+name|SegmentIdFactory
+name|maker
+parameter_list|)
 block|{
 return|return
 name|newSegmentId
 argument_list|(
 name|BULK
+argument_list|,
+name|maker
 argument_list|)
 return|;
 block|}
@@ -369,6 +379,9 @@ name|newSegmentId
 parameter_list|(
 name|long
 name|type
+parameter_list|,
+name|SegmentIdFactory
+name|maker
 parameter_list|)
 block|{
 name|segmentCounter
@@ -410,6 +423,8 @@ argument_list|(
 name|msb
 argument_list|,
 name|lsb
+argument_list|,
+name|maker
 argument_list|)
 return|;
 block|}

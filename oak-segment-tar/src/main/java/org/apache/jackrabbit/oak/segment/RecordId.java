@@ -188,7 +188,7 @@ specifier|static
 name|RecordId
 name|fromString
 parameter_list|(
-name|SegmentTracker
+name|SegmentStore
 name|factory
 parameter_list|,
 name|String
@@ -233,7 +233,7 @@ name|segmentId
 init|=
 name|factory
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|uuid
 operator|.

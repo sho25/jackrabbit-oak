@@ -529,7 +529,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentTracker
+name|SegmentStore
 import|;
 end_import
 
@@ -3843,12 +3843,12 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Collect the references of those blobs that are reachable from any segment with a      * generation at or above {@code minGeneration}.      * @param tracker      * @param collector      * @param minGeneration      */
+comment|/**      * Collect the references of those blobs that are reachable from any segment with a      * generation at or above {@code minGeneration}.      * @param store      * @param collector      * @param minGeneration      */
 name|void
 name|collectBlobReferences
 parameter_list|(
-name|SegmentTracker
-name|tracker
+name|SegmentStore
+name|store
 parameter_list|,
 name|ReferenceCollector
 name|collector
@@ -3881,9 +3881,9 @@ comment|// Fetch the blob references from the tar index instead reading them fro
 name|SegmentId
 name|id
 init|=
-name|tracker
+name|store
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|entry
 operator|.

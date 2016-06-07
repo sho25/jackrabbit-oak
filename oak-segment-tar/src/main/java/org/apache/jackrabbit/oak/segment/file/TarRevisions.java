@@ -775,7 +775,7 @@ name|RecordId
 operator|.
 name|fromString
 argument_list|(
-name|tracker
+name|store
 argument_list|,
 name|entry
 argument_list|)

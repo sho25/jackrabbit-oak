@@ -1251,14 +1251,6 @@ throws|throws
 name|IOException
 block|{
 comment|// OAK-1184
-name|SegmentTracker
-name|factory
-init|=
-name|store
-operator|.
-name|getTracker
-argument_list|()
-decl_stmt|;
 name|List
 argument_list|<
 name|RecordId
@@ -1290,7 +1282,7 @@ argument_list|(
 operator|new
 name|RecordId
 argument_list|(
-name|factory
+name|store
 operator|.
 name|newBulkSegmentId
 argument_list|()

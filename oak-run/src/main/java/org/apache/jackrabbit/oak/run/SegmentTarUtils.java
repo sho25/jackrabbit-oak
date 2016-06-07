@@ -2516,9 +2516,6 @@ operator|=
 name|fromString
 argument_list|(
 name|store
-operator|.
-name|getTracker
-argument_list|()
 argument_list|,
 name|tokens
 index|[
@@ -2558,9 +2555,6 @@ operator|=
 name|fromString
 argument_list|(
 name|store
-operator|.
-name|getTracker
-argument_list|()
 argument_list|,
 name|tokens
 index|[
@@ -2797,9 +2791,6 @@ init|=
 name|fromString
 argument_list|(
 name|store
-operator|.
-name|getTracker
-argument_list|()
 argument_list|,
 name|revDiffsIt
 operator|.
@@ -2821,9 +2812,6 @@ init|=
 name|fromString
 argument_list|(
 name|store
-operator|.
-name|getTracker
-argument_list|()
 argument_list|,
 name|revDiffsIt
 operator|.
@@ -4621,10 +4609,7 @@ name|id
 init|=
 name|store
 operator|.
-name|getTracker
-argument_list|()
-operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|uuid
 operator|.
@@ -4685,9 +4670,6 @@ operator|=
 name|fromString
 argument_list|(
 name|store
-operator|.
-name|getTracker
-argument_list|()
 argument_list|,
 name|matcher
 operator|.
@@ -4714,9 +4696,6 @@ operator|=
 name|fromString
 argument_list|(
 name|store
-operator|.
-name|getTracker
-argument_list|()
 argument_list|,
 name|matcher
 operator|.
