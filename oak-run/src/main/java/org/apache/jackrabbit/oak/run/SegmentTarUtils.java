@@ -313,6 +313,26 @@ name|segment
 operator|.
 name|file
 operator|.
+name|FileStoreBuilder
+operator|.
+name|fileStoreBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
 name|tooling
 operator|.
 name|ConsistencyChecker
@@ -1015,9 +1035,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
-operator|.
-name|Builder
+name|FileStoreBuilder
 import|;
 end_import
 
@@ -2112,9 +2130,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 operator|new
 name|File
@@ -2443,9 +2459,7 @@ block|}
 name|ReadOnlyStore
 name|store
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|dir
 argument_list|)
@@ -4935,9 +4949,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|isValidFileStoreOrFail
 argument_list|(
@@ -4976,9 +4988,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|isValidFileStoreOrFail
 argument_list|(
@@ -5002,7 +5012,7 @@ return|;
 block|}
 specifier|private
 specifier|static
-name|Builder
+name|FileStoreBuilder
 name|newFileStoreBuilder
 parameter_list|(
 name|String
@@ -5015,9 +5025,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|checkFileStoreVersionOrFail
 argument_list|(

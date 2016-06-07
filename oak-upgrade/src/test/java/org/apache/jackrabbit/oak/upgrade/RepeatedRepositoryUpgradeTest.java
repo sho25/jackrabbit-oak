@@ -18,6 +18,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStoreBuilder
+operator|.
+name|fileStoreBuilder
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -375,9 +395,7 @@ try|try
 block|{
 name|fileStore
 operator|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|dir
 argument_list|)

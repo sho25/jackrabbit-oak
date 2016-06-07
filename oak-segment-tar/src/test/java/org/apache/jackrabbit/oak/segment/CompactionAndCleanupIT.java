@@ -193,6 +193,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStoreBuilder
+operator|.
+name|fileStoreBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -741,9 +761,7 @@ block|{
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -1296,9 +1314,7 @@ decl_stmt|;
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -1853,9 +1869,7 @@ decl_stmt|;
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -2180,9 +2194,7 @@ decl_stmt|;
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -2519,9 +2531,7 @@ decl_stmt|;
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -2838,9 +2848,7 @@ decl_stmt|;
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -3263,9 +3271,7 @@ specifier|final
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -3529,9 +3535,7 @@ block|{
 name|FileStore
 name|store
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -3975,9 +3979,7 @@ block|{
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -4132,9 +4134,7 @@ argument_list|()
 expr_stmt|;
 name|fileStore
 operator|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -4352,9 +4352,7 @@ decl_stmt|;
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|repoDir
 argument_list|)
@@ -4698,9 +4696,7 @@ block|}
 comment|// Re-initialise the file store to simulate off-line gc
 name|fileStore
 operator|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|repoDir
 argument_list|)
@@ -5387,9 +5383,7 @@ decl_stmt|;
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()
@@ -5665,9 +5659,7 @@ block|{
 name|FileStore
 name|fileStore
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getFileStoreFolder
 argument_list|()

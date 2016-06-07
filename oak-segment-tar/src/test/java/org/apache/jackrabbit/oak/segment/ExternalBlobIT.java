@@ -79,6 +79,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStoreBuilder
+operator|.
+name|fileStoreBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -1246,9 +1266,7 @@ condition|)
 block|{
 name|store
 operator|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getWorkDir
 argument_list|()
@@ -1868,9 +1886,7 @@ argument_list|()
 decl_stmt|;
 name|store
 operator|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|getWorkDir
 argument_list|()

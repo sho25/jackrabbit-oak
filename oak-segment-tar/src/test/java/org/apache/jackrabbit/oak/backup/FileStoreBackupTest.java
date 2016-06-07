@@ -21,6 +21,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStoreBuilder
+operator|.
+name|fileStoreBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -377,9 +397,7 @@ block|{
 name|FileStore
 name|source
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|src
 argument_list|)
@@ -466,9 +484,7 @@ block|{
 name|FileStore
 name|source
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|src
 argument_list|)
@@ -529,9 +545,7 @@ argument_list|)
 expr_stmt|;
 name|source
 operator|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|src
 argument_list|)
@@ -717,9 +731,7 @@ block|{
 name|FileStore
 name|backup
 init|=
-name|FileStore
-operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|destination
 argument_list|)
