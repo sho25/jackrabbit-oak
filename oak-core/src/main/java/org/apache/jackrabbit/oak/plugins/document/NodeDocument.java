@@ -8155,6 +8155,11 @@ literal|','
 argument_list|)
 expr_stmt|;
 block|}
+name|doc
+operator|.
+name|seal
+argument_list|()
+expr_stmt|;
 return|return
 name|doc
 return|;
