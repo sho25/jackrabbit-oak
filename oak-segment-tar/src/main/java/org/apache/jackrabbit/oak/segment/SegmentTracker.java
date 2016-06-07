@@ -59,6 +59,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|UUID
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|atomic
@@ -74,20 +84,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Predicate
 import|;
 end_import
 
@@ -428,21 +424,23 @@ name|maker
 argument_list|)
 return|;
 block|}
-comment|// FIXME OAK-4285: Align cleanup of segment id tables with the new cleanup strategy
-comment|// ith clean brutal we need to remove those ids that have been cleaned
-comment|// i.e. those whose segment was from an old generation
-comment|// Instead of removing, mark affected ids as gc'ed so the SNFE caused by
-comment|// any subsequent access can report a precise cause
 specifier|public
 specifier|synchronized
 name|void
 name|clearSegmentIdTables
 parameter_list|(
-name|Predicate
+annotation|@
+name|Nonnull
+name|Set
 argument_list|<
-name|SegmentId
+name|UUID
 argument_list|>
-name|canRemove
+name|reclaimed
+parameter_list|,
+annotation|@
+name|Nonnull
+name|String
+name|gcInfo
 parameter_list|)
 block|{
 for|for
@@ -457,7 +455,9 @@ name|table
 operator|.
 name|clearSegmentIdTables
 argument_list|(
-name|canRemove
+name|reclaimed
+argument_list|,
+name|gcInfo
 argument_list|)
 expr_stmt|;
 block|}
