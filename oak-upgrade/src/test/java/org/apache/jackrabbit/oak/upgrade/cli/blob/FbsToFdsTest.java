@@ -262,6 +262,17 @@ argument_list|()
 block|}
 return|;
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|boolean
+name|supportsCheckpointMigration
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 
