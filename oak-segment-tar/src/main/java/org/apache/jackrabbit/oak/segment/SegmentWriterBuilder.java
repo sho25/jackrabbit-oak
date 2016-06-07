@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Builder for building {@link SegmentWriter} instances.  * The returned instances are thread safe if {@link #withWriterPool()}  * was specified and<em>not</em> thread sage if {@link #withoutWriterPool()}  * was specified (default).  */
+comment|/**  * Builder for building {@link SegmentWriter} instances.  * The returned instances are thread safe if {@link #withWriterPool()}  * was specified and<em>not</em> thread sage if {@link #withoutWriterPool()}  * was specified (default).  *<p>  *<em>Default:</em> calling one of the {@code build()} methods without previously  * calling one of the {@code with...()} methods returns a {@code SegmentWriter}  * as would the following chain of calls:  *<pre>      segmentWriterBuilder("name")         .with(LATEST_VERSION)         .withGeneration(0)         .withoutWriterPool()         .with(new WriterCacheManager.Default())         .build(store);  *</pre>  */
 end_comment
 
 begin_class
@@ -239,6 +239,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Set the {@code name} of this builder. This name will appear in the segment's      * meta data.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -314,6 +315,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Specify the {@code generation} for the segment written by the returned      * segment writer.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -375,6 +377,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Specify the {@code cacheManager} used by the returned writer.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -398,6 +401,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Specify that the returned writer should not use a cache.      * @see #with(WriterCacheManager)      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -417,6 +421,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Build a {@code SegmentWriter} for a {@code FileStore}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -464,6 +469,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Build a {@code SegmentWriter} for a {@code MemoryStore}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -511,6 +517,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Build a {@code SegmentWriter} for a {@code HttpStore}.      */
 annotation|@
 name|Nonnull
 specifier|public
