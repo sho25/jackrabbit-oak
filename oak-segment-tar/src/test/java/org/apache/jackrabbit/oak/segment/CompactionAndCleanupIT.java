@@ -3122,15 +3122,6 @@ operator|/
 literal|10
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|size2
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
