@@ -102,6 +102,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|compaction
+operator|.
+name|SegmentGCOptions
+operator|.
+name|defaultGCOptions
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -486,9 +506,8 @@ specifier|private
 name|SegmentGCOptions
 name|gcOptions
 init|=
-name|SegmentGCOptions
-operator|.
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Nonnull

@@ -44,17 +44,6 @@ specifier|public
 class|class
 name|SegmentGCOptions
 block|{
-comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #MEMORY_THRESHOLD_DEFAULT},      * {@link #GAIN_THRESHOLD_DEFAULT}, {@link #RETRY_COUNT_DEFAULT},      * {@link #FORCE_AFTER_FAIL_DEFAULT}, {@link #LOCK_WAIT_TIME_DEFAULT}.      */
-specifier|public
-specifier|static
-specifier|final
-name|SegmentGCOptions
-name|DEFAULT
-init|=
-operator|new
-name|SegmentGCOptions
-argument_list|()
-decl_stmt|;
 comment|/**      * Default value for {@link #isPaused()}      */
 specifier|public
 specifier|static
@@ -272,6 +261,19 @@ argument_list|,
 name|LOCK_WAIT_TIME_DEFAULT
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #MEMORY_THRESHOLD_DEFAULT},      * {@link #GAIN_THRESHOLD_DEFAULT}, {@link #RETRY_COUNT_DEFAULT},      * {@link #FORCE_AFTER_FAIL_DEFAULT}, {@link #LOCK_WAIT_TIME_DEFAULT}.      */
+specifier|public
+specifier|static
+name|SegmentGCOptions
+name|defaultGCOptions
+parameter_list|()
+block|{
+return|return
+operator|new
+name|SegmentGCOptions
+argument_list|()
+return|;
 block|}
 comment|/**      * @return  {@code true} iff revision gc is paused.      */
 specifier|public

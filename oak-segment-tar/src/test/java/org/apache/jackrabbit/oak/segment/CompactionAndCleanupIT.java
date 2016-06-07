@@ -185,7 +185,7 @@ name|compaction
 operator|.
 name|SegmentGCOptions
 operator|.
-name|DEFAULT
+name|defaultGCOptions
 import|;
 end_import
 
@@ -769,7 +769,8 @@ argument_list|)
 operator|.
 name|withGCOptions
 argument_list|(
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setRetainedGenerations
 argument_list|(
@@ -1306,7 +1307,8 @@ block|{
 name|SegmentGCOptions
 name|gcOptions
 init|=
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setOffline
 argument_list|()
@@ -1861,7 +1863,8 @@ block|{
 name|SegmentGCOptions
 name|gcOptions
 init|=
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setOffline
 argument_list|()
@@ -2183,7 +2186,8 @@ block|{
 name|SegmentGCOptions
 name|gcOptions
 init|=
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setOffline
 argument_list|()
@@ -2513,7 +2517,8 @@ decl_stmt|;
 name|SegmentGCOptions
 name|gcOptions
 init|=
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setOffline
 argument_list|()
@@ -2840,7 +2845,8 @@ block|{
 name|SegmentGCOptions
 name|gcOptions
 init|=
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setOffline
 argument_list|()
@@ -3270,7 +3276,8 @@ argument_list|)
 operator|.
 name|withGCOptions
 argument_list|(
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setRetainedGenerations
 argument_list|(
@@ -3544,7 +3551,8 @@ argument_list|)
 operator|.
 name|withGCOptions
 argument_list|(
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setForceAfterFail
 argument_list|(
@@ -4323,11 +4331,6 @@ literal|"merge-after-compact"
 block|}
 control|)
 block|{
-name|SegmentGCOptions
-name|gcOptions
-init|=
-name|DEFAULT
-decl_stmt|;
 name|File
 name|repoDir
 init|=
@@ -4355,7 +4358,8 @@ argument_list|)
 operator|.
 name|withGCOptions
 argument_list|(
-name|gcOptions
+name|defaultGCOptions
+argument_list|()
 argument_list|)
 operator|.
 name|build
@@ -4600,7 +4604,8 @@ literal|0
 init|;
 name|k
 operator|<
-name|gcOptions
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|getRetainedGenerations
 argument_list|()
@@ -5369,7 +5374,8 @@ block|{
 name|SegmentGCOptions
 name|gcOptions
 init|=
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 decl_stmt|;
 name|FileStore
 name|fileStore

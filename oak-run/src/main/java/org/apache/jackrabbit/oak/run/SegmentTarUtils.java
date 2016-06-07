@@ -295,7 +295,7 @@ name|compaction
 operator|.
 name|SegmentGCOptions
 operator|.
-name|DEFAULT
+name|defaultGCOptions
 import|;
 end_import
 
@@ -1717,7 +1717,8 @@ argument_list|)
 operator|.
 name|withGCOptions
 argument_list|(
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setOffline
 argument_list|()
@@ -1836,7 +1837,8 @@ argument_list|)
 operator|.
 name|withGCOptions
 argument_list|(
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 operator|.
 name|setOffline
 argument_list|()

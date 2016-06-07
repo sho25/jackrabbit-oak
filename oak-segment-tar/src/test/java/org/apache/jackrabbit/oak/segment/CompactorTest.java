@@ -39,6 +39,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|compaction
+operator|.
+name|SegmentGCOptions
+operator|.
+name|defaultGCOptions
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -110,24 +130,6 @@ operator|.
 name|api
 operator|.
 name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|compaction
-operator|.
-name|SegmentGCOptions
 import|;
 end_import
 
@@ -372,9 +374,8 @@ argument_list|(
 literal|false
 argument_list|)
 argument_list|,
-name|SegmentGCOptions
-operator|.
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|addTestContent
@@ -521,9 +522,8 @@ argument_list|(
 literal|true
 argument_list|)
 argument_list|,
-name|SegmentGCOptions
-operator|.
-name|DEFAULT
+name|defaultGCOptions
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|SegmentNodeState
