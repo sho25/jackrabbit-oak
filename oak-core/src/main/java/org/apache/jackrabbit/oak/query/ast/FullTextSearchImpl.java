@@ -1371,9 +1371,9 @@ name|PathUtils
 operator|.
 name|concat
 argument_list|(
-name|p
-argument_list|,
 name|relativePath
+argument_list|,
+name|p
 argument_list|)
 expr_stmt|;
 block|}

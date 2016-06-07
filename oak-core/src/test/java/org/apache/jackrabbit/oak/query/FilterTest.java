@@ -292,6 +292,85 @@ return|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+specifier|public
+name|void
+name|oak4170
+parameter_list|()
+throws|throws
+name|ParseException
+block|{
+name|String
+name|sql2
+init|=
+literal|"select * from [nt:unstructured] where CONTAINS([jcr:content/metadata/comment], 'december')"
+decl_stmt|;
+name|Filter
+name|f
+init|=
+name|createFilterSQL
+argument_list|(
+name|sql2
+argument_list|)
+decl_stmt|;
+name|String
+name|plan
+init|=
+name|f
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|// with the "property is not null" restriction, it would be:
+comment|// assertEquals("Filter(query=select * from [nt:unstructured] " +
+comment|//         "where CONTAINS([jcr:content/metadata/comment], 'december') " +
+comment|//         "fullText=jcr:content/metadata/comment:\"december\", " +
+comment|//         "path=*, property=[jcr:content/metadata/comment=[is not null]])", plan);
+name|assertEquals
+argument_list|(
+literal|"Filter(query=select * from [nt:unstructured] "
+operator|+
+literal|"where CONTAINS([jcr:content/metadata/comment], 'december') "
+operator|+
+literal|"fullText=jcr:content/metadata/comment:\"december\", "
+operator|+
+literal|"path=*)"
+argument_list|,
+name|plan
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|f
+operator|.
+name|getPropertyRestrictions
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+literal|0
+argument_list|,
+name|f
+operator|.
+name|getPropertyRestrictions
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|f
+operator|.
+name|getPropertyRestriction
+argument_list|(
+literal|"jcr:content/metadata/comment"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|localName
