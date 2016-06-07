@@ -124,6 +124,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|RecordCache
+operator|.
+name|newRecordCache
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -624,18 +642,10 @@ name|RecordId
 argument_list|>
 name|cache
 init|=
-name|RecordCache
-operator|.
-expr|<
-name|RecordId
-operator|>
-name|factory
+name|newRecordCache
 argument_list|(
 name|cacheSize
 argument_list|)
-operator|.
-name|get
-argument_list|()
 decl_stmt|;
 specifier|public
 name|Compactor

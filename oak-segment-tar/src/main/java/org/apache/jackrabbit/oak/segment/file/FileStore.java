@@ -355,6 +355,50 @@ name|segment
 operator|.
 name|file
 operator|.
+name|GCListener
+operator|.
+name|Status
+operator|.
+name|FAILURE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|GCListener
+operator|.
+name|Status
+operator|.
+name|SUCCESS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
 name|TarRevisions
 operator|.
 name|timeout
@@ -1012,6 +1056,8 @@ operator|.
 name|segment
 operator|.
 name|WriterCacheManager
+operator|.
+name|Empty
 import|;
 end_import
 
@@ -1048,24 +1094,6 @@ operator|.
 name|blob
 operator|.
 name|BlobStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|gc
-operator|.
-name|GCMonitor
 import|;
 end_import
 
@@ -1339,11 +1367,11 @@ specifier|final
 name|SegmentVersion
 name|version
 decl_stmt|;
-comment|/**      * {@code GCMonitor} monitoring this instance's gc progress      */
+comment|/**      * {@code GcListener} listening to this instance's gc progress      */
 specifier|private
 specifier|final
-name|GCMonitor
-name|gcMonitor
+name|GCListener
+name|gcListener
 decl_stmt|;
 comment|/**      * Represents the approximate size on disk of the repository.      */
 specifier|private
@@ -1651,6 +1679,14 @@ operator|.
 name|withWriterPool
 argument_list|()
 operator|.
+name|with
+argument_list|(
+name|builder
+operator|.
+name|getCacheManager
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|(
 name|this
@@ -1687,11 +1723,11 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|gcMonitor
+name|gcListener
 operator|=
 name|builder
 operator|.
-name|getGcMonitor
+name|getGcListener
 argument_list|()
 expr_stmt|;
 name|this
@@ -2277,7 +2313,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -2334,7 +2370,7 @@ operator|>=
 name|avail
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|skipped
 argument_list|(
@@ -2412,7 +2448,7 @@ operator|<=
 literal|0
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -2433,7 +2469,7 @@ name|isPaused
 argument_list|()
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -2445,7 +2481,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -2479,7 +2515,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -2508,7 +2544,7 @@ condition|(
 name|sufficientEstimatedGain
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -2569,7 +2605,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|skipped
 argument_list|(
@@ -2592,7 +2628,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|skipped
 argument_list|(
@@ -2674,7 +2710,7 @@ block|}
 block|}
 else|else
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|skipped
 argument_list|(
@@ -3723,7 +3759,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -3875,7 +3911,7 @@ condition|(
 name|shutdown
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -3917,7 +3953,7 @@ condition|(
 name|shutdown
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4077,7 +4113,7 @@ operator|.
 name|getFile
 argument_list|()
 decl_stmt|;
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4122,7 +4158,7 @@ name|finalSize
 argument_list|)
 expr_stmt|;
 comment|// FIXME OAK-4106: Reclaimed size reported by FileStore.cleanup is off
-name|gcMonitor
+name|gcListener
 operator|.
 name|cleaned
 argument_list|(
@@ -4133,7 +4169,7 @@ argument_list|,
 name|finalSize
 argument_list|)
 expr_stmt|;
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4413,7 +4449,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4468,7 +4504,7 @@ condition|)
 block|{
 comment|// FIXME OAK-4371: Overly zealous warning about checkpoints on compaction
 comment|// Make the number of checkpoints configurable above which the warning should be issued?
-name|gcMonitor
+name|gcListener
 operator|.
 name|warn
 argument_list|(
@@ -4536,7 +4572,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4549,7 +4585,7 @@ return|return
 literal|false
 return|;
 block|}
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4614,7 +4650,7 @@ block|{
 comment|// Some other concurrent changes have been made.
 comment|// Rebase (and compact) those changes on top of the
 comment|// compacted state before retrying to set the head.
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4653,7 +4689,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4666,7 +4702,7 @@ return|return
 literal|false
 return|;
 block|}
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4701,7 +4737,7 @@ operator|!
 name|success
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4722,7 +4758,7 @@ name|getForceAfterFail
 argument_list|()
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4746,7 +4782,7 @@ operator|!
 name|success
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|warn
 argument_list|(
@@ -4795,36 +4831,6 @@ condition|(
 name|success
 condition|)
 block|{
-name|segmentWriter
-operator|.
-name|evictCaches
-argument_list|(
-operator|new
-name|Predicate
-argument_list|<
-name|Integer
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|apply
-parameter_list|(
-name|Integer
-name|generation
-parameter_list|)
-block|{
-return|return
-name|generation
-operator|<
-name|newGeneration
-return|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
 comment|// FIXME OAK-4285: Align cleanup of segment id tables with the new cleanup strategy
 comment|// ith clean brutal we need to remove those ids that have been cleaned
 comment|// i.e. those whose segment was from an old generation
@@ -4841,29 +4847,16 @@ name|alwaysFalse
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-4283: Align GCMonitor API with implementation
-comment|// Refactor GCMonitor: there is no more compaction map stats
-name|gcMonitor
+name|gcListener
 operator|.
 name|compacted
 argument_list|(
-operator|new
-name|long
-index|[]
-block|{}
+name|SUCCESS
 argument_list|,
-operator|new
-name|long
-index|[]
-block|{}
-argument_list|,
-operator|new
-name|long
-index|[]
-block|{}
+name|newGeneration
 argument_list|)
 expr_stmt|;
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4891,37 +4884,16 @@ return|;
 block|}
 else|else
 block|{
-name|segmentWriter
+name|gcListener
 operator|.
-name|evictCaches
+name|compacted
 argument_list|(
-operator|new
-name|Predicate
-argument_list|<
-name|Integer
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|apply
-parameter_list|(
-name|Integer
-name|generation
-parameter_list|)
-block|{
-return|return
-name|generation
-operator|==
+name|FAILURE
+argument_list|,
 name|newGeneration
-return|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -4954,7 +4926,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|error
 argument_list|(
@@ -4983,7 +4955,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|error
 argument_list|(
@@ -5042,12 +5014,9 @@ name|blobStore
 argument_list|,
 name|tracker
 argument_list|,
-name|WriterCacheManager
-operator|.
 name|Empty
 operator|.
-name|create
-argument_list|()
+name|INSTANCE
 argument_list|,
 name|bufferWriter
 argument_list|)
@@ -5167,7 +5136,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|info
 argument_list|(
@@ -5196,7 +5165,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|gcMonitor
+name|gcListener
 operator|.
 name|error
 argument_list|(
