@@ -99,6 +99,27 @@ name|Revision
 implements|implements
 name|CacheValue
 block|{
+comment|//Extra 2 for those cases where counter or clusterId is 2 digit
+specifier|final
+specifier|static
+name|int
+name|REV_STRING_APPROX_SIZE
+init|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|+
+literal|2
+decl_stmt|;
 specifier|static
 specifier|final
 name|int
