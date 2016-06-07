@@ -5738,6 +5738,10 @@ name|SegmentNotFoundException
 name|snfe
 parameter_list|)
 block|{
+comment|// This SNFE means a defer compacted node state is too far
+comment|// in the past. It has been gc'ed already and cannot be
+comment|// compacted.
+comment|// Consider increasing SegmentGCOptions.getRetainedGenerations()
 throw|throw
 operator|new
 name|SegmentNotFoundException
