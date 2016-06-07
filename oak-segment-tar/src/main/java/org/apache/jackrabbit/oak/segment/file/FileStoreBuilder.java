@@ -689,6 +689,34 @@ block|{
 case|case
 name|SUCCESS
 case|:
+comment|// FIXME OAK-4283: Align GCMonitor API with implementation
+comment|// This call is still needed to ensure upstream consumers
+comment|// of GCMonitor callback get properly notified. See
+comment|// RepositoryImpl.RefreshOnGC and
+comment|// LuceneIndexProviderService.registerGCMonitor().
+name|gcMonitor
+operator|.
+name|compacted
+argument_list|(
+operator|new
+name|long
+index|[
+literal|0
+index|]
+argument_list|,
+operator|new
+name|long
+index|[
+literal|0
+index|]
+argument_list|,
+operator|new
+name|long
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 name|evictCaches
 argument_list|(
 operator|new
