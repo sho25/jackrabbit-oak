@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This interface is a marker interface to be used to represent both an  * authentication strategy and the information to enable that authentication  * strategy.  *<p/>  * In example, a {@code RemoteCredentials} object created to represent an  * authentication strategy based on user name and password, may encapsulate the  * user name and password to enable this authentication strategy when a session  * to the repository is created.  *<p/>  * To create instances of this interface, take a look at the methods defined in  * {@link RemoteRepository}.  */
+comment|/**  * This interface is a marker interface to be used to represent both an  * authentication strategy and the information to enable that authentication  * strategy.  *<p>  * In example, a {@code RemoteCredentials} object created to represent an  * authentication strategy based on user name and password, may encapsulate the  * user name and password to enable this authentication strategy when a session  * to the repository is created.  *<p>  * To create instances of this interface, take a look at the methods defined in  * {@link RemoteRepository}.  */
 end_comment
 
 begin_interface

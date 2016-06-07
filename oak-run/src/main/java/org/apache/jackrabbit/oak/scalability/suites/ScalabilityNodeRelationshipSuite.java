@@ -436,7 +436,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The suite test will incrementally increase the load and execute searches.  * Each test run thus adds nodes and executes different benchmarks. This way we measure time  * taken for benchmark execution.  *  *<p>  * The following system JVM properties can be defined to configure the suite.  *<ul>  *<li>  *<code>nodeLevels</code> - Comma separated string property that governs the number of number of  *     different node relationships in the following order:  *<ul>  *<li>Users</li>  *<li>Groups</li>  *<li>User Relationships</li>  *<li>Activities</li>  *</ul>  *  *     Defaults to 10,5,2,1.  *</li>  *</ul>  *</p>  *  */
+comment|/**  * The suite test will incrementally increase the load and execute searches.  * Each test run thus adds nodes and executes different benchmarks. This way we measure time  * taken for benchmark execution.  *  *<p>  * The following system JVM properties can be defined to configure the suite.  *<ul>  *<li>  *<code>nodeLevels</code> - Comma separated string property that governs the number of number of  *     different node relationships in the following order:  *<ul>  *<li>Users</li>  *<li>Groups</li>  *<li>User Relationships</li>  *<li>Activities</li>  *</ul>  *  *     Defaults to 10,5,2,1.  *</li>  *</ul>  *  */
 end_comment
 
 begin_class

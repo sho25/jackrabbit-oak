@@ -994,7 +994,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Reconstructs a {@link Document) based on the persisted {@link RDBRow}.      */
+comment|/**      * Reconstructs a {@link Document} based on the persisted {@link RDBRow}.      */
 annotation|@
 name|Nonnull
 specifier|public

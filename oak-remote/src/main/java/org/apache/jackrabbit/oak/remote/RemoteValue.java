@@ -46,7 +46,7 @@ specifier|public
 class|class
 name|RemoteValue
 block|{
-comment|/**      * A generic interface to represent a supplier of an item.      *<p/>      * In the specific, it is used by values whose underlying implementation is      * an {@code InputStream}. To enable multiple traversals of {@code      * InputStream}s, the value is wrapped by this interface to effectively have      * a factory over the underlying {@code InputStream}.      *      * @param<T> Type of the item this object is able to create.      */
+comment|/**      * A generic interface to represent a supplier of an item.      *<p>      * In the specific, it is used by values whose underlying implementation is      * an {@code InputStream}. To enable multiple traversals of {@code      * InputStream}s, the value is wrapped by this interface to effectively have      * a factory over the underlying {@code InputStream}.      *      * @param<T> Type of the item this object is able to create.      */
 specifier|public
 specifier|static
 interface|interface

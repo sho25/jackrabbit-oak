@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A decoration layer for NodeState instances that intercepts  * all accesses to NodeStates and PropertyStates (getters) and  * informs a {@link Reporter} via its callbacks that the respective  * NodeStates or PropertyStates have been accessed.  *<br>  * The decoration is deep, i.e. any child NodeStates will be  * decorated as well and will report to the same {@code Reporter}  * instance.  *<br>  * For convenience, a {@link PeriodicReporter} abstract class exists.  * This simplifies reporting every nth node/property only.  *<br>  * Note: Multiple accesses to the same node or property are each  * reported. Therefore if exactly counting unique accesses is a  * requirement, the reporter needs to take care of de-duplication.  *  * @see Reporter, PeriodicReporter, LoggingReporter  */
+comment|/**  * A decoration layer for NodeState instances that intercepts  * all accesses to NodeStates and PropertyStates (getters) and  * informs a {@link Reporter} via its callbacks that the respective  * NodeStates or PropertyStates have been accessed.  *<br>  * The decoration is deep, i.e. any child NodeStates will be  * decorated as well and will report to the same {@code Reporter}  * instance.  *<br>  * For convenience, a {@link PeriodicReporter} abstract class exists.  * This simplifies reporting every nth node/property only.  *<br>  * Note: Multiple accesses to the same node or property are each  * reported. Therefore if exactly counting unique accesses is a  * requirement, the reporter needs to take care of de-duplication.  *  * @see Reporter  * @see PeriodicReporter  * @see LoggingReporter  */
 end_comment
 
 begin_class

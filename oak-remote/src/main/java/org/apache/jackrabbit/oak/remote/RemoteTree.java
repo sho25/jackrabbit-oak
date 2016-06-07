@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This interface is a recursive data structure representing a view on a  * repository tree.  *<p/>  * The purpose of the remote tree is not to represent exactly the content as  * stored in the repository, but to provide a view on that content fulfilling  * the filtering options provided by the client when the tree was accessed.  */
+comment|/**  * This interface is a recursive data structure representing a view on a  * repository tree.  *<p>  * The purpose of the remote tree is not to represent exactly the content as  * stored in the repository, but to provide a view on that content fulfilling  * the filtering options provided by the client when the tree was accessed.  */
 end_comment
 
 begin_interface
@@ -46,7 +46,7 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
-comment|/**      * Read the children associated to the root of this remote tree. The root of      * this remote tree is represented by the instance of {@code RemoteTree}      * this method is invoked on. The children of this remote tree are      * themselves remote trees.      *<p/>      * The remote tree may be truncated at some point (e.g. to avoid very deep      * remote trees to be returned), and this is the reason why the values of      * this {@code Map} can be {@code null}. When a {@code null} value is met,      * the consumer of this interface must assume that there is another subtree      * rooted under the corresponding key, but it is not returned to fulfill the      * filtering options provided when this tree was read.      *      * @return The children associated to the root of this remote tree.      */
+comment|/**      * Read the children associated to the root of this remote tree. The root of      * this remote tree is represented by the instance of {@code RemoteTree}      * this method is invoked on. The children of this remote tree are      * themselves remote trees.      *<p>      * The remote tree may be truncated at some point (e.g. to avoid very deep      * remote trees to be returned), and this is the reason why the values of      * this {@code Map} can be {@code null}. When a {@code null} value is met,      * the consumer of this interface must assume that there is another subtree      * rooted under the corresponding key, but it is not returned to fulfill the      * filtering options provided when this tree was read.      *      * @return The children associated to the root of this remote tree.      */
 name|Map
 argument_list|<
 name|String
@@ -56,7 +56,7 @@ argument_list|>
 name|getChildren
 parameter_list|()
 function_decl|;
-comment|/**      * Return a flag to indicate that this remote tree actually has more      * children than the one returned by {@link #getChildren()}.      *<p/>      * This flag is important when the repository tree is read using very strict      * filtering options regarding the maximum number of children to return. If      * this method returns {@code true}, a consumer of this interface must      * assume that there are more children than the one attached to the root of      * this tree. They could be retrieved by varying the relevant filtering      * options and performing another read for this subtree.      *      * @return {@true} if this remote tree is not exposing the full set of      * children as stored in the repository, {@code false} otherwise.      */
+comment|/**      * Return a flag to indicate that this remote tree actually has more      * children than the one returned by {@link #getChildren()}.      *<p>      * This flag is important when the repository tree is read using very strict      * filtering options regarding the maximum number of children to return. If      * this method returns {@code true}, a consumer of this interface must      * assume that there are more children than the one attached to the root of      * this tree. They could be retrieved by varying the relevant filtering      * options and performing another read for this subtree.      *      * @return {@code true} if this remote tree is not exposing the full set of      * children as stored in the repository, {@code false} otherwise.      */
 name|boolean
 name|hasMoreChildren
 parameter_list|()

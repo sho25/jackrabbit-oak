@@ -133,7 +133,7 @@ specifier|final
 name|Version
 name|matchVersion
 decl_stmt|;
-comment|/**      * Creates a new {@link OakAnalyzer}      *       * @param matchVersion      *            Lucene version to match See      *            {@link<a href="#version">above</a>}      */
+comment|/**      * Creates a new {@link OakAnalyzer}      *       * @param matchVersion      *            Lucene version to match See      *            {@link #matchVersion above}      */
 specifier|public
 name|OakAnalyzer
 parameter_list|(

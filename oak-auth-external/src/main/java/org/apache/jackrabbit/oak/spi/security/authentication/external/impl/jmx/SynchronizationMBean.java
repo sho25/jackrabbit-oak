@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides utilities to manage synchronized external identities.  * The operations return a single or array of messages of the operations performed. for simplicity the messages are  * JSON serialized strings:  *<xmp>  * {  *     "op": "upd",  *     "uid": "bob",  *     "eid": "cn=bob,o=apache"  * }  *</xmp>  *  * With the following operations:  *<ul>  *<li>nop: nothing changed</li>  *<li>upd: entry updated</li>  *<li>add: entry added</li>  *<li>del: entry deleted</li>  *<li>err: operation failed. in this case, the 'msg' property will contain a reason</li>  *</ul>  *  * Note that this interface is not exported via OSGi as it is not intended to use outside of JMX (yet).  */
+comment|/**  * Provides utilities to manage synchronized external identities.  * The operations return a single or array of messages of the operations performed. for simplicity the messages are  * JSON serialized strings:  *<pre>{@code  * {  *     "op": "upd",  *     "uid": "bob",  *     "eid": "cn=bob,o=apache"  * }  * }</pre>  *  * With the following operations:  *<ul>  *<li>nop: nothing changed</li>  *<li>upd: entry updated</li>  *<li>add: entry added</li>  *<li>del: entry deleted</li>  *<li>err: operation failed. in this case, the 'msg' property will contain a reason</li>  *</ul>  *  * Note that this interface is not exported via OSGi as it is not intended to use outside of JMX (yet).  */
 end_comment
 
 begin_interface

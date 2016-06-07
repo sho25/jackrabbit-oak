@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wrapper of another DocumentStore that does a lease check on any method  * invocation (read or update) and fails if the lease is not valid.  *<p>  * @see https://issues.apache.org/jira/browse/OAK-2739 for more details  */
+comment|/**  * Wrapper of another DocumentStore that does a lease check on any method  * invocation (read or update) and fails if the lease is not valid.  *<p>  * @see "https://issues.apache.org/jira/browse/OAK-2739 for more details"  */
 end_comment
 
 begin_class

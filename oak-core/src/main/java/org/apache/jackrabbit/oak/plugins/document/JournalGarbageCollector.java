@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The JournalGarbageCollector can clean up JournalEntries that are older than a  * particular age.  *<p/>  * It would typically be invoked in conjunction with the VersionGarbageCollector  * but must not be confused with that one - 'journal' refers to the separate  * collection that contains changed paths per background writes used for  * observation.  */
+comment|/**  * The JournalGarbageCollector can clean up JournalEntries that are older than a  * particular age.  *<p>  * It would typically be invoked in conjunction with the VersionGarbageCollector  * but must not be confused with that one - 'journal' refers to the separate  * collection that contains changed paths per background writes used for  * observation.  */
 end_comment
 
 begin_class

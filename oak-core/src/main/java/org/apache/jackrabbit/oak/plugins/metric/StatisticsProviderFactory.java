@@ -350,7 +350,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory to create StatisticsProvider depending on setup. It detects if the  * {@link Metrics http://metrics.dropwizard.io} library is present or not. If present  * then it configures a MetricsStatisticsProvider otherwise fallbacks to DefaultStatisticsProvider  */
+comment|/**  * Factory to create StatisticsProvider depending on setup. It detects if the  *<a href="http://metrics.dropwizard.io">Metrics</a> library is present or not. If present  * then it configures a MetricsStatisticsProvider otherwise fallbacks to DefaultStatisticsProvider  */
 end_comment
 
 begin_class

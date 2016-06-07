@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The JNDI config hold information about JNDI connection details.  *  * It supports the following properties and init parameters:  *<xmp>  * +-------------------+--------------------+  * | Property Name     | Init-Param Name    |  * +-------------------+--------------------+  * | jndi.enable       | {provider spec.}   |  * | java.naming.*     | java.naming.*      |  * +-------------------+--------------------+  *</xmp>  */
+comment|/**  * The JNDI config hold information about JNDI connection details.  *  * It supports the following properties and init parameters:  *<pre>  * +-------------------+--------------------+  * | Property Name     | Init-Param Name    |  * +-------------------+--------------------+  * | jndi.enable       | {provider spec.}   |  * | java.naming.*     | java.naming.*      |  * +-------------------+--------------------+  *</pre>  */
 end_comment
 
 begin_class

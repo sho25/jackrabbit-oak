@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * An operation to modify content inside the repository.  *<p/>  * This is just a marker interface. Factory methods for {@code RemoteOperation}  * instances are found in {@link RemoteSession}. The interface doesn't currently  * expose any method, as its instances are supposed to be consumed by the same  * {@code RemoteSession} (or by another instance of the same implementation)  * that created them.  */
+comment|/**  * An operation to modify content inside the repository.  *<p>  * This is just a marker interface. Factory methods for {@code RemoteOperation}  * instances are found in {@link RemoteSession}. The interface doesn't currently  * expose any method, as its instances are supposed to be consumed by the same  * {@code RemoteSession} (or by another instance of the same implementation)  * that created them.  */
 end_comment
 
 begin_interface

@@ -46,7 +46,7 @@ specifier|public
 interface|interface
 name|BlobReferenceRetriever
 block|{
-comment|/**      * Collect references.      *       * @param collector the collector to collect all references      * @return the references      * @throws Exception the exception      */
+comment|/**      * Collect references.      *       * @param collector the collector to collect all references      */
 name|void
 name|collectReferences
 parameter_list|(

@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Collection of operations available on a remote repository once the user  * correctly logged in.  *<p/>  * Operations working on pure content, like reading a tree or committing  * changes, requires a revision. A revision represents a snapshot of the  * repository in a specified point in time. This concept enables repeatable  * reads and consistent writes.  *<p/>  * When binary data is involved, this interface exposes methods to read and  * write arbitrary binary data from and to the repository. A binary data is  * considered an immutable collection of bytes that can be referenced by an  * identifier.  */
+comment|/**  * Collection of operations available on a remote repository once the user  * correctly logged in.  *<p>  * Operations working on pure content, like reading a tree or committing  * changes, requires a revision. A revision represents a snapshot of the  * repository in a specified point in time. This concept enables repeatable  * reads and consistent writes.  *<p>  * When binary data is involved, this interface exposes methods to read and  * write arbitrary binary data from and to the repository. A binary data is  * considered an immutable collection of bytes that can be referenced by an  * identifier.  */
 end_comment
 
 begin_interface
@@ -56,12 +56,12 @@ specifier|public
 interface|interface
 name|RemoteSession
 block|{
-comment|/**      * Read the latest revision in the repository.      *<p/>      * This operation is always meant to succeed, because the repository will      * always have an initial revision to return to the caller.      *      * @return The latest revision in the repository.      */
+comment|/**      * Read the latest revision in the repository.      *<p>      * This operation is always meant to succeed, because the repository will      * always have an initial revision to return to the caller.      *      * @return The latest revision in the repository.      */
 name|RemoteRevision
 name|readLastRevision
 parameter_list|()
 function_decl|;
-comment|/**      * Read a revision given a string representation of the revision itself.      *<p/>      * This operation may fail for a number of reasons. In example, the string      * passed to this method is not a valid revision, or this string represents      * a revision that was valid in the past but it is no more valid.      *      * @param revision The string representation of the revision.      * @return The revision represented by the string passed to this method, or      * {@code null} if the string representation is invalid.      */
+comment|/**      * Read a revision given a string representation of the revision itself.      *<p>      * This operation may fail for a number of reasons. In example, the string      * passed to this method is not a valid revision, or this string represents      * a revision that was valid in the past but it is no more valid.      *      * @param revision The string representation of the revision.      * @return The revision represented by the string passed to this method, or      * {@code null} if the string representation is invalid.      */
 name|RemoteRevision
 name|readRevision
 parameter_list|(
@@ -178,7 +178,7 @@ parameter_list|)
 throws|throws
 name|RemoteCommitException
 function_decl|;
-comment|/**      * Read a binary ID given a string representation of the binary ID itself.      *<p/>      * This operations may fail for a number of reasons. In example, the string      * doesn't represent a valid binary ID, or the string represents a binary ID      * that was valid in the past but is no more valid.      *      * @param binaryId String representation of the binary ID.      * @return The binary ID read from the repository. This method may return      * {@code null} if the string representation of the binary ID is not valid.      */
+comment|/**      * Read a binary ID given a string representation of the binary ID itself.      *<p>      * This operations may fail for a number of reasons. In example, the string      * doesn't represent a valid binary ID, or the string represents a binary ID      * that was valid in the past but is no more valid.      *      * @param binaryId String representation of the binary ID.      * @return The binary ID read from the repository. This method may return      * {@code null} if the string representation of the binary ID is not valid.      */
 name|RemoteBinaryId
 name|readBinaryId
 parameter_list|(
@@ -186,7 +186,7 @@ name|String
 name|binaryId
 parameter_list|)
 function_decl|;
-comment|/**      * Read a binary object from the repository according to the given filters.      *<p/>      * In the case of a binary object, filters are really simple. At most, it is      * possible to read just a portion of the binary object instead of reading      * it in its entirety.      *      * @param binaryId Binary ID referring to the binary object to read.      * @param filters  Filters to apply to the returned binary object.      * @return A stream representing the filtered content of the binary object.      */
+comment|/**      * Read a binary object from the repository according to the given filters.      *<p>      * In the case of a binary object, filters are really simple. At most, it is      * possible to read just a portion of the binary object instead of reading      * it in its entirety.      *      * @param binaryId Binary ID referring to the binary object to read.      * @param filters  Filters to apply to the returned binary object.      * @return A stream representing the filtered content of the binary object.      */
 name|InputStream
 name|readBinary
 parameter_list|(

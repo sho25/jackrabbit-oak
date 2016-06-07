@@ -165,6 +165,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|external
+operator|.
+name|impl
+operator|.
+name|ExternalLoginModule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|service
@@ -196,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements a LoginModuleFactory that creates {  * @link org.apache.jackrabbit.oak.security.authentication.CustomLoginModule}s  * and allows to configure login modules via OSGi config.  */
+comment|/**  * Implements a LoginModuleFactory that creates {@link CustomLoginModule}s  * and allows to configure login modules via OSGi config.  */
 end_comment
 
 begin_class
@@ -345,7 +369,7 @@ specifier|private
 name|ConfigurationParameters
 name|osgiConfig
 decl_stmt|;
-comment|/**      * Activates the LoginModuleFactory service      * @param context the component context      */
+comment|/**      * Activates the LoginModuleFactory service      * @param componentContext the component context      */
 annotation|@
 name|SuppressWarnings
 argument_list|(

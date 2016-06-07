@@ -38,7 +38,7 @@ name|boolean
 name|isPausedCompaction
 parameter_list|()
 function_decl|;
-comment|/**      * Set revision gc to paused.      * @param paused      * @return this instance      */
+comment|/**      * Set revision gc to paused.      * @param paused      */
 name|void
 name|setPausedCompaction
 parameter_list|(

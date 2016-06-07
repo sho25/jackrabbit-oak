@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The RMI config hold information about RMI connection details.  *  * It supports the following properties and init parameters:  *<xmp>  * +-------------------+--------------------+  * | Property Name     | Init-Param Name    |  * +-------------------+--------------------+  * | rmi.enable        | {rmi-port sepc.}   |  * | rmi.host          | rmi-host           |  * | rmi.port          | rmi-port           |  * | rmi.name          | {repository name}  |  * | rmi.url           | rmi-url            |  * +-------------------+--------------------+  *</xmp>  */
+comment|/**  * The RMI config hold information about RMI connection details.  *  * It supports the following properties and init parameters:  *<pre>  * +-------------------+--------------------+  * | Property Name     | Init-Param Name    |  * +-------------------+--------------------+  * | rmi.enable        | {rmi-port sepc.}   |  * | rmi.host          | rmi-host           |  * | rmi.port          | rmi-port           |  * | rmi.name          | {repository name}  |  * | rmi.url           | rmi-url            |  * +-------------------+--------------------+  *</pre>  */
 end_comment
 
 begin_class

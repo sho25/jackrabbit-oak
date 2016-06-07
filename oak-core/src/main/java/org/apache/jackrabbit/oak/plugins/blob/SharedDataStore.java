@@ -88,7 +88,7 @@ name|SHARED
 block|,
 name|DEFAULT
 block|}
-comment|/**      * Adds the root record.      *       * @param stream the stream      * @param name the name of the root record      * @return the data record      * @throws DataStoreException the data store exception      */
+comment|/**      * Adds the root record.      *       * @param stream the stream      * @param name the name of the root record      * @throws DataStoreException the data store exception      */
 name|void
 name|addMetadataRecord
 parameter_list|(

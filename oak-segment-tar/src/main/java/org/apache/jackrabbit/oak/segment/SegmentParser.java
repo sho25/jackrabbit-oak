@@ -341,13 +341,13 @@ specifier|public
 enum|enum
 name|BlobType
 block|{
-comment|/** Small:< {@link Segment#SMALL_LIMIT}. */
+comment|/** Small:&lt; {@link Segment#SMALL_LIMIT}. */
 name|SMALL
 block|,
-comment|/** Medium:< {@link Segment#MEDIUM_LIMIT} */
+comment|/** Medium:&lt; {@link Segment#MEDIUM_LIMIT} */
 name|MEDIUM
 block|,
-comment|/** Long:>=  {@link Segment#MEDIUM_LIMIT} */
+comment|/** Long:&gt;=  {@link Segment#MEDIUM_LIMIT} */
 name|LONG
 block|,
 comment|/** External blob (i.e. in {@link BlobStore}. */

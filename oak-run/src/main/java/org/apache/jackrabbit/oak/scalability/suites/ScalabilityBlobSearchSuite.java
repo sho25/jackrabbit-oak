@@ -408,7 +408,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The suite test will incrementally increase the load and execute searches.  * Each test run thus adds blobs and executes different searches. This way we measure time taken for  * search(es) execution.  *  *<p>  * The following system JVM properties can be defined to configure the suite.  *<ul>  *<li>  *<code>fileWriters</code> - Controls the number of concurrent background threads for writing blobs.  *     Defaults to 0.  *</li>  *<li>  *<code>fileReaders</code> - Controls the number of concurrent background threads for reading blobs.  *     Defaults to 1.  *</li>  *<li>  *<code>fileSize</code> - Controls the size in KB of the blobs. Defaults to 1.  *</li>  *<li>  *<code>maxAssets</code> - Controls the max child nodes created under a node. Defaults to 500.  *</li>  *</ul>  *</p>  */
+comment|/**  * The suite test will incrementally increase the load and execute searches.  * Each test run thus adds blobs and executes different searches. This way we measure time taken for  * search(es) execution.  *  *<p>  * The following system JVM properties can be defined to configure the suite.  *<ul>  *<li>  *<code>fileWriters</code> - Controls the number of concurrent background threads for writing blobs.  *     Defaults to 0.  *</li>  *<li>  *<code>fileReaders</code> - Controls the number of concurrent background threads for reading blobs.  *     Defaults to 1.  *</li>  *<li>  *<code>fileSize</code> - Controls the size in KB of the blobs. Defaults to 1.  *</li>  *<li>  *<code>maxAssets</code> - Controls the max child nodes created under a node. Defaults to 500.  *</li>  *</ul>  */
 end_comment
 
 begin_class

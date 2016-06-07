@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents the identifier of a binary object.  *<p/>  * Binary objects stored in the repository are immutable. The same binary ID is  * guaranteed to return the same binary object over time.  */
+comment|/**  * Represents the identifier of a binary object.  *<p>  * Binary objects stored in the repository are immutable. The same binary ID is  * guaranteed to return the same binary object over time.  */
 end_comment
 
 begin_interface

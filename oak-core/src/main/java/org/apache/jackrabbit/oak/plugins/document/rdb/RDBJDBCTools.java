@@ -1198,7 +1198,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Generate database + driver version diagnostics.      *       * @param md      *            metadata object      * @param dbmax      *            minimal DB major version number (where {@code -1} disables the      *            check)      * @param dbmin      *            minimal DB minor version number      * @param drmax      *            minimal driver major version number (where {@code -1} disables      *            the check)      * @param drin      *            minimal driver minor version number      * @param dbname      *            database type      * @return diagnostics (empty when there's nothing to complain about)      */
+comment|/**      * Generate database + driver version diagnostics.      *       * @param md      *            metadata object      * @param dbmax      *            minimal DB major version number (where {@code -1} disables the      *            check)      * @param dbmin      *            minimal DB minor version number      * @param drmax      *            minimal driver major version number (where {@code -1} disables      *            the check)      * @param drmin      *            minimal driver minor version number      * @param dbname      *            database type      * @return diagnostics (empty when there's nothing to complain about)      */
 specifier|protected
 specifier|static
 name|String
@@ -1554,7 +1554,7 @@ name|String
 name|getStatementComponent
 parameter_list|()
 function_decl|;
-comment|/**          * Set the parameters need by the statement component returned by          * {@link #getStatementComponent()}          *           * @param stmt          *            the statement          * @param index          *            of first parameter to set          * @return index of next parameter to set          * @throws SQLException          */
+comment|/**          * Set the parameters need by the statement component returned by          * {@link #getStatementComponent()}          *           * @param stmt          *            the statement          * @param startIndex          *            of first parameter to set          * @return index of next parameter to set          * @throws SQLException          */
 specifier|public
 name|int
 name|setParameters

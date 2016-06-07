@@ -170,7 +170,7 @@ specifier|private
 name|long
 name|start
 decl_stmt|;
-comment|/**      * Create a class with the provided class.      *       * @param claz      */
+comment|/**      * Create a class with the provided class.      *       * @param clazz      */
 specifier|public
 name|StopwatchLogger
 parameter_list|(

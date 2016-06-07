@@ -307,6 +307,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitHook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|CommitInfo
 import|;
 end_import
@@ -784,7 +802,7 @@ block|}
 block|}
 expr_stmt|;
 block|}
-comment|/**      *<p>      * Plain Java oriented constructor. Refer to      * {@link AtomicCounterEditor#AtomicCounterEditor(NodeBuilder, String, ScheduledExecutorService, NodeStore)}      * for constructions details of the actual editor.      *</p>      *       *<p>      * Based on the use case this may need an already set of the constructor parameters during the      * repository construction. Please ensure they're registered before this provider is registered.      *</p>      *       * @param clusterInfo cluster node information      * @param executor the executor for running asynchronously.      * @param store reference to the NodeStore.      * @param whiteboard the underlying board for picking up the registered {@link CommitHook}      */
+comment|/**      *<p>      * Plain Java oriented constructor. Refer to      * {@link AtomicCounterEditor#AtomicCounterEditor(NodeBuilder, String, ScheduledExecutorService, NodeStore, Whiteboard)}      * for constructions details of the actual editor.      *</p>      *       *<p>      * Based on the use case this may need an already set of the constructor parameters during the      * repository construction. Please ensure they're registered before this provider is registered.      *</p>      *       * @param clusterInfo cluster node information      * @param executor the executor for running asynchronously.      * @param store reference to the NodeStore.      * @param whiteboard the underlying board for picking up the registered {@link CommitHook}      */
 specifier|public
 name|AtomicCounterEditorProvider
 parameter_list|(

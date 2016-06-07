@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The bootstrap configuration hold information about initial startup  * parameters like repository config and home.  *  * It supports the following properties and init parameters:  *<xmp>  * +-------------------+-------------------+  * | Property Name     | Init-Param Name   |  * +-------------------+-------------------+  * | repository.home   | repository-home   |  * | repository.config | repository-config |  * | repository.name   | repository-name   |  * +-------------------+-------------------+  *</xmp>  */
+comment|/**  * The bootstrap configuration hold information about initial startup  * parameters like repository config and home.  *  * It supports the following properties and init parameters:  *<pre>  * +-------------------+-------------------+  * | Property Name     | Init-Param Name   |  * +-------------------+-------------------+  * | repository.home   | repository-home   |  * | repository.config | repository-config |  * | repository.name   | repository-name   |  * +-------------------+-------------------+  *</pre>  */
 end_comment
 
 begin_class

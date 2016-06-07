@@ -1589,7 +1589,7 @@ literal|"Child node ordering is not supported on this node"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under a parent with this effective type.      *      * @param propertyName The internal oak name of the property for which the      * definition should be retrieved.      * @param isMultiple {@code true} if the target property is multi-valued.      * @param type The target type of the property.      * @param exactTypeMatch {@code true} if the required type of the definition      * must exactly match the type of the target property.      * @return the applicable definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
+comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under a parent with this effective type.      *      * @param propertyName The internal oak name of the property for which the      * definition should be retrieved.      * @param isMultiple {@code true} if the target property is multi-valued.      * @param type The target type of the property.      * @param exactTypeMatch {@code true} if the required type of the definition      * must exactly match the type of the target property.      * @return the applicable definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      */
 specifier|public
 name|PropertyDefinition
 name|getPropertyDefinition

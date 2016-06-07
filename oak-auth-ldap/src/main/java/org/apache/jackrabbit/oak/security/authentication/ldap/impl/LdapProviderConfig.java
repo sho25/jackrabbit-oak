@@ -1190,7 +1190,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Returns the LDAP filter that is used when searching this type of identity. The filter is based on the          * configuration and has the following format:          *          *<pre>          *     (&(${idAttr}=${id})(objectclass=${objectclass})${extraFilter})          *</pre>          *          * Note that the objectclass part is repeated according to the specified objectclasses in {@link #getObjectClasses()}.          *          * @param id the id value          * @return the search filter          */
+comment|/**          * Returns the LDAP filter that is used when searching this type of identity. The filter is based on the          * configuration and has the following format:          *          *<pre>{@code          *     (&(${idAttr}=${id})(objectclass=${objectclass})${extraFilter})          * }</pre>          *          * Note that the objectclass part is repeated according to the specified objectclasses in {@link #getObjectClasses()}.          *          * @param id the id value          * @return the search filter          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -2424,7 +2424,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Returns the LDAP filter that is used when searching for groups where an identity is member of.      * The filter is based on the configuration and has the following format:      *      *<pre>      *     (&(${memberAttribute}=${dn})(objectclass=${objectclass})${extraFilter})      *</pre>      *      * Note that the objectclass part is repeated according to the specified objectclasses in      * {@link Identity#getObjectClasses()} of the group configuration.      *      * @param dn the dn of the identity to search for      * @return the search filter      */
+comment|/**      * Returns the LDAP filter that is used when searching for groups where an identity is member of.      * The filter is based on the configuration and has the following format:      *      *<pre>{@code      *     (&(${memberAttribute}=${dn})(objectclass=${objectclass})${extraFilter})      * }</pre>      *      * Note that the objectclass part is repeated according to the specified objectclasses in      * {@link Identity#getObjectClasses()} of the group configuration.      *      * @param dn the dn of the identity to search for      * @return the search filter      */
 specifier|public
 name|String
 name|getMemberOfSearchFilter

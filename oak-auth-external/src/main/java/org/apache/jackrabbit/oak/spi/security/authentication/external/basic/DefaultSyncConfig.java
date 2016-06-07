@@ -323,7 +323,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Defines the mapping of internal property names from external values. Only the external properties defined as          * keys of this map are synced with the mapped internal properties. note that the property names can be relative          * paths. the intermediate nodes will be created accordingly.          *          * Example:          *<xmp>          *     {          *         "rep:fullname": "cn",          *         "country", "c",          *         "profile/email": "mail",          *         "profile/givenName": "cn"          *     }          *</xmp>          *          * The implicit properties like userid, groupname, password must not be mapped.          *          * @return the property mapping where the keys are the local property names and the values the external ones.          */
+comment|/**          * Defines the mapping of internal property names from external values. Only the external properties defined as          * keys of this map are synced with the mapped internal properties. note that the property names can be relative          * paths. the intermediate nodes will be created accordingly.          *          * Example:          *<pre>{@code          *     {          *         "rep:fullname": "cn",          *         "country", "c",          *         "profile/email": "mail",          *         "profile/givenName": "cn"          *     }          * }</pre>          *          * The implicit properties like userid, groupname, password must not be mapped.          *          * @return the property mapping where the keys are the local property names and the values the external ones.          */
 annotation|@
 name|Nonnull
 specifier|public

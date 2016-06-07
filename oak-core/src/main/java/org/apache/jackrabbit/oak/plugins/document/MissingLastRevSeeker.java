@@ -844,7 +844,7 @@ name|isRecoveryNeeded
 argument_list|)
 return|;
 block|}
-comment|/**      * Check if _lastRev recovery needed for this cluster node      * state is Active&& currentTime past the leaseEnd time      */
+comment|/**      * Check if _lastRev recovery needed for this cluster node      * state is Active and currentTime past the leaseEnd time      */
 specifier|public
 name|boolean
 name|isRecoveryNeeded

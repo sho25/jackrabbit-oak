@@ -159,7 +159,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Multiple members were added to the {@link Group} during XML group import.      * The members are provided as an iterable of their string-based content IDs (UUIDs), as these      * members do not exist yet (group imported before users). Implementations may track such content ids      * for later processing once the user identified by the content id is added.      *<p/>      * Implementations may perform specific modifications or validations.      *      * @param group            The {@link Group} to which the members were added.      * @param memberContentIds An {@link Iterable} of the member content IDs (UUIDs).      * @param root             The root associated with the user manager.      * @param namePathMapper      * @throws RepositoryException If an error occurs.      */
+comment|/**      * Multiple members were added to the {@link Group} during XML group import.      * The members are provided as an iterable of their string-based content IDs (UUIDs), as these      * members do not exist yet (group imported before users). Implementations may track such content ids      * for later processing once the user identified by the content id is added.      *<p>      * Implementations may perform specific modifications or validations.      *      * @param group            The {@link Group} to which the members were added.      * @param memberContentIds An {@link Iterable} of the member content IDs (UUIDs).      * @param root             The root associated with the user manager.      * @param namePathMapper      * @throws RepositoryException If an error occurs.      */
 name|void
 name|onMembersAddedContentId
 parameter_list|(

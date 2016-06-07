@@ -414,7 +414,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Is responsible for querying the property index content.  *<br>  * This class can be used directly on a subtree where there is an index defined  * by supplying a {@link NodeState} root.  *   *<pre>  *<code>  * {  *     NodeState state = ... // get a node state  *     PropertyIndexLookup lookup = new PropertyIndexLookup(state);  *     Set<String> hits = lookup.find("foo", PropertyValues.newString("xyz"));  * }  *</code>  *</pre>  */
+comment|/**  * Is responsible for querying the property index content.  *<br>  * This class can be used directly on a subtree where there is an index defined  * by supplying a {@link NodeState} root.  *   *<pre>{@code  * {  *     NodeState state = ... // get a node state  *     PropertyIndexLookup lookup = new PropertyIndexLookup(state);  *     Set<String> hits = lookup.find("foo", PropertyValues.newString("xyz"));  * }  * }</pre>  */
 end_comment
 
 begin_class

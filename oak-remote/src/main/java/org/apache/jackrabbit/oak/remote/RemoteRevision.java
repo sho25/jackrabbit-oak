@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A repository revision represents an immutable state of the repository.  *<p/>  * Having a revision allows you to perform repeatable reads, because it is  * assured that the state referenced by the revision is immutable.  *<p/>  * The revision also allows the system to reference a known state of the  * repository when changes are committed. Since a revision references an  * immutable state, committing some changes will create a new state of the  * repository that will be referenced by a new revision.  */
+comment|/**  * A repository revision represents an immutable state of the repository.  *<p>  * Having a revision allows you to perform repeatable reads, because it is  * assured that the state referenced by the revision is immutable.  *<p>  * The revision also allows the system to reference a known state of the  * repository when changes are committed. Since a revision references an  * immutable state, committing some changes will create a new state of the  * repository that will be referenced by a new revision.  */
 end_comment
 
 begin_interface

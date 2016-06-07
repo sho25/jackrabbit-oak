@@ -159,6 +159,24 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|DocumentNodeStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
 name|Revision
 import|;
 end_import
@@ -195,7 +213,7 @@ specifier|final
 name|boolean
 name|useRevisionMaps
 decl_stmt|;
-comment|/**      * @param useRevisionMaps      *            whether to use {@link RevisionMap}s instead of regular      *            {@link Map}s.      */
+comment|/**      * @param useRevisionMaps      *            whether to use revision maps instead of regular      *            {@link Map}s.      */
 specifier|public
 name|RDBJSONSupport
 parameter_list|(

@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * RDB specific version of {@link VersionGCSupport} which uses an extended query  * interface to fetch required {@link NodeDocuments}.  */
+comment|/**  * RDB specific version of {@link VersionGCSupport} which uses an extended query  * interface to fetch required {@link NodeDocument}s.  */
 end_comment
 
 begin_class
