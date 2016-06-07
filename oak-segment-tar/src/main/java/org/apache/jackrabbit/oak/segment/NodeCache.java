@@ -282,11 +282,7 @@ block|{
 return|return
 operator|new
 name|NodeCache
-argument_list|(
-literal|0
-argument_list|,
-literal|0
-argument_list|)
+argument_list|()
 block|{
 annotation|@
 name|Override
@@ -325,6 +321,24 @@ return|;
 block|}
 block|}
 return|;
+block|}
+comment|/* Internal constructor used by empty() only */
+specifier|private
+name|NodeCache
+parameter_list|()
+block|{
+name|this
+operator|.
+name|capacity
+operator|=
+literal|0
+expr_stmt|;
+name|this
+operator|.
+name|nodes
+operator|=
+literal|null
+expr_stmt|;
 block|}
 specifier|public
 name|NodeCache

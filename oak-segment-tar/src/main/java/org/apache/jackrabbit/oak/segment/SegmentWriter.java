@@ -831,7 +831,7 @@ specifier|final
 name|WriteOperationHandler
 name|writeOperationHandler
 decl_stmt|;
-comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param reader     segment reader for the {@code store}      * @param blobStore  the blog store or {@code null} for inlined blobs      * @param tracker    segment tracker for {@code store}      * @param writeOperationHandler  handler for write operations.      */
+comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param reader     segment reader for the {@code store}      * @param blobStore  the blog store or {@code null} for inlined blobs      * @param tracker    segment tracker for {@code store}      * @param cacheManager  cache manager instance for the de-duplication caches used by this writer      * @param writeOperationHandler  handler for write operations.      */
 specifier|public
 name|SegmentWriter
 parameter_list|(
@@ -854,6 +854,11 @@ annotation|@
 name|Nonnull
 name|SegmentTracker
 name|tracker
+parameter_list|,
+annotation|@
+name|Nonnull
+name|WriterCacheManager
+name|cacheManager
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -896,20 +901,21 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|cacheManager
+operator|=
+name|checkNotNull
+argument_list|(
+name|cacheManager
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|writeOperationHandler
 operator|=
 name|checkNotNull
 argument_list|(
 name|writeOperationHandler
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|cacheManager
-operator|=
-operator|new
-name|WriterCacheManager
-argument_list|()
 expr_stmt|;
 block|}
 comment|// FIXME OAK-4277: Finalise de-duplication caches
