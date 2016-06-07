@@ -34,24 +34,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentVersion
-operator|.
-name|LATEST_VERSION
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -181,14 +163,6 @@ decl_stmt|;
 annotation|@
 name|Nonnull
 specifier|private
-name|SegmentVersion
-name|version
-init|=
-name|LATEST_VERSION
-decl_stmt|;
-annotation|@
-name|Nonnull
-specifier|private
 name|Supplier
 argument_list|<
 name|Integer
@@ -259,31 +233,6 @@ name|SegmentWriterBuilder
 argument_list|(
 name|name
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Nonnull
-specifier|public
-name|SegmentWriterBuilder
-name|with
-parameter_list|(
-annotation|@
-name|Nonnull
-name|SegmentVersion
-name|version
-parameter_list|)
-block|{
-name|this
-operator|.
-name|version
-operator|=
-name|checkNotNull
-argument_list|(
-name|version
-argument_list|)
-expr_stmt|;
-return|return
-name|this
 return|;
 block|}
 comment|/**      * Specify the {@code generation} for the segment written by the returned      * segment writer.      *<p>      * If {@link #withoutWriterPool()} was specified all segments will be written      * at the generation that {@code generation.get()} returned at the time      * any of the {@code build()} methods is called.      * If {@link #withWriterPool()} was specified a segments will be written      * at the generation that {@code generation.get()} returns when a new segment      * is created by the returned writer.      */
@@ -601,8 +550,6 @@ operator|.
 name|getReader
 argument_list|()
 argument_list|,
-name|version
-argument_list|,
 name|name
 argument_list|,
 name|generation
@@ -626,8 +573,6 @@ name|store
 operator|.
 name|getReader
 argument_list|()
-argument_list|,
-name|version
 argument_list|,
 name|name
 argument_list|,
@@ -675,8 +620,6 @@ operator|.
 name|getReader
 argument_list|()
 argument_list|,
-name|version
-argument_list|,
 name|name
 argument_list|,
 name|generation
@@ -700,8 +643,6 @@ name|store
 operator|.
 name|getReader
 argument_list|()
-argument_list|,
-name|version
 argument_list|,
 name|name
 argument_list|,
@@ -749,8 +690,6 @@ operator|.
 name|getReader
 argument_list|()
 argument_list|,
-name|version
-argument_list|,
 name|name
 argument_list|,
 name|generation
@@ -774,8 +713,6 @@ name|store
 operator|.
 name|getReader
 argument_list|()
-argument_list|,
-name|version
 argument_list|,
 name|name
 argument_list|,

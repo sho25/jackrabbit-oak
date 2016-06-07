@@ -274,6 +274,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentVersion
+operator|.
+name|LATEST_VERSION
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -456,14 +474,6 @@ specifier|final
 name|SegmentReader
 name|reader
 decl_stmt|;
-comment|/**      * Version of the segment storage format.      */
-annotation|@
-name|Nonnull
-specifier|private
-specifier|final
-name|SegmentVersion
-name|version
-decl_stmt|;
 comment|/**      * Id of this writer.      */
 annotation|@
 name|Nonnull
@@ -516,11 +526,6 @@ name|SegmentReader
 name|reader
 parameter_list|,
 annotation|@
-name|Nonnull
-name|SegmentVersion
-name|version
-parameter_list|,
-annotation|@
 name|CheckForNull
 name|String
 name|wid
@@ -554,15 +559,6 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|reader
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|version
-operator|=
-name|checkNotNull
-argument_list|(
-name|version
 argument_list|)
 expr_stmt|;
 name|this
@@ -669,7 +665,7 @@ name|SegmentVersion
 operator|.
 name|asByte
 argument_list|(
-name|version
+name|LATEST_VERSION
 argument_list|)
 expr_stmt|;
 name|buffer
