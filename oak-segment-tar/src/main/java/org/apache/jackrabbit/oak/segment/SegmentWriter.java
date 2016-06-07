@@ -5705,6 +5705,8 @@ name|RecordId
 name|id
 parameter_list|)
 block|{
+try|try
+block|{
 name|int
 name|thatGen
 init|=
@@ -5729,6 +5731,23 @@ name|thatGen
 operator|<
 name|thisGen
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|SegmentNotFoundException
+name|snfe
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|SegmentNotFoundException
+argument_list|(
+literal|"Cannot copy record from a generation that has been gc'ed already"
+argument_list|,
+name|snfe
+argument_list|)
+throw|;
+block|}
 block|}
 specifier|private
 class|class
