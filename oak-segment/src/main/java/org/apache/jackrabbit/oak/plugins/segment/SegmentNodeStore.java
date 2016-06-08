@@ -682,6 +682,7 @@ name|NodeStore
 implements|,
 name|Observable
 block|{
+comment|// FIXME OAK-4449: SegmentNodeStore and SegmentStore builders should log their parameters on build()
 specifier|public
 specifier|static
 class|class

@@ -137,6 +137,14 @@ name|BlobStore
 import|;
 end_import
 
+begin_comment
+comment|// FIXME OAK-4451: Implement a proper template cache
+end_comment
+
+begin_comment
+comment|// - move the template cache into this class, implement monitoring, management, logging, tests
+end_comment
+
 begin_class
 specifier|public
 class|class

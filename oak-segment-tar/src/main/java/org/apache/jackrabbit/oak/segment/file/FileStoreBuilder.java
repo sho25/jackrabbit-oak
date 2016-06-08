@@ -421,6 +421,10 @@ begin_comment
 comment|/**  * Builder for creating {@link FileStore} instances.  */
 end_comment
 
+begin_comment
+comment|// FIXME OAK-4449: SegmentNodeStore and SegmentStore builders should log their parameters on build()
+end_comment
+
 begin_class
 specifier|public
 class|class
