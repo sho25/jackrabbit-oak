@@ -87,6 +87,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -151,6 +161,16 @@ parameter_list|(
 name|String
 name|prefix
 parameter_list|)
+function_decl|;
+comment|/**      * Returns a list of all DataRecords      *      * @return iterator over DataRecords      * @throws DataStoreException      */
+name|Iterator
+argument_list|<
+name|DataRecord
+argument_list|>
+name|getAllRecords
+parameter_list|()
+throws|throws
+name|DataStoreException
 function_decl|;
 block|}
 end_interface

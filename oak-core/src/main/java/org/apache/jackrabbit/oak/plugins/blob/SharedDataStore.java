@@ -35,6 +35,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -135,6 +145,14 @@ parameter_list|(
 name|String
 name|prefix
 parameter_list|)
+function_decl|;
+comment|/**      * Retrieved an iterator over all DataRecords.      *      * @return iterator over DataRecords      */
+name|Iterator
+argument_list|<
+name|DataRecord
+argument_list|>
+name|getAllRecords
+parameter_list|()
 function_decl|;
 comment|/**      * Gets the type.      *       * @return the type      */
 name|Type

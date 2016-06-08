@@ -728,11 +728,11 @@ name|int
 name|minRecordLength
 parameter_list|)
 block|{
-name|FileDataStore
+name|OakFileDataStore
 name|fds
 init|=
 operator|new
-name|FileDataStore
+name|OakFileDataStore
 argument_list|()
 decl_stmt|;
 name|fds
