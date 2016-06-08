@@ -581,11 +581,14 @@ argument_list|()
 argument_list|,
 name|conflictHandler
 argument_list|)
+operator|.
+name|getNodeState
+argument_list|()
 return|;
 block|}
 specifier|private
 specifier|static
-name|NodeState
+name|NodeBuilder
 name|merge
 parameter_list|(
 name|NodeState
@@ -620,9 +623,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|target
-operator|.
-name|getNodeState
-argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------< NodeStateDiff>---
