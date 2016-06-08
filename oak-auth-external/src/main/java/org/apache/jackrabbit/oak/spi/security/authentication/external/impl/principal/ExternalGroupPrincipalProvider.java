@@ -1658,7 +1658,7 @@ name|acl
 operator|.
 name|Group
 block|{
-specifier|public
+specifier|private
 name|ExternalGroupPrincipal
 parameter_list|(
 name|String
