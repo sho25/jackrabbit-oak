@@ -1909,6 +1909,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|Supplier
@@ -1992,9 +1994,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+annotation|@
+name|Nonnull
 name|SegmentWriteOperation
 name|with
 parameter_list|(
+annotation|@
+name|Nonnull
 name|SegmentBufferWriter
 name|writer
 parameter_list|)
