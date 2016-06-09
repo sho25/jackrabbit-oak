@@ -194,6 +194,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|MISSING_BLOBSTORE
+init|=
+literal|"missingblobstore"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|COPY_VERSIONS
 init|=
 literal|"copy-versions"
@@ -482,6 +490,15 @@ argument_list|(
 name|String
 operator|.
 name|class
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|MISSING_BLOBSTORE
+argument_list|,
+literal|"Try to upgrade the NodeStore without access to the external Datastore"
 argument_list|)
 expr_stmt|;
 block|}
