@@ -763,9 +763,9 @@ else|else
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
-literal|"Ignoring permission provider of '{}': missing implementation of AggregatedPermissionProvider"
+literal|"Ignoring permission provider of '{}': Not an AggregatedPermissionProvider"
 argument_list|,
 name|conf
 operator|.
