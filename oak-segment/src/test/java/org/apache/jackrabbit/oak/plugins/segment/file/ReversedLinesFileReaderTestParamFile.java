@@ -418,7 +418,13 @@ name|folder
 init|=
 operator|new
 name|TemporaryFolder
-argument_list|()
+argument_list|(
+operator|new
+name|File
+argument_list|(
+literal|"target"
+argument_list|)
+argument_list|)
 decl_stmt|;
 specifier|public
 name|ReversedLinesFileReaderTestParamFile
