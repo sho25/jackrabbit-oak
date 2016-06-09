@@ -22,6 +22,68 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|upgrade
+operator|.
+name|cli
+operator|.
+name|container
+operator|.
+name|MongoNodeStoreContainer
+operator|.
+name|isMongoAvailable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -203,46 +265,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 annotation|@
 name|RunWith
@@ -421,6 +443,12 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|isMongoAvailable
+argument_list|()
+condition|)
+block|{
 name|params
 operator|.
 name|add
@@ -447,8 +475,12 @@ literal|false
 block|}
 argument_list|)
 expr_stmt|;
-comment|// params.add(new Object[] { "Segment -> Mongo (FDS)", new SegmentNodeStoreContainer(blob), new MongoNodeStoreContainer(blob), false });
-comment|// params.add(new Object[] { "SegmentTar -> Mongo (FDS)", new SegmentTarNodeStoreContainer(blob), new MongoNodeStoreContainer(blob), false });
+comment|// params.add(new Object[] { "Segment -> Mongo (FDS)", new
+comment|// SegmentNodeStoreContainer(blob), new
+comment|// MongoNodeStoreContainer(blob), false });
+comment|// params.add(new Object[] { "SegmentTar -> Mongo (FDS)", new
+comment|// SegmentTarNodeStoreContainer(blob), new
+comment|// MongoNodeStoreContainer(blob), false });
 name|params
 operator|.
 name|add
@@ -475,6 +507,7 @@ literal|false
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
