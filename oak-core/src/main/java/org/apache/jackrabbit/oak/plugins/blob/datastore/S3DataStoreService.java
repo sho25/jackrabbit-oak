@@ -173,11 +173,11 @@ argument_list|>
 name|config
 parameter_list|)
 block|{
-name|S3DataStore
+name|SharedS3DataStore
 name|dataStore
 init|=
 operator|new
-name|S3DataStore
+name|SharedS3DataStore
 argument_list|()
 decl_stmt|;
 name|Properties
