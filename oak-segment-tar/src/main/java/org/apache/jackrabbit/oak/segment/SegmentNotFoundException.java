@@ -119,6 +119,8 @@ block|{
 name|super
 argument_list|(
 name|message
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 name|this
