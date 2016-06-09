@@ -2497,6 +2497,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
+specifier|public
 specifier|static
 name|String
 name|readLine
@@ -2519,6 +2520,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+specifier|public
 specifier|static
 name|void
 name|writeLine
