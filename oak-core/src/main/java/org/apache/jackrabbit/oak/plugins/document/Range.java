@@ -149,12 +149,10 @@ argument_list|)
 operator|>=
 literal|0
 argument_list|,
-literal|"High Revision must be later than low Revision, high="
-operator|+
+literal|"High Revision must be later than low Revision, high=%s low=%s"
+argument_list|,
 name|high
-operator|+
-literal|" low="
-operator|+
+argument_list|,
 name|low
 argument_list|)
 expr_stmt|;
