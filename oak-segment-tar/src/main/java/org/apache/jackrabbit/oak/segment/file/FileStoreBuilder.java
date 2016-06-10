@@ -1062,7 +1062,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Create a new {@link FileStore} instance with the settings specified in this      * builder. If none of the {@code with} methods have been called before calling      * this method, a file store with the following default settings is returned:      *<ul>      *<li>blob store: inline</li>      *<li>max file size: 256MB</li>      *<li>cache size: 256MB</li>      *<li>memory mapping: on for 64 bit JVMs off otherwise</li>      *<li>whiteboard: none. No {@link GCMonitor} tracking</li>      *<li>statsProvider: {@link StatisticsProvider#NOOP}</li>      *<li>GC options: {@link SegmentGCOptions#DEFAULT}</li>      *</ul>      *      * @return a new file store instance      * @throws IOException      */
+comment|/**      * Create a new {@link FileStore} instance with the settings specified in this      * builder. If none of the {@code with} methods have been called before calling      * this method, a file store with the following default settings is returned:      *<ul>      *<li>blob store: inline</li>      *<li>max file size: 256MB</li>      *<li>cache size: 256MB</li>      *<li>memory mapping: on for 64 bit JVMs off otherwise</li>      *<li>whiteboard: none. No {@link GCMonitor} tracking</li>      *<li>statsProvider: {@link StatisticsProvider#NOOP}</li>      *<li>GC options: {@link SegmentGCOptions#defaultGCOptions()}</li>      *</ul>      *      * @return a new file store instance      * @throws IOException      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1114,7 +1114,7 @@ return|return
 name|store
 return|;
 block|}
-comment|/**      * Create a new {@link ReadOnlyStore} instance with the settings specified in this      * builder. If none of the {@code with} methods have been called before calling      * this method, a file store with the following default settings is returned:      *<ul>      *<li>blob store: inline</li>      *<li>max file size: 256MB</li>      *<li>cache size: 256MB</li>      *<li>memory mapping: on for 64 bit JVMs off otherwise</li>      *<li>whiteboard: none. No {@link GCMonitor} tracking</li>      *<li>statsProvider: {@link StatisticsProvider#NOOP}</li>      *<li>GC options: {@link SegmentGCOptions#DEFAULT}</li>      *</ul>      *      * @return a new file store instance      * @throws IOException      */
+comment|/**      * Create a new {@link ReadOnlyStore} instance with the settings specified in this      * builder. If none of the {@code with} methods have been called before calling      * this method, a file store with the following default settings is returned:      *<ul>      *<li>blob store: inline</li>      *<li>max file size: 256MB</li>      *<li>cache size: 256MB</li>      *<li>memory mapping: on for 64 bit JVMs off otherwise</li>      *<li>whiteboard: none. No {@link GCMonitor} tracking</li>      *<li>statsProvider: {@link StatisticsProvider#NOOP}</li>      *<li>GC options: {@link SegmentGCOptions#defaultGCOptions()}</li>      *</ul>      *      * @return a new file store instance      * @throws IOException      */
 annotation|@
 name|Nonnull
 specifier|public
