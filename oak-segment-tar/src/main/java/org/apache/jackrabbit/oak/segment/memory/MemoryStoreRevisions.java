@@ -139,6 +139,10 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_comment
+comment|/**  * This is a simple in memory {@code Revisions} implementation.  * It is non blocking and does not support any {@link Option}s.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -150,6 +154,7 @@ specifier|private
 name|RecordId
 name|head
 decl_stmt|;
+comment|/**      * Bind this instance to a {@code store}.      */
 specifier|public
 name|void
 name|bind
@@ -300,6 +305,7 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException, always      */
 annotation|@
 name|Override
 specifier|public

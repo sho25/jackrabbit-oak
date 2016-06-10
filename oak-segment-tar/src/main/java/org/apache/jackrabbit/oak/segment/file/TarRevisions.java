@@ -353,6 +353,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStore
+operator|.
+name|ReadOnlyStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -368,6 +388,10 @@ operator|.
 name|LoggerFactory
 import|;
 end_import
+
+begin_comment
+comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link #JOURNAL_FILE_NAME journal} file where the current head is persisted  * by calling {@link #flush(Callable)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, Supplier) bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
+end_comment
 
 begin_class
 specifier|public
@@ -401,7 +425,6 @@ name|JOURNAL_FILE_NAME
 init|=
 literal|"journal.log"
 decl_stmt|;
-comment|/**      * The latest head state.      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -534,6 +557,7 @@ throw|;
 block|}
 block|}
 block|}
+comment|/**      * Timeout option approximating no time out ({@code Long.MAX_VALUE} days).      */
 specifier|public
 specifier|static
 specifier|final
@@ -548,6 +572,7 @@ argument_list|,
 name|DAYS
 argument_list|)
 decl_stmt|;
+comment|/**      * Factory method for creating a timeout option.      */
 specifier|public
 specifier|static
 name|Option
@@ -570,6 +595,7 @@ name|unit
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a new instance placing the journal log file into the passed      * {@code directory}.      * @param readOnly      safeguard for {@link ReadOnlyStore}: open the journal      *                      file in read only mode.      * @param directory     directory of the journal file      * @throws IOException      */
 specifier|public
 name|TarRevisions
 parameter_list|(
@@ -650,6 +676,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Bind this instance to a store.      * @param store              store to bind to      * @param writeInitialNode   provider for the initial node in case the journal is empty.      * @throws IOException      */
 specifier|synchronized
 name|void
 name|bind
@@ -861,6 +888,7 @@ operator|new
 name|ReentrantLock
 argument_list|()
 decl_stmt|;
+comment|/**      * Flush the id of the current head to the journal after a call to      * {@code persisted}. This method does nothing and returns immediately if      * called concurrently and a call is already in progress.      * @param persisted     call back for upstream dependencies to ensure      *                      the current head state is actually persisted before      *                      its id is written to the head state.      * @throws IOException      */
 specifier|public
 name|void
 name|flush
@@ -1096,6 +1124,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * This implementation blocks if a concurrent call is already in progress.      * @param newHead  function mapping an record id to the record id to which      *                 the current head id should be set.      * @param options  zero or one timeout options specifying how long to block      * @return      * @throws InterruptedException      * @see #timeout(long, TimeUnit)      * @see #INFINITY      */
 annotation|@
 name|Override
 specifier|public
@@ -1277,6 +1306,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Close the underlying journal file.      * @throws IOException      */
 annotation|@
 name|Override
 specifier|public

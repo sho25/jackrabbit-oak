@@ -151,6 +151,10 @@ name|Revisions
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code Revisions} implementation delegates via HTTP  * to its remote counterpart. It does not support setting  * the id of the head state.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -274,6 +278,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException, always      */
 annotation|@
 name|Override
 specifier|public
@@ -303,6 +308,7 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException, always      */
 annotation|@
 name|Override
 specifier|public
