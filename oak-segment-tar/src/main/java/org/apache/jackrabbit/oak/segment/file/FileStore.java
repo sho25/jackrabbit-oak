@@ -4683,7 +4683,6 @@ decl_stmt|;
 while|while
 condition|(
 name|cycles
-operator|++
 operator|<
 name|gcOptions
 operator|.
@@ -4714,17 +4713,25 @@ block|{
 comment|// Some other concurrent changes have been made.
 comment|// Rebase (and compact) those changes on top of the
 comment|// compacted state before retrying to set the head.
+name|cycles
+operator|++
+expr_stmt|;
 name|gcListener
 operator|.
 name|info
 argument_list|(
 literal|"TarMK GC #{}: compaction detected concurrent commits while compacting. "
 operator|+
-literal|"Compacting these commits. Cycle {}"
+literal|"Compacting these commits. Cycle {} of {}"
 argument_list|,
 name|GC_COUNT
 argument_list|,
 name|cycles
+argument_list|,
+name|gcOptions
+operator|.
+name|getRetryCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|SegmentNodeState
@@ -4810,8 +4817,6 @@ argument_list|,
 name|GC_COUNT
 argument_list|,
 name|cycles
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 if|if
@@ -4830,6 +4835,9 @@ literal|"TarMK GC #{}: compaction force compacting remaining commits"
 argument_list|,
 name|GC_COUNT
 argument_list|)
+expr_stmt|;
+name|cycles
+operator|++
 expr_stmt|;
 name|success
 operator|=
@@ -4894,8 +4902,6 @@ name|MILLISECONDS
 argument_list|)
 argument_list|,
 name|cycles
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 return|return
@@ -4996,8 +5002,6 @@ name|MILLISECONDS
 argument_list|)
 argument_list|,
 name|cycles
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 return|return
