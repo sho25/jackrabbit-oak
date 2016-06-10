@@ -458,7 +458,10 @@ name|FileStoreBackup
 operator|.
 name|backup
 argument_list|(
-name|store
+name|source
+operator|.
+name|getReader
+argument_list|()
 argument_list|,
 name|destination
 argument_list|)
@@ -484,7 +487,10 @@ name|FileStoreBackup
 operator|.
 name|backup
 argument_list|(
-name|store
+name|source
+operator|.
+name|getReader
+argument_list|()
 argument_list|,
 name|destination
 argument_list|)
@@ -512,7 +518,10 @@ name|FileStoreBackup
 operator|.
 name|backup
 argument_list|(
-name|store
+name|source
+operator|.
+name|getReader
+argument_list|()
 argument_list|,
 name|destination
 argument_list|)
@@ -578,7 +587,10 @@ name|FileStoreBackup
 operator|.
 name|backup
 argument_list|(
-name|store
+name|source
+operator|.
+name|getReader
+argument_list|()
 argument_list|,
 name|destination
 argument_list|)
