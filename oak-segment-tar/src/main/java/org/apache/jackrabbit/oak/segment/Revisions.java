@@ -41,28 +41,34 @@ name|Function
 import|;
 end_import
 
+begin_comment
+comment|/**  * {@code Revisions} instances provide read and write access to  * the current head state. Implementations are thread safe  * and all setters act atomically.  *<p>  * This is a low level API and it is the callers and implementors  * responsibility to ensure all record id passed to or returned  * from methods of this interface are the ids of node states.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|Revisions
 block|{
+comment|/**      * Implementation specific options for the {@code setHead} methods.      * These options can e.g. be used to specify priority, timeout, etc.      * for individual method calls.      */
 interface|interface
 name|Option
 block|{}
-comment|/**      * Returns the record id of the head state.      * @return od of the head state      */
+comment|/**      * Returns the record id of the head state. The returned id      * is a valid id for a {@code SegmentNodeState}.      * @return  id of the head state      */
 annotation|@
 name|Nonnull
 name|RecordId
 name|getHead
 parameter_list|()
 function_decl|;
+comment|/**      * Atomically set the record id of the current head state to the      * given {@code head} state if the current head state matches      * the {@code expected} value.      * All record ids must be valid ids for {@code SegmentNodeState}s.      *      * @param expected  the expected head for the update to take place      * @param head      the new head to update to      * @param options   implementation specific options      * @return          {@code true} if the current head was successfully      *                  updated, {@code false} otherwise.      */
 name|boolean
 name|setHead
 parameter_list|(
 annotation|@
 name|Nonnull
 name|RecordId
-name|base
+name|expected
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -76,6 +82,7 @@ modifier|...
 name|options
 parameter_list|)
 function_decl|;
+comment|/**      * Atomically set the record id of the current head state to the value      * returned from the {@code newHead} function when called with the record      * id of the current head.      * The behaviour of this function regarding locking and handling      * {@code null}s returned by {@code newHead} is implementation specific.      *      * @param newHead  function mapping an record id to the record id to which      *                 the current head id should be set.      * @param options  implementation specific options      * @return         {@code true} if the current head was successfully      *                 updated, {@code false} otherwise.      * @throws InterruptedException      *                 Blocking implementations may throw this exception whe      *                 interrupted.      */
 name|boolean
 name|setHead
 parameter_list|(
