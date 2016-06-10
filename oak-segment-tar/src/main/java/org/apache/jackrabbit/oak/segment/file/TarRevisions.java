@@ -595,6 +595,8 @@ name|unit
 argument_list|)
 return|;
 block|}
+comment|// FIXME OAK-4465: Remove the read-only concern from TarRevisions: this should be possible once
+comment|// the ReadOnlyStore is properly separated from the FileStore. See OAK-4450.
 comment|/**      * Create a new instance placing the journal log file into the passed      * {@code directory}.      * @param readOnly      safeguard for {@link ReadOnlyStore}: open the journal      *                      file in read only mode.      * @param directory     directory of the journal file      * @throws IOException      */
 specifier|public
 name|TarRevisions
