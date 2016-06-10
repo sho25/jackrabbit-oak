@@ -777,6 +777,21 @@ name|MigrationCliArguments
 name|arguments
 parameter_list|)
 function_decl|;
+specifier|public
+name|boolean
+name|isSegment
+parameter_list|()
+block|{
+return|return
+name|this
+operator|==
+name|SEGMENT
+operator|||
+name|this
+operator|==
+name|SEGMENT_TAR
+return|;
+block|}
 block|}
 end_enum
 

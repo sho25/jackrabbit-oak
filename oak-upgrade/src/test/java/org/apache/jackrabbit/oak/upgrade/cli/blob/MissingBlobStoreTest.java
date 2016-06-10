@@ -475,12 +475,6 @@ literal|false
 block|}
 argument_list|)
 expr_stmt|;
-comment|// params.add(new Object[] { "Segment -> Mongo (FDS)", new
-comment|// SegmentNodeStoreContainer(blob), new
-comment|// MongoNodeStoreContainer(blob), false });
-comment|// params.add(new Object[] { "SegmentTar -> Mongo (FDS)", new
-comment|// SegmentTarNodeStoreContainer(blob), new
-comment|// MongoNodeStoreContainer(blob), false });
 name|params
 operator|.
 name|add
@@ -525,8 +519,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|// blob = new FileBlobStoreContainer();
-comment|// params.add(new Object[] { "SegmentTar -> SegmentTar (FBS)", new SegmentTarNodeStoreContainer(blob), new SegmentTarNodeStoreContainer(blob), true });
 return|return
 name|params
 return|;
