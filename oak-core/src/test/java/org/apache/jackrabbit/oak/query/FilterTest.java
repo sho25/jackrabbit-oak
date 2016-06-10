@@ -294,6 +294,159 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|functionBasedIndex
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|sql2
+init|=
+literal|"select [jcr:path] from [nt:base] where lower([test]) = 'hello'"
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Filter(query=select [jcr:path] from [nt:base] "
+operator|+
+literal|"where lower([test]) = 'hello', "
+operator|+
+literal|"path=*, property=["
+operator|+
+literal|"function*lower*@test=[hello], "
+operator|+
+literal|"test=[is not null]])"
+argument_list|,
+name|createFilterSQL
+argument_list|(
+name|sql2
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sql2
+operator|=
+literal|"select [jcr:path] from [nt:base] where upper([test]) = 'HELLO'"
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Filter(query=select [jcr:path] from [nt:base] "
+operator|+
+literal|"where upper([test]) = 'HELLO', "
+operator|+
+literal|"path=*, property=["
+operator|+
+literal|"function*upper*@test=[HELLO], "
+operator|+
+literal|"test=[is not null]])"
+argument_list|,
+name|createFilterSQL
+argument_list|(
+name|sql2
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sql2
+operator|=
+literal|"select [jcr:path] from [nt:base] where upper(name()) = 'ACME:TEST'"
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Filter(query=select [jcr:path] from [nt:base] "
+operator|+
+literal|"where upper(name()) = 'ACME:TEST', "
+operator|+
+literal|"path=*, property=["
+operator|+
+literal|"function*upper*@:localname=[TEST]])"
+argument_list|,
+name|createFilterSQL
+argument_list|(
+name|sql2
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sql2
+operator|=
+literal|"select [jcr:path] from [nt:base] where lower(localname()) = 'test'"
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Filter(query=select [jcr:path] from [nt:base] "
+operator|+
+literal|"where lower(localname()) = 'test', "
+operator|+
+literal|"path=*, property=["
+operator|+
+literal|"function*lower*@:localname=[test]])"
+argument_list|,
+name|createFilterSQL
+argument_list|(
+name|sql2
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sql2
+operator|=
+literal|"select [jcr:path] from [nt:base] where length([test])<= 10"
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Filter(query=select [jcr:path] from [nt:base] "
+operator|+
+literal|"where length([test])<= 10, "
+operator|+
+literal|"path=*, property=[test=[is not null], "
+operator|+
+literal|"function*length*@test=[..10]]])"
+argument_list|,
+name|createFilterSQL
+argument_list|(
+name|sql2
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sql2
+operator|=
+literal|"select [jcr:path] from [nt:base] where length([test])> 2"
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Filter(query=select [jcr:path] from [nt:base] "
+operator|+
+literal|"where length([test])> 2, "
+operator|+
+literal|"path=*, property=[test=[is not null], "
+operator|+
+literal|"function*length*@test=[(2..]])"
+argument_list|,
+name|createFilterSQL
+argument_list|(
+name|sql2
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|oak4170
 parameter_list|()
 throws|throws

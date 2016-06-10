@@ -137,6 +137,7 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|/**      * The prefix for native function restrictions (native, similar, spellcheck, suggest).      */
 specifier|public
 specifier|static
 specifier|final

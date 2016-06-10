@@ -1019,6 +1019,21 @@ continue|continue;
 block|}
 if|if
 condition|(
+name|name
+operator|.
+name|startsWith
+argument_list|(
+name|QueryConstants
+operator|.
+name|FUNCTION_RESTRICTION_PREFIX
+argument_list|)
+condition|)
+block|{
+comment|// TODO support function-based indexes
+continue|continue;
+block|}
+if|if
+condition|(
 name|QueryImpl
 operator|.
 name|REP_FACET

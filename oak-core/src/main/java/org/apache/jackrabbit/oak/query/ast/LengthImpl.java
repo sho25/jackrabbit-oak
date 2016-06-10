@@ -378,6 +378,19 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|propertyValue
+operator|.
+name|restrictFunction
+argument_list|(
+name|f
+argument_list|,
+literal|"length"
+argument_list|,
+name|operator
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -396,6 +409,27 @@ name|list
 parameter_list|)
 block|{
 comment|// optimizations of the type "length(x) in(1, 2, 3)" are not supported
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|restrictFunction
+parameter_list|(
+name|FilterImpl
+name|f
+parameter_list|,
+name|String
+name|functionName
+parameter_list|,
+name|Operator
+name|operator
+parameter_list|,
+name|PropertyValue
+name|v
+parameter_list|)
+block|{
+comment|// optimizations of the type "upper(length(x)) = '1'" are not supported
 block|}
 annotation|@
 name|Override

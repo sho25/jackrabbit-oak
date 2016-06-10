@@ -366,6 +366,27 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|void
+name|restrictFunction
+parameter_list|(
+name|FilterImpl
+name|f
+parameter_list|,
+name|String
+name|functionName
+parameter_list|,
+name|Operator
+name|operator
+parameter_list|,
+name|PropertyValue
+name|v
+parameter_list|)
+block|{
+comment|// optimizations of the type "upper(jcr:score()) = '1'" are not supported
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|canRestrictSelector
 parameter_list|(

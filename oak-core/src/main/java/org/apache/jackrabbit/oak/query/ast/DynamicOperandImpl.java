@@ -91,6 +91,7 @@ name|PropertyValue
 name|currentProperty
 parameter_list|()
 function_decl|;
+comment|/**      * Apply a restriction of type "this = value" to the given filter.      *       * @param f the filter where the restriction is applied.      * @param operator the operator (for example "=").      * @param v the value      */
 specifier|public
 specifier|abstract
 name|void
@@ -106,6 +107,7 @@ name|PropertyValue
 name|v
 parameter_list|)
 function_decl|;
+comment|/**      * Apply a restriction of type "this in (list)" to the given filter.      *       * @param f the filter where the restriction is applied.      * @param list the list of values      */
 specifier|public
 specifier|abstract
 name|void
@@ -119,6 +121,25 @@ argument_list|<
 name|PropertyValue
 argument_list|>
 name|list
+parameter_list|)
+function_decl|;
+comment|/**      * Apply a restriction of type "function(this) = value" to the given filter.      *       * @param functionName the function name (for example "upper")      * @param f the filter where the restriction is applied.      * @param operator the operator (for example "=").      * @param v the value      */
+specifier|public
+specifier|abstract
+name|void
+name|restrictFunction
+parameter_list|(
+name|FilterImpl
+name|f
+parameter_list|,
+name|String
+name|functionName
+parameter_list|,
+name|Operator
+name|operator
+parameter_list|,
+name|PropertyValue
+name|v
 parameter_list|)
 function_decl|;
 comment|/**      * Check whether the condition can be applied to a selector (to restrict the      * selector). The method may return true if the operand can be evaluated      * when the given selector and all previous selectors in the join can be      * evaluated.      *      * @param s the selector      * @return true if the condition can be applied      */
