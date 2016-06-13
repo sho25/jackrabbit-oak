@@ -1048,6 +1048,7 @@ name|get
 argument_list|()
 return|;
 block|}
+comment|/**      * This implementation blocks if a concurrent call to      * {@link #setHead(Function, Option...)} is already in      * progress.       * @param options   none      */
 annotation|@
 name|Override
 specifier|public
@@ -1126,7 +1127,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This implementation blocks if a concurrent call is already in progress.      * @param newHead  function mapping an record id to the record id to which      *                 the current head id should be set.      * @param options  zero or one timeout options specifying how long to block      * @return      * @throws InterruptedException      * @see #timeout(long, TimeUnit)      * @see #INFINITY      */
+comment|/**      * This implementation blocks if a concurrent call is already in progress.      * @param newHead  function mapping an record id to the record id to which      *                 the current head id should be set. If it returns      *                 {@code null} the head remains unchanged and {@code setHead}      *                 returns {@code false}.       * @param options  zero or one timeout options specifying how long to block      * @throws InterruptedException      * @throws IllegalArgumentException  on any non recognised {@code option}.      * @see #timeout(long, TimeUnit)      * @see #INFINITY      */
 annotation|@
 name|Override
 specifier|public
