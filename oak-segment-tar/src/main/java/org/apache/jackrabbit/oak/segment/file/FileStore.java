@@ -6501,7 +6501,7 @@ block|{
 return|return
 name|tracker
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|msb
 argument_list|,

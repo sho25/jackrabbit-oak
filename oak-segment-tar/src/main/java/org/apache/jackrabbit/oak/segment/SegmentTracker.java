@@ -281,7 +281,7 @@ annotation|@
 name|Nonnull
 specifier|public
 name|SegmentId
-name|getSegmentId
+name|newSegmentId
 parameter_list|(
 name|long
 name|msb
@@ -317,7 +317,7 @@ index|[
 name|index
 index|]
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|msb
 argument_list|,
@@ -414,7 +414,7 @@ operator||
 name|type
 decl_stmt|;
 return|return
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|msb
 argument_list|,

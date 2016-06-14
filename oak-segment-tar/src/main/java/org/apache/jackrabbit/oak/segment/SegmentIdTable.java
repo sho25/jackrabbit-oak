@@ -230,7 +230,7 @@ annotation|@
 name|Nonnull
 specifier|synchronized
 name|SegmentId
-name|getSegmentId
+name|newSegmentId
 parameter_list|(
 name|long
 name|msb

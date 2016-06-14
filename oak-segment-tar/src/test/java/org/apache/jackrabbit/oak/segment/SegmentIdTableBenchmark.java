@@ -276,7 +276,7 @@ control|)
 block|{
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|j
 argument_list|,

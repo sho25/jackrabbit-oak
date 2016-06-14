@@ -353,7 +353,7 @@ name|add
 argument_list|(
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|i
 argument_list|,
@@ -392,7 +392,7 @@ comment|// (2,1) doesn't exist
 return|return
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 literal|2
 argument_list|,
@@ -550,7 +550,7 @@ name|add
 argument_list|(
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|r
 operator|.
@@ -632,7 +632,7 @@ name|add
 argument_list|(
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|r
 operator|.
@@ -741,7 +741,7 @@ name|add
 argument_list|(
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|i
 argument_list|,
@@ -917,7 +917,7 @@ name|add
 argument_list|(
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|i
 argument_list|,
@@ -1069,7 +1069,7 @@ name|add
 argument_list|(
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|i
 argument_list|,
@@ -1180,7 +1180,7 @@ name|id2
 init|=
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|msb
 argument_list|,
@@ -1228,7 +1228,7 @@ control|)
 block|{
 name|tbl
 operator|.
-name|getSegmentId
+name|newSegmentId
 argument_list|(
 name|i
 argument_list|,
