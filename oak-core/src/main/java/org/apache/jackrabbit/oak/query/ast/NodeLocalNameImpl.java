@@ -458,6 +458,18 @@ block|{
 comment|// optimizations of the type "lower(LOCALNAME(x)) = 'x'"
 if|if
 condition|(
+name|operator
+operator|==
+name|Operator
+operator|.
+name|NOT_EQUAL
+condition|)
+block|{
+comment|// not supported
+return|return;
+block|}
+if|if
+condition|(
 name|v
 operator|==
 literal|null

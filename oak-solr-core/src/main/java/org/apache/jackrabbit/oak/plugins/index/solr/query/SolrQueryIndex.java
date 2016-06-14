@@ -3707,6 +3707,17 @@ operator|.
 name|propertyName
 argument_list|)
 operator|||
+name|property
+operator|.
+name|propertyName
+operator|.
+name|startsWith
+argument_list|(
+name|QueryConstants
+operator|.
+name|FUNCTION_RESTRICTION_PREFIX
+argument_list|)
+operator|||
 name|configuration
 operator|.
 name|getIgnoredProperties

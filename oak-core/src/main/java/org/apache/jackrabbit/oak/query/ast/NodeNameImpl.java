@@ -499,6 +499,18 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|operator
+operator|==
+name|Operator
+operator|.
+name|NOT_EQUAL
+condition|)
+block|{
+comment|// not supported
+return|return;
+block|}
+if|if
+condition|(
 name|v
 operator|==
 literal|null
