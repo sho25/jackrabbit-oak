@@ -406,9 +406,9 @@ literal|"Filter(query=select [jcr:path] from [nt:base] "
 operator|+
 literal|"where length([test])<= 10, "
 operator|+
-literal|"path=*, property=[test=[is not null], "
+literal|"path=*, property=[function*length*@test=[..10]], "
 operator|+
-literal|"function*length*@test=[..10]]])"
+literal|"test=[is not null]])"
 argument_list|,
 name|createFilterSQL
 argument_list|(
@@ -429,9 +429,9 @@ literal|"Filter(query=select [jcr:path] from [nt:base] "
 operator|+
 literal|"where length([test])> 2, "
 operator|+
-literal|"path=*, property=[test=[is not null], "
+literal|"path=*, property=[function*length*@test=[(2..], "
 operator|+
-literal|"function*length*@test=[(2..]])"
+literal|"test=[is not null]])"
 argument_list|,
 name|createFilterSQL
 argument_list|(
