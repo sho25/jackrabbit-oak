@@ -27,11 +27,16 @@ name|Nonnull
 import|;
 end_import
 
+begin_comment
+comment|/**  * Instances of {@code SegmentReader} are responsible for reading records from segments.  *<p>  * Passing a record id that cannot be resolved to any of the read methods will eventually  * result in a {@link SegmentNotFoundException}. Implementations are however free to choose  * to defer such an exception. For example by returning cached data or a thunk to a specific  * record such that the exception is only thrown when actually accessing the returned record.  *<p>  * The behaviour of the read methods is implementation specific when passing a record id  * that does not match the type of the expected record.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|SegmentReader
 block|{
+comment|/**      * Read the string identified by {@code id}.      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@
 name|Nonnull
 name|String
@@ -43,6 +48,7 @@ name|RecordId
 name|id
 parameter_list|)
 function_decl|;
+comment|/**      * Read the map identified by {@code id}.      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@
 name|Nonnull
 name|MapRecord
@@ -54,6 +60,7 @@ name|RecordId
 name|id
 parameter_list|)
 function_decl|;
+comment|/**      * Read the template identified by {@code id}.      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@
 name|Nonnull
 name|Template
@@ -65,6 +72,7 @@ name|RecordId
 name|id
 parameter_list|)
 function_decl|;
+comment|/**      * Read the node identified by {@code id}.      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@
 name|Nonnull
 name|SegmentNodeState
@@ -76,12 +84,14 @@ name|RecordId
 name|id
 parameter_list|)
 function_decl|;
+comment|/**      * Read the current head state      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@
 name|Nonnull
 name|SegmentNodeState
 name|readHeadState
 parameter_list|()
 function_decl|;
+comment|/**      * Read the property identified by {@code id} and {@code template}      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@
 name|Nonnull
 name|SegmentPropertyState
@@ -98,6 +108,7 @@ name|PropertyTemplate
 name|template
 parameter_list|)
 function_decl|;
+comment|/**      * Read the blob identified by {@code id}.      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@
 name|Nonnull
 name|SegmentBlob

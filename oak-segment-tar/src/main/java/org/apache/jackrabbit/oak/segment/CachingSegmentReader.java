@@ -137,12 +137,34 @@ name|BlobStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|// FIXME OAK-4451: Implement a proper template cache
 end_comment
 
 begin_comment
 comment|// - move the template cache into this class, implement monitoring, management, logging, tests
+end_comment
+
+begin_comment
+comment|/**  * This {@code SegmentReader} implementation implements caching for  * strings and templates. It can also optionally rely on a {@link BlobStore} for resolving blobs.  */
 end_comment
 
 begin_class
@@ -200,6 +222,7 @@ specifier|final
 name|StringCache
 name|stringCache
 decl_stmt|;
+comment|/**      * Create a new instance based on the supplied arguments.      * @param writer          A {@code Supplier} for a the {@code SegmentWriter} used by the segment      *                        builders returned from {@link NodeState#builder()} to write ahead changes.      *                        {@code writer.get()} must not return {@code null}.      * @param revisions       {@code Revisions} instance of the underlying {@link SegmentStore}.      * @param blobStore       {@code BlobStore} instance of the underlying {@link SegmentStore}, or      *                        {@code null} if none.      * @param stringCacheMB   the size of the string cache in MBs or {@code 0} for no cache.      */
 specifier|public
 name|CachingSegmentReader
 parameter_list|(
@@ -267,6 +290,7 @@ literal|1024
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Cached reading of a string.      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -381,6 +405,7 @@ name|id
 argument_list|)
 return|;
 block|}
+comment|/**      * Cached reading of a template.      */
 annotation|@
 name|Nonnull
 annotation|@

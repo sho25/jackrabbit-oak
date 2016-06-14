@@ -99,6 +99,10 @@ name|MemoryStore
 import|;
 end_import
 
+begin_comment
+comment|/**  * Static factories for creating {@link SegmentNodeBuilder} instances  * pertaining to specific {@link SegmentStore} instances.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|final
@@ -109,6 +113,7 @@ specifier|private
 name|SegmentNodeStoreBuilders
 parameter_list|()
 block|{}
+comment|/**      * Create a {@code SegmentNodeStoreBuilder} based on a {@code FileStore}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -149,6 +154,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a {@code SegmentNodeStoreBuilder} based on a {@code MemoryStore}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -189,6 +195,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a {@code SegmentNodeStoreBuilder} based on a {@code HttpStore}.      */
 annotation|@
 name|Nonnull
 specifier|public
