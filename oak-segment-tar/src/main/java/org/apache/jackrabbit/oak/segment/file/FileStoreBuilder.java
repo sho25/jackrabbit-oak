@@ -303,10 +303,6 @@ begin_comment
 comment|/**  * Builder for creating {@link FileStore} instances.  */
 end_comment
 
-begin_comment
-comment|// FIXME OAK-4449: SegmentNodeStore and SegmentStore builders should log their parameters on build()
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -969,6 +965,15 @@ argument_list|,
 name|directory
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Creating file store {}"
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|FileStore
@@ -1015,6 +1020,15 @@ argument_list|(
 literal|true
 argument_list|,
 name|directory
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Creating file store {}"
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 return|return
@@ -1132,6 +1146,43 @@ parameter_list|()
 block|{
 return|return
 name|cacheManager
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"FileStoreBuilder{"
+operator|+
+literal|"directory="
+operator|+
+name|directory
+operator|+
+literal|", blobStore="
+operator|+
+name|blobStore
+operator|+
+literal|", maxFileSize="
+operator|+
+name|maxFileSize
+operator|+
+literal|", cacheSize="
+operator|+
+name|cacheSize
+operator|+
+literal|", memoryMapping="
+operator|+
+name|memoryMapping
+operator|+
+literal|", gcOptions="
+operator|+
+name|gcOptions
+operator|+
+literal|'}'
 return|;
 block|}
 block|}
