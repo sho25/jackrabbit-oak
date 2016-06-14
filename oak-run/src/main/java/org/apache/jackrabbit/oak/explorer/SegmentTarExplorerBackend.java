@@ -551,9 +551,6 @@ operator|=
 name|newArrayList
 argument_list|(
 name|journalReader
-operator|.
-name|iterator
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

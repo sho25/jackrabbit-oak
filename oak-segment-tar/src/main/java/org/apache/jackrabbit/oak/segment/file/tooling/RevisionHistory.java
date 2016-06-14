@@ -39,22 +39,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
-operator|.
-name|transform
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -131,6 +115,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -170,6 +164,20 @@ operator|.
 name|base
 operator|.
 name|Function
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterators
 import|;
 end_import
 
@@ -381,7 +389,7 @@ return|;
 block|}
 comment|/**      * Return the history of the node at the given {@code path} according to the passed      * {@code journal}.      *      * @param journal      * @param path      * @return      * @throws IOException      */
 specifier|public
-name|Iterable
+name|Iterator
 argument_list|<
 name|HistoryElement
 argument_list|>
@@ -407,6 +415,8 @@ name|path
 argument_list|)
 expr_stmt|;
 return|return
+name|Iterators
+operator|.
 name|transform
 argument_list|(
 operator|new

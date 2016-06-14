@@ -518,9 +518,6 @@ argument_list|)
 argument_list|,
 name|jr
 operator|.
-name|iterator
-argument_list|()
-operator|.
 name|next
 argument_list|()
 argument_list|)

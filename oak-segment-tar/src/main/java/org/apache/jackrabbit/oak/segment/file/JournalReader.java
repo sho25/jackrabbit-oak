@@ -51,16 +51,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -94,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Reader for journal files of the SegmentMK.  */
+comment|/**  * Iterator over the revisions in the journal in reverse order  * (end of the file to beginning).  */
 end_comment
 
 begin_class
@@ -102,13 +92,13 @@ specifier|public
 specifier|final
 class|class
 name|JournalReader
-implements|implements
-name|Closeable
-implements|,
-name|Iterable
+extends|extends
+name|AbstractIterator
 argument_list|<
 name|String
 argument_list|>
+implements|implements
+name|Closeable
 block|{
 specifier|private
 specifier|static
@@ -148,25 +138,7 @@ name|journalFile
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return Iterator over the revisions in the journal in reverse order      *         (end of the file to beginning).      */
-annotation|@
-name|Override
-specifier|public
-name|Iterator
-argument_list|<
-name|String
-argument_list|>
-name|iterator
-parameter_list|()
-block|{
-return|return
-operator|new
-name|AbstractIterator
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
-block|{
+comment|/**      * @throws IllegalStateException  if an {@code IOException} occurs while reading from      *                                the journal file.      */
 annotation|@
 name|Override
 specifier|protected
@@ -248,9 +220,6 @@ block|}
 return|return
 name|endOfData
 argument_list|()
-return|;
-block|}
-block|}
 return|;
 block|}
 annotation|@
