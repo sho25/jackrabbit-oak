@@ -266,10 +266,7 @@ name|ns
 init|=
 name|store
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 operator|.
 name|getChildNode
@@ -341,10 +338,7 @@ name|head
 init|=
 name|store
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|NodeBuilder
@@ -432,10 +426,7 @@ name|head
 init|=
 name|store
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|String
@@ -562,10 +553,7 @@ name|head
 init|=
 name|store
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|NodeBuilder

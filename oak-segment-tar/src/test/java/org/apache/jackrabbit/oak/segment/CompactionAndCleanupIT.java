@@ -4008,10 +4008,7 @@ name|oldHead
 init|=
 name|fileStore
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -4152,10 +4149,7 @@ name|traverse
 argument_list|(
 name|fileStore
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4169,10 +4163,7 @@ name|traverse
 argument_list|(
 name|fileStore
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 argument_list|)
 expr_stmt|;

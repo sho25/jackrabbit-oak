@@ -443,8 +443,6 @@ name|CachingSegmentReader
 argument_list|(
 name|getWriter
 argument_list|,
-name|revisions
-argument_list|,
 literal|null
 argument_list|,
 literal|16

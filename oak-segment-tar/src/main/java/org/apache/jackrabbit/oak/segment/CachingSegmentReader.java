@@ -201,13 +201,6 @@ argument_list|>
 name|writer
 decl_stmt|;
 annotation|@
-name|Nonnull
-specifier|private
-specifier|final
-name|Revisions
-name|revisions
-decl_stmt|;
-annotation|@
 name|CheckForNull
 specifier|private
 specifier|final
@@ -222,7 +215,7 @@ specifier|final
 name|StringCache
 name|stringCache
 decl_stmt|;
-comment|/**      * Create a new instance based on the supplied arguments.      * @param writer          A {@code Supplier} for a the {@code SegmentWriter} used by the segment      *                        builders returned from {@link NodeState#builder()} to write ahead changes.      *                        {@code writer.get()} must not return {@code null}.      * @param revisions       {@code Revisions} instance of the underlying {@link SegmentStore}.      * @param blobStore       {@code BlobStore} instance of the underlying {@link SegmentStore}, or      *                        {@code null} if none.      * @param stringCacheMB   the size of the string cache in MBs or {@code 0} for no cache.      */
+comment|/**      * Create a new instance based on the supplied arguments.      * @param writer          A {@code Supplier} for a the {@code SegmentWriter} used by the segment      *                        builders returned from {@link NodeState#builder()} to write ahead changes.      *                        {@code writer.get()} must not return {@code null}.      * @param blobStore       {@code BlobStore} instance of the underlying {@link SegmentStore}, or      *                        {@code null} if none.      * @param stringCacheMB   the size of the string cache in MBs or {@code 0} for no cache.      */
 specifier|public
 name|CachingSegmentReader
 parameter_list|(
@@ -233,11 +226,6 @@ argument_list|<
 name|SegmentWriter
 argument_list|>
 name|writer
-parameter_list|,
-annotation|@
-name|Nonnull
-name|Revisions
-name|revisions
 parameter_list|,
 annotation|@
 name|Nullable
@@ -255,15 +243,6 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|writer
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|revisions
-operator|=
-name|checkNotNull
-argument_list|(
-name|revisions
 argument_list|)
 expr_stmt|;
 name|this
@@ -539,7 +518,12 @@ name|Override
 specifier|public
 name|SegmentNodeState
 name|readHeadState
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Revisions
+name|revisions
+parameter_list|)
 block|{
 return|return
 name|readNode

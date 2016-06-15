@@ -518,10 +518,7 @@ block|{
 return|return
 name|fs
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 return|;
 block|}

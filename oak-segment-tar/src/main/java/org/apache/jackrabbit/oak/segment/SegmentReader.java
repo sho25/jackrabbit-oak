@@ -84,12 +84,17 @@ name|RecordId
 name|id
 parameter_list|)
 function_decl|;
-comment|/**      * Read the current head state      * @throws SegmentNotFoundException  see class comment for exception semantics      */
+comment|/**      * Read the current head state based on the head of {@code revisions}      * @param revisions      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@
 name|Nonnull
 name|SegmentNodeState
 name|readHeadState
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Revisions
+name|revisions
+parameter_list|)
 function_decl|;
 comment|/**      * Read the property identified by {@code id} and {@code template}      * @throws SegmentNotFoundException  see class comment for exception semantics      */
 annotation|@

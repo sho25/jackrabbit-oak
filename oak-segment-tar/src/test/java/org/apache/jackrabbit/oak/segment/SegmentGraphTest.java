@@ -550,10 +550,7 @@ name|root
 init|=
 name|store
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|segments

@@ -1599,8 +1599,6 @@ name|CachingSegmentReader
 argument_list|(
 name|getWriter
 argument_list|,
-name|revisions
-argument_list|,
 name|blobStore
 argument_list|,
 literal|0
@@ -1627,8 +1625,6 @@ name|CachingSegmentReader
 argument_list|(
 name|getWriter
 argument_list|,
-name|revisions
-argument_list|,
 name|blobStore
 argument_list|,
 operator|(
@@ -1651,8 +1647,6 @@ operator|new
 name|CachingSegmentReader
 argument_list|(
 name|getWriter
-argument_list|,
-name|revisions
 argument_list|,
 name|blobStore
 argument_list|,
@@ -3586,9 +3580,7 @@ init|=
 operator|new
 name|CompactionGainEstimate
 argument_list|(
-name|segmentReader
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 argument_list|,
 name|count
@@ -4688,9 +4680,7 @@ decl_stmt|;
 name|SegmentNodeState
 name|before
 init|=
-name|segmentReader
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|long
@@ -4888,9 +4878,7 @@ expr_stmt|;
 name|SegmentNodeState
 name|head
 init|=
-name|segmentReader
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|after
@@ -5617,6 +5605,23 @@ parameter_list|()
 block|{
 return|return
 name|revisions
+return|;
+block|}
+comment|/**      * Convenience method for accessing the root node for the current head.      * This is equivalent to      *<pre>      * fileStore.getReader().readHeadState(fileStore.getRevisions())      *</pre>      * @return the current head node state      */
+annotation|@
+name|Nonnull
+specifier|public
+name|SegmentNodeState
+name|getHead
+parameter_list|()
+block|{
+return|return
+name|segmentReader
+operator|.
+name|readHeadState
+argument_list|(
+name|revisions
+argument_list|)
 return|;
 block|}
 annotation|@

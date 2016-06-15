@@ -1376,6 +1376,11 @@ operator|.
 name|getReader
 argument_list|()
 argument_list|,
+name|fs
+operator|.
+name|getRevisions
+argument_list|()
+argument_list|,
 name|target
 argument_list|)
 expr_stmt|;
@@ -3836,10 +3841,7 @@ name|paths
 argument_list|,
 name|store
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 argument_list|,
 literal|"/"

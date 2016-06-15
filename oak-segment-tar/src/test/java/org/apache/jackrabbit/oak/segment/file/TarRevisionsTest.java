@@ -912,7 +912,9 @@ argument_list|,
 name|reader
 operator|.
 name|readHeadState
-argument_list|()
+argument_list|(
+name|revisions
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

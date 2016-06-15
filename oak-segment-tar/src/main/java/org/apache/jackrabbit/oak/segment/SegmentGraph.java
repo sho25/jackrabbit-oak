@@ -759,10 +759,7 @@ argument_list|(
 name|fileStore
 argument_list|)
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|Predicate
@@ -1128,10 +1125,7 @@ argument_list|(
 name|fileStore
 argument_list|)
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|HashSet
@@ -1381,10 +1375,7 @@ argument_list|(
 name|fileStore
 argument_list|)
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 decl_stmt|;
 name|HashSet

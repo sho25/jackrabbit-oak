@@ -1022,10 +1022,7 @@ block|{
 return|return
 name|store
 operator|.
-name|getReader
-argument_list|()
-operator|.
-name|readHeadState
+name|getHead
 argument_list|()
 return|;
 block|}
