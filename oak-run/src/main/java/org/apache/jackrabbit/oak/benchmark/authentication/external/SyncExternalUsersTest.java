@@ -271,7 +271,10 @@ operator|=
 operator|new
 name|SyncMBeanImpl
 argument_list|(
-name|getRepository
+name|getContentRepository
+argument_list|()
+argument_list|,
+name|getSecurityProvider
 argument_list|()
 argument_list|,
 name|syncManager
