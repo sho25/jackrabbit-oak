@@ -4084,7 +4084,6 @@ argument_list|,
 name|reclaimGeneration
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-4165: Too verbose logging during revision gc
 name|log
 operator|.
 name|info
