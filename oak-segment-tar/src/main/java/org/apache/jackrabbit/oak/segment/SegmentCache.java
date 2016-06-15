@@ -146,7 +146,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FIXME OAK-4373 document, add monitoring, management, tests, logging  */
+comment|/**  * FIXME OAK-4474: Finalise SegmentCache: document, add monitoring, management, tests, logging  * FIXME OAK-3309: SegmentMK segment cache loader stats  */
 end_comment
 
 begin_class
