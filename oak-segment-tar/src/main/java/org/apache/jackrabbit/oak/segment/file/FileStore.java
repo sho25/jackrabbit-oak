@@ -1488,7 +1488,7 @@ operator|.
 name|getBlobStore
 argument_list|()
 expr_stmt|;
-comment|// FIXME OAK-4373 refactor cache size configurations
+comment|// FIXME OAK-4451 refactor cache size configurations
 comment|// FIXME OAK-4277: Finalise de-duplication caches: inject caches
 comment|// from the outside so we can get rid of the cache stat accessors
 if|if
@@ -1577,7 +1577,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|// FIXME OAK-4373 refactor cache size configurations
+comment|// FIXME OAK-4451 refactor cache size configurations
 comment|// FIXME OAK-4451: Implement a proper template cache: inject caches
 comment|// from the outside so we can get rid of the cache stat accessors
 if|if

@@ -622,7 +622,7 @@ name|SegmentId
 index|[]
 name|refids
 decl_stmt|;
-comment|/**      * Template records read from segment. Used to avoid duplicate      * copies and repeated parsing of the same templates.      * FIXME OAK-4373 move the template cache to the segment reader along side with the string cache      */
+comment|/**      * Template records read from segment. Used to avoid duplicate      * copies and repeated parsing of the same templates.      * FIXME OAK-4451 move the template cache to the segment reader along side with the string cache      */
 annotation|@
 name|CheckForNull
 specifier|final
