@@ -259,6 +259,24 @@ name|YES
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|index
+operator|.
+name|FieldInfo
+operator|.
+name|IndexOptions
+operator|.
+name|DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code FieldFactory} is a factory for<code>Field</code> instances with  * frequently used fields.  */
 end_comment
@@ -354,7 +372,7 @@ name|OAK_TYPE
 operator|.
 name|setIndexOptions
 argument_list|(
-name|DOCS_AND_FREQS_AND_POSITIONS
+name|DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS
 argument_list|)
 expr_stmt|;
 name|OAK_TYPE
