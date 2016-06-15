@@ -3685,13 +3685,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// FIXME OAK-4291: FileStore.flush prone to races leading to corruption
-comment|// There is a small windows that could lead to a corrupted store:
-comment|// if we crash right after setting the persisted head but before any delay-flushed
-comment|// SegmentBufferWriter instance flushes (see SegmentBufferWriterPool.returnWriter())
-comment|// then that data is lost although it might be referenced from the persisted head already.
-comment|// Need a test case. Possible fix: return a future from flush() and set the persisted head
-comment|// in the completion handler.
 name|segmentWriter
 operator|.
 name|flush
@@ -5666,9 +5659,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|// FIXME OAK-4291: FileStore.flush prone to races leading to corruption
-comment|// Replace this with a way to "close" the underlying SegmentBufferWriter(s)
-comment|// tracker.getWriter().dropCache();
 name|fileStoreLock
 operator|.
 name|writeLock
