@@ -325,19 +325,123 @@ argument_list|(
 literal|"Jackrabbit query tests using a Lucene based index"
 argument_list|)
 decl_stmt|;
-comment|//        suite.addTestSuite(FulltextQueryTest.class);
-comment|//        suite.addTestSuite(SQLTest.class);
-comment|//        suite.addTestSuite(JoinTest.class);
-comment|//        suite.addTestSuite(SkipDeletedNodesTest.class);
-comment|//        suite.addTestSuite(PathQueryNodeTest.class);
-comment|//        suite.addTestSuite(FulltextSQL2QueryTest.class);
-comment|//        suite.addTestSuite(SQL2NodeLocalNameTest.class);
-comment|//        suite.addTestSuite(SQL2OrderByTest.class);
-comment|//        suite.addTestSuite(MixinTest.class);
-comment|//        suite.addTestSuite(SQL2OuterJoinTest.class);
-comment|//        suite.addTestSuite(SQL2OffsetLimitTest.class);
-comment|//        suite.addTestSuite(LimitAndOffsetTest.class);
-comment|//        suite.addTestSuite(OrderByTest.class);
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|FulltextQueryTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQLTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|JoinTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SkipDeletedNodesTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|PathQueryNodeTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|FulltextSQL2QueryTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2NodeLocalNameTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2OrderByTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MixinTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2OuterJoinTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2OffsetLimitTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|LimitAndOffsetTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|OrderByTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|suite
 operator|.
 name|addTestSuite
@@ -347,7 +451,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|//        suite.addTestSuite(QueryResultTest.class);
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|QueryResultTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 return|return
 name|suite
 return|;
