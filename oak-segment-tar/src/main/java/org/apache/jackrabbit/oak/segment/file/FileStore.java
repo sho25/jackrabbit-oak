@@ -1043,7 +1043,7 @@ name|segment
 operator|.
 name|WriterCacheManager
 operator|.
-name|Empty
+name|Default
 import|;
 end_import
 
@@ -5240,9 +5240,9 @@ name|segmentReader
 argument_list|,
 name|blobStore
 argument_list|,
-name|Empty
-operator|.
-name|INSTANCE
+operator|new
+name|Default
+argument_list|()
 argument_list|,
 name|bufferWriter
 argument_list|)
