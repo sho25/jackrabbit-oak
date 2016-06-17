@@ -3340,6 +3340,37 @@ return|return
 name|min
 return|;
 block|}
+comment|/**      * Returns true if all the revisions in the {@code a} greater or equals      * to their counterparts in {@code b}. If {@code b} contains revisions      * for cluster nodes that are not present in {@code a}, return false.      *      * @param a      * @param b      * @return true if all the revisions in the {@code a} are at least      * as recent as their counterparts in the {@code b}      */
+specifier|public
+specifier|static
+name|boolean
+name|isGreaterOrEquals
+parameter_list|(
+annotation|@
+name|Nonnull
+name|RevisionVector
+name|a
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RevisionVector
+name|b
+parameter_list|)
+block|{
+return|return
+name|a
+operator|.
+name|pmax
+argument_list|(
+name|b
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+name|a
+argument_list|)
+return|;
+block|}
 comment|/**      * Wraps the given iterable and aborts iteration over elements when the      * predicate on an element evaluates to {@code false}.      *      * @param iterable the iterable to wrap.      * @param p the predicate.      * @return the aborting iterable.      */
 specifier|public
 specifier|static

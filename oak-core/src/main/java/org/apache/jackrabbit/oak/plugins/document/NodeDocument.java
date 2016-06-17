@@ -4842,8 +4842,6 @@ name|String
 name|prevId
 parameter_list|)
 block|{
-comment|//Use the maxAge variant such that in case of Mongo call for
-comment|//previous doc are directed towards replicas first
 name|LOG
 operator|.
 name|trace
@@ -4853,7 +4851,34 @@ argument_list|,
 name|prevId
 argument_list|)
 expr_stmt|;
-return|return
+name|NodeDocument
+name|doc
+init|=
+name|store
+operator|.
+name|find
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|prevId
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|doc
+operator|==
+literal|null
+condition|)
+block|{
+comment|// In case secondary read preference is used and node is not found
+comment|// then check with primary again as it might happen that node document has not been
+comment|// replicated. We know that document with such an id must exist but possibly dut to
+comment|// replication lag it has not reached to secondary. So in that case read again
+comment|// from primary
+name|doc
+operator|=
 name|store
 operator|.
 name|find
@@ -4864,10 +4889,12 @@ name|NODES
 argument_list|,
 name|prevId
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|0
 argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|doc
 return|;
 block|}
 annotation|@

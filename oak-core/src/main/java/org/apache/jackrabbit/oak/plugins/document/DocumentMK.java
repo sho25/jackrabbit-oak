@@ -3343,6 +3343,10 @@ name|DocumentStore
 name|documentStore
 decl_stmt|;
 specifier|private
+name|String
+name|mongoUri
+decl_stmt|;
+specifier|private
 name|DiffCache
 name|diffCache
 decl_stmt|;
@@ -3565,6 +3569,12 @@ parameter_list|)
 throws|throws
 name|UnknownHostException
 block|{
+name|this
+operator|.
+name|mongoUri
+operator|=
+name|uri
+expr_stmt|;
 name|DB
 name|db
 init|=
@@ -3766,6 +3776,16 @@ name|db
 argument_list|,
 literal|16
 argument_list|)
+return|;
+block|}
+comment|/**          * Returns the Mongo URI used in the {@link #setMongoDB(String, String, int)} method.          *          * @return the Mongo URI or null if the {@link #setMongoDB(String, String, int)} method hasn't          * been called.          */
+specifier|public
+name|String
+name|getMongoUri
+parameter_list|()
+block|{
+return|return
+name|mongoUri
 return|;
 block|}
 comment|/**          * Sets a {@link DataSource} to use for the RDB document and blob          * stores.          *          * @return this          */

@@ -363,15 +363,6 @@ operator|.
 name|Builder
 argument_list|()
 operator|.
-name|setMaxReplicationLag
-argument_list|(
-name|replicationLag
-argument_list|,
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-argument_list|)
-operator|.
 name|setMongoDB
 argument_list|(
 name|mongoConnection
@@ -528,6 +519,8 @@ name|NODES
 argument_list|,
 literal|"foo"
 argument_list|,
+literal|null
+argument_list|,
 name|DocumentReadPreference
 operator|.
 name|PRIMARY
@@ -548,6 +541,8 @@ argument_list|(
 name|NODES
 argument_list|,
 literal|"foo"
+argument_list|,
+literal|null
 argument_list|,
 name|DocumentReadPreference
 operator|.
@@ -570,6 +565,8 @@ argument_list|(
 name|NODES
 argument_list|,
 literal|"foo"
+argument_list|,
+literal|null
 argument_list|,
 name|DocumentReadPreference
 operator|.
@@ -611,6 +608,8 @@ name|NODES
 argument_list|,
 literal|"foo"
 argument_list|,
+literal|null
+argument_list|,
 name|DocumentReadPreference
 operator|.
 name|PREFER_SECONDARY
@@ -633,6 +632,8 @@ name|NODES
 argument_list|,
 literal|"foo"
 argument_list|,
+literal|null
+argument_list|,
 name|DocumentReadPreference
 operator|.
 name|PREFER_SECONDARY_IF_OLD_ENOUGH
@@ -654,6 +655,8 @@ argument_list|(
 name|SETTINGS
 argument_list|,
 literal|"foo"
+argument_list|,
+literal|null
 argument_list|,
 name|DocumentReadPreference
 operator|.
@@ -786,6 +789,8 @@ name|NODES
 argument_list|,
 name|parentId
 argument_list|,
+literal|null
+argument_list|,
 name|DocumentReadPreference
 operator|.
 name|PREFER_SECONDARY_IF_OLD_ENOUGH
@@ -824,6 +829,8 @@ argument_list|(
 name|NODES
 argument_list|,
 name|parentId
+argument_list|,
+literal|null
 argument_list|,
 name|DocumentReadPreference
 operator|.
