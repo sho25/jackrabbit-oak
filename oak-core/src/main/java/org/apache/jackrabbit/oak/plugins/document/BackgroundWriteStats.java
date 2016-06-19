@@ -42,6 +42,9 @@ decl_stmt|;
 name|long
 name|num
 decl_stmt|;
+name|long
+name|totalWriteTime
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -69,6 +72,10 @@ operator|+
 literal|", num:"
 operator|+
 name|num
+operator|+
+literal|", totalWriteTime:"
+operator|+
+name|totalWriteTime
 return|;
 block|}
 block|}

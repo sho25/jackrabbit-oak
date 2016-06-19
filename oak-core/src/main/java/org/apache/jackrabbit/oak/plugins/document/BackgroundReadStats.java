@@ -61,7 +61,12 @@ decl_stmt|;
 name|long
 name|dispatchChanges
 decl_stmt|;
-comment|//TODO external diff size
+name|long
+name|totalReadTime
+decl_stmt|;
+name|long
+name|numExternalChanges
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -115,6 +120,14 @@ operator|+
 literal|", dispatch:"
 operator|+
 name|dispatchChanges
+operator|+
+literal|", numExternalChanges:"
+operator|+
+name|numExternalChanges
+operator|+
+literal|", totalReadTime:"
+operator|+
+name|totalReadTime
 operator|+
 literal|'}'
 return|;
