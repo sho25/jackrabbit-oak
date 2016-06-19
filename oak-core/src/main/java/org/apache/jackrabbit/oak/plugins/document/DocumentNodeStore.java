@@ -2185,6 +2185,11 @@ specifier|final
 name|boolean
 name|readOnlyMode
 decl_stmt|;
+specifier|private
+specifier|final
+name|DocumentNodeStoreStatsCollector
+name|nodeStoreStatsCollector
+decl_stmt|;
 specifier|public
 name|DocumentNodeStore
 parameter_list|(
@@ -2201,6 +2206,15 @@ operator|=
 name|builder
 operator|.
 name|getBlobStore
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|nodeStoreStatsCollector
+operator|=
+name|builder
+operator|.
+name|getNodeStoreStatsCollector
 argument_list|()
 expr_stmt|;
 if|if
@@ -8291,6 +8305,11 @@ name|void
 name|internalRunBackgroundUpdateOperations
 parameter_list|()
 block|{
+name|BackgroundWriteStats
+name|stats
+init|=
+literal|null
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|backgroundWriteMonitor
@@ -8348,12 +8367,11 @@ operator|-
 name|time
 decl_stmt|;
 comment|// write back pending updates to _lastRev
-name|BackgroundWriteStats
 name|stats
-init|=
+operator|=
 name|backgroundWrite
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|stats
 operator|.
 name|split
@@ -8422,6 +8440,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//Push stats outside of sync block
+name|nodeStoreStatsCollector
+operator|.
+name|doneBackgroundUpdate
+argument_list|(
+name|stats
+argument_list|)
+expr_stmt|;
 block|}
 comment|//----------------------< background read operations>----------------------
 comment|/** Note: made package-protected for testing purpose, would otherwise be private **/
@@ -8486,6 +8512,11 @@ name|void
 name|internalRunBackgroundReadOperations
 parameter_list|()
 block|{
+name|BackgroundReadStats
+name|readStats
+init|=
+literal|null
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|backgroundReadMonitor
@@ -8500,12 +8531,11 @@ name|getTime
 argument_list|()
 decl_stmt|;
 comment|// pull in changes from other cluster nodes
-name|BackgroundReadStats
 name|readStats
-init|=
+operator|=
 name|backgroundRead
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|readStats
 operator|.
 name|totalReadTime
@@ -8573,6 +8603,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|nodeStoreStatsCollector
+operator|.
+name|doneBackgroundRead
+argument_list|(
+name|readStats
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Renews the cluster lease if necessary.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
 name|boolean
@@ -13131,6 +13168,15 @@ argument_list|(
 name|getClusterId
 argument_list|()
 argument_list|)
+return|;
+block|}
+specifier|public
+name|DocumentNodeStoreStatsCollector
+name|getStatsCollector
+parameter_list|()
+block|{
+return|return
+name|nodeStoreStatsCollector
 return|;
 block|}
 block|}
