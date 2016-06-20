@@ -45,7 +45,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|concurrent
+operator|.
+name|ConcurrentMap
 import|;
 end_import
 
@@ -485,7 +487,7 @@ literal|"Metrics"
 decl_stmt|;
 specifier|private
 specifier|final
-name|Map
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -495,7 +497,7 @@ name|statsRegistry
 init|=
 name|Maps
 operator|.
-name|newHashMap
+name|newConcurrentMap
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -785,7 +787,6 @@ name|repoStats
 return|;
 block|}
 specifier|private
-specifier|synchronized
 parameter_list|<
 name|T
 extends|extends
@@ -817,6 +818,30 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+comment|//Use double locking pattern. The map should get populated with required set
+comment|//during startup phase so for later calls should not hit the synchronized block
+if|if
+condition|(
+name|stats
+operator|==
+literal|null
+condition|)
+block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+name|stats
+operator|=
+name|statsRegistry
+operator|.
+name|get
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+comment|//If still null then go ahead and create it within lock
 if|if
 condition|(
 name|stats
@@ -902,6 +927,8 @@ argument_list|,
 name|stats
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 if|if
 condition|(
