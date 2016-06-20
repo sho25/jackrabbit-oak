@@ -45,6 +45,24 @@ name|commons
 operator|.
 name|jmx
 operator|.
+name|Description
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|jmx
+operator|.
 name|Name
 import|;
 end_import
@@ -117,7 +135,21 @@ name|boolean
 name|utc
 parameter_list|)
 function_decl|;
-comment|/**      * @return the estimated time difference in milliseconds between      * the local instance and the (typically common, shared) document server system.      * The value can be zero if the times are estimated to be equal,      * positive when the local instance is ahead of the remote server      * and negative when the local instance is behind the remote server. An invocation is not cached      * and typically requires a round-trip to the server (but that is not a requirement).      * @throws UnsupportedOperationException if this DocumentStore does not support this method      */
+annotation|@
+name|Description
+argument_list|(
+literal|"Return the estimated time difference in milliseconds between\n"
+operator|+
+literal|"the local instance and the (typically common, shared) document server system.\n"
+operator|+
+literal|"The value can be zero if the times are estimated to be equal,\n"
+operator|+
+literal|"positive when the local instance is ahead of the remote server\n"
+operator|+
+literal|"and negative when the local instance is behind the remote server. An invocation is not cached\n"
+operator|+
+literal|"and typically requires a round-trip to the server (but that is not a requirement)."
+argument_list|)
 name|long
 name|determineServerTimeDifferenceMillis
 parameter_list|()
