@@ -235,7 +235,6 @@ name|MERGE_SUCCESS_NUM_RETRY
 init|=
 literal|"DOCUMENT_NS_MERGE_SUCCESS_RETRY"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -267,7 +266,6 @@ name|MERGE_SUCCESS_EXCLUSIVE
 init|=
 literal|"DOCUMENT_NS_MERGE_SUCCESS_EXCLUSIVE"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -549,7 +547,7 @@ name|BGW_NUM
 argument_list|,
 name|StatsOptions
 operator|.
-name|DEFAULT
+name|METRICS_ONLY
 argument_list|)
 expr_stmt|;
 name|numWritesRate

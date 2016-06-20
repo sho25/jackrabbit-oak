@@ -21,6 +21,18 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|CompositeData
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -108,6 +120,22 @@ function_decl|;
 comment|/**      * @return the estimated time difference in milliseconds between      * the local instance and the (typically common, shared) document server system.      * The value can be zero if the times are estimated to be equal,      * positive when the local instance is ahead of the remote server      * and negative when the local instance is behind the remote server. An invocation is not cached      * and typically requires a round-trip to the server (but that is not a requirement).      * @throws UnsupportedOperationException if this DocumentStore does not support this method      */
 name|long
 name|determineServerTimeDifferenceMillis
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getMergeSuccessHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getMergeFailureHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getExternalChangeCountHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getBackgroundUpdateCountHistory
 parameter_list|()
 function_decl|;
 block|}
