@@ -305,7 +305,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException, always      */
+comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException always      */
 annotation|@
 name|Override
 specifier|public

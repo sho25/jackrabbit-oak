@@ -278,7 +278,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException, always      */
+comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException always      */
 annotation|@
 name|Override
 specifier|public
@@ -308,7 +308,7 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
-comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException, always      */
+comment|/**      * Not supported: throws {@code UnsupportedOperationException}      * @throws UnsupportedOperationException always      */
 annotation|@
 name|Override
 specifier|public
