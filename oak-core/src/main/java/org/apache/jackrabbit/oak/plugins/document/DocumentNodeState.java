@@ -1073,6 +1073,8 @@ name|getNode
 argument_list|(
 name|p
 argument_list|,
+name|rootRevision
+argument_list|,
 name|lastRevision
 argument_list|)
 operator|!=
@@ -1124,7 +1126,7 @@ argument_list|,
 name|name
 argument_list|)
 decl_stmt|;
-name|DocumentNodeState
+name|AbstractDocumentNodeState
 name|child
 init|=
 name|store
@@ -1132,6 +1134,8 @@ operator|.
 name|getNode
 argument_list|(
 name|p
+argument_list|,
+name|rootRevision
 argument_list|,
 name|lastRevision
 argument_list|)
