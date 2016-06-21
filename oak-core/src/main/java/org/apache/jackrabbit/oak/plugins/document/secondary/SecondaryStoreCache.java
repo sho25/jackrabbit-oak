@@ -653,6 +653,27 @@ argument_list|,
 name|differ
 argument_list|)
 decl_stmt|;
+comment|//If the root rev is< lastRev then secondary store is lagging and would
+comment|//not have the matching result
+if|if
+condition|(
+name|lastRev
+operator|.
+name|compareTo
+argument_list|(
+name|currentRoot
+operator|.
+name|getLastRevision
+argument_list|()
+argument_list|)
+operator|>
+literal|0
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|AbstractDocumentNodeState
 name|nodeState
 init|=
