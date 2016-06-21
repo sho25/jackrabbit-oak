@@ -571,6 +571,16 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|state
+operator|.
+name|getPropertyCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
