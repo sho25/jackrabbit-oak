@@ -283,22 +283,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_class
 class|class
 name|SecondaryStoreCache
@@ -821,10 +805,7 @@ name|PathUtils
 operator|.
 name|elements
 argument_list|(
-name|checkNotNull
-argument_list|(
 name|path
-argument_list|)
 argument_list|)
 control|)
 block|{
@@ -838,10 +819,7 @@ name|state
 operator|.
 name|getChildNode
 argument_list|(
-name|checkNotNull
-argument_list|(
 name|name
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
