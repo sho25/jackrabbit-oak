@@ -530,9 +530,12 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
-name|NodeState
+name|AbstractDocumentNodeState
 name|target
 init|=
+operator|(
+name|AbstractDocumentNodeState
+operator|)
 name|root
 decl_stmt|;
 name|NodeState
@@ -572,6 +575,8 @@ argument_list|(
 name|builder
 argument_list|,
 name|pathFilter
+argument_list|,
+name|target
 argument_list|)
 decl_stmt|;
 comment|//Copy the root node meta properties
@@ -579,9 +584,6 @@ name|PathFilteringDiff
 operator|.
 name|copyMetaProperties
 argument_list|(
-operator|(
-name|AbstractDocumentNodeState
-operator|)
 name|target
 argument_list|,
 name|builder
