@@ -2204,6 +2204,14 @@ specifier|private
 name|DocumentNodeStore
 name|documentNodeStore
 decl_stmt|;
+specifier|private
+name|ServiceRegistration
+name|blobStoreReg
+decl_stmt|;
+specifier|private
+name|BlobStore
+name|defaultBlobStore
+decl_stmt|;
 annotation|@
 name|Activate
 specifier|protected
@@ -2984,6 +2992,48 @@ name|db
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|customBlobStore
+condition|)
+block|{
+name|defaultBlobStore
+operator|=
+name|mkBuilder
+operator|.
+name|getBlobStore
+argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Registering the BlobStore with ServiceRegistry"
+argument_list|)
+expr_stmt|;
+name|blobStoreReg
+operator|=
+name|context
+operator|.
+name|getBundleContext
+argument_list|()
+operator|.
+name|registerService
+argument_list|(
+name|BlobStore
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|defaultBlobStore
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 comment|//Set wrapping blob store after setting the DB
 if|if
 condition|(
@@ -3450,6 +3500,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|defaultBlobStore
+operator|==
+name|blobStore
+condition|)
+block|{
+return|return;
+block|}
 name|log
 operator|.
 name|info
@@ -3721,6 +3780,27 @@ name|unregister
 argument_list|()
 expr_stmt|;
 name|nodeStoreReg
+operator|=
+literal|null
+expr_stmt|;
+block|}
+comment|//If we exposed our BlobStore then unregister it *after*
+comment|//NodeStore service. This ensures that if any other component
+comment|//like SecondaryStoreCache depends on this then it remains active
+comment|//untill DocumentNodeStore get deactivated
+if|if
+condition|(
+name|blobStoreReg
+operator|!=
+literal|null
+condition|)
+block|{
+name|blobStoreReg
+operator|.
+name|unregister
+argument_list|()
+expr_stmt|;
+name|blobStoreReg
 operator|=
 literal|null
 expr_stmt|;
