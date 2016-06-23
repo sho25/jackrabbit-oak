@@ -153,6 +153,8 @@ name|DataRecord
 argument_list|>
 name|getAllRecords
 parameter_list|()
+throws|throws
+name|DataStoreException
 function_decl|;
 comment|/**      * Gets the type.      *       * @return the type      */
 name|Type
