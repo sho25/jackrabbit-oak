@@ -602,7 +602,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Invalidate document with given keys iff their mod counts are different as      * passed in the map.      *      * @param modCounts map where key is the document id and the value is the mod count      * @return number of invalidated entries      */
+comment|/**      * Invalidate document with given keys iff their modification stamps are      * different as passed in the map.      *      * @param modStamps map where key is the document id and the value is the      *                  modification stamps.      * @return number of invalidated entries      */
 annotation|@
 name|Nonnegative
 specifier|public
@@ -615,9 +615,9 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Long
+name|ModificationStamp
 argument_list|>
-name|modCounts
+name|modStamps
 parameter_list|)
 block|{
 name|int
@@ -631,11 +631,11 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|Long
+name|ModificationStamp
 argument_list|>
 name|e
 range|:
-name|modCounts
+name|modStamps
 operator|.
 name|entrySet
 argument_list|()
@@ -649,8 +649,8 @@ operator|.
 name|getKey
 argument_list|()
 decl_stmt|;
-name|Long
-name|modCount
+name|ModificationStamp
+name|stamp
 init|=
 name|e
 operator|.
@@ -681,11 +681,28 @@ name|Objects
 operator|.
 name|equal
 argument_list|(
+name|stamp
+operator|.
 name|modCount
 argument_list|,
 name|doc
 operator|.
 name|getModCount
+argument_list|()
+argument_list|)
+operator|||
+operator|!
+name|Objects
+operator|.
+name|equal
+argument_list|(
+name|stamp
+operator|.
+name|modified
+argument_list|,
+name|doc
+operator|.
+name|getModified
 argument_list|()
 argument_list|)
 condition|)
