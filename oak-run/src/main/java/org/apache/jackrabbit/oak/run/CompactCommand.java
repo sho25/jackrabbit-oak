@@ -575,7 +575,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"Compaction succeed in "
+literal|"Compaction succeeded in "
 operator|+
 name|watch
 operator|.
