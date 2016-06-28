@@ -963,6 +963,16 @@ name|com
 operator|.
 name|mongodb
 operator|.
+name|CommandResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
 name|DB
 import|;
 end_import
@@ -9256,8 +9266,8 @@ decl_stmt|;
 comment|// assumption here: server returns UTC - ie the returned
 comment|// date object is correctly taking care of time zones.
 specifier|final
-name|Date
-name|serverLocalTime
+name|CommandResult
+name|serverStatus
 init|=
 name|db
 operator|.
@@ -9265,6 +9275,31 @@ name|command
 argument_list|(
 literal|"serverStatus"
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|serverStatus
+operator|==
+literal|null
+condition|)
+block|{
+comment|// OAK-4107 / OAK-4515 : extra safety
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"determineServerTimeDifferenceMillis: db.serverStatus returned null - cannot determine time difference - assuming 0ms."
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+specifier|final
+name|Date
+name|serverLocalTime
+init|=
+name|serverStatus
 operator|.
 name|getDate
 argument_list|(
@@ -9278,7 +9313,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// OAK-4107 : looks like this can happen - at least
+comment|// OAK-4107 / OAK-4515 : looks like this can happen - at least
 comment|// has been seen once on mongo 3.0.9
 comment|// let's handle this gently and issue a log.warn
 comment|// instead of throwing a NPE
@@ -9286,7 +9321,28 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"determineServerTimeDifferenceMillis: db.serverStatus.localTime returned null - cannot determine time difference - assuming 0ms"
+literal|"determineServerTimeDifferenceMillis: db.serverStatus.localTime returned null - cannot determine time difference - assuming 0ms. "
+operator|+
+literal|"(Result details: server exception="
+operator|+
+name|serverStatus
+operator|.
+name|getException
+argument_list|()
+operator|+
+literal|", server error message="
+operator|+
+name|serverStatus
+operator|.
+name|getErrorMessage
+argument_list|()
+operator|+
+literal|")"
+argument_list|,
+name|serverStatus
+operator|.
+name|getException
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
