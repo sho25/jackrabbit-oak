@@ -447,6 +447,10 @@ name|getHead
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|updates
+operator|=
+literal|0
+expr_stmt|;
 name|head
 operator|.
 name|compareAgainstBaseState
