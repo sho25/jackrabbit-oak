@@ -1044,6 +1044,16 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|row
+operator|.
+name|getModified
+argument_list|()
+operator|!=
+literal|0
+condition|)
+block|{
 name|doc
 operator|.
 name|put
@@ -1056,6 +1066,7 @@ name|getModified
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|doc
 operator|.
 name|put

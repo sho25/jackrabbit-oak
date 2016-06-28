@@ -299,18 +299,6 @@ name|assertTrue
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeFalse
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -340,15 +328,6 @@ block|{
 name|super
 argument_list|(
 name|dsf
-argument_list|)
-expr_stmt|;
-name|assumeFalse
-argument_list|(
-name|dsf
-operator|instanceof
-name|DocumentStoreFixture
-operator|.
-name|RDBFixture
 argument_list|)
 expr_stmt|;
 block|}
