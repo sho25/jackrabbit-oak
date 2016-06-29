@@ -2060,6 +2060,11 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+comment|// FIXME The following background operations are historically part of
+comment|// the implementation of the FileStore, but they should better be
+comment|// scheduled and invoked by an external agent. The code deploying the
+comment|// FileStore might have better insights on when and how these background
+comment|// operations should be invoked. See also OAK-3468.
 name|flushOperation
 operator|=
 operator|new
@@ -2206,8 +2211,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-3468 Replace BackgroundThread with Scheduler
-comment|// Externalise these background operations
 if|if
 condition|(
 operator|!
