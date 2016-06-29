@@ -3541,6 +3541,15 @@ name|BlobStore
 name|blobStore
 parameter_list|)
 block|{
+if|if
+condition|(
+name|defaultBlobStore
+operator|==
+name|blobStore
+condition|)
+block|{
+return|return;
+block|}
 name|this
 operator|.
 name|blobStore
