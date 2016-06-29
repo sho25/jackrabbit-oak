@@ -441,7 +441,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStore
+name|NodeStoreProvider
 import|;
 end_import
 
@@ -690,11 +690,11 @@ name|Reference
 argument_list|(
 name|target
 operator|=
-literal|"(type=secondary)"
+literal|"(role=secondary)"
 argument_list|)
 specifier|private
-name|NodeStore
-name|secondaryStore
+name|NodeStoreProvider
+name|secondaryStoreProvider
 decl_stmt|;
 annotation|@
 name|Reference
@@ -991,7 +991,10 @@ init|=
 operator|new
 name|SecondaryStoreBuilder
 argument_list|(
-name|secondaryStore
+name|secondaryStoreProvider
+operator|.
+name|getNodeStore
+argument_list|()
 argument_list|)
 operator|.
 name|differ
