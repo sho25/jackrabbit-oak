@@ -105,6 +105,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Comparator
 import|;
 end_import
@@ -4849,6 +4859,20 @@ name|getSelectorName
 argument_list|()
 expr_stmt|;
 block|}
+comment|// reverse names to that for xpath,
+comment|// the first selector is the same as the node iterator
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|list
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|list
 return|;
