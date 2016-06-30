@@ -237,6 +237,15 @@ name|ResetClusterIdCommand
 argument_list|()
 argument_list|)
 block|,
+name|PERSISTENTCACHE
+argument_list|(
+literal|"persistentcache"
+argument_list|,
+operator|new
+name|PersistentCacheCommand
+argument_list|()
+argument_list|)
+block|,
 name|HELP
 argument_list|(
 literal|"help"
