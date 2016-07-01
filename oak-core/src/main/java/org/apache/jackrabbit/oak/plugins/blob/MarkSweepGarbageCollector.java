@@ -255,6 +255,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -509,7 +519,7 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|IOUtils
+name|FileIOUtils
 import|;
 end_import
 
@@ -525,9 +535,7 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|sort
-operator|.
-name|ExternalSort
+name|IOUtils
 import|;
 end_import
 
@@ -608,16 +616,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
 import|;
 end_import
 
@@ -2207,20 +2205,15 @@ range|:
 name|ids
 control|)
 block|{
-name|ExternalSort
+name|FileIOUtils
 operator|.
-name|writeLine
+name|writeAsLine
 argument_list|(
 name|writer
 argument_list|,
 name|id
-argument_list|)
-expr_stmt|;
-name|writer
-operator|.
-name|append
-argument_list|(
-name|NEWLINE
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

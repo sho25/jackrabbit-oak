@@ -50,10 +50,12 @@ comment|/**  * Utility class to escape '\n', '\r', '\' char  * while being writt
 end_comment
 
 begin_class
+specifier|public
 specifier|abstract
 class|class
 name|EscapeUtils
 block|{
+specifier|public
 specifier|static
 name|String
 name|escapeLineBreak
@@ -95,6 +97,7 @@ return|return
 name|line
 return|;
 block|}
+specifier|public
 specifier|static
 name|String
 name|unescapeLineBreaks
