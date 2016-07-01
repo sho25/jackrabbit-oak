@@ -224,7 +224,7 @@ argument_list|(
 literal|"dumpdatastorerefs"
 argument_list|,
 operator|new
-name|DumpDataStoreReferencesCommand
+name|DataStoreCheckCommand
 argument_list|()
 argument_list|)
 block|,
