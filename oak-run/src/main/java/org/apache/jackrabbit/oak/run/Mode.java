@@ -246,6 +246,15 @@ name|PersistentCacheCommand
 argument_list|()
 argument_list|)
 block|,
+name|THREADDUMP
+argument_list|(
+literal|"threaddump"
+argument_list|,
+operator|new
+name|ThreadDumpCommand
+argument_list|()
+argument_list|)
+block|,
 name|HELP
 argument_list|(
 literal|"help"
