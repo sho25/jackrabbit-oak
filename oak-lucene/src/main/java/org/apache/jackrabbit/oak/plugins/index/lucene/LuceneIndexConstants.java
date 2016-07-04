@@ -360,6 +360,12 @@ name|COST_PER_EXECUTION
 init|=
 literal|"costPerExecution"
 decl_stmt|;
+comment|/**      * Boolean property indicating if in-built analyzer should preserve original term      * (i.e. use      * {@link org.apache.lucene.analysis.miscellaneous.WordDelimiterFilter#PRESERVE_ORIGINAL}      * flag)      */
+name|String
+name|INDEX_ORIGINAL_TERM
+init|=
+literal|"indexOriginalTerm"
+decl_stmt|;
 comment|/**      * Node name under which various analyzers are configured      */
 name|String
 name|ANALYZERS
