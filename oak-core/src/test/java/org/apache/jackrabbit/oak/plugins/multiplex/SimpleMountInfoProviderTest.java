@@ -482,7 +482,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|mountsContainedBetweenPaths
+name|mountsPlacedUnder
 parameter_list|()
 block|{
 name|MountInfoProvider
@@ -505,6 +505,8 @@ argument_list|(
 literal|"second"
 argument_list|,
 literal|"/d"
+argument_list|,
+literal|"/b/a"
 argument_list|)
 operator|.
 name|mount
@@ -512,6 +514,8 @@ argument_list|(
 literal|"third"
 argument_list|,
 literal|"/h"
+argument_list|,
+literal|"/b/c"
 argument_list|)
 operator|.
 name|build
@@ -525,11 +529,9 @@ name|mountsContainedBetweenPaths
 init|=
 name|mip
 operator|.
-name|getMountsContainedBetweenPaths
+name|getMountsPlacedUnder
 argument_list|(
-literal|"/a"
-argument_list|,
-literal|"/f"
+literal|"/b"
 argument_list|)
 decl_stmt|;
 name|assertEquals
