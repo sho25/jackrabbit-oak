@@ -356,6 +356,26 @@ name|creationTime
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s, %tc"
+argument_list|,
+name|indexPath
+argument_list|,
+name|creationTime
+argument_list|)
+return|;
+block|}
 specifier|private
 specifier|static
 name|Properties

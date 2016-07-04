@@ -1787,6 +1787,26 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//Check if parent directory is also removed i.e.
+comment|//index count should be 1 now
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|c1
+operator|.
+name|getIndexRootDirectory
+argument_list|()
+operator|.
+name|getLocalIndexes
+argument_list|(
+name|indexPath
+argument_list|)
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
