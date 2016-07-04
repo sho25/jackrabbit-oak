@@ -2270,9 +2270,10 @@ name|SegmentBufferWriter
 name|writer
 parameter_list|)
 block|{
-comment|// Write the stable record ID. This is only a marker and is not a
-comment|// reference to another record. Because of this, those record IDs
-comment|// should not be marked as references.
+comment|// Write the stable record ID. If no stable ID exists (in case of a
+comment|// new node state), it is generated from the current record ID. In
+comment|// this case, the generated stable ID is only a marker and is not a
+comment|// reference to another record.
 if|if
 condition|(
 name|stableId
@@ -2299,8 +2300,6 @@ operator|.
 name|writeRecordId
 argument_list|(
 name|stableId
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
