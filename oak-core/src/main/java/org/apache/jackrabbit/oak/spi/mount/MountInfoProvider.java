@@ -108,6 +108,17 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|hasNonDefaultMounts
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 decl_stmt|;
 comment|/**      * Maps a given path to logical store name.      *      * @param path node path for which backing store location is to be determined      * @return mountInfo for the given path. If no explicit mount configured then      * default mount would be returned      */
@@ -135,6 +146,11 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+function_decl|;
+comment|/**      * Return true if there are explicit mounts configured      */
+name|boolean
+name|hasNonDefaultMounts
+parameter_list|()
 function_decl|;
 block|}
 end_interface

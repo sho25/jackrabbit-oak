@@ -182,6 +182,11 @@ name|Mount
 argument_list|>
 name|mounts
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|hasMounts
+decl_stmt|;
 specifier|public
 name|SimpleMountInfoProvider
 parameter_list|(
@@ -211,6 +216,16 @@ name|getMounts
 argument_list|(
 name|mountInfos
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|hasMounts
+operator|=
+operator|!
+name|mountInfos
+operator|.
+name|isEmpty
+argument_list|()
 expr_stmt|;
 comment|//TODO add validation of mountpoints
 block|}
@@ -290,6 +305,17 @@ name|get
 argument_list|(
 name|name
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|hasNonDefaultMounts
+parameter_list|()
+block|{
+return|return
+name|hasMounts
 return|;
 block|}
 comment|//~----------------------------------------< builder>
