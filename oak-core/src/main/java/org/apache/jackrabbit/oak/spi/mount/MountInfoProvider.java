@@ -65,7 +65,7 @@ annotation|@
 name|Override
 specifier|public
 name|Mount
-name|getMountInfo
+name|getMountByPath
 parameter_list|(
 name|String
 name|path
@@ -98,7 +98,7 @@ annotation|@
 name|Override
 specifier|public
 name|Mount
-name|getMount
+name|getMountByName
 parameter_list|(
 name|String
 name|name
@@ -123,7 +123,7 @@ block|}
 decl_stmt|;
 comment|/**      * Maps a given path to logical store name.      *      * @param path node path for which backing store location is to be determined      * @return mountInfo for the given path. If no explicit mount configured then      * default mount would be returned      */
 name|Mount
-name|getMountInfo
+name|getMountByPath
 parameter_list|(
 name|String
 name|path
@@ -141,7 +141,7 @@ comment|/**      * Returns the mount instance for given mount name      *      *
 annotation|@
 name|CheckForNull
 name|Mount
-name|getMount
+name|getMountByName
 parameter_list|(
 name|String
 name|name

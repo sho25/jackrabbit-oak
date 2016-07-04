@@ -370,7 +370,7 @@ name|m
 init|=
 name|provider
 operator|.
-name|getMount
+name|getMountByName
 argument_list|(
 name|MountInfoProviderService
 operator|.
@@ -396,7 +396,7 @@ name|m
 argument_list|,
 name|provider
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -410,7 +410,7 @@ name|DEFAULT
 argument_list|,
 name|provider
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -497,7 +497,7 @@ name|m
 init|=
 name|provider
 operator|.
-name|getMount
+name|getMountByName
 argument_list|(
 name|MountInfoProviderService
 operator|.
@@ -513,7 +513,7 @@ name|m
 operator|=
 name|provider
 operator|.
-name|getMount
+name|getMountByName
 argument_list|(
 literal|"foo"
 argument_list|)
@@ -524,7 +524,7 @@ name|m
 argument_list|,
 name|provider
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -538,7 +538,7 @@ name|DEFAULT
 argument_list|,
 name|provider
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/x"
 argument_list|)

@@ -233,7 +233,7 @@ annotation|@
 name|Override
 specifier|public
 name|Mount
-name|getMountInfo
+name|getMountByPath
 parameter_list|(
 name|String
 name|path
@@ -292,7 +292,7 @@ annotation|@
 name|Override
 specifier|public
 name|Mount
-name|getMount
+name|getMountByName
 parameter_list|(
 name|String
 name|name

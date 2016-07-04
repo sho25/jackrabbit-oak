@@ -41,30 +41,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -218,7 +194,7 @@ name|assertNotNull
 argument_list|(
 name|mip
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -228,7 +204,7 @@ name|assertTrue
 argument_list|(
 name|mip
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -290,7 +266,7 @@ literal|"foo"
 argument_list|,
 name|mip
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -305,7 +281,7 @@ literal|"foo"
 argument_list|,
 name|mip
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/a/x"
 argument_list|)
@@ -320,7 +296,7 @@ literal|"bar"
 argument_list|,
 name|mip
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -333,7 +309,7 @@ name|assertTrue
 argument_list|(
 name|mip
 operator|.
-name|getMountInfo
+name|getMountByPath
 argument_list|(
 literal|"/z"
 argument_list|)
@@ -426,7 +402,7 @@ name|assertNotNull
 argument_list|(
 name|mip
 operator|.
-name|getMount
+name|getMountByName
 argument_list|(
 literal|"foo"
 argument_list|)
@@ -436,7 +412,7 @@ name|assertNotNull
 argument_list|(
 name|mip
 operator|.
-name|getMount
+name|getMountByName
 argument_list|(
 literal|"bar"
 argument_list|)
@@ -446,7 +422,7 @@ name|assertNull
 argument_list|(
 name|mip
 operator|.
-name|getMount
+name|getMountByName
 argument_list|(
 literal|"boom"
 argument_list|)
@@ -495,7 +471,7 @@ name|assertTrue
 argument_list|(
 name|mip
 operator|.
-name|getMount
+name|getMountByName
 argument_list|(
 literal|"bar"
 argument_list|)
@@ -508,7 +484,7 @@ name|assertFalse
 argument_list|(
 name|mip
 operator|.
-name|getMount
+name|getMountByName
 argument_list|(
 literal|"foo"
 argument_list|)
