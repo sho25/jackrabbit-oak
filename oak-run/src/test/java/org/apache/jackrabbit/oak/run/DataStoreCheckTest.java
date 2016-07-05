@@ -539,6 +539,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Charsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -881,8 +897,6 @@ name|newWriter
 argument_list|(
 name|cfgFile
 argument_list|,
-name|Charsets
-operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
@@ -948,7 +962,7 @@ name|FileOutputStream
 argument_list|(
 name|FileDescriptor
 operator|.
-name|out
+name|err
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1242,13 +1256,20 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Running testMissinOpParams: {}"
+argument_list|,
+name|argsList
+argument_list|)
+expr_stmt|;
 name|testIncorrectParams
 argument_list|(
 name|argsList
 argument_list|,
-literal|"Missing "
-operator|+
-literal|"required option(s) ['id', 'ref', 'consistency']"
+literal|"Missing required option(s) ['id', 'ref', 'consistency']"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1413,6 +1434,13 @@ operator|new
 name|PrintStream
 argument_list|(
 name|buffer
+argument_list|,
+literal|true
+argument_list|,
+name|UTF_8
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1446,14 +1474,30 @@ name|buffer
 operator|.
 name|toString
 argument_list|(
-name|Charsets
-operator|.
 name|UTF_8
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Assert message: {}"
+argument_list|,
+name|assertMsg
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Message logged in System.err: {}"
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
 name|Assert
 operator|.
 name|assertTrue
@@ -1478,7 +1522,7 @@ name|FileOutputStream
 argument_list|(
 name|FileDescriptor
 operator|.
-name|out
+name|err
 argument_list|)
 argument_list|)
 argument_list|)
