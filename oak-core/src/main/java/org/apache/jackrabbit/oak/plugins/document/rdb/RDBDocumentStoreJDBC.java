@@ -4794,13 +4794,13 @@ name|id
 parameter_list|,
 name|long
 name|lastmodcount
+parameter_list|,
+name|long
+name|lastmodified
 parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|PreparedStatement
-name|stmt
-decl_stmt|;
 name|boolean
 name|useCaseStatement
 init|=
@@ -4816,6 +4816,20 @@ operator|.
 name|allowsCaseInSelect
 argument_list|()
 decl_stmt|;
+name|StringBuffer
+name|sql
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+name|sql
+operator|.
+name|append
+argument_list|(
+literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, "
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|useCaseStatement
@@ -4823,22 +4837,18 @@ condition|)
 block|{
 comment|// the case statement causes the actual row data not to be
 comment|// sent in case we already have it
-name|stmt
-operator|=
-name|connection
+name|sql
 operator|.
-name|prepareStatement
+name|append
 argument_list|(
-literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, case MODCOUNT when ? then null else DATA end as DATA, "
-operator|+
-literal|"case MODCOUNT when ? then null else BDATA end as BDATA from "
-operator|+
-name|tmd
+literal|"case when (MODCOUNT = ? and MODIFIED = ?) then null else DATA end as DATA, "
+argument_list|)
+expr_stmt|;
+name|sql
 operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" where ID = ?"
+name|append
+argument_list|(
+literal|"case when (MODCOUNT = ? and MODIFIED = ?) then null else BDATA end as BDATA "
 argument_list|)
 expr_stmt|;
 block|}
@@ -4846,13 +4856,19 @@ else|else
 block|{
 comment|// either we don't have a previous version of the document
 comment|// or the database does not support CASE in SELECT
-name|stmt
-operator|=
-name|connection
+name|sql
 operator|.
-name|prepareStatement
+name|append
 argument_list|(
-literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, DATA, BDATA from "
+literal|"DATA, BDATA "
+argument_list|)
+expr_stmt|;
+block|}
+name|sql
+operator|.
+name|append
+argument_list|(
+literal|"from "
 operator|+
 name|tmd
 operator|.
@@ -4862,7 +4878,19 @@ operator|+
 literal|" where ID = ?"
 argument_list|)
 expr_stmt|;
-block|}
+name|PreparedStatement
+name|stmt
+init|=
+name|connection
+operator|.
+name|prepareStatement
+argument_list|(
+name|sql
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|int
@@ -4892,7 +4920,27 @@ argument_list|(
 name|si
 operator|++
 argument_list|,
+name|lastmodified
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setLong
+argument_list|(
+name|si
+operator|++
+argument_list|,
 name|lastmodcount
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setLong
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|lastmodified
 argument_list|)
 expr_stmt|;
 block|}

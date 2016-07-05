@@ -9434,6 +9434,8 @@ argument_list|,
 name|id
 argument_list|,
 name|lastmodcount
+argument_list|,
+name|lastmodified
 argument_list|)
 decl_stmt|;
 name|connection
@@ -9499,41 +9501,6 @@ return|;
 block|}
 else|else
 block|{
-comment|// workaround: need to re-read if data is not present
-comment|// that would be the case if the modcount did match but the modified time did not
-comment|// see OAK-4509
-if|if
-condition|(
-name|row
-operator|.
-name|getData
-argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-name|row
-operator|=
-name|db
-operator|.
-name|read
-argument_list|(
-name|connection
-argument_list|,
-name|tmd
-argument_list|,
-name|id
-argument_list|,
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-name|connection
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
-block|}
 return|return
 name|convertFromDBObject
 argument_list|(
