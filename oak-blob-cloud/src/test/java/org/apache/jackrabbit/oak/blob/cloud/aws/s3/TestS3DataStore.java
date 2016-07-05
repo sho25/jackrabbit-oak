@@ -244,15 +244,6 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|expectedEx
-operator|.
-name|expect
-argument_list|(
-name|RuntimeException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
