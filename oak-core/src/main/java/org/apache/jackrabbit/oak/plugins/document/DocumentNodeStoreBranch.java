@@ -124,6 +124,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|CountingDiff
+operator|.
+name|countChanges
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1861,7 +1883,7 @@ name|base
 return|;
 block|}
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch or      *<li>{@link Persisted} otherwise.      *<li>{@link Merged} on {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch</li>      *<li>{@link Persisted} on {@link #setRoot(NodeState)} if the number of      *         changes counted from the base to the new root reaches      *         {@link DocumentRootBuilder#UPDATE_LIMIT}.</li>      *<li>{@link Merged} on {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
 specifier|private
 class|class
 name|InMemory
@@ -1872,6 +1894,11 @@ comment|/** Root state of the transient head. */
 specifier|private
 name|NodeState
 name|head
+decl_stmt|;
+comment|/** Number of in-memory updates */
+specifier|private
+name|int
+name|numUpdates
 decl_stmt|;
 annotation|@
 name|Override
@@ -1911,6 +1938,17 @@ operator|.
 name|head
 operator|=
 name|head
+expr_stmt|;
+name|this
+operator|.
+name|numUpdates
+operator|=
+name|countChanges
+argument_list|(
+name|base
+argument_list|,
+name|head
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -1965,13 +2003,32 @@ name|root
 argument_list|)
 condition|)
 block|{
+name|numUpdates
+operator|+=
+name|countChanges
+argument_list|(
+name|head
+argument_list|,
+name|root
+argument_list|)
+expr_stmt|;
 name|head
 operator|=
 name|root
 expr_stmt|;
+if|if
+condition|(
+name|numUpdates
+operator|>
+name|DocumentRootBuilder
+operator|.
+name|UPDATE_LIMIT
+condition|)
+block|{
 name|persist
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
