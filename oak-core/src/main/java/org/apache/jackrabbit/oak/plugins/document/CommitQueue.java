@@ -1034,6 +1034,13 @@ name|await
 argument_list|()
 expr_stmt|;
 block|}
+name|c
+operator|.
+name|headOfQueue
+argument_list|(
+name|rev
+argument_list|)
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|this
@@ -1067,13 +1074,6 @@ name|commits
 operator|.
 name|firstKey
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|c
-operator|.
-name|headOfQueue
-argument_list|(
-name|rev
 argument_list|)
 expr_stmt|;
 block|}
