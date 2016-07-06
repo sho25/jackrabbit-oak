@@ -1356,6 +1356,9 @@ name|getClassLoader
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|initializeClasses
+argument_list|()
+expr_stmt|;
 name|whiteboard
 operator|=
 operator|new
@@ -2513,6 +2516,32 @@ operator|.
 name|reloadTokenFilters
 argument_list|(
 name|classLoader
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|initializeClasses
+parameter_list|()
+block|{
+comment|// prevent LUCENE-6482
+comment|// (also done in IndexDefinition, just to be save)
+name|OakCodec
+name|ensureLucene46CodecLoaded
+init|=
+operator|new
+name|OakCodec
+argument_list|()
+decl_stmt|;
+comment|// to ensure the JVM doesn't optimize away object creation
+comment|// (probably not really needed; just to be save)
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Lucene46Codec is loaded: {}"
+argument_list|,
+name|ensureLucene46CodecLoaded
 argument_list|)
 expr_stmt|;
 block|}
