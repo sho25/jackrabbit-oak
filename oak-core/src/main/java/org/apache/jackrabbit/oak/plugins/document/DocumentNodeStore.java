@@ -1764,9 +1764,16 @@ specifier|protected
 name|int
 name|maxBackOffMillis
 init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.maxBackOffMS"
+argument_list|,
 name|asyncDelay
 operator|*
 literal|2
+argument_list|)
 decl_stmt|;
 comment|/**      * Whether this instance is disposed.      */
 specifier|private
