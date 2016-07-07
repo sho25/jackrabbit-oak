@@ -123,6 +123,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -154,20 +164,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
 import|;
 end_import
 
@@ -1269,7 +1265,18 @@ name|testIncorrectParams
 argument_list|(
 name|argsList
 argument_list|,
-literal|"Missing required option(s) ['id', 'ref', 'consistency']"
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
+literal|"Missing required option(s)"
+argument_list|,
+literal|"'id'"
+argument_list|,
+literal|"'ref'"
+argument_list|,
+literal|"'consistency'"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1322,7 +1329,12 @@ name|testIncorrectParams
 argument_list|(
 name|argsList
 argument_list|,
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
 literal|"Operation not defined for SegmentNodeStore without external datastore"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1371,7 +1383,12 @@ name|testIncorrectParams
 argument_list|(
 name|argsList
 argument_list|,
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
 literal|"Missing required option(s) ['store']"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|argsList
@@ -1398,7 +1415,12 @@ name|testIncorrectParams
 argument_list|(
 name|argsList
 argument_list|,
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
 literal|"Missing required option(s) ['store']"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1413,7 +1435,10 @@ name|String
 argument_list|>
 name|argList
 parameter_list|,
+name|ArrayList
+argument_list|<
 name|String
+argument_list|>
 name|assertMsg
 parameter_list|)
 throws|throws
@@ -1498,6 +1523,14 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|String
+name|msg
+range|:
+name|assertMsg
+control|)
+block|{
 name|Assert
 operator|.
 name|assertTrue
@@ -1506,10 +1539,11 @@ name|message
 operator|.
 name|contains
 argument_list|(
-name|assertMsg
+name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|System
 operator|.
 name|setErr
