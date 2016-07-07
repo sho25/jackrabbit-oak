@@ -2976,6 +2976,19 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
+comment|// the commit revision with branch flag if this is a branch commit
+name|Revision
+name|rev
+init|=
+name|isBranchCommit
+condition|?
+name|revision
+operator|.
+name|asBranchRevision
+argument_list|()
+else|:
+name|revision
+decl_stmt|;
 name|RevisionVector
 name|after
 init|=
@@ -2983,7 +2996,7 @@ name|before
 operator|.
 name|update
 argument_list|(
-name|revision
+name|rev
 argument_list|)
 decl_stmt|;
 name|DiffCache
@@ -3209,7 +3222,11 @@ name|nodeStore
 operator|.
 name|applyChanges
 argument_list|(
+name|before
+argument_list|,
 name|after
+argument_list|,
+name|rev
 argument_list|,
 name|path
 argument_list|,

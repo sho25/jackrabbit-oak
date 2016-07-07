@@ -1893,45 +1893,8 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-comment|// the following should just make one call to DocumentStore.query()
-for|for
-control|(
-name|ChildNodeEntry
-name|e
-range|:
-name|store
-operator|.
-name|getRoot
-argument_list|()
-operator|.
-name|getChildNodeEntries
-argument_list|()
-control|)
-block|{
-name|e
-operator|.
-name|getNodeState
-argument_list|()
-expr_stmt|;
-block|}
-name|assertEquals
-argument_list|(
-literal|1
-argument_list|,
-name|counter
-operator|.
-name|get
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|counter
-operator|.
-name|set
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-comment|// now the child node entries are cached and no call should happen
+comment|// the following must read from the nodeChildrenCache populated by
+comment|// the commit and not use a query on the document store (OAK-1322)
 for|for
 control|(
 name|ChildNodeEntry
@@ -14478,6 +14441,12 @@ decl_stmt|;
 name|startValues
 operator|.
 name|clear
+argument_list|()
+expr_stmt|;
+comment|// make sure diff is not served from node children cache entries
+name|ns
+operator|.
+name|invalidateNodeChildrenCache
 argument_list|()
 expr_stmt|;
 name|afterTest

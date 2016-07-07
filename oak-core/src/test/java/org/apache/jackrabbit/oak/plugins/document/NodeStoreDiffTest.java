@@ -35,6 +35,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -46,6 +56,20 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
 import|;
 end_import
 
@@ -752,12 +776,43 @@ comment|//oak:index due to which when the base state is compared in ModifiedNode
 comment|//then it fetches the new DocumentNodeState whose lastRev is greater than this.base.lastRev
 comment|//but less then lastRev of the of readRevision. Where readRevision is the rev of root node when
 comment|//rebase was performed
+comment|// remember paths accessed so far
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|paths
+init|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
+name|tds
+operator|.
+name|paths
+argument_list|)
+decl_stmt|;
 comment|//This is not to be done in actual cases as CommitHooks are invoked in critical sections
 comment|//and creating nodes from within CommitHooks would cause deadlock. This is done here to ensure
 comment|//that changes are done when rebase has been performed and merge is about to happen
 name|createNodes
 argument_list|(
 literal|"/oak:index/prop-b/b1"
+argument_list|)
+expr_stmt|;
+comment|// reset accessed paths
+name|tds
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+name|tds
+operator|.
+name|paths
+operator|.
+name|addAll
+argument_list|(
+name|paths
 argument_list|)
 expr_stmt|;
 comment|//For now we the cache is disabled (size 0) so this is not required
