@@ -1833,13 +1833,6 @@ argument_list|(
 name|stringRecord
 argument_list|)
 expr_stmt|;
-name|writer
-operator|.
-name|addBlobRef
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
 return|return
 name|id
 return|;
@@ -1939,13 +1932,6 @@ argument_list|,
 literal|0
 argument_list|,
 name|length
-argument_list|)
-expr_stmt|;
-name|writer
-operator|.
-name|addBlobRef
-argument_list|(
-name|id
 argument_list|)
 expr_stmt|;
 return|return

@@ -420,6 +420,11 @@ name|Default
 argument_list|()
 argument_list|,
 name|bufferWriter
+argument_list|,
+name|store
+operator|.
+name|getBinaryReferenceConsumer
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|SegmentGCOptions
