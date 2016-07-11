@@ -6065,7 +6065,7 @@ block|{
 return|return
 name|segmentCache
 operator|.
-name|geSegment
+name|getSegment
 argument_list|(
 name|id
 argument_list|,
