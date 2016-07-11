@@ -343,36 +343,6 @@ name|PARAM_NO_CERT_CHECK
 init|=
 literal|"host.noCertCheck"
 decl_stmt|;
-comment|/**      * @see #getSearchAttributes()      */
-annotation|@
-name|Property
-argument_list|(
-name|label
-operator|=
-literal|"Search attributes"
-argument_list|,
-name|description
-operator|=
-literal|"Array of attributes to retrieve when searching LDAP entries. Leave empty to retrieve all available attributes."
-argument_list|,
-name|value
-operator|=
-block|{}
-argument_list|,
-name|cardinality
-operator|=
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PARAM_SEARCH_ATTRIBUTES
-init|=
-literal|"search.attributes"
-decl_stmt|;
 comment|/**      * @see #getBindDN()      */
 specifier|public
 specifier|static
