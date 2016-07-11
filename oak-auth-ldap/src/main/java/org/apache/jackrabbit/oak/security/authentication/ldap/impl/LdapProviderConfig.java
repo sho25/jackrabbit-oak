@@ -343,6 +343,36 @@ name|PARAM_NO_CERT_CHECK
 init|=
 literal|"host.noCertCheck"
 decl_stmt|;
+comment|/**      * @see #getSearchAttributes()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"Search attributes"
+argument_list|,
+name|description
+operator|=
+literal|"Array of attributes to retrieve when searching LDAP entries. Leave empty to retrieve all available attributes."
+argument_list|,
+name|value
+operator|=
+block|{}
+argument_list|,
+name|cardinality
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_SEARCH_ATTRIBUTES
+init|=
+literal|"search.attributes"
+decl_stmt|;
 comment|/**      * @see #getBindDN()      */
 specifier|public
 specifier|static
@@ -963,6 +993,46 @@ name|PARAM_GROUP_MEMBER_ATTRIBUTE
 init|=
 literal|"group.memberAttribute"
 decl_stmt|;
+comment|/**      * @see Identity#getCustomAttributes()      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+index|[]
+name|PARAM_CUSTOM_ATTRIBUTES_DEFAULT
+init|=
+block|{}
+decl_stmt|;
+comment|/**      * @see Identity#getCustomAttributes()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"Custom Attributes"
+argument_list|,
+name|description
+operator|=
+literal|"Attributes retrieved when looking up LDAP entries. Leave empty to retrieve all attributes."
+argument_list|,
+name|value
+operator|=
+block|{}
+argument_list|,
+name|cardinality
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_CUSTOM_ATTRIBUTES
+init|=
+literal|"customattributes"
+decl_stmt|;
 comment|/**      * Defines the configuration of an identity (user or group).      */
 specifier|public
 class|class
@@ -980,6 +1050,13 @@ decl_stmt|;
 specifier|private
 name|String
 name|idAttribute
+decl_stmt|;
+specifier|private
+name|String
+index|[]
+name|customAttributes
+init|=
+block|{}
 decl_stmt|;
 specifier|private
 name|String
@@ -1381,6 +1458,23 @@ name|sb
 operator|.
 name|append
 argument_list|(
+literal|", userAttributes='"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|Arrays
+operator|.
+name|toString
+argument_list|(
+name|customAttributes
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
 literal|", extraFilter='"
 argument_list|)
 operator|.
@@ -1694,6 +1788,18 @@ argument_list|,
 name|PARAM_GROUP_MEMBER_ATTRIBUTE_DEFAULT
 argument_list|)
 argument_list|)
+operator|.
+name|setCustomAttributes
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_CUSTOM_ATTRIBUTES
+argument_list|,
+name|PARAM_CUSTOM_ATTRIBUTES_DEFAULT
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|ConfigurationParameters
 operator|.
@@ -1997,6 +2103,13 @@ decl_stmt|;
 specifier|private
 name|String
 name|memberOfFilterTemplate
+decl_stmt|;
+specifier|private
+name|String
+index|[]
+name|customAttributes
+init|=
+name|PARAM_CUSTOM_ATTRIBUTES_DEFAULT
 decl_stmt|;
 specifier|private
 specifier|final
@@ -2419,6 +2532,43 @@ operator|.
 name|groupMemberAttribute
 operator|=
 name|groupMemberAttribute
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Optionally configures an array of attribute names that will be retrieved when looking up LDAP entries.      * Defaults to the empty array indicating that all attributes will be retrieved.      *      * @return an array of attribute names. The empty array indicates that all attributes will be retrieved.      */
+annotation|@
+name|Nonnull
+specifier|public
+name|String
+index|[]
+name|getCustomAttributes
+parameter_list|()
+block|{
+return|return
+name|customAttributes
+return|;
+block|}
+comment|/**      * Sets the attribute names to be retrieved when looking up LDAP entries. The empty array indicates that all attributes will be retrieved.      *      * @param customAttributes an array of attribute names      * @return the Identity instance      */
+annotation|@
+name|Nonnull
+specifier|public
+name|LdapProviderConfig
+name|setCustomAttributes
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+index|[]
+name|customAttributes
+parameter_list|)
+block|{
+name|this
+operator|.
+name|customAttributes
+operator|=
+name|customAttributes
 expr_stmt|;
 return|return
 name|this
