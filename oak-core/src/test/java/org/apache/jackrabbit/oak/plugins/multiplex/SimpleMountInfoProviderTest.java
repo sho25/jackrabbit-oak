@@ -168,7 +168,7 @@ argument_list|(
 name|Collections
 operator|.
 expr|<
-name|MountInfo
+name|Mount
 operator|>
 name|emptyList
 argument_list|()
@@ -376,9 +376,10 @@ name|mounts
 operator|.
 name|contains
 argument_list|(
-name|Mount
+name|mip
 operator|.
-name|DEFAULT
+name|getDefaultMount
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
