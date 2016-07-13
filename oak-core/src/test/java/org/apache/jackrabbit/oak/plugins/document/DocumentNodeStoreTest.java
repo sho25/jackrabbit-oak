@@ -2212,8 +2212,6 @@ argument_list|,
 name|r
 argument_list|,
 name|head
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|c
@@ -2340,8 +2338,6 @@ argument_list|,
 name|r
 argument_list|,
 name|head
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|c

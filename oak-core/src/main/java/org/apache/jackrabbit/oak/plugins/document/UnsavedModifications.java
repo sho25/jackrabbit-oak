@@ -896,8 +896,6 @@ argument_list|,
 name|r
 argument_list|,
 literal|null
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|updateOp
