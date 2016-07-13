@@ -21,6 +21,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|StandardSystemProperty
+operator|.
+name|JAVA_SPECIFICATION_VERSION
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -88,6 +104,18 @@ operator|.
 name|Assert
 operator|.
 name|fail
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeFalse
 import|;
 end_import
 
@@ -3835,6 +3863,25 @@ name|void
 name|testInterestingStrings
 parameter_list|()
 block|{
+name|assumeFalse
+argument_list|(
+name|dsf
+operator|instanceof
+name|DocumentStoreFixture
+operator|.
+name|MongoFixture
+operator|&&
+name|JAVA_SPECIFICATION_VERSION
+operator|.
+name|value
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"1.8"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// test case  "gclef:\uD834\uDD1E" will fail on MySQL unless properly configured to use utf8mb4 charset        // Assume.assumeTrue(!(super.dsname.equals("RDB-MySQL")));
 name|String
 index|[]
