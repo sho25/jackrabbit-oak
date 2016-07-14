@@ -14156,6 +14156,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// make sure diffMany is used and not the new
+comment|// journal diff introduced with OAK-4528
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"oak.disableJournalDiff"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 name|Clock
 name|clock
 init|=
@@ -14567,6 +14578,13 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|clearProperty
+argument_list|(
+literal|"oak.disableJournalDiff"
 argument_list|)
 expr_stmt|;
 block|}

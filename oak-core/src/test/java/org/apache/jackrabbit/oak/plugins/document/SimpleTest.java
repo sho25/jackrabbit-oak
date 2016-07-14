@@ -23,6 +23,30 @@ begin_import
 import|import static
 name|org
 operator|.
+name|hamcrest
+operator|.
+name|CoreMatchers
+operator|.
+name|anyOf
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|hamcrest
+operator|.
+name|CoreMatchers
+operator|.
+name|equalTo
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -64,6 +88,18 @@ operator|.
 name|Assert
 operator|.
 name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -1322,11 +1358,22 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-name|assertEquals
+name|assertThat
+argument_list|(
+name|diff13
+argument_list|,
+name|anyOf
+argument_list|(
+name|equalTo
 argument_list|(
 literal|"+\"/t2\":{}+\"/t3\":{}"
+argument_list|)
 argument_list|,
-name|diff13
+name|equalTo
+argument_list|(
+literal|"+\"/t3\":{}+\"/t2\":{}"
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
