@@ -1979,6 +1979,29 @@ argument_list|,
 name|ascii
 argument_list|)
 decl_stmt|;
+comment|// make sure it's gone before trying to create it
+try|try
+block|{
+name|super
+operator|.
+name|ds
+operator|.
+name|remove
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|DocumentStoreException
+name|ignored
+parameter_list|)
+block|{             }
 name|UpdateOp
 name|up
 init|=
