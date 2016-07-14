@@ -6072,15 +6072,12 @@ name|id
 init|=
 operator|(
 operator|(
-name|Record
+name|SegmentNodeState
 operator|)
 name|state
 operator|)
 operator|.
-name|getRecordId
-argument_list|()
-operator|.
-name|getBytes
+name|getStableIdBytes
 argument_list|()
 decl_stmt|;
 name|stableId
