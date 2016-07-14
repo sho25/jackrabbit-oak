@@ -573,7 +573,7 @@ name|apache
 operator|.
 name|commons
 operator|.
-name|math
+name|math3
 operator|.
 name|stat
 operator|.
