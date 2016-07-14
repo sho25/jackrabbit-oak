@@ -3863,6 +3863,7 @@ name|void
 name|testInterestingStrings
 parameter_list|()
 block|{
+comment|// see OAK-3683
 name|assumeFalse
 argument_list|(
 name|dsf
@@ -3882,7 +3883,6 @@ literal|"1.8"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// test case  "gclef:\uD834\uDD1E" will fail on MySQL unless properly configured to use utf8mb4 charset        // Assume.assumeTrue(!(super.dsname.equals("RDB-MySQL")));
 name|String
 index|[]
 name|tests
