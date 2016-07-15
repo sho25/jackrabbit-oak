@@ -248,6 +248,14 @@ literal|"skip-init"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|String
+name|SKIP_NAME_CHECK
+init|=
+literal|"skip-name-check"
+decl_stmt|;
+specifier|public
+specifier|static
 name|OptionParser
 name|create
 parameter_list|()

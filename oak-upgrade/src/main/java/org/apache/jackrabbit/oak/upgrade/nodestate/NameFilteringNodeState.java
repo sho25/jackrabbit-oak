@@ -294,7 +294,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This method checks whether the name is no longer than the maximum node      * name length supported by the DocumentNodeStore.      *      * @param name      *            to check      * @return true if the name is longer than {@link Utils#NODE_NAME_LIMIT}      */
-specifier|private
+specifier|public
 specifier|static
 name|boolean
 name|isNameTooLong

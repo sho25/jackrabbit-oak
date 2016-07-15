@@ -171,6 +171,11 @@ specifier|final
 name|boolean
 name|skipInitialization
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|skipNameCheck
+decl_stmt|;
 specifier|public
 name|MigrationOptions
 parameter_list|(
@@ -419,6 +424,19 @@ operator|.
 name|SKIP_INIT
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|skipNameCheck
+operator|=
+name|args
+operator|.
+name|hasOption
+argument_list|(
+name|OptionParserFactory
+operator|.
+name|SKIP_NAME_CHECK
+argument_list|)
+expr_stmt|;
 name|logOptions
 argument_list|()
 expr_stmt|;
@@ -523,6 +541,15 @@ parameter_list|()
 block|{
 return|return
 name|skipInitialization
+return|;
+block|}
+specifier|public
+name|boolean
+name|isSkipNameCheck
+parameter_list|()
+block|{
+return|return
+name|skipNameCheck
 return|;
 block|}
 specifier|private
@@ -712,6 +739,19 @@ operator|.
 name|info
 argument_list|(
 literal|"The repository initialization will be skipped"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|skipNameCheck
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Test for long-named nodes will be disabled"
 argument_list|)
 expr_stmt|;
 block|}
