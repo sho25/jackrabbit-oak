@@ -477,7 +477,6 @@ argument_list|,
 name|url
 argument_list|)
 expr_stmt|;
-comment|// SHOULD also contain StatementCache, but see OAK-4559
 name|String
 name|interceptors
 init|=
@@ -487,7 +486,7 @@ name|getProperty
 argument_list|(
 literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBDataSourceFactory.jdbcInterceptors"
 argument_list|,
-literal|"SlowQueryReport(threshold=10000);ConnectionState"
+literal|"SlowQueryReport(threshold=10000);ConnectionState;StatementCache"
 argument_list|)
 decl_stmt|;
 if|if

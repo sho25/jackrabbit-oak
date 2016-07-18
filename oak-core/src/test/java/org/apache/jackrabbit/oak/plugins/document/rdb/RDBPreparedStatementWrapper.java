@@ -582,6 +582,9 @@ argument_list|(
 literal|"Wrapped statement "
 operator|+
 name|statement
+operator|.
+name|getClass
+argument_list|()
 operator|+
 literal|" failed to close associated ResultSet; call stack:"
 argument_list|,

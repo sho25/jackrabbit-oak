@@ -685,11 +685,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|stmt
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|con
 operator|.
 name|commit
@@ -1715,6 +1710,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|rs
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|stmt
 operator|.
 name|close
@@ -2041,6 +2041,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|rs
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|stmt
 operator|.
 name|close
