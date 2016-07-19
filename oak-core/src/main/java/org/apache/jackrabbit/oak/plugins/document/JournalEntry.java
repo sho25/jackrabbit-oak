@@ -755,6 +755,16 @@ expr_stmt|;
 name|deDuplicatedCnt
 operator|++
 expr_stmt|;
+comment|// clean up the hierarchy when we are done with this
+comment|// part of the tree to avoid excessive memory usage
+name|node
+operator|.
+name|children
+operator|=
+name|TreeNode
+operator|.
+name|NO_CHILDREN
+expr_stmt|;
 name|node
 operator|=
 name|node
