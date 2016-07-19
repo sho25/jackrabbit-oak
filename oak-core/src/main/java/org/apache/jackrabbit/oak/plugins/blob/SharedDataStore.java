@@ -25,6 +25,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStream
 import|;
 end_import
@@ -104,6 +114,19 @@ name|addMetadataRecord
 parameter_list|(
 name|InputStream
 name|stream
+parameter_list|,
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|DataStoreException
+function_decl|;
+comment|/**      * Adds the root record.      *      * @param f the file      * @param name the name of the root record      * @throws DataStoreException the data store exception      */
+name|void
+name|addMetadataRecord
+parameter_list|(
+name|File
+name|f
 parameter_list|,
 name|String
 name|name
