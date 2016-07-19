@@ -401,6 +401,19 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|DISABLE_GENERATION_CHECK
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"disable-generation-check"
+argument_list|)
+decl_stmt|;
 comment|/**      * The set of root records (i.e. ones not referenced by other records)      * in this segment.      */
 specifier|private
 specifier|final
@@ -1104,6 +1117,12 @@ name|SegmentId
 name|id
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|DISABLE_GENERATION_CHECK
+condition|)
+block|{
 try|try
 block|{
 if|if
@@ -1183,6 +1202,7 @@ argument_list|,
 name|snfe
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
