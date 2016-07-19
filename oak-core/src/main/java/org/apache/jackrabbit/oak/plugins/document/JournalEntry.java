@@ -445,16 +445,23 @@ name|READ_CHUNK_SIZE
 init|=
 literal|100
 decl_stmt|;
-comment|/**      * switch to disk after 1MB      */
+comment|/**      * switch to disk after 2048 paths      */
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|STRING_SORT_OVERFLOW_TO_DISK_THRESHOLD
 init|=
-literal|1024
-operator|*
-literal|1024
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.overflowToDiskThreshold"
+argument_list|,
+name|StringSort
+operator|.
+name|BATCH_SIZE
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
