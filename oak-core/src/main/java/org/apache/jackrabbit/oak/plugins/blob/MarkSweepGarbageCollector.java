@@ -1535,6 +1535,8 @@ comment|// Mark all used references
 name|iterateNodeTree
 argument_list|(
 name|fs
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 comment|// Move the marked references file to the data store meta area if applicable
@@ -2349,13 +2351,17 @@ return|return
 name|deleted
 return|;
 block|}
-comment|/**      * Iterates the complete node tree and collect all blob references      * @param fs the garbage collector file state      */
+comment|/**      * Iterates the complete node tree and collect all blob references      * @param fs the garbage collector file state      * @param logPath whether to log path in the file or not      */
 specifier|protected
 name|void
 name|iterateNodeTree
 parameter_list|(
 name|GarbageCollectorFileState
 name|fs
+parameter_list|,
+specifier|final
+name|boolean
+name|logPath
 parameter_list|)
 throws|throws
 name|IOException
@@ -2496,6 +2502,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|logPath
+condition|)
+block|{
 name|idBatch
 operator|.
 name|add
@@ -2510,6 +2521,17 @@ name|nodeId
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|idBatch
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|idBatch
@@ -2775,6 +2797,8 @@ comment|// Mark all used blob references
 name|iterateNodeTree
 argument_list|(
 name|fs
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 try|try
