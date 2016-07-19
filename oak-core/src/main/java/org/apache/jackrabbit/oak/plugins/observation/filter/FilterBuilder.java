@@ -1479,7 +1479,7 @@ name|FilterBuilder
 operator|.
 name|this
 operator|.
-name|includeClusterExternal
+name|includeClusterLocal
 return|;
 block|}
 annotation|@
@@ -1494,7 +1494,7 @@ name|FilterBuilder
 operator|.
 name|this
 operator|.
-name|includeClusterLocal
+name|includeClusterExternal
 return|;
 block|}
 block|}
