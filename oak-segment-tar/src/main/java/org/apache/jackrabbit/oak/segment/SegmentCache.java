@@ -150,7 +150,11 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FIXME OAK-4474: Finalise SegmentCache: document, add monitoring, management, tests, logging  */
+comment|// FIXME OAK-4474: Finalise SegmentCache: document, add monitoring, management, tests, logging
+end_comment
+
+begin_comment
+comment|/**  * A cache for {@link Segment} instances by their {@link SegmentId}.  *<p>  * Conceptually this cache serves as a 2nd level cache for segments. The 1st level cache is  * implemented by memoising the segment in its id (see {@link SegmentId#segment}. Every time  * an segment is evicted from this cache the memoised segment is discarded (see  * {@link SegmentId#unloaded()}).  *<p>  * As a consequence this cache is actually only queried for segments it does not contain,  * which are then loaded through the loader passed to {@link #getSegment(SegmentId, Callable)}.  * This behaviour is eventually reflected in the cache statistics (see {@link #getCacheStats()}),  * which always reports a {@link CacheStats#getMissRate() miss rate} of 1.  */
 end_comment
 
 begin_class
@@ -229,6 +233,7 @@ name|Segment
 argument_list|>
 name|cache
 decl_stmt|;
+comment|/**      * Create a new segment cache of the given size.      * @param cacheSizeMB  size of the cache in megabytes.      */
 specifier|public
 name|SegmentCache
 parameter_list|(
@@ -326,6 +331,7 @@ name|build
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Retrieve an segment from the cache or load it and cache it if not yet in the cache.      * @param id        the id of the segment      * @param loader    the loader to load the segment if not yet in the cache      * @return          the segment identified by {@code id}      * @throws ExecutionException  when {@code loader} failed to load an segment      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -359,6 +365,7 @@ name|loader
 argument_list|)
 return|;
 block|}
+comment|/**      * Put a segment into the cache      * @param segment  the segment to cache      */
 specifier|public
 name|void
 name|putSegment
@@ -392,6 +399,7 @@ name|segment
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Clear all segment from the cache      */
 specifier|public
 name|void
 name|clear
@@ -403,6 +411,7 @@ name|invalidateAll
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * See the class comment regarding some peculiarities of this cache's statistics      * @return  statistics for this cache.      */
 annotation|@
 name|Nonnull
 specifier|public
