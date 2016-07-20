@@ -835,6 +835,28 @@ name|name
 operator|=
 name|UserConstants
 operator|.
+name|PARAM_OMIT_ADMIN_PW
+argument_list|,
+name|label
+operator|=
+literal|"Omit Admin Password"
+argument_list|,
+name|description
+operator|=
+literal|"Boolean flag to prevent the administrator account to be created with a password upon repository initialization. Please note that changing this option after the initial repository setup will have no effect."
+argument_list|,
+name|boolValue
+operator|=
+literal|false
+argument_list|)
+block|,
+annotation|@
+name|Property
+argument_list|(
+name|name
+operator|=
+name|UserConstants
+operator|.
 name|PARAM_SUPPORT_AUTOSAVE
 argument_list|,
 name|label
