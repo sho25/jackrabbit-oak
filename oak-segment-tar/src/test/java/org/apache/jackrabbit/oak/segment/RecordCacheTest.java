@@ -19,6 +19,18 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|String
+operator|.
+name|valueOf
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -81,23 +93,17 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nullable
+name|Nonnull
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|annotation
 operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|StringCache
+name|Nullable
 import|;
 end_import
 
@@ -128,7 +134,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|StringCacheTest
+name|RecordCacheTest
 block|{
 annotation|@
 name|Test
@@ -165,7 +171,7 @@ block|{
 annotation|@
 name|Override
 annotation|@
-name|Nullable
+name|Nonnull
 specifier|public
 name|String
 name|apply
@@ -182,9 +188,10 @@ name|incrementAndGet
 argument_list|()
 expr_stmt|;
 return|return
-literal|""
-operator|+
+name|valueOf
+argument_list|(
 name|input
+argument_list|)
 return|;
 block|}
 block|}
@@ -230,13 +237,14 @@ control|)
 block|{
 name|assertEquals
 argument_list|(
-literal|""
-operator|+
+name|valueOf
+argument_list|(
 name|i
+argument_list|)
 argument_list|,
 name|c
 operator|.
-name|getString
+name|get
 argument_list|(
 name|i
 argument_list|,
@@ -253,9 +261,10 @@ block|}
 comment|// the LIRS cache should be almost empty (low hit rate there)
 name|assertTrue
 argument_list|(
-literal|""
-operator|+
+name|valueOf
+argument_list|(
 name|counter
+argument_list|)
 argument_list|,
 name|counter
 operator|.
@@ -268,9 +277,10 @@ expr_stmt|;
 comment|// but the fast cache should improve the total hit rate
 name|assertTrue
 argument_list|(
-literal|""
-operator|+
+name|valueOf
+argument_list|(
 name|counter
+argument_list|)
 argument_list|,
 name|counter
 operator|.
@@ -401,7 +411,7 @@ name|i
 argument_list|,
 name|c
 operator|.
-name|getString
+name|get
 argument_list|(
 name|i
 argument_list|,
@@ -421,7 +431,7 @@ literal|0
 argument_list|,
 name|c
 operator|.
-name|getString
+name|get
 argument_list|(
 literal|0
 argument_list|,
@@ -439,9 +449,10 @@ comment|// the LIRS cache should be almost empty (low hit rate there)
 comment|// and large strings are not kept in the fast cache, so hit rate should be bad
 name|assertTrue
 argument_list|(
-literal|""
-operator|+
+name|valueOf
+argument_list|(
 name|counter
+argument_list|)
 argument_list|,
 name|counter
 operator|.
@@ -453,9 +464,10 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|""
-operator|+
+name|valueOf
+argument_list|(
 name|counter
+argument_list|)
 argument_list|,
 name|counter
 operator|.
@@ -513,12 +525,13 @@ name|input
 parameter_list|)
 block|{
 return|return
-literal|""
-operator|+
+name|valueOf
+argument_list|(
 name|counter
 operator|.
 name|incrementAndGet
 argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
@@ -539,7 +552,7 @@ literal|"1"
 argument_list|,
 name|c
 operator|.
-name|getString
+name|get
 argument_list|(
 literal|0
 argument_list|,
@@ -558,7 +571,7 @@ literal|"1"
 argument_list|,
 name|c
 operator|.
-name|getString
+name|get
 argument_list|(
 literal|0
 argument_list|,
@@ -582,7 +595,7 @@ literal|"2"
 argument_list|,
 name|c
 operator|.
-name|getString
+name|get
 argument_list|(
 literal|0
 argument_list|,
@@ -600,7 +613,7 @@ literal|"2"
 argument_list|,
 name|c
 operator|.
-name|getString
+name|get
 argument_list|(
 literal|0
 argument_list|,
@@ -793,7 +806,7 @@ name|x
 init|=
 name|c
 operator|.
-name|getString
+name|get
 argument_list|(
 name|segment
 argument_list|,

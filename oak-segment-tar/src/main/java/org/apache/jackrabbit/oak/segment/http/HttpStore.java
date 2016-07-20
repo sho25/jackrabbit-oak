@@ -49,6 +49,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|CachingSegmentReader
+operator|.
+name|DEFAULT_TEMPLATE_CACHE_MB
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|SegmentWriterBuilder
 operator|.
 name|segmentWriterBuilder
@@ -460,6 +478,8 @@ argument_list|,
 literal|null
 argument_list|,
 name|DEFAULT_STRING_CACHE_MB
+argument_list|,
+name|DEFAULT_TEMPLATE_CACHE_MB
 argument_list|)
 decl_stmt|;
 specifier|private

@@ -2243,7 +2243,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Expose stats about the string cache, if available
+comment|// Expose stats about the string and template caches
 name|CacheStats
 name|stringCacheStats
 init|=
@@ -2269,6 +2269,36 @@ operator|.
 name|TYPE
 argument_list|,
 name|stringCacheStats
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|CacheStats
+name|templateCacheStats
+init|=
+name|store
+operator|.
+name|getTemplateCacheStats
+argument_list|()
+decl_stmt|;
+name|stringCacheMBean
+operator|=
+name|registerMBean
+argument_list|(
+name|whiteboard
+argument_list|,
+name|CacheStatsMBean
+operator|.
+name|class
+argument_list|,
+name|templateCacheStats
+argument_list|,
+name|CacheStats
+operator|.
+name|TYPE
+argument_list|,
+name|templateCacheStats
 operator|.
 name|getName
 argument_list|()
