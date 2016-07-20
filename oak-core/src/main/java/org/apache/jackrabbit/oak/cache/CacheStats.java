@@ -214,6 +214,7 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
+comment|/**      * Construct the cache stats object.      *       * @param cache the cache      * @param name the name of the cache      * @param weigher the weigher used to estimate the current weight      * @param maxWeight the maximum weight      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -754,6 +755,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName

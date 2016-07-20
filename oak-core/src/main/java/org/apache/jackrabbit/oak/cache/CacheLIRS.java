@@ -1041,7 +1041,7 @@ operator|.
 name|value
 return|;
 block|}
-comment|/**      * Add an entry to the cache. The entry may or may not exist in the      * cache yet. This method will usually mark unknown entries as cold and      * known entries as hot.      *      * @param key the key (may not be null)      * @param value the value (may not be null)      * @param memory the memory used for the given entry      * @return the old value, or null if there was no resident entry      */
+comment|/**      * Add an entry to the cache. This method is an explicit memory size      * (weight), and not using the weigher even if configured. The entry may or      * may not exist in the cache yet. This method will usually mark unknown      * entries as cold and known entries as hot.      *       * @param key the key (may not be null)      * @param value the value (may not be null)      * @param memory the memory used for the given entry      * @return the old value, or null if there was no resident entry      */
 specifier|public
 name|V
 name|put
@@ -1082,7 +1082,7 @@ name|memory
 argument_list|)
 return|;
 block|}
-comment|/**      * Add an entry to the cache using the average memory size.      *      * @param key the key (may not be null)      * @param value the value (may not be null)      */
+comment|/**      * Add an entry to the cache. If a weigher is specified, it is used,      * otherwise the average memory size is used.      *       * @param key the key (may not be null)      * @param value the value (may not be null)      */
 annotation|@
 name|Override
 specifier|public
@@ -5844,6 +5844,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Set the weigher which is used if memory usage of an entry is not          * explicitly set (when adding entries).          *           * @param weigher the weigher          * @return this          */
 specifier|public
 name|Builder
 argument_list|<
@@ -5872,6 +5873,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Set the total maximum weight. If the cache is heavier, then entries          * are evicted.          *           * @param maxWeight the maximum weight          * @return this          */
 specifier|public
 name|Builder
 argument_list|<
@@ -5895,6 +5897,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Set the average weight of an entry. This is used, together with the          * maximum weight, to calculate the length of the internal array of the          * cache.          *           * For higher performance, the weight should be set relatively low, at          * the cost of some space. To save space, the average weight should be          * set high, at the cost of some performance.          *           * @param averageWeight the average weight          * @return this          */
 specifier|public
 name|Builder
 argument_list|<
@@ -5918,6 +5921,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Set the maximum size (in number of entries). This is the same as          * setting the average weight of an entry to 1, and the maximum weight          * to the maximum size.          *           * @param maxSize the maximum size          * @return this          */
 specifier|public
 name|Builder
 argument_list|<
