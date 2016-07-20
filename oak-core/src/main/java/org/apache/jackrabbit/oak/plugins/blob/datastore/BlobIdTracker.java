@@ -111,6 +111,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|locks
 operator|.
 name|ReentrantLock
@@ -142,6 +154,20 @@ operator|.
 name|base
 operator|.
 name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Stopwatch
 import|;
 end_import
 
@@ -778,7 +804,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tracks the blob ids available or added in the blob store.  *     - We can identify instance node where uploading/downloading not required  *     - From other nodes we can only upload deltas since, last snapshot  *     - If all nodes have the speificed flag then all nodes run partial gc  *  */
+comment|/**  * Tracks the blob ids available or added in the blob store using the {@link BlobIdStore} .  *  */
 end_comment
 
 begin_class
@@ -1165,7 +1191,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Retrieves all the reference files available in the DataStore and merges them to a local      * and then returns an iterator over it. This way the ids returned are as recent as the      * snapshots taken on all instances/repositories connected to the DataStore.      *      * The iterator returned ia a Closeable instance and should be closed by calling #close().      *      * @return iterator over all the blob ids available      * @throws IOException      */
+comment|/**      * Retrieves all the reference files available in the DataStore and merges      * them to the local store and then returns an iterator over it.      * This way the ids returned are as recent as the snapshots taken on all      * instances/repositories connected to the DataStore.      *      * The iterator returned ia a Closeable instance and should be closed by calling #close().      *      * @return iterator over all the blob ids available      * @throws IOException      */
 annotation|@
 name|Override
 specifier|public
@@ -1261,6 +1287,7 @@ name|path
 argument_list|)
 return|;
 block|}
+comment|/**      * Retrieves and merges all the blob id records available in the DataStore from different      * instances sharing the DataStore (cluster nodes/different repositories).      *      * @throws IOException      */
 specifier|private
 name|void
 name|globalMerge
@@ -1270,7 +1297,22 @@ name|IOException
 block|{
 try|try
 block|{
-comment|// Download all the blob reference files except the local one from the data store
+name|Stopwatch
+name|watch
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Retrieving all blob id files available form the DataStore"
+argument_list|)
+expr_stmt|;
+comment|// Download all the blob reference records from the data store
 name|Iterable
 argument_list|<
 name|DataRecord
@@ -1284,7 +1326,7 @@ argument_list|(
 name|fileNamePrefix
 argument_list|)
 decl_stmt|;
-comment|// Download all the corresponding reference files
+comment|// Download all the corresponding files for the records
 name|List
 argument_list|<
 name|File
@@ -1374,7 +1416,30 @@ block|}
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Retrieved all blob id files in [{}]"
+argument_list|,
+name|watch
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Merge all the downloaded files in to the local store
+name|watch
+operator|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+expr_stmt|;
 name|store
 operator|.
 name|merge
@@ -1384,7 +1449,30 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// Remove all the data store records
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Merged all retrieved blob id files in [{}]"
+argument_list|,
+name|watch
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Remove all the data store records as they have been merged
+name|watch
+operator|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|DataRecord
@@ -1408,7 +1496,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Deleted metadata record {}"
 argument_list|,
@@ -1422,6 +1510,22 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Deleted all blob id metadata files in [{}]"
+argument_list|,
+name|watch
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1443,7 +1547,7 @@ name|e
 throw|;
 block|}
 block|}
-comment|/**      * Takes a snapshot on the tracker.      * Uploads the latest snapshot to the DataStore so, that it's visible      * to other cluster nodes/repositories connected to the DataStore.      *      * @throws IOException      */
+comment|/**      * Takes a snapshot on the tracker.      * to other cluster nodes/repositories connected to the DataStore.      *      * @throws IOException      */
 specifier|private
 name|void
 name|snapshot
@@ -1464,9 +1568,40 @@ operator|!
 name|SKIP_TRACKER
 condition|)
 block|{
+name|Stopwatch
+name|watch
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 name|store
 operator|.
 name|snapshot
+argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Completed snapshot in [{}]"
+argument_list|,
+name|watch
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|watch
+operator|=
+name|Stopwatch
+operator|.
+name|createStarted
 argument_list|()
 expr_stmt|;
 name|inputStream
@@ -1495,6 +1630,22 @@ name|instanceId
 operator|+
 name|mergedFileSuffix
 operator|)
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Added blob id metadata record in DataStore in [{}]"
+argument_list|,
+name|watch
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1994,6 +2145,7 @@ argument_list|,
 name|refFiles
 argument_list|)
 expr_stmt|;
+comment|// Clear the references as not needed
 name|refFiles
 operator|.
 name|clear
