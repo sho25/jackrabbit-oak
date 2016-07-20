@@ -113,6 +113,12 @@ name|NT_OAK_UNSTRUCTURED
 init|=
 literal|"oak:Unstructured"
 decl_stmt|;
+comment|/**      * @since oak 1.5.7      */
+name|String
+name|NT_OAK_RESOURCE
+init|=
+literal|"oak:Resource"
+decl_stmt|;
 name|String
 name|NT_REP_NODE_TYPE
 init|=
