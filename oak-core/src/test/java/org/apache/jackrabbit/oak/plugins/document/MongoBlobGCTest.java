@@ -3350,6 +3350,9 @@ name|markAndSweep
 parameter_list|(
 name|boolean
 name|markOnly
+parameter_list|,
+name|boolean
+name|forceBlobRetrieve
 parameter_list|)
 throws|throws
 name|Exception
@@ -3465,6 +3468,8 @@ argument_list|(
 name|fs
 argument_list|,
 name|markStart
+argument_list|,
+name|forceBlobRetrieve
 argument_list|)
 decl_stmt|;
 name|threw

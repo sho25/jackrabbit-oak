@@ -125,6 +125,41 @@ name|boolean
 name|markOnly
 parameter_list|)
 function_decl|;
+comment|/**      * Initiate a data store garbage collection operation.      *      * @param markOnly whether to only mark references and not sweep in the mark and sweep operation.      * @param forceBlobIdRetrieve whether to force retrieve blob ids from datastore      * @return  the status of the operation right after it was initiated      */
+name|CompositeData
+name|startBlobGC
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"markOnly"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"Set to true to only mark references and not sweep in the mark and sweep operation. "
+operator|+
+literal|"This mode is to be used when the underlying BlobStore is shared between multiple "
+operator|+
+literal|"different repositories. For all other cases set it to false to perform full garbage collection"
+argument_list|)
+name|boolean
+name|markOnly
+parameter_list|,
+annotation|@
+name|Name
+argument_list|(
+literal|"forceBlobIdRetrieve"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"Set to true to force retrieve all ids from the datastore bypassing any local tracking"
+argument_list|)
+name|boolean
+name|forceBlobIdRetrieve
+parameter_list|)
+function_decl|;
 comment|/**      * Data store garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull

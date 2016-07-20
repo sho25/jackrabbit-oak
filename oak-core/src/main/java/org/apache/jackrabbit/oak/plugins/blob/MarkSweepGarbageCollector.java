@@ -1013,6 +1013,31 @@ block|{
 name|markAndSweep
 argument_list|(
 name|markOnly
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|collectGarbage
+parameter_list|(
+name|boolean
+name|markOnly
+parameter_list|,
+name|boolean
+name|forceBlobRetrieve
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|markAndSweep
+argument_list|(
+name|markOnly
+argument_list|,
+name|forceBlobRetrieve
 argument_list|)
 expr_stmt|;
 block|}
@@ -1423,13 +1448,16 @@ return|return
 name|stats
 return|;
 block|}
-comment|/**      * Mark and sweep. Main entry method for GC.      *      * @param markOnly whether to mark only      * @throws Exception the exception      */
+comment|/**      * Mark and sweep. Main entry method for GC.      *      * @param markOnly whether to mark only      * @param forceBlobRetrieve force retrieve blob ids      * @throws Exception the exception      */
 specifier|protected
 name|void
 name|markAndSweep
 parameter_list|(
 name|boolean
 name|markOnly
+parameter_list|,
+name|boolean
+name|forceBlobRetrieve
 parameter_list|)
 throws|throws
 name|Exception
@@ -1494,6 +1522,8 @@ argument_list|(
 name|fs
 argument_list|,
 name|markStart
+argument_list|,
+name|forceBlobRetrieve
 argument_list|)
 decl_stmt|;
 name|threw
@@ -1719,7 +1749,7 @@ literal|"Ending difference phase of the garbage collector"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sweep phase of gc candidate deletion.      *<p>      * Performs the following steps depending upon the type of the blob store refer      * {@link org.apache.jackrabbit.oak.plugins.blob.SharedDataStore.Type}:      *      *<ul>      *<li>Shared</li>      *<li>      *<ul>      *<li> Merge all marked references (from the mark phase run independently) available in the data store meta      *          store (from all configured independent repositories).      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (earliest time stamp of the marked references - #maxLastModifiedInterval) from the above set.      *</ul>      *</li>      *      *<li>Default</li>      *<li>      *<ul>      *<li> Mark phase already run.      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (time stamp of the marked references - #maxLastModifiedInterval).      *</ul>      *</li>      *</ul>      *      * @return the number of blobs deleted      * @throws Exception the exception      * @param fs the garbage collector file state      * @param markStart the start time of mark to take as reference for deletion      */
+comment|/**      * Sweep phase of gc candidate deletion.      *<p>      * Performs the following steps depending upon the type of the blob store refer      * {@link org.apache.jackrabbit.oak.plugins.blob.SharedDataStore.Type}:      *      *<ul>      *<li>Shared</li>      *<li>      *<ul>      *<li> Merge all marked references (from the mark phase run independently) available in the data store meta      *          store (from all configured independent repositories).      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (earliest time stamp of the marked references - #maxLastModifiedInterval) from the above set.      *</ul>      *</li>      *      *<li>Default</li>      *<li>      *<ul>      *<li> Mark phase already run.      *<li> Retrieve all blob ids available.      *<li> Diffs the 2 sets above to retrieve list of blob ids not used.      *<li> Deletes only blobs created after      *          (time stamp of the marked references - #maxLastModifiedInterval).      *</ul>      *</li>      *</ul>      *      * @return the number of blobs deleted      * @throws Exception the exception      * @param fs the garbage collector file state      * @param markStart the start time of mark to take as reference for deletion      * @param forceBlobRetrieve      */
 specifier|protected
 name|long
 name|sweep
@@ -1729,6 +1759,9 @@ name|fs
 parameter_list|,
 name|long
 name|markStart
+parameter_list|,
+name|boolean
+name|forceBlobRetrieve
 parameter_list|)
 throws|throws
 name|Exception
@@ -1794,6 +1827,8 @@ operator|new
 name|BlobIdRetriever
 argument_list|(
 name|fs
+argument_list|,
+name|forceBlobRetrieve
 argument_list|)
 operator|)
 operator|.
@@ -2576,6 +2611,8 @@ operator|new
 name|BlobIdRetriever
 argument_list|(
 name|fs
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2752,11 +2789,19 @@ specifier|final
 name|GarbageCollectorFileState
 name|fs
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|forceRetrieve
+decl_stmt|;
 specifier|public
 name|BlobIdRetriever
 parameter_list|(
 name|GarbageCollectorFileState
 name|fs
+parameter_list|,
+name|boolean
+name|forceBlobRetrieve
 parameter_list|)
 block|{
 name|this
@@ -2764,6 +2809,12 @@ operator|.
 name|fs
 operator|=
 name|fs
+expr_stmt|;
+name|this
+operator|.
+name|forceRetrieve
+operator|=
+name|forceBlobRetrieve
 expr_stmt|;
 block|}
 annotation|@
@@ -2774,6 +2825,12 @@ name|call
 parameter_list|()
 throws|throws
 name|Exception
+block|{
+if|if
+condition|(
+operator|!
+name|forceRetrieve
+condition|)
 block|{
 name|BlobCollectionType
 operator|.
@@ -2792,9 +2849,12 @@ name|getBatchCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|long
-name|length
-init|=
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Length of blob ids file retrieved from tracker {}"
+argument_list|,
 name|fs
 operator|.
 name|getAvailableRefs
@@ -2802,16 +2862,9 @@ argument_list|()
 operator|.
 name|length
 argument_list|()
-decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Length of blob ids file retrieved {}"
-argument_list|,
-name|length
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If the length is 0 then references not available from the tracker
 comment|// retrieve from the data store
 if|if
@@ -2841,8 +2894,12 @@ name|getBatchCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|length
-operator|=
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Length of blob ids file retrieved {}"
+argument_list|,
 name|fs
 operator|.
 name|getAvailableRefs
@@ -2850,14 +2907,6 @@ argument_list|()
 operator|.
 name|length
 argument_list|()
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Length of blob ids file retrieved {}"
-argument_list|,
-name|length
 argument_list|)
 expr_stmt|;
 name|BlobCollectionType
