@@ -88,6 +88,8 @@ name|super
 argument_list|(
 name|maxSize
 argument_list|,
+literal|250
+argument_list|,
 literal|"Template Cache"
 argument_list|)
 expr_stmt|;
