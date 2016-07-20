@@ -611,7 +611,7 @@ name|commons
 operator|.
 name|FileIOUtils
 operator|.
-name|CloseableFileIterator
+name|BurnOnCloseFileIterator
 operator|.
 name|wrap
 import|;

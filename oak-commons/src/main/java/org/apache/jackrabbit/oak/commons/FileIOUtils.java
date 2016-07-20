@@ -1404,6 +1404,11 @@ operator|.
 name|lineIterator
 argument_list|(
 name|marked
+argument_list|,
+name|UTF_8
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 argument_list|,
 name|FileUtils
@@ -1411,6 +1416,11 @@ operator|.
 name|lineIterator
 argument_list|(
 name|available
+argument_list|,
+name|UTF_8
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 argument_list|,
 name|transformer
@@ -1678,11 +1688,11 @@ name|diff
 return|;
 block|}
 block|}
-comment|/**      * Implements a {@link java.io.Closeable} wrapper over a {@link LineIterator}.      * Also has a transformer to transform the output. If the underlying file is      * provide then it deletes the file on {@link #close()}.      *      * @param<T> the type of elements in the iterator      */
+comment|/**      * Implements a {@link java.io.Closeable} wrapper over a {@link LineIterator}.      * Also has a transformer to transform the output. If the underlying file is      * provide then it deletes the file on {@link #close()}.      *      * If there is a scope for lines in the file containing line break characters it should be      * ensured that the files is written with      * {@link #writeAsLine(BufferedWriter, String, boolean)} with true to escape line break      * characters and should be properly unescaped on read.      * A custom transformer can also be provided to unescape.      *      * @param<T> the type of elements in the iterator      */
 specifier|public
 specifier|static
 class|class
-name|CloseableFileIterator
+name|BurnOnCloseFileIterator
 parameter_list|<
 name|T
 parameter_list|>
@@ -1727,7 +1737,7 @@ name|File
 name|backingFile
 decl_stmt|;
 specifier|public
-name|CloseableFileIterator
+name|BurnOnCloseFileIterator
 parameter_list|(
 name|LineIterator
 name|iterator
@@ -1755,7 +1765,7 @@ name|transformer
 expr_stmt|;
 block|}
 specifier|public
-name|CloseableFileIterator
+name|BurnOnCloseFileIterator
 parameter_list|(
 name|LineIterator
 name|iterator
@@ -1880,7 +1890,7 @@ block|}
 block|}
 specifier|public
 specifier|static
-name|CloseableFileIterator
+name|BurnOnCloseFileIterator
 argument_list|<
 name|String
 argument_list|>
@@ -1892,7 +1902,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|CloseableFileIterator
+name|BurnOnCloseFileIterator
 argument_list|<
 name|String
 argument_list|>
@@ -1926,7 +1936,7 @@ return|;
 block|}
 specifier|public
 specifier|static
-name|CloseableFileIterator
+name|BurnOnCloseFileIterator
 argument_list|<
 name|String
 argument_list|>
@@ -1941,7 +1951,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|CloseableFileIterator
+name|BurnOnCloseFileIterator
 argument_list|<
 name|String
 argument_list|>
