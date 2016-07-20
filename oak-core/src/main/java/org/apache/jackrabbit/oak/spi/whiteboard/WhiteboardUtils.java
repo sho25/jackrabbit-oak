@@ -268,6 +268,8 @@ argument_list|,
 name|delayInSeconds
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -287,6 +289,9 @@ name|delayInSeconds
 parameter_list|,
 name|boolean
 name|runOnSingleClusterNode
+parameter_list|,
+name|boolean
+name|useDedicatedPool
 parameter_list|)
 block|{
 name|ImmutableMap
@@ -336,6 +341,22 @@ argument_list|(
 literal|"scheduler.runOn"
 argument_list|,
 literal|"SINGLE"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|useDedicatedPool
+condition|)
+block|{
+comment|//Make use of dedicated threadpool SLING-5831
+name|builder
+operator|.
+name|put
+argument_list|(
+literal|"scheduler.threadPool"
+argument_list|,
+literal|"oak"
 argument_list|)
 expr_stmt|;
 block|}

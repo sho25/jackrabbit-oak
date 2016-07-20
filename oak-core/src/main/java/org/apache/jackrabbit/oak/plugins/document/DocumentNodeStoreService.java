@@ -4721,6 +4721,12 @@ name|toSeconds
 argument_list|(
 name|leaseTime
 argument_list|)
+argument_list|,
+literal|false
+comment|/*runOnSingleClusterNode*/
+argument_list|,
+literal|true
+comment|/*use dedicated pool*/
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4846,6 +4852,9 @@ argument_list|)
 argument_list|,
 literal|true
 comment|/*runOnSingleClusterNode*/
+argument_list|,
+literal|true
+comment|/*use dedicated pool*/
 argument_list|)
 argument_list|)
 expr_stmt|;

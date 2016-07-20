@@ -225,6 +225,8 @@ argument_list|,
 name|delayInSeconds
 argument_list|,
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -271,8 +273,6 @@ name|getIndexStats
 argument_list|()
 argument_list|,
 literal|1
-argument_list|,
-literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
