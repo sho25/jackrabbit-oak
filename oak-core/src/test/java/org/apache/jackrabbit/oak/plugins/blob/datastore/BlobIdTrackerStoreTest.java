@@ -117,11 +117,7 @@ name|plugins
 operator|.
 name|blob
 operator|.
-name|datastore
-operator|.
-name|BlobIdTracker
-operator|.
-name|Store
+name|SharedDataStore
 import|;
 end_import
 
@@ -139,7 +135,11 @@ name|plugins
 operator|.
 name|blob
 operator|.
-name|SharedDataStore
+name|datastore
+operator|.
+name|BlobIdTracker
+operator|.
+name|BlobIdStore
 import|;
 end_import
 
@@ -432,7 +432,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for BlobIdTracker.Store to test addition, retrieval and removal of blob ids.  */
+comment|/**  * Test for BlobIdTracker.BlobIdStore to test addition, retrieval and removal of blob ids.  */
 end_comment
 
 begin_class
@@ -629,9 +629,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -691,9 +689,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -755,9 +751,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -849,9 +843,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -933,9 +925,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -1014,9 +1004,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -1106,9 +1094,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -1189,9 +1175,7 @@ throws|,
 name|InterruptedException
 block|{
 specifier|final
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -1309,9 +1293,7 @@ throws|,
 name|InterruptedException
 block|{
 specifier|final
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -1459,9 +1441,7 @@ throws|,
 name|InterruptedException
 block|{
 specifier|final
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -1612,9 +1592,7 @@ throws|throws
 name|IOException
 block|{
 specifier|final
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -1773,9 +1751,7 @@ throws|,
 name|InterruptedException
 block|{
 specifier|final
-name|BlobIdTracker
-operator|.
-name|Store
+name|BlobIdStore
 name|store
 init|=
 name|tracker
@@ -1889,7 +1865,7 @@ name|Thread
 name|addThread
 parameter_list|(
 specifier|final
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|,
 specifier|final
@@ -1920,7 +1896,7 @@ name|Thread
 name|addThread
 parameter_list|(
 specifier|final
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|,
 specifier|final
@@ -2045,7 +2021,7 @@ name|Thread
 name|retrieveThread
 parameter_list|(
 specifier|final
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|,
 specifier|final
@@ -2143,7 +2119,7 @@ name|Thread
 name|removeThread
 parameter_list|(
 specifier|final
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|,
 specifier|final
@@ -2251,7 +2227,7 @@ name|Thread
 name|snapshotThread
 parameter_list|(
 specifier|final
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|,
 specifier|final
@@ -2339,7 +2315,7 @@ name|String
 argument_list|>
 name|add
 parameter_list|(
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|,
 name|List
@@ -2395,7 +2371,7 @@ name|String
 argument_list|>
 name|retrieve
 parameter_list|(
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|)
 throws|throws
@@ -2460,7 +2436,7 @@ name|String
 argument_list|>
 name|retrieveFile
 parameter_list|(
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|,
 name|TemporaryFolder
@@ -2511,7 +2487,7 @@ specifier|static
 name|void
 name|remove
 parameter_list|(
-name|Store
+name|BlobIdStore
 name|store
 parameter_list|,
 name|File

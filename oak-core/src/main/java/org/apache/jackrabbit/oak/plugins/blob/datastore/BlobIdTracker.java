@@ -707,7 +707,7 @@ name|datastore
 operator|.
 name|BlobIdTracker
 operator|.
-name|Store
+name|BlobIdStore
 operator|.
 name|Type
 operator|.
@@ -733,7 +733,7 @@ name|datastore
 operator|.
 name|BlobIdTracker
 operator|.
-name|Store
+name|BlobIdStore
 operator|.
 name|Type
 operator|.
@@ -759,7 +759,7 @@ name|datastore
 operator|.
 name|BlobIdTracker
 operator|.
-name|Store
+name|BlobIdStore
 operator|.
 name|Type
 operator|.
@@ -839,7 +839,7 @@ name|SharedDataStore
 name|datastore
 decl_stmt|;
 specifier|protected
-name|Store
+name|BlobIdStore
 name|store
 decl_stmt|;
 specifier|private
@@ -961,7 +961,7 @@ operator|.
 name|store
 operator|=
 operator|new
-name|Store
+name|BlobIdStore
 argument_list|(
 name|rootDir
 argument_list|,
@@ -1523,7 +1523,7 @@ block|}
 comment|/**      * Local store for managing the blob reference      */
 specifier|static
 class|class
-name|Store
+name|BlobIdStore
 implements|implements
 name|Closeable
 block|{
@@ -1580,7 +1580,7 @@ specifier|final
 name|ReentrantLock
 name|refLock
 decl_stmt|;
-name|Store
+name|BlobIdStore
 parameter_list|(
 name|File
 name|rootDir
