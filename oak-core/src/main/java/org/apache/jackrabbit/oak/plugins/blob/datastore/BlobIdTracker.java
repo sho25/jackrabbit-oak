@@ -805,7 +805,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * System property to skip tracker. If set will skip:      *  * Snapshots (No-op)      *  * Retrieve (return empty)      */
+comment|/**      * System property to skip tracker. If set will skip:      *  * Snapshots (No-op)      *  * Retrieve (return empty)      *  * Add (No-op)      */
 specifier|private
 specifier|final
 name|boolean
@@ -1093,6 +1093,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
+name|SKIP_TRACKER
+condition|)
+block|{
 name|store
 operator|.
 name|addRecord
@@ -1100,6 +1106,7 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1116,6 +1123,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
+name|SKIP_TRACKER
+condition|)
+block|{
 name|store
 operator|.
 name|addRecords
@@ -1123,6 +1136,7 @@ argument_list|(
 name|recs
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1136,6 +1150,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
+name|SKIP_TRACKER
+condition|)
+block|{
 name|store
 operator|.
 name|addRecords
@@ -1143,6 +1163,7 @@ argument_list|(
 name|recs
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Retrieves all the reference files available in the DataStore and merges them to a local      * and then returns an iterator over it. This way the ids returned are as recent as the      * snapshots taken on all instances/repositories connected to the DataStore.      *      * The iterator returned ia a Closeable instance and should be closed by calling #close().      *      * @return iterator over all the blob ids available      * @throws IOException      */
 annotation|@
