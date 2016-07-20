@@ -445,6 +445,18 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
 name|Assume
 operator|.
 name|assumeNoException
@@ -720,12 +732,8 @@ argument_list|,
 name|retrieved
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|"Different ids from the datastore"
-argument_list|,
-name|initAdd
-argument_list|,
 name|read
 argument_list|(
 name|dataStore
@@ -738,6 +746,9 @@ name|getType
 argument_list|()
 argument_list|)
 argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -796,6 +807,18 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Extra elements after add"
+argument_list|,
+name|initAdd
+argument_list|,
+name|retrieve
+argument_list|(
+name|tracker
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|remove
 argument_list|(
 name|tracker
@@ -815,24 +838,16 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|retrieved
-init|=
+name|assertEquals
+argument_list|(
+literal|"Extra elements after remove"
+argument_list|,
+name|initAdd
+argument_list|,
 name|retrieve
 argument_list|(
 name|tracker
 argument_list|)
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Extra elements after add"
-argument_list|,
-name|initAdd
-argument_list|,
-name|retrieved
 argument_list|)
 expr_stmt|;
 block|}
