@@ -13,9 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|blob
+name|commons
 package|;
 end_package
 

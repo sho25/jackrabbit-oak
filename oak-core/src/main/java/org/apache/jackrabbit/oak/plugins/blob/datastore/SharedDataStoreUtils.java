@@ -460,6 +460,11 @@ name|MARKED_START_MARKER
 argument_list|(
 literal|"markedTimestamp"
 argument_list|)
+block|,
+name|BLOBREFERENCES
+argument_list|(
+literal|"blob"
+argument_list|)
 block|;
 specifier|private
 specifier|final
