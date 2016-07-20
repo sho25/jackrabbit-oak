@@ -351,18 +351,6 @@ name|assertEquals
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -497,12 +485,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// invalidate both caches under test first
-name|invalidateDocChildrenCache
-argument_list|(
-name|ns1
-argument_list|)
-expr_stmt|;
+comment|// invalidate cache under test first
 name|ns1
 operator|.
 name|getDocumentStore
@@ -1044,12 +1027,7 @@ operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
-comment|// invalidate both caches under test first
-name|invalidateDocChildrenCache
-argument_list|(
-name|ns1
-argument_list|)
-expr_stmt|;
+comment|// invalidate cache under test first
 name|ns1
 operator|.
 name|getDocumentStore

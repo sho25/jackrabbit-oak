@@ -950,11 +950,6 @@ argument_list|(
 name|stats
 argument_list|)
 expr_stmt|;
-name|nodeStore
-operator|.
-name|invalidateDocChildrenCache
-argument_list|()
-expr_stmt|;
 name|stats
 operator|.
 name|deleteDeletedDocs
