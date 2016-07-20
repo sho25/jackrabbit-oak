@@ -53,13 +53,55 @@ end_import
 
 begin_import
 import|import static
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Collections
+name|jackrabbit
 operator|.
-name|singleton
+name|oak
+operator|.
+name|segment
+operator|.
+name|CachingSegmentReader
+operator|.
+name|DEFAULT_STRING_CACHE_MB
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|CachingSegmentReader
+operator|.
+name|DEFAULT_TEMPLATE_CACHE_MB
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentCache
+operator|.
+name|DEFAULT_SEGMENT_CACHE_MB
 import|;
 end_import
 
@@ -345,9 +387,22 @@ literal|256
 decl_stmt|;
 specifier|private
 name|int
-name|cacheSize
+name|segmentCacheSize
+init|=
+name|DEFAULT_SEGMENT_CACHE_MB
 decl_stmt|;
-comment|// 0 -> DEFAULT_MEMORY_CACHE_SIZE
+specifier|private
+name|int
+name|stringCacheSize
+init|=
+name|DEFAULT_STRING_CACHE_MB
+decl_stmt|;
+specifier|private
+name|int
+name|templateCacheSize
+init|=
+name|DEFAULT_TEMPLATE_CACHE_MB
+decl_stmt|;
 specifier|private
 name|boolean
 name|memoryMapping
@@ -784,41 +839,64 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Size of the cache in MB.      * @param cacheSize      * @return this instance      */
+comment|/**      * Size of the segment cache in MB.      * @param segmentCacheSize  None negative cache size      * @return this instance      */
 annotation|@
 name|Nonnull
 specifier|public
 name|FileStoreBuilder
-name|withCacheSize
+name|withSegmentCacheSize
 parameter_list|(
 name|int
-name|cacheSize
+name|segmentCacheSize
 parameter_list|)
 block|{
 name|this
 operator|.
-name|cacheSize
+name|segmentCacheSize
 operator|=
-name|cacheSize
+name|segmentCacheSize
 expr_stmt|;
 return|return
 name|this
 return|;
 block|}
-comment|/**      * Turn caching off      * @return this instance      */
+comment|/**      * Size of the string cache in MB.      * @param stringCacheSize  None negative cache size      * @return this instance      */
 annotation|@
 name|Nonnull
 specifier|public
 name|FileStoreBuilder
-name|withNoCache
-parameter_list|()
+name|withStringCacheSize
+parameter_list|(
+name|int
+name|stringCacheSize
+parameter_list|)
 block|{
 name|this
 operator|.
-name|cacheSize
+name|stringCacheSize
 operator|=
-operator|-
-literal|1
+name|stringCacheSize
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Size of the template cache in MB.      * @param templateCacheSize  None negative cache size      * @return this instance      */
+annotation|@
+name|Nonnull
+specifier|public
+name|FileStoreBuilder
+name|withTemplateCacheSize
+parameter_list|(
+name|int
+name|templateCacheSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|templateCacheSize
+operator|=
+name|templateCacheSize
 expr_stmt|;
 return|return
 name|this
@@ -1078,11 +1156,27 @@ name|maxFileSize
 return|;
 block|}
 name|int
-name|getCacheSize
+name|getSegmentCacheSize
 parameter_list|()
 block|{
 return|return
-name|cacheSize
+name|segmentCacheSize
+return|;
+block|}
+name|int
+name|getStringCacheSize
+parameter_list|()
+block|{
+return|return
+name|stringCacheSize
+return|;
+block|}
+name|int
+name|getTemplateCacheSize
+parameter_list|()
+block|{
+return|return
+name|templateCacheSize
 return|;
 block|}
 name|boolean
@@ -1174,9 +1268,17 @@ literal|", maxFileSize="
 operator|+
 name|maxFileSize
 operator|+
-literal|", cacheSize="
+literal|", segmentCacheSize="
 operator|+
-name|cacheSize
+name|segmentCacheSize
+operator|+
+literal|", stringCacheSize="
+operator|+
+name|stringCacheSize
+operator|+
+literal|", templateCacheSize="
+operator|+
+name|templateCacheSize
 operator|+
 literal|", memoryMapping="
 operator|+

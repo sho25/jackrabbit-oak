@@ -911,11 +911,6 @@ argument_list|(
 literal|256
 argument_list|)
 operator|.
-name|withCacheSize
-argument_list|(
-literal|64
-argument_list|)
-operator|.
 name|withMemoryMapping
 argument_list|(
 literal|false

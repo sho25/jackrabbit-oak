@@ -61,6 +61,20 @@ name|common
 operator|.
 name|cache
 operator|.
+name|RemovalCause
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
 name|Weigher
 import|;
 end_import
@@ -135,20 +149,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|cache
-operator|.
-name|RemovalCause
-import|;
-end_import
-
 begin_comment
 comment|// FIXME OAK-4474: Finalise SegmentCache: document, add monitoring, management, tests, logging
 end_comment
@@ -176,6 +176,14 @@ name|SegmentCache
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_SEGMENT_CACHE_MB
+init|=
+literal|256
 decl_stmt|;
 specifier|private
 specifier|final
