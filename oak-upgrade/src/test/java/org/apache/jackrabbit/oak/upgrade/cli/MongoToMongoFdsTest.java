@@ -146,7 +146,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|MongoToMongoFds
+name|MongoToMongoFdsTest
 extends|extends
 name|AbstractOak2OakTest
 block|{
@@ -166,7 +166,7 @@ name|NodeStoreContainer
 name|destination
 decl_stmt|;
 specifier|public
-name|MongoToMongoFds
+name|MongoToMongoFdsTest
 parameter_list|()
 throws|throws
 name|IOException
@@ -235,7 +235,7 @@ index|[]
 block|{
 literal|"--copy-binaries"
 block|,
-literal|"--fileblobstore"
+literal|"--datastore"
 block|,
 name|destinationBlob
 operator|.
