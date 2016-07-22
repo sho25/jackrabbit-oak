@@ -3961,7 +3961,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Collect reclaimable segments.      * A data segment is reclaimable iff its generation is in the {@code reclaimGeneration}      * predicate.      * A bulk segment is reclaimable if it is in {@code bulkRefs} or if it is transitively      * reachable through a non reclaimable data segment.      *      * @param bulkRefs  bulk segment gc roots      * @param reclaim   reclaimable segments      * @param reclaimGeneration  reclaim generation predicate for data segments      * @throws IOException      */
+comment|/**      * Collect reclaimable segments.      * A data segment is reclaimable iff its generation is in the {@code reclaimGeneration}      * predicate.      * A bulk segment is reclaimable if it is not in {@code bulkRefs} or if it is transitively      * reachable through a non reclaimable data segment.      *      * @param bulkRefs  bulk segment gc roots      * @param reclaim   reclaimable segments      * @param reclaimGeneration  reclaim generation predicate for data segments      * @throws IOException      */
 name|void
 name|mark
 parameter_list|(
@@ -4028,6 +4028,11 @@ name|i
 operator|--
 control|)
 block|{
+comment|// A bulk segments is *always* written before any data segment referencing it.
+comment|// Backward iteration ensures we see all references to bulk segments before
+comment|// we see the bulk segment itself. Therefore we can remove a bulk reference
+comment|// from the bulkRefs set once we encounter it, which save us some memory and
+comment|// CPU on subsequent look-ups.
 name|TarEntry
 name|entry
 init|=
@@ -4145,19 +4150,8 @@ argument_list|)
 condition|)
 block|{
 comment|// keep the extra check for bulk segments for the case where a
-comment|// pre-compiled graph is not available and getReferences also
-comment|// includes data references
-if|if
-condition|(
-operator|!
-name|reclaim
-operator|.
-name|remove
-argument_list|(
-name|id
-argument_list|)
-condition|)
-block|{
+comment|// pre-compiled graph is not available (graph == null) and
+comment|// getReferences also includes data references
 name|bulkRefs
 operator|.
 name|add
@@ -4165,7 +4159,6 @@ argument_list|(
 name|refId
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
