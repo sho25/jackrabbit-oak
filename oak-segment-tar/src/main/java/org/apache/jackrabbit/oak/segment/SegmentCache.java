@@ -129,30 +129,6 @@ name|CacheStats
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_comment
-comment|// FIXME OAK-4474: Finalise SegmentCache: document, add monitoring, management, tests, logging
-end_comment
-
 begin_comment
 comment|/**  * A cache for {@link Segment} instances by their {@link SegmentId}.  *<p>  * Conceptually this cache serves as a 2nd level cache for segments. The 1st level cache is  * implemented by memoising the segment in its id (see {@link SegmentId#segment}. Every time  * an segment is evicted from this cache the memoised segment is discarded (see  * {@link SegmentId#unloaded()}).  *<p>  * As a consequence this cache is actually only queried for segments it does not contain,  * which are then loaded through the loader passed to {@link #getSegment(SegmentId, Callable)}.  * This behaviour is eventually reflected in the cache statistics (see {@link #getCacheStats()}),  * which always reports a {@link CacheStats#getMissRate() miss rate} of 1.  */
 end_comment
@@ -162,21 +138,6 @@ specifier|public
 class|class
 name|SegmentCache
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|SegmentCache
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
