@@ -134,7 +134,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|RecordCacheTest
+name|ReaderCacheTest
 block|{
 annotation|@
 name|Test
