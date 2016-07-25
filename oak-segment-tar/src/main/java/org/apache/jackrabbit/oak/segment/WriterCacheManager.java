@@ -721,6 +721,7 @@ argument_list|)
 return|;
 block|}
 specifier|protected
+specifier|final
 name|void
 name|evictCaches
 parameter_list|(

@@ -192,7 +192,7 @@ block|{
 return|return
 name|Empty
 operator|.
-name|supplier
+name|emptyFactory
 argument_list|()
 return|;
 block|}
@@ -201,7 +201,7 @@ block|{
 return|return
 name|Default
 operator|.
-name|supplier
+name|defaultFactory
 argument_list|(
 name|size
 argument_list|)
@@ -233,7 +233,7 @@ argument_list|<
 name|T
 argument_list|>
 argument_list|>
-name|supplier
+name|emptyFactory
 parameter_list|()
 block|{
 return|return
@@ -332,7 +332,7 @@ argument_list|<
 name|T
 argument_list|>
 argument_list|>
-name|supplier
+name|defaultFactory
 parameter_list|(
 specifier|final
 name|int
@@ -420,7 +420,7 @@ block|{
 return|return
 name|size
 argument_list|()
-operator|>=
+operator|>
 name|size
 return|;
 block|}
