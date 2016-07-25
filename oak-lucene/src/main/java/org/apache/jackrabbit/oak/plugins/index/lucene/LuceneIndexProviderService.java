@@ -1356,9 +1356,6 @@ name|getClassLoader
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|initializeClasses
-argument_list|()
-expr_stmt|;
 name|whiteboard
 operator|=
 operator|new
@@ -2452,6 +2449,9 @@ name|initializeFactoryClassLoaders0
 argument_list|(
 name|classLoader
 argument_list|)
+expr_stmt|;
+name|initializeClasses
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
