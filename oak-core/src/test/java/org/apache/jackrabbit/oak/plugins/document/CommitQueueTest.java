@@ -534,7 +534,7 @@ name|r
 init|=
 name|after
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 decl_stmt|;
 name|LOG

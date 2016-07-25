@@ -532,10 +532,6 @@ specifier|final
 name|String
 name|path
 decl_stmt|;
-specifier|final
-name|RevisionVector
-name|readRevision
-decl_stmt|;
 name|RevisionVector
 name|lastRevision
 decl_stmt|;
@@ -584,7 +580,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|RevisionVector
-name|readRevision
+name|rootRevision
 parameter_list|)
 block|{
 name|this
@@ -593,7 +589,7 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|readRevision
+name|rootRevision
 argument_list|,
 literal|false
 argument_list|)
@@ -614,7 +610,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|RevisionVector
-name|readRevision
+name|rootRevision
 parameter_list|,
 name|boolean
 name|hasChildren
@@ -626,7 +622,7 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|readRevision
+name|rootRevision
 argument_list|,
 operator|new
 name|HashMap
@@ -638,8 +634,6 @@ argument_list|>
 argument_list|()
 argument_list|,
 name|hasChildren
-argument_list|,
-literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -663,7 +657,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|RevisionVector
-name|readRevision
+name|rootRevision
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -682,11 +676,6 @@ annotation|@
 name|Nullable
 name|RevisionVector
 name|lastRevision
-parameter_list|,
-annotation|@
-name|Nullable
-name|RevisionVector
-name|rootRevision
 parameter_list|,
 name|boolean
 name|fromExternalChange
@@ -712,11 +701,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|readRevision
+name|rootRevision
 operator|=
 name|checkNotNull
 argument_list|(
-name|readRevision
+name|rootRevision
 argument_list|)
 expr_stmt|;
 name|this
@@ -724,18 +713,6 @@ operator|.
 name|lastRevision
 operator|=
 name|lastRevision
-expr_stmt|;
-name|this
-operator|.
-name|rootRevision
-operator|=
-name|rootRevision
-operator|!=
-literal|null
-condition|?
-name|rootRevision
-else|:
-name|readRevision
 expr_stmt|;
 name|this
 operator|.
@@ -803,15 +780,13 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|readRevision
+name|root
 argument_list|,
 name|properties
 argument_list|,
 name|hasChildren
 argument_list|,
 name|lastRevision
-argument_list|,
-name|root
 argument_list|,
 name|externalChange
 argument_list|)
@@ -833,15 +808,13 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|readRevision
+name|rootRevision
 argument_list|,
 name|properties
 argument_list|,
 name|hasChildren
 argument_list|,
 name|lastRevision
-argument_list|,
-name|rootRevision
 argument_list|,
 literal|true
 argument_list|)
@@ -860,20 +833,7 @@ name|fromExternalChange
 return|;
 block|}
 comment|//--------------------------< AbstractDocumentNodeState>-----------------------------------
-annotation|@
-name|Override
-annotation|@
-name|Nonnull
-specifier|public
-name|RevisionVector
-name|getRevision
-parameter_list|()
-block|{
-return|return
-name|readRevision
-return|;
-block|}
-comment|/**      * Returns the root revision for this node state. This is the read revision      * passed from the parent node state. This revision therefore reflects the      * revision of the root node state where the traversal down the tree      * started. The returned revision is only maintained on a best effort basis      * and may be the same as {@link #getRevision()} if this node state is      * retrieved directly from the {@code DocumentNodeStore}.      *      * @return the revision of the root node state is available, otherwise the      *          same value as returned by {@link #getRevision()}.      */
+comment|/**      * Returns the root revision for this node state. This is the root revision      * passed from the parent node state. This revision therefore reflects the      * revision of the root node state where the traversal down the tree      * started.      *      * @return the revision of the root node state.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1287,7 +1247,8 @@ condition|)
 block|{
 if|if
 condition|(
-name|readRevision
+name|getRootRevision
+argument_list|()
 operator|.
 name|isBranch
 argument_list|()
@@ -1304,7 +1265,8 @@ argument_list|()
 operator|.
 name|getBranch
 argument_list|(
-name|readRevision
+name|getRootRevision
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1361,7 +1323,8 @@ name|IllegalStateException
 argument_list|(
 literal|"No branch for revision: "
 operator|+
-name|readRevision
+name|getRootRevision
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1372,7 +1335,8 @@ name|b
 operator|.
 name|isHead
 argument_list|(
-name|readRevision
+name|getRootRevision
+argument_list|()
 operator|.
 name|getBranchRevision
 argument_list|()
@@ -1647,12 +1611,29 @@ name|buff
 operator|.
 name|append
 argument_list|(
-literal|"readRevision: '"
+literal|"rootRevision: '"
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|readRevision
+name|rootRevision
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"', "
+argument_list|)
+expr_stmt|;
+name|buff
+operator|.
+name|append
+argument_list|(
+literal|"lastRevision: '"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|lastRevision
 argument_list|)
 operator|.
 name|append
@@ -1849,11 +1830,6 @@ name|size
 init|=
 literal|40
 comment|// shallow
-operator|+
-name|readRevision
-operator|.
-name|getMemory
-argument_list|()
 operator|+
 operator|(
 name|lastRevision
@@ -2264,7 +2240,7 @@ argument_list|)
 operator|.
 name|value
 argument_list|(
-name|readRevision
+name|rootRevision
 operator|.
 name|toString
 argument_list|()
@@ -2398,7 +2374,7 @@ init|=
 literal|null
 decl_stmt|;
 name|RevisionVector
-name|rev
+name|rootRev
 init|=
 literal|null
 decl_stmt|;
@@ -2414,8 +2390,6 @@ literal|false
 decl_stmt|;
 name|DocumentNodeState
 name|state
-init|=
-literal|null
 decl_stmt|;
 name|HashMap
 argument_list|<
@@ -2483,7 +2457,7 @@ name|k
 argument_list|)
 condition|)
 block|{
-name|rev
+name|rootRev
 operator|=
 name|RevisionVector
 operator|.
@@ -2649,7 +2623,7 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|rev
+name|rootRev
 argument_list|,
 name|hasChildren
 argument_list|)

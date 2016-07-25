@@ -715,7 +715,7 @@ name|PROP_REVISION
 argument_list|,
 name|state
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|)
 argument_list|)

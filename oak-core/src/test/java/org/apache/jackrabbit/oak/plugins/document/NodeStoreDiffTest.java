@@ -1205,7 +1205,7 @@ literal|"Root at {} ({})"
 argument_list|,
 name|dns
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|,
 name|dns

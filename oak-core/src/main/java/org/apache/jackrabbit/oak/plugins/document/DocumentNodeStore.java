@@ -2799,7 +2799,7 @@ argument_list|,
 name|getRoot
 argument_list|()
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 operator|.
 name|getRevision
@@ -7937,7 +7937,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 return|;
 block|}
@@ -11752,7 +11752,7 @@ return|return
 name|getRoot
 argument_list|()
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 operator|.
 name|toString

@@ -757,7 +757,7 @@ literal|"/"
 argument_list|,
 name|c1ns1
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|)
 expr_stmt|;

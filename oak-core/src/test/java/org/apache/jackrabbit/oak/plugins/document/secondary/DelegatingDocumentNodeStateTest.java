@@ -457,16 +457,6 @@ name|rv1
 argument_list|,
 name|state
 operator|.
-name|getRevision
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|rv1
-argument_list|,
-name|state
-operator|.
 name|getRootRevision
 argument_list|()
 argument_list|)

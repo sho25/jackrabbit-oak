@@ -185,7 +185,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|232
+literal|164
 argument_list|,
 name|state
 operator|.

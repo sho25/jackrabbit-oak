@@ -1477,7 +1477,7 @@ name|newCommit
 argument_list|(
 name|base
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|,
 name|this
@@ -1524,7 +1524,7 @@ name|c
 argument_list|,
 name|base
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 operator|.
 name|isBranch
@@ -2308,7 +2308,7 @@ name|getRoot
 argument_list|(
 name|state
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 operator|.
 name|asBranchRevision
@@ -2387,12 +2387,12 @@ name|rebase
 argument_list|(
 name|head
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|,
 name|root
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2521,7 +2521,7 @@ name|merge
 argument_list|(
 name|head
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|,
 name|info
@@ -2671,12 +2671,12 @@ name|reset
 argument_list|(
 name|branchHead
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|,
 name|ancestor
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2735,7 +2735,7 @@ name|getBranch
 argument_list|(
 name|head
 operator|.
-name|getRevision
+name|getRootRevision
 argument_list|()
 argument_list|)
 decl_stmt|;

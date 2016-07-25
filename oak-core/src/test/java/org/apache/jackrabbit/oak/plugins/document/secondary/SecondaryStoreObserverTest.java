@@ -1025,12 +1025,12 @@ name|assertEquals
 argument_list|(
 name|a
 operator|.
-name|getRevision
+name|getLastRevision
 argument_list|()
 argument_list|,
 name|b
 operator|.
-name|getRevision
+name|getLastRevision
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -224,12 +224,6 @@ function_decl|;
 specifier|public
 specifier|abstract
 name|RevisionVector
-name|getRevision
-parameter_list|()
-function_decl|;
-specifier|public
-specifier|abstract
-name|RevisionVector
 name|getLastRevision
 parameter_list|()
 function_decl|;
@@ -546,12 +540,9 @@ name|start
 argument_list|,
 literal|1
 argument_list|,
-literal|"compareAgainstBaseState, path={}, readRevision={}, lastRevision={}, base.path={}, base.readRevision={}, base.lastRevision={}"
+literal|"compareAgainstBaseState, path={}, lastRevision={}, base.path={}, base.lastRevision={}"
 argument_list|,
 name|getPath
-argument_list|()
-argument_list|,
-name|getRevision
 argument_list|()
 argument_list|,
 name|getLastRevision
@@ -560,11 +551,6 @@ argument_list|,
 name|mBase
 operator|.
 name|getPath
-argument_list|()
-argument_list|,
-name|mBase
-operator|.
-name|getRevision
 argument_list|()
 argument_list|,
 name|mBase
@@ -591,7 +577,7 @@ argument_list|)
 return|;
 block|}
 comment|//------------------------------< internal>--------------------------------
-comment|/**      * Returns {@code true} if this state has the same revision as the      * {@code other} state. This method first compares the {@link #readRevision}      * and then the {@link #lastRevision}.      *      * @param other the other state to compare with.      * @return {@code true} if the revisions are equal, {@code false} otherwise.      */
+comment|/**      * Returns {@code true} if this state has the same last revision as the      * {@code other} state.      *      * @param other the other state to compare with.      * @return {@code true} if the last revisions are equal, {@code false} otherwise.      */
 specifier|private
 name|boolean
 name|revisionEquals
@@ -603,17 +589,11 @@ block|{
 return|return
 name|this
 operator|.
-name|getRevision
+name|getLastRevision
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|other
-operator|.
-name|getRevision
-argument_list|()
-argument_list|)
-operator|||
+operator|!=
+literal|null
+operator|&&
 name|this
 operator|.
 name|getLastRevision

@@ -3319,9 +3319,12 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|,
-name|state
+name|store
 operator|.
-name|getRevision
+name|getRoot
+argument_list|()
+operator|.
+name|getLastRevision
 argument_list|()
 argument_list|)
 expr_stmt|;
