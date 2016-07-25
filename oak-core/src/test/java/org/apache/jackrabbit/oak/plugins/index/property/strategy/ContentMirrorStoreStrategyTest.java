@@ -395,8 +395,6 @@ specifier|public
 name|void
 name|testIndexPruning
 parameter_list|()
-throws|throws
-name|CommitFailedException
 block|{
 name|IndexStoreStrategy
 name|store

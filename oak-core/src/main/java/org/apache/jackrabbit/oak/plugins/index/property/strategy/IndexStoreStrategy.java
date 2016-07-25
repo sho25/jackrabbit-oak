@@ -43,22 +43,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|query
@@ -140,8 +124,6 @@ name|String
 argument_list|>
 name|afterKeys
 parameter_list|)
-throws|throws
-name|CommitFailedException
 function_decl|;
 comment|/**      * Check whether an entry for the given key exists.      *       * @param index the index      * @param key the key      * @return true if at least one entry exists      */
 name|boolean
@@ -219,10 +201,6 @@ parameter_list|,
 name|int
 name|max
 parameter_list|)
-function_decl|;
-name|String
-name|getIndexNodeName
-parameter_list|()
 function_decl|;
 block|}
 end_interface
