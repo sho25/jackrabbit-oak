@@ -80,11 +80,7 @@ comment|// implement configuration, monitoring and management
 end_comment
 
 begin_comment
-comment|// add unit tests
-end_comment
-
-begin_comment
-comment|// document, nullability
+comment|/**  * Partial mapping of keys of type {@code T} to values of type {@link RecordId}. This is  * typically used for de-duplicating values that have already been persisted and thus  * already have a {@code RecordId}.  * @param<T>  */
 end_comment
 
 begin_class
@@ -96,6 +92,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
+comment|/**      * Add a mapping from {@code key} to {@code value}. Any existing mapping is replaced.      */
 specifier|public
 specifier|abstract
 name|void
@@ -108,6 +105,7 @@ name|RecordId
 name|value
 parameter_list|)
 function_decl|;
+comment|/**      * @return  The mapping for {@code key}, or {@code null} if none.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -119,6 +117,7 @@ name|T
 name|key
 parameter_list|)
 function_decl|;
+comment|/**      * Factory method for creating {@code RecordCache} instances. The returned      * instances are all thread safe. They implement a simple LRU behaviour where      * the least recently accessed mapping would be replaced when inserting a      * new mapping would exceed {@code size}.      *      * @return  A new {@code RecordCache} instance of the given {@code size}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -162,6 +161,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * @return  A factory returning {@code RecordCache} instances of the given size when invoked.      * @see #newRecordCache(int)      */
 annotation|@
 name|Nonnull
 specifier|public
