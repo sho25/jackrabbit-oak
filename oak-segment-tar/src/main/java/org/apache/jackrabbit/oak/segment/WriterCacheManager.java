@@ -255,7 +255,8 @@ specifier|abstract
 class|class
 name|WriterCacheManager
 block|{
-specifier|private
+comment|/**      * Default size of the string cache.      * @see #getStringCache(int)      */
+specifier|public
 specifier|static
 specifier|final
 name|int
@@ -268,7 +269,8 @@ argument_list|,
 literal|15000
 argument_list|)
 decl_stmt|;
-specifier|private
+comment|/**      * Default size of the template cache.      * @see #getTemplateCache(int)      */
+specifier|public
 specifier|static
 specifier|final
 name|int
@@ -572,7 +574,7 @@ name|nodeCacheFactory
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * New instance using the default factories {@link RecordCache#factory(int)}          * and {@link NodeCache#factory(int, int)}.          */
+comment|/**          * New instance using the default factories {@link RecordCache#factory(int)}          * and {@link NodeCache#factory(int, int)} with the sizes          * {@link #DEFAULT_STRING_CACHE_SIZE} and {@link #DEFAULT_TEMPLATE_CACHE_SIZE}.          */
 specifier|public
 name|Default
 parameter_list|()
