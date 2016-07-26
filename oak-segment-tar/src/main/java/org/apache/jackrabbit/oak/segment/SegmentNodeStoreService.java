@@ -1479,7 +1479,7 @@ name|description
 operator|=
 literal|"TarMK compaction gain threshold. The gain estimation prevents compaction from running "
 operator|+
-literal|"if the provided threshold is not met. Value represents a percentage so an input beween 0 and 100 is expected."
+literal|"if the provided threshold is not met. Value represents a percentage so an input between 0 and 100 is expected."
 argument_list|)
 specifier|public
 specifier|static
