@@ -617,6 +617,11 @@ specifier|private
 name|Statistics
 name|statistics
 decl_stmt|;
+comment|/**      * Mark this buffer as dirty. A dirty buffer needs to be flushed to disk      * regularly to avoid data loss.      */
+specifier|private
+name|boolean
+name|dirty
+decl_stmt|;
 specifier|public
 name|SegmentBufferWriter
 parameter_list|(
@@ -980,6 +985,10 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+name|dirty
+operator|=
+literal|false
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -996,6 +1005,10 @@ operator|++
 index|]
 operator|=
 name|value
+expr_stmt|;
+name|dirty
+operator|=
+literal|true
 expr_stmt|;
 block|}
 specifier|public
@@ -1031,6 +1044,10 @@ operator|(
 name|byte
 operator|)
 name|value
+expr_stmt|;
+name|dirty
+operator|=
+literal|true
 expr_stmt|;
 block|}
 specifier|public
@@ -1096,6 +1113,10 @@ operator|(
 name|byte
 operator|)
 name|value
+expr_stmt|;
+name|dirty
+operator|=
+literal|true
 expr_stmt|;
 block|}
 specifier|public
@@ -1268,6 +1289,10 @@ name|statistics
 operator|.
 name|recordIdCount
 operator|++
+expr_stmt|;
+name|dirty
+operator|=
+literal|true
 expr_stmt|;
 block|}
 comment|// FIXME OAK-4287: Disable / remove SegmentBufferWriter#checkGCGeneration
@@ -1571,6 +1596,10 @@ name|position
 operator|+=
 name|length
 expr_stmt|;
+name|dirty
+operator|=
+literal|true
+expr_stmt|;
 block|}
 comment|/**      * Adds a segment header to the buffer and writes a segment to the segment      * store. This is done automatically (called from prepare) when there is not      * enough space for a record. It can also be called explicitly.      */
 annotation|@
@@ -1584,9 +1613,7 @@ name|IOException
 block|{
 if|if
 condition|(
-name|length
-operator|>
-literal|0
+name|dirty
 condition|)
 block|{
 name|int
