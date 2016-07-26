@@ -17,6 +17,16 @@ name|segment
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
+import|;
+end_import
+
 begin_comment
 comment|/**  * A consumer for references to external binaries. An implementor of this  * interface is called every time an external binary reference is written in the  * store.  */
 end_comment
@@ -26,12 +36,15 @@ specifier|public
 interface|interface
 name|BinaryReferenceConsumer
 block|{
-comment|/**      * Consume the reference to an external binary.      *      * @param generation      The generation of the record referencing the      *                        binary.      * @param binaryReference The opaque string representation of the binary      *                        reference.      */
+comment|/**      * Consume the reference to an external binary.      *      * @param generation      The generation of the record referencing the      *                        binary.      * @param segmentId       The ID of the segment this reference belongs to.      * @param binaryReference The opaque string representation of the binary      *                        reference.      */
 name|void
 name|consume
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|UUID
+name|segmentId
 parameter_list|,
 name|String
 name|binaryReference

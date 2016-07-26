@@ -4144,6 +4144,11 @@ operator|.
 name|getGeneration
 argument_list|()
 argument_list|,
+name|recordId
+operator|.
+name|asUUID
+argument_list|()
+argument_list|,
 name|blobId
 argument_list|)
 expr_stmt|;

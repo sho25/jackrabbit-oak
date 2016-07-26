@@ -17,6 +17,16 @@ name|segment
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility methods to work with {@link BinaryReferenceConsumer} instances.  */
 end_comment
@@ -46,6 +56,9 @@ name|consume
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|UUID
+name|segmentId
 parameter_list|,
 name|String
 name|binaryReference

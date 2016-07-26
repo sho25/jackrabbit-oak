@@ -952,6 +952,17 @@ argument_list|(
 literal|"target"
 argument_list|)
 argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|delete
+parameter_list|()
+block|{
+comment|// Do nothing
+block|}
+block|}
 decl_stmt|;
 annotation|@
 name|BeforeClass
@@ -3132,6 +3143,19 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|records
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|expected

@@ -1566,6 +1566,9 @@ parameter_list|(
 name|int
 name|generation
 parameter_list|,
+name|UUID
+name|segmentId
+parameter_list|,
 name|String
 name|binaryReference
 parameter_list|)
@@ -1585,6 +1588,8 @@ operator|.
 name|addBinaryReference
 argument_list|(
 name|generation
+argument_list|,
+name|segmentId
 argument_list|,
 name|binaryReference
 argument_list|)
@@ -6753,6 +6758,15 @@ argument_list|(
 name|writeFile
 argument_list|,
 name|stats
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"New TAR writer {}"
+argument_list|,
+name|tarWriter
 argument_list|)
 expr_stmt|;
 block|}
