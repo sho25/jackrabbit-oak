@@ -246,7 +246,7 @@ comment|// implement configuration, monitoring and management
 end_comment
 
 begin_comment
-comment|// document
+comment|/**  * Instances of this class manage the deduplication caches used  * by the {@link SegmentWriter} to avoid writing multiple copies  * of the same record. The caches are striped into generations  * with one generation per gc cycle. This avoids records old  * generations being reused.  */
 end_comment
 
 begin_class
@@ -281,6 +281,7 @@ argument_list|,
 literal|3000
 argument_list|)
 decl_stmt|;
+comment|/**      * @param generation      * @return  cache for string records of the given {@code generation}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -295,6 +296,7 @@ name|int
 name|generation
 parameter_list|)
 function_decl|;
+comment|/**      * @param generation      * @return  cache for template records of the given {@code generation}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -309,6 +311,7 @@ name|int
 name|generation
 parameter_list|)
 function_decl|;
+comment|/**      * @param generation      * @return  cache for node records of the given {@code generation}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -344,6 +347,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * This implementation of {@link WriterCacheManager} returns empty caches      * of size 0.      * @see #INSTANCE      */
 specifier|public
 specifier|static
 class|class
@@ -351,6 +355,7 @@ name|Empty
 extends|extends
 name|WriterCacheManager
 block|{
+comment|/**          * Singleton instance of {@link Empty}          */
 specifier|public
 specifier|static
 specifier|final
@@ -405,6 +410,7 @@ specifier|private
 name|Empty
 parameter_list|()
 block|{}
+comment|/**          * @return  empty cache of size 0          */
 annotation|@
 name|Override
 specifier|public
@@ -422,6 +428,7 @@ return|return
 name|stringCache
 return|;
 block|}
+comment|/**          * @return  empty cache of size 0          */
 annotation|@
 name|Override
 specifier|public
@@ -439,6 +446,7 @@ return|return
 name|templateCache
 return|;
 block|}
+comment|/**          * @return  empty cache of size 0          */
 annotation|@
 name|Override
 specifier|public
@@ -454,6 +462,7 @@ name|nodeCache
 return|;
 block|}
 block|}
+comment|/**      * This implementation of {@link WriterCacheManager} returns      * {@link RecordCache} instances for the string and template cache      * and {@link NodeCache} instances for the node cache.      */
 specifier|public
 specifier|static
 class|class
@@ -494,6 +503,7 @@ name|NodeCache
 argument_list|>
 name|nodeCaches
 decl_stmt|;
+comment|/**          * New instance using the passed factories for creating cache instances.          * The factories will be invoked exactly once when a generation of a          * cache is requested that has not been requested before.          *          * @param stringCacheFactory       factory for the string cache          * @param templateCacheFactory     factory for the template cache          * @param nodeCacheFactory         factory for the node cache          */
 specifier|public
 name|Default
 parameter_list|(
@@ -562,6 +572,7 @@ name|nodeCacheFactory
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**          * New instance using the default factories {@link RecordCache#factory(int)}          * and {@link NodeCache#factory(int, int)}.          */
 specifier|public
 name|Default
 parameter_list|()
@@ -1099,6 +1110,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**          * Remove all cache generations matching the passed {@code generations} predicate.          * @param generations          */
 specifier|protected
 specifier|final
 name|void
