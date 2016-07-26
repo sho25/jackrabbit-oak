@@ -246,10 +246,6 @@ comment|// implement configuration, monitoring and management
 end_comment
 
 begin_comment
-comment|// add unit tests
-end_comment
-
-begin_comment
 comment|// document
 end_comment
 
