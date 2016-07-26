@@ -942,27 +942,6 @@ name|Rule
 specifier|public
 name|TemporaryFolder
 name|folder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|(
-operator|new
-name|File
-argument_list|(
-literal|"target"
-argument_list|)
-argument_list|)
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|delete
-parameter_list|()
-block|{
-comment|// Do nothing
-block|}
-block|}
 decl_stmt|;
 annotation|@
 name|BeforeClass

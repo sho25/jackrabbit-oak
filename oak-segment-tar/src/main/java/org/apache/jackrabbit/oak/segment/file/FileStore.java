@@ -6760,15 +6760,6 @@ argument_list|,
 name|stats
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"New TAR writer {}"
-argument_list|,
-name|tarWriter
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 comment|/**      * @return  the external BlobStore (if configured) with this store, {@code null} otherwise.      */
