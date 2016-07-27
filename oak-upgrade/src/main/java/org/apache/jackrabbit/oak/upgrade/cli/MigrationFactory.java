@@ -860,6 +860,16 @@ name|isSkipInitialization
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|sidegrade
+operator|.
+name|setIncludeIndex
+argument_list|(
+name|options
+operator|.
+name|isIncludeIndex
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|sidegrade
 return|;

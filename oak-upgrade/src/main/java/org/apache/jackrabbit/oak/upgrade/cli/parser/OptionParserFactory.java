@@ -256,6 +256,14 @@ literal|"skip-name-check"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|String
+name|INCLUDE_INDEX
+init|=
+literal|"include-index"
+decl_stmt|;
+specifier|public
+specifier|static
 name|OptionParser
 name|create
 parameter_list|()
@@ -660,6 +668,19 @@ argument_list|(
 name|String
 operator|.
 name|class
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|INCLUDE_INDEX
+argument_list|,
+literal|"Copy index data for paths specified in the "
+operator|+
+name|INCLUDE_PATHS
+operator|+
+literal|" option"
 argument_list|)
 expr_stmt|;
 block|}
