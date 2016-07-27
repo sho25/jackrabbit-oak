@@ -1966,6 +1966,9 @@ name|definition
 parameter_list|,
 name|Directory
 name|remote
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -1982,6 +1985,8 @@ argument_list|,
 name|definition
 argument_list|,
 name|remote
+argument_list|,
+name|dirName
 argument_list|)
 decl_stmt|;
 name|corDir
@@ -2009,6 +2014,9 @@ name|remote
 parameter_list|,
 name|boolean
 name|reindexMode
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -2025,6 +2033,8 @@ argument_list|,
 name|remote
 argument_list|,
 name|reindexMode
+argument_list|,
+name|dirName
 argument_list|)
 decl_stmt|;
 name|cowDir

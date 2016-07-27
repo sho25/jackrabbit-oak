@@ -165,11 +165,6 @@ name|PERSISTENCE_PATH
 init|=
 literal|"path"
 decl_stmt|;
-name|String
-name|INDEX_DATA_CHILD_NAME_FS
-init|=
-literal|"data"
-decl_stmt|;
 comment|/**      * Experimental flag to control storage behavior: 'null' or 'true' means the content is stored      */
 name|String
 name|EXPERIMENTAL_STORAGE

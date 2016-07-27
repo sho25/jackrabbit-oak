@@ -496,6 +496,9 @@ name|definition
 parameter_list|,
 name|String
 name|indexPath
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -659,7 +662,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//Create index folder under that
-comment|//TODO Add support for multiple folders depending on type of content
 name|File
 name|indexFolder
 init|=
@@ -668,7 +670,10 @@ name|File
 argument_list|(
 name|baseFolder
 argument_list|,
-literal|"default"
+name|getFSSafeName
+argument_list|(
+name|dirName
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -1065,13 +1070,9 @@ name|result
 operator|.
 name|add
 argument_list|(
-name|e
-operator|.
-name|replaceAll
+name|getFSSafeName
 argument_list|(
-literal|"\\W"
-argument_list|,
-literal|""
+name|e
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1664,6 +1665,26 @@ argument_list|(
 name|indexRootDir
 argument_list|,
 name|subDir
+argument_list|)
+return|;
+block|}
+specifier|private
+specifier|static
+name|String
+name|getFSSafeName
+parameter_list|(
+name|String
+name|e
+parameter_list|)
+block|{
+return|return
+name|e
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\W"
+argument_list|,
+literal|""
 argument_list|)
 return|;
 block|}

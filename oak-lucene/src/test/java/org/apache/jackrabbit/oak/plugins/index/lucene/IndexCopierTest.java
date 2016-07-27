@@ -263,20 +263,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|StandardSystemProperty
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|Lists
@@ -649,6 +635,28 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|LuceneIndexConstants
+operator|.
+name|INDEX_DATA_CHILD_NAME
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|nodetype
 operator|.
 name|write
@@ -925,6 +933,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -1162,6 +1172,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1338,6 +1350,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 try|try
@@ -1431,6 +1445,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -1535,6 +1551,8 @@ argument_list|(
 name|defn
 argument_list|,
 literal|"/foo"
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -1625,6 +1643,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -1678,6 +1698,8 @@ argument_list|(
 name|defn
 argument_list|,
 name|indexPath
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -1731,6 +1753,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|readAndAssert
@@ -1768,6 +1792,8 @@ argument_list|(
 name|defn
 argument_list|,
 name|indexPath
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -1875,6 +1901,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -2228,6 +2256,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -2482,6 +2512,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -2530,6 +2562,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|remote
@@ -2572,6 +2606,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|remote
@@ -2704,6 +2740,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -2843,6 +2881,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|r1
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|readAndAssert
@@ -2917,6 +2957,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|r2
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 comment|//Close would trigger removal of file which are not present in remote
@@ -3090,6 +3132,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|r1
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|readAndAssert
@@ -3164,6 +3208,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|r2
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 comment|//Close would trigger removal of file which are not present in remote
@@ -3262,6 +3308,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|r2
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|w3
@@ -3297,6 +3345,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|r2
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|w4
@@ -3395,6 +3445,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote1
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|readAndAssert
@@ -3437,6 +3489,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote2
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|readAndAssert
@@ -3520,6 +3574,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -3630,6 +3686,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -3668,6 +3726,8 @@ argument_list|(
 name|defn
 argument_list|,
 literal|"foo"
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|List
@@ -3813,6 +3873,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -4127,6 +4189,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -4171,6 +4235,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|readAndAssert
@@ -4463,6 +4529,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 comment|//Read should be served from remote
@@ -4516,6 +4584,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|readAndAssert
@@ -4643,6 +4713,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -4966,6 +5038,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -5344,6 +5418,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|toFail
@@ -5547,6 +5623,8 @@ argument_list|,
 name|remote
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|toPause
@@ -5826,6 +5904,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|readAndAssert
@@ -5916,6 +5996,8 @@ argument_list|,
 name|remote2
 argument_list|,
 literal|false
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|byte
@@ -5950,6 +6032,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|remote
+argument_list|,
+name|INDEX_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 comment|//Ensure that deletion task submitted to executor get processed immediately
@@ -6370,6 +6454,9 @@ name|indexPath
 parameter_list|,
 name|IndexDefinition
 name|definition
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -6386,6 +6473,9 @@ name|createLocalDirForIndexWriter
 parameter_list|(
 name|IndexDefinition
 name|definition
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException

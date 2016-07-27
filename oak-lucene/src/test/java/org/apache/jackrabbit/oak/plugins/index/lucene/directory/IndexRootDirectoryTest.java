@@ -352,6 +352,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -386,6 +388,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|File
@@ -399,6 +403,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 comment|//Both should be same dir
@@ -452,6 +458,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|File
@@ -465,6 +473,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -502,6 +512,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|LuceneIndexEditorContext
@@ -523,6 +535,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|assertNotEquals
@@ -608,6 +622,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|LuceneIndexEditorContext
@@ -629,6 +645,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|LuceneIndexEditorContext
@@ -649,6 +667,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|LuceneIndexEditorContext
@@ -670,6 +690,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/b"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|List
@@ -927,6 +949,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|configureUniqueId
@@ -943,6 +967,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|configureUniqueId
@@ -959,6 +985,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|List
@@ -1016,6 +1044,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1154,6 +1184,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|configureUniqueId
@@ -1170,6 +1202,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|configureUniqueId
@@ -1186,6 +1220,8 @@ name|getDefn
 argument_list|()
 argument_list|,
 literal|"/a"
+argument_list|,
+literal|"default"
 argument_list|)
 decl_stmt|;
 name|assertEquals

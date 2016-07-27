@@ -1203,6 +1203,9 @@ name|definition
 parameter_list|,
 name|Directory
 name|remote
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -1215,6 +1218,8 @@ argument_list|(
 name|indexPath
 argument_list|,
 name|definition
+argument_list|,
+name|dirName
 argument_list|)
 decl_stmt|;
 return|return
@@ -1248,6 +1253,9 @@ name|remote
 parameter_list|,
 name|boolean
 name|reindexMode
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -1258,6 +1266,8 @@ init|=
 name|createLocalDirForIndexWriter
 argument_list|(
 name|definition
+argument_list|,
+name|dirName
 argument_list|)
 decl_stmt|;
 return|return
@@ -1323,6 +1333,9 @@ name|createLocalDirForIndexWriter
 parameter_list|(
 name|IndexDefinition
 name|definition
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -1343,6 +1356,8 @@ argument_list|(
 name|definition
 argument_list|,
 name|indexPath
+argument_list|,
+name|dirName
 argument_list|)
 decl_stmt|;
 comment|//By design indexing in Oak is single threaded so Lucene locking
@@ -1384,6 +1399,9 @@ name|indexPath
 parameter_list|,
 name|IndexDefinition
 name|definition
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -1396,6 +1414,8 @@ argument_list|(
 name|definition
 argument_list|,
 name|indexPath
+argument_list|,
+name|dirName
 argument_list|)
 decl_stmt|;
 name|Directory
@@ -1472,6 +1492,9 @@ name|definition
 parameter_list|,
 name|String
 name|indexPath
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -1484,6 +1507,8 @@ argument_list|(
 name|definition
 argument_list|,
 name|indexPath
+argument_list|,
+name|dirName
 argument_list|)
 return|;
 block|}
