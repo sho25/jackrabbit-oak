@@ -983,6 +983,21 @@ name|getTemplateCacheStats
 argument_list|()
 return|;
 block|}
+comment|/**      * @return  Statistics for the node deduplication cache or {@code null} if not available.      */
+annotation|@
+name|CheckForNull
+specifier|public
+name|CacheStatsMBean
+name|getNodeCacheStats
+parameter_list|()
+block|{
+return|return
+name|cacheManager
+operator|.
+name|getNodeCacheStats
+argument_list|()
+return|;
+block|}
 comment|/**      * Write a map record.      * @param base      base map relative to which the {@code changes} are applied ot      *                  {@code null} for the empty map.      * @param changes   the changed mapping to apply to the {@code base} map.      * @return          the map record written      * @throws IOException      */
 annotation|@
 name|Nonnull

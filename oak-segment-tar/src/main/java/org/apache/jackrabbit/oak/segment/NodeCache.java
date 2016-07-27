@@ -141,6 +141,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
+name|CacheStats
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -164,7 +178,7 @@ comment|// FIXME OAK-4277: Finalise de-duplication caches
 end_comment
 
 begin_comment
-comment|// implement configuration, monitoring and management
+comment|// implement configuration
 end_comment
 
 begin_comment
@@ -181,6 +195,22 @@ specifier|abstract
 class|class
 name|NodeCache
 block|{
+specifier|private
+name|long
+name|hitCount
+decl_stmt|;
+specifier|private
+name|long
+name|missCount
+decl_stmt|;
+specifier|private
+name|long
+name|loadCount
+decl_stmt|;
+specifier|private
+name|long
+name|evictionCount
+decl_stmt|;
 specifier|public
 specifier|abstract
 name|void
@@ -207,6 +237,37 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
+comment|/**      * @return number of mappings      */
+specifier|public
+specifier|abstract
+name|long
+name|size
+parameter_list|()
+function_decl|;
+comment|/**      * @return  access statistics for this cache      */
+specifier|public
+name|CacheStats
+name|getStats
+parameter_list|()
+block|{
+return|return
+operator|new
+name|CacheStats
+argument_list|(
+name|hitCount
+argument_list|,
+name|missCount
+argument_list|,
+name|loadCount
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+name|evictionCount
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Nonnull
 specifier|public
@@ -370,8 +431,24 @@ name|String
 name|key
 parameter_list|)
 block|{
+name|super
+operator|.
+name|missCount
+operator|++
+expr_stmt|;
 return|return
 literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|size
+parameter_list|()
+block|{
+return|return
+literal|0
 return|;
 block|}
 block|}
@@ -413,7 +490,7 @@ argument_list|,
 name|RecordId
 argument_list|>
 argument_list|>
-name|nodes
+name|caches
 decl_stmt|;
 specifier|private
 name|int
@@ -508,7 +585,7 @@ name|capacity
 expr_stmt|;
 name|this
 operator|.
-name|nodes
+name|caches
 operator|=
 name|newArrayList
 argument_list|()
@@ -528,7 +605,7 @@ name|k
 operator|++
 control|)
 block|{
-name|nodes
+name|caches
 operator|.
 name|add
 argument_list|(
@@ -561,11 +638,6 @@ name|int
 name|depth
 parameter_list|)
 block|{
-comment|// FIXME OAK-4277: Finalise de-duplication caches
-comment|// Validate and optimise the eviction strategy.
-comment|// Nodes with many children should probably get a boost to
-comment|// protecting them from preemptive eviction. Also it might be
-comment|// necessary to implement pinning (e.g. for checkpoints).
 while|while
 condition|(
 name|size
@@ -576,7 +648,7 @@ block|{
 name|int
 name|d
 init|=
-name|nodes
+name|caches
 operator|.
 name|size
 argument_list|()
@@ -586,7 +658,7 @@ decl_stmt|;
 name|int
 name|removed
 init|=
-name|nodes
+name|caches
 operator|.
 name|remove
 argument_list|(
@@ -597,6 +669,12 @@ name|size
 argument_list|()
 decl_stmt|;
 name|size
+operator|-=
+name|removed
+expr_stmt|;
+name|super
+operator|.
+name|evictionCount
 operator|-=
 name|removed
 expr_stmt|;
@@ -632,7 +710,7 @@ if|if
 condition|(
 name|depth
 operator|<
-name|nodes
+name|caches
 operator|.
 name|size
 argument_list|()
@@ -640,7 +718,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|nodes
+name|caches
 operator|.
 name|get
 argument_list|(
@@ -657,6 +735,11 @@ operator|==
 literal|null
 condition|)
 block|{
+name|super
+operator|.
+name|loadCount
+operator|++
+expr_stmt|;
 name|size
 operator|++
 expr_stmt|;
@@ -686,7 +769,7 @@ name|value
 argument_list|,
 name|depth
 argument_list|,
-name|nodes
+name|caches
 operator|.
 name|size
 argument_list|()
@@ -714,15 +797,15 @@ name|String
 argument_list|,
 name|RecordId
 argument_list|>
-name|map
+name|cache
 range|:
-name|nodes
+name|caches
 control|)
 block|{
 if|if
 condition|(
 operator|!
-name|map
+name|cache
 operator|.
 name|isEmpty
 argument_list|()
@@ -731,7 +814,7 @@ block|{
 name|RecordId
 name|recordId
 init|=
-name|map
+name|cache
 operator|.
 name|get
 argument_list|(
@@ -745,14 +828,62 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|super
+operator|.
+name|hitCount
+operator|++
+expr_stmt|;
 return|return
 name|recordId
 return|;
 block|}
 block|}
 block|}
+name|super
+operator|.
+name|missCount
+operator|++
+expr_stmt|;
 return|return
 literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+specifier|synchronized
+name|long
+name|size
+parameter_list|()
+block|{
+name|long
+name|size
+init|=
+literal|0
+decl_stmt|;
+for|for
+control|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|RecordId
+argument_list|>
+name|cache
+range|:
+name|caches
+control|)
+block|{
+name|size
+operator|+=
+name|cache
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|size
 return|;
 block|}
 block|}
