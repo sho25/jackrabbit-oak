@@ -1390,6 +1390,14 @@ literal|", templateCacheSize="
 operator|+
 name|templateCacheSize
 operator|+
+literal|", stringDeduplicationCacheSize="
+operator|+
+name|stringDeduplicationCacheSize
+operator|+
+literal|", templateDeduplicationCacheSize="
+operator|+
+name|templateDeduplicationCacheSize
+operator|+
 literal|", memoryMapping="
 operator|+
 name|memoryMapping
