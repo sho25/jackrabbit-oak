@@ -1300,6 +1300,14 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|String
+name|DEFAULT_JOURNAL_CACHE
+init|=
+literal|""
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|int
 name|DEFAULT_CACHE_SEGMENT_COUNT
 init|=
@@ -1635,6 +1643,31 @@ name|String
 name|PROP_PERSISTENT_CACHE
 init|=
 literal|"persistentCache"
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|value
+operator|=
+name|DEFAULT_JOURNAL_CACHE
+argument_list|,
+name|label
+operator|=
+literal|"Journal Cache Config"
+argument_list|,
+name|description
+operator|=
+literal|"Configuration for enabling journal cache. By default it is not enabled. Refer to "
+operator|+
+literal|"http://jackrabbit.apache.org/oak/docs/nodestore/persistent-cache.html for various options"
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PROP_JOURNAL_CACHE
+init|=
+literal|"journalCache"
 decl_stmt|;
 annotation|@
 name|Property
@@ -2608,6 +2641,21 @@ argument_list|,
 name|DEFAULT_PERSISTENT_CACHE
 argument_list|)
 decl_stmt|;
+name|String
+name|journalCache
+init|=
+name|PropertiesUtil
+operator|.
+name|toString
+argument_list|(
+name|prop
+argument_list|(
+name|PROP_JOURNAL_CACHE
+argument_list|)
+argument_list|,
+name|DEFAULT_JOURNAL_CACHE
+argument_list|)
+decl_stmt|;
 name|int
 name|cacheSegmentCount
 init|=
@@ -2804,6 +2852,28 @@ name|persistentCache
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|journalCache
+operator|!=
+literal|null
+operator|&&
+name|journalCache
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|mkBuilder
+operator|.
+name|setJournalCache
+argument_list|(
+name|journalCache
+argument_list|)
+expr_stmt|;
+block|}
 name|boolean
 name|wrappingCustomBlobStore
 init|=
@@ -2963,7 +3033,7 @@ name|info
 argument_list|(
 literal|"Starting DocumentNodeStore with host={}, db={}, cache size (MB)={}, persistentCache={}, "
 operator|+
-literal|"blobCacheSize (MB)={}, maxReplicationLagInSecs={}"
+literal|"journalCache={}, blobCacheSize (MB)={}, maxReplicationLagInSecs={}"
 argument_list|,
 name|mongoURI
 operator|.
@@ -2975,6 +3045,8 @@ argument_list|,
 name|cacheSize
 argument_list|,
 name|persistentCache
+argument_list|,
+name|journalCache
 argument_list|,
 name|blobCacheSize
 argument_list|,
