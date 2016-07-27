@@ -141,7 +141,7 @@ name|md
 operator|.
 name|isMounted
 argument_list|(
-literal|"/x/y/oak:foo/a"
+literal|"/x/y/oak:mount-foo/a"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -293,7 +293,7 @@ name|this
 operator|.
 name|pathFragmentName
 operator|=
-literal|"oak:"
+literal|"oak:mount-"
 operator|+
 name|name
 expr_stmt|;

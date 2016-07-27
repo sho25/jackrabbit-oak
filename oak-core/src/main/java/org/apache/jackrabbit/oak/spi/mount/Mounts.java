@@ -256,7 +256,7 @@ name|getPathFragmentName
 parameter_list|()
 block|{
 return|return
-literal|"oak:"
+literal|""
 return|;
 block|}
 annotation|@
@@ -334,7 +334,6 @@ literal|true
 return|;
 block|}
 block|}
-empty_stmt|;
 specifier|public
 specifier|static
 name|MountInfoProvider
