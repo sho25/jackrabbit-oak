@@ -182,10 +182,6 @@ comment|// implement configuration
 end_comment
 
 begin_comment
-comment|// add unit tests
-end_comment
-
-begin_comment
 comment|// document, nullability
 end_comment
 
