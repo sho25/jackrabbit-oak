@@ -174,14 +174,6 @@ import|;
 end_import
 
 begin_comment
-comment|// FIXME OAK-4277: Finalise de-duplication caches
-end_comment
-
-begin_comment
-comment|// implement configuration
-end_comment
-
-begin_comment
 comment|/**  * Partial mapping of string keys to values of type {@link RecordId}. This is  * typically used for de-duplicating nodes that have already been persisted and thus  * already have a {@code RecordId}.  */
 end_comment
 

@@ -238,14 +238,6 @@ import|;
 end_import
 
 begin_comment
-comment|// FIXME OAK-4277: Finalise de-duplication caches
-end_comment
-
-begin_comment
-comment|// implement configuration
-end_comment
-
-begin_comment
 comment|/**  * Instances of this class manage the deduplication caches used  * by the {@link SegmentWriter} to avoid writing multiple copies  * of the same record. The caches are striped into generations  * with one generation per gc cycle. This avoids records old  * generations being reused.  */
 end_comment
 
@@ -281,6 +273,34 @@ argument_list|(
 literal|"oak.tar.templatesCacheSize"
 argument_list|,
 literal|3000
+argument_list|)
+decl_stmt|;
+comment|/**      * Default capacity of the node cache.      * @see #getNodeCache(int)      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_NODE_CACHE_CAPACITY
+init|=
+name|getInteger
+argument_list|(
+literal|"oak.tar.nodeCacheCapacity"
+argument_list|,
+literal|1000000
+argument_list|)
+decl_stmt|;
+comment|/**      * Default maximal depth of the node cache.      * @see #getNodeCache(int)      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_NODE_CACHE_DEPTH
+init|=
+name|getInteger
+argument_list|(
+literal|"oak.tar.nodeCacheDepth"
+argument_list|,
+literal|20
 argument_list|)
 decl_stmt|;
 comment|/**      * @param generation      * @return  cache for string records of the given {@code generation}.      */
@@ -617,9 +637,9 @@ name|NodeCache
 operator|.
 name|factory
 argument_list|(
-literal|1000000
+name|DEFAULT_NODE_CACHE_CAPACITY
 argument_list|,
-literal|20
+name|DEFAULT_NODE_CACHE_DEPTH
 argument_list|)
 argument_list|)
 expr_stmt|;

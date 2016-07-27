@@ -1470,7 +1470,7 @@ literal|15000
 argument_list|,
 name|label
 operator|=
-literal|"String deduplication cache size"
+literal|"String deduplication cache size (#items)"
 argument_list|,
 name|description
 operator|=
@@ -1493,7 +1493,7 @@ literal|3000
 argument_list|,
 name|label
 operator|=
-literal|"Template deduplication cache size"
+literal|"Template deduplication cache size (#items)"
 argument_list|,
 name|description
 operator|=
@@ -1506,6 +1506,52 @@ name|String
 name|TEMPLATE_DEDUPLICATION_CACHE_SIZE
 init|=
 literal|"templateDeduplicationCache.size"
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|intValue
+operator|=
+literal|10000000
+argument_list|,
+name|label
+operator|=
+literal|"Node deduplication cache size  (#items)"
+argument_list|,
+name|description
+operator|=
+literal|"Maximum number of nodes to keep in the deduplication cache"
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NODE_DEDUPLICATION_CACHE_SIZE
+init|=
+literal|"nodeDeduplicationCache.size"
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|intValue
+operator|=
+literal|20
+argument_list|,
+name|label
+operator|=
+literal|"Node deduplication cache depth  (#levels)"
+argument_list|,
+name|description
+operator|=
+literal|"Maximum number of levels to keep in the node deduplication cache"
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NODE_DEDUPLICATION_CACHE_DEPTH
+init|=
+literal|"nodeDeduplicationCache.depth"
 decl_stmt|;
 annotation|@
 name|Property
@@ -2233,6 +2279,18 @@ operator|.
 name|withTemplateDeduplicationCacheSize
 argument_list|(
 name|getTemplateDeduplicationCacheSize
+argument_list|()
+argument_list|)
+operator|.
+name|withNodeDeduplicationCacheSize
+argument_list|(
+name|getNodeDeduplicationCacheSize
+argument_list|()
+argument_list|)
+operator|.
+name|withNodeDeduplicationDepth
+argument_list|(
+name|getNodeDeduplicationDepth
 argument_list|()
 argument_list|)
 operator|.
@@ -3462,6 +3520,40 @@ argument_list|(
 name|getCacheSize
 argument_list|(
 name|TEMPLATE_DEDUPLICATION_CACHE_SIZE
+argument_list|)
+argument_list|)
+return|;
+block|}
+specifier|private
+name|int
+name|getNodeDeduplicationCacheSize
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|getCacheSize
+argument_list|(
+name|NODE_DEDUPLICATION_CACHE_SIZE
+argument_list|)
+argument_list|)
+return|;
+block|}
+specifier|private
+name|int
+name|getNodeDeduplicationDepth
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|getCacheSize
+argument_list|(
+name|NODE_DEDUPLICATION_CACHE_DEPTH
 argument_list|)
 argument_list|)
 return|;
