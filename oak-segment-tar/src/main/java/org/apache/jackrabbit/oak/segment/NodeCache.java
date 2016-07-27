@@ -182,7 +182,7 @@ comment|// implement configuration
 end_comment
 
 begin_comment
-comment|// document, nullability
+comment|/**  * Partial mapping of string keys to values of type {@link RecordId}. This is  * typically used for de-duplicating nodes that have already been persisted and thus  * already have a {@code RecordId}.  */
 end_comment
 
 begin_class
@@ -207,14 +207,19 @@ specifier|private
 name|long
 name|evictionCount
 decl_stmt|;
+comment|/**      * Add a mapping from {@code key} to {@code value} where {@code value} is the      * id of a node at the given {@code depth}. Any existing mapping is replaced.      */
 specifier|public
 specifier|abstract
 name|void
 name|put
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|,
+annotation|@
+name|Nonnull
 name|RecordId
 name|value
 parameter_list|,
@@ -222,6 +227,7 @@ name|int
 name|depth
 parameter_list|)
 function_decl|;
+comment|/**      * @return  The mapping for {@code key}, or {@code null} if none.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -229,6 +235,8 @@ specifier|abstract
 name|RecordId
 name|get
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|)
@@ -241,6 +249,8 @@ name|size
 parameter_list|()
 function_decl|;
 comment|/**      * @return  access statistics for this cache      */
+annotation|@
+name|Nonnull
 specifier|public
 name|CacheStats
 name|getStats
@@ -264,6 +274,7 @@ name|evictionCount
 argument_list|)
 return|;
 block|}
+comment|/**      * Factory method for creating {@code NodeCache} instances with a given      * {@code capacity} and maximal depth. The returned instances are all      * thread safe.      *      * Mappings with a depth exceeding {@code maxDepth} will not be added.      *      * If the number of mappings exceed {@code capacity} the maximal depth      * is decreased and all mappings exceeding that new value are removed.      *      * @param capacity   maximal number of mappings      * @param maxDepth   maximal depth      * @return  A new {@code RecordCache} instance of the given {@code size}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -308,6 +319,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * @return  A factory returning {@code Node} instances of the given      *          {@code capacity} and {@code maxDepth} when invoked.      * @see #newNodeCache(int, int)      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -406,9 +418,13 @@ specifier|synchronized
 name|void
 name|put
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|,
+annotation|@
+name|Nonnull
 name|RecordId
 name|value
 parameter_list|,
@@ -423,6 +439,8 @@ specifier|synchronized
 name|RecordId
 name|get
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|)
@@ -624,9 +642,13 @@ specifier|synchronized
 name|void
 name|put
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|,
+annotation|@
+name|Nonnull
 name|RecordId
 name|value
 parameter_list|,
@@ -781,6 +803,8 @@ specifier|synchronized
 name|RecordId
 name|get
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|)

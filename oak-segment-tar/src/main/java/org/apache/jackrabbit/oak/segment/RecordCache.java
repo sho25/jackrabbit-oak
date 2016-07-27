@@ -220,7 +220,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * @return  A factory returning {@code RecordCache} instances of the given size when invoked.      * @see #newRecordCache(int)      */
+comment|/**      * @return  A factory returning {@code RecordCache} instances of the given {@code size}      *          when invoked.      * @see #newRecordCache(int)      */
 annotation|@
 name|Nonnull
 specifier|public
