@@ -5054,6 +5054,15 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Exception while loading pre-compiled tar graph"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
@@ -5120,6 +5129,15 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Exception while loading binary reference"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
