@@ -3115,8 +3115,8 @@ parameter_list|(
 name|boolean
 name|isUpdate
 parameter_list|,
-name|String
-name|opName
+name|Object
+name|operation
 parameter_list|)
 block|{
 if|if
@@ -3155,7 +3155,10 @@ name|log
 argument_list|,
 literal|"Attempted to perform "
 operator|+
-name|opName
+name|operation
+operator|.
+name|toString
+argument_list|()
 operator|+
 literal|" while thread "
 operator|+
@@ -3186,7 +3189,10 @@ name|debug
 argument_list|(
 literal|"Attempted to perform "
 operator|+
-name|opName
+name|operation
+operator|.
+name|toString
+argument_list|()
 operator|+
 literal|" while thread "
 operator|+
@@ -3300,9 +3306,6 @@ name|isUpdate
 argument_list|()
 argument_list|,
 name|sessionOperation
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
