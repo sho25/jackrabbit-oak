@@ -52,6 +52,10 @@ import|;
 end_import
 
 begin_comment
+comment|// FIXME OAK-4618: Align GCMonitorMBean MBean with new generation based GC
+end_comment
+
+begin_comment
 comment|/**  * MBean for monitoring the revision garbage collection process of the  * {@link FileStore}.  */
 end_comment
 

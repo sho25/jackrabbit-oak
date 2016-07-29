@@ -166,6 +166,10 @@ import|;
 end_import
 
 begin_comment
+comment|// FIXME OAK-4619: Unify RecordCacheStats and CacheStats
+end_comment
+
+begin_comment
 comment|/**  * Statistics for {@link RecordCache}.  */
 end_comment
 

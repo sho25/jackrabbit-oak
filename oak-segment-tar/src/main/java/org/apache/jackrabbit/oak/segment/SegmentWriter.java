@@ -1823,6 +1823,7 @@ condition|(
 name|isCompaction
 condition|)
 block|{
+comment|// FIXME OAK-4445: Collect write statistics. This logs and clears the statistic on each compaction cycle instead of each run
 name|LOG
 operator|.
 name|info

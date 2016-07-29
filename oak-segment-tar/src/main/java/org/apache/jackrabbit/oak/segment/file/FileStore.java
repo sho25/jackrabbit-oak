@@ -2003,7 +2003,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|// FIXME The following background operations are historically part of
+comment|// FIXME OAK-4621: External invocation of background operations
+comment|// The following background operations are historically part of
 comment|// the implementation of the FileStore, but they should better be
 comment|// scheduled and invoked by an external agent. The code deploying the
 comment|// FileStore might have better insights on when and how these background
@@ -3713,6 +3714,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME OAK-4138 Decouple revision cleanup from the flush thread: instead of synchronizing, skip flush if already in progress
 comment|// remove all obsolete tar generations
 synchronized|synchronized
 init|(
