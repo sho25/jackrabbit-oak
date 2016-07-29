@@ -1277,7 +1277,9 @@ argument_list|()
 operator|+
 literal|"/"
 operator|+
-literal|":suggesterStatus"
+name|LuceneIndexConstants
+operator|.
+name|SUGGEST_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 if|if

@@ -113,6 +113,11 @@ init|=
 literal|":data"
 decl_stmt|;
 name|String
+name|SUGGEST_DATA_CHILD_NAME
+init|=
+literal|":suggest-data"
+decl_stmt|;
+name|String
 name|TRASH_CHILD_NAME
 init|=
 literal|":trash"

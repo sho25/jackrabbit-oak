@@ -647,6 +647,28 @@ name|lucene
 operator|.
 name|LuceneIndexConstants
 operator|.
+name|SUGGEST_DATA_CHILD_NAME
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|LuceneIndexConstants
+operator|.
 name|VERSION
 import|;
 end_import
@@ -1772,7 +1794,7 @@ name|definitionBuilder
 operator|.
 name|child
 argument_list|(
-literal|":suggesterStatus"
+name|SUGGEST_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|DirectoryReader
@@ -1796,7 +1818,7 @@ name|OakDirectory
 argument_list|(
 name|definitionBuilder
 argument_list|,
-literal|":suggest-data"
+name|SUGGEST_DATA_CHILD_NAME
 argument_list|,
 name|definition
 argument_list|,
@@ -1899,7 +1921,7 @@ name|definitionBuilder
 operator|.
 name|child
 argument_list|(
-literal|":suggesterStatus"
+name|SUGGEST_DATA_CHILD_NAME
 argument_list|)
 decl_stmt|;
 name|PropertyState
