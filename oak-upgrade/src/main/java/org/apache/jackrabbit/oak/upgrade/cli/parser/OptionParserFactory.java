@@ -74,6 +74,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|IGNORE_MISSING_BINARIES
+init|=
+literal|"ignore-missing-binaries"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|EARLY_SHUTDOWN
 init|=
 literal|"early-shutdown"
@@ -515,6 +523,15 @@ argument_list|(
 name|MISSING_BLOBSTORE
 argument_list|,
 literal|"Try to upgrade the NodeStore without access to the external Datastore"
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|IGNORE_MISSING_BINARIES
+argument_list|,
+literal|"Don't break the migration if some binaries are missing"
 argument_list|)
 expr_stmt|;
 block|}

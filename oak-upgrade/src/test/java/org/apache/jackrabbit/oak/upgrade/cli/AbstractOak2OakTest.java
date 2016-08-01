@@ -527,7 +527,7 @@ specifier|private
 name|NodeStore
 name|destination
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Session
 name|session
 decl_stmt|;
@@ -682,6 +682,19 @@ argument_list|(
 name|args
 argument_list|)
 expr_stmt|;
+name|createSession
+argument_list|()
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|createSession
+parameter_list|()
+throws|throws
+name|RepositoryException
+throws|,
+name|IOException
+block|{
 name|destination
 operator|=
 name|getDestinationContainer
@@ -958,6 +971,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|public
 specifier|static
 name|void
 name|verifyContent
@@ -1134,6 +1148,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 specifier|static
 name|void
 name|verifyBlob

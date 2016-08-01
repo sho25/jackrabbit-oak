@@ -267,6 +267,28 @@ name|parser
 operator|.
 name|OptionParserFactory
 operator|.
+name|IGNORE_MISSING_BINARIES
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|upgrade
+operator|.
+name|cli
+operator|.
+name|parser
+operator|.
+name|OptionParserFactory
+operator|.
 name|SRC_FBS
 import|;
 end_import
@@ -779,7 +801,7 @@ throw|throw
 operator|new
 name|CliArgumentException
 argument_list|(
-literal|"This combination of nodestores is not supported by the --"
+literal|"This combination of node stores is not supported by the --"
 operator|+
 name|MISSING_BLOBSTORE
 argument_list|,
@@ -858,6 +880,16 @@ block|{
 name|BlobStoreFactory
 name|factory
 decl_stmt|;
+name|boolean
+name|ignoreMissingBinaries
+init|=
+name|parser
+operator|.
+name|hasOption
+argument_list|(
+name|IGNORE_MISSING_BINARIES
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|parser
@@ -918,6 +950,8 @@ name|getOption
 argument_list|(
 name|SRC_S3
 argument_list|)
+argument_list|,
+name|ignoreMissingBinaries
 argument_list|)
 expr_stmt|;
 block|}
@@ -943,6 +977,8 @@ name|getOption
 argument_list|(
 name|SRC_FDS
 argument_list|)
+argument_list|,
+name|ignoreMissingBinaries
 argument_list|)
 expr_stmt|;
 block|}
@@ -1056,6 +1092,8 @@ name|getOption
 argument_list|(
 name|DST_S3
 argument_list|)
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -1081,6 +1119,8 @@ name|getOption
 argument_list|(
 name|DST_FDS
 argument_list|)
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}

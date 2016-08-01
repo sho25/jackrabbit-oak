@@ -178,6 +178,8 @@ name|directory
 operator|.
 name|getPath
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 operator|.
 name|create
@@ -230,6 +232,15 @@ name|directory
 operator|.
 name|getPath
 argument_list|()
+return|;
+block|}
+specifier|public
+name|File
+name|getDirectory
+parameter_list|()
+block|{
+return|return
+name|directory
 return|;
 block|}
 block|}
