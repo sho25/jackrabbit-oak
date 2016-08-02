@@ -657,12 +657,12 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|DataStore
 name|delegate
 decl_stmt|;
-specifier|private
+specifier|protected
 name|BlobStatsCollector
 name|stats
 init|=
@@ -2761,7 +2761,7 @@ name|tracker
 return|;
 block|}
 comment|//~---------------------------------------------< Internal>
-specifier|private
+specifier|protected
 name|InputStream
 name|getStream
 parameter_list|(
@@ -2831,7 +2831,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|private
+specifier|protected
 name|DataRecord
 name|getDataRecord
 parameter_list|(
@@ -3118,7 +3118,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-specifier|private
+specifier|protected
 name|String
 name|extractBlobId
 parameter_list|(
