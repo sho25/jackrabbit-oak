@@ -413,11 +413,6 @@ operator|.
 name|mkdirs
 argument_list|()
 expr_stmt|;
-name|newRepo
-operator|.
-name|mkdirs
-argument_list|()
-expr_stmt|;
 try|try
 init|(
 name|InputStream

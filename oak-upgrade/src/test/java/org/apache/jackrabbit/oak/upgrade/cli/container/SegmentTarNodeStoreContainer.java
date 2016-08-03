@@ -353,6 +353,15 @@ name|getPath
 argument_list|()
 return|;
 block|}
+specifier|public
+name|File
+name|getDirectory
+parameter_list|()
+block|{
+return|return
+name|directory
+return|;
+block|}
 block|}
 end_class
 
