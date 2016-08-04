@@ -120,6 +120,18 @@ argument_list|,
 name|REP_EXTERNAL_PRINCIPAL_NAMES
 argument_list|)
 decl_stmt|;
+comment|/**      * Configuration parameter to enable special protection of external IDs      *      * @see<a href="https://issues.apache.org/jira/browse/OAK-4301">OAK-4301</a>      */
+name|String
+name|PARAM_PROTECT_EXTERNAL_IDS
+init|=
+literal|"protectExternalId"
+decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_PROTECT_EXTERNAL_IDS}.      */
+name|boolean
+name|DEFAULT_PROTECT_EXTERNAL_IDS
+init|=
+literal|true
+decl_stmt|;
 block|}
 end_interface
 
