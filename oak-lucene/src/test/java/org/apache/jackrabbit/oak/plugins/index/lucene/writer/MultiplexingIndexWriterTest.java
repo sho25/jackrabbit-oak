@@ -1260,7 +1260,7 @@ name|m
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|Document
 name|newDoc
