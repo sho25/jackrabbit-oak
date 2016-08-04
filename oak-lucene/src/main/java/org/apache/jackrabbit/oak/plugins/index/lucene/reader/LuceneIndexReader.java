@@ -51,9 +51,9 @@ name|apache
 operator|.
 name|lucene
 operator|.
-name|search
+name|index
 operator|.
-name|IndexSearcher
+name|IndexReader
 import|;
 end_import
 
@@ -96,8 +96,8 @@ name|LuceneIndexReader
 extends|extends
 name|Closeable
 block|{
-name|IndexSearcher
-name|getSearcher
+name|IndexReader
+name|getReader
 parameter_list|()
 function_decl|;
 annotation|@

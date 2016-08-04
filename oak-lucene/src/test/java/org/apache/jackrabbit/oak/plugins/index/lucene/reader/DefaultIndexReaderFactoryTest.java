@@ -585,7 +585,7 @@ name|assertNotNull
 argument_list|(
 name|reader
 operator|.
-name|getSearcher
+name|getReader
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -611,10 +611,7 @@ literal|1
 argument_list|,
 name|reader
 operator|.
-name|getSearcher
-argument_list|()
-operator|.
-name|getIndexReader
+name|getReader
 argument_list|()
 operator|.
 name|numDocs
@@ -631,10 +628,7 @@ argument_list|()
 decl_stmt|;
 name|reader
 operator|.
-name|getSearcher
-argument_list|()
-operator|.
-name|getIndexReader
+name|getReader
 argument_list|()
 operator|.
 name|addReaderClosedListener
@@ -816,7 +810,7 @@ name|assertNotNull
 argument_list|(
 name|reader
 operator|.
-name|getSearcher
+name|getReader
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1092,7 +1086,7 @@ name|assertNotNull
 argument_list|(
 name|reader
 operator|.
-name|getSearcher
+name|getReader
 argument_list|()
 argument_list|)
 expr_stmt|;

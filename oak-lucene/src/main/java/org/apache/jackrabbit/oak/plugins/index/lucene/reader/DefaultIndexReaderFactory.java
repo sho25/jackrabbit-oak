@@ -561,6 +561,8 @@ argument_list|,
 name|indexPath
 argument_list|)
 decl_stmt|;
+comment|//Default mount is the first entry. This ensures that suggester, spellcheck can work on that untill they
+comment|//support multiple readers
 if|if
 condition|(
 name|reader
