@@ -280,6 +280,7 @@ name|RO_PRIVATE_UNIQUE_INDEX
 decl_stmt|;
 static|static
 block|{
+comment|// TODO OAK-4645 set default to true once the code is stable
 name|String
 name|ro
 init|=
@@ -289,7 +290,7 @@ name|getProperty
 argument_list|(
 literal|"oak.multiplexing.readOnlyPrivateUniqueIndex"
 argument_list|,
-literal|"true"
+literal|"false"
 argument_list|)
 decl_stmt|;
 name|RO_PRIVATE_UNIQUE_INDEX
