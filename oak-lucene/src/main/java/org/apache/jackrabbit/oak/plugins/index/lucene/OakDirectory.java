@@ -628,6 +628,7 @@ comment|/**  * Implementation of the Lucene {@link Directory} (a flat list of fi
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|OakDirectory
 extends|extends
