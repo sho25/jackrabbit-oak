@@ -1977,6 +1977,8 @@ argument_list|(
 operator|new
 name|DefaultIndexReaderFactory
 argument_list|(
+name|mountInfoProvider
+argument_list|,
 name|indexCopier
 argument_list|)
 argument_list|)
