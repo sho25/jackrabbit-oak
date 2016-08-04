@@ -364,9 +364,11 @@ name|type
 argument_list|)
 condition|)
 block|{
-return|return
+name|LuceneIndexEditorContext
+name|context
+init|=
 operator|new
-name|LuceneIndexEditor
+name|LuceneIndexEditorContext
 argument_list|(
 name|root
 argument_list|,
@@ -383,6 +385,13 @@ argument_list|,
 name|extractedTextCache
 argument_list|,
 name|augmentorFactory
+argument_list|)
+decl_stmt|;
+return|return
+operator|new
+name|LuceneIndexEditor
+argument_list|(
+name|context
 argument_list|)
 return|;
 block|}
