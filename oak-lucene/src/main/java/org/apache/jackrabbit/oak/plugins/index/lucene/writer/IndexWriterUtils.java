@@ -544,6 +544,9 @@ name|indexDefinition
 parameter_list|,
 name|NodeBuilder
 name|definition
+parameter_list|,
+name|String
+name|dirName
 parameter_list|)
 throws|throws
 name|IOException
@@ -570,6 +573,8 @@ operator|new
 name|OakDirectory
 argument_list|(
 name|definition
+argument_list|,
+name|dirName
 argument_list|,
 name|indexDefinition
 argument_list|,

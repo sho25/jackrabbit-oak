@@ -533,6 +533,11 @@ name|indexCopier
 decl_stmt|;
 specifier|private
 specifier|final
+name|String
+name|dirName
+decl_stmt|;
+specifier|private
+specifier|final
 name|boolean
 name|reindex
 decl_stmt|;
@@ -558,6 +563,9 @@ name|Nullable
 name|IndexCopier
 name|indexCopier
 parameter_list|,
+name|String
+name|dirName
+parameter_list|,
 name|boolean
 name|reindex
 parameter_list|)
@@ -579,6 +587,12 @@ operator|.
 name|indexCopier
 operator|=
 name|indexCopier
+expr_stmt|;
+name|this
+operator|.
+name|dirName
+operator|=
+name|dirName
 expr_stmt|;
 name|this
 operator|.
@@ -881,6 +895,8 @@ argument_list|(
 name|definition
 argument_list|,
 name|definitionBuilder
+argument_list|,
+name|dirName
 argument_list|)
 expr_stmt|;
 name|IndexWriterConfig
@@ -905,9 +921,7 @@ name|directory
 argument_list|,
 name|reindex
 argument_list|,
-name|LuceneIndexConstants
-operator|.
-name|INDEX_DATA_CHILD_NAME
+name|dirName
 argument_list|)
 expr_stmt|;
 name|config
