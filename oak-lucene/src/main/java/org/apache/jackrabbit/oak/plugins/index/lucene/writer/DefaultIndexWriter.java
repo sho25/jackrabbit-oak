@@ -518,6 +518,11 @@ name|dirName
 decl_stmt|;
 specifier|private
 specifier|final
+name|String
+name|suggestDirName
+decl_stmt|;
+specifier|private
+specifier|final
 name|boolean
 name|reindex
 decl_stmt|;
@@ -546,6 +551,9 @@ parameter_list|,
 name|String
 name|dirName
 parameter_list|,
+name|String
+name|suggestDirName
+parameter_list|,
 name|boolean
 name|reindex
 parameter_list|)
@@ -573,6 +581,12 @@ operator|.
 name|dirName
 operator|=
 name|dirName
+expr_stmt|;
+name|this
+operator|.
+name|suggestDirName
+operator|=
+name|suggestDirName
 expr_stmt|;
 name|this
 operator|.
@@ -989,7 +1003,7 @@ name|definitionBuilder
 operator|.
 name|child
 argument_list|(
-name|SUGGEST_DATA_CHILD_NAME
+name|suggestDirName
 argument_list|)
 decl_stmt|;
 name|DirectoryReader
@@ -1013,7 +1027,7 @@ name|OakDirectory
 argument_list|(
 name|definitionBuilder
 argument_list|,
-name|SUGGEST_DATA_CHILD_NAME
+name|suggestDirName
 argument_list|,
 name|definition
 argument_list|,
@@ -1111,7 +1125,7 @@ name|definitionBuilder
 operator|.
 name|child
 argument_list|(
-name|SUGGEST_DATA_CHILD_NAME
+name|suggestDirName
 argument_list|)
 decl_stmt|;
 name|PropertyState

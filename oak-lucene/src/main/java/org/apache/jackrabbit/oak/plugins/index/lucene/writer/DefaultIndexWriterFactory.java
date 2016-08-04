@@ -225,6 +225,10 @@ name|LuceneIndexConstants
 operator|.
 name|INDEX_DATA_CHILD_NAME
 argument_list|,
+name|LuceneIndexConstants
+operator|.
+name|SUGGEST_DATA_CHILD_NAME
+argument_list|,
 name|reindex
 argument_list|)
 return|;

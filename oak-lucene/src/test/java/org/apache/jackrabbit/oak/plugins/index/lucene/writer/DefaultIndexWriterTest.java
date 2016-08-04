@@ -159,6 +159,28 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|LuceneIndexConstants
+operator|.
+name|SUGGEST_DATA_CHILD_NAME
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|memory
 operator|.
 name|EmptyNodeState
@@ -270,6 +292,8 @@ literal|null
 argument_list|,
 name|INDEX_DATA_CHILD_NAME
 argument_list|,
+name|SUGGEST_DATA_CHILD_NAME
+argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
@@ -321,6 +345,8 @@ literal|null
 argument_list|,
 name|INDEX_DATA_CHILD_NAME
 argument_list|,
+name|SUGGEST_DATA_CHILD_NAME
+argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
@@ -371,6 +397,8 @@ argument_list|,
 literal|null
 argument_list|,
 name|INDEX_DATA_CHILD_NAME
+argument_list|,
+name|SUGGEST_DATA_CHILD_NAME
 argument_list|,
 literal|false
 argument_list|)

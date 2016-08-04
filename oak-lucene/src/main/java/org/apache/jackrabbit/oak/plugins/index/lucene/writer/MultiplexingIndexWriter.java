@@ -492,6 +492,16 @@ argument_list|(
 name|m
 argument_list|)
 decl_stmt|;
+name|String
+name|suggestDirName
+init|=
+name|MultiplexersLucene
+operator|.
+name|getSuggestDirName
+argument_list|(
+name|m
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|DefaultIndexWriter
@@ -503,6 +513,8 @@ argument_list|,
 name|indexCopier
 argument_list|,
 name|dirName
+argument_list|,
+name|suggestDirName
 argument_list|,
 name|reindex
 argument_list|)
