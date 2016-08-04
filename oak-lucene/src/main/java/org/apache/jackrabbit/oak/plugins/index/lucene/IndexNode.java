@@ -599,25 +599,7 @@ name|LuceneIndexReader
 name|getDefaultReader
 parameter_list|()
 block|{
-comment|//TODO This is still required to support Suggester, Spellcheck etc
-name|Preconditions
-operator|.
-name|checkArgument
-argument_list|(
-name|readers
-operator|.
-name|size
-argument_list|()
-operator|==
-literal|1
-argument_list|,
-literal|"Multiple readers provided. Default reader cannot be "
-operator|+
-literal|"determined %s"
-argument_list|,
-name|readers
-argument_list|)
-expr_stmt|;
+comment|//TODO This is still required to support Suggester, Spellcheck etc OAK-4643
 return|return
 name|readers
 operator|.
