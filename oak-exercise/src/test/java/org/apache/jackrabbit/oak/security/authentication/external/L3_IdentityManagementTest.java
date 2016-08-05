@@ -35,14 +35,34 @@ name|AbstractSecurityTest
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  *<pre>  * Module: External Authentication  * =============================================================================  *  * Title: Introduction  * -----------------------------------------------------------------------------  *  * Goal:  * Understand the fundamental concepts of the oak-auth-external module.  *  * Exercises:  *  * - {@link #TODO}  *  */
+comment|/**  *<pre>  * Module: External Authentication  * =============================================================================  *  * Title: Identity Management  * -----------------------------------------------------------------------------  *  * Goal:  * Become familiar with the external identity management feature and get basic  * understanding on how to write and plug a custom implementation.  *  * Exercises:  *  * - {@link #TODO}  *  *  * Additional Exercises:  * -----------------------------------------------------------------------------  *  * TODO  *  *</pre>  *  * @see TODO  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|L1_IntroductionTest
+name|L3_IdentityManagementTest
 extends|extends
 name|AbstractSecurityTest
 block|{   }
