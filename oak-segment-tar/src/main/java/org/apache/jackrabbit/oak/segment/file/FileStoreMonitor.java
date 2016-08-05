@@ -54,6 +54,13 @@ name|long
 name|bytes
 parameter_list|)
 block|{          }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|flushed
+parameter_list|()
+block|{                      }
 block|}
 decl_stmt|;
 comment|/**      * Notifies the monitor when data is written      *      * @param bytes number of bytes written      */
@@ -71,6 +78,11 @@ parameter_list|(
 name|long
 name|bytes
 parameter_list|)
+function_decl|;
+comment|/**      * Notifies the monitor when journal data is flushed to disk.      */
+name|void
+name|flushed
+parameter_list|()
 function_decl|;
 block|}
 end_interface

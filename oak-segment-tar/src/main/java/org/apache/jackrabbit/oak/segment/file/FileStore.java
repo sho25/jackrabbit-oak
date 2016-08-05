@@ -4077,6 +4077,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|stats
+operator|.
+name|flushed
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Run garbage collection on the segment level: reclaim those data segments      * that are from an old segment generation and those bulk segments that are not      * reachable anymore.      * Those tar files that shrink by at least 25% are rewritten to a new tar generation      * skipping the reclaimed segments.      */
 specifier|public

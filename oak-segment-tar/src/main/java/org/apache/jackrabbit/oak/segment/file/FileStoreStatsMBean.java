@@ -63,6 +63,11 @@ name|String
 name|fileStoreInfoAsString
 parameter_list|()
 function_decl|;
+comment|/**      * @return  time series of the writes to journal      */
+name|CompositeData
+name|getJournalWriteStats
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
