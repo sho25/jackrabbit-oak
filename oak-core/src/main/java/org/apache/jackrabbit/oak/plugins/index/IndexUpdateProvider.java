@@ -330,6 +330,8 @@ argument_list|,
 name|builder
 argument_list|,
 name|NOOP_CALLBACK
+argument_list|,
+name|info
 argument_list|)
 operator|.
 name|withMissingProviderStrategy
