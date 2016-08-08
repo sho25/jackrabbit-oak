@@ -397,8 +397,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|FileStoreStats
 name|stats
 init|=
@@ -412,6 +410,8 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|long
 name|initialSize
 init|=
@@ -529,6 +529,16 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|stats
+operator|.
+name|getJournalWriteStatsAsCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

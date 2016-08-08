@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|stats
+operator|.
+name|TimeSeriesStatsUtil
+operator|.
+name|asCompositeData
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -134,22 +150,6 @@ operator|.
 name|stats
 operator|.
 name|StatsOptions
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|stats
-operator|.
-name|TimeSeriesStatsUtil
-operator|.
-name|asCompositeData
 import|;
 end_import
 
@@ -452,8 +452,22 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|long
+name|getJournalWriteStatsAsCount
+parameter_list|()
+block|{
+return|return
+name|journalWriteStats
+operator|.
+name|getCount
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|CompositeData
-name|getJournalWriteStats
+name|getJournalWriteStatsAsCompositeData
 parameter_list|()
 block|{
 return|return

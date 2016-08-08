@@ -63,9 +63,14 @@ name|String
 name|fileStoreInfoAsString
 parameter_list|()
 function_decl|;
+comment|/**      * @return  count of the writes to journal      */
+name|long
+name|getJournalWriteStatsAsCount
+parameter_list|()
+function_decl|;
 comment|/**      * @return  time series of the writes to journal      */
 name|CompositeData
-name|getJournalWriteStats
+name|getJournalWriteStatsAsCompositeData
 parameter_list|()
 function_decl|;
 block|}
