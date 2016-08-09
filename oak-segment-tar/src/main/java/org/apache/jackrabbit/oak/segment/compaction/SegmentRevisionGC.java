@@ -124,6 +124,17 @@ name|int
 name|retainedGenerations
 parameter_list|)
 function_decl|;
+name|long
+name|getGcSizeDeltaEstimation
+parameter_list|()
+function_decl|;
+name|void
+name|setGcSizeDeltaEstimation
+parameter_list|(
+name|long
+name|gcSizeDeltaEstimation
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

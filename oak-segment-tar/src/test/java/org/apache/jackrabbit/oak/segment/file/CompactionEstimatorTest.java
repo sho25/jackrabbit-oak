@@ -529,9 +529,9 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-comment|// should be at 66%
-name|assertTrue
-argument_list|(
+name|GCEstimation
+name|est
+init|=
 name|fileStore
 operator|.
 name|estimateCompactionGain
@@ -543,6 +543,31 @@ argument_list|(
 literal|false
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|est
+operator|.
+name|gcNeeded
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|est
+operator|instanceof
+name|CompactionGainEstimate
+condition|)
+block|{
+comment|// should be at 66%
+name|assertTrue
+argument_list|(
+operator|(
+operator|(
+name|CompactionGainEstimate
+operator|)
+name|est
+operator|)
 operator|.
 name|estimateCompactionGain
 argument_list|()
@@ -550,6 +575,7 @@ operator|>
 literal|60
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
