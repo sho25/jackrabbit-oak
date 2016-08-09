@@ -23,6 +23,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -248,12 +268,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// OAK-4196
+comment|/**      * @see<a href="https://issues.apache.org/jira/browse/OAK-4196">OAK-4196</a>      */
 annotation|@
 name|Test
 specifier|public
 name|void
-name|testEventDeniedNode
+name|testEventRemovedNodeWhenDenyEntryIsRemoved
 parameter_list|()
 throws|throws
 name|Exception
@@ -359,8 +379,10 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-comment|// since the testUser does not have read-permission on the removed
-comment|// childNPath, no corresponding event must be generated.
+comment|// since the events are generated _after_ persisting all the changes
+comment|// and the removal also removes the permission entries denying access
+comment|// testUser will be notified about the removal because the remaining
+comment|// permission setup after the removal grants read access.
 name|Event
 index|[]
 name|evts
@@ -371,6 +393,19 @@ name|getEvents
 argument_list|(
 name|DEFAULT_WAIT_TIMEOUT
 argument_list|)
+decl_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|eventPaths
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -390,27 +425,40 @@ operator|==
 name|Event
 operator|.
 name|NODE_REMOVED
-operator|&&
+condition|)
+block|{
+name|eventPaths
+operator|.
+name|add
+argument_list|(
 name|evt
 operator|.
 name|getPath
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|childNPath
-argument_list|)
-condition|)
-block|{
-name|fail
-argument_list|(
-literal|"TestUser does not have READ permission on "
-operator|+
-name|childNPath
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|assertTrue
+argument_list|(
+name|eventPaths
+operator|.
+name|contains
+argument_list|(
+name|childNPath
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|eventPaths
+operator|.
+name|contains
+argument_list|(
+name|childNPath2
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -423,11 +471,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @see<a href="https://issues.apache.org/jira/browse/OAK-4196">OAK-4196</a>      */
 annotation|@
 name|Test
 specifier|public
 name|void
-name|testEventDeniedNode2
+name|testEventRemovedNode
 parameter_list|()
 throws|throws
 name|Exception
@@ -496,8 +545,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// superuser removes the node with childNPath& childNPath2 in
-comment|// order to provoke events being generated
+comment|// superuser removes the node with childNPath order to provoke events being generated
 name|superuser
 operator|.
 name|getItem
