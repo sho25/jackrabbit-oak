@@ -275,7 +275,7 @@ argument_list|(
 name|maxFileSizeMB
 argument_list|)
 operator|.
-name|withCacheSize
+name|withSegmentCacheSize
 argument_list|(
 name|cacheSizeMB
 argument_list|)
@@ -445,7 +445,7 @@ argument_list|(
 name|maxFileSizeMB
 argument_list|)
 operator|.
-name|withCacheSize
+name|withSegmentCacheSize
 argument_list|(
 name|cacheSizeMB
 argument_list|)

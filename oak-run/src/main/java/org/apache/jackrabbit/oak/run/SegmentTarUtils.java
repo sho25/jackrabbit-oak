@@ -4841,7 +4841,7 @@ name|path
 argument_list|)
 argument_list|)
 operator|.
-name|withCacheSize
+name|withSegmentCacheSize
 argument_list|(
 name|TAR_SEGMENT_CACHE_SIZE
 argument_list|)
@@ -4880,7 +4880,7 @@ name|path
 argument_list|)
 argument_list|)
 operator|.
-name|withCacheSize
+name|withSegmentCacheSize
 argument_list|(
 name|TAR_SEGMENT_CACHE_SIZE
 argument_list|)
@@ -4919,7 +4919,7 @@ name|force
 argument_list|)
 argument_list|)
 operator|.
-name|withCacheSize
+name|withSegmentCacheSize
 argument_list|(
 name|TAR_SEGMENT_CACHE_SIZE
 argument_list|)
