@@ -4155,12 +4155,6 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
-name|long
-name|initialSize
-init|=
-name|size
-argument_list|()
-decl_stmt|;
 name|Set
 argument_list|<
 name|UUID
@@ -4195,16 +4189,9 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: cleanup started. Current repository size is {} ({} bytes)"
+literal|"TarMK GC #{}: cleanup started."
 argument_list|,
 name|GC_COUNT
-argument_list|,
-name|humanReadableByteCount
-argument_list|(
-name|initialSize
-argument_list|)
-argument_list|,
-name|initialSize
 argument_list|)
 expr_stmt|;
 name|newWriter
@@ -4287,6 +4274,29 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+comment|// compute initial size here to better reflect repository size after the previous tar writer was closed
+name|long
+name|initialSize
+init|=
+name|size
+argument_list|()
+decl_stmt|;
+name|gcListener
+operator|.
+name|info
+argument_list|(
+literal|"TarMK GC #{}: current repository size is {} ({} bytes)"
+argument_list|,
+name|GC_COUNT
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|initialSize
+argument_list|)
+argument_list|,
+name|initialSize
+argument_list|)
+expr_stmt|;
 name|Set
 argument_list|<
 name|UUID
@@ -4407,6 +4417,12 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+comment|// it doesn't account for concurrent commits that might have happened
+name|long
+name|afterCleanupSize
+init|=
+literal|0
+decl_stmt|;
 name|List
 argument_list|<
 name|TarReader
@@ -4432,7 +4448,7 @@ name|List
 argument_list|<
 name|TarReader
 argument_list|>
-name|newReaders
+name|sweptReaders
 init|=
 name|newArrayList
 argument_list|()
@@ -4472,14 +4488,22 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|newReaders
+name|sweptReaders
 operator|.
 name|add
 argument_list|(
 name|newReader
 argument_list|)
 expr_stmt|;
+name|afterCleanupSize
+operator|+=
+name|newReader
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 block|}
+comment|// if these two differ, the former represents the swept version of the latter
 if|if
 condition|(
 name|newReader
@@ -4498,7 +4522,7 @@ block|}
 block|}
 else|else
 block|{
-name|newReaders
+name|sweptReaders
 operator|.
 name|add
 argument_list|(
@@ -4509,7 +4533,7 @@ block|}
 block|}
 name|readers
 operator|=
-name|newReaders
+name|sweptReaders
 expr_stmt|;
 block|}
 finally|finally
@@ -4592,13 +4616,18 @@ init|=
 name|size
 argument_list|()
 decl_stmt|;
+name|long
+name|reclaimedSize
+init|=
+name|initialSize
+operator|-
+name|afterCleanupSize
+decl_stmt|;
 name|stats
 operator|.
 name|reclaimed
 argument_list|(
-name|initialSize
-operator|-
-name|finalSize
+name|reclaimedSize
 argument_list|)
 expr_stmt|;
 name|gcJournal
@@ -4608,14 +4637,11 @@ argument_list|(
 name|finalSize
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-4106: Reclaimed size reported by FileStore.cleanup is off
 name|gcListener
 operator|.
 name|cleaned
 argument_list|(
-name|initialSize
-operator|-
-name|finalSize
+name|reclaimedSize
 argument_list|,
 name|finalSize
 argument_list|)
@@ -4648,14 +4674,10 @@ name|finalSize
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
-name|initialSize
-operator|-
-name|finalSize
+name|reclaimedSize
 argument_list|)
 argument_list|,
-name|initialSize
-operator|-
-name|finalSize
+name|reclaimedSize
 argument_list|)
 expr_stmt|;
 return|return
