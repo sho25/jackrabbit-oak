@@ -193,6 +193,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipException
+import|;
+end_import
+
+begin_import
+import|import
 name|joptsimple
 operator|.
 name|OptionParser
@@ -1046,6 +1058,15 @@ name|e
 parameter_list|)
 block|{
 comment|// EOFException: Unexpected end of ZLIB input stream
+break|break;
+block|}
+catch|catch
+parameter_list|(
+name|ZipException
+name|e
+parameter_list|)
+block|{
+comment|// java.util.zip.ZipException: invalid block type
 break|break;
 block|}
 if|if

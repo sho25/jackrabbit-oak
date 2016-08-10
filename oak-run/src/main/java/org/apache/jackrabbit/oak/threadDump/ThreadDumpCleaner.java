@@ -208,6 +208,10 @@ literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
 operator|+
 literal|"at java.net.PlainSocketImpl.socketAvailable(?s).*?\n\n"
 block|,
+literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
+operator|+
+literal|"at java.net.PlainSocketImpl.socketConnect(?s).*?\n\n"
+block|,
 literal|"<EndOfDump>\n\n"
 block|,      }
 decl_stmt|;
