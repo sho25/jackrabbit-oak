@@ -2125,6 +2125,13 @@ name|parentTree
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|tokenParent
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 return|return
 name|tokenParent
