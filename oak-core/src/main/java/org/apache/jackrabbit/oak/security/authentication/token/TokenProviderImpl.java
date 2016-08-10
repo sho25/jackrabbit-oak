@@ -673,7 +673,6 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Default expiration time in ms for login tokens is 2 hours.      */
-specifier|private
 specifier|static
 specifier|final
 name|long
@@ -685,7 +684,6 @@ literal|3600
 operator|*
 literal|1000
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|int

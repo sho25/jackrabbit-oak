@@ -74,7 +74,7 @@ specifier|private
 name|TokenProvider
 name|tokenProvider
 decl_stmt|;
-comment|/**      * Returns the principal provider as set using      * {@link #setTokenProvider(TokenProvider)}      * or {@code null}.      *      * @return an instance of {@code PrincipalProvider} or {@code null} if no      * provider has been set before.      */
+comment|/**      * Returns the token provider as set using      * {@link #setTokenProvider(TokenProvider)}      * or {@code null}.      *      * @return an instance of {@code TokenProvider} or {@code null} if no      * provider has been set before.      */
 specifier|public
 name|TokenProvider
 name|getTokenProvider
