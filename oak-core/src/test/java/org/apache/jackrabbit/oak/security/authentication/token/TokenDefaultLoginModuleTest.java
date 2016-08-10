@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authentication
+operator|.
+name|token
 package|;
 end_package
 
@@ -173,20 +175,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|AbstractSecurityTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|api
 operator|.
 name|AuthInfo
@@ -239,9 +227,7 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|token
-operator|.
-name|TokenLoginModule
+name|Jackrabbit2ConfigurationTest
 import|;
 end_import
 
@@ -450,7 +436,7 @@ specifier|public
 class|class
 name|TokenDefaultLoginModuleTest
 extends|extends
-name|AbstractSecurityTest
+name|Jackrabbit2ConfigurationTest
 block|{
 annotation|@
 name|Override

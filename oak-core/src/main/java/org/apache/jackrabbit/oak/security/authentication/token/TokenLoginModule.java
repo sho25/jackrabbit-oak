@@ -764,13 +764,31 @@ block|}
 else|else
 block|{
 comment|// failed to create token -> fail commit()
+name|Object
+name|logId
+init|=
+operator|(
+name|userId
+operator|!=
+literal|null
+operator|)
+condition|?
+name|userId
+else|:
+name|sharedState
+operator|.
+name|get
+argument_list|(
+name|SHARED_KEY_LOGIN_NAME
+argument_list|)
+decl_stmt|;
 name|log
 operator|.
 name|debug
 argument_list|(
 literal|"TokenProvider failed to create a login token for user "
 operator|+
-name|userId
+name|logId
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -779,7 +797,7 @@ name|LoginException
 argument_list|(
 literal|"Failed to create login token for user "
 operator|+
-name|userId
+name|logId
 argument_list|)
 throw|;
 block|}
