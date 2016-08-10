@@ -351,6 +351,17 @@ operator|.
 name|currentPath
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|path
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|String
 name|name
 init|=
