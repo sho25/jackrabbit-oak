@@ -288,7 +288,6 @@ import|;
 end_import
 
 begin_class
-specifier|public
 class|class
 name|PathFilteringDiff
 extends|extends
@@ -695,7 +694,6 @@ operator|)
 name|state
 return|;
 block|}
-specifier|public
 specifier|static
 name|void
 name|copyMetaProperties

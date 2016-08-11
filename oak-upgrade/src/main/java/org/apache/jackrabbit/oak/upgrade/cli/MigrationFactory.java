@@ -870,16 +870,6 @@ name|isIncludeIndex
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|sidegrade
-operator|.
-name|setAddSecondaryMetadata
-argument_list|(
-name|options
-operator|.
-name|isAddSecondaryMetadata
-argument_list|()
-argument_list|)
-expr_stmt|;
 return|return
 name|sidegrade
 return|;

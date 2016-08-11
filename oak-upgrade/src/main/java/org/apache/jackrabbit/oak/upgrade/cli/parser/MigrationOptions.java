@@ -114,19 +114,6 @@ literal|"yyyy-MM-dd"
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|static
-specifier|final
-name|boolean
-name|ADD_SECONDARY_METADATA
-init|=
-name|Boolean
-operator|.
-name|getBoolean
-argument_list|(
-literal|"oak.upgrade.addSecondaryMetadata"
-argument_list|)
-decl_stmt|;
-specifier|private
 specifier|final
 name|boolean
 name|copyBinariesByReference
@@ -619,15 +606,6 @@ return|return
 name|ignoreMissingBinaries
 return|;
 block|}
-specifier|public
-name|boolean
-name|isAddSecondaryMetadata
-parameter_list|()
-block|{
-return|return
-name|ADD_SECONDARY_METADATA
-return|;
-block|}
 specifier|private
 name|void
 name|logOptions
@@ -859,19 +837,6 @@ operator|.
 name|info
 argument_list|(
 literal|"Missing binaries won't break the migration"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|ADD_SECONDARY_METADATA
-condition|)
-block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"Secondary metadata will be added"
 argument_list|)
 expr_stmt|;
 block|}
