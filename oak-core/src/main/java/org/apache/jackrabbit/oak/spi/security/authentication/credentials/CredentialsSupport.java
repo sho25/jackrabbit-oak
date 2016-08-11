@@ -75,16 +75,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|SimpleCredentials
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -149,6 +139,26 @@ annotation|@
 name|Nonnull
 name|Credentials
 name|credentials
+parameter_list|)
+function_decl|;
+comment|/**      * Writes the attributes to the specified {@code Credentials}.      * If the specified credentials are not supported or doesn't allow to write      * attributes this method will return {@code false}.      *      * @param credentials The credentials as passed to the repository login.      * @param attributes The attributes to be written to the given credentials.      * @return {@code true}, if the attributes were set; {@code false} otherwise.      */
+name|boolean
+name|setAttributes
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Credentials
+name|credentials
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|?
+argument_list|>
+name|attributes
 parameter_list|)
 function_decl|;
 block|}
