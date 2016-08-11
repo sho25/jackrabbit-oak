@@ -4634,6 +4634,8 @@ name|gcJournal
 operator|.
 name|persist
 argument_list|(
+name|reclaimedSize
+argument_list|,
 name|finalSize
 argument_list|)
 expr_stmt|;

@@ -378,7 +378,7 @@ operator|.
 name|read
 argument_list|()
 operator|.
-name|getSize
+name|getRepoSize
 argument_list|()
 return|;
 block|}

@@ -83,6 +83,16 @@ name|String
 name|getLastCleanup
 parameter_list|()
 function_decl|;
+comment|/**      * @return  repository size after the last cleanup.      */
+name|long
+name|getLastRepositorySize
+parameter_list|()
+function_decl|;
+comment|/**      * @return  reclaimed size during the last cleanup.      */
+name|long
+name|getLastReclaimedSize
+parameter_list|()
+function_decl|;
 comment|/**      * @return  last error or {@code null} if none.      */
 annotation|@
 name|CheckForNull
