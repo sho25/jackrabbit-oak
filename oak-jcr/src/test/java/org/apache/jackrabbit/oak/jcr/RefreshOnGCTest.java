@@ -612,7 +612,7 @@ name|GCMonitor
 name|gcMonitor
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|CompactionStrategy
 name|strategy
@@ -826,7 +826,7 @@ name|void
 name|setup
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|File
 name|directory

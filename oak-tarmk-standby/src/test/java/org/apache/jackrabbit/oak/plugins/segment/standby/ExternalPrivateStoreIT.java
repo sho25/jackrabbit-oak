@@ -164,7 +164,7 @@ name|File
 name|d
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|primaryStore
 operator|=
@@ -195,7 +195,7 @@ name|File
 name|d
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|secondaryStore
 operator|=

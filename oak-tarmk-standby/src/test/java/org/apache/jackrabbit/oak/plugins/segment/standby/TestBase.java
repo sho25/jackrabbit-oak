@@ -348,7 +348,7 @@ name|void
 name|setUpServerAndClient
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 comment|// server
 name|directoryS
@@ -402,7 +402,7 @@ name|File
 name|directory
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|FileStore
@@ -437,7 +437,7 @@ name|File
 name|directory
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|newFileStore
@@ -463,7 +463,7 @@ name|File
 name|directory
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|newFileStore

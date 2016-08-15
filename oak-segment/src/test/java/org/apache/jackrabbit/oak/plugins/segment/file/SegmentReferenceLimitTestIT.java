@@ -369,13 +369,7 @@ name|void
 name|corruption
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|CommitFailedException
-throws|,
-name|ExecutionException
-throws|,
-name|InterruptedException
+name|Exception
 block|{
 name|FileStore
 name|fileStore

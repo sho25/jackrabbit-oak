@@ -2595,11 +2595,7 @@ name|void
 name|cleanupCyclicGraph
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|ExecutionException
-throws|,
-name|InterruptedException
+name|Exception
 block|{
 name|FileStore
 name|fileStore
@@ -2885,11 +2881,7 @@ name|void
 name|preCompactionReferences
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|CommitFailedException
-throws|,
-name|InterruptedException
+name|Exception
 block|{
 for|for
 control|(
@@ -3963,9 +3955,7 @@ name|void
 name|propertyRetention
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|CommitFailedException
+name|Exception
 block|{
 name|FileStore
 name|fileStore

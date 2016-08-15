@@ -736,6 +736,8 @@ name|version
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 name|ReadOnlyStore
 name|store

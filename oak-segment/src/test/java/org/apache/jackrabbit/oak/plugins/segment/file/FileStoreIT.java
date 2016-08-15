@@ -549,7 +549,7 @@ name|void
 name|testRestartAndGCWithoutMM
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|testRestartAndGC
 argument_list|(
@@ -564,7 +564,7 @@ name|void
 name|testRestartAndGCWithMM
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|testRestartAndGC
 argument_list|(
@@ -580,7 +580,7 @@ name|boolean
 name|memoryMapping
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|FileStore
 name|store
@@ -804,7 +804,7 @@ name|void
 name|testCompaction
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|int
 name|largeBinarySize
@@ -1308,7 +1308,7 @@ name|void
 name|testRecovery
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|FileStore
 name|store
@@ -1900,7 +1900,7 @@ name|void
 name|segmentOverflow
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 for|for
 control|(
@@ -2065,7 +2065,7 @@ name|void
 name|nonBlockingROStore
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|FileStore
 name|store

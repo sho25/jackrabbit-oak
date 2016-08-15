@@ -999,7 +999,7 @@ name|BlobStore
 name|blobStore
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 if|if
 condition|(

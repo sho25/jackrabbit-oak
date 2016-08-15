@@ -464,7 +464,7 @@ name|String
 name|path
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|FileDataStore
 name|fds

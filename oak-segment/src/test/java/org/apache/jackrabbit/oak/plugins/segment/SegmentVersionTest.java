@@ -892,9 +892,7 @@ name|void
 name|mixedVersions
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|CommitFailedException
+name|Exception
 block|{
 name|FileStore
 name|fileStoreV10
@@ -1019,9 +1017,7 @@ name|void
 name|migrate
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|CommitFailedException
+name|Exception
 block|{
 name|FileStore
 name|fileStoreV10

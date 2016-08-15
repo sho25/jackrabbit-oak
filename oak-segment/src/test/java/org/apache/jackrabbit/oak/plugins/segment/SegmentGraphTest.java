@@ -763,7 +763,7 @@ name|void
 name|testSegmentGraph
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ReadOnlyStore
 name|store
@@ -889,7 +889,7 @@ name|void
 name|testSegmentGraphWithFilter
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ReadOnlyStore
 name|store
@@ -1025,7 +1025,7 @@ name|void
 name|testGCGraph
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ReadOnlyStore
 name|store

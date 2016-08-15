@@ -835,7 +835,7 @@ name|File
 name|fs
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|fileStoreBuilder
@@ -875,7 +875,7 @@ name|File
 name|destination
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|FileStore
 name|backup

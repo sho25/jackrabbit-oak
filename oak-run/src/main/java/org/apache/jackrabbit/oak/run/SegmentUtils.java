@@ -1039,6 +1039,26 @@ name|segment
 operator|.
 name|file
 operator|.
+name|InvalidFileStoreVersionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
 name|JournalReader
 import|;
 end_import
@@ -1156,6 +1176,8 @@ name|closer
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 return|return
 name|SegmentNodeStore
@@ -1297,6 +1319,8 @@ name|target
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 name|FileStoreRestore
 operator|.
@@ -1318,6 +1342,8 @@ name|args
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 name|File
 name|file
@@ -1500,6 +1526,8 @@ name|depth
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 name|Iterable
 argument_list|<
@@ -1569,6 +1597,8 @@ name|binLen
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 name|checkConsistency
 argument_list|(
@@ -1596,6 +1626,8 @@ name|force
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 name|FileStore
 name|store
@@ -1944,6 +1976,8 @@ name|ignoreSNFEs
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 if|if
 condition|(
@@ -1990,6 +2024,8 @@ name|closer
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 return|return
 name|closer
@@ -2013,6 +2049,8 @@ name|path
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 return|return
 name|FileStore
@@ -2158,6 +2196,8 @@ name|ignoreSNFEs
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 name|System
 operator|.

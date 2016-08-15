@@ -430,11 +430,7 @@ name|void
 name|heavyWrite
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|CommitFailedException
-throws|,
-name|InterruptedException
+name|Exception
 block|{
 specifier|final
 name|FileStore

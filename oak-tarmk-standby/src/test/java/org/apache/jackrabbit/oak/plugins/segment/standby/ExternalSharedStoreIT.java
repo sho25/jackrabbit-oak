@@ -167,7 +167,7 @@ name|File
 name|d
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|externalStore
 operator|=
@@ -198,7 +198,7 @@ name|File
 name|d
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|setupFileDataStore

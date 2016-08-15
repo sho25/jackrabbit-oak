@@ -303,7 +303,7 @@ name|File
 name|d2
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|FileStore
 name|f1

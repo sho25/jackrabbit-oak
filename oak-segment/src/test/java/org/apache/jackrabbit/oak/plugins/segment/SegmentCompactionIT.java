@@ -1690,15 +1690,7 @@ name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|MalformedObjectNameException
-throws|,
-name|NotCompliantMBeanException
-throws|,
-name|InstanceAlreadyExistsException
-throws|,
-name|MBeanRegistrationException
+name|Exception
 block|{
 name|assumeTrue
 argument_list|(

@@ -1208,6 +1208,8 @@ name|FileStore
 name|build
 parameter_list|()
 throws|throws
+name|InvalidFileStoreVersionException
+throws|,
 name|IOException
 block|{
 name|checkState
@@ -1266,6 +1268,8 @@ name|ReadOnlyStore
 name|buildReadOnly
 parameter_list|()
 throws|throws
+name|InvalidFileStoreVersionException
+throws|,
 name|IOException
 block|{
 name|checkState

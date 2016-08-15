@@ -411,6 +411,26 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|InvalidFileStoreVersionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|blob
@@ -458,6 +478,8 @@ name|h
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 comment|//TODO add support for other NodeStore flags
 name|OptionParser

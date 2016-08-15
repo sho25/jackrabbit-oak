@@ -201,16 +201,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Map
@@ -529,7 +519,7 @@ name|void
 name|setup
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|FileStore
 name|store
@@ -1008,7 +998,7 @@ name|void
 name|testSegmentGraph
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ReadOnlyStore
 name|store
@@ -1132,7 +1122,7 @@ name|void
 name|testSegmentGraphWithFilter
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ReadOnlyStore
 name|store
@@ -1263,7 +1253,7 @@ name|void
 name|testGCGraph
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 comment|// TODO Improve test coverage to non trivial cases with more than a single generation
 comment|// This is quite tricky as there is no easy way to construct a file store with

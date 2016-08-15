@@ -51,16 +51,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -147,7 +137,7 @@ name|void
 name|containsSegment
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|FileStore
 name|fileStore

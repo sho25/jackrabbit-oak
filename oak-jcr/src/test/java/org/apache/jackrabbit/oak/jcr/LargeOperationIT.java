@@ -985,7 +985,7 @@ argument_list|>
 name|fixtures
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|File
 name|file
