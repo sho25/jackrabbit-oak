@@ -2097,9 +2097,6 @@ parameter_list|,
 name|String
 name|checkpoint
 parameter_list|,
-name|String
-name|afterCheckpoint
-parameter_list|,
 name|AsyncIndexStats
 name|indexStats
 parameter_list|,
@@ -2118,8 +2115,6 @@ argument_list|,
 name|leaseTimeOut
 argument_list|,
 name|checkpoint
-argument_list|,
-name|afterCheckpoint
 argument_list|,
 name|indexStats
 argument_list|,
@@ -2156,9 +2151,6 @@ parameter_list|,
 name|String
 name|checkpoint
 parameter_list|,
-name|String
-name|afterCheckpoint
-parameter_list|,
 name|AsyncIndexStats
 name|indexStats
 parameter_list|,
@@ -2179,8 +2171,6 @@ name|leaseTimeOut
 argument_list|,
 name|checkpoint
 argument_list|,
-name|afterCheckpoint
-argument_list|,
 name|indexStats
 argument_list|,
 name|stopFlag
@@ -2198,7 +2188,10 @@ name|Override
 specifier|protected
 name|void
 name|prepare
-parameter_list|()
+parameter_list|(
+name|String
+name|afterCheckpoint
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
@@ -2210,7 +2203,9 @@ expr_stmt|;
 name|super
 operator|.
 name|prepare
-argument_list|()
+argument_list|(
+name|afterCheckpoint
+argument_list|)
 expr_stmt|;
 name|listener
 operator|.
