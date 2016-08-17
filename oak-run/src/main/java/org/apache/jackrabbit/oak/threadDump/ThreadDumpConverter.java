@@ -97,164 +97,39 @@ name|PrintWriter
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
 begin_comment
-comment|/**  * A tool that removes uninteresting lines from stack traces.  */
+comment|/**  * A tool that converts full thread dumps files to the "standard" format.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|ThreadDumpCleaner
+name|ThreadDumpConverter
 block|{
-specifier|private
+specifier|public
 specifier|static
-specifier|final
+name|void
+name|main
+parameter_list|(
 name|String
-index|[]
-name|PATTERN_ARRAY
-init|=
+modifier|...
+name|args
+parameter_list|)
+throws|throws
+name|IOException
 block|{
-literal|"\"Concurrent Mark-Sweep GC Thread\".*\n"
-block|,
-literal|"\"Exception Catcher Thread\".*\n"
-block|,
-literal|"JNI global references:.*\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\n"
-block|,
-literal|"\".*?\".*\n\n"
-block|,
-literal|"\\$\\$YJP\\$\\$"
-block|,
-literal|"\"(Attach|Service|VM|GC|DestroyJavaVM|Signal|AWT|AppKit|C2 |Low Mem|"
-operator|+
-literal|"process reaper|YJPAgent-).*?\"(?s).*?\n\n"
-block|,
-literal|"   Locked ownable synchronizers:(?s).*?\n\n"
-block|,
-literal|"   Locked synchronizers:(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State: (TIMED_)?WAITING(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at sun.nio.ch.KQueueArrayWrapper.kevent0(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at java.io.FileInputStream.readBytes(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at sun.nio.ch.ServerSocketChannelImpl.accept(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at java.net.DualStackPlainSocketImpl.accept0(?s).*\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at sun.nio.ch.EPollArrayWrapper.epollWait(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at java.lang.Object.wait(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at java.net.PlainSocketImpl.socketAccept(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at java.net.SocketInputStream.socketRead0(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at sun.nio.ch.WindowsSelectorImpl\\$SubSelector.poll0(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at sun.management.ThreadImpl.dumpThreads0(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at sun.misc.Unsafe.park(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at java.net.PlainSocketImpl.socketClose0(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at java.net.PlainSocketImpl.socketAvailable(?s).*?\n\n"
-block|,
-literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
-operator|+
-literal|"at java.net.PlainSocketImpl.socketConnect(?s).*?\n\n"
-block|,
-literal|"<EndOfDump>\n\n"
-block|,      }
-decl_stmt|;
-specifier|private
-specifier|static
-name|ArrayList
-argument_list|<
-name|Pattern
-argument_list|>
-name|PATTERNS
-init|=
+name|process
+argument_list|(
 operator|new
-name|ArrayList
-argument_list|<
-name|Pattern
-argument_list|>
-argument_list|()
-decl_stmt|;
-static|static
-block|{
-for|for
-control|(
-name|String
-name|s
-range|:
-name|PATTERN_ARRAY
-control|)
-block|{
-name|PATTERNS
-operator|.
-name|add
+name|File
 argument_list|(
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-name|s
+name|args
+index|[
+literal|0
+index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|public
 specifier|static
@@ -318,7 +193,7 @@ argument_list|()
 argument_list|,
 name|fileName
 operator|+
-literal|".filtered.txt"
+literal|".converted.txt"
 argument_list|)
 decl_stmt|;
 name|PrintWriter
@@ -453,6 +328,97 @@ condition|)
 block|{
 break|break;
 block|}
+if|if
+condition|(
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"    at "
+argument_list|)
+condition|)
+block|{
+name|line
+operator|=
+literal|"\t"
+operator|+
+name|line
+operator|.
+name|substring
+argument_list|(
+literal|4
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"    Locked synchronizers"
+argument_list|)
+condition|)
+block|{
+name|line
+operator|=
+literal|"   "
+operator|+
+name|line
+operator|.
+name|substring
+argument_list|(
+literal|4
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"      - locked "
+argument_list|)
+condition|)
+block|{
+name|line
+operator|=
+literal|"\t"
+operator|+
+name|line
+operator|.
+name|substring
+argument_list|(
+literal|4
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"     owned by "
+argument_list|)
+condition|)
+block|{
+name|line
+operator|=
+literal|"\t"
+operator|+
+name|line
+operator|.
+name|substring
+argument_list|(
+literal|4
+argument_list|)
+expr_stmt|;
+block|}
 name|buff
 operator|.
 name|append
@@ -482,7 +448,7 @@ name|writer
 operator|.
 name|print
 argument_list|(
-name|filter
+name|convert
 argument_list|(
 name|buff
 operator|.
@@ -503,7 +469,7 @@ name|writer
 operator|.
 name|println
 argument_list|(
-name|filter
+name|convert
 argument_list|(
 name|buff
 operator|.
@@ -516,37 +482,164 @@ block|}
 specifier|private
 specifier|static
 name|String
-name|filter
+name|convert
 parameter_list|(
 name|String
-name|s
+name|string
 parameter_list|)
 block|{
-for|for
-control|(
-name|Pattern
-name|p
-range|:
-name|PATTERNS
-control|)
-block|{
-name|s
-operator|=
-name|p
+name|int
+name|endOfLine
+init|=
+name|string
 operator|.
-name|matcher
+name|indexOf
 argument_list|(
-name|s
+literal|'\n'
 argument_list|)
+decl_stmt|;
+name|String
+name|firstLine
+decl_stmt|;
+if|if
+condition|(
+name|endOfLine
+operator|<
+literal|0
+condition|)
+block|{
+name|firstLine
+operator|=
+name|string
+expr_stmt|;
+block|}
+else|else
+block|{
+name|firstLine
+operator|=
+name|string
 operator|.
-name|replaceAll
+name|substring
 argument_list|(
-literal|""
+literal|0
+argument_list|,
+name|endOfLine
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|firstLine
+operator|.
+name|startsWith
+argument_list|(
+literal|"\""
+argument_list|)
+condition|)
+block|{
 return|return
-name|s
+name|string
+return|;
+block|}
+name|String
+name|remainingText
+init|=
+name|string
+operator|.
+name|substring
+argument_list|(
+name|endOfLine
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|Thread
+operator|.
+name|State
+name|state
+range|:
+name|Thread
+operator|.
+name|State
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+name|int
+name|index
+init|=
+name|firstLine
+operator|.
+name|indexOf
+argument_list|(
+literal|" in "
+operator|+
+name|state
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|index
+operator|>
+literal|0
+condition|)
+block|{
+name|String
+name|stateName
+init|=
+name|firstLine
+operator|.
+name|substring
+argument_list|(
+name|index
+operator|+
+literal|4
+argument_list|,
+name|index
+operator|+
+literal|4
+operator|+
+name|state
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|length
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|firstLine
+operator|=
+name|firstLine
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|index
+argument_list|)
+operator|+
+literal|"\n"
+expr_stmt|;
+name|remainingText
+operator|=
+literal|"   java.lang.Thread.State: "
+operator|+
+name|stateName
+operator|+
+name|remainingText
+expr_stmt|;
+block|}
+block|}
+return|return
+name|firstLine
+operator|+
+name|remainingText
 return|;
 block|}
 block|}

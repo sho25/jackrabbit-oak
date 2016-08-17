@@ -261,6 +261,22 @@ name|ThreadDumpCleaner
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|threadDump
+operator|.
+name|ThreadDumpConverter
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -292,6 +308,21 @@ init|=
 operator|new
 name|OptionParser
 argument_list|()
+decl_stmt|;
+name|OptionSpec
+argument_list|<
+name|Void
+argument_list|>
+name|convertSpec
+init|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"convert"
+argument_list|,
+literal|"convert the thread dumps to the standard format"
+argument_list|)
 decl_stmt|;
 name|OptionSpec
 argument_list|<
@@ -467,6 +498,16 @@ expr_stmt|;
 return|return;
 block|}
 name|boolean
+name|convert
+init|=
+name|options
+operator|.
+name|has
+argument_list|(
+name|convertSpec
+argument_list|)
+decl_stmt|;
+name|boolean
 name|filter
 init|=
 name|options
@@ -576,6 +617,35 @@ operator|.
 name|println
 argument_list|(
 literal|"Combined into "
+operator|+
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|convert
+condition|)
+block|{
+name|file
+operator|=
+name|ThreadDumpConverter
+operator|.
+name|process
+argument_list|(
+name|file
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Converted to "
 operator|+
 name|file
 operator|.
@@ -1085,6 +1155,13 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"Full thread dump"
+argument_list|)
+operator|||
+name|s
+operator|.
+name|startsWith
+argument_list|(
+literal|"Full Java thread dump"
 argument_list|)
 condition|)
 block|{
