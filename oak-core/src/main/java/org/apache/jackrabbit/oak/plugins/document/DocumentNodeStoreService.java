@@ -2769,7 +2769,11 @@ decl_stmt|;
 name|bundle
 operator|.
 name|stop
-argument_list|()
+argument_list|(
+name|Bundle
+operator|.
+name|STOP_TRANSIENT
+argument_list|)
 expr_stmt|;
 name|log
 operator|.
