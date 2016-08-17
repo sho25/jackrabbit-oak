@@ -725,7 +725,6 @@ literal|false
 decl_stmt|;
 comment|/**      * OAK-2739: for development it would be useful to be able to disable the      * lease check - hence there's a system property that does that:      * oak.documentMK.disableLeaseCheck      */
 specifier|private
-specifier|final
 name|boolean
 name|leaseCheckDisabled
 decl_stmt|;
@@ -873,6 +872,21 @@ argument_list|,
 literal|"false"
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setLeaseCheckDisabled
+parameter_list|(
+name|boolean
+name|leaseCheckDisabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|leaseCheckDisabled
+operator|=
+name|leaseCheckDisabled
 expr_stmt|;
 block|}
 specifier|public

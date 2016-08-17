@@ -2448,6 +2448,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|clusterNodeInfo
+operator|.
+name|setLeaseCheckDisabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 name|this
 operator|.
 name|store
