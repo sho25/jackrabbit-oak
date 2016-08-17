@@ -441,6 +441,20 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|JcrConstants
+operator|.
+name|NT_BASE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|commons
@@ -1955,14 +1969,25 @@ condition|(
 name|propertyPath
 operator|!=
 literal|null
-operator|&&
-operator|!
+condition|)
+block|{
+name|PropertyDefinition
+name|pd
+init|=
 name|indexingRule
 operator|.
-name|isIndexed
+name|getConfig
 argument_list|(
 name|propertyPath
 argument_list|)
+decl_stmt|;
+comment|//If given prop is not analyzed then its
+comment|//not indexed
+if|if
+condition|(
+name|pd
+operator|==
+literal|null
 condition|)
 block|{
 name|nonIndexedPaths
@@ -1972,6 +1997,24 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|pd
+operator|.
+name|analyzed
+condition|)
+block|{
+name|nonIndexedPaths
+operator|.
+name|add
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -2032,6 +2075,10 @@ return|return
 literal|false
 return|;
 block|}
+comment|//where contains('jcr:content/bar', 'mountain OR valley') and contains('jcr:content/foo', 'mountain OR valley')
+comment|//above query can be evaluated by index which indexes foo and bar with restriction that both belong to same node
+comment|//by displacing the query path to evaluate on contains('bar', ...) and filter out those parents which do not
+comment|//have jcr:content as parent. So ensure that relPaths size is 1 or 0
 if|if
 condition|(
 operator|!
@@ -2078,14 +2125,112 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Such path translation would only work if index contains
-comment|//all the nodes
-return|return
+comment|//Such non indexed path can possibly be evaluated via any rule on nt:base
+comment|//which can possibly index everything
+name|IndexingRule
+name|rule
+init|=
 name|definition
 operator|.
-name|indexesAllTypes
-argument_list|()
+name|getApplicableIndexingRule
+argument_list|(
+name|NT_BASE
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rule
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
 return|;
+block|}
+for|for
+control|(
+name|String
+name|p
+range|:
+name|nonIndexedPaths
+control|)
+block|{
+comment|//Index can only evaluate a node search jcr:content/*
+comment|//if it indexes node scope indexing is enabled
+if|if
+condition|(
+name|LucenePropertyIndex
+operator|.
+name|isNodePath
+argument_list|(
+name|p
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|rule
+operator|.
+name|isNodeFullTextIndexed
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+else|else
+block|{
+comment|//Index can only evaluate a property like jcr:content/type
+comment|//if it indexes 'type' and that too analyzed
+name|String
+name|propertyName
+init|=
+name|PathUtils
+operator|.
+name|getName
+argument_list|(
+name|p
+argument_list|)
+decl_stmt|;
+name|PropertyDefinition
+name|pd
+init|=
+name|rule
+operator|.
+name|getConfig
+argument_list|(
+name|propertyName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|pd
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|pd
+operator|.
+name|analyzed
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+block|}
 block|}
 else|else
 block|{

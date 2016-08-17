@@ -2195,15 +2195,6 @@ name|evaluatePathRestrictions
 return|;
 block|}
 specifier|public
-name|boolean
-name|indexesAllTypes
-parameter_list|()
-block|{
-return|return
-name|indexesAllTypes
-return|;
-block|}
-specifier|public
 name|Analyzer
 name|getAnalyzer
 parameter_list|()
