@@ -4252,6 +4252,11 @@ init|=
 name|newLinkedHashMap
 argument_list|()
 decl_stmt|;
+name|long
+name|initialSize
+init|=
+literal|0
+decl_stmt|;
 name|fileStoreLock
 operator|.
 name|writeLock
@@ -4338,6 +4343,13 @@ argument_list|,
 name|reader
 argument_list|)
 expr_stmt|;
+name|initialSize
+operator|+=
+name|reader
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 finally|finally
@@ -4351,13 +4363,6 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-comment|// compute initial size here to better reflect repository size after the previous tar writer was closed
-name|long
-name|initialSize
-init|=
-name|size
-argument_list|()
-decl_stmt|;
 name|gcListener
 operator|.
 name|info
