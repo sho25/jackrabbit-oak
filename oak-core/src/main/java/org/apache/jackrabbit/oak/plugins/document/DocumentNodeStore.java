@@ -2332,19 +2332,6 @@ expr_stmt|;
 block|}
 name|this
 operator|.
-name|changes
-operator|=
-name|Collection
-operator|.
-name|JOURNAL
-operator|.
-name|newDocument
-argument_list|(
-name|s
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
 name|executor
 operator|=
 name|builder
@@ -2463,6 +2450,13 @@ operator|.
 name|store
 operator|=
 name|s
+expr_stmt|;
+name|this
+operator|.
+name|changes
+operator|=
+name|newJournalEntry
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -9758,13 +9752,8 @@ block|{
 comment|// success: start with a new document
 name|changes
 operator|=
-name|JOURNAL
-operator|.
-name|newDocument
-argument_list|(
-name|getDocumentStore
+name|newJournalEntry
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -9796,6 +9785,21 @@ argument_list|)
 return|;
 block|}
 comment|//-----------------------------< internal>---------------------------------
+specifier|private
+name|JournalEntry
+name|newJournalEntry
+parameter_list|()
+block|{
+return|return
+operator|new
+name|JournalEntry
+argument_list|(
+name|store
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 comment|/**      * Performs an initial read of the _lastRevs on the root document and sets      * the root state.      *      * @param rootDoc the current root document.      */
 specifier|private
 name|void
