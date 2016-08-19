@@ -3596,7 +3596,6 @@ return|return
 literal|true
 return|;
 block|}
-specifier|private
 specifier|static
 name|EditorProvider
 name|createTypeEditorProvider
@@ -3675,7 +3674,6 @@ block|}
 block|}
 return|;
 block|}
-specifier|private
 specifier|static
 name|EditorProvider
 name|createIndexEditorProvider
