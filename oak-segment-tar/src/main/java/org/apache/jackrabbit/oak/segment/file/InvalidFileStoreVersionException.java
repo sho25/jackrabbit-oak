@@ -29,7 +29,25 @@ class|class
 name|InvalidFileStoreVersionException
 extends|extends
 name|Exception
-block|{  }
+block|{
+specifier|public
+name|InvalidFileStoreVersionException
+parameter_list|()
+block|{     }
+specifier|public
+name|InvalidFileStoreVersionException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 end_class
 
 end_unit
