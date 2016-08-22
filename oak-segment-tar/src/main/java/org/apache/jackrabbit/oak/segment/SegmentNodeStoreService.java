@@ -280,26 +280,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|whiteboard
-operator|.
-name|WhiteboardUtils
-operator|.
-name|scheduleWithFixedDelay
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -2784,15 +2764,6 @@ operator|.
 name|TYPE
 argument_list|,
 literal|"File Store garbage collection monitor"
-argument_list|)
-argument_list|,
-name|scheduleWithFixedDelay
-argument_list|(
-name|whiteboard
-argument_list|,
-name|fsgcm
-argument_list|,
-literal|1
 argument_list|)
 argument_list|)
 operator|)

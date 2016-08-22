@@ -39,22 +39,6 @@ name|Nonnull
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|openmbean
-operator|.
-name|CompositeData
-import|;
-end_import
-
-begin_comment
-comment|// FIXME OAK-4618: Align GCMonitorMBean MBean with new generation based GC
-end_comment
-
 begin_comment
 comment|/**  * MBean for monitoring the revision garbage collection process of the  * {@link FileStore}.  */
 end_comment
@@ -105,20 +89,6 @@ annotation|@
 name|Nonnull
 name|String
 name|getStatus
-parameter_list|()
-function_decl|;
-comment|/**      * @return  time series of the repository size      */
-annotation|@
-name|Nonnull
-name|CompositeData
-name|getRepositorySize
-parameter_list|()
-function_decl|;
-comment|/**      * @return  time series of the reclaimed space      */
-annotation|@
-name|Nonnull
-name|CompositeData
-name|getReclaimedSize
 parameter_list|()
 function_decl|;
 block|}
