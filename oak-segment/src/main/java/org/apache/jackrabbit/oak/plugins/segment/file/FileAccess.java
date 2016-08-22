@@ -321,6 +321,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
+specifier|synchronized
 name|int
 name|length
 parameter_list|()
