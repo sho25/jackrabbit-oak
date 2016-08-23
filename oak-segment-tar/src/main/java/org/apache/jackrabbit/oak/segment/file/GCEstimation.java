@@ -29,7 +29,7 @@ name|boolean
 name|gcNeeded
 parameter_list|()
 function_decl|;
-comment|/**      * User friendly message explaining the value of the      * {@link GCEstimation#isGcNeeded()} flag      */
+comment|/**      * User friendly message explaining the value of the      * {@link GCEstimation#gcNeeded()} flag      */
 name|String
 name|gcLog
 parameter_list|()
