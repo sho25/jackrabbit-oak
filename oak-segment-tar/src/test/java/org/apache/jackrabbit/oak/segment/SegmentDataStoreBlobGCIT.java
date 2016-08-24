@@ -2123,7 +2123,7 @@ name|state
 init|=
 name|setUp
 argument_list|(
-literal|30000
+literal|10
 argument_list|)
 decl_stmt|;
 name|log
