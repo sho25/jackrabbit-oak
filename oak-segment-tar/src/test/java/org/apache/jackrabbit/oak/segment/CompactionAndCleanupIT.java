@@ -6410,11 +6410,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|fileStore
-operator|.
-name|cleanup
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|Future
@@ -6435,6 +6430,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|fileStore
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|String
