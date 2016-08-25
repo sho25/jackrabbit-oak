@@ -94,6 +94,7 @@ comment|/**  * A property definition within a template (the property name, the t
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|PropertyTemplate
 implements|implements
