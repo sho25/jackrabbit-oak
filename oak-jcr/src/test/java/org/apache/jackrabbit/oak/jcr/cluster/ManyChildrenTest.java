@@ -239,7 +239,6 @@ name|NodeStoreFixtures
 operator|.
 name|DOCUMENT_NS
 decl_stmt|;
-comment|//    NodeStoreFixture fixture = NodeStoreFixture.SEGMENT_MK;
 name|Repository
 name|repository
 decl_stmt|;

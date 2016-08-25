@@ -400,7 +400,7 @@ name|f1
 operator|=
 name|NodeStoreFixtures
 operator|.
-name|SEGMENT_MK
+name|SEGMENT_TAR
 expr_stmt|;
 name|f2
 operator|=

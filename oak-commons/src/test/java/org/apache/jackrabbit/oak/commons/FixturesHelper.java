@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * helper class that return the list of available fixtures based on the {@code nsfixtures} system  * property ({@code -Dnsfixtures=SEGMENT_MK}).  *   * See {@link FixturesHelper.Fixture} for a list of available fixtures  */
+comment|/**  * helper class that return the list of available fixtures based on the {@code nsfixtures} system  * property ({@code -Dnsfixtures=SEGMENT_TAR}).  *   * See {@link FixturesHelper.Fixture} for a list of available fixtures  */
 end_comment
 
 begin_class

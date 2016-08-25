@@ -167,7 +167,7 @@ name|FixturesHelper
 operator|.
 name|Fixture
 operator|.
-name|SEGMENT_MK
+name|SEGMENT_TAR
 import|;
 end_import
 
@@ -845,6 +845,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|BeforeClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -949,6 +959,8 @@ name|getRoot
 argument_list|()
 return|;
 block|}
+annotation|@
+name|BeforeClass
 specifier|public
 specifier|static
 name|void
@@ -962,7 +974,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|SEGMENT_MK
+name|SEGMENT_TAR
 argument_list|)
 argument_list|)
 expr_stmt|;

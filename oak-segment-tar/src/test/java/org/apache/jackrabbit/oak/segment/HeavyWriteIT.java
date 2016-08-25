@@ -51,7 +51,7 @@ name|FixturesHelper
 operator|.
 name|Fixture
 operator|.
-name|SEGMENT_MK
+name|SEGMENT_TAR
 import|;
 end_import
 
@@ -164,22 +164,6 @@ operator|.
 name|api
 operator|.
 name|Blob
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CommitFailedException
 import|;
 end_import
 
@@ -418,7 +402,7 @@ name|FIXTURES
 operator|.
 name|contains
 argument_list|(
-name|SEGMENT_MK
+name|SEGMENT_TAR
 argument_list|)
 argument_list|)
 expr_stmt|;
