@@ -343,6 +343,16 @@ specifier|final
 name|CommitInfo
 name|info
 decl_stmt|;
+specifier|private
+specifier|final
+name|long
+name|created
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|ContentChange
 parameter_list|(
 name|NodeState
@@ -451,6 +461,18 @@ argument_list|,
 name|change
 operator|.
 name|info
+argument_list|)
+expr_stmt|;
+name|removed
+argument_list|(
+name|queue
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|created
 argument_list|)
 expr_stmt|;
 name|currentTask
@@ -676,6 +698,18 @@ name|added
 parameter_list|(
 name|int
 name|queueSize
+parameter_list|)
+block|{ }
+comment|/**      * Called when ever an item has been removed from the queue.      *      * @param queueSize the size of the queue after the item was removed.      * @param created the time in milliseconds when the removed item was put      *                into the queue.      */
+specifier|protected
+name|void
+name|removed
+parameter_list|(
+name|int
+name|queueSize
+parameter_list|,
+name|long
+name|created
 parameter_list|)
 block|{ }
 comment|/**      * @return  The max queue length used for this observer's queue      */
