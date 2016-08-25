@@ -19,6 +19,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|SECONDS
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -707,6 +721,10 @@ operator|.
 name|locked
 argument_list|(
 name|block
+argument_list|,
+literal|10
+argument_list|,
+name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}
@@ -858,8 +876,6 @@ operator|.
 name|release
 argument_list|()
 expr_stmt|;
-name|TimeUnit
-operator|.
 name|SECONDS
 operator|.
 name|sleep
@@ -903,6 +919,10 @@ operator|.
 name|locked
 argument_list|(
 name|block
+argument_list|,
+literal|10
+argument_list|,
+name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}

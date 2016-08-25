@@ -1083,52 +1083,6 @@ operator|=
 name|max
 expr_stmt|;
 block|}
-comment|/**      * Execute the passed callable with trying to acquire this store's commit lock.      * @param c  callable to execute      * @return  {@code false} if the store's commit lock cannot be acquired, the result      *          of {@code c.call()} otherwise.      * @throws Exception      */
-comment|// FIXME OAK-4015: Expedite commits from the compactor
-comment|// FIXME OAK-4122: Replace the commit semaphore in the segment node store with a scheduler
-comment|// Replace by usage of expeditable lock or commit scheduler
-name|boolean
-name|locked
-parameter_list|(
-name|Callable
-argument_list|<
-name|Boolean
-argument_list|>
-name|c
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-name|commitSemaphore
-operator|.
-name|tryAcquire
-argument_list|()
-condition|)
-block|{
-try|try
-block|{
-return|return
-name|c
-operator|.
-name|call
-argument_list|()
-return|;
-block|}
-finally|finally
-block|{
-name|commitSemaphore
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-return|return
-literal|false
-return|;
-block|}
 comment|/**      * Execute the passed callable with trying to acquire this store's commit lock.      * @param timeout the maximum time to wait for the store's commit lock      * @param unit the time unit of the {@code timeout} argument      * @param c  callable to execute      * @return  {@code false} if the store's commit lock cannot be acquired, the result      *          of {@code c.call()} otherwise.      * @throws Exception      */
 comment|// FIXME OAK-4015: Expedite commits from the compactor
 comment|// FIXME OAK-4122: Replace the commit semaphore in the segment node store with a scheduler
