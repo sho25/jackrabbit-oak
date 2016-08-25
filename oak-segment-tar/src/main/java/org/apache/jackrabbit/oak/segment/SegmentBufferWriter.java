@@ -317,16 +317,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|UUID
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -553,7 +543,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|UUID
+name|SegmentId
 argument_list|>
 name|referencedSegmentIds
 init|=
@@ -1257,9 +1247,6 @@ name|recordId
 operator|.
 name|getSegmentId
 argument_list|()
-operator|.
-name|asUUID
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1630,7 +1617,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|UUID
+name|SegmentId
 name|id
 range|:
 name|referencedSegmentIds
