@@ -361,6 +361,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -573,6 +583,11 @@ block|}
 comment|/**      * OAK-2430      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4707"
+argument_list|)
 specifier|public
 name|void
 name|testSyncLoop
