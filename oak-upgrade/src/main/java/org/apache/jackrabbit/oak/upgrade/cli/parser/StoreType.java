@@ -827,7 +827,7 @@ return|;
 block|}
 block|}
 return|return
-name|SEGMENT
+name|SEGMENT_TAR
 return|;
 block|}
 specifier|public

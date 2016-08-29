@@ -1183,7 +1183,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|SEGMENT
+name|SEGMENT_TAR
 condition|)
 block|{
 return|return
@@ -1335,7 +1335,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|SEGMENT
+name|SEGMENT_TAR
 expr_stmt|;
 block|}
 name|jcr2Dir
@@ -1683,7 +1683,7 @@ argument_list|(
 operator|new
 name|StoreDescriptor
 argument_list|(
-name|SEGMENT
+name|SEGMENT_TAR
 argument_list|,
 name|crx2Dir
 argument_list|)
