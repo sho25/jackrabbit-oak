@@ -417,6 +417,8 @@ name|properties
 parameter_list|)
 block|{
 return|return
+name|ns
+operator|.
 name|checkpoint
 argument_list|(
 name|lifetime
@@ -438,6 +440,8 @@ name|lifetime
 parameter_list|)
 block|{
 return|return
+name|ns
+operator|.
 name|checkpoint
 argument_list|(
 name|lifetime
@@ -464,6 +468,8 @@ name|checkpoint
 parameter_list|)
 block|{
 return|return
+name|ns
+operator|.
 name|checkpointInfo
 argument_list|(
 name|checkpoint
@@ -483,6 +489,8 @@ name|checkpoint
 parameter_list|)
 block|{
 return|return
+name|ns
+operator|.
 name|retrieve
 argument_list|(
 name|checkpoint
@@ -502,6 +510,8 @@ name|checkpoint
 parameter_list|)
 block|{
 return|return
+name|ns
+operator|.
 name|release
 argument_list|(
 name|checkpoint
