@@ -1577,6 +1577,25 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
+return|return
+name|toStringBuilder
+argument_list|(
+name|sb
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+comment|/**      * Appends the string representation of this revision vector to the passed      * {@code StringBuilder}. The string representation is the same as returned      * by {@link #asString()}.      *      * @param sb the {@code StringBuilder} this revision vector is appended to.      * @return the passed {@code StringBuilder} object.      */
+specifier|public
+name|StringBuilder
+name|toStringBuilder
+parameter_list|(
+name|StringBuilder
+name|sb
+parameter_list|)
+block|{
 for|for
 control|(
 name|int
@@ -1586,7 +1605,9 @@ literal|0
 init|;
 name|i
 operator|<
-name|len
+name|revisions
+operator|.
+name|length
 condition|;
 name|i
 operator|++
@@ -1620,9 +1641,6 @@ expr_stmt|;
 block|}
 return|return
 name|sb
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 comment|/**      * Creates a revision vector from a string representation as returned by      * {@link #asString()}.      *      * @param s the string representation of a revision vector.      * @return the revision vector.      * @throws IllegalArgumentException if the string is malformed      */
@@ -1883,6 +1901,18 @@ literal|false
 argument_list|,
 literal|false
 argument_list|)
+return|;
+block|}
+comment|/**      * Returns the dimensions of this revision vector. That is, the number of      * revision elements in this vector.      *      * @return the number of revision elements in this vector.      */
+specifier|public
+name|int
+name|getDimensions
+parameter_list|()
+block|{
+return|return
+name|revisions
+operator|.
+name|length
 return|;
 block|}
 comment|//------------------------< CacheValue>------------------------------------
