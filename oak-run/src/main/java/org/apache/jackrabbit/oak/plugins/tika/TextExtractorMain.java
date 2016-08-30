@@ -630,15 +630,15 @@ name|class
 argument_list|)
 decl_stmt|;
 name|OptionSpec
-name|segmentTar
+name|segment
 init|=
 name|parser
 operator|.
 name|accepts
 argument_list|(
-literal|"segment-tar"
+literal|"segment"
 argument_list|,
-literal|"Use oak-segment-tar instead of oak-segment"
+literal|"Use oak-segment instead of oak-segment-tar"
 argument_list|)
 decl_stmt|;
 name|OptionSpec
@@ -1456,7 +1456,7 @@ name|options
 operator|.
 name|has
 argument_list|(
-name|segmentTar
+name|segment
 argument_list|)
 argument_list|,
 name|blobStore
@@ -1834,7 +1834,7 @@ name|String
 name|src
 parameter_list|,
 name|boolean
-name|segmentTar
+name|segment
 parameter_list|,
 name|BlobStore
 name|blobStore
@@ -1963,11 +1963,11 @@ return|;
 block|}
 if|if
 condition|(
-name|segmentTar
+name|segment
 condition|)
 block|{
 return|return
-name|SegmentTarUtils
+name|SegmentUtils
 operator|.
 name|bootstrap
 argument_list|(
@@ -1980,7 +1980,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|SegmentUtils
+name|SegmentTarUtils
 operator|.
 name|bootstrap
 argument_list|(

@@ -184,15 +184,15 @@ name|OptionParser
 argument_list|()
 decl_stmt|;
 name|OptionSpec
-name|segmentTar
+name|segment
 init|=
 name|parser
 operator|.
 name|accepts
 argument_list|(
-literal|"segment-tar"
+literal|"segment"
 argument_list|,
-literal|"Use oak-segment-tar instead of oak-segment"
+literal|"Use oak-segment instead of oak-segment-tar"
 argument_list|)
 decl_stmt|;
 name|OptionSet
@@ -222,7 +222,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"usage: checkpoints {<path>|<mongo-uri>} [list|rm-all|rm-unreferenced|rm<checkpoint>] [--segment-tar]"
+literal|"usage: checkpoints {<path>|<mongo-uri>} [list|rm-all|rm-unreferenced|rm<checkpoint>] [--segment]"
 argument_list|)
 expr_stmt|;
 name|System
@@ -427,7 +427,7 @@ name|options
 operator|.
 name|has
 argument_list|(
-name|segmentTar
+name|segment
 argument_list|)
 condition|)
 block|{
@@ -435,7 +435,7 @@ name|cps
 operator|=
 name|Checkpoints
 operator|.
-name|onSegmentTar
+name|onSegment
 argument_list|(
 operator|new
 name|File
@@ -453,7 +453,7 @@ name|cps
 operator|=
 name|Checkpoints
 operator|.
-name|onSegment
+name|onSegmentTar
 argument_list|(
 operator|new
 name|File

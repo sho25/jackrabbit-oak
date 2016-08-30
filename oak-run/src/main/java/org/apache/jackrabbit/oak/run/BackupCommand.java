@@ -78,15 +78,15 @@ name|OptionParser
 argument_list|()
 decl_stmt|;
 name|OptionSpec
-name|segmentTar
+name|segment
 init|=
 name|parser
 operator|.
 name|accepts
 argument_list|(
-literal|"segment-tar"
+literal|"segment"
 argument_list|,
-literal|"Use oak-segment-tar instead of oak-segment"
+literal|"Use oak-segment instead of oak-segment-tar"
 argument_list|)
 decl_stmt|;
 name|OptionSet
@@ -175,11 +175,11 @@ name|options
 operator|.
 name|has
 argument_list|(
-name|segmentTar
+name|segment
 argument_list|)
 condition|)
 block|{
-name|SegmentTarUtils
+name|SegmentUtils
 operator|.
 name|backup
 argument_list|(
@@ -191,7 +191,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|SegmentUtils
+name|SegmentTarUtils
 operator|.
 name|backup
 argument_list|(

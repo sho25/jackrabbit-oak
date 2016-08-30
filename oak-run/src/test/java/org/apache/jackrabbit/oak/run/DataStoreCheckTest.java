@@ -18,6 +18,34 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Charsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -333,8 +361,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
 name|SegmentBlob
@@ -351,11 +377,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -369,13 +393,29 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
 name|file
 operator|.
 name|FileStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStoreBuilder
 import|;
 end_import
 
@@ -533,34 +573,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests for {@link DataStoreCheckCommand}  */
 end_comment
@@ -686,13 +698,11 @@ name|getAbsolutePath
 argument_list|()
 expr_stmt|;
 name|FileStore
-operator|.
-name|Builder
-name|builder
+name|fileStore
 init|=
-name|FileStore
+name|FileStoreBuilder
 operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|storeFile
 argument_list|)
@@ -707,20 +717,10 @@ argument_list|(
 literal|256
 argument_list|)
 operator|.
-name|withCacheSize
+name|withSegmentCacheSize
 argument_list|(
 literal|64
 argument_list|)
-operator|.
-name|withMemoryMapping
-argument_list|(
-literal|false
-argument_list|)
-decl_stmt|;
-name|FileStore
-name|fileStore
-init|=
-name|builder
 operator|.
 name|build
 argument_list|()
@@ -728,7 +728,7 @@ decl_stmt|;
 name|NodeStore
 name|store
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
