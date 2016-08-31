@@ -242,6 +242,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4708"
+argument_list|)
 specifier|public
 name|void
 name|testServerEmptyConfig
@@ -554,6 +559,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4708"
+argument_list|)
 specifier|public
 name|void
 name|testClientEmptyConfigNoServer
@@ -869,6 +879,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4708"
+argument_list|)
 specifier|public
 name|void
 name|testClientNoServer
