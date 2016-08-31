@@ -121,7 +121,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|boolean
-name|mmap
+name|disableMmap
 decl_stmt|;
 specifier|private
 specifier|final
@@ -209,7 +209,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|mmap
+name|disableMmap
 operator|=
 name|args
 operator|.
@@ -217,7 +217,7 @@ name|hasOption
 argument_list|(
 name|OptionParserFactory
 operator|.
-name|MMAP
+name|DISABLE_MMAP
 argument_list|)
 expr_stmt|;
 if|if
@@ -488,11 +488,11 @@ return|;
 block|}
 specifier|public
 name|boolean
-name|isMmap
+name|isDisableMmap
 parameter_list|()
 block|{
 return|return
-name|mmap
+name|disableMmap
 return|;
 block|}
 specifier|public
@@ -636,14 +636,14 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|mmap
+name|disableMmap
 condition|)
 block|{
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Enabling memory mapped file access for Segment Store"
+literal|"Disabling memory mapped file access for Segment Store"
 argument_list|)
 expr_stmt|;
 block|}
