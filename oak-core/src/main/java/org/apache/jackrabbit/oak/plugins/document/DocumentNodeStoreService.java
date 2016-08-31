@@ -1816,6 +1816,31 @@ name|PROP_JOURNAL_GC_BATCH_SIZE
 init|=
 literal|"journalGcBatchSize"
 decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|boolValue
+operator|=
+literal|false
+argument_list|,
+name|label
+operator|=
+literal|"Pre-fetch external changes"
+argument_list|,
+name|description
+operator|=
+literal|"Boolean value indicating if external changes should "
+operator|+
+literal|"be pre-fetched in a background thread."
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROP_PREFETCH_EXTERNAL_CHANGES
+init|=
+literal|"prefetchExternalChanges"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -2682,6 +2707,19 @@ argument_list|,
 name|DEFAULT_CACHE_STACK_MOVE_DISTANCE
 argument_list|)
 decl_stmt|;
+name|boolean
+name|prefetchExternalChanges
+init|=
+name|toBoolean
+argument_list|(
+name|prop
+argument_list|(
+name|PROP_PREFETCH_EXTERNAL_CHANGES
+argument_list|)
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
 name|DocumentMK
 operator|.
 name|Builder
@@ -2832,6 +2870,11 @@ comment|// plan B succeeded.
 block|}
 block|}
 block|}
+argument_list|)
+operator|.
+name|setPrefetchExternalChanges
+argument_list|(
+name|prefetchExternalChanges
 argument_list|)
 decl_stmt|;
 if|if
