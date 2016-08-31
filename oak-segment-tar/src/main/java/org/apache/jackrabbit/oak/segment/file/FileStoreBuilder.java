@@ -1223,7 +1223,7 @@ argument_list|)
 expr_stmt|;
 name|directory
 operator|.
-name|mkdir
+name|mkdirs
 argument_list|()
 expr_stmt|;
 name|revisions
