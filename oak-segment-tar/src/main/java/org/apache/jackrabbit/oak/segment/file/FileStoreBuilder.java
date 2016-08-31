@@ -550,6 +550,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|memoryMapping
+init|=
+name|FileStore
+operator|.
+name|MEMORY_MAPPING_DEFAULT
 decl_stmt|;
 annotation|@
 name|Nonnull
