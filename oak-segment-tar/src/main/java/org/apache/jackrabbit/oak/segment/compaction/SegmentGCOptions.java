@@ -96,7 +96,7 @@ specifier|final
 name|int
 name|LOCK_WAIT_TIME_DEFAULT
 init|=
-literal|60000
+literal|60
 decl_stmt|;
 comment|/**      * Default value for {@link #getRetainedGenerations()}      */
 specifier|public
@@ -106,6 +106,16 @@ name|int
 name|RETAINED_GENERATIONS_DEFAULT
 init|=
 literal|2
+decl_stmt|;
+comment|/**      * Default value for {@link #getGcSizeDeltaEstimation()}      */
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|SIZE_DELTA_ESTIMATION_DEFAULT
+init|=
+operator|-
+literal|1
 decl_stmt|;
 specifier|private
 name|boolean
@@ -193,8 +203,7 @@ name|getLong
 argument_list|(
 literal|"oak.segment.compaction.gcSizeDeltaEstimation"
 argument_list|,
-operator|-
-literal|1
+name|SIZE_DELTA_ESTIMATION_DEFAULT
 argument_list|)
 decl_stmt|;
 specifier|public
