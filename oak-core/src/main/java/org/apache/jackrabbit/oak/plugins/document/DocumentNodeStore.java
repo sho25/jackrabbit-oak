@@ -5692,7 +5692,10 @@ name|PathRev
 argument_list|(
 name|path
 argument_list|,
-name|before
+name|beforeState
+operator|.
+name|getLastRevision
+argument_list|()
 operator|.
 name|update
 argument_list|(
