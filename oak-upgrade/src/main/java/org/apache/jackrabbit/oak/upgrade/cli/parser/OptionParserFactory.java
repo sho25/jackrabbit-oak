@@ -58,9 +58,9 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|DISABLE_MMAP
+name|MMAP
 init|=
-literal|"disable-mmap"
+literal|"mmap"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -762,9 +762,9 @@ name|op
 operator|.
 name|accepts
 argument_list|(
-name|DISABLE_MMAP
+name|MMAP
 argument_list|,
-literal|"Disable memory mapped file access for Segment Store"
+literal|"Enable memory mapped file access for Segment Store"
 argument_list|)
 expr_stmt|;
 name|op
