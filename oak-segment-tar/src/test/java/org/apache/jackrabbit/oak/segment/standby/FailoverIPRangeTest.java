@@ -417,6 +417,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4707"
+argument_list|)
 specifier|public
 name|void
 name|testFailoverValidIPRange
