@@ -170,6 +170,8 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"--disable-mmap"
+block|,
 literal|"--user"
 block|,
 literal|"sa"

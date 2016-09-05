@@ -705,7 +705,7 @@ operator|.
 name|getOptions
 argument_list|()
 operator|.
-name|isMmap
+name|isDisableMmap
 argument_list|()
 argument_list|)
 argument_list|)
@@ -774,7 +774,7 @@ operator|.
 name|getOptions
 argument_list|()
 operator|.
-name|isMmap
+name|isDisableMmap
 argument_list|()
 argument_list|)
 argument_list|)
