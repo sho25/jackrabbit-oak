@@ -51,6 +51,10 @@ name|TabularData
 name|getObserversStats
 parameter_list|()
 function_decl|;
+name|TabularData
+name|getLeaderBoard
+parameter_list|()
+function_decl|;
 name|int
 name|getListenersCount
 parameter_list|()
