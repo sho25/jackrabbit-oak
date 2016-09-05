@@ -101,6 +101,26 @@ name|index
 operator|.
 name|IndexConstants
 operator|.
+name|INDEXING_MODE_NRT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|IndexConstants
+operator|.
 name|INDEX_CONTENT_NODE_NAME
 import|;
 end_import
@@ -3717,7 +3737,7 @@ name|Sets
 operator|.
 name|newHashSet
 argument_list|(
-literal|""
+name|INDEXING_MODE_NRT
 argument_list|,
 literal|"async"
 argument_list|)

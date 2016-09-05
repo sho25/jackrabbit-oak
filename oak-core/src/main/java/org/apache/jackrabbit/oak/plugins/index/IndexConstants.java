@@ -64,6 +64,16 @@ init|=
 literal|"reindex-async"
 decl_stmt|;
 name|String
+name|INDEXING_MODE_SYNC
+init|=
+literal|"sync"
+decl_stmt|;
+name|String
+name|INDEXING_MODE_NRT
+init|=
+literal|"nrt"
+decl_stmt|;
+name|String
 name|ASYNC_PROPERTY_NAME
 init|=
 literal|"async"
