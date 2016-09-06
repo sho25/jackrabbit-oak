@@ -841,6 +841,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|LOG_NODE_COPY
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.upgrade.logNodeCopy"
+argument_list|,
+literal|10000
+argument_list|)
+decl_stmt|;
 comment|/**      * Target node store.      */
 specifier|private
 specifier|final
@@ -1234,7 +1249,7 @@ name|LOG
 argument_list|,
 literal|"Copying"
 argument_list|,
-literal|10000
+name|LOG_NODE_COPY
 argument_list|,
 operator|-
 literal|1
