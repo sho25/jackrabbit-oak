@@ -1481,11 +1481,6 @@ name|customCommitHooks
 argument_list|)
 expr_stmt|;
 block|}
-name|markIndexesToBeRebuilt
-argument_list|(
-name|targetRoot
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1493,6 +1488,11 @@ name|isCompleteMigration
 argument_list|()
 condition|)
 block|{
+name|markIndexesToBeRebuilt
+argument_list|(
+name|targetRoot
+argument_list|)
+expr_stmt|;
 comment|// type validation, reference and indexing hooks
 name|hooks
 operator|.

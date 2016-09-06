@@ -2041,6 +2041,8 @@ operator|.
 name|of
 argument_list|(
 literal|"counter"
+argument_list|,
+literal|"uuid"
 argument_list|)
 decl_stmt|;
 specifier|public
