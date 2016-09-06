@@ -21,6 +21,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Executors
+operator|.
+name|newSingleThreadScheduledExecutor
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -116,6 +130,18 @@ operator|.
 name|util
 operator|.
 name|Random
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledExecutorService
 import|;
 end_import
 
@@ -403,6 +429,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|DefaultStatisticsProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -478,6 +520,9 @@ name|d
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|ScheduledExecutorService
+name|executor
 parameter_list|)
 throws|throws
 name|Exception
@@ -553,6 +598,15 @@ operator|.
 name|withBlobStore
 argument_list|(
 name|blobStore
+argument_list|)
+operator|.
+name|withStatisticsProvider
+argument_list|(
+operator|new
+name|DefaultStatisticsProvider
+argument_list|(
+name|executor
+argument_list|)
 argument_list|)
 operator|.
 name|build

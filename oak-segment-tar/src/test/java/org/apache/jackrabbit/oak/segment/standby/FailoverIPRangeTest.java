@@ -499,6 +499,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4708"
+argument_list|)
 specifier|public
 name|void
 name|testFailoverCorrectListIPv6
@@ -566,6 +571,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4708"
+argument_list|)
 specifier|public
 name|void
 name|testFailoverCorrectListUseIPv6

@@ -59,6 +59,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledExecutorService
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -159,6 +171,9 @@ name|setupPrimary
 parameter_list|(
 name|File
 name|d
+parameter_list|,
+name|ScheduledExecutorService
+name|primaryExecutor
 parameter_list|)
 throws|throws
 name|Exception
@@ -179,6 +194,8 @@ name|externalStore
 operator|.
 name|getAbsolutePath
 argument_list|()
+argument_list|,
+name|primaryExecutor
 argument_list|)
 return|;
 block|}
@@ -190,6 +207,9 @@ name|setupSecondary
 parameter_list|(
 name|File
 name|d
+parameter_list|,
+name|ScheduledExecutorService
+name|secondaryExecutor
 parameter_list|)
 throws|throws
 name|Exception
@@ -203,6 +223,8 @@ name|externalStore
 operator|.
 name|getAbsolutePath
 argument_list|()
+argument_list|,
+name|secondaryExecutor
 argument_list|)
 return|;
 block|}
