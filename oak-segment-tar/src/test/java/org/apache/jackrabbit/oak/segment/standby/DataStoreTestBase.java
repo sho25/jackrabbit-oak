@@ -21,20 +21,6 @@ end_package
 
 begin_import
 import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-operator|.
-name|newSingleThreadScheduledExecutor
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -457,16 +443,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -728,11 +704,6 @@ return|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4708"
-argument_list|)
 specifier|public
 name|void
 name|testSync
@@ -986,11 +957,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4708"
-argument_list|)
 specifier|public
 name|void
 name|testProxySkippedBytes
@@ -1013,11 +979,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4708"
-argument_list|)
 specifier|public
 name|void
 name|testProxySkippedBytesIntermediateChange
@@ -1040,11 +1001,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4708"
-argument_list|)
 specifier|public
 name|void
 name|testProxyFlippedStartByte
@@ -1066,11 +1022,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4708"
-argument_list|)
 specifier|public
 name|void
 name|testProxyFlippedIntermediateByte
@@ -1092,11 +1043,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4708"
-argument_list|)
 specifier|public
 name|void
 name|testProxyFlippedIntermediateByte2
@@ -1118,11 +1064,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4708"
-argument_list|)
 specifier|public
 name|void
 name|testProxyFlippedIntermediateByteChange
@@ -1144,11 +1085,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4708"
-argument_list|)
 specifier|public
 name|void
 name|testProxyFlippedIntermediateByteChange2
