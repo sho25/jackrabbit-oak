@@ -307,20 +307,6 @@ name|jackrabbit
 operator|.
 name|JcrConstants
 operator|.
-name|JCR_MIXINTYPES
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|JcrConstants
-operator|.
 name|JCR_PREDECESSORS
 import|;
 end_import
@@ -517,6 +503,26 @@ name|getVersionHistoryNodeState
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|upgrade
+operator|.
+name|version
+operator|.
+name|VersionHistoryUtil
+operator|.
+name|getVersionStorage
+import|;
+end_import
+
 begin_comment
 comment|/**  * The VersionablePropertiesEditor adds missing versionable properties.  */
 end_comment
@@ -556,6 +562,11 @@ specifier|private
 specifier|final
 name|NodeBuilder
 name|rootBuilder
+decl_stmt|;
+specifier|private
+specifier|final
+name|NodeBuilder
+name|versionStorage
 decl_stmt|;
 specifier|private
 specifier|final
@@ -600,6 +611,15 @@ operator|.
 name|rootBuilder
 operator|=
 name|rootBuilder
+expr_stmt|;
+name|this
+operator|.
+name|versionStorage
+operator|=
+name|getVersionStorage
+argument_list|(
+name|rootBuilder
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -685,6 +705,14 @@ operator|=
 name|parent
 operator|.
 name|rootBuilder
+expr_stmt|;
+name|this
+operator|.
+name|versionStorage
+operator|=
+name|parent
+operator|.
+name|versionStorage
 expr_stmt|;
 name|this
 operator|.
@@ -954,7 +982,7 @@ name|versionHistory
 init|=
 name|getVersionHistoryNodeState
 argument_list|(
-name|rootBuilder
+name|versionStorage
 operator|.
 name|getNodeState
 argument_list|()

@@ -783,6 +783,26 @@ name|copyVersionStorage
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|upgrade
+operator|.
+name|version
+operator|.
+name|VersionHistoryUtil
+operator|.
+name|getVersionStorage
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -1375,9 +1395,17 @@ condition|)
 block|{
 name|copyVersionStorage
 argument_list|(
-name|sourceRoot
-argument_list|,
 name|targetRoot
+argument_list|,
+name|getVersionStorage
+argument_list|(
+name|sourceRoot
+argument_list|)
+argument_list|,
+name|getVersionStorage
+argument_list|(
+name|targetRoot
+argument_list|)
 argument_list|,
 name|versionCopyConfiguration
 argument_list|)
