@@ -434,6 +434,15 @@ name|tree
 operator|.
 name|setProperty
 argument_list|(
+literal|"reindex"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|tree
+operator|.
+name|setProperty
+argument_list|(
 name|IndexConstants
 operator|.
 name|TYPE_PROPERTY_NAME
