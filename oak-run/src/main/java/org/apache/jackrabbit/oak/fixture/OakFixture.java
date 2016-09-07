@@ -323,6 +323,22 @@ name|NodeStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|StatisticsProvider
+import|;
+end_import
+
 begin_class
 specifier|public
 specifier|abstract
@@ -494,6 +510,9 @@ name|setUpCluster
 parameter_list|(
 name|int
 name|n
+parameter_list|,
+name|StatisticsProvider
+name|statsProvider
 parameter_list|)
 throws|throws
 name|Exception
@@ -608,6 +627,9 @@ name|setUpCluster
 parameter_list|(
 name|int
 name|n
+parameter_list|,
+name|StatisticsProvider
+name|statsProvider
 parameter_list|)
 throws|throws
 name|Exception
@@ -1048,6 +1070,7 @@ argument_list|(
 name|cacheSize
 argument_list|)
 operator|.
+comment|//TODO Persistent cache should be removed in teardown
 name|setPersistentCache
 argument_list|(
 literal|"target/persistentCache,time"
@@ -1095,6 +1118,9 @@ name|setUpCluster
 parameter_list|(
 name|int
 name|n
+parameter_list|,
+name|StatisticsProvider
+name|statsProvider
 parameter_list|)
 throws|throws
 name|Exception
@@ -1155,6 +1181,11 @@ name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
+operator|.
+name|setStatisticsProvider
+argument_list|(
+name|statsProvider
+argument_list|)
 operator|.
 name|setMongoDB
 argument_list|(
@@ -1679,6 +1710,9 @@ name|setUpCluster
 parameter_list|(
 name|int
 name|n
+parameter_list|,
+name|StatisticsProvider
+name|statsProvider
 parameter_list|)
 throws|throws
 name|Exception
@@ -1750,6 +1784,11 @@ name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
+operator|.
+name|setStatisticsProvider
+argument_list|(
+name|statsProvider
+argument_list|)
 operator|.
 name|setRDBConnection
 argument_list|(
@@ -2189,6 +2228,9 @@ name|setUpCluster
 parameter_list|(
 name|int
 name|n
+parameter_list|,
+name|StatisticsProvider
+name|statsProvider
 parameter_list|)
 throws|throws
 name|Exception
@@ -2326,6 +2368,11 @@ argument_list|(
 name|EmptyNodeState
 operator|.
 name|EMPTY_NODE
+argument_list|)
+operator|.
+name|withStatisticsProvider
+argument_list|(
+name|statsProvider
 argument_list|)
 operator|.
 name|withMaxFileSize

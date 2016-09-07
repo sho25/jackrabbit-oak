@@ -145,6 +145,22 @@ name|BlobStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|StatisticsProvider
+import|;
+end_import
+
 begin_class
 class|class
 name|SegmentTarFixture
@@ -312,6 +328,9 @@ name|setUpCluster
 parameter_list|(
 name|int
 name|n
+parameter_list|,
+name|StatisticsProvider
+name|statsProvider
 parameter_list|)
 throws|throws
 name|Exception
@@ -443,6 +462,11 @@ operator|.
 name|withMaxFileSize
 argument_list|(
 name|maxFileSizeMB
+argument_list|)
+operator|.
+name|withStatisticsProvider
+argument_list|(
+name|statsProvider
 argument_list|)
 operator|.
 name|withSegmentCacheSize
