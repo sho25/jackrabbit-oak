@@ -99,20 +99,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|io
-operator|.
-name|ByteStreams
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -347,17 +333,21 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Test
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Test
+name|common
+operator|.
+name|io
+operator|.
+name|ByteStreams
 import|;
 end_import
 
