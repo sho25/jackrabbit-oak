@@ -3037,6 +3037,15 @@ name|leaseTime
 return|;
 block|}
 specifier|public
+name|long
+name|getLeaseEndTime
+parameter_list|()
+block|{
+return|return
+name|leaseEndTime
+return|;
+block|}
+specifier|public
 name|void
 name|setLeaseFailureHandler
 parameter_list|(
