@@ -794,7 +794,18 @@ name|upperBound
 argument_list|)
 condition|)
 block|{
-comment|// no wildcards
+comment|// no wildcards: equality comparison
+comment|// but v may contain escaped wildcards, so we can't use it
+name|PropertyValue
+name|pv
+init|=
+name|PropertyValues
+operator|.
+name|newString
+argument_list|(
+name|lowerBound
+argument_list|)
+decl_stmt|;
 name|operand1
 operator|.
 name|restrict
@@ -805,7 +816,7 @@ name|Operator
 operator|.
 name|EQUAL
 argument_list|,
-name|v
+name|pv
 argument_list|)
 expr_stmt|;
 block|}
