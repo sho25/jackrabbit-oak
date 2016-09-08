@@ -488,6 +488,15 @@ name|segment
 operator|=
 name|segment
 expr_stmt|;
+name|this
+operator|.
+name|gcGeneration
+operator|=
+name|segment
+operator|.
+name|getGcGeneration
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * This method should only be called from lower level caches to notify this instance that the      * passed {@code segment} has been unloaded and should no longer be memoised.      * @see #getSegment()      * @see #loaded(Segment)      */
 name|void
@@ -543,6 +552,27 @@ name|msb
 argument_list|,
 name|lsb
 argument_list|)
+return|;
+block|}
+comment|/**      * Get the underlying segment's gc generation. Might cause the segment to      * get loaded if the generation info is missing      * @return the segment's gc generation      */
+specifier|public
+name|int
+name|getGcGeneration
+parameter_list|()
+block|{
+if|if
+condition|(
+name|gcGeneration
+operator|<
+literal|0
+condition|)
+block|{
+name|getSegment
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|gcGeneration
 return|;
 block|}
 comment|// --------------------------------------------------------< Comparable>--

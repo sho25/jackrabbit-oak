@@ -1293,9 +1293,6 @@ if|if
 condition|(
 name|id
 operator|.
-name|getSegment
-argument_list|()
-operator|.
 name|getGcGeneration
 argument_list|()
 operator|<

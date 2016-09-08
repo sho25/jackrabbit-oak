@@ -2655,7 +2655,7 @@ operator|.
 name|getHead
 argument_list|()
 operator|.
-name|getSegment
+name|getSegmentId
 argument_list|()
 operator|.
 name|getGcGeneration

@@ -6249,7 +6249,7 @@ name|thatGen
 init|=
 name|id
 operator|.
-name|getSegment
+name|getSegmentId
 argument_list|()
 operator|.
 name|getGcGeneration

@@ -386,7 +386,7 @@ operator|.
 name|getRecordId
 argument_list|()
 operator|.
-name|getSegment
+name|getSegmentId
 argument_list|()
 operator|.
 name|getGcGeneration

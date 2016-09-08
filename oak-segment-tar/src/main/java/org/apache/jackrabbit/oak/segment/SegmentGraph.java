@@ -2761,11 +2761,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|Segment
-name|segment
+name|SegmentId
+name|segmentId
 init|=
 name|getSegmentId
 argument_list|()
+decl_stmt|;
+name|Segment
+name|segment
+init|=
+name|segmentId
 operator|.
 name|getSegment
 argument_list|()
@@ -2793,7 +2798,7 @@ literal|"gc"
 argument_list|,
 name|valueOf
 argument_list|(
-name|segment
+name|segmentId
 operator|.
 name|getGcGeneration
 argument_list|()
