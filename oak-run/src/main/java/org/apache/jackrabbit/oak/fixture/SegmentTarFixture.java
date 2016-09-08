@@ -410,6 +410,8 @@ argument_list|(
 name|base
 argument_list|,
 literal|true
+argument_list|,
+name|statsProvider
 argument_list|)
 expr_stmt|;
 name|blobStore
