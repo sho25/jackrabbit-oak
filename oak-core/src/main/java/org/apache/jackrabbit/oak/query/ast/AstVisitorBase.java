@@ -344,7 +344,7 @@ block|{
 return|return
 name|node
 operator|.
-name|getPropertyValue
+name|getOperand
 argument_list|()
 operator|.
 name|accept

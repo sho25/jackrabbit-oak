@@ -362,7 +362,7 @@ literal|"where upper(name()) = 'ACME:TEST', "
 operator|+
 literal|"path=*, property=["
 operator|+
-literal|"function*upper*@:localname=[TEST]])"
+literal|"function*upper*@:name=[ACME:TEST]])"
 argument_list|,
 name|createFilterSQL
 argument_list|(
@@ -375,17 +375,17 @@ argument_list|)
 expr_stmt|;
 name|sql2
 operator|=
-literal|"select [jcr:path] from [nt:base] where lower(localname()) = 'test'"
+literal|"select [jcr:path] from [nt:base] where lower(localname())> 'test'"
 expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Filter(query=select [jcr:path] from [nt:base] "
 operator|+
-literal|"where lower(localname()) = 'test', "
+literal|"where lower(localname())> 'test', "
 operator|+
 literal|"path=*, property=["
 operator|+
-literal|"function*lower*@:localname=[test]])"
+literal|"function*lower*@:localname=[(test..]])"
 argument_list|,
 name|createFilterSQL
 argument_list|(
@@ -421,17 +421,17 @@ argument_list|)
 expr_stmt|;
 name|sql2
 operator|=
-literal|"select [jcr:path] from [nt:base] where length([test])> 2"
+literal|"select [jcr:path] from [nt:base] where length([data/test])> 2"
 expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Filter(query=select [jcr:path] from [nt:base] "
 operator|+
-literal|"where length([test])> 2, "
+literal|"where length([data/test])> 2, "
 operator|+
-literal|"path=*, property=[function*length*@test=[(2..], "
+literal|"path=*, property=[data/test=[is not null], "
 operator|+
-literal|"test=[is not null]])"
+literal|"function*length*@data/test=[(2..]])"
 argument_list|,
 name|createFilterSQL
 argument_list|(

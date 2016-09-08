@@ -2312,7 +2312,9 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-literal|"Result set size is different"
+literal|"Result set size is different: "
+operator|+
+name|actual
 argument_list|,
 name|expected
 operator|.

@@ -34,6 +34,15 @@ name|RESTRICTION_LOCAL_NAME
 init|=
 literal|":localname"
 decl_stmt|;
+comment|/**      * Name of the property restriction used to express query performed      * via NAME and LOCALNAME functions      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|RESTRICTION_NAME
+init|=
+literal|":name"
+decl_stmt|;
 comment|/**      * The prefix for restrictions for function-based indexes, for example      * upper(propertyName). Syntax: "function*expression". In order to support      * all kinds of expressions in the future (including nested expressions and      * so on), the format for the expression is written in the Polish notation      * (the RPN, reversed), with "*" as delimiter (as property names may not      * contain "*"), and "@" in front of each property name to distinguish      * between property names and functions. Literals are quoted. Examples: The      * expression "lower(lastName)" is converted to "function*lower {@literal @}      * lastName". The expression "lower(lastName)" is converted to      * "lower(upper(lastName))" is converted to "function*lower*upper*      * {@literal @}lastName". The condition      * "firstName+' '+lastName = 'Tim Cook'" would be "function*+*+ {@literal @}      * firstName*' ' {@literal @}lastName.      */
 specifier|public
 specifier|static

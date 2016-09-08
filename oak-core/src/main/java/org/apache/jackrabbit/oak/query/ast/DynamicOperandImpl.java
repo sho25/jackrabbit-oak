@@ -73,6 +73,26 @@ name|FilterImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryIndex
+operator|.
+name|OrderEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * The base class for dynamic operands (such as a function or property).  */
 end_comment
@@ -123,23 +143,14 @@ argument_list|>
 name|list
 parameter_list|)
 function_decl|;
-comment|/**      * Apply a restriction of type "function(this) = value" to the given filter.      *       * @param functionName the function name (for example "upper")      * @param f the filter where the restriction is applied.      * @param operator the operator (for example "=").      * @param v the value      */
+comment|/**      * Get the function of a function-based index, in Polish notation.      *       * @param s the selector      * @return the function, or null if not supported      */
 specifier|public
 specifier|abstract
-name|void
-name|restrictFunction
-parameter_list|(
-name|FilterImpl
-name|f
-parameter_list|,
 name|String
-name|functionName
-parameter_list|,
-name|Operator
-name|operator
-parameter_list|,
-name|PropertyValue
-name|v
+name|getFunction
+parameter_list|(
+name|SelectorImpl
+name|s
 parameter_list|)
 function_decl|;
 comment|/**      * Check whether the condition can be applied to a selector (to restrict the      * selector). The method may return true if the operand can be evaluated      * when the given selector and all previous selectors in the join can be      * evaluated.      *      * @param s the selector      * @return true if the condition can be applied      */
@@ -260,6 +271,19 @@ specifier|abstract
 name|DynamicOperandImpl
 name|createCopy
 parameter_list|()
+function_decl|;
+comment|/**      * Create an entry for the "order by" list for a given filter.      *       * @param s the selector      * @param o the ordering      * @return the entry      */
+specifier|public
+specifier|abstract
+name|OrderEntry
+name|getOrderEntry
+parameter_list|(
+name|SelectorImpl
+name|s
+parameter_list|,
+name|OrderingImpl
+name|o
+parameter_list|)
 function_decl|;
 block|}
 end_class

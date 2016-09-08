@@ -3671,11 +3671,8 @@ name|factory
 operator|.
 name|length
 argument_list|(
-name|parsePropertyValue
-argument_list|(
-name|readName
+name|parseDynamicOperand
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
