@@ -253,6 +253,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|directory
+operator|.
+name|mkdirs
+argument_list|()
+expr_stmt|;
 name|FileStore
 operator|.
 name|Builder
