@@ -450,8 +450,6 @@ name|RecordId
 argument_list|>
 name|persistedHead
 decl_stmt|;
-comment|// FIXME OAK-4015: Expedite commits from the compactor
-comment|// use a lock that can expedite important commits like compaction and checkpoints.
 annotation|@
 name|Nonnull
 specifier|private
@@ -461,7 +459,9 @@ name|rwLock
 init|=
 operator|new
 name|ReentrantReadWriteLock
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static
@@ -547,6 +547,30 @@ throw|;
 block|}
 block|}
 block|}
+comment|/**      * Option to cause set head calls to be expedited. That is, cause them to skip the queue      * of any other callers waiting to complete that don't have this option specified.      */
+specifier|public
+specifier|static
+specifier|final
+name|Option
+name|EXPEDITE_OPTION
+init|=
+operator|new
+name|Option
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Expedite Option"
+return|;
+block|}
+block|}
+decl_stmt|;
 comment|/**      * Timeout option approximating no time out ({@code Long.MAX_VALUE} days).      */
 specifier|public
 specifier|static
@@ -1027,7 +1051,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * This implementation blocks if a concurrent call to      * {@link #setHead(Function, Option...)} is already in      * progress.       * @param options   none      */
+comment|/**      * This implementation blocks if a concurrent call to      * {@link #setHead(Function, Option...)} is already in      * progress.      *      * @param options   zero or one expedite option for expediting this call      * @throws IllegalArgumentException  on any non recognised {@code option}.      * @see #EXPEDITE_OPTION      */
 annotation|@
 name|Override
 specifier|public
@@ -1054,10 +1078,28 @@ block|{
 name|checkBound
 argument_list|()
 expr_stmt|;
+comment|// If the expedite option was specified we acquire the write lock instead of the read lock.
+comment|// This will cause this thread to get the lock before all threads currently waiting to
+comment|// enter the read lock. See also the class comment of ReadWriteLock.
+name|Lock
+name|lock
+init|=
+name|isExpedited
+argument_list|(
+name|options
+argument_list|)
+condition|?
+name|rwLock
+operator|.
+name|writeLock
+argument_list|()
+else|:
 name|rwLock
 operator|.
 name|readLock
 argument_list|()
+decl_stmt|;
+name|lock
 operator|.
 name|lock
 argument_list|()
@@ -1096,10 +1138,7 @@ return|;
 block|}
 finally|finally
 block|{
-name|rwLock
-operator|.
-name|readLock
-argument_list|()
+name|lock
 operator|.
 name|unlock
 argument_list|()
@@ -1217,6 +1256,63 @@ block|{
 return|return
 literal|false
 return|;
+block|}
+block|}
+specifier|private
+specifier|static
+name|boolean
+name|isExpedited
+parameter_list|(
+name|Option
+index|[]
+name|options
+parameter_list|)
+block|{
+if|if
+condition|(
+name|options
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|options
+operator|.
+name|length
+operator|==
+literal|1
+condition|)
+block|{
+return|return
+name|options
+index|[
+literal|0
+index|]
+operator|==
+name|EXPEDITE_OPTION
+return|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Expected zero or one options, got "
+operator|+
+name|options
+operator|.
+name|length
+argument_list|)
+throw|;
 block|}
 block|}
 annotation|@

@@ -383,6 +383,26 @@ name|file
 operator|.
 name|TarRevisions
 operator|.
+name|EXPEDITE_OPTION
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|TarRevisions
+operator|.
 name|timeout
 import|;
 end_import
@@ -5211,6 +5231,8 @@ name|after
 operator|.
 name|getRecordId
 argument_list|()
+argument_list|,
+name|EXPEDITE_OPTION
 argument_list|)
 operator|)
 condition|)
