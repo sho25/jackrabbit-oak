@@ -39,7 +39,7 @@ name|codec
 operator|.
 name|Messages
 operator|.
-name|newGetHeadReq
+name|newGetHeadRequest
 import|;
 end_import
 
@@ -347,7 +347,7 @@ name|ctx
 operator|.
 name|writeAndFlush
 argument_list|(
-name|newGetHeadReq
+name|newGetHeadRequest
 argument_list|(
 name|this
 operator|.

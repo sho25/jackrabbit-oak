@@ -57,7 +57,7 @@ name|codec
 operator|.
 name|Messages
 operator|.
-name|newGetBlobReq
+name|newGetBlobRequest
 import|;
 end_import
 
@@ -79,7 +79,7 @@ name|codec
 operator|.
 name|Messages
 operator|.
-name|newGetSegmentReq
+name|newGetSegmentRequest
 import|;
 end_import
 
@@ -1003,7 +1003,7 @@ name|ctx
 operator|.
 name|writeAndFlush
 argument_list|(
-name|newGetSegmentReq
+name|newGetSegmentRequest
 argument_list|(
 name|this
 operator|.
@@ -1036,7 +1036,7 @@ name|ctx
 operator|.
 name|writeAndFlush
 argument_list|(
-name|newGetBlobReq
+name|newGetBlobRequest
 argument_list|(
 name|this
 operator|.
