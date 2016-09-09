@@ -180,14 +180,6 @@ literal|true
 block|}
 block|,
 block|{
-literal|"foobar"
-block|,
-literal|"127.0.0.1"
-block|,
-literal|false
-block|}
-block|,
-block|{
 literal|"127.0.0.1-127.0.0.2"
 block|,
 literal|"127.0.0.1"
@@ -220,7 +212,7 @@ literal|false
 block|}
 block|,
 block|{
-literal|"foobar, 127-128, 126.0.0.1, 127.0.0.0-127.255.255.255"
+literal|"127-128, 126.0.0.1, 127.0.0.0-127.255.255.255"
 block|,
 literal|"127.0.0.1"
 block|,
@@ -228,7 +220,7 @@ literal|true
 block|}
 block|,
 block|{
-literal|"foobar, 122-126, ::1, 126.0.0.1, 127.0.0.0-127.255.255.255"
+literal|"122-126, ::1, 126.0.0.1, 127.0.0.0-127.255.255.255"
 block|,
 literal|"127.0.0.1"
 block|,
@@ -236,7 +228,7 @@ literal|true
 block|}
 block|,
 block|{
-literal|"foobar, 126.0.0.1, ::2, 128.0.0.1-255.255.255.255, 128.0.0.0-127.255.255.255"
+literal|"126.0.0.1, ::2, 128.0.0.1-255.255.255.255, 128.0.0.0-127.255.255.255"
 block|,
 literal|"127.0.0.1"
 block|,
@@ -244,7 +236,7 @@ literal|false
 block|}
 block|,
 block|{
-literal|"foobar, 127-128, 0:0:0:0:0:0:0:1, 126.0.0.1, 127.0.0.0-127.255.255.255"
+literal|"127-128, 0:0:0:0:0:0:0:1, 126.0.0.1, 127.0.0.0-127.255.255.255"
 block|,
 literal|"::1"
 block|,
@@ -252,7 +244,7 @@ literal|true
 block|}
 block|,
 block|{
-literal|"foobar, 122-126, ::1, 126.0.0.1, 127.0.0.0-127.255.255.255"
+literal|"122-126, ::1, 126.0.0.1, 127.0.0.0-127.255.255.255"
 block|,
 literal|"::1"
 block|,
@@ -260,7 +252,7 @@ literal|true
 block|}
 block|,
 block|{
-literal|"foobar, 126.0.0.1, ::2, 128.0.0.1-255.255.255.255, 128.0.0.0-127.255.255.255"
+literal|"126.0.0.1, ::2, 128.0.0.1-255.255.255.255, 128.0.0.0-127.255.255.255"
 block|,
 literal|"::1"
 block|,
