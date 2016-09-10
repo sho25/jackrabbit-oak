@@ -309,6 +309,16 @@ literal|"hello world"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"hello\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello hello"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -364,11 +374,231 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|minusLiteral
+parameter_list|()
+throws|throws
+name|ParseException
+block|{
+name|assertEquals
+argument_list|(
+literal|"\"-\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"-"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"-\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"- "
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"-\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"- -"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"-\" \"hello\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"- hello"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"-\" \"hello\" \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello - world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"-\" \"hello\" \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello  -  world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"-\" \"hello\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello -"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"-"
+argument_list|,
+literal|"hello - world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"- "
+argument_list|,
+literal|"hello - world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"- -"
+argument_list|,
+literal|"hello - world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"- hello"
+argument_list|,
+literal|"hello - world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"hello - world"
+argument_list|,
+literal|"hello - world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"hello - \"wonderful world\""
+argument_list|,
+literal|"hello - wonderful world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"hello -"
+argument_list|,
+literal|"hello -"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|not
 parameter_list|()
 throws|throws
 name|ParseException
 block|{
+name|assertEquals
+argument_list|(
+literal|"\"hello\" -\"wonderful world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello -\"wonderful world\""
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"hello -\"wonderful world\""
+argument_list|,
+literal|"hello"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"hello -\"wonderful world\""
+argument_list|,
+literal|"hello wonderful"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"hello -\"wonderful world\""
+argument_list|,
+literal|"hello world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|test
+argument_list|(
+literal|"hello -\"wonderful world\""
+argument_list|,
+literal|"hello wonderful world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|test
+argument_list|(
+literal|"hello -\"wonderful world\""
+argument_list|,
+literal|"wonderful world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"hello \"-wonderful world\""
+argument_list|,
+literal|"hello this beautiful -wonderful world"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"\"hello\" -\"world\""
@@ -648,20 +878,6 @@ argument_list|(
 literal|"\""
 argument_list|,
 literal|"(*)\"; expected: double quote"
-argument_list|)
-expr_stmt|;
-name|testInvalid
-argument_list|(
-literal|"-"
-argument_list|,
-literal|"(*)-; expected: term"
-argument_list|)
-expr_stmt|;
-name|testInvalid
-argument_list|(
-literal|"- x"
-argument_list|,
-literal|"- (*)x; expected: term"
 argument_list|)
 expr_stmt|;
 name|testInvalid
