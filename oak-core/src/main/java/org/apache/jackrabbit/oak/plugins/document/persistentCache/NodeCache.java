@@ -413,6 +413,26 @@ name|ImmutableSet
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 class|class
 name|NodeCache
@@ -438,6 +458,20 @@ argument_list|,
 name|V
 argument_list|>
 block|{
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|NodeCache
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -642,6 +676,13 @@ argument_list|,
 name|map
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"The persistent cache writes will be asynchronous"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -650,6 +691,13 @@ operator|.
 name|writerQueue
 operator|=
 literal|null
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"The persistent cache writes will be synchronous"
+argument_list|)
 expr_stmt|;
 block|}
 name|this
