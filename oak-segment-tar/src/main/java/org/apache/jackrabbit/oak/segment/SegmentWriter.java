@@ -5321,6 +5321,8 @@ init|=
 name|deduplicateNode
 argument_list|(
 name|state
+argument_list|,
+name|nodeWriteStats
 argument_list|)
 decl_stmt|;
 if|if
@@ -5439,6 +5441,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Pass null to indicate we don't want to update the node write statistics
+comment|// when deduplicating the base state
 name|beforeId
 operator|=
 name|deduplicateNode
@@ -5447,6 +5451,8 @@ name|after
 operator|.
 name|getBaseState
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -6059,22 +6065,22 @@ name|writer
 argument_list|)
 return|;
 block|}
-comment|/**          * Try to deduplicate the passed {@code node}. This succeeds if          * the passed node state has already been persisted to this store and          * either it has the same generation or it has been already compacted          * and is still in the de-duplication cache for nodes.          *          * @param node The node states to de-duplicate.          * @return the id of the de-duplicated node or {@code null} if none.          */
+comment|/**          * Try to deduplicate the passed {@code node}. This succeeds if          * the passed node state has already been persisted to this store and          * either it has the same generation or it has been already compacted          * and is still in the de-duplication cache for nodes.          *          * @param node The node states to de-duplicate.          * @param nodeWriteStats  write statistics to update if not {@code null}.          * @return the id of the de-duplicated node or {@code null} if none.          */
 specifier|private
 name|RecordId
 name|deduplicateNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
 name|node
+parameter_list|,
+annotation|@
+name|CheckForNull
+name|NodeWriteStats
+name|nodeWriteStats
 parameter_list|)
 block|{
-name|checkState
-argument_list|(
-name|nodeWriteStats
-operator|!=
-literal|null
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -6126,11 +6132,19 @@ condition|)
 block|{
 comment|// This segment node state is already in this store, no need to
 comment|// write it again
+if|if
+condition|(
+name|nodeWriteStats
+operator|!=
+literal|null
+condition|)
+block|{
 name|nodeWriteStats
 operator|.
 name|deDupNodes
 operator|++
 expr_stmt|;
+block|}
 return|return
 name|sns
 operator|.
@@ -6156,6 +6170,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|nodeWriteStats
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
 name|compacted
 operator|==
 literal|null
@@ -6166,15 +6187,16 @@ operator|.
 name|cacheMiss
 operator|++
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
+else|else
+block|{
 name|nodeWriteStats
 operator|.
 name|cacheHits
 operator|++
 expr_stmt|;
+block|}
+block|}
 return|return
 name|compacted
 return|;
