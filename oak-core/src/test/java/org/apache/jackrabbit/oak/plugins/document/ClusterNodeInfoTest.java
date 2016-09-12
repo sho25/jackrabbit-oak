@@ -536,34 +536,27 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-name|boolean
-name|renewed
-init|=
-literal|false
-decl_stmt|;
 try|try
 block|{
-name|renewed
-operator|=
 name|info
 operator|.
 name|renewLease
 argument_list|()
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"must fail with DocumentStoreException"
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|AssertionError
+name|DocumentStoreException
 name|e
 parameter_list|)
 block|{
-comment|// TODO: rather use DocumentStoreException !?
+comment|// expected
 block|}
-name|assertFalse
-argument_list|(
-name|renewed
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|int
@@ -666,35 +659,26 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// cluster node 1 must not be able to renew the lease now
-name|boolean
-name|renewed
-init|=
-literal|false
-decl_stmt|;
 try|try
 block|{
 comment|// must either return false
-name|renewed
-operator|=
+name|assertFalse
+argument_list|(
 name|info
 operator|.
 name|renewLease
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|AssertionError
+name|DocumentStoreException
 name|e
 parameter_list|)
 block|{
 comment|// or throw an exception
 block|}
-name|assertFalse
-argument_list|(
-name|renewed
-argument_list|)
-expr_stmt|;
 block|}
 specifier|private
 name|void

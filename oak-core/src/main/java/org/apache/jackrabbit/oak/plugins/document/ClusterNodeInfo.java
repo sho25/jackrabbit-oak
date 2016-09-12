@@ -2165,10 +2165,13 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * Checks if the lease for this cluster node is still valid, otherwise      * throws a {@link DocumentStoreException}. This method will not throw the      * exception immediately when the lease expires, but instead give the lease      * update thread a last chance of 5 seconds to renew it. This allows the      * DocumentNodeStore to recover from an expired lease caused by a system      * put to sleep or a JVM in debug mode.      *      * @throws DocumentStoreException if the lease expired.      */
 specifier|public
 name|void
 name|performLeaseCheck
 parameter_list|()
+throws|throws
+name|DocumentStoreException
 block|{
 if|if
 condition|(
@@ -2197,18 +2200,12 @@ comment|// go into the synchronized.
 comment|// (note that once a lease check failed it would not
 comment|// be updated again, ever, as guaranteed by checking
 comment|// for leaseCheckFailed in renewLease() )
-name|LOG
-operator|.
-name|error
-argument_list|(
-name|LEASE_CHECK_FAILED_MSG
-argument_list|)
-expr_stmt|;
 throw|throw
-operator|new
-name|AssertionError
+name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -2248,18 +2245,12 @@ name|leaseCheckFailed
 condition|)
 block|{
 comment|// someone else won and marked leaseCheckFailed - so we only log/throw
-name|LOG
-operator|.
-name|error
-argument_list|(
-name|LEASE_CHECK_FAILED_MSG
-argument_list|)
-expr_stmt|;
 throw|throw
-operator|new
-name|AssertionError
+name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -2383,18 +2374,12 @@ name|leaseCheckFailed
 condition|)
 block|{
 comment|// someone else won and marked leaseCheckFailed - so we only log/throw
-name|LOG
-operator|.
-name|error
-argument_list|(
-name|LEASE_CHECK_FAILED_MSG
-argument_list|)
-expr_stmt|;
 throw|throw
-operator|new
-name|AssertionError
+name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -2542,18 +2527,21 @@ argument_list|()
 expr_stmt|;
 block|}
 throw|throw
-operator|new
-name|AssertionError
+name|leaseExpired
 argument_list|(
 name|errorMsg
+argument_list|,
+literal|false
 argument_list|)
 throw|;
 block|}
-comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed after 'leaseUpdateInterval' millis      * since last lease update - default being every 10 sec (this used to be 30sec).      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
+comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed after 'leaseUpdateInterval' millis      * since last lease update - default being every 10 sec (this used to be 30sec).      *<p>      * This method will not fail immediately with a DocumentStoreException if      * the lease expired. It will still try to renew the lease and only fail if      * {@link #performLeaseCheck()} decided the lease expired or another cluster      * node initiated recover for this node.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      * @throws DocumentStoreException if the operation failed or the lease      *          expired.      */
 specifier|public
 name|boolean
 name|renewLease
 parameter_list|()
+throws|throws
+name|DocumentStoreException
 block|{
 name|long
 name|now
@@ -2620,18 +2608,12 @@ name|leaseCheckFailed
 condition|)
 block|{
 comment|// prevent lease renewal after it failed
-name|LOG
-operator|.
-name|error
-argument_list|(
-name|LEASE_CHECK_FAILED_MSG
-argument_list|)
-expr_stmt|;
 throw|throw
-operator|new
-name|AssertionError
+name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -2816,18 +2798,12 @@ condition|)
 block|{
 comment|// somehow the instance figured out otherwise that the
 comment|// lease check failed - so we don't have to too - so we just log/throw
-name|LOG
-operator|.
-name|error
-argument_list|(
-name|LEASE_CHECK_FAILED_MSG
-argument_list|)
-expr_stmt|;
 throw|throw
-operator|new
-name|AssertionError
+name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -2861,7 +2837,7 @@ argument_list|(
 name|errorMsg
 argument_list|)
 expr_stmt|;
-comment|// should never be reached: handleLeaseFailure throws an AssertionError
+comment|// should never be reached: handleLeaseFailure throws a DocumentStoreException
 return|return
 literal|false
 return|;
@@ -3796,6 +3772,39 @@ name|clock
 operator|.
 name|getTime
 argument_list|()
+return|;
+block|}
+specifier|private
+specifier|static
+name|DocumentStoreException
+name|leaseExpired
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|boolean
+name|log
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+operator|new
+name|DocumentStoreException
+argument_list|(
+name|msg
+argument_list|)
 return|;
 block|}
 block|}
