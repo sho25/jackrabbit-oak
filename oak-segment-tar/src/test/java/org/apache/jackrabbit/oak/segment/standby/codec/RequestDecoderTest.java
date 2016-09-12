@@ -17,7 +17,7 @@ name|segment
 operator|.
 name|standby
 operator|.
-name|server
+name|codec
 package|;
 end_package
 
@@ -66,26 +66,6 @@ operator|.
 name|embedded
 operator|.
 name|EmbeddedChannel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|standby
-operator|.
-name|codec
-operator|.
-name|Messages
 import|;
 end_import
 
