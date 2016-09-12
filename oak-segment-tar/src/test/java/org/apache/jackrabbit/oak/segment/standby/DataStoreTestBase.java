@@ -574,7 +574,7 @@ argument_list|)
 operator|.
 name|withNodeDeduplicationCacheSize
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 operator|.
 name|withSegmentCacheSize

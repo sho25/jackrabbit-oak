@@ -119,25 +119,7 @@ name|segment
 operator|.
 name|WriterCacheManager
 operator|.
-name|DEFAULT_NODE_CACHE_CAPACITY
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|WriterCacheManager
-operator|.
-name|DEFAULT_NODE_CACHE_DEPTH
+name|DEFAULT_NODE_CACHE_SIZE
 import|;
 end_import
 
@@ -263,7 +245,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|NodeCache
+name|RecordCache
 import|;
 end_import
 
@@ -279,7 +261,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|RecordCache
+name|RecordId
 import|;
 end_import
 
@@ -539,13 +521,7 @@ specifier|private
 name|int
 name|nodeDeduplicationCacheSize
 init|=
-name|DEFAULT_NODE_CACHE_CAPACITY
-decl_stmt|;
-specifier|private
-name|int
-name|nodeDeduplicationCacheDepth
-init|=
-name|DEFAULT_NODE_CACHE_DEPTH
+name|DEFAULT_NODE_CACHE_SIZE
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1042,7 +1018,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Number of items to keep in the node deduplication cache      * @param nodeDeduplicationCacheSize  None negative cache size      * @return this instance      */
+comment|/**      * Number of items to keep in the node deduplication cache      * @param nodeDeduplicationCacheSize  None negative cache size. Must be a power of 2.      * @return this instance      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1058,27 +1034,6 @@ operator|.
 name|nodeDeduplicationCacheSize
 operator|=
 name|nodeDeduplicationCacheSize
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
-comment|/**      * Maximal depth of the node deduplication cache      * @param nodeDeduplicationCacheDepth      * @return this instance      */
-annotation|@
-name|Nonnull
-specifier|public
-name|FileStoreBuilder
-name|withNodeDeduplicationDepth
-parameter_list|(
-name|int
-name|nodeDeduplicationCacheDepth
-parameter_list|)
-block|{
-name|this
-operator|.
-name|nodeDeduplicationCacheDepth
-operator|=
-name|nodeDeduplicationCacheDepth
 expr_stmt|;
 return|return
 name|this
@@ -1463,8 +1418,6 @@ argument_list|,
 name|templateDeduplicationCacheSize
 argument_list|,
 name|nodeDeduplicationCacheSize
-argument_list|,
-name|nodeDeduplicationCacheDepth
 argument_list|)
 expr_stmt|;
 block|}
@@ -1518,10 +1471,6 @@ literal|", nodeDeduplicationCacheSize="
 operator|+
 name|nodeDeduplicationCacheSize
 operator|+
-literal|", nodeDeduplicationCacheDepth="
-operator|+
-name|nodeDeduplicationCacheDepth
-operator|+
 literal|", memoryMapping="
 operator|+
 name|memoryMapping
@@ -1552,10 +1501,7 @@ name|int
 name|templateCacheSize
 parameter_list|,
 name|int
-name|nodeCacheCapacity
-parameter_list|,
-name|int
-name|nodeCacheDepth
+name|nodeCacheSize
 parameter_list|)
 block|{
 name|super
@@ -1580,13 +1526,16 @@ argument_list|(
 name|templateCacheSize
 argument_list|)
 argument_list|,
-name|NodeCache
+name|PriorityCache
 operator|.
+expr|<
+name|String
+argument_list|,
+name|RecordId
+operator|>
 name|factory
 argument_list|(
-name|nodeCacheCapacity
-argument_list|,
-name|nodeCacheDepth
+name|nodeCacheSize
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1602,15 +1602,17 @@ name|Property
 argument_list|(
 name|intValue
 operator|=
-literal|10000000
+literal|8388608
 argument_list|,
 name|label
 operator|=
-literal|"Node deduplication cache size  (#items)"
+literal|"Node deduplication cache size (#items)"
 argument_list|,
 name|description
 operator|=
-literal|"Maximum number of nodes to keep in the deduplication cache"
+literal|"Maximum number of node to keep in the deduplication cache. If the supplied"
+operator|+
+literal|" value is not a power of 2, it will be rounded up to the next power of 2."
 argument_list|)
 specifier|public
 specifier|static
@@ -1619,29 +1621,6 @@ name|String
 name|NODE_DEDUPLICATION_CACHE_SIZE
 init|=
 literal|"nodeDeduplicationCache.size"
-decl_stmt|;
-annotation|@
-name|Property
-argument_list|(
-name|intValue
-operator|=
-literal|20
-argument_list|,
-name|label
-operator|=
-literal|"Node deduplication cache depth  (#levels)"
-argument_list|,
-name|description
-operator|=
-literal|"Maximum number of levels to keep in the node deduplication cache"
-argument_list|)
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NODE_DEDUPLICATION_CACHE_DEPTH
-init|=
-literal|"nodeDeduplicationCache.depth"
 decl_stmt|;
 annotation|@
 name|Property
@@ -2428,12 +2407,6 @@ operator|.
 name|withNodeDeduplicationCacheSize
 argument_list|(
 name|getNodeDeduplicationCacheSize
-argument_list|()
-argument_list|)
-operator|.
-name|withNodeDeduplicationDepth
-argument_list|(
-name|getNodeDeduplicationDepth
 argument_list|()
 argument_list|)
 operator|.
@@ -3787,7 +3760,16 @@ name|int
 name|getNodeDeduplicationCacheSize
 parameter_list|()
 block|{
-return|return
+comment|// Round to the next power of 2
+name|int
+name|size
+init|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|1
+argument_list|,
 name|Integer
 operator|.
 name|parseInt
@@ -3797,23 +3779,23 @@ argument_list|(
 name|NODE_DEDUPLICATION_CACHE_SIZE
 argument_list|)
 argument_list|)
-return|;
-block|}
-specifier|private
-name|int
-name|getNodeDeduplicationDepth
-parameter_list|()
-block|{
+argument_list|)
+decl_stmt|;
 return|return
+literal|1
+operator|<<
+operator|(
+literal|32
+operator|-
 name|Integer
 operator|.
-name|parseInt
+name|numberOfLeadingZeros
 argument_list|(
-name|getCacheSize
-argument_list|(
-name|NODE_DEDUPLICATION_CACHE_DEPTH
+name|size
+operator|-
+literal|1
 argument_list|)
-argument_list|)
+operator|)
 return|;
 block|}
 specifier|private
