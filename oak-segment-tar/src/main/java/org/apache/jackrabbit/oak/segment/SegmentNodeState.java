@@ -767,6 +767,7 @@ name|String
 name|getStableId
 parameter_list|()
 block|{
+comment|// FIXME OAK-4797: Optimise stable ids: come up with a faster to serialise representation that uses less memory
 name|ByteBuffer
 name|buffer
 init|=
