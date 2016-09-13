@@ -85,30 +85,17 @@ name|int
 name|retryCount
 parameter_list|)
 function_decl|;
-comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
-name|boolean
-name|getForceAfterFail
+comment|/**      * Get the number of seconds to attempt to force compact concurrent commits on top of      * already compacted commits after the maximum number of retries has been reached.      * Forced compaction acquires an exclusive write lock on the node store.      * @return  the number of seconds until forced compaction gives up and the exclusive      *          write lock on the node store is released.      */
+name|int
+name|getForceTimeout
 parameter_list|()
 function_decl|;
-comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      */
+comment|/**      * Set the number of seconds to attempt to force compact concurrent commits on top of      * already compacted commits after the maximum number of retries has been reached.      * Forced compaction acquires an exclusively write lock on the node store.      * @param timeout  the number of seconds until forced compaction gives up and the exclusive      *                 lock on the node store is released.      */
 name|void
-name|setForceAfterFail
-parameter_list|(
-name|boolean
-name|forceAfterFail
-parameter_list|)
-function_decl|;
-comment|/**      * Get the time to wait for the lock when force compacting.      * See {@link #setForceAfterFail(boolean)}      * @return lock wait time in seconds.      */
-name|int
-name|getLockWaitTime
-parameter_list|()
-function_decl|;
-comment|/**      * Set the time to wait for the lock when force compacting.      * @param lockWaitTime  lock wait time in seconds      */
-name|void
-name|setLockWaitTime
+name|setForceTimeout
 parameter_list|(
 name|int
-name|lockWaitTime
+name|timeout
 parameter_list|)
 function_decl|;
 comment|/**      * Number of segment generations to retain.      * @see #setRetainedGenerations(int)      * @return  number of gc generations.      */

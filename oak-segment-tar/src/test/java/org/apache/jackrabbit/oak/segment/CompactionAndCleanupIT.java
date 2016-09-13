@@ -3821,17 +3821,6 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
-name|withGCOptions
-argument_list|(
-name|defaultGCOptions
-argument_list|()
-operator|.
-name|setForceAfterFail
-argument_list|(
-literal|true
-argument_list|)
-argument_list|)
-operator|.
 name|build
 argument_list|()
 decl_stmt|;

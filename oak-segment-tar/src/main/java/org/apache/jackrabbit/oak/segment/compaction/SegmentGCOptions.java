@@ -80,21 +80,12 @@ name|RETRY_COUNT_DEFAULT
 init|=
 literal|5
 decl_stmt|;
-comment|/**      * Default value for {@link #getForceAfterFail()}      */
-specifier|public
-specifier|static
-specifier|final
-name|boolean
-name|FORCE_AFTER_FAIL_DEFAULT
-init|=
-literal|false
-decl_stmt|;
-comment|/**      * Default value for {@link #getLockWaitTime()}      */
+comment|/**      * Default value for {@link #getForceTimeout()} in seconds.      */
 specifier|public
 specifier|static
 specifier|final
 name|int
-name|LOCK_WAIT_TIME_DEFAULT
+name|FORCE_TIMEOUT_DEFAULT
 init|=
 literal|60
 decl_stmt|;
@@ -142,16 +133,10 @@ init|=
 name|RETRY_COUNT_DEFAULT
 decl_stmt|;
 specifier|private
-name|boolean
-name|forceAfterFail
-init|=
-name|FORCE_AFTER_FAIL_DEFAULT
-decl_stmt|;
-specifier|private
 name|int
-name|lockWaitTime
+name|forceTimeout
 init|=
-name|LOCK_WAIT_TIME_DEFAULT
+name|FORCE_TIMEOUT_DEFAULT
 decl_stmt|;
 specifier|private
 name|int
@@ -221,11 +206,8 @@ parameter_list|,
 name|int
 name|retryCount
 parameter_list|,
-name|boolean
-name|forceAfterFail
-parameter_list|,
 name|int
-name|lockWaitTime
+name|forceTimeout
 parameter_list|)
 block|{
 name|this
@@ -254,15 +236,9 @@ name|retryCount
 expr_stmt|;
 name|this
 operator|.
-name|forceAfterFail
+name|forceTimeout
 operator|=
-name|forceAfterFail
-expr_stmt|;
-name|this
-operator|.
-name|lockWaitTime
-operator|=
-name|lockWaitTime
+name|forceTimeout
 expr_stmt|;
 block|}
 specifier|public
@@ -279,13 +255,11 @@ name|GAIN_THRESHOLD_DEFAULT
 argument_list|,
 name|RETRY_COUNT_DEFAULT
 argument_list|,
-name|FORCE_AFTER_FAIL_DEFAULT
-argument_list|,
-name|LOCK_WAIT_TIME_DEFAULT
+name|FORCE_TIMEOUT_DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #MEMORY_THRESHOLD_DEFAULT},      * {@link #GAIN_THRESHOLD_DEFAULT}, {@link #RETRY_COUNT_DEFAULT},      * {@link #FORCE_AFTER_FAIL_DEFAULT}, {@link #LOCK_WAIT_TIME_DEFAULT}.      */
+comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #MEMORY_THRESHOLD_DEFAULT},      * {@link #GAIN_THRESHOLD_DEFAULT}, {@link #RETRY_COUNT_DEFAULT}, {@link #FORCE_TIMEOUT_DEFAULT}.      */
 specifier|public
 specifier|static
 name|SegmentGCOptions
@@ -414,59 +388,30 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
+comment|/**      * Get the number of seconds to attempt to force compact concurrent commits on top of      * already compacted commits after the maximum number of retries has been reached.      * Forced compaction acquires an exclusive write lock on the node store.      * @return  the number of seconds until forced compaction gives up and the exclusive      *          write lock on the node store is released.      */
 specifier|public
-name|boolean
-name|getForceAfterFail
+name|int
+name|getForceTimeout
 parameter_list|()
 block|{
 return|return
-name|forceAfterFail
+name|forceTimeout
 return|;
 block|}
-comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      * @return this instance      */
+comment|/**      * Set the number of seconds to attempt to force compact concurrent commits on top of      * already compacted commits after the maximum number of retries has been reached.      * Forced compaction acquires an exclusively write lock on the node store.      * @param timeout  the number of seconds until forced compaction gives up and the exclusive      *                 lock on the node store is released.      * @return this instance      */
 specifier|public
 name|SegmentGCOptions
-name|setForceAfterFail
+name|setForceTimeout
 parameter_list|(
-name|boolean
-name|forceAfterFail
+name|int
+name|timeout
 parameter_list|)
 block|{
 name|this
 operator|.
-name|forceAfterFail
+name|forceTimeout
 operator|=
-name|forceAfterFail
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
-comment|/**      * Get the time to wait for the lock when force compacting.      * See {@link #setForceAfterFail(boolean)}      * @return lock wait time in seconds.      */
-specifier|public
-name|int
-name|getLockWaitTime
-parameter_list|()
-block|{
-return|return
-name|lockWaitTime
-return|;
-block|}
-comment|/**      * Set the time to wait for the lock when force compacting.      * @param lockWaitTime  lock wait time in seconds      * @return      * @return this instance      */
-specifier|public
-name|SegmentGCOptions
-name|setLockWaitTime
-parameter_list|(
-name|int
-name|lockWaitTime
-parameter_list|)
-block|{
-name|this
-operator|.
-name|lockWaitTime
-operator|=
-name|lockWaitTime
+name|timeout
 expr_stmt|;
 return|return
 name|this
@@ -579,13 +524,9 @@ literal|", retryCount="
 operator|+
 name|retryCount
 operator|+
-literal|", forceAfterFail="
+literal|", forceTimeout="
 operator|+
-name|forceAfterFail
-operator|+
-literal|", lockWaitTime="
-operator|+
-name|lockWaitTime
+name|forceTimeout
 operator|+
 literal|", retainedGenerations="
 operator|+

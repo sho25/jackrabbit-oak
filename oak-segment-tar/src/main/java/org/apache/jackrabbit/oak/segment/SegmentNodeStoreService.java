@@ -133,7 +133,7 @@ name|compaction
 operator|.
 name|SegmentGCOptions
 operator|.
-name|FORCE_AFTER_FAIL_DEFAULT
+name|FORCE_TIMEOUT_DEFAULT
 import|;
 end_import
 
@@ -154,26 +154,6 @@ operator|.
 name|SegmentGCOptions
 operator|.
 name|GAIN_THRESHOLD_DEFAULT
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|compaction
-operator|.
-name|SegmentGCOptions
-operator|.
-name|LOCK_WAIT_TIME_DEFAULT
 import|;
 end_import
 
@@ -1721,54 +1701,31 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|boolValue
-operator|=
-name|FORCE_AFTER_FAIL_DEFAULT
-argument_list|,
-name|label
-operator|=
-literal|"Force Compaction"
-argument_list|,
-name|description
-operator|=
-literal|"Whether or not to force compact concurrent commits on top of already "
-operator|+
-literal|" compacted commits after the maximum number of retries has been reached. "
-operator|+
-literal|"Force committing tries to exclusively write lock the node store."
-argument_list|)
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|COMPACTION_FORCE_AFTER_FAIL
-init|=
-literal|"compaction.forceAfterFail"
-decl_stmt|;
-annotation|@
-name|Property
-argument_list|(
 name|intValue
 operator|=
-name|LOCK_WAIT_TIME_DEFAULT
+name|FORCE_TIMEOUT_DEFAULT
 argument_list|,
 name|label
 operator|=
-literal|"Compaction Lock Wait Time"
+literal|"Force Compaction Timeout"
 argument_list|,
 name|description
 operator|=
-literal|"Number of seconds to wait for the lock for committing compacted changes "
+literal|"Number of seconds to attempt to force compact concurrent commits on top "
 operator|+
-literal|"respectively to wait for the exclusive write lock for force committing."
+literal|"of already compacted commits after the maximum number of retries has been "
+operator|+
+literal|"reached. Forced compaction tries to acquire an exclusive write lock on the "
+operator|+
+literal|"node store."
 argument_list|)
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|COMPACTION_LOCK_WAIT_TIME
+name|COMPACTION_FORCE_TIMEOUT
 init|=
-literal|"compaction.lockWaitTime"
+literal|"compaction.force.timeout"
 decl_stmt|;
 annotation|@
 name|Property
@@ -2944,30 +2901,17 @@ argument_list|,
 name|RETRY_COUNT_DEFAULT
 argument_list|)
 decl_stmt|;
-name|boolean
-name|forceAfterFail
-init|=
-name|toBoolean
-argument_list|(
-name|property
-argument_list|(
-name|COMPACTION_FORCE_AFTER_FAIL
-argument_list|)
-argument_list|,
-name|FORCE_AFTER_FAIL_DEFAULT
-argument_list|)
-decl_stmt|;
 name|int
-name|lockWaitTime
+name|forceTimeout
 init|=
 name|toInteger
 argument_list|(
 name|property
 argument_list|(
-name|COMPACTION_LOCK_WAIT_TIME
+name|COMPACTION_FORCE_TIMEOUT
 argument_list|)
 argument_list|,
-name|LOCK_WAIT_TIME_DEFAULT
+name|FORCE_TIMEOUT_DEFAULT
 argument_list|)
 decl_stmt|;
 name|byte
@@ -3004,14 +2948,7 @@ name|gainThreshold
 argument_list|,
 name|retryCount
 argument_list|,
-name|forceAfterFail
-argument_list|,
-name|lockWaitTime
-argument_list|)
-operator|.
-name|setForceAfterFail
-argument_list|(
-name|forceAfterFail
+name|forceTimeout
 argument_list|)
 operator|.
 name|setGcSizeDeltaEstimation
