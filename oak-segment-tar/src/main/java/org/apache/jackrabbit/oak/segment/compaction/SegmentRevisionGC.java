@@ -59,19 +59,6 @@ name|int
 name|gainThreshold
 parameter_list|)
 function_decl|;
-comment|/**      * @return  the memory threshold below which revision gc will not run.      */
-name|int
-name|getMemoryThreshold
-parameter_list|()
-function_decl|;
-comment|/**      * Set the memory threshold below which revision gc will not run.      * @param memoryThreshold      */
-name|void
-name|setMemoryThreshold
-parameter_list|(
-name|int
-name|memoryThreshold
-parameter_list|)
-function_decl|;
 comment|/**      * Get the number of tries to compact concurrent commits on top of already      * compacted commits      * @return  retry count      */
 name|int
 name|getRetryCount

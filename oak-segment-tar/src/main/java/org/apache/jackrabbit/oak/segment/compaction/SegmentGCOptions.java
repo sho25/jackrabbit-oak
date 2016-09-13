@@ -53,15 +53,6 @@ name|PAUSE_DEFAULT
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * Default value for {@link #getMemoryThreshold()}      */
-specifier|public
-specifier|static
-specifier|final
-name|byte
-name|MEMORY_THRESHOLD_DEFAULT
-init|=
-literal|5
-decl_stmt|;
 comment|/**      * Default value for {@link #getGainThreshold()}      */
 specifier|public
 specifier|static
@@ -113,12 +104,6 @@ name|boolean
 name|paused
 init|=
 name|PAUSE_DEFAULT
-decl_stmt|;
-specifier|private
-name|int
-name|memoryThreshold
-init|=
-name|MEMORY_THRESHOLD_DEFAULT
 decl_stmt|;
 specifier|private
 name|int
@@ -198,9 +183,6 @@ name|boolean
 name|paused
 parameter_list|,
 name|int
-name|memoryThreshold
-parameter_list|,
-name|int
 name|gainThreshold
 parameter_list|,
 name|int
@@ -215,12 +197,6 @@ operator|.
 name|paused
 operator|=
 name|paused
-expr_stmt|;
-name|this
-operator|.
-name|memoryThreshold
-operator|=
-name|memoryThreshold
 expr_stmt|;
 name|this
 operator|.
@@ -249,8 +225,6 @@ name|this
 argument_list|(
 name|PAUSE_DEFAULT
 argument_list|,
-name|MEMORY_THRESHOLD_DEFAULT
-argument_list|,
 name|GAIN_THRESHOLD_DEFAULT
 argument_list|,
 name|RETRY_COUNT_DEFAULT
@@ -259,7 +233,7 @@ name|FORCE_TIMEOUT_DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #MEMORY_THRESHOLD_DEFAULT},      * {@link #GAIN_THRESHOLD_DEFAULT}, {@link #RETRY_COUNT_DEFAULT}, {@link #FORCE_TIMEOUT_DEFAULT}.      */
+comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #GAIN_THRESHOLD_DEFAULT},      * {@link #RETRY_COUNT_DEFAULT}, {@link #FORCE_TIMEOUT_DEFAULT}.      */
 specifier|public
 specifier|static
 name|SegmentGCOptions
@@ -296,35 +270,6 @@ operator|.
 name|paused
 operator|=
 name|paused
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
-comment|/**      * @return  the memory threshold below which revision gc will not run.      */
-specifier|public
-name|int
-name|getMemoryThreshold
-parameter_list|()
-block|{
-return|return
-name|memoryThreshold
-return|;
-block|}
-comment|/**      * Set the memory threshold below which revision gc will not run.      * @param memoryThreshold      * @return this instance      */
-specifier|public
-name|SegmentGCOptions
-name|setMemoryThreshold
-parameter_list|(
-name|int
-name|memoryThreshold
-parameter_list|)
-block|{
-name|this
-operator|.
-name|memoryThreshold
-operator|=
-name|memoryThreshold
 expr_stmt|;
 return|return
 name|this
@@ -511,10 +456,6 @@ operator|+
 literal|"paused="
 operator|+
 name|paused
-operator|+
-literal|", memoryThreshold="
-operator|+
-name|memoryThreshold
 operator|+
 literal|", gainThreshold="
 operator|+
