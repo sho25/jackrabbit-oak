@@ -33,6 +33,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -130,6 +142,24 @@ specifier|public
 class|class
 name|MongoConnection
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MAX_WAIT_TIME
+init|=
+operator|(
+name|int
+operator|)
+name|TimeUnit
+operator|.
+name|MINUTES
+operator|.
+name|toMillis
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -293,6 +323,11 @@ operator|.
 name|description
 argument_list|(
 literal|"MongoConnection for Oak DocumentMK"
+argument_list|)
+operator|.
+name|maxWaitTime
+argument_list|(
+name|DEFAULT_MAX_WAIT_TIME
 argument_list|)
 operator|.
 name|threadsAllowedToBlockForConnectionMultiplier
