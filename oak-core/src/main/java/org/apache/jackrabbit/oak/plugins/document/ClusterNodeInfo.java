@@ -2712,6 +2712,21 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// plus it must not have a recovery lock on it
+name|update
+operator|.
+name|notEquals
+argument_list|(
+name|REV_RECOVERY_LOCK
+argument_list|,
+name|RecoverLockState
+operator|.
+name|ACQUIRED
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// @TODO: to make it 100% failure proof we could introduce
 comment|// yet another field to clusterNodes: a runtimeId that we
 comment|// create (UUID) at startup each time - and against that
@@ -2813,7 +2828,6 @@ literal|true
 expr_stmt|;
 comment|// make sure only one thread 'wins', ie goes any further
 block|}
-specifier|final
 name|String
 name|errorMsg
 init|=
@@ -2825,6 +2839,102 @@ literal|"must have noticed this instance' slowness already. "
 operator|+
 literal|"Going to invoke leaseFailureHandler!)"
 decl_stmt|;
+comment|// try to add more diagnostics
+try|try
+block|{
+name|ClusterNodeInfoDocument
+name|current
+init|=
+name|store
+operator|.
+name|find
+argument_list|(
+name|Collection
+operator|.
+name|CLUSTER_NODES
+argument_list|,
+literal|""
+operator|+
+name|id
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|current
+operator|!=
+literal|null
+condition|)
+block|{
+name|Object
+name|leaseEnd
+init|=
+name|current
+operator|.
+name|get
+argument_list|(
+name|LEASE_END_KEY
+argument_list|)
+decl_stmt|;
+name|Object
+name|recoveryLock
+init|=
+name|current
+operator|.
+name|get
+argument_list|(
+name|REV_RECOVERY_LOCK
+argument_list|)
+decl_stmt|;
+name|Object
+name|recoveryBy
+init|=
+name|current
+operator|.
+name|get
+argument_list|(
+name|REV_RECOVERY_BY
+argument_list|)
+decl_stmt|;
+name|errorMsg
+operator|+=
+literal|" (leaseEnd: "
+operator|+
+name|leaseEnd
+operator|+
+literal|" (expected: "
+operator|+
+name|leaseEndTime
+operator|+
+literal|"), recoveryLock: "
+operator|+
+name|recoveryLock
+operator|+
+literal|", recoveryBy: "
+operator|+
+name|recoveryBy
+operator|+
+literal|")"
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|DocumentStoreException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"trying to read ClusterNodeInfo for cluster id "
+operator|+
+name|id
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|error

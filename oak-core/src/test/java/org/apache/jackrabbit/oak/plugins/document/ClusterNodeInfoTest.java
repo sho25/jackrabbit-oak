@@ -598,8 +598,6 @@ expr_stmt|;
 block|}
 comment|// OAK-4779
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void
