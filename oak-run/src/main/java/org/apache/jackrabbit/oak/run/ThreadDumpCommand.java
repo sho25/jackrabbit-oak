@@ -163,6 +163,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -1011,6 +1021,46 @@ name|fullThreadDumps
 init|=
 literal|0
 decl_stmt|;
+name|String
+name|fileModifiedTime
+init|=
+operator|new
+name|Timestamp
+argument_list|(
+name|file
+operator|.
+name|lastModified
+argument_list|()
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|writer
+operator|.
+name|write
+argument_list|(
+literal|"file "
+operator|+
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
+name|writer
+operator|.
+name|write
+argument_list|(
+literal|"lastModified "
+operator|+
+name|fileModifiedTime
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|file
@@ -1197,7 +1247,11 @@ literal|"    (contains "
 operator|+
 name|fullThreadDumps
 operator|+
-literal|" full thread dumps)"
+literal|" full thread dumps; "
+operator|+
+name|fileModifiedTime
+operator|+
+literal|")"
 argument_list|)
 expr_stmt|;
 block|}
