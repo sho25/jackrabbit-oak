@@ -98,7 +98,7 @@ argument_list|,
 literal|27017
 argument_list|)
 decl_stmt|;
-specifier|protected
+specifier|public
 specifier|static
 specifier|final
 name|String
