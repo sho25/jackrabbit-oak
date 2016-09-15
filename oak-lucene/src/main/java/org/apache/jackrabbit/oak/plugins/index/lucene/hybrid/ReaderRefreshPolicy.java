@@ -38,32 +38,42 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|boolean
-name|shouldRefresh
-parameter_list|()
+name|void
+name|refreshOnReadIfRequired
+parameter_list|(
+name|Runnable
+name|refreshCallback
+parameter_list|)
 block|{
-return|return
-literal|false
-return|;
+comment|//Never refresh
 block|}
 annotation|@
 name|Override
 specifier|public
 name|void
-name|updated
-parameter_list|()
-block|{          }
+name|refreshOnWriteIfRequired
+parameter_list|(
+name|Runnable
+name|refreshCallback
+parameter_list|)
+block|{
+comment|//Never refresh
+block|}
 block|}
 decl_stmt|;
-comment|/**      * Returns  true if refresh is to be done and      * resets the internal state. The caller which      * gets the true answer would be responsible for      * refreshing the readers.      *      *<p>For e.g. once updated the first call to      * this method would return true and subsequent      * calls return false      *      * @return true if refresh is to be done      */
-name|boolean
-name|shouldRefresh
-parameter_list|()
-function_decl|;
-comment|/**      * Invoked when index gets updated      */
 name|void
-name|updated
-parameter_list|()
+name|refreshOnReadIfRequired
+parameter_list|(
+name|Runnable
+name|refreshCallback
+parameter_list|)
+function_decl|;
+name|void
+name|refreshOnWriteIfRequired
+parameter_list|(
+name|Runnable
+name|refreshCallback
+parameter_list|)
 function_decl|;
 block|}
 end_interface

@@ -581,7 +581,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
-name|ReaderRefreshPolicy
+name|TimedRefreshPolicy
 name|getRefreshPolicy
 parameter_list|(
 name|IndexDefinition
@@ -592,6 +592,11 @@ return|return
 operator|new
 name|TimedRefreshPolicy
 argument_list|(
+name|definition
+operator|.
+name|isSyncIndexingEnabled
+argument_list|()
+argument_list|,
 name|clock
 argument_list|,
 name|TimeUnit

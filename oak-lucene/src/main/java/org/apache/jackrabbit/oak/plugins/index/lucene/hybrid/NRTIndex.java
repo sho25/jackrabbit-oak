@@ -455,7 +455,7 @@ name|previousReader
 decl_stmt|;
 specifier|private
 specifier|final
-name|ReaderRefreshPolicy
+name|TimedRefreshPolicy
 name|refreshPolicy
 decl_stmt|;
 specifier|private
@@ -487,7 +487,7 @@ parameter_list|,
 name|IndexCopier
 name|indexCopier
 parameter_list|,
-name|ReaderRefreshPolicy
+name|TimedRefreshPolicy
 name|refreshPolicy
 parameter_list|,
 annotation|@

@@ -682,8 +682,6 @@ name|docsPerIndex
 operator|.
 name|asMap
 argument_list|()
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|currentTask
@@ -962,9 +960,6 @@ name|LuceneDoc
 argument_list|>
 argument_list|>
 name|docsPerIndex
-parameter_list|,
-name|boolean
-name|alwaysRefreshReaders
 parameter_list|)
 block|{
 comment|//If required it can optimized by indexing diff indexes in parallel
@@ -1001,8 +996,6 @@ name|e
 operator|.
 name|getValue
 argument_list|()
-argument_list|,
-name|alwaysRefreshReaders
 argument_list|)
 expr_stmt|;
 name|added
@@ -1061,9 +1054,6 @@ argument_list|<
 name|LuceneDoc
 argument_list|>
 name|docs
-parameter_list|,
-name|boolean
-name|alwaysRefreshReaders
 parameter_list|)
 block|{
 comment|//Drop the write call if stopped
@@ -1189,25 +1179,11 @@ name|doc
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|alwaysRefreshReaders
-condition|)
-block|{
 name|indexNode
 operator|.
-name|refreshReaders
+name|refreshReadersOnWriteIfRequired
 argument_list|()
 expr_stmt|;
-block|}
-else|else
-block|{
-name|indexNode
-operator|.
-name|refreshReadersIfRequired
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
