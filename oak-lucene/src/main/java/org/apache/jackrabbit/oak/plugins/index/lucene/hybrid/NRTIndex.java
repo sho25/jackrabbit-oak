@@ -649,6 +649,7 @@ name|refreshPolicy
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|close
 parameter_list|()
@@ -669,6 +670,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|//TODO Close call can possibly be speeded up by
+comment|//avoiding merge and dropping stuff in memory. To be explored
+comment|//indexWrite.close(waitForMerges)
 name|indexWriter
 operator|.
 name|close
