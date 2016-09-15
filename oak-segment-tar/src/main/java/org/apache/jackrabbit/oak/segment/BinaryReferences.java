@@ -28,14 +28,19 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility methods to work with {@link BinaryReferenceConsumer} instances.  */
+comment|/**  * Utility methods for working with binary references.  */
 end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
-name|BinaryReferenceConsumers
+name|BinaryReferences
 block|{
+specifier|private
+name|BinaryReferences
+parameter_list|()
+block|{}
 comment|/**      * Creates a new instance of {@link BinaryReferenceConsumer} that ignores      * every binary reference it consumes.      *      * @return A new instance of {@link BinaryReferenceConsumer}.      */
 specifier|public
 specifier|static

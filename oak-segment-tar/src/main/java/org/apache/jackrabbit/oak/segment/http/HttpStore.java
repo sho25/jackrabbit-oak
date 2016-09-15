@@ -219,7 +219,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|BinaryReferenceConsumers
+name|BinaryReferences
 import|;
 end_import
 
@@ -614,7 +614,7 @@ name|getBinaryReferenceConsumer
 parameter_list|()
 block|{
 return|return
-name|BinaryReferenceConsumers
+name|BinaryReferences
 operator|.
 name|newDiscardBinaryReferenceConsumer
 argument_list|()
