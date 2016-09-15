@@ -1455,6 +1455,8 @@ argument_list|,
 name|defn
 argument_list|,
 name|readers
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 comment|//3 Obtain the plan

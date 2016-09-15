@@ -18124,6 +18124,7 @@ name|propNames
 argument_list|)
 return|;
 block|}
+specifier|public
 specifier|static
 name|Tree
 name|createIndex
