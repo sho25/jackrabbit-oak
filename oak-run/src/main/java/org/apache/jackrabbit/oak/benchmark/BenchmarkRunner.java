@@ -3527,6 +3527,8 @@ name|value
 argument_list|(
 name|options
 argument_list|)
+argument_list|,
+name|statsProvider
 argument_list|)
 block|}
 decl_stmt|;
