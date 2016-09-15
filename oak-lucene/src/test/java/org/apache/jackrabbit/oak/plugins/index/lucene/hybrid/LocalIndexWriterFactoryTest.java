@@ -760,10 +760,10 @@ argument_list|(
 name|holder
 argument_list|)
 expr_stmt|;
-comment|//2 add and 1 delete
+comment|//2 add none for delete
 name|assertEquals
 argument_list|(
-literal|3
+literal|2
 argument_list|,
 name|holder
 operator|.
@@ -868,10 +868,10 @@ argument_list|(
 name|holder
 argument_list|)
 expr_stmt|;
-comment|//1 add and 1 delete - bar
+comment|//1 add  - bar
 name|assertEquals
 argument_list|(
-literal|2
+literal|1
 argument_list|,
 name|holder
 operator|.
@@ -884,10 +884,10 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//1 add and 1 delete - bar
+comment|//1 add  - bar
 name|assertEquals
 argument_list|(
-literal|2
+literal|1
 argument_list|,
 name|holder
 operator|.

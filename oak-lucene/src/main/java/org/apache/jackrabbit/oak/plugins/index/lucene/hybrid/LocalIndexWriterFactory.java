@@ -434,21 +434,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|addLuceneDoc
-argument_list|(
-name|LuceneDoc
-operator|.
-name|forDelete
-argument_list|(
-name|definition
-operator|.
-name|getIndexPathFromConfig
-argument_list|()
-argument_list|,
-name|path
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//Hybrid index logic drops the deletes. So no use to
+comment|//add them to the list
+comment|//addLuceneDoc(LuceneDoc.forDelete(definition.getIndexPathFromConfig(), path));
 block|}
 annotation|@
 name|Override
