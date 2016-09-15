@@ -957,6 +957,14 @@ argument_list|>
 name|docs
 parameter_list|)
 block|{
+comment|//Drop the write call if stopped
+if|if
+condition|(
+name|stopped
+condition|)
+block|{
+return|return;
+block|}
 name|IndexNode
 name|indexNode
 init|=
@@ -1134,7 +1142,6 @@ name|stopped
 operator|=
 literal|true
 expr_stmt|;
-comment|//TODO Should we wait for STOP to be processed
 block|}
 block|}
 end_class
