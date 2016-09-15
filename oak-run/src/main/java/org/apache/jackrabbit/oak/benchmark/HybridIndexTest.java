@@ -1151,6 +1151,30 @@ argument_list|)
 decl_stmt|;
 specifier|private
 name|boolean
+name|useOakCodec
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useOakCodec"
+argument_list|)
+decl_stmt|;
+specifier|private
+name|String
+name|indexingMode
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"indexingMode"
+argument_list|,
+literal|"nrt"
+argument_list|)
+decl_stmt|;
+specifier|private
+name|boolean
 name|searcherEnabled
 init|=
 name|Boolean
@@ -1668,9 +1692,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|dumpStats
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|indexCopierDir
@@ -1694,7 +1715,9 @@ name|printf
 argument_list|(
 literal|"numOfIndexes: %d, refreshDeltaMillis: %d, asyncInterval: %d, queueSize: %d , "
 operator|+
-literal|"hybridIndexEnabled: %s, metricStatsEnabled: %s %n"
+literal|"hybridIndexEnabled: %s, metricStatsEnabled: %s, indexingMode: %s, "
+operator|+
+literal|"useOakCodec: %s %n"
 argument_list|,
 name|numOfIndexes
 argument_list|,
@@ -1707,6 +1730,10 @@ argument_list|,
 name|hybridIndexEnabled
 argument_list|,
 name|metricStatsEnabled
+argument_list|,
+name|indexingMode
+argument_list|,
+name|useOakCodec
 argument_list|)
 expr_stmt|;
 name|System
@@ -1730,6 +1757,9 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|dumpStats
+argument_list|()
 expr_stmt|;
 block|}
 specifier|private
@@ -2425,7 +2455,7 @@ name|async
 argument_list|(
 literal|"async"
 argument_list|,
-literal|"sync"
+name|indexingMode
 argument_list|)
 expr_stmt|;
 name|defnBuilder
@@ -2443,7 +2473,19 @@ operator|.
 name|propertyIndex
 argument_list|()
 expr_stmt|;
-comment|//defnBuilder.codec("oakCodec");
+if|if
+condition|(
+name|useOakCodec
+condition|)
+block|{
+name|defnBuilder
+operator|.
+name|codec
+argument_list|(
+literal|"oakCodec"
+argument_list|)
+expr_stmt|;
+block|}
 for|for
 control|(
 name|int
