@@ -2337,7 +2337,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"Queue size "
+literal|"Queue size - "
 operator|+
 name|queueSize
 argument_list|)
