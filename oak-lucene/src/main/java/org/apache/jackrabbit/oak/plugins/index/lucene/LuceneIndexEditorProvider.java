@@ -227,6 +227,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|Editor
 import|;
 end_import
@@ -322,6 +340,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -386,6 +424,19 @@ name|LuceneIndexEditorProvider
 implements|implements
 name|IndexEditorProvider
 block|{
+specifier|private
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|getClass
+argument_list|()
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|IndexCopier
@@ -693,6 +744,45 @@ return|return
 literal|null
 return|;
 block|}
+if|if
+condition|(
+operator|!
+name|indexingContext
+operator|.
+name|getCommitInfo
+argument_list|()
+operator|.
+name|getInfo
+argument_list|()
+operator|.
+name|containsKey
+argument_list|(
+name|CommitContext
+operator|.
+name|NAME
+argument_list|)
+condition|)
+block|{
+comment|//Logically there should not be any commit without commit context. But
+comment|//some initializer code does the commit with out it. So ignore such calls with
+comment|//warning now
+comment|//TODO Revisit use of warn level once all such cases are analyzed
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"No CommitContext found for commit"
+argument_list|,
+operator|new
+name|Exception
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+comment|//TODO Also check if index has been done once
 name|writerFactory
 operator|=
 operator|new
