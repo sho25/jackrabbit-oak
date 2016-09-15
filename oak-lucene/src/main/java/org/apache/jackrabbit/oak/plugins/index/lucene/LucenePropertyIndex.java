@@ -2660,8 +2660,15 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
-name|long
-name|lastSearchIndexerVersion
+name|IndexSearcher
+name|indexSearcher
+decl_stmt|;
+specifier|private
+name|int
+name|indexNodeId
+init|=
+operator|-
+literal|1
 decl_stmt|;
 annotation|@
 name|Override
@@ -2689,6 +2696,9 @@ name|remove
 argument_list|()
 return|;
 block|}
+name|releaseSearcher
+argument_list|()
+expr_stmt|;
 return|return
 name|endOfData
 argument_list|()
@@ -2920,10 +2930,10 @@ block|{
 name|IndexSearcher
 name|searcher
 init|=
+name|getCurrentSearcher
+argument_list|(
 name|indexNode
-operator|.
-name|getSearcher
-argument_list|()
+argument_list|)
 decl_stmt|;
 name|LuceneRequestFacade
 name|luceneRequestFacade
@@ -2983,11 +2993,6 @@ operator|=
 name|customScoreQuery
 expr_stmt|;
 block|}
-name|checkForIndexVersionChange
-argument_list|(
-name|searcher
-argument_list|)
-expr_stmt|;
 name|TopDocs
 name|docs
 decl_stmt|;
@@ -3941,55 +3946,81 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|void
-name|checkForIndexVersionChange
-parameter_list|(
 name|IndexSearcher
-name|searcher
+name|getCurrentSearcher
+parameter_list|(
+name|IndexNode
+name|indexNode
 parameter_list|)
 block|{
-name|long
-name|currentVersion
-init|=
-name|getVersion
-argument_list|(
-name|searcher
-argument_list|)
-decl_stmt|;
+comment|//The searcher once obtained is held till either cursor is finished
+comment|//or if the index gets updated. It needs to be ensured that
+comment|//searcher is obtained via this method only in this iterator
+comment|//Refresh the searcher if change in indexNode is detected
+comment|//For NRT case its fine to keep a reference to searcher i.e. not
+comment|//acquire it for every loadDocs call otherwise with frequent change
+comment|//the reset of lastDoc would happen very frequently.
+comment|//Upon IndexNode change i.e. when new async index update is detected
+comment|//the searcher would be refreshed as done earlier
 if|if
 condition|(
-name|currentVersion
+name|indexNodeId
 operator|!=
-name|lastSearchIndexerVersion
-operator|&&
-name|lastDoc
-operator|!=
-literal|null
+name|indexNode
+operator|.
+name|getIndexNodeId
+argument_list|()
 condition|)
 block|{
-name|lastDoc
-operator|=
-literal|null
-expr_stmt|;
+comment|//if already initialized then log about change
+if|if
+condition|(
+name|indexNodeId
+operator|>
+literal|0
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Change in index version detected {} => {}. Query would be performed without "
-operator|+
-literal|"offset"
-argument_list|,
-name|currentVersion
-argument_list|,
-name|lastSearchIndexerVersion
+literal|"Change in index version detected. Query would be performed without offset"
 argument_list|)
 expr_stmt|;
 block|}
-name|this
-operator|.
-name|lastSearchIndexerVersion
+comment|//TODO Add testcase for this scenario
+name|indexSearcher
 operator|=
-name|currentVersion
+name|indexNode
+operator|.
+name|getSearcher
+argument_list|()
+expr_stmt|;
+name|indexNodeId
+operator|=
+name|indexNode
+operator|.
+name|getIndexNodeId
+argument_list|()
+expr_stmt|;
+name|lastDoc
+operator|=
+literal|null
+expr_stmt|;
+block|}
+return|return
+name|indexSearcher
+return|;
+block|}
+specifier|private
+name|void
+name|releaseSearcher
+parameter_list|()
+block|{
+comment|//For now nullifying it.
+name|indexSearcher
+operator|=
+literal|null
 expr_stmt|;
 block|}
 block|}
