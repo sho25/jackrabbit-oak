@@ -454,6 +454,11 @@ name|LuceneIndexReader
 name|previousReader
 decl_stmt|;
 specifier|private
+specifier|final
+name|ReaderRefreshPolicy
+name|refreshPolicy
+decl_stmt|;
+specifier|private
 name|IndexWriter
 name|indexWriter
 decl_stmt|;
@@ -482,6 +487,9 @@ parameter_list|,
 name|IndexCopier
 name|indexCopier
 parameter_list|,
+name|ReaderRefreshPolicy
+name|refreshPolicy
+parameter_list|,
 annotation|@
 name|Nullable
 name|NRTIndex
@@ -499,6 +507,12 @@ operator|.
 name|indexCopier
 operator|=
 name|indexCopier
+expr_stmt|;
+name|this
+operator|.
+name|refreshPolicy
+operator|=
+name|refreshPolicy
 expr_stmt|;
 name|this
 operator|.
@@ -623,6 +637,15 @@ expr_stmt|;
 block|}
 return|return
 name|readers
+return|;
+block|}
+specifier|public
+name|ReaderRefreshPolicy
+name|getRefreshPolicy
+parameter_list|()
+block|{
+return|return
+name|refreshPolicy
 return|;
 block|}
 specifier|public
@@ -955,7 +978,6 @@ name|IOException
 block|{          }
 block|}
 specifier|private
-specifier|static
 class|class
 name|NRTIndexWriter
 implements|implements
@@ -1009,6 +1031,11 @@ name|addDocument
 argument_list|(
 name|doc
 argument_list|)
+expr_stmt|;
+name|refreshPolicy
+operator|.
+name|updated
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

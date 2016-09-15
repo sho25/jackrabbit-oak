@@ -223,22 +223,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|stats
-operator|.
-name|Clock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|lucene
 operator|.
 name|index
@@ -284,6 +268,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|DocumentQueue
 implements|implements
@@ -337,11 +322,6 @@ argument_list|<
 name|LuceneDoc
 argument_list|>
 name|docsQueue
-decl_stmt|;
-specifier|private
-specifier|final
-name|Clock
-name|clock
 decl_stmt|;
 specifier|private
 specifier|final
@@ -518,6 +498,7 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+specifier|public
 name|DocumentQueue
 parameter_list|(
 name|int
@@ -525,9 +506,6 @@ name|maxQueueSize
 parameter_list|,
 name|IndexTracker
 name|tracker
-parameter_list|,
-name|Clock
-name|clock
 parameter_list|,
 name|Executor
 name|executor
@@ -549,12 +527,6 @@ operator|.
 name|tracker
 operator|=
 name|tracker
-expr_stmt|;
-name|this
-operator|.
-name|clock
-operator|=
-name|clock
 expr_stmt|;
 name|this
 operator|.
@@ -746,16 +718,10 @@ name|doc
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO Support for immediate refresh
 name|indexNode
 operator|.
-name|refreshReaders
-argument_list|(
-name|clock
-operator|.
-name|getTime
+name|refreshReadersIfRequired
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 catch|catch

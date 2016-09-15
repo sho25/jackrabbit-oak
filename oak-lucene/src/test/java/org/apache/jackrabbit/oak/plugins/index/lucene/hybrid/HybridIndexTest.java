@@ -889,7 +889,6 @@ specifier|private
 name|Whiteboard
 name|wb
 decl_stmt|;
-comment|//TODO [hybrid] this needs to be obtained from NRTIndexFactory
 specifier|private
 name|long
 name|refreshDelta
@@ -912,8 +911,6 @@ parameter_list|()
 block|{
 name|IndexCopier
 name|copier
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -958,6 +955,17 @@ operator|new
 name|NRTIndexFactory
 argument_list|(
 name|copier
+argument_list|,
+name|clock
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toSeconds
+argument_list|(
+name|refreshDelta
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|LuceneIndexReaderFactory
@@ -1016,8 +1024,6 @@ argument_list|(
 literal|100
 argument_list|,
 name|tracker
-argument_list|,
-name|clock
 argument_list|,
 name|sameThreadExecutor
 argument_list|()
@@ -1282,7 +1288,19 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//TODO This extra push would not be required once refresh also account for time
+comment|//Now recently added stuff should be visible without async indexing run
+name|assertQuery
+argument_list|(
+literal|"select [jcr:path] from [nt:base] where [foo] = 'bar'"
+argument_list|,
+name|of
+argument_list|(
+literal|"/a"
+argument_list|,
+literal|"/b"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|createPath
 argument_list|(
 literal|"/c"
@@ -1299,21 +1317,6 @@ name|root
 operator|.
 name|commit
 argument_list|()
-expr_stmt|;
-comment|//Now recently added stuff should be visible without async indexing run
-name|assertQuery
-argument_list|(
-literal|"select [jcr:path] from [nt:base] where [foo] = 'bar'"
-argument_list|,
-name|of
-argument_list|(
-literal|"/a"
-argument_list|,
-literal|"/b"
-argument_list|,
-literal|"/c"
-argument_list|)
-argument_list|)
 expr_stmt|;
 comment|//Post async index it should still be upto date
 name|runAsyncIndex
