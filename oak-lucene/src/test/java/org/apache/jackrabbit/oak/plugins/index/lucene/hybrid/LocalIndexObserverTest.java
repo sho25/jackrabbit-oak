@@ -189,6 +189,18 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -413,6 +425,18 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+name|cc
+operator|.
+name|get
+argument_list|(
+name|LuceneDocumentHolder
+operator|.
+name|NAME
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

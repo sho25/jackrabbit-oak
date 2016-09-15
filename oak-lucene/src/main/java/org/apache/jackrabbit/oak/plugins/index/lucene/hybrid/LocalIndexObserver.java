@@ -273,6 +273,15 @@ condition|)
 block|{
 return|return;
 block|}
+name|commitContext
+operator|.
+name|remove
+argument_list|(
+name|LuceneDocumentHolder
+operator|.
+name|NAME
+argument_list|)
+expr_stmt|;
 name|int
 name|droppedCount
 init|=
@@ -336,7 +345,6 @@ name|droppedCount
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO Remove the holder once processing is done
 block|}
 block|}
 end_class
