@@ -164,9 +164,6 @@ operator|.
 name|getHeadRecordId
 argument_list|()
 operator|.
-name|toString
-argument_list|()
-operator|.
 name|getBytes
 argument_list|(
 name|CharsetUtil

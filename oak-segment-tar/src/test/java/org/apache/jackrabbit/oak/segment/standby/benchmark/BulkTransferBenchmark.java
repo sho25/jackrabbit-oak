@@ -107,7 +107,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbyClient
+name|StandbySync
 import|;
 end_import
 
@@ -612,14 +612,14 @@ name|System
 operator|.
 name|setProperty
 argument_list|(
-name|StandbyClient
+name|StandbySync
 operator|.
 name|CLIENT_ID_PROPERTY_NAME
 argument_list|,
 literal|"Bar"
 argument_list|)
 expr_stmt|;
-name|StandbyClient
+name|StandbySync
 name|cl
 init|=
 name|newStandbyClient

@@ -225,11 +225,10 @@ argument_list|()
 argument_list|,
 name|response
 operator|.
-name|getSegment
+name|getSegmentData
 argument_list|()
 operator|.
-name|size
-argument_list|()
+name|length
 argument_list|)
 expr_stmt|;
 block|}
@@ -261,11 +260,10 @@ literal|0
 argument_list|,
 name|response
 operator|.
-name|getBlob
+name|getBlobData
 argument_list|()
 operator|.
 name|length
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

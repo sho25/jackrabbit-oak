@@ -21,22 +21,6 @@ name|codec
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|RecordId
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -49,7 +33,7 @@ name|clientId
 decl_stmt|;
 specifier|private
 specifier|final
-name|RecordId
+name|String
 name|headRecordId
 decl_stmt|;
 specifier|public
@@ -58,7 +42,7 @@ parameter_list|(
 name|String
 name|clientId
 parameter_list|,
-name|RecordId
+name|String
 name|headRecordId
 parameter_list|)
 block|{
@@ -85,7 +69,7 @@ name|clientId
 return|;
 block|}
 specifier|public
-name|RecordId
+name|String
 name|getHeadRecordId
 parameter_list|()
 block|{

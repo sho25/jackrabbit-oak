@@ -22,11 +22,9 @@ package|;
 end_package
 
 begin_class
-specifier|public
 class|class
 name|Messages
 block|{
-specifier|public
 specifier|static
 specifier|final
 name|byte
@@ -34,7 +32,6 @@ name|HEADER_RECORD
 init|=
 literal|0x00
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|byte
@@ -42,7 +39,6 @@ name|HEADER_SEGMENT
 init|=
 literal|0x01
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|byte
@@ -50,7 +46,6 @@ name|HEADER_BLOB
 init|=
 literal|0x02
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|String
@@ -58,7 +53,6 @@ name|GET_HEAD
 init|=
 literal|"h"
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|String
@@ -66,7 +60,6 @@ name|GET_SEGMENT
 init|=
 literal|"s."
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|String
@@ -170,7 +163,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-specifier|public
 specifier|static
 name|String
 name|newGetHeadRequest
@@ -193,7 +185,6 @@ name|delimited
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|String
 name|newGetHeadRequest
@@ -211,7 +202,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|String
 name|newGetSegmentRequest
@@ -239,7 +229,6 @@ name|delimited
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|String
 name|newGetSegmentRequest
@@ -262,7 +251,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|String
 name|newGetBlobRequest
@@ -290,7 +278,6 @@ name|delimited
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|String
 name|newGetBlobRequest
@@ -313,7 +300,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|String
 name|extractMessageFrom
@@ -367,7 +353,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|public
 specifier|static
 name|String
 name|extractClientFrom

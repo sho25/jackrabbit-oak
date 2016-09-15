@@ -93,7 +93,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbyClient
+name|StandbySync
 import|;
 end_import
 
@@ -266,10 +266,10 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|StandbyClient
+name|StandbySync
 name|cl
 init|=
-name|newStandbyClient
+name|newStandbySync
 argument_list|(
 name|storeC
 argument_list|)

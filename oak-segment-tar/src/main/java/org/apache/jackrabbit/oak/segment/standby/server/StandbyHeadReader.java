@@ -21,22 +21,6 @@ name|server
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|RecordId
-import|;
-end_import
-
 begin_comment
 comment|/**  * Read the head record ID.  */
 end_comment
@@ -46,7 +30,7 @@ interface|interface
 name|StandbyHeadReader
 block|{
 comment|/**      * Read the head record ID.      *      * @return the head record ID or {@code null} if the head record ID can't be      * found.      */
-name|RecordId
+name|String
 name|readHeadRecordId
 parameter_list|()
 function_decl|;

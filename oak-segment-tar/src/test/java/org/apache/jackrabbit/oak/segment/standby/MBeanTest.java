@@ -125,7 +125,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbyClient
+name|StandbySync
 import|;
 end_import
 
@@ -552,10 +552,10 @@ throws|throws
 name|Exception
 block|{
 specifier|final
-name|StandbyClient
+name|StandbySync
 name|client
 init|=
-name|newStandbyClient
+name|newStandbySync
 argument_list|(
 name|storeC
 argument_list|)
@@ -875,7 +875,7 @@ name|System
 operator|.
 name|setProperty
 argument_list|(
-name|StandbyClient
+name|StandbySync
 operator|.
 name|CLIENT_ID_PROPERTY_NAME
 argument_list|,
@@ -883,10 +883,10 @@ literal|"Foo"
 argument_list|)
 expr_stmt|;
 specifier|final
-name|StandbyClient
+name|StandbySync
 name|client
 init|=
-name|newStandbyClient
+name|newStandbySync
 argument_list|(
 name|storeC
 argument_list|)
@@ -1077,7 +1077,7 @@ name|System
 operator|.
 name|setProperty
 argument_list|(
-name|StandbyClient
+name|StandbySync
 operator|.
 name|CLIENT_ID_PROPERTY_NAME
 argument_list|,
@@ -1085,10 +1085,10 @@ literal|"Bar"
 argument_list|)
 expr_stmt|;
 specifier|final
-name|StandbyClient
+name|StandbySync
 name|client
 init|=
-name|newStandbyClient
+name|newStandbySync
 argument_list|(
 name|storeC
 argument_list|)

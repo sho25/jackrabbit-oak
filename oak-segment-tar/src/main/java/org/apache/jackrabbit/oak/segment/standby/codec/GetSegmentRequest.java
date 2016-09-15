@@ -21,16 +21,6 @@ name|codec
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|UUID
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -43,7 +33,7 @@ name|clientId
 decl_stmt|;
 specifier|private
 specifier|final
-name|UUID
+name|String
 name|segmentId
 decl_stmt|;
 specifier|public
@@ -52,7 +42,7 @@ parameter_list|(
 name|String
 name|clientId
 parameter_list|,
-name|UUID
+name|String
 name|segmentId
 parameter_list|)
 block|{
@@ -79,7 +69,7 @@ name|clientId
 return|;
 block|}
 specifier|public
-name|UUID
+name|String
 name|getSegmentId
 parameter_list|()
 block|{

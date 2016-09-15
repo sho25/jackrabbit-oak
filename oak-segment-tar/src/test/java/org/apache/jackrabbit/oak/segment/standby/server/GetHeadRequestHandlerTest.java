@@ -25,26 +25,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|standby
-operator|.
-name|StandbyTestUtils
-operator|.
-name|mockRecordId
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -62,18 +42,6 @@ operator|.
 name|Assert
 operator|.
 name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertSame
 import|;
 end_import
 
@@ -112,22 +80,6 @@ operator|.
 name|embedded
 operator|.
 name|EmbeddedChannel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|RecordId
 import|;
 end_import
 
@@ -195,18 +147,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|RecordId
-name|headRecordId
-init|=
-name|mockRecordId
-argument_list|(
-literal|1
-argument_list|,
-literal|2
-argument_list|,
-literal|8
-argument_list|)
-decl_stmt|;
 name|StandbyHeadReader
 name|reader
 init|=
@@ -227,7 +167,7 @@ argument_list|)
 operator|.
 name|thenReturn
 argument_list|(
-name|headRecordId
+literal|"recordId"
 argument_list|)
 expr_stmt|;
 name|EmbeddedChannel
@@ -265,9 +205,9 @@ operator|.
 name|readOutbound
 argument_list|()
 decl_stmt|;
-name|assertSame
+name|assertEquals
 argument_list|(
-name|headRecordId
+literal|"recordId"
 argument_list|,
 name|response
 operator|.

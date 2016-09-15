@@ -93,7 +93,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbyClient
+name|StandbySync
 import|;
 end_import
 
@@ -713,11 +713,11 @@ name|flush
 argument_list|()
 expr_stmt|;
 comment|// this speeds up the test a little bit...
-name|StandbyClient
+name|StandbySync
 name|cl
 init|=
 operator|new
-name|StandbyClient
+name|StandbySync
 argument_list|(
 name|host
 argument_list|,

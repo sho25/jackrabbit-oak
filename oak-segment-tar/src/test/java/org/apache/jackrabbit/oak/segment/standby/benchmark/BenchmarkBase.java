@@ -163,7 +163,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbyClient
+name|StandbySync
 import|;
 end_import
 
@@ -494,7 +494,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|StandbyClient
+name|StandbySync
 name|newStandbyClient
 parameter_list|(
 name|FileStore
@@ -515,7 +515,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|StandbyClient
+name|StandbySync
 name|newStandbyClient
 parameter_list|(
 name|FileStore
@@ -539,7 +539,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|StandbyClient
+name|StandbySync
 name|newStandbyClient
 parameter_list|(
 name|FileStore
@@ -556,7 +556,7 @@ name|Exception
 block|{
 return|return
 operator|new
-name|StandbyClient
+name|StandbySync
 argument_list|(
 name|LOCALHOST
 argument_list|,

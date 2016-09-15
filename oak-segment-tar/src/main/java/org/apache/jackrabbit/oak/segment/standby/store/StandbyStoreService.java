@@ -317,7 +317,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbyClient
+name|StandbySync
 import|;
 end_import
 
@@ -699,7 +699,7 @@ init|=
 literal|null
 decl_stmt|;
 specifier|private
-name|StandbyClient
+name|StandbySync
 name|sync
 init|=
 literal|null
@@ -1118,7 +1118,7 @@ decl_stmt|;
 name|sync
 operator|=
 operator|new
-name|StandbyClient
+name|StandbySync
 argument_list|(
 name|host
 argument_list|,

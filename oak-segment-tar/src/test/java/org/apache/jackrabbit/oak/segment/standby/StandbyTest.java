@@ -99,6 +99,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|ByteStreams
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -211,7 +225,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbyClient
+name|StandbySync
 import|;
 end_import
 
@@ -337,20 +351,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|io
-operator|.
-name|ByteStreams
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -471,10 +471,10 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|StandbyClient
+name|StandbySync
 name|cl
 init|=
-name|newStandbyClient
+name|newStandbySync
 argument_list|(
 name|secondary
 argument_list|)
