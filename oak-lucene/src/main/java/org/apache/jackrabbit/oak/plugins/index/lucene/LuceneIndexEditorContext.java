@@ -85,6 +85,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -578,6 +588,11 @@ parameter_list|,
 name|NodeBuilder
 name|definition
 parameter_list|,
+annotation|@
+name|Nullable
+name|IndexDefinition
+name|indexDefinition
+parameter_list|,
 name|IndexUpdateCallback
 name|updateCallback
 parameter_list|,
@@ -618,6 +633,12 @@ name|this
 operator|.
 name|definition
 operator|=
+name|indexDefinition
+operator|!=
+literal|null
+condition|?
+name|indexDefinition
+else|:
 operator|new
 name|IndexDefinition
 argument_list|(

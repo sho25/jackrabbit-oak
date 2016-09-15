@@ -452,6 +452,11 @@ specifier|final
 name|LuceneIndexWriterFactory
 name|indexWriterFactory
 decl_stmt|;
+specifier|private
+specifier|final
+name|IndexTracker
+name|indexTracker
+decl_stmt|;
 specifier|public
 name|LuceneIndexEditorProvider
 parameter_list|()
@@ -534,10 +539,55 @@ name|mountInfoProvider
 parameter_list|)
 block|{
 name|this
+argument_list|(
+name|indexCopier
+argument_list|,
+literal|null
+argument_list|,
+name|extractedTextCache
+argument_list|,
+name|augmentorFactory
+argument_list|,
+name|mountInfoProvider
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|LuceneIndexEditorProvider
+parameter_list|(
+annotation|@
+name|Nullable
+name|IndexCopier
+name|indexCopier
+parameter_list|,
+annotation|@
+name|Nullable
+name|IndexTracker
+name|indexTracker
+parameter_list|,
+name|ExtractedTextCache
+name|extractedTextCache
+parameter_list|,
+annotation|@
+name|Nullable
+name|IndexAugmentorFactory
+name|augmentorFactory
+parameter_list|,
+name|MountInfoProvider
+name|mountInfoProvider
+parameter_list|)
+block|{
+name|this
 operator|.
 name|indexCopier
 operator|=
 name|indexCopier
+expr_stmt|;
+name|this
+operator|.
+name|indexTracker
+operator|=
+name|indexTracker
 expr_stmt|;
 name|this
 operator|.
@@ -649,6 +699,11 @@ name|writerFactory
 init|=
 name|indexWriterFactory
 decl_stmt|;
+name|IndexDefinition
+name|indexDefinition
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -678,8 +733,6 @@ literal|null
 return|;
 block|}
 comment|//TODO [hybrid] switch the builder to readonly one
-comment|//TODO [hybrid] Make use of existing IndexDefinition to avoid reinit for
-comment|//every commit
 name|writerFactory
 operator|=
 operator|new
@@ -688,6 +741,29 @@ argument_list|(
 name|indexingContext
 argument_list|)
 expr_stmt|;
+comment|//IndexDefinition from tracker might differ from one passed here for reindexing
+comment|//case which should be fine. However reusing existing definition would avoid
+comment|//creating definition instance for each commit as this gets executed for each commit
+if|if
+condition|(
+name|indexTracker
+operator|!=
+literal|null
+condition|)
+block|{
+name|indexDefinition
+operator|=
+name|indexTracker
+operator|.
+name|getIndexDefinition
+argument_list|(
+name|indexingContext
+operator|.
+name|getIndexPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|LuceneIndexEditorContext
 name|context
@@ -698,6 +774,8 @@ argument_list|(
 name|root
 argument_list|,
 name|definition
+argument_list|,
+name|indexDefinition
 argument_list|,
 name|callback
 argument_list|,
