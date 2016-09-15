@@ -304,6 +304,24 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|ReadOnlyBuilder
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -670,7 +688,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|//TODO [hybrid] switch the builder to readonly one
 name|writerFactory
 operator|=
 operator|new
@@ -702,6 +719,22 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Pass on a read only builder to ensure that nothing gets written
+comment|//at all to NodeStore for local indexing.
+comment|//TODO [hybrid] This would cause issue with Facets as for faceted fields
+comment|//some stuff gets written to NodeBuilder. That logic should be refactored
+comment|//to be moved to LuceneIndexWriter
+name|definition
+operator|=
+operator|new
+name|ReadOnlyBuilder
+argument_list|(
+name|definition
+operator|.
+name|getNodeState
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 name|LuceneIndexEditorContext
 name|context

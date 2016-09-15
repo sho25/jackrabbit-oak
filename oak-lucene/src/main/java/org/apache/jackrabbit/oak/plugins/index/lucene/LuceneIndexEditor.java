@@ -1766,6 +1766,14 @@ literal|null
 return|;
 comment|// no need to recurse down the removed subtree
 block|}
+name|LuceneIndexEditorContext
+name|getContext
+parameter_list|()
+block|{
+return|return
+name|context
+return|;
+block|}
 specifier|private
 name|boolean
 name|addOrUpdate
