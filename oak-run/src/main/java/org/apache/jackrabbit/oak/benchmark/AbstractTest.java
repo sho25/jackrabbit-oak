@@ -1813,6 +1813,8 @@ specifier|protected
 name|T
 name|prepareThreadExecutionContext
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 return|return
 literal|null
@@ -1825,6 +1827,8 @@ parameter_list|(
 name|T
 name|context
 parameter_list|)
+throws|throws
+name|Exception
 block|{      }
 specifier|protected
 name|void

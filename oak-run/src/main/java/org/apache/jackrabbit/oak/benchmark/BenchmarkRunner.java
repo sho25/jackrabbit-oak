@@ -3517,6 +3517,17 @@ argument_list|(
 name|options
 argument_list|)
 argument_list|)
+block|,
+operator|new
+name|HybridIndexTest
+argument_list|(
+name|base
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
 block|}
 decl_stmt|;
 name|Set
