@@ -658,6 +658,11 @@ name|indexDefinition
 init|=
 literal|null
 decl_stmt|;
+name|boolean
+name|asyncIndexing
+init|=
+literal|true
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -735,6 +740,10 @@ name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|asyncIndexing
+operator|=
+literal|false
+expr_stmt|;
 block|}
 name|LuceneIndexEditorContext
 name|context
@@ -755,6 +764,8 @@ argument_list|,
 name|extractedTextCache
 argument_list|,
 name|augmentorFactory
+argument_list|,
+name|asyncIndexing
 argument_list|)
 decl_stmt|;
 return|return

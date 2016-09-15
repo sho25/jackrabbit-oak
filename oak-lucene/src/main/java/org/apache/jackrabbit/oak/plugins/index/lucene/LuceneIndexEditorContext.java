@@ -561,6 +561,11 @@ specifier|final
 name|NodeState
 name|root
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|asyncIndexing
+decl_stmt|;
 comment|/**      * The media types supported by the parser used.      */
 specifier|private
 name|Set
@@ -604,6 +609,9 @@ name|extractedTextCache
 parameter_list|,
 name|IndexAugmentorFactory
 name|augmentorFactory
+parameter_list|,
+name|boolean
+name|asyncIndexing
 parameter_list|)
 block|{
 name|configureUniqueId
@@ -670,6 +678,12 @@ operator|.
 name|augmentorFactory
 operator|=
 name|augmentorFactory
+expr_stmt|;
+name|this
+operator|.
+name|asyncIndexing
+operator|=
+name|asyncIndexing
 expr_stmt|;
 if|if
 condition|(
@@ -978,6 +992,15 @@ operator|++
 expr_stmt|;
 return|return
 name|indexedNodes
+return|;
+block|}
+specifier|public
+name|boolean
+name|isAsyncIndexing
+parameter_list|()
+block|{
+return|return
+name|asyncIndexing
 return|;
 block|}
 specifier|public

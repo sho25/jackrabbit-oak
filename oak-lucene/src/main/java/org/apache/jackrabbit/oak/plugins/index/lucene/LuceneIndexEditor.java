@@ -5425,6 +5425,20 @@ name|String
 name|propertyName
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|context
+operator|.
+name|isAsyncIndexing
+argument_list|()
+condition|)
+block|{
+comment|//Skip text extraction for sync indexing
+return|return
+literal|null
+return|;
+block|}
 name|String
 name|text
 init|=
