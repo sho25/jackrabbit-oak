@@ -1130,10 +1130,6 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//Run base reindex so reindex flag gets reset to false
-name|runAsyncIndex
-argument_list|()
-expr_stmt|;
 comment|//Get initial indexing done as local indexing only work
 comment|//for incremental indexing
 name|createPath
@@ -1153,8 +1149,6 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//TODO This is required as LuceneIndexEditorContext has side effect of creating a facet
-comment|//config node
 name|runAsyncIndex
 argument_list|()
 expr_stmt|;
