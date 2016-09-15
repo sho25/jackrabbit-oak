@@ -462,6 +462,20 @@ specifier|final
 name|IndexTracker
 name|indexTracker
 decl_stmt|;
+comment|/**      * Number of indexed Lucene document that can be held in memory      * This ensures that for very large commit memory consumption      * is bounded      */
+specifier|private
+name|int
+name|inMemoryDocsLimit
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.lucene.inMemoryDocsLimit"
+argument_list|,
+literal|500
+argument_list|)
+decl_stmt|;
 specifier|public
 name|LuceneIndexEditorProvider
 parameter_list|()
@@ -789,6 +803,8 @@ operator|new
 name|LocalIndexWriterFactory
 argument_list|(
 name|indexingContext
+argument_list|,
+name|inMemoryDocsLimit
 argument_list|)
 expr_stmt|;
 comment|//IndexDefinition from tracker might differ from one passed here for reindexing
@@ -885,6 +901,21 @@ block|{
 return|return
 name|extractedTextCache
 return|;
+block|}
+specifier|public
+name|void
+name|setInMemoryDocsLimit
+parameter_list|(
+name|int
+name|inMemoryDocsLimit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|inMemoryDocsLimit
+operator|=
+name|inMemoryDocsLimit
+expr_stmt|;
 block|}
 block|}
 end_class
