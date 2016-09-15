@@ -333,7 +333,7 @@ condition|(
 operator|!
 name|definition
 operator|.
-name|isSync
+name|isNRTIndexingEnabled
 argument_list|()
 condition|)
 block|{

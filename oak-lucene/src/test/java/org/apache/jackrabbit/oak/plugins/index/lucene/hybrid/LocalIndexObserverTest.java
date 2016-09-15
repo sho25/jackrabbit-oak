@@ -365,7 +365,7 @@ argument_list|()
 decl_stmt|;
 name|holder
 operator|.
-name|getAsyncIndexedDocList
+name|getNRTIndexedDocList
 argument_list|(
 literal|"foo"
 argument_list|)

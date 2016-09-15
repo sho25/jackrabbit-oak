@@ -361,7 +361,7 @@ name|doc
 range|:
 name|holder
 operator|.
-name|getAsyncIndexedDocs
+name|getNRTIndexedDocs
 argument_list|()
 control|)
 block|{

@@ -836,7 +836,7 @@ name|assertFalse
 argument_list|(
 name|idxDefn
 operator|.
-name|isSync
+name|isNRTIndexingEnabled
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6900,7 +6900,7 @@ name|assertTrue
 argument_list|(
 name|idxDefn
 operator|.
-name|isSync
+name|isNRTIndexingEnabled
 argument_list|()
 argument_list|)
 expr_stmt|;

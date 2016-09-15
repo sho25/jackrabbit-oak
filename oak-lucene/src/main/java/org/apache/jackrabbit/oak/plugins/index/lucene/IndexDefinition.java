@@ -1374,7 +1374,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|boolean
-name|sync
+name|nrt
 decl_stmt|;
 annotation|@
 name|Nullable
@@ -1942,9 +1942,9 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|sync
+name|nrt
 operator|=
-name|supportsSyncIndexing
+name|supportsNRTIndexing
 argument_list|(
 name|defn
 argument_list|)
@@ -2300,11 +2300,11 @@ return|;
 block|}
 specifier|public
 name|boolean
-name|isSync
+name|isNRTIndexingEnabled
 parameter_list|()
 block|{
 return|return
-name|sync
+name|nrt
 return|;
 block|}
 annotation|@
@@ -7653,7 +7653,7 @@ block|}
 specifier|private
 specifier|static
 name|boolean
-name|supportsSyncIndexing
+name|supportsNRTIndexing
 parameter_list|(
 name|NodeState
 name|defn

@@ -767,7 +767,7 @@ literal|2
 argument_list|,
 name|holder
 operator|.
-name|getAsyncIndexedDocList
+name|getNRTIndexedDocList
 argument_list|(
 literal|"/oak:index/fooIndex"
 argument_list|)
@@ -875,7 +875,7 @@ literal|1
 argument_list|,
 name|holder
 operator|.
-name|getAsyncIndexedDocList
+name|getNRTIndexedDocList
 argument_list|(
 literal|"/oak:index/fooIndex"
 argument_list|)
@@ -891,7 +891,7 @@ literal|1
 argument_list|,
 name|holder
 operator|.
-name|getAsyncIndexedDocList
+name|getNRTIndexedDocList
 argument_list|(
 literal|"/oak:index/barIndex"
 argument_list|)

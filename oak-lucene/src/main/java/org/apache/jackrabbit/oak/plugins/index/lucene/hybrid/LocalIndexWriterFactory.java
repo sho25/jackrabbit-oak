@@ -487,7 +487,7 @@ operator|=
 name|getDocumentHolder
 argument_list|()
 operator|.
-name|getAsyncIndexedDocList
+name|getNRTIndexedDocList
 argument_list|(
 name|indexingContext
 operator|.
