@@ -6170,6 +6170,18 @@ parameter_list|)
 block|{
 try|try
 block|{
+comment|//Check for file presence otherwise internally it results in
+comment|//an exception to be created
+if|if
+condition|(
+name|dir
+operator|.
+name|fileExists
+argument_list|(
+name|fileName
+argument_list|)
+condition|)
+block|{
 return|return
 name|dir
 operator|.
@@ -6179,17 +6191,17 @@ name|fileName
 argument_list|)
 return|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|ignore
 parameter_list|)
-block|{
+block|{          }
 return|return
 operator|-
 literal|1
 return|;
-block|}
 block|}
 comment|//~------------------------------------------< CopyOnReadStatsMBean>
 annotation|@

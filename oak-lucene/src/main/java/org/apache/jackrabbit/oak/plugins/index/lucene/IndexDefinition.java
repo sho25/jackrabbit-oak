@@ -1998,6 +1998,8 @@ return|return
 name|blobSize
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|Codec
 name|getCodec
