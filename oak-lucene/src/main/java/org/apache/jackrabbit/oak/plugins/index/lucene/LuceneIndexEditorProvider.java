@@ -724,7 +724,7 @@ argument_list|()
 operator|&&
 name|IndexDefinition
 operator|.
-name|supportsSyncIndexing
+name|supportsSyncOrNRTIndexing
 argument_list|(
 name|definition
 argument_list|)
