@@ -482,6 +482,37 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|definition
+operator|.
+name|isSyncIndexingEnabled
+argument_list|()
+condition|)
+block|{
+name|docList
+operator|=
+name|getDocumentHolder
+argument_list|()
+operator|.
+name|getSyncIndexedDocList
+argument_list|(
+name|indexingContext
+operator|.
+name|getIndexPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|definition
+operator|.
+name|isNRTIndexingEnabled
+argument_list|()
+condition|)
+block|{
 name|docList
 operator|=
 name|getDocumentHolder
@@ -495,6 +526,19 @@ name|getIndexPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Should not be invoked for any other indexing "
+operator|+
+literal|"mode apart from 'sync' and 'nrt'"
+argument_list|)
+throw|;
+block|}
 block|}
 comment|//TODO [hybrid] checks about the size. If too many drop
 comment|//However for truly sync case hold on

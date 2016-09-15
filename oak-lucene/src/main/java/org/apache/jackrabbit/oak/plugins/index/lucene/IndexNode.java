@@ -858,6 +858,18 @@ name|shouldRefresh
 argument_list|()
 condition|)
 block|{
+name|refreshReaders
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+specifier|public
+name|void
+name|refreshReaders
+parameter_list|()
+block|{
+comment|//TODO Instead of refresh on write switch on refresh on read
+comment|//for sync indexes
 name|indexSearcher
 operator|=
 operator|new
@@ -876,7 +888,6 @@ argument_list|,
 name|definition
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|private
 name|LuceneIndexReader

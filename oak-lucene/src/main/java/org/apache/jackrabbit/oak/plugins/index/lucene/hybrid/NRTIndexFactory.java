@@ -331,10 +331,17 @@ block|{
 if|if
 condition|(
 operator|!
+operator|(
 name|definition
 operator|.
 name|isNRTIndexingEnabled
 argument_list|()
+operator|||
+name|definition
+operator|.
+name|isSyncIndexingEnabled
+argument_list|()
+operator|)
 condition|)
 block|{
 return|return
