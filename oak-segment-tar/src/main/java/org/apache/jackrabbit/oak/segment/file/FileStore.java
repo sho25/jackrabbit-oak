@@ -311,6 +311,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|BinaryReferences
+operator|.
+name|newReferenceReader
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|SegmentId
 operator|.
 name|isDataSegmentId
@@ -4974,6 +4992,11 @@ operator|.
 name|collectBlobReferences
 argument_list|(
 name|collector
+argument_list|,
+name|newReferenceReader
+argument_list|(
+name|this
+argument_list|)
 argument_list|,
 name|minGeneration
 argument_list|)
