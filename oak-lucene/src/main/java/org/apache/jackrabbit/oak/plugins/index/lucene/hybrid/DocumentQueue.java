@@ -676,7 +676,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|processDoc
+name|processDocs
 argument_list|(
 name|e
 operator|.
@@ -945,7 +945,7 @@ return|;
 block|}
 specifier|private
 name|void
-name|processDoc
+name|processDocs
 parameter_list|(
 name|String
 name|indexPath
