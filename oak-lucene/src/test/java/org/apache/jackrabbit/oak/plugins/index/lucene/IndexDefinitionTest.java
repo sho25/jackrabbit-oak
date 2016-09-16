@@ -79,22 +79,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Tree
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|Type
 import|;
 end_import
@@ -180,24 +164,6 @@ operator|.
 name|util
 operator|.
 name|TokenizerChain
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|tree
-operator|.
-name|TreeFactory
 import|;
 end_import
 
@@ -1607,7 +1573,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -1778,7 +1744,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -1795,7 +1761,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -1938,7 +1904,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -1954,7 +1920,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -1970,7 +1936,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2045,7 +2011,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2063,7 +2029,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2138,7 +2104,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2156,7 +2122,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2173,7 +2139,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2257,7 +2223,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2273,7 +2239,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2291,7 +2257,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2668,7 +2634,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -2844,7 +2810,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -3056,7 +3022,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -3172,7 +3138,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -3299,7 +3265,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -3447,7 +3413,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -3923,7 +3889,7 @@ name|defn2
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -4057,7 +4023,7 @@ name|defn2
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -5905,7 +5871,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -6058,7 +6024,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -6117,7 +6083,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -6217,7 +6183,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -6276,7 +6242,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -6414,7 +6380,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -6591,7 +6557,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -6986,7 +6952,7 @@ name|defn
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
-name|newTree
+name|asState
 argument_list|(
 name|newNode
 argument_list|(
@@ -6998,23 +6964,18 @@ return|;
 block|}
 specifier|private
 specifier|static
-name|Tree
-name|newTree
+name|NodeState
+name|asState
 parameter_list|(
 name|NodeBuilder
 name|nb
 parameter_list|)
 block|{
 return|return
-name|TreeFactory
-operator|.
-name|createReadOnlyTree
-argument_list|(
 name|nb
 operator|.
 name|getNodeState
 argument_list|()
-argument_list|)
 return|;
 block|}
 specifier|private
@@ -7043,6 +7004,10 @@ operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
 name|typeName
+argument_list|,
+name|Type
+operator|.
+name|NAME
 argument_list|)
 expr_stmt|;
 return|return
