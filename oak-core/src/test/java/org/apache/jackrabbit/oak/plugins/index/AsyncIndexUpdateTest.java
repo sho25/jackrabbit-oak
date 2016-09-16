@@ -952,8 +952,9 @@ name|lookup
 operator|.
 name|query
 argument_list|(
-operator|new
 name|FilterImpl
+operator|.
+name|newTestInstance
 argument_list|()
 argument_list|,
 name|name

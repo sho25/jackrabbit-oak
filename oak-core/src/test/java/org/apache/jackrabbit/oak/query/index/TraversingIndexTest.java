@@ -329,8 +329,9 @@ decl_stmt|;
 name|FilterImpl
 name|f
 init|=
-operator|new
 name|FilterImpl
+operator|.
+name|newTestInstance
 argument_list|()
 decl_stmt|;
 name|f

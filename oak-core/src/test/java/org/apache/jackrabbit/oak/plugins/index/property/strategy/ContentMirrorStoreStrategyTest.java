@@ -1427,8 +1427,9 @@ specifier|final
 name|FilterImpl
 name|filter
 init|=
-operator|new
 name|FilterImpl
+operator|.
+name|newTestInstance
 argument_list|()
 decl_stmt|;
 name|filter

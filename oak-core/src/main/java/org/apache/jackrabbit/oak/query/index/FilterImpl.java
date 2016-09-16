@@ -451,7 +451,20 @@ name|boolean
 name|preparing
 decl_stmt|;
 comment|// TODO support "order by"
+comment|/**      * Create a new filter instance that is used for unit testing. This method      * is relatively slow, because it creates a new query engine setting object.      * Therefore, it is only to be used for testing. At runtime, the      * public constructor should be used instead.      *       * @return the filter      */
 specifier|public
+specifier|static
+name|FilterImpl
+name|newTestInstance
+parameter_list|()
+block|{
+return|return
+operator|new
+name|FilterImpl
+argument_list|()
+return|;
+block|}
+specifier|private
 name|FilterImpl
 parameter_list|()
 block|{
