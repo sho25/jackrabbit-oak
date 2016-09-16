@@ -540,6 +540,12 @@ name|PROP_EXCLUDE_FROM_AGGREGATE
 init|=
 literal|"excludeFromAggregation"
 decl_stmt|;
+comment|/**      * String property: the function to index, for function-based index      */
+name|String
+name|PROP_FUNCTION
+init|=
+literal|"function"
+decl_stmt|;
 block|}
 end_interface
 

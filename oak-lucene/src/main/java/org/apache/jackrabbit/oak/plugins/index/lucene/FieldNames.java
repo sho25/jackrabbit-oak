@@ -165,6 +165,15 @@ name|NODE_NAME
 init|=
 literal|":nodeName"
 decl_stmt|;
+comment|/**      * Suffix of the fields that contains function values      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FUNCTION_PREFIX
+init|=
+literal|"function*"
+decl_stmt|;
 comment|/**      * Used to select only the PATH field from the lucene documents      */
 specifier|public
 specifier|static
