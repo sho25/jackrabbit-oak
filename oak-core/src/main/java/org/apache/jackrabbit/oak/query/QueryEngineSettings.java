@@ -158,6 +158,7 @@ literal|"true"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|/**      * Create a new query engine settings object. Creating the object is      * relatively slow, and at runtime, as few such objects as possible should      * be created (ideally, only one per Oak instance). Creating new instances      * also means they can not be configured using JMX, as one would expect.      */
 specifier|public
 name|QueryEngineSettings
 parameter_list|()
