@@ -49,6 +49,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -429,10 +439,13 @@ operator|.
 name|getHead
 argument_list|()
 decl_stmt|;
+name|Set
+argument_list|<
 name|String
-name|ref
+argument_list|>
+name|refs
 init|=
-name|getReferenceCheckpoint
+name|getReferencedCheckpoints
 argument_list|(
 name|head
 operator|.
@@ -478,11 +491,11 @@ control|)
 block|{
 if|if
 condition|(
-name|c
+name|refs
 operator|.
-name|equals
+name|contains
 argument_list|(
-name|ref
+name|c
 argument_list|)
 condition|)
 block|{
