@@ -1739,6 +1739,10 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|IllegalArgumentException
+block|{
+try|try
 block|{
 name|int
 name|index
@@ -1750,15 +1754,13 @@ argument_list|(
 literal|':'
 argument_list|)
 decl_stmt|;
-assert|assert
+if|if
+condition|(
 name|index
-operator|>
+operator|>=
 literal|0
-operator|:
-literal|"Invalid id "
-operator|+
-name|id
-assert|;
+condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -1774,6 +1776,25 @@ name|index
 argument_list|)
 argument_list|)
 return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|NumberFormatException
+name|e
+parameter_list|)
+block|{
+comment|// ignore and throw IllegalArgumentException
+block|}
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Invalid id: "
+operator|+
+name|id
+argument_list|)
+throw|;
 block|}
 specifier|public
 specifier|static
