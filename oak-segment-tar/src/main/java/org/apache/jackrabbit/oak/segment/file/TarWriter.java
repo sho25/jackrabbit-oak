@@ -1473,7 +1473,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * If the current instance is dirty, this will return a new TarWriter based      * on the next generation of the file being written to by incrementing the      * internal {@link #writeIndex} counter. Otherwise it will return the      * current instance.      */
-specifier|synchronized
 name|TarWriter
 name|createNextGeneration
 parameter_list|()
@@ -1488,6 +1487,11 @@ literal|0
 argument_list|)
 expr_stmt|;
 comment|// If nothing was written to this file, then we're already done.
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 if|if
 condition|(
 name|access
@@ -1498,6 +1502,7 @@ block|{
 return|return
 name|this
 return|;
+block|}
 block|}
 name|close
 argument_list|()
