@@ -332,6 +332,18 @@ name|PARAM_PASSWORD_SALT_SIZE
 init|=
 literal|"passwordSaltSize"
 decl_stmt|;
+comment|/**      * Optionally enables the UsernameCaseMapped profile defined in      * https://tools.ietf.org/html/rfc7613#section-3.2 for user name comparison.      * Use this if half-width and full-width user names should be considered      * equal.      */
+name|String
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+init|=
+literal|"enableRFC7613UsercaseMappedProfile"
+decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE}      */
+name|boolean
+name|DEFAULT_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Optional configuration parameter defining how to generate the name of the      * authorizable node from the ID of the new authorizable that is being created.      * The value is expected to be an instance of {@link AuthorizableNodeName}.      * By default {@link AuthorizableNodeName#DEFAULT} is used.      */
 name|String
 name|PARAM_AUTHORIZABLE_NODE_NAME

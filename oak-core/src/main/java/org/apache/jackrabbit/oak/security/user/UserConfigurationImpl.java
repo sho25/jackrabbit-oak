@@ -971,6 +971,28 @@ name|UserPrincipalProvider
 operator|.
 name|EXPIRATION_NO_CACHE
 argument_list|)
+block|,
+annotation|@
+name|Property
+argument_list|(
+name|name
+operator|=
+name|UserConstants
+operator|.
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+argument_list|,
+name|label
+operator|=
+literal|"RFC7613 Username Comparison Profile"
+argument_list|,
+name|description
+operator|=
+literal|"Enable the UsercaseMappedProfile defined in RFC7613 for username comparison."
+argument_list|,
+name|boolValue
+operator|=
+literal|false
+argument_list|)
 block|}
 argument_list|)
 specifier|public

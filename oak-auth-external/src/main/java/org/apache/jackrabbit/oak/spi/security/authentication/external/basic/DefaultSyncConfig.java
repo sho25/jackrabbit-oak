@@ -198,6 +198,10 @@ specifier|private
 name|String
 name|pathPrefix
 decl_stmt|;
+specifier|private
+name|boolean
+name|applyRFC7613UsernameCaseMapped
+decl_stmt|;
 comment|/**          * Returns the duration in milliseconds until a synced authorizable gets expired. An expired authorizable will          * be re-synced.          * @return the expiration time in milliseconds.          */
 specifier|public
 name|long
@@ -224,6 +228,35 @@ operator|.
 name|expirationTime
 operator|=
 name|expirationTime
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Returns true if new AuthorizableIDs will be normalized according to          * the UsernameCaseMapped profile defined in RFC7613          * @return true if new AuthorizableIDs will be normalized.          */
+specifier|public
+name|boolean
+name|isApplyRFC7613UsernameCaseMapped
+parameter_list|()
+block|{
+return|return
+name|applyRFC7613UsernameCaseMapped
+return|;
+block|}
+comment|/**          * Set to true if new AuthorizableIDs shall be normalized according to          * the UsernameCaseMapped profile defined in RFC7613.          * @param true if the UsernameCaseMapped profile shall be used for normalization.          * @return {@code this}          * @see #isApplyRFC7613UsernameCaseMapped()          */
+specifier|public
+name|Authorizable
+name|setApplyRFC7613UsernameCaseMapped
+parameter_list|(
+name|boolean
+name|applyRFC7613UsernameCaseMapped
+parameter_list|)
+block|{
+name|this
+operator|.
+name|applyRFC7613UsernameCaseMapped
+operator|=
+name|applyRFC7613UsernameCaseMapped
 expr_stmt|;
 return|return
 name|this

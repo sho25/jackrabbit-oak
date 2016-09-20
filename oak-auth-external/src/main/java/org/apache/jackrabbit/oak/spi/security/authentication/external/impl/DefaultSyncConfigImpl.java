@@ -601,6 +601,39 @@ name|PARAM_GROUP_PATH_PREFIX
 init|=
 literal|"group.pathPrefix"
 decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE}      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE_DEFAULT
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * @see Authorizable#isApplyRFC7613UsernameCaseMapped()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"RFC7613 Username Normalization Profile"
+argument_list|,
+name|description
+operator|=
+literal|"Enable the UsercaseMappedProfile defined in RFC7613 for username normalization."
+argument_list|,
+name|boolValue
+operator|=
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+init|=
+literal|"enableRFC7613UsercaseMappedProfile"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -735,6 +768,18 @@ name|ONE_HOUR
 argument_list|)
 argument_list|)
 operator|.
+name|setApplyRFC7613UsernameCaseMapped
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+argument_list|,
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE_DEFAULT
+argument_list|)
+argument_list|)
+operator|.
 name|setPathPrefix
 argument_list|(
 name|params
@@ -790,6 +835,18 @@ argument_list|,
 name|PARAM_GROUP_EXPIRATION_TIME_DEFAULT
 argument_list|,
 name|ONE_DAY
+argument_list|)
+argument_list|)
+operator|.
+name|setApplyRFC7613UsernameCaseMapped
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+argument_list|,
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE_DEFAULT
 argument_list|)
 argument_list|)
 operator|.

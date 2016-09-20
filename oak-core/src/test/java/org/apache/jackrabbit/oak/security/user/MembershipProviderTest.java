@@ -3154,6 +3154,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+comment|//TODO
 name|memberIds
 operator|.
 name|put
@@ -3163,6 +3164,8 @@ operator|.
 name|getContentID
 argument_list|(
 literal|"member1"
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 literal|"member1"
@@ -3177,6 +3180,8 @@ operator|.
 name|getContentID
 argument_list|(
 literal|"member2"
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 literal|"member2"
@@ -3540,6 +3545,7 @@ literal|"member"
 operator|+
 name|i
 decl_stmt|;
+comment|//TODO
 name|memberIds
 operator|.
 name|put
@@ -3549,6 +3555,8 @@ operator|.
 name|getContentID
 argument_list|(
 name|memberId
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 name|memberId

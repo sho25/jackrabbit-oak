@@ -1453,7 +1453,6 @@ block|}
 block|}
 block|}
 specifier|private
-specifier|static
 name|boolean
 name|isValidUUID
 parameter_list|(
@@ -1492,6 +1491,18 @@ operator|.
 name|getContentID
 argument_list|(
 name|id
+argument_list|,
+name|provider
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+argument_list|,
+name|DEFAULT_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+argument_list|)
 argument_list|)
 argument_list|)
 return|;

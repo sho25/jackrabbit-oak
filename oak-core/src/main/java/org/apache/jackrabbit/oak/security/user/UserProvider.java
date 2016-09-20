@@ -1129,6 +1129,15 @@ argument_list|,
 name|getContentID
 argument_list|(
 name|authorizableId
+argument_list|,
+name|config
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+argument_list|,
+name|DEFAULT_ENABLE_RFC7613_USERCASE_MAPPED_PROFILE
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
