@@ -364,7 +364,7 @@ argument_list|(
 literal|"target"
 argument_list|)
 argument_list|,
-literal|"segment-tar"
+literal|"repo-segment-tar"
 argument_list|)
 operator|.
 name|toFile
