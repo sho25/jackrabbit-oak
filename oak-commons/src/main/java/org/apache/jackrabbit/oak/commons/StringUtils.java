@@ -344,6 +344,12 @@ name|s
 parameter_list|)
 block|{
 return|return
+name|s
+operator|==
+literal|null
+condition|?
+literal|0
+else|:
 literal|48
 operator|+
 name|s
