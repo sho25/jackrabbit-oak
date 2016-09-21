@@ -109,6 +109,11 @@ name|long
 name|gcSizeDeltaEstimation
 parameter_list|)
 function_decl|;
+comment|/**      * Raise the flag to signal compaction to stop as soon as possible.      */
+name|void
+name|stopCompaction
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

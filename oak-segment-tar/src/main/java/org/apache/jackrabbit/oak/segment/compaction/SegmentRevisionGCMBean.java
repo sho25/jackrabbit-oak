@@ -268,6 +268,21 @@ name|gcSizeDeltaEstimation
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|stopCompaction
+parameter_list|()
+block|{
+name|gcOptions
+operator|.
+name|setStopCompaction
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
