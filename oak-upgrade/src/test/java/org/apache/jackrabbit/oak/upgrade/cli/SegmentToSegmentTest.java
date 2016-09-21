@@ -59,6 +59,16 @@ name|SegmentNodeStoreContainer
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -79,6 +89,8 @@ decl_stmt|;
 specifier|public
 name|SegmentToSegmentTest
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|source
 operator|=

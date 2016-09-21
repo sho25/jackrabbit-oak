@@ -237,6 +237,12 @@ specifier|private
 name|Session
 name|session
 decl_stmt|;
+specifier|public
+name|Jcr2ToSegmentTest
+parameter_list|()
+throws|throws
+name|IOException
+block|{     }
 annotation|@
 name|Before
 specifier|public
