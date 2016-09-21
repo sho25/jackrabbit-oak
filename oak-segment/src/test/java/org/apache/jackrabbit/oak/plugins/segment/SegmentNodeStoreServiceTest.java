@@ -578,7 +578,7 @@ specifier|private
 name|SegmentNodeStoreService
 name|segmentNodeStoreService
 decl_stmt|;
-specifier|private
+specifier|protected
 name|void
 name|registerSegmentNodeStoreService
 parameter_list|(
@@ -639,7 +639,7 @@ name|properties
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|unregisterSegmentNodeStoreService
 parameter_list|()
@@ -697,7 +697,7 @@ name|unregister
 argument_list|()
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|assertServiceActivated
 parameter_list|()
@@ -727,7 +727,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|assertServiceNotActivated
 parameter_list|()
