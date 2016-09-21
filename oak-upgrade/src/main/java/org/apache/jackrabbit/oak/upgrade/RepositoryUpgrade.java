@@ -163,6 +163,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|emptyMap
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -386,6 +398,16 @@ operator|.
 name|util
 operator|.
 name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -3894,7 +3916,28 @@ argument_list|)
 decl_stmt|;
 name|ConfigurationParameters
 name|userConfig
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|config
+operator|.
+name|getSecurityManagerConfig
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|userConfig
+operator|=
+name|ConfigurationParameters
+operator|.
+name|EMPTY
+expr_stmt|;
+block|}
+else|else
+block|{
+name|userConfig
+operator|=
 name|mapConfigurationParameters
 argument_list|(
 name|config
@@ -3945,7 +3988,8 @@ name|UserConstants
 operator|.
 name|PARAM_PASSWORD_HASH_ITERATIONS
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 return|return
 name|ConfigurationParameters
 operator|.
