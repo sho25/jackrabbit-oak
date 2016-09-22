@@ -1671,6 +1671,8 @@ name|version
 init|=
 name|checkVersion
 argument_list|(
+name|db
+argument_list|,
 name|serverStatus
 argument_list|)
 decl_stmt|;
@@ -2071,6 +2073,9 @@ specifier|static
 name|String
 name|checkVersion
 parameter_list|(
+name|DB
+name|db
+parameter_list|,
 name|CommandResult
 name|serverStatus
 parameter_list|)
@@ -2085,6 +2090,30 @@ argument_list|(
 literal|"version"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|version
+operator|==
+literal|null
+condition|)
+block|{
+comment|// OAK-4841: serverStatus was probably unauthorized,
+comment|// use buildInfo command to get version
+name|version
+operator|=
+name|db
+operator|.
+name|command
+argument_list|(
+literal|"buildInfo"
+argument_list|)
+operator|.
+name|getString
+argument_list|(
+literal|"version"
+argument_list|)
+expr_stmt|;
+block|}
 name|Matcher
 name|m
 init|=
