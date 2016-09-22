@@ -7908,10 +7908,10 @@ block|}
 else|else
 block|{
 comment|// branch commit (not merged)
-name|RevisionVector
+name|Revision
 name|branchCommit
 init|=
-name|RevisionVector
+name|Revision
 operator|.
 name|fromString
 argument_list|(
@@ -7921,9 +7921,6 @@ decl_stmt|;
 if|if
 condition|(
 name|branchCommit
-operator|.
-name|getBranchRevision
-argument_list|()
 operator|.
 name|getClusterId
 argument_list|()

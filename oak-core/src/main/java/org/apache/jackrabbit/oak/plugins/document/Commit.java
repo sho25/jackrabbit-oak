@@ -1130,6 +1130,9 @@ literal|null
 condition|?
 name|baseBranchRevision
 operator|.
+name|getBranchRevision
+argument_list|()
+operator|.
 name|toString
 argument_list|()
 else|:
