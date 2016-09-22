@@ -6013,6 +6013,15 @@ argument_list|(
 name|source
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|reader
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 name|TermEnum
 name|terms
 init|=

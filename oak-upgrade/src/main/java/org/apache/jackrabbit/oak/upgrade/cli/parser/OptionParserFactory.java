@@ -801,6 +801,15 @@ argument_list|,
 literal|"Skip the repository initialization; only copy data"
 argument_list|)
 expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|SKIP_NAME_CHECK
+argument_list|,
+literal|"Skip the initial phase of testing node name lengths"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
