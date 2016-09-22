@@ -13,11 +13,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|blob
 operator|.
-name|datastore
+name|cloud
+operator|.
+name|aws
+operator|.
+name|s3
 package|;
 end_package
 

@@ -3146,6 +3146,7 @@ return|return
 name|encodedBlobId
 return|;
 block|}
+specifier|public
 specifier|static
 class|class
 name|BlobId
@@ -3157,6 +3158,15 @@ name|SEP
 init|=
 literal|"#"
 decl_stmt|;
+specifier|public
+name|String
+name|getBlobId
+parameter_list|()
+block|{
+return|return
+name|blobId
+return|;
+block|}
 specifier|final
 name|String
 name|blobId
@@ -3372,6 +3382,7 @@ name|SEP
 argument_list|)
 return|;
 block|}
+specifier|public
 specifier|static
 name|BlobId
 name|of

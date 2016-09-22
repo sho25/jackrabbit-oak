@@ -3551,18 +3551,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|DataStoreUtils
-operator|.
-name|cleanup
-argument_list|(
-name|blobStore
-operator|.
-name|getDataStore
-argument_list|()
-argument_list|,
-name|startDate
-argument_list|)
-expr_stmt|;
 block|}
 specifier|static
 name|InputStream
@@ -3609,7 +3597,7 @@ name|data
 argument_list|)
 return|;
 block|}
-comment|/**     * Waits for some time and adds additional blobs after blob referenced identified to simulate     * long running blob id collection phase.      */
+comment|/**     * Waits for some time and adds additional blobs after blob referenced identified to simulate     * long running blob id collection phase.     */
 class|class
 name|TestGarbageCollector
 extends|extends

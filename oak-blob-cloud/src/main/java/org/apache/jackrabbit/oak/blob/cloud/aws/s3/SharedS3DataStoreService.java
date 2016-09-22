@@ -13,11 +13,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|blob
 operator|.
-name|datastore
+name|cloud
+operator|.
+name|aws
+operator|.
+name|s3
 package|;
 end_package
 
@@ -82,6 +84,26 @@ operator|.
 name|data
 operator|.
 name|DataStoreException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|blob
+operator|.
+name|datastore
+operator|.
+name|AbstractDataStoreService
 import|;
 end_import
 
