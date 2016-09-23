@@ -113,24 +113,6 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|memory
-operator|.
-name|ModifiedNodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
 name|nodetype
 operator|.
 name|NodeTypeConstants
@@ -285,6 +267,26 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|MemoryNodeState
+operator|.
+name|wrap
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code RepositoryInitializer} that asserts the existence and node type of  * the /jcr:system/jcr:privileges node that is used to store privilege definitions.  * In addition it writes all built-in privilege definitions except jcr:all to  * the repository.  */
 end_comment
@@ -393,9 +395,7 @@ comment|// squeeze node state before it is passed to store (OAK-2411)
 name|NodeState
 name|base
 init|=
-name|ModifiedNodeState
-operator|.
-name|squeeze
+name|wrap
 argument_list|(
 name|builder
 operator|.
