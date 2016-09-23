@@ -216,7 +216,6 @@ comment|/**  * Basic in-memory node state implementation.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|MemoryNodeState
 extends|extends
@@ -806,7 +805,6 @@ return|return
 literal|true
 return|;
 block|}
-specifier|public
 specifier|static
 name|MemoryNodeState
 name|wrap

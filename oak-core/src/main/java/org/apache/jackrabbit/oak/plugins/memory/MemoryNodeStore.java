@@ -536,7 +536,12 @@ argument_list|<
 name|NodeState
 argument_list|>
 argument_list|(
+name|MemoryNodeState
+operator|.
+name|wrap
+argument_list|(
 name|state
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
