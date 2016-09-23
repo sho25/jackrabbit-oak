@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -63,6 +53,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|blob
+operator|.
+name|cloud
+operator|.
+name|S3DataStoreUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -80,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test {@link org.apache.jackrabbit.core.data.CachingDataStore} with S3Backend  * and local cache Off. It requires to pass aws config file via system property.  * For e.g. -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties  */
+comment|/**  * Test {@link org.apache.jackrabbit.core.data.CachingDataStore} with S3Backend  * and local cache Off.  * It requires to pass aws config file via system property or system properties by prefixing with 'ds.'.  * See details @ {@link S3DataStoreUtils}.  * For e.g. -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties   */
 end_comment
 
 begin_class
@@ -105,12 +113,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|public
-name|TestS3DsCacheOff
-parameter_list|()
-throws|throws
-name|IOException
-block|{     }
 annotation|@
 name|Override
 specifier|protected

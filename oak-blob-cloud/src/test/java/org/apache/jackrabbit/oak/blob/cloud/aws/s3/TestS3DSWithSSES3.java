@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -89,6 +79,44 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|blob
+operator|.
+name|cloud
+operator|.
+name|S3DataStoreUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -105,8 +133,20 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
-comment|/**  * Test S3DataStore operation with SSE_S3 encryption.  */
+comment|/**  * Test S3DataStore operation with SSE_S3 encryption.  * It requires to pass aws config file via system property  or system properties by prefixing with 'ds.'.  * See details @ {@link S3DataStoreUtils}.  * For e.g. -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties   */
 end_comment
 
 begin_class
@@ -131,12 +171,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|public
-name|TestS3DSWithSSES3
-parameter_list|()
-throws|throws
-name|IOException
-block|{     }
 annotation|@
 name|Override
 specifier|protected
@@ -197,6 +231,8 @@ name|s3ds
 return|;
 block|}
 comment|/**      * Test data migration enabling SSE_S3 encryption.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDataMigration
@@ -275,6 +311,8 @@ name|data
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|data
@@ -374,6 +412,8 @@ name|getIdentifier
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|data
