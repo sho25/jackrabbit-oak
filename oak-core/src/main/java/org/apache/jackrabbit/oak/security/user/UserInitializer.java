@@ -545,7 +545,6 @@ name|String
 name|workspaceName
 parameter_list|)
 block|{
-comment|// squeeze node state before it is passed to store (OAK-2411)
 name|NodeState
 name|base
 init|=

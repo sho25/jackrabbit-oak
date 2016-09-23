@@ -875,7 +875,6 @@ literal|"to decide whether traversing or using an index is faster."
 argument_list|)
 expr_stmt|;
 block|}
-comment|// squeeze node state before it is passed to store (OAK-2411)
 name|NodeState
 name|base
 init|=

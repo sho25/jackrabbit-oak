@@ -526,6 +526,7 @@ name|NodeState
 name|state
 parameter_list|)
 block|{
+comment|// squeeze node state before it is passed to store (OAK-2411)
 name|this
 operator|.
 name|root
