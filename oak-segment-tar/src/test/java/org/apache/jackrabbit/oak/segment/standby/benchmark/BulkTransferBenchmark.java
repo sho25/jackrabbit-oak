@@ -107,7 +107,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbySync
+name|StandbyClientSync
 import|;
 end_import
 
@@ -147,7 +147,7 @@ name|standby
 operator|.
 name|server
 operator|.
-name|StandbyServer
+name|StandbyServerSync
 import|;
 end_import
 
@@ -590,11 +590,11 @@ name|flush
 argument_list|()
 expr_stmt|;
 specifier|final
-name|StandbyServer
-name|server
+name|StandbyServerSync
+name|serverSync
 init|=
 operator|new
-name|StandbyServer
+name|StandbyServerSync
 argument_list|(
 name|port
 argument_list|,
@@ -603,7 +603,7 @@ argument_list|,
 name|useSSL
 argument_list|)
 decl_stmt|;
-name|server
+name|serverSync
 operator|.
 name|start
 argument_list|()
@@ -612,17 +612,17 @@ name|System
 operator|.
 name|setProperty
 argument_list|(
-name|StandbySync
+name|StandbyClientSync
 operator|.
 name|CLIENT_ID_PROPERTY_NAME
 argument_list|,
 literal|"Bar"
 argument_list|)
 expr_stmt|;
-name|StandbySync
-name|cl
+name|StandbyClientSync
+name|clientSync
 init|=
-name|newStandbyClient
+name|newStandbyClientSync
 argument_list|(
 name|storeC
 argument_list|,
@@ -659,7 +659,7 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-name|cl
+name|clientSync
 operator|.
 name|getMBeanName
 argument_list|()
@@ -671,7 +671,7 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-name|server
+name|serverSync
 operator|.
 name|getMBeanName
 argument_list|()
@@ -685,7 +685,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|cl
+name|clientSync
 operator|.
 name|run
 argument_list|()
@@ -823,12 +823,12 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|server
+name|serverSync
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|cl
+name|clientSync
 operator|.
 name|close
 argument_list|()

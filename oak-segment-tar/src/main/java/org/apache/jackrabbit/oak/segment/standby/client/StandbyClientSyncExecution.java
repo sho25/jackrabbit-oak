@@ -257,7 +257,7 @@ end_comment
 
 begin_class
 class|class
-name|StandbySyncExecution
+name|StandbyClientSyncExecution
 block|{
 specifier|private
 specifier|static
@@ -269,7 +269,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|StandbySyncExecution
+name|StandbyClientSyncExecution
 operator|.
 name|class
 argument_list|)
@@ -316,7 +316,7 @@ init|=
 name|newHashMap
 argument_list|()
 decl_stmt|;
-name|StandbySyncExecution
+name|StandbyClientSyncExecution
 parameter_list|(
 name|FileStore
 name|store

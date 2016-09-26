@@ -253,7 +253,7 @@ begin_class
 specifier|public
 specifier|final
 class|class
-name|StandbySync
+name|StandbyClientSync
 implements|implements
 name|ClientStandbyStatusMBean
 implements|,
@@ -279,7 +279,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|StandbySync
+name|StandbyClientSync
 operator|.
 name|class
 argument_list|)
@@ -367,7 +367,7 @@ name|long
 name|syncEndTimestamp
 decl_stmt|;
 specifier|public
-name|StandbySync
+name|StandbyClientSync
 parameter_list|(
 name|String
 name|host
@@ -575,6 +575,8 @@ operator|+
 literal|"\""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -639,6 +641,8 @@ operator|=
 name|STATUS_CLOSED
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -729,7 +733,7 @@ name|getApproximateSize
 argument_list|()
 decl_stmt|;
 operator|new
-name|StandbySyncExecution
+name|StandbyClientSyncExecution
 argument_list|(
 name|fileStore
 argument_list|,

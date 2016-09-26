@@ -317,7 +317,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbySync
+name|StandbyClientSync
 import|;
 end_import
 
@@ -337,7 +337,7 @@ name|standby
 operator|.
 name|server
 operator|.
-name|StandbyServer
+name|StandbyServerSync
 import|;
 end_import
 
@@ -693,14 +693,14 @@ name|FileStore
 name|fileStore
 decl_stmt|;
 specifier|private
-name|StandbyServer
-name|primary
+name|StandbyServerSync
+name|serverSync
 init|=
 literal|null
 decl_stmt|;
 specifier|private
-name|StandbySync
-name|sync
+name|StandbyClientSync
+name|clientSync
 init|=
 literal|null
 decl_stmt|;
@@ -844,12 +844,12 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|primary
+name|serverSync
 operator|!=
 literal|null
 condition|)
 block|{
-name|primary
+name|serverSync
 operator|.
 name|close
 argument_list|()
@@ -857,12 +857,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|sync
+name|clientSync
 operator|!=
 literal|null
 condition|)
 block|{
-name|sync
+name|clientSync
 operator|.
 name|close
 argument_list|()
@@ -959,10 +959,10 @@ argument_list|,
 name|SECURE_DEFAULT
 argument_list|)
 decl_stmt|;
-name|primary
+name|serverSync
 operator|=
 operator|new
-name|StandbyServer
+name|StandbyServerSync
 argument_list|(
 name|port
 argument_list|,
@@ -973,7 +973,7 @@ argument_list|,
 name|secure
 argument_list|)
 expr_stmt|;
-name|primary
+name|serverSync
 operator|.
 name|start
 argument_list|()
@@ -1115,10 +1115,10 @@ argument_list|,
 name|AUTO_CLEAN_DEFAULT
 argument_list|)
 decl_stmt|;
-name|sync
+name|clientSync
 operator|=
 operator|new
-name|StandbySync
+name|StandbyClientSync
 argument_list|(
 name|host
 argument_list|,
@@ -1185,7 +1185,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|sync
+name|clientSync
 argument_list|,
 name|dictionary
 argument_list|)

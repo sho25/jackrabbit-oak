@@ -225,7 +225,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbySync
+name|StandbyClientSync
 import|;
 end_import
 
@@ -245,7 +245,7 @@ name|standby
 operator|.
 name|server
 operator|.
-name|StandbyServer
+name|StandbyServerSync
 import|;
 end_import
 
@@ -435,18 +435,18 @@ name|build
 argument_list|()
 decl_stmt|;
 specifier|final
-name|StandbyServer
-name|server
+name|StandbyServerSync
+name|serverSync
 init|=
 operator|new
-name|StandbyServer
+name|StandbyServerSync
 argument_list|(
 name|port
 argument_list|,
 name|primary
 argument_list|)
 decl_stmt|;
-name|server
+name|serverSync
 operator|.
 name|start
 argument_list|()
@@ -471,15 +471,15 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|StandbySync
-name|cl
+name|StandbyClientSync
+name|clientSync
 init|=
-name|newStandbySync
+name|newStandbyClientSync
 argument_list|(
 name|secondary
 argument_list|)
 decl_stmt|;
-name|cl
+name|clientSync
 operator|.
 name|run
 argument_list|()
@@ -502,12 +502,12 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|server
+name|serverSync
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|cl
+name|clientSync
 operator|.
 name|close
 argument_list|()

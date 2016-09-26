@@ -93,7 +93,7 @@ name|standby
 operator|.
 name|client
 operator|.
-name|StandbySync
+name|StandbyClientSync
 import|;
 end_import
 
@@ -113,7 +113,7 @@ name|standby
 operator|.
 name|server
 operator|.
-name|StandbyServer
+name|StandbyServerSync
 import|;
 end_import
 
@@ -682,11 +682,11 @@ name|build
 argument_list|()
 decl_stmt|;
 specifier|final
-name|StandbyServer
-name|server
+name|StandbyServerSync
+name|serverSync
 init|=
 operator|new
-name|StandbyServer
+name|StandbyServerSync
 argument_list|(
 name|port
 argument_list|,
@@ -695,7 +695,7 @@ argument_list|,
 name|ipRanges
 argument_list|)
 decl_stmt|;
-name|server
+name|serverSync
 operator|.
 name|start
 argument_list|()
@@ -713,11 +713,11 @@ name|flush
 argument_list|()
 expr_stmt|;
 comment|// this speeds up the test a little bit...
-name|StandbySync
-name|cl
+name|StandbyClientSync
+name|clientSync
 init|=
 operator|new
-name|StandbySync
+name|StandbyClientSync
 argument_list|(
 name|host
 argument_list|,
@@ -732,7 +732,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|cl
+name|clientSync
 operator|.
 name|run
 argument_list|()
@@ -782,12 +782,12 @@ block|}
 block|}
 finally|finally
 block|{
-name|server
+name|serverSync
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|cl
+name|clientSync
 operator|.
 name|close
 argument_list|()
