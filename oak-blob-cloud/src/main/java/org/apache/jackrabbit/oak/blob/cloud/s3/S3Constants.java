@@ -17,8 +17,6 @@ name|blob
 operator|.
 name|cloud
 operator|.
-name|aws
-operator|.
 name|s3
 package|;
 end_package

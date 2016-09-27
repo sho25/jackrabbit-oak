@@ -95,8 +95,6 @@ name|blob
 operator|.
 name|cloud
 operator|.
-name|aws
-operator|.
 name|s3
 operator|.
 name|stats
