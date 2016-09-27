@@ -1503,7 +1503,7 @@ argument_list|(
 operator|new
 name|Long
 argument_list|(
-literal|208
+literal|128
 argument_list|)
 argument_list|,
 name|jmxServer
