@@ -893,13 +893,10 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|wrap
-argument_list|(
 name|child
 operator|.
 name|getNodeState
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
