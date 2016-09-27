@@ -270,6 +270,16 @@ name|String
 name|checkpoint
 parameter_list|)
 function_decl|;
+comment|/**      * Returns all valid checkpoints. The returned {@code Iterable} provides a      * snapshot of valid checkpoints at the time this method is called. That      * is, the {@code Iterable} will not reflect checkpoints created after this      * method was called.      *<p>      * See {@link #checkpoint(long, Map)} for a definition of a valid      * checkpoint.      *      * @return valid checkpoints.      */
+annotation|@
+name|Nonnull
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|checkpoints
+parameter_list|()
+function_decl|;
 comment|/**      * Retrieves the root node from a previously created repository checkpoint.      *      * @param checkpoint string reference of a checkpoint      * @return the root node of the checkpoint,      *         or {@code null} if the checkpoint is no longer available      */
 annotation|@
 name|CheckForNull
