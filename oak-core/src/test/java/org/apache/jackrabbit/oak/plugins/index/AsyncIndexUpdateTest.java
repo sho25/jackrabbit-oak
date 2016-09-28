@@ -301,6 +301,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Calendar
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -866,6 +876,20 @@ operator|.
 name|stats
 operator|.
 name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|util
+operator|.
+name|ISO8601
 import|;
 end_import
 
@@ -4828,7 +4852,48 @@ name|next
 argument_list|()
 expr_stmt|;
 comment|// create a new checkpoint with the info from the first checkpoint
-comment|// this simulates an orphaned checkpoint that should be cleaned up
+comment|// this simulates an orphaned checkpoint that should be cleaned up.
+comment|// the created timestamp is set back in time because cleanup preserves
+comment|// checkpoints within the lease time frame.
+name|Calendar
+name|c
+init|=
+name|Calendar
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
+name|c
+operator|.
+name|setTimeInMillis
+argument_list|(
+name|clock
+operator|.
+name|getTime
+argument_list|()
+operator|-
+literal|2
+operator|*
+name|async
+operator|.
+name|getLeaseTimeOut
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
+name|put
+argument_list|(
+literal|"created"
+argument_list|,
+name|ISO8601
+operator|.
+name|format
+argument_list|(
+name|c
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertNotNull
 argument_list|(
 name|store

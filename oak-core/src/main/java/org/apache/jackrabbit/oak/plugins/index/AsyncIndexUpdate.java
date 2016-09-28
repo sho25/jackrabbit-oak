@@ -2879,7 +2879,8 @@ block|{
 comment|// remove unreferenced AsyncIndexUpdate checkpoints:
 comment|// - without 'created' info (checkpoint created before OAK-4826)
 comment|// or
-comment|// - 'created' value older than the current reference
+comment|// - 'created' value older than the current reference and
+comment|//   not within the lease time frame
 name|long
 name|current
 init|=
@@ -2988,6 +2989,8 @@ argument_list|)
 operator|.
 name|getTimeInMillis
 argument_list|()
+operator|+
+name|leaseTimeOut
 operator|<
 name|current
 operator|)
@@ -3715,6 +3718,15 @@ name|leaseTimeOut
 expr_stmt|;
 return|return
 name|this
+return|;
+block|}
+specifier|protected
+name|long
+name|getLeaseTimeOut
+parameter_list|()
+block|{
+return|return
+name|leaseTimeOut
 return|;
 block|}
 specifier|protected
