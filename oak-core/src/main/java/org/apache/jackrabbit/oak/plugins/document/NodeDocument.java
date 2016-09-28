@@ -7908,10 +7908,12 @@ block|}
 else|else
 block|{
 comment|// branch commit (not merged)
-name|Revision
+comment|// read as RevisionVector, even though this should be
+comment|// a Revision only. See OAK-4840
+name|RevisionVector
 name|branchCommit
 init|=
-name|Revision
+name|RevisionVector
 operator|.
 name|fromString
 argument_list|(
@@ -7921,6 +7923,9 @@ decl_stmt|;
 if|if
 condition|(
 name|branchCommit
+operator|.
+name|getBranchRevision
+argument_list|()
 operator|.
 name|getClusterId
 argument_list|()
