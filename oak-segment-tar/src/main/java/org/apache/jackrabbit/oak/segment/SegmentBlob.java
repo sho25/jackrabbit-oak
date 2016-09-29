@@ -357,6 +357,9 @@ name|segment
 operator|.
 name|readBytes
 argument_list|(
+name|getRecordNumber
+argument_list|()
+argument_list|,
 name|offset
 argument_list|,
 name|inline
@@ -392,12 +395,6 @@ init|=
 name|getSegment
 argument_list|()
 decl_stmt|;
-name|int
-name|offset
-init|=
-name|getOffset
-argument_list|()
-decl_stmt|;
 name|byte
 name|head
 init|=
@@ -405,7 +402,8 @@ name|segment
 operator|.
 name|readByte
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -425,8 +423,6 @@ name|getInlineStream
 argument_list|(
 name|segment
 argument_list|,
-name|offset
-operator|+
 literal|1
 argument_list|,
 name|head
@@ -454,7 +450,8 @@ name|segment
 operator|.
 name|readShort
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 operator|&
 literal|0x3fff
@@ -467,8 +464,6 @@ name|getInlineStream
 argument_list|(
 name|segment
 argument_list|,
-name|offset
-operator|+
 literal|2
 argument_list|,
 name|length
@@ -496,7 +491,8 @@ name|segment
 operator|.
 name|readLong
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 operator|&
 literal|0x1fffffffffffffffL
@@ -532,8 +528,9 @@ name|segment
 operator|.
 name|readRecordId
 argument_list|(
-name|offset
-operator|+
+name|getRecordNumber
+argument_list|()
+argument_list|,
 literal|8
 argument_list|)
 argument_list|,
@@ -573,7 +570,8 @@ name|readShortBlobId
 argument_list|(
 name|segment
 argument_list|,
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|,
 name|head
 argument_list|)
@@ -600,7 +598,8 @@ name|readLongBlobId
 argument_list|(
 name|segment
 argument_list|,
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
@@ -638,12 +637,6 @@ init|=
 name|getSegment
 argument_list|()
 decl_stmt|;
-name|int
-name|offset
-init|=
-name|getOffset
-argument_list|()
-decl_stmt|;
 name|byte
 name|head
 init|=
@@ -651,7 +644,8 @@ name|segment
 operator|.
 name|readByte
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -689,7 +683,8 @@ name|segment
 operator|.
 name|readShort
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 operator|&
 literal|0x3fff
@@ -717,7 +712,8 @@ name|segment
 operator|.
 name|readLong
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 operator|&
 literal|0x1fffffffffffffffL
@@ -746,7 +742,8 @@ name|readShortBlobId
 argument_list|(
 name|segment
 argument_list|,
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|,
 name|head
 argument_list|)
@@ -773,7 +770,8 @@ name|readLongBlobId
 argument_list|(
 name|segment
 argument_list|,
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
@@ -900,12 +898,6 @@ init|=
 name|getSegment
 argument_list|()
 decl_stmt|;
-name|int
-name|offset
-init|=
-name|getOffset
-argument_list|()
-decl_stmt|;
 name|byte
 name|head
 init|=
@@ -913,7 +905,8 @@ name|segment
 operator|.
 name|readByte
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// 1110 xxxx or 1111 0xxx: external value
@@ -948,7 +941,7 @@ argument_list|(
 name|getSegment
 argument_list|()
 argument_list|,
-name|getOffset
+name|getRecordNumber
 argument_list|()
 argument_list|)
 return|;
@@ -965,7 +958,7 @@ name|Segment
 name|segment
 parameter_list|,
 name|int
-name|offset
+name|recordNumber
 parameter_list|)
 block|{
 name|byte
@@ -975,7 +968,7 @@ name|segment
 operator|.
 name|readByte
 argument_list|(
-name|offset
+name|recordNumber
 argument_list|)
 decl_stmt|;
 if|if
@@ -995,7 +988,7 @@ name|readShortBlobId
 argument_list|(
 name|segment
 argument_list|,
-name|offset
+name|recordNumber
 argument_list|,
 name|head
 argument_list|)
@@ -1019,7 +1012,7 @@ name|readLongBlobId
 argument_list|(
 name|segment
 argument_list|,
-name|offset
+name|recordNumber
 argument_list|)
 return|;
 block|}
@@ -1161,7 +1154,7 @@ name|Segment
 name|segment
 parameter_list|,
 name|int
-name|offset
+name|recordNumber
 parameter_list|,
 name|byte
 name|head
@@ -1183,8 +1176,8 @@ name|segment
 operator|.
 name|readByte
 argument_list|(
-name|offset
-operator|+
+name|recordNumber
+argument_list|,
 literal|1
 argument_list|)
 operator|&
@@ -1205,8 +1198,8 @@ name|segment
 operator|.
 name|readBytes
 argument_list|(
-name|offset
-operator|+
+name|recordNumber
+argument_list|,
 literal|2
 argument_list|,
 name|bytes
@@ -1235,7 +1228,7 @@ name|Segment
 name|segment
 parameter_list|,
 name|int
-name|offset
+name|recordNumber
 parameter_list|)
 block|{
 name|RecordId
@@ -1245,8 +1238,8 @@ name|segment
 operator|.
 name|readRecordId
 argument_list|(
-name|offset
-operator|+
+name|recordNumber
+argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
@@ -1260,7 +1253,7 @@ name|readString
 argument_list|(
 name|blobId
 operator|.
-name|getOffset
+name|getRecordNumber
 argument_list|()
 argument_list|)
 return|;
@@ -1279,12 +1272,6 @@ init|=
 name|getSegment
 argument_list|()
 decl_stmt|;
-name|int
-name|offset
-init|=
-name|getOffset
-argument_list|()
-decl_stmt|;
 name|byte
 name|head
 init|=
@@ -1292,7 +1279,8 @@ name|segment
 operator|.
 name|readByte
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1315,7 +1303,8 @@ name|segment
 operator|.
 name|readLong
 argument_list|(
-name|offset
+name|getRecordNumber
+argument_list|()
 argument_list|)
 operator|&
 literal|0x1fffffffffffffffL
@@ -1351,8 +1340,9 @@ name|segment
 operator|.
 name|readRecordId
 argument_list|(
-name|offset
-operator|+
+name|getRecordNumber
+argument_list|()
+argument_list|,
 literal|8
 argument_list|)
 argument_list|,

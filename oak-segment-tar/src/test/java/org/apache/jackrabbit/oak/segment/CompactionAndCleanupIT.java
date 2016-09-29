@@ -913,11 +913,6 @@ return|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"fix estimations"
-argument_list|)
 specifier|public
 name|void
 name|compactionNoBinaryClone
@@ -2321,61 +2316,23 @@ operator|.
 name|getApproximateSize
 argument_list|()
 decl_stmt|;
-name|assertSize
+name|assertTrue
 argument_list|(
-literal|"with checkpoints added"
+literal|"the size should grow or stay the same"
 argument_list|,
 name|size1
-argument_list|,
+operator|>=
 name|size0
-argument_list|,
-name|size0
-operator|*
-literal|11
-operator|/
-literal|10
 argument_list|)
 expr_stmt|;
-name|fileStore
-operator|.
-name|compact
-argument_list|()
-expr_stmt|;
-name|fileStore
-operator|.
-name|cleanup
-argument_list|()
-expr_stmt|;
-name|long
-name|size2
-init|=
-name|fileStore
-operator|.
-name|getStats
-argument_list|()
-operator|.
-name|getApproximateSize
-argument_list|()
-decl_stmt|;
-name|assertSize
-argument_list|(
-literal|"with checkpoints compacted"
-argument_list|,
-name|size2
-argument_list|,
-name|size1
-operator|*
-literal|9
-operator|/
-literal|10
-argument_list|,
-name|size1
-operator|*
-literal|11
-operator|/
-literal|10
-argument_list|)
-expr_stmt|;
+comment|// TODO the following assertion doesn't say anything useful. The
+comment|// conveyed message is "the repository can shrink, grow or stay the
+comment|// same, as long as it remains in a 10% margin of the previous size
+comment|// that I took out of thin air". It has to be fixed or removed.
+comment|// fileStore.compact();
+comment|// fileStore.cleanup();
+comment|// long size2 = fileStore.getStats().getApproximateSize();
+comment|// assertSize("with checkpoints compacted", size2, size1 * 9/10, size1 * 11 / 10);
 block|}
 finally|finally
 block|{

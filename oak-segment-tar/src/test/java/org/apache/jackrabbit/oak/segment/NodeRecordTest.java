@@ -932,7 +932,7 @@ operator|.
 name|getRecordId
 argument_list|()
 operator|.
-name|getOffset
+name|getRecordNumber
 argument_list|()
 condition|)
 block|{

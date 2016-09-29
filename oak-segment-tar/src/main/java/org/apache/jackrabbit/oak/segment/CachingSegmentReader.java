@@ -318,7 +318,7 @@ name|lsb
 argument_list|,
 name|id
 operator|.
-name|getOffset
+name|getRecordNumber
 argument_list|()
 argument_list|,
 operator|new
@@ -433,7 +433,7 @@ name|lsb
 argument_list|,
 name|id
 operator|.
-name|getOffset
+name|getRecordNumber
 argument_list|()
 argument_list|,
 operator|new

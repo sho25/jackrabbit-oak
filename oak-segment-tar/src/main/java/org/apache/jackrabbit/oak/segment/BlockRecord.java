@@ -173,10 +173,10 @@ argument_list|()
 operator|.
 name|readBytes
 argument_list|(
-name|getOffset
-argument_list|(
+name|getRecordNumber
+argument_list|()
+argument_list|,
 name|position
-argument_list|)
 argument_list|,
 name|buffer
 argument_list|,

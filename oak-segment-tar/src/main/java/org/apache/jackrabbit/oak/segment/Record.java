@@ -116,11 +116,11 @@ operator|||
 operator|(
 name|a
 operator|.
-name|offset
+name|recordNumber
 operator|==
 name|b
 operator|.
-name|offset
+name|recordNumber
 operator|&&
 name|a
 operator|.
@@ -141,11 +141,11 @@ specifier|final
 name|SegmentId
 name|segmentId
 decl_stmt|;
-comment|/**      * Segment offset of this record.      */
+comment|/**      * Segment recordNumber of this record.      */
 specifier|private
 specifier|final
 name|int
-name|offset
+name|recordNumber
 decl_stmt|;
 comment|/**      * Creates a new object for the identified record.      *      * @param id record identified      */
 specifier|protected
@@ -166,7 +166,7 @@ argument_list|()
 argument_list|,
 name|id
 operator|.
-name|getOffset
+name|getRecordNumber
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -180,7 +180,7 @@ name|SegmentId
 name|segmentId
 parameter_list|,
 name|int
-name|offset
+name|recordNumber
 parameter_list|)
 block|{
 name|this
@@ -191,9 +191,9 @@ name|segmentId
 expr_stmt|;
 name|this
 operator|.
-name|offset
+name|recordNumber
 operator|=
-name|offset
+name|recordNumber
 expr_stmt|;
 block|}
 comment|/**      * Returns the segment that contains this record.      *      * @return segment that contains this record      */
@@ -209,6 +209,15 @@ name|getSegment
 argument_list|()
 return|;
 block|}
+specifier|protected
+name|int
+name|getRecordNumber
+parameter_list|()
+block|{
+return|return
+name|recordNumber
+return|;
+block|}
 comment|/**      * Returns the identifier of this record.      *      * @return record identifier      */
 specifier|public
 name|RecordId
@@ -221,61 +230,7 @@ name|RecordId
 argument_list|(
 name|segmentId
 argument_list|,
-name|offset
-argument_list|)
-return|;
-block|}
-comment|/**      * Returns the segment offset of this record.      *      * @return segment offset of this record      */
-specifier|protected
-specifier|final
-name|int
-name|getOffset
-parameter_list|()
-block|{
-return|return
-name|offset
-return|;
-block|}
-comment|/**      * Returns the segment offset of the given byte position in this record.      *      * @param position byte position within this record      * @return segment offset of the given byte position      */
-specifier|protected
-specifier|final
-name|int
-name|getOffset
-parameter_list|(
-name|int
-name|position
-parameter_list|)
-block|{
-return|return
-name|getOffset
-argument_list|()
-operator|+
-name|position
-return|;
-block|}
-comment|/**      * Returns the segment offset of a byte position in this record.      * The position is calculated from the given number of raw bytes and      * record identifiers.      *      * @param bytes number of raw bytes before the position      * @param ids number of record identifiers before the position      * @return segment offset of the specified byte position      */
-specifier|protected
-specifier|final
-name|int
-name|getOffset
-parameter_list|(
-name|int
-name|bytes
-parameter_list|,
-name|int
-name|ids
-parameter_list|)
-block|{
-return|return
-name|getOffset
-argument_list|(
-name|bytes
-operator|+
-name|ids
-operator|*
-name|Segment
-operator|.
-name|RECORD_ID_BYTES
+name|recordNumber
 argument_list|)
 return|;
 block|}
@@ -312,7 +267,7 @@ operator|.
 name|hashCode
 argument_list|()
 operator|^
-name|offset
+name|recordNumber
 return|;
 block|}
 annotation|@

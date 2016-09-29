@@ -674,7 +674,7 @@ name|segment
 operator|.
 name|readInt
 argument_list|(
-name|getOffset
+name|getRecordNumber
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -691,10 +691,10 @@ name|segment
 operator|.
 name|readRecordId
 argument_list|(
-name|getOffset
-argument_list|(
+name|getRecordNumber
+argument_list|()
+argument_list|,
 literal|4
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -876,7 +876,7 @@ argument_list|()
 operator|.
 name|readInt
 argument_list|(
-name|getOffset
+name|getRecordNumber
 argument_list|()
 argument_list|)
 return|;

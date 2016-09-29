@@ -864,12 +864,12 @@ argument_list|)
 operator|&&
 name|id
 operator|.
-name|getOffset
+name|getRecordNumber
 argument_list|()
 operator|==
 name|first
 operator|.
-name|getOffset
+name|getRecordNumber
 argument_list|()
 operator|+
 name|count
