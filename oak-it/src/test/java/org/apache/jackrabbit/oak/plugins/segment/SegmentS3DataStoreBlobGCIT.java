@@ -425,12 +425,9 @@ argument_list|()
 expr_stmt|;
 name|S3DataStoreUtils
 operator|.
-name|cleanup
+name|deleteBucket
 argument_list|(
-name|blobStore
-operator|.
-name|getDataStore
-argument_list|()
+name|bucket
 argument_list|,
 name|startDate
 argument_list|)
