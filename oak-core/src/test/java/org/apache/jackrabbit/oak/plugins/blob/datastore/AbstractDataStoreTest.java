@@ -850,6 +850,14 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+name|fail
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Testcase to validate      * {@link MultiDataStoreAware#deleteRecord(DataIdentifier)}.API.      */
