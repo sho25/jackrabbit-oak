@@ -427,7 +427,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"segment-generation"
+literal|"segment-generation="
 argument_list|)
 operator|.
 name|append
