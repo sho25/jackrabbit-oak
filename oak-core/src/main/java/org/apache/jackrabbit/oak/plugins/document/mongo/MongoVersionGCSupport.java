@@ -415,6 +415,21 @@ argument_list|(
 literal|"oak.mongo.disableVersionGCIndexHint"
 argument_list|)
 decl_stmt|;
+comment|/**      * The batch size for the query of possibly deleted docs.      */
+specifier|private
+specifier|final
+name|int
+name|batchSize
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.mongo.queryDeletedDocsBatchSize"
+argument_list|,
+literal|1000
+argument_list|)
+decl_stmt|;
 specifier|public
 name|MongoVersionGCSupport
 parameter_list|(
@@ -505,6 +520,13 @@ name|secondaryPreferred
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|cursor
+operator|.
+name|batchSize
+argument_list|(
+name|batchSize
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
