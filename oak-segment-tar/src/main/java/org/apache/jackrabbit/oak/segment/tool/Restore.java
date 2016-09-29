@@ -61,6 +61,24 @@ name|FileStoreRestore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|backup
+operator|.
+name|impl
+operator|.
+name|FileStoreRestoreImpl
+import|;
+end_import
+
 begin_comment
 comment|/**  * Restore a backup of a segment store into an existing segment store.  */
 end_comment
@@ -98,6 +116,15 @@ decl_stmt|;
 specifier|private
 name|File
 name|target
+decl_stmt|;
+specifier|private
+specifier|final
+name|FileStoreRestore
+name|fileStoreRestore
+init|=
+operator|new
+name|FileStoreRestoreImpl
+argument_list|()
 decl_stmt|;
 specifier|private
 name|Builder
@@ -185,6 +212,11 @@ name|File
 name|target
 decl_stmt|;
 specifier|private
+specifier|final
+name|FileStoreRestore
+name|fileStoreRestore
+decl_stmt|;
+specifier|private
 name|Restore
 parameter_list|(
 name|Builder
@@ -207,6 +239,14 @@ name|builder
 operator|.
 name|target
 expr_stmt|;
+name|this
+operator|.
+name|fileStoreRestore
+operator|=
+name|builder
+operator|.
+name|fileStoreRestore
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -217,7 +257,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|FileStoreRestore
+name|fileStoreRestore
 operator|.
 name|restore
 argument_list|(

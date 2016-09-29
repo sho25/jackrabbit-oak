@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|backup
+operator|.
+name|impl
 package|;
 end_package
 
@@ -185,6 +187,38 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|backup
+operator|.
+name|FileStoreBackup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|backup
+operator|.
+name|FileStoreRestore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|management
 operator|.
 name|ManagementOperation
@@ -240,17 +274,17 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Default implementation of {@link FileStoreBackupRestoreMBean} based on a file.  */
+comment|/**  * Default implementation of {@link FileStoreBackupRestoreMBean} based on a  * file.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|FileStoreBackupRestore
+name|FileStoreBackupRestoreImpl
 implements|implements
 name|FileStoreBackupRestoreMBean
 block|{
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -258,7 +292,7 @@ name|BACKUP_OP_NAME
 init|=
 literal|"Backup"
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -319,9 +353,19 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-comment|/**      * @param store  store to back up from or restore to      * @param file   file to back up to or restore from      * @param executor  executor for running the back up or restore operation      */
+specifier|private
+specifier|final
+name|FileStoreBackup
+name|fileStoreBackup
+decl_stmt|;
+specifier|private
+specifier|final
+name|FileStoreRestore
+name|fileStoreRestore
+decl_stmt|;
+comment|/**      * @param store    store to back up from or restore to      * @param file     file to back up to or restore from      * @param executor executor for running the back up or restore operation      */
 specifier|public
-name|FileStoreBackupRestore
+name|FileStoreBackupRestoreImpl
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -394,9 +438,27 @@ argument_list|(
 name|executor
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|fileStoreBackup
+operator|=
+operator|new
+name|FileStoreBackupImpl
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|fileStoreRestore
+operator|=
+operator|new
+name|FileStoreRestoreImpl
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 specifier|synchronized
 name|CompositeData
@@ -439,7 +501,7 @@ init|=
 name|nanoTime
 argument_list|()
 decl_stmt|;
-name|FileStoreBackup
+name|fileStoreBackup
 operator|.
 name|backup
 argument_list|(
@@ -480,6 +542,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 specifier|synchronized
 name|CompositeData
@@ -498,6 +562,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 specifier|synchronized
 name|CompositeData
@@ -540,7 +606,7 @@ init|=
 name|nanoTime
 argument_list|()
 decl_stmt|;
-name|FileStoreRestore
+name|fileStoreRestore
 operator|.
 name|restore
 argument_list|(
@@ -577,6 +643,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 specifier|synchronized
 name|CompositeData
@@ -595,6 +663,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|checkpoint
