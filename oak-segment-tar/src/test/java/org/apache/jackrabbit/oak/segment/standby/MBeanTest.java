@@ -1494,20 +1494,6 @@ literal|"TransferredSegments"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|192L
-argument_list|,
-name|jmxServer
-operator|.
-name|getAttribute
-argument_list|(
-name|connectionStatus
-argument_list|,
-literal|"TransferredSegmentBytes"
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// stop the master
 name|jmxServer
 operator|.

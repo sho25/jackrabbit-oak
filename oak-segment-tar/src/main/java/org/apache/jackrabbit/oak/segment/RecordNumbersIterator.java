@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class implementing an iterator over record numbers to offset pairs.  * It wraps an underlying iterator looping over map entries, where each entry is  * a tuple of integers.  */
+comment|/**  * Utility class implementing an iterator over a record table. It wraps an  * underlying iterator looping over map entries, where each entry is a  * representation of a record entry.  */
 end_comment
 
 begin_class
@@ -85,7 +85,7 @@ name|Entry
 argument_list|<
 name|Integer
 argument_list|,
-name|Integer
+name|RecordEntry
 argument_list|>
 name|entry
 decl_stmt|;
@@ -98,7 +98,7 @@ name|Entry
 argument_list|<
 name|Integer
 argument_list|,
-name|Integer
+name|RecordEntry
 argument_list|>
 name|entry
 parameter_list|)
@@ -136,6 +136,26 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
+operator|.
+name|getOffset
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|RecordType
+name|getType
+parameter_list|()
+block|{
+return|return
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|getType
+argument_list|()
 return|;
 block|}
 block|}
@@ -149,7 +169,7 @@ name|Entry
 argument_list|<
 name|Integer
 argument_list|,
-name|Integer
+name|RecordEntry
 argument_list|>
 argument_list|>
 name|iterator
@@ -164,7 +184,7 @@ name|Entry
 argument_list|<
 name|Integer
 argument_list|,
-name|Integer
+name|RecordEntry
 argument_list|>
 argument_list|>
 name|iterator

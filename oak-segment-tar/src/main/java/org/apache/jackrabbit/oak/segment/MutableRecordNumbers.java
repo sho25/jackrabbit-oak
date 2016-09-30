@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A thread-safe, mutable record numbers to offset table.  */
+comment|/**  * A thread-safe, mutable record table.  */
 end_comment
 
 begin_class
@@ -76,9 +76,9 @@ name|Map
 argument_list|<
 name|Integer
 argument_list|,
-name|Integer
+name|RecordEntry
 argument_list|>
-name|recordNumbers
+name|records
 init|=
 name|Maps
 operator|.
@@ -95,10 +95,10 @@ name|int
 name|recordNumber
 parameter_list|)
 block|{
-name|Integer
-name|offset
+name|RecordEntry
+name|entry
 init|=
-name|recordNumbers
+name|records
 operator|.
 name|get
 argument_list|(
@@ -107,13 +107,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|offset
+name|entry
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
-name|offset
+name|entry
+operator|.
+name|getOffset
+argument_list|()
 return|;
 block|}
 synchronized|synchronized
@@ -121,9 +124,9 @@ init|(
 name|lock
 init|)
 block|{
-name|offset
+name|entry
 operator|=
-name|recordNumbers
+name|records
 operator|.
 name|get
 argument_list|(
@@ -132,13 +135,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|offset
+name|entry
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
-name|offset
+name|entry
+operator|.
+name|getOffset
+argument_list|()
 return|;
 block|}
 return|return
@@ -161,7 +167,7 @@ name|Map
 argument_list|<
 name|Integer
 argument_list|,
-name|Integer
+name|RecordEntry
 argument_list|>
 name|recordNumbers
 decl_stmt|;
@@ -178,7 +184,7 @@ name|newHashMap
 argument_list|(
 name|this
 operator|.
-name|recordNumbers
+name|records
 argument_list|)
 expr_stmt|;
 block|}
@@ -208,17 +214,20 @@ name|lock
 init|)
 block|{
 return|return
-name|recordNumbers
+name|records
 operator|.
 name|size
 argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Add a new offset to this table and generate a record number for it.      *      * @param offset an offset to be added to this table.      * @return the record number associated to the offset.      */
+comment|/**      * Add a new offset to this table and generate a record number for it.      *      * @param type   the type of the record.      * @param offset an offset to be added to this table.      * @return the record number associated to the offset.      */
 name|int
-name|addOffset
+name|addRecord
 parameter_list|(
+name|RecordType
+name|type
+parameter_list|,
 name|int
 name|offset
 parameter_list|)
@@ -233,18 +242,24 @@ init|)
 block|{
 name|recordNumber
 operator|=
-name|recordNumbers
+name|records
 operator|.
 name|size
 argument_list|()
 expr_stmt|;
-name|recordNumbers
+name|records
 operator|.
 name|put
 argument_list|(
 name|recordNumber
 argument_list|,
+operator|new
+name|RecordEntry
+argument_list|(
+name|type
+argument_list|,
 name|offset
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

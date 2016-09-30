@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Maps
+operator|.
+name|newHashMap
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -37,22 +53,8 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
-import|;
-end_import
-
 begin_comment
-comment|/**  * An immutable record number to offset table. It is initialized at construction  * time and can never be changed afterwards.  *<p>  * This implementation is trivially thread-safe.  */
+comment|/**  * An immutable record table. It is initialized at construction time and can  * never be changed afterwards.  *<p>  * This implementation is trivially thread-safe.  */
 end_comment
 
 begin_class
@@ -67,31 +69,29 @@ name|Map
 argument_list|<
 name|Integer
 argument_list|,
-name|Integer
+name|RecordEntry
 argument_list|>
-name|recordNumbers
+name|records
 decl_stmt|;
-comment|/**      * Create a new immutable record number to offset table.      *      * @param recordNumbers a map of record numbers to offsets. It can't be      *                      {@code null}.      */
+comment|/**      * Create a new immutable record table.      *      * @param records a map of record numbers to record entries. It can't be      *                {@code null}.      */
 name|ImmutableRecordNumbers
 parameter_list|(
 name|Map
 argument_list|<
 name|Integer
 argument_list|,
-name|Integer
+name|RecordEntry
 argument_list|>
-name|recordNumbers
+name|records
 parameter_list|)
 block|{
 name|this
 operator|.
-name|recordNumbers
+name|records
 operator|=
-name|Maps
-operator|.
 name|newHashMap
 argument_list|(
-name|recordNumbers
+name|records
 argument_list|)
 expr_stmt|;
 block|}
@@ -105,10 +105,10 @@ name|int
 name|recordNumber
 parameter_list|)
 block|{
-name|Integer
-name|offset
+name|RecordEntry
+name|entry
 init|=
-name|recordNumbers
+name|records
 operator|.
 name|get
 argument_list|(
@@ -117,7 +117,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|offset
+name|entry
 operator|==
 literal|null
 condition|)
@@ -128,7 +128,10 @@ literal|1
 return|;
 block|}
 return|return
-name|offset
+name|entry
+operator|.
+name|getOffset
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -145,7 +148,7 @@ return|return
 operator|new
 name|RecordNumbersIterator
 argument_list|(
-name|recordNumbers
+name|records
 operator|.
 name|entrySet
 argument_list|()

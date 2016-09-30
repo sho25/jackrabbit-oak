@@ -56,18 +56,23 @@ name|int
 name|recordNumber
 parameter_list|)
 function_decl|;
-comment|/**      * Represents a pair of a record number and its corresponding offset.      */
+comment|/**      * Represents an entry in the record table.      */
 interface|interface
 name|Entry
 block|{
-comment|/**          * The record number part of this pair.          *          * @return a record number.          */
+comment|/**          * The record number.          *          * @return a record number.          */
 name|int
 name|getRecordNumber
 parameter_list|()
 function_decl|;
-comment|/**          * The offset part of this pair.          *          * @return an offset.          */
+comment|/**          * The offset of this record..          *          * @return an offset.          */
 name|int
 name|getOffset
+parameter_list|()
+function_decl|;
+comment|/**          * The type of this record.          *          * @return a record type.          */
+name|RecordType
+name|getType
 parameter_list|()
 function_decl|;
 block|}
