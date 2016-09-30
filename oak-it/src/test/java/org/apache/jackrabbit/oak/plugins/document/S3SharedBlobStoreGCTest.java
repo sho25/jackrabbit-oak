@@ -335,7 +335,7 @@ if|if
 condition|(
 name|S3DataStoreUtils
 operator|.
-name|isS3DataStore
+name|isS3Configured
 argument_list|()
 condition|)
 block|{

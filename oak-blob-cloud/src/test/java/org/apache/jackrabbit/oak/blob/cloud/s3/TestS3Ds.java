@@ -436,9 +436,8 @@ operator|new
 name|Date
 argument_list|()
 expr_stmt|;
-name|String
 name|bucket
-init|=
+operator|=
 name|String
 operator|.
 name|valueOf
@@ -466,7 +465,7 @@ argument_list|)
 argument_list|)
 operator|+
 literal|"-test"
-decl_stmt|;
+expr_stmt|;
 name|props
 operator|.
 name|setProperty
