@@ -447,7 +447,7 @@ specifier|final
 name|int
 name|HEADER_SIZE
 init|=
-literal|22
+literal|32
 decl_stmt|;
 comment|/**      * Number of bytes used for storing a record identifier. One byte      * is used for identifying the segment and two for the record offset      * within that segment.      */
 specifier|static
