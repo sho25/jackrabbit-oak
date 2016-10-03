@@ -3026,7 +3026,12 @@ name|writer
 operator|.
 name|format
 argument_list|(
-literal|"record number %08x: %08x"
+literal|"%10s record %08x: %08x%n"
+argument_list|,
+name|entry
+operator|.
+name|getType
+argument_list|()
 argument_list|,
 name|entry
 operator|.
