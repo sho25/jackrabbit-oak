@@ -2774,22 +2774,12 @@ operator|.
 name|isGroup
 argument_list|()
 operator|&&
-operator|(
-name|getIdentityRef
-argument_list|(
-name|a
-argument_list|)
-operator|==
-literal|null
-operator|||
 name|isSameIDP
 argument_list|(
 name|a
 argument_list|)
-operator|)
 condition|)
 block|{
-comment|// limit to same IDP or local (no IDP ref) groups, see OAK-4845
 name|grp
 operator|=
 operator|(
