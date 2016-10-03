@@ -83,22 +83,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-operator|.
-name|newHashSet
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|lang
@@ -258,16 +242,6 @@ operator|.
 name|util
 operator|.
 name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -1777,68 +1751,12 @@ operator|.
 name|length
 condition|)
 block|{
-comment|// The set of old record ids in this segment
-comment|// that were previously root record ids, but will no longer be,
-comment|// because the record to be written references them.
-comment|// This needs to be a set, because the list of ids can
-comment|// potentially reference the same record multiple times
-name|Set
-argument_list|<
-name|SegmentId
-argument_list|>
-name|segmentIds
-init|=
-name|newHashSet
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|RecordId
-name|recordId
+name|id
 range|:
 name|ids
-control|)
-block|{
-name|SegmentId
-name|segmentId
-init|=
-name|recordId
-operator|.
-name|getSegmentId
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-operator|!
-operator|(
-name|segmentId
-operator|.
-name|equals
-argument_list|(
-name|segment
-operator|.
-name|getSegmentId
-argument_list|()
-argument_list|)
-operator|)
-condition|)
-block|{
-name|segmentIds
-operator|.
-name|add
-argument_list|(
-name|segmentId
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|// Adjust the estimation of the new referenced segment ID count.
-for|for
-control|(
-name|SegmentId
-name|segmentId
-range|:
-name|segmentIds
 control|)
 block|{
 if|if
@@ -1847,7 +1765,10 @@ name|segmentReferences
 operator|.
 name|contains
 argument_list|(
-name|segmentId
+name|id
+operator|.
+name|getSegmentId
+argument_list|()
 argument_list|)
 condition|)
 block|{
