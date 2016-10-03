@@ -305,6 +305,17 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
+name|Set
+argument_list|<
+name|UUID
+argument_list|>
+name|queued
+init|=
+name|newHashSet
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|UUID
@@ -737,9 +748,30 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
+comment|// Short circuit for the "back reference problem". The segment
+comment|// graph might or might not be acyclic. The following check
+comment|// prevents processing segment that were already traversed.
 if|if
 condition|(
 name|visited
+operator|.
+name|contains
+argument_list|(
+name|referenced
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
+comment|// Short circuit for the "diamond problem". Imagine that segment S1
+comment|// references S2 and S3 and both S2 and S3 reference S4. These
+comment|// references form the shape of a diamond. If the segments are
+comment|// processed in the order S1, S2, S3, then S4 is added twice to the
+comment|// 'batch' queue. The following check prevents processing S4 twice
+comment|// or more.
+if|if
+condition|(
+name|queued
 operator|.
 name|contains
 argument_list|(
@@ -791,6 +823,13 @@ name|referenced
 argument_list|)
 expr_stmt|;
 block|}
+name|queued
+operator|.
+name|add
+argument_list|(
+name|referenced
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
