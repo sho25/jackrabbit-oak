@@ -29,7 +29,7 @@ name|collect
 operator|.
 name|Maps
 operator|.
-name|newHashMap
+name|newLinkedHashMap
 import|;
 end_import
 
@@ -89,7 +89,7 @@ name|this
 operator|.
 name|records
 operator|=
-name|newHashMap
+name|newLinkedHashMap
 argument_list|(
 name|records
 argument_list|)

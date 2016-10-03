@@ -82,7 +82,7 @@ name|records
 init|=
 name|Maps
 operator|.
-name|newHashMap
+name|newLinkedHashMap
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -180,7 +180,7 @@ name|recordNumbers
 operator|=
 name|Maps
 operator|.
-name|newHashMap
+name|newLinkedHashMap
 argument_list|(
 name|this
 operator|.
