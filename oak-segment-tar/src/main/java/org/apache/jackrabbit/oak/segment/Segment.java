@@ -3340,10 +3340,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * A consumer of record data.      */
 specifier|public
 interface|interface
 name|RecordConsumer
 block|{
+comment|/**          * Consume data about a record.          *          * @param number the record number.          * @param type   the record type.          * @param offset the offset where the record is stored.          */
 name|void
 name|consume
 parameter_list|(
@@ -3358,6 +3360,7 @@ name|offset
 parameter_list|)
 function_decl|;
 block|}
+comment|/**      * Iterate over the records contained in this segment.      *      * @param consumer an instance of {@link RecordConsumer}.      */
 specifier|public
 name|void
 name|forEachRecord
