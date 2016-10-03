@@ -1805,6 +1805,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|segmentReferences
 operator|.
 name|contains
@@ -1824,7 +1825,12 @@ block|}
 block|}
 comment|// Adjust the estimation of the new referenced segment ID count.
 name|referencedIdCount
-operator|-=
+operator|=
+name|segmentReferences
+operator|.
+name|size
+argument_list|()
+operator|+
 name|segmentIds
 operator|.
 name|size
