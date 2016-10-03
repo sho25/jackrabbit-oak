@@ -449,6 +449,22 @@ name|HEADER_SIZE
 init|=
 literal|32
 decl_stmt|;
+comment|/**      * Size of a line in the table of references to external segments.      */
+specifier|static
+specifier|final
+name|int
+name|SEGMENT_REFERENCE_SIZE
+init|=
+literal|16
+decl_stmt|;
+comment|/**      * Size of a line in the table mapping record numbers to their type and      * offset.      */
+specifier|static
+specifier|final
+name|int
+name|RECORD_SIZE
+init|=
+literal|9
+decl_stmt|;
 comment|/**      * Number of bytes used for storing a record identifier. One byte      * is used for identifying the segment and two for the record offset      * within that segment.      */
 specifier|static
 specifier|final
@@ -943,7 +959,7 @@ operator|+=
 name|getReferencedSegmentIdCount
 argument_list|()
 operator|*
-literal|16
+name|SEGMENT_REFERENCE_SIZE
 expr_stmt|;
 for|for
 control|(
@@ -980,14 +996,14 @@ name|type
 init|=
 name|data
 operator|.
-name|getInt
+name|get
 argument_list|(
 name|position
 argument_list|)
 decl_stmt|;
 name|position
 operator|+=
-literal|4
+literal|1
 expr_stmt|;
 name|int
 name|offset
