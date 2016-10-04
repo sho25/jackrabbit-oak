@@ -590,7 +590,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Found missing segment {}"
 argument_list|,
@@ -664,7 +664,7 @@ argument_list|()
 decl_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Loading segment {}"
 argument_list|,
@@ -681,7 +681,7 @@ argument_list|)
 decl_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Marking segment {} as loaded"
 argument_list|,
@@ -713,7 +713,7 @@ continue|continue;
 block|}
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Inspecting segment {} for references"
 argument_list|,
@@ -783,7 +783,7 @@ continue|continue;
 block|}
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Found reference from {} to {}"
 argument_list|,
@@ -862,7 +862,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Segment {} was found in the local cache"
 argument_list|,
