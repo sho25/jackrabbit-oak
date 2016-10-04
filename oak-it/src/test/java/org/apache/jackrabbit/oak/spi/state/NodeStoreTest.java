@@ -4060,15 +4060,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixtures
-operator|.
-name|SEGMENT_TAR
-argument_list|)
-expr_stmt|;
 name|int
 name|numCps
 init|=
