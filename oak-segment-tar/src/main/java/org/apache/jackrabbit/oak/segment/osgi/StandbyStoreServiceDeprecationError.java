@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This component is activated when a configuration for the deprecated {@code  * SegmentNodeStoreService} from {@code oak-segment} is detected. When this  * component is activated, it prints a detailed error message describing the  * detected problem and hinting at a possible solution.  */
+comment|/**  * This component is activated when a configuration for the deprecated {@code  * StandbyStoreService} from {@code oak-segment} is detected. When this  * component is activated, it prints a detailed error message describing the  * detected problem and hinting at a possible solution.  */
 end_comment
 
 begin_class
@@ -103,11 +103,11 @@ name|REQUIRE
 argument_list|,
 name|configurationPid
 operator|=
-literal|"org.apache.jackrabbit.oak.plugins.segment.SegmentNodeStoreService"
+literal|"org.apache.jackrabbit.oak.plugins.segment.standby.store.StandbyStoreService"
 argument_list|)
 specifier|public
 class|class
-name|SegmentNodeStoreServiceDeprecationError
+name|StandbyStoreServiceDeprecationError
 block|{
 specifier|private
 specifier|static
@@ -119,7 +119,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|SegmentNodeStoreServiceDeprecationError
+name|StandbyStoreServiceDeprecationError
 operator|.
 name|class
 argument_list|)
@@ -130,7 +130,7 @@ specifier|final
 name|String
 name|OLD_PID
 init|=
-literal|"org.apache.jackrabbit.oak.plugins.segment.SegmentNodeStoreService"
+literal|"org.apache.jackrabbit.oak.plugins.segment.standby.store.StandbyStoreService"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -138,7 +138,7 @@ specifier|final
 name|String
 name|NEW_PID
 init|=
-literal|"org.apache.jackrabbit.oak.segment.SegmentNodeStoreService"
+literal|"org.apache.jackrabbit.oak.segment.standby.store.StandbyStoreService"
 decl_stmt|;
 annotation|@
 name|Activate
