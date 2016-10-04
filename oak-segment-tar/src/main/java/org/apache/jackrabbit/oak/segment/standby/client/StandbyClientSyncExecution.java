@@ -298,17 +298,6 @@ name|Set
 argument_list|<
 name|UUID
 argument_list|>
-name|visited
-init|=
-name|newHashSet
-argument_list|()
-decl_stmt|;
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|UUID
-argument_list|>
 name|queued
 init|=
 name|newHashSet
@@ -699,7 +688,7 @@ argument_list|,
 name|current
 argument_list|)
 expr_stmt|;
-name|visited
+name|local
 operator|.
 name|add
 argument_list|(
@@ -759,43 +748,12 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-comment|// Short circuit for the "back reference problem". The segment
-comment|// graph might or might not be acyclic. The following check
-comment|// prevents processing segment that were already traversed.
-if|if
-condition|(
-name|visited
-operator|.
-name|contains
-argument_list|(
-name|referenced
-argument_list|)
-condition|)
-block|{
-continue|continue;
-block|}
-comment|// Short circuit for the "diamond problem". Imagine that segment S1
-comment|// references S2 and S3 and both S2 and S3 reference S4. These
-comment|// references form the shape of a diamond. If the segments are
-comment|// processed in the order S1, S2, S3, then S4 is added twice to the
-comment|// 'batch' queue. The following check prevents processing S4 twice
-comment|// or more.
-if|if
-condition|(
-name|queued
-operator|.
-name|contains
-argument_list|(
-name|referenced
-argument_list|)
-condition|)
-block|{
-continue|continue;
-block|}
 comment|// Short circuit for the "sharing-is-caring problem". If many
 comment|// new segments are sharing segments that are already locally
 comment|// available, we should not issue a request for it to the
-comment|// server.
+comment|// server. Moreover, if a segment was visited and persisted
+comment|// during this synchronization process, it will end up in the
+comment|// 'local' set as well.
 if|if
 condition|(
 name|local
@@ -823,6 +781,35 @@ argument_list|(
 name|referenced
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|local
+operator|.
+name|contains
+argument_list|(
+name|referenced
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
+comment|// Short circuit for the "diamond problem". Imagine that segment S1
+comment|// references S2 and S3 and both S2 and S3 reference S4. These
+comment|// references form the shape of a diamond. If the segments are
+comment|// processed in the order S1, S2, S3, then S4 is added twice to the
+comment|// 'batch' queue. The following check prevents processing S4 twice
+comment|// or more.
+if|if
+condition|(
+name|queued
+operator|.
+name|contains
+argument_list|(
+name|referenced
+argument_list|)
+condition|)
+block|{
 continue|continue;
 block|}
 comment|// If we arrive at this point, the referenced segment is 1) not
