@@ -1609,8 +1609,6 @@ literal|"Approximate count not used for is-not-null query"
 argument_list|,
 name|approxNodeCount
 argument_list|,
-name|filteredNodeFactor
-operator|*
 name|store
 operator|.
 name|count
@@ -1650,8 +1648,6 @@ literal|"Approximate count not used for key=value query"
 argument_list|,
 name|approxKeyCount
 argument_list|,
-name|filteredNodeFactor
-operator|*
 name|store
 operator|.
 name|count
@@ -1801,7 +1797,6 @@ name|double
 name|actual
 parameter_list|)
 block|{
-specifier|final
 name|double
 name|allowedError
 init|=
@@ -1824,6 +1819,14 @@ operator|.
 name|assertTrue
 argument_list|(
 name|msg
+operator|+
+literal|"; expected about "
+operator|+
+name|expected
+operator|+
+literal|", got "
+operator|+
+name|actual
 argument_list|,
 name|diff
 operator|<

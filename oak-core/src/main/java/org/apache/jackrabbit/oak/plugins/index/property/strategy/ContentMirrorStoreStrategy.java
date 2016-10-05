@@ -1698,8 +1698,10 @@ operator|-
 literal|1
 condition|)
 block|{
-name|count
-operator|=
+comment|// assume nodes in the index are evenly distributed in the repository (old idea)
+name|long
+name|countScaledDown
+init|=
 call|(
 name|long
 call|)
@@ -1712,6 +1714,45 @@ operator|/
 name|totalNodesCount
 operator|*
 name|filterPathCount
+argument_list|)
+decl_stmt|;
+comment|// assume 80% of the indexed nodes are in this subtree
+name|long
+name|mostNodesFromThisSubtree
+init|=
+call|(
+name|long
+call|)
+argument_list|(
+name|filterPathCount
+operator|*
+literal|0.8
+argument_list|)
+decl_stmt|;
+comment|// count can at most be the assumed subtree size
+name|count
+operator|=
+name|Math
+operator|.
+name|min
+argument_list|(
+name|count
+argument_list|,
+name|mostNodesFromThisSubtree
+argument_list|)
+expr_stmt|;
+comment|// this in theory should not have any effect,
+comment|// except if the above estimates are incorrect,
+comment|// so this is just for safety feature
+name|count
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|count
+argument_list|,
+name|countScaledDown
 argument_list|)
 expr_stmt|;
 block|}
