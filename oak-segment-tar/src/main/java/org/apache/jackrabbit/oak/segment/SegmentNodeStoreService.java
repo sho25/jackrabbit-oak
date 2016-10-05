@@ -2882,7 +2882,10 @@ name|sizeDeltaEstimation
 init|=
 name|toLong
 argument_list|(
+name|property
+argument_list|(
 name|COMPACTION_SIZE_DELTA_ESTIMATION
+argument_list|)
 argument_list|,
 name|SIZE_DELTA_ESTIMATION_DEFAULT
 argument_list|)
