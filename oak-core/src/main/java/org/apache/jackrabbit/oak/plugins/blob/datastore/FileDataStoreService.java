@@ -324,13 +324,20 @@ operator|+
 literal|"FileDataStoreService with caching. [{path}] property not configured."
 argument_list|)
 expr_stmt|;
-name|CachingFDS
+name|OakCachingFDS
 name|dataStore
 init|=
 operator|new
-name|CachingFDS
+name|OakCachingFDS
 argument_list|()
 decl_stmt|;
+name|dataStore
+operator|.
+name|setFsBackendPath
+argument_list|(
+name|fsBackendPath
+argument_list|)
+expr_stmt|;
 comment|// Disabling asyncUpload by default
 name|dataStore
 operator|.
