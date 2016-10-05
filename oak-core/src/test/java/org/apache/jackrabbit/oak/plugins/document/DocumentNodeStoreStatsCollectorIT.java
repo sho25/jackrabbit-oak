@@ -296,6 +296,14 @@ operator|.
 name|getNodeStore
 argument_list|()
 expr_stmt|;
+comment|// do not retry failed merges
+name|nodeStore
+operator|.
+name|setMaxBackOffMillis
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
