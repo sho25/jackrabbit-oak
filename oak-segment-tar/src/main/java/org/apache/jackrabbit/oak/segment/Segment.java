@@ -465,13 +465,13 @@ name|RECORD_SIZE
 init|=
 literal|9
 decl_stmt|;
-comment|/**      * Number of bytes used for storing a record identifier. One byte      * is used for identifying the segment and two for the record offset      * within that segment.      */
+comment|/**      * Number of bytes used for storing a record identifier. Two bytes      * are used for identifying the segment and four for the record offset      * within that segment.      */
 specifier|static
 specifier|final
 name|int
 name|RECORD_ID_BYTES
 init|=
-literal|4
+literal|2
 operator|+
 literal|4
 decl_stmt|;
@@ -1054,6 +1054,18 @@ name|SegmentReferences
 name|readReferencedSegments
 parameter_list|()
 block|{
+name|checkState
+argument_list|(
+name|getReferencedSegmentIdCount
+argument_list|()
+operator|+
+literal|1
+operator|<
+literal|0xffff
+argument_list|,
+literal|"Segment cannot have more than 0xffff references"
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|SegmentId
@@ -1898,11 +1910,14 @@ name|segmentId
 init|=
 name|dereferenceSegmentId
 argument_list|(
+name|asUnsigned
+argument_list|(
 name|data
 operator|.
-name|getInt
+name|getShort
 argument_list|(
 name|pos
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1918,9 +1933,24 @@ name|getInt
 argument_list|(
 name|pos
 operator|+
-literal|4
+literal|2
 argument_list|)
 argument_list|)
+return|;
+block|}
+specifier|private
+specifier|static
+name|int
+name|asUnsigned
+parameter_list|(
+name|short
+name|value
+parameter_list|)
+block|{
+return|return
+name|value
+operator|&
+literal|0xffff
 return|;
 block|}
 specifier|private
