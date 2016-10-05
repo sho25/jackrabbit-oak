@@ -1250,13 +1250,6 @@ operator|.
 name|getDB
 argument_list|()
 decl_stmt|;
-name|MongoUtils
-operator|.
-name|dropCollections
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
 return|return
 operator|new
 name|MongoDocumentStore
