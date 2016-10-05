@@ -455,6 +455,41 @@ name|PARAM_USER_DYNAMIC_MEMBERSHIP
 init|=
 literal|"user.dynamicMembership"
 decl_stmt|;
+comment|/**      * @see User#getDisableMissing()      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_DISABLE_MISSING_USERS_DEFAULT
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * @see User#getDisableMissing()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"Disable missing users"
+argument_list|,
+name|description
+operator|=
+literal|"If true, users that no longer exist on the external provider will be locally disabled, "
+operator|+
+literal|"and re-enabled if they become valid again. If false (default) they will be removed."
+argument_list|,
+name|boolValue
+operator|=
+literal|false
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_DISABLE_MISSING_USERS
+init|=
+literal|"user.disableMissing"
+decl_stmt|;
 comment|/**      * @see DefaultSyncConfig.Group#getExpirationTime()      */
 specifier|public
 specifier|static
@@ -715,6 +750,18 @@ name|cfg
 operator|.
 name|user
 argument_list|()
+operator|.
+name|setDisableMissing
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_DISABLE_MISSING_USERS
+argument_list|,
+name|PARAM_DISABLE_MISSING_USERS_DEFAULT
+argument_list|)
+argument_list|)
 operator|.
 name|setMembershipExpirationTime
 argument_list|(

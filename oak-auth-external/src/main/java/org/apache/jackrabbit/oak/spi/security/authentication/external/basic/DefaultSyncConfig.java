@@ -477,6 +477,10 @@ specifier|private
 name|boolean
 name|dynamicMembership
 decl_stmt|;
+specifier|private
+name|boolean
+name|disableMissing
+decl_stmt|;
 comment|/**          * Returns the duration in milliseconds until the group membership of a user is expired. If the          * membership information is expired it is re-synced according to the maximum nesting depth.          * Note that the membership is the groups an authorizable is member of, not the list of members of a group.          * Also note, that the group membership expiration time can be higher than the user expiration time itself and          * that value has no effect when syncing individual groups only when syncing a users membership ancestry.          *          * @return the expiration time in milliseconds.          */
 specifier|public
 name|long
@@ -567,6 +571,35 @@ operator|.
 name|dynamicMembership
 operator|=
 name|dynamicMembership
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Controls the behavior for users that no longer exist on the external provider. The default is to delete the repository users          * if they no longer exist on the external provider. If set to true, they will be disabled instead, and re-enabled once they appear          * again.          */
+specifier|public
+name|boolean
+name|getDisableMissing
+parameter_list|()
+block|{
+return|return
+name|disableMissing
+return|;
+block|}
+comment|/**          * @see #getDisableMissing()          */
+specifier|public
+name|User
+name|setDisableMissing
+parameter_list|(
+name|boolean
+name|disableMissing
+parameter_list|)
+block|{
+name|this
+operator|.
+name|disableMissing
+operator|=
+name|disableMissing
 expr_stmt|;
 return|return
 name|this

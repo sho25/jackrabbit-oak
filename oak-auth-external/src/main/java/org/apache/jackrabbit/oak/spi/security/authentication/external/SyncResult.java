@@ -82,6 +82,12 @@ block|,
 comment|/**          * authorizable deleted          */
 name|DELETE
 block|,
+comment|/**          * authorizable enabled          */
+name|ENABLE
+block|,
+comment|/**          * authorizable disabled          */
+name|DISABLE
+block|,
 comment|/**          * nothing changed. no such authorizable found.          */
 name|NO_SUCH_AUTHORIZABLE
 block|,

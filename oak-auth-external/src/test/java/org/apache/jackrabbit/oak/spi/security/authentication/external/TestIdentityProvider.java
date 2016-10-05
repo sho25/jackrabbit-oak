@@ -511,7 +511,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|public
 name|void
 name|addUser
 parameter_list|(
@@ -532,7 +532,7 @@ name|toLowerCase
 argument_list|()
 argument_list|,
 operator|(
-name|TestUser
+name|ExternalUser
 operator|)
 name|user
 argument_list|)
@@ -559,7 +559,7 @@ name|toLowerCase
 argument_list|()
 argument_list|,
 operator|(
-name|TestGroup
+name|ExternalGroup
 operator|)
 name|group
 argument_list|)
