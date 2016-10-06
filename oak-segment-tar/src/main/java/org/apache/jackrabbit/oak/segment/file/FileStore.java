@@ -1467,18 +1467,6 @@ specifier|final
 name|TarRevisions
 name|revisions
 decl_stmt|;
-comment|/**      * Scheduler for running compaction and cleanup in the background      */
-specifier|private
-specifier|final
-name|Scheduler
-name|gcScheduler
-init|=
-operator|new
-name|Scheduler
-argument_list|(
-literal|"GC Scheduler"
-argument_list|)
-decl_stmt|;
 comment|/**      * Scheduler for running<em>short</em> background operations      */
 specifier|private
 specifier|final
@@ -2185,12 +2173,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|// FIXME OAK-4621: External invocation of background operations
-comment|// The following background operations are historically part of
-comment|// the implementation of the FileStore, but they should better be
-comment|// scheduled and invoked by an external agent. The code deploying the
-comment|// FileStore might have better insights on when and how these background
-comment|// operations should be invoked. See also OAK-3468.
 name|sufficientDiskSpace
 operator|=
 operator|new
@@ -2777,13 +2759,66 @@ name|getNodeCacheStats
 argument_list|()
 return|;
 block|}
+comment|/**      * @return  a runnable for running garbage collection      */
+specifier|public
+name|Runnable
+name|getGCRunner
+parameter_list|()
+block|{
+return|return
+operator|new
+name|SafeRunnable
+argument_list|(
+name|format
+argument_list|(
+literal|"TarMK revision gc [%s]"
+argument_list|,
+name|directory
+argument_list|)
+argument_list|,
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
 specifier|public
 name|void
-name|maybeCompact
+name|run
+parameter_list|()
+block|{
+try|try
+block|{
+name|gc
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
 parameter_list|(
-name|boolean
-name|cleanup
+name|IOException
+name|e
 parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error running compaction"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+argument_list|)
+return|;
+block|}
+comment|/**      * Run garbage collection: estimation, compaction, cleanup      * @throws IOException      */
+specifier|public
+name|void
+name|gc
+parameter_list|()
 throws|throws
 name|IOException
 block|{
@@ -6267,12 +6302,7 @@ operator|=
 literal|true
 expr_stmt|;
 comment|// avoid deadlocks by closing (and joining) the background
-comment|// threads before acquiring the synchronization lock
-name|gcScheduler
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+comment|// thread before acquiring the synchronization lock
 name|fileStoreScheduler
 operator|.
 name|close
@@ -7314,63 +7344,6 @@ return|return
 name|blobStore
 return|;
 block|}
-comment|/**      * Trigger a garbage collection cycle      */
-specifier|public
-name|void
-name|gc
-parameter_list|()
-block|{
-name|gcScheduler
-operator|.
-name|execute
-argument_list|(
-name|format
-argument_list|(
-literal|"TarMK compaction [%s]"
-argument_list|,
-name|directory
-argument_list|)
-argument_list|,
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-try|try
-block|{
-name|maybeCompact
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Error running compaction"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|Map
 argument_list|<
@@ -7975,8 +7948,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
-name|gc
+name|SafeRunnable
+name|getGCRunner
 parameter_list|()
 block|{
 throw|throw
@@ -8006,11 +7979,8 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|maybeCompact
-parameter_list|(
-name|boolean
-name|cleanup
-parameter_list|)
+name|gc
+parameter_list|()
 block|{
 throw|throw
 operator|new
