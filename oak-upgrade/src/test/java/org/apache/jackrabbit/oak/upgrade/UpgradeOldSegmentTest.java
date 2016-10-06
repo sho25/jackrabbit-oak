@@ -21,6 +21,28 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|upgrade
+operator|.
+name|cli
+operator|.
+name|container
+operator|.
+name|SegmentTarNodeStoreContainer
+operator|.
+name|deleteRecursive
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -770,9 +792,7 @@ operator|.
 name|clean
 argument_list|()
 expr_stmt|;
-name|FileUtils
-operator|.
-name|deleteDirectory
+name|deleteRecursive
 argument_list|(
 name|testFolder
 argument_list|)

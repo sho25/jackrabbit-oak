@@ -531,6 +531,7 @@ return|return
 name|directory
 return|;
 block|}
+specifier|public
 specifier|static
 name|void
 name|deleteRecursive
