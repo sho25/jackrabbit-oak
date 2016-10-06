@@ -1455,12 +1455,6 @@ specifier|final
 name|TarRevisions
 name|revisions
 decl_stmt|;
-comment|/**      * The background flush thread. Automatically flushes the TarMK state      * once every five seconds.      */
-specifier|private
-specifier|final
-name|PeriodicOperation
-name|flushOperation
-decl_stmt|;
 comment|/**      * Scheduler for running compaction and cleanup in the background      */
 specifier|private
 specifier|final
@@ -1473,11 +1467,17 @@ argument_list|(
 literal|"GC Scheduler"
 argument_list|)
 decl_stmt|;
-comment|/**      * This background thread periodically asks the {@code SegmentGCOptions}      * to compare the approximate size of the repository with the available disk      * space. The result of this comparison is stored in the state of this      * {@code FileStore}.      */
+comment|/**      * Scheduler for running<em>short</em> background operations      */
 specifier|private
 specifier|final
-name|PeriodicOperation
-name|diskSpaceOperation
+name|Scheduler
+name|fileStoreScheduler
+init|=
+operator|new
+name|Scheduler
+argument_list|(
+literal|"FileStore background tasks"
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
@@ -2167,14 +2167,27 @@ comment|// the implementation of the FileStore, but they should better be
 comment|// scheduled and invoked by an external agent. The code deploying the
 comment|// FileStore might have better insights on when and how these background
 comment|// operations should be invoked. See also OAK-3468.
-name|flushOperation
+name|sufficientDiskSpace
 operator|=
 operator|new
-name|PeriodicOperation
+name|AtomicBoolean
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|readOnly
+condition|)
+block|{
+name|fileStoreScheduler
+operator|.
+name|scheduleAtFixedRate
 argument_list|(
 name|format
 argument_list|(
-literal|"TarMK flush thread [%s]"
+literal|"TarMK flush [%s]"
 argument_list|,
 name|directory
 argument_list|)
@@ -2187,6 +2200,7 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+empty_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -2222,10 +2236,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|diskSpaceOperation
-operator|=
-operator|new
-name|PeriodicOperation
+name|fileStoreScheduler
+operator|.
+name|scheduleAtFixedRate
 argument_list|(
 name|format
 argument_list|(
@@ -2256,31 +2269,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|readOnly
-condition|)
-block|{
-name|flushOperation
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-name|diskSpaceOperation
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
 block|}
-name|sufficientDiskSpace
-operator|=
-operator|new
-name|AtomicBoolean
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|readOnly
@@ -6161,109 +6150,18 @@ name|shutdown
 operator|=
 literal|true
 expr_stmt|;
+comment|// avoid deadlocks by closing (and joining) the background
+comment|// threads before acquiring the synchronization lock
 name|gcScheduler
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|// avoid deadlocks by closing (and joining) the background
-comment|// threads before acquiring the synchronization lock
-try|try
-block|{
-if|if
-condition|(
-name|flushOperation
+name|fileStoreScheduler
 operator|.
-name|stop
-argument_list|(
-literal|5
-argument_list|,
-name|SECONDS
-argument_list|)
-condition|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"The flush background thread was successfully shut down"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"The flush background thread takes too long to shutdown"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|interrupt
+name|close
 argument_list|()
 expr_stmt|;
-block|}
-try|try
-block|{
-if|if
-condition|(
-name|diskSpaceOperation
-operator|.
-name|stop
-argument_list|(
-literal|5
-argument_list|,
-name|SECONDS
-argument_list|)
-condition|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"The disk space check background thread was successfully shut down"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"The disk space check background thread takes too long to shutdown"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|interrupt
-argument_list|()
-expr_stmt|;
-block|}
 try|try
 block|{
 name|flush
