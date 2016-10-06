@@ -2242,6 +2242,41 @@ name|scheduleAtFixedRate
 argument_list|(
 name|format
 argument_list|(
+literal|"TarMK filer reaper [%s]"
+argument_list|,
+name|directory
+argument_list|)
+argument_list|,
+literal|5
+argument_list|,
+name|SECONDS
+argument_list|,
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|fileReaper
+operator|.
+name|reap
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|fileStoreScheduler
+operator|.
+name|scheduleAtFixedRate
+argument_list|(
+name|format
+argument_list|(
 literal|"TarMK disk space check [%s]"
 argument_list|,
 name|directory
@@ -4089,11 +4124,6 @@ return|;
 block|}
 block|}
 argument_list|)
-expr_stmt|;
-name|fileReaper
-operator|.
-name|reap
-argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Run garbage collection on the segment level: reclaim those data segments      * that are from an old segment generation and those bulk segments that are not      * reachable anymore.      * Those tar files that shrink by at least 25% are rewritten to a new tar generation      * skipping the reclaimed segments.      */
