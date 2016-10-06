@@ -208,6 +208,11 @@ specifier|final
 name|boolean
 name|useBlobStore
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|dsCacheSizeInMB
+decl_stmt|;
 specifier|public
 name|SegmentTarFixture
 parameter_list|(
@@ -228,6 +233,9 @@ name|memoryMapping
 parameter_list|,
 name|boolean
 name|useBlobStore
+parameter_list|,
+name|int
+name|dsCacheSizeInMB
 parameter_list|)
 block|{
 name|super
@@ -264,6 +272,12 @@ operator|.
 name|useBlobStore
 operator|=
 name|useBlobStore
+expr_stmt|;
+name|this
+operator|.
+name|dsCacheSizeInMB
+operator|=
+name|dsCacheSizeInMB
 expr_stmt|;
 block|}
 annotation|@
@@ -410,6 +424,8 @@ argument_list|(
 name|base
 argument_list|,
 literal|true
+argument_list|,
+name|dsCacheSizeInMB
 argument_list|,
 name|statsProvider
 argument_list|)

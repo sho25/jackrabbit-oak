@@ -1852,7 +1852,7 @@ argument_list|)
 block|,
 name|OakRepositoryFixture
 operator|.
-name|getMongoWithFDS
+name|getMongoWithDS
 argument_list|(
 name|uri
 argument_list|,
@@ -1944,6 +1944,13 @@ name|value
 argument_list|(
 name|options
 argument_list|)
+argument_list|,
+name|fdsCache
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
 argument_list|)
 block|,
 name|OakRepositoryFixture
@@ -1985,6 +1992,13 @@ argument_list|,
 name|cacheSize
 argument_list|,
 name|mmap
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|,
+name|fdsCache
 operator|.
 name|value
 argument_list|(
@@ -2039,7 +2053,7 @@ block|}
 decl_stmt|;
 name|OakRepositoryFixture
 operator|.
-name|getRDBWithFDS
+name|getRDBWithDS
 argument_list|(
 name|rdbjdbcuri
 operator|.

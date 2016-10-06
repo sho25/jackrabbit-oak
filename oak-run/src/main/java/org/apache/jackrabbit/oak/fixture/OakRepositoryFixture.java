@@ -220,7 +220,7 @@ block|}
 specifier|public
 specifier|static
 name|RepositoryFixture
-name|getMongoWithFDS
+name|getMongoWithDS
 parameter_list|(
 name|String
 name|host
@@ -250,7 +250,7 @@ name|getMongo
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_MONGO_FDS
+name|OAK_MONGO_DS
 argument_list|,
 name|host
 argument_list|,
@@ -273,7 +273,7 @@ block|}
 specifier|public
 specifier|static
 name|RepositoryFixture
-name|getMongoWithFDS
+name|getMongoWithDS
 parameter_list|(
 name|String
 name|uri
@@ -302,7 +302,7 @@ name|getMongo
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_MONGO_FDS
+name|OAK_MONGO_DS
 argument_list|,
 name|uri
 argument_list|,
@@ -516,7 +516,7 @@ block|}
 specifier|public
 specifier|static
 name|RepositoryFixture
-name|getRDBWithFDS
+name|getRDBWithDS
 parameter_list|(
 name|String
 name|jdbcuri
@@ -555,7 +555,7 @@ name|getRDB
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_RDB_FDS
+name|OAK_RDB_DS
 argument_list|,
 name|jdbcuri
 argument_list|,
@@ -637,6 +637,9 @@ name|cacheSizeMB
 parameter_list|,
 name|boolean
 name|memoryMapping
+parameter_list|,
+name|int
+name|dsCacheInMB
 parameter_list|)
 block|{
 return|return
@@ -649,7 +652,7 @@ name|getTar
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_TAR_FDS
+name|OAK_TAR_DS
 argument_list|,
 name|base
 argument_list|,
@@ -660,6 +663,8 @@ argument_list|,
 name|memoryMapping
 argument_list|,
 literal|true
+argument_list|,
+name|dsCacheInMB
 argument_list|)
 argument_list|)
 return|;
@@ -723,6 +728,9 @@ name|cacheSizeMB
 parameter_list|,
 name|boolean
 name|memoryMapping
+parameter_list|,
+name|int
+name|dsCacheInMB
 parameter_list|)
 block|{
 return|return
@@ -735,7 +743,7 @@ name|getSegmentTar
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_SEGMENT_TAR_FDS
+name|OAK_SEGMENT_TAR_DS
 argument_list|,
 name|base
 argument_list|,
@@ -746,6 +754,8 @@ argument_list|,
 name|memoryMapping
 argument_list|,
 literal|true
+argument_list|,
+name|dsCacheInMB
 argument_list|)
 argument_list|)
 return|;
