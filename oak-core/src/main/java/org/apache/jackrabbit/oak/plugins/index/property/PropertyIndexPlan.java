@@ -471,6 +471,7 @@ class|class
 name|PropertyIndexPlan
 block|{
 comment|/**      * The cost overhead to use the index in number of read operations.      */
+specifier|public
 specifier|static
 specifier|final
 name|double
@@ -548,6 +549,11 @@ specifier|final
 name|PathFilter
 name|pathFilter
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|unique
+decl_stmt|;
 name|PropertyIndexPlan
 parameter_list|(
 name|String
@@ -603,6 +609,19 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|this
+operator|.
+name|unique
+operator|=
+name|definition
+operator|.
+name|getBoolean
+argument_list|(
+name|IndexConstants
+operator|.
+name|UNIQUE_PROPERTY_NAME
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -899,6 +918,23 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|unique
+operator|&&
+name|cost
+operator|<=
+literal|1
+condition|)
+block|{
+comment|// for unique index, for the normal case
+comment|// (that is, for a regular lookup)
+comment|// no further reads are needed
+name|cost
+operator|=
+literal|0
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|cost
 operator|<
 name|bestCost
@@ -916,6 +952,16 @@ name|bestCost
 operator|=
 name|cost
 expr_stmt|;
+if|if
+condition|(
+name|bestCost
+operator|==
+literal|0
+condition|)
+block|{
+comment|// shortcut: not possible to top this
+break|break;
+block|}
 block|}
 block|}
 block|}
@@ -1179,18 +1225,6 @@ name|MountInfoProvider
 name|mountInfoProvider
 parameter_list|)
 block|{
-name|boolean
-name|unique
-init|=
-name|definition
-operator|.
-name|getBoolean
-argument_list|(
-name|IndexConstants
-operator|.
-name|UNIQUE_PROPERTY_NAME
-argument_list|)
-decl_stmt|;
 return|return
 name|Multiplexers
 operator|.
