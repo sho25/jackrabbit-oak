@@ -109,9 +109,14 @@ name|long
 name|gcSizeDeltaEstimation
 parameter_list|)
 function_decl|;
-comment|/**      * Raise the flag to signal compaction to stop as soon as possible.      */
+comment|/**      * Initiate a revision garbage collection operation      */
 name|void
-name|stopCompaction
+name|startRevisionGC
+parameter_list|()
+function_decl|;
+comment|/**      * Cancel a running revision garbage collection operation. Does nothing      * if revision garbage collection is not running.      */
+name|void
+name|cancelRevisionGC
 parameter_list|()
 function_decl|;
 block|}

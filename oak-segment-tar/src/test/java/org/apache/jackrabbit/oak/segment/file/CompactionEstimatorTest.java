@@ -93,20 +93,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Suppliers
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -535,14 +521,7 @@ init|=
 name|fileStore
 operator|.
 name|estimateCompactionGain
-argument_list|(
-name|Suppliers
-operator|.
-name|ofInstance
-argument_list|(
-literal|false
-argument_list|)
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(

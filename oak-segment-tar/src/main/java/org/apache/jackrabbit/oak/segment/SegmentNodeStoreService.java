@@ -2421,6 +2421,8 @@ argument_list|,
 operator|new
 name|SegmentRevisionGCMBean
 argument_list|(
+name|store
+argument_list|,
 name|gcOptions
 argument_list|)
 argument_list|,

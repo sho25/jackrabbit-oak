@@ -3612,12 +3612,11 @@ control|)
 block|{
 name|cancelled
 operator|=
+operator|!
 name|fileStore
 operator|.
 name|compact
 argument_list|()
-operator|==
-literal|null
 expr_stmt|;
 block|}
 return|return
@@ -6930,18 +6929,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Concurrent cleanup calls are not supported by the file store
-synchronized|synchronized
-init|(
-name|fileStore
-init|)
-block|{
 name|fileStore
 operator|.
 name|cleanup
 argument_list|()
 expr_stmt|;
-block|}
 return|return
 literal|null
 return|;
@@ -7254,18 +7246,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Concurrent cleanup calls are not supported by the file store
-synchronized|synchronized
-init|(
-name|fileStore
-init|)
-block|{
 name|fileStore
 operator|.
 name|cleanup
 argument_list|()
 expr_stmt|;
-block|}
 return|return
 literal|null
 return|;
