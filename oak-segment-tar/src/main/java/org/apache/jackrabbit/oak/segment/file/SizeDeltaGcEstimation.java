@@ -266,10 +266,7 @@ literal|true
 expr_stmt|;
 name|gcInfo
 operator|=
-name|format
-argument_list|(
-literal|"Estimation skipped because of missing gc journal data"
-argument_list|)
+literal|"Estimation skipped because of missing gc journal data (expected on first run)"
 expr_stmt|;
 block|}
 else|else
@@ -306,6 +303,38 @@ name|gain
 operator|>
 name|delta
 expr_stmt|;
+name|gcInfo
+operator|=
+name|format
+argument_list|(
+literal|"Segmentstore size has increased since the last compaction from %s (%s bytes) to %s (%s bytes), "
+operator|+
+literal|"an increase of %s (%s bytes) or %s%%. "
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|lastGc
+argument_list|)
+argument_list|,
+name|lastGc
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|totalSize
+argument_list|)
+argument_list|,
+name|totalSize
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|gain
+argument_list|)
+argument_list|,
+name|gain
+argument_list|,
+name|gainP
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|gcNeeded
@@ -313,25 +342,18 @@ condition|)
 block|{
 name|gcInfo
 operator|=
+name|gcInfo
+operator|+
 name|format
 argument_list|(
-literal|"Size delta is %s%% or %s/%s (%s/%s bytes), so running compaction"
-argument_list|,
-name|gainP
+literal|"This is greater than sizeDeltaEstimation=%s (%s bytes), so running compaction"
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
-name|lastGc
+name|delta
 argument_list|)
 argument_list|,
-name|humanReadableByteCount
-argument_list|(
-name|totalSize
-argument_list|)
-argument_list|,
-name|lastGc
-argument_list|,
-name|totalSize
+name|delta
 argument_list|)
 expr_stmt|;
 block|}
@@ -339,25 +361,18 @@ else|else
 block|{
 name|gcInfo
 operator|=
+name|gcInfo
+operator|+
 name|format
 argument_list|(
-literal|"Size delta is %s%% or %s/%s (%s/%s bytes), so skipping compaction for now"
-argument_list|,
-name|gainP
+literal|"This is less than sizeDeltaEstimation=%s (%s bytes), so skipping compaction"
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
-name|lastGc
+name|delta
 argument_list|)
 argument_list|,
-name|humanReadableByteCount
-argument_list|(
-name|totalSize
-argument_list|)
-argument_list|,
-name|lastGc
-argument_list|,
-name|totalSize
+name|delta
 argument_list|)
 expr_stmt|;
 block|}
