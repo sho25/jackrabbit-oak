@@ -62,6 +62,13 @@ name|CompositeData
 name|startRevisionGC
 parameter_list|()
 function_decl|;
+comment|/**      * Cancel a running revision garbage collection operation. Does nothing      * if revision garbage collection is not running.      *      * @return  the status of the operation right after it was initiated      */
+annotation|@
+name|Nonnull
+name|CompositeData
+name|cancelRevisionGC
+parameter_list|()
+function_decl|;
 comment|/**      * Revision garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
