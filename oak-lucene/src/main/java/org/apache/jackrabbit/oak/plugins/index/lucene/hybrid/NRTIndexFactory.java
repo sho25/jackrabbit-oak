@@ -218,6 +218,15 @@ name|NRTIndexFactory
 implements|implements
 name|Closeable
 block|{
+comment|/**      * Maximum numbers of NRTIndex to keep at a time. At runtime for a given index      * /oak:index/fooIndex at max 2 IndexNode would be opened at a time and those 2      * IndexNode would keep reference to at max 3 NRT Indexes      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_INDEX_COUNT
+init|=
+literal|3
+decl_stmt|;
 specifier|private
 specifier|final
 name|Logger
@@ -473,8 +482,8 @@ name|existing
 operator|.
 name|size
 argument_list|()
-operator|<
-literal|3
+operator|<=
+name|MAX_INDEX_COUNT
 condition|)
 block|{
 return|return;
@@ -556,7 +565,7 @@ operator|.
 name|size
 argument_list|()
 operator|<=
-literal|2
+name|MAX_INDEX_COUNT
 argument_list|,
 literal|"Found [%s] more than 3 index"
 argument_list|,
