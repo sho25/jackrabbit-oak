@@ -19,8 +19,46 @@ name|compaction
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|gc
+operator|.
+name|GCMonitor
+import|;
+end_import
+
 begin_comment
-comment|/**  * This MBean exposes the settings from {@link SegmentGCOptions}.  */
+comment|/**  * This MBean exposes the settings from {@link SegmentGCOptions} and  * reflects the GC status as reported by the {@link GCMonitor}.  */
 end_comment
 
 begin_interface
@@ -117,6 +155,44 @@ function_decl|;
 comment|/**      * Cancel a running revision garbage collection operation. Does nothing      * if revision garbage collection is not running.      */
 name|void
 name|cancelRevisionGC
+parameter_list|()
+function_decl|;
+comment|/**      * @return  timestamp of the last compaction or {@code null} if none.      */
+annotation|@
+name|CheckForNull
+name|String
+name|getLastCompaction
+parameter_list|()
+function_decl|;
+comment|/**      * @return  timestamp of the last cleanup or {@code null} if none.      */
+annotation|@
+name|CheckForNull
+name|String
+name|getLastCleanup
+parameter_list|()
+function_decl|;
+comment|/**      * @return  repository size after the last cleanup.      */
+name|long
+name|getLastRepositorySize
+parameter_list|()
+function_decl|;
+comment|/**      * @return  reclaimed size during the last cleanup.      */
+name|long
+name|getLastReclaimedSize
+parameter_list|()
+function_decl|;
+comment|/**      * @return  last error or {@code null} if none.      */
+annotation|@
+name|CheckForNull
+name|String
+name|getLastError
+parameter_list|()
+function_decl|;
+comment|/**      * @return  current status.      */
+annotation|@
+name|Nonnull
+name|String
+name|getStatus
 parameter_list|()
 function_decl|;
 block|}

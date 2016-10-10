@@ -111,24 +111,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
-name|jmx
-operator|.
-name|AnnotatedStandardMBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|gc
@@ -154,19 +136,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link GCMonitor} implementation providing the file store gc status  * as {@link GCMonitorMBean}.  *  */
+comment|/**  * {@link GCMonitor} implementation providing the file store gc status.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
 name|FileStoreGCMonitor
-extends|extends
-name|AnnotatedStandardMBean
 implements|implements
 name|GCMonitor
-implements|,
-name|GCMonitorMBean
 block|{
 specifier|private
 specifier|final
@@ -208,13 +186,6 @@ name|Clock
 name|clock
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|GCMonitorMBean
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|clock
@@ -411,9 +382,6 @@ operator|=
 name|current
 expr_stmt|;
 block|}
-comment|//------------------------------------------------------------< GCMonitorMBean>---
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getLastCompaction
@@ -426,8 +394,6 @@ name|lastCompaction
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getLastCleanup
@@ -440,8 +406,6 @@ name|lastCleanup
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|long
 name|getLastRepositorySize
@@ -451,8 +415,6 @@ return|return
 name|lastRepositorySize
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|long
 name|getLastReclaimedSize
@@ -499,8 +461,6 @@ literal|null
 return|;
 block|}
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getLastError
@@ -512,8 +472,6 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getStatus

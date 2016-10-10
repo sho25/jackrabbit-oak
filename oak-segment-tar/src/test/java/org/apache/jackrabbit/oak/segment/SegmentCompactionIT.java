@@ -869,24 +869,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|GCMonitorMBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|commit
@@ -1144,7 +1126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>This is a longevity test for SegmentMK compaction for {@code OAK-2849 Improve revision gc on SegmentMK}</p>  *  *<p>The test schedules a number of readers, writers, a compactor and holds some references for a certain time.  * All of which can be interactively modified through the accompanying  * {@link SegmentCompactionITMBean}, the  * {@link SegmentRevisionGC} and the  * {@link GCMonitorMBean}.</p>  *  *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>  * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}  *</p>  *  *<p>TODO Leverage longevity test support from OAK-2771 once we have it.</p>  */
+comment|/**  *<p>This is a longevity test for SegmentMK compaction for {@code OAK-2849 Improve revision gc on SegmentMK}</p>  *  *<p>The test schedules a number of readers, writers, a compactor and holds some references for a certain time.  * All of which can be interactively modified through the accompanying  * {@link SegmentCompactionITMBean}, the  * {@link SegmentRevisionGC} and the  *  *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>  * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}  *</p>  *  *<p>TODO Leverage longevity test support from OAK-2771 once we have it.</p>  */
 end_comment
 
 begin_class
@@ -1838,28 +1820,14 @@ argument_list|(
 name|fileStore
 argument_list|,
 name|gcOptions
+argument_list|,
+name|fileStoreGCMonitor
 argument_list|)
 argument_list|,
 operator|new
 name|ObjectName
 argument_list|(
 literal|"IT:TYPE=Segment Revision GC"
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|registrations
-operator|.
-name|add
-argument_list|(
-name|registerMBean
-argument_list|(
-name|fileStoreGCMonitor
-argument_list|,
-operator|new
-name|ObjectName
-argument_list|(
-literal|"IT:TYPE=GC Monitor"
 argument_list|)
 argument_list|)
 argument_list|)
