@@ -997,8 +997,7 @@ name|path
 operator|+
 literal|'['
 operator|+
-name|getEffective
-argument_list|()
+name|effective
 operator|+
 literal|']'
 expr_stmt|;
