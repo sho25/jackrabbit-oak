@@ -1813,6 +1813,8 @@ literal|"index"
 block|,
 literal|"className"
 block|,
+literal|"toString"
+block|,
 literal|"isDeep"
 block|,
 literal|"nodeTypeNames"
@@ -1876,6 +1878,10 @@ block|{
 name|SimpleType
 operator|.
 name|INTEGER
+block|,
+name|SimpleType
+operator|.
+name|STRING
 block|,
 name|SimpleType
 operator|.
@@ -2063,6 +2069,13 @@ operator|.
 name|eventListenerMBean
 operator|.
 name|getClassName
+argument_list|()
+block|,
+name|mbeans
+operator|.
+name|eventListenerMBean
+operator|.
+name|getToString
 argument_list|()
 block|,
 name|mbeans
