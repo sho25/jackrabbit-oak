@@ -1547,16 +1547,30 @@ argument_list|)
 else|:
 name|markStart
 decl_stmt|;
+name|sw
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Blob garbage collection completed in {}. Number of blobs deleted [{}] with max modification time of [{}]"
+literal|"Blob garbage collection completed in {} ({} ms). Number of blobs deleted [{}] with max modification time of [{}]"
 argument_list|,
 name|sw
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|sw
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
 argument_list|,
 name|deleteCount
 argument_list|,
