@@ -83,6 +83,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ExecutionException
 import|;
 end_import
@@ -324,6 +336,50 @@ name|CommitFailedException
 throws|,
 name|InterruptedException
 block|{
+comment|// using a latch to avoid having to rely on timing
+specifier|final
+name|CountDownLatch
+name|latch
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+name|CommitRateLimiter
+name|limiter
+init|=
+operator|new
+name|CommitRateLimiter
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|getBlockCommits
+parameter_list|()
+block|{
+comment|// this method is called in the 'try' loop, so it
+comment|// that InterruptedException will be converted
+comment|// to CommitFailedException as expected
+comment|// (sure, this is an implementation detail,
+comment|// but I don't see a good alternative here)
+name|latch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
+return|return
+name|super
+operator|.
+name|getBlockCommits
+argument_list|()
+return|;
+block|}
+block|}
+decl_stmt|;
 name|limiter
 operator|.
 name|blockCommits
@@ -354,12 +410,14 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|Thread
+comment|// wait forever to avoid timing problems
+comment|// (if the CommitRateLimiter is changed to not call
+comment|// getBlockCommits(), then this wouldn't work - but
+comment|// how could it not call getBlockCommits()?)
+name|latch
 operator|.
-name|sleep
-argument_list|(
-literal|1000
-argument_list|)
+name|await
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
