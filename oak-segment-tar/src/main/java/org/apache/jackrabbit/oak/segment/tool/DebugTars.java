@@ -351,7 +351,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -604,7 +604,7 @@ parameter_list|()
 block|{
 try|try
 init|(
-name|FileStore
+name|ReadOnlyFileStore
 name|store
 init|=
 name|openReadOnlyFileStore
@@ -636,7 +636,7 @@ specifier|private
 name|void
 name|debugTarFiles
 parameter_list|(
-name|FileStore
+name|ReadOnlyFileStore
 name|store
 parameter_list|)
 block|{
@@ -661,7 +661,7 @@ specifier|private
 name|void
 name|debugTarFile
 parameter_list|(
-name|FileStore
+name|ReadOnlyFileStore
 name|store
 parameter_list|,
 name|String

@@ -343,26 +343,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|FileStore
-operator|.
-name|ReadOnlyStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -609,15 +589,10 @@ name|unit
 argument_list|)
 return|;
 block|}
-comment|// FIXME OAK-4465: Remove the read-only concern from TarRevisions: this should be possible once
-comment|// the ReadOnlyStore is properly separated from the FileStore. See OAK-4450.
-comment|/**      * Create a new instance placing the journal log file into the passed      * {@code directory}.      * @param readOnly      safeguard for {@link ReadOnlyStore}: open the journal      *                      file in read only mode.      * @param directory     directory of the journal file      * @throws IOException      */
+comment|/**      * Create a new instance placing the journal log file into the passed      * {@code directory}.      * @param directory     directory of the journal file      * @throws IOException      */
 specifier|public
 name|TarRevisions
 parameter_list|(
-name|boolean
-name|readOnly
-parameter_list|,
 annotation|@
 name|Nonnull
 name|File
@@ -650,10 +625,6 @@ argument_list|,
 name|JOURNAL_FILE_NAME
 argument_list|)
 argument_list|,
-name|readOnly
-condition|?
-literal|"r"
-else|:
 literal|"rw"
 argument_list|)
 expr_stmt|;

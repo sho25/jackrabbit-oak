@@ -341,7 +341,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -457,7 +457,7 @@ parameter_list|()
 block|{
 try|try
 init|(
-name|FileStore
+name|ReadOnlyFileStore
 name|store
 init|=
 name|openReadOnlyFileStore
@@ -493,7 +493,7 @@ name|SegmentId
 argument_list|>
 name|getReferencedSegmentIds
 parameter_list|(
-name|FileStore
+name|ReadOnlyFileStore
 name|store
 parameter_list|,
 name|Segment
@@ -579,7 +579,7 @@ specifier|static
 name|void
 name|debugFileStore
 parameter_list|(
-name|FileStore
+name|ReadOnlyFileStore
 name|store
 parameter_list|)
 block|{

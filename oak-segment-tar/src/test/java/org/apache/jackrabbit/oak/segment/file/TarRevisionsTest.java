@@ -503,8 +503,6 @@ init|=
 operator|new
 name|TarRevisions
 argument_list|(
-literal|false
-argument_list|,
 name|folder
 operator|.
 name|getRoot

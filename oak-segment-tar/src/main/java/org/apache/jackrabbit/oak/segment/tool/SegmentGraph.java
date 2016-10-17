@@ -117,9 +117,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
-operator|.
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -356,7 +354,7 @@ parameter_list|()
 block|{
 try|try
 init|(
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|store
 init|=
 name|openReadOnlyFileStore

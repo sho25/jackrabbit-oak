@@ -475,9 +475,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
-operator|.
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -711,7 +709,7 @@ name|writeSegmentGraph
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|fileStore
 parameter_list|,
 annotation|@
@@ -1103,7 +1101,7 @@ name|parseSegmentGraph
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|fileStore
 parameter_list|,
 annotation|@
@@ -1172,7 +1170,7 @@ name|writeGCGraph
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|fileStore
 parameter_list|,
 annotation|@
@@ -1361,7 +1359,7 @@ parameter_list|(
 annotation|@
 name|Nonnull
 specifier|final
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|fileStore
 parameter_list|)
 throws|throws
@@ -1504,7 +1502,7 @@ parameter_list|(
 annotation|@
 name|Nonnull
 specifier|final
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|fileStore
 parameter_list|,
 annotation|@

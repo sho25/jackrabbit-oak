@@ -311,26 +311,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|FileStore
-operator|.
-name|ReadOnlyStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Rule
@@ -1508,7 +1488,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 comment|// second 1kB
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|ro
 init|=
 literal|null
@@ -1667,7 +1647,7 @@ argument_list|()
 expr_stmt|;
 try|try
 init|(
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|roStore
 init|=
 name|fileStoreBuilder

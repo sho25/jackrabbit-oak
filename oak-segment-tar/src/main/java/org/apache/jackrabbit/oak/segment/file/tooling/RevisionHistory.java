@@ -243,27 +243,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|FileStore
-operator|.
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -332,10 +312,10 @@ name|RevisionHistory
 block|{
 specifier|private
 specifier|final
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|store
 decl_stmt|;
-comment|/**      * Create a new instance for a {@link FileStore} in the given {@code directory}.      *      * @param directory      * @throws IOException      */
+comment|/**      * Create a new instance for a {@link ReadOnlyFileStore} in the given {@code directory}.      *      * @param directory      * @throws IOException      */
 specifier|public
 name|RevisionHistory
 parameter_list|(

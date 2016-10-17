@@ -143,7 +143,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|InvalidFileStoreVersionException
 import|;
 end_import
 
@@ -161,7 +161,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|InvalidFileStoreVersionException
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -383,7 +383,7 @@ parameter_list|()
 block|{
 try|try
 init|(
-name|FileStore
+name|ReadOnlyFileStore
 name|fs
 init|=
 name|newFileStore
@@ -422,7 +422,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
-name|FileStore
+name|ReadOnlyFileStore
 name|newFileStore
 parameter_list|()
 throws|throws

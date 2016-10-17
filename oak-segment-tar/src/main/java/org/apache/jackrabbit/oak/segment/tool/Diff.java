@@ -243,9 +243,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
-operator|.
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -669,7 +667,7 @@ return|return;
 block|}
 try|try
 init|(
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|store
 init|=
 name|fileStoreBuilder
@@ -1130,7 +1128,7 @@ specifier|private
 name|boolean
 name|diff
 parameter_list|(
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|store
 parameter_list|,
 name|RecordId

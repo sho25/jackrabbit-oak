@@ -359,9 +359,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
-operator|.
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -1000,7 +998,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|store
 init|=
 name|fileStoreBuilder
@@ -1124,7 +1122,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|store
 init|=
 name|fileStoreBuilder
@@ -1258,7 +1256,7 @@ block|{
 comment|// TODO Improve test coverage to non trivial cases with more than a single generation
 comment|// This is quite tricky as there is no easy way to construct a file store with
 comment|// a segment graphs having edges between generations (OAK-3348)
-name|ReadOnlyStore
+name|ReadOnlyFileStore
 name|store
 init|=
 name|fileStoreBuilder
