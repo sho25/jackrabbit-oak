@@ -565,17 +565,10 @@ name|Fixture
 operator|.
 name|SEGMENT_MEMORY_MAP
 block|}
-argument_list|,
-operator|new
-name|Fixture
-index|[]
-block|{
-name|Fixture
-operator|.
-name|SEGMENT_TAR
-block|}
 argument_list|)
 return|;
+comment|// TODO OAK-4944 enable fixture
+comment|// , new Fixture[] {Fixture.SEGMENT_TAR});
 block|}
 specifier|public
 name|RefreshOnGCTest
