@@ -35,6 +35,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|lang
@@ -469,6 +485,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|management
 operator|.
 name|openmbean
@@ -563,6 +589,34 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Suppliers
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -628,12 +682,24 @@ specifier|final
 name|int
 name|id
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|protected
 specifier|final
 name|String
 name|name
 decl_stmt|;
-comment|/**      * Create a new {@code ManagementOperation} of the given name. The name      * is an informal value attached to this instance.      *      * @param name  informal name      * @param task  task to execute for this operation      */
+annotation|@
+name|Nonnull
+specifier|private
+specifier|final
+name|Supplier
+argument_list|<
+name|String
+argument_list|>
+name|statusMessage
+decl_stmt|;
+comment|/**      * Create a new {@code ManagementOperation} of the given name. The {@code name}      * is an informal value attached to this instance.      *      * @param name  informal name      * @param task  task to execute for this operation      */
 specifier|public
 specifier|static
 parameter_list|<
@@ -645,9 +711,13 @@ name|R
 argument_list|>
 name|newManagementOperation
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Callable
 argument_list|<
 name|R
@@ -664,11 +734,69 @@ argument_list|>
 argument_list|(
 name|name
 argument_list|,
+name|Suppliers
+operator|.
+name|ofInstance
+argument_list|(
+literal|""
+argument_list|)
+argument_list|,
+name|task
+argument_list|)
+return|;
+block|}
+comment|/**      * Create a new {@code ManagementOperation} of the given name. The {@code name}      * is an informal value attached to this instance.      *      * @param name           informal name      * @param statusMessage  an informal status message describing the status of the background      *                       operation at the time of invocation.      * @param task           task to execute for this operation      */
+specifier|public
+specifier|static
+parameter_list|<
+name|R
+parameter_list|>
+name|ManagementOperation
+argument_list|<
+name|R
+argument_list|>
+name|newManagementOperation
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Supplier
+argument_list|<
+name|String
+argument_list|>
+name|statusMessage
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Callable
+argument_list|<
+name|R
+argument_list|>
+name|task
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ManagementOperation
+argument_list|<
+name|R
+argument_list|>
+argument_list|(
+name|name
+argument_list|,
+name|statusMessage
+argument_list|,
 name|task
 argument_list|)
 return|;
 block|}
 comment|/**      * An operation that is already done with the given {@code value}.      *      * @param name   name of the operation      * @param result result returned by the operation      * @return  a {@code ManagementOperation} instance that is already done.      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -695,7 +823,14 @@ argument_list|<
 name|R
 argument_list|>
 argument_list|(
-literal|"not started"
+literal|"done"
+argument_list|,
+name|Suppliers
+operator|.
+name|ofInstance
+argument_list|(
+literal|""
+argument_list|)
 argument_list|,
 operator|new
 name|Callable
@@ -769,22 +904,32 @@ name|none
 argument_list|(
 name|id
 argument_list|,
-name|name
-operator|+
-literal|" not started"
+literal|"NA"
 argument_list|)
 return|;
 block|}
 block|}
 return|;
 block|}
-comment|/**      * Create a new {@code ManagementOperation} of the given name. The name      * is an informal value attached to this instance.      *      * @param name  informal name      * @param task  task to execute for this operation      */
+comment|/**      * Create a new {@code ManagementOperation} of the given name. The {@code name}      * is an informal value attached to this instance.      * @param name           informal name      * @param statusMessage  an informal status message describing the status of the background      *                       operation at the time of invocation.      * @param task           task to execute for this operation      */
 specifier|private
 name|ManagementOperation
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
+name|Supplier
+argument_list|<
+name|String
+argument_list|>
+name|statusMessage
+parameter_list|,
+annotation|@
+name|Nonnull
 name|Callable
 argument_list|<
 name|R
@@ -810,7 +955,19 @@ name|this
 operator|.
 name|name
 operator|=
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|statusMessage
+operator|=
+name|checkNotNull
+argument_list|(
+name|statusMessage
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Each instance of a {@code ManagementOperation} has an unique id      * associated with it. This id is returned as a part of its      * {@link #getStatus() status}      *      * @return  id of this operation      */
@@ -824,6 +981,8 @@ name|id
 return|;
 block|}
 comment|/**      * Informal name      * @return  name of this operation      */
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getName
@@ -834,6 +993,8 @@ name|name
 return|;
 block|}
 comment|/**      * The {@link ManagementOperation.Status status} of this operation:      *<ul>      *<li>{@link Status#running(String) running} if the operation is currently      *     being executed.</li>      *<li>{@link Status#succeeded(String) succeeded} if the operation has terminated      *     without errors.</li>      *<li>{@link Status#failed(String) failed} if the operation has been cancelled,      *     its thread has been interrupted during execution or the operation has failed      *     with an exception.</li>      *</ul>      *      * @return  the current status of this operation      */
+annotation|@
+name|Nonnull
 specifier|public
 name|Status
 name|getStatus
@@ -865,6 +1026,12 @@ condition|)
 block|{
 try|try
 block|{
+name|R
+name|result
+init|=
+name|get
+argument_list|()
+decl_stmt|;
 return|return
 name|succeeded
 argument_list|(
@@ -872,10 +1039,19 @@ name|id
 argument_list|,
 name|name
 operator|+
-literal|" succeeded: "
+literal|" succeeded"
 operator|+
-name|get
-argument_list|()
+operator|(
+name|result
+operator|!=
+literal|null
+condition|?
+literal|": "
+operator|+
+name|result
+else|:
+literal|""
+operator|)
 argument_list|)
 return|;
 block|}
@@ -898,7 +1074,7 @@ name|id
 argument_list|,
 name|name
 operator|+
-literal|" status unknown: "
+literal|" interrupted: "
 operator|+
 name|e
 operator|.
@@ -917,9 +1093,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
+literal|"{} failed"
+argument_list|,
 name|name
-operator|+
-literal|" failed"
 argument_list|,
 name|e
 operator|.
@@ -956,7 +1132,12 @@ name|id
 argument_list|,
 name|name
 operator|+
-literal|" running"
+literal|" running: "
+operator|+
+name|statusMessage
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}
