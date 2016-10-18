@@ -948,6 +948,7 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
+specifier|public
 specifier|static
 name|String
 name|readBlobId

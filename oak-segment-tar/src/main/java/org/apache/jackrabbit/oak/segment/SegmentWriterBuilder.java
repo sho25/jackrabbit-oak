@@ -410,11 +410,6 @@ name|store
 argument_list|,
 name|pooled
 argument_list|)
-argument_list|,
-name|store
-operator|.
-name|getBinaryReferenceConsumer
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -458,11 +453,6 @@ name|store
 argument_list|,
 name|pooled
 argument_list|)
-argument_list|,
-name|store
-operator|.
-name|getBinaryReferenceConsumer
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -506,11 +496,6 @@ name|store
 argument_list|,
 name|pooled
 argument_list|)
-argument_list|,
-name|store
-operator|.
-name|getBinaryReferenceConsumer
-argument_list|()
 argument_list|)
 return|;
 block|}

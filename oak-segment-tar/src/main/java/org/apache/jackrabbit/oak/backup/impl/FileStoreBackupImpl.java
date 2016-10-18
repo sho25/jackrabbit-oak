@@ -531,11 +531,6 @@ name|Default
 argument_list|()
 argument_list|,
 name|bufferWriter
-argument_list|,
-name|backup
-operator|.
-name|getBinaryReferenceConsumer
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Compactor

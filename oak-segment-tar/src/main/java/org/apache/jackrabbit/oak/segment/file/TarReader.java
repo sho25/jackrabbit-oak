@@ -475,20 +475,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Function
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Predicate
 import|;
 end_import
@@ -3831,7 +3817,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Collect the references of those blobs that are reachable from any segment with a      * generation at or above {@code minGeneration}.      * @param collector      * @param referenceDecoder      * @param minGeneration      */
+comment|/**      * Collect the references of those blobs that are reachable from any segment with a      * generation at or above {@code minGeneration}.      * @param collector      * @param minGeneration      */
 name|void
 name|collectBlobReferences
 parameter_list|(
@@ -3839,16 +3825,6 @@ annotation|@
 name|Nonnull
 name|ReferenceCollector
 name|collector
-parameter_list|,
-annotation|@
-name|Nonnull
-name|Function
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|referenceDecoder
 parameter_list|,
 name|int
 name|minGeneration
@@ -3947,12 +3923,7 @@ name|collector
 operator|.
 name|addReference
 argument_list|(
-name|referenceDecoder
-operator|.
-name|apply
-argument_list|(
 name|reference
-argument_list|)
 argument_list|,
 literal|null
 argument_list|)
