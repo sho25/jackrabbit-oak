@@ -105,6 +105,24 @@ name|segment
 operator|.
 name|RecordType
 operator|.
+name|BLOB_ID
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|RecordType
+operator|.
 name|BLOCK
 import|;
 end_import
@@ -1764,7 +1782,7 @@ name|id
 return|;
 block|}
 block|}
-comment|/**      * Large Blob record writer. A blob ID is considered large if the length of      * its binary representation is equal to or greater than      * {@code Segment#BLOB_ID_SMALL_LIMIT}.      *      * @see Segment#BLOB_ID_SMALL_LIMIT      * @see RecordType#VALUE      */
+comment|/**      * Large Blob record writer. A blob ID is considered large if the length of      * its binary representation is equal to or greater than      * {@code Segment#BLOB_ID_SMALL_LIMIT}.      *      * @see Segment#BLOB_ID_SMALL_LIMIT      * @see RecordType#BLOB_ID      */
 specifier|private
 specifier|static
 class|class
@@ -1786,7 +1804,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|VALUE
+name|BLOB_ID
 argument_list|,
 literal|1
 argument_list|,
@@ -1838,7 +1856,7 @@ name|id
 return|;
 block|}
 block|}
-comment|/**      * Small Blob record writer. A blob ID is considered small if the length of      * its binary representation is less than {@code Segment#BLOB_ID_SMALL_LIMIT}.       * @see Segment#BLOB_ID_SMALL_LIMIT      * @see RecordType#VALUE      */
+comment|/**      * Small Blob record writer. A blob ID is considered small if the length of      * its binary representation is less than {@code Segment#BLOB_ID_SMALL_LIMIT}.       * @see Segment#BLOB_ID_SMALL_LIMIT      * @see RecordType#BLOB_ID      */
 specifier|private
 specifier|static
 class|class
@@ -1862,7 +1880,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|VALUE
+name|BLOB_ID
 argument_list|,
 literal|2
 operator|+

@@ -49,7 +49,10 @@ name|TEMPLATE
 block|,
 comment|/**      * A JCR node, which contains a list of record ids:      *<ul>      *<li>the record id of the template</li>      *<li>depending on the template, the record id of the map of the ids of the      * child node name(s) and child node record id(s), or if there is just one      * child node, the child node record id</li>      *<li>the record ids of the property values (for multi-valued property a      * pointer to the list record)</li>      *</ul>      */
 name|NODE
-block|}
+block|,
+comment|/**      * A reference to an external binary object.      */
+name|BLOB_ID
+block|,  }
 end_enum
 
 end_unit
