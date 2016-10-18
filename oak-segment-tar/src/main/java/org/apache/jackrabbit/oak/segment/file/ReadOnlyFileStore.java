@@ -538,6 +538,8 @@ argument_list|,
 name|memoryMapping
 argument_list|,
 name|recover
+argument_list|,
+name|recovery
 argument_list|)
 argument_list|)
 expr_stmt|;
