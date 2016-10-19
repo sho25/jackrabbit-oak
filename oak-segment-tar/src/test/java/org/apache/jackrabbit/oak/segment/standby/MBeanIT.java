@@ -232,7 +232,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|MBeanTest
+name|MBeanIT
 extends|extends
 name|TestBase
 block|{

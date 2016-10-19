@@ -228,7 +228,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|BrokenNetworkTest
+name|BrokenNetworkIT
 extends|extends
 name|TestBase
 block|{

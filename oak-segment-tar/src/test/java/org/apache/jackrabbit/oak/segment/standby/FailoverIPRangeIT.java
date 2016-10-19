@@ -228,7 +228,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|FailoverIPRangeTest
+name|FailoverIPRangeIT
 extends|extends
 name|TestBase
 block|{
