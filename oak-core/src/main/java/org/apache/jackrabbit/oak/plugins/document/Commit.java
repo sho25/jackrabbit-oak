@@ -197,13 +197,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|commons
 operator|.
-name|document
-operator|.
-name|util
-operator|.
-name|Utils
+name|PathUtils
 import|;
 end_import
 
@@ -217,9 +213,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|plugins
 operator|.
-name|PathUtils
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
 import|;
 end_import
 
@@ -1783,9 +1783,7 @@ block|}
 comment|//Ignore setting children path for bundled nodes
 if|if
 condition|(
-name|bundledNodes
-operator|.
-name|contains
+name|isBundled
 argument_list|(
 name|parentPath
 argument_list|)
@@ -3159,6 +3157,15 @@ argument_list|)
 condition|)
 block|{
 comment|// track intermediate node and root
+if|if
+condition|(
+operator|!
+name|isBundled
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
 name|tracker
 operator|.
 name|track
@@ -3166,6 +3173,7 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|nodeStore
 operator|.
@@ -3339,6 +3347,23 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|private
+name|boolean
+name|isBundled
+parameter_list|(
+name|String
+name|parentPath
+parameter_list|)
+block|{
+return|return
+name|bundledNodes
+operator|.
+name|contains
+argument_list|(
+name|parentPath
+argument_list|)
+return|;
 block|}
 specifier|private
 specifier|static
