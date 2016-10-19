@@ -330,7 +330,10 @@ argument_list|)
 argument_list|,
 name|store
 operator|.
-name|getBundlingHandler
+name|getBundlingConfigHandler
+argument_list|()
+operator|.
+name|newBundlingHandler
 argument_list|()
 argument_list|,
 operator|new

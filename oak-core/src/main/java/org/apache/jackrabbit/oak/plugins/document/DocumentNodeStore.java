@@ -3342,6 +3342,8 @@ argument_list|(
 literal|"Error closing bundlingConfigHandler"
 argument_list|,
 name|bundlingConfigHandler
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -5399,18 +5401,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|result
-return|;
-block|}
-specifier|public
-name|BundlingHandler
-name|getBundlingHandler
-parameter_list|()
-block|{
-return|return
-name|bundlingConfigHandler
-operator|.
-name|newBundlingHandler
-argument_list|()
 return|;
 block|}
 specifier|public
