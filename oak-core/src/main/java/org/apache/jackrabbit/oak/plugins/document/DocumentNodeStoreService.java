@@ -2356,32 +2356,32 @@ specifier|private
 specifier|static
 specifier|final
 name|boolean
-name|DEFAULT_BUNDLING_ENABLED
+name|DEFAULT_BUNDLING_DISABLED
 init|=
-literal|true
+literal|false
 decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
 name|boolValue
 operator|=
-name|DEFAULT_BUNDLING_ENABLED
+name|DEFAULT_BUNDLING_DISABLED
 argument_list|,
 name|label
 operator|=
-literal|"Bundling Enabled"
+literal|"Bundling Disabled"
 argument_list|,
 name|description
 operator|=
-literal|"Boolean value indicating that Node bundling is enabled"
+literal|"Boolean value indicating that Node bundling is disabled"
 argument_list|)
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
-name|PROP_BUNDLING_ENABLED
+name|PROP_BUNDLING_DISABLED
 init|=
-literal|"bundlingEnabled"
+literal|"bundlingDisabled"
 decl_stmt|;
 specifier|private
 name|DocumentStoreType
@@ -2779,16 +2779,16 @@ name|DEFAULT_CACHE_STACK_MOVE_DISTANCE
 argument_list|)
 decl_stmt|;
 name|boolean
-name|bundlingEnabled
+name|bundlingDisabled
 init|=
 name|toBoolean
 argument_list|(
 name|prop
 argument_list|(
-name|PROP_BUNDLING_ENABLED
+name|PROP_BUNDLING_DISABLED
 argument_list|)
 argument_list|,
-name|DEFAULT_BUNDLING_ENABLED
+name|DEFAULT_BUNDLING_DISABLED
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -2848,9 +2848,9 @@ argument_list|(
 name|cacheStackMoveDistance
 argument_list|)
 operator|.
-name|setBundlingEnabled
+name|setBundlingDisabled
 argument_list|(
-name|bundlingEnabled
+name|bundlingDisabled
 argument_list|)
 operator|.
 name|setLeaseCheck
@@ -4741,9 +4741,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|mkBuilder
 operator|.
-name|isBundlingEnabled
+name|isBundlingDisabled
 argument_list|()
 condition|)
 block|{
