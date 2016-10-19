@@ -536,7 +536,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|setChildrenFlagOnAdd
+name|setOrTouchChildrenFlag
 argument_list|(
 name|child
 argument_list|)
@@ -664,6 +664,11 @@ name|before
 argument_list|)
 expr_stmt|;
 block|}
+name|setOrTouchChildrenFlag
+argument_list|(
+name|child
+argument_list|)
+expr_stmt|;
 return|return
 name|MISSING_NODE
 operator|.
@@ -795,7 +800,7 @@ block|}
 block|}
 specifier|private
 name|void
-name|setChildrenFlagOnAdd
+name|setOrTouchChildrenFlag
 parameter_list|(
 name|BundlingHandler
 name|child

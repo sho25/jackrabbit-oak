@@ -194,6 +194,15 @@ specifier|public
 class|class
 name|DocumentBundlor
 block|{
+comment|/**      * Prefix used for various meta properties used for bundling      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BUNDLOR_META_PROP_PREFIX
+init|=
+literal|":doc-"
+decl_stmt|;
 comment|/**      * Hidden property to store the pattern as part of NodeState      * TODO - Also store the NodeType      */
 specifier|public
 specifier|static
