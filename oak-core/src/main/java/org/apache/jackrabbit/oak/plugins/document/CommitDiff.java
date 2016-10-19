@@ -580,7 +580,9 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-comment|//TODO [bundling] Handle change of primaryType
+comment|//TODO [bundling] Handle change of primaryType. Current approach would work
+comment|//but if bundling was enabled for previous nodetype its "side effect"
+comment|//would still impact even though new nodetype does not have bundling enabled
 name|BundlingHandler
 name|child
 init|=
@@ -649,7 +651,6 @@ name|isBundlingRoot
 argument_list|()
 condition|)
 block|{
-comment|//TODO [bundling] Handle delete
 name|commit
 operator|.
 name|removeNode

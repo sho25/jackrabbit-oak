@@ -843,6 +843,8 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
+comment|//In deletion never touch child status related meta props
+comment|//as they are not to be changed once set
 if|if
 condition|(
 operator|!
