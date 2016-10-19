@@ -2364,7 +2364,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Traversed {} nodes ({} index entries) using index {} with filter {}"
+literal|"Index-Traversed {} nodes ({} index entries) using index {} with filter {}"
 argument_list|,
 name|readCount
 argument_list|,

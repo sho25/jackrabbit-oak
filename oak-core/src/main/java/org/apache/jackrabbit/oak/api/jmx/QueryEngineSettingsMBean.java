@@ -55,6 +55,19 @@ name|long
 name|limitReads
 parameter_list|)
 function_decl|;
+comment|/**      * Whether queries that don't use an index will fail (throw an exception).      * The default is false.      *       * @return true if they fail      */
+name|boolean
+name|getFailTraversal
+parameter_list|()
+function_decl|;
+comment|/**      * Set whether queries that don't use an index will fail (throw an exception).      *       * @param failTraversal the new value for this setting      */
+name|void
+name|setFailTraversal
+parameter_list|(
+name|boolean
+name|failTraversal
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

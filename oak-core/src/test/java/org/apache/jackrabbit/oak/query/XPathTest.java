@@ -131,6 +131,95 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|queryOptions
+parameter_list|()
+throws|throws
+name|ParseException
+block|{
+name|verify
+argument_list|(
+literal|"/jcr:root/content//*[@a] order by @c option(traversal fail)"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [a] is not null "
+operator|+
+literal|"and isdescendantnode(a, '/content') "
+operator|+
+literal|"order by [c] option(traversal FAIL) "
+operator|+
+literal|"/* xpath: /jcr:root/content//*[@a] "
+operator|+
+literal|"order by @c "
+operator|+
+literal|"option(traversal fail) */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"//*[@a or @b] order by @c option(traversal warn)"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [a] is not null "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [b] is not null "
+operator|+
+literal|"order by [c] option(traversal WARN) "
+operator|+
+literal|"/* xpath: //*[@a or @b] "
+operator|+
+literal|"order by @c "
+operator|+
+literal|"option(traversal warn) */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"/jcr:root/(content|libs)//*[@a] order by @c option(traversal ok)"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [a] is not null "
+operator|+
+literal|"and isdescendantnode(a, '/content') "
+operator|+
+literal|"/* xpath: /jcr:root/content//*[@a] "
+operator|+
+literal|"order by @c option(traversal ok) */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [a] is not null "
+operator|+
+literal|"and isdescendantnode(a, '/libs') "
+operator|+
+literal|"/* xpath: /jcr:root/libs//*[@a] "
+operator|+
+literal|"order by @c option(traversal ok) */ "
+operator|+
+literal|"order by [c] "
+operator|+
+literal|"option(traversal OK)"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|test
 parameter_list|()
 throws|throws
@@ -432,6 +521,17 @@ argument_list|(
 literal|" order by "
 argument_list|,
 literal|"\norder by "
+argument_list|)
+expr_stmt|;
+name|sql
+operator|=
+name|sql
+operator|.
+name|replaceAll
+argument_list|(
+literal|" option\\("
+argument_list|,
+literal|"\noption\\("
 argument_list|)
 expr_stmt|;
 name|sql

@@ -368,6 +368,14 @@ name|boolean
 name|containsUnfilteredFullTextCondition
 parameter_list|()
 function_decl|;
+comment|/**      * Set the query option to be used for this query.      *       * @param options the options      */
+name|void
+name|setQueryOptions
+parameter_list|(
+name|QueryOptions
+name|options
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
