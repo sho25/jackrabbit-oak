@@ -49,20 +49,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|ImmutableList
@@ -146,6 +132,22 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
 import|;
 end_import
 
@@ -265,8 +267,6 @@ name|NodeState
 name|nodeState
 parameter_list|)
 block|{
-name|Preconditions
-operator|.
 name|checkArgument
 argument_list|(
 name|nodeState
@@ -359,8 +359,6 @@ name|PropertyState
 name|prop
 parameter_list|)
 block|{
-name|Preconditions
-operator|.
 name|checkArgument
 argument_list|(
 name|META_PROP_PATTERN
@@ -398,6 +396,17 @@ argument_list|>
 name|includes
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|includes
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|,
+literal|"Include list cannot be empty"
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|includes

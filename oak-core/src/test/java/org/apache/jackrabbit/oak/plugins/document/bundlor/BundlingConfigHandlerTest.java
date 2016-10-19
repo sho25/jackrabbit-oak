@@ -47,6 +47,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|plugins
 operator|.
 name|memory
@@ -134,6 +150,18 @@ operator|.
 name|MoreExecutors
 operator|.
 name|sameThreadExecutor
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|singletonList
 import|;
 end_import
 
@@ -327,7 +355,14 @@ name|DocumentBundlor
 operator|.
 name|PROP_PATTERN
 argument_list|,
+name|singletonList
+argument_list|(
 literal|"metadata"
+argument_list|)
+argument_list|,
+name|Type
+operator|.
+name|STRINGS
 argument_list|)
 expr_stmt|;
 name|nodeStore
