@@ -743,6 +743,11 @@ name|bundlingHandler
 operator|.
 name|getNodeFullPath
 argument_list|()
+argument_list|,
+name|bundlingHandler
+operator|.
+name|getRootBundlePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
