@@ -685,6 +685,7 @@ name|DocumentNodeStore
 name|store
 decl_stmt|;
 specifier|private
+specifier|final
 name|BundlingContext
 name|bundlingContext
 decl_stmt|;
@@ -939,8 +940,6 @@ name|this
 operator|.
 name|hasChildren
 operator|=
-name|this
-operator|.
 name|bundlingContext
 operator|.
 name|hasChildren
