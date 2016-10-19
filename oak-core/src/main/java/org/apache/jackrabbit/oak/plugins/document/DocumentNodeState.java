@@ -1144,6 +1144,14 @@ parameter_list|()
 block|{
 comment|//Filter out the meta properties related to bundling from
 comment|//generic listing of props
+if|if
+condition|(
+name|bundlingContext
+operator|.
+name|isBundled
+argument_list|()
+condition|)
+block|{
 return|return
 name|Iterables
 operator|.
@@ -1158,6 +1166,13 @@ name|BundlorUtils
 operator|.
 name|NOT_BUNDLOR_PROPS
 argument_list|)
+return|;
+block|}
+return|return
+name|properties
+operator|.
+name|values
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -1476,6 +1491,14 @@ argument_list|>
 name|iterator
 parameter_list|()
 block|{
+if|if
+condition|(
+name|bundlingContext
+operator|.
+name|isBundled
+argument_list|()
+condition|)
+block|{
 comment|//If all the children are bundled
 if|if
 condition|(
@@ -1502,6 +1525,12 @@ operator|new
 name|ChildNodeEntryIterator
 argument_list|()
 argument_list|)
+return|;
+block|}
+return|return
+operator|new
+name|ChildNodeEntryIterator
+argument_list|()
 return|;
 block|}
 block|}
@@ -4078,9 +4107,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|matcher
-operator|.
-name|isMatch
+name|isBundled
 argument_list|()
 condition|)
 block|{
@@ -4115,9 +4142,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|matcher
-operator|.
-name|isMatch
+name|isBundled
 argument_list|()
 condition|)
 block|{
@@ -4148,9 +4173,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|matcher
-operator|.
-name|isMatch
+name|isBundled
 argument_list|()
 condition|)
 block|{

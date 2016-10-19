@@ -221,7 +221,10 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|registry
+argument_list|)
 argument_list|,
 name|BundlingContext
 operator|.
@@ -253,10 +256,7 @@ name|this
 operator|.
 name|registry
 operator|=
-name|checkNotNull
-argument_list|(
 name|registry
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
