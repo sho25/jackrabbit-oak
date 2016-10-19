@@ -464,11 +464,33 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+try|try
+block|{
 name|t
 operator|.
 name|join
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+comment|// once in a while, we get a spurious
+comment|// wakeup in the CommitRateLimiter,
+comment|// so that the Thresd.interrupt() above
+comment|// will reach t.join().
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+block|}
 name|assertTrue
 argument_list|(
 name|Thread
