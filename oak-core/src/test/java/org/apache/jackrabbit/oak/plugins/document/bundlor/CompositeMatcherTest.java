@@ -137,7 +137,7 @@ argument_list|()
 argument_list|,
 name|Matcher
 operator|.
-name|FAILED
+name|NON_MATCHING
 argument_list|)
 argument_list|)
 expr_stmt|;

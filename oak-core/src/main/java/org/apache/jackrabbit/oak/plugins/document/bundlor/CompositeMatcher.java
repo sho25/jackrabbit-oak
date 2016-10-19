@@ -101,7 +101,7 @@ case|:
 return|return
 name|Matcher
 operator|.
-name|FAILED
+name|NON_MATCHING
 return|;
 case|case
 literal|1

@@ -27,7 +27,7 @@ interface|interface
 name|Matcher
 block|{
 name|Matcher
-name|FAILED
+name|NON_MATCHING
 init|=
 operator|new
 name|Matcher
@@ -44,7 +44,7 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|FAILED
+name|NON_MATCHING
 return|;
 block|}
 annotation|@

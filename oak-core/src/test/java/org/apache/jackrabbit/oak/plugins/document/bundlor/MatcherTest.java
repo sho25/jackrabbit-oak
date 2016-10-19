@@ -61,7 +61,7 @@ name|assertFalse
 argument_list|(
 name|Matcher
 operator|.
-name|FAILED
+name|NON_MATCHING
 operator|.
 name|isMatch
 argument_list|()
@@ -71,7 +71,7 @@ name|assertFalse
 argument_list|(
 name|Matcher
 operator|.
-name|FAILED
+name|NON_MATCHING
 operator|.
 name|next
 argument_list|(
@@ -101,7 +101,7 @@ name|Exception
 block|{
 name|Matcher
 operator|.
-name|FAILED
+name|NON_MATCHING
 operator|.
 name|getMatchedPath
 argument_list|()

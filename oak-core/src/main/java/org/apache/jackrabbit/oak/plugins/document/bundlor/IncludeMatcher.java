@@ -213,14 +213,14 @@ block|{
 return|return
 name|Matcher
 operator|.
-name|FAILED
+name|NON_MATCHING
 return|;
 block|}
 block|}
 return|return
 name|Matcher
 operator|.
-name|FAILED
+name|NON_MATCHING
 return|;
 block|}
 annotation|@

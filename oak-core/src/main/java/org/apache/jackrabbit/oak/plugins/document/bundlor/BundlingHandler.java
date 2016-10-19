@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -482,6 +472,7 @@ argument_list|()
 condition|)
 block|{
 comment|//TODO Add meta prop for bundled child node
+comment|//TODO Delete should nullify all properties
 name|childContext
 operator|=
 name|createChildContext
@@ -735,7 +726,7 @@ literal|""
 argument_list|,
 name|Matcher
 operator|.
-name|FAILED
+name|NON_MATCHING
 argument_list|)
 decl_stmt|;
 specifier|final
