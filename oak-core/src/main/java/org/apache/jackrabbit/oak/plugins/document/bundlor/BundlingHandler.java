@@ -301,6 +301,33 @@ else|:
 name|propertyName
 return|;
 block|}
+comment|/**      * Returns true if and only if current node is bundled in another node      */
+specifier|public
+name|boolean
+name|isBundledNode
+parameter_list|()
+block|{
+return|return
+name|ctx
+operator|.
+name|matcher
+operator|.
+name|depth
+argument_list|()
+operator|>
+literal|0
+return|;
+block|}
+comment|/**      * Returns absolute path of the current node      */
+specifier|public
+name|String
+name|getNodeFullPath
+parameter_list|()
+block|{
+return|return
+name|path
+return|;
+block|}
 specifier|public
 name|Set
 argument_list|<
