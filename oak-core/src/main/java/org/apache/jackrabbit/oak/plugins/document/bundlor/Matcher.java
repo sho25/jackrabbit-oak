@@ -73,6 +73,17 @@ literal|"No matching path for non matching matcher"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|depth
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
 block|}
 decl_stmt|;
 comment|/**      * Returns a matcher for given child node name based on current state      *      * @param name child node name      * @return child matcher      */
@@ -91,6 +102,11 @@ function_decl|;
 comment|/**      * Relative node path from the bundling root if      * there was a match      */
 name|String
 name|getMatchedPath
+parameter_list|()
+function_decl|;
+comment|/**      * Matcher depth. For match done for 'x/y' depth is 2      */
+name|int
+name|depth
 parameter_list|()
 function_decl|;
 block|}

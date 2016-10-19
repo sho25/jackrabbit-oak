@@ -263,6 +263,25 @@ name|getMatchedPath
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|depth
+parameter_list|()
+block|{
+return|return
+name|matchers
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|depth
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
