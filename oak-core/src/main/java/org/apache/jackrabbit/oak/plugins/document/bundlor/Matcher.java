@@ -84,6 +84,17 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"NON_MATCHING"
+return|;
+block|}
 block|}
 decl_stmt|;
 comment|/**      * Returns a matcher for given child node name based on current state      *      * @param name child node name      * @return child matcher      */
