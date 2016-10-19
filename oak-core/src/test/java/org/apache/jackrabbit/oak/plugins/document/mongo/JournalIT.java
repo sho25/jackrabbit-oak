@@ -1334,6 +1334,11 @@ argument_list|(
 name|asyncDelay
 argument_list|)
 operator|.
+name|setBundlingDisabled
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|open
 argument_list|()
 argument_list|)

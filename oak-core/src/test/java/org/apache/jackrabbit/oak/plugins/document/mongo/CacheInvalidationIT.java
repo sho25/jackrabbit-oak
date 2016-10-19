@@ -1125,6 +1125,11 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
+name|setBundlingDisabled
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|setLeaseCheck
 argument_list|(
 literal|false
