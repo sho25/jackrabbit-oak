@@ -2206,6 +2206,15 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|revisions
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 name|revisions
 operator|.
 name|flush
