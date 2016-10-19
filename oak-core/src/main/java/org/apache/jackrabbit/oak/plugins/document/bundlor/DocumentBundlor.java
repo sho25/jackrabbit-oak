@@ -201,6 +201,15 @@ name|META_PROP_PATTERN
 init|=
 literal|":pattern"
 decl_stmt|;
+comment|/**      * Hidden property name used as suffix for relative node path      * to indicate presence of that node. So for a relative node 'jcr:content'      * the parent node must have a property 'jcr:content/:self      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|META_PROP_NODE
+init|=
+literal|":self"
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -237,7 +246,7 @@ argument_list|(
 name|PROP_PATTERN
 argument_list|)
 argument_list|,
-literal|"NodeStated [%s] does not have required "
+literal|"NodeState [%s] does not have required "
 operator|+
 literal|"property [%s]"
 argument_list|,
