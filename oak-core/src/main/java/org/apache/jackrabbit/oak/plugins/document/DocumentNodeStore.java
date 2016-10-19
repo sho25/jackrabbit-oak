@@ -5361,7 +5361,7 @@ return|;
 block|}
 specifier|public
 name|BundlingHandler
-name|getBundlingRoot
+name|getBundlingHandler
 parameter_list|()
 block|{
 comment|//TODO Move this to observor based
