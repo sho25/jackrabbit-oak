@@ -192,14 +192,14 @@ specifier|public
 class|class
 name|DocumentBundlor
 block|{
-comment|/**      * Hidden property to store the pattern as part of NodeState      */
+comment|/**      * Hidden property to store the pattern as part of NodeState      * TODO - Also store the NodeType      */
 specifier|public
 specifier|static
 specifier|final
 name|String
 name|META_PROP_PATTERN
 init|=
-literal|":pattern"
+literal|":doc-pattern"
 decl_stmt|;
 comment|/**      * Hidden property name used as suffix for relative node path      * to indicate presence of that node. So for a relative node 'jcr:content'      * the parent node must have a property 'jcr:content/:self      */
 specifier|public
@@ -208,7 +208,37 @@ specifier|final
 name|String
 name|META_PROP_NODE
 init|=
-literal|":self"
+literal|":doc-self"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|HAS_CHILD_PROP_PREFIX
+init|=
+literal|":doc-has-child-"
+decl_stmt|;
+comment|/**      * Hidden property name having boolean value indicating that      * current node has children which are bundled      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|META_PROP_BUNDLED_CHILD
+init|=
+name|HAS_CHILD_PROP_PREFIX
+operator|+
+literal|"bundled"
+decl_stmt|;
+comment|/**      * Hidden property name having boolean value indicating that      * current node has children which are not bundled      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|META_PROP_NON_BUNDLED_CHILD
+init|=
+name|HAS_CHILD_PROP_PREFIX
+operator|+
+literal|"non-bundled"
 decl_stmt|;
 specifier|public
 specifier|static

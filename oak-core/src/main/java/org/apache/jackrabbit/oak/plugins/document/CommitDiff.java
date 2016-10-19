@@ -141,6 +141,26 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|bundlor
+operator|.
+name|DocumentBundlor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -220,6 +240,26 @@ operator|.
 name|EmptyNodeState
 operator|.
 name|MISSING_NODE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|PropertyStates
+operator|.
+name|createProperty
 import|;
 end_import
 
@@ -467,7 +507,6 @@ name|isBundlingRoot
 argument_list|()
 condition|)
 block|{
-comment|//TODO Handle case for leaf node optimization
 name|commit
 operator|.
 name|addNode
@@ -494,6 +533,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|setChildrenFlagOnAdd
+argument_list|(
+name|child
+argument_list|)
+expr_stmt|;
 return|return
 name|after
 operator|.
@@ -736,6 +780,97 @@ name|propName
 argument_list|)
 argument_list|,
 literal|null
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|private
+name|void
+name|setChildrenFlagOnAdd
+parameter_list|(
+name|BundlingHandler
+name|child
+parameter_list|)
+block|{
+name|NodeState
+name|currentNode
+init|=
+name|bundlingHandler
+operator|.
+name|getNodeState
+argument_list|()
+decl_stmt|;
+comment|//Add hasChildren marker for bundling case
+name|String
+name|propName
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|child
+operator|.
+name|isBundledNode
+argument_list|()
+condition|)
+block|{
+comment|//1. Child is a bundled node. In that case current node would be part
+comment|//   same NodeDocument in which the child would be saved
+name|propName
+operator|=
+name|DocumentBundlor
+operator|.
+name|META_PROP_BUNDLED_CHILD
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|bundlingHandler
+operator|.
+name|isBundledNode
+argument_list|()
+condition|)
+block|{
+comment|//2. Child is a non bundled node but current node was bundled. This would
+comment|//   be the case where child node is not covered by bundling pattern. In
+comment|//   that case also add marker to current node
+comment|//   For case when current node is bundled  but is bundling root
+comment|//   this info is already captured in _hasChildren flag
+name|propName
+operator|=
+name|DocumentBundlor
+operator|.
+name|META_PROP_NON_BUNDLED_CHILD
+expr_stmt|;
+block|}
+comment|//Avoid having multiple revision of same prop i.e. once
+comment|//child related flag is set its not touched
+if|if
+condition|(
+name|propName
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|currentNode
+operator|.
+name|hasProperty
+argument_list|(
+name|propName
+argument_list|)
+condition|)
+block|{
+name|setProperty
+argument_list|(
+name|createProperty
+argument_list|(
+name|propName
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
