@@ -992,7 +992,10 @@ name|path
 argument_list|,
 name|root
 argument_list|,
-name|properties
+name|bundlingContext
+operator|.
+name|getAllProperties
+argument_list|()
 argument_list|,
 name|hasChildren
 argument_list|,
@@ -1006,6 +1009,7 @@ block|}
 comment|/**      * @return a copy of this {@code DocumentNodeState} with the      *          {@link #fromExternalChange} flag set to {@code true}.      */
 annotation|@
 name|Nonnull
+specifier|public
 name|DocumentNodeState
 name|fromExternalChange
 parameter_list|()
@@ -1020,7 +1024,10 @@ name|path
 argument_list|,
 name|rootRevision
 argument_list|,
-name|properties
+name|bundlingContext
+operator|.
+name|getAllProperties
+argument_list|()
 argument_list|,
 name|hasChildren
 argument_list|,
