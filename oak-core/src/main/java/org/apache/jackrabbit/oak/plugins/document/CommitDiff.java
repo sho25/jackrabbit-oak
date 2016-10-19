@@ -792,14 +792,6 @@ name|BundlingHandler
 name|child
 parameter_list|)
 block|{
-name|NodeState
-name|currentNode
-init|=
-name|bundlingHandler
-operator|.
-name|getNodeState
-argument_list|()
-decl_stmt|;
 comment|//Add hasChildren marker for bundling case
 name|String
 name|propName
@@ -844,21 +836,13 @@ operator|.
 name|META_PROP_NON_BUNDLED_CHILD
 expr_stmt|;
 block|}
-comment|//Avoid having multiple revision of same prop i.e. once
-comment|//child related flag is set its not touched
+comment|//Retouch the property if already present to enable
+comment|//hierarchy conflict detection
 if|if
 condition|(
 name|propName
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|currentNode
-operator|.
-name|hasProperty
-argument_list|(
-name|propName
-argument_list|)
 condition|)
 block|{
 name|setProperty
