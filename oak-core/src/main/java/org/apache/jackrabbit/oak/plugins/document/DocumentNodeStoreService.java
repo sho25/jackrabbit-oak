@@ -4647,13 +4647,14 @@ name|void
 name|run
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-literal|"Cancelling revision garbage collection is not supported"
-argument_list|)
-throw|;
+name|store
+operator|.
+name|getVersionGarbageCollector
+argument_list|()
+operator|.
+name|cancel
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 decl_stmt|;
