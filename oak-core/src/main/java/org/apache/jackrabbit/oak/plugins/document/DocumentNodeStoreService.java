@@ -2216,17 +2216,21 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|value
-operator|=
-name|DEFAULT_PROP_HOME
-argument_list|,
 name|label
 operator|=
 literal|"Root directory"
 argument_list|,
 name|description
 operator|=
-literal|"Root directory for local tracking of blob ids"
+literal|"Root directory for local tracking of blob ids. This service "
+operator|+
+literal|"will first lookup the 'repository.home' framework property and "
+operator|+
+literal|"then a component context property with the same name. If none "
+operator|+
+literal|"of them is defined, a sub directory 'repository' relative to "
+operator|+
+literal|"the current working directory is used."
 argument_list|)
 specifier|private
 specifier|static
@@ -3398,17 +3402,8 @@ decl_stmt|;
 name|String
 name|root
 init|=
-name|PropertiesUtil
-operator|.
-name|toString
-argument_list|(
-name|prop
-argument_list|(
-name|PROP_HOME
-argument_list|)
-argument_list|,
-name|DEFAULT_PROP_HOME
-argument_list|)
+name|getRepositoryHome
+argument_list|()
 decl_stmt|;
 name|BlobTrackingStore
 name|trackingStore
@@ -4986,18 +4981,36 @@ return|return
 literal|""
 return|;
 block|}
-comment|// resolve as relative to repository.home if available
+comment|// resolve as relative to repository.home
+return|return
+name|FilenameUtils
+operator|.
+name|concat
+argument_list|(
+name|getRepositoryHome
+argument_list|()
+argument_list|,
+name|path
+argument_list|)
+return|;
+block|}
+specifier|private
+name|String
+name|getRepositoryHome
+parameter_list|()
+block|{
 name|String
 name|repoHome
 init|=
 name|prop
 argument_list|(
 name|PROP_HOME
+argument_list|,
+name|PROP_HOME
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|Strings
 operator|.
 name|isNullOrEmpty
@@ -5006,20 +5019,13 @@ name|repoHome
 argument_list|)
 condition|)
 block|{
-name|path
-operator|=
-name|FilenameUtils
-operator|.
-name|concat
-argument_list|(
 name|repoHome
-argument_list|,
-name|path
-argument_list|)
+operator|=
+name|DEFAULT_PROP_HOME
 expr_stmt|;
 block|}
 return|return
-name|path
+name|repoHome
 return|;
 block|}
 specifier|private
