@@ -100,6 +100,7 @@ specifier|public
 class|class
 name|Include
 block|{
+comment|//TODO Restrict to * and have * == **
 specifier|private
 specifier|static
 specifier|final

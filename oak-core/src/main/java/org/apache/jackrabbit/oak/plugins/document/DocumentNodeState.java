@@ -1291,7 +1291,7 @@ name|bundlingContext
 operator|.
 name|matcher
 operator|.
-name|matchesChildren
+name|matchesAllChildren
 argument_list|()
 condition|)
 block|{
@@ -1449,7 +1449,7 @@ name|bundlingContext
 operator|.
 name|matcher
 operator|.
-name|matchesChildren
+name|matchesAllChildren
 argument_list|()
 condition|)
 block|{

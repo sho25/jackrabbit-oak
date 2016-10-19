@@ -168,7 +168,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|matchesChildren
+name|matchesAllChildren
 parameter_list|()
 block|{
 return|return

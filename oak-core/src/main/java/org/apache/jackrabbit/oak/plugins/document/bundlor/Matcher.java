@@ -88,7 +88,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|matchesChildren
+name|matchesAllChildren
 parameter_list|()
 block|{
 return|return
@@ -133,7 +133,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns true if matcher for all immediate child node      * would also be a matching matcher. This would be the      * case if IncludeMatcher with '*' or '**' as pattern for      * child nodes      */
 name|boolean
-name|matchesChildren
+name|matchesAllChildren
 parameter_list|()
 function_decl|;
 block|}

@@ -139,7 +139,7 @@ name|assertTrue
 argument_list|(
 name|m
 operator|.
-name|matchesChildren
+name|matchesAllChildren
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -185,7 +185,7 @@ argument_list|(
 literal|"y"
 argument_list|)
 operator|.
-name|matchesChildren
+name|matchesAllChildren
 argument_list|()
 argument_list|)
 expr_stmt|;

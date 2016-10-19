@@ -286,7 +286,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|matchesChildren
+name|matchesAllChildren
 parameter_list|()
 block|{
 for|for
@@ -301,7 +301,7 @@ if|if
 condition|(
 name|m
 operator|.
-name|matchesChildren
+name|matchesAllChildren
 argument_list|()
 condition|)
 block|{
