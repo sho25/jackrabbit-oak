@@ -175,6 +175,19 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ALL - "
+operator|+
+name|matchingPath
+return|;
+block|}
 block|}
 end_class
 
