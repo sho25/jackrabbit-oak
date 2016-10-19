@@ -1108,6 +1108,15 @@ block|{
 if|if
 condition|(
 name|channelFuture
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
+name|channelFuture
 operator|.
 name|channel
 argument_list|()
