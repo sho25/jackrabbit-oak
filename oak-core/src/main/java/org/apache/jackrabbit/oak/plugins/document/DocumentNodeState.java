@@ -833,9 +833,9 @@ name|store
 argument_list|,
 name|path
 argument_list|,
-name|rootRevision
-argument_list|,
 name|lastRevision
+argument_list|,
+name|rootRevision
 argument_list|,
 name|fromExternalChange
 argument_list|,
