@@ -1323,7 +1323,7 @@ specifier|final
 name|String
 name|DEFAULT_PERSISTENT_CACHE
 init|=
-literal|""
+literal|"cache,binary=0"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -1331,7 +1331,7 @@ specifier|final
 name|String
 name|DEFAULT_JOURNAL_CACHE
 init|=
-literal|""
+literal|"diff-cache"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -4969,6 +4969,21 @@ condition|)
 block|{
 return|return
 name|path
+return|;
+block|}
+if|if
+condition|(
+literal|"-"
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+comment|// disable this path configuration
+return|return
+literal|""
 return|;
 block|}
 comment|// resolve as relative to repository.home if available

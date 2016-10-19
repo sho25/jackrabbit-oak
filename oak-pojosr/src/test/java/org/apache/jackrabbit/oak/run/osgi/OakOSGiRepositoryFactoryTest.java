@@ -577,6 +577,15 @@ argument_list|,
 name|repositoryHome
 argument_list|)
 expr_stmt|;
+name|config
+operator|.
+name|put
+argument_list|(
+literal|"repository.home"
+argument_list|,
+name|repositoryHome
+argument_list|)
+expr_stmt|;
 name|File
 name|repoHome
 init|=
