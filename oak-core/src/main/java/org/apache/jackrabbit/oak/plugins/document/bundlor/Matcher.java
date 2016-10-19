@@ -87,6 +87,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|matchesChildren
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|String
 name|toString
 parameter_list|()
@@ -118,6 +129,11 @@ function_decl|;
 comment|/**      * Matcher depth. For match done for 'x/y' depth is 2      */
 name|int
 name|depth
+parameter_list|()
+function_decl|;
+comment|/**      * Returns true if matcher for all immediate child node      * would also be a matching matcher. This would be the      * case if IncludeMatcher with '*' or '**' as pattern for      * child nodes      */
+name|boolean
+name|matchesChildren
 parameter_list|()
 function_decl|;
 block|}
