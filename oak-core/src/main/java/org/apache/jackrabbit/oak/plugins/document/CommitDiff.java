@@ -353,6 +353,9 @@ name|blobs
 operator|=
 name|blobs
 expr_stmt|;
+name|setMetaProperties
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -449,7 +452,7 @@ name|child
 init|=
 name|bundlingHandler
 operator|.
-name|childHandler
+name|childAdded
 argument_list|(
 name|name
 argument_list|,
@@ -464,7 +467,6 @@ name|isBundlingRoot
 argument_list|()
 condition|)
 block|{
-comment|//TODO Seed in the bundling pattern
 comment|//TODO Handle case for leaf node optimization
 name|commit
 operator|.
@@ -537,7 +539,7 @@ name|child
 init|=
 name|bundlingHandler
 operator|.
-name|childHandler
+name|childChanged
 argument_list|(
 name|name
 argument_list|,
@@ -585,7 +587,7 @@ name|child
 init|=
 name|bundlingHandler
 operator|.
-name|childHandler
+name|childDeleted
 argument_list|(
 name|name
 argument_list|,
@@ -638,6 +640,29 @@ argument_list|)
 return|;
 block|}
 comment|//----------------------------< internal>----------------------------------
+specifier|private
+name|void
+name|setMetaProperties
+parameter_list|()
+block|{
+for|for
+control|(
+name|PropertyState
+name|ps
+range|:
+name|bundlingHandler
+operator|.
+name|getMetaProps
+argument_list|()
+control|)
+block|{
+name|setProperty
+argument_list|(
+name|ps
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 specifier|private
 name|void
 name|setProperty
