@@ -451,6 +451,16 @@ name|depth
 operator|==
 name|expectedDepth
 operator|&&
+name|key
+operator|.
+name|startsWith
+argument_list|(
+name|matcher
+operator|.
+name|getMatchedPath
+argument_list|()
+argument_list|)
+operator|&&
 name|elements
 operator|.
 name|get
