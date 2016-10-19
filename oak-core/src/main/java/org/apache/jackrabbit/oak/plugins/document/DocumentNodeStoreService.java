@@ -1678,7 +1678,7 @@ literal|"Persistent Cache Config"
 argument_list|,
 name|description
 operator|=
-literal|"Configuration for enabling Persistent cache. By default it is not enabled. Refer to "
+literal|"Configuration for persistent cache. Refer to "
 operator|+
 literal|"http://jackrabbit.apache.org/oak/docs/nodestore/persistent-cache.html for various options"
 argument_list|)
@@ -1703,7 +1703,7 @@ literal|"Journal Cache Config"
 argument_list|,
 name|description
 operator|=
-literal|"Configuration for enabling journal cache. By default it is not enabled. Refer to "
+literal|"Configuration for journal cache. Refer to "
 operator|+
 literal|"http://jackrabbit.apache.org/oak/docs/nodestore/persistent-cache.html for various options"
 argument_list|)
