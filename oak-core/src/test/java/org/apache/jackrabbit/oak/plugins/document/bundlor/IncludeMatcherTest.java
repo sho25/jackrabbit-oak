@@ -154,7 +154,7 @@ init|=
 operator|new
 name|Include
 argument_list|(
-literal|"x/*;all"
+literal|"x/**"
 argument_list|)
 operator|.
 name|createMatcher

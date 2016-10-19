@@ -91,26 +91,8 @@ name|checkElementIndex
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|concat
-import|;
-end_import
-
 begin_comment
-comment|/**  * Include represents a single path pattern which captures the path which  * needs to be included in bundling. Path patterns can be like below.  *<ul>  *<li>* - Match any immediate child</li>  *<li>*\/* - Match child with any name upto 2 levels of depth</li>  *<li>jcr:content - Match immediate child with name jcr:content</li>  *<li>jcr:content\/*;all - Match jcr:content and all its child</li>  *</ul>  *  * The last path element can specify a directive. Supported directive  *<ul>  *<li>all - Include all nodes under given path</li>  *</ul>  */
+comment|/**  * Include represents a single path pattern which captures the path which  * needs to be included in bundling. Path patterns can be like below.  *<ul>  *<li>* - Match any immediate child</li>  *<li>*\/* - Match child with any name upto 2 levels of depth</li>  *<li>jcr:content - Match immediate child with name jcr:content</li>  *<li>jcr:content\/** - Match jcr:content and all its child</li>  *</ul>  *  * The last path element can specify a directive. Supported directive  *<ul>  *<li>all - Include all nodes under given path</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -118,6 +100,22 @@ specifier|public
 class|class
 name|Include
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|STAR
+init|=
+literal|"*"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|STAR_STAR
+init|=
+literal|"**"
+decl_stmt|;
 enum|enum
 name|Directive
 block|{
@@ -263,6 +261,27 @@ literal|0
 argument_list|,
 name|indexOfColon
 argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|STAR_STAR
+operator|.
+name|equals
+argument_list|(
+name|e
+argument_list|)
+condition|)
+block|{
+name|e
+operator|=
+name|STAR
+expr_stmt|;
+name|directive
+operator|=
+name|Directive
+operator|.
+name|ALL
 expr_stmt|;
 block|}
 name|elementList
@@ -445,7 +464,7 @@ name|depth
 index|]
 decl_stmt|;
 return|return
-literal|"*"
+name|STAR
 operator|.
 name|equals
 argument_list|(

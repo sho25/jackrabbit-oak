@@ -239,7 +239,7 @@ init|=
 operator|new
 name|Include
 argument_list|(
-literal|"x/*;all"
+literal|"x/**"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -295,7 +295,7 @@ init|=
 operator|new
 name|Include
 argument_list|(
-literal|"x/*;all"
+literal|"x/**"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -334,7 +334,7 @@ init|=
 operator|new
 name|Include
 argument_list|(
-literal|"x/y;all"
+literal|"x/y/**"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -475,7 +475,7 @@ init|=
 operator|new
 name|Include
 argument_list|(
-literal|"x/y;all"
+literal|"x/y/**"
 argument_list|)
 decl_stmt|;
 name|assertEquals
