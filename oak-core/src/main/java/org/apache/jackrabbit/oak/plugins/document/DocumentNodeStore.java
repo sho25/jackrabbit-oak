@@ -975,7 +975,7 @@ name|document
 operator|.
 name|bundlor
 operator|.
-name|BundledTypesRegistry
+name|BundlingConfigHandler
 import|;
 end_import
 
@@ -1488,24 +1488,6 @@ operator|.
 name|state
 operator|.
 name|NodeStateDiff
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStateUtils
 import|;
 end_import
 
@@ -2275,6 +2257,15 @@ specifier|private
 specifier|final
 name|StatisticsProvider
 name|statisticsProvider
+decl_stmt|;
+specifier|private
+specifier|final
+name|BundlingConfigHandler
+name|bundlingConfigHandler
+init|=
+operator|new
+name|BundlingConfigHandler
+argument_list|()
 decl_stmt|;
 specifier|public
 name|DocumentNodeStore
@@ -3154,6 +3145,15 @@ name|getClusterNodeInfoDisplayString
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|bundlingConfigHandler
+operator|.
+name|initialize
+argument_list|(
+name|this
+argument_list|,
+name|executor
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Recover _lastRev recovery if needed.      *      * @throws DocumentStoreException if recovery did not finish within      *          {@link #recoveryWaitTimeoutMS}.      */
 specifier|private
@@ -3302,6 +3302,30 @@ condition|)
 block|{
 comment|// only dispose once
 return|return;
+block|}
+try|try
+block|{
+name|bundlingConfigHandler
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Error closing bundlingConfigHandler"
+argument_list|,
+name|bundlingConfigHandler
+argument_list|)
+expr_stmt|;
 block|}
 comment|// notify background threads waiting on isDisposed
 synchronized|synchronized
@@ -5364,31 +5388,11 @@ name|BundlingHandler
 name|getBundlingHandler
 parameter_list|()
 block|{
-comment|//TODO Move this to observor based
-name|NodeState
-name|registryState
-init|=
-name|NodeStateUtils
-operator|.
-name|getNode
-argument_list|(
-name|getRoot
-argument_list|()
-argument_list|,
-literal|"/jcr:system/documentstore/bundlor"
-argument_list|)
-decl_stmt|;
 return|return
-operator|new
-name|BundlingHandler
-argument_list|(
-name|BundledTypesRegistry
+name|bundlingConfigHandler
 operator|.
-name|from
-argument_list|(
-name|registryState
-argument_list|)
-argument_list|)
+name|newBundlingHandler
+argument_list|()
 return|;
 block|}
 comment|/**      * Apply the changes of a node to the cache.      *      * @param before the before revision (old head)      * @param after the after revision (new head)      * @param rev the commit revision      * @param path the path      * @param isNew whether this is a new node      * @param added the list of added child nodes      * @param removed the list of removed child nodes      * @param changed the list of changed child nodes      *      */
