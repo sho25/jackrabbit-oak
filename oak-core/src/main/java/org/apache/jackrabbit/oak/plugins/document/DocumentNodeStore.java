@@ -2267,6 +2267,11 @@ operator|new
 name|BundlingConfigHandler
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|bundlingEnabled
+decl_stmt|;
 specifier|public
 name|DocumentNodeStore
 parameter_list|(
@@ -3145,6 +3150,18 @@ name|getClusterNodeInfoDisplayString
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|bundlingEnabled
+operator|=
+name|builder
+operator|.
+name|isBundlingEnabled
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|bundlingEnabled
+condition|)
+block|{
 name|bundlingConfigHandler
 operator|.
 name|initialize
@@ -3154,6 +3171,7 @@ argument_list|,
 name|executor
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Recover _lastRev recovery if needed.      *      * @throws DocumentStoreException if recovery did not finish within      *          {@link #recoveryWaitTimeoutMS}.      */
 specifier|private
@@ -5393,6 +5411,15 @@ name|bundlingConfigHandler
 operator|.
 name|newBundlingHandler
 argument_list|()
+return|;
+block|}
+specifier|public
+name|BundlingConfigHandler
+name|getBundlingConfigHandler
+parameter_list|()
+block|{
+return|return
+name|bundlingConfigHandler
 return|;
 block|}
 comment|/**      * Apply the changes of a node to the cache.      *      * @param before the before revision (old head)      * @param after the after revision (new head)      * @param rev the commit revision      * @param path the path      * @param isNew whether this is a new node      * @param added the list of added child nodes      * @param removed the list of removed child nodes      * @param changed the list of changed child nodes      *      */
