@@ -370,7 +370,7 @@ specifier|final
 name|String
 name|DOCUMENT_NODE_STORE
 init|=
-literal|"documentstore"
+literal|"rep:documentStore"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -386,7 +386,7 @@ specifier|final
 name|String
 name|CONFIG_PATH
 init|=
-literal|"/jcr:system/documentstore/bundlor"
+literal|"/jcr:system/rep:documentStore/bundlor"
 decl_stmt|;
 specifier|private
 specifier|final
