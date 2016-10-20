@@ -131,6 +131,7 @@ specifier|final
 class|class
 name|UpdateOp
 block|{
+specifier|private
 specifier|final
 name|String
 name|id
@@ -166,6 +167,8 @@ comment|/**      * Create an update operation for the document with the given id
 specifier|public
 name|UpdateOp
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|id
 parameter_list|,
@@ -236,6 +239,8 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|id
+argument_list|,
+literal|"id must not be null"
 argument_list|)
 expr_stmt|;
 name|this
@@ -460,6 +465,8 @@ name|conditionMap
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getId
@@ -1241,6 +1248,51 @@ name|Object
 name|value
 parameter_list|)
 block|{
+if|if
+condition|(
+name|Document
+operator|.
+name|ID
+operator|.
+name|equals
+argument_list|(
+name|property
+argument_list|)
+operator|&&
+operator|!
+name|id
+operator|.
+name|equals
+argument_list|(
+name|value
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"updateOp.id ("
+operator|+
+name|id
+operator|+
+literal|") and set operation on "
+operator|+
+name|Document
+operator|.
+name|ID
+operator|+
+literal|" ("
+operator|+
+name|value
+operator|+
+literal|") disagree"
+argument_list|)
+throw|;
+block|}
 name|Operation
 name|op
 init|=

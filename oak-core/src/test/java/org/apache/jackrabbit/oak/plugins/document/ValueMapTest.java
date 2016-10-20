@@ -1778,7 +1778,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|prevOp1
+name|prevOp2
 operator|.
 name|set
 argument_list|(
