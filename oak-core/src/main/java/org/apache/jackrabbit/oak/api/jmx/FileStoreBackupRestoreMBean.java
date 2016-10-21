@@ -41,11 +41,25 @@ name|CompositeData
 import|;
 end_import
 
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * MBean for backing up and restoring a {@code NodeStore}.  *  * @see org.apache.jackrabbit.oak.api.jmx.RepositoryManagementMBean  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|FileStoreBackupRestoreMBean

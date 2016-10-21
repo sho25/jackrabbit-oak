@@ -65,6 +65,18 @@ end_import
 
 begin_import
 import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -104,6 +116,8 @@ comment|/**  * This interface exposes repository management operations and the s
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|RepositoryManagementMBean

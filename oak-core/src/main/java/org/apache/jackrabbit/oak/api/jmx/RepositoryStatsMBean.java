@@ -31,11 +31,25 @@ name|CompositeData
 import|;
 end_import
 
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * MBean for providing repository wide statistics.  * This MBean exposes the time series provided by  * {@link org.apache.jackrabbit.api.stats.RepositoryStatistics RepositoryStatistics}  * through JMX as {@code CompositeData} of arrays.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|RepositoryStatsMBean

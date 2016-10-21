@@ -19,7 +19,21 @@ name|jmx
 package|;
 end_package
 
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|QueryEngineSettingsMBean
