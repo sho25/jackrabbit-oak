@@ -966,14 +966,9 @@ specifier|private
 specifier|static
 specifier|final
 name|String
-name|WORKSPACE_NAME
+name|WORKSPACE_NAME_PROP
 init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
 literal|"oak.upgrade.workspaceName"
-argument_list|)
 decl_stmt|;
 comment|/**      * Target node store.      */
 specifier|private
@@ -2296,7 +2291,12 @@ name|find
 argument_list|(
 name|asList
 argument_list|(
-name|WORKSPACE_NAME
+name|System
+operator|.
+name|getProperty
+argument_list|(
+name|WORKSPACE_NAME_PROP
+argument_list|)
 argument_list|,
 name|deriveWorkspaceName
 argument_list|()
@@ -2413,6 +2413,17 @@ return|;
 block|}
 else|else
 block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Can't find the workspace name. '{}' will be used. It can be overriden with system property {}"
+argument_list|,
+name|DEFAULT_WORKSPACE_NAME
+argument_list|,
+name|WORKSPACE_NAME_PROP
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
