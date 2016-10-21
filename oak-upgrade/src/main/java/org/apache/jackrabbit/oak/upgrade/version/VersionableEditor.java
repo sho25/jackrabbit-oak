@@ -1025,6 +1025,19 @@ argument_list|,
 name|versionableUuid
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|versionHistory
+operator|.
+name|hasProperty
+argument_list|(
+name|provider
+operator|.
+name|workspaceName
+argument_list|)
+condition|)
+block|{
 name|versionHistory
 operator|.
 name|setProperty
@@ -1040,6 +1053,7 @@ operator|.
 name|PATH
 argument_list|)
 expr_stmt|;
+block|}
 name|addMixin
 argument_list|(
 name|versionHistory
