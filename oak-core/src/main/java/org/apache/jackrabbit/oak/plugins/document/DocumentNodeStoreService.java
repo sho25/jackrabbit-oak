@@ -4951,11 +4951,11 @@ name|gc
 argument_list|(
 name|journalGCMaxAge
 argument_list|,
-name|journalGCBatchSize
-argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
+argument_list|,
+name|journalGCBatchSize
 argument_list|)
 expr_stmt|;
 block|}

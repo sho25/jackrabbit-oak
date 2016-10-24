@@ -374,11 +374,11 @@ name|gc
 argument_list|(
 literal|1
 argument_list|,
-literal|10
-argument_list|,
 name|TimeUnit
 operator|.
 name|HOURS
+argument_list|,
+literal|10
 argument_list|)
 expr_stmt|;
 comment|// must not remove existing entry, because checkpoint is still valid
@@ -422,11 +422,11 @@ name|gc
 argument_list|(
 literal|1
 argument_list|,
-literal|10
-argument_list|,
 name|TimeUnit
 operator|.
 name|HOURS
+argument_list|,
+literal|10
 argument_list|)
 expr_stmt|;
 comment|// now journal GC can remove the entry
@@ -581,11 +581,11 @@ name|gc
 argument_list|(
 literal|1
 argument_list|,
-literal|10
-argument_list|,
 name|TimeUnit
 operator|.
 name|HOURS
+argument_list|,
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -686,11 +686,11 @@ name|gc
 argument_list|(
 literal|1
 argument_list|,
-literal|10
-argument_list|,
 name|TimeUnit
 operator|.
 name|HOURS
+argument_list|,
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;

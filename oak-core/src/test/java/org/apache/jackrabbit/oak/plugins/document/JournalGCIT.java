@@ -127,11 +127,11 @@ name|gc
 argument_list|(
 literal|1
 argument_list|,
-literal|10
-argument_list|,
 name|TimeUnit
 operator|.
 name|HOURS
+argument_list|,
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
