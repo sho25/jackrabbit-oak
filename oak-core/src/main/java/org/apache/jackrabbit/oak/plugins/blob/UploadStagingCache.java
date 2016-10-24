@@ -735,7 +735,7 @@ name|uploadThreads
 parameter_list|,
 name|long
 name|size
-comment|/** bytes **/
+comment|/* bytes */
 parameter_list|,
 name|StagingUploader
 name|uploader
@@ -760,7 +760,7 @@ name|scheduledExecutor
 parameter_list|,
 name|long
 name|purgeInterval
-comment|/** secs **/
+comment|/* secs */
 parameter_list|)
 block|{
 name|this
@@ -926,7 +926,7 @@ name|uploadThreads
 parameter_list|,
 name|long
 name|size
-comment|/** bytes **/
+comment|/* bytes */
 parameter_list|,
 name|StagingUploader
 name|uploader
@@ -951,7 +951,7 @@ name|scheduledExecutor
 parameter_list|,
 name|long
 name|purgeInterval
-comment|/** secs **/
+comment|/* secs */
 parameter_list|)
 block|{
 if|if
@@ -1761,7 +1761,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Invalidate called externally.      * @param key      */
+comment|/**      * Invalidate called externally.      * @param key to invalidate      */
 specifier|protected
 name|void
 name|invalidate
@@ -2000,7 +2000,7 @@ name|count
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adjust stats and delete file.      *      * @param key      * @param toBeDeleted      * @throws IOException      */
+comment|/**      * Adjust stats and delete file.      *      * @param key to delete      * @param toBeDeleted file to delete      * @throws IOException      */
 specifier|private
 name|void
 name|deleteInternal
@@ -3307,7 +3307,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|//~--------------------------------------< CacheStatsMbean - stats that are not (yet) available
+comment|//~--------------------------------------< CacheStatsMBean - stats that are not (yet) available
 annotation|@
 name|Override
 specifier|public

@@ -539,7 +539,7 @@ argument_list|(
 literal|4
 operator|*
 literal|1024
-comment|/** KB */
+comment|/* KB */
 argument_list|,
 name|root
 argument_list|,
@@ -609,7 +609,7 @@ operator|.
 name|build
 argument_list|(
 literal|0
-comment|/** KB */
+comment|/* KB */
 argument_list|,
 name|root
 argument_list|,

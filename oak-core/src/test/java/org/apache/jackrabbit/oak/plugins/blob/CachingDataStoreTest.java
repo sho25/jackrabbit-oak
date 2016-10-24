@@ -513,6 +513,10 @@ name|assertTrue
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests for {@link AbstractSharedCachingDataStore}  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -597,14 +601,6 @@ name|CountDownLatch
 name|afterExecuteLatch
 decl_stmt|;
 specifier|private
-name|TestExecutor
-name|executor
-decl_stmt|;
-specifier|private
-name|StatisticsProvider
-name|statsProvider
-decl_stmt|;
-specifier|private
 name|ScheduledExecutorService
 name|scheduledExecutor
 decl_stmt|;
@@ -683,8 +679,9 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+name|TestExecutor
 name|executor
-operator|=
+init|=
 operator|new
 name|TestExecutor
 argument_list|(
@@ -696,7 +693,7 @@ name|callbackLatch
 argument_list|,
 name|afterExecuteLatch
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// stats
 name|ScheduledExecutorService
 name|statsExecutor
@@ -723,14 +720,15 @@ name|MILLISECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|StatisticsProvider
 name|statsProvider
-operator|=
+init|=
 operator|new
 name|DefaultStatisticsProvider
 argument_list|(
 name|statsExecutor
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|scheduledExecutor
 operator|=
 name|Executors
@@ -831,6 +829,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Add, get, delete when zero cache size.      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public
@@ -1016,6 +1015,7 @@ name|rec
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Add, get, delete when staging cache is 0.      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public
@@ -1415,6 +1415,7 @@ name|rec
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Add in staging and delete.      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public

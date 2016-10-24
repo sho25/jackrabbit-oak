@@ -630,7 +630,7 @@ name|FileCache
 parameter_list|(
 name|long
 name|maxSize
-comment|/** bytes **/
+comment|/* bytes */
 parameter_list|,
 name|File
 name|root
@@ -902,8 +902,6 @@ name|FileCacheStats
 argument_list|(
 name|cache
 argument_list|,
-literal|"DataStore-DownloadCache"
-argument_list|,
 name|weigher
 argument_list|,
 name|memWeigher
@@ -958,7 +956,7 @@ name|build
 parameter_list|(
 name|long
 name|maxSize
-comment|/** bytes **/
+comment|/* bytes */
 parameter_list|,
 name|File
 name|root
@@ -1094,8 +1092,6 @@ operator|new
 name|FileCacheStats
 argument_list|(
 name|this
-argument_list|,
-literal|"DataStore-DownloadCache"
 argument_list|,
 name|weigher
 argument_list|,
@@ -1582,7 +1578,7 @@ return|return
 name|count
 return|;
 block|}
-comment|/**      * Create a placeholder in the file system cache folder for the given identifier.      *      * @param key      * @return File handle for the id      */
+comment|/**      * Create a placeholder in the file system cache folder for the given identifier.      *      * @param key for the file      * @return File handle for the id      */
 specifier|private
 name|File
 name|getCacheFile
@@ -1708,7 +1704,7 @@ name|Object
 argument_list|>
 name|cache
 decl_stmt|;
-comment|/**      * Construct the cache stats object.      *      * @param cache     the cache      * @param name      the name of the cache      * @param weigher   the weigher used to estimate the current weight      * @param maxWeight the maximum weight      */
+comment|/**      * Construct the cache stats object.      *  @param cache     the cache      * @param weigher   the weigher used to estimate the current weight      * @param maxWeight the maximum weight      */
 specifier|public
 name|FileCacheStats
 parameter_list|(
@@ -1719,9 +1715,6 @@ argument_list|,
 name|?
 argument_list|>
 name|cache
-parameter_list|,
-name|String
-name|name
 parameter_list|,
 name|Weigher
 argument_list|<
@@ -1747,7 +1740,7 @@ name|super
 argument_list|(
 name|cache
 argument_list|,
-name|name
+literal|"DataStore-DownloadCache"
 argument_list|,
 name|weigher
 argument_list|,

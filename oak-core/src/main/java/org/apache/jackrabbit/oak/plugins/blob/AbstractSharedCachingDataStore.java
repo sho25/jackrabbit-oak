@@ -438,7 +438,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Caches files locally and stages files locally for async uploads.  * Configuration:  *  *<pre>  *&lt;DataStore class="org.apache.jackrabbit.oak.plugins.blob.AbstractCachingDataStore">  *  *&lt;param name="{@link #setPath(String) path}"/>  *&lt;param name="{@link #setCacheSize(long) cacheSize}" value="68719476736"/>  *&lt;param name="{@link #setStagingSplitPercentage(int) staginSplitPercentage}" value="10"/>  *&lt;param name="{@link #setUploadThreads(int) uploadThreads}" value="10"/>  *&lt;param name="{@link #setStagingPurgeInterval(int) stagingPurgeInterval}" value="300"/>  *&lt;/DataStore>   */
+comment|/**  * Caches files locally and stages files locally for async uploads.  * Configuration:  *  *<pre>  *&lt;DataStore class="org.apache.jackrabbit.oak.plugins.blob.AbstractCachingDataStore">  *  *&lt;param name="{@link #setPath(String) path}"/>  *&lt;param name="{@link #setCacheSize(long) cacheSize}" value="68719476736"/>  *&lt;param name="{@link #setStagingSplitPercentage(int) staginSplitPercentage}" value="10"/>  *&lt;param name="{@link #setUploadThreads(int) uploadThreads}" value="10"/>  *&lt;param name="{@link #setStagingPurgeInterval(int) stagingPurgeInterval}" value="300"/>  *&lt;/DataStore>  */
 end_comment
 
 begin_class
@@ -454,6 +454,7 @@ implements|,
 name|SharedDataStore
 block|{
 comment|/**      * Logger instance.      */
+specifier|private
 specifier|static
 specifier|final
 name|Logger
@@ -463,17 +464,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|core
-operator|.
-name|data
-operator|.
-name|LocalCache
+name|AbstractSharedCachingDataStore
 operator|.
 name|class
 argument_list|)
@@ -839,9 +830,6 @@ argument_list|)
 return|;
 block|}
 comment|// File not in cache so, retrieve the meta data from the backend explicitly
-name|DataRecord
-name|record
-decl_stmt|;
 try|try
 block|{
 return|return
@@ -992,16 +980,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"SHA1 of [{}], length =[{}] took [{}]ms "
+literal|"SHA1 of [{}], length =[{}] took [{}] ms "
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|identifier
-block|,
+argument_list|,
 name|length
-block|,
+argument_list|,
 name|watch
 operator|.
 name|elapsed
@@ -1010,7 +994,6 @@ name|TimeUnit
 operator|.
 name|MILLISECONDS
 argument_list|)
-block|}
 argument_list|)
 expr_stmt|;
 comment|// asynchronously stage for upload if the size limit of staging cache permits
@@ -1192,7 +1175,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Need a DataRecord implementation that      * * decorates the data record of the backened if available      * * creates a record from the paramaters of the file in cache      *      */
+comment|/**      * Need a DataRecord implementation that      * * decorates the data record of the backend if available      * * creates a record from the parameters of the file in cache      *      */
 specifier|static
 class|class
 name|FileCacheDataRecord
@@ -1200,14 +1183,17 @@ extends|extends
 name|AbstractDataRecord
 block|{
 specifier|private
+specifier|final
 name|long
 name|length
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|lastModified
 decl_stmt|;
 specifier|private
+specifier|final
 name|AbstractSharedCachingDataStore
 name|store
 decl_stmt|;
