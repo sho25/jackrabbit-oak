@@ -2674,7 +2674,7 @@ expr_stmt|;
 comment|// Start again
 name|init
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 expr_stmt|;
 name|taskLatch
