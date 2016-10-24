@@ -1624,14 +1624,6 @@ argument_list|(
 name|upload
 argument_list|)
 expr_stmt|;
-name|long
-name|length
-init|=
-name|upload
-operator|.
-name|length
-argument_list|()
-decl_stmt|;
 name|downloadCache
 operator|.
 name|put
@@ -1650,22 +1642,6 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-comment|// Update stats for removal
-name|currentSize
-operator|.
-name|addAndGet
-argument_list|(
-operator|-
-name|length
-argument_list|)
-expr_stmt|;
-name|cacheStats
-operator|.
-name|decrementSize
-argument_list|(
-name|length
-argument_list|)
-expr_stmt|;
 block|}
 name|map
 operator|.
@@ -1674,8 +1650,6 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
-comment|// Remove from upload staging area
-comment|//LOG.info("File [{}] removed from cache [{}]", upload, remove(id));
 block|}
 catch|catch
 parameter_list|(

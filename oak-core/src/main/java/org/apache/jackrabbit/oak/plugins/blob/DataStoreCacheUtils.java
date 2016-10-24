@@ -273,6 +273,11 @@ literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|file
+operator|.
+name|mkdirs
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|File
