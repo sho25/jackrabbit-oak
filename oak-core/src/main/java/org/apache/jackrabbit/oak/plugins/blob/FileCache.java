@@ -1194,8 +1194,6 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|LOG
 operator|.
