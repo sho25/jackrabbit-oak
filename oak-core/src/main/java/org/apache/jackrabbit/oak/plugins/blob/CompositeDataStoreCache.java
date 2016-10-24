@@ -309,8 +309,9 @@ name|this
 operator|.
 name|downloadCache
 operator|=
-operator|new
 name|FileCache
+operator|.
+name|build
 argument_list|(
 operator|(
 name|size
@@ -329,8 +330,9 @@ name|this
 operator|.
 name|stagingCache
 operator|=
-operator|new
 name|UploadStagingCache
+operator|.
+name|build
 argument_list|(
 name|directory
 argument_list|,
