@@ -553,6 +553,9 @@ name|store
 operator|.
 name|getTracker
 argument_list|()
+operator|.
+name|getSegmentCounter
+argument_list|()
 argument_list|,
 name|store
 operator|.
@@ -623,6 +626,9 @@ name|store
 operator|.
 name|getTracker
 argument_list|()
+operator|.
+name|getSegmentCounter
+argument_list|()
 argument_list|,
 name|store
 operator|.
@@ -692,6 +698,9 @@ argument_list|,
 name|store
 operator|.
 name|getTracker
+argument_list|()
+operator|.
+name|getSegmentCounter
 argument_list|()
 argument_list|,
 name|store

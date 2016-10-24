@@ -87,6 +87,20 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tracker of references to segment identifiers and segment instances  * that are currently kept in memory and factory for creating {@link SegmentId}  * instances.  */
 end_comment
@@ -226,8 +240,27 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Number of segment tracked since this tracker was instantiated      * @return count      */
-name|int
-name|getSegmentCount
+specifier|public
+name|Supplier
+argument_list|<
+name|Integer
+argument_list|>
+name|getSegmentCounter
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Supplier
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Integer
+name|get
 parameter_list|()
 block|{
 return|return
@@ -235,6 +268,9 @@ name|segmentCounter
 operator|.
 name|get
 argument_list|()
+return|;
+block|}
+block|}
 return|;
 block|}
 comment|/**      * Returns all segment identifiers that are currently referenced in memory.      *      * @return referenced segment identifiers      */

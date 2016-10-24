@@ -4121,6 +4121,9 @@ operator|.
 name|this
 argument_list|,
 name|tracker
+operator|.
+name|getSegmentCounter
+argument_list|()
 argument_list|,
 name|segmentReader
 argument_list|,

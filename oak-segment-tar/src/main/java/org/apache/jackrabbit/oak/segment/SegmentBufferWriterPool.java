@@ -696,6 +696,9 @@ argument_list|(
 name|store
 argument_list|,
 name|tracker
+operator|.
+name|getSegmentCounter
+argument_list|()
 argument_list|,
 name|reader
 argument_list|,
@@ -740,6 +743,9 @@ argument_list|(
 name|store
 argument_list|,
 name|tracker
+operator|.
+name|getSegmentCounter
+argument_list|()
 argument_list|,
 name|reader
 argument_list|,
