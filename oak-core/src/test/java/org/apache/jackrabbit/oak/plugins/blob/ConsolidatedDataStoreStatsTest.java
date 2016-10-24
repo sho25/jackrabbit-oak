@@ -393,7 +393,7 @@ name|spi
 operator|.
 name|blob
 operator|.
-name|SharedBackend
+name|AbstractSharedBackend
 import|;
 end_import
 
@@ -1028,7 +1028,7 @@ block|{
 annotation|@
 name|Override
 specifier|protected
-name|SharedBackend
+name|AbstractSharedBackend
 name|createBackend
 parameter_list|()
 block|{
