@@ -6989,6 +6989,23 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
+name|inserts
+index|[
+name|i
+index|]
+operator|.
+name|put
+argument_list|(
+name|Document
+operator|.
+name|ID
+argument_list|,
+name|update
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|UpdateUtils
 operator|.
 name|assertUnconditional
@@ -9247,6 +9264,26 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|includeId
+condition|)
+block|{
+name|setUpdates
+operator|.
+name|append
+argument_list|(
+name|Document
+operator|.
+name|ID
+argument_list|,
+name|updateOp
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|// other updates
 for|for
 control|(
@@ -9293,6 +9330,7 @@ name|ID
 argument_list|)
 condition|)
 block|{
+comment|// TODO: remove once set _id is prohibited (OAK-4952)
 comment|// avoid exception "Mod on _id not allowed"
 continue|continue;
 block|}
