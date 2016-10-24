@@ -556,7 +556,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Cache for staging async uploads. This serves as a temporary cache for serving local  * requests till the time the upload has not been synced with the backend.  *<p>  * The appropriate backend for this cache are wrapped in {@link StagingUploader}  * implementations.  *<p>  * Stats:  * - Status for a particular upload  * - Upload time  */
+comment|/**  * Cache for staging async uploads. This serves as a temporary cache for serving local  * requests till the time the upload has not been synced with the backend.  *<p>  * The appropriate backend for this cache are wrapped in {@link StagingUploader}  * implementations.  *<p>  */
 end_comment
 
 begin_class
@@ -745,7 +745,8 @@ name|ScheduledExecutorService
 name|scheduledExecutor
 parameter_list|,
 name|long
-name|removalPeriod
+name|purgeInterval
+comment|/** secs **/
 parameter_list|)
 block|{
 name|this
@@ -888,9 +889,9 @@ operator|new
 name|RemoveJob
 argument_list|()
 argument_list|,
-name|removalPeriod
+name|purgeInterval
 argument_list|,
-name|removalPeriod
+name|purgeInterval
 argument_list|,
 name|TimeUnit
 operator|.

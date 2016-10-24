@@ -268,7 +268,7 @@ comment|/* purge scheduled executor */
 parameter_list|,
 name|long
 name|purgeInterval
-comment|/* async purge interval */
+comment|/* async purge interval secs */
 parameter_list|)
 block|{
 name|checkArgument
