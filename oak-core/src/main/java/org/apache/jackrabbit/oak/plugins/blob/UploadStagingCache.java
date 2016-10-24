@@ -1199,7 +1199,7 @@ argument_list|>
 argument_list|>
 name|scheduled
 init|=
-name|put
+name|putOptionalDisregardingSize
 argument_list|(
 name|toBeSyncedFile
 operator|.
@@ -1207,6 +1207,8 @@ name|getName
 argument_list|()
 argument_list|,
 name|toBeSyncedFile
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 if|if
@@ -1219,6 +1221,21 @@ condition|)
 block|{
 name|count
 operator|++
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"File [{}] not setup for upload"
+argument_list|,
+name|toBeSyncedFile
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1250,6 +1267,38 @@ name|File
 name|input
 parameter_list|)
 block|{
+return|return
+name|putOptionalDisregardingSize
+argument_list|(
+name|id
+argument_list|,
+name|input
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/**      * Puts the file into the staging cache if ignoreSize else if possible      * Returns an optional SettableFuture if staged for upload otherwise empty.      *      * @param id      * @param input      * @param ignoreSize      * @return      */
+specifier|private
+name|Optional
+argument_list|<
+name|SettableFuture
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|>
+name|putOptionalDisregardingSize
+parameter_list|(
+name|String
+name|id
+parameter_list|,
+name|File
+name|input
+parameter_list|,
+name|boolean
+name|ignoreSize
+parameter_list|)
+block|{
 name|cacheStats
 operator|.
 name|markRequest
@@ -1275,9 +1324,24 @@ argument_list|,
 name|uploadCacheSpace
 argument_list|)
 decl_stmt|;
-comment|// if size permits and not upload complete or already scheduled for upload
+comment|// if ignoreSize update internal size else size permits
+comment|// and not upload complete or already scheduled for upload
 if|if
 condition|(
+operator|(
+operator|(
+name|ignoreSize
+operator|&&
+name|currentSize
+operator|.
+name|addAndGet
+argument_list|(
+name|length
+argument_list|)
+operator|>=
+literal|0
+operator|)
+operator|||
 name|currentSize
 operator|.
 name|addAndGet
@@ -1286,6 +1350,7 @@ name|length
 argument_list|)
 operator|<=
 name|size
+operator|)
 operator|&&
 operator|!
 name|attic
