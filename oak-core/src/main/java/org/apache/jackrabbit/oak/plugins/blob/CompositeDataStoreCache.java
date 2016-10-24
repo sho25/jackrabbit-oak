@@ -499,6 +499,16 @@ name|Object
 name|key
 parameter_list|)
 block|{
+name|stagingCache
+operator|.
+name|invalidate
+argument_list|(
+operator|(
+name|String
+operator|)
+name|key
+argument_list|)
+expr_stmt|;
 name|downloadCache
 operator|.
 name|invalidate

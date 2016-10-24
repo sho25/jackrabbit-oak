@@ -1519,7 +1519,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"File [{}] scheduled for upload [{}]"
 argument_list|,
@@ -1549,6 +1549,109 @@ expr_stmt|;
 block|}
 return|return
 name|result
+return|;
+block|}
+comment|/**      * Invalidate called externally.      * @param key      */
+specifier|protected
+name|void
+name|invalidate
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+comment|// Check if not already scheduled for deletion
+if|if
+condition|(
+operator|!
+name|attic
+operator|.
+name|containsKey
+argument_list|(
+name|key
+argument_list|)
+operator|&&
+name|map
+operator|.
+name|containsKey
+argument_list|(
+name|key
+argument_list|)
+condition|)
+block|{
+try|try
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Invalidating [{}]"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
+name|File
+name|toBeDeleted
+init|=
+name|map
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+name|deleteInternal
+argument_list|(
+name|key
+argument_list|,
+name|toBeDeleted
+argument_list|)
+expr_stmt|;
+name|map
+operator|.
+name|remove
+argument_list|(
+name|key
+argument_list|,
+name|toBeDeleted
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Could not delete file from staging"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+comment|/**      * Returns all identifiers presently staged.      *      * @return iterator of all identifiers presently staged.      */
+specifier|protected
+name|Iterator
+argument_list|<
+name|String
+argument_list|>
+name|getAllIdentifiers
+parameter_list|()
+block|{
+return|return
+name|map
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
 return|;
 block|}
 comment|/**      * Removes all cached from attic      */
@@ -1601,18 +1704,59 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+comment|// Check if not already scheduled for upload
 if|if
 condition|(
-name|remove
+operator|!
+name|map
+operator|.
+name|containsKey
 argument_list|(
 name|key
 argument_list|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"upload map contains id [{}]"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
+name|File
+name|toBeDeleted
+init|=
+name|attic
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+name|deleteInternal
+argument_list|(
+name|key
+argument_list|,
+name|toBeDeleted
+argument_list|)
+expr_stmt|;
 name|iterator
 operator|.
 name|remove
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Cache [{}] file deleted for id [{}]"
+argument_list|,
+name|toBeDeleted
+argument_list|,
+name|key
+argument_list|)
 expr_stmt|;
 name|count
 operator|++
@@ -1640,65 +1784,29 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Finished purge of [{}] files"
+literal|"Finished removal of [{}] files"
 argument_list|,
 name|count
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Adjust stats and delete file.      *      * @param key      * @param toBeDeleted      * @throws IOException      */
 specifier|private
-name|boolean
-name|remove
+name|void
+name|deleteInternal
 parameter_list|(
 name|String
-name|id
+name|key
+parameter_list|,
+name|File
+name|toBeDeleted
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 name|LOG
 operator|.
-name|trace
-argument_list|(
-literal|"Removing upload file for id [{}]"
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-comment|// Check if not already scheduled for upload
-if|if
-condition|(
-operator|!
-name|map
-operator|.
-name|containsKey
-argument_list|(
-name|id
-argument_list|)
-condition|)
-block|{
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"upload map contains id [{}]"
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-name|File
-name|toBeDeleted
-init|=
-name|attic
-operator|.
-name|get
-argument_list|(
-name|id
-argument_list|)
-decl_stmt|;
-name|LOG
-operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Trying to delete file [{}]"
 argument_list|,
@@ -1720,7 +1828,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"deleted file [{}]"
 argument_list|,
@@ -1751,7 +1859,7 @@ name|memWeigher
 operator|.
 name|weigh
 argument_list|(
-name|id
+name|key
 argument_list|,
 name|toBeDeleted
 argument_list|)
@@ -1762,24 +1870,6 @@ operator|.
 name|decrementCount
 argument_list|()
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Cache [{}] file deleted for id [{}]"
-argument_list|,
-name|toBeDeleted
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
-return|;
 block|}
 comment|/**      * Delete the file from the staged cache and all its empty sub-directories.      *      * @param f the file to be deleted      * @throws IOException      */
 specifier|private
@@ -1809,7 +1899,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Deleted staged upload file [{}]"
 argument_list|,
@@ -2289,7 +2379,7 @@ block|}
 comment|// Configure cache name
 name|cacheName
 operator|=
-literal|"StagingCacheStats"
+literal|"DataStore-StagingCache"
 expr_stmt|;
 name|this
 operator|.
