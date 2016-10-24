@@ -143,6 +143,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -437,7 +451,7 @@ decl_stmt|;
 comment|/**      * Delete temporary directory.      */
 annotation|@
 name|Before
-specifier|protected
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -462,7 +476,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-specifier|protected
+specifier|public
 name|void
 name|tearDown
 parameter_list|()
@@ -1593,6 +1607,38 @@ name|getIdentifier
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Try again if async uploads
+if|if
+condition|(
+name|ds
+operator|.
+name|getRecordIfStored
+argument_list|(
+name|rec2
+operator|.
+name|getIdentifier
+argument_list|()
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+operator|(
+operator|(
+name|MultiDataStoreAware
+operator|)
+name|ds
+operator|)
+operator|.
+name|deleteRecord
+argument_list|(
+name|rec2
+operator|.
+name|getIdentifier
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|assertNull
 argument_list|(
 literal|"rec2 should be null"
@@ -1802,9 +1848,17 @@ name|DataIdentifier
 argument_list|>
 name|itr
 init|=
+name|Sets
+operator|.
+name|newHashSet
+argument_list|(
 name|ds
 operator|.
 name|getAllIdentifiers
+argument_list|()
+argument_list|)
+operator|.
+name|iterator
 argument_list|()
 decl_stmt|;
 while|while
@@ -2891,11 +2945,7 @@ name|put
 argument_list|(
 name|rec
 argument_list|,
-operator|new
-name|Integer
-argument_list|(
 name|size
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
