@@ -3001,8 +3001,6 @@ argument_list|(
 literal|"Async tasks finished"
 argument_list|)
 expr_stmt|;
-comment|// File was returned from async cache but now deleted
-comment|// assertFalse(fileOnUpload.exists());
 name|File
 name|gold
 init|=
@@ -3046,22 +3044,6 @@ name|gold
 argument_list|,
 name|fromUploadStream
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertCacheStats
-argument_list|(
-name|cache
-operator|.
-name|getStagingCacheStats
-argument_list|()
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-literal|1
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|assertEquals
