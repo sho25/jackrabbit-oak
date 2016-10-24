@@ -291,24 +291,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segment
-operator|.
-name|Segment
-operator|.
-name|RECORD_ID_BYTES
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|state
@@ -767,7 +749,6 @@ name|String
 name|getStableId
 parameter_list|()
 block|{
-comment|// FIXME OAK-4797: Optimise stable ids: come up with a faster to serialise representation that uses less memory
 name|ByteBuffer
 name|buffer
 init|=
