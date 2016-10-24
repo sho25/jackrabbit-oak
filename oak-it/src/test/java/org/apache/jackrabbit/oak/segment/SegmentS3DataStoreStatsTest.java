@@ -317,16 +317,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -382,12 +372,6 @@ comment|/**  * Tests the registration of the S3DataStoreStatsMbean.  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4921"
-argument_list|)
-comment|// FIXME OAK-4921: SegmentS3DataStoreStatsTest failing
 specifier|public
 class|class
 name|SegmentS3DataStoreStatsTest
