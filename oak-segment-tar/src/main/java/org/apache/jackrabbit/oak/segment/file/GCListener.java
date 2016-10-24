@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -43,42 +33,43 @@ name|spi
 operator|.
 name|gc
 operator|.
-name|GCMonitor
+name|DelegatingGCMonitor
 import|;
 end_import
 
 begin_comment
-comment|// FIXME OAK-4283: Align GCMonitor API with implementation: Unify with GCMonitor
+comment|/**  * Listener receiving notifications about the garbage collection process  */
 end_comment
 
-begin_interface
-specifier|public
-interface|interface
+begin_class
+specifier|abstract
+class|class
 name|GCListener
 extends|extends
-name|GCMonitor
+name|DelegatingGCMonitor
 block|{
-enum|enum
-name|Status
-block|{
-name|SUCCESS
-block|,
-name|FAILURE
-block|}
+comment|/**      * Notification of a successfully completed compaction resulting in      * a new generation of segments      * @param newGeneration  the new generation number      */
+specifier|public
+specifier|abstract
 name|void
-name|compacted
+name|compactionSucceeded
 parameter_list|(
-annotation|@
-name|Nonnull
-name|Status
-name|status
-parameter_list|,
 name|int
-name|generation
+name|newGeneration
+parameter_list|)
+function_decl|;
+comment|/**      * Notification of a failed compaction. A new generation of      * segments could not be created.      * @param failedGeneration  the generation number that could not be created      */
+specifier|public
+specifier|abstract
+name|void
+name|compactionFailed
+parameter_list|(
+name|int
+name|failedGeneration
 parameter_list|)
 function_decl|;
 block|}
-end_interface
+end_class
 
 end_unit
 
