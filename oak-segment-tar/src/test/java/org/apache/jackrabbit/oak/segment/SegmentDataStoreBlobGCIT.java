@@ -177,16 +177,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Date
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashSet
 import|;
 end_import
@@ -368,20 +358,6 @@ operator|.
 name|collect
 operator|.
 name|Sets
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|io
-operator|.
-name|Closeables
 import|;
 end_import
 
@@ -1117,7 +1093,7 @@ literal|10
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|protected
 name|DataStoreBlobStore
 name|getBlobStore
 parameter_list|(
