@@ -246,12 +246,6 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4999"
-argument_list|)
-comment|// FIXME OAK-4999
 specifier|public
 name|void
 name|testReadWrite
