@@ -471,12 +471,10 @@ argument_list|)
 decl_stmt|;
 comment|/**      * The cacheRoot directory of the cache.      */
 specifier|private
-specifier|final
 name|File
 name|cacheRoot
 decl_stmt|;
 specifier|private
-specifier|final
 name|CacheLIRS
 argument_list|<
 name|String
@@ -486,12 +484,10 @@ argument_list|>
 name|cache
 decl_stmt|;
 specifier|private
-specifier|final
 name|FileCacheStats
 name|cacheStats
 decl_stmt|;
 specifier|private
-specifier|final
 name|ExecutorService
 name|executor
 decl_stmt|;
@@ -941,6 +937,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+specifier|private
+name|FileCache
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|FileCache
@@ -993,15 +993,7 @@ block|}
 return|return
 operator|new
 name|FileCache
-argument_list|(
-name|maxSize
-argument_list|,
-name|root
-argument_list|,
-name|loader
-argument_list|,
-name|executor
-argument_list|)
+argument_list|()
 block|{
 annotation|@
 name|Override

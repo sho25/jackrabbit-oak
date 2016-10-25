@@ -656,13 +656,11 @@ block|}
 decl_stmt|;
 comment|/**      * Max size of the upload staging cache in bytes      */
 specifier|private
-specifier|final
 name|long
 name|size
 decl_stmt|;
 comment|/**      * Current cache size in bytes      */
 specifier|private
-specifier|final
 name|AtomicLong
 name|currentSize
 decl_stmt|;
@@ -678,7 +676,6 @@ name|removeExecutor
 decl_stmt|;
 comment|/**      * In memory map for staged files      */
 specifier|private
-specifier|final
 name|ConcurrentMap
 argument_list|<
 name|String
@@ -689,7 +686,6 @@ name|map
 decl_stmt|;
 comment|/**      * In memory map for files to be deleted after uploads      */
 specifier|private
-specifier|final
 name|ConcurrentMap
 argument_list|<
 name|String
@@ -700,19 +696,16 @@ name|attic
 decl_stmt|;
 comment|/**      * Local directory where uploads are staged      */
 specifier|private
-specifier|final
 name|File
 name|uploadCacheSpace
 decl_stmt|;
 comment|/**      * Wrapper to where the blobs are uploaded/written      */
 specifier|private
-specifier|final
 name|StagingUploader
 name|uploader
 decl_stmt|;
 comment|/**      * Cache stats      */
 specifier|private
-specifier|final
 name|StagingCacheStats
 name|cacheStats
 decl_stmt|;
@@ -720,7 +713,6 @@ comment|/**      * Handle for download cache if any      */
 annotation|@
 name|Nullable
 specifier|private
-specifier|final
 name|FileCache
 name|downloadCache
 decl_stmt|;
@@ -913,6 +905,10 @@ name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}
+specifier|private
+name|UploadStagingCache
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|UploadStagingCache
@@ -988,25 +984,7 @@ block|}
 return|return
 operator|new
 name|UploadStagingCache
-argument_list|(
-name|dir
-argument_list|,
-name|uploadThreads
-argument_list|,
-name|size
-argument_list|,
-name|uploader
-argument_list|,
-name|cache
-argument_list|,
-name|statisticsProvider
-argument_list|,
-name|executor
-argument_list|,
-name|scheduledExecutor
-argument_list|,
-name|purgeInterval
-argument_list|)
+argument_list|()
 block|{
 annotation|@
 name|Override
