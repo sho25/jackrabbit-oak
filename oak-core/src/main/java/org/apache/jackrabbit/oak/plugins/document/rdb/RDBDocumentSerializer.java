@@ -23,6 +23,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -1022,6 +1038,31 @@ parameter_list|)
 throws|throws
 name|DocumentStoreException
 block|{
+specifier|final
+name|String
+name|charData
+init|=
+name|row
+operator|.
+name|getData
+argument_list|()
+decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|charData
+argument_list|,
+literal|"RDBRow.getData() is null for collection "
+operator|+
+name|collection
+operator|+
+literal|", id: "
+operator|+
+name|row
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|T
 name|doc
 init|=
@@ -1256,14 +1297,6 @@ name|ex
 argument_list|)
 throw|;
 block|}
-name|String
-name|charData
-init|=
-name|row
-operator|.
-name|getData
-argument_list|()
-decl_stmt|;
 name|json
 operator|=
 operator|new
