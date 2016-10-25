@@ -592,13 +592,6 @@ argument_list|)
 decl_stmt|;
 name|repositoryUpgrade
 operator|.
-name|setSkipInitialization
-argument_list|(
-name|skipInit
-argument_list|)
-expr_stmt|;
-name|repositoryUpgrade
-operator|.
 name|copy
 argument_list|(
 operator|new

@@ -264,6 +264,22 @@ literal|"include-index"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|String
+name|VERIFY
+init|=
+literal|"verify"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ONLY_VERIFY
+init|=
+literal|"only-verify"
+decl_stmt|;
+specifier|public
+specifier|static
 name|OptionParser
 name|create
 parameter_list|()
@@ -808,6 +824,28 @@ argument_list|(
 name|SKIP_NAME_CHECK
 argument_list|,
 literal|"Skip the initial phase of testing node name lengths"
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|VERIFY
+argument_list|,
+literal|"After the sidegrade check whether the source repository is exactly the same as destination"
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|ONLY_VERIFY
+argument_list|,
+literal|"Performs only --"
+operator|+
+name|VERIFY
+operator|+
+literal|", without copying content"
 argument_list|)
 expr_stmt|;
 block|}
