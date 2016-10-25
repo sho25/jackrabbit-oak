@@ -593,6 +593,8 @@ expr_stmt|;
 name|assertServiceActivated
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|S3DataStoreStats
 name|s3DataStoreStats
 init|=
@@ -619,12 +621,16 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|unregisterDocumentNodeStoreService
 argument_list|()
 expr_stmt|;
 name|unregisterBlobStore
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|private
 name|DocumentNodeStoreService
