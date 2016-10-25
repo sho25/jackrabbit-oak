@@ -5268,7 +5268,7 @@ name|xpath
 init|=
 literal|"/jcr:root//element(*,rep:User)[xyz/@jcr:primaryType]"
 decl_stmt|;
-name|assertTrue
+name|assertPlan
 argument_list|(
 name|getPlan
 argument_list|(
@@ -5276,11 +5276,8 @@ name|session
 argument_list|,
 name|xpath
 argument_list|)
-operator|.
-name|startsWith
-argument_list|(
+argument_list|,
 literal|"[rep:User] as [a] /* nodeType"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|session
@@ -5311,7 +5308,7 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-name|assertTrue
+name|assertPlan
 argument_list|(
 name|getPlan
 argument_list|(
@@ -5319,18 +5316,15 @@ name|session
 argument_list|,
 name|xpath
 argument_list|)
-operator|.
-name|startsWith
-argument_list|(
+argument_list|,
 literal|"[rep:User] as [a] /* traverse "
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|xpath
 operator|=
 literal|"/jcr:root//element(*,oak:Unstructured)[xyz/@jcr:primaryType]"
 expr_stmt|;
-name|assertTrue
+name|assertPlan
 argument_list|(
 name|getPlan
 argument_list|(
@@ -5338,17 +5332,41 @@ name|session
 argument_list|,
 name|xpath
 argument_list|)
-operator|.
-name|startsWith
-argument_list|(
+argument_list|,
 literal|"[oak:Unstructured] as [a] /* nodeType "
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|session
 operator|.
 name|logout
 argument_list|()
+expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|void
+name|assertPlan
+parameter_list|(
+name|String
+name|plan
+parameter_list|,
+name|String
+name|planPrefix
+parameter_list|)
+block|{
+name|assertTrue
+argument_list|(
+literal|"Unexpected plan: "
+operator|+
+name|plan
+argument_list|,
+name|plan
+operator|.
+name|startsWith
+argument_list|(
+name|planPrefix
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 specifier|private
