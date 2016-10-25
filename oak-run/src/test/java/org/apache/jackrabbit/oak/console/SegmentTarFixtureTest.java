@@ -320,6 +320,13 @@ block|}
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|)
 annotation|@
 name|Ignore
 argument_list|(
