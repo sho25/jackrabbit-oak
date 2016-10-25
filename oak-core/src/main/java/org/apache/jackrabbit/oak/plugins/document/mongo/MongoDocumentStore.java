@@ -9883,18 +9883,18 @@ comment|// assumption here: server returns UTC - ie the returned
 comment|// date object is correctly taking care of time zones.
 specifier|final
 name|CommandResult
-name|serverStatus
+name|isMaster
 init|=
 name|db
 operator|.
 name|command
 argument_list|(
-literal|"serverStatus"
+literal|"isMaster"
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|serverStatus
+name|isMaster
 operator|==
 literal|null
 condition|)
@@ -9904,7 +9904,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"determineServerTimeDifferenceMillis: db.serverStatus returned null - cannot determine time difference - assuming 0ms."
+literal|"determineServerTimeDifferenceMillis: db.isMaster returned null - cannot determine time difference - assuming 0ms."
 argument_list|)
 expr_stmt|;
 return|return
@@ -9915,7 +9915,7 @@ specifier|final
 name|Date
 name|serverLocalTime
 init|=
-name|serverStatus
+name|isMaster
 operator|.
 name|getDate
 argument_list|(
@@ -9937,25 +9937,25 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"determineServerTimeDifferenceMillis: db.serverStatus.localTime returned null - cannot determine time difference - assuming 0ms. "
+literal|"determineServerTimeDifferenceMillis: db.isMaster.localTime returned null - cannot determine time difference - assuming 0ms. "
 operator|+
 literal|"(Result details: server exception="
 operator|+
-name|serverStatus
+name|isMaster
 operator|.
 name|getException
 argument_list|()
 operator|+
 literal|", server error message="
 operator|+
-name|serverStatus
+name|isMaster
 operator|.
 name|getErrorMessage
 argument_list|()
 operator|+
 literal|")"
 argument_list|,
-name|serverStatus
+name|isMaster
 operator|.
 name|getException
 argument_list|()
