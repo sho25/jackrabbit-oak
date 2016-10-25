@@ -1488,6 +1488,8 @@ return|return
 name|tracker
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 specifier|abstract
 name|SegmentWriter
