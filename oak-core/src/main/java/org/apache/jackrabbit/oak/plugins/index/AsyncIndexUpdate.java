@@ -2182,11 +2182,18 @@ decl_stmt|;
 name|String
 name|err
 init|=
-literal|"Another copy of the index update is already running; skipping this update. Time left for lease to expire "
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Another copy of the index update is already running; skipping this update. "
 operator|+
+literal|"Time left for lease to expire %d s. Indexing can resume by %tT"
+argument_list|,
 name|leaseExpMsg
-operator|+
-literal|"s"
+argument_list|,
+name|leaseEndTime
+argument_list|)
 decl_stmt|;
 name|indexStats
 operator|.
