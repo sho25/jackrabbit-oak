@@ -558,13 +558,7 @@ name|newGeneration
 parameter_list|)
 block|{
 name|compacted
-argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|cacheManager
 operator|.
