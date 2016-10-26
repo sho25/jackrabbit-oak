@@ -461,7 +461,7 @@ block|{
 return|return
 name|fileStoreGCMonitor
 operator|.
-name|getLastReclaimedSize
+name|getLastRepositorySize
 argument_list|()
 return|;
 block|}
