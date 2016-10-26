@@ -63,6 +63,30 @@ begin_import
 import|import static
 name|java
 operator|.
+name|lang
+operator|.
+name|Long
+operator|.
+name|numberOfLeadingZeros
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|Math
+operator|.
+name|max
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -402,6 +426,39 @@ operator|+
 literal|"}"
 return|;
 block|}
+block|}
+comment|/**      * Round {@code size} up to the next power of two or 1 for negative values.      * @param size      * @return the next power of two starting from {@code size}.      */
+specifier|public
+specifier|static
+name|long
+name|nextPowerOfTwo
+parameter_list|(
+name|int
+name|size
+parameter_list|)
+block|{
+return|return
+literal|1L
+operator|<<
+operator|(
+literal|64L
+operator|-
+name|numberOfLeadingZeros
+argument_list|(
+operator|(
+name|long
+operator|)
+name|max
+argument_list|(
+literal|1
+argument_list|,
+name|size
+argument_list|)
+operator|-
+literal|1L
+argument_list|)
+operator|)
+return|;
 block|}
 comment|/**      * Create a new instance of the given {@code size}. {@code rehash} specifies the number      * of rehashes to resolve a clash.      * @param size      Size of the cache. Must be a power of {@code 2}.      * @param rehash    Number of rehashes. Must be greater or equal to {@code 0} and      *                  smaller than {@code 32 - numberOfTrailingZeros(size)}.      */
 specifier|public
