@@ -730,7 +730,7 @@ specifier|final
 name|int
 name|DEFAULT_BATCH_COUNT
 init|=
-literal|2048
+literal|1024
 decl_stmt|;
 specifier|public
 specifier|static
