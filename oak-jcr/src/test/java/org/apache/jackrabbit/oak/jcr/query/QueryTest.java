@@ -639,6 +639,32 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+comment|// the following is not really traversal, it is just listing child nodes:
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+literal|"/jcr:root/*[@test] option(traversal fail)"
+argument_list|,
+literal|"xpath"
+argument_list|)
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
+comment|// the following is not really traversal; it is just one node:
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+literal|"/jcr:root/oak:index[@test] option(traversal fail)"
+argument_list|,
+literal|"xpath"
+argument_list|)
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
