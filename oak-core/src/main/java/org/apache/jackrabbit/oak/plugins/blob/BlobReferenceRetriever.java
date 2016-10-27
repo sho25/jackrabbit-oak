@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -46,13 +56,15 @@ specifier|public
 interface|interface
 name|BlobReferenceRetriever
 block|{
-comment|/**      * Collect references.      *       * @param collector the collector to collect all references      */
+comment|/**      * Collect references.      *       * @param collector the collector to collect all references      * @throws IOException      */
 name|void
 name|collectReferences
 parameter_list|(
 name|ReferenceCollector
 name|collector
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

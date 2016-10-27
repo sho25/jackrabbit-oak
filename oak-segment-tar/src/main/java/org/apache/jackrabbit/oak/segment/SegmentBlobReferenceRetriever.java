@@ -121,8 +121,8 @@ specifier|final
 name|ReferenceCollector
 name|collector
 parameter_list|)
-block|{
-try|try
+throws|throws
+name|IOException
 block|{
 name|store
 operator|.
@@ -131,22 +131,6 @@ argument_list|(
 name|collector
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// FIXME OAK-4314: BlobReferenceRetriever#collectReferences should allow exceptions
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 block|}
 end_class
