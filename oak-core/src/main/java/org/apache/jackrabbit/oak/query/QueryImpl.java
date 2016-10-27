@@ -5429,7 +5429,7 @@ name|WARN
 case|:
 name|LOG
 operator|.
-name|warn
+name|info
 argument_list|(
 name|message
 argument_list|)
