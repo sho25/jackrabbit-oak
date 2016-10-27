@@ -2213,7 +2213,11 @@ name|description
 operator|=
 literal|"This is the default interval in which the snapshots of locally tracked blob ids will"
 operator|+
-literal|"be taken and synchronized with the blob store"
+literal|"be taken and synchronized with the blob store. This should be configured to be less than the "
+operator|+
+literal|"frequency of blob GC so that deletions during blob GC can be accounted for "
+operator|+
+literal|"in the next GC execution."
 argument_list|)
 specifier|public
 specifier|static
