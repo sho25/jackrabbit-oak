@@ -997,6 +997,9 @@ name|withMaxFileSize
 argument_list|(
 literal|256
 argument_list|)
+operator|.
+name|withDefaultMemoryMapping
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
