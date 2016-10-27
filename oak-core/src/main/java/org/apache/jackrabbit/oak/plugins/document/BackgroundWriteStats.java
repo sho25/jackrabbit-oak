@@ -43,6 +43,9 @@ name|long
 name|num
 decl_stmt|;
 name|long
+name|calls
+decl_stmt|;
+name|long
 name|totalWriteTime
 decl_stmt|;
 annotation|@
@@ -72,6 +75,10 @@ operator|+
 literal|", num:"
 operator|+
 name|num
+operator|+
+literal|", calls:"
+operator|+
+name|calls
 operator|+
 literal|", totalWriteTime:"
 operator|+
