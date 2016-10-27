@@ -1014,6 +1014,11 @@ name|getWorkDir
 argument_list|()
 argument_list|)
 operator|.
+name|withNodeDeduplicationCacheSize
+argument_list|(
+literal|16384
+argument_list|)
+operator|.
 name|withBlobStore
 argument_list|(
 name|blobStore
@@ -1162,7 +1167,7 @@ comment|/* Create garbage by creating in-lined blobs (size< 16KB) */
 name|int
 name|number
 init|=
-literal|4000
+literal|500
 decl_stmt|;
 name|NodeBuilder
 name|content
@@ -1297,7 +1302,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|500
+literal|100
 condition|;
 name|i
 operator|++
