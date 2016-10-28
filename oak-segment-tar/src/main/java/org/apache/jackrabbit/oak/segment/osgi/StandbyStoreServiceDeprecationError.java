@@ -149,7 +149,7 @@ parameter_list|()
 block|{
 name|logger
 operator|.
-name|error
+name|warn
 argument_list|(
 name|DeprecationMessage
 operator|.
