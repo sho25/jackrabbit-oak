@@ -41,29 +41,6 @@ name|void
 name|execute
 parameter_list|()
 function_decl|;
-comment|/**      * Cancel the action without executing it      */
-name|void
-name|cancel
-parameter_list|()
-function_decl|;
-comment|/**      * Return the keys affected by this action      *      * @return keys affected by this action      */
-name|Iterable
-argument_list|<
-name|K
-argument_list|>
-name|getAffectedKeys
-parameter_list|()
-function_decl|;
-comment|/**      * Return the owner of this action      *      * @return {@link CacheWriteQueue} executing this action      */
-name|CacheWriteQueue
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|getOwner
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 
