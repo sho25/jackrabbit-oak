@@ -680,6 +680,8 @@ argument_list|,
 name|scheduledExecutor
 argument_list|,
 literal|3000
+argument_list|,
+literal|6000
 argument_list|)
 expr_stmt|;
 name|closer
@@ -743,6 +745,8 @@ argument_list|,
 name|scheduledExecutor
 argument_list|,
 literal|3000
+argument_list|,
+literal|6000
 argument_list|)
 expr_stmt|;
 name|closer
@@ -1173,6 +1177,8 @@ argument_list|,
 name|scheduledExecutor
 argument_list|,
 literal|3000
+argument_list|,
+literal|6000
 argument_list|)
 expr_stmt|;
 name|closer
@@ -1397,6 +1403,8 @@ argument_list|,
 name|scheduledExecutor
 argument_list|,
 literal|3000
+argument_list|,
+literal|6000
 argument_list|)
 expr_stmt|;
 name|closer

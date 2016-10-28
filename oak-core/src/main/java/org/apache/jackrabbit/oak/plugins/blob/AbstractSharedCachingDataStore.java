@@ -454,7 +454,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Caches files locally and stages files locally for async uploads.  * Configuration:  *  *<pre>  *&lt;DataStore class="org.apache.jackrabbit.oak.plugins.blob.AbstractCachingDataStore">  *  *&lt;param name="{@link #setPath(String) path}"/>  *&lt;param name="{@link #setCacheSize(long) cacheSize}" value="68719476736"/>  *&lt;param name="{@link #setStagingSplitPercentage(int) staginSplitPercentage}" value="10"/>  *&lt;param name="{@link #setUploadThreads(int) uploadThreads}" value="10"/>  *&lt;param name="{@link #setStagingPurgeInterval(int) stagingPurgeInterval}" value="300"/>  *&lt;/DataStore>  */
+comment|/**  * Caches files locally and stages files locally for async uploads.  * Configuration:  *  *<pre>  *&lt;DataStore class="org.apache.jackrabbit.oak.plugins.blob.AbstractCachingDataStore">  *  *&lt;param name="{@link #setPath(String) path}"/>  *&lt;param name="{@link #setCacheSize(long) cacheSize}" value="68719476736"/>  *&lt;param name="{@link #setStagingSplitPercentage(int) staginSplitPercentage}" value="10"/>  *&lt;param name="{@link #setUploadThreads(int) uploadThreads}" value="10"/>  *&lt;param name="{@link #setStagingPurgeInterval(int) stagingPurgeInterval}" value="300"/>  *&lt;param name="{@link #setStagingRetryInterval(int) stagingRetryInterval} " value="600"/>  *&lt;/DataStore>  */
 end_comment
 
 begin_class
@@ -532,6 +532,13 @@ name|int
 name|stagingPurgeInterval
 init|=
 literal|300
+decl_stmt|;
+comment|/**      * The interval for retry job in seconds.      */
+specifier|private
+name|int
+name|stagingRetryInterval
+init|=
+literal|600
 decl_stmt|;
 comment|/**      * The root rootDirectory where the files are created.      */
 specifier|private
@@ -784,6 +791,8 @@ argument_list|,
 name|schedulerExecutor
 argument_list|,
 name|stagingPurgeInterval
+argument_list|,
+name|stagingRetryInterval
 argument_list|)
 expr_stmt|;
 block|}
@@ -1572,6 +1581,21 @@ operator|.
 name|stagingPurgeInterval
 operator|=
 name|stagingPurgeInterval
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setStagingRetryInterval
+parameter_list|(
+name|int
+name|stagingRetryInterval
+parameter_list|)
+block|{
+name|this
+operator|.
+name|stagingRetryInterval
+operator|=
+name|stagingRetryInterval
 expr_stmt|;
 block|}
 specifier|public

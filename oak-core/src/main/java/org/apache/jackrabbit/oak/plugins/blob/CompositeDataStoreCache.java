@@ -266,9 +266,13 @@ name|ScheduledExecutorService
 name|scheduledExecutor
 comment|/* purge scheduled executor */
 parameter_list|,
-name|long
+name|int
 name|purgeInterval
 comment|/* async purge interval secs */
+parameter_list|,
+name|int
+name|stagingRetryInterval
+comment|/* async retry interval secs */
 parameter_list|)
 block|{
 name|checkArgument
@@ -351,6 +355,8 @@ argument_list|,
 name|scheduledExecutor
 argument_list|,
 name|purgeInterval
+argument_list|,
+name|stagingRetryInterval
 argument_list|)
 expr_stmt|;
 block|}
