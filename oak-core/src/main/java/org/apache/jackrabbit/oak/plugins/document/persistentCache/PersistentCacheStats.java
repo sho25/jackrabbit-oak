@@ -1805,7 +1805,9 @@ specifier|public
 name|void
 name|resetStats
 parameter_list|()
-block|{     }
+block|{
+comment|// ignored
+block|}
 comment|//~--------------------------------------< private helpers
 specifier|private
 specifier|static

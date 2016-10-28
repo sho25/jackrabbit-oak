@@ -3158,6 +3158,11 @@ name|PersistentCacheStats
 name|getPersistentCacheStats
 parameter_list|(
 name|Cache
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 name|cache
 parameter_list|)
 block|{
@@ -3172,6 +3177,11 @@ return|return
 operator|(
 operator|(
 name|NodeCache
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 operator|)
 name|cache
 operator|)
