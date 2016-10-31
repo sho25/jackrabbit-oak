@@ -3548,6 +3548,10 @@ block|,
 operator|new
 name|BundlingNodeTest
 argument_list|()
+block|,
+operator|new
+name|PersistentCacheTest
+argument_list|()
 block|}
 decl_stmt|;
 name|Set

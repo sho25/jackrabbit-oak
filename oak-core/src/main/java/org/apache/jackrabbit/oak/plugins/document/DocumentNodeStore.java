@@ -4113,6 +4113,19 @@ name|getStats
 argument_list|()
 return|;
 block|}
+name|Cache
+argument_list|<
+name|PathRev
+argument_list|,
+name|DocumentNodeState
+argument_list|>
+name|getNodeCache
+parameter_list|()
+block|{
+return|return
+name|nodeCache
+return|;
+block|}
 comment|/**      * Returns the journal entry that will be stored in the journal with the      * next background updated.      *      * @return the current journal entry.      */
 name|JournalEntry
 name|getCurrentJournalEntry
