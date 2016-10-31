@@ -77,6 +77,13 @@ name|OakEventFilter
 name|withIncludeAncestorsRemove
 parameter_list|()
 function_decl|;
+comment|/**      * This flag causes remove events to be sent for all nodes and properties      * of an entire subtree (hence use with care!).      *<p>      * It is only applied when a parent node is actually removed. For       * a parent node move this is not applied.      * @return this filter with the filter change applied      */
+specifier|public
+specifier|abstract
+name|OakEventFilter
+name|withIncludeSubtreeOnRemove
+parameter_list|()
+function_decl|;
 block|}
 end_class
 
