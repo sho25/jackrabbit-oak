@@ -254,6 +254,11 @@ specifier|private
 name|boolean
 name|includeSubtreeOnRemove
 decl_stmt|;
+specifier|private
+name|String
+index|[]
+name|globPaths
+decl_stmt|;
 specifier|public
 name|OakEventFilterImpl
 parameter_list|(
@@ -914,11 +919,30 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//        if (globPaths != null) {
-comment|//            for (String globPath : globPaths) {
-comment|//                addAncestorsRemoveCondition(parentPaths, globPath);
-comment|//            }
-comment|//        }
+if|if
+condition|(
+name|globPaths
+operator|!=
+literal|null
+condition|)
+block|{
+for|for
+control|(
+name|String
+name|globPath
+range|:
+name|globPaths
+control|)
+block|{
+name|addAncestorsRemoveCondition
+argument_list|(
+name|parentPaths
+argument_list|,
+name|globPath
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|parentPaths
@@ -1030,6 +1054,56 @@ parameter_list|()
 block|{
 return|return
 name|includeSubtreeOnRemove
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|OakEventFilter
+name|withIncludeGlobPaths
+parameter_list|(
+name|String
+modifier|...
+name|globPaths
+parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|globPaths
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"can only set globPaths once"
+argument_list|)
+throw|;
+block|}
+comment|//        for (String aGlobPath : globPaths) {
+comment|//            return or(builder().path(aGlobPath));
+comment|//        }
+name|this
+operator|.
+name|globPaths
+operator|=
+name|globPaths
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+name|String
+index|[]
+name|getIncludeGlobPaths
+parameter_list|()
+block|{
+return|return
+name|globPaths
 return|;
 block|}
 block|}

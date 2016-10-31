@@ -84,6 +84,17 @@ name|OakEventFilter
 name|withIncludeSubtreeOnRemove
 parameter_list|()
 function_decl|;
+comment|/**      * Adds the provided glob paths to the set of include paths.      *<p>      * The definition of a glob path is      *<a href="https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/oak/plugins/observation/filter/GlobbingPathFilter.html">here</a>      *<p>      * Note that unlike 'normal' include and exclude paths, this variant      * doesn't apply Oak's NamePathMapper.      *<p>      * This filter property is added in 'or' mode.      *       * @param globPath      *            glob path that should be added as include path pattern. Note      *            that the NamePathMapper is not applied on this globPath.      * @return this filter with the filter change applied      */
+specifier|public
+specifier|abstract
+name|OakEventFilter
+name|withIncludeGlobPaths
+parameter_list|(
+name|String
+modifier|...
+name|globPaths
+parameter_list|)
+function_decl|;
 block|}
 end_class
 
