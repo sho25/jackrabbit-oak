@@ -295,6 +295,11 @@ literal|"size=100,+compact,-async"
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
+name|StatisticsProvider
+name|statsProvider
+decl_stmt|;
+specifier|private
 name|Cache
 argument_list|<
 name|PathRev
@@ -317,6 +322,20 @@ argument_list|(
 literal|1000
 argument_list|)
 decl_stmt|;
+specifier|public
+name|PersistentCacheTest
+parameter_list|(
+name|StatisticsProvider
+name|statsProvider
+parameter_list|)
+block|{
+name|this
+operator|.
+name|statsProvider
+operator|=
+name|statsProvider
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|protected
@@ -330,6 +349,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"PersistentCacheStats.rejectedPut"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|fixture
@@ -385,6 +413,13 @@ argument_list|)
 decl_stmt|;
 name|builder
 operator|.
+name|setStatisticsProvider
+argument_list|(
+name|statsProvider
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
 name|setPersistentCache
 argument_list|(
 literal|"target/persistentCache,time,"
@@ -425,9 +460,7 @@ block|{
 name|builder
 block|}
 argument_list|,
-name|StatisticsProvider
-operator|.
-name|NOOP
+name|statsProvider
 argument_list|)
 decl_stmt|;
 return|return
@@ -462,24 +495,6 @@ literal|" not supported for this benchmark."
 argument_list|)
 throw|;
 block|}
-annotation|@
-name|Override
-specifier|protected
-name|void
-name|beforeSuite
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
-annotation|@
-name|Override
-specifier|protected
-name|void
-name|beforeTest
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
 annotation|@
 name|Override
 specifier|protected
@@ -556,15 +571,6 @@ expr_stmt|;
 comment|// read, so the entry is marked as used
 block|}
 block|}
-annotation|@
-name|Override
-specifier|protected
-name|void
-name|afterTest
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
 block|}
 end_class
 

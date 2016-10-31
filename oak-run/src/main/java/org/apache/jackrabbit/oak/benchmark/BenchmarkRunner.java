@@ -3551,7 +3551,9 @@ argument_list|()
 block|,
 operator|new
 name|PersistentCacheTest
-argument_list|()
+argument_list|(
+name|statsProvider
+argument_list|)
 block|}
 decl_stmt|;
 name|Set
