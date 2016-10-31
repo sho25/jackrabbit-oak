@@ -1911,6 +1911,11 @@ name|filter
 argument_list|,
 name|VISIBLE_FILTER
 argument_list|)
+argument_list|,
+name|provider
+operator|.
+name|getEventAggregator
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|long
