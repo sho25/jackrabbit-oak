@@ -95,6 +95,23 @@ modifier|...
 name|globPaths
 parameter_list|)
 function_decl|;
+comment|/**      * Greedy aggregating filter which upon first (hence greedy) hit of provided      * nodeTypes checks if the child subtree leading to the actual change      * matches any of the provided relativeGlobPaths.      *<p>      * Note that unlike 'normal' include and exclude paths, this variant      * doesn't apply Oak's NamePathMapper.      *<p>      * This filter property is added in 'and' mode.      *       * @param nodeTypes      *            note that these nodeTypes are not mapped to oak nor validated      * @param relativeGlobPaths      *            glob paths that are added to the set of include paths.      *            Note that Oak's NamePathMapper is not applied to these relativeGlobPaths.      * @return this filter with the filter change applied      */
+specifier|public
+specifier|abstract
+name|OakEventFilter
+name|withNodeTypeAggregate
+parameter_list|(
+specifier|final
+name|String
+index|[]
+name|nodeTypes
+parameter_list|,
+specifier|final
+name|String
+index|[]
+name|relativeGlobPaths
+parameter_list|)
+function_decl|;
 block|}
 end_class
 
