@@ -1168,6 +1168,18 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** for testing only - hence package protected **/
+name|FilterProvider
+name|getFilterProvider
+parameter_list|()
+block|{
+return|return
+name|filterProvider
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|/**      * Start this change processor      * @param whiteboard  the whiteboard instance to used for scheduling individual      *                    runs of this change processor.      * @throws IllegalStateException if started already      */
 specifier|public
 specifier|synchronized

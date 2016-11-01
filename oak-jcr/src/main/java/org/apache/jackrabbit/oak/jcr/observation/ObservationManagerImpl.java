@@ -1093,6 +1093,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** for testing only, hence package protected **/
+specifier|synchronized
+name|ChangeProcessor
+name|getChangeProcessor
+parameter_list|(
+name|EventListener
+name|listener
+parameter_list|)
+block|{
+return|return
+name|processors
+operator|.
+name|get
+argument_list|(
+name|listener
+argument_list|)
+return|;
+block|}
 specifier|private
 specifier|synchronized
 name|void
