@@ -64,6 +64,11 @@ specifier|public
 interface|interface
 name|FileStoreBackupRestoreMBean
 block|{
+name|String
+name|TYPE
+init|=
+literal|"FileStoreBackupRestore"
+decl_stmt|;
 comment|/**      * Initiate a backup operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
