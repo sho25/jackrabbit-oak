@@ -13113,6 +13113,14 @@ name|BackgroundLeaseUpdate
 extends|extends
 name|NodeStoreTask
 block|{
+comment|/** OAK-4859 : log if time between two renewClusterIdLease calls is too long **/
+specifier|private
+name|long
+name|lastRenewClusterIdLeaseCall
+init|=
+operator|-
+literal|1
+decl_stmt|;
 name|BackgroundLeaseUpdate
 parameter_list|(
 name|DocumentNodeStore
@@ -13149,6 +13157,61 @@ name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
 block|{
+comment|// OAK-4859 : keep track of invocation time of renewClusterIdLease
+comment|// and warn if time since last call is longer than 5sec
+specifier|final
+name|long
+name|now
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|lastRenewClusterIdLeaseCall
+operator|<=
+literal|0
+condition|)
+block|{
+name|lastRenewClusterIdLeaseCall
+operator|=
+name|now
+expr_stmt|;
+block|}
+else|else
+block|{
+specifier|final
+name|long
+name|diff
+init|=
+name|now
+operator|-
+name|lastRenewClusterIdLeaseCall
+decl_stmt|;
+if|if
+condition|(
+name|diff
+operator|>
+literal|5000
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"BackgroundLeaseUpdate.execute: time since last renewClusterIdLease() call longer than expected: {}ms"
+argument_list|,
+name|diff
+argument_list|)
+expr_stmt|;
+block|}
+name|lastRenewClusterIdLeaseCall
+operator|=
+name|now
+expr_stmt|;
+block|}
 comment|// first renew the clusterId lease
 name|nodeStore
 operator|.
