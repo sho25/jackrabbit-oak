@@ -217,6 +217,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertNotNull
 import|;
 end_import
@@ -1516,6 +1528,179 @@ argument_list|(
 name|original
 argument_list|,
 name|optimised
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * ensure that an optimisation is available for the provided queries.      *       * @throws ParseException      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|optimiseAndOrAnd
+parameter_list|()
+throws|throws
+name|ParseException
+block|{
+name|optimiseAndOrAnd
+argument_list|(
+literal|"select * from [nt:unstructured] as [c] "
+operator|+
+literal|"where ([a]=1 or [b]=2) and ([x]=3 or [y]=4)"
+argument_list|,
+literal|"(y = 4) and (b = 2), "
+operator|+
+literal|"(y = 4) and (a = 1), "
+operator|+
+literal|"(x = 3) and (b = 2), "
+operator|+
+literal|"(x = 3) and (a = 1)"
+argument_list|)
+expr_stmt|;
+name|optimiseAndOrAnd
+argument_list|(
+literal|"select * from [nt:unstructured] as [c] "
+operator|+
+literal|"where ([a]=1 or [b]=2 or ([c]=3 and [d]=4)) and ([x]=5 or [y]=6)"
+argument_list|,
+literal|"(y = 6) and ((c = 3) and (d = 4)), "
+operator|+
+literal|"(y = 6) and (b = 2), "
+operator|+
+literal|"(y = 6) and (a = 1), "
+operator|+
+literal|"(x = 5) and ((c = 3) and (d = 4)), "
+operator|+
+literal|"(x = 5) and (b = 2), "
+operator|+
+literal|"(x = 5) and (a = 1)"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|optimiseAndOrAnd
+parameter_list|(
+name|String
+name|statement
+parameter_list|,
+name|String
+name|expected
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
+name|SQL2Parser
+name|parser
+init|=
+operator|new
+name|SQL2Parser
+argument_list|(
+name|getMappings
+argument_list|()
+argument_list|,
+name|getNodeTypes
+argument_list|()
+argument_list|,
+name|qeSettings
+argument_list|)
+decl_stmt|;
+name|Query
+name|original
+decl_stmt|;
+name|original
+operator|=
+name|parser
+operator|.
+name|parse
+argument_list|(
+name|statement
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|original
+argument_list|)
+expr_stmt|;
+name|String
+name|optimized
+init|=
+name|original
+operator|.
+name|buildAlternativeQuery
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|optimized
+operator|=
+name|optimized
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\["
+argument_list|,
+literal|""
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\]"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|optimized
+operator|=
+name|optimized
+operator|.
+name|replaceAll
+argument_list|(
+literal|"select c.jcr:primaryType as c.jcr:primaryType "
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|optimized
+operator|=
+name|optimized
+operator|.
+name|replaceAll
+argument_list|(
+literal|"from nt:unstructured as c where "
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|optimized
+operator|=
+name|optimized
+operator|.
+name|replaceAll
+argument_list|(
+literal|"c\\."
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|optimized
+operator|=
+name|optimized
+operator|.
+name|replaceAll
+argument_list|(
+literal|" union "
+argument_list|,
+literal|", "
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|optimized
 argument_list|)
 expr_stmt|;
 block|}
