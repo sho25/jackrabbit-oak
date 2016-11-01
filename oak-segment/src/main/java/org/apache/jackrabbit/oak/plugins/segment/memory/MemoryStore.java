@@ -316,6 +316,8 @@ comment|/**  * A store used for in-memory operations.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|MemoryStore
@@ -358,6 +360,8 @@ operator|.
 name|newConcurrentMap
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|MemoryStore
 parameter_list|(
@@ -412,6 +416,8 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|MemoryStore
 parameter_list|()
@@ -426,6 +432,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentTracker
 name|getTracker
@@ -437,6 +445,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|SegmentNodeState
@@ -449,6 +459,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|boolean
@@ -498,6 +510,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|containsSegment
@@ -526,6 +540,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 name|readSegment
@@ -565,6 +581,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|writeSegment
@@ -651,6 +669,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close
@@ -658,6 +678,8 @@ parameter_list|()
 block|{     }
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Blob
 name|readBlob
@@ -672,6 +694,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|BlobStore
 name|getBlobStore
@@ -683,6 +707,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|gc

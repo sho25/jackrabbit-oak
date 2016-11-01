@@ -64,11 +64,15 @@ comment|/**  * A {@code PartialCompactionMap} maps uncompacted to compacted reco
 end_comment
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|PartialCompactionMap
 block|{
 comment|/**      * Checks whether the record with the given {@code before} identifier was      * compacted to a new record with the given {@code after} identifier.      *      * @param before before record identifier      * @param after after record identifier      * @return whether {@code before} was compacted to {@code after}      */
+annotation|@
+name|Deprecated
 name|boolean
 name|wasCompactedTo
 parameter_list|(
@@ -84,6 +88,8 @@ name|after
 parameter_list|)
 function_decl|;
 comment|/**      * Checks whether content in the segment with the given identifier was      * compacted to new segments.      *      * @param id segment identifier      * @return whether the identified segment was compacted      */
+annotation|@
+name|Deprecated
 name|boolean
 name|wasCompacted
 parameter_list|(
@@ -96,6 +102,8 @@ function_decl|;
 comment|/**      * Retrieve the record id {@code before} maps to or {@code null}      * if no such id exists.      * @param before before record id      * @return after record id or {@code null}      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 name|RecordId
 name|get
 parameter_list|(
@@ -106,6 +114,8 @@ name|before
 parameter_list|)
 function_decl|;
 comment|/**      * Adds a new entry to the compaction map. Overwriting a previously      * added entry is not supported.      * @param before  before record id      * @param after  after record id      * @throws IllegalArgumentException  if {@code before} already exists in the map      */
+annotation|@
+name|Deprecated
 name|void
 name|put
 parameter_list|(
@@ -121,6 +131,8 @@ name|after
 parameter_list|)
 function_decl|;
 comment|/**      * Remove all keys from this map where {@code keys.contains(key.asUUID())}.      * @param uuids  uuids of the keys to remove      */
+annotation|@
+name|Deprecated
 name|void
 name|remove
 parameter_list|(
@@ -134,26 +146,36 @@ name|uuids
 parameter_list|)
 function_decl|;
 comment|/**      * Compressing this map ensures it takes up as little heap as possible. This      * operation might be expensive and should only be called in suitable intervals.      */
+annotation|@
+name|Deprecated
 name|void
 name|compress
 parameter_list|()
 function_decl|;
 comment|/**      * Number of segments referenced by the keys in this map. The returned value might only      * be based on the compressed part of the map.      * @return  number of segments      */
+annotation|@
+name|Deprecated
 name|long
 name|getSegmentCount
 parameter_list|()
 function_decl|;
 comment|/**      * Number of records referenced by the keys in this map. The returned value might only      * be based on the compressed part of the map.      * @return  number of records      */
+annotation|@
+name|Deprecated
 name|long
 name|getRecordCount
 parameter_list|()
 function_decl|;
 comment|/**      * Determine whether this map contains keys at all.      * @return  {@code true} iff this map is empty      */
+annotation|@
+name|Deprecated
 name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
 comment|/**      * The weight of the compaction map is its heap memory consumption in bytes.      * @return  Estimated weight of the compaction map      */
+annotation|@
+name|Deprecated
 name|long
 name|getEstimatedWeight
 parameter_list|()

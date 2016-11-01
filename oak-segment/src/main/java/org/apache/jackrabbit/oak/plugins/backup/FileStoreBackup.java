@@ -242,6 +242,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|FileStoreBackup
@@ -261,6 +263,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|boolean
@@ -273,6 +277,8 @@ argument_list|(
 literal|"oak.backup.UseFakeBlobStore"
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|void

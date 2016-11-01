@@ -76,6 +76,8 @@ comment|/**  * Utility BlobStore implementation to be used in tooling that can w
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|BasicReadOnlyBlobStore
@@ -84,6 +86,8 @@ name|BlobStore
 block|{
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|writeBlob
@@ -102,6 +106,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|readBlob
@@ -133,6 +139,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getBlobLength
@@ -185,6 +193,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|getInputStream
@@ -209,6 +219,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getBlobId
@@ -223,6 +235,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getReference

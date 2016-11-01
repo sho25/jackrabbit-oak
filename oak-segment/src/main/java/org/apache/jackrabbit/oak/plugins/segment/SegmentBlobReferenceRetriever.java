@@ -60,6 +60,8 @@ comment|/**  * Implementation of {@link BlobReferenceRetriever} to retrieve blob
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentBlobReferenceRetriever
@@ -71,6 +73,8 @@ specifier|final
 name|SegmentTracker
 name|tracker
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentBlobReferenceRetriever
 parameter_list|(
@@ -87,6 +91,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|collectReferences

@@ -312,6 +312,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|StandbyStore
@@ -353,6 +355,8 @@ specifier|private
 name|RemoteSegmentLoader
 name|loader
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|StandbyStore
 parameter_list|(
@@ -369,6 +373,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentTracker
 name|getTracker
@@ -380,6 +386,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeState
 name|getHead
@@ -394,6 +402,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|setHead
@@ -418,6 +428,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|containsSegment
@@ -437,6 +449,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 name|readSegment
@@ -987,6 +1001,8 @@ name|sid
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|persist
@@ -1106,6 +1122,8 @@ name|String
 argument_list|>
 name|cacheStats
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|preSync
@@ -1134,6 +1152,8 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|postSync
@@ -1174,6 +1194,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|writeSegment
@@ -1210,6 +1232,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close
@@ -1223,6 +1247,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Blob
 name|readBlob
@@ -1242,6 +1268,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|BlobStore
 name|getBlobStore
@@ -1256,6 +1284,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|gc
@@ -1267,6 +1297,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|size
@@ -1296,6 +1328,8 @@ operator|-
 literal|1
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|cleanup

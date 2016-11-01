@@ -58,10 +58,14 @@ comment|/**  * MBean for monitoring the revision garbage collection process of t
 end_comment
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|GCMonitorMBean
 block|{
+annotation|@
+name|Deprecated
 name|String
 name|TYPE
 init|=
@@ -70,6 +74,8 @@ decl_stmt|;
 comment|/**      * @return  timestamp of the last compaction or {@code null} if none.      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 name|String
 name|getLastCompaction
 parameter_list|()
@@ -77,6 +83,8 @@ function_decl|;
 comment|/**      * @return  timestamp of the last cleanup or {@code null} if none.      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 name|String
 name|getLastCleanup
 parameter_list|()
@@ -84,6 +92,8 @@ function_decl|;
 comment|/**      * @return  last error or {@code null} if none.      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 name|String
 name|getLastError
 parameter_list|()
@@ -91,6 +101,8 @@ function_decl|;
 comment|/**      * @return  current status.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|String
 name|getStatus
 parameter_list|()
@@ -98,6 +110,8 @@ function_decl|;
 comment|/**      * Statistics about the compaction map.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|String
 name|getCompactionMapStats
 parameter_list|()
@@ -105,6 +119,8 @@ function_decl|;
 comment|/**      * @return  time series of the repository size      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|CompositeData
 name|getRepositorySize
 parameter_list|()
@@ -112,6 +128,8 @@ function_decl|;
 comment|/**      * @return  time series of the reclaimed space      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|CompositeData
 name|getReclaimedSize
 parameter_list|()

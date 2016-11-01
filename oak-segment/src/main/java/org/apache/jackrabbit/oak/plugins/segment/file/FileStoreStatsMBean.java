@@ -34,33 +34,47 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|FileStoreStatsMBean
 block|{
+annotation|@
+name|Deprecated
 name|String
 name|TYPE
 init|=
 literal|"FileStoreStats"
 decl_stmt|;
+annotation|@
+name|Deprecated
 name|long
 name|getApproximateSize
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|int
 name|getTarFileCount
 parameter_list|()
 function_decl|;
 comment|/**      * @return  time series of the writes to repository      */
+annotation|@
+name|Deprecated
 name|CompositeData
 name|getWriteStats
 parameter_list|()
 function_decl|;
 comment|/**      * @return  time series of the writes to repository      */
+annotation|@
+name|Deprecated
 name|CompositeData
 name|getRepositorySize
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|String
 name|fileStoreInfoAsString
 parameter_list|()

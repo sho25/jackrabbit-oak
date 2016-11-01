@@ -22,19 +22,27 @@ package|;
 end_package
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|CompactionStrategyMBean
 block|{
+annotation|@
+name|Deprecated
 name|String
 name|TYPE
 init|=
 literal|"CompactionStrategy"
 decl_stmt|;
+annotation|@
+name|Deprecated
 name|boolean
 name|isCloneBinaries
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|void
 name|setCloneBinaries
 parameter_list|(
@@ -42,10 +50,14 @@ name|boolean
 name|cloneBinaries
 parameter_list|)
 function_decl|;
+annotation|@
+name|Deprecated
 name|boolean
 name|isPausedCompaction
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|void
 name|setPausedCompaction
 parameter_list|(
@@ -53,10 +65,14 @@ name|boolean
 name|pausedCompaction
 parameter_list|)
 function_decl|;
+annotation|@
+name|Deprecated
 name|String
 name|getCleanupStrategy
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|void
 name|setCleanupStrategy
 parameter_list|(
@@ -64,10 +80,14 @@ name|String
 name|cleanup
 parameter_list|)
 function_decl|;
+annotation|@
+name|Deprecated
 name|long
 name|getOlderThan
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|void
 name|setOlderThan
 parameter_list|(
@@ -75,10 +95,14 @@ name|long
 name|olderThan
 parameter_list|)
 function_decl|;
+annotation|@
+name|Deprecated
 name|byte
 name|getMemoryThreshold
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|void
 name|setMemoryThreshold
 parameter_list|(
@@ -87,11 +111,15 @@ name|memory
 parameter_list|)
 function_decl|;
 comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
+annotation|@
+name|Deprecated
 name|boolean
 name|getForceAfterFail
 parameter_list|()
 function_decl|;
 comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      */
+annotation|@
+name|Deprecated
 name|void
 name|setForceAfterFail
 parameter_list|(
@@ -100,11 +128,15 @@ name|forceAfterFail
 parameter_list|)
 function_decl|;
 comment|/**      * Get the number of tries to compact concurrent commits on top of already      * compacted commits      * @return  retry count      */
+annotation|@
+name|Deprecated
 name|int
 name|getRetryCount
 parameter_list|()
 function_decl|;
 comment|/**      * Set the number of tries to compact concurrent commits on top of already      * compacted commits      * @param retryCount      */
+annotation|@
+name|Deprecated
 name|void
 name|setRetryCount
 parameter_list|(
@@ -113,11 +145,15 @@ name|retryCount
 parameter_list|)
 function_decl|;
 comment|/**      * Get the compaction gain estimate threshold beyond which compaction should      * run      * @return gainThreshold      */
+annotation|@
+name|Deprecated
 name|byte
 name|getGainThreshold
 parameter_list|()
 function_decl|;
 comment|/**      * Set the compaction gain estimate threshold beyond which compaction should      * run      * @param gainThreshold      */
+annotation|@
+name|Deprecated
 name|void
 name|setGainThreshold
 parameter_list|(

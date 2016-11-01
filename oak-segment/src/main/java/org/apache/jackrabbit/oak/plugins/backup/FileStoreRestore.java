@@ -190,6 +190,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|FileStoreRestore
@@ -223,6 +225,8 @@ name|JOURNAL_FILE_NAME
 init|=
 literal|"journal.log"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|void
@@ -378,6 +382,8 @@ name|watch
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|void
@@ -398,6 +404,8 @@ literal|"Restore not available as an online operation."
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|private
 specifier|static
 name|boolean

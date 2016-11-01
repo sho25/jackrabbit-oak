@@ -462,6 +462,8 @@ comment|/**  * Tool for compacting segments.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|Compactor
@@ -627,6 +629,8 @@ name|Boolean
 argument_list|>
 name|cancel
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|Compactor
 parameter_list|(
@@ -647,6 +651,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Compactor
 parameter_list|(
@@ -698,6 +704,8 @@ operator|=
 name|cancel
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Compactor
 parameter_list|(
@@ -723,6 +731,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Compactor
 parameter_list|(
@@ -886,6 +896,8 @@ name|builder
 return|;
 block|}
 comment|/**      * Compact the differences between a {@code before} and a {@code after}      * on top of an {@code onto} state.      * @param before  the before state      * @param after   the after state      * @param onto    the onto state      * @return  the compacted state      */
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeState
 name|compact
@@ -936,6 +948,8 @@ return|return
 name|compacted
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|PartialCompactionMap
 name|getCompactionMap
@@ -2560,6 +2574,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setDeepCheckLargeBinaries
@@ -2575,6 +2591,8 @@ operator|=
 name|deepCheckLargeBinaries
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setContentEqualityCheck

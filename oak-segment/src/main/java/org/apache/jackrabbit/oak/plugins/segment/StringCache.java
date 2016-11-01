@@ -108,6 +108,8 @@ comment|/**  * A string cache. It has two components: a fast cache for small str
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|StringCache
@@ -216,6 +218,8 @@ block|}
 block|}
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|CacheStats
 name|getStats
@@ -237,6 +241,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get the string, loading it if necessary.      *      * @param msb the msb of the segment      * @param lsb the lsb of the segment      * @param offset the offset      * @param loader the string loader function      * @return the string (never null)      */
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getString
@@ -407,6 +413,8 @@ name|s
 return|;
 block|}
 comment|/**      * Clear the cache.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|clear

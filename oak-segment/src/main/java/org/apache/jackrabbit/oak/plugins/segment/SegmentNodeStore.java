@@ -674,6 +674,8 @@ comment|/**  * The top level class for the segment store.  *<p>  * The root node
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentNodeStore
@@ -683,6 +685,8 @@ implements|,
 name|Observable
 block|{
 comment|// FIXME OAK-4449: SegmentNodeStore and SegmentStore builders should log their parameters on build()
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
@@ -878,6 +882,8 @@ return|;
 block|}
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeStore
 name|build
@@ -908,6 +914,8 @@ block|}
 block|}
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|SegmentNodeStoreBuilder
@@ -952,6 +960,8 @@ name|ROOT
 init|=
 literal|"root"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1267,6 +1277,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Closeable
 name|addObserver
@@ -1288,6 +1300,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|getRoot
@@ -1330,6 +1344,8 @@ return|;
 block|}
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|getSuperRoot
@@ -1367,6 +1383,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|merge
@@ -1518,6 +1536,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|rebase
@@ -1608,6 +1628,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|reset
@@ -1652,6 +1674,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Blob
 name|createBlob
@@ -1679,6 +1703,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Blob
 name|getBlob
@@ -1756,6 +1782,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|checkpoint
@@ -2210,6 +2238,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|String
@@ -2240,6 +2270,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Map
 argument_list|<
@@ -2331,6 +2363,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -2351,6 +2385,8 @@ annotation|@
 name|Override
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|retrieve
@@ -2407,6 +2443,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|release

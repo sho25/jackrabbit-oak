@@ -52,10 +52,14 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|StandbyStatusMBean
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -64,6 +68,8 @@ name|JMX_NAME
 init|=
 literal|"org.apache.jackrabbit.oak:name=Status,type=\"Standby\""
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -72,6 +78,8 @@ name|STATUS_INITIALIZING
 init|=
 literal|"initializing"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -80,6 +88,8 @@ name|STATUS_STOPPED
 init|=
 literal|"stopped"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -88,6 +98,8 @@ name|STATUS_STARTING
 init|=
 literal|"starting"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -96,6 +108,8 @@ name|STATUS_RUNNING
 init|=
 literal|"running"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -104,6 +118,8 @@ name|STATUS_CLOSING
 init|=
 literal|"closing"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -119,6 +135,8 @@ name|Description
 argument_list|(
 literal|"primary or standby"
 argument_list|)
+annotation|@
+name|Deprecated
 name|String
 name|getMode
 parameter_list|()
@@ -128,6 +146,8 @@ name|Description
 argument_list|(
 literal|"current status of the service"
 argument_list|)
+annotation|@
+name|Deprecated
 name|String
 name|getStatus
 parameter_list|()
@@ -137,6 +157,8 @@ name|Description
 argument_list|(
 literal|"instance is running"
 argument_list|)
+annotation|@
+name|Deprecated
 name|boolean
 name|isRunning
 parameter_list|()
@@ -146,6 +168,8 @@ name|Description
 argument_list|(
 literal|"stop the communication"
 argument_list|)
+annotation|@
+name|Deprecated
 name|void
 name|stop
 parameter_list|()
@@ -155,6 +179,8 @@ name|Description
 argument_list|(
 literal|"start the communication"
 argument_list|)
+annotation|@
+name|Deprecated
 name|void
 name|start
 parameter_list|()

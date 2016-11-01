@@ -62,6 +62,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|FailedRequestListener
@@ -76,6 +78,8 @@ name|?
 argument_list|>
 name|promise
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|FailedRequestListener
 parameter_list|(
@@ -95,6 +99,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|operationComplete

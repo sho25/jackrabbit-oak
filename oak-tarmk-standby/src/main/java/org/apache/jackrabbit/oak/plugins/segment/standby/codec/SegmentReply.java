@@ -42,10 +42,14 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentReply
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -54,6 +58,8 @@ name|SEGMENT
 init|=
 literal|0
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -62,6 +68,8 @@ name|BLOB
 init|=
 literal|1
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|SegmentReply
@@ -89,6 +97,8 @@ specifier|final
 name|IdArrayBasedBlob
 name|blob
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentReply
 parameter_list|(
@@ -115,6 +125,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentReply
 parameter_list|(
@@ -165,6 +177,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 name|getSegment
@@ -176,6 +190,8 @@ operator|.
 name|segment
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|IdArrayBasedBlob
 name|getBlob
@@ -185,6 +201,8 @@ return|return
 name|blob
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getType

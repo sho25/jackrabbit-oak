@@ -26,6 +26,8 @@ comment|/**  * This exception can be thrown during the startup of the {@link Fil
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|InvalidFileStoreVersionException

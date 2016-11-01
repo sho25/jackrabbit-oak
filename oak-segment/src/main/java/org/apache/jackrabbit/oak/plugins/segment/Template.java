@@ -316,6 +316,8 @@ comment|/**  * The in-memory representation of a "hidden class" of a node; inspi
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|Template
@@ -996,6 +998,8 @@ name|childNodesId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|getChildNode
@@ -1218,6 +1222,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|compare
@@ -1470,6 +1476,8 @@ block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|equals
@@ -1560,6 +1568,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|hashCode
@@ -1590,6 +1600,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString

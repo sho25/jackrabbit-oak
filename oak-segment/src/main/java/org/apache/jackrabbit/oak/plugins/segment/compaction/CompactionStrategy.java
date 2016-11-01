@@ -126,6 +126,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 specifier|abstract
 class|class
@@ -146,18 +148,28 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 enum|enum
 name|CleanupType
 block|{
 comment|/**          * {@code CLEAN_ALL}<em>must</em> be used in conjunction with {@code cloneBinaries}          * otherwise segments can go away ({@code SegmentNotFoundException})          *<p>          * Pros: best compaction results          *<p>          * Cons: larger repo size<em>during</em> compaction (2x). High chances that a currently          * running diff (e.g. observation) fails with {@code SegmentNotFoundException}.          */
+annotation|@
+name|Deprecated
 name|CLEAN_ALL
 block|,
+annotation|@
+name|Deprecated
 name|CLEAN_NONE
 block|,
 comment|/**          * {@code CLEAN_OLD} with {@code cloneBinaries}          *<p>          * Pros: better compaction results          *<p>          * Cons: larger repo size {@code during} compaction (2x). {@code SegmentNotFoundException}          * with insufficiently large values for {@code olderThan}.          *<p>          * {@code CLEAN_OLD} without {@code cloneBinaries}          *<p>          * Pros: weakest compaction results, smaller size during compaction (1x + size of          * data-segments).          *<p>          * Cons: {@code SegmentNotFoundException} with insufficiently large values for          * {@code olderThan}.          */
+annotation|@
+name|Deprecated
 name|CLEAN_OLD
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -166,6 +178,8 @@ name|PAUSE_DEFAULT
 init|=
 literal|true
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -174,6 +188,8 @@ name|CLONE_BINARIES_DEFAULT
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -184,6 +200,8 @@ name|CleanupType
 operator|.
 name|CLEAN_OLD
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -199,6 +217,8 @@ operator|*
 literal|10
 decl_stmt|;
 comment|// 10h
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -207,6 +227,8 @@ name|MEMORY_THRESHOLD_DEFAULT
 init|=
 literal|5
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -215,6 +237,8 @@ name|PERSIST_COMPACTION_MAP_DEFAULT
 init|=
 literal|true
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -224,6 +248,8 @@ init|=
 literal|10
 decl_stmt|;
 comment|/**      * Default value for {@link #getRetryCount()}      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -233,6 +259,8 @@ init|=
 literal|5
 decl_stmt|;
 comment|/**      * Default value for {@link #getForceAfterFail()}      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -242,6 +270,8 @@ init|=
 literal|false
 decl_stmt|;
 comment|/**      * No compaction at all      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -351,6 +381,8 @@ name|offlineCompaction
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|protected
 name|CompactionStrategy
 parameter_list|(
@@ -413,6 +445,8 @@ operator|=
 name|memoryThreshold
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|canRemove
@@ -484,6 +518,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|cloneBinaries
@@ -493,6 +529,8 @@ return|return
 name|cloneBinaries
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isPaused
@@ -502,6 +540,8 @@ return|return
 name|paused
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setPaused
@@ -517,6 +557,8 @@ operator|=
 name|paused
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setCloneBinaries
@@ -532,6 +574,8 @@ operator|=
 name|cloneBinaries
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setCleanupType
@@ -552,6 +596,8 @@ name|cleanupType
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setOlderThan
@@ -595,6 +641,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString
@@ -646,6 +694,8 @@ operator|+
 literal|'}'
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setCompactionStart
@@ -661,6 +711,8 @@ operator|=
 name|ms
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|byte
 name|getMemoryThreshold
@@ -670,6 +722,8 @@ return|return
 name|memoryThreshold
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setMemoryThreshold
@@ -685,6 +739,8 @@ operator|=
 name|memoryThreshold
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|getPersistCompactionMap
@@ -694,6 +750,8 @@ return|return
 name|persistedCompactionMap
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setPersistCompactionMap
@@ -708,6 +766,8 @@ name|persist
 expr_stmt|;
 block|}
 comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|getForceAfterFail
@@ -718,6 +778,8 @@ name|forceAfterFail
 return|;
 block|}
 comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setForceAfterFail
@@ -734,6 +796,8 @@ name|forceAfterFail
 expr_stmt|;
 block|}
 comment|/**      * Get the number of tries to compact concurrent commits on top of already      * compacted commits      * @return  retry count      */
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getRetryCount
@@ -744,6 +808,8 @@ name|retryCount
 return|;
 block|}
 comment|/**      * Set the number of tries to compact concurrent commits on top of already      * compacted commits      * @param retryCount      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setRetryCount
@@ -760,6 +826,8 @@ name|retryCount
 expr_stmt|;
 block|}
 comment|/**      * Get the compaction gain estimate threshold beyond which compaction should      * run      * @return gainThreshold      */
+annotation|@
+name|Deprecated
 specifier|public
 name|byte
 name|getGainThreshold
@@ -770,6 +838,8 @@ name|gainThreshold
 return|;
 block|}
 comment|/**      * Set the compaction gain estimate threshold beyond which compaction should      * run      * @param gainThreshold      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setGainThreshold
@@ -785,6 +855,8 @@ operator|=
 name|gainThreshold
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|abstract
 name|boolean
@@ -801,6 +873,8 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isOfflineCompaction
@@ -810,6 +884,8 @@ return|return
 name|offlineCompaction
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setOfflineCompaction
@@ -826,6 +902,8 @@ name|offlineCompaction
 expr_stmt|;
 block|}
 comment|/**      * Check if the approximate repository size is getting too big compared with      * the available space on disk.      *      * @param repositoryDiskSpace Approximate size of the disk space occupied by      *                            the repository.      * @param availableDiskSpace  Currently available disk space.      * @return {@code true} if the available disk space is considered enough for      * normal repository operations.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isDiskSpaceSufficient

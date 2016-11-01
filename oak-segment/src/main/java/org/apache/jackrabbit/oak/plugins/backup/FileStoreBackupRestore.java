@@ -256,12 +256,16 @@ comment|/**  * Default implementation of {@link FileStoreBackupRestoreMBean} bas
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|FileStoreBackupRestore
 implements|implements
 name|FileStoreBackupRestoreMBean
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -270,6 +274,8 @@ name|BACKUP_OP_NAME
 init|=
 literal|"Backup"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -322,6 +328,8 @@ literal|""
 argument_list|)
 decl_stmt|;
 comment|/**      * @param store  store to back up from or restore to      * @param file   file to back up to or restore from      * @param executor  executor for running the back up or restore operation      */
+annotation|@
+name|Deprecated
 specifier|public
 name|FileStoreBackupRestore
 parameter_list|(
@@ -371,6 +379,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|CompositeData
@@ -450,6 +460,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|CompositeData
@@ -468,6 +480,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|CompositeData
@@ -547,6 +561,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|CompositeData
@@ -565,6 +581,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|checkpoint

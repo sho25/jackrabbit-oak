@@ -380,6 +380,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentLoaderHandler
@@ -459,6 +461,8 @@ specifier|private
 name|ExecutorService
 name|syncExecutor
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentLoaderHandler
 parameter_list|(
@@ -529,6 +533,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|handlerAdded
@@ -548,6 +554,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|exceptionCaught
@@ -576,6 +584,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelInactive
@@ -598,6 +608,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|userEventTriggered
@@ -984,6 +996,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 name|readSegment
@@ -1018,6 +1032,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Blob
 name|readBlob
@@ -1269,6 +1285,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close
@@ -1282,6 +1300,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isClosed
@@ -1300,6 +1320,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isRunning

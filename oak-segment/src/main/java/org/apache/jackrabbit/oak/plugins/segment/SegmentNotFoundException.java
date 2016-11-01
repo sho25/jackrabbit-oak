@@ -40,6 +40,8 @@ comment|/**  * This exception is thrown when there the segment does not exist in
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentNotFoundException
@@ -51,6 +53,8 @@ specifier|final
 name|String
 name|segmentId
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNotFoundException
 parameter_list|(
@@ -77,6 +81,8 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNotFoundException
 parameter_list|(
@@ -108,6 +114,8 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getSegmentId

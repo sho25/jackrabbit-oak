@@ -126,6 +126,8 @@ comment|/**  * A node builder that keeps track of the number of updates  * (set 
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentNodeBuilder
@@ -318,6 +320,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeState
 name|getNodeState
@@ -414,6 +418,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Blob
 name|createBlob

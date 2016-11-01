@@ -100,11 +100,15 @@ comment|/**  * A {@code CompactionMap} is a composite of multiple {@link Partial
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|CompactionMap
 block|{
 comment|/**      * An empty map.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -168,6 +172,8 @@ name|generation
 expr_stmt|;
 block|}
 comment|/**      * Checks whether the record with the given {@code before} identifier was      * compacted to a new record with the given {@code after} identifier.      *      * @param before before record identifier      * @param after  after record identifier      * @return whether {@code before} was compacted to {@code after}      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|wasCompactedTo
@@ -213,6 +219,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Checks whether content in the segment with the given identifier was      * compacted to new segments.      *      * @param id segment identifier      * @return whether the identified segment was compacted      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|wasCompacted
@@ -253,6 +261,8 @@ block|}
 comment|/**      * Retrieve the record id {@code before} maps to or {@code null}      * if no such id exists.      * @param before before record id      * @return after record id or {@code null}      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 name|get
@@ -298,6 +308,8 @@ literal|null
 return|;
 block|}
 comment|/**      * Remove all keys from this map where {@code keys.contains(key.asUUID())}.      * @param uuids  uuids of the keys to remove      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|remove
@@ -331,6 +343,8 @@ block|}
 comment|/**      * Create a new {@code CompactionMap} containing all maps      * of this instances and additional the passed map {@code head}.      * @param head      * @return a new {@code CompactionMap} instance      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|CompactionMap
 name|cons
@@ -393,6 +407,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Java's lacking libraries...      * @param longs      * @return sum of the passed {@code longs}      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|long
@@ -426,6 +442,8 @@ name|sum
 return|;
 block|}
 comment|/**      * The depth of the compaction map is the number of partial compaction maps      * this map consists of.      *      * @return the depth of this compaction map      * @see #cons(PartialCompactionMap)      */
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getDepth
@@ -438,6 +456,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getGeneration
@@ -448,6 +468,8 @@ name|generation
 return|;
 block|}
 comment|/**      * The weight of the compaction map is its  memory consumption bytes      * @return Estimated weight of the compaction map      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 index|[]
@@ -497,6 +519,8 @@ name|weights
 return|;
 block|}
 comment|/**      * Number of segments referenced by the keys in this map. The returned value might only      * be based on the compressed part of the individual maps.      * @return  number of segments      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 index|[]
@@ -546,6 +570,8 @@ name|counts
 return|;
 block|}
 comment|/**      * Number of records referenced by the keys in this map. The returned value might only      * be based on the compressed part of the  individual maps.      * @return  number of records      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 index|[]

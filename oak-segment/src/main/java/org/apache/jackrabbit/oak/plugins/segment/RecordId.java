@@ -122,6 +122,8 @@ comment|/**  * The record id. This includes the segment id and the offset within
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 class|class
@@ -147,6 +149,8 @@ operator|+
 literal|"(:(0|[1-9][0-9]*)|\\.([0-9a-f]{4}))"
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|RecordId
@@ -159,6 +163,8 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|RecordId
@@ -302,6 +308,8 @@ specifier|final
 name|int
 name|offset
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 parameter_list|(
@@ -352,6 +360,8 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentId
 name|getSegmentId
@@ -361,6 +371,8 @@ return|return
 name|segmentId
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getOffset
@@ -371,6 +383,8 @@ name|offset
 return|;
 block|}
 comment|/**      * @return  the segment id part of this record id as UUID      */
+annotation|@
+name|Deprecated
 specifier|public
 name|UUID
 name|asUUID
@@ -383,6 +397,8 @@ name|asUUID
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 name|getSegment
@@ -398,6 +414,8 @@ block|}
 comment|//--------------------------------------------------------< Comparable>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|compareTo
@@ -446,6 +464,8 @@ block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString
@@ -467,6 +487,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the record id string representation used in Oak 1.0.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString10
@@ -487,6 +509,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|hashCode
@@ -503,6 +527,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|equals

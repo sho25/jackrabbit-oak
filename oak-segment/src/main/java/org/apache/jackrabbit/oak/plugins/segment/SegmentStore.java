@@ -98,12 +98,16 @@ comment|/**  * The backend storage interface used by the segment node store.  */
 end_comment
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|SegmentStore
 extends|extends
 name|Closeable
 block|{
+annotation|@
+name|Deprecated
 name|SegmentTracker
 name|getTracker
 parameter_list|()
@@ -111,10 +115,14 @@ function_decl|;
 comment|/**      * Returns the head state.      *      * @return head state      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|SegmentNodeState
 name|getHead
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|boolean
 name|setHead
 parameter_list|(
@@ -126,6 +134,8 @@ name|head
 parameter_list|)
 function_decl|;
 comment|/**      * Checks whether the identified segment exists in this store.      *      * @param id segment identifier      * @return {@code true} if the segment exists, {@code false} otherwise      */
+annotation|@
+name|Deprecated
 name|boolean
 name|containsSegment
 parameter_list|(
@@ -136,6 +146,8 @@ function_decl|;
 comment|/**      * Reads the identified segment from this store.      *      * @param segmentId segment identifier      * @return identified segment, or a {@link SegmentNotFoundException} thrown if not found      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 name|Segment
 name|readSegment
 parameter_list|(
@@ -144,6 +156,8 @@ name|segmentId
 parameter_list|)
 function_decl|;
 comment|/**      * Writes the given segment to the segment store.      *      * @param id segment identifier      * @param bytes byte buffer that contains the raw contents of the segment      * @param offset start offset within the byte buffer      * @param length length of the segment      */
+annotation|@
+name|Deprecated
 name|void
 name|writeSegment
 parameter_list|(
@@ -163,11 +177,15 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+annotation|@
+name|Deprecated
 name|void
 name|close
 parameter_list|()
 function_decl|;
 comment|/**      * Read a blob from external storage.      *      * @param reference blob reference      * @return external blob      */
+annotation|@
+name|Deprecated
 name|Blob
 name|readBlob
 parameter_list|(
@@ -178,11 +196,15 @@ function_decl|;
 comment|/**      * Returns the external BlobStore (if configured) with this store      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 name|BlobStore
 name|getBlobStore
 parameter_list|()
 function_decl|;
 comment|/**      * Triggers removal of segments that are no longer referenceable.      */
+annotation|@
+name|Deprecated
 name|void
 name|gc
 parameter_list|()

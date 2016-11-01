@@ -76,6 +76,8 @@ comment|/**  * This utility breaks down space usage per record type.  * It accou
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|RecordUsageAnalyser
@@ -176,6 +178,8 @@ name|long
 name|nodeCount
 decl_stmt|;
 comment|/**      * @return number of bytes in {@link RecordType#LEAF leaf} and {@link RecordType#BRANCH branch}      * records.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getMapSize
@@ -186,6 +190,8 @@ name|mapSize
 return|;
 block|}
 comment|/**      * @return number of bytes in {@link RecordType#LIST list} and {@link RecordType#BUCKET bucket}      * records.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getListSize
@@ -196,6 +202,8 @@ name|listSize
 return|;
 block|}
 comment|/**      * @return number of bytes in inlined values (strings and blobs)      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getValueSize
@@ -206,6 +214,8 @@ name|valueSize
 return|;
 block|}
 comment|/**      * @return number of bytes in {@link RecordType#TEMPLATE template} records.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getTemplateSize
@@ -216,6 +226,8 @@ name|templateSize
 return|;
 block|}
 comment|/**      * @return number of bytes in {@link RecordType#NODE node} records.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getNodeSize
@@ -226,6 +238,8 @@ name|nodeSize
 return|;
 block|}
 comment|/**      * @return number of maps      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getMapCount
@@ -236,6 +250,8 @@ name|mapCount
 return|;
 block|}
 comment|/**      * @return number of lists      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getListCount
@@ -246,6 +262,8 @@ name|listCount
 return|;
 block|}
 comment|/**      * @return number of properties      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getPropertyCount
@@ -256,6 +274,8 @@ name|propertyCount
 return|;
 block|}
 comment|/**      * @return number of {@link Segment#SMALL_LIMIT small} blobs.      *      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getSmallBlobCount
@@ -266,6 +286,8 @@ name|smallBlobCount
 return|;
 block|}
 comment|/**      * @return number of {@link Segment#MEDIUM_LIMIT medium} blobs.      *      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getMediumBlobCount
@@ -276,6 +298,8 @@ name|mediumBlobCount
 return|;
 block|}
 comment|/**      * @return number of long blobs.      *      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getLongBlobCount
@@ -286,6 +310,8 @@ name|longBlobCount
 return|;
 block|}
 comment|/**      * @return number of external blobs.      *      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getExternalBlobCount
@@ -296,6 +322,8 @@ name|externalBlobCount
 return|;
 block|}
 comment|/**      * @return number of {@link Segment#SMALL_LIMIT small} strings.      *      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getSmallStringCount
@@ -306,6 +334,8 @@ name|smallStringCount
 return|;
 block|}
 comment|/**      * @return number of {@link Segment#MEDIUM_LIMIT medium} strings.      *      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getMediumStringCount
@@ -316,6 +346,8 @@ name|mediumStringCount
 return|;
 block|}
 comment|/**      * @return number of long strings.      *      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getLongStringCount
@@ -326,6 +358,8 @@ name|longStringCount
 return|;
 block|}
 comment|/**      * @return number of templates.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getTemplateCount
@@ -336,6 +370,8 @@ name|templateCount
 return|;
 block|}
 comment|/**      * @return number of nodes.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getNodeCount
@@ -345,6 +381,8 @@ return|return
 name|nodeCount
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|analyseNode
@@ -363,6 +401,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString

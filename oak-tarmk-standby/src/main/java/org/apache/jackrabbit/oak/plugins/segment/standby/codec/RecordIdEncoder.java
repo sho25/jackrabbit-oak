@@ -92,6 +92,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|RecordIdEncoder
@@ -103,6 +105,8 @@ argument_list|>
 block|{
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|encode

@@ -240,6 +240,8 @@ comment|/**  * A BLOB (stream of bytes). This is a record of type "VALUE".  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentBlob
@@ -248,6 +250,8 @@ name|Record
 implements|implements
 name|Blob
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|Iterable
@@ -351,6 +355,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|getNewStream
@@ -597,6 +603,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|length
@@ -772,6 +780,8 @@ annotation|@
 name|Override
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getReference
@@ -847,6 +857,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getContentIdentity
@@ -877,6 +889,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isExternal
@@ -923,6 +937,8 @@ operator|==
 literal|0xf0
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getBlobId
@@ -1002,6 +1018,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentBlob
 name|clone
@@ -1261,6 +1279,8 @@ block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|equals
@@ -1345,6 +1365,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|hashCode

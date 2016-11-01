@@ -24,12 +24,16 @@ comment|/**  * This exception is thrown by the Segment NodeStore when an interna
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentOverflowException
 extends|extends
 name|RuntimeException
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentOverflowException
 parameter_list|(
@@ -43,6 +47,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentOverflowException
 parameter_list|(
@@ -61,6 +67,8 @@ name|cause
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentOverflowException
 parameter_list|(

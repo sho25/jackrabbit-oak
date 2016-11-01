@@ -210,6 +210,8 @@ comment|/**  * A {@code PartialCompactionMap} implementation persisting its entr
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|PersistedCompactionMap
@@ -232,6 +234,8 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Rough estimate of the number of bytes of disk space of a map entry.      * Used by the compaction gain estimator to offset its estimate.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -260,6 +264,8 @@ literal|10000000
 argument_list|)
 decl_stmt|;
 comment|/**      * Key used to store meta data associated with the individual map generations. Tools      * can use this to grep across segments for finding the meta data and ultimately      * to find and parse the compaction map generations.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -311,6 +317,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|wasCompactedTo
@@ -342,6 +350,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|wasCompacted
@@ -408,6 +418,8 @@ annotation|@
 name|Override
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 name|get
@@ -652,6 +664,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|put
@@ -759,6 +773,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|remove
@@ -780,6 +796,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|compress
@@ -799,6 +817,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getSegmentCount
@@ -819,6 +839,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getRecordCount
@@ -830,6 +852,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isEmpty
@@ -1320,6 +1344,8 @@ block|}
 comment|/**      * @return 0      */
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getEstimatedWeight

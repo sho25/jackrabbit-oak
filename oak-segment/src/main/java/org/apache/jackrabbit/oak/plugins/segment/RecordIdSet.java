@@ -94,6 +94,8 @@ comment|/**  * A memory optimised set of {@link RecordId}s.  *  * The set doesn'
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|RecordIdSet
@@ -112,6 +114,8 @@ name|newHashMap
 argument_list|()
 decl_stmt|;
 comment|/**      * Add {@code id} to this set if not already present      * @param id  the record id to add      * @return  {@code true} if added, {@code false} if already present      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|addIfNotPresent
@@ -180,6 +184,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Check whether {@code id} is present is this set.      * @param id  the record id to check for      * @return  {@code true} iff {@code id} is present.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|contains

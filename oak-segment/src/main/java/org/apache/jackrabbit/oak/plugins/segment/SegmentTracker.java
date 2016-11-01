@@ -300,6 +300,8 @@ comment|/**  * Tracker of references to segment identifiers and segment instance
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentTracker
@@ -489,6 +491,8 @@ specifier|final
 name|SegmentVersion
 name|segmentVersion
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentTracker
 parameter_list|(
@@ -698,6 +702,8 @@ name|build
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentTracker
 parameter_list|(
@@ -718,6 +724,8 @@ name|version
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentTracker
 parameter_list|(
@@ -750,6 +758,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return  a new {@link SegmentWriter} instance for writing to this store.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|SegmentWriter
@@ -773,6 +783,8 @@ return|;
 block|}
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|CacheStats
 name|getSegmentCacheStats
@@ -795,6 +807,8 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|CacheStats
 name|getStringCacheStats
@@ -813,6 +827,8 @@ name|getStats
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentWriter
 name|getWriter
@@ -822,6 +838,8 @@ return|return
 name|writer
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentStore
 name|getStore
@@ -832,6 +850,8 @@ name|store
 return|;
 block|}
 comment|/**      * Clear the caches      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|void
@@ -1005,6 +1025,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setCompactionMap
@@ -1031,6 +1053,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|CompactionMap
 name|getCompactionMap
@@ -1044,6 +1068,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns all segment identifiers that are currently referenced in memory.      *      * @return referenced segment identifiers      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|Set
@@ -1083,6 +1109,8 @@ name|ids
 return|;
 block|}
 comment|/**      * Finds all external blob references that are currently accessible      * in this repository and adds them to the given collector. Useful      * for collecting garbage in an external data store.      *<p>      * Note that this method only collects blob references that are already      * stored in the repository (at the time when this method is called), so      * the garbage collector will need some other mechanism for tracking      * in-memory references and references stored while this method is      * running.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|collectBlobReferences
@@ -1300,6 +1328,8 @@ throw|;
 block|}
 block|}
 comment|/**      *       * @param msb      * @param lsb      * @return the segment id      */
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentId
 name|getSegmentId
@@ -1410,6 +1440,8 @@ name|lsb
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|void

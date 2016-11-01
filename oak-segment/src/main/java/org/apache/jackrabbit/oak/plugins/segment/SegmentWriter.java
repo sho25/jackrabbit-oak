@@ -998,6 +998,8 @@ comment|/**  * Converts nodes, properties, and values to records, which are writ
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentWriter
@@ -1279,6 +1281,8 @@ name|String
 name|wid
 decl_stmt|;
 comment|/**      * @param store     store to write to      * @param version   segment version to write      * @param wid       id of this writer      */
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentWriter
 parameter_list|(
@@ -1311,6 +1315,8 @@ operator|=
 name|wid
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|flush
@@ -1324,6 +1330,8 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|dropCache
@@ -2370,6 +2378,8 @@ return|;
 block|}
 block|}
 comment|/**      * Writes a list record containing the given list of record identifiers.      *      * @param list list of record identifiers      * @return list record identifier      */
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 name|writeList
@@ -2752,6 +2762,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Writes a string value record.      *      * @param string string to be written      * @return value record identifier      */
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 name|writeString
@@ -2983,6 +2995,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentBlob
 name|writeBlob
@@ -3276,6 +3290,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Writes a stream value record. The given stream is consumed      *<em>and closed</em> by this method.      *      * @param stream stream to be written      * @return value record identifier      * @throws IOException if the stream could not be read      */
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentBlob
 name|writeStream
@@ -3619,6 +3635,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 name|writeProperty
@@ -3868,6 +3886,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 name|writeTemplate
@@ -4354,6 +4374,8 @@ return|return
 name|tid
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeState
 name|writeNode

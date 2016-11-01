@@ -500,6 +500,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|StandbyServer
@@ -565,6 +567,8 @@ specifier|private
 name|boolean
 name|running
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|StandbyServer
 parameter_list|(
@@ -592,6 +596,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|StandbyServer
 parameter_list|(
@@ -622,6 +628,8 @@ name|secure
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|StandbyServer
 parameter_list|(
@@ -653,6 +661,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|StandbyServer
 parameter_list|(
@@ -1002,6 +1012,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getMBeanName
@@ -1019,6 +1031,8 @@ operator|.
 name|port
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close
@@ -1411,6 +1425,8 @@ parameter_list|)
 block|{}
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|startAndWait
@@ -1424,6 +1440,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|start
@@ -1437,6 +1455,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getMode
@@ -1448,6 +1468,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isRunning
@@ -1459,6 +1481,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|stop
@@ -1493,6 +1517,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getStatus

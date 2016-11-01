@@ -100,6 +100,8 @@ comment|/**  * Reader for journal files of the SegmentMK.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 class|class
@@ -132,6 +134,8 @@ specifier|final
 name|ReversedLinesFileReader
 name|journal
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|JournalReader
 parameter_list|(
@@ -153,6 +157,8 @@ block|}
 comment|/**      * @return Iterator over the revisions in the journal in reverse order      *         (end of the file to beginning).      */
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterator
 argument_list|<
@@ -257,6 +263,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close

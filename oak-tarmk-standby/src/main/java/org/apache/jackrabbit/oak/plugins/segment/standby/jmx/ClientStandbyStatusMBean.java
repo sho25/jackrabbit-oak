@@ -42,6 +42,8 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|ClientStandbyStatusMBean
@@ -53,6 +55,8 @@ name|Description
 argument_list|(
 literal|"number of consecutive failed requests"
 argument_list|)
+annotation|@
+name|Deprecated
 name|int
 name|getFailedRequests
 parameter_list|()
@@ -62,6 +66,8 @@ name|Description
 argument_list|(
 literal|"number of seconds since last successful request"
 argument_list|)
+annotation|@
+name|Deprecated
 name|int
 name|getSecondsSinceLastSuccess
 parameter_list|()
@@ -71,6 +77,8 @@ name|Description
 argument_list|(
 literal|"Local timestamp of the moment when the last sync cycle was started"
 argument_list|)
+annotation|@
+name|Deprecated
 name|long
 name|getSyncStartTimestamp
 parameter_list|()
@@ -80,6 +88,8 @@ name|Description
 argument_list|(
 literal|"Local timestamp of the moment when the last sync cycle ended"
 argument_list|)
+annotation|@
+name|Deprecated
 name|long
 name|getSyncEndTimestamp
 parameter_list|()
@@ -90,6 +100,8 @@ name|Description
 argument_list|(
 literal|"number of consecutive failed requests"
 argument_list|)
+annotation|@
+name|Deprecated
 name|int
 name|calcFailedRequests
 parameter_list|()
@@ -99,6 +111,8 @@ name|Description
 argument_list|(
 literal|"number of seconds since last successful request"
 argument_list|)
+annotation|@
+name|Deprecated
 name|int
 name|calcSecondsSinceLastSuccess
 parameter_list|()
@@ -108,6 +122,8 @@ name|Description
 argument_list|(
 literal|"Runs garbage collection"
 argument_list|)
+annotation|@
+name|Deprecated
 name|void
 name|cleanup
 parameter_list|()

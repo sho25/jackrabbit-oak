@@ -58,10 +58,14 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|RemoteSegmentLoader
 block|{
+annotation|@
+name|Deprecated
 name|Segment
 name|readSegment
 parameter_list|(
@@ -69,6 +73,8 @@ name|String
 name|id
 parameter_list|)
 function_decl|;
+annotation|@
+name|Deprecated
 name|Blob
 name|readBlob
 parameter_list|(
@@ -76,14 +82,20 @@ name|String
 name|blobId
 parameter_list|)
 function_decl|;
+annotation|@
+name|Deprecated
 name|void
 name|close
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|boolean
 name|isClosed
 parameter_list|()
 function_decl|;
+annotation|@
+name|Deprecated
 name|boolean
 name|isRunning
 parameter_list|()

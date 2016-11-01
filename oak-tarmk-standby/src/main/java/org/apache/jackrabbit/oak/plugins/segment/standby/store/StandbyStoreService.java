@@ -412,6 +412,8 @@ name|ConfigurationPolicy
 operator|.
 name|REQUIRE
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|StandbyStoreService
@@ -445,6 +447,8 @@ name|MODE_STANDBY
 init|=
 literal|"standby"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -488,6 +492,8 @@ name|value
 operator|=
 name|MODE_DEFAULT
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -496,6 +502,8 @@ name|MODE
 init|=
 literal|"mode"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -511,6 +519,8 @@ name|intValue
 operator|=
 name|PORT_DEFAULT
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -519,6 +529,8 @@ name|PORT
 init|=
 literal|"port"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -534,6 +546,8 @@ name|value
 operator|=
 name|PRIMARY_HOST_DEFAULT
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -542,6 +556,8 @@ name|PRIMARY_HOST
 init|=
 literal|"primary.host"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -557,6 +573,8 @@ name|intValue
 operator|=
 name|INTERVAL_DEFAULT
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -565,6 +583,8 @@ name|INTERVAL
 init|=
 literal|"interval"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -586,6 +606,8 @@ name|Integer
 operator|.
 name|MAX_VALUE
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -594,6 +616,8 @@ name|ALLOWED_CLIENT_IP_RANGES
 init|=
 literal|"primary.allowed-client-ip-ranges"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -609,6 +633,8 @@ name|boolValue
 operator|=
 name|SECURE_DEFAULT
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -617,6 +643,8 @@ name|SECURE
 init|=
 literal|"secure"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -632,6 +660,8 @@ name|intValue
 operator|=
 name|READ_TIMEOUT_DEFAULT
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -640,6 +670,8 @@ name|READ_TIMEOUT
 init|=
 literal|"standby.readtimeout"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -655,6 +687,8 @@ name|boolValue
 operator|=
 name|AUTO_CLEAN_DEFAULT
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -805,6 +839,8 @@ block|}
 block|}
 annotation|@
 name|Deactivate
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|void

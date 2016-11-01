@@ -236,6 +236,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|StandbyClientHandler
@@ -287,6 +289,8 @@ specifier|final
 name|boolean
 name|autoClean
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|StandbyClientHandler
 parameter_list|(
@@ -340,6 +344,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelActive
@@ -382,6 +388,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|channelRead0
@@ -406,6 +414,8 @@ block|}
 empty_stmt|;
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelReadComplete
@@ -556,6 +566,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|exceptionCaught
@@ -584,6 +596,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close

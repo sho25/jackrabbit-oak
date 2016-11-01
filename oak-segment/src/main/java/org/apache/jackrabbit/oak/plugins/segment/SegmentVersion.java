@@ -72,6 +72,8 @@ comment|/**  * Version of the segment storage format.  *<ul>  *<li>10 = all Oak 
 end_comment
 
 begin_enum
+annotation|@
+name|Deprecated
 specifier|public
 enum|enum
 name|SegmentVersion
@@ -87,6 +89,8 @@ operator|)
 literal|10
 argument_list|)
 block|,
+annotation|@
+name|Deprecated
 name|V_11
 argument_list|(
 operator|(
@@ -94,8 +98,10 @@ name|byte
 operator|)
 literal|11
 argument_list|)
-block|;
+decl_stmt|;
 comment|/**      * Latest segment version      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|SegmentVersion
@@ -166,6 +172,8 @@ operator|=
 name|version
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|onOrAfter
@@ -183,6 +191,8 @@ operator|>=
 literal|0
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|byte
@@ -198,6 +208,8 @@ operator|.
 name|version
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|SegmentVersion
@@ -247,6 +259,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|boolean

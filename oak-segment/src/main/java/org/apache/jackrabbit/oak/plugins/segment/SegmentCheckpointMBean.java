@@ -142,6 +142,8 @@ comment|/**  * {@code CheckpointMBean} implementation for the {@code SegmentNode
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentCheckpointMBean
@@ -153,6 +155,8 @@ specifier|final
 name|SegmentNodeStore
 name|store
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentCheckpointMBean
 parameter_list|(
@@ -307,6 +311,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|createCheckpoint
@@ -326,6 +332,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|releaseCheckpoint

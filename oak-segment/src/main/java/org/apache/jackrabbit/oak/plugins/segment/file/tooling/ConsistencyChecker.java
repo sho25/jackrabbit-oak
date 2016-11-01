@@ -446,6 +446,8 @@ comment|/**  * Utility for checking the files of a  * {@link org.apache.jackrabb
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|ConsistencyChecker
@@ -476,6 +478,8 @@ name|long
 name|debugInterval
 decl_stmt|;
 comment|/**      * Run a consistency check.      *      * @param directory  directory containing the tar files      * @param journalFileName  name of the journal file containing the revision history      * @param fullTraversal    full traversal consistency check if {@code true}. Only try      *                         to access the root node otherwise.      * @param debugInterval    number of seconds between printing progress information to      *                         the console during the full traversal phase.      * @param binLen           number of bytes to read from binary properties. -1 for all.      * @return  the latest consistent revision out of the revisions listed in the journal.      * @throws IOException      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|String
@@ -687,6 +691,8 @@ literal|null
 return|;
 block|}
 comment|/**      * Create a new consistency checker instance      *      * @param directory  directory containing the tar files      * @param debugInterval    number of seconds between printing progress information to      *                         the console during the full traversal phase.      * @throws IOException      */
+annotation|@
+name|Deprecated
 specifier|public
 name|ConsistencyChecker
 parameter_list|(
@@ -721,6 +727,8 @@ name|debugInterval
 expr_stmt|;
 block|}
 comment|/**      * Check whether the nodes and all its properties of all given      * {@code paths} are consistent at the given {@code revision}.      *      * @param revision  revision to check      * @param paths     paths to check      * @param binLen    number of bytes to read from binary properties. -1 for all.      * @return  Path of the first inconsistency detected or {@code null} if none.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|check
@@ -923,6 +931,8 @@ name|int
 name|propertyCount
 decl_stmt|;
 comment|/**      * Travers the given {@code revision}      * @param revision  revision to travers      * @param binLen    number of bytes to read from binary properties. -1 for all.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|traverse
@@ -1416,6 +1426,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close

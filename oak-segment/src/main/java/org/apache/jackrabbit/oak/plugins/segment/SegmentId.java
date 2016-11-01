@@ -78,6 +78,8 @@ comment|/**  * Segment identifier. There are two types of segments: data segment
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentId
@@ -137,6 +139,8 @@ literal|0xffff
 argument_list|)
 decl_stmt|;
 comment|/**      * Checks whether this is a data segment identifier.      *      * @return {@code true} for a data segment, {@code false} otherwise      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|boolean
@@ -231,6 +235,8 @@ operator|=
 name|creationTime
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentId
 parameter_list|(
@@ -262,6 +268,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Checks whether this is a data segment identifier.      *      * @return {@code true} for a data segment, {@code false} otherwise      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isDataSegmentId
@@ -275,6 +283,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Checks whether this is a bulk segment identifier.      *      * @return {@code true} for a bulk segment, {@code false} otherwise      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isBulkSegmentId
@@ -290,6 +300,8 @@ operator|==
 literal|0xBL
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|equals
@@ -315,6 +327,8 @@ operator|==
 name|lsb
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getMostSignificantBits
@@ -324,6 +338,8 @@ return|return
 name|msb
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getLeastSignificantBits
@@ -355,6 +371,8 @@ literal|19
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 name|getSegment
@@ -467,6 +485,8 @@ operator|=
 name|segment
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentTracker
 name|getTracker
@@ -476,6 +496,8 @@ return|return
 name|tracker
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getCreationTime
@@ -498,6 +520,8 @@ name|MAX_VALUE
 expr_stmt|;
 block|}
 comment|/**      * @return  this segment id as UUID      */
+annotation|@
+name|Deprecated
 specifier|public
 name|UUID
 name|asUUID
@@ -516,6 +540,8 @@ block|}
 comment|// --------------------------------------------------------< Comparable>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|compareTo
@@ -586,6 +612,8 @@ block|}
 comment|// ------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString
@@ -606,6 +634,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|equals
@@ -661,6 +691,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|hashCode

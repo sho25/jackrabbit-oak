@@ -583,12 +583,16 @@ literal|"Factory allowing configuration of adjacent instances of "
 operator|+
 literal|"NodeStore implementation based on Segment model besides a default SegmentNodeStore in same setup."
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentNodeStoreFactory
 extends|extends
 name|ProxyNodeStore
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -610,6 +614,8 @@ literal|"As multiple SegmentNodeStores can be configured, this parameter defines
 operator|+
 literal|"of 'this' SegmentNodeStore."
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -631,6 +637,8 @@ literal|"Directory location used to store the segment tar files. If not specifie
 operator|+
 literal|"for framework property 'repository.home' otherwise use a subdirectory with name 'tarmk'"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -650,6 +658,8 @@ name|description
 operator|=
 literal|"TarMK mode (64 for memory mapping, 32 for normal file access)"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -673,6 +683,8 @@ name|description
 operator|=
 literal|"TarMK maximum file size (MB)"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -696,6 +708,8 @@ name|description
 operator|=
 literal|"Cache size for storing most recently used Segments"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -721,6 +735,8 @@ literal|"Boolean value indicating that a custom BlobStore is to be used. "
 operator|+
 literal|"By default large binary content would be stored within segment tar files"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -835,6 +851,8 @@ return|;
 block|}
 annotation|@
 name|Activate
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|activate
@@ -974,6 +992,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Deactivate
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|deactivate
@@ -1608,6 +1628,8 @@ block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString

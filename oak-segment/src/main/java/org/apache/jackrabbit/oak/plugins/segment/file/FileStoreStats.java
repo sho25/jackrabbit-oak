@@ -156,6 +156,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|FileStoreStats
@@ -164,6 +166,8 @@ name|FileStoreStatsMBean
 implements|,
 name|FileStoreMonitor
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -172,6 +176,8 @@ name|SEGMENT_REPO_SIZE
 init|=
 literal|"SEGMENT_REPO_SIZE"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -200,6 +206,8 @@ specifier|final
 name|CounterStats
 name|repoSize
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|FileStoreStats
 parameter_list|(
@@ -266,6 +274,8 @@ block|}
 comment|//~-----------------------------< FileStoreMonitor>
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|written
@@ -291,6 +301,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|reclaimed
@@ -310,6 +322,8 @@ block|}
 comment|//~--------------------------------< FileStoreStatsMBean>
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getApproximateSize
@@ -324,6 +338,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getTarFileCount
@@ -343,6 +359,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|CompositeData
 name|getWriteStats
@@ -364,6 +382,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|CompositeData
 name|getRepositorySize
@@ -383,6 +403,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|fileStoreInfoAsString

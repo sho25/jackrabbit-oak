@@ -342,57 +342,81 @@ comment|/**  * {@code SegmentParser} serves as a base class for parsing segments
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentParser
 block|{
 comment|/**      * Type of blobs (and strings)      */
+annotation|@
+name|Deprecated
 specifier|public
 enum|enum
 name|BlobType
 block|{
 comment|/** Small:&lt; {@link Segment#SMALL_LIMIT}. */
+annotation|@
+name|Deprecated
 name|SMALL
 block|,
 comment|/** Medium:&lt; {@link Segment#MEDIUM_LIMIT} */
+annotation|@
+name|Deprecated
 name|MEDIUM
 block|,
 comment|/** Long:&gt;=  {@link Segment#MEDIUM_LIMIT} */
+annotation|@
+name|Deprecated
 name|LONG
 block|,
 comment|/** External blob (i.e. in {@link BlobStore}. */
+annotation|@
+name|Deprecated
 name|EXTERNAL
 block|}
 comment|/**      * Result type of {@link #parseNode(RecordId)}.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
 name|NodeInfo
 block|{
 comment|/** Id of this record*/
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|RecordId
 name|nodeId
 decl_stmt|;
 comment|/** Number of child nodes */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|nodeCount
 decl_stmt|;
 comment|/** Number of properties */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|propertyCount
 decl_stmt|;
 comment|/** Size in bytes of this node */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|size
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeInfo
 parameter_list|(
@@ -436,59 +460,79 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Result type of {@link #parseTemplate(RecordId)}.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
 name|TemplateInfo
 block|{
 comment|/** Id of this record */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|RecordId
 name|templateId
 decl_stmt|;
 comment|/** Nodes of this type have a primary type */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|boolean
 name|hasPrimaryType
 decl_stmt|;
 comment|/** Nodes of this type have mixins */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|boolean
 name|hasMixinType
 decl_stmt|;
 comment|/** Nodes with this type have no child nodes */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|boolean
 name|zeroChildNodes
 decl_stmt|;
 comment|/** Nodes of this type have more than one child node */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|boolean
 name|manyChildNodes
 decl_stmt|;
 comment|/** Number of mixins */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|mixinCount
 decl_stmt|;
 comment|/** Number of properties */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|propertyCount
 decl_stmt|;
 comment|/** Size in bytes of this template */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|size
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|TemplateInfo
 parameter_list|(
@@ -568,23 +612,31 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Result type of {@link #parseMap(RecordId, RecordId, MapRecord)}.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
 name|MapInfo
 block|{
 comment|/** Id of this record */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|RecordId
 name|mapId
 decl_stmt|;
 comment|/** Size in bytes of this map. {@code -1} if not known. */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|size
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|MapInfo
 parameter_list|(
@@ -610,29 +662,39 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Result type of {@link #parseProperty(RecordId, RecordId, PropertyTemplate)}.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
 name|PropertyInfo
 block|{
 comment|/** Id of this record */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|RecordId
 name|propertyId
 decl_stmt|;
 comment|/** Number of values in properties of this type. {@code -1} for single value properties. */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|count
 decl_stmt|;
 comment|/** Size in bytes of this property */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|size
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|PropertyInfo
 parameter_list|(
@@ -667,18 +729,24 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Result type of {@link #parseValue(RecordId, RecordId, Type)}. */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
 name|ValueInfo
 block|{
 comment|/** Id of this record */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|RecordId
 name|valueId
 decl_stmt|;
 comment|/** Type of this value */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|Type
@@ -687,6 +755,8 @@ name|?
 argument_list|>
 name|type
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|ValueInfo
 parameter_list|(
@@ -715,29 +785,39 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Return type of {@link #parseBlob(RecordId)}. */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
 name|BlobInfo
 block|{
 comment|/** Id of this record */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|RecordId
 name|blobId
 decl_stmt|;
 comment|/** Type of this blob */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|BlobType
 name|blobType
 decl_stmt|;
 comment|/** Size in bytes of this blob */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|size
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|BlobInfo
 parameter_list|(
@@ -772,29 +852,39 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Return type of {@link #parseList(RecordId, RecordId, int)} . */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
 name|ListInfo
 block|{
 comment|/** Id of this record */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|RecordId
 name|listId
 decl_stmt|;
 comment|/** Number of items in this list */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|count
 decl_stmt|;
 comment|/** Size in bytes of this list */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|size
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|ListInfo
 parameter_list|(
@@ -829,24 +919,32 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Return type of {@link #parseListBucket(RecordId, int, int, int)}. */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
 name|ListBucketInfo
 block|{
 comment|/** Id of this record */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|RecordId
 name|listId
 decl_stmt|;
 comment|/** {@code true} if this is a leaf bucket, {@code false} otherwise. */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|boolean
 name|leaf
 decl_stmt|;
 comment|/** Entries of this bucket */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|List
@@ -856,11 +954,15 @@ argument_list|>
 name|entries
 decl_stmt|;
 comment|/** Size in bytes of this bucket. */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 name|int
 name|size
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|ListBucketInfo
 parameter_list|(
@@ -907,6 +1009,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Callback called by {@link #parseNode(RecordId)} upon encountering      * a child node.      *      * @param parentId  id of the parent node      * @param nodeId    if of the child node      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onNode
@@ -925,6 +1029,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseNode(RecordId)} upon encountering      * a template      *      * @param parentId   id of the node being parsed      * @param templateId id of the template      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onTemplate
@@ -943,6 +1049,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseNode(RecordId)},      * {@link #parseMapDiff(RecordId, MapRecord)} and      * {@link #parseMapBranch(RecordId, MapRecord)} upon encountering a map.      *      * @param parentId  the id of the parent of the map      * @param mapId     the id of the map      * @param map       the map      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onMap
@@ -968,6 +1076,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseMap(RecordId, RecordId, MapRecord)} upon encountering      * a map diff.      *      * @param parentId  the id of the parent map      * @param mapId     the id of the map      * @param map       the map      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onMapDiff
@@ -991,6 +1101,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseMap(RecordId, RecordId, MapRecord)} upon encountering      * a map leaf.      *      * @param parentId  the id of the parent map      * @param mapId     the id of the map      * @param map       the map      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onMapLeaf
@@ -1014,6 +1126,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseMap(RecordId, RecordId, MapRecord)} upon encountering      * a map branch.      *      * @param parentId  the id of the parent map      * @param mapId     the id of the map      * @param map       the map      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onMapBranch
@@ -1037,6 +1151,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseNode(RecordId)} upon encountering      * a property.      *      * @param parentId    the id of the parent node      * @param propertyId  the id of the property      * @param template    the property template      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onProperty
@@ -1062,6 +1178,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseProperty(RecordId, RecordId, PropertyTemplate)} upon      * encountering a value.      *      * @param parentId   the id the value's parent      * @param valueId    the id of the value      * @param type       the type of the value      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onValue
@@ -1090,6 +1208,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseValue(RecordId, RecordId, Type)} upon encountering a blob.      *      * @param parentId  the id of the blob's parent      * @param blobId    the id of the blob      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onBlob
@@ -1108,6 +1228,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseTemplate(RecordId)},      * {@link #parseMapLeaf(RecordId, MapRecord)} and      * {@link #parseValue(RecordId, RecordId, Type)} upon encountering a string.      *      * @param parentId  the id of the string's parent      * @param stringId  the id of the string      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onString
@@ -1126,6 +1248,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseNode(RecordId)},      * {@link #parseProperty(RecordId, RecordId, PropertyTemplate)},      * {@link #parseTemplate(RecordId)},      * {@link #parseBlob(RecordId)} and      * {@link #parseString(RecordId)} upon encountering a list.      *      * @param parentId  the id of the list's parent      * @param listId    the id of the list      * @param count     the number of elements in the list      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onList
@@ -1151,6 +1275,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Callback called by {@link #parseList(RecordId, RecordId, int)} and      * {@link #parseListBucket(RecordId, int, int, int)} upon encountering a list      * bucket.      *      * @param parentId    the id of the list's parent      * @param listId      the id of the list      * @param index       the index into the bucket      * @param count       the number of items in the bucket      * @param capacity    the capacity of the bucket      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|onListBucket
@@ -1184,6 +1310,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Parse a node record      * @param nodeId      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeInfo
 name|parseNode
@@ -1575,6 +1703,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a template record      * @param templateId      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|TemplateInfo
 name|parseTemplate
@@ -1985,6 +2115,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a map record      * @param parentId  parent of this map or {@code null} if none      * @param mapId      * @param map      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|MapInfo
 name|parseMap
@@ -2060,6 +2192,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a map diff record      * @param mapId      * @param map      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|MapInfo
 name|parseMapDiff
@@ -2143,6 +2277,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a map leaf record      * @param mapId      * @param map      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|MapInfo
 name|parseMapLeaf
@@ -2210,6 +2346,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a map branch record      * @param mapId      * @param map      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|MapInfo
 name|parseMapBranch
@@ -2282,6 +2420,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a property      * @param parentId      * @param propertyId      * @param template      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|PropertyInfo
 name|parseProperty
@@ -2445,6 +2585,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a value racrod      * @param parentId  parent of the value record, {@code null} if none      * @param valueId      * @param type      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|ValueInfo
 name|parseValue
@@ -2507,6 +2649,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a blob record      * @param blobId      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|BlobInfo
 name|parseBlob
@@ -2789,6 +2933,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a string record      * @param stringId      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|BlobInfo
 name|parseString
@@ -2971,6 +3117,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse a list record      * @param parentId  parent of the list, {@code null} if none      * @param listId      * @param count      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|ListInfo
 name|parseList
@@ -3024,6 +3172,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse item of list buckets      * @param listId      * @param index      index of the first item to parse      * @param count      number of items to parse      * @param capacity   total number of items      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 name|ListBucketInfo
 name|parseListBucket

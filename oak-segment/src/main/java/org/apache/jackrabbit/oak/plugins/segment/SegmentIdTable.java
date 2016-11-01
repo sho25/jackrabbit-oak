@@ -160,6 +160,8 @@ comment|/**  * Hash table of weak references to segment identifiers.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentIdTable

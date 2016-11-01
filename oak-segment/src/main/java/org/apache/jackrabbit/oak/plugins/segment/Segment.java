@@ -442,6 +442,8 @@ comment|/**  * A list of records.  *<p>  * Record data is not kept in memory, bu
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|Segment
@@ -472,6 +474,8 @@ literal|1
 decl_stmt|;
 comment|// 255
 comment|/**      * The number of bytes (or bits of address space) to use for the      * alignment boundary of segment records.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -482,6 +486,8 @@ literal|2
 decl_stmt|;
 comment|// align at the four-byte boundary
 comment|/**      * Maximum segment size. Record identifiers are stored as three-byte      * sequences with the first byte indicating the segment and the next      * two the offset within that segment. Since all records are aligned      * at four-byte boundaries, the two bytes can address up to 256kB of      * record data.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -508,6 +514,8 @@ operator|<<
 literal|7
 decl_stmt|;
 comment|/**      * The size limit for medium values. The variable length of medium values      * is encoded as two bytes with the highest bits of the first byte set to      * one and zero, which gives us 14 bits for encoding the length of the      * value. And since small values are never stored as medium ones, we can      * extend the size range to cover that many longer values.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -527,6 +535,8 @@ operator|+
 name|SMALL_LIMIT
 decl_stmt|;
 comment|/**      * Maximum size of small blob IDs. A small blob ID is stored in a value      * record whose length field contains the pattern "1110" in its most      * significant bits. Since two bytes are used to store both the bit pattern      * and the actual length of the blob ID, a maximum of 2^12 values can be      * stored in the length field.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -537,6 +547,8 @@ literal|1
 operator|<<
 literal|12
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -674,6 +686,8 @@ name|long
 name|accessed
 decl_stmt|;
 comment|/**      * Decode a 4 byte aligned segment offset.      * @param offset  4 byte aligned segment offset      * @return decoded segment offset      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|int
@@ -694,6 +708,8 @@ name|RECORD_ALIGN_BITS
 return|;
 block|}
 comment|/**      * Encode a segment offset into a 4 byte aligned address packed into a {@code short}.      * @param offset  segment offset      * @return  encoded segment offset packed into a {@code short}      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|short
@@ -715,6 +731,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Align an {@code address} on the given {@code boundary}      *      * @param address     address to align      * @param boundary    boundary to align to      * @return  {@code n = address + a} such that {@code n % boundary == 0} and      *          {@code 0<= a< boundary}.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|int
@@ -744,6 +762,8 @@ literal|1
 operator|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 parameter_list|(
@@ -769,6 +789,8 @@ name|V_11
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 parameter_list|(
@@ -1265,6 +1287,8 @@ return|return
 name|pos
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentId
 name|getSegmentId
@@ -1293,6 +1317,8 @@ operator|+
 literal|1
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getRootCount
@@ -1309,6 +1335,8 @@ operator|&
 literal|0xffff
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordType
 name|getRootType
@@ -1359,6 +1387,8 @@ literal|0xff
 index|]
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getRootOffset
@@ -1412,6 +1442,8 @@ block|}
 comment|/**      * Returns the segment meta data of this segment or {@code null} if none is present.      *<p>      * The segment meta data is a string of the format {@code "{wid=W,sno=S,gc=G,t=T}"}      * where:      *<ul>      *<li>{@code W} is the writer id {@code wid},</li>      *<li>{@code S} is a unique, increasing sequence number corresponding to the allocation order      * of the segments in this store,</li>      *<li>{@code G} is the garbage collection generation (i.e. the number of compaction cycles      * that have been run),</li>      *<li>{@code T} is a time stamp according to {@link System#currentTimeMillis()}.</li>      *</ul>      * @return the segment meta data      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getSegmentInfo
@@ -1611,6 +1643,8 @@ return|return
 name|refid
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|List
 argument_list|<
@@ -1666,6 +1700,8 @@ return|return
 name|ids
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|size
@@ -1678,6 +1714,8 @@ name|remaining
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getCacheSize
@@ -1722,6 +1760,8 @@ name|size
 return|;
 block|}
 comment|/**      * Writes this segment to the given output stream.      *      * @param stream stream to which this segment will be written      * @throws IOException on an IO error      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|writeTo
@@ -3494,6 +3534,8 @@ block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString

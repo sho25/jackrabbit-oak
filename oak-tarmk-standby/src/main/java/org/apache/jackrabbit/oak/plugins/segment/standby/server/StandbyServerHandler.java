@@ -296,6 +296,8 @@ end_import
 begin_class
 annotation|@
 name|Sharable
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|StandbyServerHandler
@@ -336,10 +338,14 @@ name|String
 index|[]
 name|allowedIPRanges
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|state
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|StandbyServerHandler
 parameter_list|(
@@ -634,6 +640,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelRegistered
@@ -668,6 +676,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelActive
@@ -702,6 +712,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelInactive
@@ -736,6 +748,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelUnregistered
@@ -770,6 +784,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelRead0
@@ -1181,6 +1197,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|channelReadComplete
@@ -1197,6 +1215,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|exceptionCaught

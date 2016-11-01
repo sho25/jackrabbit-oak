@@ -68,6 +68,8 @@ comment|/**  * A memory optimised map of {@code short} key to {@link RecordId} v
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|RecordIdMap
@@ -113,6 +115,8 @@ init|=
 name|NO_VALUES
 decl_stmt|;
 comment|/**      * Associates {@code key} with {@code value} if not already present      * @param key      * @param value      * @return  {@code true} if added, {@code false} if already present      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|put
@@ -336,6 +340,8 @@ block|}
 comment|/**      * Returns the value associated with a given {@code key} or {@code null} if none.      * @param key  the key to retrieve      * @return  the value associated with a given {@code key} or {@code null} if none.      */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 name|get
@@ -376,6 +382,8 @@ return|;
 block|}
 block|}
 comment|/**      * Check whether {@code key} is present is this map.      * @param key  the key to check for      * @return  {@code true} iff {@code key} is present.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|containsKey
@@ -396,6 +404,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @return the number of keys in this map      */
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|size
@@ -408,6 +418,8 @@ name|length
 return|;
 block|}
 comment|/**      * Retrieve the key at a given index. Keys are ordered according      * the natural ordering of shorts.      * @param index      * @return the key at {@code index}      * @throws ArrayIndexOutOfBoundsException if not {@code 0<= index< size()}      */
+annotation|@
+name|Deprecated
 specifier|public
 name|short
 name|getKey
@@ -426,6 +438,8 @@ block|}
 comment|/**      * Retrieve the value at a given index. Keys are ordered according      * the natural ordering of shorts.      * @param index      * @return the value at {@code index}      * @throws ArrayIndexOutOfBoundsException if not {@code 0<= index< size()}      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordId
 name|getRecordId

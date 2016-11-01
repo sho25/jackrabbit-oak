@@ -142,6 +142,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|BlobEncoder
@@ -156,6 +158,8 @@ comment|// if transferring large binaries turns out to be too intensive look int
 comment|// using a ChunkedWriteHandler and a new ChunkedStream(Blob.getNewStream())
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|encode

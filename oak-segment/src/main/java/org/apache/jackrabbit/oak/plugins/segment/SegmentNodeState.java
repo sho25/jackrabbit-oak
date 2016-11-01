@@ -492,6 +492,8 @@ comment|/**  * A record of type "NODE". This class can read a node record from a
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentNodeState
@@ -514,6 +516,8 @@ name|template
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeState
 parameter_list|(
@@ -618,6 +622,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|exists
@@ -629,6 +635,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getPropertyCount
@@ -684,6 +692,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|hasProperty
@@ -762,6 +772,8 @@ annotation|@
 name|Override
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|PropertyState
 name|getProperty
@@ -1055,6 +1067,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -1316,6 +1330,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|getBoolean
@@ -1347,6 +1363,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getLong
@@ -1392,6 +1410,8 @@ annotation|@
 name|Override
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getString
@@ -1413,6 +1433,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -1439,6 +1461,8 @@ annotation|@
 name|Override
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getName
@@ -1462,6 +1486,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -1981,6 +2007,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getChildNodeCount
@@ -2038,6 +2066,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|hasChildNode
@@ -2108,6 +2138,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|getChildNode
@@ -2221,6 +2253,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -2288,6 +2322,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -2388,6 +2424,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeBuilder
 name|builder
@@ -2403,6 +2441,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|compareAgainstBaseState
@@ -3399,6 +3439,8 @@ block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|equals
@@ -3496,6 +3538,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString

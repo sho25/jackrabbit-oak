@@ -24,10 +24,14 @@ package|;
 end_package
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|Messages
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -36,6 +40,8 @@ name|HEADER_RECORD
 init|=
 literal|0x00
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -44,6 +50,8 @@ name|HEADER_SEGMENT
 init|=
 literal|0x01
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -52,6 +60,8 @@ name|HEADER_BLOB
 init|=
 literal|0x02
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -60,6 +70,8 @@ name|GET_HEAD
 init|=
 literal|"h"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -68,6 +80,8 @@ name|GET_SEGMENT
 init|=
 literal|"s."
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -131,6 +145,8 @@ operator|+
 literal|"\r\n"
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|String
@@ -149,6 +165,8 @@ name|GET_HEAD
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|String
@@ -172,6 +190,8 @@ name|sid
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|String
@@ -195,6 +215,8 @@ name|blobId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|String
@@ -249,6 +271,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|String

@@ -180,6 +180,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|CommunicationObserver
@@ -444,6 +446,8 @@ name|CommunicationPartnerMBean
 argument_list|>
 name|partnerDetails
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|CommunicationObserver
 parameter_list|(
@@ -525,6 +529,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|unregister
@@ -550,6 +556,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|gotMessageFrom
@@ -727,6 +735,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|didSendSegmentBytes
@@ -786,6 +796,8 @@ name|m
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|didSendBinariesBytes
@@ -845,6 +857,8 @@ name|m
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getID

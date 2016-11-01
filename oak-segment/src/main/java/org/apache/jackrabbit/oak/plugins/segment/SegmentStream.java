@@ -176,6 +176,8 @@ comment|/**  * For reading any record of type "VALUE" as binary streams.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentStream
@@ -184,6 +186,8 @@ name|InputStream
 block|{
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|RecordId
@@ -372,6 +376,8 @@ operator|.
 name|length
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getLength
@@ -381,6 +387,8 @@ return|return
 name|length
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getString
@@ -504,6 +512,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|markSupported
@@ -515,6 +525,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|void
@@ -531,6 +543,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 specifier|synchronized
 name|void
@@ -544,6 +558,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|read
@@ -593,6 +609,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|read
@@ -951,6 +969,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|skip
@@ -1001,6 +1021,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|available
@@ -1034,6 +1056,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close

@@ -310,6 +310,8 @@ comment|/**  * Utility for tracing a node back through the revision history.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|RevisionHistory
@@ -320,6 +322,8 @@ name|ReadOnlyStore
 name|store
 decl_stmt|;
 comment|/**      * Create a new instance for a {@link FileStore} in the given {@code directory}.      *      * @param directory      * @throws IOException      */
+annotation|@
+name|Deprecated
 specifier|public
 name|RevisionHistory
 parameter_list|(
@@ -394,6 +398,8 @@ name|node
 return|;
 block|}
 comment|/**      * Return the history of the node at the given {@code path} according to the passed      * {@code journal}.      *      * @param journal      * @param path      * @return      * @throws IOException      */
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -488,6 +494,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Representation of a point in time for a given node.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -529,6 +537,8 @@ block|}
 comment|/**          * Revision of the node          * @return          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getRevision
@@ -541,6 +551,8 @@ block|}
 comment|/**          * Node at given revision          * @return          */
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|NodeState
 name|getNode
@@ -551,6 +563,8 @@ name|node
 return|;
 block|}
 comment|/**          * Serialise this element to JSON up to the given {@code depth}.          * @param depth          * @return          */
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString
@@ -598,6 +612,8 @@ block|}
 comment|/**          * @return  {@code toString(0)}          */
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString
@@ -612,6 +628,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|equals
@@ -692,6 +710,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|hashCode

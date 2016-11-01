@@ -518,6 +518,8 @@ comment|/**  * A property, which can read a value or list record from a segment.
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentPropertyState
@@ -531,6 +533,8 @@ specifier|final
 name|PropertyTemplate
 name|template
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentPropertyState
 parameter_list|(
@@ -730,6 +734,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getName
@@ -744,6 +750,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Type
 argument_list|<
@@ -761,6 +769,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isArray
@@ -776,6 +786,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|count
@@ -814,6 +826,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 parameter_list|<
 name|T
@@ -1024,6 +1038,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|size
@@ -1040,6 +1056,8 @@ annotation|@
 name|Override
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 parameter_list|<
 name|T
@@ -1344,6 +1362,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|size
@@ -1424,6 +1444,8 @@ block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|equals
@@ -1519,6 +1541,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|hashCode
@@ -1535,6 +1559,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString

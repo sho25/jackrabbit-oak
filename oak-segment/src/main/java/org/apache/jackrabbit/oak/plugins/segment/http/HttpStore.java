@@ -312,6 +312,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|HttpStore
@@ -335,6 +337,8 @@ name|URL
 name|base
 decl_stmt|;
 comment|/**      * @param base      *            make sure the url ends with a slash "/", otherwise the      *            requests will end up as absolute instead of relative      */
+annotation|@
+name|Deprecated
 specifier|public
 name|HttpStore
 parameter_list|(
@@ -351,6 +355,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentTracker
 name|getTracker
@@ -411,6 +417,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeState
 name|getHead
@@ -523,6 +531,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|setHead
@@ -541,6 +551,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|containsSegment
@@ -567,6 +579,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 name|readSegment
@@ -670,6 +684,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|writeSegment
@@ -765,6 +781,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close
@@ -774,6 +792,8 @@ annotation|@
 name|Override
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|Blob
 name|readBlob
@@ -790,6 +810,8 @@ annotation|@
 name|Override
 annotation|@
 name|CheckForNull
+annotation|@
+name|Deprecated
 specifier|public
 name|BlobStore
 name|getBlobStore
@@ -801,6 +823,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|gc

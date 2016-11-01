@@ -20,10 +20,14 @@ package|;
 end_package
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|SegmentStoreProvider
 block|{
+annotation|@
+name|Deprecated
 name|SegmentStore
 name|getSegmentStore
 parameter_list|()

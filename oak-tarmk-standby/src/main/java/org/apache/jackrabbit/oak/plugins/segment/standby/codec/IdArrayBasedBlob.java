@@ -42,6 +42,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|IdArrayBasedBlob
@@ -53,6 +55,8 @@ specifier|final
 name|String
 name|blobId
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|IdArrayBasedBlob
 parameter_list|(
@@ -76,6 +80,8 @@ operator|=
 name|blobId
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getBlobId

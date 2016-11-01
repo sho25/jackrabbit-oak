@@ -140,6 +140,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|RecordIdDecoder
@@ -166,6 +168,8 @@ specifier|final
 name|SegmentStore
 name|store
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|RecordIdDecoder
 parameter_list|(
@@ -195,6 +199,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|protected
 name|Object
 name|decode
@@ -315,6 +321,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|protected
 name|ByteBuf
 name|extractFrame

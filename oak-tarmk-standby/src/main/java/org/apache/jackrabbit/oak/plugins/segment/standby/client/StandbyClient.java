@@ -476,6 +476,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 class|class
@@ -487,6 +489,8 @@ name|Runnable
 implements|,
 name|Closeable
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -599,6 +603,8 @@ specifier|private
 name|long
 name|syncEndTimestamp
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|StandbyClient
 parameter_list|(
@@ -803,6 +809,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getMBeanName
@@ -825,6 +833,8 @@ operator|+
 literal|"\""
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close
@@ -892,6 +902,8 @@ operator|=
 name|STATUS_CLOSED
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|run
@@ -1317,6 +1329,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getMode
@@ -1335,6 +1349,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isRunning
@@ -1349,6 +1365,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|start
@@ -1368,6 +1386,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|stop
@@ -1387,6 +1407,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getStatus
@@ -1400,6 +1422,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getFailedRequests
@@ -1413,6 +1437,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getSecondsSinceLastSuccess
@@ -1450,6 +1476,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|calcFailedRequests
@@ -1464,6 +1492,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|calcSecondsSinceLastSuccess
@@ -1478,6 +1508,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|cleanup
@@ -1491,6 +1523,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getSyncStartTimestamp
@@ -1502,6 +1536,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getSyncEndTimestamp

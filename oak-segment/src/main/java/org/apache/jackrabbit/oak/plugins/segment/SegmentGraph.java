@@ -492,6 +492,8 @@ comment|/**  * Utility graph for parsing a segment graph.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 class|class
@@ -502,6 +504,8 @@ name|SegmentGraph
 parameter_list|()
 block|{ }
 comment|/**      * Visitor for receiving call backs while traversing the      * segment graph.      */
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|SegmentGraphVisitor
@@ -523,6 +527,8 @@ parameter_list|)
 function_decl|;
 block|}
 comment|/**      * A simple graph representation for a graph with node of type {@code T}.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
@@ -633,6 +639,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**          * @return  the vertices of this graph          */
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -646,6 +654,8 @@ name|vertices
 return|;
 block|}
 comment|/**          * @param vertex          * @return  {@code true} iff this graph contains {@code vertex}          */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|containsVertex
@@ -664,6 +674,8 @@ argument_list|)
 return|;
 block|}
 comment|/**          * @return  the edges of this graph          */
+annotation|@
+name|Deprecated
 specifier|public
 name|Set
 argument_list|<
@@ -688,6 +700,8 @@ argument_list|()
 return|;
 block|}
 comment|/**          * @param from          * @return  the edges from {@code from} or {@code null} if none.          */
+annotation|@
+name|Deprecated
 specifier|public
 name|Multiset
 argument_list|<
@@ -710,6 +724,8 @@ return|;
 block|}
 block|}
 comment|/**      * Write the segment graph of a file store to a stream.      *<p>      * The graph is written in      *<a href="https://gephi.github.io/users/supported-graph-formats/gdf-format/">the Guess GDF format</a>,      * which is easily imported into<a href="https://gephi.github.io/">Gephi</a>.      * As GDF only supports integers but the segment time stamps are encoded as long      * the {@code epoch} argument is used as a negative offset translating all timestamps      * into a valid int range.      *      * @param fileStore     file store to graph      * @param out           stream to write the graph to      * @param epoch         epoch (in milliseconds)      * @param pattern       regular expression specifying inclusion of nodes or {@code null}      *                      for all nodes.      * @throws Exception      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|void
@@ -977,6 +993,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Create a regular expression based inclusion filter for segment.      *      * @param pattern       regular expression specifying inclusion of nodes.      * @param tracker       the segment tracker of the store acting upon.      * @return      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|Predicate
@@ -1100,6 +1118,8 @@ block|}
 comment|/**      * Parse the segment graph of a file store.      *      * @param fileStore     file store to parse      * @param filter        inclusion criteria for vertices and edges. An edge is only included if      *                      both its source and target vertex are included.      * @return the segment graph rooted as the segment containing the head node      *         state of {@code fileStore}.      * @throws IOException      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|Graph
@@ -1172,6 +1192,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Write the gc generation graph of a file store to a stream.      *<p>      * The graph is written in      *<a href="https://gephi.github.io/users/supported-graph-formats/gdf-format/">the Guess GDF format</a>,      * which is easily imported into<a href="https://gephi.github.io/">Gephi</a>.      *      * @param fileStore     file store to graph      * @param out           stream to write the graph to      * @throws Exception      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|void
@@ -1357,6 +1379,8 @@ block|}
 comment|/**      * Parse the gc generation graph of a file store.      *      * @param fileStore     file store to parse      * @return the gc generation graph rooted ad the segment containing the head node      *         state of {@code fileStore}.      * @throws IOException      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|Graph
@@ -1527,6 +1551,8 @@ block|}
 comment|/**      * Parse the segment graph of a file store starting with a given set of root segments.      * The full segment graph is mapped through the passed {@code map} to the      * graph returned by this function.      *      * @param fileStore     file store to parse      * @param roots         the initial set of segments      * @param map           map defining an homomorphism from the segment graph into the returned graph      * @param filter        inclusion criteria for vertices and edges. An edge is only included if      *                      both its source and target vertex are included.      * @return   the segment graph of {@code fileStore} rooted at {@code roots} and mapped      *           by {@code map}      * @throws IOException      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 parameter_list|<
@@ -1732,6 +1758,8 @@ block|}
 comment|/**      * Parser the head graph. The head graph is the sub graph of the segment      * graph containing the {@code root}.      * @param root      * @return  the head graph of {@code root}.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|Graph

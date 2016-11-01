@@ -1545,6 +1545,8 @@ literal|"should be done via file system based config file and this view should O
 operator|+
 literal|"options are supported"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentNodeStoreService
@@ -1555,6 +1557,8 @@ name|Observable
 implements|,
 name|SegmentStoreProvider
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1576,6 +1580,8 @@ literal|"Directory location used to store the segment tar files. If not specifie
 operator|+
 literal|"for framework property 'repository.home' otherwise use a subdirectory with name 'tarmk'"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1595,6 +1601,8 @@ name|description
 operator|=
 literal|"TarMK mode (64 for memory mapping, 32 for normal file access)"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1618,6 +1626,8 @@ name|description
 operator|=
 literal|"TarMK maximum file size (MB)"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1641,6 +1651,8 @@ name|description
 operator|=
 literal|"Cache size for storing most recently used Segments"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1664,6 +1676,8 @@ name|description
 operator|=
 literal|"Clone the binary segments while performing compaction"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1735,6 +1749,8 @@ literal|"certain age are considered valid (compaction.cleanup.timestamp), "
 operator|+
 literal|"3. CLEAN_ALL: None of the in memory references are considered valid"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1760,6 +1776,8 @@ literal|"Time interval in ms beyond which in memory segment references would be 
 operator|+
 literal|"while performing cleanup"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1783,6 +1801,8 @@ name|description
 operator|=
 literal|"TarMK compaction available memory multiplier needed to run compaction"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1808,6 +1828,8 @@ literal|"TarMK compaction gain threshold. The gain estimation prevents compactio
 operator|+
 literal|"if the provided threshold is not met. Value represents a percentage so an input beween 0 and 100 is expected."
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1831,6 +1853,8 @@ name|description
 operator|=
 literal|"When enabled compaction would not be performed"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1856,6 +1880,8 @@ literal|"Number of tries to compact concurrent commits on top of already "
 operator|+
 literal|"compacted commits"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1883,6 +1909,8 @@ literal|" compacted commits after the maximum number of retries has been reached
 operator|+
 literal|"Force committing tries to exclusively write lock the node store."
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1891,6 +1919,8 @@ name|COMPACTION_FORCE_AFTER_FAIL
 init|=
 literal|"compaction.forceAfterFail"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1916,6 +1946,8 @@ literal|"Number of seconds to wait for the lock for committing compacted changes
 operator|+
 literal|"respectively to wait for the exclusive write lock for force committing."
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1941,6 +1973,8 @@ literal|"When enabled the compaction map would be persisted instead of being "
 operator|+
 literal|"held in memory"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1964,6 +1998,8 @@ name|description
 operator|=
 literal|"Flag indicating that this component will not register as a NodeStore but just as a NodeStoreProvider"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1987,6 +2023,8 @@ name|description
 operator|=
 literal|"Flag indicating that this component will not register as a NodeStore but just as a SecondaryNodeStoreProvider"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -2012,6 +2050,8 @@ literal|"Boolean value indicating that a custom BlobStore is to be used. "
 operator|+
 literal|"By default large binary content would be stored within segment tar files"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -2186,6 +2226,8 @@ literal|"example as per default only those blobs which have been created 24 hrs 
 operator|+
 literal|"considered for GC"
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -2228,6 +2270,8 @@ literal|"frequency of blob GC so that deletions during blob GC can be accounted 
 operator|+
 literal|"in the next GC execution."
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -2258,6 +2302,8 @@ return|;
 block|}
 annotation|@
 name|Activate
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|activate
@@ -2356,6 +2402,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Deactivate
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|deactivate
@@ -4300,6 +4348,8 @@ block|}
 comment|/**      * needed for situations where you have to unwrap the      * SegmentNodeStoreService, to get the SegmentStore, like the failover      */
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentStore
 name|getSegmentStore
@@ -4312,6 +4362,8 @@ block|}
 comment|//------------------------------------------------------------< Observable>---
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Closeable
 name|addObserver
@@ -4333,6 +4385,8 @@ block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|toString

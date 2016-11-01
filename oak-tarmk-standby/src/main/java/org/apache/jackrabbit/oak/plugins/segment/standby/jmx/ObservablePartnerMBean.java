@@ -62,6 +62,8 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|ObservablePartnerMBean
@@ -73,6 +75,8 @@ name|Description
 argument_list|(
 literal|"name of the partner"
 argument_list|)
+annotation|@
+name|Deprecated
 name|String
 name|getName
 parameter_list|()
@@ -82,6 +86,8 @@ name|Description
 argument_list|(
 literal|"IP of the remote"
 argument_list|)
+annotation|@
+name|Deprecated
 name|String
 name|getRemoteAddress
 parameter_list|()
@@ -91,6 +97,8 @@ name|Description
 argument_list|(
 literal|"Last request"
 argument_list|)
+annotation|@
+name|Deprecated
 name|String
 name|getLastRequest
 parameter_list|()
@@ -100,6 +108,8 @@ name|Description
 argument_list|(
 literal|"Port of the remote"
 argument_list|)
+annotation|@
+name|Deprecated
 name|int
 name|getRemotePort
 parameter_list|()
@@ -111,6 +121,8 @@ name|Description
 argument_list|(
 literal|"Time the remote instance was last contacted"
 argument_list|)
+annotation|@
+name|Deprecated
 name|String
 name|getLastSeenTimestamp
 parameter_list|()
@@ -120,6 +132,8 @@ name|Description
 argument_list|(
 literal|"Number of transferred segments"
 argument_list|)
+annotation|@
+name|Deprecated
 name|long
 name|getTransferredSegments
 parameter_list|()
@@ -129,6 +143,8 @@ name|Description
 argument_list|(
 literal|"Number of bytes stored in transferred segments"
 argument_list|)
+annotation|@
+name|Deprecated
 name|long
 name|getTransferredSegmentBytes
 parameter_list|()
@@ -138,6 +154,8 @@ name|Description
 argument_list|(
 literal|"Number of transferred binaries"
 argument_list|)
+annotation|@
+name|Deprecated
 name|long
 name|getTransferredBinaries
 parameter_list|()
@@ -147,6 +165,8 @@ name|Description
 argument_list|(
 literal|"Number of bytes stored in transferred binaries"
 argument_list|)
+annotation|@
+name|Deprecated
 name|long
 name|getTransferredBinariesBytes
 parameter_list|()

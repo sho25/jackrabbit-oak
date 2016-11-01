@@ -220,6 +220,8 @@ comment|/**  * {@link GCMonitor} implementation providing the file store gc stat
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|FileStoreGCMonitor
@@ -321,6 +323,8 @@ name|status
 init|=
 literal|"NA"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|FileStoreGCMonitor
 parameter_list|(
@@ -350,6 +354,8 @@ block|}
 comment|//------------------------------------------------------------< Runnable>---
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|run
@@ -374,6 +380,8 @@ block|}
 comment|//------------------------------------------------------------< GCMonitor>---
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|info
@@ -401,6 +409,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|warn
@@ -428,6 +438,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|error
@@ -476,6 +488,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|skipped
@@ -503,6 +517,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|compacted
@@ -518,6 +534,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|cleaned
@@ -570,6 +588,8 @@ block|}
 comment|//------------------------------------------------------------< GCMonitorMBean>---
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getLastCompaction
@@ -584,6 +604,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getLastCleanup
@@ -635,6 +657,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getLastError
@@ -648,6 +672,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getStatus
@@ -659,6 +685,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getCompactionMapStats
@@ -778,6 +806,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|CompositeData
 name|getRepositorySize
@@ -796,6 +826,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|CompositeData
 name|getReclaimedSize

@@ -136,6 +136,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|SegmentEncoder
@@ -163,6 +165,8 @@ literal|4
 decl_stmt|;
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|encode

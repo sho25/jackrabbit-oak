@@ -982,6 +982,8 @@ comment|/**  * The storage implementation for tar files.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|FileStore
@@ -1264,6 +1266,8 @@ decl_stmt|;
 comment|/**      * Create a new instance of a {@link Builder} for a file store.      * @param directory  directory where the tar files are stored      * @return a new {@link Builder} instance.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|Builder
@@ -1287,6 +1291,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Builder for creating {@link FileStore} instances.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
@@ -1365,6 +1371,8 @@ block|}
 comment|/**          * Specify the {@link BlobStore}.          * @param blobStore          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withBlobStore
@@ -1391,6 +1399,8 @@ block|}
 comment|/**          * Specify the initial root node state for the file store          * @param root          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withRoot
@@ -1417,6 +1427,8 @@ block|}
 comment|/**          * Maximal size of the generated tar files in MB.          * @param maxFileSize          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withMaxFileSize
@@ -1438,6 +1450,8 @@ block|}
 comment|/**          * Size of the cache in MB.          * @param cacheSize          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withCacheSize
@@ -1459,6 +1473,8 @@ block|}
 comment|/**          * Turn caching off          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withNoCache
@@ -1478,6 +1494,8 @@ block|}
 comment|/**          * Turn memory mapping on or off          * @param memoryMapping          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withMemoryMapping
@@ -1499,6 +1517,8 @@ block|}
 comment|/**          * Set memory mapping to the default value based on OS properties          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withDefaultMemoryMapping
@@ -1517,6 +1537,8 @@ block|}
 comment|/**          * {@link GCMonitor} for monitoring this files store's gc process.          * @param gcMonitor          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withGCMonitor
@@ -1545,6 +1567,8 @@ block|}
 comment|/**          * {@link StatisticsProvider} for collecting statistics related to FileStore          * @param statisticsProvider          * @return this instance          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withStatisticsProvider
@@ -1568,6 +1592,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Builder
 name|withSegmentVersion
@@ -1592,6 +1618,8 @@ block|}
 comment|/**          * Create a new {@link FileStore} instance with the settings specified in this          * builder. If none of the {@code with} methods have been called before calling          * this method, a file store with the following default settings is returned:          *<ul>          *<li>blob store: inline</li>          *<li>root: empty node</li>          *<li>max file size: 256MB</li>          *<li>cache size: 256MB</li>          *<li>memory mapping: on for 64 bit JVMs off otherwise</li>          *<li>whiteboard: none. No {@link GCMonitor} tracking</li>          *<li>statsProvider: StatisticsProvider.NOOP</li>          *</ul>          *          * @return a new file store instance          * @throws IOException          */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 specifier|public
 name|FileStore
 name|build
@@ -1611,6 +1639,8 @@ literal|false
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|ReadOnlyStore
 name|buildReadOnly
@@ -2637,6 +2667,8 @@ name|readers
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|maybeCompact
@@ -3652,6 +3684,8 @@ return|return
 name|dataFiles
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|size
@@ -3713,6 +3747,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|readerCount
@@ -3893,6 +3929,8 @@ return|return
 name|estimate
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|FileStoreStats
 name|getStats
@@ -3902,6 +3940,8 @@ return|return
 name|stats
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|flush
@@ -3920,6 +3960,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|flush
@@ -4160,6 +4202,8 @@ block|}
 block|}
 block|}
 comment|/**      * Runs garbage collection on the segment level, which could write new      * generations of tar files. It checks which segments are still reachable,      * and throws away those that are not.      *<p>      * A new generation of a tar file is created (and segments are only      * discarded) if doing so releases more than 25% of the space in a tar file.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|List
 argument_list|<
@@ -4905,6 +4949,8 @@ block|}
 return|;
 block|}
 comment|/**      * Copy every referenced record in data (non-bulk) segments. Bulk segments      * are fully kept (they are only removed in cleanup, if there is no      * reference to them).      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|compact
@@ -5389,6 +5435,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Iterable
 argument_list|<
@@ -5515,6 +5563,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentTracker
 name|getTracker
@@ -5526,6 +5576,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentNodeState
 name|getHead
@@ -5544,6 +5596,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|setHead
@@ -5593,6 +5647,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|close
@@ -5747,6 +5803,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|containsSegment
@@ -5909,6 +5967,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Segment
 name|readSegment
@@ -6191,6 +6251,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|writeSegment
@@ -6384,6 +6446,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Blob
 name|readBlob
@@ -6425,6 +6489,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|BlobStore
 name|getBlobStore
@@ -6436,6 +6502,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|gc
@@ -6464,6 +6532,8 @@ name|trigger
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Map
 argument_list|<
@@ -6531,6 +6601,8 @@ return|return
 name|index
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Map
 argument_list|<
@@ -6649,6 +6721,8 @@ name|emptyMap
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|FileStore
 name|setCompactionStrategy
@@ -6830,6 +6904,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * A read only {@link FileStore} implementation that supports      * going back to old revisions.      *<p>      * All write methods are no-ops.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
@@ -6857,6 +6933,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**          * Go to the specified {@code revision}          *          * @param revision          */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setRevision
@@ -6874,6 +6952,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**          * Build the graph of segments reachable from an initial set of segments          * @param roots     the initial set of segments          * @param visitor   visitor receiving call back while following the segment graph          * @throws IOException          */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|traverseSegmentGraph
@@ -6940,6 +7020,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|setHead
@@ -6961,6 +7043,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|writeSegment
@@ -6990,6 +7074,8 @@ block|}
 comment|/**          * no-op          */
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|flush
@@ -6999,6 +7085,8 @@ comment|/* nop */
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|LinkedList
 argument_list|<
@@ -7017,6 +7105,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|gc
@@ -7032,6 +7122,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|compact
@@ -7047,6 +7139,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|maybeCompact
@@ -7088,6 +7182,8 @@ specifier|final
 name|Compactor
 name|compactor
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|SetHead
 parameter_list|(
@@ -7122,6 +7218,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Boolean
 name|call
@@ -7195,6 +7293,8 @@ return|;
 block|}
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|SegmentVersion
 name|getVersion

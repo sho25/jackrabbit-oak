@@ -230,6 +230,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|ReplyDecoder
@@ -239,14 +241,22 @@ argument_list|<
 name|DecodingState
 argument_list|>
 block|{
+annotation|@
+name|Deprecated
 specifier|public
 enum|enum
 name|DecodingState
 block|{
+annotation|@
+name|Deprecated
 name|HEADER
 block|,
+annotation|@
+name|Deprecated
 name|SEGMENT
 block|,
+annotation|@
+name|Deprecated
 name|BLOB
 block|}
 specifier|private
@@ -283,6 +293,8 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 name|ReplyDecoder
 parameter_list|(
@@ -304,6 +316,8 @@ operator|=
 name|store
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|private
 name|void
 name|reset
@@ -329,6 +343,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|protected
 name|void
 name|decode
