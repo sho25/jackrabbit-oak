@@ -880,11 +880,7 @@ name|blobId
 return|;
 block|}
 return|return
-name|getRecordId
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+literal|null
 return|;
 block|}
 specifier|public
