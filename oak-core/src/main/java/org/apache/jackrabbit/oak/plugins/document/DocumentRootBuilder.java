@@ -169,6 +169,26 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * This implementation tracks the number of pending changes and purges them to  * a private branch of the underlying store if a certain threshold is met.  */
 end_comment
@@ -179,6 +199,21 @@ name|DocumentRootBuilder
 extends|extends
 name|AbstractDocumentNodeBuilder
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|DocumentRootBuilder
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the private branch.      */
 specifier|static
 specifier|final
@@ -191,9 +226,21 @@ name|getInteger
 argument_list|(
 literal|"update.limit"
 argument_list|,
-literal|10000
+literal|100000
 argument_list|)
 decl_stmt|;
+static|static
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Update limit set to {}"
+argument_list|,
+name|UPDATE_LIMIT
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * The underlying store      */
 specifier|protected
 specifier|final
