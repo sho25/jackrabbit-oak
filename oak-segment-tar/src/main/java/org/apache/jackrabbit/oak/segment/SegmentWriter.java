@@ -1642,7 +1642,7 @@ name|nodeId
 argument_list|)
 return|;
 block|}
-comment|/**      * Write a node state, unless cancelled using a dedicated write operation handler.      * The write operation handler is automatically {@link WriteOperationHandler#flush() flushed}      * once the node has been written successfully.      * @param state   node state to write      * @param writeOperationHandler  the write operation handler through which all write calls      *                               induced by by this call are routed.      * @param cancel  supplier to signal cancellation of this write operation      * @return segment node state equal to {@code state} or {@code null} if cancelled.      * @throws IOException      */
+comment|/**      * Write a node state, unless cancelled using a dedicated write operation handler.      * @param state   node state to write      * @param cancel  supplier to signal cancellation of this write operation      * @return segment node state equal to {@code state} or {@code null} if cancelled.      * @throws IOException      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -1654,11 +1654,6 @@ name|Nonnull
 specifier|final
 name|NodeState
 name|state
-parameter_list|,
-annotation|@
-name|Nonnull
-name|WriteOperationHandler
-name|writeOperationHandler
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -1713,11 +1708,6 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-name|writeOperationHandler
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 return|return
 operator|new
 name|SegmentNodeState
