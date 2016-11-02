@@ -2442,7 +2442,7 @@ name|compile
 argument_list|(
 name|GlobbingPathHelper
 operator|.
-name|globAsRegex
+name|globPathAsRegex
 argument_list|(
 name|relativeGlobPaths
 index|[
