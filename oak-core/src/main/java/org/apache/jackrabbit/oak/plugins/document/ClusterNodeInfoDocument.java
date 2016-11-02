@@ -291,6 +291,18 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|format
+argument_list|()
+return|;
+block|}
 comment|/**      * Returns all cluster node info documents currently available in the given      * document store.      *      * @param store the document store.      * @return list of cluster node info documents.      */
 specifier|public
 specifier|static
