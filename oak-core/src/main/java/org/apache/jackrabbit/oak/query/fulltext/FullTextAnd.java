@@ -138,7 +138,7 @@ name|set
 init|=
 name|FullTextOr
 operator|.
-name|getSortedAndUniqueSet
+name|getUniqueSet
 argument_list|(
 name|list
 argument_list|)

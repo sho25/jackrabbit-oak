@@ -421,7 +421,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"\"-\" \"hello\" \"world\""
+literal|"\"hello\" \"-\" \"world\""
 argument_list|,
 name|convertPattern
 argument_list|(
@@ -431,7 +431,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"\"-\" \"hello\" \"world\""
+literal|"\"hello\" \"-\" \"world\""
 argument_list|,
 name|convertPattern
 argument_list|(
@@ -441,11 +441,31 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"\"-\" \"hello\""
+literal|"\"hello\" \"-\""
 argument_list|,
 name|convertPattern
 argument_list|(
 literal|"hello -"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"hello\" \"-\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello -"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"hello\" \"-\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello - hello"
 argument_list|)
 argument_list|)
 expr_stmt|;
