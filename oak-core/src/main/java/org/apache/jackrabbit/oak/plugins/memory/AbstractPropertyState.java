@@ -314,10 +314,10 @@ name|name
 operator|+
 literal|" = {"
 operator|+
+name|getBinarySize
+argument_list|(
 name|property
-operator|.
-name|size
-argument_list|()
+argument_list|)
 operator|+
 literal|" bytes}"
 return|;
@@ -407,6 +407,37 @@ argument_list|(
 name|this
 argument_list|)
 return|;
+block|}
+comment|//~-------------------------------------------< internal>
+specifier|private
+specifier|static
+name|long
+name|getBinarySize
+parameter_list|(
+name|PropertyState
+name|property
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|property
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+return|return
+operator|-
+literal|1
+return|;
+block|}
 block|}
 block|}
 end_class
