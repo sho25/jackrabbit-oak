@@ -158,6 +158,8 @@ argument_list|(
 name|folder
 argument_list|,
 name|serverBlobStore
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -180,6 +182,8 @@ argument_list|(
 name|folder
 argument_list|,
 name|clientBlobStore
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 annotation|@

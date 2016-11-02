@@ -317,20 +317,6 @@ name|SegmentNotFoundException
 name|snfe
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Segment not found: {}. {}"
-argument_list|,
-name|this
-argument_list|,
-name|gcInfo
-argument_list|()
-argument_list|,
-name|snfe
-argument_list|)
-expr_stmt|;
 throw|throw
 name|snfe
 throw|;
@@ -342,9 +328,9 @@ return|return
 name|segment
 return|;
 block|}
+comment|/**      * @return  garbage collection related information like the age of this segment      *          id, the generation of its segment and information about its gc status.      */
 annotation|@
 name|Nonnull
-specifier|private
 name|String
 name|gcInfo
 parameter_list|()

@@ -396,6 +396,8 @@ operator|new
 name|TemporaryFileStore
 argument_list|(
 name|folder
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -406,6 +408,8 @@ operator|new
 name|TemporaryFileStore
 argument_list|(
 name|folder
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 annotation|@
