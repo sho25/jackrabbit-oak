@@ -1019,9 +1019,16 @@ name|COMMIT_FAIR_LOCK
 init|=
 name|Boolean
 operator|.
-name|getBoolean
+name|parseBoolean
+argument_list|(
+name|System
+operator|.
+name|getProperty
 argument_list|(
 literal|"oak.segmentNodeStore.commitFairLock"
+argument_list|,
+literal|"true"
+argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -1040,7 +1047,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"initializing SegmentNodeStore with the commitFairLock option enabled."
+literal|"Initializing SegmentNodeStore with the commitFairLock option enabled."
 argument_list|)
 expr_stmt|;
 block|}
