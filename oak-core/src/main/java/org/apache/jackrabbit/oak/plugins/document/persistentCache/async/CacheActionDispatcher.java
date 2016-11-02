@@ -111,7 +111,9 @@ specifier|final
 name|int
 name|MAX_SIZE
 init|=
-literal|2048
+literal|16
+operator|*
+literal|1024
 decl_stmt|;
 specifier|final
 name|BlockingQueue
