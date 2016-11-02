@@ -121,7 +121,7 @@ name|map
 expr_stmt|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|addPut
 parameter_list|(
 name|K
@@ -131,6 +131,7 @@ name|V
 name|value
 parameter_list|)
 block|{
+return|return
 name|dispatcher
 operator|.
 name|add
@@ -150,10 +151,10 @@ argument_list|,
 name|this
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|addInvalidate
 parameter_list|(
 name|Iterable
@@ -163,6 +164,7 @@ argument_list|>
 name|keys
 parameter_list|)
 block|{
+return|return
 name|dispatcher
 operator|.
 name|add
@@ -180,7 +182,7 @@ argument_list|,
 name|this
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 name|PersistentCache
 name|getCache

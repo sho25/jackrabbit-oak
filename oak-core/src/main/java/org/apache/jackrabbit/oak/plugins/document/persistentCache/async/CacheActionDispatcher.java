@@ -225,7 +225,7 @@ literal|false
 expr_stmt|;
 block|}
 comment|/**      * Tries to add new action.      *      * @param action to be added      */
-name|void
+name|boolean
 name|add
 parameter_list|(
 name|CacheAction
@@ -237,27 +237,14 @@ argument_list|>
 name|action
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
+return|return
 name|queue
 operator|.
 name|offer
 argument_list|(
 name|action
 argument_list|)
-condition|)
-block|{
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"The queue is full, element {} has been rejected"
-argument_list|,
-name|action
-argument_list|)
-expr_stmt|;
-block|}
+return|;
 block|}
 block|}
 end_class

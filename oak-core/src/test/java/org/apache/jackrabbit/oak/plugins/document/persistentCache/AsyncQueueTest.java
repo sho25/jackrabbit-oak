@@ -874,7 +874,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|addPut
 parameter_list|(
 name|PathRev
@@ -891,6 +891,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+return|return
 name|wrapped
 operator|.
 name|addPut
@@ -899,10 +900,10 @@ name|key
 argument_list|,
 name|value
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|addInvalidate
 parameter_list|(
 name|Iterable
@@ -922,13 +923,14 @@ name|keys
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
 name|wrapped
 operator|.
 name|addInvalidate
 argument_list|(
 name|keys
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 block|}
