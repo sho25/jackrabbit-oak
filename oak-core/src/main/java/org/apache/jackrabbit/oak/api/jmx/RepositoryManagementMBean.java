@@ -183,6 +183,11 @@ block|}
 comment|/**      * Initiate a backup operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Creates a backup of the persistent state of the repository"
+argument_list|)
 name|CompositeData
 name|startBackup
 parameter_list|()
@@ -190,6 +195,11 @@ function_decl|;
 comment|/**      * Backup status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"The status of the ongoing operation, or the terminal status of the last completed backup operation"
+argument_list|)
 name|CompositeData
 name|getBackupStatus
 parameter_list|()
@@ -197,6 +207,11 @@ function_decl|;
 comment|/**      * Initiate a restore operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Restores the repository from a backup"
+argument_list|)
 name|CompositeData
 name|startRestore
 parameter_list|()
@@ -204,6 +219,11 @@ function_decl|;
 comment|/**      * Restore status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"The status of the ongoing operation, or the terminal status of the last completed restore operation"
+argument_list|)
 name|CompositeData
 name|getRestoreStatus
 parameter_list|()
@@ -211,6 +231,11 @@ function_decl|;
 comment|/**      * Initiate a data store garbage collection operation      *      * @param markOnly whether to only mark references and not sweep in the mark and sweep operation.      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Initiates a data store garbage collection operation"
+argument_list|)
 name|CompositeData
 name|startDataStoreGC
 parameter_list|(
@@ -235,6 +260,11 @@ function_decl|;
 comment|/**      * Data store garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Data store garbage collection status"
+argument_list|)
 name|CompositeData
 name|getDataStoreGCStatus
 parameter_list|()
@@ -242,6 +272,11 @@ function_decl|;
 comment|/**      * Initiate a revision garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Initiates a revision garbage collection operation"
+argument_list|)
 name|CompositeData
 name|startRevisionGC
 parameter_list|()
@@ -249,6 +284,11 @@ function_decl|;
 comment|/**      * Cancel a running revision garbage collection operation. Does nothing      * if revision garbage collection is not running.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Cancel a running revision garbage collection operation. Does nothing if revision garbage collection is not running."
+argument_list|)
 name|CompositeData
 name|cancelRevisionGC
 parameter_list|()
@@ -256,6 +296,11 @@ function_decl|;
 comment|/**      * Revision garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Revision garbage collection status"
+argument_list|)
 name|CompositeData
 name|getRevisionGCStatus
 parameter_list|()
@@ -275,6 +320,11 @@ function_decl|;
 comment|/**      * Initiate a reindex operation for the property indexes marked for      * reindexing      *       * @return the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Initiates a reindex operation for the property indexes marked for reindexing"
+argument_list|)
 name|CompositeData
 name|startPropertyIndexAsyncReindex
 parameter_list|()
@@ -282,6 +332,11 @@ function_decl|;
 comment|/**      * Asynchronous Property Index reindexing status      *       * @return the status of the ongoing operation or if none the terminal      *         status of the last operation or<em>Status not available</em> if      *         none.      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Asynchronous Property Index reindexing status"
+argument_list|)
 name|CompositeData
 name|getPropertyIndexAsyncReindexStatus
 parameter_list|()
@@ -289,6 +344,11 @@ function_decl|;
 comment|/**      * Refresh all currently open sessions.      *<em>Warning</em>: this operation might be disruptive to the owner of the affected sessions      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Refresh all currently open sessions"
+argument_list|)
 name|TabularData
 name|refreshAllSessions
 parameter_list|()
