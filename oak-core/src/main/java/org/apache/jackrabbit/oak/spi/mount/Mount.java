@@ -19,11 +19,25 @@ name|mount
 package|;
 end_package
 
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * A ContentRepository represents one big tree. A Mount  * refers to a set of paths in that tree which are possibly  * stored in a separate physical persistent stores. In a  * default setup all paths belong to a default Mount.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|Mount
@@ -59,6 +73,13 @@ function_decl|;
 comment|/**      * Checks if this mount falls under given path. For e.g. if a      * mount consist of '/etc/config'. Then if path is      *<ul>      *<li>/etc - Then it returns true</li>      *<li>/etc/config - Then it returns false</li>      *<li>/lib - Then it returns false</li>      *</ul>      *      * @param path path to check      * @return true if this Mount is rooted under given path      */
 name|boolean
 name|isUnder
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+function_decl|;
+name|boolean
+name|isDirectlyUnder
 parameter_list|(
 name|String
 name|path

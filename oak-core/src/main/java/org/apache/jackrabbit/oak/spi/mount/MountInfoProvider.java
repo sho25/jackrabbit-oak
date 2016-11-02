@@ -49,7 +49,21 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|MountInfoProvider
@@ -89,7 +103,7 @@ name|boolean
 name|hasNonDefaultMounts
 parameter_list|()
 function_decl|;
-comment|/**      * Returns all mounts placed under the specified path      *       * @param path the path under which mounts are to be found      * @return a collection of mounts, possibly empty      */
+comment|/**      * Returns all mounts placed under the specified path      *      * @param path the path under which mounts are to be found      * @return a collection of mounts, possibly empty      */
 annotation|@
 name|Nonnull
 name|Collection
@@ -97,6 +111,18 @@ argument_list|<
 name|Mount
 argument_list|>
 name|getMountsPlacedUnder
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+function_decl|;
+annotation|@
+name|Nonnull
+name|Collection
+argument_list|<
+name|Mount
+argument_list|>
+name|getMountsPlacedDirectlyUnder
 parameter_list|(
 name|String
 name|path

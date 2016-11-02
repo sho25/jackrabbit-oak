@@ -97,6 +97,10 @@ block|,
 name|DOCUMENT_MEM
 block|,
 name|SEGMENT_TAR
+block|,
+name|MULTIPLEXED_SEGMENT
+block|,
+name|MULTIPLEXED_MEM
 block|}
 specifier|private
 specifier|static
