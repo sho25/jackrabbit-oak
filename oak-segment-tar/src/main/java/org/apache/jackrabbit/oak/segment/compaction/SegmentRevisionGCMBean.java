@@ -109,10 +109,6 @@ name|FileStoreGCMonitor
 import|;
 end_import
 
-begin_comment
-comment|// FIXME OAK-4617: Align SegmentRevisionGC MBean with new generation based GC
-end_comment
-
 begin_class
 specifier|public
 class|class
