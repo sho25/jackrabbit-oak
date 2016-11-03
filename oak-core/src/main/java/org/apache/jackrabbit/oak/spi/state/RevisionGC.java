@@ -71,7 +71,7 @@ name|ManagementOperation
 operator|.
 name|Status
 operator|.
-name|succeeded
+name|initiated
 import|;
 end_import
 
@@ -465,7 +465,7 @@ name|gcOp
 argument_list|)
 expr_stmt|;
 return|return
-name|succeeded
+name|initiated
 argument_list|(
 name|OP_NAME
 operator|+
@@ -554,7 +554,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|succeeded
+name|initiated
 argument_list|(
 literal|"Revision garbage collection cancelled"
 argument_list|)
