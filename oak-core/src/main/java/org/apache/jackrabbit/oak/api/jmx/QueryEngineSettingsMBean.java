@@ -82,6 +82,18 @@ name|boolean
 name|failTraversal
 parameter_list|)
 function_decl|;
+comment|/**      * Whether the query result size should return an estimation (or -1 if disabled) for large queries      *      * @return true if enabled      */
+name|boolean
+name|isFastQuerySize
+parameter_list|()
+function_decl|;
+name|void
+name|setFastQuerySize
+parameter_list|(
+name|boolean
+name|fastQuerySize
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
