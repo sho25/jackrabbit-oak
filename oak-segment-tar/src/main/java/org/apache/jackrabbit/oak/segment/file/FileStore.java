@@ -1488,6 +1488,13 @@ name|void
 name|run
 parameter_list|()
 block|{
+if|if
+condition|(
+name|shutdown
+condition|)
+block|{
+return|return;
+block|}
 try|try
 block|{
 name|flush
