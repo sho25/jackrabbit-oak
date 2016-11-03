@@ -9091,6 +9091,9 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Node
+name|b
+init|=
 name|testNode
 operator|.
 name|getNode
@@ -9102,6 +9105,21 @@ name|getNode
 argument_list|(
 literal|"b"
 argument_list|)
+decl_stmt|;
+comment|// OAK-5061 : the event NODE_REMOVED on /a/b is actually expected and was missing in the test:
+name|listener
+operator|.
+name|expect
+argument_list|(
+name|b
+operator|.
+name|getPath
+argument_list|()
+argument_list|,
+name|NODE_REMOVED
+argument_list|)
+expr_stmt|;
+name|b
 operator|.
 name|remove
 argument_list|()
@@ -9113,6 +9131,13 @@ argument_list|()
 operator|.
 name|save
 argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
 expr_stmt|;
 name|missing
 operator|=
