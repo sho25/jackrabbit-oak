@@ -251,6 +251,15 @@ name|HAS_CHILD_PROP_PREFIX
 operator|+
 literal|"non-bundled"
 decl_stmt|;
+comment|/**      * Boolean property. If set to true then that bundlor config would be considered as disabled      * and would not be used      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROP_DISABLED
+init|=
+literal|"disabled"
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
