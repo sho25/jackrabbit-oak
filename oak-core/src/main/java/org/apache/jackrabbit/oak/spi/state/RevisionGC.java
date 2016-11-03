@@ -467,6 +467,8 @@ expr_stmt|;
 return|return
 name|initiated
 argument_list|(
+name|gcOp
+argument_list|,
 name|OP_NAME
 operator|+
 literal|" started"
@@ -556,6 +558,8 @@ expr_stmt|;
 return|return
 name|initiated
 argument_list|(
+name|gcOp
+argument_list|,
 literal|"Revision garbage collection cancelled"
 argument_list|)
 operator|.

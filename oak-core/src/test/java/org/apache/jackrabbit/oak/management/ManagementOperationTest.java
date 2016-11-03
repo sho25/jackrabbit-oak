@@ -1135,8 +1135,6 @@ name|Status
 operator|.
 name|unavailable
 argument_list|(
-literal|42
-argument_list|,
 literal|"forty two"
 argument_list|)
 argument_list|)
@@ -1147,8 +1145,6 @@ name|Status
 operator|.
 name|none
 argument_list|(
-literal|43
-argument_list|,
 literal|"forty three"
 argument_list|)
 argument_list|)
@@ -1159,8 +1155,6 @@ name|Status
 operator|.
 name|initiated
 argument_list|(
-literal|44
-argument_list|,
 literal|"forty four"
 argument_list|)
 argument_list|)
@@ -1171,8 +1165,6 @@ name|Status
 operator|.
 name|running
 argument_list|(
-literal|45
-argument_list|,
 literal|"forty five"
 argument_list|)
 argument_list|)
@@ -1183,8 +1175,6 @@ name|Status
 operator|.
 name|succeeded
 argument_list|(
-literal|46
-argument_list|,
 literal|"forty six"
 argument_list|)
 argument_list|)
@@ -1195,8 +1185,6 @@ name|Status
 operator|.
 name|failed
 argument_list|(
-literal|47
-argument_list|,
 literal|"forty seven"
 argument_list|)
 argument_list|)
