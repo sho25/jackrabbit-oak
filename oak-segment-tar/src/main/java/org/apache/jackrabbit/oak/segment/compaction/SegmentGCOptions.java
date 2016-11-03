@@ -99,6 +99,15 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+comment|/**      * Default value for {@link #getMemoryThreshold()}      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|MEMORY_THRESHOLD_DEFAULT
+init|=
+literal|15
+decl_stmt|;
 specifier|private
 name|boolean
 name|paused
@@ -134,6 +143,12 @@ name|boolean
 name|offline
 init|=
 literal|false
+decl_stmt|;
+specifier|private
+name|int
+name|memoryThreshold
+init|=
+name|MEMORY_THRESHOLD_DEFAULT
 decl_stmt|;
 specifier|private
 name|boolean
@@ -622,6 +637,35 @@ operator|.
 name|gcSizeDeltaEstimation
 operator|=
 name|gcSizeDeltaEstimation
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Get the available memory threshold beyond which revision gc will be      * canceled. Value represents a percentage so an value between {@code 0} and      * {@code 100} will be returned.      * @return memoryThreshold      */
+specifier|public
+name|int
+name|getMemoryThreshold
+parameter_list|()
+block|{
+return|return
+name|memoryThreshold
+return|;
+block|}
+comment|/**      * Set the available memory threshold beyond which revision gc will be      * canceled. Value represents a percentage so an input between {@code 0} and      * {@code 100} is expected. Setting this to {@code 0} will disable the      * check.      * @param memoryThreshold      * @return this instance      */
+specifier|public
+name|SegmentGCOptions
+name|setMemoryThreshold
+parameter_list|(
+name|int
+name|memoryThreshold
+parameter_list|)
+block|{
+name|this
+operator|.
+name|memoryThreshold
+operator|=
+name|memoryThreshold
 expr_stmt|;
 return|return
 name|this

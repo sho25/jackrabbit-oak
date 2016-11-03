@@ -1077,6 +1077,18 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
+comment|/**      * This flag is raised whenever the available memory falls under a specified      * threshold. See {@link GCMemoryBarrier}      */
+specifier|private
+specifier|final
+name|AtomicBoolean
+name|sufficientMemory
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|true
+argument_list|)
+decl_stmt|;
 comment|/**      * Flag signalling shutdown of the file store      */
 specifier|private
 specifier|volatile
@@ -3465,13 +3477,23 @@ name|incrementAndGet
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Stopwatch
-name|watch
+name|GCMemoryBarrier
+name|gcMemoryBarrier
 init|=
-name|Stopwatch
+operator|new
+name|GCMemoryBarrier
+argument_list|(
+name|sufficientMemory
+argument_list|,
+name|gcListener
+argument_list|,
+name|GC_COUNT
 operator|.
-name|createStarted
+name|get
 argument_list|()
+argument_list|,
+name|gcOptions
+argument_list|)
 decl_stmt|;
 name|int
 name|gainThreshold
@@ -3535,6 +3557,14 @@ argument_list|,
 name|GC_COUNT
 argument_list|)
 expr_stmt|;
+name|Stopwatch
+name|watch
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 name|Supplier
 argument_list|<
 name|Boolean
@@ -3575,6 +3605,11 @@ name|GC_COUNT
 argument_list|,
 name|cancel
 argument_list|)
+expr_stmt|;
+name|gcMemoryBarrier
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 return|return;
 block|}
@@ -3766,6 +3801,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|gcMemoryBarrier
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**          * Estimated compaction gain. The result will be undefined if stopped through          * the passed {@code stop} signal.          * @param stop  signal for stopping the estimation process.          * @return compaction gain estimate          */
 specifier|synchronized
@@ -5896,6 +5936,25 @@ block|{
 name|reason
 operator|=
 literal|"Not enough disk space"
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|store
+operator|.
+name|sufficientMemory
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+name|reason
+operator|=
+literal|"Not enough memory"
 expr_stmt|;
 return|return
 literal|true

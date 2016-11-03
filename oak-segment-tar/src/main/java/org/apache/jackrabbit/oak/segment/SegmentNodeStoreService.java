@@ -191,6 +191,26 @@ name|compaction
 operator|.
 name|SegmentGCOptions
 operator|.
+name|MEMORY_THRESHOLD_DEFAULT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|compaction
+operator|.
+name|SegmentGCOptions
+operator|.
 name|PAUSE_DEFAULT
 import|;
 end_import
@@ -1799,6 +1819,33 @@ name|String
 name|RETAINED_GENERATIONS
 init|=
 literal|"compaction.retainedGenerations"
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|intValue
+operator|=
+name|MEMORY_THRESHOLD_DEFAULT
+argument_list|,
+name|label
+operator|=
+literal|"Compaction Memory Threshold"
+argument_list|,
+name|description
+operator|=
+literal|"Set the available memory threshold beyond which revision gc will be canceled. "
+operator|+
+literal|"Value represents a percentage so an input between 0 and 100 is expected. "
+operator|+
+literal|"Setting this to 0 will disable the check."
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MEMORY_THRESHOLD
+init|=
+literal|"compaction.memoryThreshold"
 decl_stmt|;
 annotation|@
 name|Property
@@ -3533,6 +3580,19 @@ argument_list|,
 name|SIZE_DELTA_ESTIMATION_DEFAULT
 argument_list|)
 decl_stmt|;
+name|int
+name|memoryThreshold
+init|=
+name|toInteger
+argument_list|(
+name|property
+argument_list|(
+name|MEMORY_THRESHOLD
+argument_list|)
+argument_list|,
+name|MEMORY_THRESHOLD_DEFAULT
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|SegmentGCOptions
@@ -3554,6 +3614,11 @@ operator|.
 name|setGcSizeDeltaEstimation
 argument_list|(
 name|sizeDeltaEstimation
+argument_list|)
+operator|.
+name|setMemoryThreshold
+argument_list|(
+name|memoryThreshold
 argument_list|)
 return|;
 block|}

@@ -195,6 +195,19 @@ name|String
 name|getStatus
 parameter_list|()
 function_decl|;
+comment|/**      * Get the available memory threshold beyond which revision gc will be      * canceled. Value represents a percentage so an value between 0 and 100      * will be returned.      * @return memory threshold      */
+name|int
+name|getMemoryThreshold
+parameter_list|()
+function_decl|;
+comment|/**      * Set the available memory threshold beyond which revision gc will be      * canceled. Value represents a percentage so an input between {@code 0} and      * {@code 100} is expected. Setting this to {@code 0} will disable the      * check.      * @param memoryThreshold      */
+name|void
+name|setMemoryThreshold
+parameter_list|(
+name|int
+name|memoryThreshold
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
