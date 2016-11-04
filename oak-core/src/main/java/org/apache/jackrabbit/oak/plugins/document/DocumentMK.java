@@ -5552,7 +5552,10 @@ operator|.
 name|Children
 argument_list|>
 name|buildChildrenCache
-parameter_list|()
+parameter_list|(
+name|DocumentNodeStore
+name|store
+parameter_list|)
 block|{
 return|return
 name|buildCache
@@ -5564,7 +5567,7 @@ argument_list|,
 name|getChildrenCacheSize
 argument_list|()
 argument_list|,
-literal|null
+name|store
 argument_list|,
 literal|null
 argument_list|)

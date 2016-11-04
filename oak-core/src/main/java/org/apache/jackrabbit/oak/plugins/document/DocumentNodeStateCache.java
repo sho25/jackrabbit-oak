@@ -73,6 +73,20 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isCached
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 decl_stmt|;
 comment|/**      * Get the node for the given path and revision.      *      * @param path the path of the node.      * @param rootRevision revision of root NodeState      * @param lastRev last revision of the node at given path      *      * @return nodeState at given path or null. If given revision is not present or the      * path is not cached then<code>null</code> would be returned      */
@@ -89,6 +103,14 @@ name|rootRevision
 parameter_list|,
 name|RevisionVector
 name|lastRev
+parameter_list|)
+function_decl|;
+comment|/**      * Determines if given path is cached by this implementation      * @param path path to check      * @return true if given path is cached      */
+name|boolean
+name|isCached
+parameter_list|(
+name|String
+name|path
 parameter_list|)
 function_decl|;
 block|}

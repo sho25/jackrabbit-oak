@@ -2658,7 +2658,9 @@ operator|=
 name|builder
 operator|.
 name|buildChildrenCache
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 name|nodeChildrenCacheStats
 operator|=
@@ -4113,6 +4115,7 @@ name|getStats
 argument_list|()
 return|;
 block|}
+specifier|public
 name|Cache
 argument_list|<
 name|PathRev
@@ -4124,6 +4127,22 @@ parameter_list|()
 block|{
 return|return
 name|nodeCache
+return|;
+block|}
+specifier|public
+name|Cache
+argument_list|<
+name|PathRev
+argument_list|,
+name|DocumentNodeState
+operator|.
+name|Children
+argument_list|>
+name|getNodeChildrenCache
+parameter_list|()
+block|{
+return|return
+name|nodeChildrenCache
 return|;
 block|}
 comment|/**      * Returns the journal entry that will be stored in the journal with the      * next background updated.      *      * @return the current journal entry.      */
@@ -13354,6 +13373,15 @@ parameter_list|()
 block|{
 return|return
 name|nodeStoreStatsCollector
+return|;
+block|}
+specifier|public
+name|DocumentNodeStateCache
+name|getNodeStateCache
+parameter_list|()
+block|{
+return|return
+name|nodeStateCache
 return|;
 block|}
 specifier|public

@@ -132,6 +132,15 @@ name|revision
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|path
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public

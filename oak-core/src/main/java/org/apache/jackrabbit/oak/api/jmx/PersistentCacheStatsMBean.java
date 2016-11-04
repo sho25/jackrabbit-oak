@@ -94,6 +94,10 @@ name|getPutRejectedQueueFullRateHistory
 parameter_list|()
 function_decl|;
 name|CompositeData
+name|getPutRejectedAsCachedInSecRateHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
 name|getInvalidateOneRateHistory
 parameter_list|()
 function_decl|;
