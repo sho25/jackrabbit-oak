@@ -562,11 +562,10 @@ name|containsPathWithoutPlan
 argument_list|()
 condition|)
 block|{
-comment|// this is not expected (a full-text index that
-comment|// can't deal with a full-text restriction)
+comment|// the full-text index didn't return a plan
 name|LOG
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Full-text index without plan: "
 operator|+
