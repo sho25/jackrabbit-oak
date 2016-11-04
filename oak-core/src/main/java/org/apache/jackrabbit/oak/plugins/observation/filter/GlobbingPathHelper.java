@@ -293,7 +293,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\\E[^/]*(/[^/]*)*\\Q"
+literal|"\\E([^/]*/)*\\Q"
 argument_list|)
 expr_stmt|;
 block|}
