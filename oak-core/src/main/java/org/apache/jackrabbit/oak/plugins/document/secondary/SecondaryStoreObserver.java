@@ -27,6 +27,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|TimeUnit
@@ -362,6 +372,14 @@ name|pathFilter
 decl_stmt|;
 specifier|private
 specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|metaPropNames
+decl_stmt|;
+specifier|private
+specifier|final
 name|SecondaryStoreRootObserver
 name|secondaryObserver
 decl_stmt|;
@@ -389,6 +407,12 @@ name|SecondaryStoreObserver
 parameter_list|(
 name|NodeStore
 name|nodeStore
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|metaPropNames
 parameter_list|,
 name|NodeStateDiffer
 name|differ
@@ -426,6 +450,12 @@ operator|.
 name|differ
 operator|=
 name|differ
+expr_stmt|;
+name|this
+operator|.
+name|metaPropNames
+operator|=
+name|metaPropNames
 expr_stmt|;
 name|this
 operator|.
@@ -545,6 +575,8 @@ name|builder
 argument_list|,
 name|pathFilter
 argument_list|,
+name|metaPropNames
+argument_list|,
 name|target
 argument_list|)
 decl_stmt|;
@@ -556,6 +588,8 @@ argument_list|(
 name|target
 argument_list|,
 name|builder
+argument_list|,
+name|metaPropNames
 argument_list|)
 expr_stmt|;
 comment|//Apply the rest of properties

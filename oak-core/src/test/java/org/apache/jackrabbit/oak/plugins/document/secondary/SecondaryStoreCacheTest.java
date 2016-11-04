@@ -1672,11 +1672,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-5067"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1895,6 +1890,15 @@ argument_list|(
 name|pathFilter
 argument_list|)
 decl_stmt|;
+name|builder
+operator|.
+name|metaPropNames
+argument_list|(
+name|DocumentNodeStore
+operator|.
+name|META_PROP_NAMES
+argument_list|)
+expr_stmt|;
 name|SecondaryStoreCache
 name|cache
 init|=
