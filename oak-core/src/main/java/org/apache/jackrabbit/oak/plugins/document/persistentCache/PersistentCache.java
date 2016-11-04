@@ -465,9 +465,16 @@ name|ASYNC_CACHE
 init|=
 name|Boolean
 operator|.
-name|getBoolean
+name|parseBoolean
+argument_list|(
+name|System
+operator|.
+name|getProperty
 argument_list|(
 literal|"oak.cache.asynchronous"
+argument_list|,
+literal|"true"
+argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|private

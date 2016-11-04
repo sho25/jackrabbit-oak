@@ -951,7 +951,7 @@ name|builder
 operator|.
 name|setPersistentCache
 argument_list|(
-literal|"target/persistentCache,time"
+literal|"target/persistentCache,time,-async"
 argument_list|)
 expr_stmt|;
 block|}
