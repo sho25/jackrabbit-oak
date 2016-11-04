@@ -1442,6 +1442,8 @@ literal|"["
 argument_list|)
 condition|)
 block|{
+do|do
+block|{
 name|Expression
 name|c
 init|=
@@ -1468,6 +1470,15 @@ argument_list|(
 literal|"]"
 argument_list|)
 expr_stmt|;
+block|}
+do|while
+condition|(
+name|readIf
+argument_list|(
+literal|"["
+argument_list|)
+condition|)
+do|;
 block|}
 name|startOfQuery
 operator|=
@@ -6032,18 +6043,20 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+name|int
+name|parseIndex
+decl_stmt|;
 while|while
 condition|(
 literal|true
 condition|)
 block|{
-name|int
 name|parseIndex
-init|=
+operator|=
 name|converter
 operator|.
 name|parseIndex
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|converter
@@ -6118,6 +6131,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|converter
+operator|.
 name|currentTokenType
 operator|==
 name|END
@@ -6126,7 +6141,7 @@ block|{
 throw|throw
 name|getSyntaxError
 argument_list|(
-literal|"the query may not be empty"
+literal|"empty query or missing ')'"
 argument_list|)
 throw|;
 block|}
@@ -6169,9 +6184,7 @@ name|partList
 operator|.
 name|substring
 argument_list|(
-name|lastParseIndex
-operator|+
-literal|1
+name|parseIndex
 argument_list|)
 decl_stmt|;
 name|Statement

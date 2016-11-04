@@ -52,6 +52,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -220,11 +232,132 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|test
+name|chainedConditions
 parameter_list|()
 throws|throws
 name|ParseException
 block|{
+name|verify
+argument_list|(
+literal|"/jcr:root/x[@a][@b][@c]"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [a] is not null "
+operator|+
+literal|"and [b] is not null "
+operator|+
+literal|"and [c] is not null "
+operator|+
+literal|"and issamenode(a, '/x') "
+operator|+
+literal|"/* xpath: /jcr:root/x[@a][@b][@c] */"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|union
+parameter_list|()
+throws|throws
+name|ParseException
+block|{
+try|try
+block|{
+name|verify
+argument_list|(
+literal|"(/jcr:root/x[@a][@b][@c]"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ParseException
+name|e
+parameter_list|)
+block|{
+comment|// expected
+block|}
+name|verify
+argument_list|(
+literal|"(/jcr:root/x[@a] | /jcr:root/y[@b])[@c]"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [a] is not null "
+operator|+
+literal|"and [c] is not null "
+operator|+
+literal|"and issamenode(a, '/x') "
+operator|+
+literal|"/* xpath: /jcr:root/x[@a][@c] */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [b] is not null "
+operator|+
+literal|"and [c] is not null "
+operator|+
+literal|"and issamenode(a, '/y') "
+operator|+
+literal|"/* xpath: /jcr:root/y[@b][@c] */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"(/jcr:root/x | /jcr:root/y)"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where issamenode(a, '/x') "
+operator|+
+literal|"/* xpath: /jcr:root/x */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where issamenode(a, '/y') "
+operator|+
+literal|"/* xpath: /jcr:root/y */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"(/jcr:root/x | /jcr:root/y )"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where issamenode(a, '/x') "
+operator|+
+literal|"/* xpath: /jcr:root/x */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where issamenode(a, '/y') "
+operator|+
+literal|"/* xpath: /jcr:root/y */"
+argument_list|)
+expr_stmt|;
 name|verify
 argument_list|(
 literal|"(/jcr:root/content//*[@a] | /jcr:root/lib//*[@b]) order by @c"
