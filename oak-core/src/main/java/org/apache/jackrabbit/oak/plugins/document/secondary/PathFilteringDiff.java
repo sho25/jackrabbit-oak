@@ -57,6 +57,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|commons
+operator|.
+name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|plugins
 operator|.
 name|document
@@ -715,6 +731,20 @@ argument_list|>
 name|metaPropNames
 parameter_list|)
 block|{
+comment|//Only set root revision on root node
+if|if
+condition|(
+name|PathUtils
+operator|.
+name|denotesRoot
+argument_list|(
+name|state
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|builder
 operator|.
 name|setProperty
@@ -730,6 +760,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+comment|//LastRev would be set on each node
 name|builder
 operator|.
 name|setProperty

@@ -424,7 +424,7 @@ specifier|private
 name|RevisionVector
 name|lastRevision
 decl_stmt|;
-comment|/**      * Wraps a given NodeState as a {@link DelegatingDocumentNodeState} if      * it has required meta properties otherwise just returns the passed NodeState      *      * @param delegate nodeState to wrap      * @return wrapped state or original state      */
+comment|/**      * Wraps a given root NodeState as a {@link DelegatingDocumentNodeState} if      * it has required meta properties otherwise just returns the passed NodeState      *      * @param delegate nodeState to wrap      * @return wrapped state or original state      */
 specifier|public
 specifier|static
 name|NodeState
