@@ -2859,7 +2859,10 @@ argument_list|)
 operator|.
 name|setLeaseCheck
 argument_list|(
-literal|true
+operator|!
+name|ClusterNodeInfo
+operator|.
+name|DEFAULT_LEASE_CHECK_DISABLED
 comment|/* OAK-2739: enabled by default */
 argument_list|)
 operator|.
