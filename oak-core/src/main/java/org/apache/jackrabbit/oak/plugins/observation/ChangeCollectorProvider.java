@@ -363,7 +363,7 @@ literal|"Apache Jackrabbit Oak Change Collector Service"
 argument_list|,
 name|description
 operator|=
-literal|"It hooks into the commit and collect ChangeSet of changed items of a commit which "
+literal|"It hooks into the commit and collects a ChangeSet of changed items of a commit which "
 operator|+
 literal|"is then used to speed up observation processing"
 argument_list|)
