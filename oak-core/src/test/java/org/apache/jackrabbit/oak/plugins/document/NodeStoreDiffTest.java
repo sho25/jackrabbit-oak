@@ -355,16 +355,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -846,11 +836,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4403"
-argument_list|)
+comment|// OAK-4403
 annotation|@
 name|Test
 specifier|public
@@ -866,7 +852,7 @@ literal|"/content/a"
 argument_list|,
 literal|"/etc/x"
 argument_list|,
-literal|"var"
+literal|"var/x"
 argument_list|,
 literal|"/etc/y"
 argument_list|)
@@ -1007,7 +993,7 @@ name|not
 argument_list|(
 name|hasItem
 argument_list|(
-literal|"/etc"
+literal|"/etc/x"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1022,7 +1008,7 @@ name|not
 argument_list|(
 name|hasItem
 argument_list|(
-literal|"/var"
+literal|"/var/x"
 argument_list|)
 argument_list|)
 argument_list|)
