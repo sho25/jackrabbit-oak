@@ -418,7 +418,7 @@ operator|=
 operator|new
 name|PersistentCache
 argument_list|(
-literal|"target/cacheTest,+async"
+literal|"target/cacheTest"
 argument_list|)
 expr_stmt|;
 specifier|final
