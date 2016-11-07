@@ -456,27 +456,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Whether to use the queue to put items into cache. Default: false (cache      * will be updated synchronously).      */
-specifier|private
-specifier|static
-specifier|final
-name|boolean
-name|ASYNC_CACHE
-init|=
-name|Boolean
-operator|.
-name|parseBoolean
-argument_list|(
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"oak.cache.asynchronous"
-argument_list|,
-literal|"true"
-argument_list|)
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -555,7 +534,7 @@ specifier|private
 name|boolean
 name|asyncCache
 init|=
-name|ASYNC_CACHE
+literal|true
 decl_stmt|;
 specifier|private
 name|HashMap
