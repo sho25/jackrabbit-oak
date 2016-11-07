@@ -510,6 +510,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|IndexCopier
 name|indexCopier
 decl_stmt|;
