@@ -2265,7 +2265,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Deleted blobs {[]}"
+literal|"Deleted blobs {}"
 argument_list|,
 name|deleted
 argument_list|)
@@ -2291,7 +2291,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Deleted blobs {[]}"
+literal|"Deleted blobs {}"
 argument_list|,
 name|deleted
 argument_list|)
