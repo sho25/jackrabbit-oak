@@ -1319,7 +1319,7 @@ name|elements
 operator|.
 name|remove
 argument_list|(
-name|prevElem
+name|prevIdx
 argument_list|)
 expr_stmt|;
 return|return
