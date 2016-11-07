@@ -1366,7 +1366,6 @@ name|String
 name|indexPath
 parameter_list|)
 block|{
-comment|//TODO This should also be removed at start i.e. open of CopyOnWriteDirectory
 name|getSharedWorkingSet
 argument_list|(
 name|indexPath

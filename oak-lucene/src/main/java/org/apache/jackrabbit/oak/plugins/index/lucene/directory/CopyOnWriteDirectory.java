@@ -928,6 +928,13 @@ name|reindexMode
 operator|=
 name|reindexMode
 expr_stmt|;
+name|indexCopier
+operator|.
+name|clearIndexFilesBeingWritten
+argument_list|(
+name|indexPath
+argument_list|)
+expr_stmt|;
 name|initialize
 argument_list|()
 expr_stmt|;
@@ -2387,8 +2394,6 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|COWLocalFileReference
-operator|.
 name|CopyOnCloseIndexOutput
 argument_list|(
 name|local
