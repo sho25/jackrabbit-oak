@@ -2251,8 +2251,6 @@ specifier|public
 name|EventListenerIterator
 name|getRegisteredEventListeners
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 operator|new
