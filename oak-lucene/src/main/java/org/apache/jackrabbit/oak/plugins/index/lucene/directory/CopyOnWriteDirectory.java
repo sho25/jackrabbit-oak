@@ -698,6 +698,11 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"ThrowableResultOfMethodCallIgnored"
+argument_list|)
+annotation|@
 name|Override
 specifier|public
 name|Void
@@ -2533,6 +2538,11 @@ name|getFilePointer
 argument_list|()
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 annotation|@
 name|Override
 specifier|public
