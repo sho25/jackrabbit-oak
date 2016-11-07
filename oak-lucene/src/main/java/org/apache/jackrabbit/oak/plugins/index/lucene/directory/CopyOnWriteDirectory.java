@@ -653,7 +653,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
-name|indexPathForLogging
+name|indexPath
 decl_stmt|;
 specifier|private
 specifier|final
@@ -746,7 +746,7 @@ name|trace
 argument_list|(
 literal|"[COW][{}] Skipping task {} as some exception occurred in previous run"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|task
 argument_list|)
@@ -804,7 +804,7 @@ literal|"[COW][{}] Error occurred while copying files. Further processing would 
 operator|+
 literal|"be skipped"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|t
 argument_list|)
@@ -882,7 +882,7 @@ name|boolean
 name|reindexMode
 parameter_list|,
 name|String
-name|indexPathForLogging
+name|indexPath
 parameter_list|,
 name|Set
 argument_list|<
@@ -927,9 +927,9 @@ name|executor
 expr_stmt|;
 name|this
 operator|.
-name|indexPathForLogging
+name|indexPath
 operator|=
-name|indexPathForLogging
+name|indexPath
 expr_stmt|;
 name|this
 operator|.
@@ -1012,7 +1012,7 @@ name|trace
 argument_list|(
 literal|"[COW][{}] Deleted file {}"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|name
 argument_list|)
@@ -1339,7 +1339,7 @@ literal|1
 argument_list|,
 literal|"[COW][{}] Completed pending copying task {}"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|pendingCopies
 argument_list|)
@@ -1388,7 +1388,7 @@ name|IOException
 argument_list|(
 literal|"Error occurred while copying files for "
 operator|+
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|t
 argument_list|)
@@ -1471,7 +1471,7 @@ name|info
 argument_list|(
 name|msg
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|skippedFiles
 operator|.
@@ -1493,7 +1493,7 @@ name|debug
 argument_list|(
 name|msg
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|skippedFiles
 operator|.
@@ -1521,7 +1521,7 @@ name|trace
 argument_list|(
 literal|"[COW][{}] File listing - Upon completion {}"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|Arrays
 operator|.
@@ -1565,7 +1565,7 @@ name|format
 argument_list|(
 literal|"[COW][%s] Local %s, Remote %s"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|local
 argument_list|,
@@ -1691,7 +1691,7 @@ name|trace
 argument_list|(
 literal|"[COW][{}] File listing - At start {}"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|Arrays
 operator|.
@@ -1766,7 +1766,7 @@ name|trace
 argument_list|(
 literal|"[COW][{}] Skip copying of deleted file {}"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|name
 argument_list|)
@@ -1852,7 +1852,7 @@ literal|0
 argument_list|,
 literal|"[COW][{}] Copied to remote {} -- size: {}"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|name
 argument_list|,
@@ -1929,7 +1929,7 @@ name|trace
 argument_list|(
 literal|"[COW][{}] Marking as deleted {}"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|name
 argument_list|)
@@ -2391,7 +2391,7 @@ name|debug
 argument_list|(
 literal|"[COW][{}] Creating output {}"
 argument_list|,
-name|indexPathForLogging
+name|indexPath
 argument_list|,
 name|name
 argument_list|)
