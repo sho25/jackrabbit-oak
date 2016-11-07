@@ -1724,9 +1724,9 @@ init|=
 name|defaultGCOptions
 argument_list|()
 operator|.
-name|setGainThreshold
+name|setEstimationDisabled
 argument_list|(
-literal|0
+literal|true
 argument_list|)
 operator|.
 name|setForceTimeout

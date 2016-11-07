@@ -84,19 +84,6 @@ name|boolean
 name|paused
 parameter_list|)
 function_decl|;
-comment|/**      * Get the gain estimate threshold beyond which revision gc should run      * @return gainThreshold      */
-name|int
-name|getGainThreshold
-parameter_list|()
-function_decl|;
-comment|/**      * Set the revision gain estimate threshold beyond which revision gc should run      * @param gainThreshold      */
-name|void
-name|setGainThreshold
-parameter_list|(
-name|int
-name|gainThreshold
-parameter_list|)
-function_decl|;
 comment|/**      * Get the number of tries to compact concurrent commits on top of already      * compacted commits      * @return  retry count      */
 name|int
 name|getRetryCount
@@ -145,6 +132,18 @@ name|setGcSizeDeltaEstimation
 parameter_list|(
 name|long
 name|gcSizeDeltaEstimation
+parameter_list|)
+function_decl|;
+name|boolean
+name|isEstimationDisabled
+parameter_list|()
+function_decl|;
+comment|/**      * Disables the estimation phase, thus allowing GC to run every time.      * @param disabled      */
+name|void
+name|setEstimationDisabled
+parameter_list|(
+name|boolean
+name|disabled
 parameter_list|)
 function_decl|;
 comment|/**      * Initiate a revision garbage collection operation      */

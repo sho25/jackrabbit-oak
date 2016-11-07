@@ -53,14 +53,14 @@ name|PAUSE_DEFAULT
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * Default value for {@link #getGainThreshold()}      */
+comment|/**      * Default value for {@link #isEstimationDisabled()}      */
 specifier|public
 specifier|static
 specifier|final
-name|byte
-name|GAIN_THRESHOLD_DEFAULT
+name|boolean
+name|DISABLE_ESTIMATION_DEFAULT
 init|=
-literal|10
+literal|false
 decl_stmt|;
 comment|/**      * Default value for {@link #getRetryCount()}      */
 specifier|public
@@ -89,15 +89,14 @@ name|RETAINED_GENERATIONS_DEFAULT
 init|=
 literal|2
 decl_stmt|;
-comment|/**      * Default value for {@link #getGcSizeDeltaEstimation()}      */
+comment|/**      * Default value for {@link #getGcSizeDeltaEstimation()} set to 10GB      */
 specifier|public
 specifier|static
 specifier|final
 name|long
 name|SIZE_DELTA_ESTIMATION_DEFAULT
 init|=
-operator|-
-literal|1
+literal|10737418240L
 decl_stmt|;
 comment|/**      * Default value for {@link #getMemoryThreshold()}      */
 specifier|public
@@ -114,11 +113,12 @@ name|paused
 init|=
 name|PAUSE_DEFAULT
 decl_stmt|;
+comment|/**      * Flag controlling whether the estimation phase will run before a GC cycle      */
 specifier|private
-name|int
-name|gainThreshold
+name|boolean
+name|estimationDisabled
 init|=
-name|GAIN_THRESHOLD_DEFAULT
+name|DISABLE_ESTIMATION_DEFAULT
 decl_stmt|;
 specifier|private
 name|int
@@ -198,9 +198,6 @@ name|boolean
 name|paused
 parameter_list|,
 name|int
-name|gainThreshold
-parameter_list|,
-name|int
 name|retryCount
 parameter_list|,
 name|int
@@ -212,12 +209,6 @@ operator|.
 name|paused
 operator|=
 name|paused
-expr_stmt|;
-name|this
-operator|.
-name|gainThreshold
-operator|=
-name|gainThreshold
 expr_stmt|;
 name|this
 operator|.
@@ -239,8 +230,6 @@ block|{
 name|this
 argument_list|(
 name|PAUSE_DEFAULT
-argument_list|,
-name|GAIN_THRESHOLD_DEFAULT
 argument_list|,
 name|RETRY_COUNT_DEFAULT
 argument_list|,
@@ -285,35 +274,6 @@ operator|.
 name|paused
 operator|=
 name|paused
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
-comment|/**      * Get the gain estimate threshold beyond which revision gc should run      * @return gainThreshold      */
-specifier|public
-name|int
-name|getGainThreshold
-parameter_list|()
-block|{
-return|return
-name|gainThreshold
-return|;
-block|}
-comment|/**      * Set the revision gain estimate threshold beyond which revision gc should run      * @param gainThreshold      * @return this instance      */
-specifier|public
-name|SegmentGCOptions
-name|setGainThreshold
-parameter_list|(
-name|int
-name|gainThreshold
-parameter_list|)
-block|{
-name|this
-operator|.
-name|gainThreshold
-operator|=
-name|gainThreshold
 expr_stmt|;
 return|return
 name|this
@@ -472,9 +432,13 @@ literal|"paused="
 operator|+
 name|paused
 operator|+
-literal|", gainThreshold="
+literal|", estimationDisabled="
 operator|+
-name|gainThreshold
+name|estimationDisabled
+operator|+
+literal|", gcSizeDeltaEstimation="
+operator|+
+name|gcSizeDeltaEstimation
 operator|+
 literal|", retryCount="
 operator|+
@@ -605,17 +569,6 @@ name|ocBinMaxSize
 return|;
 block|}
 specifier|public
-name|boolean
-name|isGcSizeDeltaEstimation
-parameter_list|()
-block|{
-return|return
-name|gcSizeDeltaEstimation
-operator|>=
-literal|0
-return|;
-block|}
-specifier|public
 name|long
 name|getGcSizeDeltaEstimation
 parameter_list|()
@@ -666,6 +619,34 @@ operator|.
 name|memoryThreshold
 operator|=
 name|memoryThreshold
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+specifier|public
+name|boolean
+name|isEstimationDisabled
+parameter_list|()
+block|{
+return|return
+name|estimationDisabled
+return|;
+block|}
+comment|/**      * Disables the estimation phase, thus allowing GC to run every time.      * @return this instance      */
+specifier|public
+name|SegmentGCOptions
+name|setEstimationDisabled
+parameter_list|(
+name|boolean
+name|disabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|estimationDisabled
+operator|=
+name|disabled
 expr_stmt|;
 return|return
 name|this
