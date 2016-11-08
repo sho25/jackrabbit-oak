@@ -266,6 +266,69 @@ parameter_list|()
 throws|throws
 name|ParseException
 block|{
+name|verify
+argument_list|(
+literal|"//(a|(b|c))"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where name(a) = 'a' "
+operator|+
+literal|"/* xpath: //a */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where name(a) = 'b' "
+operator|+
+literal|"/* xpath: //b */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where name(a) = 'c' "
+operator|+
+literal|"/* xpath: //c */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"(//*[jcr:contains(., 'some')])"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where contains(*, 'some') "
+operator|+
+literal|"/* xpath: //*[jcr:contains(., 'some')] */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"(//*[jcr:contains(., 'x')] | //*[jcr:contains(., 'y')])"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where contains(*, 'x') "
+operator|+
+literal|"/* xpath: //*[jcr:contains(., 'x')] */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where contains(*, 'y') "
+operator|+
+literal|"/* xpath: //*[jcr:contains(., 'y')] */"
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|verify
@@ -301,7 +364,7 @@ literal|"and [c] is not null "
 operator|+
 literal|"and issamenode(a, '/x') "
 operator|+
-literal|"/* xpath: /jcr:root/x[@a][@c] */ "
+literal|"/* xpath: /jcr:root/x[@a] [@c] */ "
 operator|+
 literal|"union select [jcr:path], [jcr:score], * "
 operator|+
@@ -370,7 +433,7 @@ literal|"where [a] is not null "
 operator|+
 literal|"and isdescendantnode(a, '/content') "
 operator|+
-literal|"/* xpath: /jcr:root/content//*[@a] "
+literal|"/* xpath: /jcr:root/content//*[@a]  "
 operator|+
 literal|"order by @c */ "
 operator|+

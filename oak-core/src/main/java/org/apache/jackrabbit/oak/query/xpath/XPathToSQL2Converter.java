@@ -6080,7 +6080,10 @@ name|readIf
 argument_list|(
 literal|")"
 argument_list|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|level
 operator|--
 operator|<=
@@ -6088,6 +6091,7 @@ literal|0
 condition|)
 block|{
 break|break;
+block|}
 block|}
 elseif|else
 if|if
@@ -6113,7 +6117,9 @@ name|substring
 argument_list|(
 name|lastOrIndex
 argument_list|,
-name|lastParseIndex
+name|parseIndex
+operator|-
+literal|1
 argument_list|)
 decl_stmt|;
 name|parts
@@ -6153,10 +6159,6 @@ name|read
 argument_list|()
 expr_stmt|;
 block|}
-name|lastParseIndex
-operator|=
-name|parseIndex
-expr_stmt|;
 block|}
 name|String
 name|or
@@ -6167,7 +6169,9 @@ name|substring
 argument_list|(
 name|lastOrIndex
 argument_list|,
-name|lastParseIndex
+name|parseIndex
+operator|-
+literal|1
 argument_list|)
 decl_stmt|;
 name|parts
