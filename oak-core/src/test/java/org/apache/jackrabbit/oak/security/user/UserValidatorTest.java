@@ -1668,7 +1668,6 @@ operator|.
 name|NAME
 argument_list|)
 expr_stmt|;
-comment|//TODO
 name|userTree
 operator|.
 name|setProperty

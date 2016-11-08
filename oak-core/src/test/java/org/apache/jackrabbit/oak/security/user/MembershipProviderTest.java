@@ -3154,7 +3154,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-comment|//TODO
 name|memberIds
 operator|.
 name|put
