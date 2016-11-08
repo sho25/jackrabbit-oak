@@ -78,15 +78,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Instance of this class provide a {@link EventFilter} for observation  * events and a filter for commits.  *<p>  * In order to support OAK-4908 a FilterProvider  * extends ChangeSetFilter  */
+comment|/**  * Instance of this class provide a {@link EventFilter} for observation  * events and a filter for commits.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
 name|FilterProvider
-extends|extends
-name|ChangeSetFilter
 block|{
 comment|/**      * Filter whole commits. Only commits for which this method returns      * {@code true} will be further processed to create individual events.      *      * @param sessionId id of the filtering (this) session      * @param info      commit info of the commit or {@code null} if not available      * @return {@code true} if observation events should be created from this      * commit, {@code false} otherwise.      * @see org.apache.jackrabbit.oak.spi.commit.Observer      */
 name|boolean

@@ -2478,36 +2478,6 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * A hook called by the ObservationManagerImpl before creating the ChangeSetFilterImpl      * which allows this filter to adjust the includePaths according to its      * enabled flags.      *<p>      * This is used to set the includePath to be '/' in case includeAncestorRemove      * is set. The reason for this is that we must catch parent removals and can thus      * not apply the normally applied prefilter paths.      * @param includePaths the set to adjust depending on filter flags      */
-name|void
-name|adjustPrefilterIncludePaths
-parameter_list|(
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|includePaths
-parameter_list|)
-block|{
-if|if
-condition|(
-name|includeAncestorRemove
-condition|)
-block|{
-name|includePaths
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|includePaths
-operator|.
-name|add
-argument_list|(
-literal|"/"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 end_class
 
