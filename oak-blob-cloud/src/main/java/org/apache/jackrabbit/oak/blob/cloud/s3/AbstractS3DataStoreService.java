@@ -216,6 +216,7 @@ operator|=
 literal|true
 argument_list|)
 specifier|public
+specifier|abstract
 class|class
 name|AbstractS3DataStoreService
 extends|extends
