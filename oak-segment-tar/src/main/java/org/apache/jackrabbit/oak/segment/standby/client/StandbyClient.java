@@ -59,6 +59,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|io
 operator|.
 name|netty
@@ -1138,6 +1148,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Nullable
 name|String
 name|getHead
 parameter_list|()
@@ -1187,6 +1199,8 @@ name|getHeadRecordId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nullable
 name|byte
 index|[]
 name|getSegment
@@ -1242,6 +1256,8 @@ name|getSegmentData
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nullable
 name|byte
 index|[]
 name|getBlob
@@ -1297,6 +1313,8 @@ name|getBlobData
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nullable
 name|Iterable
 argument_list|<
 name|String
