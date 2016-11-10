@@ -1612,7 +1612,7 @@ name|record
 operator|=
 name|delegate
 operator|.
-name|getRecord
+name|getRecordIfStored
 argument_list|(
 operator|new
 name|DataIdentifier
