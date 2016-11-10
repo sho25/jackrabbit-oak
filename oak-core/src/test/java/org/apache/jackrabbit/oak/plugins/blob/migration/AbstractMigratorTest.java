@@ -596,6 +596,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-5009"
+argument_list|)
 specifier|public
 name|void
 name|blobsExistsOnTheNewBlobStore
@@ -654,6 +659,11 @@ block|}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-5009"
+argument_list|)
 specifier|public
 name|void
 name|blobsCanBeReadAfterSwitchingBlobStore
