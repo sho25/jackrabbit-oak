@@ -63,6 +63,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -124,6 +134,20 @@ operator|.
 name|collect
 operator|.
 name|Maps
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
 import|;
 end_import
 
@@ -434,7 +458,7 @@ return|;
 block|}
 specifier|public
 specifier|static
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -450,15 +474,15 @@ name|Matcher
 name|matcher
 parameter_list|)
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|childNodeNames
 init|=
-name|Lists
+name|Sets
 operator|.
-name|newArrayList
+name|newHashSet
 argument_list|()
 decl_stmt|;
 comment|//Immediate child should have depth 1 more than matcher depth
