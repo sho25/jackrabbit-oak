@@ -2362,7 +2362,7 @@ specifier|final
 name|boolean
 name|DEFAULT_BUNDLING_DISABLED
 init|=
-literal|true
+literal|false
 decl_stmt|;
 annotation|@
 name|Property
