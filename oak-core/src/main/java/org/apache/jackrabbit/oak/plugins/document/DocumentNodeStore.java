@@ -1701,7 +1701,7 @@ operator|*
 literal|1024
 argument_list|)
 decl_stmt|;
-comment|/**      * List of meta properties which are created by DocumentNodeStore and which needs to be      * retained in any cloned copy of DocumentNodeState. This does not include other properties defined      * in DocumentBundlor as those are only required by DocumentNodeState      */
+comment|/**      * List of meta properties which are created by DocumentNodeStore and which needs to be      * retained in any cloned copy of DocumentNodeState.      */
 specifier|public
 specifier|static
 specifier|final
