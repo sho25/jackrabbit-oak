@@ -193,7 +193,7 @@ operator|=
 name|nodeStore
 expr_stmt|;
 block|}
-comment|/**      * Performs diff for bundled nodes. The passed state can be DocumentNodeState or      * one from secondary nodestore i.e. {@link DelegatingDocumentNodeState}. So the      * passed states cannot be cast down to DocumentNodeState      *      * @param from from state      * @param to to state      * @param w jsop diff      * @return true if the diff needs to be continued. In case diff is complete it would return false      */
+comment|/**      * Performs diff for bundled nodes. The passed state can be DocumentNodeState or      * one from secondary nodestore i.e. {@code DelegatingDocumentNodeState}. So the      * passed states cannot be cast down to DocumentNodeState      *      * @param from from state      * @param to to state      * @param w jsop diff      * @return true if the diff needs to be continued. In case diff is complete it would return false      */
 specifier|public
 name|boolean
 name|diff

@@ -585,9 +585,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|bundlor
-operator|.
-name|DocumentBundlingTest
+name|TestUtils
 operator|.
 name|asDocumentState
 import|;
