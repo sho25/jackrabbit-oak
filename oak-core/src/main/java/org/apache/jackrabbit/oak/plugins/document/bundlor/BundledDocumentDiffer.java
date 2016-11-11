@@ -520,7 +520,7 @@ name|getNode
 argument_list|(
 name|bundlingRoot
 argument_list|,
-name|bundlingRootPath
+name|bundlingPath
 argument_list|)
 expr_stmt|;
 block|}

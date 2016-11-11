@@ -1718,6 +1718,18 @@ argument_list|(
 name|DocumentBundlor
 operator|.
 name|META_PROP_PATTERN
+argument_list|,
+name|DocumentBundlor
+operator|.
+name|META_PROP_BUNDLING_PATH
+argument_list|,
+name|DocumentBundlor
+operator|.
+name|META_PROP_NON_BUNDLED_CHILD
+argument_list|,
+name|DocumentBundlor
+operator|.
+name|META_PROP_BUNDLED_CHILD
 argument_list|)
 decl_stmt|;
 comment|/**      * Feature flag to enable concurrent add/remove operations of hidden empty      * nodes. See OAK-2673.      */

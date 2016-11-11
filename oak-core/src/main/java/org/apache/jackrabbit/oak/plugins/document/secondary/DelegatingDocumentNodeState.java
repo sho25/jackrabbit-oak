@@ -334,6 +334,7 @@ comment|/**  * NodeState wrapper which wraps another NodeState (mostly SegmentNo
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|DelegatingDocumentNodeState
 extends|extends
