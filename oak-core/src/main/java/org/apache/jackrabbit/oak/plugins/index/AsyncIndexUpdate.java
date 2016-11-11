@@ -856,6 +856,15 @@ name|Runnable
 implements|,
 name|Closeable
 block|{
+comment|/**      * Name of service property which determines the name of Async task      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROP_ASYNC_NAME
+init|=
+literal|"oak.async"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
