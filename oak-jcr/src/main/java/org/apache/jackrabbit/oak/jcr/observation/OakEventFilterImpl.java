@@ -2463,17 +2463,8 @@ name|relativePathPatterns
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|and
-argument_list|(
-operator|new
-name|NodeTypeAggregationFilter
-argument_list|(
-name|nodeTypes
-argument_list|,
-name|relativeGlobPaths
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// OAK-5096: the following AND is not necessary:
+comment|//        and(new NodeTypeAggregationFilter(nodeTypes, relativeGlobPaths));
 return|return
 name|this
 return|;
