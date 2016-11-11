@@ -603,7 +603,14 @@ name|FilenameUtils
 operator|.
 name|normalizeNoEndSeparator
 argument_list|(
+operator|new
+name|File
+argument_list|(
 name|path
+argument_list|)
+operator|.
+name|getAbsolutePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|checkArgument
