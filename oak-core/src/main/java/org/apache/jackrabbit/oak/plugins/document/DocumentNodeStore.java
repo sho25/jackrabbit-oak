@@ -1745,6 +1745,14 @@ argument_list|,
 literal|60000
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SYS_PROP_DISABLE_JOURNAL
+init|=
+literal|"oak.disableJournalDiff"
+decl_stmt|;
 comment|/**      * Feature flag to disable the journal diff mechanism. See OAK-4528.      */
 specifier|private
 name|boolean
@@ -1754,7 +1762,7 @@ name|Boolean
 operator|.
 name|getBoolean
 argument_list|(
-literal|"oak.disableJournalDiff"
+name|SYS_PROP_DISABLE_JOURNAL
 argument_list|)
 decl_stmt|;
 comment|/**      * The document store (might be used by multiple node stores).      */
