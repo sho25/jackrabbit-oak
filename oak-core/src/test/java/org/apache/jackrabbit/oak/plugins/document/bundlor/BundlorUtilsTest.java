@@ -143,7 +143,7 @@ name|bundlor
 operator|.
 name|DocumentBundlor
 operator|.
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 import|;
 end_import
 
@@ -319,7 +319,7 @@ name|concat
 argument_list|(
 literal|"jcr:content"
 argument_list|,
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 argument_list|)
 argument_list|,
 literal|"jcr:content/jcr:data"
@@ -396,7 +396,7 @@ name|concat
 argument_list|(
 literal|"jcr:content"
 argument_list|,
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 argument_list|)
 argument_list|,
 literal|"jcr:content/jcr:data"
@@ -463,7 +463,7 @@ name|concat
 argument_list|(
 literal|"jcr:content"
 argument_list|,
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 argument_list|)
 argument_list|,
 literal|"jcr:content/jcr:data"
@@ -472,7 +472,7 @@ name|concat
 argument_list|(
 literal|"jcr:content/metadata"
 argument_list|,
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 argument_list|)
 argument_list|,
 literal|"jcr:content/metadata/format"
@@ -481,14 +481,14 @@ name|concat
 argument_list|(
 literal|"jcr:content/comments"
 argument_list|,
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 argument_list|)
 argument_list|,
 name|concat
 argument_list|(
 literal|"jcr:content/renditions/original"
 argument_list|,
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 argument_list|)
 argument_list|)
 decl_stmt|;

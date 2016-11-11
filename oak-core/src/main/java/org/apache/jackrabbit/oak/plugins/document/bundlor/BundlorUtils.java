@@ -177,7 +177,7 @@ name|bundlor
 operator|.
 name|DocumentBundlor
 operator|.
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 import|;
 end_import
 
@@ -520,7 +520,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 argument_list|)
 condition|)
 block|{

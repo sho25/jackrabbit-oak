@@ -4064,7 +4064,7 @@ name|relativePath
 argument_list|,
 name|DocumentBundlor
 operator|.
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 argument_list|)
 decl_stmt|;
 return|return

@@ -212,14 +212,14 @@ name|META_PROP_PATTERN
 init|=
 literal|":doc-pattern"
 decl_stmt|;
-comment|/**      * Hidden property name used as suffix for relative node path      * to indicate presence of that node. So for a relative node 'jcr:content'      * the parent node must have a property 'jcr:content/:self      */
+comment|/**      * Hidden property name used as suffix for relative node path      * to indicate presence of that node. So for a relative node 'jcr:content'      * the parent node must have a property 'jcr:content/:doc-self-path.      *      *<p>Its value is the depth of the bundled child node      */
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|META_PROP_NODE
+name|META_PROP_BUNDLING_PATH
 init|=
-literal|":doc-self"
+literal|":doc-self-path"
 decl_stmt|;
 specifier|public
 specifier|static
