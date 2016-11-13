@@ -2663,7 +2663,7 @@ name|includePaths
 operator|.
 name|add
 argument_list|(
-literal|"/"
+literal|"/**"
 argument_list|)
 expr_stmt|;
 block|}
