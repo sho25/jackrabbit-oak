@@ -170,6 +170,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|SRC_EXTERNAL_BLOBS
+init|=
+literal|"src-external-ds"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|DST_FDS
 init|=
 literal|"datastore"
@@ -531,6 +539,15 @@ argument_list|(
 name|IGNORE_MISSING_BINARIES
 argument_list|,
 literal|"Don't break the migration if some binaries are missing"
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|SRC_EXTERNAL_BLOBS
+argument_list|,
+literal|"Flag specifying if the source Store has external references or not"
 argument_list|)
 expr_stmt|;
 block|}
