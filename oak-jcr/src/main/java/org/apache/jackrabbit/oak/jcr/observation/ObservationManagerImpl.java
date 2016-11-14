@@ -2044,6 +2044,14 @@ argument_list|,
 name|noLocal
 argument_list|)
 decl_stmt|;
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|additionalIncludePaths
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|oakEventFilter
@@ -2051,9 +2059,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|additionalIncludePaths
+operator|=
 name|oakEventFilter
 operator|.
-name|adjustPrefilterIncludePaths
+name|calcPrefilterIncludePaths
 argument_list|(
 name|includePaths
 argument_list|)
@@ -2154,6 +2164,8 @@ argument_list|(
 name|includePaths
 argument_list|,
 name|isDeep
+argument_list|,
+name|additionalIncludePaths
 argument_list|,
 name|excludedPaths
 argument_list|,

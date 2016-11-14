@@ -1805,15 +1805,15 @@ return|return
 name|includeAncestorRemove
 return|;
 block|}
-specifier|private
+specifier|static
 name|void
-name|addAncestorsRemoveCondition
+name|addAncestorPaths
 parameter_list|(
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|parentPaths
+name|ancestorPaths
 parameter_list|,
 name|String
 name|globPath
@@ -1836,12 +1836,12 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// from /a/b/c         => add /a and /a/b
-comment|// from /a/b/**        => add /a
-comment|// from /a             => add nothing
+comment|// from /a/b/c         => add /*, /a/* and /a/b/*
+comment|// from /a/b/**        => add /*, /a/*
+comment|// from /a             => add /*, nothing
 comment|// from /              => add nothing
-comment|// from /a/b/**/*.html => add /a
-comment|// from /a/b/*/*.html  => add /a
+comment|// from /a/b/**/*.html => add /*, /a/*
+comment|// from /a/b/*/*.html  => add /*, /a/*
 name|Iterator
 argument_list|<
 name|String
@@ -1865,6 +1865,22 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|it
+operator|.
+name|hasNext
+argument_list|()
+condition|)
+block|{
+name|ancestorPaths
+operator|.
+name|add
+argument_list|(
+literal|"/*"
+argument_list|)
+expr_stmt|;
+block|}
 while|while
 condition|(
 name|it
@@ -1893,7 +1909,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|parentPaths
+name|ancestorPaths
 operator|.
 name|size
 argument_list|()
@@ -1901,11 +1917,11 @@ operator|>
 literal|0
 condition|)
 block|{
-name|parentPaths
+name|ancestorPaths
 operator|.
 name|remove
 argument_list|(
-name|parentPaths
+name|ancestorPaths
 operator|.
 name|size
 argument_list|()
@@ -1942,7 +1958,7 @@ argument_list|(
 name|element
 argument_list|)
 expr_stmt|;
-name|parentPaths
+name|ancestorPaths
 operator|.
 name|add
 argument_list|(
@@ -2002,7 +2018,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|addAncestorsRemoveCondition
+name|addAncestorPaths
 argument_list|(
 name|parentPaths
 argument_list|,
@@ -2027,7 +2043,7 @@ name|getAdditionalPaths
 argument_list|()
 control|)
 block|{
-name|addAncestorsRemoveCondition
+name|addAncestorPaths
 argument_list|(
 name|parentPaths
 argument_list|,
@@ -2051,7 +2067,7 @@ range|:
 name|globPaths
 control|)
 block|{
-name|addAncestorsRemoveCondition
+name|addAncestorPaths
 argument_list|(
 name|parentPaths
 argument_list|,
@@ -2078,7 +2094,7 @@ name|List
 argument_list|<
 name|Condition
 argument_list|>
-name|ancestorsRemoveConditions
+name|ancestorsIncludeConditions
 init|=
 operator|new
 name|LinkedList
@@ -2095,7 +2111,7 @@ range|:
 name|parentPaths
 control|)
 block|{
-name|ancestorsRemoveConditions
+name|ancestorsIncludeConditions
 operator|.
 name|add
 argument_list|(
@@ -2130,7 +2146,7 @@ name|filterBuilder
 operator|.
 name|any
 argument_list|(
-name|ancestorsRemoveConditions
+name|ancestorsIncludeConditions
 argument_list|)
 argument_list|,
 name|filterBuilder
@@ -2639,8 +2655,11 @@ name|this
 return|;
 block|}
 comment|/**      * A hook called by the ObservationManagerImpl before creating the ChangeSetFilterImpl      * which allows this filter to adjust the includePaths according to its      * enabled flags.      *<p>      * This is used to set the includePath to be '/' in case includeAncestorRemove      * is set. The reason for this is that we must catch parent removals and can thus      * not apply the normally applied prefilter paths.      * @param includePaths the set to adjust depending on filter flags      */
-name|void
-name|adjustPrefilterIncludePaths
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|calcPrefilterIncludePaths
 parameter_list|(
 name|Set
 argument_list|<
@@ -2649,25 +2668,41 @@ argument_list|>
 name|includePaths
 parameter_list|)
 block|{
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|paths
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|includeAncestorRemove
 condition|)
 block|{
+for|for
+control|(
+name|String
+name|includePath
+range|:
 name|includePaths
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|includePaths
-operator|.
-name|add
+control|)
+block|{
+name|addAncestorPaths
 argument_list|(
-literal|"/**"
+name|paths
+argument_list|,
+name|includePath
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
+block|}
 if|if
 condition|(
 name|withNodeTypeAggregate
@@ -2679,27 +2714,12 @@ comment|// to just allow anything (**) below there, as this is just
 comment|// about prefiltering, not actual (precise) filtering.
 comment|// so the goal is just to ensure nothing is erroneously excluded
 comment|// so more including is fine.
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|originalPaths
-init|=
-operator|new
-name|HashSet
-argument_list|<
-name|String
-argument_list|>
-argument_list|(
-name|includePaths
-argument_list|)
-decl_stmt|;
 for|for
 control|(
 name|String
 name|includePath
 range|:
-name|originalPaths
+name|includePaths
 control|)
 block|{
 if|if
@@ -2709,13 +2729,6 @@ operator|.
 name|equals
 argument_list|(
 literal|"**"
-argument_list|)
-operator|||
-name|includePath
-operator|.
-name|endsWith
-argument_list|(
-literal|"/*"
 argument_list|)
 operator|||
 name|includePath
@@ -2739,14 +2752,7 @@ literal|"/"
 argument_list|)
 condition|)
 block|{
-name|includePaths
-operator|.
-name|remove
-argument_list|(
-name|includePath
-argument_list|)
-expr_stmt|;
-name|includePaths
+name|paths
 operator|.
 name|add
 argument_list|(
@@ -2758,14 +2764,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|includePaths
-operator|.
-name|remove
-argument_list|(
-name|includePath
-argument_list|)
-expr_stmt|;
-name|includePaths
+name|paths
 operator|.
 name|add
 argument_list|(
@@ -2777,6 +2776,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+return|return
+name|paths
+return|;
 block|}
 block|}
 end_class
