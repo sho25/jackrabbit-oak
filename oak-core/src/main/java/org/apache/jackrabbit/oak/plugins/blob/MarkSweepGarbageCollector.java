@@ -2626,7 +2626,7 @@ name|BlobIdRetriever
 argument_list|(
 name|fs
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 argument_list|)
 decl_stmt|;
