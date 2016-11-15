@@ -1652,7 +1652,7 @@ name|Property
 argument_list|(
 name|intValue
 operator|=
-literal|8388608
+literal|1048576
 argument_list|,
 name|label
 operator|=

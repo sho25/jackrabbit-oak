@@ -304,7 +304,7 @@ name|getInteger
 argument_list|(
 literal|"oak.tar.nodeCacheSize"
 argument_list|,
-literal|8388608
+literal|1048576
 argument_list|)
 decl_stmt|;
 comment|/**      * @param generation      * @return  cache for string records of the given {@code generation}.      */
