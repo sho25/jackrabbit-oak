@@ -2183,7 +2183,10 @@ name|this
 operator|.
 name|validatorProviders
 operator|=
+name|checkNotNull
+argument_list|(
 name|validatorProviders
+argument_list|)
 expr_stmt|;
 block|}
 block|}
