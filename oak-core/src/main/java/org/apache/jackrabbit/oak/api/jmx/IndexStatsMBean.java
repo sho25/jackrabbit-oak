@@ -183,6 +183,8 @@ name|getExecutionCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the execution time as a {@link org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the execution times time series      */
+annotation|@
+name|Deprecated
 name|CompositeData
 name|getExecutionTime
 parameter_list|()
@@ -198,6 +200,8 @@ name|getConsolidatedExecutionStats
 parameter_list|()
 function_decl|;
 comment|/**      * Resets the consolidated stats.      */
+annotation|@
+name|Deprecated
 name|void
 name|resetConsolidatedExecutionStats
 parameter_list|()

@@ -311,24 +311,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Register AsyncIndexStats for execution stats update
-name|regs
-operator|.
-name|add
-argument_list|(
-name|scheduleWithFixedDelay
-argument_list|(
-name|whiteboard
-argument_list|,
-name|task
-operator|.
-name|getIndexStats
-argument_list|()
-argument_list|,
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
