@@ -63,7 +63,7 @@ name|OakEventFilter
 extends|extends
 name|JackrabbitEventFilter
 block|{
-comment|/**      * This causes the node type filter to be applied on 'this' node instead of      * the 'parent' node, thus allows to create a filter which listens on      * adding/removing/etc on nodes of a particular node type (while the default      * was that the node type was applicable on the parent).      *<p>      * Note that this is an 'either/or' thing: either the node type is applied      * on the parent (default) or on 'self/this' (via this switch) but not both.      * @return this filter with the filter change applied      */
+comment|/**      * This causes the node type filter to be applied on 'this' node instead of      * the 'parent' node, thus allows to create a filter which listens on      * adding/removing/etc on nodes of a particular node type (while the default      * was that the node type was applicable on the parent).      *<p>      * Note that this is an 'either/or' thing: either the node type is applied      * on the parent (default) or on 'self/this' (via this switch) but not both.      *<p>      * Also note that this is independent from the nodeTypeAggregate,       * and will only be applied to the (main) node types set on this filter,      * not on the nodeTypeAggregate's node types.      * @return this filter with the filter change applied      */
 specifier|public
 specifier|abstract
 name|OakEventFilter
