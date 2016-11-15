@@ -51,6 +51,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -351,6 +363,39 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|int
+name|PROP_LEASE_TIMEOUT_DEFAULT
+init|=
+literal|15
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|intValue
+operator|=
+name|PROP_LEASE_TIMEOUT_DEFAULT
+argument_list|,
+name|label
+operator|=
+literal|"Lease time out"
+argument_list|,
+name|description
+operator|=
+literal|"Lease timeout in minutes. AsyncIndexer would wait for this timeout period before breaking "
+operator|+
+literal|"async indexer lease"
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PROP_LEASE_TIME_OUT
+init|=
+literal|"leaseTimeOutMinutes"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|char
 name|CONFIG_SEP
 init|=
@@ -457,6 +502,23 @@ argument_list|(
 name|whiteboard
 argument_list|)
 expr_stmt|;
+name|long
+name|leaseTimeOutMin
+init|=
+name|PropertiesUtil
+operator|.
+name|toInteger
+argument_list|(
+name|config
+operator|.
+name|get
+argument_list|(
+name|PROP_LEASE_TIME_OUT
+argument_list|)
+argument_list|,
+name|PROP_LEASE_TIMEOUT_DEFAULT
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|AsyncConfig
@@ -465,7 +527,6 @@ range|:
 name|asyncIndexerConfig
 control|)
 block|{
-comment|//TODO Pass name as part of scheduled job service property
 name|AsyncIndexUpdate
 name|task
 init|=
@@ -481,6 +542,20 @@ argument_list|,
 name|indexEditorProvider
 argument_list|)
 decl_stmt|;
+name|task
+operator|.
+name|setLeaseTimeOut
+argument_list|(
+name|TimeUnit
+operator|.
+name|MINUTES
+operator|.
+name|toMillis
+argument_list|(
+name|leaseTimeOutMin
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|indexRegistration
 operator|.
 name|registerAsyncIndexer
@@ -500,6 +575,15 @@ argument_list|(
 literal|"Configured async indexers {} "
 argument_list|,
 name|asyncIndexerConfig
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Lease time: {} mins"
+argument_list|,
+name|leaseTimeOutMin
 argument_list|)
 expr_stmt|;
 block|}
