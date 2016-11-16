@@ -216,7 +216,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Deletes entries in the journal that are older than the given      * maxRevisionAge.      *      * @param maxRevisionAge entries older than this age will be removed      * @param unit           the {@linkplain TimeUnit} for maxRevisionAge      * @param batchSize      size of batch for removal      * @return the number of entries that have been removed      */
+comment|/**      * Deletes entries in the journal that are older than the given      * maxRevisionAge.      *      * @param maxRevisionAge entries older than this age will be removed      * @param unit           the {@linkplain TimeUnit} for maxRevisionAge      * @return the number of entries that have been removed      */
 specifier|public
 name|int
 name|gc
@@ -226,9 +226,6 @@ name|maxRevisionAge
 parameter_list|,
 name|TimeUnit
 name|unit
-parameter_list|,
-name|int
-name|batchSize
 parameter_list|)
 block|{
 name|DocumentStore
@@ -328,7 +325,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"gc: Journal garbage collection starts with maxAge: {} min., batch size: {}."
+literal|"gc: Journal garbage collection starts with maxAge: {} min."
 argument_list|,
 name|TimeUnit
 operator|.
@@ -338,8 +335,6 @@ name|toMinutes
 argument_list|(
 name|maxRevisionAgeInMillis
 argument_list|)
-argument_list|,
-name|batchSize
 argument_list|)
 expr_stmt|;
 block|}

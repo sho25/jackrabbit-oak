@@ -927,8 +927,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
-argument_list|,
-literal|100
 argument_list|)
 expr_stmt|;
 name|Thread
@@ -952,8 +950,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|DAYS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -970,8 +966,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|HOURS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -988,8 +982,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|HOURS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1006,8 +998,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MINUTES
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1024,8 +1014,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MINUTES
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1042,8 +1030,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1060,8 +1046,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1139,8 +1123,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1157,8 +1139,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1224,8 +1204,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1242,8 +1220,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;

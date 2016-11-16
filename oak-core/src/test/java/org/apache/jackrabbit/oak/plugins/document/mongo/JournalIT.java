@@ -1211,8 +1211,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
-argument_list|,
-literal|100
 argument_list|)
 expr_stmt|;
 comment|// cleanup everything that might still be there
@@ -1280,8 +1278,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
