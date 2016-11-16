@@ -351,23 +351,6 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
-comment|// the journal has ids of the following format:
-comment|// 1-0000014db9aaf710-00000001
-comment|// whereas the first number is the cluster node id.
-comment|// now, this format prevents from doing a generic
-comment|// query to get all 'old' entries, as the documentstore
-comment|// can only query for a sequential list of entries.
-comment|// (and the cluster node id here partitions the set
-comment|// of entries that we have to delete)
-comment|// To account for that, we simply iterate over all
-comment|// cluster node ids and clean them up individually.
-comment|// Note that there are possible alternatives, such
-comment|// as: let each node clean up its own old entries
-comment|// but the chosen path is also quite simple: it can
-comment|// be started on any instance - but best on only one.
-comment|// if it's run on multiple concurrently, then they
-comment|// will compete at deletion, which is not optimal
-comment|// due to performance, but does not harm.
 comment|// update the tail timestamp in the journalGC document
 comment|// of the settings collection
 name|updateTailTimestamp
@@ -375,139 +358,9 @@ argument_list|(
 name|gcOlderThan
 argument_list|)
 expr_stmt|;
-comment|// 1. get the list of cluster node ids
-specifier|final
-name|List
-argument_list|<
-name|ClusterNodeInfoDocument
-argument_list|>
-name|clusterNodeInfos
-init|=
-name|ClusterNodeInfoDocument
-operator|.
-name|all
-argument_list|(
-name|ds
-argument_list|)
-decl_stmt|;
 name|int
 name|numDeleted
 init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|ClusterNodeInfoDocument
-name|clusterNodeInfoDocument
-range|:
-name|clusterNodeInfos
-control|)
-block|{
-comment|// current algorithm is to simply look at all cluster nodes
-comment|// irrespective of whether they are active or inactive etc.
-comment|// this could be optimized for inactive ones: at some point, all
-comment|// journal entries of inactive ones would have been cleaned up
-comment|// and at that point we could stop including those long-time-inactive ones.
-comment|// that 'long time' aspect would have to be tracked though, to be sure
-comment|// we don't leave garbage.
-comment|// so simpler is to quickly do a query even for long-time inactive ones
-specifier|final
-name|int
-name|clusterNodeId
-init|=
-name|clusterNodeInfoDocument
-operator|.
-name|getClusterId
-argument_list|()
-decl_stmt|;
-comment|// 2. iterate over that list and do a query with
-comment|//    a limit of 'batch size'
-name|boolean
-name|branch
-init|=
-literal|false
-decl_stmt|;
-name|long
-name|startPointer
-init|=
-literal|0
-decl_stmt|;
-while|while
-condition|(
-literal|true
-condition|)
-block|{
-name|String
-name|fromKey
-init|=
-name|JournalEntry
-operator|.
-name|asId
-argument_list|(
-operator|new
-name|Revision
-argument_list|(
-name|startPointer
-argument_list|,
-literal|0
-argument_list|,
-name|clusterNodeId
-argument_list|,
-name|branch
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|String
-name|toKey
-init|=
-name|JournalEntry
-operator|.
-name|asId
-argument_list|(
-operator|new
-name|Revision
-argument_list|(
-name|gcOlderThan
-argument_list|,
-literal|0
-argument_list|,
-name|clusterNodeId
-argument_list|,
-name|branch
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|List
-argument_list|<
-name|JournalEntry
-argument_list|>
-name|deletionBatch
-init|=
-name|ds
-operator|.
-name|query
-argument_list|(
-name|Collection
-operator|.
-name|JOURNAL
-argument_list|,
-name|fromKey
-argument_list|,
-name|toKey
-argument_list|,
-name|batchSize
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|deletionBatch
-operator|.
-name|size
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
 name|ds
 operator|.
 name|remove
@@ -516,70 +369,15 @@ name|Collection
 operator|.
 name|JOURNAL
 argument_list|,
-name|asKeys
-argument_list|(
-name|deletionBatch
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|numDeleted
-operator|+=
-name|deletionBatch
+name|JournalEntry
 operator|.
-name|size
-argument_list|()
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|deletionBatch
-operator|.
-name|size
-argument_list|()
-operator|<
-name|batchSize
-condition|)
-block|{
-if|if
-condition|(
-operator|!
-name|branch
-condition|)
-block|{
-comment|// do the same for branches:
-comment|// this will start at the beginning again with branch set to true
-comment|// and eventually finish too
-name|startPointer
-operator|=
+name|MODIFIED
+argument_list|,
 literal|0
-expr_stmt|;
-name|branch
-operator|=
-literal|true
-expr_stmt|;
-continue|continue;
-block|}
-break|break;
-block|}
-name|startPointer
-operator|=
-name|deletionBatch
-operator|.
-name|get
-argument_list|(
-name|deletionBatch
-operator|.
-name|size
-argument_list|()
-operator|-
-literal|1
+argument_list|,
+name|gcOlderThan
 argument_list|)
-operator|.
-name|getRevisionTimestamp
-argument_list|()
-expr_stmt|;
-block|}
-block|}
+decl_stmt|;
 name|sw
 operator|.
 name|stop
