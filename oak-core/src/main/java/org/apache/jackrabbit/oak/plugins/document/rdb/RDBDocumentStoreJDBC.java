@@ -1905,10 +1905,10 @@ name|String
 name|property
 parameter_list|,
 name|long
-name|startVal
+name|startValue
 parameter_list|,
 name|long
-name|endVal
+name|endValue
 parameter_list|)
 throws|throws
 name|SQLException
@@ -1934,15 +1934,15 @@ literal|"Unsupported condition: "
 operator|+
 name|property
 operator|+
-literal|" in ["
+literal|" in ("
 operator|+
-name|startVal
+name|startValue
 operator|+
 literal|", "
 operator|+
-name|endVal
+name|endValue
 operator|+
-literal|"]"
+literal|")"
 argument_list|)
 throw|;
 block|}
@@ -1960,7 +1960,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|" where MODIFIED>= ? AND MODIFIED<= ?"
+literal|" where MODIFIED> ? AND MODIFIED< ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -1977,7 +1977,7 @@ argument_list|(
 name|i
 operator|++
 argument_list|,
-name|startVal
+name|startValue
 argument_list|)
 expr_stmt|;
 name|stmt
@@ -1987,7 +1987,7 @@ argument_list|(
 name|i
 operator|++
 argument_list|,
-name|endVal
+name|endValue
 argument_list|)
 expr_stmt|;
 return|return

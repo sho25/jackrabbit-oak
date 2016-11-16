@@ -1378,7 +1378,7 @@ literal|"; indexedProperty"
 operator|+
 name|indexedProperty
 operator|+
-literal|"; range - ["
+literal|"; range - ("
 operator|+
 name|startValue
 operator|+
@@ -1386,7 +1386,7 @@ literal|", "
 operator|+
 name|endValue
 operator|+
-literal|"]"
+literal|")"
 argument_list|)
 expr_stmt|;
 block|}

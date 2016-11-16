@@ -1379,11 +1379,11 @@ argument_list|)
 decl_stmt|;
 return|return
 name|startValue
-operator|<=
+operator|<
 name|modified
 operator|&&
 name|modified
-operator|<=
+operator|<
 name|endValue
 return|;
 block|}

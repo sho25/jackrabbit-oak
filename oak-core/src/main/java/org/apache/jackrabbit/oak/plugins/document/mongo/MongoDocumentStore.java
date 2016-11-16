@@ -4781,14 +4781,14 @@ argument_list|)
 decl_stmt|;
 name|queryBuilder
 operator|.
-name|greaterThanEquals
+name|greaterThan
 argument_list|(
 name|startValue
 argument_list|)
 expr_stmt|;
 name|queryBuilder
 operator|.
-name|lessThanEquals
+name|lessThan
 argument_list|(
 name|endValue
 argument_list|)
@@ -4832,7 +4832,7 @@ literal|": "
 operator|+
 name|indexedProperty
 operator|+
-literal|" in ["
+literal|" in ("
 operator|+
 name|startValue
 operator|+
@@ -4840,7 +4840,7 @@ literal|", "
 operator|+
 name|endValue
 operator|+
-literal|"]"
+literal|")"
 argument_list|)
 throw|;
 block|}
@@ -4880,7 +4880,7 @@ name|start
 argument_list|,
 literal|1
 argument_list|,
-literal|"remove from {}: {} in [{}, {}]"
+literal|"remove from {}: {} in ({}, {})"
 argument_list|,
 name|collection
 argument_list|,

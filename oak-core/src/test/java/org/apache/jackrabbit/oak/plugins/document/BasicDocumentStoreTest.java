@@ -2591,7 +2591,7 @@ name|assertEquals
 argument_list|(
 literal|"Number of entries removed didn't match"
 argument_list|,
-literal|5
+literal|3
 argument_list|,
 name|ds
 operator|.
@@ -2635,7 +2635,7 @@ name|assertEquals
 argument_list|(
 literal|"Number of entries removed didn't match"
 argument_list|,
-literal|5
+literal|4
 argument_list|,
 name|ds
 operator|.
@@ -2725,7 +2725,7 @@ name|assertEquals
 argument_list|(
 literal|"Number of entries removed didn't match"
 argument_list|,
-literal|3
+literal|2
 argument_list|,
 name|ds
 operator|.

@@ -10135,10 +10135,10 @@ name|String
 name|indexedProperty
 parameter_list|,
 name|long
-name|startVal
+name|startValue
 parameter_list|,
 name|long
-name|endVal
+name|endValue
 parameter_list|)
 block|{
 name|int
@@ -10182,9 +10182,9 @@ name|tmd
 argument_list|,
 name|indexedProperty
 argument_list|,
-name|startVal
+name|startValue
 argument_list|,
-name|endVal
+name|endValue
 argument_list|)
 expr_stmt|;
 name|connection
@@ -10214,15 +10214,15 @@ literal|": "
 operator|+
 name|indexedProperty
 operator|+
-literal|" in ["
+literal|" in ("
 operator|+
-name|startVal
+name|startValue
 operator|+
 literal|", "
 operator|+
-name|endVal
+name|endValue
 operator|+
-literal|"]"
+literal|")"
 argument_list|)
 throw|;
 block|}
