@@ -5411,6 +5411,11 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+name|copyTasks
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
 comment|//Now wait for close to finish
 name|closeTasks
 operator|.
