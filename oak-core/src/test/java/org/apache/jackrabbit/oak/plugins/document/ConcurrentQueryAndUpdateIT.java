@@ -298,17 +298,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|op
-operator|.
-name|set
-argument_list|(
-name|Document
-operator|.
-name|ID
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
 name|NodeDocument
 operator|.
 name|setLastRev

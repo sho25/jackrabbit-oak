@@ -1455,15 +1455,6 @@ name|op
 operator|.
 name|set
 argument_list|(
-name|ID
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-name|op
-operator|.
-name|set
-argument_list|(
 name|CHANGES
 argument_list|,
 name|getChanges

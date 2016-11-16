@@ -723,7 +723,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set the property to the given String value.      *<p>      * Note that {@link Document#ID} does not need to be set using this method;      * it is sufficiently specified by the id parameter set in the constructor.      *      * @param property the property name      * @param value the value      * @throws IllegalArgumentException      *             if an attempt is made to set {@link Document#ID} to a value      *             inconsistent with the id parameter set in the constructor      *             (note that setting the ID here is redundant and might be      *             rejected in future versions)      */
+comment|/**      * Set the property to the given String value.      *<p>      * Note that {@link Document#ID} must not be set using this method;      * it is sufficiently specified by the id parameter set in the constructor.      *      * @param property the property name      * @param value the value      * @throws IllegalArgumentException      *             if an attempt is made to set {@link Document#ID}.      */
 specifier|public
 name|void
 name|set
@@ -1258,17 +1258,6 @@ name|equals
 argument_list|(
 name|property
 argument_list|)
-operator|&&
-operator|!
-name|id
-operator|.
-name|equals
-argument_list|(
-name|value
-operator|.
-name|toString
-argument_list|()
-argument_list|)
 condition|)
 block|{
 throw|throw
@@ -1279,17 +1268,11 @@ literal|"updateOp.id ("
 operator|+
 name|id
 operator|+
-literal|") and set operation on "
+literal|") must not set "
 operator|+
 name|Document
 operator|.
 name|ID
-operator|+
-literal|" ("
-operator|+
-name|value
-operator|+
-literal|") disagree"
 argument_list|)
 throw|;
 block|}

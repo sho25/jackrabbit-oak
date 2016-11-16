@@ -9504,28 +9504,6 @@ operator|.
 name|getKey
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|includeId
-operator|&&
-name|k
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|Document
-operator|.
-name|ID
-argument_list|)
-condition|)
-block|{
-comment|// TODO: remove once set _id is prohibited (OAK-4952)
-comment|// avoid exception "Mod on _id not allowed"
-continue|continue;
-block|}
 name|Operation
 name|op
 init|=

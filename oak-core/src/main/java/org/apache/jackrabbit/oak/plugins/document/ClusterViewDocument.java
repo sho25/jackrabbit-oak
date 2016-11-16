@@ -693,19 +693,6 @@ comment|// defined
 comment|// so we can use viewId==1 and we make sure no other cluster node
 comment|// tries to create this first one simultaneously - so we use
 comment|// 'create'
-comment|// going via 'create' requires ID to be set again (not only in new
-comment|// UpdateOp(id,isNew)):
-name|updateOp
-operator|.
-name|set
-argument_list|(
-name|Document
-operator|.
-name|ID
-argument_list|,
-name|CLUSTERVIEW_DOC_ID
-argument_list|)
-expr_stmt|;
 name|ArrayList
 argument_list|<
 name|UpdateOp

@@ -1204,15 +1204,6 @@ name|update
 operator|.
 name|set
 argument_list|(
-name|ID
-argument_list|,
-name|key
-argument_list|)
-expr_stmt|;
-name|update
-operator|.
-name|set
-argument_list|(
 name|MACHINE_ID_KEY
 argument_list|,
 name|clusterNode

@@ -552,15 +552,6 @@ name|op
 operator|.
 name|set
 argument_list|(
-literal|"_id"
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-name|op
-operator|.
-name|set
-argument_list|(
 literal|"_modified"
 argument_list|,
 literal|1L

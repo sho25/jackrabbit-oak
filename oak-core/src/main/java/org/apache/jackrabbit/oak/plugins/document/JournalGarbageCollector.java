@@ -438,17 +438,6 @@ argument_list|)
 decl_stmt|;
 name|op
 operator|.
-name|set
-argument_list|(
-name|Document
-operator|.
-name|ID
-argument_list|,
-name|JOURNAL_GC_ID
-argument_list|)
-expr_stmt|;
-name|op
-operator|.
 name|max
 argument_list|(
 name|TAIL_TIMESTAMP
