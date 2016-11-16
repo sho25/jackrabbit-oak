@@ -4848,10 +4848,6 @@ finally|finally
 block|{
 if|if
 condition|(
-name|num
-operator|>
-literal|0
-operator|&&
 name|collection
 operator|==
 name|Collection
