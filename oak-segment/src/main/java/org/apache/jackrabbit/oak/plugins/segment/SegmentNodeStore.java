@@ -1213,7 +1213,9 @@ block|{
 comment|// Explicitly give up reference to the previous root state
 comment|// otherwise they would block cleanup. See OAK-3347
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|commitSemaphore
 operator|.
@@ -1230,7 +1232,10 @@ comment|/**      * Refreshes the head state. Should only be called while holding
 specifier|private
 name|void
 name|refreshHead
-parameter_list|()
+parameter_list|(
+name|boolean
+name|dispatchChanges
+parameter_list|)
 block|{
 name|SegmentNodeState
 name|state
@@ -1267,6 +1272,11 @@ argument_list|(
 name|state
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dispatchChanges
+condition|)
+block|{
 name|changeDispatcher
 operator|.
 name|contentChanged
@@ -1281,6 +1291,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
@@ -1326,7 +1337,9 @@ block|{
 try|try
 block|{
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
@@ -1370,7 +1383,9 @@ block|{
 try|try
 block|{
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
@@ -2006,7 +2021,9 @@ name|currentTimeMillis
 argument_list|()
 decl_stmt|;
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|SegmentNodeState
 name|state
@@ -2228,7 +2245,9 @@ argument_list|)
 condition|)
 block|{
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 return|return
 literal|true
@@ -2495,7 +2514,9 @@ block|{
 try|try
 block|{
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|SegmentNodeState
 name|state
@@ -2562,7 +2583,9 @@ argument_list|)
 condition|)
 block|{
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 return|return
 literal|true
@@ -2705,7 +2728,9 @@ name|after
 parameter_list|)
 block|{
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -2741,7 +2766,9 @@ name|info
 argument_list|)
 expr_stmt|;
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 return|return
 literal|true
@@ -2913,7 +2940,9 @@ name|nanoTime
 argument_list|()
 decl_stmt|;
 name|refreshHead
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|SegmentNodeState
 name|state
