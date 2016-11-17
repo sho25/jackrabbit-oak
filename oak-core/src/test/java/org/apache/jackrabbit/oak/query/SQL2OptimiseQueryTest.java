@@ -1545,6 +1545,23 @@ name|optimiseAndOrAnd
 argument_list|(
 literal|"select * from [nt:unstructured] as [c] "
 operator|+
+literal|"where isdescendantnode('/tmp') "
+operator|+
+literal|"and ([a]=1 or [b]=2) and ([c]=3 or [d]=4)"
+argument_list|,
+literal|"(isdescendantnode(c, /tmp)) and (d = 4) and (b = 2), "
+operator|+
+literal|"(isdescendantnode(c, /tmp)) and (d = 4) and (a = 1), "
+operator|+
+literal|"(isdescendantnode(c, /tmp)) and (c = 3) and (b = 2), "
+operator|+
+literal|"(isdescendantnode(c, /tmp)) and (c = 3) and (a = 1)"
+argument_list|)
+expr_stmt|;
+name|optimiseAndOrAnd
+argument_list|(
+literal|"select * from [nt:unstructured] as [c] "
+operator|+
 literal|"where ([a]=1 or [b]=2) and ([x]=3 or [y]=4)"
 argument_list|,
 literal|"(y = 4) and (b = 2), "
