@@ -150,6 +150,51 @@ name|ParseException
 block|{
 name|verify
 argument_list|(
+literal|"//(element(*, nt:address))"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:address] as a "
+operator|+
+literal|"/* xpath: //element(*, nt:address) */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"//(element(*, nt:address) | element(*, nt:folder))"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:address] as a "
+operator|+
+literal|"/* xpath: //element(*, nt:address) */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:folder] as a "
+operator|+
+literal|"/* xpath: // element(*, nt:folder) */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"(//element(*, nt:address) | //element(*, nt:folder))"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:address] as a "
+operator|+
+literal|"/* xpath: //element(*, nt:address) */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:folder] as a "
+operator|+
+literal|"/* xpath: //element(*, nt:folder) */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
 literal|"/jcr:root/content//*[@a] order by @c option(traversal fail)"
 argument_list|,
 literal|"select [jcr:path], [jcr:score], * "
