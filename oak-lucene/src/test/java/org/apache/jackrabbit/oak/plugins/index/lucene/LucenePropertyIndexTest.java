@@ -9006,6 +9006,19 @@ name|assertThat
 argument_list|(
 name|explain
 argument_list|(
+literal|"select [jcr:path] from [nt:base] order by [jcr:score], [foo]"
+argument_list|)
+argument_list|,
+name|containsString
+argument_list|(
+literal|"lucene:test1"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|explain
+argument_list|(
 literal|"select [jcr:path] from [nt:base] order by [foo]"
 argument_list|)
 argument_list|,
