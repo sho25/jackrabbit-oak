@@ -95,6 +95,14 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+name|TabularData
+name|getBadIndexStats
+parameter_list|()
+function_decl|;
+name|boolean
+name|isFailing
+parameter_list|()
+function_decl|;
 annotation|@
 name|Description
 argument_list|(
