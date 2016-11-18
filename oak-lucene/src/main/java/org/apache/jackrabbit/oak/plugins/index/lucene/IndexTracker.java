@@ -1024,12 +1024,10 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|badIndexTracker
 operator|.
-name|error
+name|markBadPersistedIndex
 argument_list|(
-literal|"Failed to open Lucene index at "
-operator|+
 name|path
 argument_list|,
 name|e
@@ -1517,7 +1515,7 @@ parameter_list|)
 block|{
 name|badIndexTracker
 operator|.
-name|markBadIndex
+name|markBadIndexForRead
 argument_list|(
 name|path
 argument_list|,

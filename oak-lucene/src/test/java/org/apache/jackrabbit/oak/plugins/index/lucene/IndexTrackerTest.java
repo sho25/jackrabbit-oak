@@ -333,6 +333,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertNotNull
 import|;
 end_import
@@ -681,6 +693,43 @@ operator|=
 name|corruptIndex
 argument_list|(
 literal|"/oak:index/foo"
+argument_list|)
+expr_stmt|;
+name|tracker
+operator|.
+name|update
+argument_list|(
+name|indexed
+argument_list|)
+expr_stmt|;
+name|indexNode
+operator|=
+name|tracker
+operator|.
+name|acquireIndexNode
+argument_list|(
+literal|"/oak:index/foo"
+argument_list|)
+expr_stmt|;
+comment|//Even if the persisted index is corrupted the index should be accessible
+comment|//as update would have failed so old copy would be used
+name|assertNotNull
+argument_list|(
+name|indexNode
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|tracker
+operator|.
+name|getBadIndexTracker
+argument_list|()
+operator|.
+name|getBadPersistedIndexPaths
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//3. Recreate the tracker as we cannot push corrupt index in existing tracker

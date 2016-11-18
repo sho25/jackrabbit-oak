@@ -109,7 +109,7 @@ name|Exception
 block|{
 name|tracker
 operator|.
-name|markBadIndex
+name|markBadIndexForRead
 argument_list|(
 literal|"foo"
 argument_list|,
@@ -170,7 +170,7 @@ name|Exception
 block|{
 name|tracker
 operator|.
-name|markBadIndex
+name|markBadIndexForRead
 argument_list|(
 literal|"foo"
 argument_list|,
@@ -238,7 +238,7 @@ argument_list|)
 expr_stmt|;
 name|tracker
 operator|.
-name|markBadIndex
+name|markBadIndexForRead
 argument_list|(
 literal|"foo"
 argument_list|,
