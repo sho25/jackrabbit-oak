@@ -5556,7 +5556,7 @@ block|{
 return|return
 name|name
 operator|+
-literal|":"
+literal|"."
 operator|+
 name|suffix
 return|;
