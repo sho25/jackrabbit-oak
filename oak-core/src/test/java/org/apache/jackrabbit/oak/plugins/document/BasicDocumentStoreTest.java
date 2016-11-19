@@ -2340,6 +2340,13 @@ name|up
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|removeMeJournal
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
