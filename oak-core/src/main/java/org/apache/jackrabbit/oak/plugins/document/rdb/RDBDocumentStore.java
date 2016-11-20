@@ -1551,35 +1551,64 @@ parameter_list|)
 throws|throws
 name|DocumentStoreException
 block|{
-name|int
-name|num
-init|=
-literal|0
-decl_stmt|;
 try|try
 block|{
-name|num
-operator|=
-name|delete
+name|List
+argument_list|<
+name|QueryCondition
+argument_list|>
+name|conditions
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|QueryCondition
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|conditions
+operator|.
+name|add
 argument_list|(
-name|collection
-argument_list|,
+operator|new
+name|QueryCondition
+argument_list|(
 name|indexedProperty
 argument_list|,
+literal|">"
+argument_list|,
 name|startValue
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|conditions
+operator|.
+name|add
+argument_list|(
+operator|new
+name|QueryCondition
+argument_list|(
+name|indexedProperty
+argument_list|,
+literal|"<"
 argument_list|,
 name|endValue
 argument_list|)
+argument_list|)
 expr_stmt|;
+return|return
+name|deleteWithCondition
+argument_list|(
+name|collection
+argument_list|,
+name|conditions
+argument_list|)
+return|;
 block|}
 finally|finally
 block|{
 if|if
 condition|(
-name|num
-operator|>
-literal|0
-operator|&&
 name|collection
 operator|==
 name|Collection
@@ -1587,9 +1616,10 @@ operator|.
 name|NODES
 condition|)
 block|{
-comment|// this method is currently being used only for Journal collection while GC.
-comment|// But, to keep sanctity of the API, we need to acknowledge that Nodes collection
-comment|// could've been used. But, in this signature, there's no useful way to invalidate
+comment|// this method is currently being used only for Journal
+comment|// collection while GC. But, to keep sanctity of the API, we
+comment|// need to acknowledge that Nodes collection could've been used.
+comment|// But, in this signature, there's no useful way to invalidate
 comment|// cache.
 comment|// So, we use the hammer for this task
 name|invalidateCache
@@ -1597,9 +1627,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-return|return
-name|num
-return|;
 block|}
 annotation|@
 name|Override
@@ -10123,7 +10150,7 @@ extends|extends
 name|Document
 parameter_list|>
 name|int
-name|delete
+name|deleteWithCondition
 parameter_list|(
 name|Collection
 argument_list|<
@@ -10131,14 +10158,11 @@ name|T
 argument_list|>
 name|collection
 parameter_list|,
-name|String
-name|indexedProperty
-parameter_list|,
-name|long
-name|startValue
-parameter_list|,
-name|long
-name|endValue
+name|List
+argument_list|<
+name|QueryCondition
+argument_list|>
+name|conditions
 parameter_list|)
 block|{
 name|int
@@ -10174,17 +10198,13 @@ name|numDeleted
 operator|=
 name|db
 operator|.
-name|delete
+name|deleteWithCondition
 argument_list|(
 name|connection
 argument_list|,
 name|tmd
 argument_list|,
-name|indexedProperty
-argument_list|,
-name|startValue
-argument_list|,
-name|endValue
+name|conditions
 argument_list|)
 expr_stmt|;
 name|connection
@@ -10212,17 +10232,7 @@ name|collection
 operator|+
 literal|": "
 operator|+
-name|indexedProperty
-operator|+
-literal|" in ("
-operator|+
-name|startValue
-operator|+
-literal|", "
-operator|+
-name|endValue
-operator|+
-literal|")"
+name|conditions
 argument_list|)
 throw|;
 block|}
