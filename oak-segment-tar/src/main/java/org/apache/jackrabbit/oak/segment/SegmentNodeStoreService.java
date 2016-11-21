@@ -3048,6 +3048,11 @@ name|builder
 argument_list|(
 name|store
 argument_list|)
+operator|.
+name|withStatisticsProvider
+argument_list|(
+name|statisticsProvider
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -3487,6 +3492,32 @@ operator|.
 name|TYPE
 argument_list|,
 literal|"Segment node store backup/restore"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Expose statistics about the SegmentNodeStore
+name|registrations
+operator|.
+name|add
+argument_list|(
+name|registerMBean
+argument_list|(
+name|whiteboard
+argument_list|,
+name|SegmentNodeStoreStatsMBean
+operator|.
+name|class
+argument_list|,
+name|segmentNodeStore
+operator|.
+name|getStats
+argument_list|()
+argument_list|,
+name|SegmentNodeStoreStatsMBean
+operator|.
+name|TYPE
+argument_list|,
+literal|"SegmentNodeStore statistics"
 argument_list|)
 argument_list|)
 expr_stmt|;
