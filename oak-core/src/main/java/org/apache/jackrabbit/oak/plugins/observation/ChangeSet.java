@@ -99,6 +99,14 @@ name|String
 argument_list|>
 name|propertyNames
 decl_stmt|;
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|allNodeTypes
+decl_stmt|;
 name|ChangeSet
 parameter_list|(
 name|int
@@ -127,6 +135,12 @@ argument_list|<
 name|String
 argument_list|>
 name|propertyNames
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|allNodeTypes
 parameter_list|)
 block|{
 name|this
@@ -203,6 +217,23 @@ argument_list|(
 name|propertyNames
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|allNodeTypes
+operator|=
+name|allNodeTypes
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
+name|allNodeTypes
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -224,13 +255,17 @@ literal|", propertyNames="
 operator|+
 name|propertyNames
 operator|+
-literal|", nodeNames="
+literal|", parentNodeNames="
 operator|+
 name|parentNodeNames
 operator|+
-literal|", nodeTypes="
+literal|", parentNodeTypes="
 operator|+
 name|parentNodeTypes
+operator|+
+literal|", allNodeTypes="
+operator|+
+name|allNodeTypes
 operator|+
 literal|"}"
 return|;
@@ -298,6 +333,20 @@ parameter_list|()
 block|{
 return|return
 name|maxPathDepth
+return|;
+block|}
+annotation|@
+name|CheckForNull
+specifier|public
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getAllNodeTypes
+parameter_list|()
+block|{
+return|return
+name|allNodeTypes
 return|;
 block|}
 block|}
