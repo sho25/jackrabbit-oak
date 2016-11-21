@@ -178,7 +178,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Temporary class to be removed before 1.6 which allows to turn on/off  * the prefiltering test mode via an osgi-config, rather than via  * a System.property (the two ways overlap - but the osgi one, if configured, wins)  * TODO: remove me before 1.6  * @deprecated to be removed before 1.6  */
+comment|/**  * Temporary class to be removed before 1.6 which allows to turn on/off  * the prefiltering test mode via an osgi-config.  *<p>  * Note: the system property (oak.observation.prefilteringTestMode)   * has thus been removed.  * TODO: remove me before 1.6  * @deprecated to be removed before 1.6  */
 end_comment
 
 begin_class
