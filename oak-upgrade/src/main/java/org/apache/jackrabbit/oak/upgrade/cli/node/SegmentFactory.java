@@ -659,11 +659,6 @@ argument_list|(
 literal|256
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|disableMmap
-condition|)
-block|{
 name|builder
 operator|.
 name|withMemoryMapping
@@ -671,15 +666,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|builder
-operator|.
-name|withDefaultMemoryMapping
-argument_list|()
-expr_stmt|;
-block|}
 name|FileStore
 name|fs
 decl_stmt|;
@@ -689,7 +675,7 @@ name|fs
 operator|=
 name|builder
 operator|.
-name|build
+name|buildReadOnly
 argument_list|()
 expr_stmt|;
 block|}
