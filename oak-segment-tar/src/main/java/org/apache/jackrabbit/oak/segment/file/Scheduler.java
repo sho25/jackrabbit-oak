@@ -411,7 +411,7 @@ name|unit
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Close this scheduler and wait 5 second for currently executing tasks to finish.      * Logs a warning if not all tasks finished executing after 5 seconds.      * @see ScheduledExecutorService#shutdown()      */
+comment|/**      * Close this scheduler.      * @see ScheduledExecutorService#shutdown()      */
 annotation|@
 name|Override
 specifier|public
@@ -432,7 +432,7 @@ name|executor
 operator|.
 name|awaitTermination
 argument_list|(
-literal|5
+literal|60
 argument_list|,
 name|SECONDS
 argument_list|)
@@ -454,11 +454,50 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
+literal|"The scheduler {} takes too long to shut down, forcing termination"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+name|executor
+operator|.
+name|shutdownNow
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|executor
+operator|.
+name|awaitTermination
+argument_list|(
+literal|60
+argument_list|,
+name|SECONDS
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"The scheduler {} was successfully shut down"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
 literal|"The scheduler {} takes too long to shutdown"
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
