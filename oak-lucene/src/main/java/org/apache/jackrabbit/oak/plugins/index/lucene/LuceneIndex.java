@@ -1518,6 +1518,20 @@ argument_list|(
 literal|"oak.luceneUsePath"
 argument_list|)
 decl_stmt|;
+specifier|static
+specifier|final
+name|int
+name|MAX_RELOAD_COUNT
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.luceneMaxReloadCount"
+argument_list|,
+literal|16
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|final
 name|IndexTracker
@@ -2240,6 +2254,10 @@ decl_stmt|;
 specifier|private
 name|long
 name|lastSearchIndexerVersion
+decl_stmt|;
+specifier|private
+name|int
+name|reloadCount
 decl_stmt|;
 annotation|@
 name|Override
@@ -3267,6 +3285,35 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|reloadCount
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|reloadCount
+operator|>
+name|MAX_RELOAD_COUNT
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"More than {} index version changes detected for query {}"
+argument_list|,
+name|MAX_RELOAD_COUNT
+argument_list|,
+name|plan
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Too many version changes"
+argument_list|)
+throw|;
+block|}
 name|lastDoc
 operator|=
 literal|null
@@ -3277,11 +3324,13 @@ name|debug
 argument_list|(
 literal|"Change in index version detected {} => {}. Query would be performed without "
 operator|+
-literal|"offset"
+literal|"offset; reload {}"
 argument_list|,
 name|currentVersion
 argument_list|,
 name|lastSearchIndexerVersion
+argument_list|,
+name|reloadCount
 argument_list|)
 expr_stmt|;
 block|}
