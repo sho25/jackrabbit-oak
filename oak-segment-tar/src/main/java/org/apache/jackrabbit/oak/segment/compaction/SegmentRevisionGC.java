@@ -187,6 +187,13 @@ name|String
 name|getLastError
 parameter_list|()
 function_decl|;
+comment|/**      * @return  last log message or {@code null} if none.      */
+annotation|@
+name|Nonnull
+name|String
+name|getLastLogMessage
+parameter_list|()
+function_decl|;
 comment|/**      * @return  current status.      */
 annotation|@
 name|Nonnull

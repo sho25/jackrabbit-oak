@@ -116,6 +116,14 @@ name|long
 name|currentSize
 parameter_list|)
 function_decl|;
+comment|/**      * The garbage collection entered a new phase e.g. idle, estimation, etc.      * @param status short summary of the GC phase      */
+name|void
+name|updateStatus
+parameter_list|(
+name|String
+name|status
+parameter_list|)
+function_decl|;
 class|class
 name|Empty
 implements|implements
@@ -194,6 +202,16 @@ name|reclaimedSize
 parameter_list|,
 name|long
 name|currentSize
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|updateStatus
+parameter_list|(
+name|String
+name|status
 parameter_list|)
 block|{ }
 block|}

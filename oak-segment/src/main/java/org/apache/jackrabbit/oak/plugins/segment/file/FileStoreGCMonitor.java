@@ -585,6 +585,18 @@ name|reclaimed
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+annotation|@
+name|Deprecated
+specifier|public
+name|void
+name|updateStatus
+parameter_list|(
+name|String
+name|status
+parameter_list|)
+block|{     }
 comment|//------------------------------------------------------------< GCMonitorMBean>---
 annotation|@
 name|Override

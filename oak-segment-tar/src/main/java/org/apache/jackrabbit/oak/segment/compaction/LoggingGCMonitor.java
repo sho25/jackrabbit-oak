@@ -193,6 +193,16 @@ name|long
 name|currentSize
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|updateStatus
+parameter_list|(
+name|String
+name|status
+parameter_list|)
+block|{              }
 block|}
 end_class
 
