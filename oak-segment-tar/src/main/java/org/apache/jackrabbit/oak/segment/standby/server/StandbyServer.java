@@ -1056,6 +1056,16 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Exception handler
+name|p
+operator|.
+name|addLast
+argument_list|(
+operator|new
+name|ExceptionHandler
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
