@@ -895,6 +895,8 @@ name|extractedTextCache
 argument_list|,
 name|augmentorFactory
 argument_list|,
+name|indexingContext
+argument_list|,
 name|asyncIndexing
 argument_list|)
 decl_stmt|;
