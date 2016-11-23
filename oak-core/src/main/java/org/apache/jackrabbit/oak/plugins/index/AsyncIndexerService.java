@@ -511,6 +511,41 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|long
+name|PROP_ERROR_WARN_INTERVAL_DEFAULT
+init|=
+literal|15
+operator|*
+literal|60
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|longValue
+operator|=
+name|PROP_ERROR_WARN_INTERVAL_DEFAULT
+argument_list|,
+name|label
+operator|=
+literal|"Error warn interval (s)"
+argument_list|,
+name|description
+operator|=
+literal|"Time interval in seconds after which a warning log would be logged for skipped indexes. "
+operator|+
+literal|"This is done to avoid flooding the log in case of corrupted index."
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PROP_ERROR_WARN_INTERVAL
+init|=
+literal|"errorWarnIntervalSeconds"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|char
 name|CONFIG_SEP
 init|=
@@ -838,6 +873,23 @@ argument_list|,
 name|PROP_FAILING_INDEX_TIMEOUT_DEFAULT
 argument_list|)
 decl_stmt|;
+name|long
+name|errorWarnIntervalSeconds
+init|=
+name|PropertiesUtil
+operator|.
+name|toLong
+argument_list|(
+name|config
+operator|.
+name|get
+argument_list|(
+name|PROP_ERROR_WARN_INTERVAL
+argument_list|)
+argument_list|,
+name|PROP_ERROR_WARN_INTERVAL_DEFAULT
+argument_list|)
+decl_stmt|;
 name|TrackingCorruptIndexHandler
 name|corruptIndexHandler
 init|=
@@ -856,6 +908,17 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+name|corruptIndexHandler
+operator|.
+name|setErrorWarnInterval
+argument_list|(
+name|errorWarnIntervalSeconds
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|failingIndexTimeoutSeconds
@@ -867,11 +930,15 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"[{}] is set to {}. Auto corrupt index isolation handling is disabled,"
+literal|"[{}] is set to {}. Auto corrupt index isolation handling is disabled, warning log would be "
+operator|+
+literal|"logged every {} s"
 argument_list|,
 name|PROP_FAILING_INDEX_TIMEOUT
 argument_list|,
 name|failingIndexTimeoutSeconds
+argument_list|,
+name|errorWarnIntervalSeconds
 argument_list|)
 expr_stmt|;
 block|}
