@@ -128,6 +128,12 @@ name|INDEX_PATH
 init|=
 literal|":indexPath"
 decl_stmt|;
+comment|/**      * Property name for indicating that given index is corrupt and should be excluded      * from further indexing. Its value is the date when this index was marked as      * corrupt      */
+name|String
+name|CORRUPT_PROPERTY_NAME
+init|=
+literal|"corrupt"
+decl_stmt|;
 block|}
 end_interface
 
