@@ -139,18 +139,6 @@ begin_import
 import|import static
 name|java
 operator|.
-name|nio
-operator|.
-name|ByteBuffer
-operator|.
-name|wrap
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
 name|util
 operator|.
 name|concurrent
@@ -2950,6 +2938,11 @@ decl_stmt|;
 comment|// If the segment is a data segment, create a new instance of Segment to
 comment|// access some internal information stored in the segment and to store
 comment|// in an in-memory cache for later use.
+name|int
+name|generation
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|id
@@ -3024,6 +3017,13 @@ argument_list|,
 name|data
 argument_list|)
 expr_stmt|;
+name|generation
+operator|=
+name|segment
+operator|.
+name|getGcGeneration
+argument_list|()
+expr_stmt|;
 block|}
 name|fileStoreLock
 operator|.
@@ -3035,28 +3035,6 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|int
-name|generation
-init|=
-name|Segment
-operator|.
-name|getGcGeneration
-argument_list|(
-name|wrap
-argument_list|(
-name|buffer
-argument_list|,
-name|offset
-argument_list|,
-name|length
-argument_list|)
-argument_list|,
-name|id
-operator|.
-name|asUUID
-argument_list|()
-argument_list|)
-decl_stmt|;
 comment|// Flush the segment to disk
 name|long
 name|size
