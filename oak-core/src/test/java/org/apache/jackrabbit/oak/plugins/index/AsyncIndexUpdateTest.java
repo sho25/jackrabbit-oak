@@ -10372,8 +10372,8 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-comment|//Indexing should be ok now
-name|assertFalse
+comment|//Indexing would be considered as failing
+name|assertTrue
 argument_list|(
 name|async
 operator|.
@@ -10381,6 +10381,21 @@ name|getIndexStats
 argument_list|()
 operator|.
 name|isFailing
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|IndexStatsMBean
+operator|.
+name|STATUS_FAILING
+argument_list|,
+name|async
+operator|.
+name|getIndexStats
+argument_list|()
+operator|.
+name|getStatus
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10518,7 +10533,7 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|async
 operator|.

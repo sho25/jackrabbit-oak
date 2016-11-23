@@ -119,6 +119,11 @@ init|=
 literal|"done"
 decl_stmt|;
 name|String
+name|STATUS_FAILING
+init|=
+literal|"failing"
+decl_stmt|;
+name|String
 name|STATUS_INTERRUPTED
 init|=
 literal|"interrupted"
