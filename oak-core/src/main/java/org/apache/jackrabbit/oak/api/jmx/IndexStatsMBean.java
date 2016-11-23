@@ -33,6 +33,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|TabularData
+import|;
+end_import
+
+begin_import
+import|import
 name|aQute
 operator|.
 name|bnd
@@ -281,6 +293,10 @@ function_decl|;
 comment|/**      * @return the time when the latest indexing error has been seen, will not      *         be reset once the job starts working again      */
 name|String
 name|getLatestErrorTime
+parameter_list|()
+function_decl|;
+name|TabularData
+name|getFailingIndexStats
 parameter_list|()
 function_decl|;
 block|}
