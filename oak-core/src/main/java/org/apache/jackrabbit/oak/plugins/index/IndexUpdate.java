@@ -1441,19 +1441,6 @@ operator|.
 name|DATE
 argument_list|)
 decl_stmt|;
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Ignoring corrupt index [{}] which has been marked as corrupt since [{}]. This index "
-operator|+
-literal|"MUST be reindexed for indexing to work properly"
-argument_list|,
-name|indexPath
-argument_list|,
-name|corruptSince
-argument_list|)
-expr_stmt|;
 name|rootState
 operator|.
 name|corruptIndexHandler

@@ -44,7 +44,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|skippingCorruptIndex
 parameter_list|(
 name|String
@@ -56,7 +56,11 @@ parameter_list|,
 name|Calendar
 name|corruptSince
 parameter_list|)
-block|{          }
+block|{
+return|return
+literal|false
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -75,7 +79,8 @@ parameter_list|)
 block|{          }
 block|}
 decl_stmt|;
-name|void
+comment|/**      * Callback method to inform handler that a corrupt index has been skipped      *      * @param async async name      * @param indexPath corrupt index path      * @param corruptSince time since index is corrupt      * @return true if warning is logged for skipped indexing      */
+name|boolean
 name|skippingCorruptIndex
 parameter_list|(
 name|String
