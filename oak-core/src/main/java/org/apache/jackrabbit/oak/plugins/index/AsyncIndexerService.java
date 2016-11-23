@@ -948,11 +948,15 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Auto corrupt index isolation handling is enabled. Any async index which fails for [{}]s would "
+literal|"Auto corrupt index isolation handling is enabled. Any async index which fails for {}s would "
 operator|+
-literal|"be marked as corrupted and would be skipped from further indexing"
+literal|"be marked as corrupted and would be skipped from further indexing. A warning log would be "
+operator|+
+literal|"logged every {} s"
 argument_list|,
 name|failingIndexTimeoutSeconds
+argument_list|,
+name|errorWarnIntervalSeconds
 argument_list|)
 expr_stmt|;
 block|}
