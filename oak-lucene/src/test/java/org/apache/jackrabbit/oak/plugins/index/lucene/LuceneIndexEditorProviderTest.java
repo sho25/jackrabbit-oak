@@ -1104,6 +1104,16 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|indexUpdateFailed
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{          }
+annotation|@
+name|Override
+specifier|public
+name|void
 name|indexUpdate
 parameter_list|()
 throws|throws
