@@ -892,9 +892,9 @@ name|deDuplicatedCnt
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Reads all external changes between the two given revisions (with the same      * clusterId) from the journal and appends the paths therein to the provided      * sorter. If there is no exact match of a journal entry for the given      * {@code to} revision, this method will fill external changes from the      * next higher journal entry that contains the revision.      *      * @param sorter the StringSort to which all externally changed paths      *               between the provided revisions will be added      * @param from   the lower bound of the revision range (exclusive).      * @param to     the upper bound of the revision range (inclusive).      * @param store  the document store to query.      * @throws IOException      */
+comment|/**      * Reads all external changes between the two given revisions (with the same      * clusterId) from the journal and appends the paths therein to the provided      * sorter. If there is no exact match of a journal entry for the given      * {@code to} revision, this method will fill external changes from the      * next higher journal entry that contains the revision.      *      * @param sorter the StringSort to which all externally changed paths      *               between the provided revisions will be added      * @param from   the lower bound of the revision range (exclusive).      * @param to     the upper bound of the revision range (inclusive).      * @param store  the document store to query.      * @return the number of journal entries read from the store.      * @throws IOException      */
 specifier|static
-name|void
+name|int
 name|fillExternalChanges
 parameter_list|(
 annotation|@
@@ -951,7 +951,9 @@ operator|>=
 literal|0
 condition|)
 block|{
-return|return;
+return|return
+literal|0
+return|;
 block|}
 comment|// to is inclusive, but DocumentStore.query() toKey is exclusive
 specifier|final
@@ -1217,8 +1219,14 @@ argument_list|(
 name|sorter
 argument_list|)
 expr_stmt|;
+name|numEntries
+operator|++
+expr_stmt|;
 block|}
 block|}
+return|return
+name|numEntries
+return|;
 block|}
 name|long
 name|getRevisionTimestamp
