@@ -5478,6 +5478,9 @@ argument_list|(
 name|reclaimedSize
 argument_list|,
 name|finalSize
+argument_list|,
+name|getGcGeneration
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gcListener

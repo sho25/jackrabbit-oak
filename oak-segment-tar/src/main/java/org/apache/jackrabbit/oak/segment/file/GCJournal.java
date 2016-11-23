@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Persists the repository size and the reclaimed size following a cleanup operation in the  * {@link #GC_JOURNAL gc journal} file with the format: 'repoSize, reclaimedSize, timestamp'.  */
+comment|/**  * Persists the repository size and the reclaimed size following a cleanup  * operation in the {@link #GC_JOURNAL gc journal} file with the format:  * 'repoSize, reclaimedSize, timestamp, gcGen'.  */
 end_comment
 
 begin_class
@@ -299,6 +299,7 @@ name|directory
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Persists the repository size and the reclaimed size following a cleanup      * operation      */
 specifier|public
 specifier|synchronized
 name|void
@@ -309,8 +310,31 @@ name|reclaimedSize
 parameter_list|,
 name|long
 name|repoSize
+parameter_list|,
+name|int
+name|gcGeneration
 parameter_list|)
 block|{
+name|GCJournalEntry
+name|current
+init|=
+name|read
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|current
+operator|.
+name|getGcGeneration
+argument_list|()
+operator|==
+name|gcGeneration
+condition|)
+block|{
+comment|// failed compaction, only update the journal if the generation
+comment|// increases
+return|return;
+block|}
 name|latest
 operator|=
 operator|new
@@ -324,6 +348,8 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+argument_list|,
+name|gcGeneration
 argument_list|)
 expr_stmt|;
 name|Path
@@ -397,6 +423,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Returns the latest entry available      */
 specifier|public
 specifier|synchronized
 name|GCJournalEntry
@@ -466,6 +493,7 @@ return|return
 name|latest
 return|;
 block|}
+comment|/**      * Returns all available entries from the journal      */
 specifier|public
 specifier|synchronized
 name|Collection
@@ -600,6 +628,9 @@ literal|1
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -617,6 +648,11 @@ specifier|final
 name|long
 name|ts
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|gcGeneration
+decl_stmt|;
 specifier|public
 name|GCJournalEntry
 parameter_list|(
@@ -628,6 +664,9 @@ name|reclaimedSize
 parameter_list|,
 name|long
 name|ts
+parameter_list|,
+name|int
+name|gcGeneration
 parameter_list|)
 block|{
 name|this
@@ -648,6 +687,12 @@ name|ts
 operator|=
 name|ts
 expr_stmt|;
+name|this
+operator|.
+name|gcGeneration
+operator|=
+name|gcGeneration
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -666,6 +711,10 @@ operator|+
 literal|","
 operator|+
 name|ts
+operator|+
+literal|","
+operator|+
+name|gcGeneration
 return|;
 block|}
 specifier|static
@@ -694,6 +743,12 @@ operator|.
 name|length
 operator|==
 literal|3
+operator|||
+name|items
+operator|.
+name|length
+operator|==
+literal|4
 condition|)
 block|{
 name|long
@@ -729,6 +784,35 @@ literal|2
 index|]
 argument_list|)
 decl_stmt|;
+name|int
+name|gcGen
+init|=
+operator|-
+literal|1
+decl_stmt|;
+if|if
+condition|(
+name|items
+operator|.
+name|length
+operator|==
+literal|4
+condition|)
+block|{
+name|gcGen
+operator|=
+operator|(
+name|int
+operator|)
+name|safeParse
+argument_list|(
+name|items
+index|[
+literal|3
+index|]
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 operator|new
 name|GCJournalEntry
@@ -738,6 +822,8 @@ argument_list|,
 name|reclaimedSize
 argument_list|,
 name|ts
+argument_list|,
+name|gcGen
 argument_list|)
 return|;
 block|}
@@ -817,6 +903,15 @@ return|return
 name|ts
 return|;
 block|}
+specifier|public
+name|int
+name|getGcGeneration
+parameter_list|()
+block|{
+return|return
+name|gcGeneration
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -835,6 +930,14 @@ name|result
 init|=
 literal|1
 decl_stmt|;
+name|result
+operator|=
+name|prime
+operator|*
+name|result
+operator|+
+name|gcGeneration
+expr_stmt|;
 name|result
 operator|=
 name|prime
@@ -945,6 +1048,17 @@ name|GCJournalEntry
 operator|)
 name|obj
 decl_stmt|;
+if|if
+condition|(
+name|gcGeneration
+operator|!=
+name|other
+operator|.
+name|gcGeneration
+condition|)
+return|return
+literal|false
+return|;
 if|if
 condition|(
 name|reclaimedSize
