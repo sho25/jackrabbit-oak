@@ -2507,13 +2507,6 @@ parameter_list|()
 block|{
 return|return
 name|input
-operator|.
-name|withRootRevision
-argument_list|(
-name|rootRevision
-argument_list|,
-name|fromExternalChange
-argument_list|)
 return|;
 block|}
 block|}
