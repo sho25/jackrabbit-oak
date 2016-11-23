@@ -1376,6 +1376,26 @@ decl_stmt|;
 annotation|@
 name|Override
 specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|super
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|" [changeSetFilter="
+operator|+
+name|changeSetFilter
+operator|+
+literal|"]"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|includeCommit
 parameter_list|(

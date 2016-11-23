@@ -221,6 +221,41 @@ name|String
 argument_list|>
 name|propertyNames
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ChangeSetFilterImpl[rootIncludePaths="
+operator|+
+name|rootIncludePaths
+operator|+
+literal|", includePathPatterns="
+operator|+
+name|includePathPatterns
+operator|+
+literal|", excludePathPatterns="
+operator|+
+name|excludePathPatterns
+operator|+
+literal|", parentNodeNames="
+operator|+
+name|parentNodeNames
+operator|+
+literal|", parentNodeTypes="
+operator|+
+name|parentNodeTypes
+operator|+
+literal|", propertyNames="
+operator|+
+name|propertyNames
+operator|+
+literal|"]"
+return|;
+block|}
 specifier|public
 name|ChangeSetFilterImpl
 parameter_list|(
@@ -639,18 +674,23 @@ name|ChangeSet
 name|changeSet
 parameter_list|)
 block|{
-specifier|final
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|cpp
-init|=
+if|if
+condition|(
 name|changeSet
 operator|.
-name|getParentPaths
+name|anyOverflow
 argument_list|()
-decl_stmt|;
+condition|)
+block|{
+comment|// in case of an overflow we could
+comment|// either try to still determine include/exclude based on non-overflown
+comment|// sets - or we can do a fail-stop and determine this as too complex
+comment|// to try-to-exclude, and just include
+comment|//TODO: optimize this later
+return|return
+literal|false
+return|;
+block|}
 specifier|final
 name|Set
 argument_list|<
@@ -658,25 +698,17 @@ name|String
 argument_list|>
 name|parentPaths
 init|=
-name|cpp
-operator|!=
-literal|null
-condition|?
 operator|new
 name|HashSet
 argument_list|<
 name|String
 argument_list|>
 argument_list|(
-name|cpp
-argument_list|)
-else|:
-operator|new
-name|HashSet
-argument_list|<
-name|String
-argument_list|>
+name|changeSet
+operator|.
+name|getParentPaths
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// first go through excludes to remove those that are explicitly
 comment|// excluded
