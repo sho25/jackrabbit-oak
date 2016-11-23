@@ -243,7 +243,7 @@ return|return
 name|applyRFC7613UsernameCaseMapped
 return|;
 block|}
-comment|/**          * Set to true if new AuthorizableIDs shall be normalized according to          * the UsernameCaseMapped profile defined in RFC7613.          * @param true if the UsernameCaseMapped profile shall be used for normalization.          * @return {@code this}          * @see #isApplyRFC7613UsernameCaseMapped()          */
+comment|/**          * Set to true if new AuthorizableIDs shall be normalized according to          * the UsernameCaseMapped profile defined in RFC7613.          * @param applyRFC7613UsernameCaseMapped true if the UsernameCaseMapped profile shall be used for normalization.          * @return {@code this}          * @see #isApplyRFC7613UsernameCaseMapped()          */
 specifier|public
 name|Authorizable
 name|setApplyRFC7613UsernameCaseMapped
