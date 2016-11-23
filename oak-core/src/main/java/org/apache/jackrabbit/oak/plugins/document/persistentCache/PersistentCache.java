@@ -2910,7 +2910,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|private
 name|boolean
 name|needSwitch
 parameter_list|()
