@@ -276,7 +276,7 @@ operator|.
 name|SIMPLE
 decl_stmt|;
 specifier|private
-name|int
+name|long
 name|indexerCycleCount
 decl_stmt|;
 specifier|private
@@ -724,7 +724,7 @@ name|path
 decl_stmt|;
 specifier|private
 specifier|final
-name|int
+name|long
 name|lastIndexerCycleCount
 init|=
 name|indexerCycleCount
@@ -916,7 +916,7 @@ name|path
 return|;
 block|}
 specifier|private
-name|int
+name|long
 name|getCycleCount
 parameter_list|()
 block|{

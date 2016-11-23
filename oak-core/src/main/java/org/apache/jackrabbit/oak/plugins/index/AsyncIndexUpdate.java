@@ -3229,6 +3229,14 @@ name|getKey
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|CorruptIndexInfo
+name|info
+init|=
+name|index
+operator|.
+name|getValue
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -3242,14 +3250,6 @@ name|CORRUPT_PROPERTY_NAME
 argument_list|)
 condition|)
 block|{
-name|CorruptIndexInfo
-name|info
-init|=
-name|index
-operator|.
-name|getValue
-argument_list|()
-decl_stmt|;
 name|String
 name|corruptSince
 init|=
@@ -3308,6 +3308,16 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failing index at [{}] is already marked as corrupt. The index is failing {}"
+argument_list|,
+name|info
+operator|.
+name|getPath
+argument_list|()
+argument_list|,
+name|info
+operator|.
+name|getStats
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

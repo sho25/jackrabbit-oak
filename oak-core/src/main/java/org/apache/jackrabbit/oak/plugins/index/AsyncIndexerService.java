@@ -884,6 +884,8 @@ argument_list|(
 literal|"Auto corrupt index isolation handling is enabled. Any async index which fails for [{}]s would "
 operator|+
 literal|"be marked as corrupted and would be skipped from further indexing"
+argument_list|,
+name|failingIndexTimeoutSeconds
 argument_list|)
 expr_stmt|;
 block|}

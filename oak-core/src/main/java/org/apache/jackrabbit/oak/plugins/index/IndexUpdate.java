@@ -2384,6 +2384,13 @@ argument_list|,
 name|indexPath
 argument_list|,
 name|corrupt
+operator|.
+name|getValue
+argument_list|(
+name|Type
+operator|.
+name|DATE
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
