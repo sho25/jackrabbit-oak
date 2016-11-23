@@ -3791,6 +3791,9 @@ operator|.
 name|lease
 argument_list|)
 expr_stmt|;
+name|IndexUpdate
+name|indexUpdate
+decl_stmt|;
 try|try
 block|{
 name|NodeBuilder
@@ -3809,9 +3812,8 @@ argument_list|(
 name|builder
 argument_list|)
 expr_stmt|;
-name|IndexUpdate
 name|indexUpdate
-init|=
+operator|=
 operator|new
 name|IndexUpdate
 argument_list|(
@@ -3836,7 +3838,7 @@ name|withMissingProviderStrategy
 argument_list|(
 name|missingStrategy
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|CommitFailedException
 name|exception
 init|=
@@ -4107,7 +4109,7 @@ block|{
 name|String
 name|msg
 init|=
-literal|"[{}] AsyncIndex update run completed in {}. Indexed {} nodes"
+literal|"[{}] AsyncIndex update run completed in {}. Indexed {} nodes, {}"
 decl_stmt|;
 comment|//Log at info level if time taken is more than 5 min
 if|if
@@ -4138,6 +4140,11 @@ name|indexStats
 operator|.
 name|getUpdates
 argument_list|()
+argument_list|,
+name|indexUpdate
+operator|.
+name|getIndexingStats
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4156,6 +4163,11 @@ argument_list|,
 name|indexStats
 operator|.
 name|getUpdates
+argument_list|()
+argument_list|,
+name|indexUpdate
+operator|.
+name|getIndexingStats
 argument_list|()
 argument_list|)
 expr_stmt|;
