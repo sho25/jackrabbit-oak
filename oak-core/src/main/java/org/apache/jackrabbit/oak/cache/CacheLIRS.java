@@ -6061,6 +6061,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * How many other item are to be moved to the top of the stack before          * the current item is moved. The default is 16. Using higher values          * will avoid re-ordering in many cases, so less time is spent          * reordering. But this somewhat reduces cache hit rate, and eviction          * will become more random. Typically, cache hit rate can be improved by          * using smaller values, and access performance can be improved using          * larger values. Using values larger than 128 is not recommended.          */
 specifier|public
 name|Builder
 argument_list|<
