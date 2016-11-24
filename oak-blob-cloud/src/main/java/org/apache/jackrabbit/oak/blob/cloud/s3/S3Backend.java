@@ -3319,13 +3319,12 @@ argument_list|(
 literal|"secret not defined"
 argument_list|)
 expr_stmt|;
-throw|throw
-operator|new
-name|DataStoreException
-argument_list|(
-literal|"secret not defined"
-argument_list|)
-throw|;
+return|return
+name|super
+operator|.
+name|getOrCreateReferenceKey
+argument_list|()
+return|;
 block|}
 catch|catch
 parameter_list|(

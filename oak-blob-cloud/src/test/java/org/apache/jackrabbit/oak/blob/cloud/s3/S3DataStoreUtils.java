@@ -377,7 +377,7 @@ name|DEFAULT_CONFIG_PATH
 init|=
 literal|"./src/test/resources/aws.properties"
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|static
 name|Class
 name|JR2_S3
@@ -386,7 +386,7 @@ name|SharedS3DataStore
 operator|.
 name|class
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|static
 name|Class
 name|S3
