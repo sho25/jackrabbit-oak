@@ -1770,7 +1770,9 @@ argument_list|(
 name|getRoot
 argument_list|()
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
 name|observers
