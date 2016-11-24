@@ -738,7 +738,9 @@ name|commit
 argument_list|,
 name|isBranch
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}

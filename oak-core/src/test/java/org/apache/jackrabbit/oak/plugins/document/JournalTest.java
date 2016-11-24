@@ -65,6 +65,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -532,9 +542,13 @@ specifier|public
 name|void
 name|contentChanged
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
 name|root
 parameter_list|,
+annotation|@
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)

@@ -408,7 +408,9 @@ name|c
 argument_list|,
 literal|false
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
@@ -607,7 +609,9 @@ name|c
 argument_list|,
 literal|false
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|fail
