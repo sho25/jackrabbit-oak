@@ -456,7 +456,9 @@ name|contentChanged
 argument_list|(
 name|after
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
 comment|// expect two queries for children: below /foo and /foo/bar

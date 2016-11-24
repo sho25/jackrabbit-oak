@@ -3842,7 +3842,7 @@ name|isBranch
 parameter_list|,
 specifier|final
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -9608,7 +9608,9 @@ operator|.
 name|fromExternalChange
 argument_list|()
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
 block|}

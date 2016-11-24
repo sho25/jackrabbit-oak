@@ -55,16 +55,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -501,7 +491,7 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -641,8 +631,9 @@ name|TimerStats
 name|timer
 init|=
 name|info
-operator|==
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 condition|?
 name|external
 else|:

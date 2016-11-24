@@ -1537,7 +1537,9 @@ name|contentChanged
 argument_list|(
 name|r0
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|AbstractDocumentNodeState

@@ -492,7 +492,7 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)

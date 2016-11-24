@@ -103,6 +103,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Value
@@ -2582,9 +2592,13 @@ specifier|public
 name|void
 name|contentChanged
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
 name|root
 parameter_list|,
+annotation|@
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -2604,8 +2618,9 @@ comment|// otherwise this is a no-op
 if|if
 condition|(
 name|info
-operator|==
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 condition|)
 block|{
 comment|// then ignore this as this is likely an external change
