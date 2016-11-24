@@ -454,7 +454,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Caches files locally and stages files locally for async uploads.  * Configuration:  *  *<pre>  *&lt;DataStore class="org.apache.jackrabbit.oak.plugins.blob.AbstractCachingDataStore">  *  *&lt;param name="{@link #setPath(String) path}"/>  *&lt;param name="{@link #setCacheSize(long) cacheSize}" value="68719476736"/>  *&lt;param name="{@link #setStagingSplitPercentage(int) staginSplitPercentage}" value="10"/>  *&lt;param name="{@link #setUploadThreads(int) uploadThreads}" value="10"/>  *&lt;param name="{@link #setStagingPurgeInterval(int) stagingPurgeInterval}" value="300"/>  *&lt;param name="{@link #setStagingRetryInterval(int) stagingRetryInterval} " value="600"/>  *&lt;/DataStore>  */
+comment|/**  * Cache files locally and stage files locally for async uploads.  * Configuration:  *  *<pre>  *&lt;DataStore class="org.apache.jackrabbit.oak.plugins.blob.AbstractCachingDataStore">  *  *&lt;param name="{@link #setPath(String) path}"/>  *&lt;param name="{@link #setCacheSize(long) cacheSize}" value="68719476736"/>  *&lt;param name="{@link #setStagingSplitPercentage(int) stagingSplitPercentage}" value="10"/>  *&lt;param name="{@link #setUploadThreads(int) uploadThreads}" value="10"/>  *&lt;param name="{@link #setStagingPurgeInterval(int) stagingPurgeInterval}" value="300"/>  *&lt;param name="{@link #setStagingRetryInterval(int) stagingRetryInterval} " value="600"/>  *&lt;/DataStore>  */
 end_comment
 
 begin_class
@@ -1281,7 +1281,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Need a DataRecord implementation that      * * decorates the data record of the backend if available      * * creates a record from the parameters of the file in cache      *      */
+comment|/**      * DataRecord implementation fetching the stream from the cache.      */
 specifier|static
 class|class
 name|FileCacheDataRecord
