@@ -10992,7 +10992,7 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -11001,7 +11001,9 @@ if|if
 condition|(
 name|info
 operator|!=
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 condition|)
 block|{
 name|infos
