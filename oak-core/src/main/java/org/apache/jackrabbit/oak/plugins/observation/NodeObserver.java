@@ -591,7 +591,7 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -970,14 +970,6 @@ name|this
 operator|.
 name|commitInfo
 operator|=
-name|commitInfo
-operator|==
-literal|null
-condition|?
-name|CommitInfo
-operator|.
-name|EMPTY
-else|:
 name|commitInfo
 expr_stmt|;
 name|this

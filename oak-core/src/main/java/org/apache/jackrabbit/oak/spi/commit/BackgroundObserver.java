@@ -181,16 +181,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -847,11 +837,13 @@ name|input
 parameter_list|)
 block|{
 return|return
+operator|!
 name|input
 operator|.
 name|info
-operator|!=
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 return|;
 block|}
 block|}
@@ -894,8 +886,9 @@ return|return
 name|input
 operator|.
 name|info
-operator|==
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 return|;
 block|}
 block|}
@@ -921,7 +914,7 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -937,13 +930,19 @@ argument_list|(
 name|root
 argument_list|)
 expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|alwaysCollapseExternalEvents
 operator|&&
 name|info
-operator|==
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 operator|&&
 name|last
 operator|!=
@@ -952,14 +951,16 @@ operator|&&
 name|last
 operator|.
 name|info
-operator|==
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 condition|)
 block|{
 comment|// This is an external change. If the previous change was
 comment|// also external, we can drop it from the queue (since external
 comment|// changes in any case can cover multiple commits) to help
 comment|// prevent the queue from filling up too fast.
+comment|//TODO - Support for merging ChangeSet for external changes
 name|queue
 operator|.
 name|remove
@@ -990,7 +991,9 @@ name|ContentChange
 argument_list|(
 name|root
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
 block|}

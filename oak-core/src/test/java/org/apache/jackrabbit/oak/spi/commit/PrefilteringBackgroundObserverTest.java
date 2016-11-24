@@ -371,8 +371,9 @@ elseif|else
 if|if
 condition|(
 name|info
-operator|==
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 condition|)
 block|{
 return|return
@@ -738,7 +739,9 @@ operator|-
 literal|1
 argument_list|)
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1882,7 +1885,9 @@ operator|-
 literal|1
 argument_list|)
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
 block|}

@@ -1553,8 +1553,9 @@ parameter_list|)
 block|{
 return|return
 name|info
-operator|==
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 return|;
 block|}
 annotation|@

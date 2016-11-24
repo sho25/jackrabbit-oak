@@ -85,7 +85,6 @@ interface|interface
 name|FilteringAwareObserver
 block|{
 comment|/**      * Equivalent to the state-full contentChanged() method of the Observer      * with one important difference being that this variation explicitly      * passes the before NodeState (thus the observer must in this case      * not remember the previous state)      * @param before the before NodeState      * @param after the after NodeState      * @param info the associated CommitInfo      */
-specifier|public
 name|void
 name|contentChanged
 parameter_list|(
@@ -100,7 +99,7 @@ name|NodeState
 name|after
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)

@@ -152,7 +152,9 @@ name|contentChanged
 argument_list|(
 name|root
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
 name|observers
@@ -198,7 +200,7 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -206,6 +208,11 @@ block|{
 name|checkNotNull
 argument_list|(
 name|root
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|info
 argument_list|)
 expr_stmt|;
 name|observers

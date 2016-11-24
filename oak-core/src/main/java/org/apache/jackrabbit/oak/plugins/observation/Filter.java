@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -85,7 +75,6 @@ interface|interface
 name|Filter
 block|{
 comment|/**      * Whether or not to exclude a particular content change from being      * forwarded to downstream observers.      *       * @param root      *            the new root state      * @param info      *            the associated CommitInfo      * @return true to exclude this content change (not forward), false to      *         include it (forward)      */
-specifier|public
 name|boolean
 name|excludes
 parameter_list|(
@@ -95,7 +84,7 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)

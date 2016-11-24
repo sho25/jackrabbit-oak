@@ -334,9 +334,11 @@ name|mapper
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|commitInfo
-operator|!=
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 condition|)
 block|{
 name|this
@@ -398,9 +400,10 @@ name|this
 operator|.
 name|userID
 operator|=
-name|CommitInfo
+name|commitInfo
 operator|.
-name|OAK_UNKNOWN
+name|getUserId
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -412,9 +415,9 @@ name|this
 operator|.
 name|date
 operator|=
-name|System
+name|commitInfo
 operator|.
-name|currentTimeMillis
+name|getDate
 argument_list|()
 expr_stmt|;
 comment|// rough estimate
