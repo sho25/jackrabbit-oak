@@ -681,6 +681,20 @@ name|common
 operator|.
 name|base
 operator|.
+name|Joiner
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Predicate
 import|;
 end_import
@@ -3979,9 +3993,18 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compacted {} to {}"
+literal|"TarMK GC #{}: compaction cycle 0 completed in {} ({} ms). Compacted {} to {}"
 argument_list|,
 name|GC_COUNT
+argument_list|,
+name|watch
+argument_list|,
+name|watch
+operator|.
+name|elapsed
+argument_list|(
+name|MILLISECONDS
+argument_list|)
 argument_list|,
 name|before
 operator|.
@@ -4072,6 +4095,14 @@ operator|+
 name|cycles
 argument_list|)
 expr_stmt|;
+name|Stopwatch
+name|cycleWatch
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 name|SegmentNodeState
 name|head
 init|=
@@ -4116,9 +4147,20 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compacted {} against {} to {}"
+literal|"TarMK GC #{}: compaction cycle {} completed in {} ({} ms). Compacted {} against {} to {}"
 argument_list|,
 name|GC_COUNT
+argument_list|,
+name|cycles
+argument_list|,
+name|cycleWatch
+argument_list|,
+name|cycleWatch
+operator|.
+name|elapsed
+argument_list|(
+name|MILLISECONDS
+argument_list|)
 argument_list|,
 name|head
 operator|.
@@ -4177,7 +4219,9 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: trying to force compact remaining commits for {} seconds"
+literal|"TarMK GC #{}: trying to force compact remaining commits for {} seconds. "
+operator|+
+literal|"Concurrent commits to the store will be blocked."
 argument_list|,
 name|GC_COUNT
 argument_list|,
@@ -4194,6 +4238,14 @@ name|message
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Stopwatch
+name|forceWatch
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 name|cycles
 operator|++
 expr_stmt|;
@@ -4218,9 +4270,31 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|success
 condition|)
+block|{
+name|gcListener
+operator|.
+name|info
+argument_list|(
+literal|"TarMK GC #{}: compaction succeeded to force compact remaining commits "
+operator|+
+literal|"after {} ({} ms)."
+argument_list|,
+name|GC_COUNT
+argument_list|,
+name|forceWatch
+argument_list|,
+name|forceWatch
+operator|.
+name|elapsed
+argument_list|(
+name|MILLISECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 if|if
 condition|(
@@ -4234,11 +4308,20 @@ name|gcListener
 operator|.
 name|warn
 argument_list|(
-literal|"TarMK GC #{}: compaction failed to force compact remaining commits. "
+literal|"TarMK GC #{}: compaction failed to force compact remaining commits "
 operator|+
-literal|"Compaction was cancelled: {}."
+literal|"after {} ({} ms). Compaction was cancelled: {}."
 argument_list|,
 name|GC_COUNT
+argument_list|,
+name|forceWatch
+argument_list|,
+name|forceWatch
+operator|.
+name|elapsed
+argument_list|(
+name|MILLISECONDS
+argument_list|)
 argument_list|,
 name|cancel
 argument_list|)
@@ -4252,9 +4335,18 @@ name|warn
 argument_list|(
 literal|"TarMK GC #{}: compaction failed to force compact remaining commits. "
 operator|+
-literal|"Most likely compaction didn't get exclusive access to the store."
+literal|"after {} ({} ms). Most likely compaction didn't get exclusive access to the store."
 argument_list|,
 name|GC_COUNT
+argument_list|,
+name|forceWatch
+argument_list|,
+name|forceWatch
+operator|.
+name|elapsed
+argument_list|(
+name|MILLISECONDS
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5265,20 +5357,6 @@ operator|.
 name|getFile
 argument_list|()
 decl_stmt|;
-name|gcListener
-operator|.
-name|info
-argument_list|(
-literal|"TarMK GC #{}: cleanup marking file for deletion: {}"
-argument_list|,
-name|GC_COUNT
-argument_list|,
-name|file
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|toRemove
 operator|.
 name|addLast
@@ -5287,6 +5365,20 @@ name|file
 argument_list|)
 expr_stmt|;
 block|}
+name|gcListener
+operator|.
+name|info
+argument_list|(
+literal|"TarMK GC #{}: cleanup marking files for deletion: {}"
+argument_list|,
+name|GC_COUNT
+argument_list|,
+name|toFileNames
+argument_list|(
+name|toRemove
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|long
 name|finalSize
 init|=
@@ -5365,6 +5457,48 @@ expr_stmt|;
 return|return
 name|toRemove
 return|;
+block|}
+specifier|private
+name|String
+name|toFileNames
+parameter_list|(
+annotation|@
+name|Nonnull
+name|List
+argument_list|<
+name|File
+argument_list|>
+name|files
+parameter_list|)
+block|{
+if|if
+condition|(
+name|files
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|"none"
+return|;
+block|}
+else|else
+block|{
+return|return
+name|Joiner
+operator|.
+name|on
+argument_list|(
+literal|","
+argument_list|)
+operator|.
+name|join
+argument_list|(
+name|files
+argument_list|)
+return|;
+block|}
 block|}
 specifier|private
 name|void

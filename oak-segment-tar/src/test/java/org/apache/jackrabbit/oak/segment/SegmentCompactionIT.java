@@ -1419,7 +1419,7 @@ specifier|volatile
 name|int
 name|compactionInterval
 init|=
-literal|60
+literal|2
 decl_stmt|;
 specifier|private
 specifier|volatile
