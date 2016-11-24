@@ -2800,7 +2800,7 @@ name|CommitHook
 name|commitHook
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
