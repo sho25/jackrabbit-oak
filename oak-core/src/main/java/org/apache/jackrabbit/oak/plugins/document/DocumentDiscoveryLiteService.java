@@ -2632,7 +2632,7 @@ name|logger
 operator|.
 name|trace
 argument_list|(
-literal|"contentChanged: ignoring content change due to commit info being null"
+literal|"contentChanged: ignoring content change due to commit info belonging to external change"
 argument_list|)
 expr_stmt|;
 return|return;
