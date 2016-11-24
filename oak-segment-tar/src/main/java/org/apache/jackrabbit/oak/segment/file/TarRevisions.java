@@ -899,6 +899,8 @@ name|tryLock
 argument_list|()
 condition|)
 block|{
+try|try
+block|{
 if|if
 condition|(
 name|journalFile
@@ -908,8 +910,6 @@ condition|)
 block|{
 return|return;
 block|}
-try|try
-block|{
 name|doFlush
 argument_list|(
 name|persisted
