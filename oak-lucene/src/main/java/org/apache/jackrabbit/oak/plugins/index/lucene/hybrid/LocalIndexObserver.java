@@ -205,17 +205,17 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
 block|{
-comment|//TODO [hybrid] Do external diff?
 if|if
 condition|(
 name|info
-operator|==
-literal|null
+operator|.
+name|isExternal
+argument_list|()
 condition|)
 block|{
 return|return;

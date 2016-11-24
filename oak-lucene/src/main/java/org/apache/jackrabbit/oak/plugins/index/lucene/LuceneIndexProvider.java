@@ -348,9 +348,13 @@ specifier|public
 name|void
 name|contentChanged
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
 name|root
 parameter_list|,
+annotation|@
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)

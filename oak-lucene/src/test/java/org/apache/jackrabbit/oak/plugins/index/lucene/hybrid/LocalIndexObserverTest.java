@@ -279,7 +279,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|nullCommitInfo
+name|externalCommitInfo
 parameter_list|()
 throws|throws
 name|Exception
@@ -290,7 +290,9 @@ name|contentChanged
 argument_list|(
 name|EMPTY_NODE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
 block|}
