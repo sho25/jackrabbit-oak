@@ -4074,7 +4074,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks if the given authorizable was synced from the same IDP by comparing the IDP name of the      * {@value #REP_EXTERNAL_ID} property.      *      * todo: allow multiple IDPs on 1 authorizable      *      * @param auth the authorizable.      * @return {@code true} if same IDP.      */
+comment|/**      * Checks if the given authorizable was synced from the same IDP by comparing the IDP name of the      * {@value #REP_EXTERNAL_ID} property.      *      * @param auth the authorizable.      * @return {@code true} if same IDP.      */
 specifier|protected
 name|boolean
 name|isSameIDP
