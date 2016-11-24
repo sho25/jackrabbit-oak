@@ -289,6 +289,8 @@ argument_list|(
 name|mongoUri
 argument_list|,
 literal|2
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
