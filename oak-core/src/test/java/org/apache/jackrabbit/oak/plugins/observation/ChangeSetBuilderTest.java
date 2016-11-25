@@ -1190,6 +1190,8 @@ argument_list|(
 literal|"/a/b"
 argument_list|,
 literal|"/x"
+argument_list|,
+literal|"/p/q"
 argument_list|)
 argument_list|)
 expr_stmt|;
