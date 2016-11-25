@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|apache
@@ -27,11 +27,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|segment
 operator|.
-name|StringUtils
+name|CacheWeights
 operator|.
-name|estimateMemoryUsage
+name|ReaderStringCacheWeigher
 import|;
 end_import
 
@@ -68,41 +68,12 @@ argument_list|,
 literal|250
 argument_list|,
 literal|"String Cache"
+argument_list|,
+operator|new
+name|ReaderStringCacheWeigher
+argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|protected
-name|int
-name|getEntryWeight
-parameter_list|(
-name|String
-name|string
-parameter_list|)
-block|{
-name|int
-name|size
-init|=
-literal|168
-decl_stmt|;
-comment|// overhead for each cache entry
-name|size
-operator|+=
-literal|40
-expr_stmt|;
-comment|// key
-name|size
-operator|+=
-name|estimateMemoryUsage
-argument_list|(
-name|string
-argument_list|)
-expr_stmt|;
-comment|// value
-return|return
-name|size
-return|;
 block|}
 annotation|@
 name|Override
