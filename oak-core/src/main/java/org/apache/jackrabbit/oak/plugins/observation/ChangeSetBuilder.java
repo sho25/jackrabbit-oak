@@ -43,6 +43,22 @@ name|Sets
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Builder of a ChangeSet - only used by ChangeCollectorProvider (and tests..)  */
 end_comment
@@ -222,6 +238,22 @@ name|String
 name|path
 parameter_list|)
 block|{
+if|if
+condition|(
+name|PathUtils
+operator|.
+name|getDepth
+argument_list|(
+name|path
+argument_list|)
+operator|>
+name|maxPathDepth
+condition|)
+block|{
+return|return
+name|this
+return|;
+block|}
 name|parentPathOverflow
 operator|=
 name|addAndCheckOverflow
