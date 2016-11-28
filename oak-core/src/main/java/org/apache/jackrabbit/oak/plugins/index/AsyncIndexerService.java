@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -82,6 +92,20 @@ operator|.
 name|collect
 operator|.
 name|Lists
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|Closer
 import|;
 end_import
 
@@ -606,6 +630,16 @@ specifier|private
 name|IndexMBeanRegistration
 name|indexRegistration
 decl_stmt|;
+specifier|private
+specifier|final
+name|Closer
+name|closer
+init|=
+name|Closer
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Activate
 specifier|public
@@ -793,6 +827,13 @@ operator|.
 name|timeIntervalInSecs
 argument_list|)
 expr_stmt|;
+name|closer
+operator|.
+name|register
+argument_list|(
+name|task
+argument_list|)
+expr_stmt|;
 block|}
 name|log
 operator|.
@@ -827,6 +868,8 @@ specifier|public
 name|void
 name|deactivate
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -841,6 +884,12 @@ name|unregister
 argument_list|()
 expr_stmt|;
 block|}
+comment|//Close the task *after* unregistering the jobs
+name|closer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 comment|//~-------------------------------------------< internal>
 specifier|private
