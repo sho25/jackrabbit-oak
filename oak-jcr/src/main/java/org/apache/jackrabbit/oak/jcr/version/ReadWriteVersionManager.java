@@ -1261,7 +1261,12 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Base version does not exist."
+literal|"Base version does not exist for "
+operator|+
+name|versionableTree
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
