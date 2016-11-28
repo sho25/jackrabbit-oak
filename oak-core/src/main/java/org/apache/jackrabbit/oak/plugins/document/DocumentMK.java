@@ -3691,7 +3691,7 @@ specifier|final
 name|int
 name|DEFAULT_NODE_CACHE_PERCENTAGE
 init|=
-literal|25
+literal|35
 decl_stmt|;
 specifier|public
 specifier|static
@@ -3707,7 +3707,7 @@ specifier|final
 name|int
 name|DEFAULT_CHILDREN_CACHE_PERCENTAGE
 init|=
-literal|10
+literal|15
 decl_stmt|;
 specifier|public
 specifier|static
@@ -3715,7 +3715,7 @@ specifier|final
 name|int
 name|DEFAULT_DIFF_CACHE_PERCENTAGE
 init|=
-literal|5
+literal|30
 decl_stmt|;
 specifier|public
 specifier|static
