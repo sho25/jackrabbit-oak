@@ -262,6 +262,14 @@ name|Observer
 implements|,
 name|Closeable
 block|{
+specifier|public
+specifier|final
+specifier|static
+name|int
+name|DEFAULT_QUEUE_SIZE
+init|=
+literal|10000
+decl_stmt|;
 comment|/**      * Signal for the background thread to stop processing changes.      */
 specifier|private
 specifier|static
@@ -689,7 +697,7 @@ name|observer
 argument_list|,
 name|executor
 argument_list|,
-literal|1000
+name|DEFAULT_QUEUE_SIZE
 argument_list|)
 expr_stmt|;
 block|}
