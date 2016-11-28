@@ -993,6 +993,21 @@ return|return
 literal|false
 return|;
 block|}
+if|if
+condition|(
+name|changeSet
+operator|.
+name|doesHitMaxPathDepth
+argument_list|()
+condition|)
+block|{
+comment|// then we might or might not include this - but without
+comment|// further complicated checks this can't be determined for sure
+comment|// so for simplicity reason: return false here
+return|return
+literal|false
+return|;
+block|}
 specifier|final
 name|Set
 argument_list|<
