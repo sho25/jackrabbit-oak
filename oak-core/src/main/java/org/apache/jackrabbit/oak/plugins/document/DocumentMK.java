@@ -3673,7 +3673,7 @@ specifier|static
 class|class
 name|Builder
 block|{
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|long
