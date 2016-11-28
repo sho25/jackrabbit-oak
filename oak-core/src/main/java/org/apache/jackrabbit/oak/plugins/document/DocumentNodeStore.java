@@ -9555,6 +9555,10 @@ name|externalSort
 argument_list|,
 name|diffCache
 argument_list|,
+name|PathUtils
+operator|.
+name|ROOT_PATH
+argument_list|,
 name|oldHead
 argument_list|,
 name|newHead
