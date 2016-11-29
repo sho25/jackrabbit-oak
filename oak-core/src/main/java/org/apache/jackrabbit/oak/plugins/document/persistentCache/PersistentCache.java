@@ -2558,6 +2558,10 @@ name|wrap
 operator|=
 name|cacheLocalDiff
 expr_stmt|;
+name|async
+operator|=
+name|asyncDiffCache
+expr_stmt|;
 break|break;
 case|case
 name|DOC_CHILDREN
