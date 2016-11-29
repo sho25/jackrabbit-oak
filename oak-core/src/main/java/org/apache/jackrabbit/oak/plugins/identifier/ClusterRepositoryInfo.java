@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -36,6 +52,16 @@ operator|.
 name|annotation
 operator|.
 name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
 import|;
 end_import
 
@@ -237,10 +263,19 @@ specifier|static
 name|String
 name|getOrCreateId
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeStore
 name|store
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|store
+argument_list|,
+literal|"store is null"
+argument_list|)
+expr_stmt|;
 comment|// first try to read an existing clusterId
 name|NodeState
 name|root
