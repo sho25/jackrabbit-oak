@@ -55,6 +55,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+operator|.
+name|newHashSet
+import|;
+end_import
+
+begin_import
+import|import static
 name|javax
 operator|.
 name|jcr
@@ -196,6 +212,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -471,6 +497,17 @@ name|newArrayList
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|pathsForMBean
+init|=
+name|newHashSet
+argument_list|()
+decl_stmt|;
+specifier|private
 name|Condition
 name|condition
 init|=
@@ -626,6 +663,31 @@ name|checkNotNull
 argument_list|(
 name|absPath
 argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Adds paths to the FilterConfigMBean's getPaths set      * @param paths      * @return      */
+specifier|public
+name|FilterBuilder
+name|addPathsForMBean
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|paths
+parameter_list|)
+block|{
+name|pathsForMBean
+operator|.
+name|addAll
+argument_list|(
+name|paths
 argument_list|)
 expr_stmt|;
 return|return
@@ -1640,7 +1702,7 @@ name|Override
 specifier|public
 name|String
 index|[]
-name|getSubTrees
+name|getPaths
 parameter_list|()
 block|{
 return|return
@@ -1648,7 +1710,7 @@ name|Iterables
 operator|.
 name|toArray
 argument_list|(
-name|subTrees
+name|pathsForMBean
 argument_list|,
 name|String
 operator|.

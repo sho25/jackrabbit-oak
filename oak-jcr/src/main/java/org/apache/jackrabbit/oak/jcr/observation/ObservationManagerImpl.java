@@ -1682,6 +1682,13 @@ init|=
 name|newArrayList
 argument_list|()
 decl_stmt|;
+name|filterBuilder
+operator|.
+name|addPathsForMBean
+argument_list|(
+name|includePaths
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|String

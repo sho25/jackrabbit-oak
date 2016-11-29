@@ -2420,7 +2420,7 @@ name|mbeans
 operator|.
 name|filterConfigMBean
 operator|.
-name|getSubTrees
+name|getPaths
 argument_list|()
 argument_list|)
 block|,

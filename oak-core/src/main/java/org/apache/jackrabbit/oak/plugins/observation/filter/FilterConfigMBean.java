@@ -31,10 +31,10 @@ name|TYPE
 init|=
 literal|"FilterConfig"
 decl_stmt|;
-comment|/**      * A set of paths whose subtrees include all events of this filter.      * @return  list of paths      * @see org.apache.jackrabbit.oak.plugins.observation.filter.FilterBuilder#addSubTree(String)      */
+comment|/**      * A set of paths, potentially containing globs, that include all events of this filter.      * @return  list of paths      * @see org.apache.jackrabbit.oak.plugins.observation.filter.FilterBuilder#addSubTree(String)      */
 name|String
 index|[]
-name|getSubTrees
+name|getPaths
 parameter_list|()
 function_decl|;
 comment|/**      * Whether to include cluster local changes.      *      * @return true if cluster local changes need to be included      */
