@@ -45,6 +45,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -94,6 +104,24 @@ operator|.
 name|lucene
 operator|.
 name|IndexDefinition
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|GarbageCollectableBlobStore
 import|;
 end_import
 
@@ -197,6 +225,10 @@ name|boolean
 name|reindex
 decl_stmt|;
 specifier|private
+name|GarbageCollectableBlobStore
+name|blobStore
+decl_stmt|;
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -228,6 +260,11 @@ name|definitionBuilder
 parameter_list|,
 name|boolean
 name|reindex
+parameter_list|,
+annotation|@
+name|Nullable
+name|GarbageCollectableBlobStore
+name|blobStore
 parameter_list|)
 block|{
 name|this
@@ -259,6 +296,12 @@ operator|.
 name|reindex
 operator|=
 name|reindex
+expr_stmt|;
+name|this
+operator|.
+name|blobStore
+operator|=
+name|blobStore
 expr_stmt|;
 block|}
 annotation|@
@@ -517,6 +560,8 @@ argument_list|,
 name|suggestDirName
 argument_list|,
 name|reindex
+argument_list|,
+name|blobStore
 argument_list|)
 return|;
 block|}
