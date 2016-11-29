@@ -23,6 +23,42 @@ name|jmx
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|jmx
+operator|.
+name|Description
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|jmx
+operator|.
+name|Name
+import|;
+end_import
+
 begin_comment
 comment|/**  * An MBean that provides an approximate node count for a given path.  */
 end_comment
@@ -38,20 +74,60 @@ init|=
 literal|"NodeCounter"
 decl_stmt|;
 comment|/**      * Get the estimated number of nodes below a given path.      *       * @param path the path      * @return the estimated number of nodes, or -1 if unknown (if not index is      *         available)      */
+annotation|@
+name|Description
+argument_list|(
+literal|"Get the estimated number of nodes below a given path."
+argument_list|)
 name|long
 name|getEstimatedNodeCount
 parameter_list|(
+annotation|@
+name|Description
+argument_list|(
+literal|"the path"
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"path"
+argument_list|)
 name|String
 name|path
 parameter_list|)
 function_decl|;
 comment|/**      * Get the estimated number of nodes for the child nodes of a given path.      *       * @param path the path      * @param level the depth of the child nodes to list      * @return a comma separated list of child nodes with the respective      *         estimated counts      */
+annotation|@
+name|Description
+argument_list|(
+literal|"Get the estimated number of nodes below a given path."
+argument_list|)
 name|String
 name|getEstimatedChildNodeCounts
 parameter_list|(
+annotation|@
+name|Description
+argument_list|(
+literal|"the path"
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"path"
+argument_list|)
 name|String
 name|path
 parameter_list|,
+annotation|@
+name|Description
+argument_list|(
+literal|"the depth of the child nodes to list (the higher the number, the slower)"
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"level"
+argument_list|)
 name|int
 name|level
 parameter_list|)
