@@ -78,6 +78,19 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Write a blob from an input stream with specified options.      * This method closes the input stream.      *      * @param in the input stream to write      * @param options the options to use      * @return      * @throws IOException      */
+name|String
+name|writeBlob
+parameter_list|(
+name|InputStream
+name|in
+parameter_list|,
+name|BlobOptions
+name|options
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Read a number of bytes from a blob.      *       * @param blobId the blob id      * @param pos the position within the blob      * @param buff the target byte array      * @param off the offset within the target array      * @param length the number of bytes to read      * @return the number of bytes read      */
 name|int
 name|readBlob

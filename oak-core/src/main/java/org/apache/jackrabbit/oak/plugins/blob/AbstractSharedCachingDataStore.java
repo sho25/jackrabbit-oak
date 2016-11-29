@@ -361,6 +361,26 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|blob
+operator|.
+name|datastore
+operator|.
+name|TypedDataStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|blob
@@ -384,6 +404,24 @@ operator|.
 name|blob
 operator|.
 name|AbstractSharedBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|BlobOptions
 import|;
 end_import
 
@@ -453,6 +491,28 @@ name|checkArgument
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|BlobOptions
+operator|.
+name|UploadType
+operator|.
+name|SYNCHRONOUS
+import|;
+end_import
+
 begin_comment
 comment|/**  * Cache files locally and stage files locally for async uploads.  * Configuration:  *  *<pre>  *&lt;DataStore class="org.apache.jackrabbit.oak.plugins.blob.AbstractCachingDataStore">  *  *&lt;param name="{@link #setPath(String) path}"/>  *&lt;param name="{@link #setCacheSize(long) cacheSize}" value="68719476736"/>  *&lt;param name="{@link #setStagingSplitPercentage(int) stagingSplitPercentage}" value="10"/>  *&lt;param name="{@link #setUploadThreads(int) uploadThreads}" value="10"/>  *&lt;param name="{@link #setStagingPurgeInterval(int) stagingPurgeInterval}" value="300"/>  *&lt;param name="{@link #setStagingRetryInterval(int) stagingRetryInterval} " value="600"/>  *&lt;/DataStore>  */
 end_comment
@@ -468,6 +528,8 @@ implements|implements
 name|MultiDataStoreAware
 implements|,
 name|SharedDataStore
+implements|,
+name|TypedDataStore
 block|{
 comment|/**      * Logger instance.      */
 specifier|private
@@ -964,6 +1026,32 @@ parameter_list|)
 throws|throws
 name|DataStoreException
 block|{
+return|return
+name|addRecord
+argument_list|(
+name|inputStream
+argument_list|,
+operator|new
+name|BlobOptions
+argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|DataRecord
+name|addRecord
+parameter_list|(
+name|InputStream
+name|inputStream
+parameter_list|,
+name|BlobOptions
+name|blobOptions
+parameter_list|)
+throws|throws
+name|DataStoreException
+block|{
 name|Stopwatch
 name|watch
 init|=
@@ -1089,6 +1177,13 @@ comment|// asynchronously stage for upload if the size limit of staging cache pe
 comment|// otherwise add to backend
 if|if
 condition|(
+name|blobOptions
+operator|.
+name|getUpload
+argument_list|()
+operator|==
+name|SYNCHRONOUS
+operator|||
 operator|!
 name|cache
 operator|.
@@ -1110,6 +1205,15 @@ argument_list|(
 name|identifier
 argument_list|,
 name|tmpFile
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Added blob [{}] to backend"
+argument_list|,
+name|identifier
 argument_list|)
 expr_stmt|;
 comment|// offer to download cache

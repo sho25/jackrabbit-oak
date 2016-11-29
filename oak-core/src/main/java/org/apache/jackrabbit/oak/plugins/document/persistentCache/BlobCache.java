@@ -127,7 +127,7 @@ name|spi
 operator|.
 name|blob
 operator|.
-name|BlobStore
+name|BlobOptions
 import|;
 end_import
 
@@ -202,8 +202,6 @@ specifier|public
 class|class
 name|BlobCache
 implements|implements
-name|BlobStore
-implements|,
 name|GarbageCollectableBlobStore
 implements|,
 name|GenerationCache
@@ -635,6 +633,29 @@ comment|// TODO maybe copy the binary to the cache in a background thread
 return|return
 name|base
 operator|.
+name|writeBlob
+argument_list|(
+name|in
+argument_list|)
+return|;
+block|}
+comment|/**      * Ignores the options provided and delegates to {@link #writeBlob(InputStream)}.      *      * @param in the input stream to write      * @param options the options to use      * @return      * @throws IOException      */
+annotation|@
+name|Override
+specifier|public
+name|String
+name|writeBlob
+parameter_list|(
+name|InputStream
+name|in
+parameter_list|,
+name|BlobOptions
+name|options
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
 name|writeBlob
 argument_list|(
 name|in
