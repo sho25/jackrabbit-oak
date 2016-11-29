@@ -737,6 +737,17 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
+name|add
+argument_list|(
+literal|"currentWeights"
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|estimateCurrentWeight
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
 name|toString
 argument_list|()
 return|;
