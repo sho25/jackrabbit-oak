@@ -47,16 +47,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -165,6 +155,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|before
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// avoid null being passed as before to observer
+comment|// before == null happens only at startup
+if|if
+condition|(
 name|info
 operator|!=
 name|FilteringObserver
@@ -183,6 +182,7 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|before
 operator|=

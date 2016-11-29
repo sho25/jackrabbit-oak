@@ -2310,6 +2310,17 @@ parameter_list|)
 block|{
 name|checkNotNull
 argument_list|(
+name|before
+argument_list|)
+expr_stmt|;
+comment|// OAK-5160 before is now guaranteed to be non-null
+name|checkNotNull
+argument_list|(
+name|after
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
@@ -2366,13 +2377,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|before
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 block|{
 name|long
@@ -2684,7 +2688,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|private

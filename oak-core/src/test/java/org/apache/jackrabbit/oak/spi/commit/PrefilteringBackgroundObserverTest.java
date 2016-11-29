@@ -830,7 +830,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|501
+literal|500
 argument_list|,
 name|received
 operator|.
@@ -838,13 +838,15 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// changed from 501 with OAK-5121
 name|assertEquals
 argument_list|(
-literal|500
+literal|499
 argument_list|,
 name|resetCallCnt
 argument_list|)
 expr_stmt|;
+comment|// changed from 500 with OAK-5121
 comment|// Part 2 : run with filtersEvaluatedMapWithNullObservers - empty or null shouldn't matter, it's excluded in both cases
 name|received
 operator|.
@@ -1235,7 +1237,7 @@ literal|true
 argument_list|,
 literal|10
 argument_list|,
-literal|2
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1342,7 +1344,7 @@ literal|true
 argument_list|,
 literal|5
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 literal|7
 argument_list|,
@@ -1641,7 +1643,7 @@ literal|true
 argument_list|,
 literal|3
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 literal|4
 argument_list|,
