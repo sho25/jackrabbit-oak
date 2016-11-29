@@ -1384,20 +1384,26 @@ name|c
 parameter_list|)
 function_decl|;
 block|}
-comment|/**      * Persists the changes between {@code toPersist} and {@code base}      * to the underlying store.      *<p>      * While this method does not declare any exceptions to be thrown, an      * implementation may still throw a runtime exception specific to the      * concrete implementation of this node store branch.      *      * @param toPersist the state with the changes on top of {@code base}.      * @param base the base state.      * @param info the commit info or {@code null} if there is none.      * @return the state with the persisted changes.      */
+comment|/**      * Persists the changes between {@code toPersist} and {@code base}      * to the underlying store.      *<p>      * While this method does not declare any exceptions to be thrown, an      * implementation may still throw a runtime exception specific to the      * concrete implementation of this node store branch.      *      * @param toPersist the state with the changes on top of {@code base}.      * @param base the base state.      * @param info the commit info.      * @return the state with the persisted changes.      */
 specifier|private
 name|DocumentNodeState
 name|persist
 parameter_list|(
 specifier|final
+annotation|@
+name|Nonnull
 name|NodeState
 name|toPersist
 parameter_list|,
 specifier|final
+annotation|@
+name|Nonnull
 name|DocumentNodeState
 name|base
 parameter_list|,
 specifier|final
+annotation|@
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -1453,12 +1459,18 @@ specifier|private
 name|DocumentNodeState
 name|persist
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Changes
 name|op
 parameter_list|,
+annotation|@
+name|Nonnull
 name|DocumentNodeState
 name|base
 parameter_list|,
+annotation|@
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -2642,7 +2654,9 @@ name|newHead
 argument_list|,
 name|head
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
