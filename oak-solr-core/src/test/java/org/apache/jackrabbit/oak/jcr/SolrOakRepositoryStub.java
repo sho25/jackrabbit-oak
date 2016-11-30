@@ -362,7 +362,7 @@ specifier|public
 class|class
 name|SolrOakRepositoryStub
 extends|extends
-name|OakTarMKRepositoryStub
+name|OakSegmentTarRepositoryStub
 block|{
 specifier|public
 name|SolrOakRepositoryStub

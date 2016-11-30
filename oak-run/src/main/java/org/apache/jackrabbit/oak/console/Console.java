@@ -1284,6 +1284,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|private
 specifier|static
 class|class

@@ -411,6 +411,8 @@ name|OAK_RDB_DS
 init|=
 literal|"Oak-RDB-DS"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -419,6 +421,8 @@ name|OAK_TAR
 init|=
 literal|"Oak-Tar"
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -1632,6 +1636,8 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|OakFixture
@@ -1730,6 +1736,8 @@ literal|0
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|OakFixture
@@ -2378,6 +2386,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class

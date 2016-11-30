@@ -240,6 +240,8 @@ operator|new
 name|MemoryFixture
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final

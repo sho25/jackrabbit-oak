@@ -136,10 +136,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A repository stub implementation for Oak on TarMK  */
+comment|/**  * A repository stub implementation for Oak on TarMK  * @deprecated Use {@link OakSegmentTarRepositoryStub} instead.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|OakTarMKRepositoryStub

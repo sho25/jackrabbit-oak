@@ -416,7 +416,7 @@ specifier|public
 class|class
 name|LuceneOakRepositoryStub
 extends|extends
-name|OakTarMKRepositoryStub
+name|OakSegmentTarRepositoryStub
 block|{
 specifier|public
 name|LuceneOakRepositoryStub

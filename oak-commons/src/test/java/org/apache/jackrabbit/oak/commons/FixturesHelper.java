@@ -88,6 +88,8 @@ name|Fixture
 block|{
 name|DOCUMENT_NS
 block|,
+annotation|@
+name|Deprecated
 name|SEGMENT_MK
 block|,
 name|DOCUMENT_RDB
