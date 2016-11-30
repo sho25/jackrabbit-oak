@@ -938,7 +938,10 @@ operator|<
 literal|2
 condition|)
 block|{
-comment|//in this case we can avoid calling idp.getIdentity(), saving a roundtrip
+comment|// since the ExternalGroupRef marker already indicates that the
+comment|// ref points to an external group and we already reached the desired
+comment|// depth, we can avoid calling idp.getIdentity(), saving a roundtrip
+comment|// to the external IDP.
 name|principalNames
 operator|.
 name|add
@@ -952,6 +955,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// resolve identity from the reference to
+comment|// - make sure we it is an external group
+comment|// - recursively collect group-group membership
 name|ExternalIdentity
 name|extId
 init|=

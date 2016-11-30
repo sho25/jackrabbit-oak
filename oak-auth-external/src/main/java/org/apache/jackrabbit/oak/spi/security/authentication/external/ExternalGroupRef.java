@@ -50,7 +50,7 @@ name|ExternalGroupRef
 extends|extends
 name|ExternalIdentityRef
 block|{
-comment|/**svn st      *      * Creates a new external group ref with the given id and provider name      * @param id the id of the identity.      * @param providerName the name of the identity provider      */
+comment|/**      * Creates a new external group ref with the given id and provider name      *      * @param id the id of the identity.      * @param providerName the name of the identity provider      */
 specifier|public
 name|ExternalGroupRef
 parameter_list|(
