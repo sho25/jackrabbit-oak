@@ -1023,7 +1023,7 @@ argument_list|()
 argument_list|,
 name|DefaultSyncConfigImpl
 operator|.
-name|PARAM_GROUP_AUTO_MEMBERSHIP
+name|PARAM_USER_AUTO_MEMBERSHIP
 argument_list|,
 name|setup
 operator|.
