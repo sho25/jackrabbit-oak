@@ -282,6 +282,7 @@ name|FileCache
 operator|.
 name|DOWNLOAD_DIR
 decl_stmt|;
+comment|/**      * De-serialize the pending uploads map from {@link org.apache.jackrabbit.core.data.AsyncUploadCache}.      *      * @param homeDir the directory where the serialized file is maintained      * @return the de-serialized map      */
 specifier|private
 specifier|static
 name|Map
@@ -422,6 +423,7 @@ return|return
 name|asyncUploadMap
 return|;
 block|}
+comment|/**      * Delete the serialized pending uploads map from the file system.      *      * @param homeDir the repository home directory      */
 specifier|private
 specifier|static
 name|void
@@ -511,6 +513,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * Move the DataStore downloaded cache files to the appropriate folder used by the new cache      * {@link FileCache}      * @param path the root of the datastore      */
 specifier|public
 specifier|static
 name|void
@@ -734,6 +737,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Move the pending uploads read from the de-serialized map to the appropriate directory      * used by the {@link UploadStagingCache}.      *      * @param homeDir the repository home directory      * @param path the root of the datastore      * @param deleteMap flag indicating whether to delete the pending upload map after upgrade      */
 specifier|public
 specifier|static
 name|void
@@ -948,6 +952,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Upgrades the {@link org.apache.jackrabbit.core.data.CachingDataStore}.      *      * @param homeDir the repository home directory      * @param path the root of the datastore      * @param moveCache flag whether to move the downloaded cache files      * @param deleteMap flag indicating whether to delete the pending upload map after upgrade      */
 specifier|public
 specifier|static
 name|void
