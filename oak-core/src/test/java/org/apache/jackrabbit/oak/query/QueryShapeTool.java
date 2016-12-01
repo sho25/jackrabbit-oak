@@ -218,7 +218,7 @@ name|println
 argument_list|()
 expr_stmt|;
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|void
 name|process
@@ -294,7 +294,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|shape
