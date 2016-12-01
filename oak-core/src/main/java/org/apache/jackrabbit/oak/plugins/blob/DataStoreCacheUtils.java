@@ -92,7 +92,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|UploadStagingCache
+name|DataStoreCacheUtils
 operator|.
 name|class
 argument_list|)
