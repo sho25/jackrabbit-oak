@@ -237,6 +237,15 @@ name|ThreadDumpCommand
 argument_list|()
 argument_list|)
 block|,
+name|DATASTORECACHEUPGRADE
+argument_list|(
+literal|"datastorecacheupgrade"
+argument_list|,
+operator|new
+name|DataStoreCacheUpgradeCommand
+argument_list|()
+argument_list|)
+block|,
 name|HELP
 argument_list|(
 literal|"help"
