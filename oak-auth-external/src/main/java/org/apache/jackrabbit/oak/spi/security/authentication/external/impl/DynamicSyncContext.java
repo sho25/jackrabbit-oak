@@ -927,37 +927,7 @@ range|:
 name|declaredGroupIdRefs
 control|)
 block|{
-if|if
-condition|(
-name|ref
-operator|instanceof
-name|ExternalGroupRef
-operator|&&
-name|depth
-operator|<
-literal|2
-condition|)
-block|{
-comment|// since the ExternalGroupRef marker already indicates that the
-comment|// ref points to an external group and we already reached the desired
-comment|// depth, we can avoid calling idp.getIdentity(), saving a roundtrip
-comment|// to the external IDP.
-name|principalNames
-operator|.
-name|add
-argument_list|(
-name|ref
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// resolve identity from the reference to
-comment|// - make sure we it is an external group
-comment|// - recursively collect group-group membership
+comment|// get group
 name|ExternalIdentity
 name|extId
 init|=
@@ -979,9 +949,9 @@ name|principalNames
 operator|.
 name|add
 argument_list|(
-name|ref
+name|extId
 operator|.
-name|getId
+name|getPrincipalName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1017,10 +987,9 @@ name|debug
 argument_list|(
 literal|"Not an external group ({}) => ignore."
 argument_list|,
-name|ref
+name|extId
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
