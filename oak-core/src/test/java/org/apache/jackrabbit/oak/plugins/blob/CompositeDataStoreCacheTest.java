@@ -540,7 +540,10 @@ argument_list|,
 name|InputStream
 argument_list|>
 argument_list|(
-name|root
+name|folder
+operator|.
+name|newFolder
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|uploader
@@ -548,7 +551,10 @@ operator|=
 operator|new
 name|TestStagingUploader
 argument_list|(
-name|root
+name|folder
+operator|.
+name|newFolder
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// create executor
@@ -659,6 +665,8 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|,
+literal|null
+argument_list|,
 literal|80
 operator|*
 literal|1024
@@ -726,8 +734,10 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|,
+literal|null
+argument_list|,
 literal|0
-comment|/* bytes */
+comment|/* bytes         */
 argument_list|,
 literal|10
 argument_list|,
@@ -1155,10 +1165,12 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|,
+literal|null
+argument_list|,
 literal|40
 operator|*
 literal|1024
-comment|/* bytes */
+comment|/*         bytes */
 argument_list|,
 literal|10
 comment|/* staging % */
@@ -1381,10 +1393,12 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|,
+literal|null
+argument_list|,
 literal|80
 operator|*
 literal|1024
-comment|/* bytes */
+comment|/*         bytes */
 argument_list|,
 literal|10
 comment|/* staging % */
@@ -2267,6 +2281,14 @@ argument_list|,
 name|f
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+name|f
+operator|.
+name|exists
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|File
 name|f2
 init|=
@@ -2296,6 +2318,14 @@ operator|+
 literal|1
 argument_list|,
 name|f2
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|f2
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|CountDownLatch
@@ -2575,6 +2605,14 @@ operator|+
 literal|1
 argument_list|,
 name|f2
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|f2
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// stage for upload

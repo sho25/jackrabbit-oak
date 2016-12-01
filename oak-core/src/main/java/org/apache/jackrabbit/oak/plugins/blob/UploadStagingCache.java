@@ -605,6 +605,26 @@ name|humanReadableByteCount
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|blob
+operator|.
+name|DataStoreCacheUpgradeUtils
+operator|.
+name|movePendingUploadsToStaging
+import|;
+end_import
+
 begin_comment
 comment|/**  * Cache for staging async uploads. This serves as a temporary cache for serving local  * requests till the time the upload has not been synced with the backend.  *<p>  * The appropriate backend for this cache are wrapped in {@link StagingUploader}  * implementations.  *<p>  */
 end_comment
@@ -631,6 +651,14 @@ name|UploadStagingCache
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|UPLOAD_STAGING_DIR
+init|=
+literal|"upload"
 decl_stmt|;
 comment|//Rough estimate of the in-memory key, value pair
 specifier|private
@@ -765,6 +793,9 @@ name|UploadStagingCache
 parameter_list|(
 name|File
 name|dir
+parameter_list|,
+name|File
+name|home
 parameter_list|,
 name|int
 name|uploadThreads
@@ -952,7 +983,11 @@ operator|=
 name|cache
 expr_stmt|;
 name|build
-argument_list|()
+argument_list|(
+name|home
+argument_list|,
+name|dir
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1005,6 +1040,9 @@ parameter_list|(
 name|File
 name|dir
 parameter_list|,
+name|File
+name|home
+parameter_list|,
 name|int
 name|uploadThreads
 parameter_list|,
@@ -1054,6 +1092,8 @@ operator|new
 name|UploadStagingCache
 argument_list|(
 name|dir
+argument_list|,
+name|home
 argument_list|,
 name|uploadThreads
 argument_list|,
@@ -1180,17 +1220,33 @@ block|{             }
 block|}
 return|;
 block|}
-comment|/**      * Retrieves all the files staged in the staging area and schedules them for uploads.      */
+comment|/**      * Retrieves all the files staged in the staging area and schedules them for uploads.      * @param home the home of the repo      * @param rootPath the parent of the cache      */
 specifier|private
 name|void
 name|build
-parameter_list|()
+parameter_list|(
+name|File
+name|home
+parameter_list|,
+name|File
+name|rootPath
+parameter_list|)
 block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Scheduling pending uploads"
+argument_list|)
+expr_stmt|;
+comment|// Move any older cache pending uploads
+name|movePendingUploadsToStaging
+argument_list|(
+name|home
+argument_list|,
+name|rootPath
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|Iterator
@@ -2325,6 +2381,23 @@ argument_list|)
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|setDownloadCache
+parameter_list|(
+annotation|@
+name|Nullable
+name|FileCache
+name|downloadCache
+parameter_list|)
+block|{
+name|this
+operator|.
+name|downloadCache
+operator|=
+name|downloadCache
 expr_stmt|;
 block|}
 comment|/**      * Class which calls remove on all      */

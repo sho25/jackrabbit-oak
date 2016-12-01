@@ -469,6 +469,19 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|DOWNLOAD_DIR
+init|=
+literal|"download"
+decl_stmt|;
+comment|/**      * Parent of the cache root directory      */
+specifier|private
+name|File
+name|parent
+decl_stmt|;
 comment|/**      * The cacheRoot directory of the cache.      */
 specifier|private
 name|File
@@ -633,6 +646,12 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|parent
+operator|=
+name|root
+expr_stmt|;
+name|this
+operator|.
 name|cacheRoot
 operator|=
 operator|new
@@ -640,7 +659,7 @@ name|File
 argument_list|(
 name|root
 argument_list|,
-literal|"download"
+name|DOWNLOAD_DIR
 argument_list|)
 expr_stmt|;
 comment|/* convert to 4 KB block */
@@ -1471,6 +1490,14 @@ name|count
 init|=
 literal|0
 decl_stmt|;
+comment|// Move older generation cache downloaded files to the new folder
+name|DataStoreCacheUpgradeUtils
+operator|.
+name|moveDownloadCache
+argument_list|(
+name|parent
+argument_list|)
+expr_stmt|;
 comment|// Iterate over all files in the cache folder
 name|Iterator
 argument_list|<
