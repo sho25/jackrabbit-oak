@@ -309,7 +309,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * IndexPaln Attribute name which refers to the name of the fields that should used for facets.      */
+comment|/**      * IndexPaln Attribute name which refers to the name of the fields that should be used for facets.      */
 specifier|public
 specifier|static
 specifier|final

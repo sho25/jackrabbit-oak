@@ -528,6 +528,12 @@ name|PROP_SECURE_FACETS
 init|=
 literal|"secure"
 decl_stmt|;
+comment|/**      * Optional (index definition) property indicating max number of facets that will be retrieved      * in query      * Default is {@link IndexDefinition#DEFAULT_FACET_COUNT}      */
+name|String
+name|PROP_FACETS_TOP_CHILDREN
+init|=
+literal|"topChildren"
+decl_stmt|;
 comment|/**      * Optional (property definition) property indicating whether facets should be created      * for this property      */
 name|String
 name|PROP_FACETS
