@@ -201,9 +201,9 @@ name|FileStoreRevisionRecoveryCommand
 argument_list|()
 argument_list|)
 block|,
-name|DUMPDATASTOREREFS
+name|DATASTORECHECK
 argument_list|(
-literal|"dumpdatastorerefs"
+literal|"datastorecheck"
 argument_list|,
 operator|new
 name|DataStoreCheckCommand
