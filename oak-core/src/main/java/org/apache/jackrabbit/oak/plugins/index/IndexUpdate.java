@@ -778,7 +778,6 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      *<p>      * The value of this flag determines the behavior of the IndexUpdate when      * dealing with {@code reindex} flags.      *</p>      *<p>      * If {@code false} (default value), the indexer will start reindexing      * immediately in the current thread, blocking a commit until this operation      * is done.      *</p>      *<p>      * If {@code true}, the indexer will ignore the flag, therefore ignoring any      * reindex requests.      *</p>      *<p>      * This is only provided as a support tool (see OAK-3505) so it should be      * used with extreme caution!      *</p>      */
-specifier|private
 specifier|static
 specifier|final
 name|boolean
@@ -1242,6 +1241,22 @@ name|getIndexingStats
 argument_list|()
 return|;
 block|}
+specifier|public
+name|void
+name|setIgnoreReindexFlags
+parameter_list|(
+name|boolean
+name|ignoreReindexFlag
+parameter_list|)
+block|{
+name|rootState
+operator|.
+name|setIgnoreReindexFlags
+argument_list|(
+name|ignoreReindexFlag
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 name|boolean
 name|shouldReindex
@@ -1282,7 +1297,9 @@ condition|)
 block|{
 return|return
 operator|!
-name|IGNORE_REINDEX_FLAGS
+name|rootState
+operator|.
+name|ignoreReindexFlags
 return|;
 block|}
 comment|// reindex in the case this is a new node, even though the reindex flag
@@ -2706,6 +2723,12 @@ specifier|final
 name|CommitInfo
 name|commitInfo
 decl_stmt|;
+specifier|private
+name|boolean
+name|ignoreReindexFlags
+init|=
+name|IGNORE_REINDEX_FLAGS
+decl_stmt|;
 comment|/**          * Callback for the update events of the indexing job          */
 specifier|final
 name|IndexUpdateCallback
@@ -3144,6 +3167,20 @@ operator|.
 name|missingProvider
 operator|=
 name|missingProvider
+expr_stmt|;
+block|}
+name|void
+name|setIgnoreReindexFlags
+parameter_list|(
+name|boolean
+name|ignoreReindexFlags
+parameter_list|)
+block|{
+name|this
+operator|.
+name|ignoreReindexFlags
+operator|=
+name|ignoreReindexFlags
 expr_stmt|;
 block|}
 specifier|private
