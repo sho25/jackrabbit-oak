@@ -4366,7 +4366,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Returns update operations to split this document. The implementation may      * decide to not return any operations if no splitting is required. A caller      * must explicitly pass a head revision even though it is available through      * the {@link RevisionContext}. The given head revision must reflect a head      * state before {@code doc} was retrieved from the document store. This is      * important in order to maintain consistency. See OAK-3081 for details.      *      * @param context the revision context.      * @param head    the head revision before this document was retrieved from      *                the document store.      * @param isBinaryValue a predicate that returns {@code true} if the given      *                      String value is considered a binary; {@code false}      *                      otherwise.      * @return the split operations.      */
+comment|/**      * Returns update operations to split this document. The implementation may      * decide to not return any operations if no splitting is required. A caller      * must explicitly pass a head revision even though it is available through      * the {@link RevisionContext}. The given head revision must reflect a head      * state before {@code doc} was retrieved from the document store. This is      * important in order to maintain consistency. See OAK-3081 for details.      *      * @param context the revision context.      * @param head    the head revision before this document was retrieved from      *                the document store.      * @param binarySize a function that returns the binary size of the given      *                   JSON property value String.      * @return the split operations.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -4388,11 +4388,13 @@ name|head
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Predicate
+name|Function
 argument_list|<
 name|String
+argument_list|,
+name|Long
 argument_list|>
-name|isBinaryValue
+name|binarySize
 parameter_list|)
 block|{
 return|return
@@ -4406,7 +4408,7 @@ name|context
 argument_list|,
 name|head
 argument_list|,
-name|isBinaryValue
+name|binarySize
 argument_list|,
 name|NUM_REVS_THRESHOLD
 argument_list|)

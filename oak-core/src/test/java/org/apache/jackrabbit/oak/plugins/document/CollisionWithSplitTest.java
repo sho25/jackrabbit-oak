@@ -43,20 +43,6 @@ begin_import
 import|import
 name|com
 operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Predicates
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
 name|mongodb
 operator|.
 name|DB
@@ -203,17 +189,21 @@ end_import
 
 begin_import
 import|import static
-name|com
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Predicates
+name|plugins
 operator|.
-name|alwaysFalse
+name|document
+operator|.
+name|Collection
+operator|.
+name|NODES
 import|;
 end_import
 
@@ -231,9 +221,9 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|Collection
+name|TestUtils
 operator|.
-name|NODES
+name|NO_BINARY
 import|;
 end_import
 
@@ -586,13 +576,7 @@ operator|.
 name|getHeadRevision
 argument_list|()
 argument_list|,
-name|Predicates
-operator|.
-expr|<
-name|String
-operator|>
-name|alwaysFalse
-argument_list|()
+name|NO_BINARY
 argument_list|,
 name|NUM_NODES
 argument_list|)
