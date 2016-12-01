@@ -1440,7 +1440,7 @@ argument_list|)
 expr_stmt|;
 name|pb
 operator|.
-name|setValues
+name|addValues
 argument_list|(
 name|predecessorIds
 operator|.
@@ -1536,7 +1536,7 @@ argument_list|)
 expr_stmt|;
 name|pb
 operator|.
-name|setValues
+name|addValues
 argument_list|(
 name|successorIds
 operator|.
