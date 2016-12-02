@@ -1951,6 +1951,8 @@ argument_list|,
 name|r2
 argument_list|,
 name|store
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|assertEquals
