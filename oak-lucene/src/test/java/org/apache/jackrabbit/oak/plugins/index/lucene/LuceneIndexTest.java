@@ -7694,7 +7694,7 @@ name|indexPath
 argument_list|,
 name|defn
 operator|.
-name|getIndexPathFromConfig
+name|getIndexPath
 argument_list|()
 argument_list|)
 expr_stmt|;

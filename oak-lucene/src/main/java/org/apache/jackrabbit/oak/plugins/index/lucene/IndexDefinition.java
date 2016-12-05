@@ -3897,7 +3897,7 @@ return|;
 block|}
 specifier|public
 name|String
-name|getIndexPathFromConfig
+name|getIndexPath
 parameter_list|()
 block|{
 return|return

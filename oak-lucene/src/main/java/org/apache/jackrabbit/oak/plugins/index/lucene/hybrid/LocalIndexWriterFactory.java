@@ -246,7 +246,7 @@ name|forUpdate
 argument_list|(
 name|definition
 operator|.
-name|getIndexPathFromConfig
+name|getIndexPath
 argument_list|()
 argument_list|,
 name|path

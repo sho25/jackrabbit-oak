@@ -1113,7 +1113,7 @@ name|indexPath
 init|=
 name|definition
 operator|.
-name|getIndexPathFromConfig
+name|getIndexPath
 argument_list|()
 decl_stmt|;
 name|checkIntegrity
@@ -1202,7 +1202,7 @@ name|indexPath
 init|=
 name|definition
 operator|.
-name|getIndexPathFromConfig
+name|getIndexPath
 argument_list|()
 decl_stmt|;
 name|File

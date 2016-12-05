@@ -823,7 +823,7 @@ block|{
 return|return
 name|definition
 operator|.
-name|getIndexPathFromConfig
+name|getIndexPath
 argument_list|()
 return|;
 block|}
@@ -969,7 +969,7 @@ name|definition
 argument_list|,
 name|definition
 operator|.
-name|getIndexPathFromConfig
+name|getIndexPath
 argument_list|()
 argument_list|,
 name|dirName
