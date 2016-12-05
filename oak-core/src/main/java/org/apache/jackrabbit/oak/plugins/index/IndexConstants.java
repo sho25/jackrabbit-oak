@@ -122,12 +122,6 @@ name|QUERY_PATHS
 init|=
 literal|"queryPaths"
 decl_stmt|;
-comment|/**      * Hidden property which stores the indexPath which can be used by      * IndexEditors      */
-name|String
-name|INDEX_PATH
-init|=
-literal|":indexPath"
-decl_stmt|;
 comment|/**      * Property name for indicating that given index is corrupt and should be excluded      * from further indexing. Its value is the date when this index was marked as      * corrupt      */
 name|String
 name|CORRUPT_PROPERTY_NAME
