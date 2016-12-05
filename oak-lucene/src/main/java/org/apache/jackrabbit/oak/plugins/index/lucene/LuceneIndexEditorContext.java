@@ -743,6 +743,11 @@ operator|.
 name|updateDefinition
 argument_list|(
 name|definition
+argument_list|,
+name|indexingContext
+operator|.
+name|getIndexPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

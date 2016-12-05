@@ -1200,17 +1200,6 @@ name|String
 name|indexPath
 parameter_list|)
 block|{
-name|builder
-operator|.
-name|setProperty
-argument_list|(
-name|IndexConstants
-operator|.
-name|INDEX_PATH
-argument_list|,
-name|indexPath
-argument_list|)
-expr_stmt|;
 name|TestUtil
 operator|.
 name|enableIndexingMode
@@ -1233,7 +1222,7 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|,
-literal|"/foo"
+name|indexPath
 argument_list|)
 return|;
 block|}

@@ -3612,17 +3612,6 @@ name|TYPENAME_STRING
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|nb
-operator|.
-name|setProperty
-argument_list|(
-name|IndexConstants
-operator|.
-name|INDEX_PATH
-argument_list|,
-literal|"foo"
-argument_list|)
-expr_stmt|;
 name|IndexUtils
 operator|.
 name|createIndexDefinition
