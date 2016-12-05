@@ -3565,6 +3565,9 @@ argument_list|(
 name|root
 argument_list|,
 name|idx
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3581,6 +3584,9 @@ argument_list|(
 name|root
 argument_list|,
 name|idx
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;

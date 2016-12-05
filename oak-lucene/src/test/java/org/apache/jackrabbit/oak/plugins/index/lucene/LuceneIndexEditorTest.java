@@ -3992,6 +3992,9 @@ argument_list|(
 name|root
 argument_list|,
 name|defnBuilder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 argument_list|,
 literal|true
