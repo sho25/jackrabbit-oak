@@ -62,6 +62,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -89,6 +109,21 @@ name|PathRev
 implements|implements
 name|CacheValue
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|PathRev
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|String
@@ -148,10 +183,15 @@ name|int
 name|getMemory
 parameter_list|()
 block|{
-return|return
+name|long
+name|size
+init|=
 literal|24
 comment|// shallow size
 operator|+
+operator|(
+name|long
+operator|)
 name|StringUtils
 operator|.
 name|estimateMemoryUsage
@@ -164,8 +204,39 @@ name|revision
 operator|.
 name|getMemory
 argument_list|()
-return|;
+decl_stmt|;
 comment|// revision
+if|if
+condition|(
+name|size
+operator|>
+name|Integer
+operator|.
+name|MAX_VALUE
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Estimated memory footprint larger than Integer.MAX_VALUE: {}."
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+name|size
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+expr_stmt|;
+block|}
+return|return
+operator|(
+name|int
+operator|)
+name|size
+return|;
 block|}
 comment|//----------------------------< Object>------------------------------------
 annotation|@

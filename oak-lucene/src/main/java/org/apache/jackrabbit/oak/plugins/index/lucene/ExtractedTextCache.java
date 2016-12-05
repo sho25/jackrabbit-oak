@@ -244,6 +244,7 @@ init|=
 literal|""
 decl_stmt|;
 specifier|private
+specifier|static
 specifier|final
 name|Logger
 name|log
@@ -252,8 +253,9 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|getClass
-argument_list|()
+name|ExtractedTextCache
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -894,7 +896,7 @@ parameter_list|()
 block|{         }
 specifier|private
 specifier|static
-name|int
+name|long
 name|getMemory
 parameter_list|(
 annotation|@
@@ -909,6 +911,9 @@ comment|// shallow size
 operator|+
 literal|40
 operator|+
+operator|(
+name|long
+operator|)
 name|s
 operator|.
 name|length
@@ -931,7 +936,7 @@ name|String
 name|value
 parameter_list|)
 block|{
-name|int
+name|long
 name|size
 init|=
 literal|168
@@ -953,7 +958,35 @@ name|value
 argument_list|)
 expr_stmt|;
 comment|// value
+if|if
+condition|(
+name|size
+operator|>
+name|Integer
+operator|.
+name|MAX_VALUE
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Calculated weight larger than Integer.MAX_VALUE: {}."
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+name|size
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+expr_stmt|;
+block|}
 return|return
+operator|(
+name|int
+operator|)
 name|size
 return|;
 block|}

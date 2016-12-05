@@ -724,7 +724,7 @@ return|return
 literal|0
 return|;
 block|}
-name|int
+name|long
 name|size
 init|=
 literal|0
@@ -857,6 +857,9 @@ name|size
 operator|+=
 literal|8
 operator|+
+operator|(
+name|long
+operator|)
 name|estimateMemoryUsage
 argument_list|(
 operator|(
@@ -903,6 +906,9 @@ expr_stmt|;
 comment|// 64 bytes per entry
 name|size
 operator|+=
+operator|(
+name|long
+operator|)
 name|map
 operator|.
 name|size
@@ -910,7 +916,35 @@ argument_list|()
 operator|*
 literal|64
 expr_stmt|;
+if|if
+condition|(
+name|size
+operator|>
+name|Integer
+operator|.
+name|MAX_VALUE
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Estimated memory footprint larger than Integer.MAX_VALUE: {}."
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+name|size
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+expr_stmt|;
+block|}
 return|return
+operator|(
+name|int
+operator|)
 name|size
 return|;
 block|}
