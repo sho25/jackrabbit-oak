@@ -35,6 +35,24 @@ name|checkArgument
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|GCNodeWriteMonitor
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class holds configuration options for segment store revision gc.  */
 end_comment
@@ -97,6 +115,16 @@ name|long
 name|SIZE_DELTA_ESTIMATION_DEFAULT
 init|=
 literal|10737418240L
+decl_stmt|;
+comment|/**      * Default value for the gc progress log      */
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|GC_PROGRESS_LOG_DEFAULT
+init|=
+operator|-
+literal|1
 decl_stmt|;
 comment|/**      * Default value for {@link #getMemoryThreshold()}      */
 specifier|public
@@ -190,6 +218,15 @@ literal|"oak.segment.compaction.gcSizeDeltaEstimation"
 argument_list|,
 name|SIZE_DELTA_ESTIMATION_DEFAULT
 argument_list|)
+decl_stmt|;
+comment|/**      * Responsible for monitoring progress of the online compaction, and      * providing progress tracking.      */
+specifier|private
+name|GCNodeWriteMonitor
+name|gcNodeWriteMonitor
+init|=
+name|GCNodeWriteMonitor
+operator|.
+name|EMPTY
 decl_stmt|;
 specifier|public
 name|SegmentGCOptions
@@ -650,6 +687,38 @@ name|disabled
 expr_stmt|;
 return|return
 name|this
+return|;
+block|}
+comment|/**      * Enables the GcWriteMonitor with the given params.      * @param gcProgressLog      *            Enables compaction progress logging at each set of compacted nodes, disabled if set to      *            {@code -1}      * @return this instance      */
+specifier|public
+name|SegmentGCOptions
+name|withGCNodeWriteMonitor
+parameter_list|(
+name|long
+name|gcProgressLog
+parameter_list|)
+block|{
+name|this
+operator|.
+name|gcNodeWriteMonitor
+operator|=
+operator|new
+name|GCNodeWriteMonitor
+argument_list|(
+name|gcProgressLog
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+specifier|public
+name|GCNodeWriteMonitor
+name|getGCNodeWriteMonitor
+parameter_list|()
+block|{
+return|return
+name|gcNodeWriteMonitor
 return|;
 block|}
 block|}

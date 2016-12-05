@@ -214,6 +214,41 @@ name|int
 name|memoryThreshold
 parameter_list|)
 function_decl|;
+comment|/**      * @return {@code true} if there is an online compaction cycle running      */
+name|boolean
+name|isRevisionGCRunning
+parameter_list|()
+function_decl|;
+comment|/**      * @return number of compacted nodes in the current cycle      */
+name|long
+name|getCompactedNodes
+parameter_list|()
+function_decl|;
+comment|/**      * @return number of estimated nodes to be compacted in the current cycle.      *         Can be {@code -1} if the estimation can't be performed      */
+name|long
+name|getEstimatedCompactableNodes
+parameter_list|()
+function_decl|;
+comment|/**      * @return percentage of progress for the current compaction cycle. Can be      *         {@code -1} if the estimation can't be performed.      */
+name|int
+name|getEstimatedRevisionGCCompletion
+parameter_list|()
+function_decl|;
+comment|/**      * @return Number of nodes the monitor will log a message, {@code -1} means disabled      */
+specifier|public
+name|long
+name|getRevisionGCProgressLog
+parameter_list|()
+function_decl|;
+comment|/**      * Set the size of the logging interval, {@code -1} means disabled      * @param logCycle      *            number of nodes      */
+specifier|public
+name|void
+name|setRevisionGCProgressLog
+parameter_list|(
+name|long
+name|gcProgressLog
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
