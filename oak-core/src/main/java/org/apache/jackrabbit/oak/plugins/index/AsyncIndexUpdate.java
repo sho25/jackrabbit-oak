@@ -1163,22 +1163,6 @@ specifier|private
 specifier|static
 specifier|final
 name|CommitFailedException
-name|CONCURRENT_UPDATE
-init|=
-operator|new
-name|CommitFailedException
-argument_list|(
-literal|"Async"
-argument_list|,
-literal|1
-argument_list|,
-literal|"Concurrent update detected"
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|CommitFailedException
 name|INTERRUPTED
 init|=
 operator|new
@@ -1780,7 +1764,8 @@ name|now
 condition|)
 block|{
 throw|throw
-name|CONCURRENT_UPDATE
+name|newConcurrentUpdateException
+argument_list|()
 throw|;
 block|}
 name|NodeBuilder
@@ -2666,7 +2651,8 @@ name|Exception
 argument_list|(
 name|err
 argument_list|,
-name|CONCURRENT_UPDATE
+name|newConcurrentUpdateException
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4340,7 +4326,8 @@ block|}
 else|else
 block|{
 throw|throw
-name|CONCURRENT_UPDATE
+name|newConcurrentUpdateException
+argument_list|()
 throw|;
 block|}
 block|}
@@ -4447,7 +4434,8 @@ literal|1
 condition|)
 block|{
 throw|throw
-name|CONCURRENT_UPDATE
+name|newConcurrentUpdateException
+argument_list|()
 throw|;
 block|}
 else|else
@@ -6994,6 +6982,24 @@ parameter_list|()
 block|{
 return|return
 name|name
+return|;
+block|}
+specifier|private
+specifier|static
+name|CommitFailedException
+name|newConcurrentUpdateException
+parameter_list|()
+block|{
+return|return
+operator|new
+name|CommitFailedException
+argument_list|(
+literal|"Async"
+argument_list|,
+literal|1
+argument_list|,
+literal|"Concurrent update detected"
+argument_list|)
 return|;
 block|}
 block|}
