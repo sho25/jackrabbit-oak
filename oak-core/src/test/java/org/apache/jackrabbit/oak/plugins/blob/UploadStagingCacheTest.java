@@ -35,16 +35,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -2369,17 +2359,17 @@ literal|0
 argument_list|)
 decl_stmt|;
 specifier|final
-name|FileInputStream
+name|InputStream
 name|fStream
 init|=
 name|Files
 operator|.
-name|newInputStreamSupplier
+name|asByteSource
 argument_list|(
 name|file
 argument_list|)
 operator|.
-name|getInput
+name|openStream
 argument_list|()
 decl_stmt|;
 comment|// task to copy the steam to a file simulating read from the stream

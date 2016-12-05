@@ -1382,12 +1382,12 @@ name|is
 operator|=
 name|Files
 operator|.
-name|newInputStreamSupplier
+name|asByteSource
 argument_list|(
 name|configFile
 argument_list|)
 operator|.
-name|getInput
+name|openStream
 argument_list|()
 expr_stmt|;
 name|props

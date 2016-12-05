@@ -66,6 +66,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|IOUtils
+operator|.
+name|closeQuietly
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -92,20 +110,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|io
-operator|.
-name|Closeables
 import|;
 end_import
 
@@ -428,8 +432,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Closeables
-operator|.
 name|closeQuietly
 argument_list|(
 name|subscription
