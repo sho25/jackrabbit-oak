@@ -569,16 +569,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -929,6 +919,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -1144,6 +1136,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -1338,6 +1332,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|CollectingExecutor
@@ -1443,6 +1439,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -1641,6 +1639,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -1762,6 +1762,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -1885,6 +1887,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 comment|//Close old version
@@ -2012,6 +2016,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|CollectingExecutor
@@ -2232,6 +2238,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -2629,6 +2637,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -2827,6 +2837,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|RAMIndexCopier
@@ -2976,6 +2988,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -3227,6 +3241,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -3548,6 +3564,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -3711,6 +3729,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Directory
@@ -3823,6 +3843,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Directory
@@ -3974,6 +3996,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -4282,6 +4306,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -4588,6 +4614,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -4828,6 +4856,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -5153,6 +5183,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -5478,6 +5510,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -5668,6 +5702,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -6012,6 +6048,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -6298,6 +6336,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexCopier

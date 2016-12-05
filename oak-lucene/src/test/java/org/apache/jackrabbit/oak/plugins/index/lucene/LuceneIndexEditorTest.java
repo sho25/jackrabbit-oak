@@ -1378,6 +1378,8 @@ name|idxnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|NodeState
@@ -1827,6 +1829,8 @@ name|nb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|NodeState
@@ -3336,6 +3340,8 @@ name|getChildNode
 argument_list|(
 literal|"lucene"
 argument_list|)
+argument_list|,
+literal|"/foo"
 argument_list|)
 operator|.
 name|getVersion
@@ -3420,6 +3426,8 @@ name|getChildNode
 argument_list|(
 literal|"lucene"
 argument_list|)
+argument_list|,
+literal|"/foo"
 argument_list|)
 operator|.
 name|getVersion
@@ -3500,6 +3508,8 @@ name|getChildNode
 argument_list|(
 literal|"lucene"
 argument_list|)
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -3995,6 +4005,8 @@ name|defnBuilder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|,
 literal|true

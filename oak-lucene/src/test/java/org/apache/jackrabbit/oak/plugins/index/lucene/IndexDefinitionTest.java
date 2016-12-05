@@ -810,6 +810,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -850,6 +852,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -1011,6 +1015,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -1178,6 +1184,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -1272,6 +1280,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -1343,6 +1353,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -1391,6 +1403,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertNull
@@ -1434,6 +1448,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -1564,6 +1580,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -1736,6 +1754,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertNull
@@ -1896,6 +1916,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertNull
@@ -2003,6 +2025,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -2096,6 +2120,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -2215,6 +2241,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertNull
@@ -2349,6 +2377,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -2481,6 +2511,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 comment|//As nt:base is defined earlier it would supercede everything
@@ -2625,6 +2657,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -2801,6 +2835,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -3013,6 +3049,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -3130,6 +3168,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|rule1
@@ -3256,6 +3296,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -3404,6 +3446,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -3506,6 +3550,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -3587,6 +3633,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -3640,6 +3688,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -3696,6 +3746,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -3769,6 +3821,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -3834,6 +3888,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -3872,6 +3928,8 @@ name|updated
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -3976,6 +4034,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -4014,6 +4074,8 @@ name|updated
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -4098,6 +4160,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -4157,6 +4221,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -4211,6 +4277,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -4302,6 +4370,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -4382,6 +4452,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -4439,6 +4511,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -4548,6 +4622,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -4613,6 +4689,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -4669,6 +4747,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -4721,6 +4801,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -4767,6 +4849,8 @@ name|defnb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -4829,6 +4913,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 block|}
@@ -4925,6 +5011,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 block|}
@@ -4996,6 +5084,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5086,6 +5176,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5141,6 +5233,8 @@ name|indexRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -5196,6 +5290,8 @@ name|indexRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -5242,6 +5338,8 @@ name|indexRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -5294,6 +5392,8 @@ name|indexRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -5337,6 +5437,8 @@ name|indexRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -5390,6 +5492,8 @@ name|indexRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertFalse
@@ -5434,6 +5538,8 @@ name|indexRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -5484,6 +5590,8 @@ name|indexRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -5565,6 +5673,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5662,6 +5772,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5732,6 +5844,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -5862,6 +5976,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -6015,6 +6131,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -6075,6 +6193,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|rule
@@ -6174,6 +6294,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -6234,6 +6356,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|rule
@@ -6371,6 +6495,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -6548,6 +6674,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexingRule
@@ -6678,6 +6806,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -6714,6 +6844,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -6750,6 +6882,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertNull
@@ -6804,29 +6938,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|uid
 argument_list|,
-name|defn
-operator|.
-name|getUniqueId
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|//Assert via NodeBuilder
-name|defn
-operator|=
-operator|new
-name|IndexDefinition
-argument_list|(
-name|root
-argument_list|,
-name|EMPTY_NODE
-argument_list|,
-name|builder
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -6872,6 +6985,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -6915,6 +7030,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertFalse

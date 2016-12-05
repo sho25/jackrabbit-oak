@@ -776,6 +776,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|,
 name|readOnly

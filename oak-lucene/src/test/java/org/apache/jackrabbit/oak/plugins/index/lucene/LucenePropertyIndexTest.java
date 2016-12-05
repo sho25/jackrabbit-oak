@@ -16856,6 +16856,8 @@ argument_list|(
 name|INITIAL_CONTENT
 argument_list|,
 name|idxState
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 comment|//Check that with normal indexing uid gets initialized
@@ -16918,6 +16920,8 @@ argument_list|(
 name|INITIAL_CONTENT
 argument_list|,
 name|idxState
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 comment|//Check that uid is also initialized in reindexing

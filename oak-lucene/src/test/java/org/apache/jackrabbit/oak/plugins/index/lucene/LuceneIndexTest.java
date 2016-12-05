@@ -841,16 +841,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -3568,6 +3558,8 @@ name|idx
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3587,6 +3579,8 @@ name|idx
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -6639,6 +6633,8 @@ name|defnState
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 comment|//1. Create index in two increments
@@ -6870,6 +6866,8 @@ name|defnState
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertQuery
@@ -7652,6 +7650,11 @@ operator|.
 name|EMPTY
 argument_list|)
 decl_stmt|;
+name|String
+name|indexPath
+init|=
+literal|"/oak:index/lucene"
+decl_stmt|;
 name|IndexDefinition
 name|defn
 init|=
@@ -7671,11 +7674,13 @@ name|getChildNode
 argument_list|(
 literal|"lucene"
 argument_list|)
+argument_list|,
+name|indexPath
 argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/oak:index/lucene"
+name|indexPath
 argument_list|,
 name|defn
 operator|.
@@ -7685,7 +7690,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/oak:index/lucene"
+name|indexPath
 argument_list|,
 name|defn
 operator|.

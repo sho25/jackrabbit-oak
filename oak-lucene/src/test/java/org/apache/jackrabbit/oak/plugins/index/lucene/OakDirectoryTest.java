@@ -788,6 +788,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertWrites
@@ -828,6 +830,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|assertWrites
@@ -868,6 +872,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|byte
@@ -985,6 +991,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|NodeBuilder
@@ -1151,6 +1159,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Set
@@ -1211,6 +1221,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|true
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1255,6 +1267,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Set
@@ -1322,6 +1336,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 expr_stmt|;
 name|Set
@@ -1642,6 +1658,9 @@ name|builder
 parameter_list|,
 name|boolean
 name|readOnly
+parameter_list|,
+name|String
+name|indexPath
 parameter_list|)
 block|{
 return|return
@@ -1659,6 +1678,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+name|indexPath
 argument_list|)
 argument_list|,
 name|readOnly
@@ -1711,6 +1732,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|NodeBuilder
@@ -1841,6 +1864,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|NodeBuilder
@@ -2362,6 +2387,8 @@ argument_list|,
 name|EmptyNodeState
 operator|.
 name|EMPTY_NODE
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Directory
@@ -2478,6 +2505,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+name|indexPath
 argument_list|)
 decl_stmt|;
 try|try
@@ -2756,6 +2785,8 @@ argument_list|(
 name|builder
 argument_list|,
 literal|false
+argument_list|,
+name|indexPath
 argument_list|)
 decl_stmt|;
 name|blobStore
@@ -2951,6 +2982,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|,
 literal|true

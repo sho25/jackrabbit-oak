@@ -2807,6 +2807,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Aggregate
@@ -2974,6 +2976,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Aggregate
@@ -3154,6 +3158,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Aggregate
@@ -3287,6 +3293,8 @@ name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|Aggregate

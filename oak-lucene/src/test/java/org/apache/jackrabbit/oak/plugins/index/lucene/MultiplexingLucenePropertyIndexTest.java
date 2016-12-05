@@ -1353,6 +1353,8 @@ name|defnBuilder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 comment|//1. Have 2 reader created by writes in 2 diff mounts

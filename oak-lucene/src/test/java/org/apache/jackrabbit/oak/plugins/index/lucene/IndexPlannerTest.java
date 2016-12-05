@@ -1122,6 +1122,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1225,6 +1227,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1314,6 +1318,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1428,6 +1434,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1601,6 +1609,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1700,6 +1710,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1799,6 +1811,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1935,6 +1949,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2076,6 +2092,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2235,6 +2253,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2365,6 +2385,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2467,6 +2489,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2595,6 +2619,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2740,6 +2766,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2864,6 +2892,8 @@ name|nb
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2966,6 +2996,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexNode
@@ -3146,6 +3178,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|,
 name|numofDocs
@@ -3312,6 +3346,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|,
 name|numofDocs
@@ -3426,6 +3462,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3588,6 +3626,8 @@ name|getChildNode
 argument_list|(
 literal|"test"
 argument_list|)
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 name|IndexNode
@@ -3753,6 +3793,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3888,6 +3930,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4000,6 +4044,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4159,6 +4205,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4324,6 +4372,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5889,6 +5939,8 @@ argument_list|(
 name|root
 argument_list|,
 name|defn
+argument_list|,
+literal|"/foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -6055,6 +6107,8 @@ name|defn
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|"/foo"
 argument_list|)
 decl_stmt|;
 return|return
