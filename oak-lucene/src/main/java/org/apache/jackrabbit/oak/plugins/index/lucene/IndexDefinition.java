@@ -941,26 +941,6 @@ name|index
 operator|.
 name|IndexConstants
 operator|.
-name|INDEX_PATH
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|IndexConstants
-operator|.
 name|REINDEX_COUNT
 import|;
 end_import
