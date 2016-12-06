@@ -640,11 +640,6 @@ name|boolean
 name|asyncIndexing
 parameter_list|)
 block|{
-name|configureUniqueId
-argument_list|(
-name|definition
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|root

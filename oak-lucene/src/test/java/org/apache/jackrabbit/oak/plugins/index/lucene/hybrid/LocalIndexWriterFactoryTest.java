@@ -527,13 +527,13 @@ argument_list|)
 expr_stmt|;
 comment|//This is reindex case so nothing would be indexed
 comment|//So now holder should be present in context
-name|assertNull
+name|assertNotNull
 argument_list|(
 name|getHolder
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertNotNull
 argument_list|(
 name|getCommitAttribute
 argument_list|(
