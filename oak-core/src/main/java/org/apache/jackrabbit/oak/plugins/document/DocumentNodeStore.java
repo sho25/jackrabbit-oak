@@ -11398,9 +11398,15 @@ name|Utils
 operator|.
 name|getMinTimestampForDiff
 argument_list|(
-name|fromRev
+name|from
+operator|.
+name|getRootRevision
+argument_list|()
 argument_list|,
-name|toRev
+name|to
+operator|.
+name|getRootRevision
+argument_list|()
 argument_list|,
 name|getMinExternalRevisions
 argument_list|()
