@@ -991,6 +991,22 @@ argument_list|(
 name|newNs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|context
+operator|==
+literal|null
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"bindNodeStore: context is null, delaying reconfiguration"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|unregisterMultiplexingNodeStore
 argument_list|()
 expr_stmt|;
@@ -1044,6 +1060,22 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|context
+operator|==
+literal|null
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"unbindNodeStore: context is null, delaying reconfiguration"
+argument_list|)
+expr_stmt|;
+return|return;
 block|}
 name|unregisterMultiplexingNodeStore
 argument_list|()
