@@ -2171,7 +2171,10 @@ name|PropertyState
 argument_list|>
 name|entry
 range|:
-name|properties
+name|bundlingContext
+operator|.
+name|getAllProperties
+argument_list|()
 operator|.
 name|entrySet
 argument_list|()
