@@ -405,9 +405,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|writer
-operator|.
-name|MultiplexingIndexWriterTest
+name|TestUtil
 operator|.
 name|newDoc
 import|;
