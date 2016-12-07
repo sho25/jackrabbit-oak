@@ -166,6 +166,33 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Retrieves the fields, and number of documents for each field, for an index. "
+operator|+
+literal|"This allows to investigate what is stored in the index."
+argument_list|)
+name|String
+index|[]
+name|getFieldInfo
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"indexPath"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"The index path (empty for all indexes)"
+argument_list|)
+name|String
+name|indexPath
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 
