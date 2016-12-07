@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -527,22 +543,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * RepositoryFactory which constructs an instance of Oak repository. Thi factory supports following  * parameters  *  *<dl>  *<dt>org.osgi.framework.BundleActivator</dt>  *<dd>(Optional) BundleActivator instance which would be notified about the startup and shutdown</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.config</dt>  *<dd>(Optional) Config key which refers to the map of config where key in that map refers to OSGi config</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.configFile</dt>  *<dd>  *          Comma separated list of file names which referred to config stored in form of JSON. The  *          JSON content consist of pid as the key and config map as the value  *</dd>  *  *<dt>org.apache.jackrabbit.repository.home</dt>  *<dd>Used to specify the absolute path of the repository home directory</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.bundleFilter</dt>  *<dd>Used to specify the bundle filter string which is passed to ClasspathScanner</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.timeoutInSecs</dt>  *<dd>Timeout in seconds for the repository startup/shutdown should wait. Defaults to 10 minutes</dd>  *  *<dt>org.apache.jackrabbit.oak.repository.shutDownOnTimeout</dt>  *<dd>Boolean flag to determine if the OSGi container should be shutdown upon timeout. Defaults to false</dd>  *</dl>  */
 end_comment
@@ -634,6 +634,8 @@ specifier|final
 name|String
 name|REPOSITORY_BUNDLE_FILTER_DEFAULT
 init|=
+literal|"(&"
+operator|+
 literal|"(|"
 operator|+
 literal|"(Bundle-SymbolicName=org.apache.jackrabbit*)"
@@ -645,6 +647,10 @@ operator|+
 literal|"(Bundle-SymbolicName=org.apache.aries*)"
 operator|+
 literal|"(Bundle-SymbolicName=groovy-all)"
+operator|+
+literal|")"
+operator|+
+literal|"(!(Bundle-SymbolicName=org.apache.jackrabbit.oak-segment-tar))"
 operator|+
 literal|")"
 decl_stmt|;
