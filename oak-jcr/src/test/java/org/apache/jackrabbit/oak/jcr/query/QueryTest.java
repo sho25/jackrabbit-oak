@@ -5348,20 +5348,79 @@ argument_list|)
 expr_stmt|;
 name|xpath
 operator|=
-literal|"/jcr:root//element(*,oak:Unstructured)[xyz/@jcr:primaryType]"
+literal|"/jcr:root//element(*,oak:Unstructured)[xyz/@jcr:primaryType] option(traversal fail)"
 expr_stmt|;
-name|assertPlan
-argument_list|(
+comment|// the plan might still use traversal, so we can't just check the plan;
+comment|// but using "option(traversal fail)" we have ensured that there is an index
+comment|// (the nodetype index) that can serve this query
 name|getPlan
 argument_list|(
 name|session
 argument_list|,
 name|xpath
 argument_list|)
+expr_stmt|;
+comment|// and without the node type index, it is supposed to fail
+name|Node
+name|nodeTypeIndex
+init|=
+name|session
+operator|.
+name|getRootNode
+argument_list|()
+operator|.
+name|getNode
+argument_list|(
+literal|"oak:index"
+argument_list|)
+operator|.
+name|getNode
+argument_list|(
+literal|"nodetype"
+argument_list|)
+decl_stmt|;
+name|nodeTypeIndex
+operator|.
+name|setProperty
+argument_list|(
+literal|"declaringNodeTypes"
 argument_list|,
-literal|"[oak:Unstructured] as [a] /* nodeType "
+operator|new
+name|String
+index|[]
+block|{             }
+argument_list|,
+name|PropertyType
+operator|.
+name|NAME
 argument_list|)
 expr_stmt|;
+name|session
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+name|getPlan
+argument_list|(
+name|session
+argument_list|,
+name|xpath
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InvalidQueryException
+name|e
+parameter_list|)
+block|{
+comment|// expected
+block|}
 name|session
 operator|.
 name|logout
