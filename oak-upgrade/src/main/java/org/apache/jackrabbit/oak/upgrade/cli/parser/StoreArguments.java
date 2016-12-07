@@ -354,6 +354,8 @@ init|=
 name|createStoreDescriptors
 argument_list|(
 name|arguments
+argument_list|,
+name|options
 argument_list|)
 decl_stmt|;
 name|src
@@ -618,6 +620,9 @@ argument_list|<
 name|String
 argument_list|>
 name|arguments
+parameter_list|,
+name|MigrationOptions
+name|options
 parameter_list|)
 throws|throws
 name|CliArgumentException
@@ -646,6 +651,8 @@ expr_stmt|;
 name|validateDescriptors
 argument_list|(
 name|descriptors
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 return|return
@@ -1098,6 +1105,9 @@ argument_list|<
 name|StoreDescriptor
 argument_list|>
 name|descriptors
+parameter_list|,
+name|MigrationOptions
+name|options
 parameter_list|)
 throws|throws
 name|CliArgumentException
@@ -1230,6 +1240,33 @@ operator|new
 name|CliArgumentException
 argument_list|(
 literal|"The source and the destination is the same repository."
+argument_list|,
+literal|1
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|src
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|StoreType
+operator|.
+name|JCR2_DIR_XML
+operator|&&
+name|options
+operator|.
+name|isSrcBlobStoreDefined
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|CliArgumentException
+argument_list|(
+literal|"The --src-datastore can't be used for the repository upgrade. Source datastore configuration is placed in the repository.xml file."
 argument_list|,
 literal|1
 argument_list|)
