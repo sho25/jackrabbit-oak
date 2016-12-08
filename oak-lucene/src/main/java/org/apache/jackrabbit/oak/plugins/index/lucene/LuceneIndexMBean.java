@@ -210,6 +210,25 @@ name|String
 name|indexPath
 parameter_list|)
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Returns the diff of index definition for index at given path from the stored index definition in "
+operator|+
+literal|"string form"
+argument_list|)
+name|String
+name|diffStoredIndexDefinition
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"indexPath"
+argument_list|)
+name|String
+name|indexPath
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
