@@ -1108,10 +1108,7 @@ argument_list|(
 name|root
 argument_list|,
 name|defnState
-argument_list|)
-operator|.
-name|indexPath
-argument_list|(
+argument_list|,
 name|indexingContext
 operator|.
 name|getIndexPath
