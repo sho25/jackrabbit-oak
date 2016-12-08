@@ -1321,6 +1321,14 @@ return|return
 name|badIndexTracker
 return|;
 block|}
+name|NodeState
+name|getRoot
+parameter_list|()
+block|{
+return|return
+name|root
+return|;
+block|}
 specifier|private
 specifier|synchronized
 name|IndexNode

@@ -193,6 +193,23 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Returns the stored index definition for index at given path in string form"
+argument_list|)
+name|String
+name|getStoredIndexDefinition
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"indexPath"
+argument_list|)
+name|String
+name|indexPath
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
