@@ -1069,7 +1069,8 @@ condition|(
 operator|!
 name|IndexDefinition
 operator|.
-name|DISABLE_STORED_INDEX_DEFINITION
+name|isDisableStoredIndexDefinition
+argument_list|()
 condition|)
 block|{
 name|definitionBuilder
@@ -1455,6 +1456,12 @@ decl_stmt|;
 if|if
 condition|(
 name|asyncIndexing
+operator|&&
+operator|!
+name|IndexDefinition
+operator|.
+name|isDisableStoredIndexDefinition
+argument_list|()
 condition|)
 block|{
 if|if
