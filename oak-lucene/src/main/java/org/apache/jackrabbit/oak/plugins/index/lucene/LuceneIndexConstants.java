@@ -552,6 +552,12 @@ name|PROP_FUNCTION
 init|=
 literal|"function"
 decl_stmt|;
+comment|/**      * Boolean property which signal LuceneIndexEditor to refresh the stored index definition      */
+name|String
+name|PROP_REFRESH_DEFN
+init|=
+literal|"refresh"
+decl_stmt|;
 block|}
 end_interface
 
