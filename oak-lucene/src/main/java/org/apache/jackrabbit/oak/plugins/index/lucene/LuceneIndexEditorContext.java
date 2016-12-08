@@ -720,6 +720,8 @@ argument_list|,
 name|definition
 argument_list|,
 name|indexingContext
+argument_list|,
+name|asyncIndexing
 argument_list|)
 expr_stmt|;
 name|this
@@ -1448,6 +1450,9 @@ name|definition
 parameter_list|,
 name|IndexingContext
 name|indexingContext
+parameter_list|,
+name|boolean
+name|asyncIndexing
 parameter_list|)
 block|{
 name|NodeState
@@ -1468,6 +1473,8 @@ name|LuceneIndexConstants
 operator|.
 name|PROP_REFRESH_DEFN
 argument_list|)
+operator|&&
+name|asyncIndexing
 condition|)
 block|{
 name|definition
