@@ -687,12 +687,21 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
-comment|//Create a hidden node to indicate that its not a fresh index
+name|NodeBuilder
+name|rootBuilder
+init|=
+name|root
+operator|.
 name|builder
+argument_list|()
+decl_stmt|;
+name|rootBuilder
 operator|.
 name|child
 argument_list|(
-literal|":status"
+name|IndexNode
+operator|.
+name|ASYNC
 argument_list|)
 expr_stmt|;
 name|assertNull
@@ -703,7 +712,10 @@ name|open
 argument_list|(
 literal|"/foo"
 argument_list|,
-name|root
+name|rootBuilder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|,
 name|builder
 operator|.
