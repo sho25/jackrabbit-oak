@@ -1105,6 +1105,37 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|DISABLE_STORED_INDEX_DEFINITION
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.lucene.disableStoredIndexDefinition"
+argument_list|)
+decl_stmt|;
+static|static
+block|{
+if|if
+condition|(
+name|DISABLE_STORED_INDEX_DEFINITION
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Feature to ensure that index definition match the index state is set to be disabled. Change in "
+operator|+
+literal|"index definition would now effect query plans and might lead to inconsistent results"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Default number of seconds after which to delete actively. Default is -1, meaning disabled.      * The plan is to use 3600 (1 hour) in the future.      */
 specifier|static
 specifier|final
@@ -8133,6 +8164,15 @@ name|NodeState
 name|defn
 parameter_list|)
 block|{
+if|if
+condition|(
+name|DISABLE_STORED_INDEX_DEFINITION
+condition|)
+block|{
+return|return
+name|defn
+return|;
+block|}
 name|NodeState
 name|storedState
 init|=
