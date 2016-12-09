@@ -885,6 +885,40 @@ name|getIndexPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|indexDefinition
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|indexDefinition
+operator|.
+name|hasMatchingNodeTypeReg
+argument_list|(
+name|root
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Detected change in NodeType registry for index {}. Would not use "
+operator|+
+literal|"existing index definition"
+argument_list|,
+name|indexDefinition
+operator|.
+name|getIndexPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|indexDefinition
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 comment|//Pass on a read only builder to ensure that nothing gets written
 comment|//at all to NodeStore for local indexing.
