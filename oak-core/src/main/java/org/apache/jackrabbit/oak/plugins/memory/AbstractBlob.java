@@ -230,8 +230,9 @@ operator|.
 name|getContentIdentity
 argument_list|()
 decl_stmt|;
-comment|//Check for identity first. If they are same then its
-comment|//definitely same blob. If not we need to check further.
+comment|//Check for identities not null. If not null then the identity check suffices to confirm
+comment|// whether they are same blob or not as the identity is a content hash.
+comment|// If any of the identities is null we need to check further.
 if|if
 condition|(
 name|ai
@@ -241,17 +242,15 @@ operator|&&
 name|bi
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+return|return
 name|ai
 operator|.
 name|equals
 argument_list|(
 name|bi
 argument_list|)
-condition|)
-block|{
-return|return
-literal|true
 return|;
 block|}
 try|try
