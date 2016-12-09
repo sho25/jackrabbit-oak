@@ -107,14 +107,18 @@ name|RETAINED_GENERATIONS_DEFAULT
 init|=
 literal|2
 decl_stmt|;
-comment|/**      * Default value for {@link #getGcSizeDeltaEstimation()} set to 10GB      */
+comment|/**      * Default value for {@link #getGcSizeDeltaEstimation()}.      */
 specifier|public
 specifier|static
 specifier|final
 name|long
 name|SIZE_DELTA_ESTIMATION_DEFAULT
 init|=
-literal|10737418240L
+literal|1024L
+operator|*
+literal|1024L
+operator|*
+literal|1024L
 decl_stmt|;
 comment|/**      * Default value for the gc progress log      */
 specifier|public
