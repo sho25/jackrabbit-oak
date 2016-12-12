@@ -2858,6 +2858,40 @@ decl_stmt|;
 if|if
 condition|(
 name|matchingRule
+operator|==
+literal|null
+operator|&&
+name|rule
+operator|.
+name|getNodeTypeName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|filter
+operator|.
+name|getNodeType
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|//In case nodetype registry in IndexDefinition is stale then it would not populate
+comment|//rules for new nodetype even though at indexing time it was able to index (due to
+comment|//use of latest nodetype reg nodestate)
+comment|//In such a case if the rule name and nodetype name for query matches then it is
+comment|//considered a match.
+comment|//This would though not work for the case where rule is related to nodetype as used
+comment|//in query matched via some inheritance chain
+comment|//TODO Need a way to check if nodetype reg as seen by IndexDefinition is old then
+comment|//IndexNode is reopened
+name|matchingRule
+operator|=
+name|rule
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|matchingRule
 operator|!=
 literal|null
 condition|)
