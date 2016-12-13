@@ -1951,24 +1951,10 @@ operator|.
 name|getClusterId
 argument_list|()
 decl_stmt|;
-comment|// should have 1 each with just the root changed
-name|assertJournalEntries
-argument_list|(
-name|ds1
-argument_list|,
-literal|"{}"
-argument_list|)
-expr_stmt|;
-name|assertJournalEntries
-argument_list|(
-name|ds2
-argument_list|,
-literal|"{}"
-argument_list|)
-expr_stmt|;
+comment|// should have none yet
 name|assertEquals
 argument_list|(
-literal|1
+literal|0
 argument_list|,
 name|countJournalEntries
 argument_list|(
@@ -1980,7 +1966,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|0
 argument_list|,
 name|countJournalEntries
 argument_list|(
@@ -2234,7 +2220,7 @@ argument_list|(
 name|ds1
 argument_list|)
 decl_stmt|;
-comment|// besides the former root change, now 1 also has
+comment|// now 1 also has
 specifier|final
 name|String
 name|change1
@@ -2244,8 +2230,6 @@ decl_stmt|;
 name|assertJournalEntries
 argument_list|(
 name|ds1
-argument_list|,
-literal|"{}"
 argument_list|,
 name|change1
 argument_list|)
@@ -2259,8 +2243,6 @@ decl_stmt|;
 name|assertJournalEntries
 argument_list|(
 name|ds2
-argument_list|,
-literal|"{}"
 argument_list|,
 name|change2
 argument_list|)
@@ -2359,8 +2341,6 @@ name|assertJournalEntries
 argument_list|(
 name|ds1
 argument_list|,
-literal|"{}"
-argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
@@ -2368,8 +2348,6 @@ comment|// unchanged
 name|assertJournalEntries
 argument_list|(
 name|ds2
-argument_list|,
-literal|"{}"
 argument_list|,
 name|change2
 argument_list|,
@@ -2403,8 +2381,6 @@ name|assertJournalEntries
 argument_list|(
 name|ds1
 argument_list|,
-literal|"{}"
-argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
@@ -2412,8 +2388,6 @@ comment|// unchanged
 name|assertJournalEntries
 argument_list|(
 name|ds2
-argument_list|,
-literal|"{}"
 argument_list|,
 name|change2
 argument_list|,
@@ -2604,8 +2578,6 @@ name|assertJournalEntries
 argument_list|(
 name|ds1
 argument_list|,
-literal|"{}"
-argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
@@ -2613,8 +2585,6 @@ comment|// unchanged
 name|assertJournalEntries
 argument_list|(
 name|ds2
-argument_list|,
-literal|"{}"
 argument_list|,
 name|change2
 argument_list|,

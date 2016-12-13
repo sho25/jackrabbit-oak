@@ -534,6 +534,21 @@ name|changes
 init|=
 literal|null
 decl_stmt|;
+comment|/**      * Counts number of paths changed due to {@code modified()} calls.      * Applicable for entries being prepared to be persisted.      */
+specifier|private
+specifier|volatile
+name|int
+name|numChangedNodes
+init|=
+literal|0
+decl_stmt|;
+comment|/**      * Tracks if this entry has branch commits or not      * Applicable for entries being prepared to be persisted.      */
+specifier|private
+name|boolean
+name|hasBranchCommits
+init|=
+literal|false
+decl_stmt|;
 specifier|private
 name|boolean
 name|concurrent
@@ -1528,6 +1543,22 @@ name|path
 argument_list|)
 control|)
 block|{
+if|if
+condition|(
+name|node
+operator|.
+name|get
+argument_list|(
+name|name
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|numChangedNodes
+operator|++
+expr_stmt|;
+block|}
 name|node
 operator|=
 name|node
@@ -1757,6 +1788,10 @@ operator|.
 name|asBranchRevision
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|hasBranchCommits
+operator|=
+literal|true
 expr_stmt|;
 block|}
 name|put
@@ -2153,6 +2188,28 @@ block|}
 return|;
 block|}
 block|}
+return|;
+block|}
+comment|/**      * @return number of changed nodes being tracked by this journal entry.      */
+name|int
+name|getNumChangedNodes
+parameter_list|()
+block|{
+return|return
+name|numChangedNodes
+return|;
+block|}
+comment|/**      * @return if this entry has some changes to be pushed      */
+name|boolean
+name|hasChanges
+parameter_list|()
+block|{
+return|return
+name|numChangedNodes
+operator|>
+literal|0
+operator|||
+name|hasBranchCommits
 return|;
 block|}
 comment|//-----------------------------< internal>---------------------------------

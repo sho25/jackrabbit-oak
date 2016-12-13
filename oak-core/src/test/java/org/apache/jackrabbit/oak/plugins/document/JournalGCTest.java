@@ -667,12 +667,10 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// must collect all journal entries. the first created when
-comment|// DocumentNodeStore was initialized and the second created
-comment|// by the background update
+comment|// must collect the journal entry created by the background update
 name|assertEquals
 argument_list|(
-literal|2
+literal|1
 argument_list|,
 name|jgc
 operator|.
