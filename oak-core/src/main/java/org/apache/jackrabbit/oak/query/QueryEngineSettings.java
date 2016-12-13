@@ -101,9 +101,7 @@ name|getInteger
 argument_list|(
 name|OAK_QUERY_LIMIT_IN_MEMORY
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|500000
 argument_list|)
 decl_stmt|;
 specifier|static
@@ -124,9 +122,7 @@ name|getInteger
 argument_list|(
 name|OAK_QUERY_LIMIT_READS
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|100000
 argument_list|)
 decl_stmt|;
 specifier|static
