@@ -537,6 +537,14 @@ literal|"32"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MAX_FILE_SIZE
+init|=
+literal|256
+decl_stmt|;
 annotation|@
 name|Nonnull
 specifier|private
@@ -555,7 +563,7 @@ specifier|private
 name|int
 name|maxFileSize
 init|=
-literal|256
+name|DEFAULT_MAX_FILE_SIZE
 decl_stmt|;
 specifier|private
 name|int

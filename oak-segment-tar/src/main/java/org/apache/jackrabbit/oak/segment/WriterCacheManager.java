@@ -265,6 +265,14 @@ specifier|abstract
 class|class
 name|WriterCacheManager
 block|{
+comment|/**      * Default size of the string cache, used as default for OSGi config.      */
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_STRING_CACHE_SIZE_OSGi
+init|=
+literal|15000
+decl_stmt|;
 comment|/**      * Default size of the string cache.      * @see #getStringCache(int)      */
 specifier|public
 specifier|static
@@ -276,8 +284,16 @@ name|getInteger
 argument_list|(
 literal|"oak.tar.stringsCacheSize"
 argument_list|,
-literal|15000
+name|DEFAULT_STRING_CACHE_SIZE_OSGi
 argument_list|)
+decl_stmt|;
+comment|/**      * Default size of the template cache, used as default for OSGi config.      */
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_TEMPLATE_CACHE_SIZE_OSGi
+init|=
+literal|3000
 decl_stmt|;
 comment|/**      * Default size of the template cache.      * @see #getTemplateCache(int)      */
 specifier|public
@@ -290,8 +306,16 @@ name|getInteger
 argument_list|(
 literal|"oak.tar.templatesCacheSize"
 argument_list|,
-literal|3000
+name|DEFAULT_TEMPLATE_CACHE_SIZE_OSGi
 argument_list|)
+decl_stmt|;
+comment|/**      * Default size of the node deduplication cache, used as default for OSGi      * config.      */
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_NODE_CACHE_SIZE_OSGi
+init|=
+literal|1048576
 decl_stmt|;
 comment|/**      * Default size of the node deduplication cache.      * @see #getNodeCache(int)      */
 specifier|public
@@ -304,7 +328,7 @@ name|getInteger
 argument_list|(
 literal|"oak.tar.nodeCacheSize"
 argument_list|,
-literal|1048576
+name|DEFAULT_NODE_CACHE_SIZE_OSGi
 argument_list|)
 decl_stmt|;
 comment|/**      * @param generation      * @return  cache for string records of the given {@code generation}.      */
