@@ -479,6 +479,50 @@ name|humanReadableByteCount
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|IndexDefinition
+operator|.
+name|INDEX_DEFINITION_NODE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|LuceneIndexConstants
+operator|.
+name|PROP_REFRESH_DEFN
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -1077,8 +1121,6 @@ name|definitionBuilder
 operator|.
 name|setChildNode
 argument_list|(
-name|IndexDefinition
-operator|.
 name|INDEX_DEFINITION_NODE
 argument_list|,
 name|NodeStateCloner
@@ -1124,6 +1166,9 @@ name|uid
 argument_list|(
 name|uid
 argument_list|)
+operator|.
+name|reindex
+argument_list|()
 operator|.
 name|build
 argument_list|()
@@ -1467,8 +1512,6 @@ name|definition
 operator|.
 name|getBoolean
 argument_list|(
-name|LuceneIndexConstants
-operator|.
 name|PROP_REFRESH_DEFN
 argument_list|)
 condition|)
@@ -1477,8 +1520,6 @@ name|definition
 operator|.
 name|removeProperty
 argument_list|(
-name|LuceneIndexConstants
-operator|.
 name|PROP_REFRESH_DEFN
 argument_list|)
 expr_stmt|;
@@ -1496,8 +1537,6 @@ name|definition
 operator|.
 name|setChildNode
 argument_list|(
-name|IndexDefinition
-operator|.
 name|INDEX_DEFINITION_NODE
 argument_list|,
 name|clonedState
@@ -1547,8 +1586,6 @@ name|definition
 operator|.
 name|hasChildNode
 argument_list|(
-name|IndexDefinition
-operator|.
 name|INDEX_DEFINITION_NODE
 argument_list|)
 condition|)
@@ -1557,8 +1594,6 @@ name|definition
 operator|.
 name|setChildNode
 argument_list|(
-name|IndexDefinition
-operator|.
 name|INDEX_DEFINITION_NODE
 argument_list|,
 name|NodeStateCloner
