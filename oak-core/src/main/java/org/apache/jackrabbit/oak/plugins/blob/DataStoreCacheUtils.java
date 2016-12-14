@@ -97,7 +97,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Delete the file from the staged cache and all its empty parent-directories.      *      * @param f the file to be deleted      * @throws IOException      */
+comment|/**      * Delete the file from the given root directory all its empty parent-directories.      *      * @param f the file to be deleted      * @throws IOException      */
 specifier|public
 specifier|static
 name|void
@@ -131,7 +131,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Deleted staged upload file [{}]"
+literal|"Deleted file [{}]"
 argument_list|,
 name|f
 argument_list|)
