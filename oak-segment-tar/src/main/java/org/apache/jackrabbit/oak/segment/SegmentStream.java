@@ -797,7 +797,7 @@ name|blockCount
 argument_list|)
 decl_stmt|;
 name|RecordId
-name|first
+name|previousId
 init|=
 name|ids
 operator|.
@@ -808,7 +808,7 @@ argument_list|)
 decl_stmt|;
 comment|// guaranteed to contain at least one
 name|int
-name|count
+name|consecutiveBlocks
 init|=
 literal|1
 decl_stmt|;
@@ -835,6 +835,7 @@ name|id
 init|=
 literal|null
 decl_stmt|;
+comment|// id is null for the last iteration only
 if|if
 condition|(
 name|i
@@ -855,12 +856,14 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Id can only be null in the last iteration. But then previousId cannot be
+comment|// null as this would imply id was null in the previous iteration.
 assert|assert
 name|id
 operator|==
 literal|null
 operator|||
-name|first
+name|previousId
 operator|!=
 literal|null
 assert|;
@@ -869,6 +872,7 @@ condition|(
 name|id
 operator|!=
 literal|null
+comment|// blocks are in the same segment
 operator|&&
 name|id
 operator|.
@@ -877,33 +881,35 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|first
+name|previousId
 operator|.
 name|getSegmentId
 argument_list|()
 argument_list|)
+comment|// blocks are consecutive
 operator|&&
 name|id
 operator|.
 name|getRecordNumber
 argument_list|()
 operator|==
-name|first
+name|previousId
 operator|.
 name|getRecordNumber
 argument_list|()
 operator|+
-name|count
+name|consecutiveBlocks
 operator|*
 name|BLOCK_SIZE
 condition|)
 block|{
-name|count
+name|consecutiveBlocks
 operator|++
 expr_stmt|;
 block|}
 else|else
 block|{
+comment|// read the current chunk of consecutive blocks
 name|int
 name|blockSize
 init|=
@@ -915,7 +921,7 @@ name|blockOffset
 operator|+
 name|remaining
 argument_list|,
-name|count
+name|consecutiveBlocks
 operator|*
 name|BLOCK_SIZE
 argument_list|)
@@ -926,7 +932,7 @@ init|=
 operator|new
 name|BlockRecord
 argument_list|(
-name|first
+name|previousId
 argument_list|,
 name|blockSize
 argument_list|)
@@ -964,11 +970,11 @@ name|remaining
 operator|-=
 name|n
 expr_stmt|;
-name|first
+name|previousId
 operator|=
 name|id
 expr_stmt|;
-name|count
+name|consecutiveBlocks
 operator|=
 literal|1
 expr_stmt|;
