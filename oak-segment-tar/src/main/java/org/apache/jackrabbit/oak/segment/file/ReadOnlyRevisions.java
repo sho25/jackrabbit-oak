@@ -315,7 +315,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Bind this instance to a store.      *       * @param store      *            store to bind to      * @param writeInitialNode      *            provider for the initial node in case the journal is empty.      * @throws IOException      */
+comment|/**      * Bind this instance to a store.      *       * @param store      *            store to bind to      * @throws IOException      */
 specifier|synchronized
 name|void
 name|bind

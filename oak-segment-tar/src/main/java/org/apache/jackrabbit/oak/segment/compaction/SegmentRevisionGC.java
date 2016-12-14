@@ -239,7 +239,7 @@ name|long
 name|getRevisionGCProgressLog
 parameter_list|()
 function_decl|;
-comment|/**      * Set the size of the logging interval, {@code -1} means disabled      * @param logCycle      *            number of nodes      */
+comment|/**      * Set the size of the logging interval, {@code -1} means disabled      * @param gcProgressLog      *            number of nodes      */
 name|void
 name|setRevisionGCProgressLog
 parameter_list|(

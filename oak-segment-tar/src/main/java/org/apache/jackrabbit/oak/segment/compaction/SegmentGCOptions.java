@@ -278,7 +278,7 @@ name|FORCE_TIMEOUT_DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #GAIN_THRESHOLD_DEFAULT},      * {@link #RETRY_COUNT_DEFAULT}, {@link #FORCE_TIMEOUT_DEFAULT}.      */
+comment|/**      * Default options: {@link #PAUSE_DEFAULT}, {@link #RETRY_COUNT_DEFAULT},      * {@link #FORCE_TIMEOUT_DEFAULT}.      */
 specifier|public
 specifier|static
 name|SegmentGCOptions
