@@ -55,6 +55,7 @@ literal|"cleanup"
 argument_list|)
 block|;
 specifier|private
+specifier|final
 name|String
 name|message
 decl_stmt|;

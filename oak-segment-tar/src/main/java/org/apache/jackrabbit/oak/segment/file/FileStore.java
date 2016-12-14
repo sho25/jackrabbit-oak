@@ -1693,6 +1693,7 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+specifier|final
 name|SegmentGCOptions
 name|gcOptions
 init|=
@@ -4595,6 +4596,7 @@ name|Boolean
 argument_list|>
 argument_list|()
 block|{
+specifier|final
 name|long
 name|deadline
 init|=

@@ -361,6 +361,7 @@ argument_list|)
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|boolean
 name|USE_FAKE_BLOBSTORE
 init|=

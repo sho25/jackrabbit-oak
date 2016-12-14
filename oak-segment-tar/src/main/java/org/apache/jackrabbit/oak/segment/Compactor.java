@@ -506,6 +506,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|boolean
 name|eagerFlush
 init|=

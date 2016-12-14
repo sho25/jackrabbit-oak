@@ -466,6 +466,7 @@ name|V
 parameter_list|>
 block|{
 specifier|static
+specifier|final
 name|Entry
 argument_list|<
 name|Void

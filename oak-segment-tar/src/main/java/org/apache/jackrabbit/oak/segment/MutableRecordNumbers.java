@@ -205,6 +205,7 @@ name|Entry
 argument_list|>
 argument_list|()
 block|{
+specifier|final
 name|int
 index|[]
 name|entries

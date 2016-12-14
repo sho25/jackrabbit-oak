@@ -27,6 +27,7 @@ class|class
 name|GetHeadRequest
 block|{
 specifier|private
+specifier|final
 name|String
 name|clientId
 decl_stmt|;

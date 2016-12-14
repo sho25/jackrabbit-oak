@@ -426,6 +426,7 @@ name|File
 name|path
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -438,6 +439,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|int
 name|maxCharDisplay
 init|=

@@ -651,10 +651,12 @@ name|int
 name|readTimeoutMs
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|clientId
 decl_stmt|;
 specifier|private
+specifier|final
 name|NioEventLoopGroup
 name|group
 decl_stmt|;

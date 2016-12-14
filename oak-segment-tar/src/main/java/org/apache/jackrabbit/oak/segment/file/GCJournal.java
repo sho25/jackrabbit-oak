@@ -619,6 +619,7 @@ class|class
 name|GCJournalEntry
 block|{
 specifier|static
+specifier|final
 name|GCJournalEntry
 name|EMPTY
 init|=
