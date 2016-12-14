@@ -422,7 +422,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Whether to ignore exceptions caused by missing segments in the          * segment store. This paramter is not mandatory and defaults to {@code          * false}.          *          * @param ignoreMissingSegments {@code true} to ignore exceptions caused          *                              by missing segments, {@code false}          *                              otherwise.          * @return this builder.          */
+comment|/**          * Whether to ignore exceptions caused by missing segments in the          * segment store. This parameter is not mandatory and defaults to {@code          * false}.          *          * @param ignoreMissingSegments {@code true} to ignore exceptions caused          *                              by missing segments, {@code false}          *                              otherwise.          * @return this builder.          */
 specifier|public
 name|Builder
 name|withIgnoreMissingSegments

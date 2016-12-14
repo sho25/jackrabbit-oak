@@ -103,7 +103,7 @@ name|SegmentDiscoveryLiteDescriptors
 implements|implements
 name|Descriptors
 block|{
-comment|/**      * Name of the repository descriptor via which the clusterView is published - which is the raison d'etre of the      * DocumentDiscoveryLiteService TODO: move this constant to a generic place for both segment and document      **/
+comment|/**      * Name of the repository descriptor via which the clusterView is published - which is the reason d'etre of the      * DocumentDiscoveryLiteService TODO: move this constant to a generic place for both segment and document      **/
 specifier|private
 specifier|static
 specifier|final

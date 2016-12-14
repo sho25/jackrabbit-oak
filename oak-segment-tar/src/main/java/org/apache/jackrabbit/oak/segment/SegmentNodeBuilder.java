@@ -342,7 +342,7 @@ name|getNodeState
 argument_list|()
 decl_stmt|;
 name|SegmentNodeState
-name|sstate
+name|sState
 init|=
 name|writer
 operator|.
@@ -355,12 +355,12 @@ if|if
 condition|(
 name|state
 operator|!=
-name|sstate
+name|sState
 condition|)
 block|{
 name|set
 argument_list|(
-name|sstate
+name|sState
 argument_list|)
 expr_stmt|;
 name|updateCount
@@ -369,7 +369,7 @@ literal|0
 expr_stmt|;
 block|}
 return|return
-name|sstate
+name|sState
 return|;
 block|}
 catch|catch

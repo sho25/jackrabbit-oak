@@ -581,14 +581,14 @@ name|allowIPRanges
 parameter_list|(
 name|String
 index|[]
-name|alloallowedClientIPRanges
+name|allowedClientIPRanges
 parameter_list|)
 block|{
 name|this
 operator|.
 name|allowedClientIPRanges
 operator|=
-name|alloallowedClientIPRanges
+name|allowedClientIPRanges
 expr_stmt|;
 return|return
 name|this

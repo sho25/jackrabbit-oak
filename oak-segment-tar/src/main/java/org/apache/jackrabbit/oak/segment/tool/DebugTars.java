@@ -737,7 +737,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 name|boolean
-name|hasrefs
+name|hasRefs
 init|=
 literal|false
 decl_stmt|;
@@ -778,7 +778,7 @@ name|t
 argument_list|)
 condition|)
 block|{
-name|hasrefs
+name|hasRefs
 operator|=
 literal|true
 expr_stmt|;
@@ -793,7 +793,7 @@ block|}
 block|}
 if|if
 condition|(
-name|hasrefs
+name|hasRefs
 condition|)
 block|{
 name|System

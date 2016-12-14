@@ -244,7 +244,7 @@ name|size
 init|=
 name|SEGMENT_CACHE_OVERHEAD
 decl_stmt|;
-comment|// segmentid weight estimation is included in segment
+comment|// segmentId weight estimation is included in segment
 name|size
 operator|+=
 name|segment

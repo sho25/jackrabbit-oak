@@ -200,7 +200,7 @@ name|SegmentStream
 condition|)
 block|{
 name|SegmentStream
-name|sstream
+name|sStream
 init|=
 operator|(
 name|SegmentStream
@@ -210,13 +210,13 @@ decl_stmt|;
 name|RecordId
 name|id
 init|=
-name|sstream
+name|sStream
 operator|.
 name|recordId
 decl_stmt|;
 if|if
 condition|(
-name|sstream
+name|sStream
 operator|.
 name|position
 operator|==
@@ -545,7 +545,7 @@ name|void
 name|mark
 parameter_list|(
 name|int
-name|readlimit
+name|readLimit
 parameter_list|)
 block|{
 name|mark

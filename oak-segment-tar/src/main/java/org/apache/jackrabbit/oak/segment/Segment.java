@@ -3728,7 +3728,7 @@ name|isDirect
 argument_list|()
 condition|)
 block|{
-comment|// seems to overreport by 100+ bytes
+comment|// seems to over report by 100+ bytes
 name|size
 operator|+=
 name|size
