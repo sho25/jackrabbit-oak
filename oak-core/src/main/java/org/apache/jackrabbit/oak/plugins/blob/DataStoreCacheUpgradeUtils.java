@@ -764,6 +764,18 @@ argument_list|,
 name|UPLOAD_STAGING_DIR
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|homeDir
+operator|!=
+literal|null
+operator|&&
+name|homeDir
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
 name|Map
 argument_list|<
 name|String
@@ -950,6 +962,7 @@ argument_list|(
 name|homeDir
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Upgrades the {@link org.apache.jackrabbit.core.data.CachingDataStore}.      *      * @param homeDir the repository home directory      * @param path the root of the datastore      * @param moveCache flag whether to move the downloaded cache files      * @param deleteMap flag indicating whether to delete the pending upload map after upgrade      */
