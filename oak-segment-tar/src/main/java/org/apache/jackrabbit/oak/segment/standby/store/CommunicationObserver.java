@@ -880,7 +880,9 @@ name|oldestEntry
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|log
 operator|.
 name|info
@@ -952,10 +954,12 @@ operator|.
 name|lastSeen
 argument_list|)
 condition|)
+block|{
 name|ret
 operator|=
 name|m
 expr_stmt|;
+block|}
 block|}
 return|return
 name|ret
