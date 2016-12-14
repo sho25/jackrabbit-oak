@@ -270,11 +270,6 @@ name|File
 name|path
 decl_stmt|;
 specifier|private
-specifier|final
-name|boolean
-name|force
-decl_stmt|;
-specifier|private
 name|Compact
 parameter_list|(
 name|Builder
@@ -288,14 +283,6 @@ operator|=
 name|builder
 operator|.
 name|path
-expr_stmt|;
-name|this
-operator|.
-name|force
-operator|=
-name|builder
-operator|.
-name|force
 expr_stmt|;
 block|}
 annotation|@
