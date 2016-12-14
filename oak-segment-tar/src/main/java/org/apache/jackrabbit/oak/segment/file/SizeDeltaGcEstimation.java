@@ -243,12 +243,7 @@ literal|true
 expr_stmt|;
 name|gcInfo
 operator|=
-name|format
-argument_list|(
 literal|"Estimation skipped because the size delta value equals 0"
-argument_list|,
-name|delta
-argument_list|)
 expr_stmt|;
 block|}
 elseif|else
