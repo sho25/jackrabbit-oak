@@ -225,6 +225,10 @@ argument_list|,
 literal|256
 argument_list|)
 decl_stmt|;
+specifier|private
+name|Utils
+parameter_list|()
+block|{}
 specifier|static
 name|ReadOnlyFileStore
 name|openReadOnlyFileStore

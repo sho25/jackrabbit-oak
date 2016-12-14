@@ -122,6 +122,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 name|FileStoreUtil
 parameter_list|()
 block|{

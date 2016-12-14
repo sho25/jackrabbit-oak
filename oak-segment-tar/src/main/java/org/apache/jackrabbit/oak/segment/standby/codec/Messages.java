@@ -98,6 +98,10 @@ init|=
 literal|":"
 decl_stmt|;
 specifier|private
+name|Messages
+parameter_list|()
+block|{}
+specifier|private
 specifier|static
 name|String
 name|newRequest

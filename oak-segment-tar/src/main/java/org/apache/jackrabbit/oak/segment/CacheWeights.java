@@ -126,6 +126,10 @@ name|SEGMENT_CACHE_OVERHEAD
 init|=
 literal|32
 decl_stmt|;
+specifier|private
+name|CacheWeights
+parameter_list|()
+block|{}
 specifier|public
 specifier|static
 class|class

@@ -43,6 +43,10 @@ literal|"  functionality but you need to rename your configuration to target the
 operator|+
 literal|"  new component using the PID %s.\n"
 decl_stmt|;
+specifier|private
+name|DeprecationMessage
+parameter_list|()
+block|{}
 specifier|static
 name|String
 name|movedPid
