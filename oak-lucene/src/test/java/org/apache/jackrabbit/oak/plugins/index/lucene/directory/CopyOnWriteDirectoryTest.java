@@ -335,16 +335,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -567,8 +557,6 @@ expr_stmt|;
 block|}
 comment|// OAK-5238
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -624,6 +612,8 @@ literal|"foo"
 argument_list|)
 argument_list|,
 name|INDEX_DATA_CHILD_NAME
+argument_list|,
+literal|true
 argument_list|,
 literal|null
 argument_list|)

@@ -1019,6 +1019,10 @@ name|definitionBuilder
 argument_list|,
 name|dirName
 argument_list|,
+name|indexCopier
+operator|!=
+literal|null
+argument_list|,
 name|blobStore
 argument_list|)
 expr_stmt|;

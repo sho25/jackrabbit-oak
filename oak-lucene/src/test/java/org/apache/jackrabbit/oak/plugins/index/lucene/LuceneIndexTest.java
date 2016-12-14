@@ -3706,6 +3706,8 @@ name|LuceneIndexConstants
 operator|.
 name|INDEX_DATA_CHILD_NAME
 argument_list|,
+literal|false
+argument_list|,
 literal|null
 argument_list|)
 argument_list|,
@@ -3757,6 +3759,8 @@ argument_list|,
 name|LuceneIndexConstants
 operator|.
 name|INDEX_DATA_CHILD_NAME
+argument_list|,
+literal|false
 argument_list|,
 literal|null
 argument_list|)
