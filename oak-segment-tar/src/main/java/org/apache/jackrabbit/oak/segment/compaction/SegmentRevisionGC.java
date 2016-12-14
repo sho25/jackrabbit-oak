@@ -235,13 +235,11 @@ name|getEstimatedRevisionGCCompletion
 parameter_list|()
 function_decl|;
 comment|/**      * @return Number of nodes the monitor will log a message, {@code -1} means disabled      */
-specifier|public
 name|long
 name|getRevisionGCProgressLog
 parameter_list|()
 function_decl|;
 comment|/**      * Set the size of the logging interval, {@code -1} means disabled      * @param logCycle      *            number of nodes      */
-specifier|public
 name|void
 name|setRevisionGCProgressLog
 parameter_list|(

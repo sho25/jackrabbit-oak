@@ -58,7 +58,6 @@ specifier|private
 name|String
 name|message
 decl_stmt|;
-specifier|private
 name|SegmentGCStatus
 parameter_list|(
 name|String
