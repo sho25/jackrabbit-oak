@@ -624,6 +624,13 @@ block|{
 name|compacted
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|cacheManager
+operator|!=
+literal|null
+condition|)
+block|{
 name|cacheManager
 operator|.
 name|evictOldGeneration
@@ -631,6 +638,7 @@ argument_list|(
 name|newGeneration
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -642,6 +650,13 @@ name|int
 name|failedGeneration
 parameter_list|)
 block|{
+if|if
+condition|(
+name|cacheManager
+operator|!=
+literal|null
+condition|)
+block|{
 name|cacheManager
 operator|.
 name|evictGeneration
@@ -649,6 +664,7 @@ argument_list|(
 name|failedGeneration
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 decl_stmt|;
