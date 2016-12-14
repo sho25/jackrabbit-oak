@@ -149,6 +149,38 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|Futures
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ListenableFuture
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ListeningExecutorService
 import|;
 end_import
@@ -511,8 +543,15 @@ name|void
 name|setup
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting setup"
+argument_list|)
+expr_stmt|;
 name|root
 operator|=
 name|folder
@@ -682,11 +721,41 @@ argument_list|,
 literal|6000
 argument_list|)
 expr_stmt|;
+name|Futures
+operator|.
+name|successfulAsList
+argument_list|(
+operator|(
+name|Iterable
+argument_list|<
+name|?
+extends|extends
+name|ListenableFuture
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+operator|)
+name|executor
+operator|.
+name|futures
+argument_list|)
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
 name|closer
 operator|.
 name|register
 argument_list|(
 name|cache
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished setup"
 argument_list|)
 expr_stmt|;
 block|}
@@ -714,6 +783,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting zeroCache"
+argument_list|)
+expr_stmt|;
 name|cache
 operator|=
 operator|new
@@ -891,6 +967,13 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished zeroCache"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * {@link CompositeDataStoreCache#getIfPresent(String)} when no cache.      */
 annotation|@
@@ -900,6 +983,13 @@ name|void
 name|getIfPresentNoCache
 parameter_list|()
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting getIfPresentNoCache"
+argument_list|)
+expr_stmt|;
 name|File
 name|file
 init|=
@@ -933,6 +1023,13 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished getIfPresentNoCache"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * {@link CompositeDataStoreCache#get(String)} when no cache.      * @throws IOException      */
 annotation|@
@@ -944,6 +1041,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting getNoCache"
+argument_list|)
+expr_stmt|;
 name|expectedEx
 operator|.
 name|expect
@@ -962,6 +1066,13 @@ operator|+
 literal|0
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished getNoCache"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * {@link CompositeDataStoreCache#getIfPresent(Object)} when no cache.      */
 annotation|@
@@ -971,6 +1082,13 @@ name|void
 name|getIfPresentObjectNoCache
 parameter_list|()
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting getIfPresentObjectNoCache"
+argument_list|)
+expr_stmt|;
 name|File
 name|file
 init|=
@@ -1028,6 +1146,13 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished getIfPresentObjectNoCache"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Add to staging      */
 annotation|@
@@ -1039,6 +1164,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting add"
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -1134,6 +1266,13 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished add"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Add to staging when cache full.      */
 annotation|@
@@ -1145,6 +1284,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting addCacheFull"
+argument_list|)
+expr_stmt|;
 name|cache
 operator|=
 operator|new
@@ -1323,6 +1469,13 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished addCacheFull"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Invalidate from staging.      */
 annotation|@
@@ -1334,6 +1487,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting invalidateStaging"
+argument_list|)
+expr_stmt|;
 comment|// create executor
 name|taskLatch
 operator|=
@@ -1581,8 +1741,15 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished invalidateStaging"
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Test {@link CompositeDataStoreCache#getIfPresent(String)} when file staged      * and then download cache when uploaded.      * @throws IOException      */
+comment|/**      * Test {@link CompositeDataStoreCache#getIfPresent(String)} when file staged      * and then put in download cache when uploaded.      * @throws IOException      */
 annotation|@
 name|Test
 specifier|public
@@ -1592,13 +1759,27 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting getIfPresentStaged"
+argument_list|)
+expr_stmt|;
 name|get
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished getIfPresentStaged"
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Test {@link CompositeDataStoreCache#get(String)} when file staged and then      * download cache when uploaded.      * @throws IOException      */
+comment|/**      * Test {@link CompositeDataStoreCache#get(String)} when file staged and then put in      * download cache when uploaded.      * @throws IOException      */
 annotation|@
 name|Test
 specifier|public
@@ -1608,9 +1789,23 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting getStaged"
+argument_list|)
+expr_stmt|;
 name|get
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished getStaged"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1744,7 +1939,7 @@ expr_stmt|;
 name|waitFinish
 argument_list|()
 expr_stmt|;
-comment|// Not should hit the download cache
+comment|// Now should hit the download cache
 if|if
 condition|(
 name|get
@@ -1776,9 +1971,18 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"File loaded from cache [{}]"
+argument_list|,
+name|file
+argument_list|)
+expr_stmt|;
 name|assertNotNull
 argument_list|(
-name|f
+name|file
 argument_list|)
 expr_stmt|;
 name|assertFile
@@ -1835,6 +2039,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting getLoad"
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -1999,6 +2210,13 @@ name|getLoadSuccessCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished getLoad"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Invalidate cache entry.      * @throws Exception      */
 annotation|@
@@ -2010,6 +2228,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting invalidate"
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -2195,6 +2420,13 @@ name|getEvictionCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished invalidate"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Concurrently retrieves 2 different files from cache.      * @throws Exception      */
 annotation|@
@@ -2206,6 +2438,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting concurrentGetCached"
+argument_list|)
+expr_stmt|;
 comment|// Add 2 files to backend
 comment|// Concurrently get both
 name|ListeningExecutorService
@@ -2517,6 +2756,13 @@ name|getLoadSuccessCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished concurrentGetCached"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Concurrently retrieves 2 different files from cache.      * One is staged and other in the download cache.      * @throws Exception      */
 annotation|@
@@ -2528,6 +2774,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting concurrentGetFromStagedAndCached"
+argument_list|)
+expr_stmt|;
 comment|// Add 1 to backend
 comment|// Add 2 to upload area
 comment|// Stop upload execution
@@ -2857,6 +3110,13 @@ name|getLoadSuccessCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished concurrentGetFromStagedAndCached"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Concurrently stage and get a file and then upload.      * Use the file retrieve to read contents.      * @throws Exception      */
 annotation|@
@@ -2868,6 +3128,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting concurrentAddGet"
+argument_list|)
+expr_stmt|;
 comment|// Add to the upload area
 comment|// stop upload execution
 comment|// Same as above but concurrently
@@ -3119,6 +3386,13 @@ argument_list|()
 operator|.
 name|getLoadSuccessCount
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished concurrentAddGet"
 argument_list|)
 expr_stmt|;
 block|}

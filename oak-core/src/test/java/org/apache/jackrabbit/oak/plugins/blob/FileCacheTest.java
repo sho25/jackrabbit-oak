@@ -440,6 +440,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Started setup"
+argument_list|)
+expr_stmt|;
 name|root
 operator|=
 name|folder
@@ -569,6 +576,13 @@ argument_list|(
 name|cache
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished setup"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|After
@@ -592,6 +606,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Started zeroCache"
+argument_list|)
+expr_stmt|;
 name|cache
 operator|=
 name|FileCache
@@ -702,6 +723,13 @@ name|cache
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished zeroCache"
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Load and get from cache.      * @throws Exception      */
@@ -1939,11 +1967,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|File
+name|f4
+init|=
 name|future2
 operator|.
 name|get
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|LOG
 operator|.
 name|info
@@ -1971,7 +2002,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|f
+name|f4
 operator|.
 name|exists
 argument_list|()
@@ -1983,7 +2014,7 @@ literal|4
 argument_list|,
 name|cache
 argument_list|,
-name|f
+name|f4
 argument_list|)
 expr_stmt|;
 block|}

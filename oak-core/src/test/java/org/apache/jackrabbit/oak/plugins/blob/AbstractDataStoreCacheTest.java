@@ -985,7 +985,7 @@ argument_list|()
 expr_stmt|;
 name|LOG
 operator|.
-name|trace
+name|info
 argument_list|(
 literal|"After execution....after counting down latch"
 argument_list|)
