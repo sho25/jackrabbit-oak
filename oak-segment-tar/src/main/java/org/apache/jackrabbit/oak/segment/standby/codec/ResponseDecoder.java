@@ -309,6 +309,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|decodeGetHeadResponse
 parameter_list|(
@@ -372,6 +373,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|decodeGetSegmentResponse
 parameter_list|(
@@ -483,6 +485,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|decodeGetBlobResponse
 parameter_list|(
@@ -610,6 +613,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|decodeGetReferencesResponse
 parameter_list|(
@@ -753,6 +757,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|long
 name|hash
 parameter_list|(

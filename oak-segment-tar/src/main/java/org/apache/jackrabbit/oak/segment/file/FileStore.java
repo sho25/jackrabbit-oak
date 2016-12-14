@@ -3325,7 +3325,7 @@ decl_stmt|;
 name|boolean
 name|updated
 init|=
-name|gcOptions
+name|SegmentGCOptions
 operator|.
 name|isDiskSpaceSufficient
 argument_list|(

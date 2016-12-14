@@ -858,6 +858,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 name|int
 name|headGeneration
 parameter_list|(

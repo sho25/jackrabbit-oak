@@ -1382,6 +1382,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 name|String
 name|getLocalPath
 parameter_list|(
@@ -1425,6 +1426,7 @@ literal|"]"
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|getLocalPath
 parameter_list|(

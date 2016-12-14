@@ -1227,6 +1227,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|shutDown
 parameter_list|(

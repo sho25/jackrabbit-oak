@@ -2893,6 +2893,7 @@ return|return
 name|properties
 return|;
 block|}
+specifier|static
 name|long
 name|readLength
 parameter_list|(

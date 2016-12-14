@@ -3364,6 +3364,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|private
+specifier|static
 name|List
 argument_list|<
 name|UUID
@@ -5176,6 +5177,7 @@ name|buffer
 return|;
 block|}
 specifier|private
+specifier|static
 name|Map
 argument_list|<
 name|Integer

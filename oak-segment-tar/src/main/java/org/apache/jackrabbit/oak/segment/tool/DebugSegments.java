@@ -535,6 +535,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|debugSegment
 parameter_list|(

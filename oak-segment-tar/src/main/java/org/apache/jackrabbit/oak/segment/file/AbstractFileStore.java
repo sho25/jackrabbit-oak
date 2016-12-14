@@ -831,6 +831,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|static
 name|Manifest
 name|checkManifest
 parameter_list|(
@@ -1724,7 +1725,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|final
+specifier|static
 name|void
 name|populateTarGraph
 parameter_list|(
@@ -1780,7 +1781,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|final
+specifier|static
 name|void
 name|populateTarBinaryReferences
 parameter_list|(

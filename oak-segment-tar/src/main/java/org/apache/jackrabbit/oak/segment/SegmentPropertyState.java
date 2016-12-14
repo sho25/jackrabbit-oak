@@ -1484,8 +1484,7 @@ argument_list|()
 return|;
 block|}
 return|return
-name|getSegment
-argument_list|()
+name|Segment
 operator|.
 name|readLength
 argument_list|(

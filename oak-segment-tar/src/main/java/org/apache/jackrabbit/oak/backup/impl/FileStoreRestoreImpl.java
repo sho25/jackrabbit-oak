@@ -602,6 +602,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|validFileStore
 parameter_list|(

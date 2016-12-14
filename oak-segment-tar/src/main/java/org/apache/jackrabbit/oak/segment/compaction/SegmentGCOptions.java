@@ -503,6 +503,7 @@ block|}
 block|}
 comment|/**      * Check if the approximate repository size is getting too big compared with      * the available space on disk.      *      * @param repositoryDiskSpace Approximate size of the disk space occupied by      *                            the repository.      * @param availableDiskSpace  Currently available disk space.      * @return {@code true} if the available disk space is considered enough for      * normal repository operations.      */
 specifier|public
+specifier|static
 name|boolean
 name|isDiskSpaceSufficient
 parameter_list|(

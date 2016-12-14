@@ -184,6 +184,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|encode
 parameter_list|(
@@ -247,6 +248,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|serialize
 parameter_list|(
