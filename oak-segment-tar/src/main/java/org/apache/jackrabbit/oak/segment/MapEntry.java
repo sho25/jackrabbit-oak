@@ -395,6 +395,7 @@ name|that
 operator|.
 name|value
 argument_list|)
+comment|// FIXME OAK-5301: Possible null dereference in MapRecord
 operator|.
 name|result
 argument_list|()
