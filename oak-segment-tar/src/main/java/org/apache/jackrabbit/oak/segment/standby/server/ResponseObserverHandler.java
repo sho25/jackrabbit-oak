@@ -249,9 +249,6 @@ operator|.
 name|getClientId
 argument_list|()
 argument_list|,
-operator|(
-name|int
-operator|)
 name|Math
 operator|.
 name|max
