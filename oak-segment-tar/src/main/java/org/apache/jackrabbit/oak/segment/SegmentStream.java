@@ -855,6 +855,15 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+assert|assert
+name|id
+operator|==
+literal|null
+operator|||
+name|first
+operator|!=
+literal|null
+assert|;
 if|if
 condition|(
 name|id
