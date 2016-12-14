@@ -324,8 +324,6 @@ operator|==
 literal|null
 condition|)
 block|{
-try|try
-block|{
 name|log
 operator|.
 name|debug
@@ -344,17 +342,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SegmentNotFoundException
-name|snfe
-parameter_list|)
-block|{
-throw|throw
-name|snfe
-throw|;
-block|}
 block|}
 block|}
 block|}
