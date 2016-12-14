@@ -2042,13 +2042,9 @@ argument_list|<
 name|TarReader
 argument_list|>
 name|readersSnapshot
-init|=
-literal|null
 decl_stmt|;
 name|long
 name|writeFileSnapshotSize
-init|=
-literal|0
 decl_stmt|;
 name|fileStoreLock
 operator|.
