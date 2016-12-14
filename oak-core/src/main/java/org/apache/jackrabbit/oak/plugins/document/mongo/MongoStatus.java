@@ -473,6 +473,8 @@ block|}
 catch|catch
 parameter_list|(
 name|MongoQueryException
+decl||
+name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
