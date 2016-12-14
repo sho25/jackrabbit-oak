@@ -436,6 +436,8 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|RecordId
 name|that
 parameter_list|)

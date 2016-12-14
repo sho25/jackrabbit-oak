@@ -351,6 +351,8 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|MapEntry
 name|that
 parameter_list|)

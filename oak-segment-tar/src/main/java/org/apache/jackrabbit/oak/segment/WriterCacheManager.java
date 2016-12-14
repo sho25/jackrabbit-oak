@@ -472,6 +472,8 @@ parameter_list|()
 block|{}
 comment|/**          * @return  empty cache of size 0          */
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|RecordCache
@@ -489,6 +491,8 @@ name|stringCache
 return|;
 block|}
 comment|/**          * @return  empty cache of size 0          */
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

@@ -141,6 +141,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -621,6 +631,8 @@ specifier|public
 name|int
 name|read
 parameter_list|(
+annotation|@
+name|Nonnull
 name|byte
 index|[]
 name|b

@@ -514,12 +514,18 @@ specifier|public
 name|boolean
 name|setHead
 parameter_list|(
+annotation|@
+name|Nonnull
 name|RecordId
 name|expected
 parameter_list|,
+annotation|@
+name|Nonnull
 name|RecordId
 name|head
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Option
 modifier|...
 name|options
@@ -564,6 +570,8 @@ specifier|public
 name|boolean
 name|setHead
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Function
 argument_list|<
 name|RecordId
@@ -572,6 +580,8 @@ name|RecordId
 argument_list|>
 name|newHead
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Option
 modifier|...
 name|options

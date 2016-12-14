@@ -1058,6 +1058,8 @@ name|WriteOperation
 argument_list|()
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|CheckForNull
 annotation|@
 name|Override

@@ -392,11 +392,15 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|RecordId
 name|execute
 parameter_list|(
+annotation|@
+name|Nonnull
 name|WriteOperation
 name|writeOperation
 parameter_list|)

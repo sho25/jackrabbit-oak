@@ -21,6 +21,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Value
@@ -140,6 +150,8 @@ name|store
 expr_stmt|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -162,6 +174,8 @@ specifier|public
 name|boolean
 name|isStandardDescriptor
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|)
@@ -181,6 +195,8 @@ specifier|public
 name|boolean
 name|isSingleValueDescriptor
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|)
@@ -200,6 +216,8 @@ specifier|public
 name|Value
 name|getValue
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|)
@@ -236,6 +254,8 @@ name|Value
 index|[]
 name|getValues
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|key
 parameter_list|)

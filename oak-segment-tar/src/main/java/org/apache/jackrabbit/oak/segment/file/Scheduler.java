@@ -530,6 +530,8 @@ specifier|public
 name|Thread
 name|newThread
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Runnable
 name|runnable
 parameter_list|)

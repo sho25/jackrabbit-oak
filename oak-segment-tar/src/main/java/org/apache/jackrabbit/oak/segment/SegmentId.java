@@ -576,6 +576,8 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|SegmentId
 name|that
 parameter_list|)
