@@ -671,7 +671,10 @@ name|dataStore
 operator|=
 name|getBlobStore
 argument_list|(
-name|root
+name|folder
+operator|.
+name|newFolder
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1126,11 +1129,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-5251"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1145,13 +1143,16 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|//Add file offline
+name|root
+operator|=
+name|folder
+operator|.
+name|newFolder
+argument_list|()
+expr_stmt|;
 name|File
-name|offline
+name|blobIdRoot
 init|=
-operator|new
-name|File
-argument_list|(
 operator|new
 name|File
 argument_list|(
@@ -1159,6 +1160,20 @@ name|root
 argument_list|,
 literal|"blobids"
 argument_list|)
+decl_stmt|;
+name|blobIdRoot
+operator|.
+name|mkdirs
+argument_list|()
+expr_stmt|;
+comment|//Add file offline
+name|File
+name|offline
+init|=
+operator|new
+name|File
+argument_list|(
+name|blobIdRoot
 argument_list|,
 literal|"blob-offline123456.gen"
 argument_list|)
