@@ -1208,12 +1208,7 @@ argument_list|)
 operator|.
 name|compareTo
 argument_list|(
-name|Long
-operator|.
-name|valueOf
-argument_list|(
 name|h
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

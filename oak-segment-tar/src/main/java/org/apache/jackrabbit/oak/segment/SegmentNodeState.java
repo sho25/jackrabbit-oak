@@ -2665,10 +2665,6 @@ argument_list|)
 operator|.
 name|compareTo
 argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 name|beforeProperties
 index|[
 name|beforeIndex
@@ -2676,7 +2672,6 @@ index|]
 operator|.
 name|hashCode
 argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
