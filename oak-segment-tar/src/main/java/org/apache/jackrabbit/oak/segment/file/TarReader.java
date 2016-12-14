@@ -3387,8 +3387,6 @@ argument_list|>
 argument_list|>
 name|graph
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|List
 argument_list|<

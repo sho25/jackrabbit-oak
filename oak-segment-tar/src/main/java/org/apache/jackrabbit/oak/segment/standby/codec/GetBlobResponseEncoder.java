@@ -209,8 +209,6 @@ parameter_list|,
 name|ByteBuf
 name|out
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|byte
 index|[]

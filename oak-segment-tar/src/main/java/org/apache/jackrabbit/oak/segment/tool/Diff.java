@@ -163,16 +163,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|PrintWriter
 import|;
 end_import
@@ -1140,8 +1130,6 @@ parameter_list|,
 name|PrintWriter
 name|pw
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|pw
 operator|.

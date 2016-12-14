@@ -693,10 +693,6 @@ specifier|final
 name|FileStoreBuilder
 name|builder
 parameter_list|)
-throws|throws
-name|InvalidFileStoreVersionException
-throws|,
-name|IOException
 block|{
 name|this
 operator|.

@@ -2260,8 +2260,6 @@ specifier|public
 name|boolean
 name|compact
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 return|return
 name|garbageCollector
@@ -3905,8 +3903,6 @@ specifier|synchronized
 name|int
 name|compact
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 specifier|final
 name|int

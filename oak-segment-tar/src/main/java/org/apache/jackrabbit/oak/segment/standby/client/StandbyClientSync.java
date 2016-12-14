@@ -121,18 +121,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ssl
-operator|.
-name|SSLException
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -400,8 +388,6 @@ parameter_list|,
 name|boolean
 name|autoClean
 parameter_list|)
-throws|throws
-name|SSLException
 block|{
 name|this
 operator|.
