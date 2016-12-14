@@ -22,6 +22,7 @@ package|;
 end_package
 
 begin_class
+specifier|final
 class|class
 name|Messages
 block|{

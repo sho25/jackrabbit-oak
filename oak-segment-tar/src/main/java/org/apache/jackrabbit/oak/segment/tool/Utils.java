@@ -194,6 +194,7 @@ import|;
 end_import
 
 begin_class
+specifier|final
 class|class
 name|Utils
 block|{

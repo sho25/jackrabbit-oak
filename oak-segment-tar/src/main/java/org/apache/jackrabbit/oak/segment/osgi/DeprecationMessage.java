@@ -20,6 +20,7 @@ package|;
 end_package
 
 begin_class
+specifier|final
 class|class
 name|DeprecationMessage
 block|{
