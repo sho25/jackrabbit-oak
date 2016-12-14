@@ -197,6 +197,7 @@ init|=
 literal|10
 decl_stmt|;
 specifier|private
+specifier|static
 class|class
 name|CommunicationPartnerMBean
 implements|implements
