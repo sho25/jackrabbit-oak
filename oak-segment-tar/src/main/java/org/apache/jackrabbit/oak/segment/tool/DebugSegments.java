@@ -413,12 +413,11 @@ argument_list|)
 expr_stmt|;
 name|checkArgument
 argument_list|(
+operator|!
 name|segments
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 argument_list|)
 expr_stmt|;
 return|return

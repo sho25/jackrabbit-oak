@@ -681,12 +681,11 @@ argument_list|()
 decl_stmt|;
 while|while
 condition|(
+operator|!
 name|batch
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|UUID

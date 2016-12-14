@@ -492,10 +492,8 @@ literal|null
 operator|||
 name|s
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|?
 name|UUID
