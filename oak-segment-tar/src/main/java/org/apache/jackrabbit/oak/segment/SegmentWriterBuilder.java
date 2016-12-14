@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -492,8 +482,6 @@ name|Nonnull
 name|WriteOperation
 name|writeOperation
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new
@@ -509,8 +497,6 @@ specifier|public
 name|void
 name|flush
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new
