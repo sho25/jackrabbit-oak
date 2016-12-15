@@ -252,19 +252,31 @@ argument_list|,
 literal|100
 argument_list|)
 decl_stmt|;
-name|byte
-index|[]
-name|t1R
-init|=
+comment|// write t1 remote with at least one byte more
 name|writeFile
 argument_list|(
 name|remote
 argument_list|,
 literal|"t1"
 argument_list|,
-literal|110
+name|randomBytes
+argument_list|(
+name|t1L
+operator|.
+name|length
+operator|+
+name|rnd
+operator|.
+name|nextInt
+argument_list|(
+literal|10
 argument_list|)
-decl_stmt|;
+operator|+
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// write t2 remote only
 name|byte
 index|[]
 name|t2R
@@ -278,6 +290,7 @@ argument_list|,
 literal|120
 argument_list|)
 decl_stmt|;
+comment|// write t3 remote and local with same size and data
 name|byte
 index|[]
 name|t3R
