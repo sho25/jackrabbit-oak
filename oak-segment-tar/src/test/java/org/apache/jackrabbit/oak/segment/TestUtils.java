@@ -99,10 +99,6 @@ name|Nonnull
 import|;
 end_import
 
-begin_comment
-comment|// FIXME SegmentTestUtils duplicates this
-end_comment
-
 begin_class
 specifier|public
 specifier|final

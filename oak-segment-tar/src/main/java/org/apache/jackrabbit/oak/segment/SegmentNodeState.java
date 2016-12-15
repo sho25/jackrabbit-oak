@@ -3589,7 +3589,6 @@ operator|)
 name|object
 argument_list|)
 return|;
-comment|// TODO
 block|}
 block|}
 annotation|@
