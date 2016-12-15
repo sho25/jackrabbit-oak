@@ -1034,6 +1034,8 @@ name|await
 argument_list|()
 expr_stmt|;
 block|}
+try|try
+block|{
 name|c
 operator|.
 name|headOfQueue
@@ -1041,6 +1043,9 @@ argument_list|(
 name|rev
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 synchronized|synchronized
 init|(
 name|this
@@ -1083,6 +1088,7 @@ comment|// notify next if there is any
 name|notifyHead
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
