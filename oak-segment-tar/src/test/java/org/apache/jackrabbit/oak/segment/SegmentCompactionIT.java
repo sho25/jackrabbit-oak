@@ -1126,7 +1126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>This is a longevity test for SegmentMK compaction for {@code OAK-2849 Improve revision gc on SegmentMK}</p>  *  *<p>The test schedules a number of readers, writers, a compactor and holds some references for a certain time.  * All of which can be interactively modified through the accompanying  * {@link SegmentCompactionITMBean}, the  * {@link SegmentRevisionGC} and the  *  *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>  * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}  *</p>  *  *<p>TODO Leverage longevity test support from OAK-2771 once we have it.</p>  */
+comment|/**  *<p>This is a longevity test for revision garbage collection.</p>  *  *<p>The test schedules a number of readers, writers, a compactor and holds some references for a certain time.  * All of which can be interactively modified through the accompanying  * {@link SegmentCompactionITMBean}, the  * {@link SegmentRevisionGC} and the  *  *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>  * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}  *</p>  *  *<p>TODO Leverage longevity test support from OAK-2771 once we have it.</p>  */
 end_comment
 
 begin_class
