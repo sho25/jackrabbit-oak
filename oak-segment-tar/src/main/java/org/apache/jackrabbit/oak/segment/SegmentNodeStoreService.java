@@ -2001,19 +2001,19 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"Apache Jackrabbit Oak Segment NodeStore Service"
+literal|"Oak Segment Tar NodeStore service"
 argument_list|,
 name|description
 operator|=
-literal|"NodeStore implementation based on Segment model. For configuration option refer "
+literal|"Apache Jackrabbit Oak NodeStore implementation based on the segment model. "
 operator|+
-literal|"to http://jackrabbit.apache.org/oak/docs/osgi_config.html#SegmentNodeStore. Note that for system "
+literal|"For configuration refer to http://jackrabbit.apache.org/oak/docs/osgi_config.html#SegmentNodeStore. "
 operator|+
-literal|"stability purpose it is advisable to not change these settings at runtime. Instead the config change "
+literal|"Note that for system stability purpose it is advisable to not change these settings "
 operator|+
-literal|"should be done via file system based config file and this view should ONLY be used to determine which "
+literal|"at runtime. Instead the config change should be done via file system based config "
 operator|+
-literal|"options are supported"
+literal|"file and this view should ONLY be used to determine which options are supported."
 argument_list|)
 specifier|public
 class|class
@@ -2043,9 +2043,9 @@ literal|"Directory"
 argument_list|,
 name|description
 operator|=
-literal|"Directory location used to store the segment tar files. If not specified then looks "
+literal|"Directory for storing the tar files. Defaults to the value of the framework "
 operator|+
-literal|"for framework property 'repository.home' otherwise use a subdirectory with name 'tarmk'"
+literal|"property 'repository.home' or to 'repository' if that is neither specified."
 argument_list|)
 specifier|public
 specifier|static
@@ -2064,7 +2064,7 @@ literal|"Mode"
 argument_list|,
 name|description
 operator|=
-literal|"TarMK mode (64 for memory mapping, 32 for normal file access)"
+literal|"TarMK mode (64 for memory mapped file access, 32 for normal file access)."
 argument_list|)
 specifier|public
 specifier|static
@@ -2083,11 +2083,11 @@ name|DEFAULT_MAX_FILE_SIZE
 argument_list|,
 name|label
 operator|=
-literal|"Maximum Tar File Size (MB)"
+literal|"Maximum tar file size (MB)"
 argument_list|,
 name|description
 operator|=
-literal|"TarMK maximum file size (MB)"
+literal|"The maximum size of the tar files in megabytes."
 argument_list|)
 specifier|public
 specifier|static
@@ -2110,7 +2110,7 @@ literal|"Segment cache size (MB)"
 argument_list|,
 name|description
 operator|=
-literal|"Cache size for storing most recently used segments"
+literal|"Cache size for storing most recently used segments in megabytes."
 argument_list|)
 specifier|public
 specifier|static
@@ -2133,7 +2133,7 @@ literal|"String cache size (MB)"
 argument_list|,
 name|description
 operator|=
-literal|"Cache size for storing most recently used strings"
+literal|"Cache size for storing most recently used strings in megabytes."
 argument_list|)
 specifier|public
 specifier|static
@@ -2156,7 +2156,7 @@ literal|"Template cache size (MB)"
 argument_list|,
 name|description
 operator|=
-literal|"Cache size for storing most recently used templates"
+literal|"Cache size for storing most recently used templates in megabytes."
 argument_list|)
 specifier|public
 specifier|static
@@ -2246,11 +2246,11 @@ name|PAUSE_DEFAULT
 argument_list|,
 name|label
 operator|=
-literal|"Pause Compaction"
+literal|"Pause compaction"
 argument_list|,
 name|description
 operator|=
-literal|"When enabled compaction would not be performed"
+literal|"When set to true the compaction phase is skipped during garbage collection."
 argument_list|)
 specifier|public
 specifier|static
@@ -2269,13 +2269,13 @@ name|RETRY_COUNT_DEFAULT
 argument_list|,
 name|label
 operator|=
-literal|"Compaction Retries"
+literal|"Compaction retries"
 argument_list|,
 name|description
 operator|=
 literal|"Number of tries to compact concurrent commits on top of already "
 operator|+
-literal|"compacted commits"
+literal|"compacted commits."
 argument_list|)
 specifier|public
 specifier|static
@@ -2294,7 +2294,7 @@ name|FORCE_TIMEOUT_DEFAULT
 argument_list|,
 name|label
 operator|=
-literal|"Force Compaction Timeout"
+literal|"Force compaction timeout"
 argument_list|,
 name|description
 operator|=
@@ -2304,7 +2304,7 @@ literal|"of already compacted commits after the maximum number of retries has be
 operator|+
 literal|"reached. Forced compaction tries to acquire an exclusive write lock on the "
 operator|+
-literal|"node store."
+literal|"node store, blocking concurrent write access as long as the lock is held."
 argument_list|)
 specifier|public
 specifier|static
@@ -2323,11 +2323,13 @@ name|SIZE_DELTA_ESTIMATION_DEFAULT
 argument_list|,
 name|label
 operator|=
-literal|"Compaction Repository Size Delta"
+literal|"Garbage collection repository size threshold"
 argument_list|,
 name|description
 operator|=
-literal|"Amount of increase in repository size that will trigger compaction (bytes)"
+literal|"Garbage collection will be skipped unless the repository grew at least by "
+operator|+
+literal|"the number of bytes specified."
 argument_list|)
 specifier|public
 specifier|static
@@ -2346,11 +2348,11 @@ name|DISABLE_ESTIMATION_DEFAULT
 argument_list|,
 name|label
 operator|=
-literal|"Disable Compaction Estimation Phase"
+literal|"Disable estimation phase"
 argument_list|,
 name|description
 operator|=
-literal|"Disables compaction estimation phase, thus allowing compaction to run every time."
+literal|"Disables the estimation phase allowing garbage collection to run unconditionally."
 argument_list|)
 specifier|public
 specifier|static
@@ -2373,7 +2375,9 @@ literal|"Compaction retained generations"
 argument_list|,
 name|description
 operator|=
-literal|"Number of segment generations to retain."
+literal|"Number of segment generations to retain during garbage collection. "
+operator|+
+literal|"Must be set to at least 2."
 argument_list|)
 specifier|public
 specifier|static
@@ -2392,15 +2396,13 @@ name|MEMORY_THRESHOLD_DEFAULT
 argument_list|,
 name|label
 operator|=
-literal|"Compaction Memory Threshold"
+literal|"Compaction memory threshold"
 argument_list|,
 name|description
 operator|=
-literal|"Set the available memory threshold beyond which revision gc will be canceled. "
+literal|"Threshold of available heap memory in percent of total heap memory below "
 operator|+
-literal|"Value represents a percentage so an input between 0 and 100 is expected. "
-operator|+
-literal|"Setting this to 0 will disable the check."
+literal|"which the compaction phase is canceled. 0 disables heap memory monitoring."
 argument_list|)
 specifier|public
 specifier|static
@@ -2419,11 +2421,13 @@ name|GC_PROGRESS_LOG_DEFAULT
 argument_list|,
 name|label
 operator|=
-literal|"Compaction Progress Log"
+literal|"Compaction progress log"
 argument_list|,
 name|description
 operator|=
-literal|"Enables compaction progress logging at each set of compacted nodes. A value of -1 disables the log."
+literal|"The number of nodes compacted after which a status message is logged. "
+operator|+
+literal|"-1 disables progress logging."
 argument_list|)
 specifier|public
 specifier|static
@@ -2442,11 +2446,13 @@ literal|false
 argument_list|,
 name|label
 operator|=
-literal|"Standby Mode"
+literal|"Standby mode"
 argument_list|,
 name|description
 operator|=
-literal|"Flag indicating that this component will not register as a NodeStore but just as a NodeStoreProvider"
+literal|"Flag indicating this component will not register as a NodeStore but as a "
+operator|+
+literal|"NodeStoreProvider instead."
 argument_list|)
 specifier|public
 specifier|static
@@ -2465,13 +2471,13 @@ literal|false
 argument_list|,
 name|label
 operator|=
-literal|"Custom BlobStore"
+literal|"Custom blob store"
 argument_list|,
 name|description
 operator|=
-literal|"Boolean value indicating that a custom BlobStore is to be used. "
+literal|"Boolean value indicating that a custom BlobStore is used for storing "
 operator|+
-literal|"By default large binary content would be stored within segment tar files"
+literal|"large binary values."
 argument_list|)
 specifier|public
 specifier|static
@@ -2486,13 +2492,13 @@ name|Property
 argument_list|(
 name|label
 operator|=
-literal|"Backup Directory"
+literal|"Backup directory"
 argument_list|,
 name|description
 operator|=
-literal|"Directory location for storing repository backups. If not set, defaults to"
+literal|"Directory for storing repository backups. Defaults to 'segmentstore-backup' "
 operator|+
-literal|" 'segmentstore-backup' subdirectory under 'repository.home'."
+literal|"subdirectory under 'repository.home'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2567,17 +2573,17 @@ name|DEFAULT_BLOB_GC_MAX_AGE
 argument_list|,
 name|label
 operator|=
-literal|"Blob GC Max Age (in secs)"
+literal|"Blob gc max age (in secs)"
 argument_list|,
 name|description
 operator|=
-literal|"Blob Garbage Collector (GC) logic will only consider those blobs for GC which "
+literal|"The blob garbage collection logic will only consider those blobs which "
 operator|+
-literal|"are not accessed recently (currentTime - lastModifiedTime> blobGcMaxAgeInSecs). For "
+literal|"are not accessed recently (currentTime - lastModifiedTime> blobGcMaxAgeInSecs). "
 operator|+
-literal|"example as per default only those blobs which have been created 24 hrs ago will be "
+literal|"For example with the default setting only those blobs which have been created "
 operator|+
-literal|"considered for GC"
+literal|"at least 24 hours ago will be considered for garbage collection."
 argument_list|)
 specifier|public
 specifier|static
@@ -2608,17 +2614,17 @@ name|DEFAULT_BLOB_SNAPSHOT_INTERVAL
 argument_list|,
 name|label
 operator|=
-literal|"Blob tracking snapshot interval (in secs)"
+literal|"Blob tracking snapshot interval"
 argument_list|,
 name|description
 operator|=
-literal|"This is the default interval in which the snapshots of locally tracked blob ids will"
+literal|"Interval in seconds in which snapshots of locally tracked blob ids are "
 operator|+
-literal|"be taken and synchronized with the blob store. This should be configured to be less than the "
+literal|"taken and synchronized with the blob store. This should be configured to be "
 operator|+
-literal|"frequency of blob GC so that deletions during blob GC can be accounted for "
+literal|"less than the frequency of blob garbage collection so that deletions during blob "
 operator|+
-literal|"in the next GC execution."
+literal|"garbage collection can be accounted for in the next garbage collection execution."
 argument_list|)
 specifier|public
 specifier|static
@@ -2665,7 +2671,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"BlobStore use enabled. SegmentNodeStore would be initialized when BlobStore would be available"
+literal|"BlobStore enabled. SegmentNodeStore will be initialized once the blob "
+operator|+
+literal|"store becomes available"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -2816,9 +2824,11 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Deprecated property compaction.gainThreshold was detected. In order to configure compaction please use the new property "
+literal|"Detected deprecated flag 'compaction.gainThreshold'. "
 operator|+
-literal|"compaction.sizeDeltaEstimation. For turning off estimation, the new property compaction.disableEstimation should be used."
+literal|"Please use 'compaction.sizeDeltaEstimation' instead and "
+operator|+
+literal|"'compaction.disableEstimation' to disable estimation."
 argument_list|)
 expr_stmt|;
 block|}
@@ -3045,7 +3055,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"The segment store data is not compatible with the current version. Please use oak-segment or a different version of oak-segment-tar."
+literal|"The storage format is not compatible with this version of Oak Segment Tar"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -4175,8 +4187,6 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|t
 operator|.
@@ -4208,8 +4218,6 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|r
 operator|.
@@ -4241,8 +4249,6 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|t
 operator|.

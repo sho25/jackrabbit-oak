@@ -302,7 +302,7 @@ name|gcInfo
 operator|=
 name|format
 argument_list|(
-literal|"Segmentstore size has increased since the last compaction from %s (%s bytes) to %s (%s bytes), "
+literal|"Segmentstore size has increased since the last garbage collection from %s (%s bytes) to %s (%s bytes), "
 operator|+
 literal|"an increase of %s (%s bytes) or %s%%. "
 argument_list|,
@@ -341,7 +341,7 @@ name|gcInfo
 operator|+
 name|format
 argument_list|(
-literal|"This is greater than sizeDeltaEstimation=%s (%s bytes), so running compaction"
+literal|"This is greater than sizeDeltaEstimation=%s (%s bytes), so running garbage collection"
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
@@ -360,7 +360,7 @@ name|gcInfo
 operator|+
 name|format
 argument_list|(
-literal|"This is less than sizeDeltaEstimation=%s (%s bytes), so skipping compaction"
+literal|"This is less than sizeDeltaEstimation=%s (%s bytes), so skipping garbage collection"
 argument_list|,
 name|humanReadableByteCount
 argument_list|(

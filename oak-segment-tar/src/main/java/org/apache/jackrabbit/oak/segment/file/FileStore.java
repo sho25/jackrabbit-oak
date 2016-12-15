@@ -3638,7 +3638,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: estimation interrupted: {}. Skipping compaction."
+literal|"TarMK GC #{}: estimation interrupted: {}. Skipping garbage collection."
 argument_list|,
 name|GC_COUNT
 argument_list|,
