@@ -484,7 +484,6 @@ name|IndexUpdateListener
 name|refreshPolicy
 decl_stmt|;
 specifier|private
-specifier|final
 name|NRTIndex
 name|previous
 decl_stmt|;
@@ -799,6 +798,12 @@ name|indexDir
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Null the reference to previous so as to let it
+comment|//garbage collect. It would not be accessed post close
+name|previous
+operator|=
+literal|null
+expr_stmt|;
 name|closed
 operator|=
 literal|true
@@ -811,6 +816,14 @@ parameter_list|()
 block|{
 return|return
 name|closed
+return|;
+block|}
+name|NRTIndex
+name|getPrevious
+parameter_list|()
+block|{
+return|return
+name|previous
 return|;
 block|}
 annotation|@
