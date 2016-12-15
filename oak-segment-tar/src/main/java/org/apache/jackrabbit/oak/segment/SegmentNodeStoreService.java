@@ -2064,7 +2064,9 @@ literal|"Mode"
 argument_list|,
 name|description
 operator|=
-literal|"TarMK mode (64 for memory mapped file access, 32 for normal file access)."
+literal|"TarMK mode (64 for memory mapped file access, 32 for normal file access). "
+operator|+
+literal|"Default value is taken from the 'sun.arch.data.model' system property."
 argument_list|)
 specifier|public
 specifier|static
@@ -2087,7 +2089,13 @@ literal|"Maximum tar file size (MB)"
 argument_list|,
 name|description
 operator|=
-literal|"The maximum size of the tar files in megabytes."
+literal|"The maximum size of the tar files in megabytes. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_MAX_FILE_SIZE
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2110,7 +2118,13 @@ literal|"Segment cache size (MB)"
 argument_list|,
 name|description
 operator|=
-literal|"Cache size for storing most recently used segments in megabytes."
+literal|"Cache size for storing most recently used segments in megabytes. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_SEGMENT_CACHE_MB
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2133,7 +2147,13 @@ literal|"String cache size (MB)"
 argument_list|,
 name|description
 operator|=
-literal|"Cache size for storing most recently used strings in megabytes."
+literal|"Cache size for storing most recently used strings in megabytes. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_STRING_CACHE_MB
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2156,7 +2176,13 @@ literal|"Template cache size (MB)"
 argument_list|,
 name|description
 operator|=
-literal|"Cache size for storing most recently used templates in megabytes."
+literal|"Cache size for storing most recently used templates in megabytes. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_TEMPLATE_CACHE_MB
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2179,7 +2205,13 @@ literal|"String deduplication cache size (#items)"
 argument_list|,
 name|description
 operator|=
-literal|"Maximum number of strings to keep in the deduplication cache"
+literal|"Maximum number of strings to keep in the deduplication cache. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_STRING_CACHE_SIZE_OSGi
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2202,7 +2234,13 @@ literal|"Template deduplication cache size (#items)"
 argument_list|,
 name|description
 operator|=
-literal|"Maximum number of templates to keep in the deduplication cache"
+literal|"Maximum number of templates to keep in the deduplication cache. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_TEMPLATE_CACHE_SIZE_OSGi
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2225,9 +2263,15 @@ literal|"Node deduplication cache size (#items)"
 argument_list|,
 name|description
 operator|=
-literal|"Maximum number of node to keep in the deduplication cache. If the supplied"
+literal|"Maximum number of node to keep in the deduplication cache. If the supplied "
 operator|+
-literal|" value is not a power of 2, it will be rounded up to the next power of 2."
+literal|"value is not a power of 2, it will be rounded up to the next power of 2. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_NODE_CACHE_SIZE_OSGi
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2250,7 +2294,13 @@ literal|"Pause compaction"
 argument_list|,
 name|description
 operator|=
-literal|"When set to true the compaction phase is skipped during garbage collection."
+literal|"When set to true the compaction phase is skipped during garbage collection. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|PAUSE_DEFAULT
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2275,7 +2325,13 @@ name|description
 operator|=
 literal|"Number of tries to compact concurrent commits on top of already "
 operator|+
-literal|"compacted commits."
+literal|"compacted commits. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|RETRY_COUNT_DEFAULT
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2304,7 +2360,13 @@ literal|"of already compacted commits after the maximum number of retries has be
 operator|+
 literal|"reached. Forced compaction tries to acquire an exclusive write lock on the "
 operator|+
-literal|"node store, blocking concurrent write access as long as the lock is held."
+literal|"node store, blocking concurrent write access as long as the lock is held. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|FORCE_TIMEOUT_DEFAULT
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2329,7 +2391,13 @@ name|description
 operator|=
 literal|"Garbage collection will be skipped unless the repository grew at least by "
 operator|+
-literal|"the number of bytes specified."
+literal|"the number of bytes specified. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|SIZE_DELTA_ESTIMATION_DEFAULT
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2352,7 +2420,13 @@ literal|"Disable estimation phase"
 argument_list|,
 name|description
 operator|=
-literal|"Disables the estimation phase allowing garbage collection to run unconditionally."
+literal|"Disables the estimation phase allowing garbage collection to run unconditionally. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DISABLE_ESTIMATION_DEFAULT
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2377,7 +2451,13 @@ name|description
 operator|=
 literal|"Number of segment generations to retain during garbage collection. "
 operator|+
-literal|"Must be set to at least 2."
+literal|"Must be set to at least 2. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|RETAINED_GENERATIONS_DEFAULT
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2402,7 +2482,13 @@ name|description
 operator|=
 literal|"Threshold of available heap memory in percent of total heap memory below "
 operator|+
-literal|"which the compaction phase is canceled. 0 disables heap memory monitoring."
+literal|"which the compaction phase is canceled. 0 disables heap memory monitoring. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|MEMORY_THRESHOLD_DEFAULT
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2427,7 +2513,13 @@ name|description
 operator|=
 literal|"The number of nodes compacted after which a status message is logged. "
 operator|+
-literal|"-1 disables progress logging."
+literal|"-1 disables progress logging. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|GC_PROGRESS_LOG_DEFAULT
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2452,7 +2544,9 @@ name|description
 operator|=
 literal|"Flag indicating this component will not register as a NodeStore but as a "
 operator|+
-literal|"NodeStoreProvider instead."
+literal|"NodeStoreProvider instead. "
+operator|+
+literal|"Default value is 'false'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2477,7 +2571,9 @@ name|description
 operator|=
 literal|"Boolean value indicating that a custom BlobStore is used for storing "
 operator|+
-literal|"large binary values."
+literal|"large binary values. "
+operator|+
+literal|"Default value is 'false'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2583,7 +2679,13 @@ literal|"are not accessed recently (currentTime - lastModifiedTime> blobGcMaxAge
 operator|+
 literal|"For example with the default setting only those blobs which have been created "
 operator|+
-literal|"at least 24 hours ago will be considered for garbage collection."
+literal|"at least 24 hours ago will be considered for garbage collection. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_BLOB_GC_MAX_AGE
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
@@ -2624,7 +2726,13 @@ literal|"taken and synchronized with the blob store. This should be configured t
 operator|+
 literal|"less than the frequency of blob garbage collection so that deletions during blob "
 operator|+
-literal|"garbage collection can be accounted for in the next garbage collection execution."
+literal|"garbage collection can be accounted for in the next garbage collection execution. "
+operator|+
+literal|"Default value is '"
+operator|+
+name|DEFAULT_BLOB_SNAPSHOT_INTERVAL
+operator|+
+literal|"'."
 argument_list|)
 specifier|public
 specifier|static
