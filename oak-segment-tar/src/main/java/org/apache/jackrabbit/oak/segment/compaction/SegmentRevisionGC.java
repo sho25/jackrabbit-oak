@@ -156,17 +156,13 @@ name|void
 name|cancelRevisionGC
 parameter_list|()
 function_decl|;
-comment|/**      * @return  timestamp of the last compaction or {@code null} if none.      */
-annotation|@
-name|CheckForNull
-name|String
+comment|/**      * @return  time of the last compaction in milliseconds.      */
+name|long
 name|getLastCompaction
 parameter_list|()
 function_decl|;
-comment|/**      * @return  timestamp of the last cleanup or {@code null} if none.      */
-annotation|@
-name|CheckForNull
-name|String
+comment|/**      * @return  time of the last cleanup in milliseconds.      */
+name|long
 name|getLastCleanup
 parameter_list|()
 function_decl|;

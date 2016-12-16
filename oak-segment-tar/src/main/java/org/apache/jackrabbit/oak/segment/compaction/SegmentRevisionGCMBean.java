@@ -416,11 +416,9 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
-annotation|@
 name|Override
 specifier|public
-name|String
+name|long
 name|getLastCompaction
 parameter_list|()
 block|{
@@ -432,11 +430,9 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|CheckForNull
-annotation|@
 name|Override
 specifier|public
-name|String
+name|long
 name|getLastCleanup
 parameter_list|()
 block|{
