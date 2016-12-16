@@ -201,15 +201,14 @@ specifier|public
 class|class
 name|QueryEngineSettingsService
 block|{
+comment|// should be the same as QueryEngineSettings.DEFAULT_QUERY_LIMIT_IN_MEMORY
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|DEFAULT_QUERY_LIMIT_IN_MEMORY
 init|=
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|500000
 decl_stmt|;
 annotation|@
 name|Property
@@ -233,15 +232,14 @@ name|QUERY_LIMIT_IN_MEMORY
 init|=
 literal|"queryLimitInMemory"
 decl_stmt|;
+comment|// should be the same as QueryEngineSettings.DEFAULT_QUERY_LIMIT_READS
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|DEFAULT_QUERY_LIMIT_READS
 init|=
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|100000
 decl_stmt|;
 annotation|@
 name|Property

@@ -90,6 +90,7 @@ name|OAK_QUERY_LIMIT_IN_MEMORY
 init|=
 literal|"oak.queryLimitInMemory"
 decl_stmt|;
+comment|// should be the same as QueryEngineSettingsService.DEFAULT_QUERY_LIMIT_IN_MEMORY
 specifier|static
 specifier|final
 name|int
@@ -111,6 +112,7 @@ name|OAK_QUERY_LIMIT_READS
 init|=
 literal|"oak.queryLimitReads"
 decl_stmt|;
+comment|// should be the same as QueryEngineSettingsService.DEFAULT_QUERY_LIMIT_READS
 specifier|static
 specifier|final
 name|int
