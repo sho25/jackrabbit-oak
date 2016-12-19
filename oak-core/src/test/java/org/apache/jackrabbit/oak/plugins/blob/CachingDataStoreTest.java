@@ -193,6 +193,38 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Futures
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ListenableFuture
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -698,6 +730,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting init"
+argument_list|)
+expr_stmt|;
 comment|// create executor
 name|taskLatch
 operator|=
@@ -798,12 +837,23 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 specifier|final
+name|File
+name|datastoreRoot
+init|=
+name|folder
+operator|.
+name|newFolder
+argument_list|()
+decl_stmt|;
+specifier|final
 name|TestMemoryBackend
 name|testBackend
 init|=
 operator|new
 name|TestMemoryBackend
-argument_list|()
+argument_list|(
+name|datastoreRoot
+argument_list|)
 decl_stmt|;
 name|this
 operator|.
@@ -884,6 +934,36 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Futures
+operator|.
+name|successfulAsList
+argument_list|(
+operator|(
+name|Iterable
+argument_list|<
+name|?
+extends|extends
+name|ListenableFuture
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+operator|)
+name|executor
+operator|.
+name|futures
+argument_list|)
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished init"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Add, get, delete when zero cache size.      * @throws Exception      */
 annotation|@
@@ -895,6 +975,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting zeroCacheAddGetDelete"
+argument_list|)
+expr_stmt|;
 name|dataStore
 operator|.
 name|close
@@ -1070,6 +1157,13 @@ argument_list|(
 name|rec
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished zeroCacheAddGetDelete"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Add, get, delete when staging cache is 0.      * @throws Exception      */
 annotation|@
@@ -1081,6 +1175,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting zeroStagingCacheAddGetDelete"
+argument_list|)
+expr_stmt|;
 name|dataStore
 operator|.
 name|close
@@ -1260,6 +1361,13 @@ argument_list|(
 name|rec
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished zeroStagingCacheAddGetDelete"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Add, get, delete with synchronous option.      * @throws Exception      */
 annotation|@
@@ -1271,6 +1379,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting syncAddGetDelete"
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -1441,6 +1556,13 @@ argument_list|(
 name|rec
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished syncAddGetDelete"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * {@link CompositeDataStoreCache#getIfPresent(String)} when no cache.      */
 annotation|@
@@ -1452,6 +1574,13 @@ parameter_list|()
 throws|throws
 name|DataStoreException
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting getRecordNotAvailable"
+argument_list|)
+expr_stmt|;
 name|DataRecord
 name|rec
 init|=
@@ -1473,6 +1602,13 @@ argument_list|(
 name|rec
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished getRecordNotAvailable"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * {@link CompositeDataStoreCache#get(String)} when no cache.      * @throws IOException      */
 annotation|@
@@ -1484,6 +1620,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting exists"
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 name|dataStore
@@ -1500,6 +1643,13 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished exists"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Add in datastore.      */
 annotation|@
@@ -1511,6 +1661,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting addDelete"
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -1651,6 +1808,13 @@ argument_list|(
 name|rec
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished addDelete"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Add in staging and delete.      * @throws Exception      */
 annotation|@
@@ -1662,6 +1826,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting addStagingAndDelete"
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -1839,6 +2010,13 @@ argument_list|(
 name|rec
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished addStagingAndDelete"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Get all Identifiers.      */
 annotation|@
@@ -1850,6 +2028,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting getAllIdentifiers"
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -1969,6 +2154,13 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished getAllIdentifiers"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1979,6 +2171,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting reference"
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -2188,6 +2387,13 @@ name|getReference
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished reference"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -2198,6 +2404,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting referenceNoCache"
+argument_list|)
+expr_stmt|;
 name|dataStore
 operator|.
 name|close
@@ -2356,6 +2569,13 @@ name|rec
 operator|.
 name|getReference
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished referenceNoCache"
 argument_list|)
 expr_stmt|;
 block|}

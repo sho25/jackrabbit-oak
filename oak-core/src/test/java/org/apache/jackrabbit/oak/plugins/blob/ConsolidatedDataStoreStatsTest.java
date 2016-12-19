@@ -1019,6 +1019,15 @@ name|MILLISECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
+specifier|final
+name|File
+name|datastoreRoot
+init|=
+name|folder
+operator|.
+name|newFolder
+argument_list|()
+decl_stmt|;
 name|dataStore
 operator|=
 operator|new
@@ -1035,7 +1044,9 @@ block|{
 return|return
 operator|new
 name|TestMemoryBackend
-argument_list|()
+argument_list|(
+name|datastoreRoot
+argument_list|)
 return|;
 block|}
 annotation|@
