@@ -2592,9 +2592,9 @@ literal|"Backup directory"
 argument_list|,
 name|description
 operator|=
-literal|"Directory for storing repository backups. Defaults to 'segmentstore-backup' "
+literal|"Directory (relative to current working directory) for storing repository backups. "
 operator|+
-literal|"subdirectory under 'repository.home'."
+literal|"Defaults to 'repository.home/segmentstore-backup'."
 argument_list|)
 specifier|public
 specifier|static
