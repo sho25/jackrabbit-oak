@@ -248,7 +248,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * There are occasions where in old JR2 repositories not all ancestors on  * the users path are of type {@code rep:AuthorizableFolder}, thus leading  * to exceptions after repository upgrade.  *<br/>  * In order to avoid such situations, this hook verifies that all nodes on  * the users and groups paths are of type {@code rep:AuthorizableFolder} and  * fixes the node-type if it is incorrect.  */
+comment|/**  * There are occasions where in old JR2 repositories not all ancestors on  * the users path are of type {@code rep:AuthorizableFolder}, thus leading  * to exceptions after repository upgrade.  *<br>  * In order to avoid such situations, this hook verifies that all nodes on  * the users and groups paths are of type {@code rep:AuthorizableFolder} and  * fixes the node-type if it is incorrect.  */
 end_comment
 
 begin_class

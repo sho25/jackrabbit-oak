@@ -1237,7 +1237,7 @@ operator|=
 name|onlyVerify
 expr_stmt|;
 block|}
-comment|/**      * Same as {@link #copy(RepositoryInitializer)}, but with no custom initializer.       */
+comment|/**      * Same as {@link #copy(RepositoryInitializer)}, but with no custom initializer.      *      * @throws RepositoryException if the copy operation fails      */
 specifier|public
 name|void
 name|copy

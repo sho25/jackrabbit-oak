@@ -431,7 +431,7 @@ name|Builder
 argument_list|()
 return|;
 block|}
-comment|/**      * Shorthand method to copy one NodeStore to another. The changes in the      * target NodeStore are automatically persisted.      *      * @param source NodeStore to copy from.      * @param target NodeStore to copy to.      * @throws CommitFailedException      * @see org.apache.jackrabbit.oak.upgrade.nodestate.NodeStateCopier.Builder#copy(NodeStore, NodeStore)      */
+comment|/**      * Shorthand method to copy one NodeStore to another. The changes in the      * target NodeStore are automatically persisted.      *      * @param source NodeStore to copy from.      * @param target NodeStore to copy to.      * @return true if the target has been modified      * @throws CommitFailedException if the operation fails      * @see org.apache.jackrabbit.oak.upgrade.nodestate.NodeStateCopier.Builder#copy(NodeStore, NodeStore)      */
 specifier|public
 specifier|static
 name|boolean
@@ -1439,7 +1439,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**          * Creates a NodeStateCopier to copy the {@code source} NodeStore to the          * {@code target} NodeStore, using any include, exclude and merge paths          * set on this NodeStateCopier.Builder.          *<br>          * Changes are automatically persisted with empty CommitHooks and CommitInfo          * via {@link NodeStore#merge(NodeBuilder, CommitHook, CommitInfo)}.          *          * @param source NodeStore to copy from          * @param target NodeStore to copy to          * @return true if there were any changes, false if source and target represent          *         the same content          * @throws CommitFailedException          */
+comment|/**          * Creates a NodeStateCopier to copy the {@code source} NodeStore to the          * {@code target} NodeStore, using any include, exclude and merge paths          * set on this NodeStateCopier.Builder.          *<br>          * Changes are automatically persisted with empty CommitHooks and CommitInfo          * via {@link NodeStore#merge(NodeBuilder, CommitHook, CommitInfo)}.          *          * @param source NodeStore to copy from          * @param target NodeStore to copy to          * @return true if there were any changes, false if source and target represent          *         the same content          * @throws CommitFailedException if the copy operation fails          */
 specifier|public
 name|boolean
 name|copy

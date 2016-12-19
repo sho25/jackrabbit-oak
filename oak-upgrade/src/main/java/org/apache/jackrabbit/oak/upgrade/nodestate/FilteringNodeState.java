@@ -175,7 +175,7 @@ name|String
 argument_list|>
 name|excludedPaths
 decl_stmt|;
-comment|/**      * Factory method that conditionally decorates the given node-state      * iff the node-state is (a) hidden itself or (b) has hidden descendants.      *      * @param path The path where the node-state should be assumed to be located.      * @param delegate The node-state to decorate.      * @param includePaths A Set of paths that should be visible. Defaults to ["/"] if {@code null}.      * @param excludePaths A Set of paths that should be hidden. Empty if {@code null}.      * @return The decorated node-state if required, the original node-state if decoration is unnecessary.      * @param excludePaths      */
+comment|/**      * Factory method that conditionally decorates the given node-state      * iff the node-state is (a) hidden itself or (b) has hidden descendants.      *      * @param path The path where the node-state should be assumed to be located.      * @param delegate The node-state to decorate.      * @param includePaths A Set of paths that should be visible. Defaults to ["/"] if {@code null}.      * @param excludePaths A Set of paths that should be hidden. Empty if {@code null}.      * @return The decorated node-state if required, the original node-state if decoration is unnecessary.      */
 annotation|@
 name|Nonnull
 specifier|public
