@@ -20,66 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -337,6 +277,66 @@ name|ServiceRegistration
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests OSGi registration for {@link BlobTrackingStore}.  */
 end_comment
@@ -435,10 +435,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|registerTrackingBlobStore
+name|registerNodeStoreService
 argument_list|()
 expr_stmt|;
-name|registerNodeStoreService
+name|assertServiceNotActivated
+argument_list|()
+expr_stmt|;
+name|registerTrackingBlobStore
 argument_list|()
 expr_stmt|;
 name|assertServiceActivated
@@ -489,10 +492,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|registerTrackingBlobStore
+name|registerNodeStoreService
 argument_list|()
 expr_stmt|;
-name|registerNodeStoreService
+name|assertServiceNotActivated
+argument_list|()
+expr_stmt|;
+name|registerTrackingBlobStore
 argument_list|()
 expr_stmt|;
 name|assertServiceActivated
