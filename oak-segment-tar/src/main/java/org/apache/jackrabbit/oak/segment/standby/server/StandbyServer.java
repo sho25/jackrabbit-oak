@@ -1037,6 +1037,9 @@ operator|new
 name|DefaultStandbyBlobReader
 argument_list|(
 name|store
+operator|.
+name|getBlobStore
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
