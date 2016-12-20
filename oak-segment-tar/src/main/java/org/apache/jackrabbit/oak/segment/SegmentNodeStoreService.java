@@ -5249,8 +5249,6 @@ name|service
 parameter_list|)
 block|{
 return|return
-name|whiteboard
-operator|.
 name|register
 argument_list|(
 name|clazz
@@ -5259,7 +5257,11 @@ name|service
 argument_list|,
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 argument_list|)
 return|;
