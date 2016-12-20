@@ -2896,14 +2896,29 @@ name|role
 argument_list|)
 decl_stmt|;
 comment|// Listen for GCMonitor services
-name|GCMonitorTracker
+name|GCMonitor
 name|gcMonitor
+init|=
+name|GCMonitor
+operator|.
+name|EMPTY
+decl_stmt|;
+if|if
+condition|(
+name|configuration
+operator|.
+name|isPrimarySegmentStore
+argument_list|()
+condition|)
+block|{
+name|GCMonitorTracker
+name|tracker
 init|=
 operator|new
 name|GCMonitorTracker
 argument_list|()
 decl_stmt|;
-name|gcMonitor
+name|tracker
 operator|.
 name|start
 argument_list|(
@@ -2914,9 +2929,14 @@ name|closeables
 operator|.
 name|add
 argument_list|(
-name|gcMonitor
+name|tracker
 argument_list|)
 expr_stmt|;
+name|gcMonitor
+operator|=
+name|tracker
+expr_stmt|;
+block|}
 comment|// Create the gc options
 if|if
 condition|(
@@ -3427,9 +3447,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Expose an MBean to managing and monitoring garbage collection
+if|if
+condition|(
+name|configuration
+operator|.
+name|isPrimarySegmentStore
+argument_list|()
+condition|)
+block|{
 specifier|final
 name|FileStoreGCMonitor
-name|fsgcm
+name|monitor
 init|=
 operator|new
 name|FileStoreGCMonitor
@@ -3451,7 +3479,7 @@ name|GCMonitor
 operator|.
 name|class
 argument_list|,
-name|fsgcm
+name|monitor
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3474,7 +3502,7 @@ name|store
 argument_list|,
 name|gcOptions
 argument_list|,
-name|fsgcm
+name|monitor
 argument_list|)
 argument_list|,
 name|SegmentRevisionGC
@@ -3528,7 +3556,7 @@ name|get
 parameter_list|()
 block|{
 return|return
-name|fsgcm
+name|monitor
 operator|.
 name|getStatus
 argument_list|()
@@ -3571,6 +3599,7 @@ literal|"Revision garbage collection"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Expose statistics about the FileStore
 name|closeables
 operator|.
