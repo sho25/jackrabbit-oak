@@ -1092,7 +1092,7 @@ name|GC_BACKOFF
 init|=
 name|getInteger
 argument_list|(
-literal|"gc.backoff"
+literal|"oak.gc.backoff"
 argument_list|,
 literal|10
 operator|*
