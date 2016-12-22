@@ -377,7 +377,7 @@ name|segment
 operator|.
 name|SegmentNodeStoreService
 operator|.
-name|DIRECTORY
+name|REPOSITORY_HOME_DIRECTORY
 import|;
 end_import
 
@@ -2039,19 +2039,21 @@ name|Property
 argument_list|(
 name|label
 operator|=
-literal|"Directory"
+literal|"Repository Home Directory"
 argument_list|,
 name|description
 operator|=
-literal|"Directory for storing the tar files. Defaults to the value of the framework "
+literal|"Path on the file system where repository data will be stored. "
 operator|+
-literal|"property 'repository.home' or to 'repository' if that is neither specified."
+literal|"Defaults to the value of the framework property 'repository.home' or to 'repository' "
+operator|+
+literal|"if that is neither specified."
 argument_list|)
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|DIRECTORY
+name|REPOSITORY_HOME_DIRECTORY
 init|=
 literal|"repository.home"
 decl_stmt|;
@@ -3030,7 +3032,7 @@ name|fileStoreBuilder
 argument_list|(
 name|configuration
 operator|.
-name|getDirectory
+name|getSegmentDirectory
 argument_list|()
 argument_list|)
 operator|.
@@ -3932,7 +3934,7 @@ name|BlobIdTracker
 argument_list|(
 name|configuration
 operator|.
-name|getRootDirectory
+name|getRepositoryHome
 argument_list|()
 argument_list|,
 name|getOrCreateId
@@ -4518,8 +4520,9 @@ name|name
 argument_list|)
 return|;
 block|}
+comment|/**      * Chooses repository home directory name based on<b>repository.home</b>      * property, defaulting to<b>repository</b> if property is not set.      *       * @return repository home directory name.      */
 name|String
-name|getRootDirectory
+name|getRepositoryHome
 parameter_list|()
 block|{
 name|String
@@ -4527,7 +4530,7 @@ name|root
 init|=
 name|property
 argument_list|(
-name|DIRECTORY
+name|REPOSITORY_HOME_DIRECTORY
 argument_list|)
 decl_stmt|;
 if|if
@@ -4546,15 +4549,16 @@ return|return
 name|root
 return|;
 block|}
+comment|/**      * Creates a new sub-directory relative to {@link #getRepositoryHome()} for      * storing segments.      *       * @return directory for storing segments.      */
 name|File
-name|getDirectory
+name|getSegmentDirectory
 parameter_list|()
 block|{
 return|return
 operator|new
 name|File
 argument_list|(
-name|getBaseDirectory
+name|getRepositoryHome
 argument_list|()
 argument_list|,
 name|appendRole
@@ -4564,6 +4568,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Creates a new sub-directory relative to {@link #getRepositoryHome()} for       * storing repository backups.      *       * @return directory for storing repository backups.      */
 name|File
 name|getBackupDirectory
 parameter_list|()
@@ -4595,7 +4600,7 @@ return|return
 operator|new
 name|File
 argument_list|(
-name|getBaseDirectory
+name|getRepositoryHome
 argument_list|()
 argument_list|,
 name|appendRole
@@ -5017,42 +5022,6 @@ operator|+
 name|role
 return|;
 block|}
-block|}
-specifier|private
-name|File
-name|getBaseDirectory
-parameter_list|()
-block|{
-name|String
-name|directory
-init|=
-name|property
-argument_list|(
-name|DIRECTORY
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|directory
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-operator|new
-name|File
-argument_list|(
-name|directory
-argument_list|)
-return|;
-block|}
-return|return
-operator|new
-name|File
-argument_list|(
-literal|"tarmk"
-argument_list|)
-return|;
 block|}
 specifier|private
 name|String

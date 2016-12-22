@@ -173,7 +173,7 @@ name|put
 argument_list|(
 name|SegmentNodeStoreService
 operator|.
-name|DIRECTORY
+name|REPOSITORY_HOME_DIRECTORY
 argument_list|,
 name|repoHome
 argument_list|)

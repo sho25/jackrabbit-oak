@@ -305,7 +305,7 @@ name|segment
 operator|.
 name|SegmentNodeStoreService
 operator|.
-name|DIRECTORY
+name|REPOSITORY_HOME_DIRECTORY
 import|;
 end_import
 
@@ -638,7 +638,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-name|DIRECTORY
+name|REPOSITORY_HOME_DIRECTORY
 argument_list|,
 name|folder
 operator|.
