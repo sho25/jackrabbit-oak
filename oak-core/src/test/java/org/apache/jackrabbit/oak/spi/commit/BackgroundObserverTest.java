@@ -213,16 +213,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -906,12 +896,17 @@ name|Pair
 argument_list|>
 name|includedChanges
 init|=
+name|Collections
+operator|.
+name|synchronizedList
+argument_list|(
 operator|new
 name|LinkedList
 argument_list|<
 name|Pair
 argument_list|>
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|private
 name|boolean
@@ -2277,6 +2272,11 @@ name|executor
 argument_list|)
 expr_stmt|;
 block|}
+name|executor
+operator|.
+name|shutdownNow
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
