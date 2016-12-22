@@ -533,6 +533,34 @@ return|return
 literal|false
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|state
+operator|==
+name|STATE_URI
+operator|&&
+name|c
+operator|==
+name|EOF
+condition|)
+block|{
+comment|// we reached EOF without finding the closing curly brace '}'
+name|listener
+operator|.
+name|error
+argument_list|(
+literal|'\''
+operator|+
+name|jcrPath
+operator|+
+literal|"' is not a valid path. Missing '}'."
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 break|break;
 case|case
 literal|'.'
