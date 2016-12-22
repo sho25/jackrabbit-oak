@@ -3709,7 +3709,7 @@ condition|)
 block|{
 name|gcListener
 operator|.
-name|skipped
+name|warn
 argument_list|(
 literal|"TarMK GC #{}: estimation interrupted: {}. Skipping garbage collection."
 argument_list|,
@@ -4131,7 +4131,7 @@ condition|)
 block|{
 name|gcListener
 operator|.
-name|skipped
+name|warn
 argument_list|(
 literal|"TarMK GC #{}: compaction cancelled: {}."
 argument_list|,
@@ -4285,7 +4285,7 @@ condition|)
 block|{
 name|gcListener
 operator|.
-name|skipped
+name|warn
 argument_list|(
 literal|"TarMK GC #{}: compaction cancelled: {}."
 argument_list|,
@@ -4462,7 +4462,7 @@ condition|)
 block|{
 name|gcListener
 operator|.
-name|skipped
+name|warn
 argument_list|(
 literal|"TarMK GC #{}: compaction failed to force compact remaining commits "
 operator|+
