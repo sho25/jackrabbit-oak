@@ -1194,9 +1194,61 @@ condition|)
 block|{
 comment|// then we might or might not include this - but without
 comment|// further complicated checks this can't be determined for sure
-comment|// so for simplicity reason: return false here
+comment|// so for simplicity reason just check first level include names
+comment|// if available
+if|if
+condition|(
+name|firstLevelIncludeNames
+operator|==
+literal|null
+condition|)
+block|{
 return|return
 literal|false
+return|;
+block|}
+for|for
+control|(
+name|String
+name|parentPath
+range|:
+name|changeSet
+operator|.
+name|getParentPaths
+argument_list|()
+control|)
+block|{
+name|String
+name|firstLevelName
+init|=
+name|firstLevelName
+argument_list|(
+name|parentPath
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|firstLevelName
+operator|!=
+literal|null
+operator|&&
+name|firstLevelIncludeNames
+operator|.
+name|contains
+argument_list|(
+name|firstLevelName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+comment|// none of the first level include names matched any parentPath
+comment|// we can safely exclude this change set
+return|return
+literal|true
 return|;
 block|}
 specifier|final
