@@ -32,6 +32,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -921,6 +933,17 @@ operator|.
 name|getLastRevRecoveryAgent
 argument_list|()
 decl_stmt|;
+comment|// Post OAK-5337, a cluster node won't report itself as a candidate for recovery
+comment|// Recovery agent would still detect that recovery is required and calling
+comment|// recover on self would recover too (testLastRevRestore)
+name|assertTrue
+argument_list|(
+name|recoveryAgent
+operator|.
+name|isRecoveryNeeded
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Iterable
 argument_list|<
 name|Integer
@@ -934,32 +957,13 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|0
 argument_list|,
 name|Iterables
 operator|.
 name|size
 argument_list|(
 name|cids
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
-literal|1
-argument_list|)
-argument_list|,
-name|Iterables
-operator|.
-name|get
-argument_list|(
-name|cids
-argument_list|,
-literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;

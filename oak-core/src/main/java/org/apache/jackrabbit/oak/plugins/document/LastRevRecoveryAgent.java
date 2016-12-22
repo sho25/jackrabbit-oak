@@ -1702,7 +1702,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Gets the _lastRev recovery candidate cluster nodes. This also includes      * cluster nodes that are currently being recovered.      *      * @return the recovery candidate nodes.      */
+comment|/**      * Gets the _lastRev recovery candidate cluster nodes. This also includes      * cluster nodes that are currently being recovered. The method would not      * return self as a candidate for recovery even if it has failed to update      * lease in time      *      * @return the recovery candidate nodes.      */
 specifier|public
 name|Iterable
 argument_list|<
@@ -1741,6 +1741,16 @@ name|input
 parameter_list|)
 block|{
 return|return
+name|nodeStore
+operator|.
+name|getClusterId
+argument_list|()
+operator|!=
+name|input
+operator|.
+name|getClusterId
+argument_list|()
+operator|&&
 name|missingLastRevUtil
 operator|.
 name|isRecoveryNeeded
