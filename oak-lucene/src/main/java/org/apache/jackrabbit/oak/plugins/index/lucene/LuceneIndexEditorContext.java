@@ -921,6 +921,11 @@ name|getTimeInMillis
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|indexUpdated
+condition|)
+block|{
 name|PERF_LOGGER
 operator|.
 name|end
@@ -935,11 +940,6 @@ argument_list|,
 name|definition
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|indexUpdated
-condition|)
-block|{
 comment|//OAK-2029 Record the last updated status so
 comment|//as to make IndexTracker detect changes when index
 comment|//is stored in file system
