@@ -313,6 +313,33 @@ name|ParseException
 block|{
 name|verify
 argument_list|(
+literal|"(//*[@a=1 or @b=1] | //*[@c=1])"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [a] = 1 "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [b] = 1 "
+operator|+
+literal|"/* xpath: //*[@a=1 or @b=1] */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where [c] = 1 "
+operator|+
+literal|"/* xpath: //*[@c=1] */"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
 literal|"//(a|(b|c))"
 argument_list|,
 literal|"select [jcr:path], [jcr:score], * "
