@@ -478,6 +478,10 @@ specifier|private
 name|PrintStream
 name|out
 decl_stmt|;
+specifier|private
+name|RepositoryFixture
+name|currentFixture
+decl_stmt|;
 comment|/**      *<p>      * used to signal the {@link #runTest(int)} if stop running future test planned or not. If set      * to true, it will exit the loop not performing any more tests.      *</p>      *       *<p>      * useful when the running of the benchmark makes sense for as long as other processes didn't      * complete.      *</p>      *       *<p>      * Set this variable from within the benchmark itself by using {@link #issueHaltRequest(String)}      *</p>      *       *<p>      *<strong>it works only for concurrency level of 1 ({@code --concurrency 1} the      * default)</strong>      *</p>      */
 specifier|private
 name|boolean
@@ -745,6 +749,10 @@ range|:
 name|fixtures
 control|)
 block|{
+name|currentFixture
+operator|=
+name|fixture
+expr_stmt|;
 try|try
 block|{
 name|Repository
@@ -1943,6 +1951,15 @@ parameter_list|()
 block|{
 return|return
 name|credentials
+return|;
+block|}
+specifier|protected
+name|RepositoryFixture
+name|getCurrentFixture
+parameter_list|()
+block|{
+return|return
+name|currentFixture
 return|;
 block|}
 comment|/**      * Returns a new reader session that will be automatically closed once      * all the iterations of this test have been executed.      *      * @return reader session      */
