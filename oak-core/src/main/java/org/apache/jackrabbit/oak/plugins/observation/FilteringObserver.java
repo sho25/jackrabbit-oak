@@ -194,7 +194,7 @@ specifier|private
 name|NodeState
 name|lastNoop
 decl_stmt|;
-comment|/**      * Default constructor which creates a BackgroundObserver automatically, including      * creating a FilteringDispatcher.      * @param executor the executor that should be used for the BackgroundObserver      * @param queueLength the queue length of the BackgroundObserver      * @param filter the Filter to be used for filtering      * @param observer the FilteringAwareObserver to which content changes ultimately      * are delivered after going through a chain of       * FilteringObserver->BackgroundObserver->FilteringDispatcher.      */
+comment|/**      * Default constructor which creates a BackgroundObserver automatically, including      * creating a FilteringDispatcher.      * @param executor the executor that should be used for the BackgroundObserver      * @param queueLength the queue length of the BackgroundObserver      * @param filter the Filter to be used for filtering      * @param observer the FilteringAwareObserver to which content changes ultimately      * are delivered after going through a chain of       * FilteringObserver-&gt;BackgroundObserver-&gt;FilteringDispatcher.      */
 specifier|public
 name|FilteringObserver
 parameter_list|(
