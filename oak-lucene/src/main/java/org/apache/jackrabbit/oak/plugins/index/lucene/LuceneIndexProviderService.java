@@ -1421,7 +1421,7 @@ specifier|final
 name|int
 name|PROP_HYBRID_QUEUE_SIZE_DEFAULT
 init|=
-literal|1000
+literal|10000
 decl_stmt|;
 annotation|@
 name|Property
