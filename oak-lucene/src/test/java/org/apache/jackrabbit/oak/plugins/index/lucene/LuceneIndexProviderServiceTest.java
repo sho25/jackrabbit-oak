@@ -789,6 +789,14 @@ name|getIndexCopier
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|editorProvider
+operator|.
+name|getIndexingQueue
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|IndexCopier
 name|indexCopier
 init|=

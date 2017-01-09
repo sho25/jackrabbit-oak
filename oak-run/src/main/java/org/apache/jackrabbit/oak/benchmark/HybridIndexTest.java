@@ -2213,6 +2213,13 @@ argument_list|,
 name|statsProvider
 argument_list|)
 expr_stmt|;
+name|luceneEditorProvider
+operator|.
+name|setIndexingQueue
+argument_list|(
+name|queue
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void

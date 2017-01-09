@@ -183,6 +183,28 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|hybrid
+operator|.
+name|DocumentQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|commit
@@ -293,22 +315,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableSet
-operator|.
-name|of
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -350,26 +356,6 @@ operator|.
 name|LuceneIndexHelper
 operator|.
 name|newLucenePropertyIndexDefinition
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|PropertyStates
-operator|.
-name|createProperty
 import|;
 end_import
 
@@ -504,6 +490,18 @@ name|defaultMountInfoProvider
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|editorProvider
+operator|.
+name|setIndexingQueue
+argument_list|(
+name|mock
+argument_list|(
+name|DocumentQueue
+operator|.
+name|class
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|IndexUpdateCallback
 name|callback
 init|=
@@ -638,6 +636,18 @@ name|defaultMountInfoProvider
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|editorProvider
+operator|.
+name|setIndexingQueue
+argument_list|(
+name|mock
+argument_list|(
+name|DocumentQueue
+operator|.
+name|class
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//Set up a different IndexDefinition which needs to be returned
 comment|//from tracker with a marker property
 name|NodeBuilder
