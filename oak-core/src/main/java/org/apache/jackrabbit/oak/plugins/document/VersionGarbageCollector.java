@@ -1044,7 +1044,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Ignoring revision garbage collection because a valid "
 operator|+
