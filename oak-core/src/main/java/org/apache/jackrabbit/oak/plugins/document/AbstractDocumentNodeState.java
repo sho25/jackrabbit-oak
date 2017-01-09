@@ -239,7 +239,7 @@ name|boolean
 name|isFromExternalChange
 parameter_list|()
 function_decl|;
-comment|/**      * Creates a copy of this {@code DocumentNodeState} with the      * {@link #rootRevision} set to the given {@code root} revision. This method      * returns {@code this} instance if the given {@code root} revision is      * the same as the one in this instance and the {@link #fromExternalChange}      * flags are equal.      *      * @param root the root revision for the copy of this node state.      * @param externalChange if the {@link #fromExternalChange} flag must be      *                       set on the returned node state.      * @return a copy of this node state with the given root revision and      *          external change flag.      */
+comment|/**      * Creates a copy of this {@code DocumentNodeState} with the      * {@link #getRootRevision()} set to the given {@code root} revision. This method      * returns {@code this} instance if the given {@code root} revision is      * the same as the one in this instance and the {@link #isFromExternalChange()}      * flags are equal.      *      * @param root the root revision for the copy of this node state.      * @param externalChange if the {@link #isFromExternalChange()} flag must be      *                       set on the returned node state.      * @return a copy of this node state with the given root revision and      *          external change flag.      */
 specifier|public
 specifier|abstract
 name|AbstractDocumentNodeState
