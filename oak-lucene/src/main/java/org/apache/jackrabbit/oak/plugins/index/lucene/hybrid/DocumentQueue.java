@@ -157,6 +157,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|locks
+operator|.
+name|Lock
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -194,6 +208,22 @@ operator|.
 name|collect
 operator|.
 name|Lists
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Striped
 import|;
 end_import
 
@@ -468,6 +498,21 @@ specifier|private
 specifier|final
 name|MeterStats
 name|dropped
+decl_stmt|;
+specifier|private
+specifier|final
+name|Striped
+argument_list|<
+name|Lock
+argument_list|>
+name|locks
+init|=
+name|Striped
+operator|.
+name|lock
+argument_list|(
+literal|64
+argument_list|)
 decl_stmt|;
 comment|/**      * Time in millis for which add call to queue      * would wait before dropping off      */
 specifier|private
@@ -1039,12 +1084,39 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|processDocs
-argument_list|(
+comment|//In NRT case the indexing would be single threaded as it always happens via queue
+comment|//For sync case it can happen that indexing is requested by LocalIndexObserver and also
+comment|//via elements in queue. So we need to lock the indexing path
+comment|//Lock contention should not happen much as in most cases elements added
+comment|//to queue would get processed before observer is invoked
+name|String
+name|indexPath
+init|=
 name|e
 operator|.
 name|getKey
 argument_list|()
+decl_stmt|;
+name|Lock
+name|indexingLock
+init|=
+name|locks
+operator|.
+name|get
+argument_list|(
+name|indexPath
+argument_list|)
+decl_stmt|;
+name|indexingLock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+name|processDocs
+argument_list|(
+name|indexPath
 argument_list|,
 name|e
 operator|.
@@ -1052,6 +1124,15 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|indexingLock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 name|added
 operator|.
 name|mark
