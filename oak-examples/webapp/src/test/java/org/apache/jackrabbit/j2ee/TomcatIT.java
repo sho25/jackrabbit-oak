@@ -645,7 +645,7 @@ name|Exception
 block|{
 name|client
 operator|.
-name|closeAllWindows
+name|close
 argument_list|()
 expr_stmt|;
 name|tomcat
