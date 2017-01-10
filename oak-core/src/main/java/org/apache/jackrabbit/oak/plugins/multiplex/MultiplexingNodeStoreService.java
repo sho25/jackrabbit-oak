@@ -382,20 +382,6 @@ operator|=
 name|ConfigurationPolicy
 operator|.
 name|REQUIRE
-argument_list|,
-name|metatype
-operator|=
-literal|true
-argument_list|,
-name|label
-operator|=
-literal|"Apache Jackrabbit Oak Multiplexing NodeStore Service"
-argument_list|,
-name|description
-operator|=
-literal|"NodeStore implementation proxying all the operations "
-operator|+
-literal|"to other nodestores configured in OSGi"
 argument_list|)
 specifier|public
 class|class
