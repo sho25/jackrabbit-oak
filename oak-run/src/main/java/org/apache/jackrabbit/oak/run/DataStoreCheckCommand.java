@@ -634,7 +634,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Command to check data store consistency and also optionally retrieve ids& references  */
+comment|/**  * Command to check data store consistency and also optionally retrieve ids  * and references.  */
 end_comment
 
 begin_class
