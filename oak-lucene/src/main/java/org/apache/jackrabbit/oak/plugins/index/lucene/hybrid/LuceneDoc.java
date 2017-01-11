@@ -47,6 +47,22 @@ name|IndexableField
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_class
 class|class
 name|LuceneDoc
@@ -107,7 +123,10 @@ name|indexPath
 argument_list|,
 name|path
 argument_list|,
+name|checkNotNull
+argument_list|(
 name|doc
+argument_list|)
 argument_list|,
 literal|false
 argument_list|)
@@ -166,13 +185,19 @@ name|this
 operator|.
 name|docPath
 operator|=
+name|checkNotNull
+argument_list|(
 name|path
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|indexPath
 operator|=
+name|checkNotNull
+argument_list|(
 name|indexPath
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
