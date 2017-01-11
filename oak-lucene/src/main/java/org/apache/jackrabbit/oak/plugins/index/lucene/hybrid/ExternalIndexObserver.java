@@ -340,7 +340,6 @@ import|;
 end_import
 
 begin_class
-specifier|public
 class|class
 name|ExternalIndexObserver
 implements|implements
