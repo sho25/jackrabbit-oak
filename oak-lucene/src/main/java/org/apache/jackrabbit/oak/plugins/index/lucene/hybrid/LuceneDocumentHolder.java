@@ -45,6 +45,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -103,6 +113,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|spi
+operator|.
+name|JournalProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -139,6 +169,8 @@ begin_class
 specifier|public
 class|class
 name|LuceneDocumentHolder
+implements|implements
+name|JournalProperty
 block|{
 specifier|private
 specifier|static
@@ -161,7 +193,7 @@ specifier|final
 name|String
 name|NAME
 init|=
-literal|"oak.lucene.documentHolder"
+literal|"luceneDocs"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -248,6 +280,8 @@ decl_stmt|;
 specifier|public
 name|LuceneDocumentHolder
 parameter_list|(
+annotation|@
+name|Nonnull
 name|IndexingQueue
 name|documentQueue
 parameter_list|,
@@ -364,6 +398,13 @@ name|LuceneDoc
 name|doc
 parameter_list|)
 block|{
+name|doc
+operator|=
+name|checkNotNull
+argument_list|(
+name|doc
+argument_list|)
+expr_stmt|;
 comment|//First try adding to queue in non blocking manner
 if|if
 condition|(
