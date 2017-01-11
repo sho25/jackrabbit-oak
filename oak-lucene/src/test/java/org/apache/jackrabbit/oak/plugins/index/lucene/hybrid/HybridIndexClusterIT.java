@@ -1240,7 +1240,9 @@ name|class
 argument_list|,
 operator|new
 name|LuceneJournalPropertyService
-argument_list|()
+argument_list|(
+literal|1000
+argument_list|)
 argument_list|,
 literal|null
 argument_list|)
@@ -1255,7 +1257,9 @@ name|class
 argument_list|,
 operator|new
 name|LuceneJournalPropertyService
-argument_list|()
+argument_list|(
+literal|1000
+argument_list|)
 argument_list|,
 literal|null
 argument_list|)

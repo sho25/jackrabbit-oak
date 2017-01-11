@@ -3044,6 +3044,16 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|int
+name|observerQueueSize
+init|=
+literal|1000
+decl_stmt|;
+name|int
+name|builderMaxSize
+init|=
+literal|5000
+decl_stmt|;
 name|regs
 operator|.
 name|add
@@ -3061,7 +3071,9 @@ argument_list|()
 argument_list|,
 operator|new
 name|LuceneJournalPropertyService
-argument_list|()
+argument_list|(
+name|builderMaxSize
+argument_list|)
 argument_list|,
 literal|null
 argument_list|)
@@ -3082,9 +3094,22 @@ argument_list|,
 name|getExecutorService
 argument_list|()
 argument_list|,
-literal|1000
+name|observerQueueSize
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Configured JournalPropertyBuilder with max size {} and backed by BackgroundObserver "
+operator|+
+literal|"with queue size {}"
+argument_list|,
+name|builderMaxSize
+argument_list|,
+name|observerQueueSize
+argument_list|)
+expr_stmt|;
 name|Observer
 name|observer
 init|=
