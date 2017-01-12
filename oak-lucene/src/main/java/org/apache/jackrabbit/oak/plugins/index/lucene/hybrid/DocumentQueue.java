@@ -723,12 +723,14 @@ name|doc
 argument_list|)
 expr_stmt|;
 block|}
-name|addAllSynchronously
+name|addDocsToIndex
 argument_list|(
 name|docsPerIndex
 operator|.
 name|asMap
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|scheduleQueuedDocsProcessing
@@ -1107,6 +1109,33 @@ argument_list|>
 name|docsPerIndex
 parameter_list|)
 block|{
+name|addDocsToIndex
+argument_list|(
+name|docsPerIndex
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|addDocsToIndex
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Collection
+argument_list|<
+name|LuceneDoc
+argument_list|>
+argument_list|>
+name|docsPerIndex
+parameter_list|,
+name|boolean
+name|docsFromQueue
+parameter_list|)
+block|{
 comment|//If required it can optimized by indexing diff indexes in parallel
 comment|//Something to consider if it becomes a bottleneck
 for|for
@@ -1168,6 +1197,8 @@ name|e
 operator|.
 name|getValue
 argument_list|()
+argument_list|,
+name|docsFromQueue
 argument_list|)
 expr_stmt|;
 block|}
@@ -1235,6 +1266,9 @@ argument_list|<
 name|LuceneDoc
 argument_list|>
 name|docs
+parameter_list|,
+name|boolean
+name|docsFromQueue
 parameter_list|)
 block|{
 comment|//Drop the write call if stopped
@@ -1378,11 +1412,22 @@ name|docAdded
 operator|=
 literal|true
 expr_stmt|;
+name|String
+name|prefix
+init|=
+name|docsFromQueue
+condition|?
+literal|"Queued"
+else|:
+literal|"Direct"
+decl_stmt|;
 name|log
 operator|.
 name|trace
 argument_list|(
-literal|"Updated index with doc {}"
+literal|"[{}] Updated index with doc {}"
+argument_list|,
+name|prefix
 argument_list|,
 name|doc
 argument_list|)
