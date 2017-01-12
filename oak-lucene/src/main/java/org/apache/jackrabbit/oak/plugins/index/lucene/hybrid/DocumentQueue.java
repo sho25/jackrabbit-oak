@@ -1225,14 +1225,6 @@ return|;
 block|}
 specifier|private
 name|void
-name|addedToQueue
-parameter_list|(
-name|LuceneDoc
-name|doc
-parameter_list|)
-block|{      }
-specifier|private
-name|void
 name|processDocs
 parameter_list|(
 name|String
