@@ -844,6 +844,15 @@ operator|.
 name|createUnstarted
 argument_list|()
 decl_stmt|;
+specifier|final
+name|Stopwatch
+name|sortDocIds
+init|=
+name|Stopwatch
+operator|.
+name|createUnstarted
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -877,6 +886,10 @@ operator|+
 literal|", timeToCollectDeletedDocs="
 operator|+
 name|collectDeletedDocs
+operator|+
+literal|", timeToSortDocIds="
+operator|+
+name|sortDocIds
 operator|+
 literal|", timeTakenToDeleteDeletedDocs="
 operator|+
@@ -1299,6 +1312,25 @@ condition|)
 block|{
 return|return;
 block|}
+name|stats
+operator|.
+name|sortDocIds
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|gc
+operator|.
+name|ensureSorted
+argument_list|()
+expr_stmt|;
+name|stats
+operator|.
+name|sortDocIds
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 name|stats
 operator|.
 name|deleteDeletedDocs
