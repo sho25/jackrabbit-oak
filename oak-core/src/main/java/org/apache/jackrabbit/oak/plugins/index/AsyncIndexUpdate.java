@@ -2835,6 +2835,9 @@ name|state
 argument_list|,
 name|root
 argument_list|)
+operator|&&
+operator|!
+name|switchOnSync
 condition|)
 block|{
 name|log
@@ -3428,7 +3431,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Cleaning up orphaned checkpoints"
+literal|"[{}] Cleaning up orphaned checkpoints"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 name|Set
@@ -3459,7 +3464,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"No reference checkpoint set in index stats"
+literal|"[{}] No reference checkpoint set in index stats"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 return|return;
@@ -3646,7 +3653,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Removed orphaned checkpoint '{}' {}"
+literal|"[{}] Removed orphaned checkpoint '{}' {}"
+argument_list|,
+name|name
 argument_list|,
 name|checkpoint
 argument_list|,
@@ -4015,6 +4024,55 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|store
+operator|.
+name|release
+argument_list|(
+name|afterCheckpoint
+argument_list|)
+condition|)
+block|{
+name|builder
+operator|.
+name|child
+argument_list|(
+name|ASYNC
+argument_list|)
+operator|.
+name|removeProperty
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|child
+argument_list|(
+name|ASYNC
+argument_list|)
+operator|.
+name|removeProperty
+argument_list|(
+name|lastIndexedTo
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"[{}] Unable to release checkpoint {}"
+argument_list|,
+name|name
+argument_list|,
+name|afterCheckpoint
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|updatePostRunStatus
 operator|=
