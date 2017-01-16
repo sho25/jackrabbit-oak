@@ -2444,6 +2444,8 @@ operator|new
 name|NRTIndexFactory
 argument_list|(
 name|indexCopier
+argument_list|,
+name|statisticsProvider
 argument_list|)
 expr_stmt|;
 block|}

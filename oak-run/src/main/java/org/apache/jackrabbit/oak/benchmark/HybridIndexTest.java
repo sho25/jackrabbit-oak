@@ -2131,6 +2131,10 @@ name|toSeconds
 argument_list|(
 name|refreshDeltaMillis
 argument_list|)
+argument_list|,
+name|StatisticsProvider
+operator|.
+name|NOOP
 argument_list|)
 expr_stmt|;
 name|MountInfoProvider

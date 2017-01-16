@@ -971,6 +971,10 @@ name|toSeconds
 argument_list|(
 name|refreshDelta
 argument_list|)
+argument_list|,
+name|StatisticsProvider
+operator|.
+name|NOOP
 argument_list|)
 decl_stmt|;
 name|LuceneIndexReaderFactory
