@@ -1087,7 +1087,7 @@ index|[]
 block|{
 literal|"async:15"
 block|,
-literal|"foo:23"
+literal|"foo-async:23"
 block|}
 argument_list|)
 expr_stmt|;
@@ -1103,7 +1103,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"foo"
+literal|"foo-async"
 argument_list|,
 name|configs
 operator|.

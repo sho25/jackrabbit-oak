@@ -1447,7 +1447,12 @@ name|this
 operator|.
 name|name
 operator|=
+name|AsyncIndexUpdate
+operator|.
+name|checkValidName
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 name|this
 operator|.

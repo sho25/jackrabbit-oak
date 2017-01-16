@@ -1224,7 +1224,7 @@ argument_list|)
 operator|.
 name|withAsyncIndexing
 argument_list|(
-literal|"foo"
+literal|"foo-async"
 argument_list|,
 literal|5
 argument_list|)

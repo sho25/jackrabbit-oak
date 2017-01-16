@@ -3306,7 +3306,9 @@ name|asyncTasks
 operator|.
 name|put
 argument_list|(
-name|checkNotNull
+name|AsyncIndexUpdate
+operator|.
+name|checkValidName
 argument_list|(
 name|name
 argument_list|)
