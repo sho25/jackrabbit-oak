@@ -57,7 +57,7 @@ block|{
 name|String
 name|TYPE
 init|=
-literal|"CheckpointManger"
+literal|"CheckpointManager"
 decl_stmt|;
 comment|/**      * List the checkpoints that are currently present along with      * its id, creation time and expiry time.      * @return      */
 name|TabularData
