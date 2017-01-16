@@ -67,6 +67,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ScheduledExecutorService
 import|;
 end_import
@@ -263,11 +275,15 @@ name|StatisticsProvider
 name|statsProvider
 parameter_list|,
 name|ListeningExecutorService
-name|executor
+name|listeningExecutor
 parameter_list|,
 name|ScheduledExecutorService
 name|scheduledExecutor
 comment|/* purge scheduled executor */
+parameter_list|,
+name|ExecutorService
+name|executor
+comment|/* File cache executor */
 parameter_list|,
 name|int
 name|purgeInterval
@@ -334,7 +350,7 @@ literal|null
 argument_list|,
 name|statsProvider
 argument_list|,
-name|executor
+name|listeningExecutor
 argument_list|,
 name|scheduledExecutor
 argument_list|,
@@ -361,7 +377,7 @@ name|directory
 argument_list|,
 name|loader
 argument_list|,
-literal|null
+name|executor
 argument_list|)
 expr_stmt|;
 name|stagingCache
