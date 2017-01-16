@@ -1026,6 +1026,17 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+name|List
+argument_list|<
+name|LuceneIndexReader
+argument_list|>
+name|getPrimaryReaders
+parameter_list|()
+block|{
+return|return
+name|readers
+return|;
+block|}
 annotation|@
 name|CheckForNull
 specifier|public
@@ -1262,7 +1273,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-specifier|private
 name|List
 argument_list|<
 name|LuceneIndexReader
