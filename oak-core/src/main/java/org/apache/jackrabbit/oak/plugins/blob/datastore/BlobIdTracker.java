@@ -2193,6 +2193,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// Create a new generation writer.
+comment|// Merge the generations also before removing so that any id to be removed and also
+comment|// tracked in the generations are not resurrected
+name|nextGeneration
+argument_list|()
+expr_stmt|;
+name|merge
+argument_list|(
+name|generations
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|refLock
 operator|.
 name|lock
