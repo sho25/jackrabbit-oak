@@ -634,8 +634,6 @@ specifier|final
 name|String
 name|REPOSITORY_BUNDLE_FILTER_DEFAULT
 init|=
-literal|"(&"
-operator|+
 literal|"(|"
 operator|+
 literal|"(Bundle-SymbolicName=org.apache.jackrabbit*)"
@@ -647,10 +645,6 @@ operator|+
 literal|"(Bundle-SymbolicName=org.apache.aries*)"
 operator|+
 literal|"(Bundle-SymbolicName=groovy-all)"
-operator|+
-literal|")"
-operator|+
-literal|"(!(Bundle-SymbolicName=org.apache.jackrabbit.oak-segment-tar))"
 operator|+
 literal|")"
 decl_stmt|;
