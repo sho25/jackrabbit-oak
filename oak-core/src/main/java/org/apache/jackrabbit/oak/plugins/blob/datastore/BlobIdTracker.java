@@ -1730,6 +1730,12 @@ specifier|final
 name|ReentrantLock
 name|refLock
 decl_stmt|;
+comment|/* Lock for snapshot */
+specifier|private
+specifier|final
+name|ReentrantLock
+name|snapshotLock
+decl_stmt|;
 name|BlobIdStore
 parameter_list|(
 name|File
@@ -1756,6 +1762,14 @@ expr_stmt|;
 name|this
 operator|.
 name|refLock
+operator|=
+operator|new
+name|ReentrantLock
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|snapshotLock
 operator|=
 operator|new
 name|ReentrantLock
@@ -2193,6 +2207,10 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// do a snapshot
+name|snapshot
+argument_list|()
+expr_stmt|;
 name|refLock
 operator|.
 name|lock
@@ -2461,6 +2479,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|snapshotLock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
+block|{
 name|nextGeneration
 argument_list|()
 expr_stmt|;
@@ -2471,6 +2496,15 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|snapshotLock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
