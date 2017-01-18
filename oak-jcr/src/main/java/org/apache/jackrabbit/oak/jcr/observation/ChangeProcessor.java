@@ -945,12 +945,6 @@ specifier|final
 name|int
 name|MAX_DELAY
 decl_stmt|;
-comment|/** The test mode can be used to just verify if prefiltering would have      * correctly done its job and warn if that's not the case.      * @deprecated remove this before 1.6 - see OAK-5136      */
-specifier|private
-specifier|static
-name|boolean
-name|PREFILTERING_TESTMODE
-decl_stmt|;
 comment|// OAK-4533: make DELAY_THRESHOLD and MAX_DELAY adjustable - using System.properties for now
 static|static
 block|{
@@ -1113,29 +1107,6 @@ expr_stmt|;
 name|MAX_DELAY
 operator|=
 name|maxDelay
-expr_stmt|;
-block|}
-comment|/**      * @deprecated remove this before 1.6 - see OAK-5136      * @param testMode      */
-specifier|static
-name|void
-name|setPrefilteringTestMode
-parameter_list|(
-name|boolean
-name|testMode
-parameter_list|)
-block|{
-name|PREFILTERING_TESTMODE
-operator|=
-name|testMode
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"setPrefilteringTestMode: PREFILTERING_TESTMODE = "
-operator|+
-name|PREFILTERING_TESTMODE
-argument_list|)
 expr_stmt|;
 block|}
 specifier|private
@@ -2005,19 +1976,6 @@ name|CommitInfo
 name|info
 parameter_list|)
 block|{
-if|if
-condition|(
-name|PREFILTERING_TESTMODE
-condition|)
-block|{
-comment|// then we don't prefilter but only test later
-name|prefilterSkipCount
-operator|++
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
 specifier|final
 name|FilterResult
 name|filterResult
@@ -2324,59 +2282,6 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
-name|FilterResult
-name|prefilterTestResult
-init|=
-literal|null
-decl_stmt|;
-if|if
-condition|(
-name|PREFILTERING_TESTMODE
-condition|)
-block|{
-comment|// OAK-4908 test mode: when the ChangeCollectorProvider is enabled
-comment|// there is the option to have the ChangeProcessors run in so-called
-comment|// 'test mode'. In this test mode the prefiltering is not applied,
-comment|// but instead verified if it *would have prefiltered correctly*.
-comment|// that test is therefore done at dequeue-time, hence in
-comment|// contentChanged
-comment|// TODO: remove this testing mechanism after a while
-try|try
-block|{
-name|prefilterTestResult
-operator|=
-name|evalPrefilter
-argument_list|(
-name|after
-argument_list|,
-name|info
-argument_list|,
-name|getChangeSet
-argument_list|(
-name|info
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"contentChanged: exception in wouldBeExcludedCommit: "
-operator|+
-name|e
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 try|try
 block|{
 name|long
@@ -2394,11 +2299,6 @@ name|filterProvider
 operator|.
 name|get
 argument_list|()
-decl_stmt|;
-name|boolean
-name|onEventInvoked
-init|=
-literal|false
 decl_stmt|;
 comment|// FIXME don't rely on toString for session id
 if|if
@@ -2530,10 +2430,6 @@ argument_list|(
 name|events
 argument_list|)
 decl_stmt|;
-name|onEventInvoked
-operator|=
-literal|true
-expr_stmt|;
 name|eventListener
 operator|.
 name|onEvent
@@ -2572,87 +2468,6 @@ name|leave
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-block|}
-if|if
-condition|(
-name|prefilterTestResult
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// OAK-4908 test mode
-if|if
-condition|(
-name|prefilterTestResult
-operator|==
-name|FilterResult
-operator|.
-name|EXCLUDE
-operator|&&
-name|onEventInvoked
-condition|)
-block|{
-comment|// this is not ok, an event would have gotten
-comment|// excluded-by-prefiltering even though
-comment|// it actually got an event.
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"contentChanged: delivering event which would have been prefiltered, "
-operator|+
-literal|"info={}, this={}, listener={}"
-argument_list|,
-name|info
-argument_list|,
-name|this
-argument_list|,
-name|eventListener
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|prefilterTestResult
-operator|==
-name|FilterResult
-operator|.
-name|INCLUDE
-operator|&&
-operator|!
-name|onEventInvoked
-operator|&&
-name|info
-operator|!=
-literal|null
-operator|&&
-name|info
-operator|!=
-name|CommitInfo
-operator|.
-name|EMPTY
-condition|)
-block|{
-comment|// this can occur arbitrarily frequent. as prefiltering
-comment|// is not perfect, it can
-comment|// have false negatives - ie it can include even though
-comment|// no event is then created
-comment|// hence we can only really log at debug here
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"contentChanged: no event to deliver but not prefiltered, info={}, this={}, listener={}"
-argument_list|,
-name|info
-argument_list|,
-name|this
-argument_list|,
-name|eventListener
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 name|PERF_LOGGER
