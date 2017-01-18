@@ -768,6 +768,8 @@ literal|"+docs"
 argument_list|)
 condition|)
 block|{
+comment|// enabling this can lead to consistency problems,
+comment|// specially if multiple cluster nodes are used
 name|cacheDocs
 operator|=
 literal|true
@@ -800,6 +802,8 @@ literal|"+docChildren"
 argument_list|)
 condition|)
 block|{
+comment|// enabling this can lead to consistency problems,
+comment|// specially if multiple cluster nodes are used
 name|cacheDocChildren
 operator|=
 literal|true
