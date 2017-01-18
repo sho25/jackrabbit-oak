@@ -334,6 +334,7 @@ if|if
 condition|(
 name|standby
 condition|)
+block|{
 name|builder
 operator|.
 name|withSnfeListener
@@ -343,6 +344,7 @@ operator|.
 name|IGNORE_SNFE
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|blobStore
