@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segment
+name|commons
 operator|.
-name|test
+name|junit
 package|;
 end_package
 

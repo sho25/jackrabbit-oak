@@ -207,9 +207,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segment
+name|commons
 operator|.
-name|test
+name|junit
 operator|.
 name|TemporaryPort
 import|;
