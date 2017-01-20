@@ -3146,7 +3146,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 name|configuration
 operator|.
 name|isStandbyInstance
