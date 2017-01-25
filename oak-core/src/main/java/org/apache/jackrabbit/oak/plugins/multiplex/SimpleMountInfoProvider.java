@@ -509,6 +509,8 @@ literal|false
 argument_list|,
 literal|false
 argument_list|,
+literal|true
+argument_list|,
 name|asList
 argument_list|(
 name|paths
@@ -544,6 +546,8 @@ argument_list|,
 literal|true
 argument_list|,
 literal|false
+argument_list|,
+literal|true
 argument_list|,
 name|asList
 argument_list|(

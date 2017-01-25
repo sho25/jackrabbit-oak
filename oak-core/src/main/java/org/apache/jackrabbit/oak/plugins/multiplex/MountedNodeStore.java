@@ -110,50 +110,6 @@ return|return
 name|nodeStore
 return|;
 block|}
-name|boolean
-name|hasChildren
-parameter_list|(
-name|Iterable
-argument_list|<
-name|String
-argument_list|>
-name|children
-parameter_list|)
-block|{
-comment|// since we can't possibly know if a node matching the
-comment|// 'oak:mount-*' pattern exists below a given path
-comment|// we are forced to iterate for each node store
-for|for
-control|(
-name|String
-name|childNodeName
-range|:
-name|children
-control|)
-block|{
-if|if
-condition|(
-name|childNodeName
-operator|.
-name|startsWith
-argument_list|(
-name|getMount
-argument_list|()
-operator|.
-name|getPathFragmentName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-return|return
-literal|false
-return|;
-block|}
 block|}
 end_class
 

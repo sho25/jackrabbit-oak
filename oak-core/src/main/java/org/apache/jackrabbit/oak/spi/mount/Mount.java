@@ -62,6 +62,11 @@ name|String
 name|getPathFragmentName
 parameter_list|()
 function_decl|;
+comment|/**      * Checks if this mount supports mounting nodes containing the path fragment      * (see {@link #getPathFragmentName()}).      *      * @return true if the path fragment mounts are supported      */
+name|boolean
+name|isSupportFragment
+parameter_list|()
+function_decl|;
 comment|/**      * Checks if given path belongs to this<code>Mount</code>      *      * @param path path to check      * @return true if path belong to this mount      */
 name|boolean
 name|isMounted
