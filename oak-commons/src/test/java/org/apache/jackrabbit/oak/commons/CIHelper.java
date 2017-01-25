@@ -70,7 +70,25 @@ block|{
 specifier|private
 name|CIHelper
 parameter_list|()
-block|{ }
+block|{
+comment|// Prevent instantiation.
+block|}
+comment|/**      * Check if this process is running on Jenkins.      *      * @return {@code true} if this process is running on Jenkins, {@code false}      * otherwise.      */
+specifier|public
+specifier|static
+name|boolean
+name|jenkins
+parameter_list|()
+block|{
+return|return
+name|getenv
+argument_list|(
+literal|"JENKINS_URL"
+argument_list|)
+operator|!=
+literal|null
+return|;
+block|}
 comment|/**      * @return  {@code true} iff running on      * https://travis-ci.org/      */
 specifier|public
 specifier|static

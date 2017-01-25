@@ -33,6 +33,24 @@ name|oak
 operator|.
 name|commons
 operator|.
+name|CIHelper
+operator|.
+name|jenkins
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
 name|FixturesHelper
 operator|.
 name|Fixture
@@ -76,6 +94,18 @@ operator|.
 name|SegmentTestUtils
 operator|.
 name|createTmpTargetDir
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeFalse
 import|;
 end_import
 
@@ -337,6 +367,21 @@ decl_stmt|;
 name|FileStore
 name|storeC2
 decl_stmt|;
+annotation|@
+name|BeforeClass
+specifier|public
+specifier|static
+name|void
+name|assumeIsNotJenkins
+parameter_list|()
+block|{
+name|assumeFalse
+argument_list|(
+name|jenkins
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/*      Java 6 on Windows doesn't support dual IP stacks, so we will skip our IPv6      tests.     */
 specifier|protected
 specifier|final
