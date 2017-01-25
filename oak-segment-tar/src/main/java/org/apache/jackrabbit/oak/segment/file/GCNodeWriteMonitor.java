@@ -258,6 +258,8 @@ operator|.
 name|info
 argument_list|(
 literal|"TarMK GC #{}: unable to estimate number of nodes for compaction, missing gc history."
+argument_list|,
+name|gcCount
 argument_list|)
 expr_stmt|;
 block|}
