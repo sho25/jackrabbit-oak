@@ -246,6 +246,15 @@ name|DataStoreCacheUpgradeCommand
 argument_list|()
 argument_list|)
 block|,
+name|INDEX
+argument_list|(
+literal|"index"
+argument_list|,
+operator|new
+name|IndexCommand
+argument_list|()
+argument_list|)
+block|,
 name|HELP
 argument_list|(
 literal|"help"
