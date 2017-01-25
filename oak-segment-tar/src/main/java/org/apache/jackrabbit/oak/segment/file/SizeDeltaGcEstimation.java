@@ -290,7 +290,7 @@ operator|-
 name|lastGc
 operator|)
 operator|/
-name|totalSize
+name|lastGc
 decl_stmt|;
 name|gcNeeded
 operator|=
