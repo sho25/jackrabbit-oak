@@ -831,16 +831,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -3737,12 +3727,6 @@ block|}
 block|}
 block|}
 comment|/**      * See OAK-5517: SNFE when running compaction after a cancelled gc      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-5517"
-argument_list|)
-comment|// FIXME OAK-5517: SNFE when running compaction after a cancelled gc
 annotation|@
 name|Test
 specifier|public
