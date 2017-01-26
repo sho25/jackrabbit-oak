@@ -1915,6 +1915,12 @@ argument_list|,
 literal|100000
 argument_list|)
 decl_stmt|;
+comment|/**      * The document store without potentially lease checking wrapper.      */
+specifier|private
+specifier|final
+name|DocumentStore
+name|nonLeaseCheckingStore
+decl_stmt|;
 comment|/**      * The document store (might be used by multiple node stores).      */
 specifier|protected
 specifier|final
@@ -2111,6 +2117,13 @@ name|Nonnull
 specifier|private
 name|Thread
 name|leaseUpdateThread
+decl_stmt|;
+comment|/**      * Background thread performing the cluster update      */
+annotation|@
+name|Nonnull
+specifier|private
+name|Thread
+name|clusterUpdateThread
 decl_stmt|;
 comment|/**      * Read/Write lock for background operations. Regular commits will acquire      * a shared lock, while a background write acquires an exclusive lock.      */
 specifier|private
@@ -2677,6 +2690,12 @@ name|clusterNodeInfo
 operator|.
 name|getId
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|nonLeaseCheckingStore
+operator|=
+name|s
 expr_stmt|;
 if|if
 condition|(
@@ -3305,6 +3324,43 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+name|clusterUpdateThread
+operator|=
+operator|new
+name|Thread
+argument_list|(
+operator|new
+name|BackgroundClusterUpdate
+argument_list|(
+name|this
+argument_list|,
+name|isDisposed
+argument_list|)
+argument_list|,
+literal|"DocumentNodeStore cluster update thread "
+operator|+
+name|threadNamePostfix
+argument_list|)
+expr_stmt|;
+name|clusterUpdateThread
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|readOnlyMode
+condition|)
+block|{
+name|clusterUpdateThread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
 name|persistentCache
 operator|=
 name|builder
@@ -3652,6 +3708,22 @@ name|ae
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+try|try
+block|{
+name|clusterUpdateThread
+operator|.
+name|join
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+comment|// ignore
 block|}
 try|try
 block|{
@@ -9165,7 +9237,7 @@ name|ClusterNodeInfoDocument
 operator|.
 name|all
 argument_list|(
-name|store
+name|nonLeaseCheckingStore
 argument_list|)
 control|)
 block|{
@@ -13964,8 +14036,50 @@ operator|.
 name|renewClusterIdLease
 argument_list|()
 expr_stmt|;
-comment|// then, independently if the lease had to be updated or not, check
-comment|// the status:
+block|}
+block|}
+specifier|static
+class|class
+name|BackgroundClusterUpdate
+extends|extends
+name|NodeStoreTask
+block|{
+name|BackgroundClusterUpdate
+parameter_list|(
+name|DocumentNodeStore
+name|nodeStore
+parameter_list|,
+name|AtomicBoolean
+name|isDisposed
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|nodeStore
+argument_list|,
+name|isDisposed
+argument_list|,
+name|Suppliers
+operator|.
+name|ofInstance
+argument_list|(
+literal|1000
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|execute
+parameter_list|(
+annotation|@
+name|Nonnull
+name|DocumentNodeStore
+name|nodeStore
+parameter_list|)
+block|{
 if|if
 condition|(
 name|nodeStore
@@ -13974,7 +14088,6 @@ name|updateClusterState
 argument_list|()
 condition|)
 block|{
-comment|// then inform the discovery lite listener - if it is registered
 name|nodeStore
 operator|.
 name|signalClusterStateChange
