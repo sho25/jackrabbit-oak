@@ -61,6 +61,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -169,21 +189,34 @@ name|Exception
 block|{
 name|assertCommand
 argument_list|(
+name|combineLines
+argument_list|(
 literal|"hello"
+argument_list|)
 argument_list|,
 literal|"{'print':'hello'}"
 argument_list|)
 expr_stmt|;
 name|assertCommand
 argument_list|(
+name|combineLines
+argument_list|(
 literal|"false"
+argument_list|)
 argument_list|,
 literal|"{'print':false}"
 argument_list|)
 expr_stmt|;
 name|assertCommand
 argument_list|(
-literal|"1\n2\n3"
+name|combineLines
+argument_list|(
+literal|"1"
+argument_list|,
+literal|"2"
+argument_list|,
+literal|"3"
+argument_list|)
 argument_list|,
 literal|"{'$x':[1, 2, 3]}"
 argument_list|,
@@ -192,7 +225,14 @@ argument_list|)
 expr_stmt|;
 name|assertCommand
 argument_list|(
-literal|"x1\nx2\nx3"
+name|combineLines
+argument_list|(
+literal|"x1"
+argument_list|,
+literal|"x2"
+argument_list|,
+literal|"x3"
+argument_list|)
 argument_list|,
 literal|"{'$myFunction':[{'$y': 'x', '+': '$x'}, {'print':'$y'}]}"
 argument_list|,
@@ -203,7 +243,14 @@ argument_list|)
 expr_stmt|;
 name|assertCommand
 argument_list|(
-literal|"2\n4\n8"
+name|combineLines
+argument_list|(
+literal|"2"
+argument_list|,
+literal|"4"
+argument_list|,
+literal|"8"
+argument_list|)
 argument_list|,
 literal|"{'$x':1}"
 argument_list|,
@@ -212,7 +259,12 @@ argument_list|)
 expr_stmt|;
 name|assertCommand
 argument_list|(
-literal|"b\nd"
+name|combineLines
+argument_list|(
+literal|"b"
+argument_list|,
+literal|"d"
+argument_list|)
 argument_list|,
 literal|"{'$x':1}"
 argument_list|,
@@ -227,7 +279,12 @@ argument_list|)
 expr_stmt|;
 name|assertCommand
 argument_list|(
-literal|"10\n10"
+name|combineLines
+argument_list|(
+literal|"10"
+argument_list|,
+literal|"10"
+argument_list|)
 argument_list|,
 literal|"{'$x':1}"
 argument_list|,
@@ -240,7 +297,18 @@ argument_list|)
 expr_stmt|;
 name|assertCommand
 argument_list|(
-literal|"1\nnull\n1\n2\na1"
+name|combineLines
+argument_list|(
+literal|"1"
+argument_list|,
+literal|"null"
+argument_list|,
+literal|"1"
+argument_list|,
+literal|"2"
+argument_list|,
+literal|"a1"
+argument_list|)
 argument_list|,
 literal|"{'$x':1, '+':null}"
 argument_list|,
@@ -376,7 +444,10 @@ name|assertCommand
 argument_list|(
 name|index
 argument_list|,
+name|combineLines
+argument_list|(
 literal|""
+argument_list|)
 argument_list|,
 literal|"{'addNode':'/foo', 'node':{'jcr:primaryType': 'nt:unstructured', 'x': 1, 'y':{}}}"
 argument_list|,
@@ -387,13 +458,16 @@ name|assertCommand
 argument_list|(
 name|index
 argument_list|,
-literal|"/foo\n"
-operator|+
-literal|"/jcr:system\n"
-operator|+
-literal|"/oak:index\n"
-operator|+
+name|combineLines
+argument_list|(
+literal|"/foo"
+argument_list|,
+literal|"/jcr:system"
+argument_list|,
+literal|"/oak:index"
+argument_list|,
 literal|"/rep:security"
+argument_list|)
 argument_list|,
 literal|"{'xpath':'/jcr:root/* order by @jcr:path'}"
 argument_list|)
@@ -402,7 +476,10 @@ name|assertCommand
 argument_list|(
 name|index
 argument_list|,
+name|combineLines
+argument_list|(
 literal|"/oak:index/counter"
+argument_list|)
 argument_list|,
 literal|"{'xpath':'/jcr:root//element(*, oak:QueryIndexDefinition)[@type=`counter`] "
 operator|+
@@ -413,9 +490,12 @@ name|assertCommand
 argument_list|(
 name|index
 argument_list|,
+name|combineLines
+argument_list|(
 literal|"[nt:unstructured] as [a] /* property test = 1 "
 operator|+
 literal|"where ([a].[x] = 1) and (isdescendantnode([a], [/])) */"
+argument_list|)
 argument_list|,
 literal|"{'addNode':'/oak:index/test', 'node':{ "
 operator|+
@@ -444,7 +524,10 @@ name|assertCommand
 argument_list|(
 name|index
 argument_list|,
+name|combineLines
+argument_list|(
 literal|"50"
+argument_list|)
 argument_list|,
 literal|"{'addNode':'/foo/test', 'node':{'jcr:primaryType': 'oak:Unstructured', 'child':{}}}"
 argument_list|,
@@ -477,6 +560,8 @@ name|assertCommand
 argument_list|(
 name|index
 argument_list|,
+name|combineLines
+argument_list|(
 literal|"[nt:unstructured] as [a] /* nodeType Filter(query="
 operator|+
 literal|"explain select [jcr:path], [jcr:score], * from [nt:unstructured] as a "
@@ -486,6 +571,7 @@ operator|+
 literal|"/jcr:root//element(*, nt:unstructured)[@x=1] */, path=//*, "
 operator|+
 literal|"property=[x=[1]]) where ([a].[x] = 1) and (isdescendantnode([a], [/])) */"
+argument_list|)
 argument_list|,
 literal|"{'setProperty': '/oak:index/test/type', 'value': 'disabled'}"
 argument_list|,
@@ -498,9 +584,12 @@ name|assertCommand
 argument_list|(
 name|index
 argument_list|,
+name|combineLines
+argument_list|(
 literal|"[nt:unstructured] as [a] /* traverse '*' "
 operator|+
 literal|"where [a].[x] = 1 */"
+argument_list|)
 argument_list|,
 literal|"{'removeNode': '/oak:index/nodetype'}"
 argument_list|,
@@ -513,11 +602,14 @@ name|assertCommand
 argument_list|(
 name|index
 argument_list|,
+name|combineLines
+argument_list|(
 literal|"['/foo': {\n"
 operator|+
 literal|"  'jcr:primaryType': 'nt:unstructured', '{Long}x': '1', 'y': {}, 'test': {}\n"
 operator|+
 literal|"}]"
+argument_list|)
 argument_list|,
 literal|"{'xpath':'/jcr:root/foo', 'depth':2}"
 argument_list|)
@@ -640,10 +732,8 @@ name|toByteArray
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|assertEquals
-argument_list|(
-name|expected
-argument_list|,
+name|got
+operator|=
 name|got
 operator|.
 name|trim
@@ -655,8 +745,65 @@ literal|'"'
 argument_list|,
 literal|'\''
 argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|got
 argument_list|)
 expr_stmt|;
+block|}
+specifier|static
+name|String
+name|combineLines
+parameter_list|(
+name|String
+modifier|...
+name|lines
+parameter_list|)
+block|{
+name|StringWriter
+name|w
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+name|PrintWriter
+name|p
+init|=
+operator|new
+name|PrintWriter
+argument_list|(
+name|w
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|String
+name|l
+range|:
+name|lines
+control|)
+block|{
+name|p
+operator|.
+name|println
+argument_list|(
+name|l
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|w
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+return|;
 block|}
 block|}
 end_class
