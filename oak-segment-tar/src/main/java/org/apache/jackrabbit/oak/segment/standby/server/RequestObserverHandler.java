@@ -281,6 +281,17 @@ argument_list|,
 literal|"get head"
 argument_list|,
 name|address
+operator|.
+name|getAddress
+argument_list|()
+operator|.
+name|getHostAddress
+argument_list|()
+argument_list|,
+name|address
+operator|.
+name|getPort
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -309,6 +320,17 @@ argument_list|,
 literal|"get segment"
 argument_list|,
 name|address
+operator|.
+name|getAddress
+argument_list|()
+operator|.
+name|getHostAddress
+argument_list|()
+argument_list|,
+name|address
+operator|.
+name|getPort
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -337,6 +359,17 @@ argument_list|,
 literal|"get blob id"
 argument_list|,
 name|address
+operator|.
+name|getAddress
+argument_list|()
+operator|.
+name|getHostAddress
+argument_list|()
+argument_list|,
+name|address
+operator|.
+name|getPort
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
