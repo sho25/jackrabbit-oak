@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Version of the segment storage format.  *<ul>  *<li>10 = all Oak versions previous to 11</li>  *<li>11 = all Oak versions starting from 1.0.12, 1.1.7 and 1.2</li>  *<li>12 = all oak-segment-tar versions</li>  *</ul>  */
+comment|/**  * Version of the segment storage format.  *<ul>  *<li>12 = all oak-segment-tar versions</li>  *</ul>  */
 end_comment
 
 begin_enum
@@ -74,28 +74,7 @@ specifier|public
 enum|enum
 name|SegmentVersion
 block|{
-comment|/**      * @deprecated Use latest version V11      */
-annotation|@
-name|Deprecated
-name|V_10
-argument_list|(
-operator|(
-name|byte
-operator|)
-literal|10
-argument_list|)
-block|,
-comment|/**      * @deprecated Use latest version V11      */
-annotation|@
-name|Deprecated
-name|V_11
-argument_list|(
-operator|(
-name|byte
-operator|)
-literal|11
-argument_list|)
-block|,
+comment|/*      * ON OLDER VERSIONS      *      * The legacy Segment Store implemented in oak-segment makes use of version      * numbers 10 and 11. These version numbers identify two variations of the      * data format that oak-segment can parse and understand.      *      * For oak-segment-tar 10 and 11 are invalid values for the segment version.      * The data format identified by these versions is not understood by      * oak-segment-tar. No special handling is needed for versions 10 and 11.      * From the perspective of oak-segment-tar, they are just invalid. The first      * valid version for oak-segment-tar is 12.      *      * As a consequence, if you find yourself debugging code from      * oak-segment-tar and you detect that version 10 or 11 is used in some      * segment, you are probably trying to read the old data format with the new      * code.      */
 name|V_12
 argument_list|(
 operator|(
@@ -228,34 +207,6 @@ condition|)
 block|{
 return|return
 name|V_12
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|v
-operator|==
-name|V_11
-operator|.
-name|version
-condition|)
-block|{
-return|return
-name|V_11
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|v
-operator|==
-name|V_10
-operator|.
-name|version
-condition|)
-block|{
-return|return
-name|V_10
 return|;
 block|}
 else|else
