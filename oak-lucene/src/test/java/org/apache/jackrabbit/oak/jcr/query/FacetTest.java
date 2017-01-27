@@ -352,6 +352,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertTrue
+argument_list|(
+name|superuser
+operator|.
+name|nodeExists
+argument_list|(
+literal|"/oak:index/luceneGlobal/facets"
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|superuser
