@@ -33,6 +33,22 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSet
+operator|.
+name|copyOf
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Sets
 operator|.
 name|difference
@@ -320,6 +336,8 @@ parameter_list|)
 block|{
 name|close
 argument_list|(
+name|copyOf
+argument_list|(
 name|difference
 argument_list|(
 name|collections
@@ -328,6 +346,7 @@ name|keySet
 argument_list|()
 argument_list|,
 name|hostNames
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
