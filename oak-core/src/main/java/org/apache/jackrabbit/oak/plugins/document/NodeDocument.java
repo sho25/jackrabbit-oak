@@ -878,7 +878,7 @@ specifier|final
 name|int
 name|DOC_SIZE_THRESHOLD
 init|=
-literal|256
+literal|1024
 operator|*
 literal|1024
 decl_stmt|;
@@ -889,14 +889,6 @@ name|int
 name|NUM_REVS_THRESHOLD
 init|=
 literal|100
-decl_stmt|;
-comment|/**      * The split ratio. Only split data to an old document when at least      * 30% of the data can be moved.      */
-specifier|static
-specifier|final
-name|float
-name|SPLIT_RATIO
-init|=
-literal|0.3f
 decl_stmt|;
 comment|/**      * Create an intermediate previous document when there are this many      * previous documents of equal height.      */
 specifier|static
