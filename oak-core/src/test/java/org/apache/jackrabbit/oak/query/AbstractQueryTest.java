@@ -1999,13 +1999,18 @@ if|if
 condition|(
 name|time
 operator|>
-literal|10000
+literal|5
+operator|*
+literal|60
+operator|*
+literal|1000
 operator|&&
 operator|!
 name|isDebugModeEnabled
 argument_list|()
 condition|)
 block|{
+comment|// more than 5 minutes
 name|fail
 argument_list|(
 literal|"Query took too long: "
