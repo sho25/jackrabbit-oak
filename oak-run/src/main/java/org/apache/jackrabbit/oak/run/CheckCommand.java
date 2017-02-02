@@ -160,10 +160,7 @@ argument_list|(
 literal|"journal.log"
 argument_list|)
 decl_stmt|;
-name|ArgumentAcceptingOptionSpec
-argument_list|<
-name|Long
-argument_list|>
+name|OptionSpec
 name|deep
 init|=
 name|parser
@@ -172,12 +169,25 @@ name|accepts
 argument_list|(
 literal|"deep"
 argument_list|,
-literal|"enable deep consistency checking. An optional long "
-operator|+
-literal|"specifies the number of seconds between progress notifications"
+literal|"enable deep consistency checking. "
+argument_list|)
+decl_stmt|;
+name|ArgumentAcceptingOptionSpec
+argument_list|<
+name|Long
+argument_list|>
+name|notify
+init|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"notify"
+argument_list|,
+literal|"number of seconds between progress notifications"
 argument_list|)
 operator|.
-name|withOptionalArg
+name|withRequiredArg
 argument_list|()
 operator|.
 name|ofType
@@ -323,7 +333,7 @@ decl_stmt|;
 name|long
 name|debugLevel
 init|=
-name|deep
+name|notify
 operator|.
 name|value
 argument_list|(

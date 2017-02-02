@@ -204,7 +204,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Number of seconds between successive debug print statements. This          * parameter is not required and defaults to an arbitrary large number.          *          * @param debugInterval number of seconds between successive debug print          *                      statements. It must be strictly positive.          * @return this builder.          */
+comment|/**          * Number of seconds between successive debug print statements. This          * parameter is not required and defaults to an arbitrary large number.          *          * @param debugInterval number of seconds between successive debug print          *                      statements. It must be positive.          * @return this builder.          */
 specifier|public
 name|Builder
 name|withDebugInterval
@@ -216,7 +216,7 @@ block|{
 name|checkArgument
 argument_list|(
 name|debugInterval
-operator|>
+operator|>=
 literal|0
 argument_list|)
 expr_stmt|;
