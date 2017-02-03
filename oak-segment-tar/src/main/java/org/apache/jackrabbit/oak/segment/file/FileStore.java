@@ -1548,6 +1548,8 @@ argument_list|,
 name|memoryMapping
 argument_list|,
 name|recovery
+argument_list|,
+name|ioMonitor
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3357,6 +3359,8 @@ argument_list|(
 name|writeFile
 argument_list|,
 name|memoryMapping
+argument_list|,
+name|ioMonitor
 argument_list|)
 argument_list|)
 expr_stmt|;

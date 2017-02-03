@@ -207,6 +207,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -487,20 +501,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Supplier
-import|;
-end_import
-
 begin_comment
 comment|/**  * The storage implementation for tar files.  */
 end_comment
@@ -687,6 +687,11 @@ return|;
 block|}
 block|}
 decl_stmt|;
+specifier|protected
+specifier|final
+name|IOMonitor
+name|ioMonitor
+decl_stmt|;
 name|AbstractFileStore
 parameter_list|(
 specifier|final
@@ -781,6 +786,15 @@ operator|=
 name|builder
 operator|.
 name|getMemoryMapping
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|ioMonitor
+operator|=
+name|builder
+operator|.
+name|getIOMonitor
 argument_list|()
 expr_stmt|;
 block|}

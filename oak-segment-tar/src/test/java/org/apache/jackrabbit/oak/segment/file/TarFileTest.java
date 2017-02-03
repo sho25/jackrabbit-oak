@@ -403,6 +403,10 @@ argument_list|(
 name|file
 argument_list|,
 literal|false
+argument_list|,
+operator|new
+name|IOMonitorAdapter
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try
@@ -444,6 +448,10 @@ argument_list|(
 name|file
 argument_list|,
 literal|false
+argument_list|,
+operator|new
+name|IOMonitorAdapter
+argument_list|()
 argument_list|)
 expr_stmt|;
 try|try
@@ -940,6 +948,10 @@ argument_list|(
 name|file
 argument_list|,
 literal|false
+argument_list|,
+operator|new
+name|IOMonitorAdapter
+argument_list|()
 argument_list|)
 init|)
 block|{
@@ -1170,6 +1182,10 @@ argument_list|(
 name|file
 argument_list|,
 literal|false
+argument_list|,
+operator|new
+name|IOMonitorAdapter
+argument_list|()
 argument_list|)
 init|)
 block|{
@@ -1587,6 +1603,10 @@ argument_list|(
 name|file
 argument_list|,
 literal|false
+argument_list|,
+operator|new
+name|IOMonitorAdapter
+argument_list|()
 argument_list|)
 init|)
 block|{
