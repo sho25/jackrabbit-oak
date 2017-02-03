@@ -226,6 +226,18 @@ argument_list|,
 literal|"Use oak-segment instead of oak-segment-tar"
 argument_list|)
 decl_stmt|;
+name|OptionSpec
+name|ioStatistics
+init|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"io-stats"
+argument_list|,
+literal|"Print I/O statistics (only for oak-segment-tar)"
+argument_list|)
+decl_stmt|;
 name|OptionSet
 name|options
 init|=
@@ -390,6 +402,13 @@ argument_list|,
 name|debugLevel
 argument_list|,
 name|binLen
+argument_list|,
+name|options
+operator|.
+name|has
+argument_list|(
+name|ioStatistics
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

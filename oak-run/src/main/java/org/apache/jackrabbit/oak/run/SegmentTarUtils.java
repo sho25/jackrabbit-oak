@@ -1211,6 +1211,9 @@ name|debugLevel
 parameter_list|,
 name|long
 name|binLen
+parameter_list|,
+name|boolean
+name|ioStatistics
 parameter_list|)
 block|{
 name|Check
@@ -1241,6 +1244,11 @@ operator|.
 name|withMinimumBinaryLength
 argument_list|(
 name|binLen
+argument_list|)
+operator|.
+name|withIOStatistics
+argument_list|(
+name|ioStatistics
 argument_list|)
 operator|.
 name|build

@@ -136,6 +136,10 @@ name|long
 name|minimumBinaryLength
 decl_stmt|;
 specifier|private
+name|boolean
+name|ioStatistics
+decl_stmt|;
+specifier|private
 name|Builder
 parameter_list|()
 block|{
@@ -230,7 +234,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Minimum amount of bytes to read from binary properties. This          * parameter is not required and defaults to zero.          *          * @param minimumBinaryLength minimum amount of bytes to read from          *                            binary properties. If this parameter is          *                            set to {@code -1}, every binary property          *                            is read in its entirety.          * @return          */
+comment|/**          * Minimum amount of bytes to read from binary properties. This          * parameter is not required and defaults to zero.          *          * @param minimumBinaryLength minimum amount of bytes to read from          *                            binary properties. If this parameter is          *                            set to {@code -1}, every binary property          *                            is read in its entirety.          * @return this builder.          */
 specifier|public
 name|Builder
 name|withMinimumBinaryLength
@@ -244,6 +248,25 @@ operator|.
 name|minimumBinaryLength
 operator|=
 name|minimumBinaryLength
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Instruct the command to print statistics about I/O operations          * performed during the check. This parameter is not required and          * defaults to {@code false}.          *          * @param ioStatistics {@code true} if I/O statistics should be          *                     provided, {@code false} otherwise.          * @return this builder.          */
+specifier|public
+name|Builder
+name|withIOStatistics
+parameter_list|(
+name|boolean
+name|ioStatistics
+parameter_list|)
+block|{
+name|this
+operator|.
+name|ioStatistics
+operator|=
+name|ioStatistics
 expr_stmt|;
 return|return
 name|this
@@ -300,6 +323,11 @@ name|long
 name|minimumBinaryLength
 decl_stmt|;
 specifier|private
+specifier|final
+name|boolean
+name|ioStatistics
+decl_stmt|;
+specifier|private
 name|Check
 parameter_list|(
 name|Builder
@@ -346,6 +374,14 @@ name|builder
 operator|.
 name|minimumBinaryLength
 expr_stmt|;
+name|this
+operator|.
+name|ioStatistics
+operator|=
+name|builder
+operator|.
+name|ioStatistics
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -369,6 +405,8 @@ argument_list|,
 name|debugInterval
 argument_list|,
 name|minimumBinaryLength
+argument_list|,
+name|ioStatistics
 argument_list|)
 expr_stmt|;
 block|}
