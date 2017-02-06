@@ -1022,8 +1022,10 @@ operator|.
 name|facet
 expr_stmt|;
 block|}
-name|dirty
-operator||=
+name|boolean
+index|[]
+name|dirties
+init|=
 name|indexAggregates
 argument_list|(
 name|path
@@ -1032,7 +1034,23 @@ name|fields
 argument_list|,
 name|state
 argument_list|)
+decl_stmt|;
+name|dirty
+operator||=
+name|dirties
+index|[
+literal|0
+index|]
 expr_stmt|;
+comment|// any (aggregate) indexing happened
+name|facet
+operator||=
+name|dirties
+index|[
+literal|1
+index|]
+expr_stmt|;
+comment|// facet indexing during (index-time) aggregation
 name|dirty
 operator||=
 name|indexNullCheckEnabledProps
@@ -3358,8 +3376,10 @@ return|return
 name|node
 return|;
 block|}
+comment|/**      * index aggregates on a certain path      * @param path the path of the node      * @param fields the list of fields      * @param state the node state      * @return an array of booleans whose first element is {@code true} if any indexing has happened      * and the second element is {@code true} if facets on any (aggregate) property have been indexed      */
 specifier|private
 name|boolean
+index|[]
 name|indexAggregates
 parameter_list|(
 specifier|final
@@ -3381,6 +3401,14 @@ block|{
 specifier|final
 name|AtomicBoolean
 name|dirtyFlag
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
+decl_stmt|;
+specifier|final
+name|AtomicBoolean
+name|facetFlag
 init|=
 operator|new
 name|AtomicBoolean
@@ -3510,6 +3538,23 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|result
+operator|.
+name|pd
+operator|.
+name|facet
+condition|)
+block|{
+name|facetFlag
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|dirty
 condition|)
 block|{
@@ -3526,10 +3571,20 @@ block|}
 argument_list|)
 expr_stmt|;
 return|return
+operator|new
+name|boolean
+index|[]
+block|{
 name|dirtyFlag
 operator|.
 name|get
 argument_list|()
+block|,
+name|facetFlag
+operator|.
+name|get
+argument_list|()
+block|}
 return|;
 block|}
 comment|/**      * Create the fulltext field from the aggregated nodes. If result is for aggregate for a relative node      * include then      * @param path current node path      * @param fields indexed fields      * @param result aggregate result      * @return true if a field was created for passed node result      */
