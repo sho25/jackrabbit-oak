@@ -590,6 +590,21 @@ operator|.
 name|DATA_NODE_NAME
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|s
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
+comment|// no index data (not yet indexed, or very few nodes)
+return|return
+operator|-
+literal|1
+return|;
+block|}
 name|s
 operator|=
 name|child
@@ -804,6 +819,21 @@ operator|.
 name|DATA_NODE_NAME
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|s
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
+comment|// no index data (not yet indexed, or very few nodes)
+return|return
+operator|-
+literal|1
+return|;
+block|}
 name|s
 operator|=
 name|child

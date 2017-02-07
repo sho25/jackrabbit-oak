@@ -1189,7 +1189,7 @@ name|setProperty
 argument_list|(
 literal|"entryCount"
 argument_list|,
-literal|100000
+literal|10000000
 argument_list|)
 expr_stmt|;
 name|Node
