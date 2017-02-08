@@ -154,7 +154,7 @@ name|accepts
 argument_list|(
 literal|"deep"
 argument_list|,
-literal|"enable deep consistency checking. "
+literal|"<deprecated> enable deep consistency checking. "
 argument_list|)
 decl_stmt|;
 name|ArgumentAcceptingOptionSpec
@@ -300,16 +300,6 @@ argument_list|(
 name|options
 argument_list|)
 decl_stmt|;
-name|boolean
-name|fullTraversal
-init|=
-name|options
-operator|.
-name|has
-argument_list|(
-name|deep
-argument_list|)
-decl_stmt|;
 name|long
 name|debugLevel
 init|=
@@ -367,6 +357,26 @@ name|options
 operator|.
 name|has
 argument_list|(
+name|deep
+argument_list|)
+condition|)
+block|{
+name|printUsage
+argument_list|(
+name|parser
+argument_list|,
+literal|"The --deep option was deprecated! Please do not use it in the future!"
+argument_list|,
+literal|"A deep scan of the content tree, traversing every node, will be performed by default."
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|options
+operator|.
+name|has
+argument_list|(
 name|segment
 argument_list|)
 condition|)
@@ -379,7 +389,7 @@ name|dir
 argument_list|,
 name|journalFileName
 argument_list|,
-name|fullTraversal
+literal|true
 argument_list|,
 name|debugLevel
 argument_list|,
@@ -397,7 +407,7 @@ name|dir
 argument_list|,
 name|journalFileName
 argument_list|,
-name|fullTraversal
+literal|true
 argument_list|,
 name|debugLevel
 argument_list|,
