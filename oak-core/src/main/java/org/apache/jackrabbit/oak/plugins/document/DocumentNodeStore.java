@@ -9676,10 +9676,11 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e1
 parameter_list|)
 block|{
+comment|// OAK-5601 : catch any Exception, not only IOException
 name|LOG
 operator|.
 name|error
