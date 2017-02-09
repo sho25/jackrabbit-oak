@@ -189,10 +189,7 @@ operator|.
 name|MAX_VALUE
 argument_list|)
 decl_stmt|;
-name|ArgumentAcceptingOptionSpec
-argument_list|<
-name|Long
-argument_list|>
+name|OptionSpec
 name|bin
 init|=
 name|parser
@@ -201,17 +198,7 @@ name|accepts
 argument_list|(
 literal|"bin"
 argument_list|,
-literal|"read the first n bytes from binary properties."
-argument_list|)
-operator|.
-name|withRequiredArg
-argument_list|()
-operator|.
-name|ofType
-argument_list|(
-name|Long
-operator|.
-name|class
+literal|"read the content of binary properties"
 argument_list|)
 decl_stmt|;
 name|OptionSpec
@@ -313,8 +300,7 @@ decl_stmt|;
 name|long
 name|binLen
 init|=
-operator|-
-literal|1L
+literal|0L
 decl_stmt|;
 if|if
 condition|(
@@ -328,28 +314,9 @@ condition|)
 block|{
 name|binLen
 operator|=
-name|bin
-operator|.
-name|value
-argument_list|(
-name|options
-argument_list|)
+operator|-
+literal|1L
 expr_stmt|;
-if|if
-condition|(
-name|binLen
-operator|<
-literal|0
-condition|)
-block|{
-name|printUsage
-argument_list|(
-name|parser
-argument_list|,
-literal|"The value for --bin option must be a positive number!"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 if|if
 condition|(

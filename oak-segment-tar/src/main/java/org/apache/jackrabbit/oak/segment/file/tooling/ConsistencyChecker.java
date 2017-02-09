@@ -1210,7 +1210,7 @@ argument_list|)
 decl_stmt|;
 name|print
 argument_list|(
-literal|"Traversed {} nodes and {} properties"
+literal|"Checked {} nodes and {} properties"
 argument_list|,
 name|nodeCount
 argument_list|,
@@ -1356,6 +1356,9 @@ block|}
 block|}
 else|else
 block|{
+name|propertyCount
+operator|++
+expr_stmt|;
 name|propertyState
 operator|.
 name|getValue
@@ -1364,9 +1367,6 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-name|propertyCount
-operator|++
-expr_stmt|;
 block|}
 for|for
 control|(
@@ -1462,7 +1462,6 @@ return|;
 block|}
 block|}
 specifier|private
-specifier|static
 name|void
 name|traverse
 parameter_list|(
@@ -1594,6 +1593,9 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|propertyCount
+operator|++
+expr_stmt|;
 block|}
 block|}
 specifier|private
