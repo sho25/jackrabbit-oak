@@ -376,6 +376,16 @@ name|QueryOptions
 name|options
 parameter_list|)
 function_decl|;
+comment|/**      * Whether the query is potentially slow.      * Only supported for prepared queries.      *       * @return true if traversal is the only option      */
+name|boolean
+name|isPotentiallySlow
+parameter_list|()
+function_decl|;
+comment|/**      * Verify the query is not potentially slow. Only supported for prepared      * queries.      *       * @throws IllegalArgumentException if potentially slow, and configured to      *             fail in this case      */
+name|void
+name|verifyNotPotentiallySlow
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

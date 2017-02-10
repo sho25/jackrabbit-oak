@@ -1349,6 +1349,11 @@ operator|.
 name|prepare
 argument_list|()
 expr_stmt|;
+name|result
+operator|.
+name|verifyNotPotentiallySlow
+argument_list|()
+expr_stmt|;
 name|LOG
 operator|.
 name|debug
@@ -1372,6 +1377,11 @@ comment|// Always prepare all of the queries and compute the cheapest as
 comment|// it's the default behaviour. That way, we always log the cost and
 comment|// can more easily analyze problems. The querySelectionMode flag can
 comment|// be used to override the cheapest.
+name|boolean
+name|isPotentiallySlow
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|Query
@@ -1388,6 +1398,20 @@ operator|.
 name|prepare
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|q
+operator|.
+name|isPotentiallySlow
+argument_list|()
+condition|)
+block|{
+name|isPotentiallySlow
+operator|=
+literal|false
+expr_stmt|;
+block|}
 name|double
 name|cost
 init|=
@@ -1500,6 +1524,17 @@ case|case
 name|CHEAPEST
 case|:
 default|default:
+block|}
+if|if
+condition|(
+name|isPotentiallySlow
+condition|)
+block|{
+name|result
+operator|.
+name|verifyNotPotentiallySlow
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 return|return
