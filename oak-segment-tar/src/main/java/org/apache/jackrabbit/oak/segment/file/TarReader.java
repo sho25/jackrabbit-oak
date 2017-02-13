@@ -5815,7 +5815,7 @@ name|elapsed
 argument_list|(
 name|TimeUnit
 operator|.
-name|MILLISECONDS
+name|NANOSECONDS
 argument_list|)
 decl_stmt|;
 name|ioMonitor

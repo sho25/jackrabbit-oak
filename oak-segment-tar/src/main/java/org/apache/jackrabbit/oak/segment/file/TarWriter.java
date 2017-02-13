@@ -1175,7 +1175,7 @@ name|elapsed
 argument_list|(
 name|TimeUnit
 operator|.
-name|MILLISECONDS
+name|NANOSECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;

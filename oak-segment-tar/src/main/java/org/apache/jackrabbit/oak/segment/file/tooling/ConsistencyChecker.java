@@ -555,7 +555,18 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|AtomicLong
-name|bytesRead
+name|readBytes
+init|=
+operator|new
+name|AtomicLong
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|final
+name|AtomicLong
+name|readTime
 init|=
 operator|new
 name|AtomicLong
@@ -567,7 +578,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|beforeSegmentRead
+name|afterSegmentRead
 parameter_list|(
 name|File
 name|file
@@ -580,6 +591,9 @@ name|lsb
 parameter_list|,
 name|int
 name|length
+parameter_list|,
+name|long
+name|elapsed
 parameter_list|)
 block|{
 name|ioOperations
@@ -587,11 +601,18 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-name|bytesRead
+name|readBytes
 operator|.
 name|addAndGet
 argument_list|(
 name|length
+argument_list|)
+expr_stmt|;
+name|readTime
+operator|.
+name|addAndGet
+argument_list|(
+name|elapsed
 argument_list|)
 expr_stmt|;
 block|}
@@ -868,7 +889,7 @@ name|checker
 operator|.
 name|print
 argument_list|(
-literal|"[I/O] Segment read operations: {0}"
+literal|"[I/O] Segment read: Number of operations: {0}"
 argument_list|,
 name|checker
 operator|.
@@ -881,7 +902,7 @@ name|checker
 operator|.
 name|print
 argument_list|(
-literal|"[I/O] Segment bytes read: {0} ({1} bytes)"
+literal|"[I/O] Segment read: Total size: {0} ({1} bytes)"
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
@@ -889,7 +910,7 @@ name|checker
 operator|.
 name|statisticsIOMonitor
 operator|.
-name|bytesRead
+name|readBytes
 operator|.
 name|get
 argument_list|()
@@ -899,7 +920,20 @@ name|checker
 operator|.
 name|statisticsIOMonitor
 operator|.
-name|bytesRead
+name|readBytes
+argument_list|)
+expr_stmt|;
+name|checker
+operator|.
+name|print
+argument_list|(
+literal|"[I/O] Segment read: Total time: {0} ns"
+argument_list|,
+name|checker
+operator|.
+name|statisticsIOMonitor
+operator|.
+name|readTime
 argument_list|)
 expr_stmt|;
 block|}
