@@ -259,6 +259,26 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|text
+operator|.
+name|MessageFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Set
@@ -503,26 +523,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Utility for checking the files of a  * {@link FileStore} for inconsistency and  * reporting that latest consistent revision.  */
 end_comment
@@ -597,21 +597,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|ConsistencyChecker
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-specifier|private
 specifier|final
 name|StatisticsIOMonitor
 name|statisticsIOMonitor
@@ -630,7 +615,17 @@ specifier|final
 name|long
 name|debugInterval
 decl_stmt|;
-comment|/**      * Run a consistency check.      *      * @param directory  directory containing the tar files      * @param journalFileName  name of the journal file containing the revision history      * @param fullTraversal    full traversal consistency check if {@code true}. Only try      *                         to access the root node otherwise.      * @param debugInterval    number of seconds between printing progress information to      *                         the console during the full traversal phase.      * @param binLen           number of bytes to read from binary properties. -1 for all.      * @throws IOException      */
+specifier|private
+specifier|final
+name|PrintWriter
+name|outWriter
+decl_stmt|;
+specifier|private
+specifier|final
+name|PrintWriter
+name|errWriter
+decl_stmt|;
+comment|/**      * Run a consistency check.      *      * @param directory  directory containing the tar files      * @param journalFileName  name of the journal file containing the revision history      * @param fullTraversal    full traversal consistency check if {@code true}. Only try      *                         to access the root node otherwise.      * @param debugInterval    number of seconds between printing progress information to      *                         the console during the full traversal phase.      * @param binLen           number of bytes to read from binary properties. -1 for all.      * @param ioStatistics     if {@code true} prints I/O statistics gathered while consistency       *                         check was performed      * @param outWriter        text output stream writer      * @param errWriter        text error stream writer                              * @throws IOException      */
 specifier|public
 specifier|static
 name|void
@@ -653,19 +648,18 @@ name|binLen
 parameter_list|,
 name|boolean
 name|ioStatistics
+parameter_list|,
+name|PrintWriter
+name|outWriter
+parameter_list|,
+name|PrintWriter
+name|errWriter
 parameter_list|)
 throws|throws
 name|IOException
 throws|,
 name|InvalidFileStoreVersionException
 block|{
-name|print
-argument_list|(
-literal|"Searching for last good revision in {}"
-argument_list|,
-name|journalFileName
-argument_list|)
-expr_stmt|;
 try|try
 init|(
 name|JournalReader
@@ -694,9 +688,22 @@ argument_list|,
 name|debugInterval
 argument_list|,
 name|ioStatistics
+argument_list|,
+name|outWriter
+argument_list|,
+name|errWriter
 argument_list|)
 init|)
 block|{
+name|checker
+operator|.
+name|print
+argument_list|(
+literal|"Searching for last good revision in {0}"
+argument_list|,
+name|journalFileName
+argument_list|)
+expr_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -738,9 +745,11 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+name|checker
+operator|.
 name|print
 argument_list|(
-literal|"Checking revision {}"
+literal|"Checking revision {0}"
 argument_list|,
 name|revision
 argument_list|)
@@ -790,16 +799,20 @@ operator|==
 literal|null
 condition|)
 block|{
+name|checker
+operator|.
 name|print
 argument_list|(
-literal|"Found latest good revision {}"
+literal|"Found latest good revision {0}"
 argument_list|,
 name|revision
 argument_list|)
 expr_stmt|;
+name|checker
+operator|.
 name|print
 argument_list|(
-literal|"Searched through {} revisions"
+literal|"Searched through {0} revisions"
 argument_list|,
 name|revisionCount
 argument_list|)
@@ -818,9 +831,11 @@ argument_list|(
 name|badPath
 argument_list|)
 expr_stmt|;
+name|checker
+operator|.
 name|print
 argument_list|(
-literal|"Broken revision {}"
+literal|"Broken revision {0}"
 argument_list|,
 name|revision
 argument_list|)
@@ -833,9 +848,11 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|print
+name|checker
+operator|.
+name|printError
 argument_list|(
-literal|"Skipping invalid record id {}"
+literal|"Skipping invalid record id {0}"
 argument_list|,
 name|revision
 argument_list|)
@@ -847,9 +864,11 @@ condition|(
 name|ioStatistics
 condition|)
 block|{
+name|checker
+operator|.
 name|print
 argument_list|(
-literal|"[I/O] Segment read operations: {}"
+literal|"[I/O] Segment read operations: {0}"
 argument_list|,
 name|checker
 operator|.
@@ -858,9 +877,11 @@ operator|.
 name|ioOperations
 argument_list|)
 expr_stmt|;
+name|checker
+operator|.
 name|print
 argument_list|(
-literal|"[I/O] Segment bytes read: {} ({} bytes)"
+literal|"[I/O] Segment bytes read: {0} ({1} bytes)"
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
@@ -889,6 +910,8 @@ operator|==
 literal|null
 condition|)
 block|{
+name|checker
+operator|.
 name|print
 argument_list|(
 literal|"No good revision found"
@@ -897,7 +920,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Create a new consistency checker instance      *      * @param directory  directory containing the tar files      * @param debugInterval    number of seconds between printing progress information to      *                         the console during the full traversal phase.      * @throws IOException      */
+comment|/**      * Create a new consistency checker instance      *      * @param directory        directory containing the tar files      * @param debugInterval    number of seconds between printing progress information to      *                         the console during the full traversal phase.      * @param ioStatistics     if {@code true} prints I/O statistics gathered while consistency       *                         check was performed      * @param outWriter        text output stream writer      * @param errWriter        text error stream writer                              * @throws IOException      */
 specifier|public
 name|ConsistencyChecker
 parameter_list|(
@@ -909,6 +932,12 @@ name|debugInterval
 parameter_list|,
 name|boolean
 name|ioStatistics
+parameter_list|,
+name|PrintWriter
+name|outWriter
+parameter_list|,
+name|PrintWriter
+name|errWriter
 parameter_list|)
 throws|throws
 name|IOException
@@ -950,6 +979,18 @@ operator|.
 name|debugInterval
 operator|=
 name|debugInterval
+expr_stmt|;
+name|this
+operator|.
+name|outWriter
+operator|=
+name|outWriter
+expr_stmt|;
+name|this
+operator|.
+name|errWriter
+operator|=
+name|errWriter
 expr_stmt|;
 block|}
 comment|/**      * Check whether the nodes and all its properties of all given      * {@code paths} are consistent at the given {@code revision}.      *      * @param revision  revision to check      * @param paths     paths to check      * @param binLen    number of bytes to read from binary properties. -1 for all.      * @return  Path of the first inconsistency detected or {@code null} if none.      */
@@ -1026,7 +1067,7 @@ try|try
 block|{
 name|print
 argument_list|(
-literal|"Checking {}"
+literal|"Checking {0}"
 argument_list|,
 name|path
 argument_list|)
@@ -1129,9 +1170,9 @@ name|RuntimeException
 name|e
 parameter_list|)
 block|{
-name|print
+name|printError
 argument_list|(
-literal|"Error while checking {}: {}"
+literal|"Error while checking {0}: {1}"
 argument_list|,
 name|path
 argument_list|,
@@ -1154,7 +1195,7 @@ specifier|private
 name|int
 name|propertyCount
 decl_stmt|;
-comment|/**      * Travers the given {@code revision}      * @param revision  revision to travers      * @param binLen    number of bytes to read from binary properties. -1 for all.      */
+comment|/**      * Traverse the given {@code revision}      * @param revision  revision to travers      * @param binLen    number of bytes to read from binary properties. -1 for all.      */
 specifier|public
 name|String
 name|traverse
@@ -1210,7 +1251,7 @@ argument_list|)
 decl_stmt|;
 name|print
 argument_list|(
-literal|"Checked {} nodes and {} properties"
+literal|"Checked {0} nodes and {1} properties"
 argument_list|,
 name|nodeCount
 argument_list|,
@@ -1227,9 +1268,9 @@ name|RuntimeException
 name|e
 parameter_list|)
 block|{
-name|print
+name|printError
 argument_list|(
-literal|"Error while traversing {}"
+literal|"Error while traversing {0}"
 argument_list|,
 name|revision
 argument_list|,
@@ -1265,7 +1306,7 @@ try|try
 block|{
 name|debug
 argument_list|(
-literal|"Traversing {}"
+literal|"Traversing {0}"
 argument_list|,
 name|path
 argument_list|)
@@ -1286,7 +1327,7 @@ control|)
 block|{
 name|debug
 argument_list|(
-literal|"Checking {}/{}"
+literal|"Checking {0}/{1}"
 argument_list|,
 name|path
 argument_list|,
@@ -1444,9 +1485,9 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|print
+name|printError
 argument_list|(
-literal|"Error while traversing {}: {}"
+literal|"Error while traversing {0}: {1}"
 argument_list|,
 name|path
 argument_list|,
@@ -1644,7 +1685,6 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|private
-specifier|static
 name|void
 name|print
 parameter_list|(
@@ -1652,16 +1692,15 @@ name|String
 name|format
 parameter_list|)
 block|{
-name|LOG
+name|outWriter
 operator|.
-name|info
+name|println
 argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|static
 name|void
 name|print
 parameter_list|(
@@ -1672,18 +1711,22 @@ name|Object
 name|arg
 parameter_list|)
 block|{
-name|LOG
+name|outWriter
 operator|.
-name|info
+name|println
+argument_list|(
+name|MessageFormat
+operator|.
+name|format
 argument_list|(
 name|format
 argument_list|,
 name|arg
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|static
 name|void
 name|print
 parameter_list|(
@@ -1697,15 +1740,77 @@ name|Object
 name|arg2
 parameter_list|)
 block|{
-name|LOG
+name|outWriter
 operator|.
-name|info
+name|println
+argument_list|(
+name|MessageFormat
+operator|.
+name|format
 argument_list|(
 name|format
 argument_list|,
 name|arg1
 argument_list|,
 name|arg2
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|printError
+parameter_list|(
+name|String
+name|format
+parameter_list|,
+name|Object
+name|arg
+parameter_list|)
+block|{
+name|errWriter
+operator|.
+name|println
+argument_list|(
+name|MessageFormat
+operator|.
+name|format
+argument_list|(
+name|format
+argument_list|,
+name|arg
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|printError
+parameter_list|(
+name|String
+name|format
+parameter_list|,
+name|Object
+name|arg1
+parameter_list|,
+name|Object
+name|arg2
+parameter_list|)
+block|{
+name|errWriter
+operator|.
+name|println
+argument_list|(
+name|MessageFormat
+operator|.
+name|format
+argument_list|(
+name|format
+argument_list|,
+name|arg1
+argument_list|,
+name|arg2
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1730,9 +1835,7 @@ name|debug
 argument_list|()
 condition|)
 block|{
-name|LOG
-operator|.
-name|debug
+name|print
 argument_list|(
 name|format
 argument_list|,
@@ -1761,9 +1864,7 @@ name|debug
 argument_list|()
 condition|)
 block|{
-name|LOG
-operator|.
-name|debug
+name|print
 argument_list|(
 name|format
 argument_list|,
