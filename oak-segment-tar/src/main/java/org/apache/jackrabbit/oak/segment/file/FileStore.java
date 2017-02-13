@@ -1612,6 +1612,8 @@ argument_list|,
 name|stats
 argument_list|,
 name|writeNumber
+argument_list|,
+name|ioMonitor
 argument_list|)
 expr_stmt|;
 name|this

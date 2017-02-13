@@ -875,6 +875,8 @@ argument_list|,
 name|file
 argument_list|,
 name|recovery
+argument_list|,
+name|ioMonitor
 argument_list|)
 expr_stmt|;
 name|reader
@@ -1041,6 +1043,8 @@ argument_list|,
 name|file
 argument_list|,
 name|recovery
+argument_list|,
+name|ioMonitor
 argument_list|)
 expr_stmt|;
 name|reader
@@ -1196,6 +1200,9 @@ name|file
 parameter_list|,
 name|TarRecovery
 name|recovery
+parameter_list|,
+name|IOMonitor
+name|ioMonitor
 parameter_list|)
 throws|throws
 name|IOException
@@ -1218,6 +1225,8 @@ operator|new
 name|TarWriter
 argument_list|(
 name|file
+argument_list|,
+name|ioMonitor
 argument_list|)
 init|)
 block|{
@@ -4441,6 +4450,8 @@ operator|new
 name|TarWriter
 argument_list|(
 name|newFile
+argument_list|,
+name|ioMonitor
 argument_list|)
 decl_stmt|;
 for|for

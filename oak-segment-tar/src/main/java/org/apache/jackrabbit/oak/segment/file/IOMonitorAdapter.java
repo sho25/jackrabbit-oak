@@ -81,6 +81,51 @@ parameter_list|)
 block|{
 comment|// Intentionally left blank
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|beforeSegmentWrite
+parameter_list|(
+name|File
+name|file
+parameter_list|,
+name|long
+name|msb
+parameter_list|,
+name|long
+name|lsb
+parameter_list|,
+name|int
+name|length
+parameter_list|)
+block|{
+comment|// Intentionally left blank
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|afterSegmentWrite
+parameter_list|(
+name|File
+name|file
+parameter_list|,
+name|long
+name|msb
+parameter_list|,
+name|long
+name|lsb
+parameter_list|,
+name|int
+name|length
+parameter_list|,
+name|long
+name|elapsed
+parameter_list|)
+block|{
+comment|// Intentionally left blank
+block|}
 block|}
 end_class
 

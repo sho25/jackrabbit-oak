@@ -545,6 +545,10 @@ operator|new
 name|TarWriter
 argument_list|(
 name|tar
+argument_list|,
+operator|new
+name|IOMonitorAdapter
+argument_list|()
 argument_list|)
 init|)
 block|{
@@ -1506,6 +1510,10 @@ operator|.
 name|DEFAULT
 argument_list|,
 name|counter
+argument_list|,
+operator|new
+name|IOMonitorAdapter
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// not dirty, will not create a new writer
