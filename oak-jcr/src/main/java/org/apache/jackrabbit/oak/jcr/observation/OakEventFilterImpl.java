@@ -1858,6 +1858,7 @@ return|return
 name|includeAncestorRemove
 return|;
 block|}
+comment|/**      * This helper method goes through the provided globPath and adds      * each parent (ancestor)'s path to the ancestorPaths set.      *<p>      * OAK-5619 : this used to add "${parent}/*" type ancestor paths, however      * that was wrong: we must only take the actual "${parent}"s to which we want      * to listen to. Also, the glob case looks slightly different than originally      * implemented:      *<ul>      *<li>* : we treat this as a normal name, ie as a normal parent and continue normally</li>      *<li>**: when a ** is hit, the loop through the elements can be stopped,      *  as ** includes all children already, so no further paths are needed.</li>      *</ul>      * @param ancestorPaths the set to which the ancestors of globPath will      * be added to      * @param globPath the input path that may contain globs      */
 specifier|static
 name|void
 name|addAncestorPaths
@@ -1889,12 +1890,14 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// from /a/b/c         => add /*, /a/* and /a/b/*
-comment|// from /a/b/**        => add /*, /a/*
-comment|// from /a             => add /*, nothing
+comment|// from /a/b/c         => add /a, /a/b, /a/b/c
+comment|// from /a/b/**        => add /a, /a/b, /a/b/**
+comment|// from /a             => add /a
 comment|// from /              => add nothing
-comment|// from /a/b/**/*.html => add /*, /a/*
-comment|// from /a/b/*/*.html  => add /*, /a/*
+comment|// from /a/b/**/*.html => add /a, /a/b, /a/b/**
+comment|// from /a/b/*/*.html  => add /a, /a/b, /a/b/*, /a/b/*/*.html
+comment|// from /a/b/*/d       => add /a, /a/b, /a/b/*, /a/b/*/d
+comment|// from /a/b/*/d/e     => add /a, /a/b, /a/b/*, /a/b/*/d, /a/b/*/d/e
 name|Iterator
 argument_list|<
 name|String
@@ -1918,22 +1921,6 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|ancestorPaths
-operator|.
-name|add
-argument_list|(
-literal|"/*"
-argument_list|)
-expr_stmt|;
-block|}
 while|while
 condition|(
 name|it
@@ -1950,53 +1937,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|element
-operator|.
-name|contains
-argument_list|(
-literal|"*"
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
-name|ancestorPaths
-operator|.
-name|size
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-name|ancestorPaths
-operator|.
-name|remove
-argument_list|(
-name|ancestorPaths
-operator|.
-name|size
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-break|break;
-block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-break|break;
-block|}
 name|sb
 operator|.
 name|append
@@ -2019,10 +1959,21 @@ name|sb
 operator|.
 name|toString
 argument_list|()
-operator|+
-literal|"/*"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|element
+operator|.
+name|equals
+argument_list|(
+literal|"**"
+argument_list|)
+condition|)
+block|{
+comment|// then we can stop as ** contains everything already
+break|break;
+block|}
 block|}
 block|}
 specifier|public
