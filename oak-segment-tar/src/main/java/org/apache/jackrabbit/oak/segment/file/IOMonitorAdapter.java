@@ -40,7 +40,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|onSegmentRead
+name|beforeSegmentRead
 parameter_list|(
 name|File
 name|file
@@ -53,6 +53,30 @@ name|lsb
 parameter_list|,
 name|int
 name|length
+parameter_list|)
+block|{
+comment|// Intentionally left blank
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|afterSegmentRead
+parameter_list|(
+name|File
+name|file
+parameter_list|,
+name|long
+name|msb
+parameter_list|,
+name|long
+name|lsb
+parameter_list|,
+name|int
+name|length
+parameter_list|,
+name|long
+name|elapsed
 parameter_list|)
 block|{
 comment|// Intentionally left blank

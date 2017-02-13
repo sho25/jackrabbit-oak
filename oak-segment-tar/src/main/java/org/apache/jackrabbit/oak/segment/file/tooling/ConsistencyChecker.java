@@ -567,7 +567,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|onSegmentRead
+name|beforeSegmentRead
 parameter_list|(
 name|File
 name|file
