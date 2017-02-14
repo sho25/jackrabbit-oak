@@ -1241,7 +1241,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Cannot handle protected PropInfo "
 operator|+
@@ -1251,7 +1251,7 @@ literal|". Node "
 operator|+
 name|parent
 operator|+
-literal|" doesn't represent a valid Authorizable."
+literal|" doesn't represent an Authorizable."
 argument_list|)
 expr_stmt|;
 return|return
@@ -3246,7 +3246,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"ImportBehavior.BESTEFFORT: Remember non-existing member for processing."
 argument_list|)
@@ -3405,7 +3405,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"ImportBehavior.BESTEFFORT: Found "
 operator|+
@@ -3850,7 +3850,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"ImportBehavior.BESTEFFORT: Remember non-existing impersonator for special processing."
 argument_list|)
