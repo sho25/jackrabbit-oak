@@ -642,7 +642,7 @@ specifier|private
 name|int
 name|propertyCount
 decl_stmt|;
-comment|/**      * Run a full traversal consistency check.      *      * @param directory  directory containing the tar files      * @param journalFileName  name of the journal file containing the revision history      * @param debugInterval    number of seconds between printing progress information to      *                         the console during the full traversal phase.      * @param checkBinaries    if {@code true} full content of binary properties will be scanned                              * @param ioStatistics     if {@code true} prints I/O statistics gathered while consistency       *                         check was performed      * @param outWriter        text output stream writer      * @param errWriter        text error stream writer                              * @throws IOException      */
+comment|/**      * Run a full traversal consistency check.      *      * @param directory  directory containing the tar files      * @param journalFileName  name of the journal file containing the revision history      * @param debugInterval    number of seconds between printing progress information to      *                         the console during the full traversal phase.      * @param checkBinaries    if {@code true} full content of binary properties will be scanned      * @param filterPaths      collection of repository paths to be checked                               * @param ioStatistics     if {@code true} prints I/O statistics gathered while consistency       *                         check was performed      * @param outWriter        text output stream writer      * @param errWriter        text error stream writer                              * @throws IOException      */
 specifier|public
 specifier|static
 name|void
@@ -659,6 +659,12 @@ name|debugInterval
 parameter_list|,
 name|boolean
 name|checkBinaries
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|filterPaths
 parameter_list|,
 name|boolean
 name|ioStatistics
@@ -764,7 +770,7 @@ name|revision
 argument_list|,
 name|corruptPaths
 argument_list|,
-literal|"/"
+name|filterPaths
 argument_list|,
 name|checkBinaries
 argument_list|)
@@ -983,7 +989,7 @@ operator|=
 name|errWriter
 expr_stmt|;
 block|}
-comment|/**      * Checks the consistency of the supplied {@code path} at the given {@code revision},       * starting first with already known {@code corruptPaths}.      *       * @param revision      revision to be checked      * @param corruptPaths  already known corrupt paths from previous revisions      * @param path          initial path from which to start the consistency check,       *                      provided there are no corrupt paths.      * @param checkBinaries if {@code true} full content of binary properties will be scanned      * @return              {@code null}, if the content tree rooted at path is consistent       *                      in this revision or the path of the first inconsistency otherwise.        */
+comment|/**      * Checks the consistency of the supplied {@code paths} at the given {@code revision},       * starting first with already known {@code corruptPaths}.      *       * @param revision      revision to be checked      * @param corruptPaths  already known corrupt paths from previous revisions      * @param paths         paths on which to run consistency check,       *                      provided there are no corrupt paths.      * @param checkBinaries if {@code true} full content of binary properties will be scanned      * @return              {@code null}, if the content tree rooted at path is consistent       *                      in this revision or the path of the first inconsistency otherwise.        */
 specifier|public
 name|String
 name|checkRevision
@@ -997,8 +1003,11 @@ name|String
 argument_list|>
 name|corruptPaths
 parameter_list|,
+name|Set
+argument_list|<
 name|String
-name|path
+argument_list|>
+name|paths
 parameter_list|,
 name|boolean
 name|checkBinaries
@@ -1018,13 +1027,6 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|print
-argument_list|(
-literal|"Checking {0}"
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
 name|store
 operator|.
 name|setRevision
@@ -1103,6 +1105,21 @@ name|propertyCount
 operator|=
 literal|0
 expr_stmt|;
+for|for
+control|(
+name|String
+name|path
+range|:
+name|paths
+control|)
+block|{
+name|print
+argument_list|(
+literal|"Checking {0}"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 name|NodeWrapper
 name|wrapper
 init|=
@@ -1130,15 +1147,16 @@ argument_list|,
 name|checkBinaries
 argument_list|)
 expr_stmt|;
-name|print
-argument_list|(
-literal|"Checked {0} nodes and {1} properties"
-argument_list|,
-name|nodeCount
-argument_list|,
-name|propertyCount
-argument_list|)
-expr_stmt|;
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
+break|break;
+block|}
+block|}
 return|return
 name|result
 return|;
@@ -1162,8 +1180,20 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|path
+literal|"/"
 return|;
+block|}
+finally|finally
+block|{
+name|print
+argument_list|(
+literal|"Checked {0} nodes and {1} properties"
+argument_list|,
+name|nodeCount
+argument_list|,
+name|propertyCount
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Checks the consistency of a node and its properties at the given path.      *       * @param node              node to be checked      * @param path              path of the node      * @param checkBinaries     if {@code true} full content of binary properties will be scanned      * @return                  {@code null}, if the node is consistent,       *                          or the path of the first inconsistency otherwise.      */
@@ -1515,7 +1545,11 @@ name|denotesRoot
 argument_list|(
 name|path
 argument_list|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
+operator|!
 name|parent
 operator|.
 name|hasChildNode
@@ -1524,6 +1558,16 @@ name|name
 argument_list|)
 condition|)
 block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Invalid path: "
+operator|+
+name|path
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|NodeWrapper

@@ -147,15 +147,11 @@ end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
-operator|.
-name|io
-operator|.
-name|Closer
+name|Set
 import|;
 end_import
 
@@ -528,6 +524,20 @@ operator|.
 name|state
 operator|.
 name|NodeStore
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|Closer
 import|;
 end_import
 
@@ -1219,6 +1229,12 @@ parameter_list|,
 name|boolean
 name|checkBinaries
 parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|filterPaths
+parameter_list|,
 name|boolean
 name|ioStatistics
 parameter_list|,
@@ -1252,6 +1268,11 @@ operator|.
 name|withCheckBinaries
 argument_list|(
 name|checkBinaries
+argument_list|)
+operator|.
+name|withFilterPaths
+argument_list|(
+name|filterPaths
 argument_list|)
 operator|.
 name|withIOStatistics
