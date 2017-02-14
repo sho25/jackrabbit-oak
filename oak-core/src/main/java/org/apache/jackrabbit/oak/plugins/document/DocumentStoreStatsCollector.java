@@ -203,6 +203,25 @@ name|int
 name|retryCount
 parameter_list|)
 function_decl|;
+comment|/**      * Called when a remove operation for documents was completed.      * @param timeTakenNanos time taken      * @param collection the collection      * @param removeCount the number of removed documents      */
+name|void
+name|doneRemove
+parameter_list|(
+name|long
+name|timeTakenNanos
+parameter_list|,
+name|Collection
+argument_list|<
+name|?
+extends|extends
+name|Document
+argument_list|>
+name|collection
+parameter_list|,
+name|int
+name|removeCount
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

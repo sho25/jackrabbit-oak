@@ -76,6 +76,10 @@ name|getNodesUpdateCount
 parameter_list|()
 function_decl|;
 name|long
+name|getNodesRemoveCount
+parameter_list|()
+function_decl|;
+name|long
 name|getJournalCreateCount
 parameter_list|()
 function_decl|;
@@ -133,6 +137,10 @@ parameter_list|()
 function_decl|;
 name|CompositeData
 name|getUpdateNodesFailureHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getRemoveNodesHistory
 parameter_list|()
 function_decl|;
 block|}
