@@ -981,7 +981,7 @@ name|getInteger
 argument_list|(
 literal|"oak.observation.full-queue.warn.interval"
 argument_list|,
-literal|10
+literal|30
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2023,7 +2023,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"{} Suppressing further such cases for {} seconds."
+literal|"{} Suppressing further such cases for {} minutes."
 argument_list|,
 name|message
 argument_list|,
@@ -2031,7 +2031,7 @@ name|TimeUnit
 operator|.
 name|MILLISECONDS
 operator|.
-name|toSeconds
+name|toMinutes
 argument_list|(
 name|QUEUE_FULL_WARN_INTERVAL
 argument_list|)
