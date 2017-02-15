@@ -268,7 +268,7 @@ name|Closer
 name|closer
 parameter_list|)
 throws|throws
-name|UnknownHostException
+name|IOException
 block|{
 name|DocumentMK
 operator|.
@@ -324,6 +324,15 @@ operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
+comment|// TODO probably we should disable all observers, see OAK-5651
+name|documentNodeStore
+operator|.
+name|getBundlingConfigHandler
+argument_list|()
+operator|.
+name|unregisterObserver
+argument_list|()
+expr_stmt|;
 name|closer
 operator|.
 name|register
