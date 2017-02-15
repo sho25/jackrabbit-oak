@@ -540,6 +540,17 @@ name|File
 name|directory
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|directory
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 try|try
 block|{
 name|Files
