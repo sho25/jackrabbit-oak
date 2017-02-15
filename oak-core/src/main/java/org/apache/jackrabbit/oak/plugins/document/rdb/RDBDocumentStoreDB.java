@@ -330,17 +330,6 @@ name|description
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|allowsCaseInSelect
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 block|,
 name|POSTGRES
@@ -2162,16 +2151,6 @@ name|md
 operator|.
 name|getDatabaseProductName
 argument_list|()
-return|;
-block|}
-comment|/**      * Allows case in select. Default true.      */
-specifier|public
-name|boolean
-name|allowsCaseInSelect
-parameter_list|()
-block|{
-return|return
-literal|true
 return|;
 block|}
 comment|/**      * Query syntax for "FETCH FIRST"      */

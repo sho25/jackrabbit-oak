@@ -4699,13 +4699,6 @@ operator|&&
 name|lastmodified
 operator|>=
 literal|1
-operator|&&
-name|this
-operator|.
-name|dbInfo
-operator|.
-name|allowsCaseInSelect
-argument_list|()
 decl_stmt|;
 name|StringBuffer
 name|sql

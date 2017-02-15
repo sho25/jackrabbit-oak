@@ -502,15 +502,6 @@ parameter_list|()
 throws|throws
 name|SQLException
 block|{
-comment|// this tests functionality that relies on case statements
-name|assumeTrue
-argument_list|(
-name|dbInfo
-operator|.
-name|allowsCaseInSelect
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
