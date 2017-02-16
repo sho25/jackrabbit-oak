@@ -65,7 +65,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|JournalUtil
+name|FileStoreUtil
 operator|.
 name|findPersistedRecordId
 import|;
