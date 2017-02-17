@@ -33,6 +33,9 @@ name|updateAccessedRevision
 parameter_list|(
 name|RevisionVector
 name|revision
+parameter_list|,
+name|int
+name|currentClusterId
 parameter_list|)
 function_decl|;
 block|}

@@ -3883,6 +3883,11 @@ operator|.
 name|updateAccessedRevision
 argument_list|(
 name|lastRevision
+argument_list|,
+name|nodeStore
+operator|.
+name|getClusterId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

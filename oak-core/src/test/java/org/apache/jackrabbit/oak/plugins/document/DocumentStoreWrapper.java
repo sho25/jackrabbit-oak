@@ -809,6 +809,9 @@ name|updateAccessedRevision
 parameter_list|(
 name|RevisionVector
 name|revision
+parameter_list|,
+name|int
+name|currentClusterId
 parameter_list|)
 block|{
 if|if
@@ -828,6 +831,8 @@ operator|.
 name|updateAccessedRevision
 argument_list|(
 name|revision
+argument_list|,
+name|currentClusterId
 argument_list|)
 expr_stmt|;
 block|}
