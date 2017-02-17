@@ -2206,6 +2206,11 @@ argument_list|,
 literal|"(leaf)"
 argument_list|)
 decl_stmt|;
+name|leafDocIdsToDelete
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|stats
 operator|.
 name|deletedLeafDocGCCount
