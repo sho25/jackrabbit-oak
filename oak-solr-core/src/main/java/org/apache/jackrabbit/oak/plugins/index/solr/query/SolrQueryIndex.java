@@ -996,13 +996,6 @@ init|=
 literal|2.3
 decl_stmt|;
 specifier|private
-specifier|static
-name|double
-name|COST_FOR_SINGLE_RESTRICTION
-init|=
-literal|10
-decl_stmt|;
-specifier|private
 specifier|final
 name|Logger
 name|log

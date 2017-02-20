@@ -193,6 +193,13 @@ operator|.
 name|getNumFound
 argument_list|()
 decl_stmt|;
+name|long
+name|diff
+init|=
+name|numFound
+operator|-
+name|estimate
+decl_stmt|;
 name|double
 name|delta
 init|=
@@ -200,9 +207,7 @@ name|Math
 operator|.
 name|pow
 argument_list|(
-name|numFound
-operator|-
-name|estimate
+name|diff
 argument_list|,
 literal|2
 argument_list|)
@@ -260,6 +265,17 @@ index|[
 name|i
 index|]
 operator|+
+operator|(
+name|diff
+operator|>
+literal|0
+condition|?
+literal|1
+else|:
+operator|-
+literal|1
+operator|)
+operator|*
 name|alpha
 operator|*
 name|errors
@@ -322,11 +338,15 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
 name|estimatedEntryCount
-operator|+
-literal|1
+argument_list|)
 return|;
-comment|// smoothing
 block|}
 comment|/**      * Get the input value for a certain feature (by index) in the given filter.      *<p/>      * A filter is represented as a vector in R^5 where      * i_0 : no. of property restrictions      * i_1 : 1 if any native constraint exists in the filter, 0 otherwise      * i_2 : the path restriction ordinal      * i_3 : the depth of the path restriction if set, 0 otherwise      * i_4 : the precedence of the dominant full text constraint if present, 0 otherwise      *      * @param filter the filter      * @param i      the index of the filter vector feature to retrieve      * @return the feature value      */
 specifier|private
