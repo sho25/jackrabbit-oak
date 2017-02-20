@@ -255,6 +255,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// FIXME: check, why this query causes a traversal despite the existence of an index
+name|getQueryEngineSettings
+argument_list|()
+operator|.
+name|setFailTraversal
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|Principal
 name|everyone
 init|=
@@ -422,6 +431,14 @@ block|}
 block|}
 finally|finally
 block|{
+name|getQueryEngineSettings
+argument_list|()
+operator|.
+name|setFailTraversal
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|everyoneGroup
