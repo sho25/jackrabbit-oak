@@ -2689,6 +2689,15 @@ operator|+
 literal|" milliseconds. Falling back to asynchronous stop on "
 operator|+
 name|processor
+operator|+
+literal|" (listener details: '"
+operator|+
+name|processor
+operator|.
+name|getListenerToString
+argument_list|()
+operator|+
+literal|"')"
 argument_list|)
 expr_stmt|;
 name|processor
