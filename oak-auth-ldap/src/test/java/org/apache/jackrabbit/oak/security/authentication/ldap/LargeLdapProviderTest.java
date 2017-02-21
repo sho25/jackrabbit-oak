@@ -500,6 +500,13 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|idp
+operator|!=
+literal|null
+condition|)
+block|{
 name|idp
 operator|.
 name|close
@@ -509,6 +516,7 @@ name|idp
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|LdapIdentityProvider
