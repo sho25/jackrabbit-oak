@@ -461,10 +461,10 @@ name|t
 operator|.
 name|join
 argument_list|(
-literal|1000
+literal|30000
 argument_list|)
 expr_stmt|;
-comment|// if the thread is still alive after 1 second, we assume
+comment|// if the thread is still alive after 30 seconds, we assume
 comment|// there is a deadlock - we just let the threads alive,
 comment|// but report a failure (what else could we do?)
 if|if
@@ -520,7 +520,7 @@ name|add
 argument_list|,
 name|add
 operator|<
-literal|1000
+literal|30000
 argument_list|)
 expr_stmt|;
 block|}
