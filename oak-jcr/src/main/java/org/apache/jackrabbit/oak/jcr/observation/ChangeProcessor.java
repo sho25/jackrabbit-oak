@@ -3018,7 +3018,6 @@ literal|"]"
 return|;
 block|}
 comment|/** for logging only **/
-specifier|public
 name|String
 name|getListenerToString
 parameter_list|()
