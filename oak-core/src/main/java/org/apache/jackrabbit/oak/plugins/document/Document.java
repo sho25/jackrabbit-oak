@@ -306,6 +306,26 @@ name|value
 argument_list|)
 return|;
 block|}
+comment|/**      * Removes the given<code>key</code>.      *      * @param key the key.      * @return the previous value or<code>null</code> if there was none.      */
+annotation|@
+name|CheckForNull
+specifier|public
+name|Object
+name|remove
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+return|return
+name|data
+operator|.
+name|remove
+argument_list|(
+name|key
+argument_list|)
+return|;
+block|}
 comment|/**      * @return a Set view of the keys contained in this document.      */
 specifier|public
 name|Set

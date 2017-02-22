@@ -899,6 +899,18 @@ name|Operation
 operator|.
 name|Type
 operator|.
+name|REMOVE
+operator|||
+name|op
+operator|.
+name|type
+operator|==
+name|UpdateOp
+operator|.
+name|Operation
+operator|.
+name|Type
+operator|.
 name|REMOVE_MAP_ENTRY
 condition|)
 block|{
@@ -1859,19 +1871,13 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|DocumentStoreException
+name|doc
+operator|.
+name|remove
 argument_list|(
-literal|"unexpected operation "
-operator|+
-name|op
-operator|+
-literal|" in: "
-operator|+
-name|updateString
+name|key
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 else|else
 block|{

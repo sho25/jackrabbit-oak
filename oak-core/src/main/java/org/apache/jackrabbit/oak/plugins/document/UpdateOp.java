@@ -633,6 +633,72 @@ name|op
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Remove a property.      *      * @param property the property name      */
+specifier|public
+name|void
+name|remove
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|property
+parameter_list|)
+block|{
+if|if
+condition|(
+name|Document
+operator|.
+name|ID
+operator|.
+name|equals
+argument_list|(
+name|property
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|Document
+operator|.
+name|ID
+operator|+
+literal|" must not be removed"
+argument_list|)
+throw|;
+block|}
+name|Operation
+name|op
+init|=
+operator|new
+name|Operation
+argument_list|(
+name|Operation
+operator|.
+name|Type
+operator|.
+name|REMOVE
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+name|changes
+operator|.
+name|put
+argument_list|(
+operator|new
+name|Key
+argument_list|(
+name|property
+argument_list|,
+literal|null
+argument_list|)
+argument_list|,
+name|op
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Remove a map entry.      * The property is a map of revisions / values.      *      * @param property the property      * @param revision the revision      */
 specifier|public
 name|void
@@ -1333,6 +1399,9 @@ name|SET_MAP_ENTRY
 block|,
 comment|/**              * Remove the sub-key / value pair.              * The value in the stored node is a map.              */
 name|REMOVE_MAP_ENTRY
+block|,
+comment|/**              * Remove the value.              * The sub-key is not used.              */
+name|REMOVE
 block|}
 comment|/**          * The operation type.          */
 specifier|public
@@ -1429,6 +1498,9 @@ name|MAX
 case|:
 case|case
 name|REMOVE_MAP_ENTRY
+case|:
+case|case
+name|REMOVE
 case|:
 comment|// nothing to do
 break|break;

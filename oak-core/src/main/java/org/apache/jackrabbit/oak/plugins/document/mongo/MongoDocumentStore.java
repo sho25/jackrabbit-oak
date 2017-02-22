@@ -7199,6 +7199,9 @@ block|}
 break|break;
 block|}
 case|case
+name|REMOVE
+case|:
+case|case
 name|REMOVE_MAP_ENTRY
 case|:
 comment|// nothing to do for new entries
@@ -9299,6 +9302,9 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+case|case
+name|REMOVE
+case|:
 case|case
 name|REMOVE_MAP_ENTRY
 case|:
