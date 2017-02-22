@@ -21,11 +21,11 @@ end_package
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|annotation
 operator|.
-name|Comparator
+name|CheckForNull
 import|;
 end_import
 
@@ -76,6 +76,23 @@ name|Nonnull
 name|Revision
 name|newRevision
 parameter_list|()
+function_decl|;
+comment|/**      * Retrieves the commit value for a given change. This method returns the      * following types of commit values:      *<ul>      *<li>"c" : the change revision is committed as is.</li>      *<li>"c-rX-Y-Z" : the change revision is a branch commit merged in      *          revision "rX-Y-Z".</li>      *<li>"brX-Y-Z" : the change revision is a branch commit done at      *          "rX-Y-Z" but not yet merged.</li>      *<li>{@code null} : the change revision does not have an entry on      *          the commit root document and is not committed.</li>      *</ul>      *      * @param changeRevision the revision a change was made.      * @param doc the document where the change was made.      * @return the commit value or {@code null} if the change does not      *          have a commit value (yet).      */
+annotation|@
+name|CheckForNull
+name|String
+name|getCommitValue
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Revision
+name|changeRevision
+parameter_list|,
+annotation|@
+name|Nonnull
+name|NodeDocument
+name|doc
+parameter_list|)
 function_decl|;
 block|}
 end_interface
