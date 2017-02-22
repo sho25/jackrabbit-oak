@@ -1452,7 +1452,7 @@ name|c2
 argument_list|,
 name|k
 argument_list|,
-literal|100
+literal|10000
 argument_list|)
 expr_stmt|;
 name|StringValue
@@ -1513,7 +1513,7 @@ name|k
 argument_list|,
 literal|null
 argument_list|,
-literal|100
+literal|10000
 argument_list|)
 expr_stmt|;
 name|StringValue
@@ -1597,7 +1597,7 @@ argument_list|>
 name|call
 parameter_list|,
 name|int
-name|timeout
+name|timeoutInMilliseconds
 parameter_list|)
 block|{
 name|long
@@ -1674,7 +1674,7 @@ if|if
 condition|(
 name|time
 operator|>
-name|timeout
+name|timeoutInMilliseconds
 condition|)
 block|{
 return|return
@@ -1711,7 +1711,7 @@ name|V
 name|value
 parameter_list|,
 name|int
-name|timeout
+name|timeoutInMilliseconds
 parameter_list|)
 block|{
 return|return
@@ -1765,7 +1765,7 @@ return|;
 block|}
 block|}
 argument_list|,
-name|timeout
+name|timeoutInMilliseconds
 argument_list|)
 return|;
 block|}
@@ -1793,7 +1793,7 @@ name|K
 name|key
 parameter_list|,
 name|int
-name|timeout
+name|timeoutInMilliseconds
 parameter_list|)
 block|{
 return|return
@@ -1828,7 +1828,7 @@ return|;
 block|}
 block|}
 argument_list|,
-name|timeout
+name|timeoutInMilliseconds
 argument_list|)
 return|;
 block|}
