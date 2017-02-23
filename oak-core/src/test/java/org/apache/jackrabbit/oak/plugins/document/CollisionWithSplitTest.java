@@ -747,6 +747,8 @@ argument_list|,
 name|op
 argument_list|,
 name|ourRev
+argument_list|,
+name|ns2
 argument_list|)
 decl_stmt|;
 name|assertEquals

@@ -175,6 +175,28 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
+name|isCommitted
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -8216,6 +8238,8 @@ argument_list|,
 name|isDocDeleted
 argument_list|(
 name|parentDoc
+argument_list|,
+name|store1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8297,6 +8321,8 @@ argument_list|,
 name|isDocDeleted
 argument_list|(
 name|parentDoc
+argument_list|,
+name|store1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8502,6 +8528,8 @@ argument_list|,
 name|isDocDeleted
 argument_list|(
 name|parentDoc
+argument_list|,
+name|store1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8578,6 +8606,8 @@ argument_list|,
 name|isDocDeleted
 argument_list|(
 name|parentDoc
+argument_list|,
+name|store1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -19321,6 +19351,9 @@ name|isDocDeleted
 parameter_list|(
 name|NodeDocument
 name|doc
+parameter_list|,
+name|RevisionContext
+name|context
 parameter_list|)
 block|{
 name|boolean
@@ -19375,14 +19408,19 @@ control|)
 block|{
 if|if
 condition|(
-name|doc
-operator|.
 name|isCommitted
+argument_list|(
+name|context
+operator|.
+name|getCommitValue
 argument_list|(
 name|entry
 operator|.
 name|getKey
 argument_list|()
+argument_list|,
+name|doc
+argument_list|)
 argument_list|)
 condition|)
 block|{

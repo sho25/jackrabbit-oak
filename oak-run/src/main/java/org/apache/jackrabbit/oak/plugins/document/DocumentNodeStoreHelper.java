@@ -383,6 +383,28 @@ name|convertFromDBObject
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
+name|isCommitted
+import|;
+end_import
+
 begin_comment
 comment|/**  * Helper class to access package private method of DocumentNodeStore and other  * classes in this package.  */
 end_comment
@@ -891,14 +913,19 @@ block|}
 elseif|else
 if|if
 condition|(
-name|doc
-operator|.
 name|isCommitted
+argument_list|(
+name|ns
+operator|.
+name|getCommitValue
 argument_list|(
 name|entry
 operator|.
 name|getKey
 argument_list|()
+argument_list|,
+name|doc
+argument_list|)
 argument_list|)
 condition|)
 block|{

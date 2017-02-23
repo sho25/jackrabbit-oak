@@ -153,6 +153,28 @@ name|util
 operator|.
 name|Utils
 operator|.
+name|isCommitted
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
 name|isPropertyName
 import|;
 end_import
@@ -200,6 +222,11 @@ specifier|final
 name|Revision
 name|ourRev
 decl_stmt|;
+specifier|private
+specifier|final
+name|RevisionContext
+name|context
+decl_stmt|;
 name|Collision
 parameter_list|(
 annotation|@
@@ -221,6 +248,11 @@ annotation|@
 name|Nonnull
 name|Revision
 name|ourRev
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RevisionContext
+name|context
 parameter_list|)
 block|{
 name|this
@@ -257,6 +289,15 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|ourRev
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|context
+operator|=
+name|checkNotNull
+argument_list|(
+name|context
 argument_list|)
 expr_stmt|;
 block|}
@@ -284,6 +325,8 @@ argument_list|,
 name|ourRev
 argument_list|,
 name|store
+argument_list|,
+name|context
 argument_list|)
 condition|)
 block|{
@@ -332,6 +375,8 @@ argument_list|,
 name|theirRev
 argument_list|,
 name|store
+argument_list|,
+name|context
 argument_list|)
 condition|)
 block|{
@@ -465,7 +510,7 @@ literal|false
 return|;
 block|}
 comment|//--------------------------< internal>------------------------------------
-comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *      * @param document the document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param other the revision which detected the collision.      * @param store the document store.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
+comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *      * @param document the document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param other the revision which detected the collision.      * @param store the document store.      * @param context the revision context.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
 specifier|private
 specifier|static
 name|boolean
@@ -490,6 +535,11 @@ annotation|@
 name|Nonnull
 name|DocumentStore
 name|store
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RevisionContext
+name|context
 parameter_list|)
 block|{
 name|String
@@ -516,11 +566,16 @@ condition|)
 block|{
 if|if
 condition|(
-name|document
-operator|.
 name|isCommitted
 argument_list|(
+name|context
+operator|.
+name|getCommitValue
+argument_list|(
 name|revision
+argument_list|,
+name|document
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -601,11 +656,16 @@ decl_stmt|;
 comment|// check commit status of revision
 if|if
 condition|(
-name|commitRoot
-operator|.
 name|isCommitted
 argument_list|(
+name|context
+operator|.
+name|getCommitValue
+argument_list|(
 name|revision
+argument_list|,
+name|commitRoot
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -733,11 +793,16 @@ comment|// check again if revision is still not committed
 comment|// See OAK-3882
 if|if
 condition|(
-name|commitRoot
-operator|.
 name|isCommitted
 argument_list|(
+name|context
+operator|.
+name|getCommitValue
+argument_list|(
 name|revision
+argument_list|,
+name|commitRoot
+argument_list|)
 argument_list|)
 condition|)
 block|{

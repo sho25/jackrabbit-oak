@@ -668,6 +668,8 @@ argument_list|,
 name|op
 argument_list|,
 name|c
+argument_list|,
+name|ns
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -712,6 +714,8 @@ argument_list|,
 name|op
 argument_list|,
 name|c
+argument_list|,
+name|ns
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -827,6 +831,8 @@ argument_list|,
 name|op
 argument_list|,
 name|c
+argument_list|,
+name|ns
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -871,6 +877,8 @@ argument_list|,
 name|op
 argument_list|,
 name|c
+argument_list|,
+name|ns
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -915,6 +923,8 @@ argument_list|,
 name|op
 argument_list|,
 name|c
+argument_list|,
+name|ns
 argument_list|)
 expr_stmt|;
 name|assertFalse
@@ -1026,6 +1036,8 @@ argument_list|,
 name|op
 argument_list|,
 name|c
+argument_list|,
+name|ns
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -1070,6 +1082,8 @@ argument_list|,
 name|op
 argument_list|,
 name|c
+argument_list|,
+name|ns
 argument_list|)
 expr_stmt|;
 name|assertTrue
