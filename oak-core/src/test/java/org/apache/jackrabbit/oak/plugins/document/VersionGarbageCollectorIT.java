@@ -1639,6 +1639,15 @@ operator|.
 name|deletedLeafDocGCCount
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|stats
+operator|.
+name|updateResurrectedGCCount
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
