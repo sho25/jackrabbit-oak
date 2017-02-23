@@ -183,22 +183,6 @@ name|RDBOptions
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
-name|QueryEngineSettings
-import|;
-end_import
-
 begin_comment
 comment|/**  * A repository stub implementation for the RDB document store.  */
 end_comment
@@ -400,20 +384,6 @@ operator|.
 name|getNodeStore
 argument_list|()
 expr_stmt|;
-name|QueryEngineSettings
-name|qs
-init|=
-operator|new
-name|QueryEngineSettings
-argument_list|()
-decl_stmt|;
-name|qs
-operator|.
-name|setFullTextComparisonWithoutIndex
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|repository
@@ -426,7 +396,8 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|qs
+name|getQueryEngineSettings
+argument_list|()
 argument_list|)
 operator|.
 name|createRepository
