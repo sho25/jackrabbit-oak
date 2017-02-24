@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@link CheckCommand} assuming a valid repository.  */
+comment|/**  * Tests for {@link CheckCommand} assuming a consistent repository.  */
 end_comment
 
 begin_class
@@ -273,7 +273,9 @@ name|newArrayList
 argument_list|(
 literal|"Searched through 1 revisions"
 argument_list|,
-literal|"Checked 7 nodes and 45 properties"
+literal|"Checked 7 nodes and 21 properties"
+argument_list|,
+literal|"Path / is consistent"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -477,7 +479,23 @@ name|newArrayList
 argument_list|(
 literal|"Searched through 1 revisions"
 argument_list|,
-literal|"Checked 6 nodes and 45 properties"
+literal|"Checked 1 nodes and 1 properties"
+argument_list|,
+literal|"Checked 1 nodes and 2 properties"
+argument_list|,
+literal|"Checked 1 nodes and 3 properties"
+argument_list|,
+literal|"Path /a is consistent"
+argument_list|,
+literal|"Path /b is consistent"
+argument_list|,
+literal|"Path /c is consistent"
+argument_list|,
+literal|"Path /d is consistent"
+argument_list|,
+literal|"Path /e is consistent"
+argument_list|,
+literal|"Path /f is consistent"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -642,6 +660,8 @@ argument_list|(
 literal|"Searched through 1 revisions"
 argument_list|,
 literal|"Checked 7 nodes and 15 properties"
+argument_list|,
+literal|"Path / is consistent"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -826,7 +846,21 @@ name|newArrayList
 argument_list|(
 literal|"Searched through 1 revisions"
 argument_list|,
-literal|"Checked 4 nodes and 10 properties"
+literal|"Checked 1 nodes and 0 properties"
+argument_list|,
+literal|"Checked 1 nodes and 0 properties"
+argument_list|,
+literal|"Checked 1 nodes and 4 properties"
+argument_list|,
+literal|"Checked 1 nodes and 5 properties"
+argument_list|,
+literal|"Path /a is consistent"
+argument_list|,
+literal|"Path /b is consistent"
+argument_list|,
+literal|"Path /d is consistent"
+argument_list|,
+literal|"Path /e is consistent"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -988,9 +1022,7 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"Broken revision"
-argument_list|,
-literal|"Checked 0 nodes and 0 properties"
+literal|"Searched through 1 revisions"
 argument_list|,
 literal|"No good revision found"
 argument_list|)
@@ -1007,7 +1039,7 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"Invalid path: /g"
+literal|"Path /g not found"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1187,11 +1219,23 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"Broken revision"
+literal|"Searched through 1 revisions"
 argument_list|,
-literal|"Checked 2 nodes and 10 properties"
+literal|"Checked 1 nodes and 1 properties"
 argument_list|,
-literal|"No good revision found"
+literal|"Checked 1 nodes and 6 properties"
+argument_list|,
+literal|"Checked 1 nodes and 4 properties"
+argument_list|,
+literal|"Checked 1 nodes and 5 properties"
+argument_list|,
+literal|"Path /a is consistent"
+argument_list|,
+literal|"Path /f is consistent"
+argument_list|,
+literal|"Path /d is consistent"
+argument_list|,
+literal|"Path /e is consistent"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1206,7 +1250,7 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"Invalid path: /g"
+literal|"Path /g not found"
 argument_list|)
 argument_list|)
 expr_stmt|;

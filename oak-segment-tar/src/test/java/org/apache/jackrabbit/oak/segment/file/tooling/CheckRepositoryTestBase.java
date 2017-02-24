@@ -516,7 +516,7 @@ name|builder
 argument_list|,
 literal|"a"
 argument_list|,
-literal|5
+literal|1
 argument_list|)
 expr_stmt|;
 name|addChildWithBlobProperties
@@ -527,7 +527,7 @@ name|builder
 argument_list|,
 literal|"b"
 argument_list|,
-literal|10
+literal|2
 argument_list|)
 expr_stmt|;
 name|addChildWithBlobProperties
@@ -538,7 +538,7 @@ name|builder
 argument_list|,
 literal|"c"
 argument_list|,
-literal|15
+literal|3
 argument_list|)
 expr_stmt|;
 name|addChildWithProperties
@@ -549,7 +549,7 @@ name|builder
 argument_list|,
 literal|"d"
 argument_list|,
-literal|5
+literal|4
 argument_list|)
 expr_stmt|;
 name|addChildWithProperties
@@ -571,7 +571,7 @@ name|builder
 argument_list|,
 literal|"f"
 argument_list|,
-literal|5
+literal|6
 argument_list|)
 expr_stmt|;
 name|nodeStore
