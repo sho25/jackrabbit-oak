@@ -1626,6 +1626,10 @@ name|permission
 parameter_list|)
 block|{
 return|return
+name|permission
+operator|>
+name|NO_PERMISSION
+operator|&&
 operator|!
 name|NON_AGGREGATES
 operator|.
