@@ -474,7 +474,7 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"Error while traversing /z"
+literal|"Error while traversing /z: java.lang.IllegalArgumentException: Segment reference out of bounds"
 argument_list|,
 literal|"Path /z not found"
 argument_list|)
@@ -640,7 +640,7 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"Error while traversing /a"
+literal|"Error while traversing /a: java.lang.IllegalArgumentException: Segment reference out of bounds"
 argument_list|)
 argument_list|)
 expr_stmt|;

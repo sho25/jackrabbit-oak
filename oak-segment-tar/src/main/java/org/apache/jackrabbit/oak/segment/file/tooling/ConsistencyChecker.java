@@ -1462,9 +1462,6 @@ argument_list|,
 name|path
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

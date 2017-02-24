@@ -1203,6 +1203,8 @@ argument_list|(
 name|reference
 operator|<=
 name|referencedSegmentIdCount
+argument_list|,
+literal|"Segment reference out of bounds"
 argument_list|)
 expr_stmt|;
 name|SegmentId
