@@ -22,6 +22,90 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertArrayEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -385,90 +469,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertArrayEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertThat
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -627,6 +627,13 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|idp
+operator|!=
+literal|null
+condition|)
+block|{
 name|idp
 operator|.
 name|close
@@ -636,6 +643,7 @@ name|idp
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|LdapIdentityProvider
