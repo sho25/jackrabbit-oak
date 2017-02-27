@@ -551,8 +551,7 @@ specifier|private
 name|long
 name|weight
 init|=
-operator|-
-literal|1
+literal|0
 decl_stmt|;
 specifier|static
 specifier|final
