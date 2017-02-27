@@ -187,16 +187,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -327,12 +317,6 @@ name|UnsupportedOperationException
 operator|.
 name|class
 argument_list|)
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-4998"
-argument_list|)
-comment|// FIXME OAK-4998
 specifier|public
 name|void
 name|testReadOnly
