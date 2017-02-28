@@ -815,6 +815,9 @@ name|journal
 operator|.
 name|next
 argument_list|()
+operator|.
+name|getRevision
+argument_list|()
 decl_stmt|;
 name|checker
 operator|.

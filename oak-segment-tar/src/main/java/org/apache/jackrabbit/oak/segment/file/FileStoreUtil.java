@@ -186,7 +186,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|String
+name|JournalEntry
 name|entry
 init|=
 name|journalReader
@@ -206,6 +206,9 @@ argument_list|(
 name|store
 argument_list|,
 name|entry
+operator|.
+name|getRevision
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

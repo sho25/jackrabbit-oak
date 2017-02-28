@@ -583,6 +583,9 @@ name|reader
 operator|.
 name|next
 argument_list|()
+operator|.
+name|getRevision
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -706,6 +709,9 @@ name|reader
 operator|.
 name|next
 argument_list|()
+operator|.
+name|getRevision
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -823,6 +829,9 @@ argument_list|,
 name|reader
 operator|.
 name|next
+argument_list|()
+operator|.
+name|getRevision
 argument_list|()
 argument_list|)
 expr_stmt|;
