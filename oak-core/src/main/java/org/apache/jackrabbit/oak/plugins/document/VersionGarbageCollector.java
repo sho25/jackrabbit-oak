@@ -2345,6 +2345,9 @@ argument_list|(
 name|getDocIdsToDelete
 argument_list|()
 argument_list|,
+name|getDocIdsToDeleteSize
+argument_list|()
+argument_list|,
 literal|"(other)"
 argument_list|)
 expr_stmt|;
@@ -2398,6 +2401,9 @@ init|=
 name|removeDeletedDocuments
 argument_list|(
 name|getLeafDocIdsToDelete
+argument_list|()
+argument_list|,
+name|getLeafDocIdsToDeleteSize
 argument_list|()
 argument_list|,
 literal|"(leaf)"
@@ -2818,6 +2824,18 @@ argument_list|()
 return|;
 block|}
 specifier|private
+name|long
+name|getDocIdsToDeleteSize
+parameter_list|()
+block|{
+return|return
+name|docIdsToDelete
+operator|.
+name|getSize
+argument_list|()
+return|;
+block|}
+specifier|private
 name|Iterator
 argument_list|<
 name|String
@@ -2831,6 +2849,18 @@ return|return
 name|leafDocIdsToDelete
 operator|.
 name|iterator
+argument_list|()
+return|;
+block|}
+specifier|private
+name|long
+name|getLeafDocIdsToDeleteSize
+parameter_list|()
+block|{
+return|return
+name|leafDocIdsToDelete
+operator|.
+name|size
 argument_list|()
 return|;
 block|}
@@ -2940,6 +2970,9 @@ name|String
 argument_list|>
 name|docIdsToDelete
 parameter_list|,
+name|long
+name|numDocuments
+parameter_list|,
 name|String
 name|label
 parameter_list|)
@@ -2952,8 +2985,7 @@ name|info
 argument_list|(
 literal|"Proceeding to delete [{}] documents [{}]"
 argument_list|,
-name|getNumDocuments
-argument_list|()
+name|numDocuments
 argument_list|,
 name|label
 argument_list|)
