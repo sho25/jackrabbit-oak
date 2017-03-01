@@ -125,6 +125,8 @@ begin_class
 specifier|public
 class|class
 name|SegmentTracker
+implements|implements
+name|SegmentIdProvider
 block|{
 specifier|private
 specifier|static
@@ -310,6 +312,20 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|getSegmentIdCount
+parameter_list|()
+block|{
+return|return
+name|segmentCounter
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|/**      * Returns all segment identifiers that are currently referenced in memory.      *      * @return referenced segment identifiers      */
 specifier|public
 specifier|synchronized
@@ -350,6 +366,8 @@ name|ids
 return|;
 block|}
 comment|/**      * Get an existing {@code SegmentId} with the given {@code msb} and {@code      * lsb} or create a new one if no such id exists with this tracker.      *      * @param msb   most significant bits of the segment id      * @param lsb   least  significant bits of the segment id      * @return the segment id      */
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -399,6 +417,8 @@ return|;
 block|}
 comment|/**      * Create and track a new segment id for data segments.      *      * @return the segment id      */
 annotation|@
+name|Override
+annotation|@
 name|Nonnull
 specifier|public
 name|SegmentId
@@ -413,6 +433,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Create and track a new segment id for bulk segments.      *      * @return the segment id      */
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
