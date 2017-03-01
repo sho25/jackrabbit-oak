@@ -137,7 +137,7 @@ literal|"/"
 operator|+
 name|DB
 operator|+
-literal|"?connectTimeoutMS=3000"
+literal|"?connectTimeoutMS=3000&serverSelectionTimeoutMS=3000"
 argument_list|)
 decl_stmt|;
 specifier|protected
