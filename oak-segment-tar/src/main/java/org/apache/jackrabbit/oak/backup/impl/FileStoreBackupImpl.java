@@ -491,8 +491,6 @@ operator|new
 name|SegmentBufferWriter
 argument_list|(
 name|backup
-argument_list|,
-name|backup
 operator|.
 name|getSegmentIdProvider
 argument_list|()

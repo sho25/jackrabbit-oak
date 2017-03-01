@@ -343,8 +343,6 @@ operator|new
 name|SegmentBufferWriterPool
 argument_list|(
 name|store
-argument_list|,
-name|store
 operator|.
 name|getSegmentIdProvider
 argument_list|()
@@ -893,7 +891,9 @@ expr_stmt|;
 name|pool
 operator|.
 name|flush
-argument_list|()
+argument_list|(
+name|store
+argument_list|)
 expr_stmt|;
 name|ConcurrentMap
 argument_list|<
@@ -1104,7 +1104,9 @@ block|{
 name|pool
 operator|.
 name|flush
-argument_list|()
+argument_list|(
+name|store
+argument_list|)
 expr_stmt|;
 return|return
 literal|null

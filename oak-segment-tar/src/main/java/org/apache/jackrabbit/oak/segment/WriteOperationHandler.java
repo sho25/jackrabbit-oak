@@ -78,10 +78,15 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Flush any pending changes on any {@link SegmentBufferWriter} managed by this instance.      * @throws IOException      */
+comment|/**      * Flush any pending changes on any {@link SegmentBufferWriter} managed by this instance.      * @param store  the {@code SegmentStore} instance to write the {@code Segment} to      * @throws IOException      */
 name|void
 name|flush
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nonnull
+name|SegmentStore
+name|store
+parameter_list|)
 throws|throws
 name|IOException
 function_decl|;

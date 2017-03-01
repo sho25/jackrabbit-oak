@@ -457,6 +457,9 @@ name|write
 parameter_list|(
 name|SegmentBufferWriter
 name|writer
+parameter_list|,
+name|SegmentStore
+name|store
 parameter_list|)
 throws|throws
 name|IOException
@@ -473,6 +476,8 @@ argument_list|,
 name|size
 argument_list|,
 name|ids
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 return|return

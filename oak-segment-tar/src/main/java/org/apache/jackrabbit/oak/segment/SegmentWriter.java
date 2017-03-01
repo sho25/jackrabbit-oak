@@ -999,7 +999,9 @@ block|{
 name|writeOperationHandler
 operator|.
 name|flush
-argument_list|()
+argument_list|(
+name|store
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return  Statistics for the string deduplication cache or {@code null} if not available.      */
@@ -2224,6 +2226,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -2438,6 +2442,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -2541,6 +2547,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -2607,6 +2615,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -3236,6 +3246,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -3426,6 +3438,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -3465,6 +3479,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -3935,6 +3951,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 expr_stmt|;
 block|}
@@ -3960,6 +3978,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 expr_stmt|;
 block|}
@@ -4019,6 +4039,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -4639,6 +4661,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -4660,6 +4684,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -5113,6 +5139,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|templateCache
@@ -6007,6 +6035,8 @@ operator|.
 name|write
 argument_list|(
 name|writer
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}

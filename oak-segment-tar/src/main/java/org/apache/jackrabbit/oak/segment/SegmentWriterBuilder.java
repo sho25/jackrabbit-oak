@@ -488,7 +488,12 @@ name|Override
 specifier|public
 name|void
 name|flush
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nonnull
+name|SegmentStore
+name|store
+parameter_list|)
 block|{
 throw|throw
 operator|new
@@ -575,8 +580,6 @@ operator|new
 name|SegmentBufferWriterPool
 argument_list|(
 name|store
-argument_list|,
-name|store
 operator|.
 name|getSegmentIdProvider
 argument_list|()
@@ -598,8 +601,6 @@ return|return
 operator|new
 name|SegmentBufferWriter
 argument_list|(
-name|store
-argument_list|,
 name|store
 operator|.
 name|getSegmentIdProvider
@@ -645,8 +646,6 @@ operator|new
 name|SegmentBufferWriterPool
 argument_list|(
 name|store
-argument_list|,
-name|store
 operator|.
 name|getSegmentIdProvider
 argument_list|()
@@ -668,8 +667,6 @@ return|return
 operator|new
 name|SegmentBufferWriter
 argument_list|(
-name|store
-argument_list|,
 name|store
 operator|.
 name|getSegmentIdProvider
