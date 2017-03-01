@@ -220,6 +220,9 @@ name|store
 argument_list|,
 name|store
 operator|.
+name|getSegmentIdProvider
+argument_list|()
+operator|.
 name|newSegmentId
 argument_list|(
 name|msb

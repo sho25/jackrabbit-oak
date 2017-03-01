@@ -635,6 +635,8 @@ operator|.
 name|bind
 argument_list|(
 name|this
+argument_list|,
+name|tracker
 argument_list|)
 expr_stmt|;
 name|currentHead
@@ -664,7 +666,7 @@ name|RecordId
 operator|.
 name|fromString
 argument_list|(
-name|this
+name|tracker
 argument_list|,
 name|revision
 argument_list|)
@@ -1304,6 +1306,8 @@ name|ids
 operator|.
 name|add
 argument_list|(
+name|tracker
+operator|.
 name|newSegmentId
 argument_list|(
 name|msb

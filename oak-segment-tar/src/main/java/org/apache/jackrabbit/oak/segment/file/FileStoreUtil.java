@@ -103,6 +103,22 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|SegmentIdProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|SegmentStore
 import|;
 end_import
@@ -152,13 +168,16 @@ parameter_list|()
 block|{
 comment|// Prevent instantiation
 block|}
-comment|/**      * Traverse the journal until a record ID is found that exists in the      * provided segment store.      *      * @param store   An instance of {@link SegmentStore}.      * @param journal Path to the journal file.      * @return An instance of {@link RecordId}, or {@code null} if none could be      * found.      * @throws IOException If an I/O error occurs.      */
+comment|/**      * Traverse the journal until a record ID is found that exists in the      * provided segment store.      *      * @param store   An instance of {@link SegmentStore}.      * @param idProvider  The {@code SegmentIdProvider} of the {@code store}      * @param journal Path to the journal file.      * @return An instance of {@link RecordId}, or {@code null} if none could be      * found.      * @throws IOException If an I/O error occurs.      */
 specifier|static
 name|RecordId
 name|findPersistedRecordId
 parameter_list|(
 name|SegmentStore
 name|store
+parameter_list|,
+name|SegmentIdProvider
+name|idProvider
 parameter_list|,
 name|File
 name|journal
@@ -203,7 +222,7 @@ name|RecordId
 operator|.
 name|fromString
 argument_list|(
-name|store
+name|idProvider
 argument_list|,
 name|entry
 operator|.

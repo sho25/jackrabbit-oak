@@ -609,6 +609,9 @@ name|id
 init|=
 name|store
 operator|.
+name|getSegmentIdProvider
+argument_list|()
+operator|.
 name|newSegmentId
 argument_list|(
 name|uuid
@@ -669,6 +672,9 @@ operator|=
 name|fromString
 argument_list|(
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 argument_list|,
 name|matcher
 operator|.
@@ -695,6 +701,9 @@ operator|=
 name|fromString
 argument_list|(
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 argument_list|,
 name|matcher
 operator|.

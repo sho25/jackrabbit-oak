@@ -185,7 +185,7 @@ parameter_list|()
 block|{
 name|assertTrue
 argument_list|(
-name|store
+name|idProvider
 operator|.
 name|newSegmentId
 argument_list|(
@@ -194,7 +194,7 @@ argument_list|,
 literal|0
 argument_list|)
 operator|==
-name|store
+name|idProvider
 operator|.
 name|newSegmentId
 argument_list|(
@@ -206,7 +206,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|store
+name|idProvider
 operator|.
 name|newSegmentId
 argument_list|(
@@ -215,7 +215,7 @@ argument_list|,
 literal|2
 argument_list|)
 operator|==
-name|store
+name|idProvider
 operator|.
 name|newSegmentId
 argument_list|(
@@ -227,7 +227,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|store
+name|idProvider
 operator|.
 name|newSegmentId
 argument_list|(
@@ -236,7 +236,7 @@ argument_list|,
 literal|2
 argument_list|)
 operator|!=
-name|store
+name|idProvider
 operator|.
 name|newSegmentId
 argument_list|(

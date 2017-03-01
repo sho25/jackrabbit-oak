@@ -84,19 +84,6 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Create a {@link SegmentId} represented by the given MSB/LSB pair.      *      * @param msb The most significant bits of the {@link SegmentId}.      * @param lsb The least significant bits of the {@link SegmentId}.      * @return A non-{@code null} instance of {@link SegmentId}.      */
-annotation|@
-name|Nonnull
-name|SegmentId
-name|newSegmentId
-parameter_list|(
-name|long
-name|msb
-parameter_list|,
-name|long
-name|lsb
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 

@@ -355,6 +355,22 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|SegmentIdProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|SegmentStore
 import|;
 end_import
@@ -380,7 +396,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link #JOURNAL_FILE_NAME journal} file where the current head is persisted  * by calling {@link #flush(Callable)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, Supplier) bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
+comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link #JOURNAL_FILE_NAME journal} file where the current head is persisted  * by calling {@link #flush(Callable)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, SegmentIdProvider, Supplier)} bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
 end_comment
 
 begin_class
@@ -691,7 +707,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Bind this instance to a store.      * @param store              store to bind to      * @param writeInitialNode   provider for the initial node in case the journal is empty.      * @throws IOException      */
+comment|/**      * Bind this instance to a store.      * @param store              store to bind to      * @param idProvider         {@code SegmentIdProvider} of the {@code store}      * @param writeInitialNode   provider for the initial node in case the journal is empty.      * @throws IOException      */
 specifier|synchronized
 name|void
 name|bind
@@ -700,6 +716,11 @@ annotation|@
 name|Nonnull
 name|SegmentStore
 name|store
+parameter_list|,
+annotation|@
+name|Nonnull
+name|SegmentIdProvider
+name|idProvider
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -730,6 +751,8 @@ init|=
 name|findPersistedRecordId
 argument_list|(
 name|store
+argument_list|,
+name|idProvider
 argument_list|,
 operator|new
 name|File

@@ -189,16 +189,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -214,6 +204,16 @@ operator|.
 name|util
 operator|.
 name|UUID
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -1191,6 +1191,9 @@ operator|.
 name|fromString
 argument_list|(
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 argument_list|,
 name|recordId
 argument_list|)

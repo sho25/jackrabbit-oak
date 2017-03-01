@@ -193,6 +193,22 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|SegmentIdProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|SegmentStore
 import|;
 end_import
@@ -335,7 +351,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Bind this instance to a store.      *       * @param store      *            store to bind to      * @throws IOException      */
+comment|/**      * Bind this instance to a store.      *       * @param store store to bind to      * @param idProvider  {@code SegmentIdProvider} of the {@code store}      * @throws IOException      */
 specifier|synchronized
 name|void
 name|bind
@@ -344,6 +360,11 @@ annotation|@
 name|Nonnull
 name|SegmentStore
 name|store
+parameter_list|,
+annotation|@
+name|Nonnull
+name|SegmentIdProvider
+name|idProvider
 parameter_list|)
 throws|throws
 name|IOException
@@ -366,6 +387,8 @@ init|=
 name|findPersistedRecordId
 argument_list|(
 name|store
+argument_list|,
+name|idProvider
 argument_list|,
 operator|new
 name|File

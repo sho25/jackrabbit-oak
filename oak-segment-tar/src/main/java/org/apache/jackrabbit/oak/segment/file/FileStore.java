@@ -1811,6 +1811,8 @@ name|bind
 argument_list|(
 name|this
 argument_list|,
+name|tracker
+argument_list|,
 name|initialNode
 argument_list|()
 argument_list|)

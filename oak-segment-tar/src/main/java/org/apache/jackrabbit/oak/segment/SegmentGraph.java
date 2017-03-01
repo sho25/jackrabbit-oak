@@ -783,6 +783,9 @@ argument_list|(
 name|pattern
 argument_list|,
 name|fileStore
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Graph
@@ -851,6 +854,9 @@ argument_list|,
 name|epoch
 argument_list|,
 name|fileStore
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -967,7 +973,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Create a regular expression based inclusion filter for segment.      *      * @param pattern       regular expression specifying inclusion of nodes.      * @param store       the segment store acting upon.      * @return      */
+comment|/**      * Create a regular expression based inclusion filter for segment.      *      * @param pattern       regular expression specifying inclusion of nodes.      * @return      */
 specifier|public
 specifier|static
 name|Predicate
@@ -984,8 +990,8 @@ parameter_list|,
 annotation|@
 name|Nonnull
 specifier|final
-name|SegmentStore
-name|store
+name|SegmentIdProvider
+name|idProvider
 parameter_list|)
 block|{
 specifier|final
@@ -1002,7 +1008,7 @@ argument_list|)
 decl_stmt|;
 name|checkNotNull
 argument_list|(
-name|store
+name|idProvider
 argument_list|)
 expr_stmt|;
 return|return
@@ -1032,7 +1038,7 @@ name|getSegmentInfo
 argument_list|(
 name|segment
 argument_list|,
-name|store
+name|idProvider
 argument_list|)
 decl_stmt|;
 if|if
@@ -1443,6 +1449,9 @@ argument_list|(
 name|segmentId
 argument_list|,
 name|fileStore
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 argument_list|)
 operator|.
 name|getInfoMap
@@ -2244,8 +2253,8 @@ parameter_list|,
 name|Date
 name|epoch
 parameter_list|,
-name|SegmentStore
-name|store
+name|SegmentIdProvider
+name|idProvider
 parameter_list|)
 block|{
 name|SegmentInfo
@@ -2256,7 +2265,7 @@ name|SegmentInfo
 argument_list|(
 name|node
 argument_list|,
-name|store
+name|idProvider
 argument_list|)
 decl_stmt|;
 if|if
@@ -2549,8 +2558,8 @@ parameter_list|(
 name|UUID
 name|segment
 parameter_list|,
-name|SegmentStore
-name|store
+name|SegmentIdProvider
+name|idProvider
 parameter_list|)
 block|{
 return|return
@@ -2559,7 +2568,7 @@ name|SegmentInfo
 argument_list|(
 name|segment
 argument_list|,
-name|store
+name|idProvider
 argument_list|)
 operator|.
 name|getInfo
@@ -2578,8 +2587,8 @@ name|uuid
 decl_stmt|;
 specifier|private
 specifier|final
-name|SegmentStore
-name|store
+name|SegmentIdProvider
+name|idProvider
 decl_stmt|;
 specifier|private
 name|SegmentId
@@ -2590,8 +2599,8 @@ parameter_list|(
 name|UUID
 name|uuid
 parameter_list|,
-name|SegmentStore
-name|store
+name|SegmentIdProvider
+name|idProvider
 parameter_list|)
 block|{
 name|this
@@ -2602,9 +2611,9 @@ name|uuid
 expr_stmt|;
 name|this
 operator|.
-name|store
+name|idProvider
 operator|=
-name|store
+name|idProvider
 expr_stmt|;
 block|}
 name|boolean
@@ -2650,7 +2659,7 @@ argument_list|()
 decl_stmt|;
 name|id
 operator|=
-name|store
+name|idProvider
 operator|.
 name|newSegmentId
 argument_list|(

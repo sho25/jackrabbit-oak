@@ -161,8 +161,8 @@ specifier|static
 name|RecordId
 name|fromString
 parameter_list|(
-name|SegmentStore
-name|factory
+name|SegmentIdProvider
+name|idProvider
 parameter_list|,
 name|String
 name|id
@@ -204,7 +204,7 @@ decl_stmt|;
 name|SegmentId
 name|segmentId
 init|=
-name|factory
+name|idProvider
 operator|.
 name|newSegmentId
 argument_list|(
