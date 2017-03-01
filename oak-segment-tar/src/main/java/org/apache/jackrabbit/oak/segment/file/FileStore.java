@@ -2900,6 +2900,7 @@ throw|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|SegmentNotFoundException
 name|asSegmentNotFoundException
 parameter_list|(
