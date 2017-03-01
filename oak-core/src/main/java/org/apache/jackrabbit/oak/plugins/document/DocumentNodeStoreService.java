@@ -2406,6 +2406,27 @@ name|PROP_BUNDLING_DISABLED
 init|=
 literal|"bundlingDisabled"
 decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"DocumentNodeStore update.limit"
+argument_list|,
+name|description
+operator|=
+literal|"Number of content updates that need to happen before "
+operator|+
+literal|"the updates are automatically purged to the private branch."
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROP_UPDATE_LIMIT
+init|=
+literal|"updateLimit"
+decl_stmt|;
 specifier|private
 name|DocumentStoreType
 name|documentStoreType
@@ -2827,6 +2848,21 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+name|int
+name|updateLimit
+init|=
+name|toInteger
+argument_list|(
+name|prop
+argument_list|(
+name|PROP_UPDATE_LIMIT
+argument_list|)
+argument_list|,
+name|DocumentMK
+operator|.
+name|UPDATE_LIMIT
+argument_list|)
+decl_stmt|;
 name|DocumentMK
 operator|.
 name|Builder
@@ -2995,6 +3031,11 @@ operator|.
 name|setPrefetchExternalChanges
 argument_list|(
 name|prefetchExternalChanges
+argument_list|)
+operator|.
+name|setUpdateLimit
+argument_list|(
+name|updateLimit
 argument_list|)
 decl_stmt|;
 if|if

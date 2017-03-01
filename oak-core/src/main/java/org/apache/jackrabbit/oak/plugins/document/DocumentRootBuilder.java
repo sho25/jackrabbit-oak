@@ -214,33 +214,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the private branch.      */
-specifier|static
-specifier|final
-name|int
-name|UPDATE_LIMIT
-init|=
-name|Integer
-operator|.
-name|getInteger
-argument_list|(
-literal|"update.limit"
-argument_list|,
-literal|100000
-argument_list|)
-decl_stmt|;
-static|static
-block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"Update limit set to {}"
-argument_list|,
-name|UPDATE_LIMIT
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * The underlying store      */
 specifier|protected
 specifier|final
@@ -254,10 +227,16 @@ specifier|private
 name|NodeState
 name|base
 decl_stmt|;
-comment|/**      * Private branch used to hold pending changes exceeding {@link #UPDATE_LIMIT}      */
+comment|/**      * Private branch used to hold pending changes exceeding {@link #updateLimit}      */
 specifier|private
 name|DocumentNodeStoreBranch
 name|branch
+decl_stmt|;
+comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the private branch.      */
+specifier|private
+specifier|final
+name|int
+name|updateLimit
 decl_stmt|;
 comment|/**      * Number of updated not yet persisted to the private {@link #branch}      */
 specifier|private
@@ -310,6 +289,15 @@ name|createBranch
 argument_list|(
 name|base
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateLimit
+operator|=
+name|store
+operator|.
+name|getUpdateLimit
+argument_list|()
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< MemoryNodeBuilder>---
@@ -387,7 +375,7 @@ condition|(
 operator|++
 name|updates
 operator|>
-name|UPDATE_LIMIT
+name|updateLimit
 condition|)
 block|{
 name|purge

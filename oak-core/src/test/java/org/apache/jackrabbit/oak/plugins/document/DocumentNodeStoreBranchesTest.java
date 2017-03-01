@@ -661,7 +661,7 @@ name|totalUpdates
 init|=
 literal|5
 operator|*
-name|DocumentRootBuilder
+name|DocumentMK
 operator|.
 name|UPDATE_LIMIT
 decl_stmt|;

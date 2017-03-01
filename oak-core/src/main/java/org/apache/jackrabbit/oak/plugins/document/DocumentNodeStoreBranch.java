@@ -604,6 +604,12 @@ specifier|final
 name|ReadWriteLock
 name|mergeLock
 decl_stmt|;
+comment|/** The maximum number of updates to keep in memory */
+specifier|private
+specifier|final
+name|int
+name|updateLimit
+decl_stmt|;
 comment|/**      * State of the this branch. Either {@link Unmodified}, {@link InMemory}, {@link Persisted},      * {@link ResetFailed} or {@link Merged}.      * @see BranchState      */
 specifier|private
 name|BranchState
@@ -683,6 +689,15 @@ operator|.
 name|mergeLock
 operator|=
 name|mergeLock
+expr_stmt|;
+name|this
+operator|.
+name|updateLimit
+operator|=
+name|store
+operator|.
+name|getUpdateLimit
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1895,7 +1910,7 @@ name|base
 return|;
 block|}
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch</li>      *<li>{@link Persisted} on {@link #setRoot(NodeState)} if the number of      *         changes counted from the base to the new root reaches      *         {@link DocumentRootBuilder#UPDATE_LIMIT}.</li>      *<li>{@link Merged} on {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch</li>      *<li>{@link Persisted} on {@link #setRoot(NodeState)} if the number of      *         changes counted from the base to the new root reaches      *         {@link DocumentMK.Builder#getUpdateLimit()}.</li>      *<li>{@link Merged} on {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
 specifier|private
 class|class
 name|InMemory
@@ -2032,9 +2047,7 @@ if|if
 condition|(
 name|numUpdates
 operator|>
-name|DocumentRootBuilder
-operator|.
-name|UPDATE_LIMIT
+name|updateLimit
 condition|)
 block|{
 name|persist

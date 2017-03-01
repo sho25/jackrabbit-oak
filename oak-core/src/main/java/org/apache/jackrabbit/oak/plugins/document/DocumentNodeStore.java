@@ -2527,6 +2527,11 @@ specifier|final
 name|JournalPropertyHandlerFactory
 name|journalPropertyHandlerFactory
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|updateLimit
+decl_stmt|;
 specifier|public
 name|DocumentNodeStore
 parameter_list|(
@@ -2536,6 +2541,15 @@ name|Builder
 name|builder
 parameter_list|)
 block|{
+name|this
+operator|.
+name|updateLimit
+operator|=
+name|builder
+operator|.
+name|getUpdateLimit
+argument_list|()
+expr_stmt|;
 name|this
 operator|.
 name|blobStore
@@ -3462,9 +3476,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Initialized DocumentNodeStore with clusterNodeId: {} ({})"
+literal|"Initialized DocumentNodeStore with clusterNodeId: {}, updateLimit: {} ({})"
 argument_list|,
 name|clusterId
+argument_list|,
+name|updateLimit
 argument_list|,
 name|getClusterNodeInfoDisplayString
 argument_list|()
@@ -14411,6 +14427,14 @@ parameter_list|()
 block|{
 return|return
 name|journalPropertyHandlerFactory
+return|;
+block|}
+name|int
+name|getUpdateLimit
+parameter_list|()
+block|{
+return|return
+name|updateLimit
 return|;
 block|}
 block|}
