@@ -578,7 +578,7 @@ name|store
 argument_list|,
 name|store
 operator|.
-name|getTracker
+name|getSegmentIdProvider
 argument_list|()
 argument_list|,
 name|store
@@ -648,7 +648,7 @@ name|store
 argument_list|,
 name|store
 operator|.
-name|getTracker
+name|getSegmentIdProvider
 argument_list|()
 argument_list|,
 name|store

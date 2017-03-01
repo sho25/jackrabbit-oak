@@ -1140,17 +1140,6 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
-name|SegmentTracker
-name|getTracker
-parameter_list|()
-block|{
-return|return
-name|tracker
-return|;
-block|}
-annotation|@
-name|Nonnull
-specifier|public
 specifier|abstract
 name|SegmentWriter
 name|getWriter

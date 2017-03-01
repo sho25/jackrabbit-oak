@@ -1132,9 +1132,6 @@ name|id
 range|:
 name|store
 operator|.
-name|getTracker
-argument_list|()
-operator|.
 name|getReferencedSegmentIds
 argument_list|()
 control|)

@@ -1333,6 +1333,21 @@ return|return
 name|revisions
 return|;
 block|}
+specifier|public
+name|Set
+argument_list|<
+name|SegmentId
+argument_list|>
+name|getReferencedSegmentIds
+parameter_list|()
+block|{
+return|return
+name|tracker
+operator|.
+name|getReferencedSegmentIds
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

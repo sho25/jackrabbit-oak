@@ -279,8 +279,8 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|SegmentTracker
-name|tracker
+name|SegmentIdProvider
+name|idProvider
 decl_stmt|;
 annotation|@
 name|Nonnull
@@ -323,8 +323,8 @@ name|store
 parameter_list|,
 annotation|@
 name|Nonnull
-name|SegmentTracker
-name|tracker
+name|SegmentIdProvider
+name|idProvider
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -356,11 +356,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|tracker
+name|idProvider
 operator|=
 name|checkNotNull
 argument_list|(
-name|tracker
+name|idProvider
 argument_list|)
 expr_stmt|;
 name|this
@@ -699,7 +699,7 @@ name|SegmentBufferWriter
 argument_list|(
 name|store
 argument_list|,
-name|tracker
+name|idProvider
 argument_list|,
 name|reader
 argument_list|,
@@ -743,7 +743,7 @@ name|SegmentBufferWriter
 argument_list|(
 name|store
 argument_list|,
-name|tracker
+name|idProvider
 argument_list|,
 name|reader
 argument_list|,
