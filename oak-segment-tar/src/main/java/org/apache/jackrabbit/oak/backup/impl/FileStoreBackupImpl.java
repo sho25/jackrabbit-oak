@@ -499,14 +499,6 @@ argument_list|()
 argument_list|,
 name|backup
 operator|.
-name|getTracker
-argument_list|()
-operator|.
-name|getSegmentCounter
-argument_list|()
-argument_list|,
-name|backup
-operator|.
 name|getReader
 argument_list|()
 argument_list|,
