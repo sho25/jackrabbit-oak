@@ -835,6 +835,9 @@ operator|new
 name|Segment
 argument_list|(
 name|idProvider
+operator|.
+name|newDataSegmentId
+argument_list|()
 argument_list|,
 name|reader
 argument_list|,
