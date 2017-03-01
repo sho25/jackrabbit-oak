@@ -25,19 +25,19 @@ name|framework
 operator|.
 name|Assert
 operator|.
-name|assertFalse
+name|assertTrue
 import|;
 end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
-name|assertTrue
+name|assertFalse
 import|;
 end_import
 
@@ -48,16 +48,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
 import|;
 end_import
 
@@ -111,8 +101,8 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
-name|SegmentTracker
-name|tracker
+name|SegmentIdProvider
+name|idProvider
 decl_stmt|;
 specifier|public
 name|SegmentIdFactoryTest
@@ -126,11 +116,11 @@ operator|new
 name|MemoryStore
 argument_list|()
 expr_stmt|;
-name|tracker
+name|idProvider
 operator|=
 name|store
 operator|.
-name|getTracker
+name|getSegmentIdProvider
 argument_list|()
 expr_stmt|;
 block|}
@@ -143,7 +133,7 @@ parameter_list|()
 block|{
 name|assertTrue
 argument_list|(
-name|store
+name|idProvider
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -154,7 +144,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|store
+name|idProvider
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -165,7 +155,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|store
+name|idProvider
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -176,7 +166,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|store
+name|idProvider
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -269,7 +259,7 @@ block|{
 name|SegmentId
 name|a
 init|=
-name|store
+name|idProvider
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -277,7 +267,7 @@ decl_stmt|;
 name|SegmentId
 name|b
 init|=
-name|store
+name|idProvider
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -285,7 +275,7 @@ decl_stmt|;
 name|SegmentId
 name|c
 init|=
-name|store
+name|idProvider
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -296,7 +286,7 @@ name|SegmentId
 argument_list|>
 name|ids
 init|=
-name|tracker
+name|store
 operator|.
 name|getReferencedSegmentIds
 argument_list|()
@@ -338,7 +328,7 @@ name|ids
 operator|.
 name|contains
 argument_list|(
-name|store
+name|idProvider
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -347,7 +337,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This test can't be enabled in general, as gc() contract is too      * weak for this to work reliably. But it's a good manual check for      * the correct operation of the tracking of segment id references.      */
-comment|// @Test
 specifier|public
 name|void
 name|garbageCollection
@@ -356,7 +345,7 @@ block|{
 name|SegmentId
 name|a
 init|=
-name|store
+name|idProvider
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -364,7 +353,7 @@ decl_stmt|;
 name|SegmentId
 name|b
 init|=
-name|store
+name|idProvider
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -417,7 +406,7 @@ name|SegmentId
 argument_list|>
 name|ids
 init|=
-name|tracker
+name|store
 operator|.
 name|getReferencedSegmentIds
 argument_list|()

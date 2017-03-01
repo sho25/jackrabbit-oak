@@ -2716,9 +2716,7 @@ return|return
 operator|new
 name|Segment
 argument_list|(
-name|FileStore
-operator|.
-name|this
+name|tracker
 argument_list|,
 name|segmentReader
 argument_list|,
@@ -2775,9 +2773,7 @@ return|return
 operator|new
 name|Segment
 argument_list|(
-name|FileStore
-operator|.
-name|this
+name|tracker
 argument_list|,
 name|segmentReader
 argument_list|,
@@ -2845,9 +2841,7 @@ return|return
 operator|new
 name|Segment
 argument_list|(
-name|FileStore
-operator|.
-name|this
+name|tracker
 argument_list|,
 name|segmentReader
 argument_list|,
@@ -3041,7 +3035,7 @@ operator|=
 operator|new
 name|Segment
 argument_list|(
-name|this
+name|tracker
 argument_list|,
 name|segmentReader
 argument_list|,

@@ -494,6 +494,11 @@ name|backup
 argument_list|,
 name|backup
 operator|.
+name|getSegmentIdProvider
+argument_list|()
+argument_list|,
+name|backup
+operator|.
 name|getTracker
 argument_list|()
 operator|.
@@ -521,6 +526,11 @@ argument_list|,
 name|backup
 operator|.
 name|getReader
+argument_list|()
+argument_list|,
+name|backup
+operator|.
+name|getSegmentIdProvider
 argument_list|()
 argument_list|,
 name|backup

@@ -367,20 +367,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicInteger
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -576,16 +562,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -2962,6 +2938,9 @@ init|=
 name|newRecordId
 argument_list|(
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 argument_list|,
 operator|new
 name|Random

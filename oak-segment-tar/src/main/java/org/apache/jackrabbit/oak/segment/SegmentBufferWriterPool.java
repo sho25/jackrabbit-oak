@@ -700,6 +700,8 @@ argument_list|(
 name|store
 argument_list|,
 name|tracker
+argument_list|,
+name|tracker
 operator|.
 name|getSegmentCounter
 argument_list|()
@@ -745,6 +747,8 @@ operator|new
 name|SegmentBufferWriter
 argument_list|(
 name|store
+argument_list|,
+name|tracker
 argument_list|,
 name|tracker
 operator|.

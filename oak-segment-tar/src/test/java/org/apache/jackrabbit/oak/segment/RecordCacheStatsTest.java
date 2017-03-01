@@ -286,6 +286,9 @@ operator|.
 name|newRecordId
 argument_list|(
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 argument_list|,
 name|rnd
 argument_list|)

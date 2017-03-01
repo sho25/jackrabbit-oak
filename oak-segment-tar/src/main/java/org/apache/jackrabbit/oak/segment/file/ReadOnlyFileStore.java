@@ -943,9 +943,7 @@ return|return
 operator|new
 name|Segment
 argument_list|(
-name|ReadOnlyFileStore
-operator|.
-name|this
+name|tracker
 argument_list|,
 name|segmentReader
 argument_list|,

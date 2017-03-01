@@ -1300,6 +1300,9 @@ name|RecordId
 argument_list|(
 name|store
 operator|.
+name|getSegmentIdProvider
+argument_list|()
+operator|.
 name|newBulkSegmentId
 argument_list|()
 argument_list|,

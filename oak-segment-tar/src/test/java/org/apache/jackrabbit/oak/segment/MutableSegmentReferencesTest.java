@@ -137,7 +137,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -148,6 +148,9 @@ name|SegmentId
 name|id
 init|=
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -186,7 +189,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -198,6 +201,9 @@ name|first
 init|=
 name|store
 operator|.
+name|getSegmentIdProvider
+argument_list|()
+operator|.
 name|newDataSegmentId
 argument_list|()
 decl_stmt|;
@@ -205,6 +211,9 @@ name|SegmentId
 name|second
 init|=
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -255,7 +264,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -266,6 +275,9 @@ name|SegmentId
 name|id
 init|=
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -309,7 +321,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -320,6 +332,9 @@ name|SegmentId
 name|id
 init|=
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -368,7 +383,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -379,6 +394,9 @@ name|SegmentId
 name|id
 init|=
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -427,7 +445,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -438,6 +456,9 @@ name|SegmentId
 name|id
 init|=
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 operator|.
 name|newDataSegmentId
 argument_list|()
@@ -486,7 +507,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SegmentStore
+name|MemoryStore
 name|store
 init|=
 operator|new
@@ -498,6 +519,9 @@ name|first
 init|=
 name|store
 operator|.
+name|getSegmentIdProvider
+argument_list|()
+operator|.
 name|newDataSegmentId
 argument_list|()
 decl_stmt|;
@@ -505,6 +529,9 @@ name|SegmentId
 name|second
 init|=
 name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
 operator|.
 name|newDataSegmentId
 argument_list|()

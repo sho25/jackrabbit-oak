@@ -857,6 +857,13 @@ name|SegmentReader
 name|reader
 decl_stmt|;
 annotation|@
+name|Nonnull
+specifier|private
+specifier|final
+name|SegmentIdProvider
+name|idProvider
+decl_stmt|;
+annotation|@
 name|CheckForNull
 specifier|private
 specifier|final
@@ -880,7 +887,7 @@ name|GCNodeWriteMonitor
 operator|.
 name|EMPTY
 decl_stmt|;
-comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param reader     segment reader for the {@code store}      * @param blobStore  the blog store or {@code null} for inlined blobs      * @param cacheManager  cache manager instance for the de-duplication caches used by this writer      * @param writeOperationHandler  handler for write operations.      */
+comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety properties      * pointed out in the class comment.      *      * @param store      store to write to      * @param reader     segment reader for the {@code store}      * @param idProvider segment id provider for the {@code store}      * @param blobStore  the blog store or {@code null} for inlined blobs      * @param cacheManager  cache manager instance for the de-duplication caches used by this writer      * @param writeOperationHandler  handler for write operations.      */
 specifier|public
 name|SegmentWriter
 parameter_list|(
@@ -893,6 +900,11 @@ annotation|@
 name|Nonnull
 name|SegmentReader
 name|reader
+parameter_list|,
+annotation|@
+name|Nonnull
+name|SegmentIdProvider
+name|idProvider
 parameter_list|,
 annotation|@
 name|Nullable
@@ -926,6 +938,15 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|reader
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|idProvider
+operator|=
+name|checkNotNull
+argument_list|(
+name|idProvider
 argument_list|)
 expr_stmt|;
 name|this
@@ -3568,7 +3589,7 @@ block|{
 name|SegmentId
 name|bulkId
 init|=
-name|store
+name|idProvider
 operator|.
 name|newBulkSegmentId
 argument_list|()
@@ -4291,7 +4312,7 @@ block|{
 name|SegmentId
 name|bulkId
 init|=
-name|store
+name|idProvider
 operator|.
 name|newBulkSegmentId
 argument_list|()

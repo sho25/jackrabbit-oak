@@ -97,20 +97,6 @@ name|long
 name|lsb
 parameter_list|)
 function_decl|;
-comment|/**      * Create a new {@link SegmentId} for a segment of type "bulk".      *      * @return A non-{@code null} instance of {@link SegmentId}.      */
-annotation|@
-name|Nonnull
-name|SegmentId
-name|newBulkSegmentId
-parameter_list|()
-function_decl|;
-comment|/**      * Create a new {@link SegmentId} for a segment of type "data".      *      * @return A non-{@code null} instance of {@link SegmentId}.      */
-annotation|@
-name|Nonnull
-name|SegmentId
-name|newDataSegmentId
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

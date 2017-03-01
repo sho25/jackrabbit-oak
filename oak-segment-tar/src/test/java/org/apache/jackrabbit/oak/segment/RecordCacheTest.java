@@ -186,6 +186,16 @@ operator|new
 name|MemoryStore
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|SegmentIdProvider
+name|idProvider
+init|=
+name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
+decl_stmt|;
 specifier|public
 name|RecordCacheTest
 parameter_list|()
@@ -229,7 +239,7 @@ argument_list|,
 operator|(
 name|newRecordId
 argument_list|(
-name|store
+name|idProvider
 argument_list|,
 name|rnd
 argument_list|)
@@ -280,7 +290,7 @@ name|value
 init|=
 name|newRecordId
 argument_list|(
-name|store
+name|idProvider
 argument_list|,
 name|rnd
 argument_list|)
@@ -363,7 +373,7 @@ name|value
 init|=
 name|newRecordId
 argument_list|(
-name|store
+name|idProvider
 argument_list|,
 name|rnd
 argument_list|)
@@ -434,7 +444,7 @@ name|value
 init|=
 name|newRecordId
 argument_list|(
-name|store
+name|idProvider
 argument_list|,
 name|rnd
 argument_list|)
