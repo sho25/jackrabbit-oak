@@ -1449,6 +1449,13 @@ operator|.
 name|getContentRepository
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|repository
+operator|!=
+literal|null
+condition|)
+block|{
 name|systemSession
 operator|=
 name|Subject
@@ -1501,6 +1508,17 @@ operator|.
 name|getLatestRoot
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Unable to retrieve the Root via RepositoryCallback; ContentRepository not available."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
