@@ -157,6 +157,8 @@ begin_class
 specifier|public
 class|class
 name|CompositeConfigurationTest
+extends|extends
+name|AbstractCompositeConfigurationTest
 block|{
 specifier|private
 specifier|static
@@ -165,10 +167,6 @@ name|String
 name|NAME
 init|=
 literal|"test"
-decl_stmt|;
-specifier|private
-name|CompositeConfiguration
-name|compositeConfiguration
 decl_stmt|;
 annotation|@
 name|Before
@@ -300,8 +298,6 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|compositeConfiguration
-operator|.
 name|getConfigurations
 argument_list|()
 operator|.
@@ -326,9 +322,7 @@ operator|.
 name|Default
 argument_list|()
 decl_stmt|;
-name|compositeConfiguration
-operator|.
-name|setDefaultConfig
+name|setDefault
 argument_list|(
 name|sc
 argument_list|)
@@ -339,8 +333,6 @@ name|SecurityConfiguration
 argument_list|>
 name|configurations
 init|=
-name|compositeConfiguration
-operator|.
 name|getConfigurations
 argument_list|()
 decl_stmt|;
@@ -383,8 +375,6 @@ name|void
 name|testAddConfiguration
 parameter_list|()
 block|{
-name|compositeConfiguration
-operator|.
 name|addConfiguration
 argument_list|(
 operator|new
@@ -394,8 +384,6 @@ name|Default
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|compositeConfiguration
-operator|.
 name|addConfiguration
 argument_list|(
 operator|new
@@ -411,8 +399,6 @@ name|SecurityConfiguration
 argument_list|>
 name|configurations
 init|=
-name|compositeConfiguration
-operator|.
 name|getConfigurations
 argument_list|()
 decl_stmt|;
@@ -443,17 +429,13 @@ operator|.
 name|Default
 argument_list|()
 decl_stmt|;
-name|compositeConfiguration
-operator|.
-name|setDefaultConfig
+name|setDefault
 argument_list|(
 name|def
 argument_list|)
 expr_stmt|;
 name|configurations
 operator|=
-name|compositeConfiguration
-operator|.
 name|getConfigurations
 argument_list|()
 expr_stmt|;
@@ -494,9 +476,7 @@ operator|.
 name|Default
 argument_list|()
 decl_stmt|;
-name|compositeConfiguration
-operator|.
-name|setDefaultConfig
+name|setDefault
 argument_list|(
 name|def
 argument_list|)
@@ -510,15 +490,11 @@ operator|.
 name|Default
 argument_list|()
 decl_stmt|;
-name|compositeConfiguration
-operator|.
 name|addConfiguration
 argument_list|(
 name|sc
 argument_list|)
 expr_stmt|;
-name|compositeConfiguration
-operator|.
 name|removeConfiguration
 argument_list|(
 name|def
@@ -527,8 +503,6 @@ expr_stmt|;
 name|List
 name|configurations
 init|=
-name|compositeConfiguration
-operator|.
 name|getConfigurations
 argument_list|()
 decl_stmt|;
@@ -555,8 +529,6 @@ name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|compositeConfiguration
-operator|.
 name|removeConfiguration
 argument_list|(
 name|sc
@@ -564,8 +536,6 @@ argument_list|)
 expr_stmt|;
 name|configurations
 operator|=
-name|compositeConfiguration
-operator|.
 name|getConfigurations
 argument_list|()
 expr_stmt|;
@@ -702,9 +672,7 @@ operator|new
 name|TestConfiguration
 argument_list|()
 decl_stmt|;
-name|compositeConfiguration
-operator|.
-name|setDefaultConfig
+name|setDefault
 argument_list|(
 name|sc
 argument_list|)
@@ -751,8 +719,6 @@ name|getClass
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|compositeConfiguration
-operator|.
 name|addConfiguration
 argument_list|(
 name|sc
@@ -805,8 +771,6 @@ operator|.
 name|Default
 argument_list|()
 decl_stmt|;
-name|compositeConfiguration
-operator|.
 name|addConfiguration
 argument_list|(
 name|defConfig
@@ -836,8 +800,6 @@ name|length
 argument_list|)
 expr_stmt|;
 comment|// add same test configuration again -> no duplicate entries
-name|compositeConfiguration
-operator|.
 name|addConfiguration
 argument_list|(
 name|sc
@@ -873,8 +835,6 @@ operator|new
 name|TestConfiguration
 argument_list|()
 decl_stmt|;
-name|compositeConfiguration
-operator|.
 name|addConfiguration
 argument_list|(
 name|sc2
@@ -903,8 +863,6 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-name|compositeConfiguration
-operator|.
 name|removeConfiguration
 argument_list|(
 name|sc2
@@ -933,22 +891,16 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-name|compositeConfiguration
-operator|.
 name|removeConfiguration
 argument_list|(
 name|sc
 argument_list|)
 expr_stmt|;
-name|compositeConfiguration
-operator|.
 name|removeConfiguration
 argument_list|(
 name|sc
 argument_list|)
 expr_stmt|;
-name|compositeConfiguration
-operator|.
 name|removeConfiguration
 argument_list|(
 name|defConfig
