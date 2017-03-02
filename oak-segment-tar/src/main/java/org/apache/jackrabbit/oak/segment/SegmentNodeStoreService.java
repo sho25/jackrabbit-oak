@@ -2573,9 +2573,7 @@ name|description
 operator|=
 literal|"Boolean value indicating that a custom BlobStore is used for storing "
 operator|+
-literal|"large binary values. "
-operator|+
-literal|"Default value is 'false'."
+literal|"large binary values."
 argument_list|)
 specifier|public
 specifier|static
