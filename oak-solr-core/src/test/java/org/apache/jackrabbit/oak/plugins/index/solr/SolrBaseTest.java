@@ -251,11 +251,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -268,8 +266,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|plugins
 operator|.
 name|segment
 operator|.
@@ -414,7 +410,7 @@ name|Exception
 block|{
 name|store
 operator|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

@@ -55,11 +55,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -72,8 +70,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|plugins
 operator|.
 name|segment
 operator|.
@@ -165,7 +161,7 @@ decl_stmt|;
 name|NodeStore
 name|globalStore
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(
@@ -180,7 +176,7 @@ decl_stmt|;
 name|NodeStore
 name|tempMount
 init|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

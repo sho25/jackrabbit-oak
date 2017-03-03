@@ -26,20 +26,26 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
-name|apache
+name|junit
 operator|.
-name|jackrabbit
+name|Assert
 operator|.
-name|oak
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|plugins
+name|junit
 operator|.
-name|segment
+name|Assert
 operator|.
-name|SegmentNodeStore
+name|fail
 import|;
 end_import
 
@@ -53,7 +59,21 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|segment
+operator|.
+name|SegmentNodeStoreBuilders
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
 operator|.
 name|segment
 operator|.
@@ -173,30 +193,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests for {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.nodestate.OakSolrNodeStateConfiguration}  */
 end_comment
@@ -221,7 +217,7 @@ name|Exception
 block|{
 name|store
 operator|=
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

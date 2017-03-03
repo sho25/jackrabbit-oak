@@ -91,11 +91,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 import|;
 end_import
 
@@ -109,13 +107,29 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
 name|segment
 operator|.
 name|file
 operator|.
 name|FileStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStoreBuilder
 import|;
 end_import
 
@@ -184,9 +198,9 @@ name|this
 operator|.
 name|store
 operator|=
-name|FileStore
+name|FileStoreBuilder
 operator|.
-name|builder
+name|fileStoreBuilder
 argument_list|(
 name|directory
 argument_list|)
@@ -213,7 +227,7 @@ argument_list|(
 operator|new
 name|Oak
 argument_list|(
-name|SegmentNodeStore
+name|SegmentNodeStoreBuilders
 operator|.
 name|builder
 argument_list|(

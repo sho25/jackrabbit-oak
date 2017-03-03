@@ -192,15 +192,6 @@ name|FileStoreDiffCommand
 argument_list|()
 argument_list|)
 block|,
-name|TARMKRECOVERY
-argument_list|(
-literal|"tarmkrecovery"
-argument_list|,
-operator|new
-name|FileStoreRevisionRecoveryCommand
-argument_list|()
-argument_list|)
-block|,
 name|DATASTORECHECK
 argument_list|(
 literal|"datastorecheck"

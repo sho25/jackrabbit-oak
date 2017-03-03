@@ -220,18 +220,6 @@ argument_list|,
 literal|"Force compaction and ignore non matching segment version"
 argument_list|)
 decl_stmt|;
-name|OptionSpec
-name|segment
-init|=
-name|parser
-operator|.
-name|accepts
-argument_list|(
-literal|"segment"
-argument_list|,
-literal|"Use oak-segment instead of oak-segment-tar"
-argument_list|)
-decl_stmt|;
 name|OptionSet
 name|options
 init|=
@@ -409,28 +397,6 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-if|if
-condition|(
-name|options
-operator|.
-name|has
-argument_list|(
-name|segment
-argument_list|)
-condition|)
-block|{
-name|SegmentUtils
-operator|.
-name|compact
-argument_list|(
-name|directory
-argument_list|,
-name|force
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|SegmentTarUtils
 operator|.
 name|compact
@@ -440,7 +406,6 @@ argument_list|,
 name|force
 argument_list|)
 expr_stmt|;
-block|}
 name|success
 operator|=
 literal|true
