@@ -11894,11 +11894,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-5229"
-argument_list|)
 specifier|public
 name|void
 name|setPrimaryTypeShouldFail
@@ -11988,6 +11983,14 @@ name|e
 parameter_list|)
 block|{
 comment|// ok
+name|getAdminSession
+argument_list|()
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 name|Session
 name|session2

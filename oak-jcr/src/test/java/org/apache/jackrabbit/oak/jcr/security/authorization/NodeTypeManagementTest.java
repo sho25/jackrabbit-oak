@@ -562,7 +562,7 @@ name|childNode
 operator|.
 name|setPrimaryType
 argument_list|(
-literal|"nt:folder"
+literal|"oak:Unstructured"
 argument_list|)
 expr_stmt|;
 name|testSession
@@ -664,7 +664,7 @@ decl_stmt|;
 name|String
 name|changedNtName
 init|=
-literal|"nt:folder"
+literal|"oak:Unstructured"
 decl_stmt|;
 name|child
 operator|.
