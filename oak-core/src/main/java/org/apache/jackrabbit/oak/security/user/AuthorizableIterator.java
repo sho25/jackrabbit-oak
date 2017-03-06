@@ -438,19 +438,6 @@ name|String
 name|oakPath
 parameter_list|)
 block|{
-name|String
-name|jcrPath
-init|=
-name|userManager
-operator|.
-name|getNamePathMapper
-argument_list|()
-operator|.
-name|getJcrPath
-argument_list|(
-name|oakPath
-argument_list|)
-decl_stmt|;
 try|try
 block|{
 name|Authorizable
@@ -458,9 +445,9 @@ name|a
 init|=
 name|userManager
 operator|.
-name|getAuthorizableByPath
+name|getAuthorizableByOakPath
 argument_list|(
-name|jcrPath
+name|oakPath
 argument_list|)
 decl_stmt|;
 if|if
@@ -490,7 +477,7 @@ name|debug
 argument_list|(
 literal|"Failed to access authorizable "
 operator|+
-name|jcrPath
+name|oakPath
 argument_list|)
 expr_stmt|;
 block|}
