@@ -2022,6 +2022,7 @@ block|}
 comment|//--------------------------------------------------------------------------
 annotation|@
 name|CheckForNull
+specifier|public
 name|Authorizable
 name|getAuthorizable
 parameter_list|(
