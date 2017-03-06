@@ -726,7 +726,9 @@ name|userManager
 operator|.
 name|findAuthorizables
 argument_list|(
-literal|"jcr:primaryType"
+name|DefaultSyncContext
+operator|.
+name|REP_EXTERNAL_ID
 argument_list|,
 literal|null
 argument_list|)
