@@ -1350,7 +1350,7 @@ block|{
 name|Session
 name|s
 init|=
-name|loginAdministrative
+name|systemLogin
 argument_list|()
 decl_stmt|;
 name|UserManager
@@ -1410,7 +1410,7 @@ block|{
 name|Session
 name|s
 init|=
-name|loginAdministrative
+name|systemLogin
 argument_list|()
 decl_stmt|;
 for|for
