@@ -111,6 +111,8 @@ comment|/**      * Returns {@code true} if the specified credentials can be succ
 name|boolean
 name|matches
 parameter_list|(
+annotation|@
+name|Nonnull
 name|TokenCredentials
 name|tokenCredentials
 parameter_list|)

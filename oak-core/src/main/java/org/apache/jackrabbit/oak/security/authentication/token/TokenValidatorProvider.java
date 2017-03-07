@@ -666,7 +666,7 @@ throws|throws
 name|CommitFailedException
 block|{
 name|String
-name|beforeName
+name|propertyName
 init|=
 name|after
 operator|.
@@ -679,7 +679,7 @@ name|TOKEN_ATTRIBUTE_KEY
 operator|.
 name|equals
 argument_list|(
-name|beforeName
+name|propertyName
 argument_list|)
 condition|)
 block|{
@@ -688,7 +688,7 @@ name|msg
 init|=
 literal|"Attempt to change reserved token property "
 operator|+
-name|beforeName
+name|propertyName
 decl_stmt|;
 throw|throw
 name|constraintViolation
@@ -706,7 +706,7 @@ name|TOKEN_ATTRIBUTE_EXPIRY
 operator|.
 name|equals
 argument_list|(
-name|beforeName
+name|propertyName
 argument_list|)
 condition|)
 block|{
@@ -723,7 +723,7 @@ name|JCR_PRIMARYTYPE
 operator|.
 name|equals
 argument_list|(
-name|beforeName
+name|propertyName
 argument_list|)
 condition|)
 block|{
@@ -1106,14 +1106,9 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|TOKENS_NODE_NAME
-operator|.
-name|equals
+name|isTokensParent
 argument_list|(
 name|parent
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 operator|||
 operator|!
