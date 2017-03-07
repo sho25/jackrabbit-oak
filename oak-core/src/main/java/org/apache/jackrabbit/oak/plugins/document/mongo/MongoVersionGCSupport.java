@@ -1021,6 +1021,18 @@ block|}
 annotation|@
 name|Override
 specifier|protected
+name|void
+name|collectIdToBeDeleted
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+comment|// nothing to do here, as we're overwriting deleteSplitDocuments()
+block|}
+annotation|@
+name|Override
+specifier|protected
 name|int
 name|deleteSplitDocuments
 parameter_list|()
