@@ -547,7 +547,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"SplitBlobStore[old={}, new={}]"
+literal|"SplitBlobStore[old=%s, new=%s]"
 argument_list|,
 name|oldBlobStore
 argument_list|,
