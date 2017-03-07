@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -559,7 +569,15 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
+name|loginId
+decl_stmt|;
+specifier|private
+name|String
 name|userId
+decl_stmt|;
+specifier|private
+name|Principal
+name|principal
 decl_stmt|;
 name|UserAuthentication
 parameter_list|(
@@ -576,7 +594,7 @@ parameter_list|,
 annotation|@
 name|Nullable
 name|String
-name|userId
+name|loginId
 parameter_list|)
 block|{
 name|this
@@ -593,9 +611,9 @@ name|root
 expr_stmt|;
 name|this
 operator|.
-name|userId
+name|loginId
 operator|=
-name|userId
+name|loginId
 expr_stmt|;
 block|}
 comment|//-----------------------------------------------------< Authentication>---
@@ -619,7 +637,7 @@ name|credentials
 operator|==
 literal|null
 operator|||
-name|userId
+name|loginId
 operator|==
 literal|null
 condition|)
@@ -656,7 +674,7 @@ name|userManager
 operator|.
 name|getAuthorizable
 argument_list|(
-name|userId
+name|loginId
 argument_list|)
 decl_stmt|;
 if|if
@@ -684,7 +702,7 @@ name|AccountNotFoundException
 argument_list|(
 literal|"Not a user "
 operator|+
-name|userId
+name|loginId
 argument_list|)
 throw|;
 block|}
@@ -710,7 +728,7 @@ name|AccountLockedException
 argument_list|(
 literal|"User with ID "
 operator|+
-name|userId
+name|loginId
 operator|+
 literal|" has been disabled: "
 operator|+
@@ -746,7 +764,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|userId
+name|loginId
 operator|.
 name|equals
 argument_list|(
@@ -852,7 +870,7 @@ name|equalUserId
 argument_list|(
 name|ipCreds
 argument_list|,
-name|userId
+name|loginId
 argument_list|)
 operator|&&
 name|impersonate
@@ -888,6 +906,20 @@ operator|.
 name|PRE_AUTHENTICATED
 expr_stmt|;
 block|}
+name|userId
+operator|=
+name|user
+operator|.
+name|getID
+argument_list|()
+expr_stmt|;
+name|principal
+operator|=
+name|user
+operator|.
+name|getPrincipal
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -908,6 +940,62 @@ throw|;
 block|}
 return|return
 name|success
+return|;
+block|}
+annotation|@
+name|CheckForNull
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getUserId
+parameter_list|()
+block|{
+if|if
+condition|(
+name|userId
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"UserId can only be retrieved after successful authentication."
+argument_list|)
+throw|;
+block|}
+return|return
+name|userId
+return|;
+block|}
+annotation|@
+name|CheckForNull
+annotation|@
+name|Override
+specifier|public
+name|Principal
+name|getUserPrincipal
+parameter_list|()
+block|{
+if|if
+condition|(
+name|principal
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Principal can only be retrieved after successful authentication."
+argument_list|)
+throw|;
+block|}
+return|return
+name|principal
 return|;
 block|}
 comment|//--------------------------------------------------------------------------
@@ -1045,7 +1133,7 @@ name|debug
 argument_list|(
 literal|"User "
 operator|+
-name|userId
+name|loginId
 operator|+
 literal|": changed user password"
 argument_list|)
@@ -1062,7 +1150,7 @@ name|warn
 argument_list|(
 literal|"Aborted password change for user "
 operator|+
-name|userId
+name|loginId
 operator|+
 literal|": provided new password is of incompatible type "
 operator|+
@@ -1108,7 +1196,7 @@ name|error
 argument_list|(
 literal|"Failed to change password for user "
 operator|+
-name|userId
+name|loginId
 argument_list|,
 name|e
 operator|.
@@ -1129,7 +1217,7 @@ name|error
 argument_list|(
 literal|"Failed to change password for user "
 operator|+
-name|userId
+name|loginId
 argument_list|,
 name|e
 operator|.
@@ -1155,7 +1243,7 @@ name|error
 argument_list|(
 literal|"Failed to change password for user "
 operator|+
-name|userId
+name|loginId
 argument_list|,
 name|e
 operator|.

@@ -425,6 +425,10 @@ specifier|private
 name|String
 name|userId
 decl_stmt|;
+specifier|private
+name|Principal
+name|principal
+decl_stmt|;
 comment|//--------------------------------------------------------< LoginModule>---
 annotation|@
 name|Override
@@ -504,9 +508,16 @@ argument_list|()
 expr_stmt|;
 name|userId
 operator|=
-name|tokenInfo
+name|authentication
 operator|.
 name|getUserId
+argument_list|()
+expr_stmt|;
+name|principal
+operator|=
+name|authentication
+operator|.
+name|getUserPrincipal
 argument_list|()
 expr_stmt|;
 name|log
@@ -562,6 +573,17 @@ name|Principal
 argument_list|>
 name|principals
 init|=
+operator|(
+name|principal
+operator|!=
+literal|null
+operator|)
+condition|?
+name|getPrincipals
+argument_list|(
+name|principal
+argument_list|)
+else|:
 name|getPrincipals
 argument_list|(
 name|userId

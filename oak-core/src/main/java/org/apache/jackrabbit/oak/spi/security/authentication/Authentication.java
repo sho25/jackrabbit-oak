@@ -23,6 +23,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -75,6 +95,20 @@ name|credentials
 parameter_list|)
 throws|throws
 name|LoginException
+function_decl|;
+comment|/**      * Optional method that return the userID extracted upon {@link #authenticate(Credentials)}.      * It is expected to return {@code null} if the implementation doesn't support this.      *      * An {@link IllegalStateException} may be thrown if called prior to {@link #authenticate(Credentials)}.      *      * @return a user identifier or {@code null}      */
+annotation|@
+name|CheckForNull
+name|String
+name|getUserId
+parameter_list|()
+function_decl|;
+comment|/**      * Optional method that return the {@link Principal} of the authenticating user      * extracted upon {@link #authenticate(Credentials)}. It is expected to return      * {@code null} if the implementation doesn't support this.      *      * An {@link IllegalStateException} may be thrown if called prior to {@link #authenticate(Credentials)}.      *      * @return a valid {@code Principal} or {@code null}      */
+annotation|@
+name|CheckForNull
+name|Principal
+name|getUserPrincipal
+parameter_list|()
 function_decl|;
 block|}
 end_interface
