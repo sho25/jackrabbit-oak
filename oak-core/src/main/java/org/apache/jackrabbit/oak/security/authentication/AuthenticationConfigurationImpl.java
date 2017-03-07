@@ -407,6 +407,11 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Constructor for OSGi      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 specifier|public
 name|AuthenticationConfigurationImpl
 parameter_list|()
