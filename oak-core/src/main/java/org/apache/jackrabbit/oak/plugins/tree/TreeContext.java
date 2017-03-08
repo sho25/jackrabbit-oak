@@ -85,7 +85,7 @@ name|PropertyState
 name|property
 parameter_list|)
 function_decl|;
-comment|/**      * Reveals if the specified {@code Tree} is the root of a subtree defined by      * the module that exposes this {@link TreeContext} instance. Note,      * that in contrast to {@link #definesTree(Tree)}      * this method will only return {@code false} for any tree located in the      * subtree.      *      * @param tree The tree to be tested.      * @return {@code true} if the specified tree is the root of a subtree of items      * that are defined by the security module.      */
+comment|/**      * Reveals if the specified {@code Tree} is the root of a subtree defined by      * the module that exposes this {@link TreeContext} instance. Note,      * that in contrast to {@link #definesTree(Tree)}      * this method will return {@code false} for any tree located in the      * subtree.      *      * @param tree The tree to be tested.      * @return {@code true} if the specified tree is the root of a subtree of items      * that are defined by the security module.      */
 name|boolean
 name|definesContextRoot
 parameter_list|(
