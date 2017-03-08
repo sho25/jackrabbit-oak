@@ -331,6 +331,24 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|TestUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
 name|VersionGarbageCollector
 import|;
 end_import
@@ -494,6 +512,16 @@ operator|.
 name|stats
 operator|.
 name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
 import|;
 end_import
 
@@ -966,6 +994,13 @@ operator|=
 name|getTestClock
 argument_list|()
 expr_stmt|;
+name|TestUtils
+operator|.
+name|setRevisionClock
+argument_list|(
+name|clock
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|blobStoreRoot
@@ -976,6 +1011,19 @@ name|newFolder
 argument_list|(
 literal|"blobstore"
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|After
+specifier|public
+name|void
+name|after
+parameter_list|()
+block|{
+name|TestUtils
+operator|.
+name|resetRevisionClockToDefault
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1498,7 +1546,7 @@ name|maxAge
 init|=
 literal|10
 decl_stmt|;
-comment|// hours
+comment|// minutes
 comment|// 1. Go past GC age and check no GC done as nothing deleted
 name|clock
 operator|.
@@ -2491,6 +2539,8 @@ name|Cluster
 argument_list|(
 literal|"cluster1-1"
 argument_list|,
+literal|1
+argument_list|,
 name|store
 argument_list|)
 decl_stmt|;
@@ -2501,6 +2551,8 @@ operator|new
 name|Cluster
 argument_list|(
 literal|"cluster1-2"
+argument_list|,
+literal|2
 argument_list|,
 name|store
 argument_list|)
@@ -2957,7 +3009,7 @@ name|maxAge
 init|=
 literal|10
 decl_stmt|;
-comment|// hours
+comment|// minutes
 comment|// 1. Go past GC age and check no GC done as nothing deleted
 name|clock
 operator|.
@@ -3026,14 +3078,16 @@ specifier|public
 name|Cluster
 parameter_list|(
 name|String
-name|clusterId
+name|clusterName
 parameter_list|)
 throws|throws
 name|Exception
 block|{
 name|this
 argument_list|(
-name|clusterId
+name|clusterName
+argument_list|,
+literal|1
 argument_list|,
 operator|new
 name|MemoryDocumentStore
@@ -3045,6 +3099,9 @@ specifier|public
 name|Cluster
 parameter_list|(
 name|String
+name|clusterName
+parameter_list|,
+name|int
 name|clusterId
 parameter_list|,
 name|MemoryDocumentStore
@@ -3066,6 +3123,16 @@ name|builderProvider
 operator|.
 name|newBuilder
 argument_list|()
+operator|.
+name|setClusterId
+argument_list|(
+name|clusterId
+argument_list|)
+operator|.
+name|clock
+argument_list|(
+name|clock
+argument_list|)
 operator|.
 name|setAsyncDelay
 argument_list|(
@@ -3133,7 +3200,7 @@ name|folder
 operator|.
 name|newFolder
 argument_list|(
-name|clusterId
+name|clusterName
 argument_list|)
 operator|.
 name|getAbsolutePath
@@ -3195,7 +3262,7 @@ name|newFolder
 argument_list|(
 literal|"gc"
 operator|+
-name|clusterId
+name|clusterName
 argument_list|)
 operator|.
 name|getAbsolutePath
