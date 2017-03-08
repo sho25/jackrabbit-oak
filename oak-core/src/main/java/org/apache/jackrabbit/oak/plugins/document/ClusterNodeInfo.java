@@ -2296,43 +2296,85 @@ comment|// as the margin is 20sec and we're just reducing it by 5sec
 comment|// (in the un-paused case)
 try|try
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"performLeaseCheck: lease within "
-operator|+
-name|leaseFailureMargin
-operator|+
-literal|"ms of failing ("
-operator|+
-operator|(
+name|long
+name|difference
+init|=
 name|leaseEndTime
 operator|-
 name|now
-operator|)
-operator|+
-literal|" ms precisely) - "
-operator|+
-literal|"waiting 1sec to retry (up to another "
-operator|+
-operator|(
+decl_stmt|;
+name|long
+name|waitForMs
+init|=
+literal|1000
+decl_stmt|;
+name|String
+name|detail
+init|=
+name|difference
+operator|>=
+literal|0
+condition|?
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"lease within %dms of failing (%dms precisely)"
+argument_list|,
+name|leaseFailureMargin
+argument_list|,
+name|difference
+argument_list|)
+else|:
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"already past lease end (%dms precisely)"
+argument_list|,
+operator|-
+literal|1
+operator|*
+name|difference
+argument_list|)
+decl_stmt|;
+name|String
+name|retries
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"waiting %dms to retry (up to another %d times...)"
+argument_list|,
+name|waitForMs
+argument_list|,
 name|MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE
 operator|-
 literal|1
 operator|-
 name|i
-operator|)
-operator|+
-literal|" times)..."
 argument_list|)
-expr_stmt|;
-name|wait
+decl_stmt|;
+name|LOG
+operator|.
+name|info
 argument_list|(
-literal|1000
+literal|"performLeaseCheck: "
+operator|+
+name|detail
+operator|+
+literal|" - "
+operator|+
+name|retries
 argument_list|)
 expr_stmt|;
 comment|// directly use this to sleep on - to allow renewLease() to work
+name|wait
+argument_list|(
+name|waitForMs
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
