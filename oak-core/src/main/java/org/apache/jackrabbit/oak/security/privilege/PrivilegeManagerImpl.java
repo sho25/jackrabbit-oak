@@ -319,9 +319,6 @@ name|privileges
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Privilege
-argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -543,6 +540,8 @@ name|String
 argument_list|>
 name|getOakNames
 parameter_list|(
+annotation|@
+name|CheckForNull
 name|String
 index|[]
 name|jcrNames
@@ -583,9 +582,6 @@ name|oakNames
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
 argument_list|(
 name|jcrNames
 operator|.
@@ -627,6 +623,8 @@ specifier|private
 name|String
 name|getOakName
 parameter_list|(
+annotation|@
+name|CheckForNull
 name|String
 name|jcrName
 parameter_list|)
@@ -685,6 +683,8 @@ specifier|private
 name|Privilege
 name|getPrivilege
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PrivilegeDefinition
 name|definition
 parameter_list|)
@@ -744,6 +744,8 @@ specifier|private
 name|PrivilegeDefinition
 name|getPrivilegeDefinition
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|oakName
 parameter_list|)
@@ -790,6 +792,8 @@ decl_stmt|;
 specifier|private
 name|PrivilegeImpl
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PrivilegeDefinition
 name|definition
 parameter_list|)
@@ -880,9 +884,6 @@ name|declaredAggregates
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Privilege
-argument_list|>
 argument_list|(
 name|declaredAggregateNames
 operator|.
@@ -996,9 +997,6 @@ name|aggr
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Privilege
-argument_list|>
 argument_list|()
 decl_stmt|;
 for|for

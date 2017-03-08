@@ -224,11 +224,6 @@ name|definitions
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|PrivilegeDefinition
-argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -284,6 +279,8 @@ name|CheckForNull
 name|PrivilegeDefinition
 name|readDefinition
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|privilegeName
 parameter_list|)
