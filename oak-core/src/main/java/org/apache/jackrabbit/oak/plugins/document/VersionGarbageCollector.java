@@ -951,6 +951,10 @@ literal|", timeToSortDocIds="
 operator|+
 name|sortDocIds
 operator|+
+literal|", timeTakenToUpdateResurrectedDocs="
+operator|+
+name|updateResurrectedDocuments
+operator|+
 literal|", timeTakenToDeleteDeletedDocs="
 operator|+
 name|deleteDeletedDocs
