@@ -940,7 +940,7 @@ name|MessageDigest
 operator|.
 name|getInstance
 argument_list|(
-literal|"SHA-1"
+literal|"SHA-256"
 argument_list|)
 decl_stmt|;
 name|OutputStream

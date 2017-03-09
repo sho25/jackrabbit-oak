@@ -559,15 +559,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * The digest algorithm used to uniquely identify records.      */
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|DIGEST
-init|=
-literal|"SHA-1"
-decl_stmt|;
 comment|/**      * The root path      */
 specifier|private
 name|String
@@ -1198,7 +1189,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"SHA1 of [{}], length =[{}] took [{}] ms "
+literal|"SHA-256 of [{}], length =[{}] took [{}] ms "
 argument_list|,
 name|identifier
 argument_list|,
