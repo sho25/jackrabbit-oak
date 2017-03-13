@@ -1535,7 +1535,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Can't copy checkpoints without the access to the external blob store; migration will proceed"
+literal|"Checkpoints won't be copied, because no external datastore has been specified. This will result in the full repository reindexing on the first start. See https://jackrabbit.apache.org/oak/docs/migration.html#Checkpoints_migration for more info."
 argument_list|)
 expr_stmt|;
 block|}
