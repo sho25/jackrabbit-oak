@@ -228,6 +228,11 @@ name|onlyVerify
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|skipCheckpoints
+decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|srcUser
 decl_stmt|;
@@ -607,6 +612,19 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|skipCheckpoints
+operator|=
+name|args
+operator|.
+name|hasOption
+argument_list|(
+name|OptionParserFactory
+operator|.
+name|SKIP_CHECKPOINTS
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|srcUser
 operator|=
 name|args
@@ -942,6 +960,15 @@ parameter_list|()
 block|{
 return|return
 name|onlyVerify
+return|;
+block|}
+specifier|public
+name|boolean
+name|isSkipCheckpoints
+parameter_list|()
+block|{
+return|return
+name|skipCheckpoints
 return|;
 block|}
 specifier|public
@@ -1407,6 +1434,19 @@ argument_list|(
 literal|"Source DataStore external blobs: {}"
 argument_list|,
 name|srcExternalBlobs
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|skipCheckpoints
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Checkpoints won't be migrated"
 argument_list|)
 expr_stmt|;
 block|}

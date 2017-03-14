@@ -1561,7 +1561,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|protected
 name|void
 name|verifyCheckpoint
 parameter_list|()
@@ -1818,7 +1818,7 @@ return|;
 block|}
 block|}
 comment|// OAK-2869
-specifier|private
+specifier|protected
 name|void
 name|verifyEmptyAsync
 parameter_list|()

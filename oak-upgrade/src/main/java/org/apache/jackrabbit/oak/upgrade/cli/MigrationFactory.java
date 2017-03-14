@@ -915,6 +915,16 @@ name|isOnlyVerify
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|sidegrade
+operator|.
+name|setSkipCheckpoints
+argument_list|(
+name|options
+operator|.
+name|isSkipCheckpoints
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|sidegrade
 return|;

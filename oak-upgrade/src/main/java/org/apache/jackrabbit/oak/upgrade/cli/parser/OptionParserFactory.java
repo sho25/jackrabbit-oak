@@ -288,6 +288,14 @@ literal|"only-verify"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|String
+name|SKIP_CHECKPOINTS
+init|=
+literal|"skip-checkpoints"
+decl_stmt|;
+specifier|public
+specifier|static
 name|OptionParser
 name|create
 parameter_list|()
@@ -863,6 +871,15 @@ operator|+
 name|VERIFY
 operator|+
 literal|", without copying content"
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|SKIP_CHECKPOINTS
+argument_list|,
+literal|"Don't copy checkpoints on the full segment->segment migration"
 argument_list|)
 expr_stmt|;
 block|}

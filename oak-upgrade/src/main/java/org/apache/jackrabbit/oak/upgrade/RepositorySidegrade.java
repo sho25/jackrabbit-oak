@@ -965,6 +965,12 @@ name|DEFAULT_MERGE_PATHS
 decl_stmt|;
 specifier|private
 name|boolean
+name|skipCheckpoints
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+name|boolean
 name|includeIndex
 init|=
 literal|false
@@ -1237,6 +1243,21 @@ operator|=
 name|onlyVerify
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|setSkipCheckpoints
+parameter_list|(
+name|boolean
+name|skipCheckpoints
+parameter_list|)
+block|{
+name|this
+operator|.
+name|skipCheckpoints
+operator|=
+name|skipCheckpoints
+expr_stmt|;
+block|}
 comment|/**      * Same as {@link #copy(RepositoryInitializer)}, but with no custom initializer.      *      * @throws RepositoryException if the copy operation fails      */
 specifier|public
 name|void
@@ -1503,6 +1524,24 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|skipCheckpoints
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Checkpoints won't be migrated because of the --skip-checkpoints option"
+argument_list|)
+expr_stmt|;
+name|isRemoveCheckpointReferences
+operator|=
+literal|true
+expr_stmt|;
+block|}
 else|else
 block|{
 name|boolean
@@ -1527,17 +1566,13 @@ block|{
 name|removeCheckpoints
 argument_list|()
 expr_stmt|;
-name|checkpointsCopied
-operator|=
-literal|false
-expr_stmt|;
-name|LOG
-operator|.
-name|warn
+throw|throw
+operator|new
+name|RepositoryException
 argument_list|(
-literal|"Checkpoints won't be copied, because no external datastore has been specified. This will result in the full repository reindexing on the first start. See https://jackrabbit.apache.org/oak/docs/migration.html#Checkpoints_migration for more info."
+literal|"Checkpoints won't be copied, because no external datastore has been specified. This will result in the full repository reindexing on the first start. Use --skip-checkpoints to force the migration or see https://jackrabbit.apache.org/oak/docs/migration.html#Checkpoints_migration for more info."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 if|if
 condition|(
