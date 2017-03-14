@@ -744,7 +744,10 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-name|userPath
+name|user
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|tree
@@ -815,7 +818,10 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-name|userPath
+name|user
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|tree
