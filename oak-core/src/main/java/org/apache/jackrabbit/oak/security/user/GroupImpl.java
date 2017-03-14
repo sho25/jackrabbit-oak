@@ -394,6 +394,8 @@ name|Override
 name|void
 name|checkValidTree
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
@@ -402,10 +404,6 @@ name|RepositoryException
 block|{
 if|if
 condition|(
-name|tree
-operator|==
-literal|null
-operator|||
 operator|!
 name|UserUtil
 operator|.
@@ -1375,16 +1373,9 @@ name|memberId
 argument_list|)
 throw|;
 block|}
-elseif|else
-if|if
-condition|(
-name|ImportBehavior
-operator|.
-name|IGNORE
-operator|==
-name|importBehavior
-condition|)
+else|else
 block|{
+comment|// ImportBehavior.IGNORE is default in UserUtil.getImportBehavior
 name|String
 name|msg
 init|=

@@ -43,6 +43,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -358,6 +368,8 @@ name|Override
 name|void
 name|checkValidTree
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
@@ -366,10 +378,6 @@ name|RepositoryException
 block|{
 if|if
 condition|(
-name|tree
-operator|==
-literal|null
-operator|||
 operator|!
 name|UserUtil
 operator|.

@@ -401,6 +401,8 @@ specifier|abstract
 name|void
 name|checkValidTree
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
