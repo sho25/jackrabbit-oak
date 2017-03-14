@@ -993,12 +993,9 @@ block|{
 name|int
 name|size
 init|=
-operator|new
 name|MembershipWriter
-argument_list|()
 operator|.
-name|getMembershipSizeThreshold
-argument_list|()
+name|DEFAULT_MEMBERSHIP_THRESHHOLD
 operator|*
 literal|5
 decl_stmt|;

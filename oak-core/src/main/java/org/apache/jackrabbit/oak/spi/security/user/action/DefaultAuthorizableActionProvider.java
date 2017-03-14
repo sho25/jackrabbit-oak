@@ -596,8 +596,12 @@ name|actions
 init|=
 name|Lists
 operator|.
-name|newArrayList
-argument_list|()
+name|newArrayListWithExpectedSize
+argument_list|(
+name|enabledActions
+operator|.
+name|length
+argument_list|)
 decl_stmt|;
 for|for
 control|(
