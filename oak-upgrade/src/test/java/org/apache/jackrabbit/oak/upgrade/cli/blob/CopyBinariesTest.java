@@ -1102,6 +1102,8 @@ name|asList
 argument_list|(
 literal|"--disable-mmap"
 argument_list|,
+literal|"--skip-checkpoints"
+argument_list|,
 name|source
 operator|.
 name|getDescription
