@@ -10383,6 +10383,15 @@ argument_list|,
 name|r
 argument_list|)
 expr_stmt|;
+name|NodeDocument
+operator|.
+name|removeBranchCommit
+argument_list|(
+name|op
+argument_list|,
+name|r
+argument_list|)
+expr_stmt|;
 block|}
 name|store
 operator|.
