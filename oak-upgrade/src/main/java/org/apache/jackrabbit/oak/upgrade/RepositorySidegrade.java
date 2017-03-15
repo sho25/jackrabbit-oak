@@ -2296,7 +2296,7 @@ decl_stmt|;
 name|long
 name|c2
 init|=
-name|o1
+name|o2
 operator|.
 name|getNodeState
 argument_list|()
