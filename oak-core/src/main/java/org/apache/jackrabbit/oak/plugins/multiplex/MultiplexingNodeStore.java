@@ -1132,7 +1132,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Can't merge following read-only paths (they are configured to be ignored): {}."
 argument_list|,
