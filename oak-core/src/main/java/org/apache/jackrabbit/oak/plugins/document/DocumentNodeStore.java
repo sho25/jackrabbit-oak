@@ -1707,6 +1707,22 @@ name|oak
 operator|.
 name|util
 operator|.
+name|OakVersion
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|util
+operator|.
 name|PerfLogger
 import|;
 end_import
@@ -1803,6 +1819,16 @@ operator|+
 literal|".perf"
 argument_list|)
 argument_list|)
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|FormatVersion
+name|VERSION
+init|=
+name|FormatVersion
+operator|.
+name|V1_8
 decl_stmt|;
 comment|/**      * Do not cache more than this number of children for a document.      */
 specifier|static
@@ -2667,6 +2693,13 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+name|checkVersion
+argument_list|(
+name|s
+argument_list|,
+name|readOnlyMode
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|executor
@@ -10840,6 +10873,141 @@ argument_list|)
 return|;
 block|}
 comment|//-----------------------------< internal>---------------------------------
+comment|/**      * Checks if this node store can operate on the data in the given document      * store.      *      * @param store the document store.      * @param readOnlyMode whether this node store is in read-only mode.      * @throws DocumentStoreException if the versions are incompatible given the      *      access mode (read-write vs. read-only).      */
+specifier|private
+specifier|static
+name|void
+name|checkVersion
+parameter_list|(
+name|DocumentStore
+name|store
+parameter_list|,
+name|boolean
+name|readOnlyMode
+parameter_list|)
+throws|throws
+name|DocumentStoreException
+block|{
+name|FormatVersion
+name|storeVersion
+init|=
+name|FormatVersion
+operator|.
+name|versionOf
+argument_list|(
+name|store
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|VERSION
+operator|.
+name|canRead
+argument_list|(
+name|storeVersion
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+literal|"Cannot open DocumentNodeStore. "
+operator|+
+literal|"Existing data in DocumentStore was written with more "
+operator|+
+literal|"recent version. Store version: "
+operator|+
+name|storeVersion
+operator|+
+literal|", this version: "
+operator|+
+name|VERSION
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+operator|!
+name|readOnlyMode
+condition|)
+block|{
+if|if
+condition|(
+name|storeVersion
+operator|==
+name|FormatVersion
+operator|.
+name|V0
+condition|)
+block|{
+comment|// no version present. set to current version
+name|VERSION
+operator|.
+name|writeTo
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"FormatVersion set to {}"
+argument_list|,
+name|VERSION
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|VERSION
+operator|.
+name|equals
+argument_list|(
+name|storeVersion
+argument_list|)
+condition|)
+block|{
+comment|// version does not match. fail the check and
+comment|// require a manual upgrade first
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+literal|"Cannot open DocumentNodeStore "
+operator|+
+literal|"in read-write mode. Existing data in DocumentStore "
+operator|+
+literal|"was written with older version. Store version: "
+operator|+
+name|storeVersion
+operator|+
+literal|", this version: "
+operator|+
+name|VERSION
+operator|+
+literal|". Use "
+operator|+
+literal|"the oak-run-"
+operator|+
+name|OakVersion
+operator|.
+name|getVersion
+argument_list|()
+operator|+
+literal|".jar tool "
+operator|+
+literal|"with the unlockUpgrade command first."
+argument_list|)
+throw|;
+block|}
+block|}
+block|}
+specifier|private
 name|void
 name|pushJournalEntry
 parameter_list|(
