@@ -1158,7 +1158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>This is a longevity test for revision garbage collection.</p>  *  *<p>The test schedules a number of readers, writers, a compactor and holds some references for a certain time.  * All of which can be interactively modified through the accompanying  * {@link SegmentCompactionITMBean}, the  * {@link SegmentRevisionGC} and the  *  *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>  * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}  *</p>  *  *<p>TODO Leverage longevity test support from OAK-2771 once we have it.</p>  */
+comment|/**  *<p>This is a longevity test for revision garbage collection.</p>  *  *<p>The test schedules a number of readers, writers, a compactor and holds some references for a certain time.  * All of which can be interactively modified through the accompanying {@link SegmentCompactionITMBean} and the {@link SegmentRevisionGC}.  *  *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>  * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}  *</p>  *  *<p>TODO Leverage longevity test support from OAK-2771 once we have it.</p>  */
 end_comment
 
 begin_class
@@ -1166,6 +1166,18 @@ specifier|public
 class|class
 name|SegmentCompactionIT
 block|{
+static|static
+block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"oak.gc.backoff"
+argument_list|,
+literal|"1"
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Only run if explicitly asked to via -Dtest=SegmentCompactionIT */
 specifier|private
 specifier|static
@@ -1353,14 +1365,28 @@ specifier|volatile
 name|int
 name|maxReaders
 init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"SegmentCompactionIT.maxReaders"
+argument_list|,
 literal|10
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|volatile
 name|int
 name|maxWriters
 init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"SegmentCompactionIT.maxWriters"
+argument_list|,
 literal|10
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|volatile
