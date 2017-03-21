@@ -1377,7 +1377,7 @@ parameter_list|()
 block|{
 name|nodeStore
 operator|.
-name|backgroundRead
+name|runBackgroundReadOperations
 argument_list|()
 expr_stmt|;
 block|}

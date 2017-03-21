@@ -810,7 +810,7 @@ argument_list|()
 expr_stmt|;
 name|ns2
 operator|.
-name|backgroundRead
+name|runBackgroundReadOperations
 argument_list|()
 expr_stmt|;
 name|CommitInfo
@@ -992,7 +992,7 @@ argument_list|()
 expr_stmt|;
 name|ns2
 operator|.
-name|backgroundRead
+name|runBackgroundReadOperations
 argument_list|()
 expr_stmt|;
 name|CommitInfo
@@ -1212,7 +1212,7 @@ argument_list|()
 expr_stmt|;
 name|ns2
 operator|.
-name|backgroundRead
+name|runBackgroundReadOperations
 argument_list|()
 expr_stmt|;
 name|CommitInfo
@@ -1495,7 +1495,7 @@ argument_list|()
 expr_stmt|;
 name|ns2
 operator|.
-name|backgroundRead
+name|runBackgroundReadOperations
 argument_list|()
 expr_stmt|;
 name|CommitInfo

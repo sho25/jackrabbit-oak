@@ -9579,6 +9579,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Perform a background read and make external changes visible.      */
+specifier|private
 name|BackgroundReadStats
 name|backgroundRead
 parameter_list|()
