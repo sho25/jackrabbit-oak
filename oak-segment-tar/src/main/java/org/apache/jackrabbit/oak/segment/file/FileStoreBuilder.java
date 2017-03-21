@@ -1430,6 +1430,8 @@ argument_list|,
 name|templateDeduplicationCacheSize
 argument_list|,
 name|nodeDeduplicationCacheSize
+argument_list|,
+name|statsProvider
 argument_list|)
 expr_stmt|;
 block|}
@@ -1522,6 +1524,11 @@ name|templateCacheSize
 parameter_list|,
 name|int
 name|nodeCacheSize
+parameter_list|,
+annotation|@
+name|Nonnull
+name|StatisticsProvider
+name|statisticsProvider
 parameter_list|)
 block|{
 name|super
@@ -1558,6 +1565,8 @@ operator|new
 name|NodeCacheWeigher
 argument_list|()
 argument_list|)
+argument_list|,
+name|statisticsProvider
 argument_list|)
 expr_stmt|;
 block|}

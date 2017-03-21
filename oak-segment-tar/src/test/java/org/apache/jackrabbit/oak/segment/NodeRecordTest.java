@@ -775,9 +775,11 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|RecordCache
+name|Cache
 argument_list|<
 name|String
+argument_list|,
+name|RecordId
 argument_list|>
 name|getStringCache
 parameter_list|(
@@ -801,9 +803,11 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|RecordCache
+name|Cache
 argument_list|<
 name|Template
+argument_list|,
+name|RecordId
 argument_list|>
 name|getTemplateCache
 parameter_list|(
