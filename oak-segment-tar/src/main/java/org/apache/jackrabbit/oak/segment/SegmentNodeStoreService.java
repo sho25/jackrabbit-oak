@@ -3482,6 +3482,15 @@ name|monitor
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|configuration
+operator|.
+name|isStandbyInstance
+argument_list|()
+condition|)
+block|{
 name|closeables
 operator|.
 name|add
@@ -3512,6 +3521,7 @@ literal|"Segment node store revision garbage collection"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|Runnable
 name|cancelGC
 init|=
