@@ -1964,13 +1964,13 @@ name|DocumentStore
 name|nonLeaseCheckingStore
 decl_stmt|;
 comment|/**      * The document store (might be used by multiple node stores).      */
-specifier|protected
+specifier|private
 specifier|final
 name|DocumentStore
 name|store
 decl_stmt|;
 comment|/**      * Marker node, indicating a node does not exist at a given revision.      */
-specifier|protected
+specifier|private
 specifier|final
 name|DocumentNodeState
 name|missing
@@ -1982,26 +1982,26 @@ name|CommitQueue
 name|commitQueue
 decl_stmt|;
 comment|/**      * Commit queue for batch updates.      */
-specifier|protected
+specifier|private
 specifier|final
 name|BatchCommitQueue
 name|batchCommitQueue
 decl_stmt|;
 comment|/**      * The change dispatcher for this node store.      */
-specifier|protected
+specifier|private
 specifier|final
 name|ChangeDispatcher
 name|dispatcher
 decl_stmt|;
 comment|/**      * The delay for asynchronous operations (delayed commit propagation and      * cache update).      */
-specifier|protected
+specifier|private
 name|int
 name|asyncDelay
 init|=
 literal|1000
 decl_stmt|;
 comment|/**      * The maximum back off time in milliseconds when merges are retried. The      * default value is twice the {@link #asyncDelay}.      */
-specifier|protected
+specifier|private
 name|int
 name|maxBackOffMillis
 init|=
@@ -2016,7 +2016,7 @@ operator|*
 literal|2
 argument_list|)
 decl_stmt|;
-specifier|protected
+specifier|private
 name|int
 name|changeSetMaxItems
 init|=
@@ -2029,7 +2029,7 @@ argument_list|,
 literal|50
 argument_list|)
 decl_stmt|;
-specifier|protected
+specifier|private
 name|int
 name|changeSetMaxDepth
 init|=

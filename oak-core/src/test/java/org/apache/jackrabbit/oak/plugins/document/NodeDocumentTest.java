@@ -1198,7 +1198,8 @@ name|SplitDocumentCleanUp
 argument_list|(
 name|ns
 operator|.
-name|store
+name|getDocumentStore
+argument_list|()
 argument_list|,
 operator|new
 name|VersionGCStats
@@ -1362,7 +1363,8 @@ name|SplitDocumentCleanUp
 argument_list|(
 name|ns
 operator|.
-name|store
+name|getDocumentStore
+argument_list|()
 argument_list|,
 operator|new
 name|VersionGCStats
@@ -1949,7 +1951,8 @@ name|SplitDocumentCleanUp
 argument_list|(
 name|ns
 operator|.
-name|store
+name|getDocumentStore
+argument_list|()
 argument_list|,
 operator|new
 name|VersionGCStats
@@ -2138,7 +2141,8 @@ name|SplitDocumentCleanUp
 argument_list|(
 name|ns
 operator|.
-name|store
+name|getDocumentStore
+argument_list|()
 argument_list|,
 operator|new
 name|VersionGCStats
