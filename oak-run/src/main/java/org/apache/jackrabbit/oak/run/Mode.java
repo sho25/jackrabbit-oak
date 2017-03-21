@@ -120,6 +120,15 @@ name|UpgradeCommand
 argument_list|()
 argument_list|)
 block|,
+name|UNLOCKUPGRADE
+argument_list|(
+literal|"unlockUpgrade"
+argument_list|,
+operator|new
+name|UnlockUpgradeCommand
+argument_list|()
+argument_list|)
+block|,
 name|SCALABILITY
 argument_list|(
 literal|"scalability"
