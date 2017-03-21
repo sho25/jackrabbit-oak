@@ -21,6 +21,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|WriterCacheManager
+operator|.
+name|Operation
+operator|.
+name|WRITE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -113,6 +133,8 @@ operator|.
 name|getTemplateCache
 argument_list|(
 literal|0
+argument_list|,
+name|WRITE
 argument_list|)
 argument_list|,
 name|cache
@@ -120,6 +142,8 @@ operator|.
 name|getTemplateCache
 argument_list|(
 literal|1
+argument_list|,
+name|WRITE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -130,6 +154,8 @@ operator|.
 name|getStringCache
 argument_list|(
 literal|0
+argument_list|,
+name|WRITE
 argument_list|)
 argument_list|,
 name|cache
@@ -137,6 +163,8 @@ operator|.
 name|getStringCache
 argument_list|(
 literal|1
+argument_list|,
+name|WRITE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -162,6 +190,8 @@ operator|.
 name|getTemplateCache
 argument_list|(
 literal|0
+argument_list|,
+name|WRITE
 argument_list|)
 argument_list|,
 name|cache
@@ -169,6 +199,8 @@ operator|.
 name|getTemplateCache
 argument_list|(
 literal|1
+argument_list|,
+name|WRITE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -179,6 +211,8 @@ operator|.
 name|getStringCache
 argument_list|(
 literal|0
+argument_list|,
+name|WRITE
 argument_list|)
 argument_list|,
 name|cache
@@ -186,6 +220,8 @@ operator|.
 name|getStringCache
 argument_list|(
 literal|1
+argument_list|,
+name|WRITE
 argument_list|)
 argument_list|)
 expr_stmt|;

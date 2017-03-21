@@ -313,6 +313,15 @@ specifier|abstract
 class|class
 name|WriterCacheManager
 block|{
+comment|/**      * The type of operation a cache acquired through this manager is used for.      * This type is used to determine against which monitoring endpoint to report      * access statistics.      *      * @see #getStringCache(int, Operation)      * @see #getTemplateCache(int, Operation)      * @see #getNodeCache(int, Operation)      */
+specifier|public
+enum|enum
+name|Operation
+block|{
+name|WRITE
+block|,
+name|COMPACT
+block|}
 comment|/**      * Default size of the string cache, used as default for OSGi config.      */
 specifier|static
 specifier|final
@@ -321,7 +330,7 @@ name|DEFAULT_STRING_CACHE_SIZE_OSGi
 init|=
 literal|15000
 decl_stmt|;
-comment|/**      * Default size of the string cache.      * @see #getStringCache(int)      */
+comment|/**      * Default size of the string cache.      * @see #getStringCache(int, Operation)      */
 specifier|public
 specifier|static
 specifier|final
@@ -343,7 +352,7 @@ name|DEFAULT_TEMPLATE_CACHE_SIZE_OSGi
 init|=
 literal|3000
 decl_stmt|;
-comment|/**      * Default size of the template cache.      * @see #getTemplateCache(int)      */
+comment|/**      * Default size of the template cache.      * @see #getTemplateCache(int, Operation)      */
 specifier|public
 specifier|static
 specifier|final
@@ -365,7 +374,7 @@ name|DEFAULT_NODE_CACHE_SIZE_OSGi
 init|=
 literal|1048576
 decl_stmt|;
-comment|/**      * Default size of the node deduplication cache.      * @see #getNodeCache(int)      */
+comment|/**      * Default size of the node deduplication cache.      * @see #getNodeCache(int, Operation)      */
 specifier|public
 specifier|static
 specifier|final
@@ -379,7 +388,7 @@ argument_list|,
 name|DEFAULT_NODE_CACHE_SIZE_OSGi
 argument_list|)
 decl_stmt|;
-comment|/**      * @param generation      * @return  cache for string records of the given {@code generation}.      */
+comment|/**      * @return  cache for string records of the given {@code generation} and {@code operation}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -394,9 +403,12 @@ name|getStringCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 function_decl|;
-comment|/**      * @param generation      * @return  cache for template records of the given {@code generation}.      */
+comment|/**      * @param generation      * @return  cache for template records of the given {@code generation} and {@code operation}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -411,9 +423,12 @@ name|getTemplateCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 function_decl|;
-comment|/**      * @param generation      * @return  cache for node records of the given {@code generation}.      */
+comment|/**      * @return  cache for node records of the given {@code generation} and {@code operation}.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -428,6 +443,9 @@ name|getNodeCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 function_decl|;
 comment|/**      * @return  statistics for the string cache or {@code null} if not available.      */
@@ -541,6 +559,9 @@ name|getStringCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -561,6 +582,9 @@ name|getTemplateCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -583,6 +607,9 @@ name|getNodeCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -1080,6 +1107,9 @@ name|getStringCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -1087,7 +1117,9 @@ operator|new
 name|AccessTrackingCache
 argument_list|<>
 argument_list|(
-literal|"oak.segment.string-deduplication-cache"
+literal|"oak.segment.string-deduplication-cache-"
+operator|+
+name|operation
 argument_list|,
 name|stringCaches
 operator|.
@@ -1113,6 +1145,9 @@ name|getTemplateCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -1120,7 +1155,9 @@ operator|new
 name|AccessTrackingCache
 argument_list|<>
 argument_list|(
-literal|"oak.segment.template-deduplication-cache"
+literal|"oak.segment.template-deduplication-cache-"
+operator|+
+name|operation
 argument_list|,
 name|templateCaches
 operator|.
@@ -1164,6 +1201,9 @@ parameter_list|(
 specifier|final
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -1171,7 +1211,9 @@ operator|new
 name|AccessTrackingCache
 argument_list|<>
 argument_list|(
-literal|"oak.segment.node-deduplication-cache"
+literal|"oak.segment.node-deduplication-cache-"
+operator|+
+name|operation
 argument_list|,
 operator|new
 name|Cache

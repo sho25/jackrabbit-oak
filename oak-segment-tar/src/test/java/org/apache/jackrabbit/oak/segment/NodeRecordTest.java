@@ -785,6 +785,9 @@ name|getStringCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -795,6 +798,8 @@ operator|.
 name|getStringCache
 argument_list|(
 name|generation
+argument_list|,
+name|operation
 argument_list|)
 return|;
 block|}
@@ -813,6 +818,9 @@ name|getTemplateCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -823,6 +831,8 @@ operator|.
 name|getTemplateCache
 argument_list|(
 name|generation
+argument_list|,
+name|operation
 argument_list|)
 return|;
 block|}
@@ -841,6 +851,9 @@ name|getNodeCache
 parameter_list|(
 name|int
 name|generation
+parameter_list|,
+name|Operation
+name|operation
 parameter_list|)
 block|{
 return|return
@@ -849,6 +862,8 @@ operator|.
 name|getNodeCache
 argument_list|(
 name|generation
+argument_list|,
+name|operation
 argument_list|)
 return|;
 block|}
