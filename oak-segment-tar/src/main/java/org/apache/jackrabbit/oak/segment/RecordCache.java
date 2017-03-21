@@ -59,16 +59,6 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
 name|Nonnull
 import|;
 end_import
@@ -116,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Partial mapping of keys of type {@code T} to values of type {@link RecordId}. This is  * typically used for de-duplicating values that have already been persisted and thus  * already have a {@code RecordId}.  * @param<T>  */
+comment|/**  * Partial mapping of keys of type {@code K} to values of type {@link RecordId}. This is  * typically used for de-duplicating values that have already been persisted and thus  * already have a {@code RecordId}.  * @param<K>  */
 end_comment
 
 begin_class
@@ -125,8 +115,15 @@ specifier|abstract
 class|class
 name|RecordCache
 parameter_list|<
-name|T
+name|K
 parameter_list|>
+implements|implements
+name|Cache
+argument_list|<
+name|K
+argument_list|,
+name|RecordId
+argument_list|>
 block|{
 specifier|private
 name|long
@@ -144,37 +141,6 @@ specifier|private
 name|long
 name|evictionCount
 decl_stmt|;
-comment|/**      * Add a mapping from {@code key} to {@code value}. Any existing mapping is replaced.      */
-specifier|public
-specifier|abstract
-name|void
-name|put
-parameter_list|(
-annotation|@
-name|Nonnull
-name|T
-name|key
-parameter_list|,
-annotation|@
-name|Nonnull
-name|RecordId
-name|value
-parameter_list|)
-function_decl|;
-comment|/**      * @return  The mapping for {@code key}, or {@code null} if none.      */
-annotation|@
-name|CheckForNull
-specifier|public
-specifier|abstract
-name|RecordId
-name|get
-parameter_list|(
-annotation|@
-name|Nonnull
-name|T
-name|key
-parameter_list|)
-function_decl|;
 comment|/**      * @return number of mappings      */
 specifier|public
 specifier|abstract
@@ -188,6 +154,32 @@ name|long
 name|estimateCurrentWeight
 parameter_list|()
 function_decl|;
+annotation|@
+name|Override
+specifier|public
+name|void
+name|put
+parameter_list|(
+annotation|@
+name|Nonnull
+name|K
+name|key
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RecordId
+name|value
+parameter_list|,
+name|byte
+name|cost
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
 comment|/**      * @return  access statistics for this cache      */
 annotation|@
 name|Nonnull
@@ -515,12 +507,12 @@ specifier|static
 class|class
 name|Default
 parameter_list|<
-name|T
+name|K
 parameter_list|>
 extends|extends
 name|RecordCache
 argument_list|<
-name|T
+name|K
 argument_list|>
 block|{
 annotation|@
@@ -529,7 +521,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|T
+name|K
 argument_list|,
 name|RecordId
 argument_list|>
@@ -541,7 +533,7 @@ specifier|private
 specifier|final
 name|Weigher
 argument_list|<
-name|T
+name|K
 argument_list|,
 name|RecordId
 argument_list|>
@@ -556,13 +548,13 @@ decl_stmt|;
 specifier|static
 specifier|final
 parameter_list|<
-name|T
+name|K
 parameter_list|>
 name|Supplier
 argument_list|<
 name|RecordCache
 argument_list|<
-name|T
+name|K
 argument_list|>
 argument_list|>
 name|defaultFactory
@@ -576,7 +568,7 @@ name|Nonnull
 specifier|final
 name|Weigher
 argument_list|<
-name|T
+name|K
 argument_list|,
 name|RecordId
 argument_list|>
@@ -589,7 +581,7 @@ name|Supplier
 argument_list|<
 name|RecordCache
 argument_list|<
-name|T
+name|K
 argument_list|>
 argument_list|>
 argument_list|()
@@ -599,7 +591,7 @@ name|Override
 specifier|public
 name|RecordCache
 argument_list|<
-name|T
+name|K
 argument_list|>
 name|get
 parameter_list|()
@@ -632,7 +624,7 @@ name|Nonnull
 specifier|final
 name|Weigher
 argument_list|<
-name|T
+name|K
 argument_list|,
 name|RecordId
 argument_list|>
@@ -653,7 +645,7 @@ operator|=
 operator|new
 name|LinkedHashMap
 argument_list|<
-name|T
+name|K
 argument_list|,
 name|RecordId
 argument_list|>
@@ -679,7 +671,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|T
+name|K
 argument_list|,
 name|RecordId
 argument_list|>
@@ -742,7 +734,7 @@ name|put
 parameter_list|(
 annotation|@
 name|Nonnull
-name|T
+name|K
 name|key
 parameter_list|,
 annotation|@
@@ -786,7 +778,7 @@ name|get
 parameter_list|(
 annotation|@
 name|Nonnull
-name|T
+name|K
 name|key
 parameter_list|)
 block|{

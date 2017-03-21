@@ -751,6 +751,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|WriterCacheManager
 name|nodesOnlyCache
 parameter_list|()
@@ -826,7 +827,12 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|NodeCache
+name|Cache
+argument_list|<
+name|String
+argument_list|,
+name|RecordId
+argument_list|>
 name|getNodeCache
 parameter_list|(
 name|int

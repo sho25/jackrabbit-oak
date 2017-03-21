@@ -1405,8 +1405,10 @@ return|return
 name|snfeListener
 return|;
 block|}
+comment|/**      * @return  creates or returns the {@code WriterCacheManager} this builder passes or      *          passed to the store on {@link #build()}.      *      * @see #withNodeDeduplicationCacheSize(int)      * @see #withStringDeduplicationCacheSize(int)      * @see #withTemplateDeduplicationCacheSize(int)      */
 annotation|@
 name|Nonnull
+specifier|public
 name|WriterCacheManager
 name|getCacheManager
 parameter_list|()
