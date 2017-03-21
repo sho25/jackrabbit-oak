@@ -919,6 +919,10 @@ name|index
 operator|=
 name|i
 expr_stmt|;
+name|eviction
+operator|=
+literal|false
+expr_stmt|;
 break|break;
 block|}
 elseif|else
@@ -964,6 +968,10 @@ name|initialCost
 operator|++
 expr_stmt|;
 block|}
+name|eviction
+operator|=
+literal|false
+expr_stmt|;
 break|break;
 block|}
 elseif|else
@@ -980,6 +988,10 @@ comment|// Old generation -> use this index
 name|index
 operator|=
 name|i
+expr_stmt|;
+name|eviction
+operator|=
+literal|false
 expr_stmt|;
 break|break;
 block|}
