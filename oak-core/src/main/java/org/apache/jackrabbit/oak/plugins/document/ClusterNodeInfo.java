@@ -3652,6 +3652,14 @@ operator|+
 literal|"oakVersion: "
 operator|+
 name|OAK_VERSION
+operator|+
+literal|",\n"
+operator|+
+literal|"formatVersion: "
+operator|+
+name|DocumentNodeStore
+operator|.
+name|VERSION
 return|;
 block|}
 comment|/**      * Specify a custom clock to be used for determining current time.      *      *<b>Only Used For Testing</b>      */
