@@ -654,7 +654,7 @@ specifier|final
 name|boolean
 name|AUTO_CLEAN_DEFAULT
 init|=
-literal|false
+literal|true
 decl_stmt|;
 annotation|@
 name|Property
