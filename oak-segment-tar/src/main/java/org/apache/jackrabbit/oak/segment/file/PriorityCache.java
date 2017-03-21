@@ -271,6 +271,10 @@ name|loadCount
 decl_stmt|;
 specifier|private
 name|long
+name|loadExceptionCount
+decl_stmt|;
+specifier|private
+name|long
 name|evictionCount
 decl_stmt|;
 specifier|private
@@ -1152,6 +1156,9 @@ return|;
 block|}
 else|else
 block|{
+name|loadExceptionCount
+operator|++
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -1568,7 +1575,7 @@ name|missCount
 argument_list|,
 name|loadCount
 argument_list|,
-literal|0
+name|loadExceptionCount
 argument_list|,
 literal|0
 argument_list|,
