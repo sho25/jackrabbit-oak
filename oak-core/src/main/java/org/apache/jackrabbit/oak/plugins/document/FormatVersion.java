@@ -212,7 +212,7 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
-comment|/**      * Format version for Oak 1.8.      *<p>      * Changes introduced with this version:      *<ul>      *<li>SplitDocType.DEFAULT_NO_BRANCH (OAK-5869)</li>      *</ul>      */
+comment|/**      * Format version for Oak 1.8.      *<p>      * Changes introduced with this version:      *<ul>      *<li>SplitDocType.DEFAULT_NO_BRANCH (OAK-5869)</li>      *<li>journal entries with invalidate-only changes (OAK-5964)</li>      *</ul>      */
 specifier|static
 specifier|final
 name|FormatVersion

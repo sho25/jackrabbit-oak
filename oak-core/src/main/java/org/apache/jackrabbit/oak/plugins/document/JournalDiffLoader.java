@@ -960,6 +960,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|StringSort
+name|invalidateOnly
+init|=
+name|JournalEntry
+operator|.
+name|newSorter
+argument_list|()
+decl_stmt|;
+try|try
+block|{
 name|stats
 operator|.
 name|numJournalEntries
@@ -967,6 +977,8 @@ operator|+=
 name|fillExternalChanges
 argument_list|(
 name|changes
+argument_list|,
+name|invalidateOnly
 argument_list|,
 name|path
 argument_list|,
@@ -984,6 +996,15 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|invalidateOnly
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|// do we need to include changes from pending local changes?
 if|if
