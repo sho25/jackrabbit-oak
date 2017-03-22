@@ -370,6 +370,15 @@ argument_list|,
 name|bucket
 argument_list|)
 expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+literal|"cacheSize"
+argument_list|,
+literal|"0"
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|DataStoreBlobStore
