@@ -36,6 +36,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentStore
+operator|.
+name|EMPTY_STORE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -115,6 +133,23 @@ argument_list|<
 name|SegmentId
 argument_list|>
 block|{
+comment|/**      * A {@code null} segment id not representing any segment.      */
+specifier|public
+specifier|static
+specifier|final
+name|SegmentId
+name|NULL
+init|=
+operator|new
+name|SegmentId
+argument_list|(
+name|EMPTY_STORE
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
 comment|/** Logger instance */
 specifier|private
 specifier|static

@@ -122,6 +122,23 @@ argument_list|<
 name|RecordId
 argument_list|>
 block|{
+comment|/**      * A {@code null} record id not identifying any record.      */
+specifier|public
+specifier|static
+specifier|final
+name|RecordId
+name|NULL
+init|=
+operator|new
+name|RecordId
+argument_list|(
+name|SegmentId
+operator|.
+name|NULL
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
