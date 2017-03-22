@@ -29,6 +29,22 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|Clock
+import|;
+end_import
+
 begin_comment
 comment|/**  * A revision context for tests.  */
 end_comment
@@ -126,6 +142,21 @@ argument_list|(
 name|getClusterId
 argument_list|()
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|Clock
+name|getClock
+parameter_list|()
+block|{
+return|return
+name|Clock
+operator|.
+name|SIMPLE
 return|;
 block|}
 annotation|@
