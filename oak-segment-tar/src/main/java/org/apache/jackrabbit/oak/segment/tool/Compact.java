@@ -390,6 +390,9 @@ name|journalReader
 operator|.
 name|next
 argument_list|()
+operator|.
+name|getRevision
+argument_list|()
 operator|+
 literal|" root "
 operator|+
