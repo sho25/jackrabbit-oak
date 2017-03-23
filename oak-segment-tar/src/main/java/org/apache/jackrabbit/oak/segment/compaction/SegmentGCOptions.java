@@ -493,10 +493,6 @@ literal|", retainedGenerations="
 operator|+
 name|retainedGenerations
 operator|+
-literal|", gcSizeDeltaEstimation="
-operator|+
-name|gcSizeDeltaEstimation
-operator|+
 literal|"}"
 return|;
 block|}
