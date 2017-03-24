@@ -624,7 +624,7 @@ name|helpStr
 init|=
 literal|"datastorecheck [--id] [--ref] [--consistency] [--store<path>|<mongo_uri>] "
 operator|+
-literal|"[--s3ds<s3ds_config>|--fds<fds_config>] [--dump<path>]"
+literal|"[--s3ds<s3ds_config>|--fds<fds_config>|--azureblobds<azureblobds_config>] [--dump<path>]"
 decl_stmt|;
 name|Closer
 name|closer

@@ -359,7 +359,7 @@ name|fixture
 operator|.
 name|DataStoreUtils
 operator|.
-name|configureIfS3DataStore
+name|configureIfCloudDataStore
 import|;
 end_import
 
@@ -490,6 +490,8 @@ argument_list|(
 name|basedir
 argument_list|,
 name|fdsCacheInMB
+argument_list|,
+name|statisticsProvider
 argument_list|)
 return|;
 block|}
@@ -887,6 +889,10 @@ parameter_list|,
 specifier|final
 name|int
 name|fdsCacheInMB
+parameter_list|,
+specifier|final
+name|StatisticsProvider
+name|statisticsProvider
 parameter_list|)
 block|{
 return|return
@@ -976,7 +982,7 @@ argument_list|)
 expr_stmt|;
 name|dataStore
 operator|=
-name|configureIfS3DataStore
+name|configureIfCloudDataStore
 argument_list|(
 name|className
 argument_list|,
@@ -988,6 +994,8 @@ name|unique
 operator|.
 name|toLowerCase
 argument_list|()
+argument_list|,
+name|statisticsProvider
 argument_list|)
 expr_stmt|;
 name|storeDir
@@ -1081,6 +1089,11 @@ argument_list|(
 name|storeDir
 argument_list|,
 name|config
+argument_list|,
+name|unique
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
