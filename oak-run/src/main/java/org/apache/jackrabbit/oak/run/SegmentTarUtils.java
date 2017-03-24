@@ -1550,6 +1550,9 @@ name|openReadOnlyFileStore
 parameter_list|(
 name|File
 name|path
+parameter_list|,
+name|boolean
+name|memoryMapped
 parameter_list|)
 throws|throws
 name|IOException
@@ -1572,7 +1575,7 @@ argument_list|)
 operator|.
 name|withMemoryMapping
 argument_list|(
-name|TAR_STORAGE_MEMORY_MAPPED
+name|memoryMapped
 argument_list|)
 operator|.
 name|buildReadOnly
@@ -1689,6 +1692,8 @@ init|=
 name|openReadOnlyFileStore
 argument_list|(
 name|directory
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 try|try
