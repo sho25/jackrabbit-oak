@@ -1219,6 +1219,10 @@ name|directory
 operator|.
 name|isDirectory
 argument_list|()
+argument_list|,
+literal|"%s does not exist or is not a directory"
+argument_list|,
+name|directory
 argument_list|)
 expr_stmt|;
 name|built
