@@ -34,6 +34,9 @@ name|long
 name|split
 decl_stmt|;
 name|long
+name|sweep
+decl_stmt|;
+name|long
 name|lock
 decl_stmt|;
 name|long
@@ -63,6 +66,10 @@ operator|+
 literal|", split:"
 operator|+
 name|split
+operator|+
+literal|", sweep:"
+operator|+
+name|sweep
 operator|+
 literal|", lock:"
 operator|+
