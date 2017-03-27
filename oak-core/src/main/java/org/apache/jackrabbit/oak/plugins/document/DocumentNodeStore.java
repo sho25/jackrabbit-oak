@@ -10504,6 +10504,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|//-----------------------------< internal>---------------------------------
+specifier|private
 name|BackgroundWriteStats
 name|backgroundWrite
 parameter_list|()
@@ -10546,7 +10548,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|//-----------------------------< internal>---------------------------------
 specifier|private
 specifier|static
 name|Supplier

@@ -1387,7 +1387,7 @@ parameter_list|()
 block|{
 name|nodeStore
 operator|.
-name|backgroundWrite
+name|runBackgroundUpdateOperations
 argument_list|()
 expr_stmt|;
 block|}

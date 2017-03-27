@@ -800,7 +800,7 @@ argument_list|)
 expr_stmt|;
 name|ns1
 operator|.
-name|backgroundWrite
+name|runBackgroundUpdateOperations
 argument_list|()
 expr_stmt|;
 name|c2
@@ -982,7 +982,7 @@ argument_list|)
 expr_stmt|;
 name|ns1
 operator|.
-name|backgroundWrite
+name|runBackgroundUpdateOperations
 argument_list|()
 expr_stmt|;
 name|c2
@@ -1202,7 +1202,7 @@ argument_list|)
 expr_stmt|;
 name|ns1
 operator|.
-name|backgroundWrite
+name|runBackgroundUpdateOperations
 argument_list|()
 expr_stmt|;
 name|c2
@@ -1339,7 +1339,7 @@ argument_list|)
 expr_stmt|;
 name|ns1
 operator|.
-name|backgroundWrite
+name|runBackgroundUpdateOperations
 argument_list|()
 expr_stmt|;
 name|NodeBuilder
@@ -1485,7 +1485,7 @@ argument_list|)
 expr_stmt|;
 name|ns1
 operator|.
-name|backgroundWrite
+name|runBackgroundUpdateOperations
 argument_list|()
 expr_stmt|;
 name|c2

@@ -1064,12 +1064,6 @@ operator|.
 name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
-comment|//Background ops are disabled for simple revisions
-name|ns
-operator|.
-name|backgroundWrite
-argument_list|()
-expr_stmt|;
 block|}
 specifier|private
 name|NodeState
