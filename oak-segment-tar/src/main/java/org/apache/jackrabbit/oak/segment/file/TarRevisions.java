@@ -1113,7 +1113,7 @@ comment|/**      * This implementation blocks if a concurrent call is already in
 annotation|@
 name|Override
 specifier|public
-name|boolean
+name|RecordId
 name|setHead
 parameter_list|(
 annotation|@
@@ -1193,13 +1193,13 @@ name|after
 argument_list|)
 expr_stmt|;
 return|return
-literal|true
+name|after
 return|;
 block|}
 else|else
 block|{
 return|return
-literal|false
+literal|null
 return|;
 block|}
 block|}
@@ -1218,7 +1218,7 @@ block|}
 else|else
 block|{
 return|return
-literal|false
+literal|null
 return|;
 block|}
 block|}

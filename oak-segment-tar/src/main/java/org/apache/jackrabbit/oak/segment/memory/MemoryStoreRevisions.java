@@ -309,7 +309,7 @@ comment|/**      * Not supported: throws {@code UnsupportedOperationException}  
 annotation|@
 name|Override
 specifier|public
-name|boolean
+name|RecordId
 name|setHead
 parameter_list|(
 annotation|@

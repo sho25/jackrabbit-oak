@@ -97,6 +97,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertTrue
 import|;
 end_import
@@ -756,7 +768,7 @@ argument_list|,
 literal|"a"
 argument_list|)
 decl_stmt|;
-name|assertTrue
+name|assertNotNull
 argument_list|(
 name|revisions
 operator|.
@@ -980,6 +992,8 @@ throws|throws
 name|Exception
 block|{
 return|return
+literal|null
+operator|!=
 name|revisions
 operator|.
 name|setHead
@@ -1056,6 +1070,8 @@ throws|throws
 name|Exception
 block|{
 return|return
+literal|null
+operator|!=
 name|revisions
 operator|.
 name|setHead
@@ -1240,6 +1256,8 @@ name|await
 argument_list|()
 expr_stmt|;
 return|return
+literal|null
+operator|!=
 name|revisions
 operator|.
 name|setHead
@@ -1312,6 +1330,8 @@ name|countDown
 argument_list|()
 expr_stmt|;
 return|return
+literal|null
+operator|!=
 name|revisions
 operator|.
 name|setHead

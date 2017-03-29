@@ -82,8 +82,8 @@ modifier|...
 name|options
 parameter_list|)
 function_decl|;
-comment|/**      * Atomically set the record id of the current head state to the value      * returned from the {@code newHead} function when called with the record      * id of the current head.      *<p>      * All record ids must be valid ids for {@code SegmentNodeState}s.      *<p>      * The behaviour of this method regarding locking and handling      * {@code null} values returned by {@code newHead} is implementation specific.      *      * @param newHead  function mapping an record id to the record id to which      *                 the current head id should be set.      * @param options  implementation specific options      * @return         {@code true} if the current head was successfully      *                 updated, {@code false} otherwise.      * @throws InterruptedException      *                 Blocking implementations may throw this exception whe      *                 interrupted.      */
-name|boolean
+comment|/**      * Atomically set the record id of the current head state to the value      * returned from the {@code newHead} function when called with the record      * id of the current head.      *<p>      * All record ids must be valid ids for {@code SegmentNodeState}s.      *<p>      * The behaviour of this method regarding locking and handling      * {@code null} values returned by {@code newHead} is implementation specific.      *      * @param newHead  function mapping an record id to the record id to which      *                 the current head id should be set.      * @param options  implementation specific options      * @return         the record id of the root node if the current head was successfully      *                 updated, {@code null} otherwise.      * @throws InterruptedException      *                 Blocking implementations may throw this exception whe      *                 interrupted.      */
+name|RecordId
 name|setHead
 parameter_list|(
 annotation|@

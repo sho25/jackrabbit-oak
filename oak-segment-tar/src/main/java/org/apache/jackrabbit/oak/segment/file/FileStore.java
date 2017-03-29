@@ -4674,6 +4674,8 @@ throws|throws
 name|InterruptedException
 block|{
 return|return
+literal|null
+operator|!=
 name|revisions
 operator|.
 name|setHead
