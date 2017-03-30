@@ -328,6 +328,17 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+name|DocumentNodeStore
+operator|.
+name|SYS_PROP_DISABLE_JOURNAL
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 name|DocumentMK
 operator|.
 name|Builder
