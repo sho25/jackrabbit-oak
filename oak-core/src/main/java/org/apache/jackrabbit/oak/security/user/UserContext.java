@@ -223,6 +223,13 @@ name|equals
 argument_list|(
 name|ntName
 argument_list|)
+operator|||
+name|NT_REP_SYSTEM_USER
+operator|.
+name|equals
+argument_list|(
+name|ntName
+argument_list|)
 condition|)
 block|{
 return|return
