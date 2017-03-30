@@ -95,6 +95,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|runner
 operator|.
 name|RunWith
@@ -119,6 +129,11 @@ end_comment
 
 begin_class
 annotation|@
+name|Ignore
+argument_list|(
+literal|"This base test does not have tests"
+argument_list|)
+annotation|@
 name|RunWith
 argument_list|(
 name|Parameterized
@@ -129,7 +144,7 @@ specifier|public
 class|class
 name|AbstractTwoNodeTest
 block|{
-specifier|private
+specifier|protected
 specifier|final
 name|DocumentStoreFixture
 name|fixture
