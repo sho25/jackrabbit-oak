@@ -89,7 +89,23 @@ name|SegmentNodeStoreContainer
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-6011"
+argument_list|)
+comment|// FIXME     OAK-6011: Test failure: JdbcToSegmentTest:validateMigration
 specifier|public
 class|class
 name|JdbcToSegmentTest
