@@ -1838,10 +1838,7 @@ name|checkpointRoot
 operator|.
 name|compareAgainstBaseState
 argument_list|(
-name|wrapSource
-argument_list|(
 name|previousRoot
-argument_list|)
 argument_list|,
 operator|new
 name|ApplyDiff
@@ -2022,10 +2019,7 @@ name|sourceRoot
 operator|.
 name|compareAgainstBaseState
 argument_list|(
-name|wrapSource
-argument_list|(
 name|previousRoot
-argument_list|)
 argument_list|,
 operator|new
 name|ApplyDiff
