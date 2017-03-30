@@ -65,6 +65,26 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -378,6 +398,8 @@ name|principalManager
 decl_stmt|;
 name|ImpersonationImpl
 parameter_list|(
+annotation|@
+name|Nonnull
 name|UserImpl
 name|user
 parameter_list|)
@@ -405,6 +427,8 @@ expr_stmt|;
 block|}
 comment|//------------------------------------------------------< Impersonation>---
 comment|/**      * @see org.apache.jackrabbit.api.security.user.Impersonation#getImpersonators()      */
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -522,6 +546,8 @@ specifier|public
 name|boolean
 name|grantImpersonation
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Principal
 name|principal
 parameter_list|)
@@ -646,6 +672,8 @@ specifier|public
 name|boolean
 name|revokeImpersonation
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Principal
 name|principal
 parameter_list|)
@@ -714,6 +742,8 @@ specifier|public
 name|boolean
 name|allows
 parameter_list|(
+annotation|@
+name|CheckForNull
 name|Subject
 name|subject
 parameter_list|)
@@ -816,6 +846,8 @@ name|allows
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
+annotation|@
+name|Nonnull
 specifier|private
 name|Set
 argument_list|<
@@ -834,6 +866,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 name|Set
 argument_list|<
@@ -841,6 +875,8 @@ name|String
 argument_list|>
 name|getImpersonatorNames
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|userTree
 parameter_list|)
@@ -905,9 +941,13 @@ specifier|private
 name|void
 name|updateImpersonatorNames
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|userTree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|String
@@ -956,6 +996,8 @@ specifier|private
 name|boolean
 name|isAdmin
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Principal
 name|principal
 parameter_list|)
@@ -1048,6 +1090,8 @@ specifier|private
 name|boolean
 name|isValidPrincipal
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Principal
 name|principal
 parameter_list|)
