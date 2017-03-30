@@ -3652,6 +3652,13 @@ argument_list|(
 name|nodeStore
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|isNodeStoreProvider
+argument_list|()
+condition|)
+block|{
 name|observerTracker
 operator|=
 operator|new
@@ -3670,6 +3677,7 @@ name|getBundleContext
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|journalPropertyHandlerFactory
 operator|.
 name|start
