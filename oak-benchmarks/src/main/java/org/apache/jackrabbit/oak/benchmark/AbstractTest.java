@@ -33,16 +33,6 @@ name|java
 operator|.
 name|security
 operator|.
-name|PrivilegedActionException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|security
-operator|.
 name|PrivilegedExceptionAction
 import|;
 end_import
@@ -289,9 +279,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|benchmark
-operator|.
-name|util
+name|commons
 operator|.
 name|Profiler
 import|;

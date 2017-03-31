@@ -247,11 +247,27 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|benchmark
-operator|.
-name|util
+name|commons
 operator|.
 name|Profiler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|run
+operator|.
+name|Command
 import|;
 end_import
 
@@ -294,6 +310,14 @@ name|ThreadDumpCommand
 implements|implements
 name|Command
 block|{
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|THREADDUMP
+init|=
+literal|"threaddump"
+decl_stmt|;
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -484,8 +508,6 @@ name|println
 argument_list|(
 literal|"Mode: "
 operator|+
-name|Mode
-operator|.
 name|THREADDUMP
 argument_list|)
 expr_stmt|;

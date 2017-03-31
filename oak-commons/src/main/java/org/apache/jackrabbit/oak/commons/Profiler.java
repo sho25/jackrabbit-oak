@@ -13,9 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|benchmark
-operator|.
-name|util
+name|commons
 package|;
 end_package
 

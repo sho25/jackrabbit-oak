@@ -159,6 +159,24 @@ name|Stopwatch
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|run
+operator|.
+name|Command
+import|;
+end_import
+
 begin_class
 class|class
 name|CompactCommand
