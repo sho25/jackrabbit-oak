@@ -1619,9 +1619,9 @@ argument_list|(
 operator|new
 name|Impersonators
 argument_list|(
-name|a
+name|parent
 operator|.
-name|getID
+name|getPath
 argument_list|()
 argument_list|,
 name|propInfo
@@ -3494,7 +3494,7 @@ block|{
 specifier|private
 specifier|final
 name|String
-name|userId
+name|userPath
 decl_stmt|;
 specifier|private
 specifier|final
@@ -3515,7 +3515,7 @@ specifier|private
 name|Impersonators
 parameter_list|(
 name|String
-name|userId
+name|userPath
 parameter_list|,
 name|List
 argument_list|<
@@ -3528,9 +3528,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|userId
+name|userPath
 operator|=
-name|userId
+name|userPath
 expr_stmt|;
 for|for
 control|(
@@ -3564,9 +3564,9 @@ name|a
 init|=
 name|userManager
 operator|.
-name|getAuthorizable
+name|getAuthorizableByOakPath
 argument_list|(
-name|userId
+name|userPath
 argument_list|)
 decl_stmt|;
 if|if
@@ -3585,7 +3585,7 @@ throw|throw
 operator|new
 name|RepositoryException
 argument_list|(
-name|userId
+name|userPath
 operator|+
 literal|" does not represent a valid user."
 argument_list|)
