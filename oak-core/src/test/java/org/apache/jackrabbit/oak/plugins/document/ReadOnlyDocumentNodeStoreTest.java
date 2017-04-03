@@ -63,16 +63,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -115,7 +105,7 @@ name|hamcrest
 operator|.
 name|Matchers
 operator|.
-name|contains
+name|containsInAnyOrder
 import|;
 end_import
 
@@ -170,11 +160,6 @@ operator|new
 name|DocumentMKBuilderProvider
 argument_list|()
 decl_stmt|;
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6016"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
@@ -370,11 +355,11 @@ name|diff
 operator|.
 name|added
 argument_list|,
-name|contains
+name|containsInAnyOrder
 argument_list|(
-literal|"foo"
+literal|"/foo"
 argument_list|,
-literal|"bar"
+literal|"/bar"
 argument_list|)
 argument_list|)
 expr_stmt|;
