@@ -498,7 +498,7 @@ throw|throw
 operator|new
 name|RepositoryException
 argument_list|(
-literal|"TODO"
+literal|"Multiple import values with single-valued property definition"
 argument_list|)
 throw|;
 block|}
@@ -552,7 +552,7 @@ throw|throw
 operator|new
 name|RepositoryException
 argument_list|(
-literal|"TODO"
+literal|"Multiple import values with single-valued property definition"
 argument_list|)
 throw|;
 block|}
