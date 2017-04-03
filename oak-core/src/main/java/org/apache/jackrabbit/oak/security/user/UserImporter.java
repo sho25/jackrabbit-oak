@@ -1361,6 +1361,9 @@ name|id
 argument_list|)
 throw|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 elseif|else
 if|if
