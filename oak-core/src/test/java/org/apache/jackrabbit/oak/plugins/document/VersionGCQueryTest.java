@@ -311,7 +311,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
+name|AfterClass
 import|;
 end_import
 
@@ -522,10 +522,11 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|After
+name|AfterClass
 specifier|public
+specifier|static
 name|void
-name|after
+name|resetClock
 parameter_list|()
 block|{
 name|Revision
