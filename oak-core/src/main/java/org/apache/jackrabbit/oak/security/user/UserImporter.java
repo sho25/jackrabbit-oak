@@ -797,6 +797,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -2203,9 +2219,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkNotNull
+name|checkState
 argument_list|(
 name|currentMembership
+operator|!=
+literal|null
 argument_list|)
 expr_stmt|;
 name|String
