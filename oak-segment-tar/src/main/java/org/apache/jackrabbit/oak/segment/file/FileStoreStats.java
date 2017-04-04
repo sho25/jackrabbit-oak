@@ -289,6 +289,22 @@ name|initialSize
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|init
+parameter_list|(
+name|long
+name|initialSize
+parameter_list|)
+block|{
+name|repoSize
+operator|.
+name|inc
+argument_list|(
+name|initialSize
+argument_list|)
+expr_stmt|;
+block|}
 comment|//~-----------------------------< FileStoreMonitor>
 annotation|@
 name|Override
