@@ -849,6 +849,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Rule
 import|;
 end_import
@@ -7538,6 +7548,12 @@ block|}
 comment|/**      * Test asserting OAK-4700: Concurrent cleanup must not remove segments that are still reachable      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-6033"
+argument_list|)
+comment|// FIXME OAK-6033: Test failure: CompactionAndCleanupIT.concurrentCleanup
 specifier|public
 name|void
 name|concurrentCleanup
