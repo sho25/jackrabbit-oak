@@ -13,9 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|security
 operator|.
-name|whiteboard
+name|authorization
+operator|.
+name|restriction
 package|;
 end_package
 
@@ -192,6 +194,24 @@ operator|.
 name|restriction
 operator|.
 name|RestrictionProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|whiteboard
+operator|.
+name|AbstractServiceTracker
 import|;
 end_import
 

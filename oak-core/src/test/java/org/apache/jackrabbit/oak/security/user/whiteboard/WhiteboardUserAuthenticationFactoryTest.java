@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|security
+operator|.
+name|user
 operator|.
 name|whiteboard
 package|;
@@ -72,6 +74,26 @@ operator|.
 name|api
 operator|.
 name|Root
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|whiteboard
+operator|.
+name|WhiteboardUserAuthenticationFactory
 import|;
 end_import
 

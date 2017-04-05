@@ -687,7 +687,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|security
+operator|.
+name|user
 operator|.
 name|whiteboard
 operator|.
@@ -705,7 +707,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|security
+operator|.
+name|user
 operator|.
 name|whiteboard
 operator|.
@@ -723,9 +727,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|security
 operator|.
-name|whiteboard
+name|authorization
+operator|.
+name|restriction
 operator|.
 name|WhiteboardRestrictionProvider
 import|;
@@ -741,7 +747,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|security
+operator|.
+name|user
 operator|.
 name|whiteboard
 operator|.
