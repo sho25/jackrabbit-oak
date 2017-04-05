@@ -1461,7 +1461,18 @@ block|{
 return|return
 literal|"FileStoreBuilder{"
 operator|+
-literal|"directory="
+literal|"version="
+operator|+
+name|getClass
+argument_list|()
+operator|.
+name|getPackage
+argument_list|()
+operator|.
+name|getImplementationVersion
+argument_list|()
+operator|+
+literal|", directory="
 operator|+
 name|directory
 operator|+
