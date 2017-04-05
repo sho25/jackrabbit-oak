@@ -65,21 +65,13 @@ end_import
 
 begin_import
 import|import static
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|jackrabbit
+name|Collections
 operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|whiteboard
-operator|.
-name|WhiteboardUtils
-operator|.
-name|registerMBean
+name|emptyMap
 import|;
 end_import
 
@@ -99,7 +91,7 @@ name|whiteboard
 operator|.
 name|WhiteboardUtils
 operator|.
-name|registerObserver
+name|registerMBean
 import|;
 end_import
 
@@ -3733,11 +3725,18 @@ name|regs
 operator|.
 name|add
 argument_list|(
-name|registerObserver
-argument_list|(
 name|whiteboard
+operator|.
+name|register
+argument_list|(
+name|Observer
+operator|.
+name|class
 argument_list|,
 name|observer
+argument_list|,
+name|emptyMap
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

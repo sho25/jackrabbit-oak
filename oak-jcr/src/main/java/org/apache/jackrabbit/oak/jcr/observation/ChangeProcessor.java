@@ -53,6 +53,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|emptyMap
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -150,26 +162,6 @@ operator|.
 name|WhiteboardUtils
 operator|.
 name|registerMBean
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|whiteboard
-operator|.
-name|WhiteboardUtils
-operator|.
-name|registerObserver
 import|;
 end_import
 
@@ -630,6 +622,24 @@ operator|.
 name|commit
 operator|.
 name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|Observer
 import|;
 end_import
 
@@ -1517,11 +1527,18 @@ operator|=
 operator|new
 name|CompositeRegistration
 argument_list|(
-name|registerObserver
-argument_list|(
 name|whiteboard
+operator|.
+name|register
+argument_list|(
+name|Observer
+operator|.
+name|class
 argument_list|,
 name|filteringObserver
+argument_list|,
+name|emptyMap
+argument_list|()
 argument_list|)
 argument_list|,
 name|registerMBean
