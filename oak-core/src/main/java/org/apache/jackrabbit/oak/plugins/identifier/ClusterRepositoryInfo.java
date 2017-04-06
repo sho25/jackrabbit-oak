@@ -255,6 +255,10 @@ name|CLUSTER_ID_PROP
 init|=
 literal|":clusterId"
 decl_stmt|;
+specifier|private
+name|ClusterRepositoryInfo
+parameter_list|()
+block|{     }
 comment|/**      * Gets the {# CLUSTER_ID_PROP} if available, if it doesn't it       * creates it and returns the newly created one (or if that      * happened concurrently and another cluster instance won,      * return that one)      *<p>      * Note that this method doesn't require synchronization as      * concurrent execution within the VM would be covered      * within NodeStore's merge and result in a conflict for      * one of the two threads - in which case the looser would      * re-read and find the clusterId set.      *       * @param store the NodeStore instance      * @return the persistent clusterId      */
 annotation|@
 name|CheckForNull
