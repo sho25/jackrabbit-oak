@@ -282,17 +282,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * EXERCISE: complete the implemenation  */
+comment|/**  * EXERCISE: complete the implementation  */
 end_comment
 
 begin_class
 annotation|@
 name|Component
 argument_list|(
-name|metatype
-operator|=
-literal|true
-argument_list|,
 name|policy
 operator|=
 name|ConfigurationPolicy
