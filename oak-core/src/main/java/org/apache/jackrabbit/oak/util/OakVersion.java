@@ -74,6 +74,10 @@ name|version
 init|=
 literal|null
 decl_stmt|;
+specifier|private
+name|OakVersion
+parameter_list|()
+block|{     }
 comment|/**      * Returns the version of oak-core.      *       * @return the version (or "SNAPSHOT" when unknown)      */
 annotation|@
 name|Nonnull
