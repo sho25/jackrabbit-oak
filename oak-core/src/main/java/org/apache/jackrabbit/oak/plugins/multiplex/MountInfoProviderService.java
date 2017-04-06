@@ -487,7 +487,12 @@ name|PropertiesUtil
 operator|.
 name|toStringArray
 argument_list|(
+name|config
+operator|.
+name|get
+argument_list|(
 name|PROP_PATHS_SUPPORTING_FRAGMENTS
+argument_list|)
 argument_list|,
 name|PROP_PATHS_SUPPORTING_FRAGMENTS_DEFAULT
 argument_list|)
