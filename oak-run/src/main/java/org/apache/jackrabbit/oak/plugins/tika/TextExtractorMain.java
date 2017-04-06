@@ -497,6 +497,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+name|TextExtractorMain
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|void
