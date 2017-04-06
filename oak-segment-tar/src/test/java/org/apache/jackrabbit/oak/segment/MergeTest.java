@@ -247,6 +247,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -608,6 +618,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-4122"
+argument_list|)
 specifier|public
 name|void
 name|testPessimisticMerge
@@ -797,13 +812,8 @@ argument_list|,
 literal|"xyz"
 argument_list|)
 expr_stmt|;
-name|store
-operator|.
-name|setMaximumBackoff
-argument_list|(
-literal|100
-argument_list|)
-expr_stmt|;
+comment|// FIXME OAK-4122
+comment|//  store.setMaximumBackoff(100);
 name|store
 operator|.
 name|merge

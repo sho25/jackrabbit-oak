@@ -3413,6 +3413,7 @@ return|;
 block|}
 block|}
 comment|//------------------------------------------------------------< Object>--
+specifier|public
 specifier|static
 name|boolean
 name|fastEquals
