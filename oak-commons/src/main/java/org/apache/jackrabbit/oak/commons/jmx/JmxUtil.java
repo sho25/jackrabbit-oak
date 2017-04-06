@@ -49,6 +49,10 @@ specifier|final
 class|class
 name|JmxUtil
 block|{
+specifier|private
+name|JmxUtil
+parameter_list|()
+block|{     }
 comment|/**      * Checks if the passed value string can be used as is as part of      * JMX {@link javax.management.ObjectName} If it cannot be used then      * it would return a quoted string which is then safe to be used      * as part of ObjectName.      *      *<p>This is meant to avoid unnecessary quoting of value</p>      *      * @param unquotedValue to quote if required      * @return passed value or quoted value if required      */
 specifier|public
 specifier|static
