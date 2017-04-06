@@ -282,7 +282,10 @@ name|Override
 specifier|public
 name|boolean
 name|isSupportFragment
-parameter_list|()
+parameter_list|(
+name|String
+name|path
+parameter_list|)
 block|{
 return|return
 literal|false
