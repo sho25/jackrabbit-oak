@@ -337,7 +337,7 @@ return|return
 name|FOR_LOGGING
 return|;
 block|}
-comment|/**      * @param local      *            local for formatting (affects the decimal point)      * @param threshold      *            integral value that needs to be exceeded to switch to a      *            certain time unit for display (e.g., specify {@code 2} to      *            switch to 'days' when the elapsed time is two or more days.      * @param allowNonAscii      *            set to {@code true} if the display unit can use the non-ASCII      *            "micro" Unicode character      */
+comment|/**      * @param locale      *            locale for formatting (affects the decimal point)      * @param threshold      *            integral value that needs to be exceeded to switch to a      *            certain time unit for display (e.g., specify {@code 2} to      *            switch to 'days' when the elapsed time is two or more days.      * @param allowNonAscii      *            set to {@code true} if the display unit can use the non-ASCII      *            "micro" Unicode character      */
 specifier|public
 name|TimeDurationFormatter
 parameter_list|(
