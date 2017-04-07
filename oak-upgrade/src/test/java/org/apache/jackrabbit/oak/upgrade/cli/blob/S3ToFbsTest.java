@@ -212,6 +212,12 @@ argument_list|(
 name|S3_PROPERTIES
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|S3_PROPERTIES
+operator|.
+name|isEmpty
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|sourceBlob
