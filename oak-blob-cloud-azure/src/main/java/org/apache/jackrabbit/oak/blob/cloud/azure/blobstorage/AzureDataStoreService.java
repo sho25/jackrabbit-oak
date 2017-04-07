@@ -70,10 +70,6 @@ operator|=
 name|AzureDataStoreService
 operator|.
 name|NAME
-argument_list|,
-name|metatype
-operator|=
-literal|true
 argument_list|)
 specifier|public
 class|class
