@@ -357,6 +357,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|io
 operator|.
 name|Closer
@@ -2046,11 +2060,14 @@ block|}
 name|CleanupResult
 name|cleanup
 parameter_list|(
+name|Supplier
+argument_list|<
 name|Set
 argument_list|<
 name|UUID
 argument_list|>
-name|references
+argument_list|>
+name|referencesSupplier
 parameter_list|,
 name|Predicate
 argument_list|<
@@ -2173,6 +2190,20 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
+comment|// The set of references has to be computed while holding the lock.
+comment|// This prevents a time-of-check to time-of-use race condition. See
+comment|// OAK-6046 for further details.
+name|Set
+argument_list|<
+name|UUID
+argument_list|>
+name|references
+init|=
+name|referencesSupplier
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|Set
 argument_list|<
 name|UUID
