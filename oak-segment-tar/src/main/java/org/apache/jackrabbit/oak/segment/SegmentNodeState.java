@@ -752,13 +752,8 @@ block|{
 name|ByteBuffer
 name|buffer
 init|=
-name|ByteBuffer
-operator|.
-name|wrap
-argument_list|(
 name|getStableIdBytes
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|long
 name|msb
@@ -799,8 +794,7 @@ name|offset
 return|;
 block|}
 comment|/**      * Returns the stable ID of this node, non parsed. In contrast to the node's      * record id (which is technically the node's address) the stable id doesn't      * change after an online gc cycle. It might though change after an offline      * gc cycle.      *      * @return the stable ID of this node.      */
-name|byte
-index|[]
+name|ByteBuffer
 name|getStableIdBytes
 parameter_list|()
 block|{
@@ -842,18 +836,7 @@ else|else
 block|{
 comment|// Otherwise that id points to the serialised (msb, lsb, offset)
 comment|// stable id.
-name|byte
-index|[]
-name|buffer
-init|=
-operator|new
-name|byte
-index|[
-name|RecordId
-operator|.
-name|SERIALIZED_RECORD_ID_BYTES
-index|]
-decl_stmt|;
+return|return
 name|id
 operator|.
 name|getSegment
@@ -866,17 +849,12 @@ operator|.
 name|getRecordNumber
 argument_list|()
 argument_list|,
-name|buffer
-argument_list|,
 literal|0
 argument_list|,
-name|buffer
+name|RecordId
 operator|.
-name|length
+name|SERIALIZED_RECORD_ID_BYTES
 argument_list|)
-expr_stmt|;
-return|return
-name|buffer
 return|;
 block|}
 block|}
