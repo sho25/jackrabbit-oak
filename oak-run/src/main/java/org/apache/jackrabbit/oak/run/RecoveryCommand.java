@@ -427,9 +427,6 @@ operator|.
 name|recover
 argument_list|(
 name|docs
-operator|.
-name|iterator
-argument_list|()
 argument_list|,
 name|dns
 operator|.

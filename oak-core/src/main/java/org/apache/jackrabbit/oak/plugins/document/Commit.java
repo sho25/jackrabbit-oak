@@ -562,6 +562,10 @@ specifier|private
 name|Branch
 name|b
 decl_stmt|;
+specifier|private
+name|boolean
+name|rollbackFailed
+decl_stmt|;
 comment|/**      * List of all node paths which have been modified in this commit. In addition to the nodes      * which are actually changed it also contains there parent node paths      */
 specifier|private
 name|HashSet
@@ -957,11 +961,22 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Applies this commit to the store.      *      * @throws DocumentStoreException if the commit cannot be applied.      */
+comment|/**      * @return {@code true} if this commit did not succeed and the rollback      *      was unable to revert all changes; otherwise {@code false}.      */
+name|boolean
+name|rollbackFailed
+parameter_list|()
+block|{
+return|return
+name|rollbackFailed
+return|;
+block|}
+comment|/**      * Applies this commit to the store.      *      * @throws ConflictException if the commit failed because of a conflict.      * @throws DocumentStoreException if the commit cannot be applied.      */
 name|void
 name|apply
 parameter_list|()
 throws|throws
+name|ConflictException
+throws|,
 name|DocumentStoreException
 block|{
 name|boolean
@@ -1224,7 +1239,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Apply the changes to the document store.      *      * @param baseBranchRevision the base revision of this commit. Currently only      *                     used for branch commits.      */
+comment|/**      * Apply the changes to the document store.      *      * @param baseBranchRevision the base revision of this commit. Currently only      *                     used for branch commits.      * @throws DocumentStoreException if an error occurs while writing to the      *          underlying store.      */
 specifier|private
 name|void
 name|applyToDocumentStore
@@ -1232,7 +1247,16 @@ parameter_list|(
 name|RevisionVector
 name|baseBranchRevision
 parameter_list|)
+throws|throws
+name|DocumentStoreException
 block|{
+comment|// initially set the rollbackFailed flag to true
+comment|// the flag will be set to false at the end of the method
+comment|// when the commit succeeds
+name|rollbackFailed
+operator|=
+literal|true
+expr_stmt|;
 comment|// the value in _revisions.<revision> property of the commit root node
 comment|// regular commits use "c", which makes the commit visible to
 comment|// other readers. branch commits use the base revision to indicate
@@ -1790,10 +1814,14 @@ argument_list|,
 name|commitRoot
 argument_list|)
 expr_stmt|;
+name|rollbackFailed
+operator|=
+literal|false
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|Throwable
 name|ex
 parameter_list|)
 block|{
@@ -1812,6 +1840,19 @@ block|}
 throw|throw
 name|e
 throw|;
+block|}
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|success
+condition|)
+block|{
+name|rollbackFailed
+operator|=
+literal|false
+expr_stmt|;
 block|}
 block|}
 block|}

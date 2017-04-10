@@ -3819,6 +3819,43 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Calls {@link Thread#join()} on each of the passed threads and catches      * any potentially thrown {@link InterruptedException}.      *      * @param threads the threads to join.      */
+specifier|public
+specifier|static
+name|void
+name|joinQuietly
+parameter_list|(
+name|Thread
+modifier|...
+name|threads
+parameter_list|)
+block|{
+for|for
+control|(
+name|Thread
+name|t
+range|:
+name|threads
+control|)
+block|{
+try|try
+block|{
+name|t
+operator|.
+name|join
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+comment|// ignore
+block|}
+block|}
+block|}
 block|}
 end_class
 

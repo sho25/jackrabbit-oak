@@ -53,7 +53,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Iterators
+name|Lists
 import|;
 end_import
 
@@ -795,9 +795,9 @@ name|recovery
 operator|.
 name|recover
 argument_list|(
-name|Iterators
+name|Lists
 operator|.
-name|forArray
+name|newArrayList
 argument_list|(
 name|x1
 argument_list|,
