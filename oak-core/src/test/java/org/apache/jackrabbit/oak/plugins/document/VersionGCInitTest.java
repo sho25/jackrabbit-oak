@@ -73,6 +73,18 @@ name|assertNull
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -151,6 +163,15 @@ name|ns
 operator|.
 name|getVersionGarbageCollector
 argument_list|()
+operator|.
+name|gc
+argument_list|(
+literal|1
+argument_list|,
+name|TimeUnit
+operator|.
+name|DAYS
+argument_list|)
 expr_stmt|;
 name|vgc
 operator|=
