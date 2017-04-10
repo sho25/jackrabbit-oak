@@ -503,6 +503,24 @@ operator|.
 name|Virtual
 argument_list|()
 expr_stmt|;
+comment|// baseline the clock
+name|clock
+operator|.
+name|waitUntil
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Revision
+operator|.
+name|setClock
+argument_list|(
+name|clock
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|After
@@ -573,17 +591,6 @@ argument_list|)
 operator|.
 name|getNodeStore
 argument_list|()
-expr_stmt|;
-comment|//Baseline the clock
-name|clock
-operator|.
-name|waitUntil
-argument_list|(
-name|Revision
-operator|.
-name|getCurrentTimestamp
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|NodeBuilder
 name|b1
@@ -834,17 +841,6 @@ argument_list|)
 operator|.
 name|getNodeStore
 argument_list|()
-expr_stmt|;
-comment|//Baseline the clock
-name|clock
-operator|.
-name|waitUntil
-argument_list|(
-name|Revision
-operator|.
-name|getCurrentTimestamp
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|String
 name|id
@@ -1168,17 +1164,6 @@ operator|.
 name|getNodeStore
 argument_list|()
 expr_stmt|;
-comment|//Baseline the clock
-name|clock
-operator|.
-name|waitUntil
-argument_list|(
-name|Revision
-operator|.
-name|getCurrentTimestamp
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|NodeBuilder
 name|b1
 init|=
@@ -1496,17 +1481,6 @@ operator|.
 name|getNodeStore
 argument_list|()
 expr_stmt|;
-comment|//Baseline the clock
-name|clock
-operator|.
-name|waitUntil
-argument_list|(
-name|Revision
-operator|.
-name|getCurrentTimestamp
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|NodeBuilder
 name|b1
 init|=
@@ -1764,17 +1738,6 @@ argument_list|)
 operator|.
 name|getNodeStore
 argument_list|()
-expr_stmt|;
-comment|//Baseline the clock
-name|clock
-operator|.
-name|waitUntil
-argument_list|(
-name|Revision
-operator|.
-name|getCurrentTimestamp
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|NodeBuilder
 name|b1
@@ -2060,17 +2023,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//Baseline the clock
-name|clock
-operator|.
-name|waitUntil
-argument_list|(
-name|Revision
-operator|.
-name|getCurrentTimestamp
-argument_list|()
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Thread
 name|currentThread
