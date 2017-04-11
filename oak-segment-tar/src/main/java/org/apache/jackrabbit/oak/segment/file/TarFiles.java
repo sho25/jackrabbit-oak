@@ -1082,6 +1082,7 @@ specifier|final
 name|IOMonitor
 name|ioMonitor
 decl_stmt|;
+comment|/**      * Guards access to the {@link #readers} and {@link #writer} references.      */
 specifier|private
 specifier|final
 name|ReadWriteLock
@@ -1091,14 +1092,17 @@ operator|new
 name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
+comment|/**      * Points to the first node of the linked list of TAR readers. Every node in      * the linked list is immutable. Thus, you need to to hold {@link #lock}      * while reading the value of the reference, but you can release it before      * iterating through the list.      */
 specifier|private
 name|Node
 name|readers
 decl_stmt|;
+comment|/**      * The currently used TAR writer. Its access is protected by {@link #lock}.      */
 specifier|private
 name|TarWriter
 name|writer
 decl_stmt|;
+comment|/**      * If {@code true}, a user requested this instance to close. This flag is      * used in long running, background operations - like {@link      * #cleanup(Supplier, Predicate)} - to be responsive to termination.      */
 specifier|private
 specifier|volatile
 name|boolean
@@ -1179,6 +1183,10 @@ argument_list|(
 name|indices
 argument_list|)
 expr_stmt|;
+comment|// TAR readers are stored in descending index order. The following loop
+comment|// iterates the indices in ascending order, but prepends - instead of
+comment|// appending - the corresponding TAR readers to the linked list. This
+comment|// results in a properly ordered linked list.
 for|for
 control|(
 name|Integer
@@ -2130,6 +2138,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Creates a new TAR writer with a higher index number, reopens the previous      * TAR writer as a TAR reader, and adds the TAR reader to the linked list.      *<p>      * This method must be invoked while holding {@link #lock} in write mode,      * because it modifies the references {@link #writer} and {@link #readers}.      *      * @throws IOException If an error occurs while operating on the TAR readers      *                     or the TAR writer.      */
 specifier|private
 name|void
 name|newWriter
@@ -2476,6 +2485,10 @@ name|n
 init|=
 name|readers
 decl_stmt|;
+comment|// The following loops creates a modified version of `readers` and
+comment|// saves it into `swept`. Some TAR readers in `readers` have been
+comment|// swept by the previous code and must be replaced with a slimmer
+comment|// TAR reader with the same index but a higher generation.
 while|while
 condition|(
 name|n
@@ -2495,6 +2508,13 @@ name|reader
 argument_list|)
 condition|)
 block|{
+comment|// We distinguish three cases. First, the original TAR
+comment|// reader is unmodified. This happens with no content or not
+comment|// enough content could be swept from the original TAR
+comment|// reader. Second, some content could be swept from the
+comment|// original TAR reader and a new TAR reader with the same
+comment|// index and a higher generation was created. Third, all the
+comment|// content from the original TAR reader could be swept.
 name|TarReader
 name|r
 init|=
@@ -2514,6 +2534,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// We are either in the first or in the second case.
+comment|// Save the TAR reader (either the original or the one
+comment|// with a higher generation) in the resulting linked list.
 name|swept
 operator|=
 operator|new
@@ -2541,6 +2564,9 @@ operator|.
 name|reader
 condition|)
 block|{
+comment|// We are either in the second or third case. Save the
+comment|// original TAR reader in a list of TAR readers that
+comment|// will be closed at the end of this methods.
 name|closeables
 operator|=
 operator|new
@@ -2557,6 +2583,10 @@ block|}
 block|}
 else|else
 block|{
+comment|// This reader was not involved in the mark-and-sweep. This
+comment|// might happen in iterations of this loop successive to the
+comment|// first, when we re-read `readers` and recompute `swept`
+comment|// all over again.
 name|swept
 operator|=
 operator|new
@@ -2577,6 +2607,8 @@ operator|.
 name|next
 expr_stmt|;
 block|}
+comment|// `swept` is in the reverse order because we prepended new nodes
+comment|// to it. We have to reverse it before we save it into `readers`.
 name|swept
 operator|=
 name|reverse
@@ -2584,6 +2616,11 @@ argument_list|(
 name|swept
 argument_list|)
 expr_stmt|;
+comment|// Following is a compare-and-set operation. We based the
+comment|// computation of `swept` of a specific value of `readers`. If
+comment|// `readers` is still the same as the one we started with, we just
+comment|// update `readers` and exit from the loop. Otherwise, we read the
+comment|// value of `readers` and recompute `swept` based on this value.
 name|lock
 operator|.
 name|writeLock
