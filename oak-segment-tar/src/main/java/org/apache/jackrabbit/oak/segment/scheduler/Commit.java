@@ -456,7 +456,7 @@ name|merged
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Checks if the commit contains any changes.      *       * @return {@code true}, if the commit has changes, {@code false},      *         otherwise.      */
+comment|/**      * Checks if the commit contains any changes. This is a shallow check, with      * the same semantics as      * {@link SegmentNodeState#fastEquals(NodeState, NodeState)}, which cannot      * guarantee against false negatives.      *       * @return {@code true}, if the commit has changes.      */
 specifier|public
 name|boolean
 name|hasChanges

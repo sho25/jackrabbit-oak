@@ -3391,6 +3391,7 @@ return|;
 block|}
 block|}
 comment|//------------------------------------------------------------< Object>--
+comment|/**      * Indicates whether two {@link NodeState} instances are equal to each      * other. A return value of {@code true} clearly means that the instances      * are equal, while a return value of {@code false} doesn't necessarily mean      * the instances are not equal. These "false negatives" are an      * implementation detail and callers cannot rely on them being stable.      *       * @param a      *            the first {@link NodeState} instance      * @param b      *            the second {@link NodeState} instance      * @return {@code true}, if these two instances are equal.      */
 specifier|public
 specifier|static
 name|boolean
