@@ -576,6 +576,12 @@ specifier|private
 name|boolean
 name|readOnly
 decl_stmt|;
+specifier|private
+name|Builder
+parameter_list|()
+block|{
+comment|// Prevent external instantiation.
+block|}
 name|Builder
 name|withDirectory
 parameter_list|(
