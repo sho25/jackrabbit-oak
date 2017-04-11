@@ -1249,7 +1249,7 @@ operator|new
 name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
-comment|/**      * Points to the first node of the linked list of TAR readers. Every node in      * the linked list is immutable. Thus, you need to to hold {@link #lock}      * while reading the value of the reference, but you can release it before      * iterating through the list.      */
+comment|/**      * Points to the first node of the linked list of TAR readers. Every node in      * the linked list is immutable. Thus, you need to to hold {@link #lock}      * while reading the value of the reference, but you can release it before      * iterating through the list.      *<p>      * Please note that while the linked list is immutable, the pointer to it      * (namely this instance variable) is not itself immutable. This reference      * must be kept consistent with {@link #writer}, and this is the reason why      * it's necessary to hold a lock while accessing this variable.      */
 specifier|private
 name|Node
 name|readers
