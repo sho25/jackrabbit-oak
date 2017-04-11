@@ -756,6 +756,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Sets the number of seconds to wait for the attempt to grab the lock to      * create a checkpoint      */
 specifier|private
+specifier|final
 name|int
 name|checkpointsLockWaitTime
 init|=
