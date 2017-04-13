@@ -148,6 +148,10 @@ operator|new
 name|Random
 argument_list|()
 decl_stmt|;
+specifier|private
+name|ApproximateCounter
+parameter_list|()
+block|{     }
 comment|/**      * Calculate the approximate offset from a given offset. The offset is the      * number of added or removed entries. The result is 0 in most of the cases,      * but sometimes it is a (positive or negative) multiple of the resolution,      * such that on average, the sum of the returned value matches the sum of      * the passed offsets.      *       * @param offset the high-resolution input offset      * @param resolution the resolution      * @return the low-resolution offset (most of the time 0)      */
 specifier|public
 specifier|static
