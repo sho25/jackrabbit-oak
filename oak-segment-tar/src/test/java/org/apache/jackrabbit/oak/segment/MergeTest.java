@@ -19,9 +19,9 @@ end_package
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -31,9 +31,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -43,9 +43,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -445,7 +445,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testOptimisticMerge
+name|testSequentialMergeWithRebase
 parameter_list|()
 throws|throws
 name|CommitFailedException
