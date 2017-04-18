@@ -2630,7 +2630,9 @@ name|con
 argument_list|,
 name|tmd
 argument_list|,
-literal|"count(*)"
+literal|"count"
+argument_list|,
+literal|"*"
 argument_list|,
 literal|null
 argument_list|,
@@ -3045,11 +3047,6 @@ argument_list|(
 name|baseName5ModifiedNoDeletedOnce
 argument_list|)
 expr_stmt|;
-name|String
-name|selector
-init|=
-literal|"min(MODIFIED)"
-decl_stmt|;
 name|LogCustomizer
 name|customLogs
 init|=
@@ -3079,7 +3076,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|selector
+literal|"min(MODIFIED)"
 argument_list|)
 operator|.
 name|create
@@ -3169,7 +3166,9 @@ name|con
 argument_list|,
 name|tmd
 argument_list|,
-name|selector
+literal|"min"
+argument_list|,
+literal|"_modified"
 argument_list|,
 literal|null
 argument_list|,
@@ -3322,7 +3321,9 @@ name|con
 argument_list|,
 name|tmd
 argument_list|,
-name|selector
+literal|"min"
+argument_list|,
+literal|"_modified"
 argument_list|,
 literal|null
 argument_list|,
