@@ -521,6 +521,8 @@ name|plugins
 operator|.
 name|value
 operator|.
+name|jcr
+operator|.
 name|ValueFactoryImpl
 import|;
 end_import

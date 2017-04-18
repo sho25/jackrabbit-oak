@@ -937,8 +937,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
-operator|.
 name|OakVersion
 import|;
 end_import

@@ -31,7 +31,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|api
 operator|.
 name|jmx
 operator|.

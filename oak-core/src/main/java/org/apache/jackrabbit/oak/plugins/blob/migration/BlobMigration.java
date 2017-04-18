@@ -43,7 +43,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|management
+name|commons
+operator|.
+name|jmx
 operator|.
 name|ManagementOperation
 operator|.
@@ -61,7 +63,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|management
+name|commons
+operator|.
+name|jmx
 operator|.
 name|ManagementOperation
 operator|.
@@ -79,7 +83,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|management
+name|commons
+operator|.
+name|jmx
 operator|.
 name|ManagementOperation
 operator|.
@@ -359,7 +365,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|management
+name|commons
+operator|.
+name|jmx
 operator|.
 name|ManagementOperation
 import|;

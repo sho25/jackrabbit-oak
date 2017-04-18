@@ -383,9 +383,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|identifier
+name|cluster
 operator|.
 name|ClusterRepositoryInfo
 import|;
@@ -512,16 +512,6 @@ operator|.
 name|stats
 operator|.
 name|Clock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|After
 import|;
 end_import
 

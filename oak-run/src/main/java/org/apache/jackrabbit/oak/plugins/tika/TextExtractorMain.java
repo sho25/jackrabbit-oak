@@ -287,7 +287,7 @@ name|plugins
 operator|.
 name|blob
 operator|.
-name|datastore
+name|index
 operator|.
 name|DataStoreTextWriter
 import|;

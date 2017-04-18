@@ -25,16 +25,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Date
 import|;
 end_import
@@ -95,7 +85,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|commons
+operator|.
+name|jmx
 operator|.
 name|AbstractCheckpointMBean
 import|;

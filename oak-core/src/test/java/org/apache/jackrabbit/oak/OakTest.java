@@ -511,9 +511,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|whiteboard
+name|index
 operator|.
 name|WhiteboardIndexEditorProvider
 import|;

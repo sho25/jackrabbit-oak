@@ -129,7 +129,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|commons
+operator|.
+name|jmx
 operator|.
 name|AbstractCheckpointMBean
 import|;

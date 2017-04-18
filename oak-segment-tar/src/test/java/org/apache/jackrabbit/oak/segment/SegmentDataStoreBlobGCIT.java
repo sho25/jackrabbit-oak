@@ -599,9 +599,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|identifier
+name|cluster
 operator|.
 name|ClusterRepositoryInfo
 import|;

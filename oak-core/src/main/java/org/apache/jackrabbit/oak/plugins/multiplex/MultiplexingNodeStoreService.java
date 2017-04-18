@@ -189,7 +189,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|osgi
+name|spi
+operator|.
+name|commit
 operator|.
 name|ObserverTracker
 import|;

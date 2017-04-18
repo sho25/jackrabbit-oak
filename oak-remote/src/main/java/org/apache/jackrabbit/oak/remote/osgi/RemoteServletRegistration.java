@@ -207,24 +207,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|ConfigurationPolicy
-operator|.
-name|REQUIRE
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Component

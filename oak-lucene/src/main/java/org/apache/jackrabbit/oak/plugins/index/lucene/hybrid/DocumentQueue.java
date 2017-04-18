@@ -381,7 +381,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|commons
+operator|.
+name|benchmark
 operator|.
 name|PerfLogger
 import|;

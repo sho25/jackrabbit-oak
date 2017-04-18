@@ -135,20 +135,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -290,6 +276,8 @@ operator|.
 name|plugins
 operator|.
 name|value
+operator|.
+name|jcr
 operator|.
 name|ValueFactoryImpl
 import|;

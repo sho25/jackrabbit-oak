@@ -689,7 +689,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|spi
+operator|.
+name|descriptors
 operator|.
 name|GenericDescriptors
 import|;

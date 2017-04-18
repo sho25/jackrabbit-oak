@@ -1743,8 +1743,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
-operator|.
 name|OakVersion
 import|;
 end_import
@@ -1759,7 +1757,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|commons
+operator|.
+name|benchmark
 operator|.
 name|PerfLogger
 import|;

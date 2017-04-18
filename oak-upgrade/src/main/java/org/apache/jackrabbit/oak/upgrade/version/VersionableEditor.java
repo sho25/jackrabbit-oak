@@ -471,26 +471,6 @@ name|version
 operator|.
 name|VersionHistoryUtil
 operator|.
-name|getVersionHistoryNodeState
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|upgrade
-operator|.
-name|version
-operator|.
-name|VersionHistoryUtil
-operator|.
 name|getVersionStorage
 import|;
 end_import

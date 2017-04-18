@@ -155,9 +155,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|identifier
+name|cluster
 operator|.
 name|ClusterRepositoryInfo
 operator|.
@@ -1309,7 +1309,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|osgi
+name|spi
+operator|.
+name|commit
 operator|.
 name|ObserverTracker
 import|;
@@ -1491,9 +1493,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|identifier
+name|cluster
 operator|.
 name|ClusterRepositoryInfo
 import|;
@@ -1919,7 +1921,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|spi
+operator|.
+name|descriptors
 operator|.
 name|GenericDescriptors
 import|;

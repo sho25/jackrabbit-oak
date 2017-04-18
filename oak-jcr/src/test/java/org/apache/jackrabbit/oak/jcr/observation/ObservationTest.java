@@ -583,16 +583,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|ValueFormatException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|lock
 operator|.
 name|LockException
@@ -644,18 +634,6 @@ operator|.
 name|nodetype
 operator|.
 name|NodeDefinitionTemplate
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeDefinition
 import|;
 end_import
 

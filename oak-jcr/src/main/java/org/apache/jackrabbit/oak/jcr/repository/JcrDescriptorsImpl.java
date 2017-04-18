@@ -65,7 +65,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|spi
+operator|.
+name|descriptors
 operator|.
 name|GenericDescriptors
 import|;
@@ -108,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code JcrDescriptorsImpl} extend the {@link org.apache.jackrabbit.oak.util.GenericDescriptors} by automatically marking some of the JCR  * features as supported.  */
+comment|/**  * The {@code JcrDescriptorsImpl} extend the {@link GenericDescriptors} by automatically marking some of the JCR  * features as supported.  */
 end_comment
 
 begin_class

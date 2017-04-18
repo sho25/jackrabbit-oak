@@ -199,7 +199,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|commons
+operator|.
+name|hash
 operator|.
 name|SipHash
 import|;

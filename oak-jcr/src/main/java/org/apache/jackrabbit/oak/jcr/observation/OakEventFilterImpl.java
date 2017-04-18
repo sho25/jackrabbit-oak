@@ -471,16 +471,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Implements OakEventFilter which is an extension to the JackrabbitEventFilter  * with features only supported by Oak.  */
 end_comment

@@ -435,7 +435,7 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|whiteboard
+name|commit
 operator|.
 name|WhiteboardEditorProvider
 import|;
@@ -451,9 +451,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|whiteboard
+name|index
 operator|.
 name|WhiteboardIndexEditorProvider
 import|;
@@ -471,7 +471,7 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|whiteboard
+name|query
 operator|.
 name|WhiteboardIndexProvider
 import|;
