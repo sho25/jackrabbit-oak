@@ -3079,6 +3079,47 @@ return|return
 literal|true
 return|;
 block|}
+if|if
+condition|(
+name|Utils
+operator|.
+name|isCommitted
+argument_list|(
+name|commitValue
+argument_list|)
+operator|&&
+operator|!
+name|readRevision
+operator|.
+name|isBranch
+argument_list|()
+condition|)
+block|{
+comment|// no need to load commit root document, we can simply
+comment|// tell by looking at the commit revision whether the
+comment|// revision is valid/visible
+name|Revision
+name|commitRev
+init|=
+name|Utils
+operator|.
+name|resolveCommitRevision
+argument_list|(
+name|rev
+argument_list|,
+name|commitValue
+argument_list|)
+decl_stmt|;
+return|return
+operator|!
+name|readRevision
+operator|.
+name|isRevisionNewer
+argument_list|(
+name|commitRev
+argument_list|)
+return|;
+block|}
 name|NodeDocument
 name|doc
 init|=
