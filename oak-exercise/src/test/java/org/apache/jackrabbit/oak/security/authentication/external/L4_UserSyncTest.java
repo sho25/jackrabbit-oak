@@ -35,26 +35,6 @@ name|AbstractSecurityTest
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  *<pre>  * Module: External Authentication  * =============================================================================  *  * Title: User and Group Synchronization  * -----------------------------------------------------------------------------  *  * Goal:  * Understand the aim and usage of the user/group sync and learn to use the  * different configuration options that come with the default implementation.  * Advanced exercises deal with custom extensions and implementations.  *  * Exercises:  *  * - {@link #TODO}  *  *  * Additional Exercises:  * -----------------------------------------------------------------------------  *  * TODO  *  *</pre>  *  * @see TODO  */
 end_comment

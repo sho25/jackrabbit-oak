@@ -21,18 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|nodetype
-operator|.
-name|ConstraintViolationException
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google

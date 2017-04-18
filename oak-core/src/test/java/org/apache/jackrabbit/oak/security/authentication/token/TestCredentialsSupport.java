@@ -117,26 +117,6 @@ name|CredentialsSupport
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Dummy implementation of {@link CredentialsSupport} that only supports  * {@link org.apache.jackrabbit.oak.security.authentication.token.TestCredentialsSupport.Creds}  * and always returns the same user ID upon {@link CredentialsSupport#getUserId(Credentials)}.  */
 end_comment

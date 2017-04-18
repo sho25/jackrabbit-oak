@@ -53,16 +53,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|security
 operator|.
 name|auth
@@ -236,18 +226,6 @@ operator|.
 name|Assert
 operator|.
 name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
 import|;
 end_import
 

@@ -53,16 +53,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|security
 operator|.
 name|auth
