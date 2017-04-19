@@ -385,7 +385,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|commons
 operator|.
 name|TimeDurationFormatter
 import|;
