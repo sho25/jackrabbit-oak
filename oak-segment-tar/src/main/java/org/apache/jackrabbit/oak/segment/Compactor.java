@@ -1264,7 +1264,12 @@ else|else
 block|{
 name|child
 operator|=
+name|writer
+operator|.
+name|writeNode
+argument_list|(
 name|EMPTY_NODE
+argument_list|)
 operator|.
 name|builder
 argument_list|()
