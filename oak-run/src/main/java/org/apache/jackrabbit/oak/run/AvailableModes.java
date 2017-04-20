@@ -234,6 +234,15 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
+literal|"revisions"
+argument_list|,
+operator|new
+name|RevisionsCommand
+argument_list|()
+argument_list|)
+operator|.
+name|put
+argument_list|(
 literal|"recovery"
 argument_list|,
 operator|new
