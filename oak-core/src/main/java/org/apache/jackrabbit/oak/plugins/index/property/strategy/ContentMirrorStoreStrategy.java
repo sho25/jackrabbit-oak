@@ -389,7 +389,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|plugins
+operator|.
+name|index
+operator|.
+name|counter
 operator|.
 name|ApproximateCounter
 import|;

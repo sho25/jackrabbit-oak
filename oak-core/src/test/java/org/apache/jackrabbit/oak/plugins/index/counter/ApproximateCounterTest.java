@@ -13,7 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|plugins
+operator|.
+name|index
+operator|.
+name|counter
 package|;
 end_package
 
@@ -48,6 +52,26 @@ operator|.
 name|util
 operator|.
 name|Random
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|counter
+operator|.
+name|ApproximateCounter
 import|;
 end_import
 
