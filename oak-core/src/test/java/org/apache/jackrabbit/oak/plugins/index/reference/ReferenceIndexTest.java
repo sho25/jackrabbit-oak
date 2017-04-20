@@ -455,12 +455,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|write
-operator|.
 name|InitialContent
 operator|.
 name|INITIAL_CONTENT

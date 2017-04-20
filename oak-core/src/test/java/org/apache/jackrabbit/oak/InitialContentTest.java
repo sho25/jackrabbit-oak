@@ -12,12 +12,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|write
 package|;
 end_package
 

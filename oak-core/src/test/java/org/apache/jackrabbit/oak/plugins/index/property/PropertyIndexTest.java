@@ -265,12 +265,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|write
-operator|.
 name|InitialContent
 operator|.
 name|INITIAL_CONTENT
@@ -754,24 +748,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStateUtils
 import|;
 end_import
 
