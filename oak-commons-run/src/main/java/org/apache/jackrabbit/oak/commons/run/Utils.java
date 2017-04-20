@@ -64,6 +64,10 @@ specifier|public
 class|class
 name|Utils
 block|{
+specifier|private
+name|Utils
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|String

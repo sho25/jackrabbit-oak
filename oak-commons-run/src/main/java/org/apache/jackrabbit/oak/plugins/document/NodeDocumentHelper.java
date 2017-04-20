@@ -48,6 +48,10 @@ specifier|public
 class|class
 name|NodeDocumentHelper
 block|{
+specifier|private
+name|NodeDocumentHelper
+parameter_list|()
+block|{     }
 annotation|@
 name|Nonnull
 specifier|public
