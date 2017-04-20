@@ -15,9 +15,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|blob
-operator|.
 name|index
+operator|.
+name|datastore
 package|;
 end_package
 

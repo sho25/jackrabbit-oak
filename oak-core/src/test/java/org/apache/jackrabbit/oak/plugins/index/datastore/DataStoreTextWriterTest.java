@@ -15,9 +15,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|blob
-operator|.
 name|index
+operator|.
+name|datastore
 package|;
 end_package
 
@@ -124,26 +124,6 @@ operator|.
 name|datastore
 operator|.
 name|TextWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|blob
-operator|.
-name|index
-operator|.
-name|DataStoreTextWriter
 import|;
 end_import
 
