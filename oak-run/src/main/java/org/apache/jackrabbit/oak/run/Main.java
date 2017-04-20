@@ -27,9 +27,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
 name|run
+operator|.
+name|commons
 operator|.
 name|Command
 import|;
@@ -45,9 +45,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
 name|run
+operator|.
+name|commons
 operator|.
 name|Utils
 import|;

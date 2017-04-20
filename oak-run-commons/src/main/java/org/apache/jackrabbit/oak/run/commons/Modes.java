@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
 name|run
+operator|.
+name|commons
 package|;
 end_package
 
