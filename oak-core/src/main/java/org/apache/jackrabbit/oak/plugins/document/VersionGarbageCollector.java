@@ -637,6 +637,28 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|NodeDocument
+operator|.
+name|SplitDocType
+operator|.
+name|DEFAULT_NO_BRANCH
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
 name|UpdateOp
 operator|.
 name|Condition
@@ -723,6 +745,8 @@ argument_list|(
 name|DEFAULT_LEAF
 argument_list|,
 name|COMMIT_ROOT_ONLY
+argument_list|,
+name|DEFAULT_NO_BRANCH
 argument_list|)
 decl_stmt|;
 comment|/**      * Document id stored in settings collection that keeps info about version gc      */
@@ -2512,6 +2536,15 @@ operator|.
 name|getHeadRevision
 argument_list|()
 decl_stmt|;
+specifier|final
+name|RevisionVector
+name|sweepRevisions
+init|=
+name|nodeStore
+operator|.
+name|getSweepRevisions
+argument_list|()
+decl_stmt|;
 name|log
 operator|.
 name|info
@@ -2535,6 +2568,8 @@ expr_stmt|;
 name|collectSplitDocuments
 argument_list|(
 name|phases
+argument_list|,
+name|sweepRevisions
 argument_list|,
 name|rec
 argument_list|)
@@ -2624,6 +2659,9 @@ parameter_list|(
 name|GCPhases
 name|phases
 parameter_list|,
+name|RevisionVector
+name|sweepRevisions
+parameter_list|,
 name|Recommendations
 name|rec
 parameter_list|)
@@ -2645,6 +2683,8 @@ operator|.
 name|deleteSplitDocuments
 argument_list|(
 name|GC_TYPES
+argument_list|,
+name|sweepRevisions
 argument_list|,
 name|rec
 operator|.

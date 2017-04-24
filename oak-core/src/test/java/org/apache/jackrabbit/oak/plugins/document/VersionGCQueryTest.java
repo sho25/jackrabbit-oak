@@ -1019,6 +1019,26 @@ name|getAllPreviousDocs
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|Iterators
+operator|.
+name|size
+argument_list|(
+name|Utils
+operator|.
+name|getRootDocument
+argument_list|(
+name|store
+argument_list|)
+operator|.
+name|getAllPreviousDocs
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|clock
 operator|.
 name|waitUntil
@@ -1081,15 +1101,19 @@ operator|.
 name|deletedDocGCCount
 argument_list|)
 expr_stmt|;
+comment|// GC also cleans up the previous doc on root
 name|assertEquals
 argument_list|(
 name|numPrevDocs
+operator|+
+literal|1
 argument_list|,
 name|stats
 operator|.
 name|splitDocGCCount
 argument_list|)
 expr_stmt|;
+comment|// but only does find calls for previous docs of /test
 name|assertEquals
 argument_list|(
 name|numPrevDocs
@@ -1100,9 +1124,10 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// at the end only the root document remains
 name|assertEquals
 argument_list|(
-literal|2
+literal|1
 argument_list|,
 name|Iterables
 operator|.

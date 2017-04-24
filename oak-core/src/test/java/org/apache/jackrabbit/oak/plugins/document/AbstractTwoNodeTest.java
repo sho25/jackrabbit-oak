@@ -339,6 +339,15 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
+name|MongoUtils
+operator|.
+name|dropCollections
+argument_list|(
+name|MongoUtils
+operator|.
+name|DB
+argument_list|)
+expr_stmt|;
 name|clock
 operator|=
 operator|new
