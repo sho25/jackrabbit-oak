@@ -579,7 +579,7 @@ name|getNamePathMapper
 parameter_list|()
 block|{
 return|return
-name|NamePathMapperImpl
+name|NamePathMapper
 operator|.
 name|DEFAULT
 return|;
