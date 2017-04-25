@@ -346,7 +346,6 @@ comment|/**  * Implementation of {@link Value} based on {@code PropertyState}.  
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|ValueImpl
 implements|implements
