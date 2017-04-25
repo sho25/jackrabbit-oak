@@ -831,7 +831,7 @@ name|this
 operator|.
 name|ds
 operator|=
-name|nodeStore
+name|gcSupport
 operator|.
 name|getDocumentStore
 argument_list|()

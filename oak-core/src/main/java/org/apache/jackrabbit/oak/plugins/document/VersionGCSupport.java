@@ -111,6 +111,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -417,6 +427,18 @@ return|;
 block|}
 block|}
 argument_list|)
+return|;
+block|}
+comment|/**      * Returns the underlying document store.      *      * @return the underlying document store.      */
+annotation|@
+name|Nonnull
+specifier|public
+name|DocumentStore
+name|getDocumentStore
+parameter_list|()
+block|{
+return|return
+name|store
 return|;
 block|}
 name|void
