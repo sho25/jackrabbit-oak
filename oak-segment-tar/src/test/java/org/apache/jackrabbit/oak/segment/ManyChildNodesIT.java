@@ -378,11 +378,6 @@ name|getRoot
 argument_list|()
 argument_list|)
 operator|.
-name|withSegmentCacheSize
-argument_list|(
-literal|0
-argument_list|)
-operator|.
 name|withStringCacheSize
 argument_list|(
 literal|0
