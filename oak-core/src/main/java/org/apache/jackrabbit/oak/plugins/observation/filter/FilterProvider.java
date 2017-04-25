@@ -134,7 +134,9 @@ name|FilterConfigMBean
 name|getConfigMBean
 parameter_list|()
 function_decl|;
-comment|/**      * Allows providers to supply an EventAggregator that      * is used to adjust (aggregate) the event identifier before event      * creation (ie after event filtering).      */
+comment|/**      * Allows providers to supply an optional EventAggregator that      * is used to adjust (aggregate) the event identifier before event      * creation (ie after event filtering).      */
+annotation|@
+name|CheckForNull
 name|EventAggregator
 name|getEventAggregator
 parameter_list|()

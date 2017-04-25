@@ -69,6 +69,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|observation
@@ -318,7 +328,7 @@ name|EventFilter
 name|filter
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|EventAggregator
 name|aggregator
 parameter_list|)
