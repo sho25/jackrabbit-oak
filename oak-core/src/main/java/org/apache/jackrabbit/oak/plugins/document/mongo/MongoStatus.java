@@ -614,7 +614,6 @@ return|return
 name|version
 return|;
 block|}
-specifier|private
 name|boolean
 name|isVersion
 parameter_list|(
