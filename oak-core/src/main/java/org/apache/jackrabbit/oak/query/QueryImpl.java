@@ -5583,6 +5583,15 @@ name|traversal
 condition|)
 block|{
 case|case
+name|DEFAULT
+case|:
+comment|// not possible (changed to either FAIL or WARN above)
+throw|throw
+operator|new
+name|AssertionError
+argument_list|()
+throw|;
+case|case
 name|OK
 case|:
 break|break;
