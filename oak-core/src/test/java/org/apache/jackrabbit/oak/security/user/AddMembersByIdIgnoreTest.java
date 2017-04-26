@@ -31,6 +31,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
+name|ConstraintViolationException
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -40,6 +52,22 @@ operator|.
 name|collect
 operator|.
 name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
 import|;
 end_import
 
@@ -148,6 +176,30 @@ operator|.
 name|Assert
 operator|.
 name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 

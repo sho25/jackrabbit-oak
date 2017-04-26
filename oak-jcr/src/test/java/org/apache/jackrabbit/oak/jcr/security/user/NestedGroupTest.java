@@ -773,6 +773,13 @@ operator|.
 name|getCause
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|th
+operator|!=
+literal|null
+condition|)
+block|{
 name|assertTrue
 argument_list|(
 name|th
@@ -810,6 +817,7 @@ name|getCode
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
