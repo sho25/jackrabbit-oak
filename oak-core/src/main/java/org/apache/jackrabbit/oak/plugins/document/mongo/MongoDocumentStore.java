@@ -1261,6 +1261,46 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|NodeDocument
+operator|.
+name|SD_MAX_REV_TIME_IN_SECS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|NodeDocument
+operator|.
+name|SD_TYPE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
 name|mongo
 operator|.
 name|MongoUtils
@@ -1787,13 +1827,18 @@ expr_stmt|;
 block|}
 comment|// indexes:
 comment|// the _id field is the primary key, so we don't need to define it
-comment|// compound index on _modified and _id
-if|if
-condition|(
+name|long
+name|initialDocsCount
+init|=
 name|nodes
 operator|.
 name|count
 argument_list|()
+decl_stmt|;
+comment|// compound index on _modified and _id
+if|if
+condition|(
+name|initialDocsCount
 operator|==
 literal|0
 condition|)
@@ -1898,22 +1943,72 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// index on _sdType for fast lookup of split documents
+comment|// compound index on _sdType and _sdMaxRevTime
+if|if
+condition|(
+name|initialDocsCount
+operator|==
+literal|0
+condition|)
+block|{
+comment|// this is an empty store, create compound index
+comment|// on _sdType and _sdMaxRevTime (OAK-6129)
 name|createIndex
 argument_list|(
 name|nodes
 argument_list|,
-name|NodeDocument
-operator|.
+operator|new
+name|String
+index|[]
+block|{
 name|SD_TYPE
+block|,
+name|SD_MAX_REV_TIME_IN_SECS
+block|}
 argument_list|,
+operator|new
+name|boolean
+index|[]
+block|{
 literal|true
+block|,
+literal|true
+block|}
 argument_list|,
 literal|false
 argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|hasIndex
+argument_list|(
+name|nodes
+argument_list|,
+name|SD_TYPE
+argument_list|,
+name|SD_MAX_REV_TIME_IN_SECS
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Detected an upgrade from Oak version<= 1.6. For optimal "
+operator|+
+literal|"Revision GC performance it is recommended to create a "
+operator|+
+literal|"sparse compound index for the 'nodes' collection on "
+operator|+
+literal|"{_sdType:1, _sdMaxRevTime:1}."
+argument_list|)
+expr_stmt|;
+block|}
 comment|// index on _modified for journal entries
 name|createIndex
 argument_list|(
