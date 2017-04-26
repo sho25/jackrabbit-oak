@@ -819,24 +819,6 @@ name|oak
 operator|.
 name|upgrade
 operator|.
-name|RepositoryUpgrade
-operator|.
-name|markIndexesToBeRebuilt
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|upgrade
-operator|.
 name|nodestate
 operator|.
 name|NodeStateCopier
@@ -1614,11 +1596,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|markIndexesToBeRebuilt
-argument_list|(
-name|targetRoot
-argument_list|)
-expr_stmt|;
 comment|// type validation, reference and indexing hooks
 name|hooks
 operator|.
