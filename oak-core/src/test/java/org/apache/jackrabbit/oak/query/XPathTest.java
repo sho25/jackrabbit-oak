@@ -144,6 +144,70 @@ name|ParseException
 block|{
 name|verify
 argument_list|(
+literal|"(/jcr:root/a//* | /jcr:root/b//*) order by @jcr:score"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where isdescendantnode(a, '/a') "
+operator|+
+literal|"/* xpath: /jcr:root/a//* \n"
+operator|+
+literal|"order by @jcr:score */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where isdescendantnode(a, '/b') "
+operator|+
+literal|"/* xpath: /jcr:root/b//* "
+operator|+
+literal|"order by @jcr:score */ "
+operator|+
+literal|"order by [jcr:score]"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
+literal|"(/jcr:root/a//* | /jcr:root/b//* | /jcr:root/c//*) order by @jcr:score"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where isdescendantnode(a, '/a') "
+operator|+
+literal|"/* xpath: /jcr:root/a//* \n"
+operator|+
+literal|"order by @jcr:score */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where isdescendantnode(a, '/b') "
+operator|+
+literal|"/* xpath: /jcr:root/b//* \n"
+operator|+
+literal|"order by @jcr:score */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [nt:base] as a "
+operator|+
+literal|"where isdescendantnode(a, '/c') "
+operator|+
+literal|"/* xpath: /jcr:root/c//* "
+operator|+
+literal|"order by @jcr:score */ "
+operator|+
+literal|"order by [jcr:score]"
+argument_list|)
+expr_stmt|;
+name|verify
+argument_list|(
 literal|"//(element(*, nt:address))"
 argument_list|,
 literal|"select [jcr:path], [jcr:score], * "
@@ -725,9 +789,9 @@ name|sql
 operator|.
 name|replace
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|,
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 name|sql
