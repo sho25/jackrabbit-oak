@@ -3306,6 +3306,18 @@ block|}
 block|}
 else|else
 block|{
+name|sweepRevisions
+operator|=
+name|sweepRevisions
+operator|.
+name|pmax
+argument_list|(
+name|rootDoc
+operator|.
+name|getSweepRevisions
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -3366,18 +3378,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|sweepRevisions
-operator|=
-name|sweepRevisions
-operator|.
-name|pmax
-argument_list|(
-name|rootDoc
-operator|.
-name|getSweepRevisions
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// Renew the lease because it may have been stale
 name|renewClusterIdLease
 argument_list|()
