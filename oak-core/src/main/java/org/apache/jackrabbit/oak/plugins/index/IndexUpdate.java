@@ -1920,6 +1920,13 @@ name|getReport
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Reindexing completed"
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
