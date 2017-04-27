@@ -381,6 +381,10 @@ specifier|private
 name|Revision
 name|head
 decl_stmt|;
+specifier|private
+name|long
+name|documentCount
+decl_stmt|;
 comment|/**      * Creates a new sweeper for the given context. The sweeper is initialized      * in the constructor with the head revision provided by the revision      * context. This is the head revision used later when the documents are      * check for uncommitted changes in      * {@link #sweep(Iterable, NodeDocumentSweepListener)}.      *<p>      * In combination with {@code sweepNewerThanHead == false}, the revision      * context may return a head revision that is not up-to-date, as long as it      * is consistent with documents passed to the {@code sweep()} method. That      * is, the documents must reflect all changes visible from the provided head      * revision. The sweeper will then only revert uncommitted changes up to the      * head revision. With {@code sweepNewerThanHead == true}, the sweeper will      * also revert uncommitted changes that are newer than the head revision.      * This is usually only useful during recovery of a cluster node, when it is      * guaranteed that there are no in-progress commits newer than the current      * head revision.      *      * @param context the revision context.      * @param sweepNewerThanHead whether uncommitted changes newer than the head      *                 revision should be reverted.      */
 name|NodeDocumentSweeper
 parameter_list|(
@@ -495,6 +499,10 @@ name|getRevision
 argument_list|(
 name|clusterId
 argument_list|)
+expr_stmt|;
+name|documentCount
+operator|=
+literal|0
 expr_stmt|;
 if|if
 condition|(
@@ -899,6 +907,26 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+if|if
+condition|(
+operator|++
+name|documentCount
+operator|%
+literal|100000
+operator|==
+literal|0
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Checked {} documents so far"
+argument_list|,
+name|documentCount
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|op
