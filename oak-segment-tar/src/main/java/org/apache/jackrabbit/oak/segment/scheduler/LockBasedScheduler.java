@@ -793,7 +793,9 @@ operator|=
 operator|new
 name|ChangeDispatcher
 argument_list|(
-name|getHeadNodeState
+name|head
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getChildNode
