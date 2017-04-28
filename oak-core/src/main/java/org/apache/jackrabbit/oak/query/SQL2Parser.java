@@ -6951,6 +6951,10 @@ return|return;
 case|case
 name|CHAR_BRACKETED
 case|:
+name|currentTokenQuoted
+operator|=
+literal|true
+expr_stmt|;
 name|readString
 argument_list|(
 name|i
@@ -6977,6 +6981,10 @@ return|return;
 case|case
 name|CHAR_STRING
 case|:
+name|currentTokenQuoted
+operator|=
+literal|true
+expr_stmt|;
 name|readString
 argument_list|(
 name|i
@@ -6988,6 +6996,10 @@ return|return;
 case|case
 name|CHAR_QUOTED
 case|:
+name|currentTokenQuoted
+operator|=
+literal|true
+expr_stmt|;
 name|readString
 argument_list|(
 name|i

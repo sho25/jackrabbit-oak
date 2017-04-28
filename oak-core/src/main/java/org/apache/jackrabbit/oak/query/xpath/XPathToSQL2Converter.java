@@ -5423,6 +5423,10 @@ return|return;
 case|case
 name|CHAR_STRING
 case|:
+name|currentTokenQuoted
+operator|=
+literal|true
+expr_stmt|;
 if|if
 condition|(
 name|chars
