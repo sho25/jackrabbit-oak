@@ -93,6 +93,12 @@ name|KEY_COUNT_PROPERTY_NAME
 init|=
 literal|"keyCount"
 decl_stmt|;
+comment|/**      * The regular expression pattern of the values to be indexes.      */
+name|String
+name|VALUE_PATTERN
+init|=
+literal|"valuePattern"
+decl_stmt|;
 comment|/**      * Marks a unique property index.      */
 name|String
 name|UNIQUE_PROPERTY_NAME

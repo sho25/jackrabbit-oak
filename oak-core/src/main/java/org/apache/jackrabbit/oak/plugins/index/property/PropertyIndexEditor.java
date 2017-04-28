@@ -566,6 +566,11 @@ name|String
 argument_list|>
 name|propertyNames
 decl_stmt|;
+specifier|private
+specifier|final
+name|ValuePattern
+name|valuePattern
+decl_stmt|;
 comment|/** Type predicate, or {@code null} if there are no type restrictions */
 specifier|private
 specifier|final
@@ -744,6 +749,23 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|valuePattern
+operator|=
+operator|new
+name|ValuePattern
+argument_list|(
+name|definition
+operator|.
+name|getString
+argument_list|(
+name|IndexConstants
+operator|.
+name|VALUE_PATTERN
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// get declaring types, and all their subtypes
 comment|// TODO: should we reindex when type definitions change?
 if|if
@@ -885,6 +907,14 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
+name|valuePattern
+operator|=
+name|parent
+operator|.
+name|valuePattern
+expr_stmt|;
+name|this
+operator|.
 name|typePredicate
 operator|=
 name|parent
@@ -989,6 +1019,9 @@ name|keys
 parameter_list|,
 name|PropertyState
 name|property
+parameter_list|,
+name|ValuePattern
+name|pattern
 parameter_list|)
 block|{
 if|if
@@ -1038,6 +1071,8 @@ name|create
 argument_list|(
 name|property
 argument_list|)
+argument_list|,
+name|pattern
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1062,6 +1097,9 @@ argument_list|<
 name|String
 argument_list|>
 name|propertyNames
+parameter_list|,
+name|ValuePattern
+name|pattern
 parameter_list|)
 block|{
 name|Set
@@ -1104,6 +1142,8 @@ argument_list|(
 name|keys
 argument_list|,
 name|property
+argument_list|,
+name|pattern
 argument_list|)
 expr_stmt|;
 block|}
@@ -1245,6 +1285,8 @@ name|before
 argument_list|,
 name|getPropertyNames
 argument_list|()
+argument_list|,
+name|valuePattern
 argument_list|)
 expr_stmt|;
 name|afterKeys
@@ -1255,6 +1297,8 @@ name|after
 argument_list|,
 name|getPropertyNames
 argument_list|()
+argument_list|,
+name|valuePattern
 argument_list|)
 expr_stmt|;
 block|}
@@ -1845,6 +1889,8 @@ argument_list|(
 name|afterKeys
 argument_list|,
 name|after
+argument_list|,
+name|valuePattern
 argument_list|)
 expr_stmt|;
 block|}
@@ -1897,6 +1943,8 @@ argument_list|(
 name|beforeKeys
 argument_list|,
 name|before
+argument_list|,
+name|valuePattern
 argument_list|)
 expr_stmt|;
 name|afterKeys
@@ -1906,6 +1954,8 @@ argument_list|(
 name|afterKeys
 argument_list|,
 name|after
+argument_list|,
+name|valuePattern
 argument_list|)
 expr_stmt|;
 block|}
@@ -1955,6 +2005,8 @@ argument_list|(
 name|beforeKeys
 argument_list|,
 name|before
+argument_list|,
+name|valuePattern
 argument_list|)
 expr_stmt|;
 block|}
