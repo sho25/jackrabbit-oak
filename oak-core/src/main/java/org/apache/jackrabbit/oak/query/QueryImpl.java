@@ -5606,7 +5606,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|warn
 argument_list|(
 name|message
 argument_list|)
