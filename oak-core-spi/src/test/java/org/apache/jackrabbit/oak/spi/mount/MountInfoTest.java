@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|multiplex
+name|mount
 package|;
 end_package
 
@@ -63,6 +63,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|mount
+operator|.
+name|MountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -100,8 +118,6 @@ operator|new
 name|MountInfo
 argument_list|(
 literal|"foo"
-argument_list|,
-literal|false
 argument_list|,
 literal|false
 argument_list|,
@@ -220,8 +236,6 @@ literal|"foo"
 argument_list|,
 literal|false
 argument_list|,
-literal|false
-argument_list|,
 name|Collections
 operator|.
 expr|<
@@ -317,8 +331,6 @@ operator|new
 name|MountInfo
 argument_list|(
 literal|"foo"
-argument_list|,
-literal|false
 argument_list|,
 literal|false
 argument_list|,

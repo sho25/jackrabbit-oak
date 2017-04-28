@@ -253,11 +253,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|multiplex
+name|mount
 operator|.
-name|SimpleMountInfoProvider
+name|MountInfoProvider
 import|;
 end_import
 
@@ -275,7 +275,7 @@ name|spi
 operator|.
 name|mount
 operator|.
-name|MountInfoProvider
+name|Mounts
 import|;
 end_import
 
@@ -516,7 +516,7 @@ specifier|private
 name|MountInfoProvider
 name|mip
 init|=
-name|SimpleMountInfoProvider
+name|Mounts
 operator|.
 name|newBuilder
 argument_list|()

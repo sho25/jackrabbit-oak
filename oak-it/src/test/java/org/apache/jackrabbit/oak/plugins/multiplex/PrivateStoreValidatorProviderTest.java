@@ -1094,7 +1094,7 @@ condition|)
 block|{
 name|mountInfoProvider
 operator|=
-name|SimpleMountInfoProvider
+name|Mounts
 operator|.
 name|newBuilder
 argument_list|()
