@@ -111,6 +111,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -135,7 +149,7 @@ name|oak
 operator|.
 name|cache
 operator|.
-name|CacheStats
+name|AbstractCacheStats
 import|;
 end_import
 
@@ -256,20 +270,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Supplier
 import|;
 end_import
 
@@ -1529,7 +1529,7 @@ name|segment
 argument_list|)
 expr_stmt|;
 block|}
-name|CacheStats
+name|AbstractCacheStats
 name|stats
 init|=
 name|cache
