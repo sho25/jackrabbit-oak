@@ -143,6 +143,11 @@ name|long
 name|getUpdates
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the number of which have been read so far. This value is      * kept until the next cycle begins.      *      * @return the number of node read from the current run cycle. This value is      *         kept until the next cycle begins.      */
+name|long
+name|getNodesReadCount
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the current reference checkpoint used by the async indexer      *       * @return the reference checkpoint      */
 name|String
 name|getReferenceCheckpoint

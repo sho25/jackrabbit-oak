@@ -347,6 +347,10 @@ name|builder
 argument_list|,
 name|NOOP_CALLBACK
 argument_list|,
+name|NodeTraversalCallback
+operator|.
+name|NOOP
+argument_list|,
 name|info
 argument_list|,
 name|corruptIndexHandler
