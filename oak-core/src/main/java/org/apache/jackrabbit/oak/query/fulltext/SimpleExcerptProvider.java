@@ -353,6 +353,10 @@ name|maxFragmentSize
 init|=
 literal|150
 decl_stmt|;
+specifier|private
+name|SimpleExcerptProvider
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|String

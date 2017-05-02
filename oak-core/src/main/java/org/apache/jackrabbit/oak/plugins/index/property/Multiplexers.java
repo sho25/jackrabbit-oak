@@ -278,6 +278,10 @@ specifier|static
 name|boolean
 name|RO_PRIVATE_UNIQUE_INDEX
 decl_stmt|;
+specifier|private
+name|Multiplexers
+parameter_list|()
+block|{     }
 static|static
 block|{
 comment|// TODO OAK-4645 set default to true once the code is stable
