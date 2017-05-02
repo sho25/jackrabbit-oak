@@ -672,7 +672,7 @@ block|}
 specifier|public
 specifier|static
 name|RepositoryFixture
-name|getMultiplexing
+name|getFederatedStore
 parameter_list|(
 name|File
 name|base
@@ -700,11 +700,11 @@ name|OakRepositoryFixture
 argument_list|(
 name|OakFixture
 operator|.
-name|getMultiplexing
+name|getFederatedStore
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_MULTIPLEXING
+name|OAK_FEDERATED_STORE
 argument_list|,
 name|base
 argument_list|,
@@ -724,7 +724,7 @@ block|}
 specifier|public
 specifier|static
 name|RepositoryFixture
-name|getMultiplexingInMemory
+name|getFederatedMemoryStore
 parameter_list|(
 name|int
 name|mounts
@@ -739,11 +739,11 @@ name|OakRepositoryFixture
 argument_list|(
 name|OakFixture
 operator|.
-name|getMultiplexingInMemory
+name|getFederatedMemoryStore
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_MULTIPLEXING_MEMORY
+name|OAK_FEDERATED_MEMORY_STORE
 argument_list|,
 name|mounts
 argument_list|,

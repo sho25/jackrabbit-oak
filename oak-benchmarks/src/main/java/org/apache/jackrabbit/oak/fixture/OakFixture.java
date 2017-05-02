@@ -343,17 +343,17 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|OAK_MULTIPLEXING
+name|OAK_FEDERATED_STORE
 init|=
-literal|"Oak-Multiplexing"
+literal|"Oak-Federated"
 decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|OAK_MULTIPLEXING_MEMORY
+name|OAK_FEDERATED_MEMORY_STORE
 init|=
-literal|"Oak-Multiplexing-Memory"
+literal|"Oak-Federated-Memory"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1650,7 +1650,7 @@ block|}
 specifier|public
 specifier|static
 name|OakFixture
-name|getMultiplexing
+name|getFederatedStore
 parameter_list|(
 specifier|final
 name|String
@@ -1683,7 +1683,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MultiplexingFixture
+name|FederatedFixture
 argument_list|(
 name|name
 argument_list|,
@@ -1704,7 +1704,7 @@ block|}
 specifier|public
 specifier|static
 name|OakFixture
-name|getMultiplexingInMemory
+name|getFederatedMemoryStore
 parameter_list|(
 specifier|final
 name|String
@@ -1721,7 +1721,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MultiplexingFixture
+name|FederatedFixture
 argument_list|(
 name|name
 argument_list|,

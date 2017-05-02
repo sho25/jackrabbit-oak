@@ -161,11 +161,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|federated
 operator|.
-name|multiplex
-operator|.
-name|MultiplexingMemoryFixture
+name|FederatedMemoryFixture
 import|;
 end_import
 
@@ -179,11 +177,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|federated
 operator|.
-name|multiplex
-operator|.
-name|MultiplexingSegmentFixture
+name|FederatedSegmentFixture
 import|;
 end_import
 
@@ -264,20 +260,20 @@ specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|MULTIPLEXED_SEGMENT
+name|FEDERATED_SEGMENT
 init|=
 operator|new
-name|MultiplexingSegmentFixture
+name|FederatedSegmentFixture
 argument_list|()
 decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|MULTIPLEXED_MEM
+name|FEDERATED_MEM
 init|=
 operator|new
-name|MultiplexingMemoryFixture
+name|FederatedMemoryFixture
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -431,7 +427,7 @@ name|FixturesHelper
 operator|.
 name|Fixture
 operator|.
-name|MULTIPLEXED_SEGMENT
+name|FEDERATED_SEGMENT
 argument_list|)
 condition|)
 block|{
@@ -439,7 +435,7 @@ name|configuredFixtures
 operator|.
 name|add
 argument_list|(
-name|MULTIPLEXED_SEGMENT
+name|FEDERATED_SEGMENT
 argument_list|)
 expr_stmt|;
 block|}
@@ -453,7 +449,7 @@ name|FixturesHelper
 operator|.
 name|Fixture
 operator|.
-name|MULTIPLEXED_MEM
+name|FEDERATED_MEM
 argument_list|)
 condition|)
 block|{
@@ -461,7 +457,7 @@ name|configuredFixtures
 operator|.
 name|add
 argument_list|(
-name|MULTIPLEXED_MEM
+name|FEDERATED_MEM
 argument_list|)
 expr_stmt|;
 block|}

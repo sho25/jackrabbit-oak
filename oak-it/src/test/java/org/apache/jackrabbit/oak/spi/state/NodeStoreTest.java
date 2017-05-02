@@ -3518,13 +3518,13 @@ name|fixture
 operator|==
 name|NodeStoreFixtures
 operator|.
-name|MULTIPLEXED_SEGMENT
+name|FEDERATED_MEM
 operator|||
 name|fixture
 operator|==
 name|NodeStoreFixtures
 operator|.
-name|MULTIPLEXED_MEM
+name|FEDERATED_SEGMENT
 condition|)
 block|{
 name|assertTrue

@@ -1798,7 +1798,7 @@ name|accepts
 argument_list|(
 literal|"mounts"
 argument_list|,
-literal|"Number of mounts for multiplexing node store."
+literal|"Number of mounts for the federated node store."
 argument_list|)
 operator|.
 name|withOptionalArg
@@ -2269,7 +2269,7 @@ argument_list|)
 block|,
 name|OakRepositoryFixture
 operator|.
-name|getMultiplexing
+name|getFederatedStore
 argument_list|(
 name|base
 operator|.
@@ -2306,7 +2306,7 @@ argument_list|)
 block|,
 name|OakRepositoryFixture
 operator|.
-name|getMultiplexingInMemory
+name|getFederatedMemoryStore
 argument_list|(
 name|mounts
 operator|.
