@@ -60,7 +60,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Same as {@link #getString()} unless that names and paths are returned in their      * Oak representation instead of being mapped to their JCR representation.      * @return  A String representation of the value of this property.      */
+comment|/**      * Returns the Oak internal String representation of a value. Thus, similar      * to {@link javax.jcr.Value#getString()} but ignoring any JCR specific namespace      * mapping.      * @return  A String representation of the value of this property.      */
 name|String
 name|getOakString
 parameter_list|()
