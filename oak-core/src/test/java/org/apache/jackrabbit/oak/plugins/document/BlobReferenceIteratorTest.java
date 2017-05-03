@@ -289,6 +289,11 @@ annotation|@
 name|Parameterized
 operator|.
 name|Parameters
+argument_list|(
+name|name
+operator|=
+literal|"{0}"
+argument_list|)
 specifier|public
 specifier|static
 name|java
@@ -359,6 +364,36 @@ name|Object
 index|[]
 block|{
 name|mongo
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+name|DocumentStoreFixture
+name|rdb
+init|=
+operator|new
+name|DocumentStoreFixture
+operator|.
+name|RDBFixture
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|rdb
+operator|.
+name|isAvailable
+argument_list|()
+condition|)
+block|{
+name|fixtures
+operator|.
+name|add
+argument_list|(
+operator|new
+name|Object
+index|[]
+block|{
+name|rdb
 block|}
 argument_list|)
 expr_stmt|;
@@ -441,7 +476,7 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-comment|//1. Set some single value Binary property
+comment|// 1. Set some single value Binary property
 for|for
 control|(
 name|int
