@@ -92,7 +92,7 @@ class|class
 name|MultiplexersLucene
 block|{
 comment|/**      * Prefix used to decorate mount names to represent index directory      */
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -100,7 +100,7 @@ name|INDEX_DIR_SUFFIX
 init|=
 literal|"-index-data"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
