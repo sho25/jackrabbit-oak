@@ -778,6 +778,9 @@ literal|null
 argument_list|)
 decl_stmt|;
 name|Predicate
+argument_list|<
+name|Authorizable
+argument_list|>
 name|groupFilter
 init|=
 operator|new
@@ -1896,9 +1899,6 @@ name|authorizableIds
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
 argument_list|()
 decl_stmt|;
 annotation|@
