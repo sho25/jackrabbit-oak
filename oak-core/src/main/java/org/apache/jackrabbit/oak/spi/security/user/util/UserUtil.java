@@ -727,7 +727,7 @@ condition|(
 operator|!
 name|Text
 operator|.
-name|isDescendant
+name|isDescendantOrEqual
 argument_list|(
 name|path
 argument_list|,

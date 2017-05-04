@@ -52,6 +52,14 @@ name|FUNCTION_RESTRICTION_PREFIX
 init|=
 literal|"function*"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SEARCH_ROOT_PATH
+init|=
+literal|"/jcr:root"
+decl_stmt|;
 block|}
 end_class
 
