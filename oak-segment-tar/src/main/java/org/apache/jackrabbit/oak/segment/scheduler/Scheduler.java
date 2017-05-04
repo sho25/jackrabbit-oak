@@ -23,16 +23,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|Closeable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Map
@@ -62,24 +52,6 @@ operator|.
 name|api
 operator|.
 name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|Observer
 import|;
 end_import
 
@@ -160,14 +132,6 @@ comment|/**      * Returns the latest state of the tree.      * @return the late
 name|NodeState
 name|getHeadNodeState
 parameter_list|()
-function_decl|;
-comment|/**      * Register a new {@code Observer}. Clients need to call {@link Closeable#close()}       * to stop getting notifications on the registered observer and to free up any resources      * associated with the registration.      *       * @return a {@code Closeable} instance.      */
-name|Closeable
-name|addObserver
-parameter_list|(
-name|Observer
-name|observer
-parameter_list|)
 function_decl|;
 block|}
 end_interface
