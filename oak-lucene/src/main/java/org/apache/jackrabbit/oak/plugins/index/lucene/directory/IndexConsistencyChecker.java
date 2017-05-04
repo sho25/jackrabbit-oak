@@ -562,6 +562,10 @@ specifier|final
 name|File
 name|workDirRoot
 decl_stmt|;
+specifier|private
+name|File
+name|workDir
+decl_stmt|;
 specifier|public
 enum|enum
 name|Level
@@ -783,6 +787,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * Checks the index at given path for consistency      *      * @param rootState root state of repository      * @param indexPath path of index which needs to be checked      * @param workDirRoot directory which would be used for copying the index file locally to perform      *                    check. File would be created in a subdirectory. If the index is valid      *                    then the files would be removed otherwise whatever files have been copied      *                    would be left as is      */
 specifier|public
 name|IndexConsistencyChecker
 parameter_list|(
@@ -912,12 +917,19 @@ argument_list|,
 name|watch
 argument_list|)
 expr_stmt|;
+name|FileUtils
+operator|.
+name|deleteQuietly
+argument_list|(
+name|workDir
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
 name|log
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"[] Problems detected with this index. Time taken {}"
 argument_list|,
@@ -926,6 +938,28 @@ argument_list|,
 name|watch
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|workDir
+operator|!=
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"[] Index files are copied to {}"
+argument_list|,
+name|indexPath
+argument_list|,
+name|workDir
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
 name|result
@@ -970,9 +1004,8 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|File
 name|workDir
-init|=
+operator|=
 name|createWorkDir
 argument_list|(
 name|workDirRoot
@@ -984,7 +1017,7 @@ argument_list|(
 name|indexPath
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 for|for
 control|(
 name|String
