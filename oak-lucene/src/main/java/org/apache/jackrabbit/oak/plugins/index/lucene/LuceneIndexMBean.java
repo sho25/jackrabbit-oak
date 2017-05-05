@@ -297,7 +297,9 @@ function_decl|;
 annotation|@
 name|Description
 argument_list|(
-literal|"Performs consistency check for all Lucene indexes"
+literal|"Performs consistency check for all Lucene indexes and reports true if all indexes are found "
+operator|+
+literal|"to be valid. False if any one of them was not found to be valid"
 argument_list|)
 name|boolean
 name|checkConsistencyOfAllIndexes
