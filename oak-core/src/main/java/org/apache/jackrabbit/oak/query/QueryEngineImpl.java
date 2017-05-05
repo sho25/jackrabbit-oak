@@ -1356,7 +1356,7 @@ argument_list|()
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"No alternatives found. Query: {}"
 argument_list|,
