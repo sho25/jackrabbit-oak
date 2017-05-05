@@ -523,7 +523,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Iterator
+name|Iterable
 argument_list|<
 name|String
 argument_list|>
@@ -593,6 +593,24 @@ operator|+
 literal|"nodetype index. Cannot determine the paths of all indexes"
 argument_list|)
 expr_stmt|;
+return|return
+operator|new
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Iterator
+argument_list|<
+name|String
+argument_list|>
+name|iterator
+parameter_list|()
+block|{
 name|Iterator
 argument_list|<
 name|IndexRow
@@ -650,6 +668,9 @@ return|;
 block|}
 block|}
 argument_list|)
+return|;
+block|}
+block|}
 return|;
 block|}
 specifier|private

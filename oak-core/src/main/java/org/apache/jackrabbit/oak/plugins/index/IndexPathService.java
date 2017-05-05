@@ -19,23 +19,13 @@ name|index
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
 begin_interface
 specifier|public
 interface|interface
 name|IndexPathService
 block|{
 comment|/**      * Returns all index definitions paths present in the repository      */
-name|Iterator
+name|Iterable
 argument_list|<
 name|String
 argument_list|>
