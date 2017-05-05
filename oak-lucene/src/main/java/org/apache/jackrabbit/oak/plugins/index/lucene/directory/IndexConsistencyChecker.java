@@ -1244,7 +1244,7 @@ name|watch
 expr_stmt|;
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"[{}] Starting check"
 argument_list|,
@@ -1455,7 +1455,7 @@ argument_list|)
 expr_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"[{}] Checking directory {}"
 argument_list|,

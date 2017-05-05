@@ -265,6 +265,63 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Performs consistency check for all Lucene indexes and reports in simple format"
+argument_list|)
+name|String
+index|[]
+name|checkAndReportConsistencyOfAllIndexes
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"fullCheck"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"If set to true a full check would be performed which can be slow as "
+operator|+
+literal|"it reads all index files. If set to false a quick check is performed to "
+operator|+
+literal|"check if all blobs referred in index files are present in BlobStore"
+argument_list|)
+name|boolean
+name|fullCheck
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Performs consistency check for all Lucene indexes"
+argument_list|)
+name|boolean
+name|checkConsistencyOfAllIndexes
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"fullCheck"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"If set to true a full check would be performed which can be slow as "
+operator|+
+literal|"it reads all index files. If set to false a quick check is performed to "
+operator|+
+literal|"check if all blobs referred in index files are present in BlobStore"
+argument_list|)
+name|boolean
+name|fullCheck
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 
