@@ -670,6 +670,10 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+specifier|private
+name|Stopwatch
+name|watch
+decl_stmt|;
 specifier|public
 name|void
 name|dump
@@ -709,7 +713,7 @@ name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"\t Size : %s%n"
+literal|"\tSize : %s%n"
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
@@ -803,6 +807,15 @@ name|pw
 argument_list|)
 expr_stmt|;
 block|}
+name|pw
+operator|.
+name|printf
+argument_list|(
+literal|"Time taken : %s%n"
+argument_list|,
+name|watch
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -894,7 +907,7 @@ name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"\t Size     : %s%n"
+literal|"\tSize     : %s%n"
 argument_list|,
 name|humanReadableByteCount
 argument_list|(
@@ -906,7 +919,7 @@ name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"\t Num docs : %d%n"
+literal|"\tNum docs : %d%n"
 argument_list|,
 name|numDocs
 argument_list|)
@@ -924,7 +937,7 @@ name|pw
 operator|.
 name|println
 argument_list|(
-literal|"Missing Files"
+literal|"\tMissing Files"
 argument_list|)
 expr_stmt|;
 for|for
@@ -939,7 +952,7 @@ name|pw
 operator|.
 name|println
 argument_list|(
-literal|"\t - "
+literal|"\t\t- "
 operator|+
 name|file
 argument_list|)
@@ -1129,6 +1142,28 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+return|return
+name|check
+argument_list|(
+name|level
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+specifier|public
+name|Result
+name|check
+parameter_list|(
+name|Level
+name|level
+parameter_list|,
+name|boolean
+name|cleanWorkDir
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|Stopwatch
 name|watch
 init|=
@@ -1155,6 +1190,12 @@ operator|.
 name|clean
 operator|=
 literal|true
+expr_stmt|;
+name|result
+operator|.
+name|watch
+operator|=
+name|watch
 expr_stmt|;
 name|log
 operator|.
@@ -1207,13 +1248,6 @@ argument_list|,
 name|watch
 argument_list|)
 expr_stmt|;
-name|FileUtils
-operator|.
-name|deleteQuietly
-argument_list|(
-name|workDir
-argument_list|)
-expr_stmt|;
 block|}
 else|else
 block|{
@@ -1228,6 +1262,21 @@ argument_list|,
 name|watch
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|cleanWorkDir
+condition|)
+block|{
+name|FileUtils
+operator|.
+name|deleteQuietly
+argument_list|(
+name|workDir
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|workDir
@@ -1237,7 +1286,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|info
 argument_list|(
 literal|"[] Index files are copied to {}"
 argument_list|,
@@ -1250,7 +1299,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+name|watch
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 return|return
 name|result
 return|;
