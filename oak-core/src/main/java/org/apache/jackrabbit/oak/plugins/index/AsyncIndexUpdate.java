@@ -5372,6 +5372,17 @@ annotation|@
 name|Override
 specifier|public
 name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
 name|getStart
 parameter_list|()
 block|{

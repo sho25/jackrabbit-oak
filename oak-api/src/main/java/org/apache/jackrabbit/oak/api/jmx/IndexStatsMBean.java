@@ -92,6 +92,11 @@ name|STATUS_INTERRUPTED
 init|=
 literal|"interrupted"
 decl_stmt|;
+comment|/**      * Name of the async indexing lane      */
+name|String
+name|getName
+parameter_list|()
+function_decl|;
 comment|/**      * @return The time the indexing job stared at, or {@code ""} if it is      *         not currently running.      */
 name|String
 name|getStart
