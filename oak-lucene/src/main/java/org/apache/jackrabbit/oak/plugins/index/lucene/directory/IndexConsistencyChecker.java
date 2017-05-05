@@ -1286,7 +1286,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"[] No problems were detected with this index. Time taken {}"
+literal|"[{}] No problems were detected with this index. Time taken {}"
 argument_list|,
 name|indexPath
 argument_list|,
@@ -1300,7 +1300,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"[] Problems detected with this index. Time taken {}"
+literal|"[{}] Problems detected with this index. Time taken {}"
 argument_list|,
 name|indexPath
 argument_list|,
@@ -1333,7 +1333,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"[] Index files are copied to {}"
+literal|"[{}] Index files are copied to {}"
 argument_list|,
 name|indexPath
 argument_list|,
@@ -1455,7 +1455,7 @@ argument_list|)
 expr_stmt|;
 name|log
 operator|.
-name|warn
+name|info
 argument_list|(
 literal|"[{}] Checking directory {}"
 argument_list|,
