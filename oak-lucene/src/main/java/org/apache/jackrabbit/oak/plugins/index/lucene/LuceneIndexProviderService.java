@@ -1907,6 +1907,16 @@ name|indexProvider
 operator|.
 name|getTracker
 argument_list|()
+argument_list|,
+name|nodeStore
+argument_list|,
+operator|new
+name|File
+argument_list|(
+name|indexDir
+argument_list|,
+literal|"indexCheckDir"
+argument_list|)
 argument_list|)
 argument_list|,
 name|LuceneIndexMBean
