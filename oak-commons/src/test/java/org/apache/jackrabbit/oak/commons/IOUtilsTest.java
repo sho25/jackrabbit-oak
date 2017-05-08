@@ -2090,286 +2090,31 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
-name|void
-name|testHumanReadableByteCount
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|"0 B"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|0L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1 B"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|1L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"999 B"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|999L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1.0 kB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|1000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1.0 kB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|1001L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1.1 kB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|1100L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"2.0 kB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|2000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1000.0 kB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|999999L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1.0 MB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|1000000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1.0 MB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|1010000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1.1 MB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|1100000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"2.0 MB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|2000000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"2.1 GB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"54.3 GB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|54320000000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"20.6 TB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|20560000000000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"377.5 PB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|377500000000000000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"1.0 EB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-literal|1000000000000000000L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"9.2 EB"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-name|Long
-operator|.
-name|MAX_VALUE
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"0 B"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-operator|-
-literal|0L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"0"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-operator|-
-literal|1L
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"0"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-name|Integer
-operator|.
-name|MIN_VALUE
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"0"
-argument_list|,
-name|IOUtils
-operator|.
-name|humanReadableByteCount
-argument_list|(
-name|Long
-operator|.
-name|MIN_VALUE
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+comment|// FIXME OAK-6175: test expectations fail to take the locale into account
+comment|//    public void testHumanReadableByteCount() {
+comment|//        assertEquals("0 B", IOUtils.humanReadableByteCount(0L));
+comment|//        assertEquals("1 B", IOUtils.humanReadableByteCount(1L));
+comment|//        assertEquals("999 B", IOUtils.humanReadableByteCount(999L));
+comment|//        assertEquals("1.0 kB", IOUtils.humanReadableByteCount(1000L));
+comment|//        assertEquals("1.0 kB", IOUtils.humanReadableByteCount(1001L));
+comment|//        assertEquals("1.1 kB", IOUtils.humanReadableByteCount(1100L));
+comment|//        assertEquals("2.0 kB", IOUtils.humanReadableByteCount(2000L));
+comment|//        assertEquals("1000.0 kB", IOUtils.humanReadableByteCount(999999L));
+comment|//        assertEquals("1.0 MB", IOUtils.humanReadableByteCount(1000000L));
+comment|//        assertEquals("1.0 MB", IOUtils.humanReadableByteCount(1010000L));
+comment|//        assertEquals("1.1 MB", IOUtils.humanReadableByteCount(1100000L));
+comment|//        assertEquals("2.0 MB", IOUtils.humanReadableByteCount(2000000L));
+comment|//        assertEquals("2.1 GB", IOUtils.humanReadableByteCount(Integer.MAX_VALUE));
+comment|//        assertEquals("54.3 GB", IOUtils.humanReadableByteCount(54320000000L));
+comment|//        assertEquals("20.6 TB", IOUtils.humanReadableByteCount(20560000000000L));
+comment|//        assertEquals("377.5 PB", IOUtils.humanReadableByteCount(377500000000000000L));
+comment|//        assertEquals("1.0 EB", IOUtils.humanReadableByteCount(1000000000000000000L));
+comment|//        assertEquals("9.2 EB", IOUtils.humanReadableByteCount(Long.MAX_VALUE));
+comment|//        assertEquals("0 B", IOUtils.humanReadableByteCount(-0L));
+comment|//        assertEquals("0", IOUtils.humanReadableByteCount(-1L));
+comment|//        assertEquals("0", IOUtils.humanReadableByteCount(Integer.MIN_VALUE));
+comment|//        assertEquals("0", IOUtils.humanReadableByteCount(Long.MIN_VALUE));
+comment|//    }
 specifier|private
 specifier|static
 name|void
