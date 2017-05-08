@@ -15183,7 +15183,7 @@ return|return
 name|blobSerializer
 return|;
 block|}
-comment|/**      * Returns an iterator for all the blob present in the store.      *      *<p>In some cases the iterator might implement {@link java.io.Closeable}. So      * callers should check for such iterator and close them</p>      *      * @see org.apache.jackrabbit.oak.plugins.document.mongo.MongoBlobReferenceIterator      * @return an iterator for all the blobs      */
+comment|/**      * Returns an iterator for all the blob present in the store.      *      *<p>In some cases the iterator might implement {@link java.io.Closeable}. So      * callers should check for such iterator and close them.      *      * @return an iterator for all the blobs      */
 specifier|public
 name|Iterator
 argument_list|<
