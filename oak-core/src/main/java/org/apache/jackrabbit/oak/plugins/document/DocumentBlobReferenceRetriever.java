@@ -23,16 +23,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|Closeable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Iterator
@@ -52,22 +42,6 @@ operator|.
 name|api
 operator|.
 name|Blob
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -140,6 +114,26 @@ operator|.
 name|blob
 operator|.
 name|ReferencedBlob
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
 import|;
 end_import
 
@@ -227,13 +221,17 @@ name|ReferencedBlob
 argument_list|>
 name|blobIterator
 init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|blobIterator
+operator|=
 name|nodeStore
 operator|.
 name|getReferencedBlobsIterator
 argument_list|()
-decl_stmt|;
-try|try
-block|{
+expr_stmt|;
 while|while
 condition|(
 name|blobIterator
@@ -261,8 +259,8 @@ decl_stmt|;
 name|referencesFound
 operator|++
 expr_stmt|;
-comment|//TODO this mode would also add in memory blobId
-comment|//Would that be an issue
+comment|// TODO this mode would also add in memory blobId
+comment|// Would that be an issue
 if|if
 condition|(
 name|blob
@@ -293,9 +291,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//TODO Should not rely on toString. Instead obtain
-comment|//secure reference and convert that to blobId using
-comment|//blobStore
+comment|// TODO Should not rely on toString. Instead obtain
+comment|// secure reference and convert that to blobId using
+comment|// blobStore
 name|collector
 operator|.
 name|addReference
@@ -316,24 +314,13 @@ block|}
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|blobIterator
-operator|instanceof
-name|Closeable
-condition|)
-block|{
-name|IOUtils
+name|Utils
 operator|.
-name|closeQuietly
+name|closeIfCloseable
 argument_list|(
-operator|(
-name|Closeable
-operator|)
 name|blobIterator
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|log
 operator|.

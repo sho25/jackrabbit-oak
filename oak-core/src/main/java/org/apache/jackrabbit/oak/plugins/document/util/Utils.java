@@ -2761,6 +2761,15 @@ else|:
 name|b
 return|;
 block|}
+comment|// default batch size for paging through a document store
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_BATCH_SIZE
+init|=
+literal|100
+decl_stmt|;
 comment|/**      * Returns an {@link Iterable} over all {@link NodeDocument}s in the given      * store. The returned {@linkplain Iterable} does not guarantee a consistent      * view on the store. it may return documents that have been added to the      * store after this method had been called.      *      * @param store      *            a {@link DocumentStore}.      * @return an {@link Iterable} over all documents in the store.      */
 specifier|public
 specifier|static
@@ -2783,6 +2792,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|0
+argument_list|,
+name|DEFAULT_BATCH_SIZE
 argument_list|)
 return|;
 block|}
@@ -2843,7 +2854,42 @@ return|return
 name|root
 return|;
 block|}
-comment|/**      * Returns an {@link Iterable} over all {@link NodeDocument}s in the given      * store matching a condition on an<em>indexed property</em>. The returned      * {@link Iterable} does not guarantee a consistent view on the store.      * it may return documents that have been added to the store after this      * method had been called.      *      * @param store      *            a {@link DocumentStore}.      * @param indexedProperty the name of the indexed property.      * @param startValue the lower bound value for the indexed property      *                   (inclusive).      * @return an {@link Iterable} over all documents in the store matching the      *         condition      */
+comment|/**      * Returns an {@link Iterable} over all {@link NodeDocument}s in the given      * store matching a condition on an<em>indexed property</em>. The returned      * {@link Iterable} does not guarantee a consistent view on the store.      * it may return documents that have been added to the store after this      * method had been called.      *      * @param store      *            a {@link DocumentStore}.      * @param indexedProperty the name of the indexed property.      * @param startValue the lower bound value for the indexed property      *                   (inclusive).      * @param batchSize number of documents to fetch at once      * @return an {@link Iterable} over all documents in the store matching the      *         condition      */
+specifier|public
+specifier|static
+name|Iterable
+argument_list|<
+name|NodeDocument
+argument_list|>
+name|getSelectedDocuments
+parameter_list|(
+name|DocumentStore
+name|store
+parameter_list|,
+name|String
+name|indexedProperty
+parameter_list|,
+name|long
+name|startValue
+parameter_list|,
+name|int
+name|batchSize
+parameter_list|)
+block|{
+return|return
+name|internalGetSelectedDocuments
+argument_list|(
+name|store
+argument_list|,
+name|indexedProperty
+argument_list|,
+name|startValue
+argument_list|,
+name|batchSize
+argument_list|)
+return|;
+block|}
+comment|/**      * Like {@link #getSelectedDocuments(DocumentStore, String, long, int)} with      * a default {@code batchSize}.      */
 specifier|public
 specifier|static
 name|Iterable
@@ -2870,6 +2916,8 @@ argument_list|,
 name|indexedProperty
 argument_list|,
 name|startValue
+argument_list|,
+name|DEFAULT_BATCH_SIZE
 argument_list|)
 return|;
 block|}
@@ -2892,8 +2940,27 @@ parameter_list|,
 specifier|final
 name|long
 name|startValue
+parameter_list|,
+specifier|final
+name|int
+name|batchSize
 parameter_list|)
 block|{
+if|if
+condition|(
+name|batchSize
+operator|<
+literal|2
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"batchSize must be> 1"
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|Iterable
@@ -2920,14 +2987,6 @@ name|NodeDocument
 argument_list|>
 argument_list|()
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|BATCH_SIZE
-init|=
-literal|100
-decl_stmt|;
 specifier|private
 name|String
 name|startId
@@ -3040,7 +3099,7 @@ name|NodeDocument
 operator|.
 name|MAX_ID_VALUE
 argument_list|,
-name|BATCH_SIZE
+name|batchSize
 argument_list|)
 else|:
 name|store
@@ -3061,7 +3120,7 @@ name|indexedProperty
 argument_list|,
 name|startValue
 argument_list|,
-name|BATCH_SIZE
+name|batchSize
 argument_list|)
 decl_stmt|;
 return|return
