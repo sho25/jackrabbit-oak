@@ -926,10 +926,10 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * Get the value that is equal or higher than this value, and that is a      * power of two.      *      * @param x the original value      * @return the next power of two value      */
+comment|/**      * Get the value that is equal or higher than this value, and that is a      * power of two.  The returned value will be in the range [0, 2^31].      * If the input is less than zero, the result of 1 is returned (powers of      * negative numbers are not integer values).      *      * @param x the original value.      * @return the next power of two value.  Results are always in the      * range [0, 2^31].      */
 specifier|public
 specifier|static
-name|int
+name|long
 name|nextPowerOf2
 parameter_list|(
 name|int
@@ -946,16 +946,6 @@ condition|(
 name|i
 operator|<
 name|x
-operator|&&
-name|i
-operator|<
-operator|(
-name|Integer
-operator|.
-name|MAX_VALUE
-operator|/
-literal|2
-operator|)
 condition|)
 block|{
 name|i
@@ -964,9 +954,6 @@ name|i
 expr_stmt|;
 block|}
 return|return
-operator|(
-name|int
-operator|)
 name|i
 return|;
 block|}
