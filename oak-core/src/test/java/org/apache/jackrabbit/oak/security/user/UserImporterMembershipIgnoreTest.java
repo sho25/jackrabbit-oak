@@ -537,7 +537,7 @@ name|i
 operator|<=
 name|MembershipWriter
 operator|.
-name|DEFAULT_MEMBERSHIP_THRESHHOLD
+name|DEFAULT_MEMBERSHIP_THRESHOLD
 condition|;
 name|i
 operator|++
