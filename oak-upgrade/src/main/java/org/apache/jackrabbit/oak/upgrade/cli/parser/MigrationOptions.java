@@ -239,6 +239,11 @@ name|skipCheckpoints
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|forceCheckpoints
+decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|srcUser
 decl_stmt|;
@@ -644,6 +649,19 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|forceCheckpoints
+operator|=
+name|args
+operator|.
+name|hasOption
+argument_list|(
+name|OptionParserFactory
+operator|.
+name|FORCE_CHECKPOINTS
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|srcUser
 operator|=
 name|args
@@ -998,6 +1016,15 @@ parameter_list|()
 block|{
 return|return
 name|skipCheckpoints
+return|;
+block|}
+specifier|public
+name|boolean
+name|isForceCheckpoints
+parameter_list|()
+block|{
+return|return
+name|forceCheckpoints
 return|;
 block|}
 specifier|public
@@ -1496,6 +1523,19 @@ operator|.
 name|info
 argument_list|(
 literal|"Checkpoints won't be migrated"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|forceCheckpoints
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Checkpoints will be migrated even with the custom paths specified"
 argument_list|)
 expr_stmt|;
 block|}

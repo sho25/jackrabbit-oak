@@ -967,6 +967,16 @@ name|isSkipCheckpoints
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|sidegrade
+operator|.
+name|setForceCheckpoints
+argument_list|(
+name|options
+operator|.
+name|isForceCheckpoints
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|sidegrade
 return|;

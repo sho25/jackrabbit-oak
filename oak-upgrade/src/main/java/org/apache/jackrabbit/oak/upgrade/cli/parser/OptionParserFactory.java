@@ -304,6 +304,14 @@ literal|"skip-checkpoints"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|String
+name|FORCE_CHECKPOINTS
+init|=
+literal|"force-checkpoints"
+decl_stmt|;
+specifier|public
+specifier|static
 name|OptionParser
 name|create
 parameter_list|()
@@ -907,6 +915,15 @@ argument_list|(
 name|SKIP_CHECKPOINTS
 argument_list|,
 literal|"Don't copy checkpoints on the full segment->segment migration"
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|FORCE_CHECKPOINTS
+argument_list|,
+literal|"Copy checkpoints even if the --include,exclude,merge-paths option is specified"
 argument_list|)
 expr_stmt|;
 block|}
