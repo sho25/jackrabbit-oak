@@ -77,6 +77,16 @@ name|Socket
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/**  * Input/output utility methods.  */
 end_comment
@@ -1177,6 +1187,10 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|,
 literal|"%.1f %sB"
 argument_list|,
 name|bytes
