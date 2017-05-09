@@ -330,7 +330,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The NodeStateCopier and NodeStateCopier.Builder classes allow  * recursively copying a NodeState to a NodeBuilder.  *<br>  * The copy algorithm is optimized for copying nodes between two  * different NodeStore instances, i.e. where comparing NodeStates  * is imprecise and/or expensive.  *<br>  * The algorithm does a post-order traversal. I.e. it copies  * changed leaf-nodes first.  *<br>  * The work for a traversal without any differences between  * {@code source} and {@code target} is equivalent to the single  * execution of a naive equals implementation.  *<br>  *<b>Usage:</b> For most use-cases the Builder API should be  * preferred. It allows setting {@code includePaths},  * {@code excludePaths} and {@code mergePaths}.  *<br>  *<b>Include paths:</b> if include paths are set, only these paths  * and their sub-trees are copied. Any nodes that are not within the  * scope of an include path are<i>implicitly excluded</i>.  *<br>  *<b>Exclude paths:</b> if exclude paths are set, any nodes matching  * or below the excluded path are not copied. If an excluded node does  * exist in the target, it is removed (see also merge paths).  *<b>Merge paths:</b> if merge paths are set, any nodes matching or  * below the merged path will not be deleted from target, even if they  * are missing in (or excluded from) the source.  */
+comment|/**  * The NodeStateCopier and NodeStateCopier.Builder classes allow  * recursively copying a NodeState to a NodeBuilder.  *<br>  * The copy algorithm is optimized for copying nodes between two  * different NodeStore instances, i.e. where comparing NodeStates  * is imprecise and/or expensive.  *<br>  * The algorithm does a post-order traversal. I.e. it copies  * changed leaf-nodes first.  *<br>  * The work for a traversal without any differences between  * {@code source} and {@code target} is equivalent to the single  * execution of a naive equals implementation.  *<br>  *<b>Usage:</b> For most use-cases the Builder API should be  * preferred. It allows setting {@code includePaths},  * {@code excludePaths} and {@code mergePaths}.  *<br>  *<b>Include paths:</b> if include paths are set, only these paths  * and their sub-trees are copied. Any nodes that are not within the  * scope of an include path are<i>implicitly excluded</i>.  *<br>  *<b>Exclude paths:</b> if exclude paths are set, any nodes matching  * or below the excluded path are not copied. If an excluded node does  * exist in the target, it is removed (see also merge paths).  *<b>Exclude fragments:</b> if exclude fragments are set, nodes with names  * matching any of the fragments (and their subtrees) are not copied. If an  * excluded node does exist in the target, it is removed.  *<b>Merge paths:</b> if merge paths are set, any nodes matching or  * below the merged path will not be deleted from target, even if they  * are missing in (or excluded from) the source.  */
 end_comment
 
 begin_class
@@ -375,6 +375,14 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
+name|excludeFragments
+decl_stmt|;
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|mergePaths
 decl_stmt|;
 specifier|private
@@ -396,6 +404,12 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
+name|excludeFragments
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|mergePaths
 parameter_list|)
 block|{
@@ -410,6 +424,12 @@ operator|.
 name|excludePaths
 operator|=
 name|excludePaths
+expr_stmt|;
+name|this
+operator|.
+name|excludeFragments
+operator|=
+name|excludeFragments
 expr_stmt|;
 name|this
 operator|.
@@ -618,6 +638,10 @@ argument_list|,
 name|this
 operator|.
 name|excludePaths
+argument_list|,
+name|this
+operator|.
+name|excludeFragments
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -1174,6 +1198,16 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
+name|excludeFragments
+init|=
+name|emptySet
+argument_list|()
+decl_stmt|;
+specifier|private
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|mergePaths
 init|=
 name|emptySet
@@ -1183,7 +1217,7 @@ specifier|private
 name|Builder
 parameter_list|()
 block|{}
-comment|/**          * Set include paths.          *          * @param paths include paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set)          */
+comment|/**          * Set include paths.          *          * @param paths include paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set, Set)          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1225,7 +1259,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Convenience wrapper for {@link #include(Set)}.          *          * @param paths include paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set)          */
+comment|/**          * Convenience wrapper for {@link #include(Set)}.          *          * @param paths include paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set, Set)          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1252,7 +1286,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**          * Set exclude paths.          *          * @param paths exclude paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set)          */
+comment|/**          * Set exclude paths.          *          * @param paths exclude paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set, Set)          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1294,7 +1328,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Convenience wrapper for {@link #exclude(Set)}.          *          * @param paths exclude paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set)          */
+comment|/**          * Convenience wrapper for {@link #exclude(Set)}.          *          * @param paths exclude paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set, Set)          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1321,7 +1355,76 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**          * Set merge paths.          *          * @param paths merge paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set)          */
+comment|/**          * Set exclude fragments.          *          * @param fragments exclude fragments          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set, Set)          */
+annotation|@
+name|Nonnull
+specifier|public
+name|Builder
+name|excludeFragments
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|fragments
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|checkNotNull
+argument_list|(
+name|fragments
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|this
+operator|.
+name|excludeFragments
+operator|=
+name|copyOf
+argument_list|(
+name|fragments
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Convenience wrapper for {@link #exclude(Set)}.          *          * @param fragments exclude fragments          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set, Set)          */
+annotation|@
+name|Nonnull
+specifier|public
+name|Builder
+name|excludeFragments
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+modifier|...
+name|fragments
+parameter_list|)
+block|{
+return|return
+name|exclude
+argument_list|(
+name|copyOf
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|fragments
+argument_list|)
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**          * Set merge paths.          *          * @param paths merge paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set, Set)          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1363,7 +1466,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Convenience wrapper for {@link #merge(Set)}.          *          * @param paths merge paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set)          */
+comment|/**          * Convenience wrapper for {@link #merge(Set)}.          *          * @param paths merge paths          * @return this Builder instance          * @see NodeStateCopier#NodeStateCopier(Set, Set, Set, Set)          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1418,6 +1521,8 @@ argument_list|(
 name|includePaths
 argument_list|,
 name|excludePaths
+argument_list|,
+name|excludeFragments
 argument_list|,
 name|mergePaths
 argument_list|)

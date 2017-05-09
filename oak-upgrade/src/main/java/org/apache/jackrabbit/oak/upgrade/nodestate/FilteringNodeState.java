@@ -175,7 +175,15 @@ name|String
 argument_list|>
 name|excludedPaths
 decl_stmt|;
-comment|/**      * Factory method that conditionally decorates the given node-state      * iff the node-state is (a) hidden itself or (b) has hidden descendants.      *      * @param path The path where the node-state should be assumed to be located.      * @param delegate The node-state to decorate.      * @param includePaths A Set of paths that should be visible. Defaults to ["/"] if {@code null}.      * @param excludePaths A Set of paths that should be hidden. Empty if {@code null}.      * @return The decorated node-state if required, the original node-state if decoration is unnecessary.      */
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|excludedFragments
+decl_stmt|;
+comment|/**      * Factory method that conditionally decorates the given node-state      * iff the node-state is (a) hidden itself or (b) has hidden descendants.      *      * @param path The path where the node-state should be assumed to be located.      * @param delegate The node-state to decorate.      * @param includePaths A Set of paths that should be visible. Defaults to ["/"] if {@code null}.      * @param excludePaths A Set of paths that should be hidden. Empty if {@code null}.      * @param excludedFragments A Set of name fragments that should be hidden. Empty if {@code null}.      * @return The decorated node-state if required, the original node-state if decoration is unnecessary.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -212,6 +220,15 @@ argument_list|<
 name|String
 argument_list|>
 name|excludePaths
+parameter_list|,
+annotation|@
+name|Nullable
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|excludedFragments
 parameter_list|)
 block|{
 specifier|final
@@ -242,6 +259,20 @@ argument_list|,
 name|NONE
 argument_list|)
 decl_stmt|;
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|safeExcludedFragments
+init|=
+name|defaultIfEmpty
+argument_list|(
+name|excludedFragments
+argument_list|,
+name|NONE
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|hasHiddenDescendants
@@ -251,6 +282,8 @@ argument_list|,
 name|includes
 argument_list|,
 name|excludes
+argument_list|,
+name|safeExcludedFragments
 argument_list|)
 condition|)
 block|{
@@ -265,6 +298,8 @@ argument_list|,
 name|includes
 argument_list|,
 name|excludes
+argument_list|,
+name|safeExcludedFragments
 argument_list|)
 return|;
 block|}
@@ -304,6 +339,15 @@ argument_list|<
 name|String
 argument_list|>
 name|excludedPaths
+parameter_list|,
+annotation|@
+name|Nonnull
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|excludedFragments
 parameter_list|)
 block|{
 name|super
@@ -328,6 +372,12 @@ operator|.
 name|excludedPaths
 operator|=
 name|excludedPaths
+expr_stmt|;
+name|this
+operator|.
+name|excludedFragments
+operator|=
+name|excludedFragments
 expr_stmt|;
 block|}
 annotation|@
@@ -374,6 +424,8 @@ argument_list|,
 name|includedPaths
 argument_list|,
 name|excludedPaths
+argument_list|,
+name|excludedFragments
 argument_list|)
 return|;
 block|}
@@ -411,6 +463,8 @@ argument_list|,
 name|includedPaths
 argument_list|,
 name|excludedPaths
+argument_list|,
+name|excludedFragments
 argument_list|)
 return|;
 block|}
@@ -436,7 +490,7 @@ name|propertyState
 argument_list|)
 return|;
 block|}
-comment|/**      * Utility method to determine whether a given path should is hidden given the      * include paths and exclude paths.      *      * @param path Path to be checked      * @param includes Include paths      * @param excludes Exclude paths      * @return Whether the {@code path} is hidden or not.      */
+comment|/**      * Utility method to determine whether a given path should is hidden given the      * include paths and exclude paths.      *      * @param path Path to be checked      * @param includes Include paths      * @param excludes Exclude paths      * @param excludedFragments Exclude fragments      * @return Whether the {@code path} is hidden or not.      */
 specifier|private
 specifier|static
 name|boolean
@@ -465,6 +519,15 @@ argument_list|<
 name|String
 argument_list|>
 name|excludes
+parameter_list|,
+annotation|@
+name|Nonnull
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|excludedFragments
 parameter_list|)
 block|{
 return|return
@@ -473,6 +536,8 @@ argument_list|(
 name|path
 argument_list|,
 name|excludes
+argument_list|,
+name|excludedFragments
 argument_list|)
 operator|||
 operator|!
@@ -484,7 +549,7 @@ name|includes
 argument_list|)
 return|;
 block|}
-comment|/**      * Utility method to determine whether the path itself or any of its descendants should      * be hidden given the include paths and exclude paths.      *      * @param path Path to be checked      * @param includePaths Include paths      * @param excludePaths Exclude paths      * @return Whether the {@code path} or any of its descendants are hidden or not.      */
+comment|/**      * Utility method to determine whether the path itself or any of its descendants should      * be hidden given the include paths and exclude paths.      *      * @param path Path to be checked      * @param includePaths Include paths      * @param excludePaths Exclude paths      * @param excludedFragments Exclude fragments      * @return Whether the {@code path} or any of its descendants are hidden or not.      */
 specifier|private
 specifier|static
 name|boolean
@@ -513,6 +578,15 @@ argument_list|<
 name|String
 argument_list|>
 name|excludePaths
+parameter_list|,
+annotation|@
+name|Nonnull
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|excludedFragments
 parameter_list|)
 block|{
 return|return
@@ -523,6 +597,8 @@ argument_list|,
 name|includePaths
 argument_list|,
 name|excludePaths
+argument_list|,
+name|excludedFragments
 argument_list|)
 operator|||
 name|isAncestorOfAnyPath
@@ -585,7 +661,7 @@ name|includePaths
 argument_list|)
 return|;
 block|}
-comment|/**      * Utility method to check whether a given set of exclude paths cover the given      * {@code path}. I.e. whether the path is hidden due to the presence of a      * matching exclude path.      *      * @param path Path to be checked      * @param excludePaths Exclude paths      * @return Whether the path is covered by the excldue paths or not.      */
+comment|/**      * Utility method to check whether a given set of exclude paths cover the given      * {@code path}. I.e. whether the path is hidden due to the presence of a      * matching exclude path.      *      * @param path Path to be checked      * @param excludePaths Exclude paths      * @param excludedFragments Exclude fragments      * @return Whether the path is covered by the excldue paths or not.      */
 specifier|private
 specifier|static
 name|boolean
@@ -605,6 +681,15 @@ argument_list|<
 name|String
 argument_list|>
 name|excludePaths
+parameter_list|,
+annotation|@
+name|Nonnull
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|excludedFragments
 parameter_list|)
 block|{
 return|return
@@ -620,6 +705,13 @@ argument_list|(
 name|path
 argument_list|,
 name|excludePaths
+argument_list|)
+operator|||
+name|containsAnyFragment
+argument_list|(
+name|path
+argument_list|,
+name|excludedFragments
 argument_list|)
 return|;
 block|}
@@ -715,6 +807,56 @@ argument_list|(
 name|p
 argument_list|,
 name|descendant
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+return|return
+literal|false
+return|;
+block|}
+comment|/**      * Utility method to check whether the passed path contains any of the provided {@code fragments}.      *      * @param path Path      * @param fragments Fragments, which the path may contain      * @return true if {@code path} contains any of the {@code fragments}, false otherwise.      */
+specifier|private
+specifier|static
+name|boolean
+name|containsAnyFragment
+parameter_list|(
+annotation|@
+name|Nonnull
+specifier|final
+name|String
+name|path
+parameter_list|,
+annotation|@
+name|Nonnull
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|fragments
+parameter_list|)
+block|{
+for|for
+control|(
+specifier|final
+name|String
+name|f
+range|:
+name|fragments
+control|)
+block|{
+if|if
+condition|(
+name|path
+operator|.
+name|contains
+argument_list|(
+name|f
 argument_list|)
 condition|)
 block|{

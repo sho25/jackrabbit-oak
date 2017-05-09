@@ -242,6 +242,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|EXCLUDE_FRAGMENTS
+init|=
+literal|"exclude-fragments"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|MERGE_PATHS
 init|=
 literal|"merge-paths"
@@ -680,6 +688,25 @@ argument_list|(
 name|EXCLUDE_PATHS
 argument_list|,
 literal|"Comma-separated list of paths to exclude during copy."
+argument_list|)
+operator|.
+name|withRequiredArg
+argument_list|()
+operator|.
+name|ofType
+argument_list|(
+name|String
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|EXCLUDE_FRAGMENTS
+argument_list|,
+literal|"Comma-separated list of fragments to exclude during copy."
 argument_list|)
 operator|.
 name|withRequiredArg

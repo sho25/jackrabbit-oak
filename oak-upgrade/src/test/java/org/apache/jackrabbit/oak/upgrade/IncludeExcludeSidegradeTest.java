@@ -469,6 +469,13 @@ argument_list|)
 expr_stmt|;
 name|sidegrade
 operator|.
+name|setExcludeFragments
+argument_list|(
+literal|"oak-mount-libs-xyz"
+argument_list|)
+expr_stmt|;
+name|sidegrade
+operator|.
 name|copy
 argument_list|()
 expr_stmt|;
