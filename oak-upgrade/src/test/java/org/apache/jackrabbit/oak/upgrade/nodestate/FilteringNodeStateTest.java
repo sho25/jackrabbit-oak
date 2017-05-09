@@ -652,6 +652,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertSame
@@ -682,6 +684,8 @@ argument_list|,
 name|rootNodeState
 argument_list|,
 name|DEFAULT_INCLUDES
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -720,6 +724,8 @@ argument_list|,
 name|DEFAULT_EXCLUDES
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertSame
@@ -752,6 +758,8 @@ argument_list|,
 name|DEFAULT_INCLUDES
 argument_list|,
 name|DEFAULT_EXCLUDES
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -802,6 +810,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertSame
@@ -846,6 +856,8 @@ name|of
 argument_list|(
 literal|"/content"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -899,6 +911,8 @@ name|of
 argument_list|(
 literal|"/content/foo/de"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -1022,6 +1036,8 @@ name|of
 argument_list|(
 literal|"/content/foo"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -1194,6 +1210,8 @@ literal|"/content/foo/de"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1277,6 +1295,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertNotSame
@@ -1314,6 +1334,8 @@ literal|"/apps"
 argument_list|,
 literal|"/libs"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -1374,6 +1396,8 @@ literal|"/libs"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertExistingHasChildNode
@@ -1425,6 +1449,8 @@ literal|"/libs"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertExistingChildNodeName
@@ -1470,6 +1496,8 @@ name|of
 argument_list|(
 literal|"/content"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -1530,6 +1558,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertExistingHasChildNode
@@ -1575,6 +1605,8 @@ name|of
 argument_list|(
 literal|"/content"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -1631,6 +1663,8 @@ literal|"/content"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertMissingChildNodeName
@@ -1659,6 +1693,8 @@ name|of
 argument_list|(
 literal|"/content/foo"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -1701,6 +1737,8 @@ name|of
 argument_list|(
 literal|"/content"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -1746,6 +1784,8 @@ name|of
 argument_list|(
 literal|"/content/foo"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -1809,6 +1849,8 @@ literal|"/content/foo"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertExistingChildNodeName
@@ -1868,6 +1910,8 @@ literal|"/content/foo/de"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1924,6 +1968,8 @@ name|of
 argument_list|(
 literal|"/content/foo"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -1985,6 +2031,8 @@ literal|"/content/foo/de"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -2041,6 +2089,8 @@ name|of
 argument_list|(
 literal|"/content/foo"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)

@@ -316,7 +316,7 @@ name|JcrUtils
 operator|.
 name|getOrCreateByPath
 argument_list|(
-literal|"/content/assets/foo/oak-mount-libs-xyz/node1"
+literal|"/content/other/path/foo/oak-mount-libs-xyz/node1"
 argument_list|,
 literal|"nt:folder"
 argument_list|,
@@ -327,7 +327,7 @@ name|JcrUtils
 operator|.
 name|getOrCreateByPath
 argument_list|(
-literal|"/content/assets/foo/oak-mount-libs-xyz/node2"
+literal|"/content/other/path/foo/oak-mount-libs-xyz/node2"
 argument_list|,
 literal|"nt:folder"
 argument_list|,
@@ -338,7 +338,7 @@ name|JcrUtils
 operator|.
 name|getOrCreateByPath
 argument_list|(
-literal|"/content/assets/foo/oak-mount-apps-abc/node3"
+literal|"/content/other/path/foo/oak-mount-apps-abc/node3"
 argument_list|,
 literal|"nt:folder"
 argument_list|,
@@ -349,7 +349,7 @@ name|JcrUtils
 operator|.
 name|getOrCreateByPath
 argument_list|(
-literal|"/content/assets/foo/oak-mount-apps-abc/node4"
+literal|"/content/other/path/foo/oak-mount-apps-abc/node4"
 argument_list|,
 literal|"nt:folder"
 argument_list|,
@@ -422,6 +422,8 @@ argument_list|(
 literal|"/content/foo/en"
 argument_list|,
 literal|"/content/assets/foo"
+argument_list|,
+literal|"/content/other"
 argument_list|)
 expr_stmt|;
 name|upgrade
@@ -442,6 +444,13 @@ operator|.
 name|setExcludeFragments
 argument_list|(
 literal|"oak-mount-libs-xyz"
+argument_list|)
+expr_stmt|;
+name|upgrade
+operator|.
+name|setFragmentPaths
+argument_list|(
+literal|"/content/other/path"
 argument_list|)
 expr_stmt|;
 name|upgrade
@@ -483,9 +492,9 @@ literal|"/content/assets/foo/2015/01"
 argument_list|,
 literal|"/content/assets/foo/2014"
 argument_list|,
-literal|"/content/assets/foo/oak-mount-apps-abc/node3"
+literal|"/content/other/path/foo/oak-mount-apps-abc/node3"
 argument_list|,
-literal|"/content/assets/foo/oak-mount-apps-abc/node4"
+literal|"/content/other/path/foo/oak-mount-apps-abc/node4"
 argument_list|)
 expr_stmt|;
 block|}
@@ -527,9 +536,9 @@ literal|"/content/assets/foo/2011"
 argument_list|,
 literal|"/content/assets/foo/2010"
 argument_list|,
-literal|"/content/assets/foo/oak-mount-libs-xyz/node1"
+literal|"/content/other/path/foo/oak-mount-libs-xyz/node1"
 argument_list|,
-literal|"/content/assets/foo/oak-mount-libs-xyz/node2"
+literal|"/content/other/path/foo/oak-mount-libs-xyz/node2"
 argument_list|)
 expr_stmt|;
 block|}

@@ -242,6 +242,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|FRAGMENT_PATHS
+init|=
+literal|"fragment-paths"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|EXCLUDE_FRAGMENTS
 init|=
 literal|"exclude-fragments"
@@ -696,6 +704,25 @@ argument_list|(
 name|EXCLUDE_PATHS
 argument_list|,
 literal|"Comma-separated list of paths to exclude during copy."
+argument_list|)
+operator|.
+name|withRequiredArg
+argument_list|()
+operator|.
+name|ofType
+argument_list|(
+name|String
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|FRAGMENT_PATHS
+argument_list|,
+literal|"Comma-separated list of paths supporting fragments."
 argument_list|)
 operator|.
 name|withRequiredArg

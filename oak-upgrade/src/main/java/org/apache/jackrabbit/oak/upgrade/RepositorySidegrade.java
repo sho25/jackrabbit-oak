@@ -785,6 +785,24 @@ name|upgrade
 operator|.
 name|RepositoryUpgrade
 operator|.
+name|DEFAULT_FRAGMENT_PATHS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|upgrade
+operator|.
+name|RepositoryUpgrade
+operator|.
 name|DEFAULT_INCLUDE_PATHS
 import|;
 end_import
@@ -995,6 +1013,16 @@ name|excludePaths
 init|=
 name|DEFAULT_EXCLUDE_PATHS
 decl_stmt|;
+comment|/**      * Paths supporting fragments during the copy process. Empty by default.      */
+specifier|private
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|fragmentPaths
+init|=
+name|DEFAULT_FRAGMENT_PATHS
+decl_stmt|;
 comment|/**      * Fragments to exclude during the copy process. Empty by default.      */
 specifier|private
 name|Set
@@ -1203,6 +1231,31 @@ argument_list|(
 name|checkNotNull
 argument_list|(
 name|excludes
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets the paths that should support the fragments.      *      * @param fragmentPaths Paths that should support fragments.      */
+specifier|public
+name|void
+name|setFragmentPaths
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+modifier|...
+name|fragmentPaths
+parameter_list|)
+block|{
+name|this
+operator|.
+name|fragmentPaths
+operator|=
+name|copyOf
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|fragmentPaths
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1891,6 +1944,8 @@ name|includePaths
 argument_list|,
 name|excludePaths
 argument_list|,
+name|fragmentPaths
+argument_list|,
 name|excludeFragments
 argument_list|)
 expr_stmt|;
@@ -2084,6 +2139,8 @@ argument_list|,
 name|includePaths
 argument_list|,
 name|excludePaths
+argument_list|,
+name|fragmentPaths
 argument_list|,
 name|excludeFragments
 argument_list|)
@@ -2369,6 +2426,13 @@ name|equals
 argument_list|(
 name|DEFAULT_MERGE_PATHS
 argument_list|)
+operator|&&
+name|fragmentPaths
+operator|.
+name|equals
+argument_list|(
+name|DEFAULT_FRAGMENT_PATHS
+argument_list|)
 return|;
 block|}
 specifier|private
@@ -2476,6 +2540,11 @@ operator|.
 name|exclude
 argument_list|(
 name|excludes
+argument_list|)
+operator|.
+name|supportFragment
+argument_list|(
+name|fragmentPaths
 argument_list|)
 operator|.
 name|excludeFragments
