@@ -830,6 +830,9 @@ name|subject
 argument_list|)
 expr_stmt|;
 block|}
+name|clearState
+argument_list|()
+expr_stmt|;
 return|return
 literal|true
 return|;
