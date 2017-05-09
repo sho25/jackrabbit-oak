@@ -10062,6 +10062,11 @@ argument_list|>
 name|externalChanges
 parameter_list|,
 annotation|@
+name|Nonnull
+name|RevisionVector
+name|sweepRevs
+parameter_list|,
+annotation|@
 name|Nullable
 name|Iterable
 argument_list|<
@@ -10132,6 +10137,16 @@ block|}
 name|setRoot
 argument_list|(
 name|newHead
+argument_list|)
+expr_stmt|;
+comment|// update sweep revisions
+name|sweepRevisions
+operator|=
+name|sweepRevisions
+operator|.
+name|pmax
+argument_list|(
+name|sweepRevs
 argument_list|)
 expr_stmt|;
 name|commitQueue

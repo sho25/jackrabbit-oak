@@ -389,7 +389,7 @@ name|void
 name|invalidateCache
 parameter_list|()
 function_decl|;
-comment|/**      * Called when the current head should be updated with revisions of external      * changes.      *      * @param externalChanges the head revision of other cluster nodes that      *                        changed and should now be considered visible.      * @param changedPaths paths of nodes that are affected by those external      *                     changes.      */
+comment|/**      * Called when the current head should be updated with revisions of external      * changes.      *      * @param externalChanges the head revision of other cluster nodes that      *                        changed and should now be considered visible.      * @param sweepRevisions the current sweep revisions.      * @param changedPaths paths of nodes that are affected by those external      *                     changes.      */
 specifier|abstract
 name|void
 name|updateHead
@@ -401,6 +401,11 @@ argument_list|<
 name|Revision
 argument_list|>
 name|externalChanges
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RevisionVector
+name|sweepRevisions
 parameter_list|,
 annotation|@
 name|Nullable
@@ -854,6 +859,11 @@ block|{
 name|updateHead
 argument_list|(
 name|externalChanges
+argument_list|,
+name|doc
+operator|.
+name|getSweepRevisions
+argument_list|()
 argument_list|,
 name|externalSort
 argument_list|)

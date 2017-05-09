@@ -1313,6 +1313,17 @@ name|long
 name|oldestRevTimeStamp
 parameter_list|)
 block|{
+name|List
+argument_list|<
+name|Integer
+argument_list|>
+name|gcTypeCodes
+init|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|()
+decl_stmt|;
 name|QueryBuilder
 name|orClause
 init|=
@@ -1327,6 +1338,16 @@ range|:
 name|gcTypes
 control|)
 block|{
+name|gcTypeCodes
+operator|.
+name|add
+argument_list|(
+name|type
+operator|.
+name|typeCode
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|DBObject
@@ -1360,9 +1381,9 @@ argument_list|(
 name|SD_TYPE
 argument_list|)
 operator|.
-name|exists
+name|in
 argument_list|(
-literal|true
+name|gcTypeCodes
 argument_list|)
 operator|.
 name|get
@@ -1442,8 +1463,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|// default split type is special because we can only remove those
-comment|// older than sweep rev
+comment|// default_no_branch split type is special because we can
+comment|// only remove those older than sweep rev
 name|List
 argument_list|<
 name|DBObject
