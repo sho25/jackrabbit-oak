@@ -543,7 +543,6 @@ literal|1
 decl_stmt|;
 comment|// 255
 comment|/**      * The number of bytes (or bits of address space) to use for the      * alignment boundary of segment records.      */
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -553,7 +552,6 @@ literal|2
 decl_stmt|;
 comment|// align at the four-byte boundary
 comment|/**      * Maximum segment size. Record identifiers are stored as three-byte      * sequences with the first byte indicating the segment and the next      * two the offset within that segment. Since all records are aligned      * at four-byte boundaries, the two bytes can address up to 256kB of      * record data.      */
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -579,7 +577,6 @@ operator|<<
 literal|7
 decl_stmt|;
 comment|/**      * The size limit for medium values. The variable length of medium values      * is encoded as two bytes with the highest bits of the first byte set to      * one and zero, which gives us 14 bits for encoding the length of the      * value. And since small values are never stored as medium ones, we can      * extend the size range to cover that many longer values.      */
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -598,7 +595,6 @@ operator|+
 name|SMALL_LIMIT
 decl_stmt|;
 comment|/**      * Maximum size of small blob IDs. A small blob ID is stored in a value      * record whose length field contains the pattern "1110" in its most      * significant bits. Since two bytes are used to store both the bit pattern      * and the actual length of the blob ID, a maximum of 2^12 values can be      * stored in the length field.      */
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -608,7 +604,6 @@ literal|1
 operator|<<
 literal|12
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -616,7 +611,6 @@ name|GC_GENERATION_OFFSET
 init|=
 literal|10
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -624,7 +618,6 @@ name|REFERENCED_SEGMENT_ID_COUNT_OFFSET
 init|=
 literal|14
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -674,7 +667,6 @@ name|SegmentReferences
 name|segmentReferences
 decl_stmt|;
 comment|/**      * Align an {@code address} on the given {@code boundary}      *      * @param address     address to align      * @param boundary    boundary to align to      * @return  {@code n = address + a} such that {@code n % boundary == 0} and      *          {@code 0<= a< boundary}.      */
-specifier|public
 specifier|static
 name|int
 name|align
@@ -1651,7 +1643,7 @@ name|REFERENCED_SEGMENT_ID_COUNT_OFFSET
 argument_list|)
 return|;
 block|}
-specifier|public
+specifier|private
 name|int
 name|getRecordNumberCount
 parameter_list|()
@@ -1745,7 +1737,6 @@ decl_stmt|;
 comment|/**      * Returns the segment meta data of this segment or {@code null} if none is present.      *<p>      * The segment meta data is a string of the format {@code "{wid=W,sno=S,gc=G,t=T}"}      * where:      *<ul>      *<li>{@code W} is the writer id {@code wid},</li>      *<li>{@code S} is a unique, increasing sequence number corresponding to the allocation order      * of the segments in this store,</li>      *<li>{@code G} is the garbage collection generation (i.e. the number of compaction cycles      * that have been run),</li>      *<li>{@code T} is a time stamp according to {@link System#currentTimeMillis()}.</li>      *</ul>      * @return the segment meta data      */
 annotation|@
 name|CheckForNull
-specifier|public
 name|String
 name|getSegmentInfo
 parameter_list|()
@@ -3643,7 +3634,6 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Estimate of how much memory this instance would occupy in the segment      * cache.      */
-specifier|public
 name|int
 name|estimateMemoryUsage
 parameter_list|()

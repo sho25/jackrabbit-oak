@@ -143,7 +143,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|Segment
+name|SegmentBlob
 import|;
 end_import
 
@@ -159,7 +159,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentBlob
+name|SegmentTestConstants
 import|;
 end_import
 
@@ -325,7 +325,7 @@ name|Exception
 block|{
 name|testBlobIdWithLength
 argument_list|(
-name|Segment
+name|SegmentTestConstants
 operator|.
 name|BLOB_ID_SMALL_LIMIT
 operator|-
@@ -345,7 +345,7 @@ name|Exception
 block|{
 name|testBlobIdWithLength
 argument_list|(
-name|Segment
+name|SegmentTestConstants
 operator|.
 name|BLOB_ID_SMALL_LIMIT
 argument_list|)
@@ -376,7 +376,7 @@ decl_stmt|;
 name|long
 name|blobLength
 init|=
-name|Segment
+name|SegmentTestConstants
 operator|.
 name|MEDIUM_LIMIT
 decl_stmt|;
