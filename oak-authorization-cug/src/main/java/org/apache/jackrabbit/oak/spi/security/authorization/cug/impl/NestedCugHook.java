@@ -492,6 +492,9 @@ name|HIDDEN_NESTED_CUGS
 argument_list|)
 decl_stmt|;
 name|PropertyBuilder
+argument_list|<
+name|String
+argument_list|>
 name|pb
 init|=
 name|getHiddenPropertyBuilder
@@ -597,6 +600,9 @@ argument_list|()
 condition|)
 block|{
 name|PropertyBuilder
+argument_list|<
+name|String
+argument_list|>
 name|pb2
 init|=
 name|getHiddenPropertyBuilder
@@ -688,6 +694,9 @@ name|HIDDEN_NESTED_CUGS
 argument_list|)
 decl_stmt|;
 name|PropertyBuilder
+argument_list|<
+name|String
+argument_list|>
 name|pb
 init|=
 name|getHiddenPropertyBuilder
@@ -776,6 +785,9 @@ block|}
 specifier|private
 specifier|static
 name|PropertyBuilder
+argument_list|<
+name|String
+argument_list|>
 name|getHiddenPropertyBuilder
 parameter_list|(
 annotation|@
@@ -1277,7 +1289,7 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
-comment|// reconnect information about nested cugs at a parent if
+comment|// reconnect information about nested CUGs at a parent if
 comment|// only the CUG got removed but the whole subtree including CUGs
 comment|// are still present.
 name|Set

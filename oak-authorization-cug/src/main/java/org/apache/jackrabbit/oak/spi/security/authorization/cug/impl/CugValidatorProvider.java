@@ -497,8 +497,6 @@ name|Nonnull
 name|NodeState
 name|parentAfter
 parameter_list|,
-annotation|@
-name|Nonnull
 name|boolean
 name|isNodetypeTree
 parameter_list|)
