@@ -3290,6 +3290,24 @@ name|options
 argument_list|)
 argument_list|)
 block|,
+operator|new
+name|AddUniqueMembersTest
+argument_list|(
+name|numberOfUsers
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|,
+name|batchSize
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
+block|,
 comment|// benchmarks removing multiple or single members
 operator|new
 name|RemoveMembersTest

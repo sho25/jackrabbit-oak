@@ -462,6 +462,7 @@ name|groupPaths
 init|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|(
 name|GROUP_CNT
 argument_list|)
