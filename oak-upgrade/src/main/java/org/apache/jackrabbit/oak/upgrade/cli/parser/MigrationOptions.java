@@ -1368,6 +1368,26 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|excludeFragments
+operator|!=
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"fragments to exclude: {}"
+argument_list|,
+operator|(
+name|Object
+operator|)
+name|excludeFragments
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|failOnError
 condition|)
 block|{

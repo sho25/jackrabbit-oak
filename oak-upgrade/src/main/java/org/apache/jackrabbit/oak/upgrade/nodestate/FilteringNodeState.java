@@ -590,6 +590,12 @@ name|excludedFragments
 parameter_list|)
 block|{
 return|return
+operator|!
+name|excludedFragments
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
 name|isHidden
 argument_list|(
 name|path
