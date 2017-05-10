@@ -434,7 +434,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class for recovering potential missing _lastRev updates of nodes due  * to crash of a node. The recovery agent is also responsible for document  * sweeping (reverting uncommitted changes).  */
+comment|/**  * Utility class for recovering potential missing _lastRev updates of nodes due  * to crash of a node. The recovery agent is also responsible for document  * sweeping (reverting uncommitted changes).  *<p>  * The recovery agent will only sweep documents for a given clusterId if the  * root document contains a sweep revision for the clusterId. A missing sweep  * revision for a clusterId indicates an upgrade from an earlier Oak version and  * a crash before the initial sweep finished. This is not the responsibility of  * the recovery agent. An initial sweep for an upgrade must either happen with  * the oak-run 'revisions' sweep command or on startup of an upgraded Oak  * instance.  */
 end_comment
 
 begin_class
@@ -682,30 +682,9 @@ block|}
 if|if
 condition|(
 name|sweepRev
-operator|==
+operator|!=
 literal|null
-condition|)
-block|{
-comment|// no sweep ever done for this cluster node. this is
-comment|// quite unusual and means an upgrade happened for a
-comment|// cluster node from 1.6 or older and then crashed
-comment|// we need to scan the entire collection
-name|startTime
-operator|=
-literal|0
-expr_stmt|;
-name|reason
-operator|=
-literal|"no sweepRevision for cluster node "
-operator|+
-name|clusterId
-operator|+
-literal|", using timestamp 0 (scanning the entire collection)"
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
+operator|&&
 name|sweepRev
 operator|.
 name|getTimestamp
@@ -834,6 +813,16 @@ operator|.
 name|getDocumentStore
 argument_list|()
 decl_stmt|;
+name|NodeDocument
+name|rootDoc
+init|=
+name|Utils
+operator|.
+name|getRootDocument
+argument_list|(
+name|docStore
+argument_list|)
+decl_stmt|;
 comment|// first run a sweep
 specifier|final
 name|AtomicReference
@@ -847,6 +836,24 @@ name|AtomicReference
 argument_list|<>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|rootDoc
+operator|.
+name|getSweepRevisions
+argument_list|()
+operator|.
+name|getRevision
+argument_list|(
+name|clusterId
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// only run a sweep for a cluster node that already has a
+comment|// sweep revision. Initial sweep is not the responsibility
+comment|// of the recovery agent.
 specifier|final
 name|RevisionContext
 name|context
@@ -854,12 +861,7 @@ init|=
 operator|new
 name|InactiveRevisionContext
 argument_list|(
-name|Utils
-operator|.
-name|getRootDocument
-argument_list|(
-name|docStore
-argument_list|)
+name|rootDoc
 argument_list|,
 name|nodeStore
 argument_list|,
@@ -1099,6 +1101,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 comment|// now deal with missing _lastRev updates
 name|UnsavedModifications
 name|unsaved
