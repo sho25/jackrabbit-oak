@@ -90,6 +90,24 @@ name|ManyNodes
 extends|extends
 name|Benchmark
 block|{
+specifier|private
+specifier|final
+name|boolean
+name|verbose
+decl_stmt|;
+name|ManyNodes
+parameter_list|(
+name|boolean
+name|verbose
+parameter_list|)
+block|{
+name|this
+operator|.
+name|verbose
+operator|=
+name|verbose
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -373,6 +391,11 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -392,6 +415,7 @@ operator|+
 literal|" ms"
 argument_list|)
 expr_stmt|;
+block|}
 name|time
 operator|=
 name|now
