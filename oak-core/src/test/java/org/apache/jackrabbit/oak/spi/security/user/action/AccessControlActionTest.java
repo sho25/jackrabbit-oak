@@ -848,15 +848,6 @@ return|;
 block|}
 annotation|@
 name|Test
-specifier|public
-name|void
-name|testInit
-parameter_list|()
-block|{
-comment|// TODO
-block|}
-annotation|@
-name|Test
 argument_list|(
 name|expected
 operator|=
