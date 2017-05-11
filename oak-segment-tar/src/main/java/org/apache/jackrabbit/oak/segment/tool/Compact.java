@@ -194,10 +194,6 @@ name|File
 name|path
 decl_stmt|;
 specifier|private
-name|boolean
-name|force
-decl_stmt|;
-specifier|private
 name|Builder
 parameter_list|()
 block|{
@@ -220,25 +216,6 @@ name|checkNotNull
 argument_list|(
 name|path
 argument_list|)
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
-comment|/**          * Set whether or not to force compact concurrent commits on top of          * already compacted commits after the maximum number of retries has          * been reached. Force committing tries to exclusively write lock the          * node store.          *          * @param force {@code true} to force an exclusive commit of the          *              compacted state, {@code false} otherwise.          * @return this builder.          */
-specifier|public
-name|Builder
-name|withForce
-parameter_list|(
-name|boolean
-name|force
-parameter_list|)
-block|{
-name|this
-operator|.
-name|force
-operator|=
-name|force
 expr_stmt|;
 return|return
 name|this

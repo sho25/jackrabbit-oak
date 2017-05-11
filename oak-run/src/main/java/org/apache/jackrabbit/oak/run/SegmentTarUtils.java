@@ -1301,9 +1301,6 @@ name|compact
 parameter_list|(
 name|File
 name|directory
-parameter_list|,
-name|boolean
-name|force
 parameter_list|)
 block|{
 name|Compact
@@ -1314,11 +1311,6 @@ operator|.
 name|withPath
 argument_list|(
 name|directory
-argument_list|)
-operator|.
-name|withForce
-argument_list|(
-name|force
 argument_list|)
 operator|.
 name|build

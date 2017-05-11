@@ -223,21 +223,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|OptionSpec
-argument_list|<
-name|Void
-argument_list|>
-name|forceFlag
-init|=
-name|parser
-operator|.
-name|accepts
-argument_list|(
-literal|"force"
-argument_list|,
-literal|"Force compaction and ignore non matching segment version"
-argument_list|)
-decl_stmt|;
 name|OptionSet
 name|options
 init|=
@@ -299,16 +284,6 @@ operator|new
 name|File
 argument_list|(
 name|path
-argument_list|)
-decl_stmt|;
-name|boolean
-name|force
-init|=
-name|options
-operator|.
-name|has
-argument_list|(
-name|forceFlag
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -420,8 +395,6 @@ operator|.
 name|compact
 argument_list|(
 name|directory
-argument_list|,
-name|force
 argument_list|)
 expr_stmt|;
 name|success
