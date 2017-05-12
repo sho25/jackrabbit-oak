@@ -1215,6 +1215,14 @@ name|STATUS_NODE
 init|=
 literal|":status"
 decl_stmt|;
+comment|/**      * Property on status node which refers to the date when the index was lastUpdated      * This may not be the same time as when index was closed but the time of checkpoint      * upto which index is upto date (OAK-6194)      */
+specifier|static
+specifier|final
+name|String
+name|STATUS_LAST_UPDATED
+init|=
+literal|"lastUpdated"
+decl_stmt|;
 comment|/**      * Meta property which provides the unique id      */
 specifier|static
 specifier|final
