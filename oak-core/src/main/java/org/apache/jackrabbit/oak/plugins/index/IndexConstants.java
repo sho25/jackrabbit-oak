@@ -134,6 +134,12 @@ name|CORRUPT_PROPERTY_NAME
 init|=
 literal|"corrupt"
 decl_stmt|;
+comment|/**      * CommitInfo attribute name which refers to the time at which      * async index checkpoint is created i.e. time upto which repository      * state is being indexed in given indexing cycle.      *      * The time is in string for as per Type.DATE      */
+name|String
+name|CHECKPOINT_CREATION_TIME
+init|=
+literal|"indexingCheckpointTime"
+decl_stmt|;
 block|}
 end_interface
 
