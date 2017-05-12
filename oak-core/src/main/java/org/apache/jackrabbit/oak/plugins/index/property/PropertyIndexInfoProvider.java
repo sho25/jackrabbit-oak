@@ -394,6 +394,7 @@ name|getChildNodeEntries
 argument_list|()
 control|)
 block|{
+comment|//In multiplexing setups there can be multiple index nodes
 if|if
 condition|(
 name|NodeStateUtils
@@ -452,6 +453,10 @@ block|}
 elseif|else
 if|if
 condition|(
+name|count
+operator|<
+literal|0
+operator|&&
 name|indexData
 operator|.
 name|getChildNodeCount
