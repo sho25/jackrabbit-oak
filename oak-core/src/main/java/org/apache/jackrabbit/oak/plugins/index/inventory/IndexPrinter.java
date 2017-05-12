@@ -902,7 +902,7 @@ name|info
 operator|.
 name|getSizeInBytes
 argument_list|()
-operator|>
+operator|>=
 literal|0
 condition|)
 block|{
@@ -930,7 +930,7 @@ name|info
 operator|.
 name|getEstimatedEntryCount
 argument_list|()
-operator|>
+operator|>=
 literal|0
 condition|)
 block|{
