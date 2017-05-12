@@ -94,6 +94,13 @@ name|boolean
 name|hasIndexDefinitionChangedWithoutReindexing
 parameter_list|()
 function_decl|;
+comment|/**      * If the index definition has changed without doing any reindexing      * then this method can be used to determine the diff in the index      * definition      * @return diff if the definition change otherwise null      */
+annotation|@
+name|CheckForNull
+name|String
+name|getIndexDefinitionDiff
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
