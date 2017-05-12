@@ -499,8 +499,6 @@ argument_list|(
 operator|new
 name|ConsolidatedDataStoreCacheStats
 argument_list|()
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -518,6 +516,11 @@ expr_stmt|;
 name|deactivate
 argument_list|(
 name|dataStoreStats
+argument_list|,
+name|context
+operator|.
+name|bundleContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|unregisterSegmentNodeStoreService
@@ -569,8 +572,6 @@ argument_list|(
 operator|new
 name|ConsolidatedDataStoreCacheStats
 argument_list|()
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|assertNull
@@ -661,6 +662,11 @@ block|{
 name|deactivate
 argument_list|(
 name|segmentNodeStoreService
+argument_list|,
+name|context
+operator|.
+name|bundleContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

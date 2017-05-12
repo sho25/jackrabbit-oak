@@ -758,6 +758,11 @@ operator|.
 name|deactivate
 argument_list|(
 name|externalLoginModuleFactory
+argument_list|,
+name|context
+operator|.
+name|bundleContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertSyncBeanRegistration

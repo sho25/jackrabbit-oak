@@ -904,6 +904,11 @@ operator|.
 name|deactivate
 argument_list|(
 name|privateStoreValidatorProvider
+argument_list|,
+name|context
+operator|.
+name|bundleContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertNull

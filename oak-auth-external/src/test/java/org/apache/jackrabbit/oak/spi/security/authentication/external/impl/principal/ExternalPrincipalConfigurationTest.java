@@ -655,6 +655,18 @@ name|osgi
 operator|.
 name|framework
 operator|.
+name|ServiceReference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|framework
+operator|.
 name|ServiceRegistration
 import|;
 end_import
@@ -781,7 +793,7 @@ name|context
 operator|.
 name|registerService
 argument_list|(
-name|DefaultSyncHandler
+name|SyncHandler
 operator|.
 name|class
 argument_list|,
@@ -1999,7 +2011,7 @@ name|bundleContext
 operator|.
 name|registerService
 argument_list|(
-name|DefaultSyncHandler
+name|SyncHandler
 operator|.
 name|class
 operator|.
@@ -2018,7 +2030,7 @@ name|bundleContext
 operator|.
 name|registerService
 argument_list|(
-name|DefaultSyncHandler
+name|SyncHandler
 operator|.
 name|class
 operator|.
@@ -2037,7 +2049,7 @@ name|bundleContext
 operator|.
 name|registerService
 argument_list|(
-name|DefaultSyncHandler
+name|SyncHandler
 operator|.
 name|class
 operator|.

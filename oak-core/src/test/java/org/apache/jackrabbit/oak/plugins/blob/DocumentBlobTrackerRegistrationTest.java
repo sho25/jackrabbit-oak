@@ -276,6 +276,11 @@ block|{
 name|deactivate
 argument_list|(
 name|service
+argument_list|,
+name|context
+operator|.
+name|bundleContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

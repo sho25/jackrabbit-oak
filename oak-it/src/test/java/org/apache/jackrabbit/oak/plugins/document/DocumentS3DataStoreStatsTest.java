@@ -533,8 +533,6 @@ argument_list|(
 operator|new
 name|S3DataStoreStats
 argument_list|()
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -552,6 +550,11 @@ expr_stmt|;
 name|deactivate
 argument_list|(
 name|s3DataStoreStats
+argument_list|,
+name|context
+operator|.
+name|bundleContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|unregisterDocumentNodeStoreService
@@ -605,8 +608,6 @@ argument_list|(
 operator|new
 name|S3DataStoreStats
 argument_list|()
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|assertNull
@@ -719,6 +720,11 @@ block|{
 name|deactivate
 argument_list|(
 name|documentNodeStoreService
+argument_list|,
+name|context
+operator|.
+name|bundleContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
