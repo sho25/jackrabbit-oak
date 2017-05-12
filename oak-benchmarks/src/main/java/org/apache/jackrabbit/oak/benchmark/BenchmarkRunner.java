@@ -1798,7 +1798,7 @@ name|accepts
 argument_list|(
 literal|"mounts"
 argument_list|,
-literal|"Number of mounts for the federated node store."
+literal|"Number of mounts for the composite node store."
 argument_list|)
 operator|.
 name|withOptionalArg
@@ -2284,7 +2284,7 @@ argument_list|)
 block|,
 name|OakRepositoryFixture
 operator|.
-name|getFederatedStore
+name|getCompositeStore
 argument_list|(
 name|base
 operator|.
@@ -2321,7 +2321,7 @@ argument_list|)
 block|,
 name|OakRepositoryFixture
 operator|.
-name|getFederatedMemoryStore
+name|getCompositeMemoryStore
 argument_list|(
 name|mounts
 operator|.

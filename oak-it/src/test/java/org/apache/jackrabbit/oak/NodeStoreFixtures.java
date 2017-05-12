@@ -161,9 +161,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|federated
+name|composite
 operator|.
-name|FederatedMemoryFixture
+name|CompositeMemoryStoreFixture
 import|;
 end_import
 
@@ -177,9 +177,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|federated
+name|composite
 operator|.
-name|FederatedSegmentFixture
+name|CompositeSegmentStoreFixture
 import|;
 end_import
 
@@ -260,20 +260,20 @@ specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|FEDERATED_SEGMENT
+name|COMPOSITE_SEGMENT
 init|=
 operator|new
-name|FederatedSegmentFixture
+name|CompositeSegmentStoreFixture
 argument_list|()
 decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|FEDERATED_MEM
+name|COMPOSITE_MEM
 init|=
 operator|new
-name|FederatedMemoryFixture
+name|CompositeMemoryStoreFixture
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -427,7 +427,7 @@ name|FixturesHelper
 operator|.
 name|Fixture
 operator|.
-name|FEDERATED_SEGMENT
+name|COMPOSITE_SEGMENT
 argument_list|)
 condition|)
 block|{
@@ -435,7 +435,7 @@ name|configuredFixtures
 operator|.
 name|add
 argument_list|(
-name|FEDERATED_SEGMENT
+name|COMPOSITE_SEGMENT
 argument_list|)
 expr_stmt|;
 block|}
@@ -449,7 +449,7 @@ name|FixturesHelper
 operator|.
 name|Fixture
 operator|.
-name|FEDERATED_MEM
+name|COMPOSITE_MEM
 argument_list|)
 condition|)
 block|{
@@ -457,7 +457,7 @@ name|configuredFixtures
 operator|.
 name|add
 argument_list|(
-name|FEDERATED_MEM
+name|COMPOSITE_MEM
 argument_list|)
 expr_stmt|;
 block|}

@@ -100,9 +100,9 @@ name|DOCUMENT_MEM
 block|,
 name|SEGMENT_TAR
 block|,
-name|FEDERATED_SEGMENT
+name|COMPOSITE_SEGMENT
 block|,
-name|FEDERATED_MEM
+name|COMPOSITE_MEM
 block|}
 specifier|private
 specifier|static

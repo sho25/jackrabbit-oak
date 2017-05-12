@@ -672,7 +672,7 @@ block|}
 specifier|public
 specifier|static
 name|RepositoryFixture
-name|getFederatedStore
+name|getCompositeStore
 parameter_list|(
 name|File
 name|base
@@ -700,11 +700,11 @@ name|OakRepositoryFixture
 argument_list|(
 name|OakFixture
 operator|.
-name|getFederatedStore
+name|getCompositeStore
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_FEDERATED_STORE
+name|OAK_COMPOSITE_STORE
 argument_list|,
 name|base
 argument_list|,
@@ -724,7 +724,7 @@ block|}
 specifier|public
 specifier|static
 name|RepositoryFixture
-name|getFederatedMemoryStore
+name|getCompositeMemoryStore
 parameter_list|(
 name|int
 name|mounts
@@ -739,11 +739,11 @@ name|OakRepositoryFixture
 argument_list|(
 name|OakFixture
 operator|.
-name|getFederatedMemoryStore
+name|getCompositeMemoryStore
 argument_list|(
 name|OakFixture
 operator|.
-name|OAK_FEDERATED_MEMORY_STORE
+name|OAK_COMPOSITE_MEMORY_STORE
 argument_list|,
 name|mounts
 argument_list|,

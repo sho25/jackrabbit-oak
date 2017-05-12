@@ -343,17 +343,17 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|OAK_FEDERATED_STORE
+name|OAK_COMPOSITE_STORE
 init|=
-literal|"Oak-Federated"
+literal|"Oak-Composite-Store"
 decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|OAK_FEDERATED_MEMORY_STORE
+name|OAK_COMPOSITE_MEMORY_STORE
 init|=
-literal|"Oak-Federated-Memory"
+literal|"Oak-Composite-Memory-Store"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1650,7 +1650,7 @@ block|}
 specifier|public
 specifier|static
 name|OakFixture
-name|getFederatedStore
+name|getCompositeStore
 parameter_list|(
 specifier|final
 name|String
@@ -1683,7 +1683,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|FederatedFixture
+name|CompositeStoreFixture
 argument_list|(
 name|name
 argument_list|,
@@ -1704,7 +1704,7 @@ block|}
 specifier|public
 specifier|static
 name|OakFixture
-name|getFederatedMemoryStore
+name|getCompositeMemoryStore
 parameter_list|(
 specifier|final
 name|String
@@ -1721,7 +1721,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|FederatedFixture
+name|CompositeStoreFixture
 argument_list|(
 name|name
 argument_list|,
