@@ -76,6 +76,9 @@ init|=
 operator|new
 name|Options
 argument_list|()
+operator|.
+name|withDisableSystemExit
+argument_list|()
 decl_stmt|;
 name|opts
 operator|.
@@ -119,6 +122,9 @@ name|opts
 init|=
 operator|new
 name|Options
+argument_list|()
+operator|.
+name|withDisableSystemExit
 argument_list|()
 decl_stmt|;
 name|opts
