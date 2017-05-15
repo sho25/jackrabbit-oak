@@ -212,12 +212,12 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-name|IndexCommand
+name|JsonIndexCommand
 operator|.
 name|INDEX
 argument_list|,
 operator|new
-name|IndexCommand
+name|JsonIndexCommand
 argument_list|()
 argument_list|)
 operator|.

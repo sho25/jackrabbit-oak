@@ -160,7 +160,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|IndexTest
+name|JsonIndexTest
 block|{
 annotation|@
 name|Test
@@ -388,11 +388,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexCommand
+name|JsonIndexCommand
 name|index
 init|=
 operator|new
-name|IndexCommand
+name|JsonIndexCommand
 argument_list|()
 decl_stmt|;
 try|try
@@ -417,7 +417,7 @@ name|index
 operator|.
 name|session
 operator|=
-name|IndexCommand
+name|JsonIndexCommand
 operator|.
 name|openSession
 argument_list|(
@@ -623,7 +623,7 @@ block|{
 name|assertCommand
 argument_list|(
 operator|new
-name|IndexCommand
+name|JsonIndexCommand
 argument_list|()
 argument_list|,
 name|expected
@@ -635,7 +635,7 @@ block|}
 name|void
 name|assertCommand
 parameter_list|(
-name|IndexCommand
+name|JsonIndexCommand
 name|index
 parameter_list|,
 name|String

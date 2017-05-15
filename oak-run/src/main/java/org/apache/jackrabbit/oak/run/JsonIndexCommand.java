@@ -740,7 +740,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|IndexCommand
+name|JsonIndexCommand
 implements|implements
 name|Command
 block|{
@@ -750,7 +750,7 @@ specifier|final
 name|String
 name|INDEX
 init|=
-literal|"index"
+literal|"json-index"
 decl_stmt|;
 name|PrintStream
 name|output
