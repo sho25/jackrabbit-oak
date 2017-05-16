@@ -59,14 +59,6 @@ end_import
 
 begin_import
 import|import
-name|joptsimple
-operator|.
-name|OptionSet
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -362,6 +354,11 @@ argument_list|,
 name|indexOpts
 operator|.
 name|getWorkDir
+argument_list|()
+argument_list|,
+name|indexOpts
+operator|.
+name|getIndexPaths
 argument_list|()
 argument_list|)
 decl_stmt|;
