@@ -768,6 +768,8 @@ return|return
 literal|"select cast (days(current_timestamp - current_timezone) - days('1970-01-01') as integer) * 86400 + midnight_seconds(current_timestamp - current_timezone) from sysibm.sysdummy1"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getTableCreationStatement
@@ -792,6 +794,8 @@ operator|+
 literal|"))"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
