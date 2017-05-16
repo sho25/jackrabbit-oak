@@ -685,7 +685,7 @@ name|oak
 operator|.
 name|util
 operator|.
-name|NodeUtil
+name|TreeUtil
 import|;
 end_import
 
@@ -2631,14 +2631,12 @@ block|{
 name|Tree
 name|pwdTree
 init|=
-operator|new
-name|NodeUtil
-argument_list|(
-name|userTree
-argument_list|)
+name|TreeUtil
 operator|.
 name|getOrAddChild
 argument_list|(
+name|userTree
+argument_list|,
 name|UserConstants
 operator|.
 name|REP_PWD
@@ -2647,9 +2645,6 @@ name|UserConstants
 operator|.
 name|NT_REP_PASSWORD
 argument_list|)
-operator|.
-name|getTree
-argument_list|()
 decl_stmt|;
 comment|// System.currentTimeMillis() may be inaccurate on windows. This is accepted for this feature.
 name|pwdTree

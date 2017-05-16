@@ -408,7 +408,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class for accessing and writing typed content of a tree.  */
+comment|/**  * Utility class for accessing and writing typed content of a tree.  *  * @deprecated See OAK-6093  */
 end_comment
 
 begin_class
