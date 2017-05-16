@@ -25,16 +25,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|UnknownHostException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Set
@@ -128,6 +118,16 @@ operator|.
 name|mongodb
 operator|.
 name|MongoClientURI
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|MongoException
 import|;
 end_import
 
@@ -248,7 +248,7 @@ specifier|final
 name|MongoClient
 name|mongo
 decl_stmt|;
-comment|/**      * Constructs a new connection using the specified MongoDB connection string.      * See also http://docs.mongodb.org/manual/reference/connection-string/      *      * @param uri the MongoDB URI      * @throws UnknownHostException      */
+comment|/**      * Constructs a new connection using the specified MongoDB connection string.      * See also http://docs.mongodb.org/manual/reference/connection-string/      *      * @param uri the MongoDB URI      * @throws MongoException if there are failures      */
 specifier|public
 name|MongoConnection
 parameter_list|(
@@ -256,18 +256,34 @@ name|String
 name|uri
 parameter_list|)
 throws|throws
-name|UnknownHostException
+name|MongoException
 block|{
-name|MongoClientOptions
-operator|.
-name|Builder
-name|builder
-init|=
+name|this
+argument_list|(
+name|uri
+argument_list|,
 name|MongoConnection
 operator|.
 name|getDefaultBuilder
 argument_list|()
-decl_stmt|;
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Constructs a new connection using the specified MongoDB connection      * String. The default client options are taken from the provided builder.      *      * @param uri the connection URI.      * @param builder the client option defaults.      * @throws MongoException if there are failures      */
+specifier|public
+name|MongoConnection
+parameter_list|(
+name|String
+name|uri
+parameter_list|,
+name|MongoClientOptions
+operator|.
+name|Builder
+name|builder
+parameter_list|)
+throws|throws
+name|MongoException
+block|{
 name|mongoURI
 operator|=
 operator|new
@@ -287,7 +303,7 @@ name|mongoURI
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new {@code MongoConnection}.      *      * @param host The host address.      * @param port The port.      * @param database The database name.      * @throws Exception If an error occurred while trying to connect.      */
+comment|/**      * Constructs a new {@code MongoConnection}.      *      * @param host The host address.      * @param port The port.      * @param database The database name.      * @throws MongoException if there are failures      */
 specifier|public
 name|MongoConnection
 parameter_list|(
@@ -301,7 +317,7 @@ name|String
 name|database
 parameter_list|)
 throws|throws
-name|Exception
+name|MongoException
 block|{
 name|this
 argument_list|(

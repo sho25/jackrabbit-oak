@@ -1525,6 +1525,14 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|boolean
+name|DEFAULT_SO_KEEP_ALIVE
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|String
 name|DEFAULT_PERSISTENT_CACHE
 init|=
@@ -1571,6 +1579,15 @@ name|String
 name|FWK_PROP_DB
 init|=
 literal|"oak.mongo.db"
+decl_stmt|;
+comment|/**      * Name of framework property to configure socket keep-alive for MongoDB      */
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FWK_PROP_SO_KEEP_ALIVE
+init|=
+literal|"oak.mongo.socketKeepAlive"
 decl_stmt|;
 annotation|@
 name|Property
@@ -1623,6 +1640,32 @@ name|String
 name|PROP_DB
 init|=
 literal|"db"
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|boolValue
+operator|=
+name|DEFAULT_SO_KEEP_ALIVE
+argument_list|,
+name|label
+operator|=
+literal|"MongoDB socket keep-alive option"
+argument_list|,
+name|description
+operator|=
+literal|"Whether socket keep-alive should be enabled for "
+operator|+
+literal|"connections to MongoDB. Note that this value can be "
+operator|+
+literal|"overridden via framework property 'oak.mongo.socketKeepAlive'"
+argument_list|)
+specifier|static
+specifier|final
+name|String
+name|PROP_SO_KEEP_ALIVE
+init|=
+literal|"socketKeepAlive"
 decl_stmt|;
 annotation|@
 name|Property
@@ -2817,6 +2860,23 @@ argument_list|,
 name|DEFAULT_DB
 argument_list|)
 decl_stmt|;
+name|boolean
+name|soKeepAlive
+init|=
+name|PropertiesUtil
+operator|.
+name|toBoolean
+argument_list|(
+name|prop
+argument_list|(
+name|PROP_SO_KEEP_ALIVE
+argument_list|,
+name|FWK_PROP_SO_KEEP_ALIVE
+argument_list|)
+argument_list|,
+name|DEFAULT_SO_KEEP_ALIVE
+argument_list|)
+decl_stmt|;
 name|int
 name|cacheSize
 init|=
@@ -3401,6 +3461,13 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
+argument_list|)
+expr_stmt|;
+name|mkBuilder
+operator|.
+name|setSocketKeepAlive
+argument_list|(
+name|soKeepAlive
 argument_list|)
 expr_stmt|;
 name|mkBuilder
