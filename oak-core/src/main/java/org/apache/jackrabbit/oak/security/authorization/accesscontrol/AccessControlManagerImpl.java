@@ -1117,7 +1117,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|plugins
+operator|.
+name|tree
 operator|.
 name|TreeUtil
 import|;
