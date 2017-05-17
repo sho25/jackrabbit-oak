@@ -496,7 +496,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the candidates with modified time greater than or equal the specified      * {@code startTime}.      *      * @param startTime the start time.      * @return the candidates      */
+comment|/**      * Get the candidates with modified time greater than or equal the specified      * {@code startTime} in milliseconds since the start of the epoch.      *      * @param startTime the start time in milliseconds.      * @return the candidates      */
 annotation|@
 name|Nonnull
 specifier|public
