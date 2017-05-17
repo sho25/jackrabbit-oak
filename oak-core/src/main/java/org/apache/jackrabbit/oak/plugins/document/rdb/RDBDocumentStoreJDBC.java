@@ -682,6 +682,14 @@ operator|.
 name|MODIFIED_IN_SECS
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|int
+name|SCHEMAVERSION
+init|=
+literal|1
+decl_stmt|;
+specifier|private
 specifier|final
 name|RDBDocumentStoreDB
 name|dbInfo
@@ -842,6 +850,26 @@ argument_list|(
 literal|"HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|tmd
+operator|.
+name|hasVersion
+argument_list|()
+condition|)
+block|{
+name|t
+operator|.
+name|append
+argument_list|(
+literal|"VERSION = "
+operator|+
+name|SCHEMAVERSION
+operator|+
+literal|", "
+argument_list|)
+expr_stmt|;
+block|}
 name|t
 operator|.
 name|append
@@ -1251,6 +1279,26 @@ argument_list|(
 literal|"MODCOUNT = MODCOUNT + 1, DSIZE = DSIZE + ?, "
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|tmd
+operator|.
+name|hasVersion
+argument_list|()
+condition|)
+block|{
+name|t
+operator|.
+name|append
+argument_list|(
+literal|"VERSION = "
+operator|+
+name|SCHEMAVERSION
+operator|+
+literal|", "
+argument_list|)
+expr_stmt|;
+block|}
 name|t
 operator|.
 name|append
@@ -2335,9 +2383,41 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"(ID, MODIFIED, HASBINARY, DELETEDONCE, MODCOUNT, CMODCOUNT, DSIZE, DATA, BDATA) "
+literal|"(ID, MODIFIED, HASBINARY, DELETEDONCE, MODCOUNT, CMODCOUNT, DSIZE, DATA, "
 operator|+
-literal|"values (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+operator|(
+name|tmd
+operator|.
+name|hasVersion
+argument_list|()
+condition|?
+literal|"VERSION, "
+else|:
+literal|""
+operator|)
+operator|+
+literal|" BDATA) "
+operator|+
+literal|"values (?, ?, ?, ?, ?, ?, ?, ?,"
+operator|+
+operator|(
+name|tmd
+operator|.
+name|hasVersion
+argument_list|()
+condition|?
+operator|(
+literal|" "
+operator|+
+name|SCHEMAVERSION
+operator|+
+literal|", "
+operator|)
+else|:
+literal|""
+operator|)
+operator|+
+literal|" ?)"
 argument_list|)
 decl_stmt|;
 name|List
@@ -2857,7 +2937,26 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|" set MODIFIED = ?, HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, BDATA = ? where ID = ? and MODCOUNT = ?"
+literal|" set MODIFIED = ?, HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, "
+operator|+
+operator|(
+name|tmd
+operator|.
+name|hasVersion
+argument_list|()
+condition|?
+operator|(
+literal|" VERSION = "
+operator|+
+name|SCHEMAVERSION
+operator|+
+literal|", "
+operator|)
+else|:
+literal|""
+operator|)
+operator|+
+literal|"BDATA = ? where ID = ? and MODCOUNT = ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -6160,7 +6259,26 @@ name|t
 operator|.
 name|append
 argument_list|(
-literal|"MODIFIED = ?, HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, BDATA = ? "
+literal|"MODIFIED = ?, HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, "
+operator|+
+operator|(
+name|tmd
+operator|.
+name|hasVersion
+argument_list|()
+condition|?
+operator|(
+literal|" VERSION = "
+operator|+
+name|SCHEMAVERSION
+operator|+
+literal|", "
+operator|)
+else|:
+literal|""
+operator|)
+operator|+
+literal|"BDATA = ? "
 argument_list|)
 expr_stmt|;
 name|t

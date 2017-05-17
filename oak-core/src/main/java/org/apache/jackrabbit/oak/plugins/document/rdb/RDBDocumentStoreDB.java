@@ -227,6 +227,20 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+import|;
+end_import
+
 begin_comment
 comment|/**  * Defines variation in the capabilities of different RDBs.  */
 end_comment
@@ -538,6 +552,9 @@ name|getTableCreationStatement
 parameter_list|(
 name|String
 name|tableName
+parameter_list|,
+name|int
+name|schema
 parameter_list|)
 block|{
 return|return
@@ -546,7 +563,19 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA bytea)"
+literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, "
+operator|+
+operator|(
+name|schema
+operator|>=
+literal|1
+condition|?
+literal|"VERSION smallint, "
+else|:
+literal|""
+operator|)
+operator|+
+literal|"DATA varchar(16384), BDATA bytea)"
 operator|)
 return|;
 block|}
@@ -776,6 +805,9 @@ name|getTableCreationStatement
 parameter_list|(
 name|String
 name|tableName
+parameter_list|,
+name|int
+name|schema
 parameter_list|)
 block|{
 return|return
@@ -783,7 +815,19 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(512) not null, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA blob("
+literal|" (ID varchar(512) not null, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, "
+operator|+
+operator|(
+name|schema
+operator|>=
+literal|1
+condition|?
+literal|"VERSION smallint, "
+else|:
+literal|""
+operator|)
+operator|+
+literal|"DATA varchar(16384), BDATA blob("
 operator|+
 literal|1024
 operator|*
@@ -1240,6 +1284,9 @@ name|getTableCreationStatement
 parameter_list|(
 name|String
 name|tableName
+parameter_list|,
+name|int
+name|schema
 parameter_list|)
 block|{
 comment|// see https://issues.apache.org/jira/browse/OAK-1914
@@ -1249,7 +1296,19 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(512) not null primary key, MODIFIED number, HASBINARY number, DELETEDONCE number, MODCOUNT number, CMODCOUNT number, DSIZE number, DATA varchar(4000), BDATA blob)"
+literal|" (ID varchar(512) not null primary key, MODIFIED number, HASBINARY number, DELETEDONCE number, MODCOUNT number, CMODCOUNT number, DSIZE number, "
+operator|+
+operator|(
+name|schema
+operator|>=
+literal|1
+condition|?
+literal|"VERSION number, "
+else|:
+literal|""
+operator|)
+operator|+
+literal|"DATA varchar(4000), BDATA blob)"
 operator|)
 return|;
 block|}
@@ -1458,6 +1517,9 @@ name|getTableCreationStatement
 parameter_list|(
 name|String
 name|tableName
+parameter_list|,
+name|int
+name|schema
 parameter_list|)
 block|{
 comment|// see https://issues.apache.org/jira/browse/OAK-1913
@@ -1467,7 +1529,19 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16000), BDATA longblob)"
+literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, "
+operator|+
+operator|(
+name|schema
+operator|>=
+literal|1
+condition|?
+literal|"VERSION smallint, "
+else|:
+literal|""
+operator|)
+operator|+
+literal|"DATA varchar(16000), BDATA longblob)"
 operator|)
 return|;
 block|}
@@ -1804,6 +1878,9 @@ name|getTableCreationStatement
 parameter_list|(
 name|String
 name|tableName
+parameter_list|,
+name|int
+name|schema
 parameter_list|)
 block|{
 comment|// see https://issues.apache.org/jira/browse/OAK-2395
@@ -1813,7 +1890,19 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA nvarchar(4000), BDATA varbinary(max))"
+literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, "
+operator|+
+operator|(
+name|schema
+operator|>=
+literal|1
+condition|?
+literal|"VERSION smallint, "
+else|:
+literal|""
+operator|)
+operator|+
+literal|"DATA nvarchar(4000), BDATA varbinary(max))"
 operator|)
 return|;
 block|}
@@ -2265,6 +2354,9 @@ name|getTableCreationStatement
 parameter_list|(
 name|String
 name|tableName
+parameter_list|,
+name|int
+name|schema
 parameter_list|)
 block|{
 return|return
@@ -2272,7 +2364,19 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA blob("
+literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, "
+operator|+
+operator|(
+name|schema
+operator|>=
+literal|1
+condition|?
+literal|"VERSION smallint, "
+else|:
+literal|""
+operator|)
+operator|+
+literal|"DATA varchar(16384), BDATA blob("
 operator|+
 literal|1024
 operator|*
@@ -2400,6 +2504,37 @@ parameter_list|)
 block|{
 return|return
 literal|""
+return|;
+block|}
+comment|/**      * Statements needed to upgrade the DB      *      * @return the table modification string      */
+specifier|public
+name|String
+name|getTableUpgradeStatement
+parameter_list|(
+name|String
+name|tableName
+parameter_list|,
+name|int
+name|level
+parameter_list|)
+block|{
+name|Preconditions
+operator|.
+name|checkArgument
+argument_list|(
+name|level
+operator|==
+literal|1
+argument_list|,
+literal|"level must be 1"
+argument_list|)
+expr_stmt|;
+return|return
+literal|"alter table "
+operator|+
+name|tableName
+operator|+
+literal|" add VERSION smallint"
 return|;
 block|}
 specifier|protected

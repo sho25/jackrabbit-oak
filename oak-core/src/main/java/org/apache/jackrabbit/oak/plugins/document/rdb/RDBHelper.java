@@ -132,6 +132,13 @@ operator|.
 name|getTableCreationStatement
 argument_list|(
 name|table
+argument_list|,
+operator|new
+name|RDBOptions
+argument_list|()
+operator|.
+name|getInitialSchema
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
