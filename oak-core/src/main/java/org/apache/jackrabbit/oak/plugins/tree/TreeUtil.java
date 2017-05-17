@@ -1623,7 +1623,7 @@ return|return
 name|child
 return|;
 block|}
-comment|/**      * Adds a new child tree with the given name and primary type name.      * This method is a shortcut for calling {@link Tree#addChild(String)} and      * {@link Tree#setProperty(String, Object, org.apache.jackrabbit.oak.api.Type)}      * where the property name is {@link JcrConstants#JCR_PRIMARYTYPE}.      * Note, that this method in addition verifies if the created tree exists      * and is accessible in order to avoid {@link IllegalStateException} upon      * subsequent modification of the new child.      *      * @param name            The Oak name of the child item.      * @param primaryTypeName The Oak name of the primary node type.      * @return The new child tree with the specified name and primary type.      * @throws AccessDeniedException If the child does not exist after creation.      */
+comment|/**      * Adds a new child tree with the given name and primary type name.      * This method is a shortcut for calling {@link Tree#addChild(String)} and      * {@link Tree#setProperty(String, Object, org.apache.jackrabbit.oak.api.Type)}      * where the property name is {@link JcrConstants#JCR_PRIMARYTYPE}.      * Note, that this method in addition verifies if the created tree exists      * and is accessible in order to avoid {@link IllegalStateException} upon      * subsequent modification of the new child.      *      * @param childName       The Oak name of the child item.      * @param primaryTypeName The Oak name of the primary node type.      * @return The new child tree with the specified name and primary type.      * @throws AccessDeniedException If the child does not exist after creation.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1691,7 +1691,7 @@ return|return
 name|child
 return|;
 block|}
-comment|/**      * Combination of {@link Tree#getChild(String)} and adding a child including      * its jcr:primaryType property (i.e. {@link Tree#addChild(String)} and      * {@link Tree#setProperty(PropertyState)}) in case no tree exists with the specified name.      *      * @param name            The Oak name of the child item.      * @param primaryTypeName The Oak name of the primary node type.      * @return The new child node with the specified name and primary type.      * @throws AccessDeniedException If the child does not exist after creation.      */
+comment|/**      * Combination of {@link Tree#getChild(String)} and adding a child including      * its jcr:primaryType property (i.e. {@link Tree#addChild(String)} and      * {@link Tree#setProperty(PropertyState)}) in case no tree exists with the specified name.      *      * @param childName       The Oak name of the child item.      * @param primaryTypeName The Oak name of the primary node type.      * @return The new child node with the specified name and primary type.      * @throws AccessDeniedException If the child does not exist after creation.      */
 annotation|@
 name|Nonnull
 specifier|public
