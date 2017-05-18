@@ -1456,11 +1456,11 @@ name|newArrayList
 argument_list|(
 literal|"Missing required option(s)"
 argument_list|,
-literal|"'id'"
+literal|"id"
 argument_list|,
-literal|"'ref'"
+literal|"ref"
 argument_list|,
-literal|"'consistency'"
+literal|"consistency"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1584,7 +1584,7 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"Missing required option(s) ['store']"
+literal|"Missing required option(s) [store]"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1618,7 +1618,7 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"Missing required option(s) ['store']"
+literal|"Missing required option(s) [store]"
 argument_list|)
 argument_list|)
 expr_stmt|;
