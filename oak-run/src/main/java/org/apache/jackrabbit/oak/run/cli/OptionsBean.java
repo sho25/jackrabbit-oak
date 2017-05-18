@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|joptsimple
 operator|.
 name|OptionSet
@@ -38,6 +48,29 @@ parameter_list|(
 name|OptionSet
 name|options
 parameter_list|)
+function_decl|;
+comment|/**      * Title string for this set of options      */
+name|String
+name|title
+parameter_list|()
+function_decl|;
+comment|/**      * Description string for this set of options      */
+name|String
+name|description
+parameter_list|()
+function_decl|;
+comment|/**      * Used to sort the help output. Help for OptionsBean in descending order i.e.      * bean having highest order would be rendered first      */
+name|int
+name|order
+parameter_list|()
+function_decl|;
+comment|/**      * Option names which are actually performing operation      */
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|operationNames
+parameter_list|()
 function_decl|;
 block|}
 end_interface
