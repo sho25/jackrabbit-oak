@@ -266,6 +266,14 @@ specifier|private
 specifier|final
 name|OptionSpec
 argument_list|<
+name|Void
+argument_list|>
+name|dumpIndex
+decl_stmt|;
+specifier|private
+specifier|final
+name|OptionSpec
+argument_list|<
 name|Integer
 argument_list|>
 name|consistencyCheck
@@ -437,6 +445,17 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+name|dumpIndex
+operator|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"index-dump"
+argument_list|,
+literal|"Dumps index content"
+argument_list|)
+expr_stmt|;
 comment|//Set of options which define action
 name|actionOpts
 operator|=
@@ -449,6 +468,8 @@ argument_list|,
 name|definitions
 argument_list|,
 name|consistencyCheck
+argument_list|,
+name|dumpIndex
 argument_list|)
 expr_stmt|;
 block|}
@@ -545,6 +566,20 @@ operator|||
 operator|!
 name|anyActionSelected
 argument_list|()
+return|;
+block|}
+specifier|public
+name|boolean
+name|dumpIndex
+parameter_list|()
+block|{
+return|return
+name|options
+operator|.
+name|has
+argument_list|(
+name|dumpIndex
+argument_list|)
 return|;
 block|}
 specifier|public
