@@ -3477,6 +3477,7 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
+comment|// prepare background threads
 name|backgroundReadThread
 operator|=
 operator|new
@@ -3552,81 +3553,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|backgroundReadThread
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|readOnlyMode
-condition|)
-block|{
-comment|// perform an initial document sweep if needed
-name|backgroundSweep
-argument_list|()
-expr_stmt|;
-name|backgroundUpdateThread
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-name|backgroundSweepThread
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
-name|leaseUpdateThread
-operator|=
-operator|new
-name|Thread
-argument_list|(
-operator|new
-name|BackgroundLeaseUpdate
-argument_list|(
-name|this
-argument_list|,
-name|isDisposed
-argument_list|)
-argument_list|,
-literal|"DocumentNodeStore lease update thread "
-operator|+
-name|threadNamePostfix
-argument_list|)
-expr_stmt|;
-name|leaseUpdateThread
-operator|.
-name|setDaemon
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-comment|// OAK-3398 : make lease updating more robust by ensuring it
-comment|// has higher likelihood of succeeding than other threads
-comment|// on a very busy machine - so as to prevent lease timeout.
-name|leaseUpdateThread
-operator|.
-name|setPriority
-argument_list|(
-name|Thread
-operator|.
-name|MAX_PRIORITY
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|readOnlyMode
-condition|)
-block|{
-name|leaseUpdateThread
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
 name|clusterUpdateThread
 operator|=
 operator|new
@@ -3652,13 +3578,78 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|leaseUpdateThread
+operator|=
+operator|new
+name|Thread
+argument_list|(
+operator|new
+name|BackgroundLeaseUpdate
+argument_list|(
+name|this
+argument_list|,
+name|isDisposed
+argument_list|)
+argument_list|,
+literal|"DocumentNodeStore lease update thread "
+operator|+
+name|threadNamePostfix
+argument_list|)
+expr_stmt|;
+name|leaseUpdateThread
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+comment|// now start the background threads
+name|clusterUpdateThread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|backgroundReadThread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
 name|readOnlyMode
 condition|)
 block|{
-name|clusterUpdateThread
+comment|// OAK-3398 : make lease updating more robust by ensuring it
+comment|// has higher likelihood of succeeding than other threads
+comment|// on a very busy machine - so as to prevent lease timeout.
+name|leaseUpdateThread
+operator|.
+name|setPriority
+argument_list|(
+name|Thread
+operator|.
+name|MAX_PRIORITY
+argument_list|)
+expr_stmt|;
+name|leaseUpdateThread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+comment|// perform an initial document sweep if needed
+comment|// this may be long running if there is no sweep revision
+comment|// for this clusterId (upgrade from Oak<= 1.6).
+comment|// it is therefore important the lease thread is running already.
+name|backgroundSweep
+argument_list|()
+expr_stmt|;
+name|backgroundUpdateThread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|backgroundSweepThread
 operator|.
 name|start
 argument_list|()
