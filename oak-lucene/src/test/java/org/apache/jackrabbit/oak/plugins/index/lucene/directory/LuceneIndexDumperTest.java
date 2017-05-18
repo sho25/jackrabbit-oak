@@ -292,7 +292,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|IndexDumperTest
+name|LuceneIndexDumperTest
 block|{
 specifier|private
 name|NodeState
