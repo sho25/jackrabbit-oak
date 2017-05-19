@@ -7257,7 +7257,7 @@ operator|=
 name|mbeanRegistration
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|String
 name|getName
 parameter_list|()

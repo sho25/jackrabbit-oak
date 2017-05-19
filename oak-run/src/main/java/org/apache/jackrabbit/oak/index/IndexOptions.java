@@ -284,6 +284,14 @@ specifier|private
 specifier|final
 name|OptionSpec
 argument_list|<
+name|Void
+argument_list|>
+name|reindex
+decl_stmt|;
+specifier|private
+specifier|final
+name|OptionSpec
+argument_list|<
 name|Integer
 argument_list|>
 name|consistencyCheck
@@ -474,6 +482,22 @@ argument_list|,
 literal|"Dumps index content"
 argument_list|)
 expr_stmt|;
+name|reindex
+operator|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"reindex"
+argument_list|,
+literal|"Reindex the indexes"
+argument_list|)
+operator|.
+name|availableIf
+argument_list|(
+literal|"index-paths"
+argument_list|)
+expr_stmt|;
 comment|//Set of options which define action
 name|actionOpts
 operator|=
@@ -488,6 +512,8 @@ argument_list|,
 name|consistencyCheck
 argument_list|,
 name|dumpIndex
+argument_list|,
+name|reindex
 argument_list|)
 expr_stmt|;
 name|operationNames
@@ -685,6 +711,20 @@ operator|.
 name|value
 argument_list|(
 name|options
+argument_list|)
+return|;
+block|}
+specifier|public
+name|boolean
+name|isReindex
+parameter_list|()
+block|{
+return|return
+name|options
+operator|.
+name|has
+argument_list|(
+name|reindex
 argument_list|)
 return|;
 block|}
