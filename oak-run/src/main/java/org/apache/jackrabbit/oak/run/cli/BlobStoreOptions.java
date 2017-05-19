@@ -271,7 +271,7 @@ block|{
 return|return
 literal|"Options related to configuring a BlobStore. All config options here (except --fds-path) refer to "
 operator|+
-literal|"path of the config file. The file should be '.cofig' file confirming to OSGi config admin format "
+literal|"path of the config file. The file should be '.config' file confirming to OSGi config admin format "
 return|;
 block|}
 annotation|@
