@@ -94,6 +94,15 @@ name|S3_BUCKET
 init|=
 literal|"s3Bucket"
 decl_stmt|;
+comment|/**      * Amazon aws S3 bucket (alternate property name).      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|S3_CONTAINER
+init|=
+literal|"container"
+decl_stmt|;
 comment|/**      * Amazon aws S3 region.      */
 specifier|public
 specifier|static
