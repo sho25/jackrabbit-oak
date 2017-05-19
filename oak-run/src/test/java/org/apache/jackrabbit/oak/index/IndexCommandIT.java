@@ -434,7 +434,7 @@ index|[]
 name|args
 init|=
 block|{
-literal|"-index-work-dir="
+literal|"-index-temp-dir="
 operator|+
 name|temporaryFolder
 operator|.
@@ -590,7 +590,7 @@ index|[]
 name|args
 init|=
 block|{
-literal|"-index-work-dir="
+literal|"-index-temp-dir="
 operator|+
 name|temporaryFolder
 operator|.
@@ -730,7 +730,7 @@ index|[]
 name|args
 init|=
 block|{
-literal|"--index-work-dir="
+literal|"--index-temp-dir="
 operator|+
 name|temporaryFolder
 operator|.
@@ -880,7 +880,7 @@ index|[]
 name|args
 init|=
 block|{
-literal|"--index-work-dir="
+literal|"--index-temp-dir="
 operator|+
 name|temporaryFolder
 operator|.
@@ -998,7 +998,7 @@ index|[]
 name|args
 init|=
 block|{
-literal|"--index-work-dir="
+literal|"--index-temp-dir="
 operator|+
 name|temporaryFolder
 operator|.

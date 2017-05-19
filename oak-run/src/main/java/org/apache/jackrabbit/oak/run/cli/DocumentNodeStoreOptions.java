@@ -113,7 +113,7 @@ name|accepts
 argument_list|(
 literal|"clusterId"
 argument_list|,
-literal|"MongoMK clusterId"
+literal|"Cluster node instance id"
 argument_list|)
 operator|.
 name|withRequiredArg

@@ -328,7 +328,7 @@ name|title
 parameter_list|()
 block|{
 return|return
-literal|null
+literal|"Global Options"
 return|;
 block|}
 annotation|@

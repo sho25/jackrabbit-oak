@@ -337,9 +337,9 @@ name|parser
 operator|.
 name|accepts
 argument_list|(
-literal|"index-work-dir"
+literal|"index-temp-dir"
 argument_list|,
-literal|"Work directory used for storing temp files"
+literal|"Directory used for storing temporary files"
 argument_list|)
 operator|.
 name|withRequiredArg
@@ -357,7 +357,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"target"
+literal|"temp"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -399,7 +399,7 @@ name|accepts
 argument_list|(
 literal|"index-info"
 argument_list|,
-literal|"Collects and dumps information related to the indexes"
+literal|"Collects and dumps various statistics related to the indexes"
 argument_list|)
 expr_stmt|;
 name|definitions

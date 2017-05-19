@@ -148,7 +148,7 @@ argument_list|(
 literal|"fds"
 argument_list|)
 argument_list|,
-literal|"FileDataStore config"
+literal|"FileDataStore config path"
 argument_list|)
 operator|.
 name|withRequiredArg
@@ -193,7 +193,7 @@ name|accepts
 argument_list|(
 literal|"s3ds"
 argument_list|,
-literal|"S3DataStore config"
+literal|"S3DataStore config path"
 argument_list|)
 operator|.
 name|withRequiredArg
@@ -210,11 +210,16 @@ name|azureOption
 operator|=
 name|parser
 operator|.
-name|accepts
+name|acceptsAll
+argument_list|(
+name|asList
 argument_list|(
 literal|"azureblobds"
 argument_list|,
-literal|"AzureBlobStorageDataStore config"
+literal|"azureds"
+argument_list|)
+argument_list|,
+literal|"AzureBlobStorageDataStore config path"
 argument_list|)
 operator|.
 name|withRequiredArg
@@ -264,7 +269,9 @@ name|description
 parameter_list|()
 block|{
 return|return
-literal|"Options related to configuring a BlobStore"
+literal|"Options related to configuring a BlobStore. All config options here (except --fds-path) refer to "
+operator|+
+literal|"path of the config file. The file should be '.cofig' file confirming to OSGi config admin format "
 return|;
 block|}
 annotation|@
