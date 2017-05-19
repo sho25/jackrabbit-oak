@@ -536,7 +536,11 @@ block|{
 return|return
 literal|"Index command supports following operations. Most operations are read only. For performing them "
 operator|+
-literal|"BloStore related options must be provided as they would access the binaries stored there  "
+literal|"BloStore related options must be provided as they would access the binaries stored there. \n"
+operator|+
+literal|"By default it performs --index-info and --index-definitions operation if no explicit operation is selected. \n"
+operator|+
+literal|"Use --index-paths to restrict the set of indexes on which the operation needs to be performed"
 return|;
 block|}
 annotation|@
