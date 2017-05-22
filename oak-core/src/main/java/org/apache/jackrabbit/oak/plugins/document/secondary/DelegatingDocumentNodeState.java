@@ -341,6 +341,7 @@ extends|extends
 name|AbstractDocumentNodeState
 block|{
 comment|//Hidden props holding DocumentNodeState meta properties
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -348,6 +349,7 @@ name|PROP_REVISION
 init|=
 literal|":doc-rev"
 decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|String

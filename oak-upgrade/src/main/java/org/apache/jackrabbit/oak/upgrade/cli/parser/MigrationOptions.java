@@ -144,6 +144,19 @@ literal|"yyyy-MM-dd"
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|ADD_SECONDARY_METADATA
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.upgrade.addSecondaryMetadata"
+argument_list|)
+decl_stmt|;
+specifier|private
 specifier|final
 name|boolean
 name|copyBinaries
@@ -1060,6 +1073,15 @@ name|forceCheckpoints
 return|;
 block|}
 specifier|public
+name|boolean
+name|isAddSecondaryMetadata
+parameter_list|()
+block|{
+return|return
+name|ADD_SECONDARY_METADATA
+return|;
+block|}
+specifier|public
 name|String
 name|getSrcUser
 parameter_list|()
@@ -1588,6 +1610,19 @@ operator|.
 name|info
 argument_list|(
 literal|"Checkpoints will be migrated even with the custom paths specified"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|ADD_SECONDARY_METADATA
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Secondary metadata will be added"
 argument_list|)
 expr_stmt|;
 block|}
