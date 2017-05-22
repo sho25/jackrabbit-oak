@@ -40,6 +40,7 @@ comment|/**  * Callback which invoked for any changed node read by IndexUpdate  
 end_comment
 
 begin_interface
+specifier|public
 interface|interface
 name|NodeTraversalCallback
 block|{
