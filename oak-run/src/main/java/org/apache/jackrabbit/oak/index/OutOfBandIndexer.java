@@ -684,6 +684,15 @@ name|INDEXER_META
 init|=
 literal|"indexer-info.txt"
 decl_stmt|;
+comment|/**      * Checkpoint value which indicate that head state needs to be used      * This would be mostly used for testing purpose      */
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|HEAD_AS_CHECKPOINT
+init|=
+literal|"head"
+decl_stmt|;
 specifier|private
 specifier|final
 name|Closer
@@ -791,6 +800,38 @@ argument_list|(
 name|checkpoint
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|checkpointedState
+operator|==
+literal|null
+operator|&&
+name|HEAD_AS_CHECKPOINT
+operator|.
+name|equals
+argument_list|(
+name|checkpoint
+argument_list|)
+condition|)
+block|{
+name|checkpointedState
+operator|=
+name|indexHelper
+operator|.
+name|getNodeStore
+argument_list|()
+operator|.
+name|getRoot
+argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Using head state for indexing. Such an index cannot be imported back"
+argument_list|)
+expr_stmt|;
+block|}
 name|checkNotNull
 argument_list|(
 name|checkpointedState
@@ -1161,6 +1202,7 @@ name|getIndexPaths
 argument_list|()
 control|)
 block|{
+comment|//TODO Do it only for lucene indexes for now
 name|NodeBuilder
 name|idxBuilder
 init|=

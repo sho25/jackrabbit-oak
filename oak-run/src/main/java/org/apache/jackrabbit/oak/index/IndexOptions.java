@@ -459,7 +459,9 @@ literal|"checkpoint"
 argument_list|,
 literal|"Checkpoint value upto which index would be updated when "
 operator|+
-literal|"indexing is performed in read only mode"
+literal|"indexing is performed in read only mode. For testing purpose it can be set to 'head' to indicate that head "
+operator|+
+literal|"state should be used."
 argument_list|)
 operator|.
 name|withRequiredArg
