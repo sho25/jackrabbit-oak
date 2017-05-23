@@ -125,6 +125,14 @@ argument_list|>
 name|nonOption
 decl_stmt|;
 specifier|private
+specifier|final
+name|OptionSpec
+argument_list|<
+name|Void
+argument_list|>
+name|metrics
+decl_stmt|;
+specifier|private
 name|OptionSet
 name|options
 decl_stmt|;
@@ -165,6 +173,17 @@ argument_list|(
 literal|"read-write"
 argument_list|,
 literal|"connect to repository in read-write mode"
+argument_list|)
+expr_stmt|;
+name|metrics
+operator|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"metrics"
+argument_list|,
+literal|"Enables Metrics based statistics collection"
 argument_list|)
 expr_stmt|;
 name|nonOption
@@ -282,6 +301,20 @@ operator|&&
 operator|!
 name|isRDB
 argument_list|()
+return|;
+block|}
+specifier|public
+name|boolean
+name|isMetricsEnabled
+parameter_list|()
+block|{
+return|return
+name|options
+operator|.
+name|has
+argument_list|(
+name|metrics
+argument_list|)
 return|;
 block|}
 specifier|public

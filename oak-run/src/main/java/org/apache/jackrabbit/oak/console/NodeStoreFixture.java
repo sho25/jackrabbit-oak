@@ -73,6 +73,22 @@ name|NodeStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|StatisticsProvider
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -88,6 +104,10 @@ annotation|@
 name|CheckForNull
 name|BlobStore
 name|getBlobStore
+parameter_list|()
+function_decl|;
+name|StatisticsProvider
+name|getStatisticsProvider
 parameter_list|()
 function_decl|;
 block|}
