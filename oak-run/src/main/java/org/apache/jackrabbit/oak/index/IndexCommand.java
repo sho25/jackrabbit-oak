@@ -226,6 +226,22 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|StatisticsProvider
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -422,6 +438,11 @@ operator|.
 name|getBlobStore
 argument_list|()
 argument_list|,
+name|fixture
+operator|.
+name|getStatisticsProvider
+argument_list|()
+argument_list|,
 name|indexOpts
 argument_list|,
 name|closer
@@ -514,6 +535,9 @@ parameter_list|,
 name|BlobStore
 name|blobStore
 parameter_list|,
+name|StatisticsProvider
+name|statisticsProvider
+parameter_list|,
 name|IndexOptions
 name|indexOpts
 parameter_list|,
@@ -534,6 +558,8 @@ argument_list|(
 name|store
 argument_list|,
 name|blobStore
+argument_list|,
+name|statisticsProvider
 argument_list|,
 name|indexOpts
 operator|.

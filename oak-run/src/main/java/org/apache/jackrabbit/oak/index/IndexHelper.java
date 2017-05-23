@@ -572,6 +572,11 @@ specifier|final
 name|BlobStore
 name|blobStore
 decl_stmt|;
+specifier|private
+specifier|final
+name|StatisticsProvider
+name|statisticsProvider
+decl_stmt|;
 name|IndexHelper
 parameter_list|(
 name|NodeStore
@@ -579,6 +584,9 @@ name|store
 parameter_list|,
 name|BlobStore
 name|blobStore
+parameter_list|,
+name|StatisticsProvider
+name|statisticsProvider
 parameter_list|,
 name|File
 name|outputDir
@@ -604,6 +612,12 @@ operator|.
 name|blobStore
 operator|=
 name|blobStore
+expr_stmt|;
+name|this
+operator|.
+name|statisticsProvider
+operator|=
+name|statisticsProvider
 expr_stmt|;
 name|this
 operator|.
@@ -800,11 +814,8 @@ name|getStatisticsProvider
 parameter_list|()
 block|{
 return|return
-name|StatisticsProvider
-operator|.
-name|NOOP
+name|statisticsProvider
 return|;
-comment|//TODO Wire in a real stats provider based on metric
 block|}
 specifier|public
 name|BlobStore
