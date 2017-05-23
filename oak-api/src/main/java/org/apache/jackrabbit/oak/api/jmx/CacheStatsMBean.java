@@ -47,12 +47,12 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of times {@link com.google.common.cache.Cache} lookup methods have returned either a cached or      * uncached value. This is defined as {@code getHitCount + getMissCount}.      */
+comment|/**      * Returns the number of times {@code com.google.common.cache.Cache} lookup methods have returned either a cached or      * uncached value. This is defined as {@code getHitCount + getMissCount}.      */
 name|long
 name|getRequestCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of times {@link com.google.common.cache.Cache} lookup methods have returned a cached value.      */
+comment|/**      * Returns the number of times {@code com.google.common.cache.Cache} lookup methods have returned a cached value.      */
 name|long
 name|getHitCount
 parameter_list|()
@@ -62,7 +62,7 @@ name|double
 name|getHitRate
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of times {@link com.google.common.cache.Cache} lookup methods have returned an uncached (newly      * loaded) value, or null. Multiple concurrent calls to {@link com.google.common.cache.Cache} lookup methods on an absent      * value can result in multiple misses, all returning the results of a single cache load      * operation.      */
+comment|/**      * Returns the number of times {@code com.google.common.cache.Cache} lookup methods have returned an uncached (newly      * loaded) value, or null. Multiple concurrent calls to {@code com.google.common.cache.Cache} lookup methods on an absent      * value can result in multiple misses, all returning the results of a single cache load      * operation.      */
 name|long
 name|getMissCount
 parameter_list|()
@@ -72,17 +72,17 @@ name|double
 name|getMissRate
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the total number of times that {@link com.google.common.cache.Cache} lookup methods attempted to load new      * values. This includes both successful load operations, as well as those that threw      * exceptions. This is defined as {@code getLoadSuccessCount + getLoadExceptionCount}.      */
+comment|/**      * Returns the total number of times that {@code com.google.common.cache.Cache} lookup methods attempted to load new      * values. This includes both successful load operations, as well as those that threw      * exceptions. This is defined as {@code getLoadSuccessCount + getLoadExceptionCount}.      */
 name|long
 name|getLoadCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of times {@link com.google.common.cache.Cache} lookup methods have successfully loaded a new value.      * This is always incremented in conjunction with {@link #getMissCount}, though {@code getMissCount}      * is also incremented when an exception is encountered during cache loading (see      * {@link #getLoadExceptionCount}). Multiple concurrent misses for the same key will result in a      * single load operation.      */
+comment|/**      * Returns the number of times {@code com.google.common.cache.Cache} lookup methods have successfully loaded a new value.      * This is always incremented in conjunction with {@link #getMissCount}, though {@code getMissCount}      * is also incremented when an exception is encountered during cache loading (see      * {@link #getLoadExceptionCount}). Multiple concurrent misses for the same key will result in a      * single load operation.      */
 name|long
 name|getLoadSuccessCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of times {@link com.google.common.cache.Cache} lookup methods threw an exception while loading a      * new value. This is always incremented in conjunction with {@code getMissCount}, though      * {@code getMissCount} is also incremented when cache loading completes successfully (see      * {@link #getLoadSuccessCount}). Multiple concurrent misses for the same key will result in a      * single load operation.      */
+comment|/**      * Returns the number of times {@code com.google.common.cache.Cache} lookup methods threw an exception while loading a      * new value. This is always incremented in conjunction with {@code getMissCount}, though      * {@code getMissCount} is also incremented when cache loading completes successfully (see      * {@link #getLoadSuccessCount}). Multiple concurrent misses for the same key will result in a      * single load operation.      */
 name|long
 name|getLoadExceptionCount
 parameter_list|()
@@ -102,7 +102,7 @@ name|double
 name|getAverageLoadPenalty
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of times an entry has been evicted. This count does not include manual      * {@linkplain com.google.common.cache.Cache#invalidate invalidations}.      */
+comment|/**      * Returns the number of times an entry has been evicted. This count does not include manual      * {@code com.google.common.cache.Cache#invalidate invalidations}.      */
 name|long
 name|getEvictionCount
 parameter_list|()

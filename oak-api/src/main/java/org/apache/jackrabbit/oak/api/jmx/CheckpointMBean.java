@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * MBean for managing {@link org.apache.jackrabbit.oak.spi.state.NodeStore#checkpoint checkpoints}.  */
+comment|/**  * MBean for managing {@code org.apache.jackrabbit.oak.spi.state.NodeStore#checkpoint checkpoints}.  */
 end_comment
 
 begin_interface
@@ -64,7 +64,7 @@ name|TabularData
 name|listCheckpoints
 parameter_list|()
 function_decl|;
-comment|/**      * Create a new checkpoint with the given {@code lifetime}.      * @param lifetime      * @return the id of the newly created checkpoint      * @see org.apache.jackrabbit.oak.spi.state.NodeStore#checkpoint      */
+comment|/**      * Create a new checkpoint with the given {@code lifetime}.      * See {@code org.apache.jackrabbit.oak.spi.state.NodeStore#checkpoint}      * @param lifetime      * @return the id of the newly created checkpoint      */
 name|String
 name|createCheckpoint
 parameter_list|(
@@ -72,7 +72,7 @@ name|long
 name|lifetime
 parameter_list|)
 function_decl|;
-comment|/**      * Release the checkpoint with the given {@code id}.      * @param id      * @return  {@code true} on success, {@code false} otherwise.      * @see org.apache.jackrabbit.oak.spi.state.NodeStore#checkpoint      */
+comment|/**      * Release the checkpoint with the given {@code id}.      * See {@code org.apache.jackrabbit.oak.spi.state.NodeStore#checkpoint}      * @param id      * @return  {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|releaseCheckpoint
 parameter_list|(

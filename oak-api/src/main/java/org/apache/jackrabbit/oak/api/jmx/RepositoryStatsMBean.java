@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * MBean for providing repository wide statistics.  * This MBean exposes the time series provided by  * {@link org.apache.jackrabbit.api.stats.RepositoryStatistics RepositoryStatistics}  * through JMX as {@code CompositeData} of arrays.  */
+comment|/**  * MBean for providing repository wide statistics.  * This MBean exposes the time series provided by  * {@code org.apache.jackrabbit.api.stats.RepositoryStatistics RepositoryStatistics}  * through JMX as {@code CompositeData} of arrays.  */
 end_comment
 
 begin_interface
@@ -59,72 +59,72 @@ name|TYPE
 init|=
 literal|"RepositoryStats"
 decl_stmt|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_COUNT      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_COUNT}      */
 name|CompositeData
 name|getSessionCount
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_LOGIN_COUNTER      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_LOGIN_COUNTER}      */
 name|CompositeData
 name|getSessionLogin
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_COUNTER      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_COUNTER}      */
 name|CompositeData
 name|getSessionReadCount
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_DURATION      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_DURATION}      */
 name|CompositeData
 name|getSessionReadDuration
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_AVERAGE      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_AVERAGE}      */
 name|CompositeData
 name|getSessionReadAverage
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_WRITE_COUNTER      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_WRITE_COUNTER}      */
 name|CompositeData
 name|getSessionWriteCount
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_DURATION      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_DURATION}      */
 name|CompositeData
 name|getSessionWriteDuration
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_WRITE_AVERAGE      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_WRITE_AVERAGE}      */
 name|CompositeData
 name|getSessionWriteAverage
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_COUNT      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_COUNT}      */
 name|CompositeData
 name|getQueryCount
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_DURATION      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_DURATION}      */
 name|CompositeData
 name|getQueryDuration
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_AVERAGE      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_AVERAGE}      */
 name|CompositeData
 name|getQueryAverage
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_COUNTER      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_COUNTER}      */
 name|CompositeData
 name|getObservationEventCount
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_DURATION      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_DURATION}      */
 name|CompositeData
 name|getObservationEventDuration
 parameter_list|()
 function_decl|;
-comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_AVERAGE      */
+comment|/**      * See {@code org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_AVERAGE}      */
 name|CompositeData
 name|getObservationEventAverage
 parameter_list|()

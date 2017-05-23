@@ -168,19 +168,19 @@ name|String
 name|getTemporaryCheckpoints
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of executions as a {@link org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the execution count time series      */
+comment|/**      * Returns the number of executions as a {@code org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the execution count time series      */
 name|CompositeData
 name|getExecutionCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the execution time as a {@link org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the execution times time series      */
+comment|/**      * Returns the execution time as a {@code org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the execution times time series      */
 annotation|@
 name|Deprecated
 name|CompositeData
 name|getExecutionTime
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of indexed nodes as a {@link org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the indexed nodes time series      */
+comment|/**      * Returns the number of indexed nodes as a {@code org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the indexed nodes time series      */
 name|CompositeData
 name|getIndexedNodesCount
 parameter_list|()
