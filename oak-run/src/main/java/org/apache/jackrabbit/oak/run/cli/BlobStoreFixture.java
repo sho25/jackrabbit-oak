@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|console
+name|run
+operator|.
+name|cli
 package|;
 end_package
 

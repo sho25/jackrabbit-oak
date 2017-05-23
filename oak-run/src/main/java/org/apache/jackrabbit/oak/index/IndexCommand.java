@@ -111,7 +111,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|console
+name|run
+operator|.
+name|cli
 operator|.
 name|NodeStoreFixture
 import|;
