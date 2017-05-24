@@ -145,18 +145,6 @@ name|Mounts
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-operator|.
-name|asList
-import|;
-end_import
-
 begin_comment
 comment|/**  * A simple and inefficient implementation to manage mount points  */
 end_comment
