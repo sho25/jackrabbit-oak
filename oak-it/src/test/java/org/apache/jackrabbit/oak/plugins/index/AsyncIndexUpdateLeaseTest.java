@@ -2116,6 +2116,20 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// take care of initial reindex before
+operator|new
+name|AsyncIndexUpdate
+argument_list|(
+name|name
+argument_list|,
+name|store
+argument_list|,
+name|provider
+argument_list|)
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 specifier|final
 name|long
 name|lease
