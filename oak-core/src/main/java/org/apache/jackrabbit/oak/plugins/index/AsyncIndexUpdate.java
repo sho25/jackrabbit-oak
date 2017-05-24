@@ -4278,7 +4278,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"[{}] Reindexing completed for indexes: {} in {}"
+literal|"[{}] Reindexing completed for indexes: {} in {} ({} ms)"
 argument_list|,
 name|name
 argument_list|,
@@ -4288,6 +4288,15 @@ name|getReindexStats
 argument_list|()
 argument_list|,
 name|watch
+argument_list|,
+name|watch
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|progressLogged
