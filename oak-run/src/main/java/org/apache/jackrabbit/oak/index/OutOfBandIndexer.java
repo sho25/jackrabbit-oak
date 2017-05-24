@@ -801,6 +801,14 @@ argument_list|(
 name|checkpointedState
 argument_list|)
 expr_stmt|;
+name|NodeState
+name|baseState
+init|=
+name|copyOnWriteStore
+operator|.
+name|getRoot
+argument_list|()
+decl_stmt|;
 comment|//TODO Check for indexPaths being empty
 name|log
 operator|.
@@ -822,7 +830,9 @@ name|switchIndexLanesAndReindexFlag
 argument_list|()
 expr_stmt|;
 name|preformIndexUpdate
-argument_list|()
+argument_list|(
+name|baseState
+argument_list|)
 expr_stmt|;
 name|writeMetaInfo
 argument_list|()
@@ -931,7 +941,10 @@ block|{      }
 specifier|private
 name|void
 name|preformIndexUpdate
-parameter_list|()
+parameter_list|(
+name|NodeState
+name|baseState
+parameter_list|)
 throws|throws
 name|IOException
 throws|,
@@ -979,12 +992,14 @@ operator|.
 name|NOOP
 argument_list|)
 decl_stmt|;
+comment|//Do not use EmptyState as before otherwise the IndexUpdate would
+comment|//unnecessary traverse the whole repo post reindexing. With use of baseState
+comment|//It would only traverse the diff i.e. those index definitions paths
+comment|//whose lane has been changed
 name|NodeState
 name|before
 init|=
-name|EmptyNodeState
-operator|.
-name|EMPTY_NODE
+name|baseState
 decl_stmt|;
 name|NodeState
 name|after
