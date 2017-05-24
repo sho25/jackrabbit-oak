@@ -56,23 +56,9 @@ block|}
 name|NodeTraversalCallback
 name|NOOP
 init|=
-operator|new
-name|NodeTraversalCallback
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|traversedNode
-parameter_list|(
-name|PathSource
 name|pathSource
-parameter_list|)
-throws|throws
-name|CommitFailedException
-block|{          }
-block|}
+lambda|->
+block|{}
 decl_stmt|;
 name|void
 name|traversedNode

@@ -40,6 +40,13 @@ specifier|public
 interface|interface
 name|IndexUpdateCallback
 block|{
+name|IndexUpdateCallback
+name|NOOP
+init|=
+parameter_list|()
+lambda|->
+block|{}
+decl_stmt|;
 comment|/**      * Invoked by the {@link org.apache.jackrabbit.oak.plugins.index.IndexEditor} for every NodeState      * indexed it.      */
 name|void
 name|indexUpdate
