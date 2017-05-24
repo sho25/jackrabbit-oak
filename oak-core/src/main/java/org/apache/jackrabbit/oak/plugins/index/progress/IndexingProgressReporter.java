@@ -287,6 +287,14 @@ name|messagePrefix
 init|=
 name|INDEX_MSG
 decl_stmt|;
+specifier|private
+name|TraversalRateEstimator
+name|traversalRateEstimator
+init|=
+operator|new
+name|SimpleRateEstimator
+argument_list|()
+decl_stmt|;
 specifier|public
 name|IndexingProgressReporter
 parameter_list|(
@@ -374,11 +382,35 @@ operator|==
 literal|0
 condition|)
 block|{
+name|double
+name|rate
+init|=
+name|traversalRateEstimator
+operator|.
+name|getNodesTraversedPerSecond
+argument_list|()
+decl_stmt|;
+name|String
+name|formattedRate
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%1.2f nodes/s, %1.2f nodes/hr"
+argument_list|,
+name|rate
+argument_list|,
+name|rate
+operator|*
+literal|3600
+argument_list|)
+decl_stmt|;
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"{} Traversed #{} {}"
+literal|"{} Traversed #{} {} [{}]"
 argument_list|,
 name|messagePrefix
 argument_list|,
@@ -388,6 +420,8 @@ name|pathSource
 operator|.
 name|getPath
 argument_list|()
+argument_list|,
+name|formattedRate
 argument_list|)
 expr_stmt|;
 block|}
@@ -397,6 +431,11 @@ name|traversedNode
 argument_list|(
 name|pathSource
 argument_list|)
+expr_stmt|;
+name|traversalRateEstimator
+operator|.
+name|traversedNode
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Registers the index for progress tracking      *      * @param indexPath path of index      * @param reindexing true if the index is being reindexed      * @param estimatedCount an estimate of count of number of entries in the index. If less      *                       than zero then it indicates that estimation cannot be done      */
@@ -656,6 +695,21 @@ operator|>
 literal|0
 argument_list|)
 return|;
+block|}
+specifier|public
+name|void
+name|setTraversalRateEstimator
+parameter_list|(
+name|TraversalRateEstimator
+name|traversalRate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|traversalRateEstimator
+operator|=
+name|traversalRate
+expr_stmt|;
 block|}
 specifier|private
 name|String
