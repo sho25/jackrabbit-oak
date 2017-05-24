@@ -21,6 +21,16 @@ name|progress
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -29,7 +39,11 @@ block|{
 name|NodeCountEstimator
 name|NOOP
 init|=
-name|path
+parameter_list|(
+name|basePath
+parameter_list|,
+name|indexPaths
+parameter_list|)
 lambda|->
 operator|-
 literal|1
@@ -39,7 +53,13 @@ name|long
 name|getEstimatedNodeCount
 parameter_list|(
 name|String
-name|path
+name|basePath
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|indexPaths
 parameter_list|)
 function_decl|;
 block|}

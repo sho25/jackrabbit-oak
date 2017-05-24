@@ -403,6 +403,9 @@ operator|.
 name|getEstimatedNodeCount
 argument_list|(
 name|path
+argument_list|,
+name|getReindexedIndexPaths
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
