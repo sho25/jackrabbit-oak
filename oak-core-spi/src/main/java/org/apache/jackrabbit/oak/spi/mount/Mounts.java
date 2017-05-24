@@ -87,6 +87,10 @@ name|singletonList
 import|;
 end_import
 
+begin_comment
+comment|/**  * Provides helper methods for creating {@link MountInfoProvider} instances.  *  */
+end_comment
+
 begin_class
 specifier|public
 specifier|final
@@ -452,6 +456,7 @@ literal|true
 return|;
 block|}
 block|}
+comment|/**      * Returns a {@link MountInfoProvider} which is configured only with the default Mount      *       * @return the default MountInfoProvider      */
 specifier|public
 specifier|static
 name|MountInfoProvider
@@ -462,6 +467,7 @@ return|return
 name|DEFAULT_PROVIDER
 return|;
 block|}
+comment|/**      * Returns the default {@link Mount}      *       * @return the default mount       */
 specifier|public
 specifier|static
 name|Mount
@@ -472,6 +478,7 @@ return|return
 name|DEFAULT_MOUNT
 return|;
 block|}
+comment|/**      * Creates a new default (root) mount with the specified non-default mounts      *       * @param mounts the mounts to configure      * @return the created mount      */
 specifier|public
 specifier|static
 name|Mount
@@ -492,6 +499,7 @@ name|mounts
 argument_list|)
 return|;
 block|}
+comment|/**      * Creates a new Builder instance for configuring more complex mount setups      *       * @return a new builder instance      */
 specifier|public
 specifier|static
 name|Builder
@@ -504,6 +512,7 @@ name|Builder
 argument_list|()
 return|;
 block|}
+comment|/**      * Provides a fluent API from creating {@link MountInfoProvider} instances      */
 specifier|public
 specifier|static
 specifier|final
@@ -529,6 +538,7 @@ specifier|private
 name|Builder
 parameter_list|()
 block|{         }
+comment|/**          * Adds a new read-write {@link Mount} with the specified name and paths          *           * @param name the name of the mount          * @param paths the paths handled by the mount          * @return this builder instance          */
 specifier|public
 name|Builder
 name|mount
@@ -568,6 +578,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Adds a new read-only Mount with the specified name and paths          *           * @param name the name of the mount          * @param paths the paths handled by the mount          * @return this builder instance          */
 specifier|public
 name|Builder
 name|readOnlyMount
@@ -607,6 +618,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Adds a new Mount instance with the specified parameters          *           * @param name the name of the mount          * @param readOnly true for read-only paths, false otherwise          * @param pathsSupportingFragments the paths supporting fragments, see {@link Mount#getPathFragmentName()}          * @param paths the paths handled by the mount          * @return this builder instance          */
 specifier|public
 name|Builder
 name|mount
@@ -651,6 +663,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Creates a new {@link MountInfoProvider}          *           * @return a newly-created MountInfoProvider          */
 specifier|public
 name|MountInfoProvider
 name|build

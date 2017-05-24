@@ -177,6 +177,10 @@ name|isAncestor
 import|;
 end_import
 
+begin_comment
+comment|/**  * Default {@link Mount} implementation for non-default mounts.  */
+end_comment
+
 begin_class
 specifier|final
 class|class
