@@ -44,6 +44,15 @@ specifier|public
 interface|interface
 name|NodeTraversalCallback
 block|{
+comment|/**      * Provides a way to lazily construct the path      * and provides access to the current path      */
+interface|interface
+name|PathSource
+block|{
+name|String
+name|getPath
+parameter_list|()
+function_decl|;
+block|}
 name|NodeTraversalCallback
 name|NOOP
 init|=
@@ -56,7 +65,10 @@ name|Override
 specifier|public
 name|void
 name|traversedNode
-parameter_list|()
+parameter_list|(
+name|PathSource
+name|pathSource
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{          }
@@ -64,7 +76,10 @@ block|}
 decl_stmt|;
 name|void
 name|traversedNode
-parameter_list|()
+parameter_list|(
+name|PathSource
+name|pathSource
+parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;

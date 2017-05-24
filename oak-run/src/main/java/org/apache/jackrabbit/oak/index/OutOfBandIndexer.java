@@ -934,7 +934,10 @@ name|Override
 specifier|public
 name|void
 name|traversedNode
-parameter_list|()
+parameter_list|(
+name|PathSource
+name|pathSource
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{      }

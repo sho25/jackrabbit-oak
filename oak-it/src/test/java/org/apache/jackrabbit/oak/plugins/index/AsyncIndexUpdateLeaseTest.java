@@ -2907,7 +2907,10 @@ name|Override
 specifier|public
 name|void
 name|traversedNode
-parameter_list|()
+parameter_list|(
+name|PathSource
+name|pathSource
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
@@ -2919,7 +2922,9 @@ expr_stmt|;
 name|super
 operator|.
 name|traversedNode
-argument_list|()
+argument_list|(
+name|pathSource
+argument_list|)
 expr_stmt|;
 name|listener
 operator|.

@@ -2283,7 +2283,10 @@ name|Override
 specifier|public
 name|void
 name|traversedNode
-parameter_list|()
+parameter_list|(
+name|PathSource
+name|pathSource
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
@@ -7029,6 +7032,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
+comment|//TODO Fix this to account for nrt and sync
 name|c
 operator|.
 name|setProperty
