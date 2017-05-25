@@ -430,6 +430,11 @@ name|with
 argument_list|(
 name|mip
 argument_list|)
+operator|.
+name|withFailOnDetection
+argument_list|(
+literal|true
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
