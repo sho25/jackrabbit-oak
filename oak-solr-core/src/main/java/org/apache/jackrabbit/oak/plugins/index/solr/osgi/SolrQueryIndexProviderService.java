@@ -438,7 +438,7 @@ name|cardinality
 operator|=
 name|ReferenceCardinality
 operator|.
-name|OPTIONAL_UNARY
+name|MANDATORY_UNARY
 argument_list|,
 name|policyOption
 operator|=
