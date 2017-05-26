@@ -613,7 +613,10 @@ name|String
 name|name
 parameter_list|,
 name|NodeState
-name|state
+name|before
+parameter_list|,
+name|NodeState
+name|after
 parameter_list|)
 block|{
 name|String
@@ -657,13 +660,16 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|//Use the before state for looking up bundlor config
+comment|//as after state may have been recreated all together
+comment|//and bundlor config might have got lost
 name|childContext
 operator|=
 name|getBundlorContext
 argument_list|(
 name|childPath
 argument_list|,
-name|state
+name|before
 argument_list|)
 expr_stmt|;
 block|}
@@ -677,7 +683,7 @@ name|childContext
 argument_list|,
 name|childPath
 argument_list|,
-name|state
+name|after
 argument_list|)
 return|;
 block|}

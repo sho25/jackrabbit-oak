@@ -826,12 +826,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//OAK-6267
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6267"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
