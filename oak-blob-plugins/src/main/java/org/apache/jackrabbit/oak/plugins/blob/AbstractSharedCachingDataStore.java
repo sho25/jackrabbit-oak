@@ -931,7 +931,7 @@ throws|throws
 name|DataStoreException
 block|{
 comment|// Return file attributes from cache only if corresponding file is cached
-comment|// This avoids downloading the file for just accessing the meta data
+comment|// This avoids downloading the file for just accessing the meta data.
 name|File
 name|cached
 init|=
@@ -979,15 +979,40 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|// File not in cache so, retrieve the meta data from the backend explicitly
+else|else
+block|{
+comment|// Return the metadata from backend and lazily load the stream
 try|try
 block|{
-return|return
+name|DataRecord
+name|rec
+init|=
 name|backend
 operator|.
 name|getRecord
 argument_list|(
 name|dataIdentifier
+argument_list|)
+decl_stmt|;
+return|return
+operator|new
+name|FileCacheDataRecord
+argument_list|(
+name|this
+argument_list|,
+name|backend
+argument_list|,
+name|dataIdentifier
+argument_list|,
+name|rec
+operator|.
+name|getLength
+argument_list|()
+argument_list|,
+name|rec
+operator|.
+name|getLastModified
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1001,13 +1026,14 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Error retrieving record [{}] from backend"
+literal|"Error retrieving record [{}]"
 argument_list|,
 name|dataIdentifier
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|null
@@ -1473,12 +1499,16 @@ parameter_list|()
 throws|throws
 name|DataStoreException
 block|{
+name|File
+name|cached
+init|=
+literal|null
+decl_stmt|;
+comment|// Need a catch as there's a possibility of eviction of this from cache
 try|try
 block|{
-return|return
-operator|new
-name|FileInputStream
-argument_list|(
+name|cached
+operator|=
 name|store
 operator|.
 name|cache
@@ -1491,8 +1521,67 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+specifier|final
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Error retrieving from cache "
+operator|+
+name|getIdentifier
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+try|try
+block|{
+comment|// If cache configured to 0 will return null
+if|if
+condition|(
+name|cached
+operator|==
+literal|null
+operator|||
+operator|!
+name|cached
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
+return|return
+name|backend
+operator|.
+name|getRecord
+argument_list|(
+name|getIdentifier
+argument_list|()
+argument_list|)
+operator|.
+name|getStream
+argument_list|()
+return|;
+block|}
+else|else
+block|{
+return|return
+operator|new
+name|FileInputStream
+argument_list|(
+name|cached
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(

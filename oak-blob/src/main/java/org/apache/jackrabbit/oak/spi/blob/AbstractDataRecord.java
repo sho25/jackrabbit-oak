@@ -64,7 +64,7 @@ implements|implements
 name|DataRecord
 block|{
 comment|/**      * The data store that contains this record.      */
-specifier|private
+specifier|protected
 specifier|final
 name|AbstractSharedBackend
 name|backend
