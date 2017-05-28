@@ -70,6 +70,14 @@ name|Exception
 name|e
 parameter_list|)
 function_decl|;
+comment|/**      * registers {@code IndexCommitCallback} instance which can then be      * notified of how indexing commit progresses.      * @param callback      */
+name|void
+name|registerIndexCommitCallback
+parameter_list|(
+name|IndexCommitCallback
+name|callback
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
