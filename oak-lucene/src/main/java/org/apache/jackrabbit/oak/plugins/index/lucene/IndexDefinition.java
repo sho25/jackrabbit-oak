@@ -1146,16 +1146,6 @@ specifier|static
 name|boolean
 name|disableStoredIndexDefinition
 decl_stmt|;
-comment|/**      * Default number of seconds after which to delete actively. Default is -1, meaning disabled.      * The plan is to use 3600 (1 hour) in the future.      */
-specifier|static
-specifier|final
-name|int
-name|DEFAULT_ACTIVE_DELETE
-init|=
-operator|-
-literal|1
-decl_stmt|;
-comment|// 60 * 60;
 comment|/**      * Blob size to use by default. To avoid issues in OAK-2105 the size should not      * be power of 2.      */
 specifier|static
 specifier|final
@@ -1314,11 +1304,6 @@ specifier|private
 specifier|final
 name|String
 name|funcName
-decl_stmt|;
-specifier|private
-specifier|final
-name|int
-name|activeDelete
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1878,19 +1863,6 @@ argument_list|,
 name|BLOB_SIZE
 argument_list|,
 name|DEFAULT_BLOB_SIZE
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|activeDelete
-operator|=
-name|getOptionalValue
-argument_list|(
-name|defn
-argument_list|,
-name|ACTIVE_DELETE
-argument_list|,
-name|DEFAULT_ACTIVE_DELETE
 argument_list|)
 expr_stmt|;
 name|this
@@ -8121,17 +8093,6 @@ name|getString
 argument_list|(
 name|PROP_UID
 argument_list|)
-return|;
-block|}
-specifier|public
-name|boolean
-name|getActiveDeleteEnabled
-parameter_list|()
-block|{
-return|return
-name|activeDelete
-operator|>=
-literal|0
 return|;
 block|}
 specifier|private
