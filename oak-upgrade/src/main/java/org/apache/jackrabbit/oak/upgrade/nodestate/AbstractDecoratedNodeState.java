@@ -871,11 +871,14 @@ block|{
 name|PropertyState
 name|ps
 init|=
+name|decorate
+argument_list|(
 name|delegate
 operator|.
 name|getProperty
 argument_list|(
 name|name
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
