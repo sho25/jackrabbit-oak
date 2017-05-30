@@ -265,7 +265,7 @@ name|CHILDREN_CAP
 init|=
 name|getInteger
 argument_list|(
-literal|"children.cap"
+literal|"oak.children.cap"
 argument_list|,
 literal|100
 argument_list|)
