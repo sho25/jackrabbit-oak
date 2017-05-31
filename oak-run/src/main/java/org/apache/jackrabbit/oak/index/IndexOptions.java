@@ -457,9 +457,9 @@ name|accepts
 argument_list|(
 literal|"checkpoint"
 argument_list|,
-literal|"Checkpoint value upto which index would be updated when "
+literal|"The checkpoint up to which the index is updated, when "
 operator|+
-literal|"indexing is performed in read only mode. For testing purpose it can be set to 'head' to indicate that head "
+literal|"indexing in read only mode. For testing purpose, it can be set to 'head' to indicate that the head "
 operator|+
 literal|"state should be used."
 argument_list|)
@@ -484,9 +484,9 @@ literal|"index-consistency-check"
 argument_list|,
 literal|"Performs consistency check "
 operator|+
-literal|"for indexes as specified by --index-paths. If none specified performs check for all indexes. Currently "
+literal|"for indexes as specified by --index-paths (if this not set, all indexes are checked). Currently "
 operator|+
-literal|"this is only supported for Lucene indexes. Possible values 1 - Basic check, 2 - Full check (slower)"
+literal|"only Lucene indexes are supported. Possible values 1 - Basic check, 2 - Full check (slower)"
 argument_list|)
 operator|.
 name|withOptionalArg
@@ -523,7 +523,7 @@ name|accepts
 argument_list|(
 literal|"reindex"
 argument_list|,
-literal|"Reindex the indexes"
+literal|"Reindex the indexes specified by --index-paths"
 argument_list|)
 operator|.
 name|availableIf
@@ -593,13 +593,13 @@ name|description
 parameter_list|()
 block|{
 return|return
-literal|"Index command supports following operations. Most operations are read only. For performing them "
+literal|"The index command supports the following operations. Most operations are read only.\n"
 operator|+
-literal|"BloStore related options must be provided as they would access the binaries stored there. \n"
+literal|"BloStore related options must be provided, as operations access the binaries stored there.\n"
 operator|+
-literal|"By default it performs --index-info and --index-definitions operation if no explicit operation is selected. \n"
+literal|"If no explicit operation is selected, --index-info and --index-definitions operation are performed.\n"
 operator|+
-literal|"Use --index-paths to restrict the set of indexes on which the operation needs to be performed"
+literal|"Use --index-paths to restrict the set of indexes on which the operation needs to be run."
 return|;
 block|}
 annotation|@
