@@ -85,9 +85,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|stats
+name|spi
 operator|.
-name|StatisticsProvider
+name|whiteboard
+operator|.
+name|Whiteboard
 import|;
 end_import
 
@@ -108,8 +110,8 @@ name|BlobStore
 name|getBlobStore
 parameter_list|()
 function_decl|;
-name|StatisticsProvider
-name|getStatisticsProvider
+name|Whiteboard
+name|getWhiteboard
 parameter_list|()
 function_decl|;
 block|}
