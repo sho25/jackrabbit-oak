@@ -183,7 +183,7 @@ name|description
 parameter_list|()
 block|{
 return|return
-literal|"Options related to configuring RDBDocumentStore for DocumentNodeStore based setups"
+literal|"Options related to configuring a RDBDocumentStore for DocumentNodeStore based setups."
 return|;
 block|}
 annotation|@

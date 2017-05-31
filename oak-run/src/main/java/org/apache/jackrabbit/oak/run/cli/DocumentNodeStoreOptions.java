@@ -139,7 +139,7 @@ name|accepts
 argument_list|(
 literal|"disableBranches"
 argument_list|,
-literal|"disable branches"
+literal|"Disable branches"
 argument_list|)
 expr_stmt|;
 name|cacheSizeSpec
@@ -150,7 +150,7 @@ name|accepts
 argument_list|(
 literal|"cacheSize"
 argument_list|,
-literal|"cache size"
+literal|"The cache size"
 argument_list|)
 operator|.
 name|withRequiredArg
@@ -205,7 +205,7 @@ name|description
 parameter_list|()
 block|{
 return|return
-literal|"Options related to constructing DocumentNodeStore"
+literal|"Options related to constructing a DocumentNodeStore."
 return|;
 block|}
 annotation|@

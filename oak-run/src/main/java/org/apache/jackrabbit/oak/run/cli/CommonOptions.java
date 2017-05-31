@@ -158,7 +158,7 @@ argument_list|,
 literal|"help"
 argument_list|)
 argument_list|,
-literal|"show help"
+literal|"Show help"
 argument_list|)
 operator|.
 name|forHelp
@@ -172,7 +172,7 @@ name|accepts
 argument_list|(
 literal|"read-write"
 argument_list|,
-literal|"connect to repository in read-write mode"
+literal|"Connect to repository in read-write mode"
 argument_list|)
 expr_stmt|;
 name|metrics
@@ -183,7 +183,7 @@ name|accepts
 argument_list|(
 literal|"metrics"
 argument_list|,
-literal|"Enables Metrics based statistics collection"
+literal|"Enables metrics based statistics collection"
 argument_list|)
 expr_stmt|;
 name|nonOption
