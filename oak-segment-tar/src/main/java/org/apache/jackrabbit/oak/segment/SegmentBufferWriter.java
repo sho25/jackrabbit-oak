@@ -974,33 +974,13 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Write a record id, and marks the record id as referenced (removes it from      * the unreferenced set).      *      * @param recordId the record id      */
+comment|/**      * Write a record ID.      *      * @param recordId  the record ID.      */
 specifier|public
 name|void
 name|writeRecordId
 parameter_list|(
 name|RecordId
 name|recordId
-parameter_list|)
-block|{
-name|writeRecordId
-argument_list|(
-name|recordId
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Write a record ID. Optionally, mark this record ID as being a reference.      * If a record ID is marked as a reference, the referenced record can't be a      * root record in this segment.      *      * @param recordId  the record ID.      * @param reference {@code true} if this record ID is a reference, {@code      *                  false} otherwise.      */
-specifier|public
-name|void
-name|writeRecordId
-parameter_list|(
-name|RecordId
-name|recordId
-parameter_list|,
-name|boolean
-name|reference
 parameter_list|)
 block|{
 name|checkNotNull
