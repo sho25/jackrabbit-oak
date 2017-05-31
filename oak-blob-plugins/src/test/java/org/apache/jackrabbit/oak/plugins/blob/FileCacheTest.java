@@ -1775,6 +1775,76 @@ literal|"Finished evictImplicit"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * test eviction on replacement.      * @throws Exception      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|evictReplace
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Started evictReplace"
+argument_list|)
+expr_stmt|;
+name|File
+name|f
+init|=
+name|createFile
+argument_list|(
+literal|0
+argument_list|,
+name|loader
+argument_list|,
+name|cache
+argument_list|,
+name|folder
+argument_list|)
+decl_stmt|;
+name|assertCache
+argument_list|(
+literal|0
+argument_list|,
+name|cache
+argument_list|,
+name|f
+argument_list|)
+expr_stmt|;
+comment|// Again put in cache to trigger eviction with replacement
+name|cache
+operator|.
+name|put
+argument_list|(
+name|ID_PREFIX
+operator|+
+literal|0
+argument_list|,
+name|f
+argument_list|)
+expr_stmt|;
+comment|// File should still be present
+name|assertCache
+argument_list|(
+literal|0
+argument_list|,
+name|cache
+argument_list|,
+name|f
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished evictReplace"
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Retrieve and invalidate concurrently.      * @throws Exception      */
 annotation|@
 name|Test

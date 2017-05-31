@@ -750,6 +750,12 @@ name|cachedFile
 operator|.
 name|exists
 argument_list|()
+operator|&&
+name|cause
+operator|!=
+name|RemovalCause
+operator|.
+name|REPLACED
 condition|)
 block|{
 name|DataStoreCacheUtils
