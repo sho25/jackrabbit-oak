@@ -395,7 +395,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"."
+literal|"indexing-result"
 argument_list|)
 argument_list|)
 expr_stmt|;

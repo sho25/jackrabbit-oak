@@ -1033,6 +1033,17 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|indexOpts
+operator|.
+name|getOutDir
+argument_list|()
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
 name|FileUtils
 operator|.
 name|cleanDirectory
@@ -1043,6 +1054,7 @@ name|getOutDir
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|cleanWorkDir
 argument_list|(
 name|indexOpts
