@@ -567,7 +567,7 @@ name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"    Last Indexed To      : %s%n"
+literal|"    Last indexed to      : %s%n"
 argument_list|,
 name|formatTime
 argument_list|(
@@ -641,7 +641,7 @@ name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"    Failing Since       : %s%n"
+literal|"    Failing since       : %s%n"
 argument_list|,
 name|stats
 operator|.
@@ -653,7 +653,7 @@ name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"    Latest Error        : %s%n"
+literal|"    Latest error        : %s%n"
 argument_list|,
 name|stats
 operator|.
@@ -884,14 +884,14 @@ name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"    async                   : true%n"
+literal|"    Async                   : true%n"
 argument_list|)
 expr_stmt|;
 name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"    async name              : %s%n"
+literal|"    Async lane name         : %s%n"
 argument_list|,
 name|info
 operator|.
@@ -914,7 +914,7 @@ name|pw
 operator|.
 name|printf
 argument_list|(
-literal|"    Last Indexed Upto       : %s%n"
+literal|"    Last indexed up to      : %s%n"
 argument_list|,
 name|formatTime
 argument_list|(
