@@ -467,6 +467,13 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|//Clean up before setting up NodeStore as the temp
+comment|//directory might be used by NodeStore for cache stuff like persistentCache
+name|setupDirectories
+argument_list|(
+name|indexOpts
+argument_list|)
+expr_stmt|;
 name|NodeStoreFixture
 name|fixture
 init|=
@@ -493,11 +500,6 @@ operator|.
 name|register
 argument_list|(
 name|fixture
-argument_list|)
-expr_stmt|;
-name|setupDirectories
-argument_list|(
-name|indexOpts
 argument_list|)
 expr_stmt|;
 name|StatisticsProvider
