@@ -2302,8 +2302,8 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|// The preconditions are not satisfied. This may happen when a
-comment|// dependency is unbound from the current component.
+comment|// The preconditions are still satisfied. This may happen when a
+comment|// dependency is unbound while not being listed as required service.
 if|if
 condition|(
 name|preconditions
