@@ -81,6 +81,12 @@ name|PARAM_CUG_ENABLED
 init|=
 literal|"cugEnabled"
 decl_stmt|;
+comment|/**      * Name of the configuration options specifying the      * {@link org.apache.jackrabbit.oak.spi.mount.MountInfoProvider} in non-OSGi      * setup scenarios.      *      * @since OAK 1.8      */
+name|String
+name|PARAM_MOUNT_PROVIDER
+init|=
+literal|"mountInfoProvider"
+decl_stmt|;
 block|}
 end_interface
 
