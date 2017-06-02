@@ -208,7 +208,7 @@ argument_list|)
 argument_list|,
 literal|"Path to be used to construct a Fake "
 operator|+
-literal|"FileDataStore. It return an empty stream for any Blob but allows writes if used in read-write mode"
+literal|"FileDataStore. It return an empty stream for any Blob but allows writes if used in read-write mode. (for testing purpose only)"
 argument_list|)
 operator|.
 name|withRequiredArg
