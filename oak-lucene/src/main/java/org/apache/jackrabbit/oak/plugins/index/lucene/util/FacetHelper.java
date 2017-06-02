@@ -318,6 +318,10 @@ name|ATTR_FACET_FIELDS
 init|=
 literal|"oak.facet.fields"
 decl_stmt|;
+specifier|private
+name|FacetHelper
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|FacetsConfig

@@ -121,6 +121,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+name|FilterIterators
+parameter_list|()
+block|{     }
 comment|/**      * Verify the number of in-memory nodes is below the limit.      *       * @param count the number of nodes      * @param settings the query engine settings      * @throws UnsupportedOperationException if the limit was exceeded      */
 specifier|public
 specifier|static
