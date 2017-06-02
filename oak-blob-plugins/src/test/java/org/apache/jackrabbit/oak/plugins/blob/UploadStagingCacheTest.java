@@ -3294,7 +3294,7 @@ expr_stmt|;
 comment|// Start again
 name|init
 argument_list|(
-literal|1
+literal|2
 argument_list|,
 operator|new
 name|TestStagingUploader
