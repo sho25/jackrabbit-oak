@@ -1414,7 +1414,7 @@ name|of
 argument_list|()
 return|;
 block|}
-comment|/**      * Runs an Oak {@link org.apache.jackrabbit.oak.query.Query} searching for      * {@link #REP_EXTERNAL_PRINCIPAL_NAMES} properties that match the given      * name or name hint.      *      * NOTE: ignore any principals listed in the {@link DefaultSyncConfig.User#autoMembership}      * because they are expected to exist in the system and thus will be found      * by another principal provider instance.      *      * @param nameHint The principal name or name hint to be searched for.      * @param exactMatch boolean flag indicating if the query should search for      *                   exact matching.      * @return The query result.      */
+comment|/**      * Runs an Oak query searching for {@link #REP_EXTERNAL_PRINCIPAL_NAMES} properties      * that match the given name or name hint.      *      * NOTE: ignore any principals listed in the {@link DefaultSyncConfig.User#autoMembership}      * because they are expected to exist in the system and thus will be found      * by another principal provider instance.      *      * @param nameHint The principal name or name hint to be searched for.      * @param exactMatch boolean flag indicating if the query should search for      *                   exact matching.      * @return The query result.      */
 annotation|@
 name|CheckForNull
 specifier|private
