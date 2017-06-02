@@ -321,6 +321,11 @@ name|fixture
 operator|.
 name|getStore
 argument_list|()
+argument_list|,
+name|fixture
+operator|.
+name|getWhiteboard
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new
