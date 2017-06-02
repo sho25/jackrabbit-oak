@@ -453,9 +453,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|traversalCount
-operator|++
-expr_stmt|;
 if|if
 condition|(
 operator|++
