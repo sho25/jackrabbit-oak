@@ -39,24 +39,6 @@ name|ArrayList
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
-name|ast
-operator|.
-name|FullTextSearchImpl
-import|;
-end_import
-
 begin_comment
 comment|/**  * A parser for fulltext condition literals. The grammar is defined in the  *<a href="http://www.day.com/specs/jcr/2.0/6_Query.html#6.7.19">  * JCR 2.0 specification, 6.7.19 FullTextSearch</a>,  * as follows (a bit simplified):  *<pre>  * FullTextSearchLiteral ::= Disjunct {' OR ' Disjunct}  * Disjunct ::= Term {' ' Term}  * Term ::= ['-'] SimpleTerm  * SimpleTerm ::= Word | '"' Word {' ' Word} '"'  *</pre>  */
 end_comment
@@ -66,6 +48,15 @@ specifier|public
 class|class
 name|FullTextParser
 block|{
+comment|/**      * Compatibility for Jackrabbit 2.0 single quoted phrase queries.      * (contains(., "word ''hello world'' word")      * These are queries that delimit a phrase with a single quote      * instead, as in the spec, using double quotes.      */
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|JACKRABBIT_2_SINGLE_QUOTED_PHRASE
+init|=
+literal|true
+decl_stmt|;
 specifier|private
 name|String
 name|propertyName
@@ -553,8 +544,6 @@ name|c
 operator|==
 literal|'\''
 operator|&&
-name|FullTextSearchImpl
-operator|.
 name|JACKRABBIT_2_SINGLE_QUOTED_PHRASE
 condition|)
 block|{

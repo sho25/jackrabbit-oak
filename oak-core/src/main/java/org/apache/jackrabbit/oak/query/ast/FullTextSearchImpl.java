@@ -286,15 +286,6 @@ name|FullTextSearchImpl
 extends|extends
 name|ConstraintImpl
 block|{
-comment|/**      * Compatibility for Jackrabbit 2.0 single quoted phrase queries.      * (contains(., "word ''hello world'' word")       * These are queries that delimit a phrase with a single quote      * instead, as in the spec, using double quotes.      */
-specifier|public
-specifier|static
-specifier|final
-name|boolean
-name|JACKRABBIT_2_SINGLE_QUOTED_PHRASE
-init|=
-literal|true
-decl_stmt|;
 specifier|final
 name|String
 name|selectorName
