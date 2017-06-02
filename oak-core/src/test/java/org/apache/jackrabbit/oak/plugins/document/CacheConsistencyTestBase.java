@@ -265,6 +265,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|ds
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|String
@@ -290,6 +297,7 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
 name|fixture
 operator|.
 name|dispose
