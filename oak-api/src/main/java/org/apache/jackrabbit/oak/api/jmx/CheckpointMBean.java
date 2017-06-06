@@ -27,6 +27,18 @@ name|management
 operator|.
 name|openmbean
 operator|.
+name|CompositeData
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
 name|TabularData
 import|;
 end_import
@@ -62,6 +74,11 @@ decl_stmt|;
 comment|/**      * List the checkpoints that are currently present along with      * its id, creation time and expiry time.      * @return      */
 name|TabularData
 name|listCheckpoints
+parameter_list|()
+function_decl|;
+comment|/**      * @return creation information about oldest checkpoint.      */
+name|CompositeData
+name|getOldestCheckpointCreationTime
 parameter_list|()
 function_decl|;
 comment|/**      * Create a new checkpoint with the given {@code lifetime}.      * See {@code org.apache.jackrabbit.oak.spi.state.NodeStore#checkpoint}      * @param lifetime      * @return the id of the newly created checkpoint      */
