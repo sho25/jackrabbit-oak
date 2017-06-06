@@ -70,7 +70,7 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Checks if given path belongs to this<code>Mount</code>      *      *<p>A path belongs to a Mount in two scenarios:      *<ol>      *<li>The path is below a fragment-supported path and the path contains a fragment name.</li>      *<li>The path of this mount is the most specific ancestor for the specified path.</li>      *</ol>      *       * The fragment check has a higher priority, and the presence of a fragment name in the path      * always decides the mount this path belongs to.      *</p>      * @param path path to check      * @return true if path belong to this mount      *       * @see #getPathFragmentName()      */
+comment|/**      * Checks if given path belongs to this<code>Mount</code>      *      *<p>A path belongs to a Mount in two scenarios:</p>      *<ol>      *<li>The path is below a fragment-supported path and the path contains a fragment name.</li>      *<li>The path of this mount is the most specific ancestor for the specified path.</li>      *</ol>      *       *<p>The fragment check has a higher priority, and the presence of a fragment name in the path      * always decides the mount this path belongs to.</p>      *      * @param path path to check      * @return true if path belong to this mount      *       * @see #getPathFragmentName()      */
 name|boolean
 name|isMounted
 parameter_list|(

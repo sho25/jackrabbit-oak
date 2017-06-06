@@ -120,7 +120,7 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Returns all mounts placed directly under the specified path      *       * @param path the path under which mounts are to be foud      * @return a collection of mounts, possibly empty      *       * @se {@link Mount#isDirectlyUnder(String)}      */
+comment|/**      * Returns all mounts placed directly under the specified path      *       * @param path the path under which mounts are to be foud      * @return a collection of mounts, possibly empty      *       * @see Mount#isDirectlyUnder(String)      */
 annotation|@
 name|Nonnull
 name|Collection

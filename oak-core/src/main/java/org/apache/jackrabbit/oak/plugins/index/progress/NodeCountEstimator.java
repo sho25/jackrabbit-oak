@@ -48,7 +48,7 @@ lambda|->
 operator|-
 literal|1
 decl_stmt|;
-comment|/**      * Provides an estimate of the sub tree node count at given path      * @param path path under which count is requested      * @return estimated count or -1 if unknown      */
+comment|/**      * Provides an estimate of the sub tree node count at given path      * @param basePath path under which count is requested      * @return estimated count or -1 if unknown      */
 name|long
 name|getEstimatedNodeCount
 parameter_list|(
