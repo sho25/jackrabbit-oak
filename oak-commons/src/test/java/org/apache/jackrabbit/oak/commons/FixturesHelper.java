@@ -103,6 +103,8 @@ block|,
 name|COMPOSITE_SEGMENT
 block|,
 name|COMPOSITE_MEM
+block|,
+name|COW_DOCUMENT
 block|}
 specifier|private
 specifier|static

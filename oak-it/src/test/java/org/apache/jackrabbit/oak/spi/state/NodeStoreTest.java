@@ -3525,6 +3525,12 @@ operator|==
 name|NodeStoreFixtures
 operator|.
 name|COMPOSITE_SEGMENT
+operator|||
+name|fixture
+operator|==
+name|NodeStoreFixtures
+operator|.
+name|COW_DOCUMENT
 condition|)
 block|{
 name|assertTrue
