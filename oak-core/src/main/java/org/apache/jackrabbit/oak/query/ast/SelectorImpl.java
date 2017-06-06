@@ -459,6 +459,24 @@ name|spi
 operator|.
 name|query
 operator|.
+name|QueryConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
 name|QueryIndex
 import|;
 end_import
@@ -1783,7 +1801,7 @@ name|columnName
 operator|.
 name|equals
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 argument_list|)
@@ -1792,7 +1810,7 @@ name|columnName
 operator|.
 name|equals
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|OAK_SCORE_EXPLANATION
 argument_list|)
@@ -1819,7 +1837,7 @@ name|columnName
 operator|.
 name|startsWith
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_FACET
 argument_list|)
@@ -1829,7 +1847,7 @@ name|f
 operator|.
 name|restrictProperty
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_FACET
 argument_list|,
@@ -2959,7 +2977,7 @@ name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|JCR_PATH
 argument_list|)
@@ -3008,7 +3026,7 @@ name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|JCR_SCORE
 argument_list|)
@@ -3020,7 +3038,7 @@ name|currentRow
 operator|.
 name|getValue
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|JCR_SCORE
 argument_list|)
@@ -3033,7 +3051,7 @@ name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 argument_list|)
@@ -3045,7 +3063,7 @@ name|currentRow
 operator|.
 name|getValue
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 argument_list|)
@@ -3058,7 +3076,7 @@ name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|OAK_SCORE_EXPLANATION
 argument_list|)
@@ -3070,7 +3088,7 @@ name|currentRow
 operator|.
 name|getValue
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|OAK_SCORE_EXPLANATION
 argument_list|)
@@ -3083,7 +3101,7 @@ name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_SPELLCHECK
 argument_list|)
@@ -3095,7 +3113,7 @@ name|currentRow
 operator|.
 name|getValue
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_SPELLCHECK
 argument_list|)
@@ -3108,7 +3126,7 @@ name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_SUGGEST
 argument_list|)
@@ -3120,7 +3138,7 @@ name|currentRow
 operator|.
 name|getValue
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_SUGGEST
 argument_list|)
@@ -3133,7 +3151,7 @@ name|oakPropertyName
 operator|.
 name|startsWith
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_FACET
 argument_list|)

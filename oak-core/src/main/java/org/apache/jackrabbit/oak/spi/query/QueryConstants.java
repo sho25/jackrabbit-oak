@@ -60,6 +60,70 @@ name|SEARCH_ROOT_PATH
 init|=
 literal|"/jcr:root"
 decl_stmt|;
+comment|/**      * The "jcr:path" pseudo-property.      */
+comment|// TODO jcr:path isn't an official feature, support it?
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|JCR_PATH
+init|=
+literal|"jcr:path"
+decl_stmt|;
+comment|/**      * The "jcr:score" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|JCR_SCORE
+init|=
+literal|"jcr:score"
+decl_stmt|;
+comment|/**      * The "rep:excerpt" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REP_EXCERPT
+init|=
+literal|"rep:excerpt"
+decl_stmt|;
+comment|/**      * The "rep:facet" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REP_FACET
+init|=
+literal|"rep:facet"
+decl_stmt|;
+comment|/**      * The "oak:explainScore" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OAK_SCORE_EXPLANATION
+init|=
+literal|"oak:scoreExplanation"
+decl_stmt|;
+comment|/**      * The "rep:spellcheck" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REP_SPELLCHECK
+init|=
+literal|"rep:spellcheck()"
+decl_stmt|;
+comment|/**      * The "rep:suggest" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REP_SUGGEST
+init|=
+literal|"rep:suggest()"
+decl_stmt|;
 block|}
 end_class
 

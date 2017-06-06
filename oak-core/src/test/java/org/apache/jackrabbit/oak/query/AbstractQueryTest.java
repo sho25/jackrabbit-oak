@@ -553,6 +553,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -842,7 +860,7 @@ name|ContentRepository
 name|createRepository
 parameter_list|()
 function_decl|;
-comment|/**      * Override this method to add your default index definition      *       * {@link #createTestIndexNode(Tree, String)} for a helper method      */
+comment|/**      * Override this method to add your default index definition      *      * {@link #createTestIndexNode(Tree, String)} for a helper method      */
 specifier|protected
 name|void
 name|createTestIndexNode
@@ -2402,7 +2420,7 @@ name|row
 operator|.
 name|getValue
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|JCR_PATH
 argument_list|)

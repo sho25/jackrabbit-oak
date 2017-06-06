@@ -105,22 +105,6 @@ name|oak
 operator|.
 name|query
 operator|.
-name|QueryImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
 name|fulltext
 operator|.
 name|FullTextAnd
@@ -232,6 +216,24 @@ operator|.
 name|query
 operator|.
 name|Filter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryConstants
 import|;
 end_import
 
@@ -736,7 +738,7 @@ block|}
 comment|// facets
 if|if
 condition|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_FACET
 operator|.
@@ -784,7 +786,7 @@ name|value
 operator|.
 name|substring
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_FACET
 operator|.
@@ -1866,7 +1868,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 argument_list|)

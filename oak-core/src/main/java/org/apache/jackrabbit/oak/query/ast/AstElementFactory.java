@@ -81,9 +81,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|query
 operator|.
-name|QueryImpl
+name|QueryConstants
 import|;
 end_import
 
@@ -250,7 +252,7 @@ name|propertyName
 operator|.
 name|startsWith
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_FACET
 argument_list|)

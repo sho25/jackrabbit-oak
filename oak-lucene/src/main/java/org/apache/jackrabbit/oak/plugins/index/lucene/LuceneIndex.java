@@ -373,22 +373,6 @@ name|oak
 operator|.
 name|query
 operator|.
-name|QueryImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
 name|fulltext
 operator|.
 name|FullTextAnd
@@ -1423,9 +1407,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|query
 operator|.
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|JCR_PATH
 import|;
@@ -2643,7 +2629,7 @@ name|filter
 operator|.
 name|getPropertyRestriction
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 argument_list|)
@@ -4617,7 +4603,7 @@ name|propertyName
 decl_stmt|;
 if|if
 condition|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 operator|.
@@ -4626,7 +4612,7 @@ argument_list|(
 name|name
 argument_list|)
 operator|||
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|OAK_SCORE_EXPLANATION
 operator|.
@@ -4635,7 +4621,7 @@ argument_list|(
 name|name
 argument_list|)
 operator|||
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_FACET
 operator|.
@@ -7097,7 +7083,7 @@ block|{
 comment|// overlay the score
 if|if
 condition|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|JCR_SCORE
 operator|.
@@ -7120,7 +7106,7 @@ return|;
 block|}
 if|if
 condition|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_SPELLCHECK
 operator|.
@@ -7129,7 +7115,7 @@ argument_list|(
 name|columnName
 argument_list|)
 operator|||
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_SUGGEST
 operator|.
@@ -7157,7 +7143,7 @@ return|;
 block|}
 if|if
 condition|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 operator|.

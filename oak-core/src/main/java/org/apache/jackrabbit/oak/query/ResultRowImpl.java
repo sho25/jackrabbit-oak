@@ -169,6 +169,24 @@ name|PropertyValues
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * A query result row that keeps all data (for this row only) in memory.  */
 end_comment
@@ -485,7 +503,7 @@ name|columnName
 operator|.
 name|startsWith
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 argument_list|)
@@ -498,7 +516,7 @@ name|query
 operator|.
 name|getColumnIndex
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 argument_list|)
@@ -531,7 +549,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|REP_EXCERPT
 operator|.

@@ -167,9 +167,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|security
 operator|.
-name|QueryImpl
+name|user
+operator|.
+name|UserManagerImpl
 import|;
 end_import
 
@@ -183,11 +185,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|security
+name|spi
 operator|.
-name|user
+name|query
 operator|.
-name|UserManagerImpl
+name|QueryConstants
 import|;
 end_import
 
@@ -402,7 +404,7 @@ name|row
 operator|.
 name|getValue
 argument_list|(
-name|QueryImpl
+name|QueryConstants
 operator|.
 name|JCR_PATH
 argument_list|)
