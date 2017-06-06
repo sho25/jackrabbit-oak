@@ -414,6 +414,7 @@ specifier|public
 interface|interface
 name|ActiveDeletedBlobCollector
 block|{
+comment|/**          * @return an instance of {@link BlobDeletionCallback} that can be used to track deleted blobs          */
 name|BlobDeletionCallback
 name|getBlobDeletionCallback
 parameter_list|()
@@ -429,7 +430,6 @@ name|blobStore
 parameter_list|)
 function_decl|;
 block|}
-comment|//                        LOG.info("Added {} to delete.", info);
 specifier|public
 specifier|static
 name|ActiveDeletedBlobCollector
@@ -473,6 +473,7 @@ name|BlobDeletionCallback
 extends|extends
 name|IndexCommitCallback
 block|{
+comment|/**          * Tracks deleted blobs. From the pov of this interface, blobId is an opaque string          * that needs to be tracked.          * @param blobId blobId representing deleted blob. In theory, it has nothing to do with          *               blobs though.          * @param ids Information that can be useful for debugging - this is not used for purging          *            blobs.          */
 name|void
 name|deleted
 parameter_list|(
@@ -811,6 +812,7 @@ name|DeletedBlobsFileWriter
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Purges blobs form blob-store which were tracked earlier to deleted.          * @param before only purge blobs which were deleted before this timestamps          * @param blobStore          */
 specifier|public
 name|void
 name|purgeBlobsDeleted
@@ -1027,13 +1029,12 @@ condition|)
 block|{
 break|break;
 block|}
-name|long
-name|deleted
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|chunkIds
 init|=
-name|blobStore
-operator|.
-name|countDeleteChunks
-argument_list|(
 name|Lists
 operator|.
 name|newArrayList
@@ -1045,6 +1046,25 @@ argument_list|(
 name|deletedBlobId
 argument_list|)
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|chunkIds
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|long
+name|deleted
+init|=
+name|blobStore
+operator|.
+name|countDeleteChunks
+argument_list|(
+name|chunkIds
 argument_list|,
 literal|0
 argument_list|)
@@ -1077,6 +1097,7 @@ name|numChunksDeleted
 operator|+=
 name|deleted
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
@@ -1855,6 +1876,7 @@ name|inUseFileName
 return|;
 block|}
 block|}
+comment|/**          * This implementation would track deleted blobs and then pass them onto          * {@link ActiveDeletedBlobCollectorImpl} on a successful commit          */
 specifier|private
 class|class
 name|DeletedBlobCollector
