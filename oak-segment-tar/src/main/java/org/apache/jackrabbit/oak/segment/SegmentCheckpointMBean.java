@@ -256,7 +256,7 @@ block|}
 block|}
 annotation|@
 name|Override
-specifier|protected
+specifier|public
 name|long
 name|getOldestCheckpointCreationTimestamp
 parameter_list|()
