@@ -14,8 +14,6 @@ operator|.
 name|oak
 operator|.
 name|query
-operator|.
-name|fulltext
 package|;
 end_package
 
@@ -169,38 +167,6 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Query
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
-name|QueryImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
 name|ast
 operator|.
 name|AndImpl
@@ -318,11 +284,9 @@ comment|/**  * This class can extract excerpts from node.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|SimpleExcerptProvider
 block|{
-specifier|public
 specifier|static
 specifier|final
 name|String
@@ -330,7 +294,6 @@ name|REP_EXCERPT_FN
 init|=
 literal|"rep:excerpt(.)"
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|String
@@ -338,7 +301,6 @@ name|EXCERPT_END
 init|=
 literal|"</span></div>"
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|String
@@ -357,7 +319,6 @@ specifier|private
 name|SimpleExcerptProvider
 parameter_list|()
 block|{     }
-specifier|public
 specifier|static
 name|String
 name|getExcerpt
@@ -1590,7 +1551,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|public
 specifier|static
 name|PropertyValue
 name|getExcerpt

@@ -14,8 +14,6 @@ operator|.
 name|oak
 operator|.
 name|query
-operator|.
-name|fulltext
 package|;
 end_package
 
@@ -46,8 +44,6 @@ operator|.
 name|oak
 operator|.
 name|query
-operator|.
-name|fulltext
 operator|.
 name|SimpleExcerptProvider
 operator|.
