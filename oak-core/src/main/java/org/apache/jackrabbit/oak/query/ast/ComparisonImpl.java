@@ -692,7 +692,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|PropertyValues
+name|ValueConverter
 operator|.
 name|canConvert
 argument_list|(
