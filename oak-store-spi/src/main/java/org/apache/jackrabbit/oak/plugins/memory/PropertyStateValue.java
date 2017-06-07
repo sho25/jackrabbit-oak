@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|query
+name|memory
 package|;
 end_package
 
@@ -183,7 +183,6 @@ specifier|final
 name|PropertyState
 name|ps
 decl_stmt|;
-specifier|protected
 name|PropertyStateValue
 parameter_list|(
 name|PropertyState

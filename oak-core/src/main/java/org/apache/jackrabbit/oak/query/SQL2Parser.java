@@ -571,9 +571,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|query
+name|memory
 operator|.
 name|PropertyValues
 import|;
@@ -4732,7 +4732,7 @@ expr_stmt|;
 name|PropertyValue
 name|v
 init|=
-name|PropertyValues
+name|ValueConverter
 operator|.
 name|convert
 argument_list|(

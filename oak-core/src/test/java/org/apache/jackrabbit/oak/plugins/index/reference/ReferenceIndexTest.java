@@ -523,9 +523,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|query
+name|memory
 operator|.
 name|PropertyValues
 operator|.

@@ -87,11 +87,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|query
 operator|.
-name|PropertyValues
+name|ValueConverter
 import|;
 end_import
 
@@ -547,7 +545,7 @@ block|}
 try|try
 block|{
 return|return
-name|PropertyValues
+name|ValueConverter
 operator|.
 name|convert
 argument_list|(
