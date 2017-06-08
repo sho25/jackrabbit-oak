@@ -1130,8 +1130,6 @@ name|commit
 parameter_list|)
 throws|throws
 name|CommitFailedException
-throws|,
-name|InterruptedException
 block|{
 comment|// only do the merge if there are some changes to commit
 if|if
