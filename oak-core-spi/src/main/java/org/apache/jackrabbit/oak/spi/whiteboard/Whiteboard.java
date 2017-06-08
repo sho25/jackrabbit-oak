@@ -76,6 +76,31 @@ argument_list|>
 name|type
 parameter_list|)
 function_decl|;
+comment|/**      * Starts tracking services of the given type, with given attributes.      *      * @param type type of the services to track      * @param filterProperties only services with these properties will be tracked.      *                         Null keys are not permitted. Null values means that      *                         the property should be absent.      * @return service tracker      */
+parameter_list|<
+name|T
+parameter_list|>
+name|Tracker
+argument_list|<
+name|T
+argument_list|>
+name|track
+parameter_list|(
+name|Class
+argument_list|<
+name|T
+argument_list|>
+name|type
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|filterProperties
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
