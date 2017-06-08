@@ -4601,6 +4601,7 @@ argument_list|(
 name|newGeneration
 argument_list|)
 block|{
+specifier|final
 name|int
 name|oldGeneration
 init|=
@@ -4726,6 +4727,7 @@ argument_list|(
 name|currentGeneration
 argument_list|)
 block|{
+specifier|final
 name|int
 name|oldGeneration
 init|=
