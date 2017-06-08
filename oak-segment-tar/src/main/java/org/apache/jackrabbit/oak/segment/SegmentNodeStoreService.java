@@ -3485,14 +3485,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Expose an MBean to managing and monitoring garbage collection
-if|if
-condition|(
-name|configuration
-operator|.
-name|isPrimarySegmentStore
-argument_list|()
-condition|)
-block|{
 specifier|final
 name|FileStoreGCMonitor
 name|monitor
@@ -3647,7 +3639,6 @@ literal|"Revision garbage collection"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Expose statistics about the FileStore
 name|closeables
 operator|.
