@@ -66,13 +66,29 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A very simple estimator for no. of entries in the index using least mean square update method but not the full stochastic  * gradient descent algorithm (yet?), on a linear interpolation model.  */
+comment|/**  * A very simple estimator for no. of entries in the index using least mean square update method for linear regression.  */
 end_comment
 
 begin_class
 class|class
 name|LMSEstimator
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|double
+name|DEFAULT_ALPHA
+init|=
+literal|0.03
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_THRESHOLD
+init|=
+literal|5
+decl_stmt|;
 specifier|private
 name|double
 index|[]
@@ -129,11 +145,11 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-literal|0.03
+name|DEFAULT_ALPHA
 argument_list|,
 name|weights
 argument_list|,
-literal|5
+name|DEFAULT_THRESHOLD
 argument_list|)
 expr_stmt|;
 block|}
@@ -142,7 +158,7 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-literal|0.03
+name|DEFAULT_ALPHA
 argument_list|,
 operator|new
 name|double
@@ -177,6 +193,7 @@ operator|.
 name|length
 index|]
 decl_stmt|;
+comment|// least mean square cost
 name|long
 name|estimate
 init|=
@@ -194,7 +211,7 @@ name|getNumFound
 argument_list|()
 decl_stmt|;
 name|long
-name|diff
+name|residual
 init|=
 name|numFound
 operator|-
@@ -207,12 +224,10 @@ name|Math
 operator|.
 name|pow
 argument_list|(
-name|diff
+name|residual
 argument_list|,
 literal|2
 argument_list|)
-operator|/
-literal|2
 decl_stmt|;
 if|if
 condition|(
@@ -243,18 +258,6 @@ name|i
 operator|++
 control|)
 block|{
-name|double
-name|errors
-init|=
-name|delta
-operator|*
-name|getInput
-argument_list|(
-name|filter
-argument_list|,
-name|i
-argument_list|)
-decl_stmt|;
 name|updatedWeights
 index|[
 name|i
@@ -265,20 +268,16 @@ index|[
 name|i
 index|]
 operator|+
-operator|(
-name|diff
-operator|>
-literal|0
-condition|?
-literal|1
-else|:
-operator|-
-literal|1
-operator|)
-operator|*
 name|alpha
 operator|*
-name|errors
+name|residual
+operator|*
+name|getInput
+argument_list|(
+name|filter
+argument_list|,
+name|i
+argument_list|)
 expr_stmt|;
 block|}
 comment|// weights updated
