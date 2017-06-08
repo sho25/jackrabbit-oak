@@ -245,6 +245,21 @@ name|CompositeData
 name|startRevisionGC
 parameter_list|()
 function_decl|;
+comment|/**      * Initiate a revision garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
+annotation|@
+name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Initiates a revision garbage collection operation for a given role"
+argument_list|)
+name|CompositeData
+name|startRevisionGCForRole
+parameter_list|(
+name|String
+name|role
+parameter_list|)
+function_decl|;
 comment|/**      * Cancel a running revision garbage collection operation. Does nothing      * if revision garbage collection is not running.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
