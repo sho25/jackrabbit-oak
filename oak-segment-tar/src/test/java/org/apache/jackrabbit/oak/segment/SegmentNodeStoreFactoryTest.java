@@ -105,26 +105,6 @@ name|NodeStoreProvider
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -136,17 +116,6 @@ specifier|private
 name|SegmentNodeStoreFactory
 name|segmentNodeStoreFactory
 decl_stmt|;
-annotation|@
-name|Test
-annotation|@
-name|Ignore
-specifier|public
-name|void
-name|nodeStoreProvider
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
 annotation|@
 name|Override
 specifier|protected
