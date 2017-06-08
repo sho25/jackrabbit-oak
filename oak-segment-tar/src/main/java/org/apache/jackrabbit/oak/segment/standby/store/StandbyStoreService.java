@@ -689,6 +689,7 @@ init|=
 literal|null
 decl_stmt|;
 specifier|private
+specifier|final
 name|Closer
 name|closer
 init|=
