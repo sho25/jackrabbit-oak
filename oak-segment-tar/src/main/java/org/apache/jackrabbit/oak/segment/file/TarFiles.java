@@ -2599,7 +2599,7 @@ comment|// original TAR reader and a new TAR reader with the same
 comment|// index and a higher generation was created. Third, all the
 comment|// content from the original TAR reader could be swept.
 name|TarReader
-name|cleandedReader
+name|cleanedReader
 init|=
 name|cleaned
 operator|.
@@ -2610,7 +2610,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|cleandedReader
+name|cleanedReader
 operator|!=
 literal|null
 condition|)
@@ -2623,14 +2623,14 @@ operator|=
 operator|new
 name|Node
 argument_list|(
-name|cleandedReader
+name|cleanedReader
 argument_list|,
 name|swept
 argument_list|)
 expr_stmt|;
 name|reclaimed
 operator|+=
-name|cleandedReader
+name|cleanedReader
 operator|.
 name|size
 argument_list|()
@@ -2638,7 +2638,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|cleandedReader
+name|cleanedReader
 operator|!=
 name|reader
 condition|)
