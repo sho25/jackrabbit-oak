@@ -27,6 +27,16 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * An implementation of {@link SegmentReferences} that throws {@link  * IllegalStateException}s every time it's used. This instance is used in  * context where accessing a {@link SegmentReferences} is considered a  * programmer's error.  */
 end_comment
@@ -55,6 +65,8 @@ literal|"invalid use"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

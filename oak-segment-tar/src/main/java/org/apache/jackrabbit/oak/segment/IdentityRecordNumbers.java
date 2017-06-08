@@ -27,6 +27,16 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * An implementation of a record number to offset table that assumes that a  * record number is also a valid offset in the segment. This implementation is  * useful when an instance of a table has still to be provided, but record  * numbers have no logical semantics (e.g. for bulk segments).  *<p>  * This implementation is trivially thread-safe.  */
 end_comment
@@ -51,6 +61,8 @@ return|return
 name|recordNumber
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

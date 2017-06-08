@@ -79,6 +79,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A mutable, thread-safe implementation of {@link SegmentReferences}.  */
 end_comment
@@ -314,6 +324,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
