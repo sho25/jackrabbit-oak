@@ -272,6 +272,21 @@ name|CompositeData
 name|cancelRevisionGC
 parameter_list|()
 function_decl|;
+comment|/**      * Cancel a running revision garbage collection operation for a given role.      * Does nothing if revision garbage collection is not running.      *      * @return  the status of the operation right after it was initiated      */
+annotation|@
+name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Cancel a running revision garbage collection operation. Does nothing if revision garbage collection is not running."
+argument_list|)
+name|CompositeData
+name|cancelRevisionGCForRole
+parameter_list|(
+name|String
+name|role
+parameter_list|)
+function_decl|;
 comment|/**      * Revision garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
@@ -283,6 +298,21 @@ argument_list|)
 name|CompositeData
 name|getRevisionGCStatus
 parameter_list|()
+function_decl|;
+comment|/**      * Revision garbage collection status for a given role.      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
+annotation|@
+name|Nonnull
+annotation|@
+name|Description
+argument_list|(
+literal|"Revision garbage collection status for a given role"
+argument_list|)
+name|CompositeData
+name|getRevisionGCStatusForRole
+parameter_list|(
+name|String
+name|role
+parameter_list|)
 function_decl|;
 comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint or {@code null} if      * the checkpoint could not be set.      *      * @deprecated Use {@link CheckpointMBean} instead      */
 annotation|@
