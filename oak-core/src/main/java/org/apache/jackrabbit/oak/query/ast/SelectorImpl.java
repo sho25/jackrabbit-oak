@@ -311,6 +311,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|query
 operator|.
 name|fulltext
@@ -401,9 +403,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|query
+name|index
 operator|.
 name|Cursors
 import|;

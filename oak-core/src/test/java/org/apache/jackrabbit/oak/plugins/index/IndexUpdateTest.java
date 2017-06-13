@@ -583,9 +583,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|plugins
 operator|.
-name|NodeStateNodeTypeInfoProvider
+name|memory
+operator|.
+name|PropertyValues
 import|;
 end_import
 
@@ -601,7 +603,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|QueryEngineSettings
+name|NodeStateNodeTypeInfoProvider
 import|;
 end_import
 
@@ -777,11 +779,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|memory
+name|query
 operator|.
-name|PropertyValues
+name|QueryEngineSettings
 import|;
 end_import
 

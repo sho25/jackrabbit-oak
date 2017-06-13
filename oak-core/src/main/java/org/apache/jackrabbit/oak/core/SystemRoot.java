@@ -65,9 +65,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|spi
 operator|.
-name|QueryEngineSettings
+name|commit
+operator|.
+name|CommitHook
 import|;
 end_import
 
@@ -83,9 +85,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
+name|query
 operator|.
-name|CommitHook
+name|QueryEngineSettings
 import|;
 end_import
 

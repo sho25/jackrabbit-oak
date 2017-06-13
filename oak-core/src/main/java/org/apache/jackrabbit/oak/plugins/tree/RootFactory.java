@@ -318,6 +318,7 @@ name|root
 argument_list|)
 return|;
 block|}
+comment|/**      * @deprecated with Oak 1.7.2 due to the usage of deprecated {@link QueryEngineSettings}      */
 annotation|@
 name|Nonnull
 specifier|public

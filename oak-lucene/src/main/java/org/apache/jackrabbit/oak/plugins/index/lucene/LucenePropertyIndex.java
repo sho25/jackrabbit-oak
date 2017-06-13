@@ -553,9 +553,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|plugins
 operator|.
-name|QueryEngineSettings
+name|memory
+operator|.
+name|PropertyValues
 import|;
 end_import
 
@@ -568,6 +570,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
+operator|.
+name|spi
 operator|.
 name|query
 operator|.
@@ -587,6 +591,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|query
 operator|.
 name|fulltext
@@ -604,6 +610,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
+operator|.
+name|spi
 operator|.
 name|query
 operator|.
@@ -623,6 +631,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|query
 operator|.
 name|fulltext
@@ -641,6 +651,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|query
 operator|.
 name|fulltext
@@ -658,6 +670,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
+operator|.
+name|spi
 operator|.
 name|query
 operator|.
@@ -695,9 +709,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|query
+name|index
 operator|.
 name|Cursors
 operator|.
@@ -771,11 +785,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|memory
+name|query
 operator|.
-name|PropertyValues
+name|QueryConstants
 import|;
 end_import
 
@@ -793,7 +807,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryConstants
+name|QueryEngineSettings
 import|;
 end_import
 
