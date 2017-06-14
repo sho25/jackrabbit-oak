@@ -757,13 +757,6 @@ operator|new
 name|ValuePattern
 argument_list|(
 name|definition
-operator|.
-name|getString
-argument_list|(
-name|IndexConstants
-operator|.
-name|VALUE_PATTERN
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// get declaring types, and all their subtypes

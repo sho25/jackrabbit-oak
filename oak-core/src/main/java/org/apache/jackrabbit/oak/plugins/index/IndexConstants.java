@@ -99,6 +99,18 @@ name|VALUE_PATTERN
 init|=
 literal|"valuePattern"
 decl_stmt|;
+comment|/**      * A list of prefixes to be excluded from the index.      */
+name|String
+name|VALUE_EXCLUDED_PREFIXES
+init|=
+literal|"valueExcludedPrefixes"
+decl_stmt|;
+comment|/**      * A list of prefixes to be included from the index.      * Include has higher priority than exclude.      */
+name|String
+name|VALUE_INCLUDED_PREFIXES
+init|=
+literal|"valueIncludedPrefixes"
+decl_stmt|;
 comment|/**      * Marks a unique property index.      */
 name|String
 name|UNIQUE_PROPERTY_NAME

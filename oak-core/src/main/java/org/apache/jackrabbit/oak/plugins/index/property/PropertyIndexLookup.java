@@ -729,13 +729,6 @@ operator|new
 name|ValuePattern
 argument_list|(
 name|indexMeta
-operator|.
-name|getString
-argument_list|(
-name|IndexConstants
-operator|.
-name|VALUE_PATTERN
-argument_list|)
 argument_list|)
 decl_stmt|;
 for|for
@@ -876,13 +869,6 @@ operator|new
 name|ValuePattern
 argument_list|(
 name|indexMeta
-operator|.
-name|getString
-argument_list|(
-name|IndexConstants
-operator|.
-name|VALUE_PATTERN
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|double
