@@ -677,8 +677,6 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|root1
@@ -712,8 +710,6 @@ operator|.
 name|createSystemRoot
 argument_list|(
 name|store2
-argument_list|,
-literal|null
 argument_list|,
 literal|null
 argument_list|,

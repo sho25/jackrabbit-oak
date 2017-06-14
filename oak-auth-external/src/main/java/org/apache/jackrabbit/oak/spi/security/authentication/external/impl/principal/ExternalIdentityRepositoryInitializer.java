@@ -544,8 +544,6 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 comment|// create index definition for "rep:externalId" and "rep:externalPrincipalNames"

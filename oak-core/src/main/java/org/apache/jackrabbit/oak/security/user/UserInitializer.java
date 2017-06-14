@@ -621,8 +621,6 @@ name|workspaceName
 argument_list|,
 name|securityProvider
 argument_list|,
-literal|null
-argument_list|,
 operator|new
 name|CompositeQueryIndexProvider
 argument_list|(
