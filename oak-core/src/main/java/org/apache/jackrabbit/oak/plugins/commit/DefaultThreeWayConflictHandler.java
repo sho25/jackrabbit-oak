@@ -33,7 +33,17 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ConflictHandler
+name|ThreeWayConflictHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
 import|;
 end_import
 
@@ -90,42 +100,40 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of a {@link ConflictHandler} always returns the same resolution.  * It can be used to implement default behaviour or as a base class for more specialised  * implementations.  * @deprecated Use {@link org.apache.jackrabbit.oak.plugins.commit.DefaultThreeWayConflictHandler} instead.  */
+comment|/**  * This implementation of a {@link ThreeWayConflictHandler} always returns the  * same resolution. It can be used to implement default behaviour or as a base  * class for more specialised implementations.  */
 end_comment
 
 begin_class
-annotation|@
-name|Deprecated
 specifier|public
 class|class
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 implements|implements
-name|ConflictHandler
+name|ThreeWayConflictHandler
 block|{
-comment|/**      * A {@code ConflictHandler} which always return {@link org.apache.jackrabbit.oak.spi.commit.ConflictHandler.Resolution#OURS}.      */
+comment|/**      * A {@code ConflictHandler} which always return      * {@link org.apache.jackrabbit.oak.spi.commit.ThreeWayConflictHandler.Resolution#OURS}.      */
 specifier|public
 specifier|static
 specifier|final
-name|ConflictHandler
+name|ThreeWayConflictHandler
 name|OURS
 init|=
 operator|new
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 argument_list|(
 name|Resolution
 operator|.
 name|OURS
 argument_list|)
 decl_stmt|;
-comment|/**      * A {@code ConflictHandler} which always return {@link org.apache.jackrabbit.oak.spi.commit.ConflictHandler.Resolution#THEIRS}.      */
+comment|/**      * A {@code ConflictHandler} which always return      * {@link org.apache.jackrabbit.oak.spi.commit.ThreeWayConflictHandler.Resolution#THEIRS}.      */
 specifier|public
 specifier|static
 specifier|final
-name|ConflictHandler
+name|ThreeWayConflictHandler
 name|THEIRS
 init|=
 operator|new
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 argument_list|(
 name|Resolution
 operator|.
@@ -137,9 +145,9 @@ specifier|final
 name|Resolution
 name|resolution
 decl_stmt|;
-comment|/**      * Create a new {@code ConflictHandler} which always returns {@code resolution}.      *      * @param resolution  the resolution to return from all methods of this      * {@code ConflictHandler} instance.      */
+comment|/**      * Create a new {@code ConflictHandler} which always returns      * {@code resolution}.      *      * @param resolution      *            the resolution to return from all methods of this      *            {@code ConflictHandler} instance.      */
 specifier|public
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 parameter_list|(
 name|Resolution
 name|resolution
@@ -152,6 +160,8 @@ operator|=
 name|resolution
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -173,6 +183,8 @@ name|resolution
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Resolution
@@ -183,12 +195,17 @@ name|parent
 parameter_list|,
 name|PropertyState
 name|ours
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 block|{
 return|return
 name|resolution
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -203,12 +220,36 @@ name|ours
 parameter_list|,
 name|PropertyState
 name|theirs
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 block|{
 return|return
 name|resolution
 return|;
 block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|Resolution
+name|deleteDeletedProperty
+parameter_list|(
+name|NodeBuilder
+name|parent
+parameter_list|,
+name|PropertyState
+name|base
+parameter_list|)
+block|{
+return|return
+name|resolution
+return|;
+block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -220,6 +261,9 @@ name|parent
 parameter_list|,
 name|PropertyState
 name|theirs
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 block|{
 return|return
@@ -227,22 +271,7 @@ name|resolution
 return|;
 block|}
 annotation|@
-name|Override
-specifier|public
-name|Resolution
-name|deleteDeletedProperty
-parameter_list|(
-name|NodeBuilder
-name|parent
-parameter_list|,
-name|PropertyState
-name|ours
-parameter_list|)
-block|{
-return|return
-name|resolution
-return|;
-block|}
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -267,6 +296,8 @@ name|resolution
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Resolution
@@ -280,12 +311,17 @@ name|name
 parameter_list|,
 name|NodeState
 name|ours
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 block|{
 return|return
 name|resolution
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -300,12 +336,17 @@ name|name
 parameter_list|,
 name|NodeState
 name|theirs
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 block|{
 return|return
 name|resolution
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -317,6 +358,9 @@ name|parent
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 block|{
 return|return

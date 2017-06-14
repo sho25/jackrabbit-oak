@@ -4820,8 +4820,9 @@ name|ResetCommitAttributeHook
 operator|.
 name|INSTANCE
 argument_list|,
-operator|new
 name|ConflictHook
+operator|.
+name|of
 argument_list|(
 operator|new
 name|AnnotatingConflictHandler

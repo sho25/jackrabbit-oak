@@ -12799,8 +12799,9 @@ name|hookList
 operator|.
 name|add
 argument_list|(
-operator|new
 name|ConflictHook
+operator|.
+name|of
 argument_list|(
 operator|new
 name|AnnotatingConflictHandler

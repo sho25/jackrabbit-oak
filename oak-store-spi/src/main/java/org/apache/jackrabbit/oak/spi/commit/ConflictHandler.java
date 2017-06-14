@@ -82,10 +82,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code ConflictHandler} is responsible for handling conflicts which happen  * on {@link org.apache.jackrabbit.oak.api.Root#rebase()} and on the implicit rebase operation which  * takes part on {@link org.apache.jackrabbit.oak.api.Root#commit()}.  *  * This interface contains one method per type of conflict which might occur.  * Each of these methods must return a {@link Resolution} for the current conflict.  * The resolution indicates to use the changes in the current {@code Root} instance  * ({@link Resolution#OURS}) or to use the changes from the underlying persistence  * store ({@link Resolution#THEIRS}). Alternatively the resolution can also indicate  * that the changes have been successfully merged by this {@code ConflictHandler}  * instance ({@link Resolution#MERGED}).  *  * @see ConflictHandler  */
+comment|/**  * A {@code ConflictHandler} is responsible for handling conflicts which happen  * on {@link org.apache.jackrabbit.oak.api.Root#rebase()} and on the implicit rebase operation which  * takes part on {@link org.apache.jackrabbit.oak.api.Root#commit()}.  *  * This interface contains one method per type of conflict which might occur.  * Each of these methods must return a {@link Resolution} for the current conflict.  * The resolution indicates to use the changes in the current {@code Root} instance  * ({@link Resolution#OURS}) or to use the changes from the underlying persistence  * store ({@link Resolution#THEIRS}). Alternatively the resolution can also indicate  * that the changes have been successfully merged by this {@code ConflictHandler}  * instance ({@link Resolution#MERGED}).  *  * @deprecated Use {@link org.apache.jackrabbit.oak.spi.commit.ThreeWayConflictHandler} instead.  */
 end_comment
 
 begin_interface
+annotation|@
+name|Deprecated
 specifier|public
 interface|interface
 name|ConflictHandler

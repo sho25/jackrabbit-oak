@@ -779,7 +779,7 @@ name|plugins
 operator|.
 name|commit
 operator|.
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 import|;
 end_import
 
@@ -3195,10 +3195,11 @@ condition|?
 operator|new
 name|CompositeHook
 argument_list|(
-operator|new
 name|ConflictHook
+operator|.
+name|of
 argument_list|(
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 operator|.
 name|OURS
 argument_list|)
@@ -3207,10 +3208,11 @@ else|:
 operator|new
 name|CompositeHook
 argument_list|(
-operator|new
 name|ConflictHook
+operator|.
+name|of
 argument_list|(
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 operator|.
 name|THEIRS
 argument_list|)

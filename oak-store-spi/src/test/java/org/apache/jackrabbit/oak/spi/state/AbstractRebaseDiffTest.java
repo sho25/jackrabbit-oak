@@ -427,6 +427,9 @@ name|builder
 parameter_list|,
 name|PropertyState
 name|after
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 block|{
 name|assertEquals
@@ -1587,6 +1590,9 @@ name|name
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 block|{
 name|assertEquals
@@ -1965,6 +1971,9 @@ name|builder
 parameter_list|,
 name|PropertyState
 name|after
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 block|{
 name|Assert
@@ -2096,6 +2105,9 @@ name|name
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 block|{
 name|Assert

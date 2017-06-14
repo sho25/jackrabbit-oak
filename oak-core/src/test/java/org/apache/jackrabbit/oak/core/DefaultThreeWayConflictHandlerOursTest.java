@@ -203,7 +203,7 @@ name|plugins
 operator|.
 name|commit
 operator|.
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 import|;
 end_import
 
@@ -258,7 +258,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|DefaultConflictHandlerOursTest
+name|DefaultThreeWayConflictHandlerOursTest
 block|{
 specifier|private
 specifier|static
@@ -309,7 +309,7 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|DefaultConflictHandler
+name|DefaultThreeWayConflictHandler
 operator|.
 name|OURS
 argument_list|)

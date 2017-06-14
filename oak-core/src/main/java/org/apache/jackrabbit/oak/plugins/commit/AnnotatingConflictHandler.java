@@ -375,7 +375,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ConflictHandler
+name|ThreeWayConflictHandler
 import|;
 end_import
 
@@ -434,7 +434,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@link ConflictHandler} implementation resolves conflicts to  * {@link org.apache.jackrabbit.oak.spi.commit.ConflictHandler.Resolution#THEIRS} and in addition marks nodes where a  * conflict occurred with the mixin {@code rep:MergeConflict}:  *  *<pre>  * [rep:MergeConflict]  *   mixin  *   primaryitem rep:ours  *   + rep:ours (rep:Unstructured) protected IGNORE  *</pre>  *  * The {@code rep:ours} sub node contains our version of the node prior to  * the conflict.  *  * @see ConflictValidator  */
+comment|/**  * This {@link ThreeWayConflictHandler} implementation resolves conflicts to  * {@link org.apache.jackrabbit.oak.spi.commit.ThreeWayConflictHandler.Resolution#THEIRS} and in addition marks nodes where a  * conflict occurred with the mixin {@code rep:MergeConflict}:  *  *<pre>  * [rep:MergeConflict]  *   mixin  *   primaryitem rep:ours  *   + rep:ours (rep:Unstructured) protected IGNORE  *</pre>  *  * The {@code rep:ours} sub node contains our version of the node prior to  * the conflict.  *  * @see ConflictValidator  */
 end_comment
 
 begin_class
@@ -442,7 +442,7 @@ specifier|public
 class|class
 name|AnnotatingConflictHandler
 implements|implements
-name|ConflictHandler
+name|ThreeWayConflictHandler
 block|{
 annotation|@
 name|Override
@@ -497,6 +497,9 @@ name|parent
 parameter_list|,
 name|PropertyState
 name|ours
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 block|{
 name|NodeBuilder
@@ -539,6 +542,9 @@ name|ours
 parameter_list|,
 name|PropertyState
 name|theirs
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 block|{
 name|NodeBuilder
@@ -578,6 +584,9 @@ name|parent
 parameter_list|,
 name|PropertyState
 name|theirs
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 block|{
 name|NodeBuilder
@@ -616,7 +625,7 @@ name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
-name|ours
+name|base
 parameter_list|)
 block|{
 name|NodeBuilder
@@ -636,7 +645,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|ours
+name|base
 argument_list|)
 expr_stmt|;
 return|return
@@ -706,6 +715,9 @@ name|name
 parameter_list|,
 name|NodeState
 name|ours
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 block|{
 name|NodeBuilder
@@ -750,6 +762,9 @@ name|name
 parameter_list|,
 name|NodeState
 name|theirs
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 block|{
 name|NodeBuilder
@@ -789,6 +804,9 @@ name|parent
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 block|{
 name|NodeBuilder

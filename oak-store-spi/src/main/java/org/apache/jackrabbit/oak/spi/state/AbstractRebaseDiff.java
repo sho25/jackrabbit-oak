@@ -115,7 +115,7 @@ name|PropertyState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**      * Called when the property {@code after} was changed on the branch but was      * deleted already in the trunk.      *      * @param builder  parent builder      * @param after  changed property      */
+comment|/**      * Called when the property {@code after} was changed on the branch but was      * deleted already in the trunk.      *      * @param builder  parent builder      * @param after  changed property      * @param base  base property      */
 specifier|protected
 specifier|abstract
 name|void
@@ -126,6 +126,9 @@ name|builder
 parameter_list|,
 name|PropertyState
 name|after
+parameter_list|,
+name|PropertyState
+name|base
 parameter_list|)
 function_decl|;
 comment|/**      * Called when the property {@code after} was changed on the branch but was      * already changed to {@code before} in the trunk.      *      * @param builder  parent property      * @param before  changed property in branch      * @param after  changed property in trunk      */
@@ -189,7 +192,7 @@ name|NodeState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**      * Called when the node {@code after} was changed on the branch but was      * deleted already in the trunk.      *      * @param builder  parent builder      * @param name  name of the changed node      * @param after  changed node      */
+comment|/**      * Called when the node {@code after} was changed on the branch but was      * deleted already in the trunk.      *      * @param builder  parent builder      * @param name  name of the changed node      * @param after  changed node      * @param base  base node      */
 specifier|protected
 specifier|abstract
 name|void
@@ -203,6 +206,9 @@ name|name
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|NodeState
+name|base
 parameter_list|)
 function_decl|;
 comment|/**      * Called when the node {@code before} was deleted in the branch but was      * already deleted in the trunk.      *      * @param builder  parent builder      * @param before  deleted node      */
@@ -339,6 +345,8 @@ argument_list|(
 name|builder
 argument_list|,
 name|after
+argument_list|,
+name|before
 argument_list|)
 expr_stmt|;
 block|}
@@ -580,6 +588,8 @@ argument_list|,
 name|name
 argument_list|,
 name|after
+argument_list|,
+name|before
 argument_list|)
 expr_stmt|;
 block|}
