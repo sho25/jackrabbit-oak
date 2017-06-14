@@ -335,18 +335,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ArrayBlockingQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|BlockingQueue
 import|;
 end_import
@@ -360,6 +348,18 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|LinkedBlockingQueue
 import|;
 end_import
 
@@ -796,13 +796,12 @@ operator|.
 name|deletedBlobs
 operator|=
 operator|new
-name|ArrayBlockingQueue
+name|LinkedBlockingQueue
 argument_list|<>
 argument_list|(
-literal|1000
+literal|100000
 argument_list|)
 expr_stmt|;
-comment|//1000 items should be ok for async index commits
 name|this
 operator|.
 name|deletedBlobsFileWriter
