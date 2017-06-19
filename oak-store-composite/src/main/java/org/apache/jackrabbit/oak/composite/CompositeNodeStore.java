@@ -2077,6 +2077,8 @@ argument_list|,
 name|checkpoint
 argument_list|,
 name|props
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 if|if
@@ -2299,6 +2301,8 @@ argument_list|,
 name|checkpoint
 argument_list|,
 name|props
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 if|if
@@ -2347,6 +2351,9 @@ argument_list|,
 name|String
 argument_list|>
 name|globalCheckpointProperties
+parameter_list|,
+name|boolean
+name|resolveByName
 parameter_list|)
 block|{
 name|Set
