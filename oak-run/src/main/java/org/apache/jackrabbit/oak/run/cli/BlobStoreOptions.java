@@ -225,9 +225,14 @@ name|s3Option
 operator|=
 name|parser
 operator|.
-name|accepts
+name|acceptsAll
+argument_list|(
+name|asList
 argument_list|(
 literal|"s3ds"
+argument_list|,
+literal|"s3-config-path"
+argument_list|)
 argument_list|,
 literal|"S3DataStore config path"
 argument_list|)
@@ -307,7 +312,9 @@ block|{
 return|return
 literal|"Options related to configuring a BlobStore. All config options here (except --fds-path) refer to "
 operator|+
-literal|"the path of the config file. The file should be a '.config' file in the OSGi config admin format."
+literal|"the path of the config file. The file can be a '.config' file in the OSGi config admin format or "
+operator|+
+literal|"properties file with '.cfg' and '.properties' extensions."
 return|;
 block|}
 annotation|@
