@@ -2445,6 +2445,16 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+comment|// usage of this DocumentNodeStore is single threaded. Reduce the
+comment|// number of cache segments to a minimum. This allows for caching
+comment|// bigger entries that would otherwise be evicted immediately
+name|builder
+operator|.
+name|setCacheSegmentCount
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|DocumentStore
 name|store
 init|=
