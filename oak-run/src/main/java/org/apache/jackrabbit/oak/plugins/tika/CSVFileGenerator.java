@@ -280,6 +280,25 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|count
+operator|%
+literal|1000
+operator|==
+literal|0
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Processed {} binaries so far"
+argument_list|,
+name|count
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|printer
 operator|.
