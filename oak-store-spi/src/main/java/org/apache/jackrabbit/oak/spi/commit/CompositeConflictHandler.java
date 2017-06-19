@@ -344,7 +344,7 @@ name|ThreeWayConflictHandler
 argument_list|>
 name|handlers
 decl_stmt|;
-comment|/**      * Create a new {@code CompositeConflictHandler} with an initial set of      * backing handler. Use {@link #addHandler(PartialConflictHandler)} to add additional      * handlers.      * @param handlers  the backing handlers      */
+comment|/**      * Create a new {@code CompositeConflictHandler} with an initial set of      * backing handler. Use {@link #addHandler(ThreeWayConflictHandler)} to add additional      * handlers.      * @param handlers  the backing handlers      */
 specifier|public
 name|CompositeConflictHandler
 parameter_list|(
@@ -370,7 +370,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new {@code CompositeConflictHandler} with no backing handlers.      * backing handler. Use {@link #addHandler(PartialConflictHandler)} to add handlers.      */
+comment|/**      * Create a new {@code CompositeConflictHandler} with no backing handlers.      * backing handler. Use {@link #addHandler(ThreeWayConflictHandler)} to add handlers.      */
 specifier|public
 name|CompositeConflictHandler
 parameter_list|()
