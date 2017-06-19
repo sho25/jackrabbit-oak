@@ -1884,6 +1884,9 @@ name|getDB
 argument_list|()
 argument_list|)
 operator|.
+name|setReadOnlyMode
+argument_list|()
+operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;

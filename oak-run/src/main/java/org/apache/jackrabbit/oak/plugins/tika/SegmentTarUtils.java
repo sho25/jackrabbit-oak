@@ -103,7 +103,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|InvalidFileStoreVersionException
 import|;
 end_import
 
@@ -121,7 +121,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|InvalidFileStoreVersionException
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -225,7 +225,7 @@ block|}
 block|}
 specifier|private
 specifier|static
-name|FileStore
+name|ReadOnlyFileStore
 name|fileStore
 parameter_list|(
 name|String
@@ -258,7 +258,7 @@ return|;
 block|}
 specifier|private
 specifier|static
-name|FileStore
+name|ReadOnlyFileStore
 name|fileStore
 parameter_list|(
 name|String
@@ -287,7 +287,7 @@ argument_list|(
 name|store
 argument_list|)
 operator|.
-name|build
+name|buildReadOnly
 argument_list|()
 return|;
 block|}
