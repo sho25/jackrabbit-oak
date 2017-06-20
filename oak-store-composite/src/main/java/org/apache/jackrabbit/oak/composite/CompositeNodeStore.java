@@ -2478,6 +2478,11 @@ return|return
 name|globalCheckpoint
 return|;
 block|}
+if|if
+condition|(
+name|resolveByName
+condition|)
+block|{
 name|String
 name|nameProp
 init|=
@@ -2543,6 +2548,7 @@ block|{
 return|return
 name|c
 return|;
+block|}
 block|}
 block|}
 return|return
