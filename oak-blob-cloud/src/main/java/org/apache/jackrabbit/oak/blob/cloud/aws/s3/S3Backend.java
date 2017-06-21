@@ -1526,7 +1526,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"  error "
 argument_list|,
@@ -1537,7 +1537,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 name|filteredMap
 init|=
@@ -1559,9 +1559,9 @@ name|Maps
 operator|.
 name|filterKeys
 argument_list|(
-name|Maps
+name|Utils
 operator|.
-name|fromProperties
+name|asMap
 argument_list|(
 name|prop
 argument_list|)

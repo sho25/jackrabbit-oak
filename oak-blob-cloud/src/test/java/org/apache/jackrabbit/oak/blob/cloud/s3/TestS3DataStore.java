@@ -521,7 +521,7 @@ name|expectedEx
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Could not initialize S3 from {s3Region=us-standard}"
+literal|"Could not initialize S3 from {s3Region=us-standard, intValueKey=25}"
 argument_list|)
 expr_stmt|;
 name|props
@@ -555,6 +555,15 @@ operator|.
 name|S3_REGION
 argument_list|,
 literal|"us-standard"
+argument_list|)
+expr_stmt|;
+name|props
+operator|.
+name|put
+argument_list|(
+literal|"intValueKey"
+argument_list|,
+literal|25
 argument_list|)
 expr_stmt|;
 name|ds

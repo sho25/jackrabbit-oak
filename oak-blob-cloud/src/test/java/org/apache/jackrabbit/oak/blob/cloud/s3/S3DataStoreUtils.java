@@ -788,9 +788,9 @@ name|populate
 argument_list|(
 name|ds
 argument_list|,
-name|Maps
+name|Utils
 operator|.
-name|fromProperties
+name|asMap
 argument_list|(
 name|props
 argument_list|)
