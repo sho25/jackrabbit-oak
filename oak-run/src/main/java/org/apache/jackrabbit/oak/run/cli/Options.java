@@ -424,9 +424,7 @@ name|checkNonOptions
 condition|)
 block|{
 name|checkNonOptions
-argument_list|(
-name|parser
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 return|return
@@ -674,13 +672,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|public
 name|void
 name|checkNonOptions
-parameter_list|(
-name|OptionParser
-name|parser
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
@@ -706,13 +701,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|parser
-operator|.
-name|printHelpOn
-argument_list|(
 name|System
 operator|.
 name|out
+operator|.
+name|println
+argument_list|(
+literal|"NodeStore details not provided"
 argument_list|)
 expr_stmt|;
 name|systemExit

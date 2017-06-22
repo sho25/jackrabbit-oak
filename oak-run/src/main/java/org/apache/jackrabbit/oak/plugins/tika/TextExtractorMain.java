@@ -351,6 +351,7 @@ operator|.
 name|FACTORY
 argument_list|)
 expr_stmt|;
+comment|//NodeStore is only required for generate command. So make it optional
 name|opts
 operator|.
 name|parseAndConfigure
@@ -358,6 +359,8 @@ argument_list|(
 name|parser
 argument_list|,
 name|args
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|TikaCommandOptions
@@ -372,6 +375,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|//If generate then check that NodeStore is specified
+if|if
+condition|(
+name|tikaOpts
+operator|.
+name|generate
+argument_list|()
+condition|)
+block|{
+name|opts
+operator|.
+name|checkNonOptions
+argument_list|()
+expr_stmt|;
+block|}
 try|try
 init|(
 name|Closer
