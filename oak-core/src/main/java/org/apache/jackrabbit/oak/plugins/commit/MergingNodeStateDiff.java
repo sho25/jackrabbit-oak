@@ -1292,6 +1292,10 @@ condition|(
 name|DELETE_CHANGED_PROPERTY
 operator|==
 name|conflictType
+operator|||
+name|DELETE_DELETED_PROPERTY
+operator|==
+name|conflictType
 condition|)
 block|{
 name|target
@@ -1407,6 +1411,10 @@ block|{
 if|if
 condition|(
 name|DELETE_CHANGED_NODE
+operator|==
+name|conflictType
+operator|||
+name|DELETE_DELETED_NODE
 operator|==
 name|conflictType
 condition|)
