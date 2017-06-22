@@ -331,7 +331,7 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 init|=
 name|segmentWriterBuilder
@@ -479,7 +479,7 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 init|=
 name|segmentWriterBuilder

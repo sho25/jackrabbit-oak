@@ -548,7 +548,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 decl_stmt|;
 annotation|@
@@ -593,7 +593,7 @@ name|reader
 parameter_list|,
 annotation|@
 name|Nonnull
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 parameter_list|,
 annotation|@
@@ -772,7 +772,7 @@ name|reader
 parameter_list|,
 annotation|@
 name|Nonnull
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 parameter_list|,
 annotation|@
@@ -823,7 +823,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 decl_stmt|;
 annotation|@
@@ -1189,11 +1189,17 @@ throws|throws
 name|IOException
 block|{
 return|return
+operator|new
+name|SegmentBlob
+argument_list|(
+name|blobStore
+argument_list|,
 name|writer
 operator|.
 name|writeStream
 argument_list|(
 name|stream
+argument_list|)
 argument_list|)
 return|;
 block|}

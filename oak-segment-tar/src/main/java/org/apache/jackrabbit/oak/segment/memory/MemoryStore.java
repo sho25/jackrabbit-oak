@@ -299,7 +299,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentWriter
+name|DefaultSegmentWriter
 import|;
 end_import
 
@@ -357,7 +357,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|segmentWriter
 decl_stmt|;
 specifier|private
@@ -434,21 +434,21 @@ argument_list|()
 expr_stmt|;
 name|Supplier
 argument_list|<
-name|SegmentWriter
+name|DefaultSegmentWriter
 argument_list|>
 name|getWriter
 init|=
 operator|new
 name|Supplier
 argument_list|<
-name|SegmentWriter
+name|DefaultSegmentWriter
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|get
 parameter_list|()
 block|{
@@ -508,7 +508,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|getWriter
 parameter_list|()
 block|{

@@ -144,7 +144,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Builder for building {@link SegmentWriter} instances.  * The returned instances are thread safe if {@link #withWriterPool()}  * was specified and<em>not</em> thread sage if {@link #withoutWriterPool()}  * was specified (default).  *<p>  *<em>Default:</em> calling one of the {@code build()} methods without previously  * calling one of the {@code with...()} methods returns a {@code SegmentWriter}  * as would the following chain of calls:  *<pre>      segmentWriterBuilder("name")         .with(LATEST_VERSION)         .withGeneration(0)         .withoutWriterPool()         .with(new WriterCacheManager.Default())         .build(store);  *</pre>  */
+comment|/**  * Builder for building {@link DefaultSegmentWriter} instances.  * The returned instances are thread safe if {@link #withWriterPool()}  * was specified and<em>not</em> thread sage if {@link #withoutWriterPool()}  * was specified (default).  *<p>  *<em>Default:</em> calling one of the {@code build()} methods without previously  * calling one of the {@code with...()} methods returns a {@code SegmentWriter}  * as would the following chain of calls:  *<pre>      segmentWriterBuilder("name")         .with(LATEST_VERSION)         .withGeneration(0)         .withoutWriterPool()         .with(new WriterCacheManager.Default())         .build(store);  *</pre>  */
 end_comment
 
 begin_class
@@ -374,7 +374,7 @@ comment|/**      * Build a {@code SegmentWriter} for a {@code FileStore}.      *
 annotation|@
 name|Nonnull
 specifier|public
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|build
 parameter_list|(
 annotation|@
@@ -385,7 +385,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SegmentWriter
+name|DefaultSegmentWriter
 argument_list|(
 name|checkNotNull
 argument_list|(
@@ -422,7 +422,7 @@ comment|/**      * Build a {@code SegmentWriter} for a {@code ReadOnlyFileStore}
 annotation|@
 name|Nonnull
 specifier|public
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|build
 parameter_list|(
 annotation|@
@@ -433,7 +433,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SegmentWriter
+name|DefaultSegmentWriter
 argument_list|(
 name|checkNotNull
 argument_list|(
@@ -511,7 +511,7 @@ comment|/**      * Build a {@code SegmentWriter} for a {@code MemoryStore}.     
 annotation|@
 name|Nonnull
 specifier|public
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|build
 parameter_list|(
 annotation|@
@@ -522,7 +522,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SegmentWriter
+name|DefaultSegmentWriter
 argument_list|(
 name|checkNotNull
 argument_list|(

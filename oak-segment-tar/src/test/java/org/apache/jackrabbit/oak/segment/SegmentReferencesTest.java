@@ -191,7 +191,7 @@ argument_list|()
 init|)
 block|{
 comment|// Write two records, one referencing the other.
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 init|=
 name|SegmentWriterBuilder
@@ -288,7 +288,7 @@ argument_list|()
 init|)
 block|{
 comment|// Write two records, one referencing the other.
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 init|=
 name|SegmentWriterBuilder

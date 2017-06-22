@@ -672,7 +672,7 @@ argument_list|()
 argument_list|)
 init|)
 block|{
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|sw
 init|=
 name|segmentWriterBuilder
@@ -702,6 +702,14 @@ decl_stmt|;
 name|SegmentBlob
 name|sb
 init|=
+operator|new
+name|SegmentBlob
+argument_list|(
+name|ss
+operator|.
+name|getBlobStore
+argument_list|()
+argument_list|,
 name|sw
 operator|.
 name|writeBlob
@@ -710,6 +718,7 @@ operator|new
 name|ArrayBasedBlob
 argument_list|(
 name|content
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -746,7 +755,7 @@ argument_list|()
 argument_list|)
 init|)
 block|{
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|sw
 init|=
 name|segmentWriterBuilder
@@ -776,6 +785,14 @@ decl_stmt|;
 name|SegmentBlob
 name|sb
 init|=
+operator|new
+name|SegmentBlob
+argument_list|(
+name|ss
+operator|.
+name|getBlobStore
+argument_list|()
+argument_list|,
 name|sw
 operator|.
 name|writeBlob
@@ -784,6 +801,7 @@ operator|new
 name|ArrayBasedBlob
 argument_list|(
 name|content
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

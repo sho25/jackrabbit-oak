@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@link WriteOperationHandler} uses a pool of {@link SegmentBufferWriter}s,  * which it passes to its {@link #execute(WriteOperation) execute} method.  *<p>  * Instances of this class are thread safe. See also the class comment of  * {@link SegmentWriter}.  */
+comment|/**  * This {@link WriteOperationHandler} uses a pool of {@link SegmentBufferWriter}s,  * which it passes to its {@link #execute(WriteOperation) execute} method.  *<p>  * Instances of this class are thread safe. See also the class comment of  * {@link DefaultSegmentWriter}.  */
 end_comment
 
 begin_class

@@ -304,7 +304,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Instances of this class manage the deduplication caches used  * by the {@link SegmentWriter} to avoid writing multiple copies  * of the same record. The caches are striped into generations  * with one generation per gc cycle. This avoids records old  * generations being reused.  */
+comment|/**  * Instances of this class manage the deduplication caches used  * by the {@link DefaultSegmentWriter} to avoid writing multiple copies  * of the same record. The caches are striped into generations  * with one generation per gc cycle. This avoids records old  * generations being reused.  */
 end_comment
 
 begin_class

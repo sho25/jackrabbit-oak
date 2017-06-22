@@ -402,7 +402,7 @@ name|openFileStore
 argument_list|()
 init|)
 block|{
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 init|=
 name|segmentWriterBuilder

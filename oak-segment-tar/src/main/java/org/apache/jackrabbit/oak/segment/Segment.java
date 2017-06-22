@@ -141,6 +141,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|DefaultSegmentWriter
+operator|.
+name|BLOCK_SIZE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|RecordNumbers
 operator|.
 name|EMPTY_RECORD_NUMBERS
@@ -198,24 +216,6 @@ operator|.
 name|SegmentVersion
 operator|.
 name|isValid
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentWriter
-operator|.
-name|BLOCK_SIZE
 import|;
 end_import
 

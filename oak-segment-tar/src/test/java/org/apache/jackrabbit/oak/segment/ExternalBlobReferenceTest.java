@@ -14,8 +14,6 @@ operator|.
 name|oak
 operator|.
 name|segment
-operator|.
-name|file
 package|;
 end_package
 
@@ -160,6 +158,24 @@ operator|.
 name|segment
 operator|.
 name|SegmentTestConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStore
 import|;
 end_import
 
@@ -418,6 +434,11 @@ expr_stmt|;
 name|SegmentBlob
 name|blob
 init|=
+operator|new
+name|SegmentBlob
+argument_list|(
+name|blobStore
+argument_list|,
 name|fileStore
 operator|.
 name|getWriter
@@ -428,6 +449,7 @@ argument_list|(
 name|newRandomInputStream
 argument_list|(
 name|blobLength
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

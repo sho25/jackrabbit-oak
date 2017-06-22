@@ -1456,7 +1456,7 @@ name|id
 return|;
 block|}
 block|}
-comment|/**      * Block record writer.      * @see SegmentWriter#writeBlock      * @see RecordType#BLOCK      */
+comment|/**      * Block record writer.      * @see RecordType#BLOCK      */
 specifier|private
 specifier|static
 class|class

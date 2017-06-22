@@ -159,7 +159,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentWriter
+name|DefaultSegmentWriter
 import|;
 end_import
 
@@ -335,7 +335,7 @@ name|newFileStore
 argument_list|()
 init|)
 block|{
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 init|=
 name|segmentWriterBuilder
@@ -425,7 +425,7 @@ name|newFileStore
 argument_list|()
 init|)
 block|{
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 init|=
 name|segmentWriterBuilder

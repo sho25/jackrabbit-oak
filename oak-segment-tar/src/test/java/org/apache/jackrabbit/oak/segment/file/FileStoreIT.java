@@ -213,7 +213,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentWriter
+name|DefaultSegmentWriter
 import|;
 end_import
 
@@ -967,7 +967,7 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 init|=
 name|store

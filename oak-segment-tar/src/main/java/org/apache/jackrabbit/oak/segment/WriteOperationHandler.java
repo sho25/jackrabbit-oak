@@ -38,14 +38,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code WriteOperationHandler} executes {@link WriteOperation WriteOperation}s and as  * such serves as a bridge between {@link SegmentWriter} and {@link SegmentBufferWriter}.  */
+comment|/**  * A {@code WriteOperationHandler} executes {@link WriteOperation WriteOperation}s and as  * such serves as a bridge between {@link DefaultSegmentWriter} and {@link SegmentBufferWriter}.  */
 end_comment
 
 begin_interface
 interface|interface
 name|WriteOperationHandler
 block|{
-comment|/**      * A {@code WriteOperation} encapsulates an operation on a {@link SegmentWriter}.      * Executing it performs the actual act of persisting changes to a      * {@link SegmentBufferWriter}.      */
+comment|/**      * A {@code WriteOperation} encapsulates an operation on a {@link DefaultSegmentWriter}.      * Executing it performs the actual act of persisting changes to a      * {@link SegmentBufferWriter}.      */
 interface|interface
 name|WriteOperation
 block|{
