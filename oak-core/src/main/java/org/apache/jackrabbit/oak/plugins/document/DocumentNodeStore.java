@@ -11059,6 +11059,9 @@ name|isDisposed
 operator|.
 name|get
 argument_list|()
+operator|||
+name|isDisableBranches
+argument_list|()
 condition|)
 block|{
 return|return;
