@@ -209,7 +209,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 decl_stmt|;
 comment|/**      * Local update counter for the root builder.      *       * The value encodes both the counter and the type of the node builder:      *<ul>      *<li>value>= {@code 0} represents a root builder (builder keeps      * counter updates)</li>      *<li>value = {@code -1} represents a child builder (value doesn't      * change, builder doesn't keep an updated counter)</li>      *</ul>      *       */
@@ -232,7 +232,7 @@ name|reader
 parameter_list|,
 annotation|@
 name|Nonnull
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 parameter_list|)
 block|{
@@ -286,7 +286,7 @@ name|reader
 parameter_list|,
 annotation|@
 name|Nonnull
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 parameter_list|)
 block|{

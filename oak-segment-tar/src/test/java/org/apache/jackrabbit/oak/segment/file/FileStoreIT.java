@@ -213,7 +213,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|DefaultSegmentWriter
+name|SegmentTestConstants
 import|;
 end_import
 
@@ -229,7 +229,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentTestConstants
+name|SegmentWriter
 import|;
 end_import
 
@@ -967,7 +967,7 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 init|=
 name|store

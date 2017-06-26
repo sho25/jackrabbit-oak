@@ -73,7 +73,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|DefaultSegmentWriter
+name|SegmentStream
 operator|.
 name|BLOCK_SIZE
 import|;

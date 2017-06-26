@@ -4881,7 +4881,7 @@ name|getReader
 argument_list|()
 decl_stmt|;
 specifier|final
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 init|=
 name|fileStore

@@ -151,6 +151,10 @@ name|NodeState
 import|;
 end_import
 
+begin_comment
+comment|/**  * Converts nodes, properties, values, etc. to records and persists them.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface

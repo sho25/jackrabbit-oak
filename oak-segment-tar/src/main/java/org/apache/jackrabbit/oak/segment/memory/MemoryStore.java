@@ -31,9 +31,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 import|;
 end_import
 
@@ -96,20 +96,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Supplier
 import|;
 end_import
 
@@ -299,7 +285,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|DefaultSegmentWriter
+name|SegmentWriter
 import|;
 end_import
 
@@ -357,7 +343,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|segmentWriter
 decl_stmt|;
 specifier|private
@@ -432,33 +418,6 @@ operator|new
 name|MemoryStoreRevisions
 argument_list|()
 expr_stmt|;
-name|Supplier
-argument_list|<
-name|DefaultSegmentWriter
-argument_list|>
-name|getWriter
-init|=
-operator|new
-name|Supplier
-argument_list|<
-name|DefaultSegmentWriter
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|DefaultSegmentWriter
-name|get
-parameter_list|()
-block|{
-return|return
-name|getWriter
-argument_list|()
-return|;
-block|}
-block|}
-decl_stmt|;
 name|this
 operator|.
 name|segmentReader
@@ -466,6 +425,8 @@ operator|=
 operator|new
 name|CachingSegmentReader
 argument_list|(
+name|this
+operator|::
 name|getWriter
 argument_list|,
 literal|null
@@ -479,7 +440,7 @@ name|this
 operator|.
 name|segmentWriter
 operator|=
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"sys"
 argument_list|)
@@ -508,7 +469,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|getWriter
 parameter_list|()
 block|{

@@ -31,9 +31,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 import|;
 end_import
 
@@ -223,7 +223,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|DefaultSegmentWriter
+name|SegmentWriter
 import|;
 end_import
 
@@ -282,7 +282,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 decl_stmt|;
 specifier|private
@@ -358,7 +358,7 @@ argument_list|()
 expr_stmt|;
 name|writer
 operator|=
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"read-only"
 argument_list|)
@@ -669,7 +669,7 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|getWriter
 parameter_list|()
 block|{

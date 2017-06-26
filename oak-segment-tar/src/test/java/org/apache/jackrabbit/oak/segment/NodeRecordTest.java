@@ -281,14 +281,14 @@ name|newFileStore
 argument_list|()
 init|)
 block|{
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 decl_stmt|;
 name|writer
 operator|=
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"1"
 argument_list|)
@@ -338,9 +338,9 @@ argument_list|()
 expr_stmt|;
 name|writer
 operator|=
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"2"
 argument_list|)
@@ -388,9 +388,9 @@ argument_list|()
 expr_stmt|;
 name|writer
 operator|=
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"3"
 argument_list|)
@@ -538,12 +538,12 @@ decl_stmt|;
 comment|// Create a new SegmentWriter. It's necessary not to have any cache,
 comment|// otherwise the write of some records (in this case, template
 comment|// records) will be cached and prevent this test to fail.
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 init|=
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"test"
 argument_list|)

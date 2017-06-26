@@ -29,9 +29,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 import|;
 end_import
 
@@ -331,10 +331,10 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 init|=
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"c"
 argument_list|)
@@ -479,10 +479,10 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 init|=
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"c"
 argument_list|)

@@ -21,6 +21,24 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|DefaultSegmentWriterBuilder
+operator|.
+name|defaultSegmentWriterBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -191,12 +209,10 @@ argument_list|()
 init|)
 block|{
 comment|// Write two records, one referencing the other.
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 init|=
-name|SegmentWriterBuilder
-operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"test"
 argument_list|)
@@ -288,12 +304,10 @@ argument_list|()
 init|)
 block|{
 comment|// Write two records, one referencing the other.
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 init|=
-name|SegmentWriterBuilder
-operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"test"
 argument_list|)

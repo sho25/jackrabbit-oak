@@ -149,20 +149,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Supplier
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -447,7 +433,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|DefaultSegmentWriter
+name|SegmentWriter
 import|;
 end_import
 
@@ -768,26 +754,9 @@ operator|=
 operator|new
 name|CachingSegmentReader
 argument_list|(
-operator|new
-name|Supplier
-argument_list|<
-name|DefaultSegmentWriter
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|DefaultSegmentWriter
-name|get
-parameter_list|()
-block|{
-return|return
+name|this
+operator|::
 name|getWriter
-argument_list|()
-return|;
-block|}
-block|}
 argument_list|,
 name|blobStore
 argument_list|,
@@ -1042,7 +1011,7 @@ annotation|@
 name|Nonnull
 specifier|public
 specifier|abstract
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|getWriter
 parameter_list|()
 function_decl|;

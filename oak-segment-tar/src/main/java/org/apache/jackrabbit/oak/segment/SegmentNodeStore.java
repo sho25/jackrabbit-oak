@@ -548,7 +548,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 decl_stmt|;
 annotation|@
@@ -593,7 +593,7 @@ name|reader
 parameter_list|,
 annotation|@
 name|Nonnull
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 parameter_list|,
 annotation|@
@@ -772,7 +772,7 @@ name|reader
 parameter_list|,
 annotation|@
 name|Nonnull
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 parameter_list|,
 annotation|@
@@ -823,7 +823,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 decl_stmt|;
 annotation|@

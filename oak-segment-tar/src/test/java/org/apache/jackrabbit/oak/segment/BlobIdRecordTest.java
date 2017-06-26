@@ -29,9 +29,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 import|;
 end_import
 
@@ -672,10 +672,10 @@ argument_list|()
 argument_list|)
 init|)
 block|{
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|sw
 init|=
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"test"
 argument_list|)
@@ -755,10 +755,10 @@ argument_list|()
 argument_list|)
 init|)
 block|{
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|sw
 init|=
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"test"
 argument_list|)

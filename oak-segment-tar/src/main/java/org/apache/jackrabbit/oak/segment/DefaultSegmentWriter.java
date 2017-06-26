@@ -832,7 +832,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code SegmentWriter} converts nodes, properties, values, etc. to records  * and persists them with the help of a {@link WriteOperationHandler}. All  * public methods of this class are thread safe if and only if the {@link  * WriteOperationHandler} passed to the constructor is thread safe.  */
+comment|/**  * Converts nodes, properties, values, etc. to records and persists them with  * the help of a {@link WriteOperationHandler}. All public methods of this class  * are thread safe if and only if the {@link WriteOperationHandler} passed to  * the constructor is thread safe.  */
 end_comment
 
 begin_class
@@ -852,31 +852,11 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
 name|DefaultSegmentWriter
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|static
-specifier|final
-name|int
-name|BLOCK_SIZE
-init|=
-literal|1
-operator|<<
-literal|12
-decl_stmt|;
-comment|// 4kB
 annotation|@
 name|Nonnull
 specifier|private
@@ -922,12 +902,9 @@ decl_stmt|;
 annotation|@
 name|Nonnull
 specifier|private
+specifier|final
 name|GCNodeWriteMonitor
 name|compactionMonitor
-init|=
-name|GCNodeWriteMonitor
-operator|.
-name|EMPTY
 decl_stmt|;
 comment|/**      * Create a new instance of a {@code SegmentWriter}. Note the thread safety      * properties pointed out in the class comment.      *      * @param store                 store to write to      * @param reader                segment reader for the {@code store}      * @param idProvider            segment id provider for the {@code store}      * @param blobStore             the blog store or {@code null} for inlined      *                              blobs      * @param cacheManager          cache manager instance for the      *                              de-duplication caches used by this writer      * @param writeOperationHandler handler for write operations.      */
 specifier|public
@@ -962,6 +939,9 @@ annotation|@
 name|Nonnull
 name|WriteOperationHandler
 name|writeOperationHandler
+parameter_list|,
+name|GCNodeWriteMonitor
+name|compactionMonitor
 parameter_list|)
 block|{
 name|this
@@ -1013,6 +993,15 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|writeOperationHandler
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|compactionMonitor
+operator|=
+name|checkNotNull
+argument_list|(
+name|compactionMonitor
 argument_list|)
 expr_stmt|;
 block|}
@@ -3427,6 +3416,8 @@ name|data
 operator|.
 name|length
 operator|/
+name|SegmentStream
+operator|.
 name|BLOCK_SIZE
 operator|+
 literal|1
@@ -3484,6 +3475,8 @@ name|MAX_SEGMENT_SIZE
 condition|;
 name|i
 operator|+=
+name|SegmentStream
+operator|.
 name|BLOCK_SIZE
 control|)
 block|{
@@ -3523,6 +3516,8 @@ name|len
 init|=
 name|min
 argument_list|(
+name|SegmentStream
+operator|.
 name|BLOCK_SIZE
 argument_list|,
 name|data
@@ -4164,6 +4159,8 @@ literal|2
 operator|*
 name|n
 operator|/
+name|SegmentStream
+operator|.
 name|BLOCK_SIZE
 argument_list|)
 decl_stmt|;
@@ -4220,6 +4217,8 @@ name|n
 condition|;
 name|i
 operator|+=
+name|SegmentStream
+operator|.
 name|BLOCK_SIZE
 control|)
 block|{
@@ -6202,23 +6201,6 @@ literal|true
 return|;
 block|}
 block|}
-block|}
-specifier|public
-name|void
-name|setCompactionMonitor
-parameter_list|(
-annotation|@
-name|Nonnull
-name|GCNodeWriteMonitor
-name|compactionMonitor
-parameter_list|)
-block|{
-name|this
-operator|.
-name|compactionMonitor
-operator|=
-name|compactionMonitor
-expr_stmt|;
 block|}
 block|}
 end_class

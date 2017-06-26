@@ -181,6 +181,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|DefaultSegmentWriterBuilder
+operator|.
+name|defaultSegmentWriterBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|Segment
 operator|.
 name|MEDIUM_LIMIT
@@ -262,24 +280,6 @@ operator|.
 name|BlobType
 operator|.
 name|SMALL
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentWriterBuilder
-operator|.
-name|segmentWriterBuilder
 import|;
 end_import
 
@@ -585,7 +585,7 @@ name|MemoryStore
 name|store
 decl_stmt|;
 specifier|private
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 decl_stmt|;
 specifier|private
@@ -921,7 +921,7 @@ argument_list|()
 expr_stmt|;
 name|writer
 operator|=
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|""
 argument_list|)

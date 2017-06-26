@@ -82,24 +82,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|DefaultSegmentWriter
-operator|.
-name|BLOCK_SIZE
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -198,6 +180,16 @@ name|SegmentStream
 extends|extends
 name|InputStream
 block|{
+specifier|static
+specifier|final
+name|int
+name|BLOCK_SIZE
+init|=
+literal|1
+operator|<<
+literal|12
+decl_stmt|;
+comment|// 4kB
 annotation|@
 name|CheckForNull
 specifier|public

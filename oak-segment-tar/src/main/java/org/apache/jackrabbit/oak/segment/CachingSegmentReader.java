@@ -176,7 +176,7 @@ specifier|private
 specifier|final
 name|Supplier
 argument_list|<
-name|DefaultSegmentWriter
+name|SegmentWriter
 argument_list|>
 name|writer
 decl_stmt|;
@@ -211,7 +211,7 @@ annotation|@
 name|Nonnull
 name|Supplier
 argument_list|<
-name|DefaultSegmentWriter
+name|SegmentWriter
 argument_list|>
 name|writer
 parameter_list|,

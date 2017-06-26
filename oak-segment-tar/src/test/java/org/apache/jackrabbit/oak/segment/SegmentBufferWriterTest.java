@@ -45,9 +45,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentWriterBuilder
+name|DefaultSegmentWriterBuilder
 operator|.
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 import|;
 end_import
 
@@ -299,7 +299,7 @@ name|openFileStore
 argument_list|()
 init|)
 block|{
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"t"
 argument_list|)
@@ -402,10 +402,10 @@ name|openFileStore
 argument_list|()
 init|)
 block|{
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 init|=
-name|segmentWriterBuilder
+name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"t"
 argument_list|)

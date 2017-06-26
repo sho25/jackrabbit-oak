@@ -545,7 +545,7 @@ name|blobStore
 decl_stmt|;
 specifier|private
 specifier|final
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 decl_stmt|;
 specifier|private
@@ -728,7 +728,7 @@ parameter_list|(
 name|SegmentReader
 name|reader
 parameter_list|,
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 parameter_list|,
 name|BlobStore
@@ -2228,7 +2228,7 @@ init|=
 operator|new
 name|byte
 index|[
-name|DefaultSegmentWriter
+name|SegmentStream
 operator|.
 name|BLOCK_SIZE
 index|]

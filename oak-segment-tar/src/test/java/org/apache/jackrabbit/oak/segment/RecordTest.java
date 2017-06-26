@@ -684,7 +684,7 @@ name|FileStore
 name|store
 decl_stmt|;
 specifier|private
-name|DefaultSegmentWriter
+name|SegmentWriter
 name|writer
 decl_stmt|;
 specifier|private
@@ -1437,14 +1437,14 @@ argument_list|)
 expr_stmt|;
 name|checkRandomStreamRecord
 argument_list|(
-name|DefaultSegmentWriter
+name|SegmentStream
 operator|.
 name|BLOCK_SIZE
 argument_list|)
 expr_stmt|;
 name|checkRandomStreamRecord
 argument_list|(
-name|DefaultSegmentWriter
+name|SegmentStream
 operator|.
 name|BLOCK_SIZE
 operator|+
