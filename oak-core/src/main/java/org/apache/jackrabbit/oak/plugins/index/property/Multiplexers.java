@@ -23,22 +23,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-operator|.
-name|newHashSet
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -266,6 +250,20 @@ operator|.
 name|base
 operator|.
 name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
 import|;
 end_import
 
@@ -622,7 +620,9 @@ block|{
 return|return
 name|unique
 condition|?
-name|newHashSet
+name|ImmutableSet
+operator|.
+name|of
 argument_list|(
 name|newUniqueStrategy
 argument_list|(
@@ -630,7 +630,9 @@ name|defaultName
 argument_list|)
 argument_list|)
 else|:
-name|newHashSet
+name|ImmutableSet
+operator|.
+name|of
 argument_list|(
 name|newMirrorStrategy
 argument_list|(
