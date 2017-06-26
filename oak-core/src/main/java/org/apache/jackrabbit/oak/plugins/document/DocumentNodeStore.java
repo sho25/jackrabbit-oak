@@ -4525,6 +4525,8 @@ block|}
 else|else
 block|{
 comment|// branch commit
+try|try
+block|{
 name|c
 operator|.
 name|applyToCache
@@ -4554,6 +4556,25 @@ name|asBranchRevision
 argument_list|()
 argument_list|)
 return|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|isDisableBranches
+argument_list|()
+condition|)
+block|{
+name|backgroundOperationLock
+operator|.
+name|readLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 name|void
@@ -4628,6 +4649,8 @@ block|}
 block|}
 else|else
 block|{
+try|try
+block|{
 name|Branch
 name|b
 init|=
@@ -4661,6 +4684,25 @@ name|asBranchRevision
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|isDisableBranches
+argument_list|()
+condition|)
+block|{
+name|backgroundOperationLock
+operator|.
+name|readLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -12329,10 +12371,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|isDisableBranches
 argument_list|()
 condition|)
+block|{
+comment|// Regular branch commits do not need to acquire the background
+comment|// operation lock because the head is not updated and no pending
+comment|// lastRev updates are done on trunk. When branches are disabled,
+comment|// a branch commit becomes a pseudo trunk commit and the lock
+comment|// must be acquired.
+name|backgroundOperationLock
+operator|.
+name|readLock
+argument_list|()
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|Revision
 name|rev

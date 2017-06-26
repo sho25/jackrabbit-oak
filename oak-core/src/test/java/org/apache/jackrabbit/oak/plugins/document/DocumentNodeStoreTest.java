@@ -20550,11 +20550,6 @@ expr_stmt|;
 block|}
 comment|// OAK-6392
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6392"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
