@@ -196,6 +196,59 @@ function_decl|;
 annotation|@
 name|Description
 argument_list|(
+literal|"Retrieves the terms, and number of documents for each term, for an index. "
+operator|+
+literal|"This allows to closely investigate what is stored in the index."
+argument_list|)
+name|String
+index|[]
+name|getFieldTermsInfo
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"indexPath"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"The index path (empty for all indexes)"
+argument_list|)
+name|String
+name|indexPath
+parameter_list|,
+annotation|@
+name|Name
+argument_list|(
+literal|"field"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"The field name (empty for all fields)"
+argument_list|)
+name|String
+name|field
+parameter_list|,
+annotation|@
+name|Name
+argument_list|(
+literal|"max"
+argument_list|)
+annotation|@
+name|Description
+argument_list|(
+literal|"The maximum number of entries to return (e.g. 100)"
+argument_list|)
+name|int
+name|max
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+annotation|@
+name|Description
+argument_list|(
 literal|"Returns the stored index definition for index at given path in string form"
 argument_list|)
 name|String
