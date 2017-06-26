@@ -351,6 +351,15 @@ name|IndexCommand
 argument_list|()
 argument_list|)
 operator|.
+name|put
+argument_list|(
+literal|"server"
+argument_list|,
+operator|new
+name|ServerCommand
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|()
 argument_list|)
