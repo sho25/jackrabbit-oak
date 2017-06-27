@@ -363,6 +363,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -567,6 +577,8 @@ specifier|final
 name|SegmentReader
 name|reader
 decl_stmt|;
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|BlobStore
@@ -611,6 +623,8 @@ name|SegmentWriter
 argument_list|>
 name|writer
 parameter_list|,
+annotation|@
+name|Nullable
 name|BlobStore
 name|blobStore
 parameter_list|,
@@ -666,6 +680,8 @@ name|Nonnull
 name|SegmentWriter
 name|writer
 parameter_list|,
+annotation|@
+name|Nullable
 name|BlobStore
 name|blobStore
 parameter_list|,
