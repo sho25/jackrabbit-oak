@@ -3469,6 +3469,7 @@ name|withCompactionMonitor
 argument_list|(
 name|compactionMonitor
 argument_list|)
+comment|// TODO michid move this into the compactor
 operator|.
 name|build
 argument_list|(
@@ -4038,6 +4039,8 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|// TODO michid fix offline compaction
+comment|// michid doc
 annotation|@
 name|CheckForNull
 specifier|private
@@ -4220,6 +4223,7 @@ name|nodeId
 argument_list|)
 return|;
 block|}
+comment|// michid doc
 annotation|@
 name|CheckForNull
 specifier|private
@@ -4386,6 +4390,7 @@ return|return
 name|compactedRoots
 return|;
 block|}
+comment|// michid doc
 annotation|@
 name|Nonnull
 specifier|private
@@ -4580,6 +4585,7 @@ return|return
 name|builder
 return|;
 block|}
+comment|// michid doc
 specifier|private
 name|SegmentNodeState
 name|forceCompact
