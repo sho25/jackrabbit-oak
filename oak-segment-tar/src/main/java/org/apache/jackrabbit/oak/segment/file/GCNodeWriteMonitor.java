@@ -128,7 +128,7 @@ block|}
 specifier|public
 specifier|synchronized
 name|void
-name|compacted
+name|onNode
 parameter_list|()
 block|{
 name|nodes

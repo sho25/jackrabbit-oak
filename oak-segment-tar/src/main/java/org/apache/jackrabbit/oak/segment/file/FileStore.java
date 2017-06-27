@@ -3465,11 +3465,6 @@ operator|.
 name|withoutWriterPool
 argument_list|()
 operator|.
-name|withCompactionMonitor
-argument_list|(
-name|compactionMonitor
-argument_list|)
-operator|.
 name|build
 argument_list|(
 name|FileStore
@@ -3491,6 +3486,10 @@ name|getBlobStore
 argument_list|()
 argument_list|,
 name|cancel
+argument_list|,
+name|compactionMonitor
+operator|::
+name|onNode
 argument_list|)
 decl_stmt|;
 name|SegmentNodeState

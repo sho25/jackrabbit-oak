@@ -879,6 +879,10 @@ name|getBlobStore
 argument_list|()
 argument_list|,
 name|cancel
+argument_list|,
+parameter_list|()
+lambda|->
+block|{}
 argument_list|)
 return|;
 block|}

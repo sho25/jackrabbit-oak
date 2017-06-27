@@ -430,7 +430,14 @@ name|Boolean
 argument_list|>
 name|cancel
 decl_stmt|;
-comment|/**      * Create a new instance based on the passed arguments.      * @param reader     segment reader used to read from the segments      * @param writer     segment writer used to serialise to segments      * @param blobStore  the blob store or {@code null} if none      * @param cancel     a flag that can be used to cancel the compaction process      */
+annotation|@
+name|Nonnull
+specifier|private
+specifier|final
+name|Runnable
+name|onNode
+decl_stmt|;
+comment|/**      * Create a new instance based on the passed arguments.      * @param reader     segment reader used to read from the segments      * @param writer     segment writer used to serialise to segments      * @param blobStore  the blob store or {@code null} if none      * @param cancel     a flag that can be used to cancel the compaction process      * @param onNode     notification call back for each compacted node      */
 specifier|public
 name|OnlineCompactor
 parameter_list|(
@@ -456,6 +463,11 @@ argument_list|<
 name|Boolean
 argument_list|>
 name|cancel
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Runnable
+name|onNode
 parameter_list|)
 block|{
 name|this
@@ -489,6 +501,15 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|cancel
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|onNode
+operator|=
+name|checkNotNull
+argument_list|(
+name|onNode
 argument_list|)
 expr_stmt|;
 block|}
@@ -818,6 +839,11 @@ name|after
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|onNode
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|SegmentNodeState
