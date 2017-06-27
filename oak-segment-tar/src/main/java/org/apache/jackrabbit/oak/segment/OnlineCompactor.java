@@ -419,6 +419,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the underlying segments.      */
+specifier|static
+specifier|final
+name|int
+name|UPDATE_LIMIT
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"compaction.update.limit"
+argument_list|,
+literal|10000
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Nonnull
 specifier|private
@@ -671,7 +686,7 @@ condition|(
 operator|++
 name|modCount
 operator|%
-literal|10000
+name|UPDATE_LIMIT
 operator|==
 literal|0
 condition|)

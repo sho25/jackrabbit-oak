@@ -215,6 +215,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|OnlineCompactor
+operator|.
+name|UPDATE_LIMIT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|compaction
 operator|.
 name|SegmentGCOptions
@@ -7185,7 +7203,7 @@ literal|0
 init|;
 name|k
 operator|<
-literal|10000
+name|UPDATE_LIMIT
 condition|;
 name|k
 operator|++
