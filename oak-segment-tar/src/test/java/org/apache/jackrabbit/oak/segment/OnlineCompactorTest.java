@@ -141,14 +141,6 @@ name|TemporaryFolder
 import|;
 end_import
 
-begin_comment
-comment|// michid unify with CompactorTest!?
-end_comment
-
-begin_comment
-comment|// michid implement more tests, check coverage
-end_comment
-
 begin_class
 specifier|public
 class|class

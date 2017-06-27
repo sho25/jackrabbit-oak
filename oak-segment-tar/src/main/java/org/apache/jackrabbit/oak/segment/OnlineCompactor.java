@@ -395,22 +395,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|// TODO michid doc
-end_comment
-
-begin_comment
-comment|// TODO michid unify with Compactor?!
-end_comment
-
-begin_comment
-comment|// TODO michid add progress tracker!?
-end_comment
-
-begin_comment
-comment|// TODO michid logging
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -685,7 +669,6 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// michid don't hc
 name|RecordId
 name|newBaseId
 init|=
@@ -1156,7 +1139,6 @@ return|;
 block|}
 block|}
 block|}
-comment|// TODO michid deduplicate binaries, strings here?
 annotation|@
 name|Nonnull
 specifier|private
