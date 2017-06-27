@@ -395,6 +395,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * Instances of this class can be used to compact a node state. I.e. to create a clone  * of a given node state without value sharing except for binaries. Binaries that are  * stored in a list of bulk segments will still value share the bulk segments (but not  * the list records).  * A node can either be compacted on its own or alternatively the difference between  * two nodes can be compacted on top of an already compacted node.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -446,6 +450,7 @@ name|Boolean
 argument_list|>
 name|cancel
 decl_stmt|;
+comment|/**      * Create a new instance based on the passed arguments.      * @param reader     segment reader used to read from the segments      * @param writer     segment writer used to serialise to segments      * @param blobStore  the blob store or {@code null} if none      * @param cancel     a flag that can be used to cancel the compaction process      */
 specifier|public
 name|OnlineCompactor
 parameter_list|(
@@ -507,6 +512,7 @@ name|cancel
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Compact a given {@code state}      * @param state  the node state to compact      * @return       the compacted node state or {@code null} if cancelled.      * @throws IOException      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -532,6 +538,7 @@ name|EMPTY_NODE
 argument_list|)
 return|;
 block|}
+comment|/**      * compact the differences between {@code after} and {@code before} on top of {@code ont}.      * @param before   the node state to diff against from {@code after}      * @param after    the node state diffed against {@code before}      * @param onto     the node state compacted onto      * @return         the compacted node state or {@code null} if cancelled.      * @throws IOException      */
 annotation|@
 name|CheckForNull
 specifier|public

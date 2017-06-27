@@ -4038,6 +4038,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**          * Compact {@code uncompacted} on top of an optional {@code base}.          * @param base         the base state to compact onto or {@code null} for an empty state.          * @param uncompacted  the uncompacted state to compact          * @param compactor    the compactor for creating the new generation of the          *                     uncompacted state.          * @param writer       the segment writer used by {@code compactor} for writing to the          *                     new generation.          * @return  compacted clone of {@code uncompacted} or null if cancelled.          * @throws IOException          */
 annotation|@
 name|CheckForNull
 specifier|private
@@ -4067,6 +4068,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// Collect a chronologically ordered list of roots for the base and the uncompacted
+comment|// state. This list consists of all checkpoints followed by the root.
 name|LinkedHashMap
 argument_list|<
 name|String
@@ -4093,6 +4096,7 @@ argument_list|(
 name|uncompacted
 argument_list|)
 decl_stmt|;
+comment|// Compact the list of uncompacted roots to a list of compacted roots.
 name|LinkedHashMap
 argument_list|<
 name|String
@@ -4121,6 +4125,8 @@ return|return
 literal|null
 return|;
 block|}
+comment|// Build a compacted super root by replacing the uncompacted roots with
+comment|// the compacted ones in the original node.
 name|SegmentNodeBuilder
 name|builder
 init|=
@@ -4187,6 +4193,7 @@ name|state
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Use the segment writer of the *new generation* to persist the compacted super root.
 name|RecordId
 name|nodeId
 init|=
@@ -4220,6 +4227,7 @@ name|nodeId
 argument_list|)
 return|;
 block|}
+comment|/**          * Compact a list of uncompacted roots on top of base roots of the same key or          * an empty node if none.          */
 annotation|@
 name|CheckForNull
 specifier|private
@@ -4386,6 +4394,7 @@ return|return
 name|compactedRoots
 return|;
 block|}
+comment|/**          * Collect a chronologically ordered list of roots for the base and the uncompacted          * state from a {@code superRoot} . This list consists of all checkpoints followed by          * the root.          */
 annotation|@
 name|Nonnull
 specifier|private
