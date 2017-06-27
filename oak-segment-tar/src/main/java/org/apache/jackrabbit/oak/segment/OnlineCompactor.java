@@ -375,26 +375,6 @@ name|NodeStateDiff
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Instances of this class can be used to compact a node state. I.e. to create a clone  * of a given node state without value sharing except for binaries. Binaries that are  * stored in a list of bulk segments will still value share the bulk segments (but not  * the list records).  * A node can either be compacted on its own or alternatively the difference between  * two nodes can be compacted on top of an already compacted node.  */
 end_comment
@@ -404,21 +384,6 @@ specifier|public
 class|class
 name|OnlineCompactor
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|OnlineCompactor
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the underlying segments.      */
 specifier|static
 specifier|final
