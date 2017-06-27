@@ -152,7 +152,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Write a map record.      *      * @param base    base map relative to which the {@code changes} are applied      *                ot {@code null} for the empty map.      * @param changes the changed mapping to apply to the {@code base} map.      * @return the map record written      * @throws IOException      */
+comment|/**      * Write a map record.      *      * @param base    base map relative to which the {@code changes} are applied      *                ot {@code null} for the empty map.      * @param changes the changed mapping to apply to the {@code base} map.      * @return the record id of the map written      * @throws IOException      */
 annotation|@
 name|Nonnull
 comment|// TODO frm this method is only used from test code, should it be removed?
@@ -210,7 +210,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Write a blob (as list of block records)      *      * @param blob blob to write      * @return The segment blob written      * @throws IOException      */
+comment|/**      * Write a blob (as list of block records)      *      * @param blob blob to write      * @return the record id of the blob written      * @throws IOException      */
 annotation|@
 name|Nonnull
 name|RecordId
@@ -224,7 +224,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Writes a block record containing the given block of bytes.      *      * @param bytes  source buffer      * @param offset offset within the source buffer      * @param length number of bytes to write      * @return block record identifier      */
+comment|/**      * Writes a block record containing the given block of bytes.      *      * @param bytes  source buffer      * @param offset offset within the source buffer      * @param length number of bytes to write      * @return the record id of the block written      */
 annotation|@
 name|Nonnull
 comment|// TODO frm this method is only used from test code, should it be removed?
@@ -246,7 +246,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Writes a stream value record. The given stream is consumed<em>and      * closed</em> by this method.      *      * @param stream stream to be written      * @return blob for the passed {@code stream}      * @throws IOException if the input stream could not be read or the output      *                     could not be written      */
+comment|/**      * Writes a stream value record. The given stream is consumed<em>and      * closed</em> by this method.      *      * @param stream stream to be written      * @return the record id of the stream written      * @throws IOException if the input stream could not be read or the output      *                     could not be written      */
 annotation|@
 name|Nonnull
 name|RecordId
@@ -260,7 +260,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Write a property.      *      * @param state the property to write      * @return the property state written      * @throws IOException      */
+comment|/**      * Write a property.      *      * @param state the property to write      * @return the record id of the property state written      * @throws IOException      */
 annotation|@
 name|Nonnull
 comment|// TODO frm this method is only used from test code, should it be removed?
@@ -275,7 +275,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Write a node state. If non null, the passed {@code stableId} will be assigned to      * the persisted node. Otherwise the stable id will be inferred from {@code state}.      *      * @param state node state to write      * @param stableIdBytes the stableId that should be assigned to the node or {@code null}.      * @return segment node state equal to {@code state}      * @throws IOException      */
+comment|/**      * Write a node state. If non null, the passed {@code stableId} will be assigned to      * the persisted node. Otherwise the stable id will be inferred from {@code state}.      *      * @param state node state to write      * @param stableIdBytes the stableId that should be assigned to the node or {@code null}.      * @return the record id of the segment node state written      * @throws IOException      */
 annotation|@
 name|Nonnull
 name|RecordId
