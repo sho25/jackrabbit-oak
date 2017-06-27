@@ -376,6 +376,10 @@ import|;
 end_import
 
 begin_comment
+comment|// FIXME OAK-6399 unify with Compactor (progress tracker? eager-flush, content based binary deduplication, unit tests, etc...)
+end_comment
+
+begin_comment
 comment|/**  * Instances of this class can be used to compact a node state. I.e. to create a clone  * of a given node state without value sharing except for binaries. Binaries that are  * stored in a list of bulk segments will still value share the bulk segments (but not  * the list records).  * A node can either be compacted on its own or alternatively the difference between  * two nodes can be compacted on top of an already compacted node.  */
 end_comment
 
