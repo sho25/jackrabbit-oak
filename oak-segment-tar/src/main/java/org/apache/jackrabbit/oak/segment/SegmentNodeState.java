@@ -782,15 +782,24 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the stable id of this node. In contrast to the node's record id      * (which is technically the node's address) the stable id doesn't change      * after an online gc cycle. It might though change after an offline gc cycle.      *      * @return  stable id      */
+annotation|@
+name|Nonnull
+specifier|static
 name|String
 name|getStableId
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nonnull
+name|ByteBuffer
+name|stableId
+parameter_list|)
 block|{
 name|ByteBuffer
 name|buffer
 init|=
-name|getStableIdBytes
+name|stableId
+operator|.
+name|duplicate
 argument_list|()
 decl_stmt|;
 name|long
@@ -831,7 +840,22 @@ operator|+
 name|offset
 return|;
 block|}
+comment|/**      * Returns the stable id of this node. In contrast to the node's record id      * (which is technically the node's address) the stable id doesn't change      * after an online gc cycle. It might though change after an offline gc cycle.      *      * @return  stable id      */
+specifier|public
+name|String
+name|getStableId
+parameter_list|()
+block|{
+return|return
+name|getStableId
+argument_list|(
+name|getStableIdBytes
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns the stable ID of this node, non parsed. In contrast to the node's      * record id (which is technically the node's address) the stable id doesn't      * change after an online gc cycle. It might though change after an offline      * gc cycle.      *      * @return the stable ID of this node.      */
+specifier|public
 name|ByteBuffer
 name|getStableIdBytes
 parameter_list|()
