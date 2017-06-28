@@ -5035,7 +5035,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 name|int
-name|minGeneration
+name|oldGeneration
 init|=
 name|getGcGeneration
 argument_list|()
@@ -5044,8 +5044,6 @@ name|gcOptions
 operator|.
 name|getRetainedGenerations
 argument_list|()
-operator|+
-literal|1
 decl_stmt|;
 name|tarFiles
 operator|.
@@ -5053,7 +5051,12 @@ name|collectBlobReferences
 argument_list|(
 name|collector
 argument_list|,
-name|minGeneration
+name|CompactionResult
+operator|.
+name|newOldReclaimer
+argument_list|(
+name|oldGeneration
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

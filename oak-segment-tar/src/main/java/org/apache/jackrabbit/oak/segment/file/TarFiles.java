@@ -2797,8 +2797,11 @@ parameter_list|(
 name|ReferenceCollector
 name|collector
 parameter_list|,
-name|int
-name|minGeneration
+name|Predicate
+argument_list|<
+name|Integer
+argument_list|>
+name|reclaim
 parameter_list|)
 throws|throws
 name|IOException
@@ -2860,7 +2863,7 @@ name|collectBlobReferences
 argument_list|(
 name|collector
 argument_list|,
-name|minGeneration
+name|reclaim
 argument_list|)
 expr_stmt|;
 block|}

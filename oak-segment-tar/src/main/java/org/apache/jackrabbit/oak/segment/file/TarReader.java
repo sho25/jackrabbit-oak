@@ -3791,7 +3791,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Collect the references of those blobs that are reachable from any segment with a      * generation at or above {@code minGeneration}.      * @param collector      * @param minGeneration      */
+comment|/**      * Collect the references of those blobs that are reachable from any segment and      * are not reclaimable according to the {@code reclaim} predicate.      */
 name|void
 name|collectBlobReferences
 parameter_list|(
@@ -3800,8 +3800,11 @@ name|Nonnull
 name|ReferenceCollector
 name|collector
 parameter_list|,
-name|int
-name|minGeneration
+name|Predicate
+argument_list|<
+name|Integer
+argument_list|>
+name|reclaim
 parameter_list|)
 block|{
 name|Map
@@ -3858,12 +3861,15 @@ control|)
 block|{
 if|if
 condition|(
+name|reclaim
+operator|.
+name|apply
+argument_list|(
 name|entry
 operator|.
 name|getKey
 argument_list|()
-operator|<
-name|minGeneration
+argument_list|)
 condition|)
 block|{
 continue|continue;
