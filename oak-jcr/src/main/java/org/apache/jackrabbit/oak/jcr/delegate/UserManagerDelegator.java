@@ -967,6 +967,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 literal|"createUser"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -1046,6 +1048,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 literal|"createUser"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -1121,6 +1125,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 literal|"createUser"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -1188,6 +1194,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 literal|"createGroup"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -1253,6 +1261,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 literal|"createGroup"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -1322,6 +1332,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 literal|"createGroup"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -1397,6 +1409,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 literal|"createGroup"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@

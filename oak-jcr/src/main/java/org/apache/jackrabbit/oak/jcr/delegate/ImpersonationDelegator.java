@@ -292,6 +292,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 literal|"grantImpersonation"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -343,6 +345,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 literal|"revokeImpersonation"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@

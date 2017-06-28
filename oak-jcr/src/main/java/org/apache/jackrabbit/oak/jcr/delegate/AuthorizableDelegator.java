@@ -720,6 +720,8 @@ name|Void
 argument_list|>
 argument_list|(
 literal|"remove"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -934,6 +936,8 @@ name|Void
 argument_list|>
 argument_list|(
 literal|"setProperty"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -988,6 +992,8 @@ name|Void
 argument_list|>
 argument_list|(
 literal|"setProperty"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -1092,6 +1098,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 literal|"removeProperty"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@

@@ -430,6 +430,8 @@ name|Void
 argument_list|>
 argument_list|(
 literal|"changePassword"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -482,6 +484,8 @@ name|Void
 argument_list|>
 argument_list|(
 literal|"changePassword"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -532,6 +536,8 @@ name|Void
 argument_list|>
 argument_list|(
 literal|"disable"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@

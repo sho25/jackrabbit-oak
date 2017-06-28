@@ -611,6 +611,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 literal|"addMember"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -675,6 +677,8 @@ argument_list|>
 argument_list|>
 argument_list|(
 literal|"addMembers"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -730,6 +734,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 literal|"removeMember"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -794,6 +800,8 @@ argument_list|>
 argument_list|>
 argument_list|(
 literal|"removeMembers"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@

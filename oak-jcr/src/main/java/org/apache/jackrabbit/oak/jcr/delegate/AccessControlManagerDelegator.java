@@ -555,6 +555,8 @@ name|Void
 argument_list|>
 argument_list|(
 literal|"setPolicy"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -608,6 +610,8 @@ name|Void
 argument_list|>
 argument_list|(
 literal|"removePolicy"
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
