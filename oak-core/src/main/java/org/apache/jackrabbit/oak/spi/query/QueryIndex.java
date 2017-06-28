@@ -202,14 +202,12 @@ name|getIndexName
 parameter_list|()
 function_decl|;
 comment|/**      *  A marker interface which means this index supports executing native queries      */
-specifier|public
 interface|interface
 name|NativeQueryIndex
 block|{
 comment|// a marker interface
 block|}
 comment|/**      * A marker interface which means this index supports may support more than      * just the minimal fulltext query syntax. If this index is used, then the      * query engine does not verify the fulltext constraint(s) for the given      * selector.      */
-specifier|public
 interface|interface
 name|FulltextQueryIndex
 extends|extends
@@ -225,7 +223,6 @@ name|getNodeAggregator
 parameter_list|()
 function_decl|;
 block|}
-specifier|public
 interface|interface
 name|AdvanceFulltextQueryIndex
 extends|extends
@@ -236,7 +233,6 @@ block|{
 comment|// a marker interface
 block|}
 comment|/**      * An query index that may support using multiple access orders      * (returning the rows in a specific order), and that can provide detailed      * information about the cost.      */
-specifier|public
 interface|interface
 name|AdvancedQueryIndex
 block|{
@@ -286,7 +282,6 @@ block|}
 comment|/**      * An index plan.      */
 annotation|@
 name|ProviderType
-specifier|public
 interface|interface
 name|IndexPlan
 extends|extends
@@ -383,7 +378,6 @@ name|getPlanName
 parameter_list|()
 function_decl|;
 comment|/**          * A builder for index plans.          */
-specifier|public
 class|class
 name|Builder
 block|{
@@ -1167,7 +1161,6 @@ block|}
 block|}
 block|}
 comment|/**      * A sort order entry.      */
-specifier|static
 class|class
 name|OrderEntry
 block|{
