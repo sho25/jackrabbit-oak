@@ -71,6 +71,18 @@ end_import
 
 begin_import
 import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|ProviderType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -102,6 +114,24 @@ operator|.
 name|commit
 operator|.
 name|MoveTracker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|ThreeWayConflictHandler
 import|;
 end_import
 
@@ -182,6 +212,8 @@ comment|/**  * Base interface for all security related configurations.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|SecurityConfiguration
@@ -260,6 +292,16 @@ name|Nonnull
 name|MoveTracker
 name|moveTracker
 parameter_list|)
+function_decl|;
+comment|/**      * Returns the list of conflict handlers available for this security configuration.      *      * @return A list of {@link org.apache.jackrabbit.oak.spi.commit.ThreeWayConflictHandler}.      */
+annotation|@
+name|Nonnull
+name|List
+argument_list|<
+name|ThreeWayConflictHandler
+argument_list|>
+name|getConflictHandlers
+parameter_list|()
 function_decl|;
 comment|/**      * @return The list of protected item importers defined by this configuration.      */
 annotation|@
@@ -399,6 +441,25 @@ name|Nonnull
 name|MoveTracker
 name|moveTracker
 parameter_list|)
+block|{
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|List
+argument_list|<
+name|ThreeWayConflictHandler
+argument_list|>
+name|getConflictHandlers
+parameter_list|()
 block|{
 return|return
 name|Collections
