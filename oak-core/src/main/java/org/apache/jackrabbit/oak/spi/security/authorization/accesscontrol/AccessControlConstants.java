@@ -209,6 +209,11 @@ name|PARAM_RESTRICTION_PROVIDER
 init|=
 literal|"restrictionProvider"
 decl_stmt|;
+name|String
+name|PARAM_MOUNT_PROVIDER
+init|=
+literal|"mountInfoProvider"
+decl_stmt|;
 block|}
 end_interface
 
