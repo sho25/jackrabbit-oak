@@ -643,7 +643,6 @@ name|TarReader
 implements|implements
 name|Closeable
 block|{
-comment|/** Logger instance */
 specifier|private
 specifier|static
 specifier|final
@@ -752,7 +751,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a TarReader instance for reading content from a tar file.      * If there exist multiple generations of the same tar file, they are      * all passed to this method. The latest generation with a valid tar      * index (which is a good indication of general validity of the file)      * is opened and the other generations are removed to clean things up.      * If none of the generations has a valid index, then something must have      * gone wrong and we'll try recover as much content as we can from the      * existing tar generations.      *      * @param files      * @param memoryMapping      * @return      * @throws IOException      */
+comment|/**      * Creates a {@link TarReader} instance for reading content from a tar file.      * If there exist multiple generations of the same tar file, they are all      * passed to this method. The latest generation with a valid tar index      * (which is a good indication of general validity of the file) is opened      * and the other generations are removed to clean things up. If none of the      * generations has a valid index, then something must have gone wrong and      * we'll try recover as much content as we can from the existing tar      * generations.      *      * @param files         The generations of the same TAR file.      * @param memoryMapping If {@code true}, opens the TAR file with memory      *                      mapping enabled.      * @param recovery      Strategy for recovering a damaged TAR file.      * @param ioMonitor     Callbacks to track internal operations for the open      *                      TAR file.      * @return An instance of {@link TarReader}.      */
 specifier|static
 name|TarReader
 name|open
@@ -1112,7 +1111,7 @@ name|file
 argument_list|)
 throw|;
 block|}
-comment|/**      * Collects all entries from the given file and optionally backs-up the      * file, by renaming it to a ".bak" extension      *       * @param file      * @param entries      * @param backup      * @throws IOException      */
+comment|/**      * Collects all entries from the given file and optionally backs-up the      * file, by renaming it to a ".bak" extension      *      * @param file    The TAR file.      * @param entries The map where the recovered entries will be collected      *                into.      * @param backup  If {@code true}, performs a backup of the TAR file.      */
 specifier|private
 specifier|static
 name|void
@@ -1209,7 +1208,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Regenerates a tar file from a list of entries.      *       * @param entries      * @param file      * @throws IOException      */
+comment|/**      * Regenerates a tar file from a list of entries.      *      * @param entries   Map of entries to recover. The entries will be recovered      *                  in the iteration order of this {@link LinkedHashMap}.      * @param file      The output file that will contain the recovered      *                  entries.      * @param recovery  The recovery strategy to execute.      * @param ioMonitor An instance of {@link IOMonitor}.      */
 specifier|private
 specifier|static
 name|void
@@ -1428,7 +1427,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Backup this tar file for manual inspection. Something went      * wrong earlier so we want to prevent the data from being      * accidentally removed or overwritten.      *      * @param file      * @throws IOException      */
+comment|/**      * Backup this tar file for manual inspection. Something went wrong earlier      * so we want to prevent the data from being accidentally removed or      * overwritten.      *      * @param file File to backup.      */
 specifier|private
 specifier|static
 name|void
@@ -1514,7 +1513,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Fine next available generation number so that a generated file doesn't      * overwrite another existing file.      *       * @param file      */
+comment|/**      * Fine next available generation number so that a generated file doesn't      * overwrite another existing file.      *      * @param file The file to backup.      * @param ext  The extension of the backed up file.      */
 specifier|private
 specifier|static
 name|File
@@ -1868,7 +1867,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Tries to read an existing index from the given tar file. The index is      * returned if it is found and looks valid (correct checksum, passes      * sanity checks).      *      * @param file tar file      * @param name name of the tar file, for logging purposes      * @return tar index, or {@code null} if not found or not valid      * @throws IOException if the tar file could not be read      */
+comment|/**      * Tries to read an existing index from the given tar file. The index is      * returned if it is found and looks valid (correct checksum, passes sanity      * checks).      *      * @param file The TAR file.      * @param name Name of the TAR file, for logging purposes.      * @return An instance of {@link ByteBuffer} populated with the content of      * the index. If the TAR doesn't contain any index, {@code null} is returned      * instead.      */
 specifier|private
 specifier|static
 name|ByteBuffer
@@ -2366,7 +2365,7 @@ return|return
 name|index
 return|;
 block|}
-comment|/**      * Scans through the tar file, looking for all segment entries.      *      * @throws IOException if the tar file could not be read      */
+comment|/**      * Scans through the tar file, looking for all segment entries.      *      * @param file    The path of the TAR file.      * @param access  The contents of the TAR file.      * @param entries The map that will contain the recovered entries. The      *                entries are inserted in the {@link LinkedHashMap} in the      *                order they appear in the TAR file.      */
 specifier|private
 specifier|static
 name|void
@@ -3061,6 +3060,7 @@ name|SIZE
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Reads and returns the identifier of every segment included in the index      * of this TAR file.      *      * @return An instance of {@link Set}.      */
 name|Set
 argument_list|<
 name|UUID
@@ -3140,6 +3140,7 @@ return|return
 name|uuids
 return|;
 block|}
+comment|/**      * Check if the requested entry exists in this TAR file.      *      * @param msb The most significant bits of the entry identifier.      * @param lsb The least significat bits of the entry identifier.      * @return {@code true} if the entry exists in this TAR file, {@code false}      * otherwise.      */
 name|boolean
 name|containsEntry
 parameter_list|(
@@ -3162,7 +3163,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * If the given segment is in this file, get the byte buffer that allows      * reading it.      *<p>      * Whether or not this will read from the file depends on whether memory      * mapped files are used or not.      *       * @param msb the most significant bits of the segment id      * @param lsb the least significant bits of the segment id      * @return the byte buffer, or null if not in this file      */
+comment|/**      * If the given segment is in this file, get the byte buffer that allows      * reading it.      *<p>      * Whether or not this will read from the file depends on whether memory      * mapped files are used or not.      *       * @param msb the most significant bits of the segment id      * @param lsb the least significant bits of the segment id      * @return the byte buffer, or null if not in this file.      */
 name|ByteBuffer
 name|readEntry
 parameter_list|(
@@ -3237,7 +3238,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Find the position of the given segment in the tar file.      * It uses the tar index if available.      *       * @param msb the most significant bits of the segment id      * @param lsb the least significant bits of the segment id      * @return the position in the file, or -1 if not found      */
+comment|/**      * Find the position of the given entry in this TAR file.      *      * @param msb The most significant bits of the entry identifier.      * @param lsb The least significant bits of the entry identifier.      * @return The position of the entry in the TAR file, or {@code -1} if the      * entry is not found.      */
 specifier|private
 name|int
 name|findEntry
@@ -3453,6 +3454,7 @@ operator|-
 literal|1
 return|;
 block|}
+comment|/**      * Read the entries in this TAR file.      *      * @return An array of {@link TarEntry}.      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -3578,8 +3580,10 @@ return|return
 name|entries
 return|;
 block|}
+comment|/**      * Read the references of an entry in this TAR file.      *      * @param entry An entry in this TAR file.      * @param id    The identifier of the entry.      * @param graph The content of the graph of this TAR file.      * @return The references of the provided TAR entry.      */
 annotation|@
 name|Nonnull
+comment|// TODO frm remove the unused parameter 'entry'
 specifier|private
 specifier|static
 name|List
@@ -3638,6 +3642,7 @@ name|references
 return|;
 block|}
 comment|/**      * Build the graph of segments reachable from an initial set of segments      * @param roots     the initial set of segments      * @param visitor   visitor receiving call back while following the segment graph      * @throws IOException      */
+comment|// TODO frm remove this method, see OAK-6021
 specifier|public
 name|void
 name|traverseSegmentGraph
@@ -3803,6 +3808,7 @@ block|}
 block|}
 block|}
 comment|/**      * Calculate the ids of the segments directly referenced from {@code referenceIds}      * through forward references.      *      * @param referencedIds  The initial set of ids to start from. On return it      *                       contains the set of direct forward references.      *      * @throws IOException      */
+comment|// TODO frm remove this method, see OAK-6021
 name|void
 name|calculateForwardReferences
 parameter_list|(
@@ -3921,7 +3927,8 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Collect the references of those blobs that are reachable from any segment and      * are not reclaimable according to the {@code reclaim} predicate.      */
+comment|/**      * Collect the references of those BLOBs that are reachable from the entries      * in this TAR file.      *<p>      * The user-provided {@link Predicate} determines if entries belonging to a      * specific generation should be inspected for binary references of not.      * Given a generation number as input, if the predicate returns {@code      * true}, entries from that generation will be skipped. If the predicate      * returns {@code false}, entries from that generation will be inspected for      * references.      *<p>      * The provided {@link ReferenceCollector} is callback object that will be      * invoked for every reference found in the inspected entries.      *      * @param collector      An instance of {@link ReferenceCollector}.      * @param skipGeneration An instance of {@link Predicate}.      */
+comment|// TODO frm this package depends on org.apache.jackrabbit.oak.plugins.blob only because of ReferenceCollector
 name|void
 name|collectBlobReferences
 parameter_list|(
@@ -3934,7 +3941,7 @@ name|Predicate
 argument_list|<
 name|Integer
 argument_list|>
-name|reclaim
+name|skipGeneration
 parameter_list|)
 block|{
 name|Map
@@ -3991,7 +3998,7 @@ control|)
 block|{
 if|if
 condition|(
-name|reclaim
+name|skipGeneration
 operator|.
 name|apply
 argument_list|(
@@ -4042,7 +4049,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Collect reclaimable segments.      * A data segment is reclaimable iff its generation is in the {@code reclaimGeneration}      * predicate.      * A bulk segment is reclaimable if it is not in {@code bulkRefs} or if it is transitively      * reachable through a non reclaimable data segment.      *      * @param bulkRefs  bulk segment gc roots      * @param reclaim   reclaimable segments      * @param reclaimGeneration  reclaim generation predicate for data segments      * @throws IOException      */
+comment|/**      * Mark entries that can be reclaimed.      *<p>      * A data segment is reclaimable iff its generation is in the {@code      * reclaimGeneration} predicate. A bulk segment is reclaimable if it is not      * in {@code bulkRefs} or if it is transitively reachable through a non      * reclaimable data segment.      *<p>      * The algorithm implemented by this method uses a couple of supporting data      * structures.      *<p>      * The first of the supporting data structures is the set of bulk segments      * to keep. When this method is invoked, this set initially contains the set      * of bulk segments that are currently in use. The algorithm removes a      * reference from this set if the corresponding bulk segment is not      * referenced (either directly or transitively) from a marked data segment.      * The algorithm adds a reference to this set if a marked data segment is      * references the corresponding bulk segment. When this method returns, the      * references in this set represent bulk segments that are currently in use      * and should not be removed.      *<p>      * The second of the supporting data structures is the set of segments to      * reclaim. This set contains references to bulk and data segments. A      * reference to a bulk segment is added if the bulk segment is not      * referenced (either directly or transitively) by marked data segment. A      * reference to a data segment is added if the user-provided predicate      * returns {@code true} for that segment. When this method returns, this set      * contains segments that are not marked and can be removed.      *      * @param bulkRefs          The set of bulk segments to keep.      * @param reclaim           The set of segments to remove.      * @param reclaimGeneration An instance of {@link Predicate}.      */
 name|void
 name|mark
 parameter_list|(
@@ -4246,7 +4253,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Remove reclaimable segments and collect actually reclaimed segments.      * @param reclaim       segments to reclaim      * @param reclaimed     actually reclaimed segments      * @return              reader resulting from the reclamation process      * @throws IOException      */
+comment|/**      * Try to remove every segment contained in a user-provided set.      *<p>      * This method might refuse to remove the segments under the following      * circumstances.      *<p>      * First, if this TAR files does not contain any of the segments that are      * supposed to be removed. In this case, the method returns {@code null}.      *<p>      * Second, if this method contains some of the segments that are supposed to      * be removed, but the reclaimable space is be less than 1/4 of the current      * size of the TAR file. In this case, this method returns this {@link      * TarReader}.      *<p>      * Third, if this TAR file is in the highest generation possible ('z') and      * thus a new generation for this TAR file can't be created. In this case,      * the method returns this {@link TarReader}.      *<p>      * Fourth, if a new TAR file has been created but it is unreadable for      * unknown reasons. In this case, this method returns this {@link      * TarReader}.      *<p>      * If none of the above conditions apply, this method returns a new {@link      * TarReader} instance tha points to a TAR file that doesn't contain the      * removed segments. The returned {@link TarReader} will belong to the next      * generation of this {@link TarReader}. In this case, the {@code reclaimed}      * set will be updated to contain the identifiers of the segments that were      * removed from this TAR file.      *      * @param reclaim   Set of segment sto reclaim.      * @param reclaimed Set of reclaimed segments. It will be update if this TAR      *                  file is rewritten.      * @return Either this {@link TarReader}, or a new instance of {@link      * TarReader}, or {@code null}.      */
 name|TarReader
 name|sweep
 parameter_list|(
@@ -4972,7 +4979,7 @@ name|this
 return|;
 block|}
 block|}
-comment|/**      * @return  {@code true} iff this reader has been closed      * @see #close()      */
+comment|/**      * Check if this {@link TarReader} is closed.      * @return {@code true} if this instance is close, {@code false} otherwise.      */
 name|boolean
 name|isClosed
 parameter_list|()
@@ -5000,8 +5007,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//-----------------------------------------------------------< private>--
-comment|/**      * Loads and parses the optional pre-compiled graph entry from the given tar      * file.      *      * @return the parsed graph, or {@code null} if one was not found      * @throws IOException if the tar file could not be read      */
+comment|/**      * Loads and parses the optional pre-compiled graph entry from the given tar      * file.      *      * @param bulkOnly If {@code true}, only vertices pointing to bulk segments      *                 are included in the graph.      * @return The parsed graph, or {@code null} if one was not found.      */
 name|Map
 argument_list|<
 name|UUID
@@ -5156,6 +5162,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Read the index of binary references from this TAR file.      *<p>      * The index of binary references is a two-level map. The key to the first      * level of the map is the generation. The key to the second level of the      * map is the identifier of a data segment in this TAR file. The value of      * the second-level map is the set of binary references contained in the      * segment.      *      * @return An instance of {@link Map}.      */
 name|Map
 argument_list|<
 name|Integer
@@ -6309,6 +6316,7 @@ return|return
 name|number
 return|;
 block|}
+comment|/**      * Return the path of this TAR file.      *      * @return An instance of {@link File}.      */
 name|File
 name|getFile
 parameter_list|()
