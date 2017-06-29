@@ -130,9 +130,7 @@ specifier|final
 name|int
 name|LEVEL_SIZE
 init|=
-name|Segment
-operator|.
-name|SEGMENT_REFERENCE_LIMIT
+literal|255
 decl_stmt|;
 specifier|private
 specifier|final

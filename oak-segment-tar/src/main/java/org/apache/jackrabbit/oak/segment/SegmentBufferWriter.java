@@ -696,7 +696,7 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
-comment|// refcount
+comment|// reserved
 name|buffer
 index|[
 name|GC_GENERATION_OFFSET

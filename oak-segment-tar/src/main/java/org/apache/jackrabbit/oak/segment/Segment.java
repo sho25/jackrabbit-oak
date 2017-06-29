@@ -527,21 +527,6 @@ literal|2
 operator|+
 literal|4
 decl_stmt|;
-comment|/**      * The limit on segment references within one segment. Since record      * identifiers use one byte to indicate the referenced segment, a single      * segment can hold references to up to 255 segments plus itself.      */
-specifier|static
-specifier|final
-name|int
-name|SEGMENT_REFERENCE_LIMIT
-init|=
-operator|(
-literal|1
-operator|<<
-literal|8
-operator|)
-operator|-
-literal|1
-decl_stmt|;
-comment|// 255
 comment|/**      * The number of bytes (or bits of address space) to use for the      * alignment boundary of segment records.      */
 specifier|static
 specifier|final
@@ -551,7 +536,7 @@ init|=
 literal|2
 decl_stmt|;
 comment|// align at the four-byte boundary
-comment|/**      * Maximum segment size. Record identifiers are stored as three-byte      * sequences with the first byte indicating the segment and the next      * two the offset within that segment. Since all records are aligned      * at four-byte boundaries, the two bytes can address up to 256kB of      * record data.      */
+comment|/**      * Maximum segment size      */
 specifier|static
 specifier|final
 name|int
@@ -559,11 +544,7 @@ name|MAX_SEGMENT_SIZE
 init|=
 literal|1
 operator|<<
-operator|(
-literal|16
-operator|+
-name|RECORD_ALIGN_BITS
-operator|)
+literal|18
 decl_stmt|;
 comment|// 256kB
 comment|/**      * The size limit for small values. The variable length of small values      * is encoded as a single byte with the high bit as zero, which gives us      * seven bits for encoding the length of the value.      */
