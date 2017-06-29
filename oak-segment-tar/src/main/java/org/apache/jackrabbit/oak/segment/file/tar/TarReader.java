@@ -675,6 +675,7 @@ operator|+
 literal|"(\\.([0-9a-f]{8}))?(\\..*)?"
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|static
 name|int
 name|getEntrySize
