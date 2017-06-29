@@ -128,7 +128,16 @@ name|store
 operator|.
 name|collectBlobReferences
 argument_list|(
+name|s
+lambda|->
 name|collector
+operator|.
+name|addReference
+argument_list|(
+name|s
+argument_list|,
+literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

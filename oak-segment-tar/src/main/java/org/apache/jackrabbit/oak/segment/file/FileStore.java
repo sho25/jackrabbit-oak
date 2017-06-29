@@ -609,6 +609,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Consumer
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -2213,7 +2225,10 @@ specifier|public
 name|void
 name|collectBlobReferences
 parameter_list|(
-name|ReferenceCollector
+name|Consumer
+argument_list|<
+name|String
+argument_list|>
 name|collector
 parameter_list|)
 throws|throws
@@ -5045,7 +5060,10 @@ specifier|synchronized
 name|void
 name|collectBlobReferences
 parameter_list|(
-name|ReferenceCollector
+name|Consumer
+argument_list|<
+name|String
+argument_list|>
 name|collector
 parameter_list|)
 throws|throws

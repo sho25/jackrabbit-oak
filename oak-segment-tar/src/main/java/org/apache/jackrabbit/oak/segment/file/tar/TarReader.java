@@ -455,6 +455,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|function
+operator|.
+name|Consumer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -562,24 +574,6 @@ operator|.
 name|io
 operator|.
 name|FileUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|blob
-operator|.
-name|ReferenceCollector
 import|;
 end_import
 
@@ -3927,14 +3921,16 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Collect the references of those BLOBs that are reachable from the entries      * in this TAR file.      *<p>      * The user-provided {@link Predicate} determines if entries belonging to a      * specific generation should be inspected for binary references of not.      * Given a generation number as input, if the predicate returns {@code      * true}, entries from that generation will be skipped. If the predicate      * returns {@code false}, entries from that generation will be inspected for      * references.      *<p>      * The provided {@link ReferenceCollector} is callback object that will be      * invoked for every reference found in the inspected entries.      *      * @param collector      An instance of {@link ReferenceCollector}.      * @param skipGeneration An instance of {@link Predicate}.      */
-comment|// TODO frm this package depends on org.apache.jackrabbit.oak.plugins.blob only because of ReferenceCollector
+comment|/**      * Collect the references of those BLOBs that are reachable from the entries      * in this TAR file.      *<p>      * The user-provided {@link Predicate} determines if entries belonging to a      * specific generation should be inspected for binary references of not.      * Given a generation number as input, if the predicate returns {@code      * true}, entries from that generation will be skipped. If the predicate      * returns {@code false}, entries from that generation will be inspected for      * references.      *<p>      * The provided {@link Consumer} is callback object that will be invoked for      * every reference found in the inspected entries.      *      * @param collector      An instance of {@link Consumer}.      * @param skipGeneration An instance of {@link Predicate}.      */
 name|void
 name|collectBlobReferences
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ReferenceCollector
+name|Consumer
+argument_list|<
+name|String
+argument_list|>
 name|collector
 parameter_list|,
 name|Predicate
@@ -4038,11 +4034,9 @@ control|)
 block|{
 name|collector
 operator|.
-name|addReference
+name|accept
 argument_list|(
 name|reference
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 block|}
