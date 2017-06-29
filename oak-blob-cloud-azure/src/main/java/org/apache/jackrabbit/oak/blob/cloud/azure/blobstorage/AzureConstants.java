@@ -29,7 +29,7 @@ specifier|final
 class|class
 name|AzureConstants
 block|{
-comment|/**      * Azure Stoage Account name      */
+comment|/**      * Azure storage account name      */
 specifier|public
 specifier|static
 specifier|final
@@ -38,7 +38,7 @@ name|AZURE_STORAGE_ACCOUNT_NAME
 init|=
 literal|"accessKey"
 decl_stmt|;
-comment|/**      * Azure Stoage Account Key      */
+comment|/**      * Azure storage account key      */
 specifier|public
 specifier|static
 specifier|final
@@ -47,7 +47,25 @@ name|AZURE_STORAGE_ACCOUNT_KEY
 init|=
 literal|"secretKey"
 decl_stmt|;
-comment|/**      * Azure Blob Storage container name      */
+comment|/**      * Azure shared access signature token      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AZURE_SAS
+init|=
+literal|"azureSas"
+decl_stmt|;
+comment|/**      * Azure blob endpoint      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AZURE_BLOB_ENDPOINT
+init|=
+literal|"azureBlobEndpoint"
+decl_stmt|;
+comment|/**      * Azure blob storage container name      */
 specifier|public
 specifier|static
 specifier|final
@@ -56,7 +74,7 @@ name|AZURE_BLOB_CONTAINER_NAME
 init|=
 literal|"container"
 decl_stmt|;
-comment|/**      * Azure Blob Storage request timeout.      */
+comment|/**      * Azure blob storage request timeout      */
 specifier|public
 specifier|static
 specifier|final
@@ -65,7 +83,7 @@ name|AZURE_BLOB_REQUEST_TIMEOUT
 init|=
 literal|"socketTimeout"
 decl_stmt|;
-comment|/**      * Azure Blob Storage maximum retries per request.      */
+comment|/**      * Azure blob storage maximum retries per request      */
 specifier|public
 specifier|static
 specifier|final
@@ -74,7 +92,7 @@ name|AZURE_BLOB_MAX_REQUEST_RETRY
 init|=
 literal|"maxErrorRetry"
 decl_stmt|;
-comment|/**      * Azure Blob Storage maximum connections per operation (default 1)      */
+comment|/**      * Azure blob storage maximum connections per operation (default 1)      */
 specifier|public
 specifier|static
 specifier|final
@@ -83,7 +101,7 @@ name|AZURE_BLOB_CONCURRENT_REQUESTS_PER_OPERATION
 init|=
 literal|"maxConnections"
 decl_stmt|;
-comment|/**      *  Constant to set proxy host.      */
+comment|/**      *  Proxy host      */
 specifier|public
 specifier|static
 specifier|final
@@ -92,7 +110,7 @@ name|PROXY_HOST
 init|=
 literal|"proxyHost"
 decl_stmt|;
-comment|/**      *  Constant to set proxy port.      */
+comment|/**      *  Proxy port      */
 specifier|public
 specifier|static
 specifier|final
