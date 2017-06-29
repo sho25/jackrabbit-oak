@@ -653,7 +653,8 @@ operator|.
 name|UNDEFINED
 return|;
 block|}
-comment|// OAK-6389 @Override
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMultiValueRestriction
