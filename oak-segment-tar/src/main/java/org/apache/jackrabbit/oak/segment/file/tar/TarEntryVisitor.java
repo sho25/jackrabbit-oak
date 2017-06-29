@@ -16,73 +16,43 @@ operator|.
 name|segment
 operator|.
 name|file
+operator|.
+name|tar
 package|;
 end_package
 
-begin_comment
-comment|/**  * FileStoreMonitor are notified for any writes or deletes  * performed by FileStore  */
-end_comment
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
 
 begin_interface
 interface|interface
-name|FileStoreMonitor
+name|TarEntryVisitor
 block|{
-name|FileStoreMonitor
-name|DEFAULT
-init|=
-operator|new
-name|FileStoreMonitor
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
 name|void
-name|written
+name|visit
 parameter_list|(
 name|long
-name|bytes
-parameter_list|)
-block|{          }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|reclaimed
-parameter_list|(
+name|msb
+parameter_list|,
 name|long
-name|bytes
+name|lsb
+parameter_list|,
+name|File
+name|file
+parameter_list|,
+name|int
+name|offset
+parameter_list|,
+name|int
+name|size
 parameter_list|)
-block|{          }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|flushed
-parameter_list|()
-block|{                      }
-block|}
-decl_stmt|;
-comment|/**      * Notifies the monitor when data is written      *      * @param bytes number of bytes written      */
-name|void
-name|written
-parameter_list|(
-name|long
-name|bytes
-parameter_list|)
-function_decl|;
-comment|/**      * Notifies the monitor when memory is reclaimed      *      * @param bytes number of bytes reclaimed      */
-name|void
-name|reclaimed
-parameter_list|(
-name|long
-name|bytes
-parameter_list|)
-function_decl|;
-comment|/**      * Notifies the monitor when journal data is flushed to disk.      */
-name|void
-name|flushed
-parameter_list|()
 function_decl|;
 block|}
 end_interface

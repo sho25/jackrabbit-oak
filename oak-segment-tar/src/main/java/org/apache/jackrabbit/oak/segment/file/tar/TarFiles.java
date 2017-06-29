@@ -16,6 +16,8 @@ operator|.
 name|segment
 operator|.
 name|file
+operator|.
+name|tar
 package|;
 end_package
 
@@ -425,6 +427,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|FileStoreStats
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -442,6 +462,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|TarFiles
 implements|implements
@@ -483,6 +504,7 @@ name|next
 expr_stmt|;
 block|}
 block|}
+specifier|public
 specifier|static
 class|class
 name|CleanupResult
@@ -515,6 +537,7 @@ parameter_list|()
 block|{
 comment|// Prevent external instantiation.
 block|}
+specifier|public
 name|long
 name|getReclaimedSize
 parameter_list|()
@@ -523,6 +546,7 @@ return|return
 name|reclaimedSize
 return|;
 block|}
+specifier|public
 name|List
 argument_list|<
 name|File
@@ -534,6 +558,7 @@ return|return
 name|removableFiles
 return|;
 block|}
+specifier|public
 name|Set
 argument_list|<
 name|UUID
@@ -545,6 +570,7 @@ return|return
 name|reclaimedSegmentIds
 return|;
 block|}
+specifier|public
 name|boolean
 name|isInterrupted
 parameter_list|()
@@ -554,6 +580,7 @@ name|interrupted
 return|;
 block|}
 block|}
+specifier|public
 specifier|static
 class|class
 name|Builder
@@ -592,6 +619,7 @@ parameter_list|()
 block|{
 comment|// Prevent external instantiation.
 block|}
+specifier|public
 name|Builder
 name|withDirectory
 parameter_list|(
@@ -612,6 +640,7 @@ return|return
 name|this
 return|;
 block|}
+specifier|public
 name|Builder
 name|withMemoryMapping
 parameter_list|(
@@ -629,6 +658,7 @@ return|return
 name|this
 return|;
 block|}
+specifier|public
 name|Builder
 name|withTarRecovery
 parameter_list|(
@@ -649,6 +679,7 @@ return|return
 name|this
 return|;
 block|}
+specifier|public
 name|Builder
 name|withIOMonitor
 parameter_list|(
@@ -669,6 +700,7 @@ return|return
 name|this
 return|;
 block|}
+specifier|public
 name|Builder
 name|withFileStoreStats
 parameter_list|(
@@ -689,6 +721,7 @@ return|return
 name|this
 return|;
 block|}
+specifier|public
 name|Builder
 name|withMaxFileSize
 parameter_list|(
@@ -713,6 +746,7 @@ return|return
 name|this
 return|;
 block|}
+specifier|public
 name|Builder
 name|withReadOnly
 parameter_list|()
@@ -1231,6 +1265,7 @@ argument_list|)
 condition|)
 do|;
 block|}
+specifier|public
 specifier|static
 name|Builder
 name|builder
@@ -1716,6 +1751,7 @@ name|w
 argument_list|)
 return|;
 block|}
+specifier|public
 name|long
 name|size
 parameter_list|()
@@ -1792,6 +1828,7 @@ return|return
 name|size
 return|;
 block|}
+specifier|public
 name|int
 name|readerCount
 parameter_list|()
@@ -1837,6 +1874,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+specifier|public
 name|void
 name|flush
 parameter_list|()
@@ -1871,6 +1909,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|public
 name|boolean
 name|containsSegment
 parameter_list|(
@@ -1966,6 +2005,7 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
 name|ByteBuffer
 name|readSegment
 parameter_list|(
@@ -2094,6 +2134,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|public
 name|void
 name|writeSegment
 parameter_list|(
@@ -2294,6 +2335,7 @@ operator|=
 name|newWriter
 expr_stmt|;
 block|}
+specifier|public
 name|CleanupResult
 name|cleanup
 parameter_list|(
@@ -2791,6 +2833,7 @@ return|return
 name|result
 return|;
 block|}
+specifier|public
 name|void
 name|collectBlobReferences
 parameter_list|(
@@ -2868,6 +2911,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
 name|Iterable
 argument_list|<
 name|UUID
@@ -2941,6 +2985,7 @@ return|return
 name|ids
 return|;
 block|}
+specifier|public
 name|Map
 argument_list|<
 name|UUID
@@ -3115,6 +3160,7 @@ return|return
 name|result
 return|;
 block|}
+specifier|public
 name|Map
 argument_list|<
 name|String
@@ -3206,6 +3252,7 @@ return|return
 name|index
 return|;
 block|}
+specifier|public
 name|void
 name|traverseSegmentGraph
 parameter_list|(

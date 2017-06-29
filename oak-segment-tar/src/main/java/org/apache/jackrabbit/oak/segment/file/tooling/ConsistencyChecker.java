@@ -459,6 +459,8 @@ name|segment
 operator|.
 name|file
 operator|.
+name|tar
+operator|.
 name|IOMonitorAdapter
 import|;
 end_import

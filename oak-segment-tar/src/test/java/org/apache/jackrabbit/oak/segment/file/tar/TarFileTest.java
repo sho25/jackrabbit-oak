@@ -16,6 +16,8 @@ operator|.
 name|segment
 operator|.
 name|file
+operator|.
+name|tar
 package|;
 end_package
 

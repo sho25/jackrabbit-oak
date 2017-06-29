@@ -16,6 +16,8 @@ operator|.
 name|segment
 operator|.
 name|file
+operator|.
+name|tar
 package|;
 end_package
 
@@ -157,7 +159,9 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|tar
+operator|.
+name|TarConstants
 operator|.
 name|FILE_NAME_FORMAT
 import|;
@@ -634,9 +638,9 @@ name|this
 operator|.
 name|monitor
 operator|=
-name|FileStoreMonitor
-operator|.
-name|DEFAULT
+operator|new
+name|FileStoreMonitorAdapter
+argument_list|()
 expr_stmt|;
 name|this
 operator|.

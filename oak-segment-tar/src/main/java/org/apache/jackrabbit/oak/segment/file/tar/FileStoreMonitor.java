@@ -16,41 +16,40 @@ operator|.
 name|segment
 operator|.
 name|file
+operator|.
+name|tar
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
+begin_comment
+comment|/**  * FileStoreMonitor are notified for any writes or deletes  * performed by FileStore  */
+end_comment
 
 begin_interface
+specifier|public
 interface|interface
-name|TarEntryVisitor
+name|FileStoreMonitor
 block|{
+comment|/**      * Notifies the monitor when data is written      *      * @param bytes number of bytes written      */
 name|void
-name|visit
+name|written
 parameter_list|(
 name|long
-name|msb
-parameter_list|,
-name|long
-name|lsb
-parameter_list|,
-name|File
-name|file
-parameter_list|,
-name|int
-name|offset
-parameter_list|,
-name|int
-name|size
+name|bytes
 parameter_list|)
+function_decl|;
+comment|/**      * Notifies the monitor when memory is reclaimed      *      * @param bytes number of bytes reclaimed      */
+name|void
+name|reclaimed
+parameter_list|(
+name|long
+name|bytes
+parameter_list|)
+function_decl|;
+comment|/**      * Notifies the monitor when journal data is flushed to disk.      */
+name|void
+name|flushed
+parameter_list|()
 function_decl|;
 block|}
 end_interface
