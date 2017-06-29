@@ -201,15 +201,6 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"graph"
-argument_list|,
-operator|new
-name|GraphCommand
-argument_list|()
-argument_list|)
-operator|.
-name|put
-argument_list|(
 literal|"help"
 argument_list|,
 operator|new
