@@ -3729,9 +3729,6 @@ name|refId
 argument_list|)
 condition|)
 block|{
-comment|// keep the extra check for bulk segments for the case where a
-comment|// pre-compiled graph is not available (graph == null) and
-comment|// getReferences also includes data references
 name|references
 operator|.
 name|add
