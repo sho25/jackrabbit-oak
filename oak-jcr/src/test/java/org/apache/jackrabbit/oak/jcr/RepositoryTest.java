@@ -8069,11 +8069,6 @@ expr_stmt|;
 block|}
 comment|// OAK-6410
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6410"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void

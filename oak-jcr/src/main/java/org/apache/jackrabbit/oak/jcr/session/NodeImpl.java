@@ -7440,6 +7440,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|property
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|isCheckedOut
 argument_list|()
