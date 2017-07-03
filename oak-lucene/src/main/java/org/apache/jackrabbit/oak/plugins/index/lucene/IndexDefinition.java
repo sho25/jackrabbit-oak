@@ -1192,6 +1192,7 @@ init|=
 literal|":version"
 decl_stmt|;
 comment|/**      * Hidden node under index definition which is used to store the index definition      * nodestate as it was at time of reindexing      */
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -1200,6 +1201,7 @@ init|=
 literal|":index-definition"
 decl_stmt|;
 comment|/**      * Hidden node under index definition which is used to store meta info      */
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -1216,6 +1218,7 @@ init|=
 literal|"lastUpdated"
 decl_stmt|;
 comment|/**      * Meta property which provides the unique id      */
+specifier|public
 specifier|static
 specifier|final
 name|String

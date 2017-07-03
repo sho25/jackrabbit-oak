@@ -741,6 +741,8 @@ name|importIndexData
 parameter_list|()
 throws|throws
 name|CommitFailedException
+throws|,
+name|IOException
 block|{
 name|NodeState
 name|root
