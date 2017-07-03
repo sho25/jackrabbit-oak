@@ -841,7 +841,9 @@ name|definitionBuilder
 operator|.
 name|child
 argument_list|(
-literal|":status"
+name|IndexDefinition
+operator|.
+name|STATUS_NODE
 argument_list|)
 decl_stmt|;
 name|status
