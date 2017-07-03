@@ -1608,7 +1608,7 @@ argument_list|(
 name|ioMonitor
 argument_list|)
 operator|.
-name|withFileStoreStats
+name|withFileStoreMonitor
 argument_list|(
 name|stats
 argument_list|)
