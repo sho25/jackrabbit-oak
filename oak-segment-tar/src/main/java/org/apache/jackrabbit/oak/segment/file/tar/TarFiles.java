@@ -1300,8 +1300,6 @@ argument_list|)
 argument_list|,
 name|memoryMapping
 argument_list|,
-literal|true
-argument_list|,
 name|builder
 operator|.
 name|tarRecovery

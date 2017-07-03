@@ -886,9 +886,6 @@ parameter_list|,
 name|boolean
 name|memoryMapping
 parameter_list|,
-name|boolean
-name|recover
-parameter_list|,
 name|TarRecovery
 name|recovery
 parameter_list|,
@@ -944,11 +941,6 @@ return|return
 name|reader
 return|;
 block|}
-if|if
-condition|(
-name|recover
-condition|)
-block|{
 name|log
 operator|.
 name|warn
@@ -1025,7 +1017,6 @@ block|{
 return|return
 name|reader
 return|;
-block|}
 block|}
 throw|throw
 operator|new
