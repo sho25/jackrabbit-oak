@@ -491,7 +491,6 @@ name|BLOCK_SIZE
 index|]
 decl_stmt|;
 specifier|static
-specifier|final
 name|int
 name|getPaddingSize
 parameter_list|(
