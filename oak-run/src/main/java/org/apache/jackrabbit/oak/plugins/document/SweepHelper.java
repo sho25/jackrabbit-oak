@@ -646,6 +646,14 @@ argument_list|>
 name|ops
 parameter_list|)
 block|{
+for|for
+control|(
+name|UpdateOp
+name|op
+range|:
+name|ops
+control|)
+block|{
 name|boolean
 name|bcUpdate
 init|=
@@ -656,14 +664,6 @@ name|revertUpdate
 init|=
 literal|false
 decl_stmt|;
-for|for
-control|(
-name|UpdateOp
-name|op
-range|:
-name|ops
-control|)
-block|{
 for|for
 control|(
 name|UpdateOp
@@ -710,7 +710,6 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-block|}
 if|if
 condition|(
 name|bcUpdate
@@ -732,6 +731,7 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
