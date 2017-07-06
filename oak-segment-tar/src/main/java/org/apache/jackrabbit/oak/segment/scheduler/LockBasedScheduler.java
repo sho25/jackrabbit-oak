@@ -702,6 +702,22 @@ literal|"true"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|/**      * Flag controlling the commit time percentile to wait for the lock in order      * to increase chances of returning an up to date state.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|SCHEDULER_FETCH_COMMIT_DELAY_PERCENTILE
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.scheduler.fetch.commitDelayPercentile"
+argument_list|,
+literal|50
+argument_list|)
+decl_stmt|;
 comment|/**      * Sets the number of seconds to wait for the attempt to grab the lock to      * create a checkpoint      */
 specifier|private
 specifier|final
@@ -860,7 +876,7 @@ name|commitTimeStats
 operator|.
 name|getPercentile
 argument_list|(
-literal|50
+name|SCHEDULER_FETCH_COMMIT_DELAY_PERCENTILE
 argument_list|)
 decl_stmt|;
 try|try
