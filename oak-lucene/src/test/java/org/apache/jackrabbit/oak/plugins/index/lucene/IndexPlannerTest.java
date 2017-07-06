@@ -3322,7 +3322,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|propertyIndexCostActualByDefault
+name|propertyIndexCostActualOverriddenByEntryCount
 parameter_list|()
 throws|throws
 name|Exception
@@ -3466,7 +3466,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|propertyIndexCostActualOverriddenByEntryCount
+name|propertyIndexCostActualByDefault
 parameter_list|()
 throws|throws
 name|Exception
