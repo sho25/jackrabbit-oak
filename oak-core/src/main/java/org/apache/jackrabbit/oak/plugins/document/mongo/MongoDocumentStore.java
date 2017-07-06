@@ -1993,6 +1993,13 @@ comment|// index on _deleted for fast lookup of potentially garbage
 comment|// depending on the MongoDB version, create a partial index
 if|if
 condition|(
+name|initialDocsCount
+operator|==
+literal|0
+condition|)
+block|{
+if|if
+condition|(
 name|mongoStatus
 operator|.
 name|isVersion
@@ -2001,10 +2008,6 @@ literal|3
 argument_list|,
 literal|2
 argument_list|)
-operator|&&
-name|initialDocsCount
-operator|==
-literal|0
 condition|)
 block|{
 name|createPartialIndex
@@ -2052,6 +2055,39 @@ argument_list|,
 literal|false
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|hasIndex
+argument_list|(
+name|nodes
+argument_list|,
+name|DELETED_ONCE
+argument_list|,
+name|MODIFIED_IN_SECS
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Detected an upgrade from Oak version<= 1.6. For optimal "
+operator|+
+literal|"Revision GC performance it is recommended to create a "
+operator|+
+literal|"partial index for the 'nodes' collection on "
+operator|+
+literal|"{_deletedOnce:1, _modified:1} with a partialFilterExpression "
+operator|+
+literal|"{_deletedOnce:true}. Partial indexes require MongoDB 3.2 "
+operator|+
+literal|"or higher."
 argument_list|)
 expr_stmt|;
 block|}
