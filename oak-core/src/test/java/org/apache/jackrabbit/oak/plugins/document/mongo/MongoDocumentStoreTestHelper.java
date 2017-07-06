@@ -53,7 +53,7 @@ begin_class
 specifier|public
 specifier|final
 class|class
-name|MongoDocumentStoreHelper
+name|MongoDocumentStoreTestHelper
 block|{
 specifier|public
 specifier|static

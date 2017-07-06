@@ -125,7 +125,7 @@ name|document
 operator|.
 name|mongo
 operator|.
-name|MongoDocumentStoreHelper
+name|MongoDocumentStoreTestHelper
 import|;
 end_import
 
@@ -930,7 +930,7 @@ decl_stmt|;
 name|DB
 name|db
 init|=
-name|MongoDocumentStoreHelper
+name|MongoDocumentStoreTestHelper
 operator|.
 name|getDB
 argument_list|(
