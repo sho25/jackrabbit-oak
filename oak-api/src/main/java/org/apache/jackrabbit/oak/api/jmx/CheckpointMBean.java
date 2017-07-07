@@ -96,13 +96,6 @@ name|Date
 name|getOldestCheckpointCreationDate
 parameter_list|()
 function_decl|;
-comment|/**      * @return creation information about oldest checkpoint.      */
-annotation|@
-name|Deprecated
-name|CompositeData
-name|getOldestCheckpointCreationTime
-parameter_list|()
-function_decl|;
 comment|/**      * Create a new checkpoint with the given {@code lifetime}.      * See {@code org.apache.jackrabbit.oak.spi.state.NodeStore#checkpoint}      * @param lifetime      * @return the id of the newly created checkpoint      */
 name|String
 name|createCheckpoint
