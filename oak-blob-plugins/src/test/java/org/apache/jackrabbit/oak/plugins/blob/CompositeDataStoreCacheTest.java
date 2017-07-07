@@ -1131,7 +1131,7 @@ literal|0
 argument_list|,
 literal|0
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -2173,7 +2173,7 @@ literal|1024
 argument_list|,
 literal|0
 argument_list|,
-literal|2
+literal|3
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -2369,7 +2369,7 @@ literal|0
 argument_list|,
 literal|0
 argument_list|,
-literal|2
+literal|3
 argument_list|)
 expr_stmt|;
 name|assertEquals
