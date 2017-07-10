@@ -329,6 +329,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|previousAsync
+operator|.
+name|isArray
+argument_list|()
+operator|&&
 name|ASYNC_PREVIOUS_NONE
 operator|.
 name|equals
