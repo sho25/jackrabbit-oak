@@ -42,6 +42,7 @@ comment|/**  * Lock used to prevent AsyncIndexUpdate from running when Index imp
 end_comment
 
 begin_interface
+specifier|public
 interface|interface
 name|AsyncIndexerLock
 parameter_list|<

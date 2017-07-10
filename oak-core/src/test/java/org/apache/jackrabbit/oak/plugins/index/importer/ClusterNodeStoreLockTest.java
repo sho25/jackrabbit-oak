@@ -462,7 +462,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|AsyncIndexerLock
+name|ClusterNodeStoreLock
 name|lock
 init|=
 operator|new
@@ -471,7 +471,7 @@ argument_list|(
 name|store
 argument_list|)
 decl_stmt|;
-name|LockToken
+name|ClusteredLockToken
 name|token
 init|=
 name|lock
@@ -494,6 +494,16 @@ name|leasify
 argument_list|(
 name|name
 argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|lock
+operator|.
+name|isLocked
+argument_list|(
+name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
