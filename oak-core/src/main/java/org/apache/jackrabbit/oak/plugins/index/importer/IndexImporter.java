@@ -518,6 +518,28 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|checkArgument
+argument_list|(
+name|indexDir
+operator|.
+name|exists
+argument_list|()
+operator|&&
+name|indexDir
+operator|.
+name|isDirectory
+argument_list|()
+argument_list|,
+literal|"Path [%s] does not point "
+operator|+
+literal|"to existing directory"
+argument_list|,
+name|indexDir
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|nodeStore
