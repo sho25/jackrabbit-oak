@@ -170,6 +170,14 @@ specifier|public
 class|class
 name|AbstractIndexCommandTest
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TEST_INDEX_PATH
+init|=
+literal|"/oak:index/fooIndex"
+decl_stmt|;
 annotation|@
 name|Rule
 specifier|public
@@ -261,6 +269,8 @@ name|fixture
 argument_list|,
 literal|"/testNode/a"
 argument_list|,
+literal|"foo"
+argument_list|,
 literal|100
 argument_list|)
 expr_stmt|;
@@ -274,6 +284,9 @@ name|fixture
 parameter_list|,
 name|String
 name|basePath
+parameter_list|,
+name|String
+name|propName
 parameter_list|,
 name|int
 name|count
@@ -319,7 +332,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"foo"
+name|propName
 argument_list|,
 literal|"bar"
 argument_list|)
@@ -455,7 +468,7 @@ name|fooIndex
 init|=
 name|getOrCreateByPath
 argument_list|(
-literal|"/oak:index/fooIndex"
+name|TEST_INDEX_PATH
 argument_list|,
 literal|"oak:QueryIndexDefinition"
 argument_list|,
