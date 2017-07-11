@@ -530,6 +530,16 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertFalse
+argument_list|(
+name|lock
+operator|.
+name|isLocked
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|NodeState
