@@ -69,6 +69,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Stopwatch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ImmutableMap
@@ -938,6 +952,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Stopwatch
+name|w
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 comment|//TODO To support restart we need to store this checkpoint somewhere
 name|String
 name|checkpoint
@@ -973,6 +995,14 @@ argument_list|,
 name|checkpoint
 argument_list|)
 decl_stmt|;
+name|Stopwatch
+name|importWatch
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 name|log
 operator|.
 name|info
@@ -996,7 +1026,18 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Indexes imported successfully"
+literal|"Indexes imported successfully in {}"
+argument_list|,
+name|importWatch
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Indexing completed successfully in {}"
+argument_list|,
+name|w
 argument_list|)
 expr_stmt|;
 block|}
