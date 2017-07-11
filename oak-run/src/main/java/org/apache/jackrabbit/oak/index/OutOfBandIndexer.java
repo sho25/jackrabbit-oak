@@ -846,7 +846,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|void
+name|File
 name|reindex
 parameter_list|()
 throws|throws
@@ -939,6 +939,9 @@ name|destDir
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|destDir
+return|;
 block|}
 specifier|private
 name|File

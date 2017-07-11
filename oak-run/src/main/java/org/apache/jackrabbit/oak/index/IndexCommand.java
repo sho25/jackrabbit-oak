@@ -892,10 +892,27 @@ name|checkpoint
 argument_list|)
 init|)
 block|{
+name|File
+name|destDir
+init|=
 name|indexer
 operator|.
 name|reindex
 argument_list|()
+decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"To complete indexing import the created index files via IndexerMBean#importIndex operation with "
+operator|+
+literal|"[{}] as input"
+argument_list|,
+name|getPath
+argument_list|(
+name|destDir
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
