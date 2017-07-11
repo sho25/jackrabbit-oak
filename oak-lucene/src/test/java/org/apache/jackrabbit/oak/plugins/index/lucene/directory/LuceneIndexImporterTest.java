@@ -671,12 +671,22 @@ name|LuceneIndexImporter
 argument_list|()
 decl_stmt|;
 name|NodeBuilder
-name|newBuilder
+name|newIdxBuilder
 init|=
-name|baseIndexState
+name|indexState
 operator|.
 name|builder
 argument_list|()
+operator|.
+name|getChildNode
+argument_list|(
+literal|"oak:index"
+argument_list|)
+operator|.
+name|getChildNode
+argument_list|(
+literal|"fooIndex"
+argument_list|)
 decl_stmt|;
 comment|//Add a file to builder to check if existing hidden nodes are removed or not
 name|Directory
@@ -685,7 +695,7 @@ init|=
 operator|new
 name|OakDirectory
 argument_list|(
-name|newBuilder
+name|newIdxBuilder
 argument_list|,
 name|dirName
 argument_list|,
@@ -714,7 +724,7 @@ name|importIndex
 argument_list|(
 name|rootState
 argument_list|,
-name|newBuilder
+name|newIdxBuilder
 argument_list|,
 name|dumper
 operator|.
@@ -740,7 +750,7 @@ decl_stmt|;
 name|NodeState
 name|importedIndexState
 init|=
-name|newBuilder
+name|newIdxBuilder
 operator|.
 name|getNodeState
 argument_list|()
