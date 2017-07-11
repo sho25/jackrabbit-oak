@@ -980,6 +980,19 @@ argument_list|,
 name|laneName
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Proceeding to update imported indexes {} to checkpoint [{}] for lane [{}]"
+argument_list|,
+name|indexInfos
+argument_list|,
+name|checkpoint
+argument_list|,
+name|laneName
+argument_list|)
+expr_stmt|;
 name|NodeState
 name|before
 init|=
@@ -1070,6 +1083,19 @@ expr_stmt|;
 name|success
 operator|=
 literal|true
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Imported index is updated to repository state at checkpoint [{}] for "
+operator|+
+literal|"indexing lane [{}]"
+argument_list|,
+name|checkpoint
+argument_list|,
+name|laneName
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
