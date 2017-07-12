@@ -321,6 +321,28 @@ name|index
 operator|.
 name|lucene
 operator|.
+name|LuceneIndexConstants
+operator|.
+name|PROP_WEIGHT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
 name|util
 operator|.
 name|ConfigUtil
@@ -436,6 +458,10 @@ specifier|final
 name|boolean
 name|excludeFromAggregate
 decl_stmt|;
+specifier|final
+name|int
+name|weight
+decl_stmt|;
 comment|/**      * Property name excluding the relativePath. For regular expression based definition      * its set to null      */
 annotation|@
 name|CheckForNull
@@ -511,6 +537,20 @@ argument_list|,
 name|FIELD_BOOST
 argument_list|,
 name|DEFAULT_BOOST
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|weight
+operator|=
+name|getOptionalValue
+argument_list|(
+name|defn
+argument_list|,
+name|PROP_WEIGHT
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 comment|//By default if a property is defined it is indexed

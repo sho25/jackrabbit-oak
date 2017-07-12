@@ -296,6 +296,11 @@ name|PROP_SCORER_PROVIDER
 init|=
 literal|"scorerProviderName"
 decl_stmt|;
+name|String
+name|PROP_WEIGHT
+init|=
+literal|"weight"
+decl_stmt|;
 comment|/**      * Integer property indicating that LuceneIndex should be      * used in compat mode to specific version      */
 name|String
 name|COMPAT_MODE

@@ -1248,6 +1248,17 @@ condition|)
 block|{
 continue|continue;
 block|}
+comment|//A property definition with weight == 0 is only meant to be used
+comment|//with some other definitions
+if|if
+condition|(
+name|pd
+operator|.
+name|weight
+operator|!=
+literal|0
+condition|)
+block|{
 name|indexedProps
 operator|.
 name|add
@@ -1255,6 +1266,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 name|result
 operator|.
 name|propDefns
@@ -1361,10 +1373,14 @@ block|{
 comment|//TODO Need a way to have better cost estimate to indicate that
 comment|//this index can evaluate more propertyRestrictions natively (if more props are indexed)
 comment|//For now we reduce cost per entry
+comment|//Use propDefns instead of indexedProps as it determines true count of property restrictions
+comment|//which are evaluated by this index
 name|int
 name|costPerEntryFactor
 init|=
-name|indexedProps
+name|result
+operator|.
+name|propDefns
 operator|.
 name|size
 argument_list|()
@@ -3289,6 +3305,23 @@ argument_list|(
 name|pr
 operator|.
 name|propertyName
+argument_list|)
+return|;
+block|}
+specifier|public
+name|boolean
+name|hasProperty
+parameter_list|(
+name|String
+name|propName
+parameter_list|)
+block|{
+return|return
+name|propDefns
+operator|.
+name|containsKey
+argument_list|(
+name|propName
 argument_list|)
 return|;
 block|}
