@@ -739,6 +739,12 @@ name|get
 argument_list|(
 name|PROP_IGNORE_READ_ONLY_WRITES
 argument_list|)
+argument_list|,
+operator|new
+name|String
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|partialReadOnly
