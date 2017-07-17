@@ -1067,18 +1067,36 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Indexes imported successfully in {}"
+literal|"Indexes imported successfully in {} ({} ms)"
 argument_list|,
 name|importWatch
+argument_list|,
+name|importWatch
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Indexing completed successfully in {}"
+literal|"Indexing completed and imported successfully in {} ({} ms)"
 argument_list|,
 name|w
+argument_list|,
+name|w
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

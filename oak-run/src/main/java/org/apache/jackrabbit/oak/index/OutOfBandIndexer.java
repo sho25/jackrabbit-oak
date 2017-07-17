@@ -89,6 +89,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|codahale
@@ -942,7 +954,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Indexing completed for indexes {} in {} and index files are copied to {}"
+literal|"Indexing completed for indexes {} in {} ({} ms) and index files are copied to {}"
 argument_list|,
 name|indexHelper
 operator|.
@@ -950,6 +962,15 @@ name|getIndexPaths
 argument_list|()
 argument_list|,
 name|w
+argument_list|,
+name|w
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
 argument_list|,
 name|IndexCommand
 operator|.
