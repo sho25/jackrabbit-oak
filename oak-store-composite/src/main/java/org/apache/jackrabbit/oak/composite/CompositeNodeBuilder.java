@@ -618,7 +618,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeState
+name|CompositeNodeState
 name|getNodeState
 parameter_list|()
 block|{
@@ -645,7 +645,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeState
+name|CompositeNodeState
 name|getBaseState
 parameter_list|()
 block|{
