@@ -1252,7 +1252,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|3
+literal|2
 argument_list|,
 name|infoMessages
 operator|.
@@ -1282,21 +1282,6 @@ operator|.
 name|get
 argument_list|(
 literal|1
-argument_list|)
-operator|.
-name|startsWith
-argument_list|(
-literal|"Proceeding to reset"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|infoMessages
-operator|.
-name|get
-argument_list|(
-literal|2
 argument_list|)
 operator|.
 name|startsWith

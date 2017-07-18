@@ -3860,6 +3860,16 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|resurrectedIds
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 name|int
 name|updateCount
 init|=
