@@ -2242,7 +2242,7 @@ comment|// size() returns length of string
 comment|// shallow memory:
 comment|// - 8 bytes per reference in values list
 comment|// - 48 bytes per string
-comment|// double useage per property because of parsed PropertyState
+comment|// double usage per property because of parsed PropertyState
 name|size
 operator|+=
 operator|(
@@ -2275,11 +2275,11 @@ name|long
 operator|)
 name|estimateMemoryUsage
 argument_list|(
-name|getPropertyAsString
+name|asString
 argument_list|(
 name|entry
 operator|.
-name|getKey
+name|getValue
 argument_list|()
 argument_list|)
 argument_list|)
