@@ -346,6 +346,12 @@ name|label
 operator|=
 literal|"Paths supporting fragments"
 argument_list|,
+name|unbounded
+operator|=
+name|PropertyUnbounded
+operator|.
+name|ARRAY
+argument_list|,
 name|description
 operator|=
 literal|"oak:mount-* under this paths will be included to mounts"
