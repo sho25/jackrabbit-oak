@@ -60,6 +60,7 @@ specifier|private
 name|Random
 name|random
 decl_stmt|;
+specifier|public
 name|RandomStream
 parameter_list|(
 name|long
