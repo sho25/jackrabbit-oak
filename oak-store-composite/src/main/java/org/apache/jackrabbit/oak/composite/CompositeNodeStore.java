@@ -983,6 +983,13 @@ argument_list|(
 name|nodeBuilder
 argument_list|)
 expr_stmt|;
+name|mergeLock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
+block|{
 comment|// merge the global builder and apply the commit hooks within
 name|Map
 argument_list|<
@@ -1213,6 +1220,15 @@ block|}
 return|return
 name|newRoot
 return|;
+block|}
+finally|finally
+block|{
+name|mergeLock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void
