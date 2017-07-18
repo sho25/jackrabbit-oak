@@ -29,6 +29,22 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Suppliers
+operator|.
+name|memoize
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ImmutableSet
@@ -322,6 +338,20 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
 import|;
 end_import
 
@@ -1906,9 +1936,16 @@ range|:
 name|rm
 control|)
 block|{
+name|Supplier
+argument_list|<
 name|NodeBuilder
+argument_list|>
 name|index
 init|=
+name|memoize
+argument_list|(
+parameter_list|()
+lambda|->
 name|definition
 operator|.
 name|child
@@ -1917,6 +1954,7 @@ name|store
 operator|.
 name|getIndexNodeName
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|store
@@ -1949,9 +1987,16 @@ name|add
 control|)
 block|{
 comment|// TODO do we still need to encode the values?
+name|Supplier
+argument_list|<
 name|NodeBuilder
+argument_list|>
 name|index
 init|=
+name|memoize
+argument_list|(
+parameter_list|()
+lambda|->
 name|definition
 operator|.
 name|child
@@ -1960,6 +2005,7 @@ name|store
 operator|.
 name|getIndexNodeName
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|store

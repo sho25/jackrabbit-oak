@@ -35,6 +35,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -210,7 +224,10 @@ specifier|public
 name|void
 name|update
 parameter_list|(
+name|Supplier
+argument_list|<
 name|NodeBuilder
+argument_list|>
 name|index
 parameter_list|,
 name|String
@@ -299,7 +316,10 @@ specifier|public
 name|boolean
 name|exists
 parameter_list|(
+name|Supplier
+argument_list|<
 name|NodeBuilder
+argument_list|>
 name|index
 parameter_list|,
 name|String

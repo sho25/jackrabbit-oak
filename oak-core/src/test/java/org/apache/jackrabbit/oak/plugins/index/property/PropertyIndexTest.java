@@ -7533,11 +7533,6 @@ expr_stmt|;
 comment|//System.out.println(NodeStateUtils.toString(getNode(indexed, "/oak:index/foo")));
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6463"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void

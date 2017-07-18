@@ -35,6 +35,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -112,11 +126,14 @@ specifier|public
 interface|interface
 name|IndexStoreStrategy
 block|{
-comment|/**      * Updates the index for the given path.      *       * @param index the index node      * @param path path stored in the index      * @param indexName the name of the index. May be null.      * @param indexMeta the definition of the index. May be null.      * @param beforeKeys keys that no longer apply to the path      * @param afterKeys keys that now do apply to the path      */
+comment|/**      * Updates the index for the given path.      *       * @param index the index node supplier      * @param path path stored in the index      * @param indexName the name of the index. May be null.      * @param indexMeta the definition of the index. May be null.      * @param beforeKeys keys that no longer apply to the path      * @param afterKeys keys that now do apply to the path      */
 name|void
 name|update
 parameter_list|(
+name|Supplier
+argument_list|<
 name|NodeBuilder
+argument_list|>
 name|index
 parameter_list|,
 name|String
@@ -143,11 +160,14 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Check whether an entry for the given key exists.      *       * @param index the index      * @param key the key      * @return true if at least one entry exists      */
+comment|/**      * Check whether an entry for the given key exists.      *       * @param index the index node supplier      * @param key the key      * @return true if at least one entry exists      */
 name|boolean
 name|exists
 parameter_list|(
+name|Supplier
+argument_list|<
 name|NodeBuilder
+argument_list|>
 name|index
 parameter_list|,
 name|String
