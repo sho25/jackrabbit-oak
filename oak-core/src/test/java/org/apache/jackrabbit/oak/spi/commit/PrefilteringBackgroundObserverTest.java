@@ -1313,6 +1313,7 @@ literal|6
 argument_list|)
 argument_list|,
 comment|// still 6 in the queue, of 7
+comment|// due to OAK-5740 the last entry is now an include
 operator|new
 name|TestPattern
 argument_list|(
@@ -1331,7 +1332,7 @@ argument_list|,
 literal|7
 argument_list|)
 argument_list|,
-comment|// now we added 2 (one NOOP and one of those 5), so the queue got full (==7)
+comment|// so with OAK-5740 we now will get 6 includes, not 5
 operator|new
 name|TestPattern
 argument_list|(
@@ -1342,7 +1343,7 @@ comment|/* only flush*/
 argument_list|,
 literal|true
 argument_list|,
-literal|5
+literal|6
 argument_list|,
 literal|0
 argument_list|,

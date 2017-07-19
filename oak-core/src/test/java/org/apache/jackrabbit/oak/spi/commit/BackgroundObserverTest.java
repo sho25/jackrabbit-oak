@@ -1963,19 +1963,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|expected
-operator|.
-name|add
-argument_list|(
-operator|new
-name|Pair
-argument_list|(
-name|secondIncluded
-argument_list|,
-name|thirdIncluded
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//        expected.add(new Pair(secondIncluded, thirdIncluded));
 name|fo
 operator|.
 name|contentChanged
@@ -2066,6 +2054,20 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
+comment|// with OAK-5740 the overflow entry now looks as follows:
+name|expected
+operator|.
+name|add
+argument_list|(
+operator|new
+name|Pair
+argument_list|(
+name|secondIncluded
+argument_list|,
+name|next
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// let recorder continue
 name|recorder
 operator|.
@@ -2138,23 +2140,10 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// while above the "seventhAfterQueueFull" DOES get filtered, the next contentChange
-comment|// triggers the release of the 'queue full overflow element' (with commitInfo==null)
-comment|// and that we must add as expected()
-name|expected
-operator|.
-name|add
-argument_list|(
-operator|new
-name|Pair
-argument_list|(
-name|thirdIncluded
-argument_list|,
-name|seventhAfterQueueFull
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// commitInfo == null
+comment|// the 'seventhAfterQueueFull' DOES get filtered - and as per behavior
+comment|// pre-OAK-5740 it used to get flushed with the next contentChanged,
+comment|// however, with OAK-5740 this is no longer the case as we now
+comment|// use the last queue entry as the overflow entry
 name|expected
 operator|.
 name|add

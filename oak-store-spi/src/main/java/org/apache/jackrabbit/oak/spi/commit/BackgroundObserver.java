@@ -391,11 +391,6 @@ specifier|private
 name|ContentChange
 name|last
 decl_stmt|;
-comment|/**      * Flag to indicate that some content changes were dropped because      * the queue was full.      */
-specifier|private
-name|boolean
-name|full
-decl_stmt|;
 comment|/**      * Current background task      */
 specifier|private
 specifier|volatile
@@ -976,22 +971,54 @@ argument_list|(
 name|last
 argument_list|)
 expr_stmt|;
-name|full
-operator|=
-literal|false
-expr_stmt|;
 block|}
 name|ContentChange
 name|change
+init|=
+operator|new
+name|ContentChange
+argument_list|(
+name|root
+argument_list|,
+name|info
+argument_list|)
+decl_stmt|;
+comment|// Try to add this change to the queue without blocking
+name|boolean
+name|full
+init|=
+operator|!
+name|queue
+operator|.
+name|offer
+argument_list|(
+name|change
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
 name|full
+operator|&&
+name|last
+operator|!=
+literal|null
 condition|)
 block|{
-comment|// If the queue is full, some commits have already been skipped
-comment|// so we need to drop the possible local commit information as
-comment|// only external changes can be merged together to larger chunks.
+comment|// last is only null at the beginning
+comment|// queue is full.
+comment|// when the change can't be added to the queue because it's full
+comment|// remove the last entry and add an explicit overflow entry instead.
+name|queue
+operator|.
+name|remove
+argument_list|(
+name|last
+argument_list|)
+expr_stmt|;
+comment|// by removing the last entry we have to drop the possible
+comment|// local commit information of the current change,
+comment|// as we're doing collapsing here and the commit information
+comment|// no longer represents an individual commit
 name|change
 operator|=
 operator|new
@@ -1004,25 +1031,6 @@ operator|.
 name|EMPTY_EXTERNAL
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|change
-operator|=
-operator|new
-name|ContentChange
-argument_list|(
-name|root
-argument_list|,
-name|info
-argument_list|)
-expr_stmt|;
-block|}
-comment|// Try to add this change to the queue without blocking, and
-comment|// mark the queue as full if there wasn't enough space
-name|full
-operator|=
-operator|!
 name|queue
 operator|.
 name|offer
@@ -1030,19 +1038,13 @@ argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|full
-condition|)
-block|{
+block|}
 comment|// Keep track of the last change added, so we can do the
 comment|// compacting of external changes shown above.
 name|last
 operator|=
 name|change
 expr_stmt|;
-block|}
 comment|// Set the completion handler on the currently running task. Multiple calls
 comment|// to onComplete are not a problem here since we always pass the same value.
 comment|// Thus there is no question as to which of the handlers will effectively run.
