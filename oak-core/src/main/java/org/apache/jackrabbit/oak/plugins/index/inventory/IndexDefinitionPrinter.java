@@ -473,7 +473,7 @@ block|{
 name|String
 name|excludeHiddenFilter
 init|=
-literal|"{\"properties\":[\"*\", \"-:*\"],\"nodes\":[\"*\", \"-:*\"]}"
+literal|"{\"nodes\":[\"*\", \"-:*\"]}"
 decl_stmt|;
 return|return
 operator|new
