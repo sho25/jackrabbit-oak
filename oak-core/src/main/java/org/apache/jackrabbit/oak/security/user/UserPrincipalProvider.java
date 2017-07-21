@@ -1810,10 +1810,7 @@ name|groupPrincipals
 operator|.
 name|add
 argument_list|(
-name|createGroupPrincipal
-argument_list|(
-name|groupTree
-argument_list|)
+name|gr
 argument_list|)
 expr_stmt|;
 block|}
