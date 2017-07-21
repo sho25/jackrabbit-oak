@@ -1618,8 +1618,6 @@ literal|"measure "
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
 name|buff
 operator|.
 name|append
@@ -1637,28 +1635,6 @@ argument_list|(
 name|s2
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OutOfMemoryError
-decl||
-name|StackOverflowError
-name|e
-parameter_list|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"OOME"
-argument_list|)
-expr_stmt|;
-throw|throw
-name|e
-throw|;
-block|}
 comment|// order by ...
 if|if
 condition|(
