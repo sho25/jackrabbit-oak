@@ -514,9 +514,10 @@ name|mounts
 parameter_list|)
 block|{
 return|return
+operator|new
 name|Mounts
 operator|.
-name|defaultMount
+name|DefaultMount
 argument_list|(
 name|mounts
 operator|.

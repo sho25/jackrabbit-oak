@@ -467,38 +467,6 @@ return|return
 name|DEFAULT_PROVIDER
 return|;
 block|}
-comment|/**      * Returns the default {@link Mount}      *       * @return the default mount       */
-specifier|public
-specifier|static
-name|Mount
-name|defaultMount
-parameter_list|()
-block|{
-return|return
-name|DEFAULT_MOUNT
-return|;
-block|}
-comment|/**      * Creates a new default (root) mount with the specified non-default mounts      *       * @param mounts the mounts to configure      * @return the created mount      */
-specifier|public
-specifier|static
-name|Mount
-name|defaultMount
-parameter_list|(
-name|Collection
-argument_list|<
-name|Mount
-argument_list|>
-name|mounts
-parameter_list|)
-block|{
-return|return
-operator|new
-name|DefaultMount
-argument_list|(
-name|mounts
-argument_list|)
-return|;
-block|}
 comment|/**      * Creates a new Builder instance for configuring more complex mount setups      *       * @return a new builder instance      */
 specifier|public
 specifier|static
