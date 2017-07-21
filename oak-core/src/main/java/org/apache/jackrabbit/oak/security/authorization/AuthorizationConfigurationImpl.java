@@ -1562,6 +1562,8 @@ name|root
 argument_list|,
 name|workspaceName
 argument_list|,
+name|workspaceName
+argument_list|,
 name|principals
 argument_list|,
 name|getRestrictionProvider
@@ -1586,11 +1588,11 @@ argument_list|()
 control|)
 block|{
 name|String
-name|ws
+name|permissionRootName
 init|=
 name|MultiplexingPermissionProvider
 operator|.
-name|getWorkspaceName
+name|getPermissionRootName
 argument_list|(
 name|m
 argument_list|,
@@ -1606,7 +1608,9 @@ name|PermissionProviderImpl
 argument_list|(
 name|root
 argument_list|,
-name|ws
+name|workspaceName
+argument_list|,
+name|permissionRootName
 argument_list|,
 name|principals
 argument_list|,
@@ -1633,11 +1637,15 @@ name|ctx
 argument_list|)
 return|;
 block|}
+else|else
+block|{
 return|return
 operator|new
 name|PermissionProviderImpl
 argument_list|(
 name|root
+argument_list|,
+name|workspaceName
 argument_list|,
 name|workspaceName
 argument_list|,
@@ -1652,6 +1660,7 @@ argument_list|,
 name|ctx
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 end_class

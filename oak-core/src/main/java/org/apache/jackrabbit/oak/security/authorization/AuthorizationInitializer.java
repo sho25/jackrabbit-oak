@@ -446,11 +446,11 @@ argument_list|()
 control|)
 block|{
 name|String
-name|ws
+name|permissionRootName
 init|=
 name|MultiplexingPermissionProvider
 operator|.
-name|getWorkspaceName
+name|getPermissionRootName
 argument_list|(
 name|m
 argument_list|,
@@ -464,7 +464,7 @@ name|permissionStore
 operator|.
 name|hasChildNode
 argument_list|(
-name|ws
+name|permissionRootName
 argument_list|)
 condition|)
 block|{
@@ -472,7 +472,7 @@ name|permissionStore
 operator|.
 name|child
 argument_list|(
-name|ws
+name|permissionRootName
 argument_list|)
 operator|.
 name|setProperty

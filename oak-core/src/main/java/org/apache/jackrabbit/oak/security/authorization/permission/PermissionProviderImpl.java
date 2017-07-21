@@ -478,6 +478,11 @@ name|workspaceName
 decl_stmt|;
 specifier|private
 specifier|final
+name|String
+name|permissionRootName
+decl_stmt|;
+specifier|private
+specifier|final
 name|Set
 argument_list|<
 name|Principal
@@ -522,6 +527,11 @@ name|workspaceName
 parameter_list|,
 annotation|@
 name|Nonnull
+name|String
+name|permissionRootName
+parameter_list|,
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|Principal
@@ -555,6 +565,12 @@ operator|.
 name|workspaceName
 operator|=
 name|workspaceName
+expr_stmt|;
+name|this
+operator|.
+name|permissionRootName
+operator|=
+name|permissionRootName
 expr_stmt|;
 name|this
 operator|.
@@ -1081,6 +1097,8 @@ argument_list|(
 name|immutableRoot
 argument_list|,
 name|workspaceName
+argument_list|,
+name|permissionRootName
 argument_list|,
 name|principals
 argument_list|,

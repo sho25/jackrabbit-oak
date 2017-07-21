@@ -848,6 +848,11 @@ name|workspaceName
 parameter_list|,
 annotation|@
 name|Nonnull
+name|String
+name|permissionRootName
+parameter_list|,
+annotation|@
+name|Nonnull
 name|RestrictionProvider
 name|restrictionProvider
 parameter_list|,
@@ -924,7 +929,7 @@ name|PermissionStoreImpl
 argument_list|(
 name|root
 argument_list|,
-name|workspaceName
+name|permissionRootName
 argument_list|,
 name|restrictionProvider
 argument_list|)
@@ -1065,6 +1070,11 @@ name|workspaceName
 parameter_list|,
 annotation|@
 name|Nonnull
+name|String
+name|permissionRootName
+parameter_list|,
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|Principal
@@ -1096,7 +1106,7 @@ name|getPermissionsRoot
 argument_list|(
 name|root
 argument_list|,
-name|workspaceName
+name|permissionRootName
 argument_list|)
 decl_stmt|;
 if|if
@@ -1131,6 +1141,8 @@ argument_list|,
 name|root
 argument_list|,
 name|workspaceName
+argument_list|,
+name|permissionRootName
 argument_list|,
 name|restrictionProvider
 argument_list|,

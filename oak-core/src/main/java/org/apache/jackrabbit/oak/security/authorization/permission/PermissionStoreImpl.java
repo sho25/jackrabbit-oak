@@ -328,7 +328,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
-name|workspaceName
+name|permissionRootName
 decl_stmt|;
 specifier|private
 specifier|final
@@ -368,7 +368,7 @@ name|Root
 name|root
 parameter_list|,
 name|String
-name|workspaceName
+name|permissionRootName
 parameter_list|,
 name|RestrictionProvider
 name|restrictionProvider
@@ -376,9 +376,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|workspaceName
+name|permissionRootName
 operator|=
-name|workspaceName
+name|permissionRootName
 expr_stmt|;
 name|this
 operator|.
@@ -430,7 +430,7 @@ name|getPermissionsRoot
 argument_list|(
 name|root
 argument_list|,
-name|workspaceName
+name|permissionRootName
 argument_list|)
 expr_stmt|;
 name|allBits

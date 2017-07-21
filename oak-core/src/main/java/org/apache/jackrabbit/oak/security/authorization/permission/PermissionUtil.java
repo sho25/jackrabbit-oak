@@ -515,7 +515,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|String
-name|workspaceName
+name|permissionRootName
 parameter_list|)
 block|{
 return|return
@@ -527,7 +527,7 @@ name|PERMISSIONS_STORE_PATH
 operator|+
 literal|'/'
 operator|+
-name|workspaceName
+name|permissionRootName
 argument_list|)
 return|;
 block|}
