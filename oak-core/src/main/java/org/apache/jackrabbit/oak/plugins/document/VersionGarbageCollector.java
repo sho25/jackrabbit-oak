@@ -1116,11 +1116,11 @@ name|averageDurationMs
 argument_list|)
 condition|)
 block|{
-name|log
+name|gcMonitor
 operator|.
 name|info
 argument_list|(
-literal|"start {}. run (avg duration {} sec)"
+literal|"Start {}. run (avg duration {} sec)"
 argument_list|,
 name|overall
 operator|.
@@ -1245,7 +1245,7 @@ operator|>
 literal|1
 condition|)
 block|{
-name|log
+name|gcMonitor
 operator|.
 name|info
 argument_list|(
@@ -1758,7 +1758,7 @@ name|fmt
 init|=
 literal|"timeToCollectDeletedDocs=%s, timeToCheckDeletedDocs=%s, timeToSortDocIds=%s, timeTakenToUpdateResurrectedDocs=%s, timeTakenToDeleteDeletedDocs=%s, timeTakenToCollectAndDeleteSplitDocs=%s"
 decl_stmt|;
-comment|// aggregrated timings?
+comment|// aggregated timings?
 if|if
 condition|(
 name|iterationCount
@@ -2700,11 +2700,11 @@ name|options
 operator|=
 name|options
 expr_stmt|;
-name|VersionGCMonitor
+name|GCMessageTracker
 name|vgcm
 init|=
 operator|new
-name|VersionGCMonitor
+name|GCMessageTracker
 argument_list|()
 decl_stmt|;
 name|this
@@ -6221,7 +6221,7 @@ operator|/
 literal|2
 argument_list|)
 decl_stmt|;
-name|log
+name|gcMonitor
 operator|.
 name|info
 argument_list|(
@@ -6520,11 +6520,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * VersionGCMonitor is a partial implementation of GCMonitor because some      * methods are specific to segment-tar. We use it primarily to keep track      * of the last message issued by the GC job.      */
+comment|/**      * GCMessageTracker is a partial implementation of GCMonitor. We use it to      * keep track of the last message issued by the GC job.      */
 specifier|private
 specifier|static
 class|class
-name|VersionGCMonitor
+name|GCMessageTracker
 extends|extends
 name|GCMonitor
 operator|.
@@ -6556,15 +6556,6 @@ modifier|...
 name|arguments
 parameter_list|)
 block|{
-name|log
-operator|.
-name|info
-argument_list|(
-name|message
-argument_list|,
-name|arguments
-argument_list|)
-expr_stmt|;
 name|lastMessage
 operator|=
 name|arrayFormat
@@ -6592,15 +6583,6 @@ modifier|...
 name|arguments
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-name|message
-argument_list|,
-name|arguments
-argument_list|)
-expr_stmt|;
 name|lastMessage
 operator|=
 name|arrayFormat
@@ -6627,15 +6609,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
-argument_list|(
-name|message
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
 name|lastMessage
 operator|=
 name|message

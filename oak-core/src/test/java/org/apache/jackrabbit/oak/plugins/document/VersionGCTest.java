@@ -1252,7 +1252,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+literal|3
 argument_list|,
 name|infoMessages
 operator|.
@@ -1271,7 +1271,7 @@ argument_list|)
 operator|.
 name|startsWith
 argument_list|(
-literal|"Looking at revisions"
+literal|"Start "
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1282,6 +1282,21 @@ operator|.
 name|get
 argument_list|(
 literal|1
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"Looking at revisions"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|infoMessages
+operator|.
+name|get
+argument_list|(
+literal|2
 argument_list|)
 operator|.
 name|startsWith
