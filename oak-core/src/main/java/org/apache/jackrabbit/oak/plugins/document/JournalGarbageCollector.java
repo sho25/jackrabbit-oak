@@ -107,6 +107,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -173,6 +187,11 @@ name|DocumentNodeStore
 name|ns
 decl_stmt|;
 specifier|private
+specifier|final
+name|long
+name|maxRevisionAgeMillis
+decl_stmt|;
+specifier|private
 specifier|volatile
 name|long
 name|lastTailTimestampRefresh
@@ -190,6 +209,9 @@ name|JournalGarbageCollector
 parameter_list|(
 name|DocumentNodeStore
 name|nodeStore
+parameter_list|,
+name|long
+name|maxRevisionAgeMillis
 parameter_list|)
 block|{
 name|this
@@ -197,6 +219,12 @@ operator|.
 name|ns
 operator|=
 name|nodeStore
+expr_stmt|;
+name|this
+operator|.
+name|maxRevisionAgeMillis
+operator|=
+name|maxRevisionAgeMillis
 expr_stmt|;
 name|this
 operator|.
@@ -216,17 +244,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Deletes entries in the journal that are older than the given      * maxRevisionAge.      *      * @param maxRevisionAge entries older than this age will be removed      * @param unit           the {@linkplain TimeUnit} for maxRevisionAge      * @return the number of entries that have been removed      */
+comment|/**      * Deletes entries in the journal that are older than      * {@link #getMaxRevisionAgeMillis()}.      *      * @return the number of entries that have been removed      */
 specifier|public
 name|int
 name|gc
-parameter_list|(
-name|long
-name|maxRevisionAge
-parameter_list|,
-name|TimeUnit
-name|unit
-parameter_list|)
+parameter_list|()
 block|{
 name|DocumentStore
 name|ds
@@ -248,16 +270,6 @@ name|getOldestRevisionToKeep
 argument_list|()
 decl_stmt|;
 name|long
-name|maxRevisionAgeInMillis
-init|=
-name|unit
-operator|.
-name|toMillis
-argument_list|(
-name|maxRevisionAge
-argument_list|)
-decl_stmt|;
-name|long
 name|now
 init|=
 name|ns
@@ -273,7 +285,7 @@ name|gcOlderThan
 init|=
 name|now
 operator|-
-name|maxRevisionAgeInMillis
+name|maxRevisionAgeMillis
 decl_stmt|;
 if|if
 condition|(
@@ -304,11 +316,11 @@ literal|"gc: Checkpoint {} is older than maxRevisionAge: {} min"
 argument_list|,
 name|keep
 argument_list|,
-name|unit
+name|MILLISECONDS
 operator|.
 name|toMinutes
 argument_list|(
-name|maxRevisionAge
+name|maxRevisionAgeMillis
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -327,13 +339,11 @@ name|debug
 argument_list|(
 literal|"gc: Journal garbage collection starts with maxAge: {} min."
 argument_list|,
-name|TimeUnit
-operator|.
 name|MILLISECONDS
 operator|.
 name|toMinutes
 argument_list|(
-name|maxRevisionAgeInMillis
+name|maxRevisionAgeMillis
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -395,8 +405,6 @@ name|sw
 argument_list|,
 name|numDeleted
 argument_list|,
-name|TimeUnit
-operator|.
 name|MILLISECONDS
 operator|.
 name|toMinutes
@@ -463,6 +471,14 @@ argument_list|()
 expr_stmt|;
 return|return
 name|tailRevision
+return|;
+block|}
+name|long
+name|getMaxRevisionAgeMillis
+parameter_list|()
+block|{
+return|return
+name|maxRevisionAgeMillis
 return|;
 block|}
 specifier|private

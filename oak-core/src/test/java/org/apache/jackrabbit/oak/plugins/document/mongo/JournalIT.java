@@ -43,18 +43,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|mongodb
@@ -1190,6 +1178,8 @@ operator|new
 name|JournalGarbageCollector
 argument_list|(
 name|ns1
+argument_list|,
+literal|0
 argument_list|)
 decl_stmt|;
 name|clock
@@ -1205,13 +1195,7 @@ expr_stmt|;
 name|gc
 operator|.
 name|gc
-argument_list|(
-literal|0
-argument_list|,
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// cleanup everything that might still be there
 comment|// create entries as parametrized:
@@ -1272,13 +1256,7 @@ argument_list|,
 name|gc
 operator|.
 name|gc
-argument_list|(
-literal|0
-argument_list|,
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// should now be able to clean up everything

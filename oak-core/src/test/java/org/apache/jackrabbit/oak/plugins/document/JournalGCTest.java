@@ -392,6 +392,18 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
+name|setJournalGCMaxAge
+argument_list|(
+name|TimeUnit
+operator|.
+name|HOURS
+operator|.
+name|toMillis
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+operator|.
 name|clock
 argument_list|(
 name|c
@@ -535,13 +547,7 @@ name|getJournalGarbageCollector
 argument_list|()
 operator|.
 name|gc
-argument_list|(
-literal|1
-argument_list|,
-name|TimeUnit
-operator|.
-name|HOURS
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// must not remove existing entry, because checkpoint is still valid
 name|entry
@@ -581,13 +587,7 @@ name|getJournalGarbageCollector
 argument_list|()
 operator|.
 name|gc
-argument_list|(
-literal|1
-argument_list|,
-name|TimeUnit
-operator|.
-name|HOURS
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// now journal GC can remove the entry
 name|entry
@@ -650,6 +650,18 @@ name|builderProvider
 operator|.
 name|newBuilder
 argument_list|()
+operator|.
+name|setJournalGCMaxAge
+argument_list|(
+name|TimeUnit
+operator|.
+name|HOURS
+operator|.
+name|toMillis
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
 operator|.
 name|clock
 argument_list|(
@@ -738,13 +750,7 @@ argument_list|,
 name|jgc
 operator|.
 name|gc
-argument_list|(
-literal|1
-argument_list|,
-name|TimeUnit
-operator|.
-name|HOURS
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// current time, but without the increment done by getTime()
@@ -839,13 +845,7 @@ argument_list|,
 name|jgc
 operator|.
 name|gc
-argument_list|(
-literal|1
-argument_list|,
-name|TimeUnit
-operator|.
-name|HOURS
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// current time, but without the increment done by getTime()
@@ -1359,19 +1359,23 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// instruct journal GC to remove entries older than one hour - readingNs hasn't seen it
-name|writingNs
-operator|.
-name|getJournalGarbageCollector
-argument_list|()
-operator|.
-name|gc
+operator|new
+name|JournalGarbageCollector
 argument_list|(
-literal|1
+name|writingNs
 argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|1
 argument_list|)
+argument_list|)
+operator|.
+name|gc
+argument_list|()
 expr_stmt|;
 comment|// entry should be removed
 name|JournalEntry

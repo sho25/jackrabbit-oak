@@ -1867,19 +1867,23 @@ name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
 comment|// collect journal entry created for /foo/nX
-name|ns1
-operator|.
-name|getJournalGarbageCollector
-argument_list|()
-operator|.
-name|gc
+operator|new
+name|JournalGarbageCollector
 argument_list|(
-literal|5
+name|ns1
 argument_list|,
 name|TimeUnit
 operator|.
 name|MINUTES
+operator|.
+name|toMillis
+argument_list|(
+literal|5
 argument_list|)
+argument_list|)
+operator|.
+name|gc
+argument_list|()
 expr_stmt|;
 comment|// the next modification updates the root revision
 comment|// for clusterId 1 past the removed journal entry

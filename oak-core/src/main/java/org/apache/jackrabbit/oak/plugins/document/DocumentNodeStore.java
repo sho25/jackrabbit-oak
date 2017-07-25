@@ -2897,6 +2897,11 @@ operator|new
 name|JournalGarbageCollector
 argument_list|(
 name|this
+argument_list|,
+name|builder
+operator|.
+name|getJournalGCMaxAge
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
