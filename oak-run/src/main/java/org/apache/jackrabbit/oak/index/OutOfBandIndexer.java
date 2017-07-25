@@ -1029,8 +1029,6 @@ name|indexerSupport
 operator|.
 name|updateIndexDefinitions
 argument_list|(
-name|root
-argument_list|,
 name|builder
 argument_list|)
 expr_stmt|;

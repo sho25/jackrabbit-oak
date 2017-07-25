@@ -51,6 +51,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -101,6 +117,8 @@ name|indexDir
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|CommitFailedException
 function_decl|;
 comment|/**      * Index type for this implementation      */
 name|String

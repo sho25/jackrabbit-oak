@@ -527,11 +527,8 @@ specifier|public
 name|void
 name|updateIndexDefinitions
 parameter_list|(
-name|NodeState
-name|root
-parameter_list|,
 name|NodeBuilder
-name|builder
+name|rootBuilder
 parameter_list|)
 throws|throws
 name|IOException
@@ -553,9 +550,7 @@ argument_list|)
 operator|.
 name|apply
 argument_list|(
-name|root
-argument_list|,
-name|builder
+name|rootBuilder
 argument_list|)
 expr_stmt|;
 block|}
