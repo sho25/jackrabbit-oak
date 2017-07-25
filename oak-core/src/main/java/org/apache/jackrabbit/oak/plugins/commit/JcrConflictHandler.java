@@ -94,14 +94,9 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
-name|ConflictHandlers
-operator|.
-name|wrap
-argument_list|(
 operator|new
 name|JcrLastModifiedConflictHandler
 argument_list|()
-argument_list|)
 argument_list|,
 name|ConflictHandlers
 operator|.
