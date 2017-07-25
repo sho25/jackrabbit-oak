@@ -628,14 +628,9 @@ name|CompositeNodeState
 argument_list|(
 name|path
 argument_list|,
-operator|new
-name|IdentityHashMap
-argument_list|<>
-argument_list|(
 name|buildersToNodeStates
 argument_list|(
 name|nodeBuilders
-argument_list|)
 argument_list|)
 argument_list|,
 name|ctx
@@ -684,6 +679,10 @@ name|builders
 parameter_list|)
 block|{
 return|return
+operator|new
+name|IdentityHashMap
+argument_list|<>
+argument_list|(
 name|transformValues
 argument_list|(
 name|builders
@@ -730,6 +729,7 @@ return|;
 block|}
 block|}
 block|}
+argument_list|)
 argument_list|)
 return|;
 block|}
