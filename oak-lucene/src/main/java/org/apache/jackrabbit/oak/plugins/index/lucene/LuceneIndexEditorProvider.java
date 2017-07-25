@@ -655,6 +655,10 @@ specifier|private
 name|IndexingQueue
 name|indexingQueue
 decl_stmt|;
+specifier|private
+name|boolean
+name|nrtIndexingEnabled
+decl_stmt|;
 comment|/**      * Number of indexed Lucene document that can be held in memory      * This ensures that for very large commit memory consumption      * is bounded      */
 specifier|private
 name|int
@@ -999,6 +1003,9 @@ literal|true
 decl_stmt|;
 if|if
 condition|(
+name|nrtIndexingEnabled
+argument_list|()
+operator|&&
 operator|!
 name|indexingContext
 operator|.
@@ -1339,6 +1346,14 @@ name|indexingQueue
 operator|=
 name|indexingQueue
 expr_stmt|;
+name|this
+operator|.
+name|nrtIndexingEnabled
+operator|=
+name|indexingQueue
+operator|!=
+literal|null
+expr_stmt|;
 block|}
 name|GarbageCollectableBlobStore
 name|getBlobStore
@@ -1346,6 +1361,15 @@ parameter_list|()
 block|{
 return|return
 name|blobStore
+return|;
+block|}
+specifier|private
+name|boolean
+name|nrtIndexingEnabled
+parameter_list|()
+block|{
+return|return
+name|nrtIndexingEnabled
 return|;
 block|}
 specifier|private
