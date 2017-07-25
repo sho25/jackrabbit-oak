@@ -153,7 +153,39 @@ name|concurrent
 operator|.
 name|TimeUnit
 operator|.
+name|MILLISECONDS
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
 name|SECONDS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|OAK
 import|;
 end_import
 
@@ -8164,6 +8196,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// check the branch age and fail the commit
+comment|// if the first branch commit is too old
+name|checkBranchAge
+argument_list|(
+name|b
+argument_list|)
+expr_stmt|;
 name|commit
 operator|.
 name|addBranchCommits
@@ -12761,6 +12800,22 @@ name|getMinExternalRevisions
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|long
+name|minJournalTimestamp
+init|=
+name|newRevision
+argument_list|()
+operator|.
+name|getTimestamp
+argument_list|()
+operator|-
+name|journalGarbageCollector
+operator|.
+name|getMaxRevisionAgeMillis
+argument_list|()
+operator|/
+literal|2
+decl_stmt|;
 comment|// use journal if possible
 name|Revision
 name|tailRev
@@ -12779,6 +12834,10 @@ name|tailRev
 operator|.
 name|getTimestamp
 argument_list|()
+operator|<
+name|minTimestamp
+operator|&&
+name|minJournalTimestamp
 operator|<
 name|minTimestamp
 condition|)
@@ -13961,6 +14020,108 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 return|;
+block|}
+specifier|private
+name|void
+name|checkBranchAge
+parameter_list|(
+name|Branch
+name|b
+parameter_list|)
+throws|throws
+name|CommitFailedException
+block|{
+comment|// check if initial branch commit is too old to merge
+name|long
+name|journalMaxAge
+init|=
+name|journalGarbageCollector
+operator|.
+name|getMaxRevisionAgeMillis
+argument_list|()
+decl_stmt|;
+name|long
+name|branchMaxAge
+init|=
+name|journalMaxAge
+operator|/
+literal|2
+decl_stmt|;
+name|long
+name|created
+init|=
+name|b
+operator|.
+name|getCommits
+argument_list|()
+operator|.
+name|first
+argument_list|()
+operator|.
+name|getTimestamp
+argument_list|()
+decl_stmt|;
+name|long
+name|branchAge
+init|=
+name|newRevision
+argument_list|()
+operator|.
+name|getTimestamp
+argument_list|()
+operator|-
+name|created
+decl_stmt|;
+if|if
+condition|(
+name|branchAge
+operator|>
+name|branchMaxAge
+condition|)
+block|{
+name|String
+name|msg
+init|=
+literal|"Long running commit detected. Branch was created "
+operator|+
+name|Utils
+operator|.
+name|timestampToString
+argument_list|(
+name|created
+argument_list|)
+operator|+
+literal|". Consider breaking "
+operator|+
+literal|"the commit down into smaller pieces or increasing the "
+operator|+
+literal|"'journalGCMaxAge' currently set to "
+operator|+
+name|journalMaxAge
+operator|+
+literal|" ms ("
+operator|+
+name|MILLISECONDS
+operator|.
+name|toMinutes
+argument_list|(
+name|journalMaxAge
+argument_list|)
+operator|+
+literal|" min)."
+decl_stmt|;
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+name|OAK
+argument_list|,
+literal|200
+argument_list|,
+name|msg
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @param blobGcMaxAgeInSecs      * @param repositoryId      * @return garbage collector of the BlobStore supports GC otherwise null      */
 annotation|@

@@ -259,7 +259,7 @@ name|getDocumentStore
 argument_list|()
 decl_stmt|;
 name|Revision
-name|keep
+name|checkpointRev
 init|=
 name|ns
 operator|.
@@ -269,6 +269,32 @@ operator|.
 name|getOldestRevisionToKeep
 argument_list|()
 decl_stmt|;
+name|Long
+name|keep
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|checkpointRev
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// keep more entries than just up to the checkpoint to account
+comment|// for branch commits that may be referenced by merge commits
+name|keep
+operator|=
+name|checkpointRev
+operator|.
+name|getTimestamp
+argument_list|()
+operator|-
+name|maxRevisionAgeMillis
+operator|/
+literal|2
+expr_stmt|;
+block|}
 name|long
 name|now
 init|=
@@ -294,9 +320,6 @@ operator|!=
 literal|null
 operator|&&
 name|keep
-operator|.
-name|getTimestamp
-argument_list|()
 operator|<
 name|gcOlderThan
 condition|)
@@ -304,9 +327,6 @@ block|{
 name|gcOlderThan
 operator|=
 name|keep
-operator|.
-name|getTimestamp
-argument_list|()
 expr_stmt|;
 name|log
 operator|.
