@@ -2089,7 +2089,7 @@ specifier|final
 name|long
 name|DEFAULT_JOURNAL_GC_MAX_AGE_MILLIS
 init|=
-literal|6
+literal|24
 operator|*
 literal|60
 operator|*
@@ -2097,7 +2097,7 @@ literal|60
 operator|*
 literal|1000
 decl_stmt|;
-comment|// default is 6hours
+comment|// default is 24hours
 annotation|@
 name|Property
 argument_list|(
