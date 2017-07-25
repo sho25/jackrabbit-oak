@@ -429,10 +429,7 @@ operator|.
 name|getNodeState
 argument_list|()
 operator|.
-name|getNodeStates
-argument_list|()
-operator|.
-name|get
+name|getNodeState
 argument_list|(
 name|ctx
 operator|.
