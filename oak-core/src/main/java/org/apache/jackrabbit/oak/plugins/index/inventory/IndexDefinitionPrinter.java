@@ -327,6 +327,13 @@ specifier|private
 name|NodeStore
 name|nodeStore
 decl_stmt|;
+specifier|private
+name|String
+name|filter
+init|=
+literal|"{\"properties\":[\"*\", \"-:childOrder\"],\"nodes\":[\"*\", \"-:*\"]}"
+decl_stmt|;
+empty_stmt|;
 specifier|public
 name|IndexDefinitionPrinter
 parameter_list|()
@@ -462,6 +469,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
+name|void
+name|setFilter
+parameter_list|(
+name|String
+name|filter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|filter
+operator|=
+name|filter
+expr_stmt|;
+block|}
 specifier|private
 name|JsonSerializer
 name|createSerializer
@@ -470,18 +492,13 @@ name|JsopBuilder
 name|json
 parameter_list|)
 block|{
-name|String
-name|excludeHiddenFilter
-init|=
-literal|"{\"properties\":[\"*\", \"-:childOrder\"],\"nodes\":[\"*\", \"-:*\"]}"
-decl_stmt|;
 return|return
 operator|new
 name|JsonSerializer
 argument_list|(
 name|json
 argument_list|,
-name|excludeHiddenFilter
+name|filter
 argument_list|,
 operator|new
 name|BlobSerializer
