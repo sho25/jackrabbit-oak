@@ -719,6 +719,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+name|readAll
+argument_list|()
+expr_stmt|;
+return|return
+name|cachedValues
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
