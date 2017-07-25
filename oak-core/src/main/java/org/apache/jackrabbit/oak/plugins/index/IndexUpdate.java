@@ -1380,7 +1380,9 @@ name|ignoreReindexFlags
 return|;
 block|}
 comment|// reindex in the case this is a new node, even though the reindex flag
-comment|// might be set to 'false' (possible via content import)
+comment|// might be set to 'false' (possible via content import).
+comment|// However if its already indexed i.e. has some hidden nodes (containing hidden data)
+comment|// then no need to reindex
 name|boolean
 name|result
 init|=
@@ -1395,6 +1397,12 @@ operator|.
 name|hasChildNode
 argument_list|(
 name|name
+argument_list|)
+operator|&&
+operator|!
+name|hasAnyHiddenNodes
+argument_list|(
+name|definition
 argument_list|)
 decl_stmt|;
 if|if
@@ -1414,6 +1422,45 @@ expr_stmt|;
 block|}
 return|return
 name|result
+return|;
+block|}
+specifier|private
+specifier|static
+name|boolean
+name|hasAnyHiddenNodes
+parameter_list|(
+name|NodeBuilder
+name|builder
+parameter_list|)
+block|{
+for|for
+control|(
+name|String
+name|name
+range|:
+name|builder
+operator|.
+name|getChildNodeNames
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|NodeStateUtils
+operator|.
+name|isHidden
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+return|return
+literal|false
 return|;
 block|}
 specifier|private
