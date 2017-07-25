@@ -153,6 +153,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -366,6 +380,22 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Charsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -741,6 +771,12 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+comment|//Update index to bar property also but do not index yet
+name|indexBarPropertyAlso
+argument_list|(
+name|fixture
+argument_list|)
+expr_stmt|;
 name|int
 name|fooCount
 init|=
@@ -878,11 +914,6 @@ argument_list|,
 literal|"bar"
 argument_list|,
 literal|100
-argument_list|)
-expr_stmt|;
-name|indexBarPropertyAlso
-argument_list|(
-name|fixture2
 argument_list|)
 expr_stmt|;
 name|fixture2
@@ -1366,6 +1397,235 @@ argument_list|(
 literal|100
 argument_list|,
 name|barCount
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|newIndexDefinition
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|createTestData
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|addTestContent
+argument_list|(
+name|fixture
+argument_list|,
+literal|"/testNode/c"
+argument_list|,
+literal|"bar"
+argument_list|,
+literal|100
+argument_list|)
+expr_stmt|;
+name|fixture
+operator|.
+name|getAsyncIndexUpdate
+argument_list|(
+literal|"async"
+argument_list|)
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+name|String
+name|explain
+init|=
+name|getQueryPlan
+argument_list|(
+name|fixture
+argument_list|,
+literal|"select * from [nt:base] where [bar] is not null"
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|explain
+argument_list|,
+name|containsString
+argument_list|(
+literal|"traverse"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|fixture
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|IndexCommand
+name|command
+init|=
+operator|new
+name|IndexCommand
+argument_list|()
+decl_stmt|;
+name|String
+name|json
+init|=
+literal|"{\n"
+operator|+
+literal|"  \"/oak:index/barIndex\": {\n"
+operator|+
+literal|"    \"compatVersion\": 2,\n"
+operator|+
+literal|"    \"type\": \"lucene\",\n"
+operator|+
+literal|"    \"async\": \"async\",\n"
+operator|+
+literal|"    \"jcr:primaryType\": \"oak:QueryIndexDefinition\",\n"
+operator|+
+literal|"    \"indexRules\": {\n"
+operator|+
+literal|"      \"jcr:primaryType\": \"nt:unstructured\",\n"
+operator|+
+literal|"      \"nt:base\": {\n"
+operator|+
+literal|"        \"jcr:primaryType\": \"nt:unstructured\",\n"
+operator|+
+literal|"        \"properties\": {\n"
+operator|+
+literal|"          \"jcr:primaryType\": \"nt:unstructured\",\n"
+operator|+
+literal|"          \"bar\": {\n"
+operator|+
+literal|"            \"name\": \"bar\",\n"
+operator|+
+literal|"            \"propertyIndex\": true,\n"
+operator|+
+literal|"            \"jcr:primaryType\": \"nt:unstructured\"\n"
+operator|+
+literal|"          }\n"
+operator|+
+literal|"        }\n"
+operator|+
+literal|"      }\n"
+operator|+
+literal|"    }\n"
+operator|+
+literal|"  }\n"
+operator|+
+literal|"}"
+decl_stmt|;
+name|File
+name|jsonFile
+init|=
+name|temporaryFolder
+operator|.
+name|newFile
+argument_list|()
+decl_stmt|;
+name|Files
+operator|.
+name|write
+argument_list|(
+name|json
+argument_list|,
+name|jsonFile
+argument_list|,
+name|UTF_8
+argument_list|)
+expr_stmt|;
+name|File
+name|outDir
+init|=
+name|temporaryFolder
+operator|.
+name|newFolder
+argument_list|()
+decl_stmt|;
+name|File
+name|storeDir
+init|=
+name|fixture
+operator|.
+name|getDir
+argument_list|()
+decl_stmt|;
+name|String
+index|[]
+name|args
+init|=
+block|{
+literal|"--index-temp-dir="
+operator|+
+name|temporaryFolder
+operator|.
+name|newFolder
+argument_list|()
+operator|.
+name|getAbsolutePath
+argument_list|()
+block|,
+literal|"--index-out-dir="
+operator|+
+name|outDir
+operator|.
+name|getAbsolutePath
+argument_list|()
+block|,
+literal|"--index-paths=/oak:index/barIndex"
+block|,
+literal|"--index-definitions-file="
+operator|+
+name|jsonFile
+operator|.
+name|getAbsolutePath
+argument_list|()
+block|,
+literal|"--reindex"
+block|,
+literal|"--read-write"
+block|,
+literal|"--"
+block|,
+comment|// -- indicates that options have ended and rest needs to be treated as non option
+name|storeDir
+operator|.
+name|getAbsolutePath
+argument_list|()
+block|}
+decl_stmt|;
+name|command
+operator|.
+name|execute
+argument_list|(
+name|args
+argument_list|)
+expr_stmt|;
+name|RepositoryFixture
+name|fixture2
+init|=
+operator|new
+name|RepositoryFixture
+argument_list|(
+name|storeDir
+argument_list|)
+decl_stmt|;
+name|explain
+operator|=
+name|getQueryPlan
+argument_list|(
+name|fixture2
+argument_list|,
+literal|"select * from [nt:base] where [bar] is not null"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|explain
+argument_list|,
+name|containsString
+argument_list|(
+literal|"/oak:index/barIndex"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

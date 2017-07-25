@@ -256,6 +256,14 @@ specifier|private
 specifier|final
 name|OptionSpec
 argument_list|<
+name|File
+argument_list|>
+name|indexDefinitionsOpt
+decl_stmt|;
+specifier|private
+specifier|final
+name|OptionSpec
+argument_list|<
 name|Void
 argument_list|>
 name|stats
@@ -412,6 +420,29 @@ argument_list|(
 literal|"pre-extracted-text-dir"
 argument_list|,
 literal|"Directory storing pre extracted text"
+argument_list|)
+operator|.
+name|withRequiredArg
+argument_list|()
+operator|.
+name|ofType
+argument_list|(
+name|File
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|indexDefinitionsOpt
+operator|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"index-definitions-file"
+argument_list|,
+literal|"index definition file which "
+operator|+
+literal|"include new index definitions or changes to existing index definitions"
 argument_list|)
 operator|.
 name|withRequiredArg
@@ -742,6 +773,20 @@ parameter_list|()
 block|{
 return|return
 name|preExtractedTextOpt
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+return|;
+block|}
+specifier|public
+name|File
+name|getIndexDefinitionsFile
+parameter_list|()
+block|{
+return|return
+name|indexDefinitionsOpt
 operator|.
 name|value
 argument_list|(
