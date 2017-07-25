@@ -539,7 +539,18 @@ literal|"foo"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//Hidden props other than :childOrder should be present
 name|assertNotNull
+argument_list|(
+name|a
+operator|.
+name|get
+argument_list|(
+literal|":foo"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertNull
 argument_list|(
 name|a
 operator|.
