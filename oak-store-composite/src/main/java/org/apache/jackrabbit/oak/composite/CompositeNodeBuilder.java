@@ -753,6 +753,10 @@ name|builders
 parameter_list|)
 block|{
 return|return
+operator|new
+name|IdentityHashMap
+argument_list|<>
+argument_list|(
 name|transformValues
 argument_list|(
 name|builders
@@ -784,6 +788,7 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 return|;
 block|}
