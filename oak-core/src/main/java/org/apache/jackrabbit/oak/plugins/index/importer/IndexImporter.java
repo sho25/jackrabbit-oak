@@ -1010,6 +1010,8 @@ argument_list|(
 name|nodeStore
 argument_list|,
 name|rootBuilder
+argument_list|,
+name|indexEditorProvider
 argument_list|)
 expr_stmt|;
 block|}
