@@ -323,6 +323,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|matchesAll
+argument_list|()
+operator|||
 name|v
 operator|==
 literal|null

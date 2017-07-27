@@ -158,28 +158,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|property
-operator|.
-name|PropertyIndex
-operator|.
-name|encode
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -254,6 +232,24 @@ operator|.
 name|commons
 operator|.
 name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|Cursors
 import|;
 end_import
 
@@ -366,24 +362,6 @@ operator|.
 name|query
 operator|.
 name|Cursor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|Cursors
 import|;
 end_import
 
@@ -982,6 +960,15 @@ block|{
 continue|continue;
 block|}
 block|}
+name|values
+operator|=
+name|PropertyIndex
+operator|.
+name|encode
+argument_list|(
+name|values
+argument_list|)
+expr_stmt|;
 name|double
 name|cost
 init|=
@@ -1356,7 +1343,9 @@ condition|)
 block|{
 comment|// "[property] = $value"
 return|return
-name|encode
+name|PropertyIndex
+operator|.
+name|read
 argument_list|(
 name|restriction
 operator|.
@@ -1401,7 +1390,9 @@ name|values
 operator|.
 name|addAll
 argument_list|(
-name|encode
+name|PropertyIndex
+operator|.
+name|read
 argument_list|(
 name|value
 argument_list|,
