@@ -746,6 +746,13 @@ name|granted
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|compositionType
+operator|==
+name|AND
+condition|)
+block|{
 comment|// update the set of denied privs by comparing the granted privs
 comment|// with the complete set of supported privileges
 name|denied
@@ -760,6 +767,7 @@ name|granted
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// subtract all denied privileges from the result

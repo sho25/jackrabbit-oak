@@ -1492,7 +1492,12 @@ name|assertEquals
 argument_list|(
 name|p
 argument_list|,
-name|expected
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|JCR_ALL
+argument_list|)
 argument_list|,
 name|cppO
 operator|.
@@ -1559,9 +1564,7 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|JCR_NAMESPACE_MANAGEMENT
-argument_list|,
-name|JCR_NODE_TYPE_DEFINITION_MANAGEMENT
+name|JCR_ALL
 argument_list|)
 argument_list|,
 name|privilegeNamesO
