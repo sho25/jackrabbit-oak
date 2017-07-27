@@ -5884,6 +5884,7 @@ argument_list|)
 operator|>=
 name|retainedGenerations
 operator|||
+operator|(
 name|reference
 operator|.
 name|compareTail
@@ -5892,6 +5893,13 @@ name|generation
 argument_list|)
 operator|>=
 name|retainedGenerations
+operator|&&
+operator|!
+name|generation
+operator|.
+name|isTail
+argument_list|()
+operator|)
 return|;
 block|}
 annotation|@
