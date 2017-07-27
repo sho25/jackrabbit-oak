@@ -1462,35 +1462,13 @@ name|getStatsProvider
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Manifest
-name|manifest
-init|=
-name|Manifest
-operator|.
-name|empty
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|notEmptyDirectory
+name|newManifestChecker
 argument_list|(
 name|directory
 argument_list|)
-condition|)
-block|{
-name|manifest
-operator|=
-name|checkManifest
-argument_list|(
-name|openManifest
+operator|.
+name|checkAndUpdateManifest
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-name|saveManifest
-argument_list|(
-name|manifest
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1772,37 +1750,6 @@ expr_stmt|;
 return|return
 name|this
 return|;
-block|}
-specifier|private
-name|void
-name|saveManifest
-parameter_list|(
-name|Manifest
-name|manifest
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-comment|// Always update the store version to the maximum supported store
-comment|// version. In doing so, we prevent older implementations from tampering
-comment|// with the store's data, which from this moment on could be written in
-comment|// a format that an older implementation might not be able to
-comment|// understand.
-name|manifest
-operator|.
-name|setStoreVersion
-argument_list|(
-name|MAX_STORE_VERSION
-argument_list|)
-expr_stmt|;
-name|manifest
-operator|.
-name|save
-argument_list|(
-name|getManifestFile
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Nonnull
