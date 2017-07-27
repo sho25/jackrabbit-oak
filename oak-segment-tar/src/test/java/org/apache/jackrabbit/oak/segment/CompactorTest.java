@@ -345,6 +345,10 @@ operator|new
 name|GCGeneration
 argument_list|(
 literal|1
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 operator|.
@@ -497,6 +501,10 @@ operator|new
 name|GCGeneration
 argument_list|(
 literal|1
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 operator|.

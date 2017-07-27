@@ -1538,6 +1538,7 @@ name|writer
 operator|=
 name|writer
 expr_stmt|;
+comment|// FIXME OAK-3349 Also take the tail part of the gc generation into account for allocating cache generations. Cache generations need to be a monotonically increasing, ordered sequence consisting of the full and tail part of the gc generation. See also org.apache.jackrabbit.oak.segment.file.FileStoreBuilder.EvictingWriteCacheManager.evictOldGeneration
 name|int
 name|generation
 init|=
@@ -1546,7 +1547,7 @@ operator|.
 name|getGeneration
 argument_list|()
 operator|.
-name|getGeneration
+name|getFull
 argument_list|()
 decl_stmt|;
 name|this
@@ -5761,7 +5762,16 @@ decl_stmt|;
 return|return
 name|thatGen
 operator|.
-name|compareWith
+name|compareFull
+argument_list|(
+name|thisGen
+argument_list|)
+operator|<
+literal|0
+operator|||
+name|thatGen
+operator|.
+name|compareTail
 argument_list|(
 name|thisGen
 argument_list|)

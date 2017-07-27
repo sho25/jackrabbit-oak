@@ -7580,7 +7580,7 @@ operator|.
 name|getGcGeneration
 argument_list|()
 operator|.
-name|next
+name|nextFull
 argument_list|()
 argument_list|,
 operator|(
@@ -7677,7 +7677,7 @@ operator|.
 name|getGcGeneration
 argument_list|()
 operator|.
-name|next
+name|nextFull
 argument_list|()
 argument_list|,
 name|sns2

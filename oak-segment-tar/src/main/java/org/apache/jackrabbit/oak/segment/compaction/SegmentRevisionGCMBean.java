@@ -109,6 +109,10 @@ name|FileStoreGCMonitor
 import|;
 end_import
 
+begin_comment
+comment|// FIXME OAK-3349 add means to trigger full / tail compaction
+end_comment
+
 begin_class
 specifier|public
 class|class

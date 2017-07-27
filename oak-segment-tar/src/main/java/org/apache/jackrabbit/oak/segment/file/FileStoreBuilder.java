@@ -689,13 +689,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// FIXME OAK-3349 also handle the tail part of the gc generation and flag. See also the respective todo at org.apache.jackrabbit.oak.segment.DefaultSegmentWriter.SegmentWriteOperation.with()
 name|cacheManager
 operator|.
 name|evictOldGeneration
 argument_list|(
 name|newGeneration
 operator|.
-name|getGeneration
+name|getFull
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -720,13 +721,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// FIXME OAK-3349 also handle the tail part of the gc generation and flag. See also the respective todo at org.apache.jackrabbit.oak.segment.DefaultSegmentWriter.SegmentWriteOperation.with()
 name|cacheManager
 operator|.
 name|evictGeneration
 argument_list|(
 name|failedGeneration
 operator|.
-name|getGeneration
+name|getFull
 argument_list|()
 argument_list|)
 expr_stmt|;

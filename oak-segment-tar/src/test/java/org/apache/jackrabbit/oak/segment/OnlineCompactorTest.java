@@ -437,6 +437,10 @@ name|TemporaryFolder
 import|;
 end_import
 
+begin_comment
+comment|// FIXME OAK-3349 implement tail compaction tests
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -595,7 +599,7 @@ operator|.
 name|getGcGeneration
 argument_list|()
 operator|.
-name|next
+name|nextFull
 argument_list|()
 argument_list|,
 name|compacted
@@ -662,7 +666,7 @@ operator|.
 name|getGcGeneration
 argument_list|()
 operator|.
-name|next
+name|nextFull
 argument_list|()
 argument_list|,
 name|compacted
@@ -762,7 +766,7 @@ operator|.
 name|getGcGeneration
 argument_list|()
 operator|.
-name|next
+name|nextFull
 argument_list|()
 argument_list|,
 name|compacted
@@ -891,6 +895,10 @@ operator|new
 name|GCGeneration
 argument_list|(
 literal|1
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 operator|.

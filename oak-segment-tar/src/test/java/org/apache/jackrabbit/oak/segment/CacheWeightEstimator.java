@@ -31,7 +31,7 @@ name|segment
 operator|.
 name|Segment
 operator|.
-name|GC_GENERATION_OFFSET
+name|GC_FULL_GENERATION_OFFSET
 import|;
 end_import
 
@@ -1737,7 +1737,7 @@ literal|0
 decl_stmt|;
 name|buffer
 index|[
-name|GC_GENERATION_OFFSET
+name|GC_FULL_GENERATION_OFFSET
 index|]
 operator|=
 call|(
@@ -1751,7 +1751,7 @@ argument_list|)
 expr_stmt|;
 name|buffer
 index|[
-name|GC_GENERATION_OFFSET
+name|GC_FULL_GENERATION_OFFSET
 operator|+
 literal|1
 index|]
@@ -1767,7 +1767,7 @@ argument_list|)
 expr_stmt|;
 name|buffer
 index|[
-name|GC_GENERATION_OFFSET
+name|GC_FULL_GENERATION_OFFSET
 operator|+
 literal|2
 index|]
@@ -1783,7 +1783,7 @@ argument_list|)
 expr_stmt|;
 name|buffer
 index|[
-name|GC_GENERATION_OFFSET
+name|GC_FULL_GENERATION_OFFSET
 operator|+
 literal|3
 index|]

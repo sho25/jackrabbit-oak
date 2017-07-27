@@ -3545,6 +3545,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
+comment|// FIXME OAK-3349 cannot properly clean up under tail compaction here since we don't have access to the tail part of the generation (i.e. it is not in the tar index).
 if|if
 condition|(
 name|skipGeneration
@@ -3558,6 +3559,10 @@ name|entry
 operator|.
 name|getKey
 argument_list|()
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 condition|)
@@ -3692,6 +3697,7 @@ name|lsb
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// FIXME OAK-3349 cannot properly clean up under tail compaction here since we don't have access to the tail part of the generation (i.e. it is not in the tar index). As a workaround for now the implementation of shouldReclaim() could directly read the tail generation from the segment (i.e. SegmentIdProvider.newSegmentId(id.getMostSignificantBits(), id.getLeastSignificantBits()).getGcGeneration().getTail())
 if|if
 condition|(
 name|context
@@ -3707,6 +3713,10 @@ name|entry
 operator|.
 name|generation
 argument_list|()
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 name|references

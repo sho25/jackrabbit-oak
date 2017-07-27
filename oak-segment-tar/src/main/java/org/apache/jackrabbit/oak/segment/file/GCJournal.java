@@ -280,6 +280,10 @@ import|;
 end_import
 
 begin_comment
+comment|// FIXME OAK-3349 incorporate tail compaction information into the gc.log file and reflect through this class.
+end_comment
+
+begin_comment
 comment|/**  * Persists the repository size and the reclaimed size following a cleanup  * operation in the {@link #GC_JOURNAL gc journal} file with the format:  * 'repoSize, reclaimedSize, timestamp, gcGen, nodes compacted'.  */
 end_comment
 
@@ -935,6 +939,7 @@ name|toString10
 argument_list|()
 expr_stmt|;
 block|}
+comment|// FIXME OAK-3349 set tail part once we have that information in the gc.log file
 return|return
 operator|new
 name|GCJournalEntry
@@ -949,6 +954,10 @@ operator|new
 name|GCGeneration
 argument_list|(
 name|gcGen
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 name|nodes

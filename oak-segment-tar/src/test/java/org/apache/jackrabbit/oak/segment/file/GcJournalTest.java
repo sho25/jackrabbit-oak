@@ -245,6 +245,10 @@ operator|new
 name|GCGeneration
 argument_list|(
 literal|1
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 literal|50
@@ -322,6 +326,10 @@ operator|new
 name|GCGeneration
 argument_list|(
 literal|2
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 literal|75
@@ -399,6 +407,10 @@ operator|new
 name|GCGeneration
 argument_list|(
 literal|3
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 literal|90
@@ -467,6 +479,10 @@ operator|new
 name|GCGeneration
 argument_list|(
 literal|3
+argument_list|,
+literal|0
+argument_list|,
+literal|false
 argument_list|)
 argument_list|,
 literal|125

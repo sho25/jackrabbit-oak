@@ -1190,6 +1190,7 @@ argument_list|(
 name|data
 argument_list|)
 decl_stmt|;
+comment|// FIXME OAK-3349 also handle the tail part of the gc generation and flag during recovery
 name|int
 name|generation
 init|=
@@ -1202,7 +1203,7 @@ argument_list|,
 name|id
 argument_list|)
 operator|.
-name|getGeneration
+name|getFull
 argument_list|()
 decl_stmt|;
 name|w
@@ -1329,6 +1330,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// FIXME OAK-3349 also handle the tail part of the gc generation and flag during recovery
 specifier|private
 specifier|static
 name|void
@@ -1352,7 +1354,7 @@ operator|.
 name|getGcGeneration
 argument_list|()
 operator|.
-name|getGeneration
+name|getFull
 argument_list|()
 decl_stmt|;
 specifier|final
