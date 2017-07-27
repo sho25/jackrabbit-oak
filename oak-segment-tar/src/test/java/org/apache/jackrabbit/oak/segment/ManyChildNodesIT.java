@@ -676,7 +676,7 @@ name|assertTrue
 argument_list|(
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -429,7 +429,7 @@ name|Exception
 block|{
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 return|return

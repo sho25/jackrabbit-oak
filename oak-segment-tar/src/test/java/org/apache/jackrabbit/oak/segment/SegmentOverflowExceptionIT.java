@@ -601,7 +601,7 @@ literal|false
 expr_stmt|;
 name|fileStore
 operator|.
-name|gc
+name|fullGC
 argument_list|()
 expr_stmt|;
 block|}

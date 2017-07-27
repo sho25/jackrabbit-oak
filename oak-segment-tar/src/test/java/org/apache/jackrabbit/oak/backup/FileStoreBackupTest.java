@@ -551,7 +551,7 @@ argument_list|)
 expr_stmt|;
 name|source
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fsb

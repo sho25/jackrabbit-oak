@@ -523,7 +523,7 @@ argument_list|()
 expr_stmt|;
 name|store
 operator|.
-name|gc
+name|fullGC
 argument_list|()
 expr_stmt|;
 name|store

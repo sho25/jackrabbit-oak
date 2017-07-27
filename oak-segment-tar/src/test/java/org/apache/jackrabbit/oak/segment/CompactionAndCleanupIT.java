@@ -1420,7 +1420,7 @@ expr_stmt|;
 comment|// 1st gc cycle -> no reclaimable garbage...
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -1518,7 +1518,7 @@ expr_stmt|;
 comment|// 2st gc cycle -> 1st blob should get collected
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -1560,7 +1560,7 @@ expr_stmt|;
 comment|// 3rtd gc cycle -> no  significant change
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -1968,7 +1968,7 @@ expr_stmt|;
 comment|// 1st gc cycle -> 1st blob should get collected
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -2086,7 +2086,7 @@ expr_stmt|;
 comment|// 2st gc cycle -> 2nd blob should *not* be collected
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -2124,7 +2124,7 @@ expr_stmt|;
 comment|// 3rd gc cycle -> no significant change
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -2380,7 +2380,7 @@ argument_list|()
 expr_stmt|;
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -2627,7 +2627,7 @@ name|assertTrue
 argument_list|(
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2959,7 +2959,7 @@ argument_list|()
 decl_stmt|;
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -3307,7 +3307,7 @@ argument_list|()
 decl_stmt|;
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -3640,7 +3640,7 @@ argument_list|()
 decl_stmt|;
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|fileStore
@@ -4146,7 +4146,7 @@ operator|=
 operator|!
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 block|}
@@ -4377,7 +4377,7 @@ argument_list|)
 expr_stmt|;
 name|fileStore
 operator|.
-name|gc
+name|fullGC
 argument_list|()
 expr_stmt|;
 block|}
@@ -4843,7 +4843,7 @@ expr_stmt|;
 block|}
 name|store
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|run
@@ -5633,7 +5633,7 @@ control|)
 block|{
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 block|}
@@ -6619,7 +6619,7 @@ control|)
 block|{
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 block|}
@@ -7057,7 +7057,7 @@ expr_stmt|;
 block|}
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|NodeState
@@ -7312,7 +7312,7 @@ argument_list|()
 decl_stmt|;
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|NodeState
@@ -7503,7 +7503,7 @@ argument_list|()
 decl_stmt|;
 name|fileStore
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 name|NodeState
@@ -9330,7 +9330,7 @@ control|)
 block|{
 name|fileStore
 operator|.
-name|gc
+name|fullGC
 argument_list|()
 expr_stmt|;
 name|Set

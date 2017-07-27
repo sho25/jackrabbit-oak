@@ -388,7 +388,7 @@ init|)
 block|{
 name|store
 operator|.
-name|compact
+name|compactFull
 argument_list|()
 expr_stmt|;
 block|}
