@@ -621,13 +621,21 @@ name|INVALID_STORE_VERSION
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * The store version is an always incrementing number, strictly greater than      * zero, that is changed every time there is a backwards incompatible      * modification to the format of the segment store.      */
+comment|/**      * The minimum supported store version. It is possible for an implementation      * to support in a transparent and backwards-compatible way older versions      * of a repository. In this case, the minimum supported store version      * identifies the store format that can still be processed by the      * implementation. The minimum store version has to be greater than zero and      * less than or equal to the maximum store version.      */
 specifier|static
 specifier|final
 name|int
-name|CURRENT_STORE_VERSION
+name|MIN_STORE_VERSION
 init|=
 literal|1
+decl_stmt|;
+comment|/**      * The maximum supported store version. It is possible for an implementation      * to support in a transparent and forwards-compatible way newer version of      * a repository. In this case, the maximum supported store version      * identifies the store format that can still be processed by the      * implementation. The maximum supported store version has to be greater      * than zero and greater than or equal to the minimum store version.      */
+specifier|static
+specifier|final
+name|int
+name|MAX_STORE_VERSION
+init|=
+literal|2
 decl_stmt|;
 specifier|protected
 specifier|static
@@ -1028,7 +1036,7 @@ if|if
 condition|(
 name|storeVersion
 operator|<
-name|CURRENT_STORE_VERSION
+name|MIN_STORE_VERSION
 condition|)
 block|{
 throw|throw
@@ -1043,7 +1051,7 @@ if|if
 condition|(
 name|storeVersion
 operator|>
-name|CURRENT_STORE_VERSION
+name|MAX_STORE_VERSION
 condition|)
 block|{
 throw|throw

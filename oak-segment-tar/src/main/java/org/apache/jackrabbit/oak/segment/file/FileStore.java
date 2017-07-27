@@ -1783,11 +1783,16 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// Always update the store version to the maximum supported store
+comment|// version. In doing so, we prevent older implementations from tampering
+comment|// with the store's data, which from this moment on could be written in
+comment|// a format that an older implementation might not be able to
+comment|// understand.
 name|manifest
 operator|.
 name|setStoreVersion
 argument_list|(
-name|CURRENT_STORE_VERSION
+name|MAX_STORE_VERSION
 argument_list|)
 expr_stmt|;
 name|manifest
