@@ -580,7 +580,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|Integer
+name|GCGeneration
 argument_list|,
 name|Map
 argument_list|<
@@ -1218,15 +1218,11 @@ name|String
 name|reference
 parameter_list|)
 block|{
-comment|// TODO frm Include both full and tail generation. See OAK-6468.
 name|binaryReferences
 operator|.
 name|computeIfAbsent
 argument_list|(
 name|generation
-operator|.
-name|getFull
-argument_list|()
 argument_list|,
 name|k
 lambda|->
@@ -1557,10 +1553,20 @@ name|values
 argument_list|()
 control|)
 block|{
-comment|// 4 bytes per generation to store the generation number itself.
+comment|// 4 bytes per generation to store the full generation number.
 name|binaryReferenceSize
 operator|+=
 literal|4
+expr_stmt|;
+comment|// 4 bytes per generation to store the tail generation number.
+name|binaryReferenceSize
+operator|+=
+literal|4
+expr_stmt|;
+comment|// 1 byte per generation to store the "tail" flag.
+name|binaryReferenceSize
+operator|+=
+literal|1
 expr_stmt|;
 comment|// 4 bytes per generation to store the number of segments.
 name|binaryReferenceSize
@@ -1635,7 +1641,7 @@ for|for
 control|(
 name|Entry
 argument_list|<
-name|Integer
+name|GCGeneration
 argument_list|,
 name|Map
 argument_list|<
@@ -1655,7 +1661,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|int
+name|GCGeneration
 name|generation
 init|=
 name|be
@@ -1684,6 +1690,38 @@ operator|.
 name|putInt
 argument_list|(
 name|generation
+operator|.
+name|getFull
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|buffer
+operator|.
+name|putInt
+argument_list|(
+name|generation
+operator|.
+name|getTail
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|buffer
+operator|.
+name|put
+argument_list|(
+call|(
+name|byte
+call|)
+argument_list|(
+name|generation
+operator|.
+name|isTail
+argument_list|()
+condition|?
+literal|1
+else|:
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|buffer
