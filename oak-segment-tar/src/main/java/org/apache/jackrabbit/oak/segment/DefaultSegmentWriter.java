@@ -1545,6 +1545,9 @@ name|writer
 operator|.
 name|getGeneration
 argument_list|()
+operator|.
+name|getGeneration
+argument_list|()
 decl_stmt|;
 name|this
 operator|.
@@ -5736,7 +5739,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|int
+name|GCGeneration
 name|thatGen
 init|=
 name|id
@@ -5747,7 +5750,7 @@ operator|.
 name|getGcGeneration
 argument_list|()
 decl_stmt|;
-name|int
+name|GCGeneration
 name|thisGen
 init|=
 name|writer
@@ -5757,8 +5760,13 @@ argument_list|()
 decl_stmt|;
 return|return
 name|thatGen
-operator|<
+operator|.
+name|compareWith
+argument_list|(
 name|thisGen
+argument_list|)
+operator|<
+literal|0
 return|;
 block|}
 catch|catch

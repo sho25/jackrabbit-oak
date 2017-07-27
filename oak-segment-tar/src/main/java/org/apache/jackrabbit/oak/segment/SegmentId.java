@@ -215,12 +215,11 @@ name|Runnable
 name|onAccess
 decl_stmt|;
 comment|/**      * The gc generation of this segment or -1 if unknown.      */
+annotation|@
+name|CheckForNull
 specifier|private
-name|int
+name|GCGeneration
 name|gcGeneration
-init|=
-operator|-
-literal|1
 decl_stmt|;
 comment|/**      * The gc info of this segment if it has been reclaimed or {@code null} otherwise.      */
 annotation|@
@@ -495,8 +494,8 @@ block|}
 if|if
 condition|(
 name|gcGeneration
-operator|>=
-literal|0
+operator|!=
+literal|null
 condition|)
 block|{
 name|sb
@@ -636,16 +635,18 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get the underlying segment's gc generation. Might cause the segment to      * get loaded if the generation info is missing      * @return the segment's gc generation      */
+annotation|@
+name|Nonnull
 specifier|public
-name|int
+name|GCGeneration
 name|getGcGeneration
 parameter_list|()
 block|{
 if|if
 condition|(
 name|gcGeneration
-operator|<
-literal|0
+operator|==
+literal|null
 condition|)
 block|{
 name|getSegment

@@ -480,9 +480,11 @@ specifier|final
 name|String
 name|wid
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
-name|int
+name|GCGeneration
 name|generation
 decl_stmt|;
 comment|/**      * The segment write buffer, filled from the end to the beginning      * (see OAK-629).      */
@@ -532,7 +534,9 @@ name|CheckForNull
 name|String
 name|wid
 parameter_list|,
-name|int
+annotation|@
+name|Nonnull
+name|GCGeneration
 name|generation
 parameter_list|)
 block|{
@@ -577,7 +581,10 @@ name|this
 operator|.
 name|generation
 operator|=
+name|checkNotNull
+argument_list|(
 name|generation
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -605,7 +612,9 @@ name|this
 argument_list|)
 return|;
 block|}
-name|int
+annotation|@
+name|Nonnull
+name|GCGeneration
 name|getGeneration
 parameter_list|()
 block|{
@@ -693,6 +702,9 @@ name|byte
 call|)
 argument_list|(
 name|generation
+operator|.
+name|getGeneration
+argument_list|()
 operator|>>
 literal|24
 argument_list|)
@@ -709,6 +721,9 @@ name|byte
 call|)
 argument_list|(
 name|generation
+operator|.
+name|getGeneration
+argument_list|()
 operator|>>
 literal|16
 argument_list|)
@@ -725,6 +740,9 @@ name|byte
 call|)
 argument_list|(
 name|generation
+operator|.
+name|getGeneration
+argument_list|()
 operator|>>
 literal|8
 argument_list|)
@@ -740,6 +758,9 @@ operator|(
 name|byte
 operator|)
 name|generation
+operator|.
+name|getGeneration
+argument_list|()
 expr_stmt|;
 name|length
 operator|=

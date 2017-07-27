@@ -1201,6 +1201,9 @@ name|buffer
 argument_list|,
 name|id
 argument_list|)
+operator|.
+name|getGeneration
+argument_list|()
 decl_stmt|;
 name|w
 operator|.
@@ -1347,6 +1350,9 @@ init|=
 name|segment
 operator|.
 name|getGcGeneration
+argument_list|()
+operator|.
+name|getGeneration
 argument_list|()
 decl_stmt|;
 specifier|final

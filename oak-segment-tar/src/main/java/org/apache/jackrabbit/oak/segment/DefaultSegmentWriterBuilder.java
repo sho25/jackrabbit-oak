@@ -165,7 +165,7 @@ name|Nonnull
 specifier|private
 name|Supplier
 argument_list|<
-name|Integer
+name|GCGeneration
 argument_list|>
 name|generation
 init|=
@@ -173,7 +173,9 @@ name|Suppliers
 operator|.
 name|ofInstance
 argument_list|(
-literal|0
+name|GCGeneration
+operator|.
+name|NULL
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -246,7 +248,7 @@ annotation|@
 name|Nonnull
 name|Supplier
 argument_list|<
-name|Integer
+name|GCGeneration
 argument_list|>
 name|generation
 parameter_list|)
@@ -271,7 +273,9 @@ specifier|public
 name|DefaultSegmentWriterBuilder
 name|withGeneration
 parameter_list|(
-name|int
+annotation|@
+name|Nonnull
+name|GCGeneration
 name|generation
 parameter_list|)
 block|{
@@ -283,7 +287,10 @@ name|Suppliers
 operator|.
 name|ofInstance
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|generation
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

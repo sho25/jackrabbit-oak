@@ -341,7 +341,11 @@ argument_list|)
 operator|.
 name|withGeneration
 argument_list|(
+operator|new
+name|GCGeneration
+argument_list|(
 literal|1
+argument_list|)
 argument_list|)
 operator|.
 name|build
@@ -489,7 +493,11 @@ argument_list|)
 operator|.
 name|withGeneration
 argument_list|(
+operator|new
+name|GCGeneration
+argument_list|(
 literal|1
+argument_list|)
 argument_list|)
 operator|.
 name|build

@@ -21,6 +21,24 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|DefaultSegmentWriterBuilder
+operator|.
+name|defaultSegmentWriterBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -197,18 +215,18 @@ name|Generation
 implements|implements
 name|Supplier
 argument_list|<
-name|Integer
+name|GCGeneration
 argument_list|>
 block|{
 specifier|private
-name|int
+name|GCGeneration
 name|generation
 decl_stmt|;
 specifier|public
 name|void
 name|set
 parameter_list|(
-name|int
+name|GCGeneration
 name|generation
 parameter_list|)
 block|{
@@ -222,7 +240,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Integer
+name|GCGeneration
 name|get
 parameter_list|()
 block|{
@@ -286,8 +304,6 @@ name|writer
 decl_stmt|;
 name|writer
 operator|=
-name|DefaultSegmentWriterBuilder
-operator|.
 name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"1"
@@ -295,7 +311,11 @@ argument_list|)
 operator|.
 name|withGeneration
 argument_list|(
+operator|new
+name|GCGeneration
+argument_list|(
 literal|1
+argument_list|)
 argument_list|)
 operator|.
 name|build
@@ -338,8 +358,6 @@ argument_list|()
 expr_stmt|;
 name|writer
 operator|=
-name|DefaultSegmentWriterBuilder
-operator|.
 name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"2"
@@ -347,7 +365,11 @@ argument_list|)
 operator|.
 name|withGeneration
 argument_list|(
+operator|new
+name|GCGeneration
+argument_list|(
 literal|2
+argument_list|)
 argument_list|)
 operator|.
 name|build
@@ -388,8 +410,6 @@ argument_list|()
 expr_stmt|;
 name|writer
 operator|=
-name|DefaultSegmentWriterBuilder
-operator|.
 name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"3"
@@ -397,7 +417,11 @@ argument_list|)
 operator|.
 name|withGeneration
 argument_list|(
+operator|new
+name|GCGeneration
+argument_list|(
 literal|3
+argument_list|)
 argument_list|)
 operator|.
 name|build
@@ -541,8 +565,6 @@ comment|// records) will be cached and prevent this test to fail.
 name|SegmentWriter
 name|writer
 init|=
-name|DefaultSegmentWriterBuilder
-operator|.
 name|defaultSegmentWriterBuilder
 argument_list|(
 literal|"test"
@@ -571,7 +593,11 @@ name|generation
 operator|.
 name|set
 argument_list|(
+operator|new
+name|GCGeneration
+argument_list|(
 literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Write a new node with a non trivial template. This record will
@@ -638,7 +664,11 @@ name|generation
 operator|.
 name|set
 argument_list|(
+operator|new
+name|GCGeneration
+argument_list|(
 literal|2
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Compact that same record to generation 2.

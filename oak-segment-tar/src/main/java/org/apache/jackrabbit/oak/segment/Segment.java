@@ -141,24 +141,6 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentStream
-operator|.
-name|BLOCK_SIZE
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
 name|RecordNumbers
 operator|.
 name|EMPTY_RECORD_NUMBERS
@@ -180,6 +162,24 @@ operator|.
 name|SegmentId
 operator|.
 name|isDataSegmentId
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentStream
+operator|.
+name|BLOCK_SIZE
 import|;
 end_import
 
@@ -1661,9 +1661,11 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Determine the gc generation a segment from its data. Note that bulk segments don't have      * generations (i.e. stay at 0).      *      * @param data         the date of the segment      * @param segmentId    the id of the segment      * @return  the gc generation of this segment or 0 if this is bulk segment.      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
-name|int
+name|GCGeneration
 name|getGcGeneration
 parameter_list|(
 name|ByteBuffer
@@ -1682,19 +1684,27 @@ name|getLeastSignificantBits
 argument_list|()
 argument_list|)
 condition|?
+operator|new
+name|GCGeneration
+argument_list|(
 name|data
 operator|.
 name|getInt
 argument_list|(
 name|GC_GENERATION_OFFSET
 argument_list|)
+argument_list|)
 else|:
-literal|0
+name|GCGeneration
+operator|.
+name|NULL
 return|;
 block|}
 comment|/**      * Determine the gc generation of this segment. Note that bulk segments don't have      * generations (i.e. stay at 0).      * @return  the gc generation of this segment or 0 if this is bulk segment.      */
+annotation|@
+name|Nonnull
 specifier|public
-name|int
+name|GCGeneration
 name|getGcGeneration
 parameter_list|()
 block|{
@@ -3174,7 +3184,7 @@ name|writer
 operator|.
 name|format
 argument_list|(
-literal|"Info: %s, Generation: %d%n"
+literal|"Info: %s, Generation: %s%n"
 argument_list|,
 name|segmentInfo
 argument_list|,
