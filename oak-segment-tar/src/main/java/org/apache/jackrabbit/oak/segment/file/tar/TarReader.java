@@ -3300,7 +3300,6 @@ block|}
 comment|/**      * Read the entries in this TAR file.      *      * @return An array of {@link TarEntry}.      */
 annotation|@
 name|Nonnull
-specifier|private
 name|TarEntry
 index|[]
 name|getEntries
@@ -3391,7 +3390,6 @@ operator|+
 literal|20
 argument_list|)
 argument_list|,
-comment|// TODO frm This should read both a full and a tail generation. See OAK-6456.
 name|newGCGeneration
 argument_list|(
 name|index
@@ -3403,9 +3401,25 @@ operator|+
 literal|24
 argument_list|)
 argument_list|,
-literal|0
+name|index
+operator|.
+name|getInt
+argument_list|(
+name|position
+operator|+
+literal|28
+argument_list|)
 argument_list|,
-literal|false
+name|index
+operator|.
+name|get
+argument_list|(
+name|position
+operator|+
+literal|32
+argument_list|)
+operator|!=
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3710,7 +3724,6 @@ name|lsb
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// FIXME OAK-3349 cannot properly clean up under tail compaction here since we don't have access to the tail part of the generation (i.e. it is not in the tar index). As a workaround for now the implementation of shouldReclaim() could directly read the tail generation from the segment (i.e. SegmentIdProvider.newSegmentId(id.getMostSignificantBits(), id.getLeastSignificantBits()).getGcGeneration().getTail())
 if|if
 condition|(
 name|context

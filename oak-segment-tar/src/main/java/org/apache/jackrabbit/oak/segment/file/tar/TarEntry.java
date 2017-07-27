@@ -45,7 +45,7 @@ specifier|final
 name|int
 name|SIZE
 init|=
-literal|28
+literal|33
 decl_stmt|;
 specifier|static
 specifier|final
