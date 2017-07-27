@@ -240,7 +240,7 @@ name|size
 decl_stmt|;
 specifier|private
 specifier|final
-name|int
+name|GCGeneration
 name|generation
 decl_stmt|;
 name|TarEntry
@@ -257,7 +257,7 @@ parameter_list|,
 name|int
 name|size
 parameter_list|,
-name|int
+name|GCGeneration
 name|generation
 parameter_list|)
 block|{
@@ -324,7 +324,7 @@ return|return
 name|size
 return|;
 block|}
-name|int
+name|GCGeneration
 name|generation
 parameter_list|()
 block|{

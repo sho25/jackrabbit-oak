@@ -95,6 +95,28 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
+operator|.
+name|newGCGeneration
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -891,8 +913,7 @@ argument_list|)
 operator|.
 name|withGeneration
 argument_list|(
-operator|new
-name|GCGeneration
+name|newGCGeneration
 argument_list|(
 literal|1
 argument_list|,

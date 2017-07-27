@@ -41,22 +41,6 @@ name|UUID
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|GCGeneration
-import|;
-end_import
-
 begin_comment
 comment|/**  * Initial data and logic needed for the cleanup of unused TAR entries.  */
 end_comment

@@ -220,6 +220,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
+operator|.
+name|newGCGeneration
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -482,6 +504,26 @@ operator|.
 name|RecordNumbers
 operator|.
 name|Entry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
 import|;
 end_import
 
@@ -1714,8 +1756,7 @@ name|GC_TAIL_GENERATION_OFFSET
 argument_list|)
 decl_stmt|;
 return|return
-operator|new
-name|GCGeneration
+name|newGCGeneration
 argument_list|(
 name|full
 argument_list|,

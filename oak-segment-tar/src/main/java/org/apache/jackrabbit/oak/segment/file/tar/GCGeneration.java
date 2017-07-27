@@ -14,6 +14,10 @@ operator|.
 name|oak
 operator|.
 name|segment
+operator|.
+name|file
+operator|.
+name|tar
 package|;
 end_package
 
@@ -42,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Instances of this class represent the garbage collection generation related information  * of a segment. Each generation consists of a full and a tail part and a tail flag.  * The full and tail part are each increased by the respective garbage collection process.  * In the tail compaction case the segments written by the compactor will also have their  * tail flag set so cleanup can recognise them as not reclaimable (unless the full part is  * older then the number of retained generations). Segments written by normal repository  * writes will inherit the full and tail generations parts of the segments written by the  * previous compaction process. However the tail flag is never set for such segments ensuring  * cleanup after subsequent tail compactions can reclaim them once old enough (e.g. the tail  * part of the generation is older then the number of retained generations).  */
+comment|/**  * Instances of this class represent the garbage collection generation related  * information of a segment. Each generation consists of a full and a tail part  * and a tail flag. The full and tail part are each increased by the respective  * garbage collection process. In the tail compaction case the segments written  * by the compactor will also have their tail flag set so cleanup can recognise  * them as not reclaimable (unless the full part is older then the number of  * retained generations). Segments written by normal repository writes will  * inherit the full and tail generations parts of the segments written by the  * previous compaction process. However the tail flag is never set for such  * segments ensuring cleanup after subsequent tail compactions can reclaim them  * once old enough (e.g. the tail part of the generation is older then the  * number of retained generations).  */
 end_comment
 
 begin_class
@@ -67,6 +71,33 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+name|GCGeneration
+name|newGCGeneration
+parameter_list|(
+name|int
+name|full
+parameter_list|,
+name|int
+name|tail
+parameter_list|,
+name|boolean
+name|isTail
+parameter_list|)
+block|{
+return|return
+operator|new
+name|GCGeneration
+argument_list|(
+name|full
+argument_list|,
+name|tail
+argument_list|,
+name|isTail
+argument_list|)
+return|;
+block|}
 specifier|private
 specifier|final
 name|int
@@ -82,7 +113,7 @@ specifier|final
 name|boolean
 name|isTail
 decl_stmt|;
-specifier|public
+specifier|private
 name|GCGeneration
 parameter_list|(
 name|int
@@ -141,7 +172,7 @@ return|return
 name|isTail
 return|;
 block|}
-comment|/**      * Create a new instance with the full part incremented by one and      * the tail part and the tail flag left unchanged.      */
+comment|/**      * Create a new instance with the full part incremented by one and the tail      * part and the tail flag left unchanged.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -163,7 +194,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a new instance with the tail part incremented by one and      * the full part and the tail flag left unchanged.      * @return      */
+comment|/**      * Create a new instance with the tail part incremented by one and the full      * part and the tail flag left unchanged.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -185,7 +216,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a new instance with the tail flag unset and the full      * part and tail part left unchanged.      * @return      */
+comment|/**      * Create a new instance with the tail flag unset and the full part and tail      * part left unchanged.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -205,7 +236,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * The the difference of the full part between {@code this} and {@code that}.      */
+comment|/**      * The the difference of the full part between {@code this} and {@code      * that}.      */
 specifier|public
 name|int
 name|compareFull
@@ -224,7 +255,7 @@ operator|.
 name|full
 return|;
 block|}
-comment|/**      * The the difference of the tail part between {@code this} and {@code that}.      */
+comment|/**      * The the difference of the tail part between {@code this} and {@code      * that}.      */
 specifier|public
 name|int
 name|compareTail

@@ -136,6 +136,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
+operator|.
+name|newGCGeneration
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -239,7 +261,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|GCGeneration
+name|RecordId
 import|;
 end_import
 
@@ -255,7 +277,11 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|RecordId
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
 import|;
 end_import
 
@@ -950,8 +976,7 @@ name|reclaimedSize
 argument_list|,
 name|ts
 argument_list|,
-operator|new
-name|GCGeneration
+name|newGCGeneration
 argument_list|(
 name|gcGen
 argument_list|,

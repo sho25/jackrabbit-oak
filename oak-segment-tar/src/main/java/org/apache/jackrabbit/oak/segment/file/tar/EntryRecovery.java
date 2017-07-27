@@ -65,7 +65,7 @@ parameter_list|,
 name|int
 name|size
 parameter_list|,
-name|int
+name|GCGeneration
 name|generation
 parameter_list|)
 throws|throws
@@ -84,7 +84,7 @@ function_decl|;
 name|void
 name|recoverBinaryReference
 parameter_list|(
-name|int
+name|GCGeneration
 name|generation
 parameter_list|,
 name|UUID

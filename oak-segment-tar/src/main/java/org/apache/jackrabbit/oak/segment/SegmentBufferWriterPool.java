@@ -207,6 +207,26 @@ name|Guard
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
+import|;
+end_import
+
 begin_comment
 comment|/**  * This {@link WriteOperationHandler} uses a pool of {@link SegmentBufferWriter}s,  * which it passes to its {@link #execute(WriteOperation) execute} method.  *<p>  * Instances of this class are thread safe.  */
 end_comment

@@ -787,22 +787,6 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|GCGeneration
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
 name|OnlineCompactor
 import|;
 end_import
@@ -1006,6 +990,26 @@ operator|.
 name|tar
 operator|.
 name|CleanupContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
 import|;
 end_import
 
@@ -2505,10 +2509,12 @@ decl_stmt|;
 comment|// If the segment is a data segment, create a new instance of Segment to
 comment|// access some internal information stored in the segment and to store
 comment|// in an in-memory cache for later use.
-name|int
+name|GCGeneration
 name|generation
 init|=
-literal|0
+name|GCGeneration
+operator|.
+name|NULL
 decl_stmt|;
 name|Set
 argument_list|<
@@ -2606,9 +2612,6 @@ operator|=
 name|segment
 operator|.
 name|getGcGeneration
-argument_list|()
-operator|.
-name|getFull
 argument_list|()
 expr_stmt|;
 name|references

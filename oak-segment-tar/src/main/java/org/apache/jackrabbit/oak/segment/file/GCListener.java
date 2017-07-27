@@ -41,6 +41,10 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|file
+operator|.
+name|tar
+operator|.
 name|GCGeneration
 import|;
 end_import
