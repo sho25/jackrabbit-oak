@@ -2786,6 +2786,18 @@ expr_stmt|;
 name|runAsyncIndex
 argument_list|()
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|printf
+argument_list|(
+literal|"Open file count - At start %d%n"
+argument_list|,
+name|getOpenFileCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|long
 name|fileCount1
 init|=
@@ -2823,7 +2835,7 @@ name|createTestDataAndRunAsync
 argument_list|(
 literal|"/content/d"
 argument_list|,
-literal|100
+literal|1
 argument_list|)
 decl_stmt|;
 name|long
@@ -2833,9 +2845,21 @@ name|createTestDataAndRunAsync
 argument_list|(
 literal|"/content/e"
 argument_list|,
-literal|100
+literal|1
 argument_list|)
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|printf
+argument_list|(
+literal|"Open file count - At end %d"
+argument_list|,
+name|getOpenFileCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|fileCount4
@@ -2871,14 +2895,14 @@ name|System
 operator|.
 name|out
 operator|.
-name|println
+name|printf
 argument_list|(
-literal|"Open file count - Post creation at "
-operator|+
+literal|"Open file count - Post creation of %d nodes at %s is %d%n"
+argument_list|,
+name|count
+argument_list|,
 name|parentPath
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|getOpenFileCount
 argument_list|()
 argument_list|)
@@ -2890,14 +2914,12 @@ name|System
 operator|.
 name|out
 operator|.
-name|println
+name|printf
 argument_list|(
-literal|"Open file count - Post async run at "
-operator|+
+literal|"Open file count - Post async run at %s is %d%n"
+argument_list|,
 name|parentPath
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|getOpenFileCount
 argument_list|()
 argument_list|)
