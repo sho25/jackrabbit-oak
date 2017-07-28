@@ -152,6 +152,12 @@ name|CHECKPOINT_CREATION_TIME
 init|=
 literal|"indexingCheckpointTime"
 decl_stmt|;
+comment|/**      * The index name hint (when using "option(index abc)", this is "abc")      */
+name|String
+name|INDEX_NAME_OPTION
+init|=
+literal|":indexName"
+decl_stmt|;
 block|}
 end_interface
 

@@ -6877,6 +6877,15 @@ name|containsUnfilteredFullTextCondition
 argument_list|()
 return|;
 block|}
+specifier|public
+name|QueryOptions
+name|getQueryOptions
+parameter_list|()
+block|{
+return|return
+name|queryOptions
+return|;
+block|}
 block|}
 end_class
 

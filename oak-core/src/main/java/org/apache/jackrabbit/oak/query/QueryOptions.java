@@ -35,6 +35,10 @@ operator|.
 name|DEFAULT
 decl_stmt|;
 specifier|public
+name|String
+name|indexName
+decl_stmt|;
+specifier|public
 enum|enum
 name|Traversal
 block|{
