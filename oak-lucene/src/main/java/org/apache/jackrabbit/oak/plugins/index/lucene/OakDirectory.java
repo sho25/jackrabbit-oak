@@ -1427,18 +1427,10 @@ decl_stmt|;
 if|if
 condition|(
 name|blobId
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-name|blobId
-operator|=
-name|b
-operator|.
-name|toString
-argument_list|()
-expr_stmt|;
-block|}
 name|blobDeletionCallback
 operator|.
 name|deleted
@@ -1460,6 +1452,7 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
