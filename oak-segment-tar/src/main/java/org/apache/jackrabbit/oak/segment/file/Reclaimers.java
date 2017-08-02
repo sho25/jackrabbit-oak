@@ -206,17 +206,25 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|// FIXME OAK-3349 align string representation with above predicate
 return|return
-literal|"("
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"(generation older than %d.%d, with %d retained generations)"
+argument_list|,
 name|reference
-operator|+
-literal|" - generation>= "
-operator|+
+operator|.
+name|getFull
+argument_list|()
+argument_list|,
+name|reference
+operator|.
+name|getTail
+argument_list|()
+argument_list|,
 name|retainedGenerations
-operator|+
-literal|")"
+argument_list|)
 return|;
 block|}
 block|}
