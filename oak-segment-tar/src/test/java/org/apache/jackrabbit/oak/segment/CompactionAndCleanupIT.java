@@ -9367,6 +9367,99 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-6507"
+argument_list|)
+specifier|public
+name|void
+name|latestFullCompactedStateShouldNotBeDeleted
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+try|try
+init|(
+name|FileStore
+name|fileStore
+init|=
+name|fileStoreBuilder
+argument_list|(
+name|getFileStoreFolder
+argument_list|()
+argument_list|)
+operator|.
+name|withGCOptions
+argument_list|(
+name|defaultGCOptions
+argument_list|()
+operator|.
+name|setEstimationDisabled
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+operator|.
+name|build
+argument_list|()
+init|)
+block|{
+comment|// Create a full, self consistent head state. This state will be the
+comment|// base for the following tail compactions. This increments the
+comment|// full generation.
+name|fileStore
+operator|.
+name|fullGC
+argument_list|()
+expr_stmt|;
+name|traverse
+argument_list|(
+name|fileStore
+operator|.
+name|getHead
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Create a tail head state on top of the previous full state. This
+comment|// increments the tail generation, but leaves the full generation
+comment|// untouched.
+name|fileStore
+operator|.
+name|tailGC
+argument_list|()
+expr_stmt|;
+name|traverse
+argument_list|(
+name|fileStore
+operator|.
+name|getHead
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Create a tail state on top of the previous tail state. This
+comment|// increments the tail generation, but leaves the full generation
+comment|// untouched. The increment in tail generation will make the cleanup
+comment|// algorithm delete the segments from the full head state. This
+comment|// results in an inconsistent repository and
+comment|// SegmentNotFoundException.
+name|fileStore
+operator|.
+name|tailGC
+argument_list|()
+expr_stmt|;
+name|traverse
+argument_list|(
+name|fileStore
+operator|.
+name|getHead
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
