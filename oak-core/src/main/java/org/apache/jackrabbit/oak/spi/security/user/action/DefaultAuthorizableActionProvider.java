@@ -24,6 +24,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|RegistrationConstants
+operator|.
+name|OAK_SECURITY_NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -398,6 +418,22 @@ argument_list|,
 name|description
 operator|=
 literal|"A regular expression specifying the pattern that must be matched by a user's password."
+argument_list|)
+block|,
+annotation|@
+name|Property
+argument_list|(
+name|name
+operator|=
+name|OAK_SECURITY_NAME
+argument_list|,
+name|propertyPrivate
+operator|=
+literal|true
+argument_list|,
+name|value
+operator|=
+literal|"org.apache.jackrabbit.oak.spi.security.user.action.DefaultAuthorizableActionProvider"
 argument_list|)
 block|}
 argument_list|)

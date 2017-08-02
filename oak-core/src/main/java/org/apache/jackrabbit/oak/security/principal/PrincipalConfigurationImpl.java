@@ -20,6 +20,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|RegistrationConstants
+operator|.
+name|OAK_SECURITY_NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -68,6 +88,22 @@ operator|.
 name|annotations
 operator|.
 name|Component
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|felix
+operator|.
+name|scr
+operator|.
+name|annotations
+operator|.
+name|Property
 import|;
 end_import
 
@@ -309,6 +345,17 @@ name|SecurityConfiguration
 operator|.
 name|class
 block|}
+argument_list|)
+annotation|@
+name|Property
+argument_list|(
+name|name
+operator|=
+name|OAK_SECURITY_NAME
+argument_list|,
+name|value
+operator|=
+literal|"org.apache.jackrabbit.oak.security.principal.PrincipalConfigurationImpl"
 argument_list|)
 specifier|public
 class|class

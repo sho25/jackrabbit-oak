@@ -381,6 +381,24 @@ name|spi
 operator|.
 name|security
 operator|.
+name|RegistrationConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|SecurityConfiguration
 import|;
 end_import
@@ -861,6 +879,40 @@ name|newCopyOnWriteArrayList
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|RegistrationConstants
+operator|.
+name|OAK_SECURITY_NAME
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|osgi
+operator|.
+name|framework
+operator|.
+name|Constants
+operator|.
+name|OBJECTCLASS
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Component
@@ -894,17 +946,21 @@ literal|"requiredServicePids"
 argument_list|,
 name|label
 operator|=
-literal|"Required Service PIDs"
+literal|"Required Services"
 argument_list|,
 name|description
 operator|=
 literal|"The SecurityProvider will not register itself "
 operator|+
-literal|"unless the services identified by these PIDs are "
+literal|"unless the services identified by the following service pids "
 operator|+
-literal|"registered first. Only the PIDs of implementations of "
+literal|"or the oak.security.name properties are registered first. The class name is "
 operator|+
-literal|"the following interfaces are checked: "
+literal|"identified by checking the service.pid property. If that property "
+operator|+
+literal|"does not exist, the oak.security.name property is used as a fallback."
+operator|+
+literal|"Only implementations of the following interfaces are checked :"
 operator|+
 literal|"AuthorizationConfiguration, PrincipalConfiguration, "
 operator|+
@@ -2773,16 +2829,16 @@ name|properties
 parameter_list|)
 block|{
 name|String
-name|pid
+name|pidOrName
 init|=
-name|getServicePid
+name|getServicePidOrComponentName
 argument_list|(
 name|properties
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|pid
+name|pidOrName
 operator|==
 literal|null
 condition|)
@@ -2793,7 +2849,7 @@ name|preconditions
 operator|.
 name|addCandidate
 argument_list|(
-name|pid
+name|pidOrName
 argument_list|)
 expr_stmt|;
 block|}
@@ -2811,16 +2867,16 @@ name|properties
 parameter_list|)
 block|{
 name|String
-name|pid
+name|pidOrName
 init|=
-name|getServicePid
+name|getServicePidOrComponentName
 argument_list|(
 name|properties
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|pid
+name|pidOrName
 operator|==
 literal|null
 condition|)
@@ -2831,14 +2887,14 @@ name|preconditions
 operator|.
 name|removeCandidate
 argument_list|(
-name|pid
+name|pidOrName
 argument_list|)
 expr_stmt|;
 block|}
 specifier|private
 specifier|static
 name|String
-name|getServicePid
+name|getServicePidOrComponentName
 parameter_list|(
 name|Map
 argument_list|<
@@ -2849,7 +2905,9 @@ argument_list|>
 name|properties
 parameter_list|)
 block|{
-return|return
+name|String
+name|servicePid
+init|=
 name|PropertiesUtil
 operator|.
 name|toString
@@ -2861,6 +2919,32 @@ argument_list|(
 name|Constants
 operator|.
 name|SERVICE_PID
+argument_list|)
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|servicePid
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|servicePid
+return|;
+block|}
+return|return
+name|PropertiesUtil
+operator|.
+name|toString
+argument_list|(
+name|properties
+operator|.
+name|get
+argument_list|(
+name|OAK_SECURITY_NAME
 argument_list|)
 argument_list|,
 literal|null
