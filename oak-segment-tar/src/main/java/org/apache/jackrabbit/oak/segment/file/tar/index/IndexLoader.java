@@ -124,7 +124,6 @@ operator|)
 operator|+
 literal|'\n'
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|int
@@ -178,7 +177,7 @@ name|blockSize
 expr_stmt|;
 block|}
 specifier|public
-name|ByteBuffer
+name|Index
 name|loadIndex
 parameter_list|(
 name|RandomAccessFile
@@ -625,7 +624,11 @@ name|reset
 argument_list|()
 expr_stmt|;
 return|return
+operator|new
+name|Index
+argument_list|(
 name|index
+argument_list|)
 return|;
 block|}
 block|}
