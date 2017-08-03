@@ -6884,7 +6884,7 @@ name|IOException
 block|{
 return|return
 operator|new
-name|IndexNode
+name|IndexNodeManager
 argument_list|(
 literal|"foo"
 argument_list|,
@@ -6910,6 +6910,9 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|)
+operator|.
+name|acquire
+argument_list|()
 return|;
 block|}
 specifier|private
@@ -6924,7 +6927,7 @@ name|IOException
 block|{
 return|return
 operator|new
-name|IndexNode
+name|IndexNodeManager
 argument_list|(
 literal|"foo"
 argument_list|,
@@ -6948,6 +6951,9 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|)
+operator|.
+name|acquire
+argument_list|()
 return|;
 block|}
 specifier|private

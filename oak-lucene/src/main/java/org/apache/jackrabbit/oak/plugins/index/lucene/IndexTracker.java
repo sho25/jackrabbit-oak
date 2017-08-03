@@ -33,7 +33,7 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkState
+name|checkNotNull
 import|;
 end_import
 
@@ -651,7 +651,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|IndexNode
+name|IndexNodeManager
 argument_list|>
 name|indices
 init|=
@@ -745,7 +745,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|IndexNode
+name|IndexNodeManager
 argument_list|>
 name|indices
 init|=
@@ -768,7 +768,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|IndexNode
+name|IndexNodeManager
 argument_list|>
 name|entry
 range|:
@@ -871,7 +871,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|IndexNode
+name|IndexNodeManager
 argument_list|>
 name|original
 init|=
@@ -882,7 +882,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|IndexNode
+name|IndexNodeManager
 argument_list|>
 name|updates
 init|=
@@ -977,10 +977,10 @@ operator|.
 name|start
 argument_list|()
 decl_stmt|;
-name|IndexNode
+name|IndexNodeManager
 name|index
 init|=
-name|IndexNode
+name|IndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1098,7 +1098,7 @@ operator|.
 expr|<
 name|String
 operator|,
-name|IndexNode
+name|IndexNodeManager
 operator|>
 name|builder
 argument_list|()
@@ -1161,7 +1161,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|IndexNode
+name|IndexNodeManager
 name|index
 init|=
 name|original
@@ -1225,7 +1225,7 @@ name|String
 name|path
 parameter_list|)
 block|{
-name|IndexNode
+name|IndexNodeManager
 name|index
 init|=
 name|indices
@@ -1235,20 +1235,29 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+name|IndexNode
+name|indexNode
+init|=
 name|index
 operator|!=
 literal|null
-operator|&&
+condition|?
 name|index
 operator|.
 name|acquire
 argument_list|()
+else|:
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|indexNode
+operator|!=
+literal|null
 condition|)
 block|{
 return|return
-name|index
+name|indexNode
 return|;
 block|}
 else|else
@@ -1271,7 +1280,7 @@ name|String
 name|indexPath
 parameter_list|)
 block|{
-name|IndexNode
+name|IndexNodeManager
 name|node
 init|=
 name|indices
@@ -1343,7 +1352,7 @@ block|{
 comment|// Retry the lookup from acquireIndexNode now that we're
 comment|// synchronized. The acquire() call is guaranteed to succeed
 comment|// since the close() method is also synchronized.
-name|IndexNode
+name|IndexNodeManager
 name|index
 init|=
 name|indices
@@ -1360,16 +1369,19 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|checkState
-argument_list|(
+name|IndexNode
+name|indexNode
+init|=
 name|index
 operator|.
 name|acquire
 argument_list|()
-argument_list|)
-expr_stmt|;
+decl_stmt|;
 return|return
-name|index
+name|checkNotNull
+argument_list|(
+name|indexNode
+argument_list|)
 return|;
 block|}
 if|if
@@ -1426,7 +1438,7 @@ condition|)
 block|{
 name|index
 operator|=
-name|IndexNode
+name|IndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1448,12 +1460,17 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|checkState
-argument_list|(
+name|IndexNode
+name|indexNode
+init|=
 name|index
 operator|.
 name|acquire
 argument_list|()
+decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|indexNode
 argument_list|)
 expr_stmt|;
 name|indices
@@ -1463,7 +1480,7 @@ operator|.
 expr|<
 name|String
 operator|,
-name|IndexNode
+name|IndexNodeManager
 operator|>
 name|builder
 argument_list|()
@@ -1491,7 +1508,7 @@ name|path
 argument_list|)
 expr_stmt|;
 return|return
-name|index
+name|indexNode
 return|;
 block|}
 block|}

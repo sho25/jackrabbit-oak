@@ -1436,11 +1436,11 @@ argument_list|,
 literal|"/foo"
 argument_list|)
 decl_stmt|;
-name|IndexNode
+name|IndexNodeManager
 name|node
 init|=
 operator|new
-name|IndexNode
+name|IndexNodeManager
 argument_list|(
 literal|"foo"
 argument_list|,
@@ -1485,6 +1485,9 @@ operator|new
 name|IndexPlanner
 argument_list|(
 name|node
+operator|.
+name|acquire
+argument_list|()
 argument_list|,
 literal|"/foo"
 argument_list|,
