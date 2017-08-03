@@ -133,6 +133,14 @@ argument_list|>
 name|metrics
 decl_stmt|;
 specifier|private
+specifier|final
+name|OptionSpec
+argument_list|<
+name|Void
+argument_list|>
+name|segment
+decl_stmt|;
+specifier|private
 name|OptionSet
 name|options
 decl_stmt|;
@@ -184,6 +192,17 @@ argument_list|(
 literal|"metrics"
 argument_list|,
 literal|"Enables metrics based statistics collection"
+argument_list|)
+expr_stmt|;
+name|segment
+operator|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"segment"
+argument_list|,
+literal|"Use older oak-segment support"
 argument_list|)
 expr_stmt|;
 name|nonOption
@@ -290,13 +309,16 @@ return|;
 block|}
 specifier|public
 name|boolean
-name|isSegment
+name|isOldSegment
 parameter_list|()
 block|{
 return|return
-operator|!
-name|isDocument
-argument_list|()
+name|options
+operator|.
+name|has
+argument_list|(
+name|segment
+argument_list|)
 return|;
 block|}
 specifier|public
