@@ -1464,8 +1464,13 @@ operator|.
 name|NOOP
 argument_list|)
 expr_stmt|;
-comment|//TODO OAK-6500
-comment|//nrtIndexFactory.setAssertAllResourcesClosed(true);
+name|nrtIndexFactory
+operator|.
+name|setAssertAllResourcesClosed
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|LuceneIndexReaderFactory
 name|indexReaderFactory
 init|=
@@ -2734,11 +2739,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6500"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
