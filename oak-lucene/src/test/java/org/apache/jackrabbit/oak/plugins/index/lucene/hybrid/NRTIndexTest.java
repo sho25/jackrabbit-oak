@@ -548,6 +548,7 @@ operator|.
 name|NOOP
 argument_list|)
 expr_stmt|;
+comment|//indexFactory.setAssertAllResourcesClosed(true);
 name|LuceneIndexEditorContext
 operator|.
 name|configureUniqueId
