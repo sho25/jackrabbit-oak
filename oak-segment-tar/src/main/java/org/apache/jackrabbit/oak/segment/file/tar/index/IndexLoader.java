@@ -124,6 +124,14 @@ operator|)
 operator|+
 literal|'\n'
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|FOOTER_SIZE
+init|=
+literal|16
+decl_stmt|;
 specifier|static
 specifier|final
 name|int
@@ -240,7 +248,7 @@ name|ByteBuffer
 operator|.
 name|allocate
 argument_list|(
-literal|16
+name|FOOTER_SIZE
 argument_list|)
 decl_stmt|;
 name|file
@@ -253,7 +261,7 @@ literal|2
 operator|*
 name|blockSize
 operator|-
-literal|16
+name|FOOTER_SIZE
 argument_list|)
 expr_stmt|;
 name|file
@@ -322,7 +330,7 @@ name|count
 operator|*
 name|ENTRY_SIZE
 operator|+
-literal|16
+name|FOOTER_SIZE
 operator|||
 name|bytes
 operator|%
@@ -363,7 +371,7 @@ literal|2
 operator|*
 name|blockSize
 operator|-
-literal|16
+name|FOOTER_SIZE
 operator|-
 name|count
 operator|*
