@@ -2664,7 +2664,6 @@ argument_list|,
 name|data
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-3349 also handle the tail part of the gc generation and flag when writing segments
 name|generation
 operator|=
 name|segment
