@@ -693,7 +693,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// FIXME OAK-3349 also handle the tail part of the gc generation and flag. See also the respective todo at org.apache.jackrabbit.oak.segment.DefaultSegmentWriter.SegmentWriteOperation.with()
+comment|// FIXME OAK-6519: Properly handle tail compactions in deduplication caches
 name|cacheManager
 operator|.
 name|evictOldGeneration
@@ -725,7 +725,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// FIXME OAK-3349 also handle the tail part of the gc generation and flag. See also the respective todo at org.apache.jackrabbit.oak.segment.DefaultSegmentWriter.SegmentWriteOperation.with()
+comment|// FIXME OAK-6519: Properly handle tail compactions in deduplication caches
 name|cacheManager
 operator|.
 name|evictGeneration
