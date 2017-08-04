@@ -313,10 +313,13 @@ operator|!=
 name|MAGIC
 condition|)
 block|{
-return|return
-literal|null
-return|;
-comment|// magic byte mismatch
+throw|throw
+operator|new
+name|InvalidIndexException
+argument_list|(
+literal|"Magic number mismatch"
+argument_list|)
+throw|;
 block|}
 if|if
 condition|(
