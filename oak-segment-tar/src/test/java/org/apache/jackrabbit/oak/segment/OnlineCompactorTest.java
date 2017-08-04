@@ -460,7 +460,7 @@ import|;
 end_import
 
 begin_comment
-comment|// FIXME OAK-3349 implement tail compaction tests
+comment|// FIXME OAK-6522: Implement unit tests for OnlineCompactor
 end_comment
 
 begin_class
