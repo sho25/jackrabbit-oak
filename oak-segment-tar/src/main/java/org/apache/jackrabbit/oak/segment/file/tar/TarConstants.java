@@ -38,32 +38,6 @@ name|FILE_NAME_FORMAT
 init|=
 literal|"data%05d%s.tar"
 decl_stmt|;
-comment|/**      * Magic byte sequence at the end of the index block.      *<p>      *<ul>      *<li>For each segment in that file, an index entry that contains the UUID,      * the offset within the file and the size of the segment. Sorted by UUID,      * to allow using interpolation search.</li>      *<li>      * The index footer, which contains metadata of the index (the size,      * checksum).</li>      *</ul>      */
-specifier|static
-specifier|final
-name|int
-name|INDEX_MAGIC
-init|=
-operator|(
-literal|'\n'
-operator|<<
-literal|24
-operator|)
-operator|+
-operator|(
-literal|'1'
-operator|<<
-literal|16
-operator|)
-operator|+
-operator|(
-literal|'K'
-operator|<<
-literal|8
-operator|)
-operator|+
-literal|'\n'
-decl_stmt|;
 comment|/**      * Magic byte sequence at the end of the graph block.      *<p>      * The file is read from the end (the tar file is read from the end: the      * last entry is the index, then the graph). File format:      *<ul>      *<li>0 padding to make the footer end at a 512 byte boundary</li>      *<li>The list of UUIDs (segments included the graph; this includes      * segments in this tar file, and referenced segments in tar files with a      * lower sequence number). 16 bytes each.</li>      *<li>The graph data. The index of the source segment UUID (in the above      * list, 4 bytes), then the list of referenced segments (the indexes of      * those; 4 bytes each). Then the list is terminated by -1.</li>      *<li>The last part is the footer, which contains metadata of the graph      * (size, checksum, the number of UUIDs).</li>      *</ul>      */
 specifier|static
 specifier|final
