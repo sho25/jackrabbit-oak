@@ -79,7 +79,7 @@ end_import
 
 begin_class
 class|class
-name|IndexLoaderV2
+name|IndexLoaderV1
 block|{
 specifier|static
 specifier|final
@@ -93,7 +93,7 @@ literal|24
 operator|)
 operator|+
 operator|(
-literal|'1'
+literal|'0'
 operator|<<
 literal|16
 operator|)
@@ -111,7 +111,7 @@ specifier|final
 name|int
 name|blockSize
 decl_stmt|;
-name|IndexLoaderV2
+name|IndexLoaderV1
 parameter_list|(
 name|int
 name|blockSize
@@ -151,7 +151,7 @@ name|ByteBuffer
 operator|.
 name|allocate
 argument_list|(
-name|IndexV2
+name|IndexV1
 operator|.
 name|FOOTER_SIZE
 argument_list|)
@@ -166,7 +166,7 @@ literal|2
 operator|*
 name|blockSize
 operator|-
-name|IndexV2
+name|IndexV1
 operator|.
 name|FOOTER_SIZE
 argument_list|)
@@ -238,11 +238,11 @@ name|bytes
 operator|<
 name|count
 operator|*
-name|IndexEntryV2
+name|IndexEntryV1
 operator|.
 name|SIZE
 operator|+
-name|IndexV2
+name|IndexV1
 operator|.
 name|FOOTER_SIZE
 operator|||
@@ -272,7 +272,7 @@ name|allocate
 argument_list|(
 name|count
 operator|*
-name|IndexEntryV2
+name|IndexEntryV1
 operator|.
 name|SIZE
 argument_list|)
@@ -287,13 +287,13 @@ literal|2
 operator|*
 name|blockSize
 operator|-
-name|IndexV2
+name|IndexV1
 operator|.
 name|FOOTER_SIZE
 operator|-
 name|count
 operator|*
-name|IndexEntryV2
+name|IndexEntryV1
 operator|.
 name|SIZE
 argument_list|)
@@ -385,7 +385,7 @@ init|=
 operator|new
 name|byte
 index|[
-name|IndexEntryV2
+name|IndexEntryV1
 operator|.
 name|SIZE
 index|]
@@ -558,7 +558,7 @@ argument_list|()
 expr_stmt|;
 return|return
 operator|new
-name|IndexV2
+name|IndexV1
 argument_list|(
 name|index
 argument_list|)

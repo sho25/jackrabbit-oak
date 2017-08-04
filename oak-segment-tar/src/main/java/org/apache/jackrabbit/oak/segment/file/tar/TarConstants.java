@@ -51,7 +51,7 @@ literal|24
 operator|)
 operator|+
 operator|(
-literal|'0'
+literal|'1'
 operator|<<
 literal|16
 operator|)
