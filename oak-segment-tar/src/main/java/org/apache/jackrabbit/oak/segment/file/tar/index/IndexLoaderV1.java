@@ -67,6 +67,20 @@ name|CRC32
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|HexDump
+import|;
+end_import
+
 begin_class
 class|class
 name|IndexLoaderV1
@@ -114,7 +128,7 @@ operator|=
 name|blockSize
 expr_stmt|;
 block|}
-name|Index
+name|IndexV1
 name|loadIndex
 parameter_list|(
 name|ReaderAtEnd
@@ -193,7 +207,18 @@ condition|(
 name|count
 operator|<
 literal|1
-operator|||
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidIndexException
+argument_list|(
+literal|"Invalid entry count"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|bytes
 operator|<
 name|count
@@ -205,7 +230,18 @@ operator|+
 name|IndexV1
 operator|.
 name|FOOTER_SIZE
-operator|||
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidIndexException
+argument_list|(
+literal|"Invalid size"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|bytes
 operator|%
 name|blockSize
@@ -217,12 +253,12 @@ throw|throw
 operator|new
 name|InvalidIndexException
 argument_list|(
-literal|"Invalid metadata"
+literal|"Invalid size alignment"
 argument_list|)
 throw|;
 block|}
 name|ByteBuffer
-name|index
+name|entries
 init|=
 name|reader
 operator|.
@@ -245,7 +281,7 @@ operator|.
 name|SIZE
 argument_list|)
 decl_stmt|;
-name|index
+name|entries
 operator|.
 name|mark
 argument_list|()
@@ -261,9 +297,19 @@ name|checksum
 operator|.
 name|update
 argument_list|(
-name|index
+name|entries
 operator|.
 name|array
+argument_list|()
+argument_list|,
+name|entries
+operator|.
+name|position
+argument_list|()
+argument_list|,
+name|entries
+operator|.
+name|remaining
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -329,7 +375,7 @@ name|i
 operator|++
 control|)
 block|{
-name|index
+name|entries
 operator|.
 name|get
 argument_list|(
@@ -429,7 +475,18 @@ condition|(
 name|offset
 operator|<
 literal|0
-operator|||
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidIndexException
+argument_list|(
+literal|"Invalid entry offset"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|offset
 operator|%
 name|blockSize
@@ -441,7 +498,7 @@ throw|throw
 operator|new
 name|InvalidIndexException
 argument_list|(
-literal|"Invalid entry offset"
+literal|"Invalid entry offset alignment"
 argument_list|)
 throw|;
 block|}
@@ -469,7 +526,7 @@ operator|=
 name|lsb
 expr_stmt|;
 block|}
-name|index
+name|entries
 operator|.
 name|reset
 argument_list|()
@@ -478,7 +535,7 @@ return|return
 operator|new
 name|IndexV1
 argument_list|(
-name|index
+name|entries
 argument_list|)
 return|;
 block|}

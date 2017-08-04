@@ -55,7 +55,7 @@ argument_list|>
 name|getUUIDs
 parameter_list|()
 function_decl|;
-name|IndexEntry
+name|int
 name|findEntry
 parameter_list|(
 name|long
@@ -70,7 +70,7 @@ name|size
 parameter_list|()
 function_decl|;
 name|int
-name|entryCount
+name|count
 parameter_list|()
 function_decl|;
 name|IndexEntry
