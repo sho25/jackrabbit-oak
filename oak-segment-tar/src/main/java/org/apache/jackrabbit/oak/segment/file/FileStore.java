@@ -3484,8 +3484,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|// FIXME OAK-3349 guard against SNFE and against rebasing onto a non compactor written state in case someone tampered with the journal.log. Add logging.
-comment|// FIXME OAK-3349 this method never throws a SNFE, how to protect against it?
+comment|// FIXME OAK-6520: Improve tail compactions resilience when base state cannot be determined
 return|return
 name|segmentReader
 operator|.
