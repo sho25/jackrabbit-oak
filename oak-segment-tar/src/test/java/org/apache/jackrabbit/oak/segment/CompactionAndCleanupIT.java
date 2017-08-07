@@ -7582,6 +7582,9 @@ argument_list|()
 operator|.
 name|nextFull
 argument_list|()
+operator|.
+name|nonGC
+argument_list|()
 argument_list|,
 operator|(
 operator|(

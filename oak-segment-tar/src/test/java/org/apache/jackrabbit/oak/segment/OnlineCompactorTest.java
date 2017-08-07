@@ -917,9 +917,9 @@ name|newGCGeneration
 argument_list|(
 literal|1
 argument_list|,
-literal|0
+literal|1
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 argument_list|)
 operator|.

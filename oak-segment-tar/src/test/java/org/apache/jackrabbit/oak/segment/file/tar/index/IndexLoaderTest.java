@@ -240,7 +240,7 @@ name|full
 argument_list|,
 name|entry
 operator|.
-name|getFullGeneration
+name|getGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -250,7 +250,7 @@ name|tail
 argument_list|,
 name|entry
 operator|.
-name|getTailGeneration
+name|getFullGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -260,7 +260,7 @@ name|isTail
 argument_list|,
 name|entry
 operator|.
-name|isTail
+name|isCompacted
 argument_list|()
 argument_list|)
 expr_stmt|;

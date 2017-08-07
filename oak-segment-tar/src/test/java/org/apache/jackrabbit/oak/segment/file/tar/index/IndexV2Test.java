@@ -880,7 +880,7 @@ literal|5
 argument_list|,
 name|entry
 operator|.
-name|getFullGeneration
+name|getGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -890,7 +890,7 @@ literal|6
 argument_list|,
 name|entry
 operator|.
-name|getTailGeneration
+name|getFullGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -900,7 +900,7 @@ literal|true
 argument_list|,
 name|entry
 operator|.
-name|isTail
+name|isCompacted
 argument_list|()
 argument_list|)
 expr_stmt|;

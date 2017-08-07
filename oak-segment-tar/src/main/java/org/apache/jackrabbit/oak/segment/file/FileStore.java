@@ -1423,7 +1423,7 @@ lambda|->
 name|getGcGeneration
 argument_list|()
 operator|.
-name|nonTail
+name|nonGC
 argument_list|()
 argument_list|)
 operator|.

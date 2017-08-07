@@ -870,12 +870,12 @@ name|ts
 argument_list|,
 name|gcGeneration
 operator|.
-name|getFull
+name|getGeneration
 argument_list|()
 argument_list|,
 name|gcGeneration
 operator|.
-name|getTail
+name|getFullGeneration
 argument_list|()
 argument_list|,
 name|nodes
@@ -934,7 +934,7 @@ literal|2
 argument_list|)
 decl_stmt|;
 name|int
-name|fullGeneration
+name|generation
 init|=
 name|parseInt
 argument_list|(
@@ -944,7 +944,7 @@ literal|3
 argument_list|)
 decl_stmt|;
 name|int
-name|tailGeneration
+name|fullGeneration
 init|=
 name|parseInt
 argument_list|(
@@ -1002,9 +1002,9 @@ name|ts
 argument_list|,
 name|newGCGeneration
 argument_list|(
-name|fullGeneration
+name|generation
 argument_list|,
-name|tailGeneration
+name|fullGeneration
 argument_list|,
 literal|false
 argument_list|)

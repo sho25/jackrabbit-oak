@@ -152,7 +152,7 @@ annotation|@
 name|Override
 specifier|public
 name|int
-name|getFullGeneration
+name|getGeneration
 parameter_list|()
 block|{
 return|return
@@ -170,7 +170,7 @@ annotation|@
 name|Override
 specifier|public
 name|int
-name|getTailGeneration
+name|getFullGeneration
 parameter_list|()
 block|{
 return|return
@@ -181,7 +181,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|isTail
+name|isCompacted
 parameter_list|()
 block|{
 return|return

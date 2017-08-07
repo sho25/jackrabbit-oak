@@ -700,7 +700,7 @@ name|evictOldGeneration
 argument_list|(
 name|newGeneration
 operator|.
-name|getFull
+name|getGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -732,7 +732,7 @@ name|evictGeneration
 argument_list|(
 name|failedGeneration
 operator|.
-name|getFull
+name|getGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;

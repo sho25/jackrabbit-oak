@@ -725,7 +725,7 @@ condition|(
 operator|!
 name|writer
 operator|.
-name|getGeneration
+name|getGCGeneration
 argument_list|()
 operator|.
 name|equals

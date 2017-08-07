@@ -1681,7 +1681,7 @@ name|putInt
 argument_list|(
 name|generation
 operator|.
-name|getFull
+name|getGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1691,7 +1691,7 @@ name|putInt
 argument_list|(
 name|generation
 operator|.
-name|getTail
+name|getFullGeneration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1705,7 +1705,7 @@ call|)
 argument_list|(
 name|generation
 operator|.
-name|isTail
+name|isCompacted
 argument_list|()
 condition|?
 literal|1
@@ -2320,7 +2320,7 @@ operator|.
 name|generation
 argument_list|()
 operator|.
-name|getFull
+name|getGeneration
 argument_list|()
 argument_list|,
 name|entry
@@ -2328,7 +2328,7 @@ operator|.
 name|generation
 argument_list|()
 operator|.
-name|getTail
+name|getFullGeneration
 argument_list|()
 argument_list|,
 name|entry
@@ -2336,7 +2336,7 @@ operator|.
 name|generation
 argument_list|()
 operator|.
-name|isTail
+name|isCompacted
 argument_list|()
 argument_list|)
 expr_stmt|;
