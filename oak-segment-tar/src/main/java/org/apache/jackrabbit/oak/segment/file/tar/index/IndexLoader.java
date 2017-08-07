@@ -49,31 +49,16 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|RandomAccessFile
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
+begin_comment
+comment|/**  * Load and validate the index of a TAR file.  */
+end_comment
 
 begin_class
 specifier|public
 class|class
 name|IndexLoader
 block|{
+comment|/**      * Create a new {@link IndexLoader} for the specified block size. The block      * size is used to validate different data items in the index.      *      * @param blockSize The block size. It msut be strictly positive.      * @return An instance of {@link IndexLoader}.      */
 specifier|public
 specifier|static
 name|IndexLoader
@@ -166,6 +151,7 @@ name|getInt
 argument_list|()
 return|;
 block|}
+comment|/**      * Load and validate the index. The index is loaded by looking backwards at      * a TAR file. This method relies on an instance of {@link ReaderAtEnd}      * which is positioned at the end of the index in the TAR file.      *      * @param reader an instance of {@link ReaderAtEnd}.      * @return An instance of {@link Index}.      * @throws IOException           If an I/O error occurs while reading the      *                               index.      * @throws InvalidIndexException If a validation error occurs while checking      *                               the index.      */
 specifier|public
 name|Index
 name|loadIndex

@@ -43,11 +43,16 @@ name|ByteBuffer
 import|;
 end_import
 
+begin_comment
+comment|/**  * Read raw data from the end of an underlying data source. The data source is  * usually a file, but any data source for which the concept of "end" makes  * sense can be used. For example, a byte buffer could be used as the underlying  * data source, e.g. for testing purposes.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|ReaderAtEnd
 block|{
+comment|/**      * Read {@code amount} bytes from the underlying data source, starting at      * {@code whence} bytes from the end of the data source.      *      * @param whence The offset from the end of the data source.      * @param amount The amount of data to read, in bytes.      * @return An instance of {@link ByteBuffer}.      * @throws IOException if an error occurs while reading from the underlying      *                     data source.      */
 name|ByteBuffer
 name|readAtEnd
 parameter_list|(

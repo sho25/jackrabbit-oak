@@ -43,11 +43,16 @@ name|UUID
 import|;
 end_import
 
+begin_comment
+comment|/**  * An index for the entries in a TAR file.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|Index
 block|{
+comment|/**      * Returns the identifiers of every entry in this index.      *      * @return A set of {@link UUID}.      */
 name|Set
 argument_list|<
 name|UUID
@@ -55,6 +60,7 @@ argument_list|>
 name|getUUIDs
 parameter_list|()
 function_decl|;
+comment|/**      * Find an entry by its identifier.      *      * @param msb The most significant bits of the identifier.      * @param lsb The least significant bits of the identifier.      * @return The index of the entry in this index, or {@code -1} if the entry      * was not found.      */
 name|int
 name|findEntry
 parameter_list|(
@@ -65,14 +71,17 @@ name|long
 name|lsb
 parameter_list|)
 function_decl|;
+comment|/**      * Return the size of this index in bytes.      *      * @return The size of this index in bytes.      */
 name|int
 name|size
 parameter_list|()
 function_decl|;
+comment|/**      * Return the number of entries in this index.      *      * @return The number of entries in this index.      */
 name|int
 name|count
 parameter_list|()
 function_decl|;
+comment|/**      * Return the entry at a specified index.      *      * @param i The index of the entry.      * @return An instance of {@link IndexEntry}.      */
 name|IndexEntry
 name|entry
 parameter_list|(

@@ -23,6 +23,10 @@ name|index
 package|;
 end_package
 
+begin_comment
+comment|/**  * Thrown to indicate that invalid or malformed data is encountered while  * validating an index.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

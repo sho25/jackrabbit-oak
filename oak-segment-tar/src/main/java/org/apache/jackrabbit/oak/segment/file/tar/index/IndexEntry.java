@@ -23,35 +23,46 @@ name|index
 package|;
 end_package
 
+begin_comment
+comment|/**  * An entry in the index of entries of a TAR file.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|IndexEntry
 block|{
+comment|/**      * Return the most significant bits of the identifier of this entry.      *      * @return the most significant bits of the identifier of this entry.      */
 name|long
 name|getMsb
 parameter_list|()
 function_decl|;
+comment|/**      * Return the least significant bits of the identifier of this entry.      *      * @return the least significant bits of the identifier of this entry.      */
 name|long
 name|getLsb
 parameter_list|()
 function_decl|;
+comment|/**      * Return the position of this entry in the TAR file.      *      * @return the position of this entry in the TAR file.      */
 name|int
 name|getPosition
 parameter_list|()
 function_decl|;
+comment|/**      * Return the length of this entry in the TAR file.      *      * @return the length of this entry in the TAR file.      */
 name|int
 name|getLength
 parameter_list|()
 function_decl|;
+comment|/**      * Return the full generation of this entry.      *      * @return the full generation of this entry.      */
 name|int
 name|getFullGeneration
 parameter_list|()
 function_decl|;
+comment|/**      * Return the tail generation of this entry.      *      * @return the tail generation of this entry.      */
 name|int
 name|getTailGeneration
 parameter_list|()
 function_decl|;
+comment|/**      * Return {@code true} if this entry was generated as part of a tail      * commit.      *      * @return {@code true} if this entry was generated as part of a tail      * commit.      */
 name|boolean
 name|isTail
 parameter_list|()

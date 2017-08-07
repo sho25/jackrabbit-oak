@@ -81,6 +81,10 @@ name|CRC32
 import|;
 end_import
 
+begin_comment
+comment|/**  * Builds an index incrementally in memory, and serializes its contents into a  * sequence of bytes.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -113,6 +117,7 @@ name|boolean
 name|isTail
 decl_stmt|;
 block|}
+comment|/**      * Create a new {@link IndexWriter} for the specified block size. The block      * size is needed to ensure that the data produced by the returned {@link      * IndexWriter} is aligned to a specified boundary, i.e. is a multiple of      * the block size.      *      * @param blockSize The block size. It must be strictly positive.      * @return An index of {@link IndexWriter}.      */
 specifier|public
 specifier|static
 name|IndexWriter
@@ -171,6 +176,7 @@ operator|=
 name|blockSize
 expr_stmt|;
 block|}
+comment|/**      * Add an entry to this index.      *      * @param msb            The most significant bits of the entry identifier.      * @param lsb            The least significant bits of the entry      *                       identifier.      * @param offset         The position of the entry in the file.      * @param size           The size of the entry.      * @param fullGeneration The full generation of the entry.      * @param tailGeneration The tail generation of the entry.      * @param isTail         Whether the entry is generated as part of a tail      *                       commit.      */
 specifier|public
 name|void
 name|addEntry
@@ -254,6 +260,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Serializes the content of the index. The returned array of bytes is      * always a multiple of the block size specified when this {@link      * IndexWriter} was created.      *      * @return the serialized content of the index.      */
 specifier|public
 name|byte
 index|[]
