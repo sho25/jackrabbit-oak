@@ -693,7 +693,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// FIXME OAK-6519: Properly handle tail compactions in deduplication caches
 name|cacheManager
 operator|.
 name|evictOldGeneration
@@ -725,7 +724,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// FIXME OAK-6519: Properly handle tail compactions in deduplication caches
 name|cacheManager
 operator|.
 name|evictGeneration

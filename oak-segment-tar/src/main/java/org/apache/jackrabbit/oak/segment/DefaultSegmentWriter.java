@@ -1558,7 +1558,6 @@ name|writer
 operator|=
 name|writer
 expr_stmt|;
-comment|// FIXME OAK-6519: Properly handle tail compactions in deduplication caches
 name|int
 name|generation
 init|=
