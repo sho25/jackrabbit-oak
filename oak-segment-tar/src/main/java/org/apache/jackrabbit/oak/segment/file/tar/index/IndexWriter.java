@@ -176,7 +176,7 @@ operator|=
 name|blockSize
 expr_stmt|;
 block|}
-comment|/**      * Add an entry to this index.      *      * @param msb            The most significant bits of the entry identifier.      * @param lsb            The least significant bits of the entry      *                       identifier.      * @param offset         The position of the entry in the file.      * @param size           The size of the entry.      * @param fullGeneration The full generation of the entry.      * @param tailGeneration The tail generation of the entry.      * @param isTail         Whether the entry is generated as part of a tail      *                       commit.      */
+comment|/**      * Add an entry to this index.      *      * @param msb            The most significant bits of the entry identifier.      * @param lsb            The least significant bits of the entry      *                       identifier.      * @param offset         The position of the entry in the file.      * @param size           The size of the entry.      * @param generation     The generation of the entry.      * @param fullGeneration The full generation of the entry.      * @param isCompacted    Whether the entry is generated as part of a      *                       compaction operation.      */
 specifier|public
 name|void
 name|addEntry
