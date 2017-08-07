@@ -102,11 +102,6 @@ return|;
 block|}
 specifier|private
 specifier|final
-name|int
-name|blockSize
-decl_stmt|;
-specifier|private
-specifier|final
 name|IndexLoaderV1
 name|v1
 decl_stmt|;
@@ -122,12 +117,6 @@ name|int
 name|blockSize
 parameter_list|)
 block|{
-name|this
-operator|.
-name|blockSize
-operator|=
-name|blockSize
-expr_stmt|;
 name|this
 operator|.
 name|v1
