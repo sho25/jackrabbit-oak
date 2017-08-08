@@ -793,6 +793,7 @@ name|SegmentNodeStoreStats
 name|stats
 decl_stmt|;
 specifier|private
+specifier|final
 name|Histogram
 name|commitTimeHistogram
 init|=

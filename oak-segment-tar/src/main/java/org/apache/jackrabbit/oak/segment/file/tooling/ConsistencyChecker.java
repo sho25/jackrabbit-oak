@@ -1763,9 +1763,11 @@ specifier|static
 class|class
 name|NodeWrapper
 block|{
+specifier|final
 name|NodeState
 name|node
 decl_stmt|;
+specifier|final
 name|String
 name|path
 decl_stmt|;
