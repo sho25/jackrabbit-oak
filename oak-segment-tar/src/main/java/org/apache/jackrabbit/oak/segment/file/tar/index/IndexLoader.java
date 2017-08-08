@@ -58,7 +58,7 @@ specifier|public
 class|class
 name|IndexLoader
 block|{
-comment|/**      * Create a new {@link IndexLoader} for the specified block size. The block      * size is used to validate different data items in the index.      *      * @param blockSize The block size. It msut be strictly positive.      * @return An instance of {@link IndexLoader}.      */
+comment|/**      * Create a new {@link IndexLoader} for the specified block size. The block      * size is used to validate different data items in the index.      *      * @param blockSize The block size. It must be strictly positive.      * @return An instance of {@link IndexLoader}.      */
 specifier|public
 specifier|static
 name|IndexLoader

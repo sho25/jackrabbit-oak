@@ -67,20 +67,6 @@ name|CRC32
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|io
-operator|.
-name|HexDump
-import|;
-end_import
-
 begin_class
 class|class
 name|IndexLoaderV1
