@@ -11,11 +11,6 @@ literal|"1.3.0"
 argument_list|)
 end_annotation
 
-begin_annotation
-annotation|@
-name|Export
-end_annotation
-
 begin_package
 package|package
 name|org
@@ -40,25 +35,15 @@ end_package
 
 begin_import
 import|import
-name|aQute
+name|org
 operator|.
-name|bnd
+name|osgi
 operator|.
 name|annotation
+operator|.
+name|versioning
 operator|.
 name|Version
-import|;
-end_import
-
-begin_import
-import|import
-name|aQute
-operator|.
-name|bnd
-operator|.
-name|annotation
-operator|.
-name|Export
 import|;
 end_import
 

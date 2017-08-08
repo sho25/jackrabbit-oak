@@ -57,11 +57,27 @@ name|PrincipalSetPolicy
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|annotation
+operator|.
+name|versioning
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * Denies read access for all principals except for the specified principals.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|CugPolicy

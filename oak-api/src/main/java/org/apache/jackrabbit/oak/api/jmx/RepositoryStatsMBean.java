@@ -33,11 +33,13 @@ end_import
 
 begin_import
 import|import
-name|aQute
+name|org
 operator|.
-name|bnd
+name|osgi
 operator|.
 name|annotation
+operator|.
+name|versioning
 operator|.
 name|ProviderType
 import|;

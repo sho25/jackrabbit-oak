@@ -97,6 +97,20 @@ name|TreeLocation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|annotation
+operator|.
+name|versioning
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code Context} represents item related information in relation to a  * dedicated {@link org.apache.jackrabbit.oak.spi.security.SecurityConfiguration}.  * This information allows to determine if a given {@code Tree} or {@link PropertyState}  * is defined by or related to the security model provided by the configuration.  */
 end_comment

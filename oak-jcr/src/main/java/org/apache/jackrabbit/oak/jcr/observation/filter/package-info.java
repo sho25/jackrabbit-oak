@@ -7,7 +7,7 @@ begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"1.0.0"
+literal|"1.0.1"
 argument_list|)
 end_annotation
 
@@ -31,11 +31,13 @@ end_package
 
 begin_import
 import|import
-name|aQute
+name|org
 operator|.
-name|bnd
+name|osgi
 operator|.
 name|annotation
+operator|.
+name|versioning
 operator|.
 name|Version
 import|;

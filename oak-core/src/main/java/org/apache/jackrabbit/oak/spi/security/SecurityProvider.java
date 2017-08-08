@@ -39,11 +39,27 @@ name|Nullable
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|annotation
+operator|.
+name|versioning
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * Main entry point for security related plugins to an Oak repository. The  * interface allow to access the available {@code SecurityConfiguration}s  * defining the individual plugins. In addition this provider gives access  * to the configuration parameters that apply to the configurations with the  * specified {@link SecurityConfiguration#getName() name}.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|SecurityProvider
