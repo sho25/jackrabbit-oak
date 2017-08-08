@@ -132,6 +132,18 @@ name|LEVEL_SIZE
 init|=
 literal|255
 decl_stmt|;
+comment|/** The maximum number of elements a list can contain */
+specifier|static
+specifier|final
+name|int
+name|MAX_ELEMENTS
+init|=
+name|LEVEL_SIZE
+operator|*
+name|LEVEL_SIZE
+operator|*
+name|LEVEL_SIZE
+decl_stmt|;
 specifier|private
 specifier|final
 name|int
@@ -161,6 +173,21 @@ argument_list|(
 name|size
 operator|>=
 literal|0
+argument_list|,
+literal|"Negative list size: "
+operator|+
+name|size
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+name|size
+operator|<=
+name|MAX_ELEMENTS
+argument_list|,
+literal|"Too many elements in list: "
+operator|+
+name|size
 argument_list|)
 expr_stmt|;
 name|this
