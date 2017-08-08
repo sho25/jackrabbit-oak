@@ -3484,15 +3484,55 @@ return|return
 literal|null
 return|;
 block|}
-comment|// FIXME OAK-6520: Improve tail compactions resilience when base state cannot be determined
-return|return
+try|try
+block|{
+name|SegmentNodeState
+name|node
+init|=
 name|segmentReader
 operator|.
 name|readNode
 argument_list|(
 name|rootId
 argument_list|)
+decl_stmt|;
+name|node
+operator|.
+name|getPropertyCount
+argument_list|()
+expr_stmt|;
+comment|// Resilience: fail early with a SNFE if the segment is not there
+return|return
+name|node
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|SegmentNotFoundException
+name|snfe
+parameter_list|)
+block|{
+name|gcListener
+operator|.
+name|error
+argument_list|(
+literal|"TarMK GC #"
+operator|+
+name|GC_COUNT
+operator|+
+literal|": Base state "
+operator|+
+name|rootId
+operator|+
+literal|" is not accessible"
+argument_list|,
+name|snfe
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 block|}
 specifier|synchronized
 name|CompactionResult
