@@ -67,6 +67,24 @@ name|CRC32
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|util
+operator|.
+name|ReaderAtEnd
+import|;
+end_import
+
 begin_class
 class|class
 name|IndexLoaderV1

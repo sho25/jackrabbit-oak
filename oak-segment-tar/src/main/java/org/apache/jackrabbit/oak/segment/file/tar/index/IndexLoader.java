@@ -49,6 +49,24 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|util
+operator|.
+name|ReaderAtEnd
+import|;
+end_import
+
 begin_comment
 comment|/**  * Load and validate the index of a TAR file.  */
 end_comment

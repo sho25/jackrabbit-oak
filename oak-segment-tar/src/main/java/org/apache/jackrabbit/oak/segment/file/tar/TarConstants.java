@@ -64,32 +64,6 @@ operator|)
 operator|+
 literal|'\n'
 decl_stmt|;
-comment|/**      * Magic sequence at the end of the binary references block.      */
-specifier|static
-specifier|final
-name|int
-name|BINARY_REFERENCES_MAGIC
-init|=
-operator|(
-literal|'\n'
-operator|<<
-literal|24
-operator|)
-operator|+
-operator|(
-literal|'0'
-operator|<<
-literal|16
-operator|)
-operator|+
-operator|(
-literal|'B'
-operator|<<
-literal|8
-operator|)
-operator|+
-literal|'\n'
-decl_stmt|;
 comment|/**      * The tar file block size.      */
 specifier|static
 specifier|final

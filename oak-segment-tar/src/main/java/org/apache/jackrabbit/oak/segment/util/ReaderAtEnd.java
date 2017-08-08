@@ -15,11 +15,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
-operator|.
-name|tar
-operator|.
-name|index
+name|util
 package|;
 end_package
 
