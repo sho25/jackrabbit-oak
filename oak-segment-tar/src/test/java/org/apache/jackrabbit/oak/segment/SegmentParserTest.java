@@ -67,18 +67,6 @@ end_import
 
 begin_import
 import|import static
-name|junitx
-operator|.
-name|framework
-operator|.
-name|ComparableAssert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -298,6 +286,18 @@ operator|.
 name|TestUtils
 operator|.
 name|newRecordId
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 

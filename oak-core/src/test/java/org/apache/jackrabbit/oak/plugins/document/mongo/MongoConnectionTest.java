@@ -131,11 +131,11 @@ end_import
 
 begin_import
 import|import static
-name|junitx
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
-name|ComparableAssert
+name|Assert
 operator|.
 name|assertEquals
 import|;
