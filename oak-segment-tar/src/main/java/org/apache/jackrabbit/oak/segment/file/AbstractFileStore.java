@@ -20,22 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -693,24 +677,12 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|checkArgument
-argument_list|(
-name|entries
-operator|!=
-literal|null
-argument_list|,
-literal|"{} is not a directory, or an I/O error occurred"
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
 return|return
+operator|!
 name|entries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 return|;
 block|}
 annotation|@
