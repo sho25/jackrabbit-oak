@@ -1393,7 +1393,25 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"too much data for a segment"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Too much data for a segment %s (referencedSegmentIdCount=%d, recordNumberCount=%d, length=%d, totalLength=%d)"
+argument_list|,
+name|segment
+operator|.
+name|getSegmentId
+argument_list|()
+argument_list|,
+name|referencedSegmentIdCount
+argument_list|,
+name|recordNumberCount
+argument_list|,
+name|length
+argument_list|,
+name|totalLength
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -1843,6 +1861,26 @@ operator|.
 name|length
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Flushing full segment {} (headerSize={}, recordSize={}, length={}, segmentSize={})"
+argument_list|,
+name|segment
+operator|.
+name|getSegmentId
+argument_list|()
+argument_list|,
+name|headerSize
+argument_list|,
+name|recordSize
+argument_list|,
+name|length
+argument_list|,
+name|segmentSize
+argument_list|)
+expr_stmt|;
 name|flush
 argument_list|(
 name|store
