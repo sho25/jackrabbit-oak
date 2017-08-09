@@ -240,6 +240,11 @@ name|boolean
 name|secure
 decl_stmt|;
 specifier|private
+specifier|final
+name|int
+name|blobChunkSize
+decl_stmt|;
+specifier|private
 specifier|volatile
 name|String
 name|state
@@ -269,6 +274,10 @@ parameter_list|,
 specifier|final
 name|FileStore
 name|fileStore
+parameter_list|,
+specifier|final
+name|int
+name|blobChunkSize
 parameter_list|)
 block|{
 name|this
@@ -276,6 +285,8 @@ argument_list|(
 name|port
 argument_list|,
 name|fileStore
+argument_list|,
+name|blobChunkSize
 argument_list|,
 literal|null
 argument_list|,
@@ -295,6 +306,10 @@ name|FileStore
 name|fileStore
 parameter_list|,
 specifier|final
+name|int
+name|blobChunkSize
+parameter_list|,
+specifier|final
 name|boolean
 name|secure
 parameter_list|)
@@ -304,6 +319,8 @@ argument_list|(
 name|port
 argument_list|,
 name|fileStore
+argument_list|,
+name|blobChunkSize
 argument_list|,
 literal|null
 argument_list|,
@@ -321,6 +338,10 @@ parameter_list|,
 specifier|final
 name|FileStore
 name|fileStore
+parameter_list|,
+specifier|final
+name|int
+name|blobChunkSize
 parameter_list|,
 specifier|final
 name|String
@@ -334,6 +355,8 @@ name|port
 argument_list|,
 name|fileStore
 argument_list|,
+name|blobChunkSize
+argument_list|,
 name|allowedClientIPRanges
 argument_list|,
 literal|false
@@ -350,6 +373,10 @@ parameter_list|,
 specifier|final
 name|FileStore
 name|fileStore
+parameter_list|,
+specifier|final
+name|int
+name|blobChunkSize
 parameter_list|,
 specifier|final
 name|String
@@ -372,6 +399,12 @@ operator|.
 name|fileStore
 operator|=
 name|fileStore
+expr_stmt|;
+name|this
+operator|.
+name|blobChunkSize
+operator|=
+name|blobChunkSize
 expr_stmt|;
 name|this
 operator|.
@@ -506,6 +539,8 @@ argument_list|(
 name|port
 argument_list|,
 name|this
+argument_list|,
+name|blobChunkSize
 argument_list|)
 operator|.
 name|secure

@@ -384,6 +384,10 @@ name|serverFileStore
 operator|.
 name|fileStore
 argument_list|()
+argument_list|,
+literal|1
+operator|*
+name|MB
 argument_list|)
 init|)
 block|{
@@ -1199,6 +1203,10 @@ name|serverFileStore
 operator|.
 name|fileStore
 argument_list|()
+argument_list|,
+literal|1
+operator|*
+name|MB
 argument_list|)
 init|;
 name|StandbyClientSync

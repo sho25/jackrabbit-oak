@@ -533,6 +533,10 @@ name|getPort
 argument_list|()
 argument_list|,
 name|primary
+argument_list|,
+literal|1
+operator|*
+name|MB
 argument_list|)
 init|;
 name|StandbyClientSync
@@ -784,6 +788,10 @@ name|getPort
 argument_list|()
 argument_list|,
 name|primary
+argument_list|,
+literal|1
+operator|*
+name|MB
 argument_list|)
 init|;
 name|StandbyClientSync

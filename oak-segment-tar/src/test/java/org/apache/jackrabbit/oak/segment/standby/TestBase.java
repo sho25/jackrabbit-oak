@@ -114,6 +114,15 @@ specifier|public
 class|class
 name|TestBase
 block|{
+specifier|static
+specifier|final
+name|int
+name|MB
+init|=
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final

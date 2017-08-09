@@ -600,6 +600,10 @@ name|port
 argument_list|,
 name|storeS
 argument_list|,
+literal|1
+operator|*
+name|MB
+argument_list|,
 name|useSSL
 argument_list|)
 decl_stmt|;
