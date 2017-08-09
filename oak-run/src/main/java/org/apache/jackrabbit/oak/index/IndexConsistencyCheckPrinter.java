@@ -538,6 +538,13 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|invalidIndexes
+operator|.
+name|add
+argument_list|(
+name|indexPath
+argument_list|)
+expr_stmt|;
 name|pw
 operator|.
 name|printf
