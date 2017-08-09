@@ -63,7 +63,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayInputStream
+name|InputStream
 import|;
 end_import
 
@@ -855,9 +855,8 @@ parameter_list|)
 throws|throws
 name|InterruptedException
 block|{
-name|byte
-index|[]
-name|data
+name|InputStream
+name|in
 init|=
 name|client
 operator|.
@@ -868,7 +867,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|data
+name|in
 operator|==
 literal|null
 condition|)
@@ -912,12 +911,13 @@ name|blobStore
 operator|.
 name|writeBlob
 argument_list|(
-operator|new
-name|ByteArrayInputStream
-argument_list|(
-name|data
+name|in
 argument_list|)
-argument_list|)
+expr_stmt|;
+name|in
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch

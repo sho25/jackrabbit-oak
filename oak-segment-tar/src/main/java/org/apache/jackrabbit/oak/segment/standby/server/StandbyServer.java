@@ -472,6 +472,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|BLOB_CHUNK_SIZE
+init|=
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
 specifier|static
 name|Builder
 name|builder
@@ -992,7 +1002,9 @@ name|addLast
 argument_list|(
 operator|new
 name|GetBlobResponseEncoder
-argument_list|()
+argument_list|(
+name|BLOB_CHUNK_SIZE
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|p

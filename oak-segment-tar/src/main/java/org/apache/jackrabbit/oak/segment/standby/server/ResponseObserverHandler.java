@@ -257,10 +257,8 @@ literal|0
 argument_list|,
 name|response
 operator|.
-name|getBlobData
+name|getLength
 argument_list|()
-operator|.
-name|length
 argument_list|)
 argument_list|)
 expr_stmt|;

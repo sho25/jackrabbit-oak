@@ -25,6 +25,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -884,10 +894,7 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Such a big max frame length is needed because blob
-comment|// values are sent in one big message. In future
-comment|// versions of the protocol, sending binaries in chunks
-comment|// should be considered instead.
+comment|// The frame length limits the chunk size to max. 2.2GB
 name|p
 operator|.
 name|addLast
@@ -1205,8 +1212,7 @@ return|;
 block|}
 annotation|@
 name|Nullable
-name|byte
-index|[]
+name|InputStream
 name|getBlob
 parameter_list|(
 name|String
@@ -1256,7 +1262,7 @@ block|}
 return|return
 name|response
 operator|.
-name|getBlobData
+name|getInputStream
 argument_list|()
 return|;
 block|}

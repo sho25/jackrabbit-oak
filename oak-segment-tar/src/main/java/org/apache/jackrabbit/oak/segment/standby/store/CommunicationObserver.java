@@ -524,7 +524,7 @@ parameter_list|(
 name|String
 name|client
 parameter_list|,
-name|int
+name|long
 name|size
 parameter_list|)
 block|{
