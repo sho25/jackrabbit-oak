@@ -93,9 +93,9 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|composite
+name|permission
 operator|.
-name|MultiplexingPermissionProvider
+name|MountPermissionProvider
 import|;
 end_import
 
@@ -448,7 +448,7 @@ block|{
 name|String
 name|permissionRootName
 init|=
-name|MultiplexingPermissionProvider
+name|MountPermissionProvider
 operator|.
 name|getPermissionRootName
 argument_list|(

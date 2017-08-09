@@ -17,7 +17,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|composite
+name|permission
 package|;
 end_package
 
@@ -90,26 +90,6 @@ operator|.
 name|security
 operator|.
 name|SecurityProviderImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|security
-operator|.
-name|authorization
-operator|.
-name|permission
-operator|.
-name|AbstractPermissionRandomTestIT
 import|;
 end_import
 
@@ -272,7 +252,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|MutiplexingProviderRandomTestIT
+name|MountPermissionProviderRandomTestIT
 extends|extends
 name|AbstractPermissionRandomTestIT
 block|{
@@ -475,7 +455,7 @@ name|assertTrue
 argument_list|(
 name|composite
 operator|instanceof
-name|MultiplexingPermissionProvider
+name|MountPermissionProvider
 argument_list|)
 expr_stmt|;
 return|return

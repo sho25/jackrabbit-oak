@@ -61,6 +61,22 @@ name|Nullable
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Root
+import|;
+end_import
+
 begin_comment
 comment|/**  * The permission store is used to store and provide access control permissions for principals. It is responsible to  * load and store the permissions in an optimal form in the repository and must not cache them.  */
 end_comment
@@ -124,6 +140,15 @@ name|principalName
 parameter_list|,
 name|long
 name|max
+parameter_list|)
+function_decl|;
+name|void
+name|flush
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Root
+name|root
 parameter_list|)
 function_decl|;
 block|}

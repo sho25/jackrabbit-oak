@@ -795,7 +795,7 @@ name|readPolicy
 decl_stmt|;
 specifier|private
 specifier|final
-name|PermissionStoreImpl
+name|PermissionStore
 name|store
 decl_stmt|;
 specifier|private
@@ -848,8 +848,8 @@ name|workspaceName
 parameter_list|,
 annotation|@
 name|Nonnull
-name|String
-name|permissionRootName
+name|PermissionStore
+name|store
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -922,17 +922,11 @@ name|readPaths
 argument_list|)
 expr_stmt|;
 comment|// setup
+name|this
+operator|.
 name|store
 operator|=
-operator|new
-name|PermissionStoreImpl
-argument_list|(
-name|root
-argument_list|,
-name|permissionRootName
-argument_list|,
-name|restrictionProvider
-argument_list|)
+name|store
 expr_stmt|;
 name|Set
 argument_list|<
@@ -1070,8 +1064,8 @@ name|workspaceName
 parameter_list|,
 annotation|@
 name|Nonnull
-name|String
-name|permissionRootName
+name|PermissionStore
+name|store
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -1106,7 +1100,7 @@ name|getPermissionsRoot
 argument_list|(
 name|root
 argument_list|,
-name|permissionRootName
+name|workspaceName
 argument_list|)
 decl_stmt|;
 if|if
@@ -1142,7 +1136,7 @@ name|root
 argument_list|,
 name|workspaceName
 argument_list|,
-name|permissionRootName
+name|store
 argument_list|,
 name|restrictionProvider
 argument_list|,
@@ -3400,11 +3394,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-operator|(
 name|entry
 operator|.
 name|isAllow
-operator|)
 return|;
 block|}
 block|}

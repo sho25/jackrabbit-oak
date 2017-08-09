@@ -117,11 +117,17 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|apache
 operator|.
-name|Assert
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Root
 import|;
 end_import
 
@@ -210,6 +216,18 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
@@ -837,6 +855,16 @@ return|return
 name|cnt
 return|;
 block|}
+specifier|public
+name|void
+name|flush
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Root
+name|root
+parameter_list|)
+block|{         }
 block|}
 specifier|private
 class|class
@@ -874,8 +902,6 @@ name|String
 name|principalName
 parameter_list|)
 block|{
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"The number of  entries exceeds the max cache size"
