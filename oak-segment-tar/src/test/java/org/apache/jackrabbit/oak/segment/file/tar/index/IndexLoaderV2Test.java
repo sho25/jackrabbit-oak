@@ -1380,7 +1380,7 @@ argument_list|)
 operator|.
 name|putInt
 argument_list|(
-literal|0x7A7C3A8D
+literal|0x8B1B0C5
 argument_list|)
 operator|.
 name|putInt

@@ -1263,7 +1263,7 @@ argument_list|)
 operator|.
 name|putInt
 argument_list|(
-literal|0x807077E9
+literal|0xAA6B4A1A
 argument_list|)
 operator|.
 name|putInt
