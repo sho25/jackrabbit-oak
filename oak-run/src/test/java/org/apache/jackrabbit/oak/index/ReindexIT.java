@@ -1668,8 +1668,6 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 block|,
-literal|"--index-paths=/oak:index/barIndex"
-block|,
 literal|"--index-definitions-file="
 operator|+
 name|jsonFile

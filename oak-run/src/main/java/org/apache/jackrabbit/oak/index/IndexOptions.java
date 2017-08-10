@@ -579,12 +579,7 @@ name|accepts
 argument_list|(
 literal|"reindex"
 argument_list|,
-literal|"Reindex the indexes specified by --index-paths"
-argument_list|)
-operator|.
-name|availableIf
-argument_list|(
-literal|"index-paths"
+literal|"Reindex the indexes specified by --index-paths or --index-definitions-file"
 argument_list|)
 expr_stmt|;
 name|importIndex
