@@ -166,7 +166,6 @@ operator|)
 operator|+
 literal|'\n'
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|int

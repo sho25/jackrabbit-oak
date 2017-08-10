@@ -185,6 +185,28 @@ name|compacted
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Generation{generation=%d, full=%d, compacted=%s}"
+argument_list|,
+name|generation
+argument_list|,
+name|full
+argument_list|,
+name|compacted
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
