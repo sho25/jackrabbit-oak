@@ -20,6 +20,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|data
+operator|.
+name|SegmentData
+operator|.
+name|newSegmentData
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1088,7 +1108,10 @@ name|Segment
 operator|.
 name|getGcGeneration
 argument_list|(
+name|newSegmentData
+argument_list|(
 name|buffer
+argument_list|)
 argument_list|,
 name|id
 argument_list|)
