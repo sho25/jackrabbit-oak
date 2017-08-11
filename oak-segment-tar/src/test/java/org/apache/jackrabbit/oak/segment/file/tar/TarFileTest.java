@@ -633,7 +633,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testGCGenerationIsTailFlagNotErased
+name|testGCGenerationIsCompactedFlagNotErased
 parameter_list|()
 throws|throws
 name|Exception

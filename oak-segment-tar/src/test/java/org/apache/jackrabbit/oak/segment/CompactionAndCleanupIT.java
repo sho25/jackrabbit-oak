@@ -8720,7 +8720,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create a tail head state on top of the previous full state. This
-comment|// increments the tail generation, but leaves the full generation
+comment|// increments the generation, but leaves the full generation
 comment|// untouched.
 name|fileStore
 operator|.
@@ -8736,10 +8736,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create a tail state on top of the previous tail state. This
-comment|// increments the tail generation, but leaves the full generation
+comment|// increments the generation, but leaves the full generation
 comment|// untouched. This brings this generations two generations away from
 comment|// the latest full head state. Still, the full head state will not
-comment|// be deleted because doing so would geenrated an invalid repository
+comment|// be deleted because doing so would generate an invalid repository
 comment|// at risk of SegmentNotFoundException.
 name|fileStore
 operator|.

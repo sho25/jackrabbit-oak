@@ -292,17 +292,17 @@ name|values
 argument_list|()
 control|)
 block|{
+comment|// 4 bytes per generation to store the generation number.
+name|binaryReferenceSize
+operator|+=
+literal|4
+expr_stmt|;
 comment|// 4 bytes per generation to store the full generation number.
 name|binaryReferenceSize
 operator|+=
 literal|4
 expr_stmt|;
-comment|// 4 bytes per generation to store the tail generation number.
-name|binaryReferenceSize
-operator|+=
-literal|4
-expr_stmt|;
-comment|// 1 byte per generation to store the "tail" flag.
+comment|// 1 byte per generation to store the "compacted" flag.
 name|binaryReferenceSize
 operator|+=
 literal|1

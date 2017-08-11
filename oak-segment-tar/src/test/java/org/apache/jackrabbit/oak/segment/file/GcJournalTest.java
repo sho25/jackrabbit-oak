@@ -696,7 +696,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testGCGenerationTailFlagCleared
+name|testGCGenerationCompactedFlagCleared
 parameter_list|()
 throws|throws
 name|Exception
