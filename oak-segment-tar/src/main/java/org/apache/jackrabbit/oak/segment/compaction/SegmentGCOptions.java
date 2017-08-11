@@ -72,13 +72,15 @@ specifier|public
 class|class
 name|SegmentGCOptions
 block|{
-comment|// michid doc
+comment|/**      * The gc type.      */
 specifier|public
 enum|enum
 name|GCType
 block|{
+comment|/**          * Full gc: compaction will compact the full head state.          */
 name|FULL
 block|,
+comment|/**          * Tail gc: compaction will compact the diff between the head state created by          * the previous compaction run and the current head state.          */
 name|TAIL
 block|}
 comment|/**      * Default value for {@link #isPaused()}      */
@@ -447,7 +449,7 @@ return|return
 name|this
 return|;
 block|}
-comment|// michid doc
+comment|/**      * @return the currently set gc type.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -459,7 +461,7 @@ return|return
 name|gcType
 return|;
 block|}
-comment|// michid doc
+comment|/**      * Set the gc type.      * @param gcType  the type of gc to run.      */
 specifier|public
 name|void
 name|setGCType
