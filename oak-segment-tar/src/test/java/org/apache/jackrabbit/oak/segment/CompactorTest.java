@@ -533,14 +533,10 @@ name|TemporaryFolder
 import|;
 end_import
 
-begin_comment
-comment|// FIXME OAK-6522: Implement unit tests for Compactor
-end_comment
-
 begin_class
 specifier|public
 class|class
-name|OnlineCompactorTest
+name|CompactorTest
 block|{
 annotation|@
 name|Rule
