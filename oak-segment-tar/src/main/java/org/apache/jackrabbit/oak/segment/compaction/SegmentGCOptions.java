@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -62,6 +72,15 @@ specifier|public
 class|class
 name|SegmentGCOptions
 block|{
+comment|// michid doc
+specifier|public
+enum|enum
+name|GCType
+block|{
+name|FULL
+block|,
+name|TAIL
+block|}
 comment|/**      * Default value for {@link #isPaused()}      */
 specifier|public
 specifier|static
@@ -169,6 +188,16 @@ name|int
 name|retainedGenerations
 init|=
 name|RETAINED_GENERATIONS_DEFAULT
+decl_stmt|;
+annotation|@
+name|Nonnull
+specifier|private
+name|GCType
+name|gcType
+init|=
+name|GCType
+operator|.
+name|FULL
 decl_stmt|;
 specifier|private
 name|boolean
@@ -418,6 +447,36 @@ return|return
 name|this
 return|;
 block|}
+comment|// michid doc
+annotation|@
+name|Nonnull
+specifier|public
+name|GCType
+name|getGCType
+parameter_list|()
+block|{
+return|return
+name|gcType
+return|;
+block|}
+comment|// michid doc
+specifier|public
+name|void
+name|setGCType
+parameter_list|(
+annotation|@
+name|Nonnull
+name|GCType
+name|gcType
+parameter_list|)
+block|{
+name|this
+operator|.
+name|gcType
+operator|=
+name|gcType
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -492,6 +551,10 @@ operator|+
 literal|", retainedGenerations="
 operator|+
 name|retainedGenerations
+operator|+
+literal|", gcType="
+operator|+
+name|gcType
 operator|+
 literal|"}"
 return|;

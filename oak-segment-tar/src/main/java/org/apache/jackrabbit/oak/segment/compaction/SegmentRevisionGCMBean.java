@@ -121,7 +121,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
+name|compaction
+operator|.
+name|SegmentGCOptions
 operator|.
 name|GCType
 import|;
@@ -412,9 +414,9 @@ name|getGCType
 parameter_list|()
 block|{
 return|return
-name|fileStore
+name|gcOptions
 operator|.
-name|getGcType
+name|getGCType
 argument_list|()
 operator|.
 name|toString
@@ -431,9 +433,9 @@ name|String
 name|gcType
 parameter_list|)
 block|{
-name|fileStore
+name|gcOptions
 operator|.
-name|setGcType
+name|setGCType
 argument_list|(
 name|GCType
 operator|.
