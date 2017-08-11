@@ -191,7 +191,7 @@ argument_list|)
 argument_list|,
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 argument_list|)
 return|;

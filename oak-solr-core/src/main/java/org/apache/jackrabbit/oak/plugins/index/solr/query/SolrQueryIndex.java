@@ -677,7 +677,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryEngineSettings
+name|QueryLimits
 import|;
 end_import
 
@@ -1651,7 +1651,7 @@ name|plan
 argument_list|,
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 argument_list|,
 name|estimator
@@ -4386,7 +4386,7 @@ parameter_list|,
 name|IndexPlan
 name|plan
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|,
 name|LMSEstimator

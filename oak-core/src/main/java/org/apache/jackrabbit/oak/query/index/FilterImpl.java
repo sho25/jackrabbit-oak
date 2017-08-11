@@ -215,7 +215,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryEngineSettings
+name|QueryLimits
 import|;
 end_import
 
@@ -375,7 +375,7 @@ name|queryStatement
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 decl_stmt|;
 comment|/**      * Whether the filter is always false.      */
@@ -479,8 +479,36 @@ argument_list|,
 literal|null
 argument_list|,
 operator|new
-name|QueryEngineSettings
+name|QueryLimits
 argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getLimitInMemory
+parameter_list|()
+block|{
+return|return
+name|Long
+operator|.
+name|MAX_VALUE
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getLimitReads
+parameter_list|()
+block|{
+return|return
+name|Long
+operator|.
+name|MAX_VALUE
+return|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -494,7 +522,7 @@ parameter_list|,
 name|String
 name|queryStatement
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -643,7 +671,7 @@ name|settings
 operator|=
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 expr_stmt|;
 block|}
@@ -2462,8 +2490,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|QueryEngineSettings
-name|getQueryEngineSettings
+name|QueryLimits
+name|getQueryLimits
 parameter_list|()
 block|{
 return|return

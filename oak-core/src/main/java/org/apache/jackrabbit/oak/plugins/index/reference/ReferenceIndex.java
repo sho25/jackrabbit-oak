@@ -837,7 +837,7 @@ argument_list|()
 argument_list|,
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 argument_list|)
 return|;
@@ -899,7 +899,7 @@ argument_list|()
 argument_list|,
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 argument_list|)
 return|;
@@ -1068,7 +1068,7 @@ name|paths
 argument_list|,
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 argument_list|)
 return|;

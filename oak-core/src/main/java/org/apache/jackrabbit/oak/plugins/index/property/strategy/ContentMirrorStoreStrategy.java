@@ -55,7 +55,7 @@ name|index
 operator|.
 name|IndexConstants
 operator|.
-name|INDEX_CONTENT_NODE_NAME
+name|ENTRY_COUNT_PROPERTY_NAME
 import|;
 end_import
 
@@ -75,7 +75,7 @@ name|index
 operator|.
 name|IndexConstants
 operator|.
-name|ENTRY_COUNT_PROPERTY_NAME
+name|INDEX_CONTENT_NODE_NAME
 import|;
 end_import
 
@@ -151,20 +151,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Supplier
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -208,6 +194,26 @@ operator|.
 name|commons
 operator|.
 name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|counter
+operator|.
+name|ApproximateCounter
 import|;
 end_import
 
@@ -301,7 +307,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryEngineSettings
+name|Filter
 import|;
 end_import
 
@@ -319,7 +325,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|Filter
+name|QueryLimits
 import|;
 end_import
 
@@ -399,26 +405,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|counter
-operator|.
-name|ApproximateCounter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -432,6 +418,20 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
 import|;
 end_import
 
@@ -1881,7 +1881,7 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 decl_stmt|;
 name|PathIterator
@@ -1980,7 +1980,7 @@ name|settings
 operator|=
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 expr_stmt|;
 block|}

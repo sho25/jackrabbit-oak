@@ -1166,7 +1166,7 @@ name|newC
 argument_list|,
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1276,7 +1276,7 @@ name|cursors
 argument_list|,
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 argument_list|)
 argument_list|)

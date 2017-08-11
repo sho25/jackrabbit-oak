@@ -155,6 +155,26 @@ name|OrderingImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|stats
+operator|.
+name|QueryStatsData
+operator|.
+name|QueryExecutionStats
+import|;
+end_import
+
 begin_comment
 comment|/**  * A "select" or "union" query.  *<p>  * Lifecycle: use the constructor to create a new object. Call init() to  * initialize the bind variable map. If the query is re-executed, a new instance  * is created.  */
 end_comment
@@ -386,6 +406,10 @@ function_decl|;
 comment|/**      * Verify the query is not potentially slow. Only supported for prepared      * queries.      *       * @throws IllegalArgumentException if potentially slow, and configured to      *             fail in this case      */
 name|void
 name|verifyNotPotentiallySlow
+parameter_list|()
+function_decl|;
+name|QueryExecutionStats
+name|getQueryExecutionStats
 parameter_list|()
 function_decl|;
 block|}

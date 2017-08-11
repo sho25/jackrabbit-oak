@@ -787,24 +787,6 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryEngineSettings
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|query
-operator|.
 name|QueryIndex
 import|;
 end_import
@@ -826,6 +808,24 @@ operator|.
 name|QueryIndex
 operator|.
 name|AdvanceFulltextQueryIndex
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryLimits
 import|;
 end_import
 
@@ -2603,12 +2603,12 @@ argument_list|(
 name|plan
 argument_list|)
 decl_stmt|;
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 init|=
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 decl_stmt|;
 name|Iterator
@@ -5045,7 +5045,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Remove all "jcr:score" entries.      *       * @param original the original list (is not modified)      * @return the list with the entries removed      */
+comment|/**      * Remove all "jcr:score" entries.      *      * @param original the original list (is not modified)      * @return the list with the entries removed      */
 specifier|private
 specifier|static
 name|List
@@ -10388,7 +10388,7 @@ specifier|final
 name|IndexPlan
 name|plan
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|,
 name|SizeEstimator

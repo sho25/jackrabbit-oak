@@ -1372,8 +1372,9 @@ block|{
 name|SQL2Parser
 name|parser
 init|=
-operator|new
-name|SQL2Parser
+name|SQL2ParserTest
+operator|.
+name|createTestSQL2Parser
 argument_list|(
 name|getMappings
 argument_list|()
@@ -1615,8 +1616,9 @@ block|{
 name|SQL2Parser
 name|parser
 init|=
-operator|new
-name|SQL2Parser
+name|SQL2ParserTest
+operator|.
+name|createTestSQL2Parser
 argument_list|(
 name|getMappings
 argument_list|()

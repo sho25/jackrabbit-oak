@@ -269,7 +269,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryEngineSettings
+name|QueryLimits
 import|;
 end_import
 
@@ -477,7 +477,7 @@ parameter_list|,
 name|Cursor
 name|b
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -504,7 +504,7 @@ name|Cursor
 argument_list|>
 name|cursors
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -530,7 +530,7 @@ name|String
 argument_list|>
 name|paths
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -561,7 +561,7 @@ name|String
 argument_list|>
 name|paths
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -615,7 +615,7 @@ parameter_list|,
 name|int
 name|level
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -701,7 +701,7 @@ parameter_list|,
 name|int
 name|level
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -905,7 +905,7 @@ name|boolean
 name|distinct
 parameter_list|,
 specifier|final
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -1113,7 +1113,7 @@ name|closed
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 decl_stmt|;
 specifier|public
@@ -1138,7 +1138,7 @@ name|settings
 operator|=
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 expr_stmt|;
 name|String
@@ -1695,7 +1695,7 @@ name|second
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 decl_stmt|;
 specifier|private
@@ -1718,7 +1718,7 @@ parameter_list|,
 name|Cursor
 name|second
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -2103,7 +2103,7 @@ name|cursors
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 decl_stmt|;
 specifier|private
@@ -2134,7 +2134,7 @@ name|Cursor
 argument_list|>
 name|cursors
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{

@@ -173,8 +173,8 @@ name|FullTextExpression
 name|getFullTextConstraint
 parameter_list|()
 function_decl|;
-name|QueryEngineSettings
-name|getQueryEngineSettings
+name|QueryLimits
+name|getQueryLimits
 parameter_list|()
 function_decl|;
 comment|/**      * check whether a certain (valid) path is accessible (can be read) from the user associated with the query Session      * @param path a valid JCR path      * @return<code>true</code> if path can be read by the calling user,<code>false</code> otherwise.      */
@@ -1194,7 +1194,7 @@ annotation|@
 name|Override
 specifier|public
 name|QueryEngineSettings
-name|getQueryEngineSettings
+name|getQueryLimits
 parameter_list|()
 block|{
 return|return

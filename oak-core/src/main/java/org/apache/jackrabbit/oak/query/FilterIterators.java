@@ -91,7 +91,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryEngineSettings
+name|QueryLimits
 import|;
 end_import
 
@@ -152,7 +152,7 @@ parameter_list|(
 name|long
 name|count
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -214,7 +214,7 @@ parameter_list|(
 name|long
 name|count
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -299,7 +299,7 @@ name|K
 argument_list|>
 name|orderBy
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -442,7 +442,7 @@ name|K
 argument_list|>
 name|it
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -553,7 +553,7 @@ parameter_list|,
 name|int
 name|max
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -597,7 +597,7 @@ name|source
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 decl_stmt|;
 specifier|private
@@ -624,7 +624,7 @@ name|K
 argument_list|>
 name|source
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{
@@ -811,7 +811,7 @@ name|source
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 decl_stmt|;
 specifier|private
@@ -851,7 +851,7 @@ parameter_list|,
 name|int
 name|max
 parameter_list|,
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 parameter_list|)
 block|{

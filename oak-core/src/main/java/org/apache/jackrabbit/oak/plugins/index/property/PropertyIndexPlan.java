@@ -417,7 +417,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryEngineSettings
+name|QueryLimits
 import|;
 end_import
 
@@ -1433,12 +1433,12 @@ name|Cursor
 name|execute
 parameter_list|()
 block|{
-name|QueryEngineSettings
+name|QueryLimits
 name|settings
 init|=
 name|filter
 operator|.
-name|getQueryEngineSettings
+name|getQueryLimits
 argument_list|()
 decl_stmt|;
 name|List
