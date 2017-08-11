@@ -773,7 +773,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|OnlineCompactor
+name|Compactor
 import|;
 end_import
 
@@ -3667,11 +3667,11 @@ operator|.
 name|this
 argument_list|)
 decl_stmt|;
-name|OnlineCompactor
+name|Compactor
 name|compactor
 init|=
 operator|new
-name|OnlineCompactor
+name|Compactor
 argument_list|(
 name|segmentReader
 argument_list|,
@@ -4249,7 +4249,7 @@ name|uncompacted
 parameter_list|,
 annotation|@
 name|Nonnull
-name|OnlineCompactor
+name|Compactor
 name|compactor
 parameter_list|,
 annotation|@
@@ -4453,7 +4453,7 @@ name|uncompactedRoots
 parameter_list|,
 annotation|@
 name|Nonnull
-name|OnlineCompactor
+name|Compactor
 name|compactor
 parameter_list|)
 throws|throws
@@ -4794,7 +4794,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 specifier|final
-name|OnlineCompactor
+name|Compactor
 name|compactor
 parameter_list|,
 annotation|@

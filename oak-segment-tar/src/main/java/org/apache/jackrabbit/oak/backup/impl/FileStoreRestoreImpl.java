@@ -151,7 +151,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|OnlineCompactor
+name|Compactor
 import|;
 end_import
 
@@ -541,11 +541,11 @@ operator|.
 name|setOffline
 argument_list|()
 decl_stmt|;
-name|OnlineCompactor
+name|Compactor
 name|compactor
 init|=
 operator|new
-name|OnlineCompactor
+name|Compactor
 argument_list|(
 name|store
 operator|.

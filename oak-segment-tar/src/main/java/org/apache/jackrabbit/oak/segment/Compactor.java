@@ -404,7 +404,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|OnlineCompactor
+name|Compactor
 block|{
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the underlying segments.      */
 specifier|static
@@ -461,7 +461,7 @@ name|compactionMonitor
 decl_stmt|;
 comment|/**      * Create a new instance based on the passed arguments.      * @param reader     segment reader used to read from the segments      * @param writer     segment writer used to serialise to segments      * @param blobStore  the blob store or {@code null} if none      * @param cancel     a flag that can be used to cancel the compaction process      * @param compactionMonitor   notification call back for each compacted nodes,      *                            properties, and binaries      */
 specifier|public
-name|OnlineCompactor
+name|Compactor
 parameter_list|(
 annotation|@
 name|Nonnull

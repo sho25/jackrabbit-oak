@@ -534,7 +534,7 @@ import|;
 end_import
 
 begin_comment
-comment|// FIXME OAK-6522: Implement unit tests for OnlineCompactor
+comment|// FIXME OAK-6522: Implement unit tests for Compactor
 end_comment
 
 begin_class
@@ -625,7 +625,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|OnlineCompactor
+name|Compactor
 name|compactor
 init|=
 name|createCompactor
@@ -786,7 +786,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|OnlineCompactor
+name|Compactor
 name|compactor
 init|=
 name|createCompactor
@@ -807,7 +807,7 @@ name|addNodes
 argument_list|(
 name|nodeStore
 argument_list|,
-name|OnlineCompactor
+name|Compactor
 operator|.
 name|UPDATE_LIMIT
 operator|*
@@ -890,7 +890,7 @@ name|IOException
 throws|,
 name|CommitFailedException
 block|{
-name|OnlineCompactor
+name|Compactor
 name|compactor
 init|=
 name|createCompactor
@@ -984,7 +984,7 @@ name|IOException
 throws|,
 name|CommitFailedException
 block|{
-name|OnlineCompactor
+name|Compactor
 name|compactor
 init|=
 name|createCompactor
@@ -1021,7 +1021,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|static
-name|OnlineCompactor
+name|Compactor
 name|createCompactor
 parameter_list|(
 name|FileStore
@@ -1082,7 +1082,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|OnlineCompactor
+name|Compactor
 argument_list|(
 name|fileStore
 operator|.

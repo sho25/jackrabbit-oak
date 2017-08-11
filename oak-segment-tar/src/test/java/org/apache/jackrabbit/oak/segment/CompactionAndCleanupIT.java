@@ -231,7 +231,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|OnlineCompactor
+name|Compactor
 operator|.
 name|UPDATE_LIMIT
 import|;
@@ -2662,7 +2662,7 @@ name|Ignore
 argument_list|(
 literal|"OAK-6399"
 argument_list|)
-comment|// FIXME OAK-6399: this test fails because the content based binary deduplication feature is missing in OnlineCompactor
+comment|// FIXME OAK-6399: this test fails because the content based binary deduplication feature is missing in Compactor
 specifier|public
 name|void
 name|offlineCompactionBinC1

@@ -125,7 +125,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|DefaultSegmentWriter
+name|Compactor
 import|;
 end_import
 
@@ -141,7 +141,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|OnlineCompactor
+name|DefaultSegmentWriter
 import|;
 end_import
 
@@ -591,11 +591,11 @@ argument_list|,
 name|bufferWriter
 argument_list|)
 decl_stmt|;
-name|OnlineCompactor
+name|Compactor
 name|compactor
 init|=
 operator|new
-name|OnlineCompactor
+name|Compactor
 argument_list|(
 name|backup
 operator|.
