@@ -208,6 +208,20 @@ name|Compact
 implements|implements
 name|Runnable
 block|{
+specifier|private
+specifier|final
+name|long
+name|logAt
+init|=
+name|Long
+operator|.
+name|getLong
+argument_list|(
+literal|"compaction-progress-log"
+argument_list|,
+literal|150000
+argument_list|)
+decl_stmt|;
 comment|/**      * Create a builder for the {@link Compact} command.      *      * @return an instance of {@link Builder}.      */
 specifier|public
 specifier|static
@@ -547,6 +561,11 @@ argument_list|()
 operator|.
 name|setOffline
 argument_list|()
+operator|.
+name|setGCLogInterval
+argument_list|(
+name|logAt
+argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
