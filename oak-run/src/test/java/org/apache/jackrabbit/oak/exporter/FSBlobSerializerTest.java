@@ -49,9 +49,13 @@ end_import
 
 begin_import
 import|import
-name|joptsimple
+name|com
 operator|.
-name|internal
+name|google
+operator|.
+name|common
+operator|.
+name|base
 operator|.
 name|Strings
 import|;
@@ -250,7 +254,7 @@ name|Strings
 operator|.
 name|repeat
 argument_list|(
-literal|'x'
+literal|"x"
 argument_list|,
 name|maxInlineSize
 operator|*
