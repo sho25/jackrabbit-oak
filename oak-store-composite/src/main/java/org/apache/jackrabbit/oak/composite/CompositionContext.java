@@ -502,10 +502,8 @@ name|String
 name|path
 parameter_list|,
 specifier|final
-name|Function
+name|NodeMap
 argument_list|<
-name|MountedNodeStore
-argument_list|,
 name|NodeState
 argument_list|>
 name|nodeStates
@@ -520,7 +518,7 @@ name|mns
 lambda|->
 name|nodeStates
 operator|.
-name|apply
+name|get
 argument_list|(
 name|mns
 argument_list|)
@@ -540,10 +538,8 @@ name|String
 name|path
 parameter_list|,
 specifier|final
-name|Function
+name|NodeMap
 argument_list|<
-name|MountedNodeStore
-argument_list|,
 name|NodeBuilder
 argument_list|>
 name|nodeBuilders
@@ -558,7 +554,7 @@ name|mns
 lambda|->
 name|nodeBuilders
 operator|.
-name|apply
+name|get
 argument_list|(
 name|mns
 argument_list|)
@@ -1104,7 +1100,12 @@ name|CompositeNodeState
 argument_list|(
 literal|"/"
 argument_list|,
+name|NodeMap
+operator|.
+name|create
+argument_list|(
 name|rootStates
+argument_list|)
 argument_list|,
 name|this
 argument_list|)
