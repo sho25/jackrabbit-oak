@@ -619,7 +619,7 @@ name|isRevisionGCRunning
 parameter_list|()
 block|{
 return|return
-name|gcOptions
+name|fileStore
 operator|.
 name|getGCNodeWriteMonitor
 argument_list|()
@@ -636,7 +636,7 @@ name|getCompactedNodes
 parameter_list|()
 block|{
 return|return
-name|gcOptions
+name|fileStore
 operator|.
 name|getGCNodeWriteMonitor
 argument_list|()
@@ -653,7 +653,7 @@ name|getEstimatedCompactableNodes
 parameter_list|()
 block|{
 return|return
-name|gcOptions
+name|fileStore
 operator|.
 name|getGCNodeWriteMonitor
 argument_list|()
@@ -670,7 +670,7 @@ name|getEstimatedRevisionGCCompletion
 parameter_list|()
 block|{
 return|return
-name|gcOptions
+name|fileStore
 operator|.
 name|getGCNodeWriteMonitor
 argument_list|()
@@ -687,7 +687,7 @@ name|getRevisionGCProgressLog
 parameter_list|()
 block|{
 return|return
-name|gcOptions
+name|fileStore
 operator|.
 name|getGCNodeWriteMonitor
 argument_list|()
@@ -708,10 +708,7 @@ parameter_list|)
 block|{
 name|gcOptions
 operator|.
-name|getGCNodeWriteMonitor
-argument_list|()
-operator|.
-name|setGcProgressLog
+name|setGCLogInterval
 argument_list|(
 name|gcProgressLog
 argument_list|)

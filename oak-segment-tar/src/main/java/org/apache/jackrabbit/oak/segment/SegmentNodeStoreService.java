@@ -3036,7 +3036,7 @@ name|getDisableEstimation
 argument_list|()
 argument_list|)
 operator|.
-name|withGCNodeWriteMonitor
+name|setGCLogInterval
 argument_list|(
 name|configuration
 operator|.

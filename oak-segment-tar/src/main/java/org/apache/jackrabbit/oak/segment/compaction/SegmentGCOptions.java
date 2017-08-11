@@ -45,24 +45,6 @@ name|Nonnull
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|GCNodeWriteMonitor
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class holds configuration options for segment store revision gc.  */
 end_comment
@@ -254,14 +236,13 @@ argument_list|,
 name|SIZE_DELTA_ESTIMATION_DEFAULT
 argument_list|)
 decl_stmt|;
-comment|/**      * Responsible for monitoring progress of the online compaction, and      * providing progress tracking.      */
+comment|/**      * Number of nodes after which an update about the compaction process is logged.      * -1 for never.      */
 specifier|private
-name|GCNodeWriteMonitor
-name|gcNodeWriteMonitor
+name|long
+name|gcLogInterval
 init|=
-name|GCNodeWriteMonitor
-operator|.
-name|EMPTY
+operator|-
+literal|1
 decl_stmt|;
 specifier|public
 name|SegmentGCOptions
@@ -755,36 +736,33 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Enables the GcWriteMonitor with the given params.      * @param gcProgressLog      *            Enables compaction progress logging at each set of compacted nodes, disabled if set to      *            {@code -1}      * @return this instance      */
+comment|/**      * Set the number of nodes after which an update about the compaction process is logged.      * -1 for never.      * @param gcLogInterval  update interval      * @return this instance      */
 specifier|public
 name|SegmentGCOptions
-name|withGCNodeWriteMonitor
+name|setGCLogInterval
 parameter_list|(
 name|long
-name|gcProgressLog
+name|gcLogInterval
 parameter_list|)
 block|{
 name|this
 operator|.
-name|gcNodeWriteMonitor
+name|gcLogInterval
 operator|=
-operator|new
-name|GCNodeWriteMonitor
-argument_list|(
-name|gcProgressLog
-argument_list|)
+name|gcLogInterval
 expr_stmt|;
 return|return
 name|this
 return|;
 block|}
+comment|/**      * @return Number of nodes after which an update about the compaction process is logged.      * -1 for never.      */
 specifier|public
-name|GCNodeWriteMonitor
-name|getGCNodeWriteMonitor
+name|long
+name|getGcLogInterval
 parameter_list|()
 block|{
 return|return
-name|gcNodeWriteMonitor
+name|gcLogInterval
 return|;
 block|}
 block|}
