@@ -228,6 +228,7 @@ return|return
 name|totalFileSize
 return|;
 block|}
+specifier|public
 specifier|static
 name|File
 name|createIndexDir
