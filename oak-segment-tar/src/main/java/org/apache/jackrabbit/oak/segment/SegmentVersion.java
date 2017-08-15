@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -66,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Version of the segment storage format.  *<ul>  *<li>12 = all oak-segment-tar versions</li>  *</ul>  */
+comment|/**  * Version of the segment storage format.<ul><li>12 = all oak-segment-tar  * versions</li></ul>  */
 end_comment
 
 begin_enum
@@ -81,6 +71,14 @@ operator|(
 name|byte
 operator|)
 literal|12
+argument_list|)
+block|,
+name|V_13
+argument_list|(
+operator|(
+name|byte
+operator|)
+literal|13
 argument_list|)
 block|;
 comment|/**      * Latest segment version      */
@@ -99,27 +97,12 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
-operator|new
-name|Comparator
-argument_list|<
-name|SegmentVersion
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|int
-name|compare
 parameter_list|(
-name|SegmentVersion
 name|v1
 parameter_list|,
-name|SegmentVersion
 name|v2
 parameter_list|)
-block|{
-return|return
+lambda|->
 name|UnsignedBytes
 operator|.
 name|compare
@@ -132,9 +115,6 @@ name|v2
 operator|.
 name|version
 argument_list|)
-return|;
-block|}
-block|}
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -154,23 +134,6 @@ name|version
 operator|=
 name|version
 expr_stmt|;
-block|}
-specifier|public
-name|boolean
-name|onOrAfter
-parameter_list|(
-name|SegmentVersion
-name|other
-parameter_list|)
-block|{
-return|return
-name|compareTo
-argument_list|(
-name|other
-argument_list|)
-operator|>=
-literal|0
-return|;
 block|}
 specifier|public
 specifier|static
@@ -200,6 +163,19 @@ if|if
 condition|(
 name|v
 operator|==
+name|V_13
+operator|.
+name|version
+condition|)
+block|{
+return|return
+name|V_13
+return|;
+block|}
+if|if
+condition|(
+name|v
+operator|==
 name|V_12
 operator|.
 name|version
@@ -209,8 +185,6 @@ return|return
 name|V_12
 return|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -220,7 +194,6 @@ operator|+
 name|v
 argument_list|)
 throw|;
-block|}
 block|}
 specifier|public
 specifier|static
@@ -232,6 +205,12 @@ name|v
 parameter_list|)
 block|{
 return|return
+name|v
+operator|==
+name|V_13
+operator|.
+name|version
+operator|||
 name|v
 operator|==
 name|V_12
