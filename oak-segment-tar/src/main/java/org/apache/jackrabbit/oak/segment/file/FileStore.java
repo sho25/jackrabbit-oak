@@ -2133,6 +2133,11 @@ argument_list|,
 name|garbageCollector
 operator|.
 name|gcOptions
+argument_list|,
+name|revisions
+operator|.
+name|getHead
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|fileReaper
@@ -5813,6 +5818,12 @@ name|Nonnull
 specifier|final
 name|SegmentGCOptions
 name|gcOptions
+parameter_list|,
+annotation|@
+name|Nonnull
+specifier|final
+name|RecordId
+name|compactedRootId
 parameter_list|)
 block|{
 return|return
@@ -5855,6 +5866,16 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
+name|RecordId
+name|getCompactedRootId
+parameter_list|()
+block|{
+return|return
+name|compactedRootId
+return|;
+block|}
 block|}
 return|;
 block|}
@@ -5867,7 +5888,7 @@ argument_list|>
 name|reclaimer
 parameter_list|()
 function_decl|;
-comment|/**          * @return  {@code true} for {@link #succeeded(GCGeneration, SegmentGCOptions, RecordId) succeeded}          *          and {@link #skipped(GCGeneration, SegmentGCOptions) skipped}, {@code false} otherwise.          */
+comment|/**          * @return  {@code true} for {@link #succeeded(GCGeneration, SegmentGCOptions, RecordId) succeeded}          *          and {@link #skipped(GCGeneration, SegmentGCOptions, RecordId) skipped}, {@code false} otherwise.          */
 specifier|abstract
 name|boolean
 name|isSuccess

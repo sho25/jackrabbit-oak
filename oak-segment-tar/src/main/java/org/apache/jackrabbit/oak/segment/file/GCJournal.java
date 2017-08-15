@@ -320,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Persists the repository size and the reclaimed size following a cleanup  * operation in the {@link #GC_JOURNAL gc journal} file with the format:  * 'repoSize, reclaimedSize, timestamp, gcGen, nodes compacted'.  */
+comment|/**  * Persists the repository size and the reclaimed size following a cleanup  * operation in the {@link #GC_JOURNAL gc journal} file with the format:  * 'repoSize, reclaimedSize, timestamp, gc generation, gc full generation (since Oak 1.8),  * number of nodes compacted, root id'.  */
 end_comment
 
 begin_class
