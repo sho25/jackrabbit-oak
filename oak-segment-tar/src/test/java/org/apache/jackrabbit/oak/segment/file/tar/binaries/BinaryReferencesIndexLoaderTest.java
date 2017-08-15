@@ -673,9 +673,9 @@ name|Generation
 argument_list|(
 literal|1
 argument_list|,
-literal|0
+literal|1
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 decl_stmt|;
 name|Generation
@@ -686,9 +686,9 @@ name|Generation
 argument_list|(
 literal|2
 argument_list|,
-literal|0
+literal|2
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 decl_stmt|;
 name|UUID
