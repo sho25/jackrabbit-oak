@@ -486,9 +486,9 @@ literal|4
 argument_list|,
 literal|5
 argument_list|,
-literal|0
+literal|5
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|assertEntry
@@ -510,9 +510,9 @@ literal|9
 argument_list|,
 literal|10
 argument_list|,
-literal|0
+literal|10
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

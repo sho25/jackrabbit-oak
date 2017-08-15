@@ -756,7 +756,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+literal|5
 argument_list|,
 name|entry
 operator|.
@@ -766,7 +766,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|false
+literal|true
 argument_list|,
 name|entry
 operator|.

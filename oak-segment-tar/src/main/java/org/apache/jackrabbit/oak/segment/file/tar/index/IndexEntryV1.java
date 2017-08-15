@@ -174,7 +174,8 @@ name|getFullGeneration
 parameter_list|()
 block|{
 return|return
-literal|0
+name|getGeneration
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -185,7 +186,7 @@ name|isCompacted
 parameter_list|()
 block|{
 return|return
-literal|false
+literal|true
 return|;
 block|}
 block|}
