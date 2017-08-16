@@ -303,7 +303,7 @@ name|file
 operator|.
 name|tar
 operator|.
-name|IOMonitor
+name|IOMonitorAdapter
 import|;
 end_import
 
@@ -710,9 +710,9 @@ argument_list|)
 operator|.
 name|withIOMonitor
 argument_list|(
-name|IOMonitor
-operator|.
-name|NULL
+operator|new
+name|IOMonitorAdapter
+argument_list|()
 argument_list|)
 operator|.
 name|withReadOnly
