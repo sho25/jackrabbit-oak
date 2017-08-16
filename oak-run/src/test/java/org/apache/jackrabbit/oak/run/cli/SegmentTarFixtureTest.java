@@ -121,16 +121,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
 name|joptsimple
 operator|.
 name|OptionParser
@@ -502,12 +492,12 @@ name|getRoot
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|FileStoreBuilderCustomizer
+name|FileStoreTarBuilderCustomizer
 name|customizer
 init|=
 name|mock
 argument_list|(
-name|FileStoreBuilderCustomizer
+name|FileStoreTarBuilderCustomizer
 operator|.
 name|class
 argument_list|)
@@ -519,7 +509,7 @@ argument_list|()
 operator|.
 name|register
 argument_list|(
-name|FileStoreBuilderCustomizer
+name|FileStoreTarBuilderCustomizer
 operator|.
 name|class
 argument_list|,

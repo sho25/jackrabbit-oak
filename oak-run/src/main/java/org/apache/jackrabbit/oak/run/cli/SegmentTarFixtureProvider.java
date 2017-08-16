@@ -229,6 +229,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|emptyMap
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -342,14 +354,14 @@ argument_list|(
 literal|256
 argument_list|)
 decl_stmt|;
-name|FileStoreBuilderCustomizer
+name|FileStoreTarBuilderCustomizer
 name|customizer
 init|=
 name|getService
 argument_list|(
 name|wb
 argument_list|,
-name|FileStoreBuilderCustomizer
+name|FileStoreTarBuilderCustomizer
 operator|.
 name|class
 argument_list|)
@@ -424,6 +436,20 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
+name|wb
+operator|.
+name|register
+argument_list|(
+name|ReadOnlyFileStore
+operator|.
+name|class
+argument_list|,
+name|fileStore
+argument_list|,
+name|emptyMap
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -458,6 +484,20 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+expr_stmt|;
+name|wb
+operator|.
+name|register
+argument_list|(
+name|FileStore
+operator|.
+name|class
+argument_list|,
+name|fileStore
+argument_list|,
+name|emptyMap
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return
