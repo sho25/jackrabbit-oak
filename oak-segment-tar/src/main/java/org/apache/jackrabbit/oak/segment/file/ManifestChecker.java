@@ -56,9 +56,11 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|ManifestChecker
 block|{
+specifier|public
 specifier|static
 name|ManifestChecker
 name|newManifestChecker
@@ -203,6 +205,7 @@ name|manifest
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|void
 name|checkManifest
 parameter_list|()
