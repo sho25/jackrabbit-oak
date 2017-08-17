@@ -32,6 +32,14 @@ name|long
 name|getLimitReads
 parameter_list|()
 function_decl|;
+name|boolean
+name|getFullTextComparisonWithoutIndex
+parameter_list|()
+function_decl|;
+name|boolean
+name|getFailTraversal
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
