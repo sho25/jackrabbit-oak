@@ -187,11 +187,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|stats
-operator|.
-name|QueryStatsData
-operator|.
-name|QueryExecutionStats
+name|QueryEngineSettings
 import|;
 end_import
 
@@ -205,11 +201,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|query
 operator|.
-name|QueryEngineSettings
+name|stats
+operator|.
+name|QueryStatsData
+operator|.
+name|QueryExecutionStats
 import|;
 end_import
 

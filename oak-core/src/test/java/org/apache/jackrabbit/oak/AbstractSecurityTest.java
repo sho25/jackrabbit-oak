@@ -535,9 +535,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|security
+name|query
 operator|.
-name|SecurityProviderImpl
+name|QueryEngineSettings
 import|;
 end_import
 
@@ -551,11 +551,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|security
 operator|.
-name|query
-operator|.
-name|QueryEngineSettings
+name|SecurityProviderImpl
 import|;
 end_import
 

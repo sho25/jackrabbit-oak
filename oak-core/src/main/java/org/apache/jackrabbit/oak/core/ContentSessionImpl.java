@@ -139,8 +139,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|query
 operator|.
 name|QueryEngineSettings
