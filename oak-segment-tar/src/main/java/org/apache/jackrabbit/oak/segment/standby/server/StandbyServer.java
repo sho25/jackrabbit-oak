@@ -269,6 +269,20 @@ name|io
 operator|.
 name|netty
 operator|.
+name|handler
+operator|.
+name|stream
+operator|.
+name|ChunkedWriteHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|io
+operator|.
+name|netty
+operator|.
 name|util
 operator|.
 name|CharsetUtil
@@ -978,7 +992,7 @@ name|observer
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Encoders
+comment|// Snappy Encoder
 name|p
 operator|.
 name|addLast
@@ -988,6 +1002,17 @@ name|SnappyFramedEncoder
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Use chunking transparently
+name|p
+operator|.
+name|addLast
+argument_list|(
+operator|new
+name|ChunkedWriteHandler
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Other Encoders
 name|p
 operator|.
 name|addLast

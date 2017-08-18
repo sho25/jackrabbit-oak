@@ -111,6 +111,20 @@ end_import
 
 begin_import
 import|import
+name|io
+operator|.
+name|netty
+operator|.
+name|handler
+operator|.
+name|stream
+operator|.
+name|ChunkedWriteHandler
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -169,6 +183,10 @@ init|=
 operator|new
 name|EmbeddedChannel
 argument_list|(
+operator|new
+name|ChunkedWriteHandler
+argument_list|()
+argument_list|,
 operator|new
 name|GetBlobResponseEncoder
 argument_list|(
@@ -297,6 +315,10 @@ init|=
 operator|new
 name|EmbeddedChannel
 argument_list|(
+operator|new
+name|ChunkedWriteHandler
+argument_list|()
+argument_list|,
 operator|new
 name|GetBlobResponseEncoder
 argument_list|(
