@@ -421,16 +421,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -1074,11 +1064,6 @@ block|}
 comment|/*      * See OAK-5902.      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6538"
-argument_list|)
 specifier|public
 name|void
 name|testSyncBigBlob
@@ -1094,7 +1079,7 @@ call|(
 name|long
 call|)
 argument_list|(
-literal|2.5
+literal|1
 operator|*
 name|GB
 argument_list|)
@@ -1156,7 +1141,7 @@ argument_list|()
 argument_list|,
 name|primary
 argument_list|,
-literal|256
+literal|128
 operator|*
 name|MB
 argument_list|)
@@ -1173,7 +1158,7 @@ operator|.
 name|getPort
 argument_list|()
 argument_list|,
-literal|50_000
+literal|15_000
 argument_list|)
 init|)
 block|{
