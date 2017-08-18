@@ -39,6 +39,10 @@ name|String
 name|indexName
 decl_stmt|;
 specifier|public
+name|String
+name|indexTag
+decl_stmt|;
+specifier|public
 enum|enum
 name|Traversal
 block|{

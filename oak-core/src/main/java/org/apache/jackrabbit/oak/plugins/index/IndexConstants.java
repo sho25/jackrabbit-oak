@@ -152,6 +152,18 @@ name|CHECKPOINT_CREATION_TIME
 init|=
 literal|"indexingCheckpointTime"
 decl_stmt|;
+comment|/**      * The index tag hint (when using "option(index tagged x, y)", this is IN("x", "y"))      */
+name|String
+name|INDEX_TAG_OPTION
+init|=
+literal|":indexTag"
+decl_stmt|;
+comment|/**      * The tags property in the index definition.      */
+name|String
+name|INDEX_TAGS
+init|=
+literal|"tags"
+decl_stmt|;
 comment|/**      * The index name hint (when using "option(index abc)", this is "abc")      */
 name|String
 name|INDEX_NAME_OPTION
