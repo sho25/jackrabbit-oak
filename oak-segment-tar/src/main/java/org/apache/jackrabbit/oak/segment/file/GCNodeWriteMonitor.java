@@ -275,7 +275,7 @@ name|gcMonitor
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compacted {} nodes, {} properties, {} binaries in {} ms."
+literal|"TarMK GC #{}: compacted {} nodes, {} properties, {} binaries in {} ms. {}"
 argument_list|,
 name|gcCount
 argument_list|,
@@ -291,6 +291,9 @@ name|currentTimeMillis
 argument_list|()
 operator|-
 name|start
+argument_list|,
+name|getPercentageDone
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -346,6 +349,26 @@ parameter_list|()
 block|{
 return|return
 name|estimated
+return|;
+block|}
+annotation|@
+name|Nonnull
+specifier|private
+name|String
+name|getPercentageDone
+parameter_list|()
+block|{
+return|return
+name|estimated
+operator|>
+literal|0
+condition|?
+name|getEstimatedPercentage
+argument_list|()
+operator|+
+literal|"% complete."
+else|:
+literal|""
 return|;
 block|}
 comment|/**      * Estimated completion percentage. Can be {@code -1} if the estimation      * could not be performed.      */
