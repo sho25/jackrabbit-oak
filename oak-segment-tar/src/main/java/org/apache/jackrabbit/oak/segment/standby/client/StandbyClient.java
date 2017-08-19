@@ -207,7 +207,7 @@ name|codec
 operator|.
 name|compression
 operator|.
-name|SnappyFramedDecoder
+name|SnappyFrameDecoder
 import|;
 end_import
 
@@ -888,7 +888,7 @@ operator|.
 name|addLast
 argument_list|(
 operator|new
-name|SnappyFramedDecoder
+name|SnappyFrameDecoder
 argument_list|(
 literal|true
 argument_list|)

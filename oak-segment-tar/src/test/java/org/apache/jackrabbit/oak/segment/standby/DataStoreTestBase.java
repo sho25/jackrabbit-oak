@@ -1141,7 +1141,7 @@ argument_list|()
 argument_list|,
 name|primary
 argument_list|,
-literal|128
+literal|16
 operator|*
 name|MB
 argument_list|)
