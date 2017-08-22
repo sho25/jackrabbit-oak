@@ -119,6 +119,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|emptyList
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -3030,7 +3042,8 @@ name|put
 argument_list|(
 name|uuid
 argument_list|,
-literal|null
+name|emptyList
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

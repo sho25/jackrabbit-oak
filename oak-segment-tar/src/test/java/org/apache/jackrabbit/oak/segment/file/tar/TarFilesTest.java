@@ -53,6 +53,18 @@ name|util
 operator|.
 name|Collections
 operator|.
+name|emptyList
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
 name|emptySet
 import|;
 end_import
@@ -1450,8 +1462,11 @@ name|keySet
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertEquals
 argument_list|(
+name|emptyList
+argument_list|()
+argument_list|,
 name|graph
 operator|.
 name|get
