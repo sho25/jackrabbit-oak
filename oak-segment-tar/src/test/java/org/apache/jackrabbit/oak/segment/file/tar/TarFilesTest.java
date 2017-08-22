@@ -1386,12 +1386,9 @@ operator|.
 name|newWriter
 argument_list|()
 expr_stmt|;
-name|File
+name|String
 name|file
 init|=
-operator|new
-name|File
-argument_list|(
 name|tarFiles
 operator|.
 name|getIndices
@@ -1405,7 +1402,6 @@ argument_list|()
 operator|.
 name|next
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|Map
 argument_list|<
@@ -1423,9 +1419,6 @@ operator|.
 name|getGraph
 argument_list|(
 name|file
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Set

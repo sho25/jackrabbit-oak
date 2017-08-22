@@ -3145,7 +3145,7 @@ operator|.
 name|getFile
 argument_list|()
 operator|.
-name|getAbsolutePath
+name|getName
 argument_list|()
 argument_list|,
 name|reader
