@@ -1996,6 +1996,7 @@ init|=
 literal|"oak.lucene.planResult"
 decl_stmt|;
 comment|/**      * Batch size for fetching results from Lucene queries.      */
+specifier|public
 specifier|static
 specifier|final
 name|int
