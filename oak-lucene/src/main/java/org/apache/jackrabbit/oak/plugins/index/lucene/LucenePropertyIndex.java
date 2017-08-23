@@ -3996,7 +3996,6 @@ literal|"Change in index version detected. Query would be performed without offs
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO Add testcase for this scenario
 name|indexSearcher
 operator|=
 name|indexNode
