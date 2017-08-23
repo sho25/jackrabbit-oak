@@ -867,9 +867,9 @@ name|this
 operator|.
 name|srcExternalBlobs
 operator|=
-name|Boolean
+name|args
 operator|.
-name|valueOf
+name|getBooleanOption
 argument_list|(
 name|OptionParserFactory
 operator|.

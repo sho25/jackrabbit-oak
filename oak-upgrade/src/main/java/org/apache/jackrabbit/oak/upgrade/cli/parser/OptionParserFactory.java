@@ -581,6 +581,16 @@ name|SRC_EXTERNAL_BLOBS
 argument_list|,
 literal|"Flag specifying if the source Store has external references or not"
 argument_list|)
+operator|.
+name|withRequiredArg
+argument_list|()
+operator|.
+name|ofType
+argument_list|(
+name|Boolean
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
 block|}
 specifier|private
