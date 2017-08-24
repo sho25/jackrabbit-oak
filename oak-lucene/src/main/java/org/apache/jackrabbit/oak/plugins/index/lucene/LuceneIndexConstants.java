@@ -228,6 +228,12 @@ name|CODEC_NAME
 init|=
 literal|"codec"
 decl_stmt|;
+comment|/**      * Name of the merge policy to be used while indexing      */
+name|String
+name|MERGE_POLICY_NAME
+init|=
+literal|"mergePolicy"
+decl_stmt|;
 comment|/**      * Child node name under which property details are provided      */
 name|String
 name|PROP_NODE

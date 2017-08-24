@@ -928,6 +928,16 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+name|config
+operator|.
+name|setMergePolicy
+argument_list|(
+name|definition
+operator|.
+name|getMergePolicy
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|writer
 operator|=
 operator|new
@@ -964,7 +974,7 @@ return|return
 name|writer
 return|;
 block|}
-comment|/**      * eventually update suggest dictionary      * @throws IOException if suggest dictionary update fails      * @param analyzer the analyzer used to update the suggester      * @param blobStore      */
+comment|/**      * eventually update suggest dictionary      * @throws IOException if suggest dictionary update fails      * @param analyzer the analyzer used to update the suggester      */
 specifier|private
 name|boolean
 name|updateSuggester

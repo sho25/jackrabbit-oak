@@ -359,6 +359,7 @@ argument_list|,
 name|analyzer
 argument_list|)
 decl_stmt|;
+comment|//            config.setMergePolicy(definition.getMergePolicy());
 if|if
 condition|(
 name|remoteDir
