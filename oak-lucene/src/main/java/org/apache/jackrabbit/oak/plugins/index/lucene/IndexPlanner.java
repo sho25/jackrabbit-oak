@@ -77,6 +77,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|atomic
@@ -228,6 +238,26 @@ operator|.
 name|util
 operator|.
 name|FacetHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|property
+operator|.
+name|ValuePatternUtil
 import|;
 end_import
 
@@ -1275,6 +1305,92 @@ name|nullCheckEnabled
 condition|)
 block|{
 continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|pd
+operator|.
+name|valuePattern
+operator|.
+name|matchesAll
+argument_list|()
+condition|)
+block|{
+comment|//So we have a valuePattern defined. So determine if
+comment|//this index can return a plan based on values
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|values
+init|=
+name|ValuePatternUtil
+operator|.
+name|getAllValues
+argument_list|(
+name|pr
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|values
+operator|==
+literal|null
+condition|)
+block|{
+comment|// "is not null" condition, but we have a value pattern
+comment|// that doesn't match everything
+comment|// case of like search
+name|String
+name|prefix
+init|=
+name|ValuePatternUtil
+operator|.
+name|getLongestPrefix
+argument_list|(
+name|filter
+argument_list|,
+name|name
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|pd
+operator|.
+name|valuePattern
+operator|.
+name|matchesPrefix
+argument_list|(
+name|prefix
+argument_list|)
+condition|)
+block|{
+comment|// region match which is not fully in the pattern
+continue|continue;
+block|}
+block|}
+else|else
+block|{
+comment|// we have a value pattern, for example (a|b),
+comment|// but we search (also) for 'c': can't match
+if|if
+condition|(
+operator|!
+name|pd
+operator|.
+name|valuePattern
+operator|.
+name|matchesAll
+argument_list|(
+name|values
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
+block|}
 block|}
 comment|//A property definition with weight == 0 is only meant to be used
 comment|//with some other definitions
