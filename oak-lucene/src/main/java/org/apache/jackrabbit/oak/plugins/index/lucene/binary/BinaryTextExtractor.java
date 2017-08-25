@@ -724,6 +724,15 @@ operator|.
 name|JCR_MIMETYPE
 argument_list|)
 decl_stmt|;
+name|type
+operator|=
+name|definition
+operator|.
+name|getTikaMappedMimeType
+argument_list|(
+name|type
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|type
