@@ -148,6 +148,16 @@ specifier|public
 class|class
 name|ValuePattern
 block|{
+specifier|public
+specifier|final
+specifier|static
+name|ValuePattern
+name|MATCH_ALL
+init|=
+operator|new
+name|ValuePattern
+argument_list|()
+decl_stmt|;
 specifier|private
 specifier|final
 name|Pattern

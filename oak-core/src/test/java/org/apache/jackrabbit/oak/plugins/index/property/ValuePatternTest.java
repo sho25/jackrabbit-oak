@@ -25,6 +25,28 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|property
+operator|.
+name|ValuePatternUtil
+operator|.
+name|getLongestPrefix
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -1574,8 +1596,6 @@ name|assertEquals
 argument_list|(
 literal|"hello"
 argument_list|,
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -1636,8 +1656,6 @@ name|assertEquals
 argument_list|(
 literal|"hello w"
 argument_list|,
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -1698,8 +1716,6 @@ name|assertEquals
 argument_list|(
 literal|"hello w"
 argument_list|,
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -1796,8 +1812,6 @@ name|assertEquals
 argument_list|(
 literal|"hell"
 argument_list|,
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -1856,8 +1870,6 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -1934,8 +1946,6 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -1976,8 +1986,6 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -2018,8 +2026,6 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -2060,8 +2066,6 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -2097,8 +2101,6 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -2164,8 +2166,6 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
@@ -2231,8 +2231,6 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|PropertyIndexPlan
-operator|.
 name|getLongestPrefix
 argument_list|(
 name|filter
