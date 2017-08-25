@@ -202,6 +202,13 @@ argument_list|,
 name|args
 argument_list|)
 decl_stmt|;
+name|int
+name|code
+init|=
+literal|0
+decl_stmt|;
+try|try
+init|(
 name|NodeStoreFixture
 name|fixture
 init|=
@@ -211,7 +218,8 @@ name|create
 argument_list|(
 name|opts
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|List
 argument_list|<
 name|String
@@ -335,11 +343,6 @@ argument_list|,
 name|fixture
 argument_list|)
 decl_stmt|;
-name|int
-name|code
-init|=
-literal|0
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -381,6 +384,7 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|System
 operator|.
