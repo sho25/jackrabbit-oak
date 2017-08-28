@@ -1961,6 +1961,15 @@ name|hasModifiedIdCompoundIndex
 operator|=
 literal|false
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|builder
+operator|.
+name|getReadOnlyMode
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|warn
@@ -1972,6 +1981,7 @@ operator|+
 literal|"for the 'nodes' collection on {_modified:1, _id:1}."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// index on the _bin flag to faster access nodes with binaries for GC
 name|createIndex
@@ -2073,6 +2083,15 @@ name|MODIFIED_IN_SECS
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|builder
+operator|.
+name|getReadOnlyMode
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|warn
@@ -2090,6 +2109,7 @@ operator|+
 literal|"or higher."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// compound index on _sdType and _sdMaxRevTime
 if|if
@@ -2143,6 +2163,15 @@ name|SD_MAX_REV_TIME_IN_SECS
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|builder
+operator|.
+name|getReadOnlyMode
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|warn
@@ -2156,6 +2185,7 @@ operator|+
 literal|"{_sdType:1, _sdMaxRevTime:1}."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// index on _modified for journal entries
 name|createIndex
