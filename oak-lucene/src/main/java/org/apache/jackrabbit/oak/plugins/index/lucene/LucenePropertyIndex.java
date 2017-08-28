@@ -7211,6 +7211,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+name|String
+name|propertyName
+init|=
+name|pr
+operator|.
+name|propertyName
+decl_stmt|;
 switch|switch
 condition|(
 name|propType
@@ -7310,8 +7317,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -7345,8 +7350,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -7385,8 +7388,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -7429,8 +7430,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 literal|null
@@ -7497,8 +7496,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|dateVal
@@ -7537,8 +7534,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 literal|0L
@@ -7639,8 +7634,6 @@ name|NumericRangeQuery
 operator|.
 name|newDoubleRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -7674,8 +7667,6 @@ name|NumericRangeQuery
 operator|.
 name|newDoubleRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -7714,8 +7705,6 @@ name|NumericRangeQuery
 operator|.
 name|newDoubleRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -7758,8 +7747,6 @@ name|NumericRangeQuery
 operator|.
 name|newDoubleRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 literal|null
@@ -7821,8 +7808,6 @@ name|NumericRangeQuery
 operator|.
 name|newDoubleRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|doubleVal
@@ -7861,8 +7846,6 @@ name|NumericRangeQuery
 operator|.
 name|newDoubleRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|Double
@@ -7961,8 +7944,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -7996,8 +7977,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -8036,8 +8015,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -8080,8 +8057,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 literal|null
@@ -8141,8 +8116,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|longVal
@@ -8181,8 +8154,6 @@ name|NumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|Long
@@ -8213,8 +8184,6 @@ block|{
 return|return
 name|createLikeQuery
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|pr
@@ -8305,8 +8274,6 @@ argument_list|(
 operator|new
 name|Term
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -8335,8 +8302,6 @@ name|TermRangeQuery
 operator|.
 name|newStringRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -8375,8 +8340,6 @@ name|TermRangeQuery
 operator|.
 name|newStringRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|first
@@ -8419,8 +8382,6 @@ name|TermRangeQuery
 operator|.
 name|newStringRange
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 literal|null
@@ -8482,8 +8443,6 @@ argument_list|(
 operator|new
 name|Term
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 name|strVal
@@ -8515,8 +8474,6 @@ return|return
 operator|new
 name|TermRangeQuery
 argument_list|(
-name|pr
-operator|.
 name|propertyName
 argument_list|,
 literal|null
