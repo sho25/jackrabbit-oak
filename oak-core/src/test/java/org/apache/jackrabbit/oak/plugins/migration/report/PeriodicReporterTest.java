@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
 operator|.
-name|nodestate
+name|migration
 operator|.
 name|report
 package|;
@@ -95,9 +95,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
 operator|.
-name|nodestate
+name|migration
 operator|.
 name|report
 operator|.
@@ -117,9 +117,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
 operator|.
-name|nodestate
+name|migration
 operator|.
 name|report
 operator|.

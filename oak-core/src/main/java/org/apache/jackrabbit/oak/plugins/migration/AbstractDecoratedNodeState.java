@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
 operator|.
-name|nodestate
+name|migration
 package|;
 end_package
 
@@ -382,6 +382,15 @@ name|delegate
 operator|=
 name|delegate
 expr_stmt|;
+block|}
+specifier|public
+name|NodeState
+name|getDelegate
+parameter_list|()
+block|{
+return|return
+name|delegate
+return|;
 block|}
 specifier|protected
 name|boolean

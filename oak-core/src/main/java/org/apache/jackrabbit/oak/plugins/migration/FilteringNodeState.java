@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
 operator|.
-name|nodestate
+name|migration
 package|;
 end_package
 

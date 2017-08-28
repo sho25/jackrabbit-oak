@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
 operator|.
-name|nodestate
+name|migration
 operator|.
 name|report
 package|;
@@ -63,11 +63,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|state
+name|migration
 operator|.
-name|NodeState
+name|AbstractDecoratedNodeState
 import|;
 end_import
 
@@ -81,11 +81,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|spi
 operator|.
-name|nodestate
+name|state
 operator|.
-name|AbstractDecoratedNodeState
+name|NodeState
 import|;
 end_import
 
