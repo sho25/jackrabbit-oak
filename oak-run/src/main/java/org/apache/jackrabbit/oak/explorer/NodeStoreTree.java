@@ -2863,7 +2863,7 @@ name|Map
 argument_list|<
 name|UUID
 argument_list|,
-name|List
+name|Set
 argument_list|<
 name|UUID
 argument_list|>
@@ -2895,7 +2895,7 @@ name|Entry
 argument_list|<
 name|UUID
 argument_list|,
-name|List
+name|Set
 argument_list|<
 name|UUID
 argument_list|>
