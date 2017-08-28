@@ -295,7 +295,7 @@ name|Component
 argument_list|(
 name|name
 operator|=
-literal|"org.apache.jackrabbit.oak.plugins.index.lucene.mt.MTFulltextQueryTermsProviderFactory"
+literal|"org.apache.jackrabbit.oak.plugins.index.mt.MTFulltextQueryTermsProviderFactory"
 argument_list|,
 name|label
 operator|=
