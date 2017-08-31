@@ -206,7 +206,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|LuceneIndexQueryTestSQL2Optimisation
+name|LuceneIndexQueryTestSQL2OptimisationTest
 extends|extends
 name|LuceneIndexQueryTest
 block|{

@@ -58,7 +58,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|PropertyIndexQueryTestSQL2Optimisations
+name|PropertyIndexQueryTestSQL2OptimisationsTest
 extends|extends
 name|PropertyIndexQueryTest
 block|{

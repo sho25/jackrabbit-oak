@@ -58,7 +58,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|MultiPropertyOrTestOptimisation
+name|MultiPropertyOrTestOptimisationTest
 extends|extends
 name|MultiPropertyOrTest
 block|{

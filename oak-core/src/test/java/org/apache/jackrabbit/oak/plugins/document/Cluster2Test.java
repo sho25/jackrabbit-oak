@@ -86,7 +86,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|ClusterTest2
+name|Cluster2Test
 block|{
 annotation|@
 name|Test
