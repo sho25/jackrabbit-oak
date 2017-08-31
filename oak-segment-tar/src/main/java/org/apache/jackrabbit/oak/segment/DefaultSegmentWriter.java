@@ -5778,6 +5778,33 @@ operator|.
 name|getGCGeneration
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|thatGen
+operator|.
+name|isCompacted
+argument_list|()
+condition|)
+block|{
+comment|// If the segment containing the base state is compacted it is
+comment|// only considered old if it is from a earlier full generation.
+comment|// Otherwise it is from the same tail and it is safe to reference.
+return|return
+name|thatGen
+operator|.
+name|getFullGeneration
+argument_list|()
+operator|<
+name|thisGen
+operator|.
+name|getFullGeneration
+argument_list|()
+return|;
+block|}
+else|else
+block|{
+comment|// If the segment containing the base state is from a regular writer
+comment|// it is considered old as soon as it is from an earlier generation.
 return|return
 name|thatGen
 operator|.
@@ -5788,6 +5815,7 @@ argument_list|)
 operator|<
 literal|0
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
