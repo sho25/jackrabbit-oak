@@ -908,7 +908,7 @@ block|}
 block|}
 name|values
 operator|=
-name|PropertyIndex
+name|PropertyIndexUtil
 operator|.
 name|encode
 argument_list|(

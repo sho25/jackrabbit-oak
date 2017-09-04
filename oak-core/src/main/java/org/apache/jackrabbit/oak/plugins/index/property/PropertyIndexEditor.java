@@ -241,7 +241,7 @@ name|index
 operator|.
 name|property
 operator|.
-name|PropertyIndex
+name|PropertyIndexUtil
 operator|.
 name|encode
 import|;
