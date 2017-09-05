@@ -294,7 +294,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|""
+literal|"<default>"
 return|;
 block|}
 annotation|@
