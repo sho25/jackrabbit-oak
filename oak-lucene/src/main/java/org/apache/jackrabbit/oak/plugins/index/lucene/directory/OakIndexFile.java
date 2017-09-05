@@ -18,6 +18,8 @@ operator|.
 name|index
 operator|.
 name|lucene
+operator|.
+name|directory
 package|;
 end_package
 
@@ -768,17 +770,6 @@ operator|!=
 name|i
 condition|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Load {}th blob from {}"
-argument_list|,
-name|i
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
 name|flushBlob
 argument_list|()
 expr_stmt|;
@@ -860,17 +851,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Flushing blob {}. Modified: {}"
-argument_list|,
-name|name
-argument_list|,
-name|blobModified
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|blobModified
@@ -1071,17 +1051,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Seek to {} in {}"
-argument_list|,
-name|pos
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
 comment|// seek() may be called with pos == length
 comment|// see https://issues.apache.org/jira/browse/LUCENE-1196
 if|if
@@ -1163,17 +1132,6 @@ name|b
 argument_list|)
 operator|.
 name|length
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"read {} bytes from {}"
-argument_list|,
-name|len
-argument_list|,
-name|name
 argument_list|)
 expr_stmt|;
 if|if
@@ -1325,19 +1283,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Write {} bytes at {} in {}"
-argument_list|,
-name|len
-argument_list|,
-name|offset
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
 name|int
 name|i
 init|=

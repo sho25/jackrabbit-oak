@@ -18,6 +18,8 @@ operator|.
 name|index
 operator|.
 name|lucene
+operator|.
+name|directory
 package|;
 end_package
 
@@ -142,6 +144,26 @@ operator|.
 name|benchmark
 operator|.
 name|PerfLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|IndexDefinition
 import|;
 end_import
 
@@ -563,6 +585,7 @@ literal|".perf"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|String

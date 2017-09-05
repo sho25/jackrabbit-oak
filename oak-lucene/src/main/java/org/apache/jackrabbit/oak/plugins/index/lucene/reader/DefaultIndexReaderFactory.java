@@ -153,6 +153,8 @@ name|index
 operator|.
 name|lucene
 operator|.
+name|directory
+operator|.
 name|OakDirectory
 import|;
 end_import

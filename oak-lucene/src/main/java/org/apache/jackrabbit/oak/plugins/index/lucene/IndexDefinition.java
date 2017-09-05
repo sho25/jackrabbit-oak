@@ -1239,6 +1239,7 @@ name|boolean
 name|disableStoredIndexDefinition
 decl_stmt|;
 comment|/**      * Blob size to use by default. To avoid issues in OAK-2105 the size should not      * be power of 2.      */
+specifier|public
 specifier|static
 specifier|final
 name|int
