@@ -36,6 +36,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|mount
+operator|.
+name|Mounts
+operator|.
+name|defaultMountInfoProvider
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -444,6 +464,9 @@ init|=
 operator|new
 name|NodeStoreChecksService
 argument_list|(
+name|defaultMountInfoProvider
+argument_list|()
+argument_list|,
 name|Arrays
 operator|.
 name|asList
@@ -485,6 +508,9 @@ init|=
 operator|new
 name|NodeStoreChecksService
 argument_list|(
+name|defaultMountInfoProvider
+argument_list|()
+argument_list|,
 name|Arrays
 operator|.
 name|asList
@@ -554,6 +580,9 @@ name|createContext
 parameter_list|(
 name|NodeStore
 name|globalStore
+parameter_list|,
+name|MountInfoProvider
+name|mip
 parameter_list|)
 block|{
 return|return
@@ -563,7 +592,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|check
 parameter_list|(
 name|MountedNodeStore
@@ -605,6 +634,9 @@ argument_list|,
 literal|"test failure"
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 block|}

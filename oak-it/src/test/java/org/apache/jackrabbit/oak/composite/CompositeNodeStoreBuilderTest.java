@@ -721,6 +721,8 @@ argument_list|(
 operator|new
 name|NodeStoreChecksService
 argument_list|(
+name|mip
+argument_list|,
 name|Collections
 operator|.
 name|singletonList
