@@ -967,7 +967,7 @@ name|LuceneIndexConstants
 operator|.
 name|BLOB_SIZE
 argument_list|,
-name|OakDirectory
+name|OakIndexFile
 operator|.
 name|DEFAULT_BLOB_SIZE
 argument_list|)
@@ -992,7 +992,7 @@ name|assertWrites
 argument_list|(
 name|dir
 argument_list|,
-name|OakDirectory
+name|OakIndexFile
 operator|.
 name|DEFAULT_BLOB_SIZE
 argument_list|)
@@ -3248,14 +3248,10 @@ argument_list|,
 literal|"/foo"
 argument_list|)
 decl_stmt|;
-name|OakDirectory
-operator|.
 name|BlobFactory
 name|factory
 init|=
 operator|new
-name|OakDirectory
-operator|.
 name|BlobFactory
 argument_list|()
 block|{
@@ -3482,14 +3478,10 @@ argument_list|,
 literal|"/foo"
 argument_list|)
 decl_stmt|;
-name|OakDirectory
-operator|.
 name|BlobFactory
 name|factory
 init|=
 operator|new
-name|OakDirectory
-operator|.
 name|BlobFactory
 argument_list|()
 block|{
