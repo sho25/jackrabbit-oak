@@ -480,7 +480,7 @@ name|indexPath
 parameter_list|,
 annotation|@
 name|Nonnull
-name|NodeState
+name|NodeBuilder
 name|definition
 parameter_list|,
 annotation|@
@@ -512,14 +512,6 @@ return|return
 literal|null
 return|;
 block|}
-name|NodeBuilder
-name|builder
-init|=
-name|definition
-operator|.
-name|builder
-argument_list|()
-decl_stmt|;
 name|IndexDefinition
 name|idxDefinition
 init|=
@@ -530,6 +522,9 @@ argument_list|(
 name|root
 argument_list|,
 name|definition
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|,
 name|indexPath
 argument_list|)
@@ -549,7 +544,7 @@ name|newInstance
 argument_list|(
 name|idxDefinition
 argument_list|,
-name|builder
+name|definition
 argument_list|,
 literal|true
 argument_list|)
@@ -575,7 +570,7 @@ name|idxDefinition
 argument_list|,
 name|indexWriter
 argument_list|,
-name|builder
+name|definition
 argument_list|,
 name|textExtractor
 argument_list|,
