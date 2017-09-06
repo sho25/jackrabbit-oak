@@ -627,6 +627,7 @@ argument_list|(
 literal|"The target is already initialized, no need to copy the seed mount"
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 name|LOG
 operator|.
