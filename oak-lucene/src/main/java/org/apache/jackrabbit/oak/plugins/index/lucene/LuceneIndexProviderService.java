@@ -3023,7 +3023,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
 name|ExecutorService
 name|getExecutorService
 parameter_list|()
@@ -3056,7 +3055,7 @@ init|=
 operator|new
 name|ThreadPoolExecutor
 argument_list|(
-literal|0
+literal|5
 argument_list|,
 literal|5
 argument_list|,
