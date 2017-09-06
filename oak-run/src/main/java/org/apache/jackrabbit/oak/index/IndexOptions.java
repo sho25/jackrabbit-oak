@@ -304,6 +304,14 @@ specifier|private
 specifier|final
 name|OptionSpec
 argument_list|<
+name|Void
+argument_list|>
+name|docTraversal
+decl_stmt|;
+specifier|private
+specifier|final
+name|OptionSpec
+argument_list|<
 name|Integer
 argument_list|>
 name|consistencyCheck
@@ -591,6 +599,19 @@ argument_list|(
 literal|"index-import"
 argument_list|,
 literal|"Imports index"
+argument_list|)
+expr_stmt|;
+name|docTraversal
+operator|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"doc-traversal-mode"
+argument_list|,
+literal|"Use Document traversal mode for reindex in "
+operator|+
+literal|"DocumentNodeStore setups. This may provide better performance in some cases (experimental)"
 argument_list|)
 expr_stmt|;
 name|indexImportDir
@@ -906,6 +927,20 @@ operator|.
 name|has
 argument_list|(
 name|importIndex
+argument_list|)
+return|;
+block|}
+specifier|public
+name|boolean
+name|isDocTraversalMode
+parameter_list|()
+block|{
+return|return
+name|options
+operator|.
+name|has
+argument_list|(
+name|docTraversal
 argument_list|)
 return|;
 block|}
