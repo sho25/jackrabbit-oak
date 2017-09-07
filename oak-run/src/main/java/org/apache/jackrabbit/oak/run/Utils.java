@@ -295,11 +295,9 @@ name|blob
 operator|.
 name|cloud
 operator|.
-name|aws
-operator|.
 name|s3
 operator|.
-name|SharedS3DataStore
+name|S3DataStore
 import|;
 end_import
 
@@ -1566,11 +1564,11 @@ name|s3dsConfig
 argument_list|)
 condition|)
 block|{
-name|SharedS3DataStore
+name|S3DataStore
 name|s3ds
 init|=
 operator|new
-name|SharedS3DataStore
+name|S3DataStore
 argument_list|()
 decl_stmt|;
 name|String

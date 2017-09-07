@@ -277,11 +277,11 @@ name|blob
 operator|.
 name|cloud
 operator|.
-name|aws
+name|azure
 operator|.
-name|s3
+name|blobstorage
 operator|.
-name|SharedS3DataStore
+name|AzureDataStore
 import|;
 end_import
 
@@ -299,11 +299,9 @@ name|blob
 operator|.
 name|cloud
 operator|.
-name|azure
+name|s3
 operator|.
-name|blobstorage
-operator|.
-name|AzureDataStore
+name|S3DataStore
 import|;
 end_import
 
@@ -485,11 +483,11 @@ operator|.
 name|S3
 condition|)
 block|{
-name|SharedS3DataStore
+name|S3DataStore
 name|s3ds
 init|=
 operator|new
-name|SharedS3DataStore
+name|S3DataStore
 argument_list|()
 decl_stmt|;
 name|Properties
