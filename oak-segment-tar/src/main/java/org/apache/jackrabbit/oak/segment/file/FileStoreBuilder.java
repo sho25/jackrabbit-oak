@@ -781,6 +781,10 @@ argument_list|()
 decl_stmt|;
 specifier|private
 name|boolean
+name|strictVersionCheck
+decl_stmt|;
+specifier|private
+name|boolean
 name|built
 decl_stmt|;
 comment|/**      * Create a new instance of a {@code FileStoreBuilder} for a file store.      * @param directory  directory where the tar files are stored      * @return a new {@code FileStoreBuilder} instance.      */
@@ -1177,6 +1181,27 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Enable strict version checking. With strict version checking enabled Oak      * will fail to start if the store version does not exactly match this Oak version.      * This is useful to e.g. avoid inadvertent upgrades during when running offline      * compaction accidentally against an older version of a store.      * @param strictVersionCheck  enables strict version checking iff {@code true}.      * @return this instance      */
+annotation|@
+name|Nonnull
+specifier|public
+name|FileStoreBuilder
+name|withStrictVersionCheck
+parameter_list|(
+name|boolean
+name|strictVersionCheck
+parameter_list|)
+block|{
+name|this
+operator|.
+name|strictVersionCheck
+operator|=
+name|strictVersionCheck
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 comment|/**      * Create a new {@link FileStore} instance with the settings specified in this      * builder. If none of the {@code with} methods have been called before calling      * this method, a file store with the following default settings is returned:      *<ul>      *<li>blob store: inline</li>      *<li>max file size: 256MB</li>      *<li>cache size: 256MB</li>      *<li>memory mapping: on for 64 bit JVMs off otherwise</li>      *<li>whiteboard: none. No {@link GCMonitor} tracking</li>      *<li>statsProvider: {@link StatisticsProvider#NOOP}</li>      *<li>GC options: {@link SegmentGCOptions#defaultGCOptions()}</li>      *</ul>      *      * @return a new file store instance      * @throws IOException      */
 annotation|@
 name|Nonnull
@@ -1544,6 +1569,14 @@ parameter_list|()
 block|{
 return|return
 name|ioMonitor
+return|;
+block|}
+name|boolean
+name|getStrictVersionCheck
+parameter_list|()
+block|{
+return|return
+name|strictVersionCheck
 return|;
 block|}
 annotation|@

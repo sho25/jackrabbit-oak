@@ -93,6 +93,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Stopwatch
+import|;
+end_import
+
+begin_import
+import|import
 name|joptsimple
 operator|.
 name|OptionParser
@@ -142,20 +156,6 @@ operator|.
 name|commons
 operator|.
 name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Stopwatch
 import|;
 end_import
 
@@ -240,6 +240,35 @@ operator|+
 literal|"If not specified memory mapped access is used on 64 bit systems "
 operator|+
 literal|"and file access is used on 32 bit systems."
+argument_list|)
+operator|.
+name|withOptionalArg
+argument_list|()
+operator|.
+name|ofType
+argument_list|(
+name|Boolean
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+name|OptionSpec
+argument_list|<
+name|Boolean
+argument_list|>
+name|forceArg
+init|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"force"
+argument_list|,
+literal|"Force compaction and ignore a non matching segment store version. "
+operator|+
+literal|"CAUTION: this will upgrade the segment store to the latest version, "
+operator|+
+literal|"which is incompatible with older versions of Oak."
 argument_list|)
 operator|.
 name|withOptionalArg
@@ -412,6 +441,19 @@ literal|"With file access"
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|force
+init|=
+name|isTrue
+argument_list|(
+name|forceArg
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|System
 operator|.
 name|out
@@ -481,6 +523,8 @@ argument_list|(
 name|directory
 argument_list|,
 name|mmap
+argument_list|,
+name|force
 argument_list|)
 expr_stmt|;
 name|success
@@ -674,6 +718,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|private
+specifier|static
+name|boolean
+name|isTrue
+parameter_list|(
+name|Boolean
+name|value
+parameter_list|)
+block|{
+return|return
+name|value
+operator|!=
+literal|null
+operator|&&
+name|value
+return|;
 block|}
 specifier|private
 specifier|static

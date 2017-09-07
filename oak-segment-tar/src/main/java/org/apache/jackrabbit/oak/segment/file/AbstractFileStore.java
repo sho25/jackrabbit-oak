@@ -640,6 +640,9 @@ name|newManifestChecker
 parameter_list|(
 name|File
 name|directory
+parameter_list|,
+name|boolean
+name|strictVersionCheck
 parameter_list|)
 block|{
 return|return
@@ -660,6 +663,10 @@ argument_list|(
 name|directory
 argument_list|)
 argument_list|,
+name|strictVersionCheck
+condition|?
+name|MAX_STORE_VERSION
+else|:
 name|MIN_STORE_VERSION
 argument_list|,
 name|MAX_STORE_VERSION

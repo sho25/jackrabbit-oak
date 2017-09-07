@@ -1451,6 +1451,11 @@ expr_stmt|;
 name|newManifestChecker
 argument_list|(
 name|directory
+argument_list|,
+name|builder
+operator|.
+name|getStrictVersionCheck
+argument_list|()
 argument_list|)
 operator|.
 name|checkAndUpdateManifest

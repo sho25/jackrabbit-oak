@@ -252,6 +252,10 @@ name|Boolean
 name|mmap
 decl_stmt|;
 specifier|private
+name|boolean
+name|force
+decl_stmt|;
+specifier|private
 name|Builder
 parameter_list|()
 block|{
@@ -300,6 +304,25 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Whether to fail if run on an older version of the store of force upgrading its format.          * @param force   upgrade iff {@code true}          * @return this builder.          */
+specifier|public
+name|Builder
+name|withForce
+parameter_list|(
+name|boolean
+name|force
+parameter_list|)
+block|{
+name|this
+operator|.
+name|force
+operator|=
+name|force
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 comment|/**          * Create an executable version of the {@link Compact} command.          *          * @return an instance of {@link Runnable}.          */
 specifier|public
 name|Runnable
@@ -333,6 +356,11 @@ name|Boolean
 name|mmap
 decl_stmt|;
 specifier|private
+specifier|final
+name|boolean
+name|strictVersionCheck
+decl_stmt|;
+specifier|private
 name|Compact
 parameter_list|(
 name|Builder
@@ -354,6 +382,15 @@ operator|=
 name|builder
 operator|.
 name|mmap
+expr_stmt|;
+name|this
+operator|.
+name|strictVersionCheck
+operator|=
+operator|!
+name|builder
+operator|.
+name|force
 expr_stmt|;
 block|}
 annotation|@
@@ -552,6 +589,11 @@ name|path
 operator|.
 name|getAbsoluteFile
 argument_list|()
+argument_list|)
+operator|.
+name|withStrictVersionCheck
+argument_list|(
+name|strictVersionCheck
 argument_list|)
 operator|.
 name|withGCOptions

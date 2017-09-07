@@ -1140,6 +1140,9 @@ annotation|@
 name|Nullable
 name|Boolean
 name|mmap
+parameter_list|,
+name|boolean
+name|force
 parameter_list|)
 block|{
 name|Compact
@@ -1155,6 +1158,11 @@ operator|.
 name|withMmap
 argument_list|(
 name|mmap
+argument_list|)
+operator|.
+name|withForce
+argument_list|(
+name|force
 argument_list|)
 operator|.
 name|build
