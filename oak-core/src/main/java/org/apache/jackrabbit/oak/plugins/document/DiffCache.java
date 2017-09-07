@@ -101,28 +101,6 @@ name|JsopTokenizer
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|util
-operator|.
-name|Utils
-operator|.
-name|unshareString
-import|;
-end_import
-
 begin_comment
 comment|/**  * A cache for child node diffs.  */
 end_comment
@@ -273,13 +251,10 @@ block|{
 name|String
 name|name
 init|=
-name|unshareString
-argument_list|(
 name|t
 operator|.
 name|readString
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|t
 operator|.
@@ -325,13 +300,10 @@ block|{
 name|String
 name|name
 init|=
-name|unshareString
-argument_list|(
 name|t
 operator|.
 name|readString
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|continueComparison
 operator|=
@@ -351,13 +323,10 @@ block|{
 name|String
 name|name
 init|=
-name|unshareString
-argument_list|(
 name|t
 operator|.
 name|readString
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|t
 operator|.

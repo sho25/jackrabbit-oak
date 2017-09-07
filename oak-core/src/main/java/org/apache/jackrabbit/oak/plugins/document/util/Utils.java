@@ -635,24 +635,6 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * Make sure the name string does not contain unnecessary baggage (shared      * strings).      *<p>      * This is only needed for older versions of Java (before Java 7 update 6).      * See also      * http://mail.openjdk.java.net/pipermail/core-libs-dev/2012-May/010257.html      *      * @param x the string      * @return the new string      */
-specifier|public
-specifier|static
-name|String
-name|unshareString
-parameter_list|(
-name|String
-name|x
-parameter_list|)
-block|{
-return|return
-operator|new
-name|String
-argument_list|(
-name|x
-argument_list|)
-return|;
-block|}
 specifier|public
 specifier|static
 name|int
