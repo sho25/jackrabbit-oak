@@ -1572,6 +1572,8 @@ literal|true
 argument_list|)
 condition|)
 block|{
+try|try
+block|{
 comment|//Decrement on each release
 name|decrementSearcherUsageCount
 argument_list|(
@@ -1580,6 +1582,9 @@ operator|.
 name|searcher
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|IndexNodeManager
 operator|.
 name|this
@@ -1587,6 +1592,7 @@ operator|.
 name|release
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
