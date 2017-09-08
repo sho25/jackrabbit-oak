@@ -283,7 +283,15 @@ name|this
 operator|.
 name|path
 operator|=
+name|ctx
+operator|.
+name|getPathCache
+argument_list|()
+operator|.
+name|get
+argument_list|(
 name|path
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
