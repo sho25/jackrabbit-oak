@@ -458,7 +458,7 @@ operator|=
 name|mergePaths
 expr_stmt|;
 block|}
-comment|/**      * Create a NodeStateCopier.Builder.      *      * @return a NodeStateCopier.Builder      * @see org.apache.jackrabbit.oak.upgrade.nodestate.NodeStateCopier.Builder      */
+comment|/**      * Create a NodeStateCopier.Builder.      *      * @return a NodeStateCopier.Builder      * @see NodeStateCopier.Builder      */
 specifier|public
 specifier|static
 name|Builder
@@ -471,7 +471,7 @@ name|Builder
 argument_list|()
 return|;
 block|}
-comment|/**      * Shorthand method to copy one NodeStore to another. The changes in the      * target NodeStore are automatically persisted.      *      * @param source NodeStore to copy from.      * @param target NodeStore to copy to.      * @return true if the target has been modified      * @throws CommitFailedException if the operation fails      * @see org.apache.jackrabbit.oak.upgrade.nodestate.NodeStateCopier.Builder#copy(NodeStore, NodeStore)      */
+comment|/**      * Shorthand method to copy one NodeStore to another. The changes in the      * target NodeStore are automatically persisted.      *      * @param source NodeStore to copy from.      * @param target NodeStore to copy to.      * @return true if the target has been modified      * @throws CommitFailedException if the operation fails      * @see NodeStateCopier.Builder#copy(NodeStore, NodeStore)      */
 specifier|public
 specifier|static
 name|boolean
