@@ -1724,6 +1724,24 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// OAK-6639 : the above addEventListener registers an Observer with the NodeStore
+comment|// that (an Observable in general) in turn as the very first activity does a contentChanged call (with
+comment|// CommitInfo.EMPTY_EXTERNAL) to 'initialize' the Observer
+comment|// (see eg https://github.com/apache/jackrabbit-oak/blob/2634dbde9aedc2549f0512285e9abee5858b256f/oak-store-spi/src/main/java/org/apache/jackrabbit/oak/spi/commit/ChangeDispatcher.java#L66)
+comment|// normally that initial call should be processed very quickly by the
+comment|// BackgroundObserver, but it seems like there are some cases where
+comment|// this (main) thread gets priority and is able to do the 6 session.save
+comment|// calls before the BackgroundObserver is able to dequeue the 'init-token'.
+comment|// in *that* case the queue overfills unexpectedly.
+comment|// To avoid this, give the BackgroundObserver 2sec here to process the
+comment|// init-token, so that the test can actually start with an empty BackgroundObserver queue
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 name|int
 name|propCounter
 init|=
