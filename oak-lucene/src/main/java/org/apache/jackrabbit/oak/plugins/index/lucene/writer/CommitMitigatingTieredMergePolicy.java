@@ -180,7 +180,7 @@ name|CommitMitigatingTieredMergePolicy
 extends|extends
 name|MergePolicy
 block|{
-comment|/** Default noCFSRatio.  If a merge's size is>= 10% of      *  the index, then we disable compound file for it.      *  @see MergePolicy#setNoCFSRatio */
+comment|/** Default noCFSRatio.  If a merge's size is&gt;= 10% of      *  the index, then we disable compound file for it.      *  @see MergePolicy#setNoCFSRatio */
 specifier|public
 specifier|static
 specifier|final
@@ -657,7 +657,7 @@ return|return
 name|forceMergeDeletesPctAllowed
 return|;
 block|}
-comment|/** Sets the allowed number of segments per tier.  Smaller      *  values mean more merging but fewer segments.      *      *<p><b>NOTE</b>: this value should be>= the {@link      *  #setMaxMergeAtOnce} otherwise you'll force too much      *  merging to occur.</p>      *      *<p>Default is 10.0.</p> */
+comment|/** Sets the allowed number of segments per tier.  Smaller      *  values mean more merging but fewer segments.      *      *<p><b>NOTE</b>: this value should be&gt;= the {@link      *  #setMaxMergeAtOnce} otherwise you'll force too much      *  merging to occur.</p>      *      *<p>Default is 10.0.</p> */
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setSegmentsPerTier
