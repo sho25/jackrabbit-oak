@@ -57,6 +57,20 @@ name|getenv
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|StandardSystemProperty
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility class for ITs to determine the environment running in.  */
 end_comment
@@ -224,6 +238,30 @@ block|}
 block|}
 return|return
 literal|false
+return|;
+block|}
+comment|/**      * @return  {@code true} iff running in a Windows environment      */
+specifier|public
+specifier|static
+name|boolean
+name|windows
+parameter_list|()
+block|{
+return|return
+name|StandardSystemProperty
+operator|.
+name|OS_NAME
+operator|.
+name|value
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"windows"
+argument_list|)
 return|;
 block|}
 block|}
