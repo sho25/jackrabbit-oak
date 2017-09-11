@@ -122,6 +122,22 @@ name|CONFIGURATION_DIRECTORY
 init|=
 literal|""
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|SOCKET_TIMEOUT
+init|=
+literal|3000
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|CONNECTION_TIMEOUT
+init|=
+literal|3000
+decl_stmt|;
 block|}
 end_class
 
