@@ -1765,8 +1765,11 @@ specifier|final
 name|int
 name|PROP_DELETED_BLOB_COLLECTION_DEFAULT_INTERVAL
 init|=
-operator|-
-literal|1
+literal|12
+operator|*
+literal|60
+operator|*
+literal|60
 decl_stmt|;
 annotation|@
 name|Property
