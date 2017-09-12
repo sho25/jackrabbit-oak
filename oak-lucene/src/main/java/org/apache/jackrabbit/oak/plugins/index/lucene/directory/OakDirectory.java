@@ -1304,9 +1304,10 @@ expr_stmt|;
 name|NodeBuilder
 name|file
 decl_stmt|;
+comment|// OAK-6562: Learn from FSDirectory and delete existing file
+comment|// on creating output
 if|if
 condition|(
-operator|!
 name|directoryBuilder
 operator|.
 name|hasChildNode
@@ -1315,6 +1316,17 @@ name|name
 argument_list|)
 condition|)
 block|{
+name|directoryBuilder
+operator|.
+name|getChildNode
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
 name|file
 operator|=
 name|directoryBuilder
@@ -1372,19 +1384,6 @@ name|getBlobSize
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|file
-operator|=
-name|directoryBuilder
-operator|.
-name|child
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-block|}
 name|fileNames
 operator|.
 name|add
