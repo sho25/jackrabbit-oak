@@ -2627,6 +2627,8 @@ init|=
 name|newHashSet
 argument_list|(
 literal|"disabled"
+argument_list|,
+literal|"ordered"
 argument_list|)
 decl_stmt|;
 specifier|public

@@ -84,7 +84,7 @@ name|DEPRECATION_MESSAGE
 init|=
 literal|"Ordered Index has been deprecated since Oak 1.1.8. "
 operator|+
-literal|"Please replace the index definitions with Lucene Property index "
+literal|"Please replace the index definition ({}) with Lucene Property index "
 operator|+
 literal|"and remove the index providers from the repository. "
 operator|+
