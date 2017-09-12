@@ -111,6 +111,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nullable
 import|;
 end_import
@@ -375,6 +385,8 @@ parameter_list|(
 name|String
 name|indexName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Consumer
 argument_list|<
 name|NodeBuilder
