@@ -237,6 +237,8 @@ name|Messages
 operator|.
 name|HEADER_BLOB
 argument_list|,
+literal|3L
+argument_list|,
 name|blobId
 argument_list|,
 name|blobData
@@ -379,6 +381,8 @@ name|Messages
 operator|.
 name|HEADER_BLOB
 argument_list|,
+literal|4L
+argument_list|,
 name|blobId
 argument_list|,
 name|firstChunkData
@@ -422,6 +426,8 @@ argument_list|(
 name|Messages
 operator|.
 name|HEADER_BLOB
+argument_list|,
+literal|4L
 argument_list|,
 name|blobId
 argument_list|,

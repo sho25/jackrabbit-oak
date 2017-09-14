@@ -393,6 +393,8 @@ name|Messages
 operator|.
 name|HEADER_BLOB
 argument_list|,
+literal|3L
+argument_list|,
 name|blobId
 argument_list|,
 name|blobData
@@ -558,6 +560,8 @@ name|Messages
 operator|.
 name|HEADER_BLOB
 argument_list|,
+literal|4L
+argument_list|,
 name|blobId
 argument_list|,
 name|firstChunkData
@@ -583,6 +587,8 @@ argument_list|(
 name|Messages
 operator|.
 name|HEADER_BLOB
+argument_list|,
+literal|4L
 argument_list|,
 name|blobId
 argument_list|,
@@ -739,6 +745,8 @@ literal|1
 operator|+
 literal|1
 operator|+
+literal|8
+operator|+
 literal|4
 operator|+
 name|blobIdBytes
@@ -770,6 +778,13 @@ argument_list|)
 expr_stmt|;
 name|buf
 operator|.
+name|writeLong
+argument_list|(
+literal|3L
+argument_list|)
+expr_stmt|;
+name|buf
+operator|.
 name|writeInt
 argument_list|(
 name|blobIdBytes
@@ -791,6 +806,8 @@ argument_list|(
 name|hash
 argument_list|(
 name|mask
+argument_list|,
+literal|3L
 argument_list|,
 name|blobData
 argument_list|)

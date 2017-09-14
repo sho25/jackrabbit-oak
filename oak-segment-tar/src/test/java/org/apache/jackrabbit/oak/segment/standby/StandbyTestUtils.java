@@ -383,6 +383,9 @@ parameter_list|(
 name|byte
 name|mask
 parameter_list|,
+name|long
+name|blobLength
+parameter_list|,
 name|byte
 index|[]
 name|data
@@ -400,6 +403,11 @@ operator|.
 name|putByte
 argument_list|(
 name|mask
+argument_list|)
+operator|.
+name|putLong
+argument_list|(
+name|blobLength
 argument_list|)
 operator|.
 name|putBytes
@@ -489,6 +497,9 @@ parameter_list|(
 name|byte
 name|header
 parameter_list|,
+name|long
+name|blobLength
+parameter_list|,
 name|String
 name|blobId
 parameter_list|,
@@ -529,6 +540,8 @@ literal|1
 operator|+
 literal|1
 operator|+
+literal|8
+operator|+
 literal|4
 operator|+
 name|blobIdBytes
@@ -558,6 +571,13 @@ argument_list|)
 expr_stmt|;
 name|buf
 operator|.
+name|writeLong
+argument_list|(
+name|blobLength
+argument_list|)
+expr_stmt|;
+name|buf
+operator|.
 name|writeInt
 argument_list|(
 name|blobIdBytes
@@ -579,6 +599,8 @@ argument_list|(
 name|hash
 argument_list|(
 name|mask
+argument_list|,
+name|blobLength
 argument_list|,
 name|data
 argument_list|)
