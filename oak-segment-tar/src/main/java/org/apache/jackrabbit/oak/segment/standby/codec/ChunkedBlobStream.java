@@ -593,6 +593,11 @@ argument_list|(
 name|mask
 argument_list|)
 operator|.
+name|putLong
+argument_list|(
+name|length
+argument_list|)
+operator|.
 name|putBytes
 argument_list|(
 name|data
@@ -629,6 +634,8 @@ literal|1
 operator|+
 literal|1
 operator|+
+literal|8
+operator|+
 literal|4
 operator|+
 name|blobIdBytes
@@ -656,6 +663,13 @@ operator|.
 name|writeByte
 argument_list|(
 name|mask
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|writeLong
+argument_list|(
+name|length
 argument_list|)
 expr_stmt|;
 name|out
