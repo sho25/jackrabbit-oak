@@ -1179,6 +1179,15 @@ argument_list|(
 name|builder
 argument_list|)
 expr_stmt|;
+name|BundlingConfigInitializer
+operator|.
+name|INSTANCE
+operator|.
+name|initialize
+argument_list|(
+name|builder
+argument_list|)
+expr_stmt|;
 name|builder
 operator|.
 name|getChildNode
