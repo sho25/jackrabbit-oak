@@ -172,6 +172,11 @@ name|newFileStore
 argument_list|()
 init|)
 block|{
+name|store
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|DefaultStandbyHeadReader
 name|reader
 init|=
@@ -185,10 +190,10 @@ name|assertEquals
 argument_list|(
 name|store
 operator|.
-name|getHead
+name|getRevisions
 argument_list|()
 operator|.
-name|getRecordId
+name|getPersistedHead
 argument_list|()
 operator|.
 name|toString

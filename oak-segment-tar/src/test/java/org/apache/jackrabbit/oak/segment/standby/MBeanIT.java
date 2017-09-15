@@ -1231,6 +1231,14 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|serverFileStore
+operator|.
+name|fileStore
+argument_list|()
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|clientSync
 operator|.
 name|start

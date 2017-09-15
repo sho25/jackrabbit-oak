@@ -61,6 +61,13 @@ name|RecordId
 name|getHead
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the<b>persisted</b> to disk record id of the head state.       * The returned id is a valid id for a {@code SegmentNodeState}.      * @return  id of the head state      */
+annotation|@
+name|Nonnull
+name|RecordId
+name|getPersistedHead
+parameter_list|()
+function_decl|;
 comment|/**      * Atomically set the record id of the current head state to the      * given {@code head} state if the current head state matches      * the {@code expected} value.      *<p>      * All record ids must be valid ids for {@code SegmentNodeState}s.      *<p>      * The locking behaviour of this method regarding implementation      * specific.      *      * @param expected  the expected head for the update to take place      * @param head      the new head to update to      * @param options   implementation specific options      * @return          {@code true} if the current head was successfully      *                  updated, {@code false} otherwise.      */
 name|boolean
 name|setHead

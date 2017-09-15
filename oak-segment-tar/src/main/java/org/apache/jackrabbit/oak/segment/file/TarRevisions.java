@@ -1015,6 +1015,25 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|RecordId
+name|getPersistedHead
+parameter_list|()
+block|{
+name|checkBound
+argument_list|()
+expr_stmt|;
+return|return
+name|persistedHead
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|/**      * This implementation blocks if a concurrent call to      * {@link #setHead(Function, Option...)} is already in      * progress.      *      * @param options   zero or one expedite option for expediting this call      * @throws IllegalArgumentException  on any non recognised {@code option}.      * @see #EXPEDITE_OPTION      */
 annotation|@
 name|Override
