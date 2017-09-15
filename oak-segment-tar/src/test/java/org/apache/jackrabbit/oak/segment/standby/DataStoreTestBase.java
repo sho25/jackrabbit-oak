@@ -1108,15 +1108,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assumeFalse
-argument_list|(
-name|CIHelper
-operator|.
-name|windows
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// FIXME OAK-6641: fails on Windows
 specifier|final
 name|long
 name|blobSize
@@ -1187,7 +1178,7 @@ argument_list|()
 argument_list|,
 name|primary
 argument_list|,
-literal|16
+literal|8
 operator|*
 name|MB
 argument_list|)
@@ -1204,7 +1195,7 @@ operator|.
 name|getPort
 argument_list|()
 argument_list|,
-literal|15_000
+literal|20_000
 argument_list|)
 init|)
 block|{
