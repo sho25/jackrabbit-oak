@@ -13,7 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|exporter
+name|plugins
+operator|.
+name|blob
+operator|.
+name|serializer
 package|;
 end_package
 
@@ -74,6 +78,26 @@ operator|.
 name|api
 operator|.
 name|Blob
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|blob
+operator|.
+name|serializer
+operator|.
+name|FSBlobSerializer
 import|;
 end_import
 

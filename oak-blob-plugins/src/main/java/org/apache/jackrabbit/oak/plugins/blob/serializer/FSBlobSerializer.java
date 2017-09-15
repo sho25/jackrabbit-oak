@@ -13,7 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|exporter
+name|plugins
+operator|.
+name|blob
+operator|.
+name|serializer
 package|;
 end_package
 
