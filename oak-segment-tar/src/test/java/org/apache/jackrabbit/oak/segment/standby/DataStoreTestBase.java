@@ -80,18 +80,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeFalse
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -294,22 +282,6 @@ operator|.
 name|server
 operator|.
 name|StandbyServerSync
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|CIHelper
 import|;
 end_import
 
@@ -1195,7 +1167,7 @@ operator|.
 name|getPort
 argument_list|()
 argument_list|,
-literal|20_000
+literal|60_000
 argument_list|)
 init|)
 block|{
