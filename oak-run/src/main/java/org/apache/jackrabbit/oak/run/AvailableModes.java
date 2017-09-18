@@ -172,6 +172,15 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
+literal|"composite-prepare"
+argument_list|,
+operator|new
+name|CompositePrepareCommand
+argument_list|()
+argument_list|)
+operator|.
+name|put
+argument_list|(
 literal|"console"
 argument_list|,
 operator|new
