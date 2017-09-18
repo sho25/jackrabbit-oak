@@ -2326,17 +2326,17 @@ name|closer
 argument_list|)
 expr_stmt|;
 comment|// Try removing pending files in case the scheduler didn't have a chance to run yet
-name|fileReaper
-operator|.
-name|reap
-argument_list|()
-expr_stmt|;
 name|System
 operator|.
 name|gc
 argument_list|()
 expr_stmt|;
 comment|// for any memory-mappings that are no longer used
+name|fileReaper
+operator|.
+name|reap
+argument_list|()
+expr_stmt|;
 name|log
 operator|.
 name|info

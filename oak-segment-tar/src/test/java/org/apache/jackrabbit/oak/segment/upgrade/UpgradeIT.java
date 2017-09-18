@@ -194,18 +194,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeFalse
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -244,22 +232,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|CIHelper
 import|;
 end_import
 
@@ -420,17 +392,6 @@ specifier|public
 class|class
 name|UpgradeIT
 block|{
-specifier|private
-specifier|final
-name|File
-name|upgradeItHome
-init|=
-operator|new
-name|File
-argument_list|(
-literal|"target/upgrade-it"
-argument_list|)
-decl_stmt|;
 annotation|@
 name|Rule
 specifier|public
@@ -440,7 +401,11 @@ init|=
 operator|new
 name|TemporaryFolder
 argument_list|(
-name|upgradeItHome
+operator|new
+name|File
+argument_list|(
+literal|"target"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * Launch a groovy script in an Oak 1.6. console to initialise the upgrade      * source. See pom.xml for how these files are placed under target/upgrade-it.      */
@@ -455,15 +420,6 @@ name|IOException
 throws|,
 name|InterruptedException
 block|{
-name|assumeFalse
-argument_list|(
-name|CIHelper
-operator|.
-name|windows
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// FIXME OAK-6648: fails on Windows
 name|Process
 name|oakConsole
 init|=
@@ -493,7 +449,13 @@ argument_list|)
 operator|.
 name|directory
 argument_list|(
-name|upgradeItHome
+operator|new
+name|File
+argument_list|(
+literal|"target"
+argument_list|,
+literal|"upgrade-it"
+argument_list|)
 argument_list|)
 operator|.
 name|redirectError
@@ -753,7 +715,7 @@ operator|.
 name|getRoot
 argument_list|()
 argument_list|,
-literal|"/manifest"
+literal|"manifest"
 argument_list|)
 argument_list|,
 literal|true
