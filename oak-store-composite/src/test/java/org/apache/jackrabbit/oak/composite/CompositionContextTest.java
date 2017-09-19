@@ -169,6 +169,14 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
+argument_list|,
+name|CompositeNodeStoreMonitor
+operator|.
+name|EMPTY_INSTANCE
+argument_list|,
+name|CompositeNodeStoreMonitor
+operator|.
+name|EMPTY_INSTANCE
 argument_list|)
 decl_stmt|;
 name|assertTrue
