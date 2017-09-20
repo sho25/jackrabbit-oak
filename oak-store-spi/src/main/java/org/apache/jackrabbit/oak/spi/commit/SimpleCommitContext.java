@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|spi
+operator|.
+name|commit
 package|;
 end_package
 
@@ -38,24 +40,6 @@ operator|.
 name|collect
 operator|.
 name|Maps
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|CommitContext
 import|;
 end_import
 
