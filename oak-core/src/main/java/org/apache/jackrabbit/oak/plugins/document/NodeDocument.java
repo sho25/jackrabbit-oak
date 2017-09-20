@@ -964,7 +964,9 @@ name|Revision
 argument_list|,
 name|Range
 argument_list|>
-argument_list|()
+argument_list|(
+name|REVERSE
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * The list of revision to root commit depth mappings to find out if a      * revision is actually committed. Depth 0 means the commit is in the root node,      * depth 1 means one node below the root, and so on.      */
