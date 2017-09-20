@@ -5665,7 +5665,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * Instances of this class represent the result from a compaction.      * Either {@link #succeeded(GCGeneration, SegmentGCOptions, RecordId) succeeded},      * {@link #aborted(GCGeneration, GCGeneration) aborted} or {@link #skipped(GCGeneration, SegmentGCOptions) skipped}.      */
+comment|/**      * Instances of this class represent the result from a compaction. Either      * {@link #succeeded(GCGeneration, SegmentGCOptions, RecordId) succeeded},      * {@link #aborted(GCGeneration, GCGeneration) aborted} or {@link      * #skipped(GCGeneration, SegmentGCOptions, RecordId)}  skipped}.      */
 specifier|private
 specifier|abstract
 specifier|static
