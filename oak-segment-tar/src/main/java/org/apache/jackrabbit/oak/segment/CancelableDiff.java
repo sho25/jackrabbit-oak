@@ -88,6 +88,7 @@ comment|/**  * A {@code NodeStateDiff} that cancels itself when a condition occu
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|CancelableDiff
 implements|implements
