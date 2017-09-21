@@ -181,6 +181,24 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|namespace
+operator|.
+name|NamespaceConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * Read-only namespace registry. Used mostly internally when access to the  * in-content registered namespaces is needed. See the  * {@link ReadWriteNamespaceRegistry} subclass for a more complete registry  * implementation that supports also namespace modifications and that's thus  * better suited for use in in implementing the full JCR API.  */
 end_comment

@@ -229,7 +229,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -249,7 +249,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -269,7 +269,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -289,7 +289,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -309,7 +309,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -329,7 +329,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -349,7 +349,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -369,7 +369,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -389,7 +389,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -409,7 +409,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -429,7 +429,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -2190,11 +2190,11 @@ return|;
 block|}
 try|try
 block|{
-name|EffectiveNodeType
+name|EffectiveNodeTypeImpl
 name|effective
 init|=
 operator|new
-name|EffectiveNodeType
+name|EffectiveNodeTypeImpl
 argument_list|(
 name|this
 argument_list|,
@@ -2324,11 +2324,11 @@ operator|.
 name|getType
 argument_list|()
 decl_stmt|;
-name|EffectiveNodeType
+name|EffectiveNodeTypeImpl
 name|effective
 init|=
 operator|new
-name|EffectiveNodeType
+name|EffectiveNodeTypeImpl
 argument_list|(
 name|this
 argument_list|,

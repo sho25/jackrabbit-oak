@@ -25,7 +25,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|version
 operator|.
@@ -76,28 +76,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|bundlor
-operator|.
-name|BundlingConfigHandler
-operator|.
-name|BUNDLOR
 import|;
 end_import
 

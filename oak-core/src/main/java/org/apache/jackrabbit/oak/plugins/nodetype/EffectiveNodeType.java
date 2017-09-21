@@ -273,6 +273,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|nodetype
+operator|.
+name|EffectiveNodeType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -350,8 +368,21 @@ comment|/**  * EffectiveNodeType... TODO  */
 end_comment
 
 begin_class
-specifier|public
 class|class
+name|EffectiveNodeTypeImpl
+implements|implements
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|nodetype
+operator|.
 name|EffectiveNodeType
 block|{
 specifier|private
@@ -364,7 +395,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|EffectiveNodeType
+name|EffectiveNodeTypeImpl
 operator|.
 name|class
 argument_list|)
@@ -402,7 +433,7 @@ specifier|final
 name|ReadOnlyNodeTypeManager
 name|ntMgr
 decl_stmt|;
-name|EffectiveNodeType
+name|EffectiveNodeTypeImpl
 parameter_list|(
 name|NodeTypeImpl
 name|primary
@@ -488,7 +519,7 @@ comment|// TODO: ignore/warning/error?
 block|}
 block|}
 block|}
-name|EffectiveNodeType
+name|EffectiveNodeTypeImpl
 parameter_list|(
 name|NodeTypeImpl
 name|primary
@@ -573,6 +604,8 @@ block|}
 block|}
 block|}
 comment|/**      * Determines whether this effective node type representation includes      * (either through inheritance or aggregation) the given node type.      *      * @param nodeTypeName name of node type      * @return {@code true} if the given node type is included, otherwise {@code false}.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|includesNodeType
@@ -591,6 +624,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Determines whether this effective node type representation includes      * (either through inheritance or aggregation) all of the given node types.      *      * @param nodeTypeNames array of node type names      * @return {@code true} if all of the given node types are included,      *         otherwise {@code false}      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|includesNodeTypes
@@ -627,6 +662,8 @@ literal|true
 return|;
 block|}
 comment|/**      * Determines whether this effective node type supports adding      * the specified mixin.      * @param mixin name of mixin type      * @return {@code true} if the mixin type is supported, otherwise {@code false}      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|supportsMixin
@@ -702,6 +739,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -754,6 +793,8 @@ return|return
 name|definitions
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -806,6 +847,8 @@ return|return
 name|definitions
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -850,6 +893,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -894,6 +939,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -938,6 +985,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -983,6 +1032,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Return all node definitions that match the specified oak name.      *      * @param oakName An internal oak name.      * @return All node definitions that match the given internal oak name.      */
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -1052,6 +1103,8 @@ return|;
 block|}
 comment|/**      * Return all property definitions that match the specified oak name.      *      * @param oakName An internal oak name.      * @return All property definitions that match the given internal oak name.      */
 annotation|@
+name|Override
+annotation|@
 name|Nonnull
 specifier|public
 name|Iterable
@@ -1103,6 +1156,8 @@ return|;
 block|}
 comment|/**      * Return all residual node definitions.      *      * @return All residual node definitions.      */
 annotation|@
+name|Override
+annotation|@
 name|Nonnull
 specifier|public
 name|Iterable
@@ -1149,6 +1204,8 @@ return|;
 block|}
 comment|/**      * Return all residual property definitions.      *      * @return All residual property definitions.      */
 annotation|@
+name|Override
+annotation|@
 name|Nonnull
 specifier|public
 name|Iterable
@@ -1193,6 +1250,8 @@ return|return
 name|definitions
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkSetProperty
@@ -1357,6 +1416,8 @@ throw|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkRemoveProperty
@@ -1418,6 +1479,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkMandatoryItems
@@ -1564,6 +1627,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkOrderableChildNodes
@@ -1602,6 +1667,8 @@ argument_list|)
 throw|;
 block|}
 comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under a parent with this effective type.      *      * @param propertyName The internal oak name of the property for which the      * definition should be retrieved.      * @param isMultiple {@code true} if the target property is multi-valued.      * @param type The target type of the property.      * @param exactTypeMatch {@code true} if the required type of the definition      * must exactly match the type of the target property.      * @return the applicable definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      */
+annotation|@
+name|Override
 specifier|public
 name|PropertyDefinition
 name|getPropertyDefinition
@@ -1738,6 +1805,8 @@ argument_list|)
 throw|;
 block|}
 comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under a parent with this effective type.      *      * @param name The internal oak name of the property for which the definition should be retrieved.      * @param type The target type of the property.      * @param unknownMultiple {@code true} if the target property has an unknown type, {@code false} if it is known to be a multi-valued property.      * @return the applicable definition for the target property or {@code null} if no matching definition can be found.      */
+annotation|@
+name|Override
 specifier|public
 name|PropertyDefinition
 name|getPropertyDefinition
@@ -1922,6 +1991,8 @@ literal|null
 return|;
 block|}
 comment|/**      *      * @param childName The internal oak name of the target node.      * @param childEffective      * @return the node definition      * @throws ConstraintViolationException      */
+annotation|@
+name|Override
 specifier|public
 name|NodeDefinition
 name|getNodeDefinition

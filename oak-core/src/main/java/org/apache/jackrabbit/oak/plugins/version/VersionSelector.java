@@ -72,7 +72,6 @@ comment|/**  *<i>Inspired by Jackrabbit 2.x</i>  *<p>  * This Interface defines 
 end_comment
 
 begin_interface
-specifier|public
 interface|interface
 name|VersionSelector
 block|{

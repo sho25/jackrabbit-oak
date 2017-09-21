@@ -123,9 +123,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|nodetype
+name|tree
 operator|.
-name|NodeTypeConstants
+name|RootFactory
 import|;
 end_import
 
@@ -139,11 +139,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|tree
+name|nodetype
 operator|.
-name|RootFactory
+name|NodeTypeConstants
 import|;
 end_import
 

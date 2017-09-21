@@ -373,7 +373,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -638,26 +638,6 @@ operator|.
 name|Type
 operator|.
 name|NAMES
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
 import|;
 end_import
 
@@ -1394,6 +1374,8 @@ argument_list|()
 operator|.
 name|getTree
 argument_list|(
+name|NodeTypeConstants
+operator|.
 name|NODE_TYPES_PATH
 argument_list|)
 decl_stmt|;

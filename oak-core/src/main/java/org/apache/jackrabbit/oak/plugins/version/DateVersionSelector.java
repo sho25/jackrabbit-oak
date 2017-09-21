@@ -104,7 +104,6 @@ comment|/**  *<i>Inspired by Jackrabbit 2.x</i>  *<p>  * This Class implements a
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|DateVersionSelector
 implements|implements

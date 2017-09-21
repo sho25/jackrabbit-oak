@@ -87,7 +87,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|version
 operator|.
@@ -110,6 +110,24 @@ operator|.
 name|state
 operator|.
 name|NodeStateUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|version
+operator|.
+name|VersionConstants
 import|;
 end_import
 

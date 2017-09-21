@@ -73,7 +73,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.

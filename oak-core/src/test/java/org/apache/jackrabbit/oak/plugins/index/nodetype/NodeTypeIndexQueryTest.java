@@ -95,7 +95,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|nodetype
 operator|.
@@ -288,22 +288,6 @@ operator|.
 name|security
 operator|.
 name|OpenSecurityProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|util
-operator|.
-name|NodeUtil
 import|;
 end_import
 

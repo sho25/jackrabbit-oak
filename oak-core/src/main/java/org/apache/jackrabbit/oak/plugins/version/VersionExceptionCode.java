@@ -24,7 +24,6 @@ comment|/**  * {@code VersionExceptionCode} contains the codes for version relat
 end_comment
 
 begin_enum
-specifier|public
 enum|enum
 name|VersionExceptionCode
 block|{

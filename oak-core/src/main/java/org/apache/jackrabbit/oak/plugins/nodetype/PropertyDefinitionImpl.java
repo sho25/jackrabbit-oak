@@ -185,6 +185,24 @@ name|ValueFactoryImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  *<pre>  * [nt:propertyDefinition]  *   ...  * - jcr:requiredType (STRING) protected mandatory  *< 'STRING', 'URI', 'BINARY', 'LONG', 'DOUBLE',  *     'DECIMAL', 'BOOLEAN', 'DATE', 'NAME', 'PATH',  *     'REFERENCE', 'WEAKREFERENCE', 'UNDEFINED'  * - jcr:valueConstraints (STRING) protected multiple  * - jcr:defaultValues (UNDEFINED) protected multiple  * - jcr:multiple (BOOLEAN) protected mandatory  * - jcr:availableQueryOperators (NAME) protected mandatory multiple  * - jcr:isFullTextSearchable (BOOLEAN) protected mandatory  * - jcr:isQueryOrderable (BOOLEAN) protected mandatory  *</pre>  */
 end_comment
