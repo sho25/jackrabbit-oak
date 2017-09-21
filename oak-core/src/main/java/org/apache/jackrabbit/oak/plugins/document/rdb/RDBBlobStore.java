@@ -66,6 +66,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
+name|getModuleVersion
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -346,20 +368,6 @@ operator|.
 name|blob
 operator|.
 name|AbstractBlobStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|OakVersion
 import|;
 end_import
 
@@ -674,9 +682,7 @@ name|info
 argument_list|(
 literal|"RDBBlobStore ("
 operator|+
-name|OakVersion
-operator|.
-name|getVersion
+name|getModuleVersion
 argument_list|()
 operator|+
 literal|") closed"
@@ -1340,9 +1346,7 @@ name|info
 argument_list|(
 literal|"RDBBlobStore ("
 operator|+
-name|OakVersion
-operator|.
-name|getVersion
+name|getModuleVersion
 argument_list|()
 operator|+
 literal|") instantiated for database "

@@ -58,6 +58,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
+name|getModuleVersion
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -216,20 +238,6 @@ operator|.
 name|stats
 operator|.
 name|Clock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|OakVersion
 import|;
 end_import
 
@@ -651,9 +659,7 @@ specifier|final
 name|String
 name|OAK_VERSION
 init|=
-name|OakVersion
-operator|.
-name|getVersion
+name|getModuleVersion
 argument_list|()
 decl_stmt|;
 comment|/**      * The number of milliseconds for a lease (2 minute by default, and      * initially).      */

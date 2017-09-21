@@ -418,7 +418,7 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
@@ -427,7 +427,15 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|OakVersion
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|Utils
+operator|.
+name|getModuleVersion
 import|;
 end_import
 
@@ -952,9 +960,7 @@ argument_list|()
 operator|+
 literal|" version "
 operator|+
-name|OakVersion
-operator|.
-name|getVersion
+name|getModuleVersion
 argument_list|()
 argument_list|)
 expr_stmt|;
