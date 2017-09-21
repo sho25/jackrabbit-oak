@@ -476,7 +476,7 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|tp
 operator|.
@@ -554,7 +554,7 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|tp
 operator|.

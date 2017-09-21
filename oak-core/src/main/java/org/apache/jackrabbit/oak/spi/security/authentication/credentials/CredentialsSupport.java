@@ -82,7 +82,7 @@ specifier|public
 interface|interface
 name|CredentialsSupport
 block|{
-comment|/**      * Returns all {@link Credentials credentials} classes supported by this      * implemenation.      *      * @return the supported {@link Credentials credentials} classes.      */
+comment|/**      * Returns all {@link Credentials credentials} classes supported by this      * implementation.      *      * @return the supported {@link Credentials credentials} classes.      */
 annotation|@
 name|Nonnull
 name|Set
