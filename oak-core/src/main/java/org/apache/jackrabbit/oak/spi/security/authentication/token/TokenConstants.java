@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authentication
@@ -64,6 +66,7 @@ import|;
 end_import
 
 begin_interface
+specifier|public
 interface|interface
 name|TokenConstants
 block|{

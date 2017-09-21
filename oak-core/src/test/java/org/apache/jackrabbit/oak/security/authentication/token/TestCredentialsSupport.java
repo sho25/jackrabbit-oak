@@ -117,6 +117,28 @@ name|CredentialsSupport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|token
+operator|.
+name|TokenConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dummy implementation of {@link CredentialsSupport} that only supports  * {@link org.apache.jackrabbit.oak.security.authentication.token.TestCredentialsSupport.Creds}  * and always returns the same user ID upon {@link CredentialsSupport#getUserId(Credentials)}.  */
 end_comment
