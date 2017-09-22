@@ -15,9 +15,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|value
-operator|.
-name|jcr
+name|memory
 package|;
 end_package
 
@@ -121,9 +119,11 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|memory
+name|value
 operator|.
-name|PropertyStates
+name|jcr
+operator|.
+name|ValueFactoryImpl
 import|;
 end_import
 
