@@ -364,25 +364,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * EffectiveNodeType... TODO  */
+comment|/**  * EffectiveNodeTypeImpl... TODO  */
 end_comment
 
 begin_class
 class|class
 name|EffectiveNodeTypeImpl
 implements|implements
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|nodetype
-operator|.
 name|EffectiveNodeType
 block|{
 specifier|private
