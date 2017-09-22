@@ -195,6 +195,8 @@ name|oak
 operator|.
 name|namepath
 operator|.
+name|impl
+operator|.
 name|LocalNameMapper
 import|;
 end_import
@@ -226,6 +228,8 @@ operator|.
 name|oak
 operator|.
 name|namepath
+operator|.
+name|impl
 operator|.
 name|NamePathMapperImpl
 import|;

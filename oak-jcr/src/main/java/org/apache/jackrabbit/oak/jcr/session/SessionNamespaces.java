@@ -149,6 +149,8 @@ name|oak
 operator|.
 name|namepath
 operator|.
+name|impl
+operator|.
 name|LocalNameMapper
 import|;
 end_import

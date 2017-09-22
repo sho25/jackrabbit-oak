@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|namepath
+operator|.
+name|impl
 package|;
 end_package
 
@@ -100,6 +102,22 @@ operator|.
 name|jcr
 operator|.
 name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|namepath
+operator|.
+name|NameMapper
 import|;
 end_import
 

@@ -124,6 +124,7 @@ specifier|private
 name|JcrPathParser
 parameter_list|()
 block|{     }
+specifier|public
 interface|interface
 name|Listener
 extends|extends

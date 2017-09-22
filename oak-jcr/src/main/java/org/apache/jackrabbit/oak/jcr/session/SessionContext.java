@@ -519,6 +519,8 @@ name|oak
 operator|.
 name|namepath
 operator|.
+name|impl
+operator|.
 name|NamePathMapperImpl
 import|;
 end_import
