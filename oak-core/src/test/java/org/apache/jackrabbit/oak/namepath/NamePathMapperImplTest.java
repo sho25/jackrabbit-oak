@@ -139,11 +139,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|commons
 operator|.
-name|identifier
-operator|.
-name|IdentifierManager
+name|UUIDUtils
 import|;
 end_import
 
@@ -263,7 +261,7 @@ block|{
 name|String
 name|uuid
 init|=
-name|IdentifierManager
+name|UUIDUtils
 operator|.
 name|generateUUID
 argument_list|()

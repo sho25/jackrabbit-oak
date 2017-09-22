@@ -247,11 +247,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|commons
 operator|.
-name|identifier
-operator|.
-name|IdentifierManager
+name|UUIDUtils
 operator|.
 name|isValidUUID
 import|;

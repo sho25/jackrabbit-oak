@@ -127,11 +127,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|commons
 operator|.
-name|identifier
-operator|.
-name|IdentifierManager
+name|UUIDUtils
 import|;
 end_import
 
@@ -473,7 +471,7 @@ name|JcrConstants
 operator|.
 name|JCR_UUID
 argument_list|,
-name|IdentifierManager
+name|UUIDUtils
 operator|.
 name|generateUUID
 argument_list|()
@@ -583,7 +581,7 @@ name|JcrConstants
 operator|.
 name|JCR_UUID
 argument_list|,
-name|IdentifierManager
+name|UUIDUtils
 operator|.
 name|generateUUID
 argument_list|()
@@ -868,7 +866,7 @@ name|setString
 argument_list|(
 name|JCR_UUID
 argument_list|,
-name|IdentifierManager
+name|UUIDUtils
 operator|.
 name|generateUUID
 argument_list|()
@@ -1081,7 +1079,7 @@ name|setString
 argument_list|(
 name|JCR_UUID
 argument_list|,
-name|IdentifierManager
+name|UUIDUtils
 operator|.
 name|generateUUID
 argument_list|()

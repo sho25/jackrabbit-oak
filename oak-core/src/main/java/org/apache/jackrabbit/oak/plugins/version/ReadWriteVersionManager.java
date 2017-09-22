@@ -263,9 +263,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|namepath
+name|commons
 operator|.
-name|NamePathMapper
+name|UUIDUtils
 import|;
 end_import
 
@@ -279,11 +279,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|namepath
 operator|.
-name|identifier
-operator|.
-name|IdentifierManager
+name|NamePathMapper
 import|;
 end_import
 
@@ -1144,7 +1142,7 @@ name|setProperty
 argument_list|(
 name|JCR_UUID
 argument_list|,
-name|IdentifierManager
+name|UUIDUtils
 operator|.
 name|generateUUID
 argument_list|()
@@ -2268,7 +2266,7 @@ block|}
 name|String
 name|versionUUID
 init|=
-name|IdentifierManager
+name|UUIDUtils
 operator|.
 name|generateUUID
 argument_list|()
