@@ -1584,7 +1584,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|CommitMitigatingTieredMergePolicy
+name|TieredMergePolicy
 operator|.
 name|class
 argument_list|,
@@ -1829,7 +1829,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|CommitMitigatingTieredMergePolicy
+name|TieredMergePolicy
 operator|.
 name|class
 argument_list|,
@@ -1928,7 +1928,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|CommitMitigatingTieredMergePolicy
+name|TieredMergePolicy
 operator|.
 name|class
 argument_list|,

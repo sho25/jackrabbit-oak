@@ -7368,13 +7368,6 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"mitigated"
 argument_list|)
-operator|||
-name|mergePolicyName
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-literal|"default"
-argument_list|)
 condition|)
 block|{
 name|mergePolicy
@@ -7392,6 +7385,13 @@ operator|.
 name|equalsIgnoreCase
 argument_list|(
 literal|"tiered"
+argument_list|)
+operator|||
+name|mergePolicyName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"default"
 argument_list|)
 condition|)
 block|{
@@ -7449,7 +7449,7 @@ block|{
 name|mergePolicy
 operator|=
 operator|new
-name|CommitMitigatingTieredMergePolicy
+name|TieredMergePolicy
 argument_list|()
 expr_stmt|;
 block|}
