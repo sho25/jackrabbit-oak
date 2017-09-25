@@ -629,7 +629,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"can register standby status mbean"
+literal|"cannot register standby status mbean"
 argument_list|,
 name|e
 argument_list|)
@@ -708,7 +708,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"can unregister standby status mbean"
+literal|"cannot unregister standby status mbean"
 argument_list|,
 name|e
 argument_list|)

@@ -46,6 +46,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|standby
+operator|.
+name|server
+operator|.
+name|FileStoreUtil
+operator|.
+name|roundDiv
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -372,6 +394,10 @@ block|}
 block|}
 block|}
 block|}
+specifier|private
+name|int
+name|blobChunkSize
+decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -684,7 +710,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|static
 name|void
 name|decodeGetBlobResponse
 parameter_list|(
@@ -786,6 +811,15 @@ operator|!=
 literal|0
 condition|)
 block|{
+name|blobChunkSize
+operator|=
+name|in
+operator|.
+name|readableBytes
+argument_list|()
+operator|-
+literal|8
+expr_stmt|;
 if|if
 condition|(
 name|tempFile
@@ -827,7 +861,29 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Received chunk of size {} from blob {} "
+literal|"Received chunk {}/{} of size {} from blob {}"
+argument_list|,
+name|roundDiv
+argument_list|(
+name|tempFile
+operator|.
+name|length
+argument_list|()
+operator|+
+name|in
+operator|.
+name|readableBytes
+argument_list|()
+argument_list|,
+name|blobChunkSize
+argument_list|)
+argument_list|,
+name|roundDiv
+argument_list|(
+name|blobLength
+argument_list|,
+name|blobChunkSize
+argument_list|)
 argument_list|,
 name|in
 operator|.
@@ -994,9 +1050,16 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Size mismatch for blob {}"
+literal|"Blob {} discarded due to size mismatch. Expected size: {}, actual size: {} "
 argument_list|,
 name|blobId
+argument_list|,
+name|blobLength
+argument_list|,
+name|tempFile
+operator|.
+name|length
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

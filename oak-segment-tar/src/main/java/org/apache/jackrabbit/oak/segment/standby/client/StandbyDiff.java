@@ -1130,6 +1130,15 @@ operator|+
 literal|"#"
 operator|+
 name|pName
+operator|+
+literal|" in "
+operator|+
+name|client
+operator|.
+name|getReadTimeoutMs
+argument_list|()
+operator|+
+literal|"ms. Please increase the timeout and try again."
 argument_list|)
 throw|;
 block|}

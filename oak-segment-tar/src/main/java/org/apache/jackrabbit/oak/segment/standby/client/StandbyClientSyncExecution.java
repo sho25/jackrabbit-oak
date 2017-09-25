@@ -419,7 +419,7 @@ argument_list|()
 expr_stmt|;
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"updated head state successfully: {} in {}ms."
 argument_list|,

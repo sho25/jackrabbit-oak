@@ -104,6 +104,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 specifier|final
 class|class
 name|FileStoreUtil
@@ -128,6 +129,38 @@ name|FileStoreUtil
 parameter_list|()
 block|{
 comment|// Prevent instantiation
+block|}
+specifier|public
+specifier|static
+name|int
+name|roundDiv
+parameter_list|(
+name|long
+name|x
+parameter_list|,
+name|int
+name|y
+parameter_list|)
+block|{
+return|return
+operator|(
+name|int
+operator|)
+name|Math
+operator|.
+name|ceil
+argument_list|(
+operator|(
+name|double
+operator|)
+name|x
+operator|/
+operator|(
+name|double
+operator|)
+name|y
+argument_list|)
+return|;
 block|}
 specifier|static
 name|Segment

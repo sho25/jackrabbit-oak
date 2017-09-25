@@ -1325,6 +1325,15 @@ name|getReferences
 argument_list|()
 return|;
 block|}
+specifier|public
+name|int
+name|getReadTimeoutMs
+parameter_list|()
+block|{
+return|return
+name|readTimeoutMs
+return|;
+block|}
 block|}
 end_class
 
