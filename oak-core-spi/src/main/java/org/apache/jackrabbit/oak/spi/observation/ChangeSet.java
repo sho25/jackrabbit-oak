@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|observation
 package|;
@@ -165,6 +165,14 @@ specifier|final
 class|class
 name|ChangeSet
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COMMIT_CONTEXT_OBSERVATION_CHANGESET
+init|=
+literal|"oak.observation.changeSet"
+decl_stmt|;
 specifier|private
 specifier|final
 name|int

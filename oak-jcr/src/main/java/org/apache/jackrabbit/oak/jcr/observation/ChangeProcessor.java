@@ -117,9 +117,11 @@ name|plugins
 operator|.
 name|observation
 operator|.
-name|ChangeCollectorProvider
+name|filter
 operator|.
-name|COMMIT_CONTEXT_OBSERVATION_CHANGESET
+name|VisibleFilter
+operator|.
+name|VISIBLE_FILTER
 import|;
 end_import
 
@@ -133,15 +135,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|observation
 operator|.
-name|filter
+name|ChangeSet
 operator|.
-name|VisibleFilter
-operator|.
-name|VISIBLE_FILTER
+name|COMMIT_CONTEXT_OBSERVATION_CHANGESET
 import|;
 end_import
 
@@ -342,24 +342,6 @@ operator|.
 name|namepath
 operator|.
 name|NamePathMapper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|ChangeSet
 import|;
 end_import
 
@@ -640,6 +622,24 @@ operator|.
 name|commit
 operator|.
 name|Observer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|observation
+operator|.
+name|ChangeSet
 import|;
 end_import
 
