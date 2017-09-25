@@ -96,7 +96,7 @@ specifier|public
 interface|interface
 name|EffectiveNodeTypeProvider
 block|{
-comment|/**      * Returns {@code true} if this tree is of the specified primary node      * type or mixin type, or a subtype thereof respecting the effective node      * type of the {@code tree}. Returns {@code false} otherwise.      *      * @param tree The tree to be tested.      * @param nodeTypeName The internal oak name of the node type to be tested.      * @return true if the specified node is of the given node type.      * @throws NoSuchNodeTypeException If the specified node type name doesn't      * refer to an existing node type.      * @throws RepositoryException If the given node type name is invalid or if      * some other error occurs.      */
+comment|/**      * Returns {@code true} if this tree is of the specified primary node      * type or mixin type, or a subtype thereof respecting the effective node      * type of the {@code tree}. Returns {@code false} otherwise.      *      * @param tree The tree to be tested.      * @param nodeTypeName The internal oak name of the node type to be tested.      * @return true if the specified node is of the given node type.      */
 name|boolean
 name|isNodeType
 parameter_list|(
@@ -106,10 +106,6 @@ parameter_list|,
 name|String
 name|nodeTypeName
 parameter_list|)
-throws|throws
-name|NoSuchNodeTypeException
-throws|,
-name|RepositoryException
 function_decl|;
 comment|/**      * Returns {@code true} if {@code typeName} is of the specified primary node      * type or mixin type, or a subtype thereof. Returns {@code false} otherwise.      *      * @param primaryTypeName  the internal oak name of the node to test      * @param mixinTypes the internal oak names of the node to test.      * @param nodeTypeName The internal oak name of the node type to be tested.      * @return {@code true} if the specified node type is of the given node type.      * @throws NoSuchNodeTypeException If the specified node type name doesn't      * refer to an existing node type.      * @throws RepositoryException If the given node type name is invalid or if      * some other error occurs.      */
 name|boolean
