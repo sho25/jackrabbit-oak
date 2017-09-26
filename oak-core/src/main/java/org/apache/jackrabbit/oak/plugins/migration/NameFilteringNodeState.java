@@ -59,26 +59,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|util
-operator|.
-name|Utils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|state
@@ -293,7 +273,7 @@ name|delegatePropertyState
 argument_list|)
 return|;
 block|}
-comment|/**      * This method checks whether the name is no longer than the maximum node      * name length supported by the DocumentNodeStore.      *      * @param name      *            to check      * @return true if the name is longer than {@link Utils#NODE_NAME_LIMIT}      */
+comment|/**      * This method checks whether the name is no longer than the maximum node      * name length supported by the DocumentNodeStore.      *      * @param name      *            to check      * @return true if the name is longer than {@code org.apache.jackrabbit.oak.plugins.document.util.Utils#NODE_NAME_LIMIT}      */
 specifier|public
 specifier|static
 name|boolean
