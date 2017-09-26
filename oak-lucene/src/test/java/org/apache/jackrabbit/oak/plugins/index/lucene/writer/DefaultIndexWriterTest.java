@@ -614,7 +614,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|indexWriterConfig_Scheduler_NonRemote
+name|indexWriterConfig_Scheduler_Remote
 parameter_list|()
 throws|throws
 name|Exception
@@ -691,7 +691,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|indexWriterConfig_Scheduler_Remote
+name|indexWriterConfig_Scheduler_Local
 parameter_list|()
 throws|throws
 name|Exception
