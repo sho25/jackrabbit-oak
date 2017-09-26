@@ -401,7 +401,11 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|PathFilter
+name|property
+operator|.
+name|strategy
+operator|.
+name|IndexStoreStrategy
 import|;
 end_import
 
@@ -417,13 +421,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|index
+name|memory
 operator|.
-name|property
-operator|.
-name|strategy
-operator|.
-name|IndexStoreStrategy
+name|PropertyValues
 import|;
 end_import
 
@@ -475,9 +475,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|mount
+name|filter
 operator|.
-name|MountInfoProvider
+name|PathFilter
 import|;
 end_import
 
@@ -491,11 +491,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|memory
+name|mount
 operator|.
-name|PropertyValues
+name|MountInfoProvider
 import|;
 end_import
 

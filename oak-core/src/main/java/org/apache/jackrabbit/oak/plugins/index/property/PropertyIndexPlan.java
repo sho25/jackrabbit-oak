@@ -227,7 +227,11 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|PathFilter
+name|property
+operator|.
+name|strategy
+operator|.
+name|IndexStoreStrategy
 import|;
 end_import
 
@@ -241,15 +245,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|index
+name|filter
 operator|.
-name|property
-operator|.
-name|strategy
-operator|.
-name|IndexStoreStrategy
+name|PathFilter
 import|;
 end_import
 
