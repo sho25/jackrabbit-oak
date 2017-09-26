@@ -899,6 +899,19 @@ name|percentComplete
 argument_list|)
 return|;
 block|}
+else|else
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"(Elapsed %s)"
+argument_list|,
+name|watch
+argument_list|)
+return|;
+block|}
 block|}
 return|return
 literal|""
