@@ -225,8 +225,6 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
 name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER
@@ -394,6 +392,24 @@ operator|.
 name|reference
 operator|.
 name|NodeReferenceConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
+name|TreeConstants
 import|;
 end_import
 

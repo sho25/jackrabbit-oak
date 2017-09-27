@@ -143,7 +143,43 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|ReadOnly
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
 name|TreeType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
+name|TreeTypeAware
 import|;
 end_import
 
@@ -212,6 +248,10 @@ class|class
 name|ImmutableTree
 extends|extends
 name|AbstractTree
+implements|implements
+name|TreeTypeAware
+implements|,
+name|ReadOnly
 block|{
 comment|/**      * Underlying node state      */
 specifier|private
@@ -336,6 +376,9 @@ operator|=
 name|parentProvider
 expr_stmt|;
 block|}
+comment|//----------------------------------------------------------< TypeAware>---
+annotation|@
+name|CheckForNull
 specifier|public
 name|TreeType
 name|getType
@@ -349,6 +392,8 @@ specifier|public
 name|void
 name|setType
 parameter_list|(
+annotation|@
+name|Nonnull
 name|TreeType
 name|type
 parameter_list|)

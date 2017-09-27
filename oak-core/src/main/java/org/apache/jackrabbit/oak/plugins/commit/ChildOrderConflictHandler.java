@@ -107,8 +107,6 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
 name|TreeConstants
 import|;
 end_import
@@ -168,7 +166,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This conflict handler instance takes care of properly merging conflicts  * occurring by concurrent reorder operations.  *  * @see org.apache.jackrabbit.oak.plugins.tree.impl.TreeConstants#OAK_CHILD_ORDER  */
+comment|/**  * This conflict handler instance takes care of properly merging conflicts  * occurring by concurrent reorder operations.  *  * @see TreeConstants#OAK_CHILD_ORDER  */
 end_comment
 
 begin_class

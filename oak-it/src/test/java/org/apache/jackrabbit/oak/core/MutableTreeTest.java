@@ -377,8 +377,6 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
 name|TreeConstants
 import|;
 end_import

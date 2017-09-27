@@ -229,8 +229,6 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
 name|TreeConstants
 import|;
 end_import
@@ -276,7 +274,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for the hidden {@link org.apache.jackrabbit.oak.plugins.tree.impl.TreeConstants#OAK_CHILD_ORDER} property  */
+comment|/**  * Test for the hidden {@link TreeConstants#OAK_CHILD_ORDER} property  */
 end_comment
 
 begin_class

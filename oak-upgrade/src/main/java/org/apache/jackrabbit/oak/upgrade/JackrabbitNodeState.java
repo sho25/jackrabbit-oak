@@ -445,8 +445,6 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
 name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER

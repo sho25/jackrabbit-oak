@@ -1209,7 +1209,7 @@ name|Aggregate
 operator|.
 name|AggregateMapper
 block|{
-comment|/**      * Name of the internal property that contains the child order defined in      * org.apache.jackrabbit.oak.plugins.tree.impl.TreeConstants      */
+comment|/**      * Name of the internal property that contains the child order defined in      * org.apache.jackrabbit.oak.plugins.tree.TreeConstants      */
 specifier|private
 specifier|static
 specifier|final
