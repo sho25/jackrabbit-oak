@@ -13,11 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|security
 operator|.
-name|tree
+name|authorization
 operator|.
-name|impl
+name|permission
 package|;
 end_package
 
@@ -104,7 +104,6 @@ comment|/**  * Helper class to handle modifications to the hidden  * {@link org.
 end_comment
 
 begin_class
-specifier|public
 specifier|final
 class|class
 name|ChildOrderDiff
@@ -116,7 +115,6 @@ block|{}
 comment|/**      * Tests if there was any user-supplied reordering involved with the      * modification of the {@link org.apache.jackrabbit.oak.plugins.tree.impl.TreeConstants#OAK_CHILD_ORDER}      * property.      *      * @param before      * @param after      * @return the name of the first reordered child if any user-supplied node      * reorder happened; {@code null} otherwise.      */
 annotation|@
 name|CheckForNull
-specifier|public
 specifier|static
 name|String
 name|firstReordered
