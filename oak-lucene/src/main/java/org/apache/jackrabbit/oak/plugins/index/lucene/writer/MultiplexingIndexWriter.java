@@ -200,6 +200,11 @@ name|reindex
 decl_stmt|;
 specifier|private
 specifier|final
+name|LuceneIndexWriterConfig
+name|writerConfig
+decl_stmt|;
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|Mount
@@ -230,6 +235,9 @@ name|definitionBuilder
 parameter_list|,
 name|boolean
 name|reindex
+parameter_list|,
+name|LuceneIndexWriterConfig
+name|writerConfig
 parameter_list|)
 block|{
 name|this
@@ -261,6 +269,12 @@ operator|.
 name|directoryFactory
 operator|=
 name|directoryFactory
+expr_stmt|;
+name|this
+operator|.
+name|writerConfig
+operator|=
+name|writerConfig
 expr_stmt|;
 block|}
 annotation|@
@@ -519,6 +533,8 @@ argument_list|,
 name|suggestDirName
 argument_list|,
 name|reindex
+argument_list|,
+name|writerConfig
 argument_list|)
 return|;
 block|}

@@ -479,6 +479,11 @@ name|boolean
 name|reindex
 decl_stmt|;
 specifier|private
+specifier|final
+name|LuceneIndexWriterConfig
+name|writerConfig
+decl_stmt|;
+specifier|private
 name|IndexWriter
 name|writer
 decl_stmt|;
@@ -519,6 +524,9 @@ name|suggestDirName
 parameter_list|,
 name|boolean
 name|reindex
+parameter_list|,
+name|LuceneIndexWriterConfig
+name|writerConfig
 parameter_list|)
 block|{
 name|this
@@ -556,6 +564,12 @@ operator|.
 name|reindex
 operator|=
 name|reindex
+expr_stmt|;
+name|this
+operator|.
+name|writerConfig
+operator|=
+name|writerConfig
 expr_stmt|;
 block|}
 annotation|@
@@ -905,6 +919,8 @@ name|directoryFactory
 operator|.
 name|remoteDirectory
 argument_list|()
+argument_list|,
+name|writerConfig
 argument_list|)
 decl_stmt|;
 name|config
