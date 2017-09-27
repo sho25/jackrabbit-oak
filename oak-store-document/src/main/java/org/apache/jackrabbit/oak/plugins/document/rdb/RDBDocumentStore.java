@@ -6576,7 +6576,7 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-name|PreparedStatement
+name|Statement
 name|checkStatement
 init|=
 literal|null
@@ -6598,34 +6598,26 @@ literal|null
 decl_stmt|;
 try|try
 block|{
+comment|// avoid PreparedStatement due to weird DB2 behavior (OAK-6237)
 name|checkStatement
 operator|=
 name|con
 operator|.
-name|prepareStatement
-argument_list|(
-literal|"select * from "
-operator|+
-name|tableName
-operator|+
-literal|" where ID = ?"
-argument_list|)
-expr_stmt|;
-name|checkStatement
-operator|.
-name|setString
-argument_list|(
-literal|1
-argument_list|,
-literal|"0:/"
-argument_list|)
+name|createStatement
+argument_list|()
 expr_stmt|;
 name|checkResultSet
 operator|=
 name|checkStatement
 operator|.
 name|executeQuery
-argument_list|()
+argument_list|(
+literal|"select * from "
+operator|+
+name|tableName
+operator|+
+literal|" where ID = '0'"
+argument_list|)
 expr_stmt|;
 comment|// try to discover size of DATA column and binary-ness of ID
 name|ResultSetMetaData

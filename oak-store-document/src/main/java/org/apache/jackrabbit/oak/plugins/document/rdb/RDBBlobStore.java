@@ -1168,39 +1168,31 @@ name|tnMeta
 block|}
 control|)
 block|{
-name|PreparedStatement
+name|Statement
 name|checkStatement
 init|=
 literal|null
 decl_stmt|;
 try|try
 block|{
+comment|// avoid PreparedStatement due to weird DB2 behavior (OAK-6237)
 name|checkStatement
 operator|=
 name|con
 operator|.
-name|prepareStatement
+name|createStatement
+argument_list|()
+expr_stmt|;
+name|checkStatement
+operator|.
+name|executeQuery
 argument_list|(
 literal|"select ID from "
 operator|+
 name|tableName
 operator|+
-literal|" where ID = ?"
+literal|" where ID = '0'"
 argument_list|)
-expr_stmt|;
-name|checkStatement
-operator|.
-name|setString
-argument_list|(
-literal|1
-argument_list|,
-literal|"0"
-argument_list|)
-expr_stmt|;
-name|checkStatement
-operator|.
-name|executeQuery
-argument_list|()
 operator|.
 name|close
 argument_list|()
