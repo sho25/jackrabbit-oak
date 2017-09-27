@@ -169,6 +169,26 @@ name|SegmentInfos
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  *  This {@link MergePolicy} extends Lucene's {@link org.apache.lucene.index.TieredMergePolicy} by providing mitigation  *  to the aggressiveness of merges in case the index is under high commit load.  *  That's because in the case of Oak we currently have that we store Lucene indexes in storage systems which require  *  themselves some garbage collection task to be executed to get rid of deleted / unused files, similarly to what Lucene's  *  merge does.  *  So the bottom line is that with this {@link MergePolicy} we should have less but bigger merges, only after commit rate  *  is under a certain threshold (in terms of added docs per sec and MBs per sec).  *  */
 end_comment
@@ -180,6 +200,19 @@ name|CommitMitigatingTieredMergePolicy
 extends|extends
 name|MergePolicy
 block|{
+specifier|private
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|getClass
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|/** Default noCFSRatio.  If a merge's size is&gt;= 10% of      *  the index, then we disable compound file for it.      *  @see MergePolicy#setNoCFSRatio */
 specifier|public
 specifier|static
@@ -189,7 +222,7 @@ name|DEFAULT_NO_CFS_RATIO
 init|=
 literal|0.1
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|double
@@ -936,6 +969,15 @@ argument_list|)
 operator|/
 name|timeDelta
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"committing {} docs/sec"
+argument_list|,
+name|commitRate
+argument_list|)
+expr_stmt|;
 name|docCount
 operator|=
 name|infos
@@ -1484,6 +1526,15 @@ name|bytes
 operator|/
 name|timeDelta
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"committing {} MBs/sec"
+argument_list|,
+name|mbRate
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|verbose
