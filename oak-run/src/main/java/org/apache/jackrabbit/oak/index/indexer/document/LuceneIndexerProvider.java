@@ -482,8 +482,12 @@ argument_list|()
 argument_list|,
 name|dirFactory
 argument_list|,
-operator|new
-name|LuceneIndexWriterConfig
+name|indexHelper
+operator|.
+name|getLuceneIndexHelper
+argument_list|()
+operator|.
+name|getWriterConfigForReindex
 argument_list|()
 argument_list|)
 expr_stmt|;
