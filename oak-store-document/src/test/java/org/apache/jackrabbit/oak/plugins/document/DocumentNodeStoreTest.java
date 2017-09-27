@@ -20631,11 +20631,6 @@ block|}
 comment|// OAK-6392
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6680"
-argument_list|)
 specifier|public
 name|void
 name|disabledBranchesWithBackgroundWrite
@@ -20883,6 +20878,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+comment|// perform up to 200 merges
 for|for
 control|(
 name|int
@@ -20892,7 +20888,7 @@ literal|0
 init|;
 name|j
 operator|<
-literal|20
+literal|200
 condition|;
 name|j
 operator|++
@@ -20952,6 +20948,22 @@ argument_list|,
 name|builder
 argument_list|)
 expr_stmt|;
+comment|// break out after 20 when there are updates
+if|if
+condition|(
+name|j
+operator|>
+literal|20
+operator|&&
+operator|!
+name|updates
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+break|break;
+block|}
 block|}
 name|running
 operator|.
