@@ -438,7 +438,16 @@ literal|"org.apache.felix"
 argument_list|,
 literal|"org.apache.felix.scr"
 argument_list|,
-literal|"1.8.0"
+literal|"2.0.12"
+argument_list|)
+argument_list|,
+name|mavenBundle
+argument_list|(
+literal|"org.osgi"
+argument_list|,
+literal|"org.osgi.dto"
+argument_list|,
+literal|"1.0.0"
 argument_list|)
 argument_list|,
 name|mavenBundle
@@ -447,7 +456,7 @@ literal|"org.apache.felix"
 argument_list|,
 literal|"org.apache.felix.configadmin"
 argument_list|,
-literal|"1.4.0"
+literal|"1.8.16"
 argument_list|)
 argument_list|,
 name|mavenBundle
