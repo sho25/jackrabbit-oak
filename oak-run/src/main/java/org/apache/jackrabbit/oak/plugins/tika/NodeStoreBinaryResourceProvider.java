@@ -243,6 +243,8 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|factories
+operator|.
 name|TreeFactory
 operator|.
 name|createReadOnlyTree

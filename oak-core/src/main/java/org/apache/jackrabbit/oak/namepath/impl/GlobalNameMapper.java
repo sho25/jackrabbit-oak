@@ -227,6 +227,8 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|factories
+operator|.
 name|RootFactory
 operator|.
 name|createReadOnlyRoot
@@ -246,6 +248,8 @@ operator|.
 name|plugins
 operator|.
 name|tree
+operator|.
+name|factories
 operator|.
 name|TreeFactory
 operator|.

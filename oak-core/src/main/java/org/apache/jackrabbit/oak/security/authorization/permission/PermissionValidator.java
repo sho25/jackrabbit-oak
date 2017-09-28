@@ -143,6 +143,8 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|factories
+operator|.
 name|TreeFactory
 import|;
 end_import

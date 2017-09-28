@@ -177,6 +177,8 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|factories
+operator|.
 name|RootFactory
 import|;
 end_import

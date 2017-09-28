@@ -221,6 +221,8 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|factories
+operator|.
 name|RootFactory
 import|;
 end_import
@@ -238,6 +240,8 @@ operator|.
 name|plugins
 operator|.
 name|tree
+operator|.
+name|factories
 operator|.
 name|TreeFactory
 import|;
