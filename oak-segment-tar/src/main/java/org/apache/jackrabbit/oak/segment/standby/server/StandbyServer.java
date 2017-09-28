@@ -486,6 +486,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * If a persisted head state cannot be acquired in less than this timeout,      * the 'get head' request from the client will be discarded.      */
+specifier|static
+specifier|final
+name|long
+name|READ_HEAD_TIMEOUT
+init|=
+name|Long
+operator|.
+name|getLong
+argument_list|(
+literal|"standby.server.timeout"
+argument_list|,
+literal|10_000L
+argument_list|)
+decl_stmt|;
 specifier|static
 name|Builder
 name|builder
@@ -1088,6 +1103,8 @@ operator|new
 name|DefaultStandbyHeadReader
 argument_list|(
 name|store
+argument_list|,
+name|READ_HEAD_TIMEOUT
 argument_list|)
 argument_list|)
 argument_list|)

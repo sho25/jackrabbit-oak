@@ -135,7 +135,7 @@ name|getInteger
 argument_list|(
 literal|"standby.test.timeout"
 argument_list|,
-literal|500
+literal|5000
 argument_list|)
 decl_stmt|;
 comment|// Java 6 on Windows doesn't support dual IP stacks, so we will skip our

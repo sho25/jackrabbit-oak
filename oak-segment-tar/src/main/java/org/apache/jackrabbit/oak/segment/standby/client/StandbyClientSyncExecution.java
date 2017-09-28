@@ -327,13 +327,14 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
+name|log
+operator|.
+name|error
 argument_list|(
 literal|"Unable to fetch remote head"
 argument_list|)
-throw|;
+expr_stmt|;
+return|return;
 block|}
 if|if
 condition|(
