@@ -111,7 +111,7 @@ operator|.
 name|file
 operator|=
 operator|new
-name|OakIndexFile
+name|OakBufferedIndexFile
 argument_list|(
 name|name
 argument_list|,
