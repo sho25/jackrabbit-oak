@@ -103,13 +103,36 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|directory
+operator|.
+name|OakIndexFile
+operator|.
+name|getOakIndexFile
+import|;
+end_import
+
 begin_class
 class|class
 name|OakIndexInput
 extends|extends
 name|IndexInput
 block|{
-specifier|private
 specifier|final
 name|OakIndexFile
 name|file
@@ -166,8 +189,7 @@ name|this
 operator|.
 name|file
 operator|=
-operator|new
-name|OakBufferedIndexFile
+name|getOakIndexFile
 argument_list|(
 name|name
 argument_list|,
