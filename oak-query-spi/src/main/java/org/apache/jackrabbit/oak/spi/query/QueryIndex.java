@@ -350,6 +350,11 @@ name|String
 name|getPathPrefix
 parameter_list|()
 function_decl|;
+comment|/**          * Whether index for this plan supports handling path restrictions natively.          */
+name|boolean
+name|getSupportsPathRestriction
+parameter_list|()
+function_decl|;
 comment|/**          * The property restriction for this index plan or<code>null</code> if          * this index plan isn't base on a property restriction. E.g. a plan          * based on an order by clause in the query.          *          * @return the restriction this plan is based on or<code>null</code>.          */
 annotation|@
 name|CheckForNull
@@ -437,6 +442,12 @@ name|String
 name|pathPrefix
 init|=
 literal|"/"
+decl_stmt|;
+specifier|protected
+name|boolean
+name|supportsPathRestriction
+init|=
+literal|false
 decl_stmt|;
 specifier|protected
 name|Map
@@ -659,6 +670,24 @@ return|;
 block|}
 specifier|public
 name|Builder
+name|setSupportsPathRestriction
+parameter_list|(
+name|boolean
+name|supportsPathRestriction
+parameter_list|)
+block|{
+name|this
+operator|.
+name|supportsPathRestriction
+operator|=
+name|supportsPathRestriction
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+specifier|public
+name|Builder
 name|setAttribute
 parameter_list|(
 name|String
@@ -853,6 +882,17 @@ name|pathPrefix
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|supportsPathRestriction
+init|=
+name|Builder
+operator|.
+name|this
+operator|.
+name|supportsPathRestriction
+decl_stmt|;
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -910,7 +950,9 @@ literal|" definition : %s,"
 operator|+
 literal|" propertyRestriction : %s,"
 operator|+
-literal|" pathPrefix : %s }"
+literal|" pathPrefix : %s,"
+operator|+
+literal|" supportsPathRestriction : %s }"
 argument_list|,
 name|costPerExecution
 argument_list|,
@@ -933,6 +975,8 @@ argument_list|,
 name|propRestriction
 argument_list|,
 name|pathPrefix
+argument_list|,
+name|supportsPathRestriction
 argument_list|)
 return|;
 block|}
@@ -1075,6 +1119,17 @@ parameter_list|()
 block|{
 return|return
 name|pathPrefix
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|getSupportsPathRestriction
+parameter_list|()
+block|{
+return|return
+name|supportsPathRestriction
 return|;
 block|}
 annotation|@
