@@ -3364,6 +3364,14 @@ name|getPathPrefix
 argument_list|()
 argument_list|)
 operator|.
+name|setSupportsPathRestriction
+argument_list|(
+name|definition
+operator|.
+name|evaluatePathRestrictions
+argument_list|()
+argument_list|)
+operator|.
 name|setDelayed
 argument_list|(
 literal|true
