@@ -817,7 +817,7 @@ name|cardinality
 operator|=
 name|ReferenceCardinality
 operator|.
-name|OPTIONAL
+name|MULTIPLE
 argument_list|,
 name|policy
 operator|=
