@@ -5048,6 +5048,27 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// only perform the conditional update when there are
+comment|// no conditions and the check is OK. this avoid an
+comment|// unnecessary call when the conditions do not match
+if|if
+condition|(
+operator|!
+name|checkConditions
+operator|||
+name|UpdateUtils
+operator|.
+name|checkConditions
+argument_list|(
+name|cachedDoc
+argument_list|,
+name|updateOp
+operator|.
+name|getConditions
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|QueryBuilder
 name|query
 init|=
@@ -5064,6 +5085,11 @@ name|getConditions
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// below condition may overwrite a user supplied condition
+comment|// on _modCount. This fine, because the conditions were
+comment|// already checked against the cached document with the
+comment|// matching _modCount value. There is no need to check the
+comment|// user supplied condition on _modCount again on the server
 name|query
 operator|.
 name|and
@@ -5140,6 +5166,7 @@ comment|// return previously cached document
 return|return
 name|cachedDoc
 return|;
+block|}
 block|}
 block|}
 comment|// conditional update failed or not possible
