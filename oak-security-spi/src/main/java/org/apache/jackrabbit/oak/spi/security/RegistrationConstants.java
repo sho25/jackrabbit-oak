@@ -13,22 +13,37 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|tree
+name|security
 package|;
 end_package
 
 begin_comment
-comment|/**  * Marker interface to indicate if a {@link Tree} or {@link org.apache.jackrabbit.oak.api.Root}  * can only be read (write operations not implemented).  */
+comment|/**  * Holds the names of well-known registration properties for security-related components  *  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
-name|ReadOnly
-block|{ }
-end_interface
+specifier|abstract
+class|class
+name|RegistrationConstants
+block|{
+comment|/**      * Name to be used when registering components that are required by the {@code org.apache.jackrabbit.oak.security.internal.SecurityProviderRegistration}      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|OAK_SECURITY_NAME
+init|=
+literal|"oak.security.name"
+decl_stmt|;
+specifier|private
+name|RegistrationConstants
+parameter_list|()
+block|{              }
+block|}
+end_class
 
 end_unit
 

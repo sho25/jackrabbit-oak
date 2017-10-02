@@ -818,7 +818,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility providing common operations for the {@code Tree} that are not provided  * by the API.  */
+comment|/**  * Utility providing common operations for the {@link org.apache.jackrabbit.oak.api.Tree} that are not provided  * by the API.  */
 end_comment
 
 begin_class
@@ -2991,7 +2991,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns {@code true} if the specified {@code tree} is a read-only tree..      *      * @param tree The tree object to be tested.      * @return {@code true} if the specified tree is an immutable read-only tree.      * @see {@link ReadOnly}      */
+comment|/**      * Returns {@code true} if the specified {@code tree} is a read-only tree..      *      * @param tree The tree object to be tested.      * @return {@code true} if the specified tree is an immutable read-only tree.      * @see org.apache.jackrabbit.oak.plugins.tree.ReadOnly      */
 specifier|public
 specifier|static
 name|boolean

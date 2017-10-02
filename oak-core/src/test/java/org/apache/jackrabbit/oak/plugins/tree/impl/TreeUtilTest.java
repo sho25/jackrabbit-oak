@@ -16,6 +16,8 @@ operator|.
 name|plugins
 operator|.
 name|tree
+operator|.
+name|impl
 package|;
 end_package
 
@@ -90,6 +92,24 @@ operator|.
 name|api
 operator|.
 name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
+name|TreeUtil
 import|;
 end_import
 
