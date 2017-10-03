@@ -372,6 +372,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|PropertyDefinition
 block|{
@@ -500,14 +501,17 @@ name|String
 index|[]
 name|functionCode
 decl_stmt|;
+specifier|public
 specifier|final
 name|ValuePattern
 name|valuePattern
 decl_stmt|;
+specifier|public
 specifier|final
 name|boolean
 name|sync
 decl_stmt|;
+specifier|public
 specifier|final
 name|boolean
 name|unique
