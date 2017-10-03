@@ -215,6 +215,40 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+operator|.
+name|transform
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|isAbsolute
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -345,6 +379,7 @@ operator|=
 name|indexState
 expr_stmt|;
 block|}
+comment|/**      * Performs query based on provided property restriction      *      * @param filter filter from the query being performed      * @param pd property definition as per index definition      * @param propertyName actual property name which may or may not be same as      *                     property name in property restriction      * @param restriction property restriction matching given property      * @return iterable consisting of absolute paths as per index content      */
 specifier|public
 name|Iterable
 argument_list|<
@@ -530,6 +565,12 @@ name|propertyName
 operator|+
 literal|")"
 decl_stmt|;
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|result
+decl_stmt|;
 if|if
 condition|(
 name|pd
@@ -537,7 +578,8 @@ operator|.
 name|unique
 condition|)
 block|{
-return|return
+name|result
+operator|=
 name|queryUnique
 argument_list|(
 name|filter
@@ -550,11 +592,12 @@ name|propIdxNodeName
 argument_list|,
 name|encodedValues
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 else|else
 block|{
-return|return
+name|result
+operator|=
 name|querySimple
 argument_list|(
 name|filter
@@ -565,8 +608,27 @@ name|propIndexNode
 argument_list|,
 name|encodedValues
 argument_list|)
-return|;
+expr_stmt|;
 block|}
+return|return
+name|transform
+argument_list|(
+name|result
+argument_list|,
+name|path
+lambda|->
+name|isAbsolute
+argument_list|(
+name|path
+argument_list|)
+condition|?
+name|path
+else|:
+literal|"/"
+operator|+
+name|path
+argument_list|)
+return|;
 block|}
 specifier|private
 specifier|static
