@@ -1720,6 +1720,10 @@ name|sortOrder
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+name|ft
+operator|==
+literal|null
 condition|)
 block|{
 name|boolean
