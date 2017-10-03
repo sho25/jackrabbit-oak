@@ -671,7 +671,9 @@ block|{
 try|try
 block|{
 name|performCleanup
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -691,11 +693,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Performs the cleanup run      *      * @return true if the cleanup was attempted      */
+comment|/**      * Performs the cleanup run      *      * @param forceCleanup if true then clean up would attempted even if no change      *                     is found in async indexer state      */
 specifier|public
 name|CleanupStats
 name|performCleanup
-parameter_list|()
+parameter_list|(
+name|boolean
+name|forceCleanup
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
@@ -735,6 +740,9 @@ name|equals
 argument_list|(
 name|asyncInfo
 argument_list|)
+operator|&&
+operator|!
+name|forceCleanup
 condition|)
 block|{
 name|log

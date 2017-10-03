@@ -2114,6 +2114,10 @@ specifier|private
 name|IndexTracker
 name|tracker
 decl_stmt|;
+specifier|private
+name|PropertyIndexCleaner
+name|cleaner
+decl_stmt|;
 annotation|@
 name|Activate
 specifier|private
@@ -2409,6 +2413,8 @@ name|indexPathService
 argument_list|,
 name|getIndexCheckDir
 argument_list|()
+argument_list|,
+name|cleaner
 argument_list|)
 argument_list|,
 name|LuceneIndexMBean
@@ -4603,9 +4609,8 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|PropertyIndexCleaner
 name|cleaner
-init|=
+operator|=
 operator|new
 name|PropertyIndexCleaner
 argument_list|(
@@ -4615,7 +4620,7 @@ name|indexPathService
 argument_list|,
 name|asyncIndexInfoService
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|oakRegs
 operator|.
 name|add
