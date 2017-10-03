@@ -1053,7 +1053,6 @@ return|return
 name|indexedNodes
 return|;
 block|}
-specifier|private
 name|boolean
 name|isAsyncIndexing
 parameter_list|()
