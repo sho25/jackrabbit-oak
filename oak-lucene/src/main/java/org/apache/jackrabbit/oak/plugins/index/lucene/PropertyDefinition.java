@@ -671,22 +671,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|//If node is not set for full text then a property definition indicates that definition is for property index
-name|this
-operator|.
-name|propertyIndex
-operator|=
-name|getOptionalValueIfIndexed
-argument_list|(
-name|defn
-argument_list|,
-name|LuceneIndexConstants
-operator|.
-name|PROP_PROPERTY_INDEX
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|ordered
@@ -912,6 +896,24 @@ argument_list|,
 name|LuceneIndexConstants
 operator|.
 name|PROP_SYNC
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+comment|//If some property is set to sync then propertyIndex mode is always enabled
+name|this
+operator|.
+name|propertyIndex
+operator|=
+name|sync
+operator|||
+name|getOptionalValueIfIndexed
+argument_list|(
+name|defn
+argument_list|,
+name|LuceneIndexConstants
+operator|.
+name|PROP_PROPERTY_INDEX
 argument_list|,
 literal|false
 argument_list|)
