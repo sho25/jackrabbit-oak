@@ -10520,6 +10520,13 @@ name|pr
 operator|.
 name|indexPath
 argument_list|)
+argument_list|,
+name|plan
+operator|.
+name|getPathPrefix
+argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|PropertyIndexResult
