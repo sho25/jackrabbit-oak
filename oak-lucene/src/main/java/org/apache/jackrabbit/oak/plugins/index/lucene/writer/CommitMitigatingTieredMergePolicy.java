@@ -338,7 +338,7 @@ name|DEFAULT_MAX_CFS_SEGMENT_SIZE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Maximum number of segments to be merged at a time      *  during "normal" merging.  For explicit merging (eg,      *  forceMerge or forceMergeDeletes was called), see {@link      *  #setMaxMergeAtOnceExplicit}.  Default is 10. */
+comment|/** Maximum number of segments to be merged at a time      *  during "normal" merging.  For explicit merging (eg,      *  forceMerge or forceMergeDeletes was called), see {@link      *  #setMaxMergeAtOnceExplicit}.  Default is 10.      *      * @param v the max no. of merges      * @return this merge policy instance      *      **/
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setMaxMergeAtOnce
@@ -374,6 +374,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * set the maximum no. of docs per sec accepted for a merge to happen      *      * @param maxCommitRate maxCommitRate maximum commit rate (docs/sec)      * @return this merge policy instance      */
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setMaxCommitRateDocs
@@ -392,7 +393,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** Returns the current maxMergeAtOnce setting.      *      * @see #setMaxMergeAtOnce */
+comment|/** Returns the current maxMergeAtOnce setting.      *      * @return the max merge at once that can be performed      * @see #setMaxMergeAtOnce */
 specifier|public
 name|int
 name|getMaxMergeAtOnce
@@ -404,7 +405,7 @@ return|;
 block|}
 comment|// TODO: should addIndexes do explicit merging, too?  And,
 comment|// if user calls IW.maybeMerge "explicitly"
-comment|/** Maximum number of segments to be merged at a time,      *  during forceMerge or forceMergeDeletes. Default is 30. */
+comment|/** Maximum number of segments to be merged at a time,      *  during forceMerge or forceMergeDeletes. Default is 30.      *      * @param v the no. of max merges      * @return this merge policy instance      **/
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setMaxMergeAtOnceExplicit
@@ -440,7 +441,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** Returns the current maxMergeAtOnceExplicit setting.      *      * @see #setMaxMergeAtOnceExplicit */
+comment|/** Returns the current maxMergeAtOnceExplicit setting.      * @return the maxMergeAtOnceExplicit value      *      * @see #setMaxMergeAtOnceExplicit */
 specifier|public
 name|int
 name|getMaxMergeAtOnceExplicit
@@ -450,7 +451,7 @@ return|return
 name|maxMergeAtOnceExplicit
 return|;
 block|}
-comment|/** Maximum sized segment to produce during      *  normal merging.  This setting is approximate: the      *  estimate of the merged segment size is made by summing      *  sizes of to-be-merged segments (compensating for      *  percent deleted docs).  Default is 5 GB. */
+comment|/** Maximum sized segment to produce during      *  normal merging.  This setting is approximate: the      *  estimate of the merged segment size is made by summing      *  sizes of to-be-merged segments (compensating for      *  percent deleted docs).  Default is 5 GB.      *      * @param v the maximum segment size in MB      * @return this merge policy instance      **/
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setMaxMergedSegmentMB
@@ -507,7 +508,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** Returns the current maxMergedSegmentMB setting.      *      * @see #getMaxMergedSegmentMB */
+comment|/** Returns the current maxMergedSegmentMB setting.      *      * @return the max merged segment size in MB      *      * @see #getMaxMergedSegmentMB */
 specifier|public
 name|double
 name|getMaxMergedSegmentMB
@@ -521,7 +522,7 @@ operator|/
 literal|1024.
 return|;
 block|}
-comment|/** Controls how aggressively merges that reclaim more      *  deletions are favored.  Higher values will more      *  aggressively target merges that reclaim deletions, but      *  be careful not to go so high that way too much merging      *  takes place; a value of 3.0 is probably nearly too      *  high.  A value of 0.0 means deletions don't impact      *  merge selection. */
+comment|/** Controls how aggressively merges that reclaim more      *  deletions are favored.  Higher values will more      *  aggressively target merges that reclaim deletions, but      *  be careful not to go so high that way too much merging      *  takes place; a value of 3.0 is probably nearly too      *  high.  A value of 0.0 means deletions don't impact      *  merge selection.      *      *  @param v the reclaim deletes weight      *  @return this merge policy instance      **/
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setReclaimDeletesWeight
@@ -557,7 +558,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** See {@link #setReclaimDeletesWeight}. */
+comment|/** See {@link #setReclaimDeletesWeight}.      * @return the reclaim deletes weight      *      **/
 specifier|public
 name|double
 name|getReclaimDeletesWeight
@@ -567,7 +568,7 @@ return|return
 name|reclaimDeletesWeight
 return|;
 block|}
-comment|/** Segments smaller than this are "rounded up" to this      *  size, ie treated as equal (floor) size for merge      *  selection.  This is to prevent frequent flushing of      *  tiny segments from allowing a long tail in the index.      *  Default is 2 MB. */
+comment|/** Segments smaller than this are "rounded up" to this      *  size, ie treated as equal (floor) size for merge      *  selection.  This is to prevent frequent flushing of      *  tiny segments from allowing a long tail in the index.      *  Default is 2 MB.      *      * @param v floor segment size in MB      * @return this merge policy instance      *      **/
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setFloorSegmentMB
@@ -624,7 +625,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** Returns the current floorSegmentMB.      *      *  @see #setFloorSegmentMB */
+comment|/** Returns the current floorSegmentMB.      * @return the floor segment size in MB      *      *  @see #setFloorSegmentMB */
 specifier|public
 name|double
 name|getFloorSegmentMB
@@ -640,7 +641,7 @@ literal|1024.
 operator|)
 return|;
 block|}
-comment|/** When forceMergeDeletes is called, we only merge away a      *  segment if its delete percentage is over this      *  threshold.  Default is 10%. */
+comment|/** When forceMergeDeletes is called, we only merge away a      *  segment if its delete percentage is over this      *  threshold.  Default is 10%.      *      * @param v the force merge deletes allowed percentage      * @return this merge policy instance      *      **/
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setForceMergeDeletesPctAllowed
@@ -680,7 +681,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** Returns the current forceMergeDeletesPctAllowed setting.      *      * @see #setForceMergeDeletesPctAllowed */
+comment|/** Returns the current forceMergeDeletesPctAllowed setting.      * @return the forceMergeDeletesPctAllowed      *      * @see #setForceMergeDeletesPctAllowed */
 specifier|public
 name|double
 name|getForceMergeDeletesPctAllowed
@@ -690,7 +691,7 @@ return|return
 name|forceMergeDeletesPctAllowed
 return|;
 block|}
-comment|/** Sets the allowed number of segments per tier.  Smaller      *  values mean more merging but fewer segments.      *      *<p><b>NOTE</b>: this value should be&gt;= the {@link      *  #setMaxMergeAtOnce} otherwise you'll force too much      *  merging to occur.</p>      *      *<p>Default is 10.0.</p> */
+comment|/** Sets the allowed number of segments per tier.  Smaller      *  values mean more merging but fewer segments.      *      *<p><b>NOTE</b>: this value should be&gt;= the {@link      *  #setMaxMergeAtOnce} otherwise you'll force too much      *  merging to occur.</p>      *      *<p>Default is 10.0.</p>      *      * @param v segments per tier      * @return this merge policy instance      *      **/
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setSegmentsPerTier
@@ -726,7 +727,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** Returns the current segmentsPerTier setting.      *      * @see #setSegmentsPerTier */
+comment|/** Returns the current segmentsPerTier setting.      * @return segments per tier      *      * @see #setSegmentsPerTier */
 specifier|public
 name|double
 name|getSegmentsPerTier
@@ -736,6 +737,7 @@ return|return
 name|segsPerTier
 return|;
 block|}
+comment|/**      * set the max no. of committed MBs for a merge to happen      * @param maxCommitRateMB max commit rate in MB (mb/sec)      * @return this merge policy instance      */
 specifier|public
 name|CommitMitigatingTieredMergePolicy
 name|setMaxCommitRateMB
@@ -974,6 +976,17 @@ operator|.
 name|debug
 argument_list|(
 literal|"committing {} docs/sec"
+argument_list|,
+name|commitRate
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|printf
+argument_list|(
+literal|"committing %s docs/sec\n"
 argument_list|,
 name|commitRate
 argument_list|)
@@ -1535,6 +1548,17 @@ argument_list|,
 name|mbRate
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|printf
+argument_list|(
+literal|"committing %s MBs/sec\n"
+argument_list|,
+name|mbRate
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|verbose
@@ -1995,7 +2019,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/** Expert: scores one merge; subclasses can override. */
+comment|/** Expert: scores one merge; subclasses can override.      * @param candidate a list of candidate segments      * @param hitTooLarge hit too large setting      * @param mergingBytes the bytes to merge      * @return a merge score      **/
 specifier|protected
 name|MergeScore
 name|score
