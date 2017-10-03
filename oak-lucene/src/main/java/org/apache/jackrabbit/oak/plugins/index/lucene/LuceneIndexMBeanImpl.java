@@ -77,18 +77,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-operator|.
-name|Entry
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -425,7 +413,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LucenePropertyIndex
+name|util
 operator|.
 name|PathStoredFieldVisitor
 import|;
