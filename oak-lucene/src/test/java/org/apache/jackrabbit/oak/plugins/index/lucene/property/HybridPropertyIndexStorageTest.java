@@ -151,6 +151,26 @@ name|index
 operator|.
 name|lucene
 operator|.
+name|PropertyUpdateCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
 name|util
 operator|.
 name|IndexDefinitionBuilder
@@ -1088,8 +1108,13 @@ operator|.
 name|unique
 argument_list|()
 expr_stmt|;
+name|PropertyUpdateCallback
+name|callback
+init|=
 name|newCallback
 argument_list|()
+decl_stmt|;
+name|callback
 operator|.
 name|propertyUpdated
 argument_list|(
@@ -1112,8 +1137,7 @@ literal|"bar"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|newCallback
-argument_list|()
+name|callback
 operator|.
 name|propertyUpdated
 argument_list|(
@@ -1135,6 +1159,11 @@ argument_list|,
 literal|"bar2"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|callback
+operator|.
+name|done
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -1255,7 +1284,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// /b should not come as pruning is disabled
+comment|// /b should not come as pruning is enabled
 name|assertThat
 argument_list|(
 name|query

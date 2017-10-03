@@ -43,6 +43,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|PropertyState
 import|;
 end_import
@@ -79,6 +95,13 @@ name|Nullable
 name|PropertyState
 name|after
 parameter_list|)
+function_decl|;
+comment|/**      * Invoked after editor has traversed all the changes      *      * @throws CommitFailedException in case some validation fails      */
+name|void
+name|done
+parameter_list|()
+throws|throws
+name|CommitFailedException
 function_decl|;
 block|}
 end_interface
