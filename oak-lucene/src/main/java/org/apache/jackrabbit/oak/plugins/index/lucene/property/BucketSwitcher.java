@@ -521,7 +521,7 @@ return|;
 block|}
 specifier|private
 specifier|static
-name|int
+name|long
 name|getOptionalValue
 parameter_list|(
 name|NodeBuilder
@@ -551,10 +551,6 @@ literal|null
 condition|?
 name|defaultVal
 else|:
-name|Ints
-operator|.
-name|checkedCast
-argument_list|(
 name|ps
 operator|.
 name|getValue
@@ -562,7 +558,6 @@ argument_list|(
 name|Type
 operator|.
 name|LONG
-argument_list|)
 argument_list|)
 return|;
 block|}
