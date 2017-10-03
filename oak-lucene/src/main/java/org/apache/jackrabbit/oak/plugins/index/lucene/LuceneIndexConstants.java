@@ -307,6 +307,18 @@ name|PROP_WEIGHT
 init|=
 literal|"weight"
 decl_stmt|;
+comment|/**      * Boolean property in property definition to mark sync properties      */
+name|String
+name|PROP_SYNC
+init|=
+literal|"sync"
+decl_stmt|;
+comment|/**      * Boolean property in property definition to mark unique properties      */
+name|String
+name|PROP_UNIQUE
+init|=
+literal|"unique"
+decl_stmt|;
 comment|/**      * Integer property indicating that LuceneIndex should be      * used in compat mode to specific version      */
 name|String
 name|COMPAT_MODE
