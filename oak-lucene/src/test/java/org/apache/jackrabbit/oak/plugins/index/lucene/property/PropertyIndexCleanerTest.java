@@ -963,7 +963,7 @@ name|assertTrue
 argument_list|(
 name|cleaner
 operator|.
-name|run
+name|performCleanup
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1054,7 +1054,7 @@ name|assertTrue
 argument_list|(
 name|cleaner
 operator|.
-name|run
+name|performCleanup
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1090,7 +1090,7 @@ name|assertTrue
 argument_list|(
 name|cleaner
 operator|.
-name|run
+name|performCleanup
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1336,7 +1336,7 @@ name|assertTrue
 argument_list|(
 name|cleaner
 operator|.
-name|run
+name|performCleanup
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1448,7 +1448,7 @@ name|assertTrue
 argument_list|(
 name|cleaner
 operator|.
-name|run
+name|performCleanup
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1620,7 +1620,7 @@ name|assertTrue
 argument_list|(
 name|cleaner
 operator|.
-name|run
+name|performCleanup
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1629,7 +1629,7 @@ name|assertFalse
 argument_list|(
 name|cleaner
 operator|.
-name|run
+name|performCleanup
 argument_list|()
 argument_list|)
 expr_stmt|;
