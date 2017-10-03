@@ -23,6 +23,18 @@ name|property
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+import|;
+end_import
+
 begin_class
 class|class
 name|HybridPropertyIndexUtil
@@ -50,6 +62,24 @@ name|String
 name|PROP_PREVIOUS_BUCKET
 init|=
 literal|"previous"
+decl_stmt|;
+comment|/**      * Property set on each bucket to record that it entries after      * given async indexer state i.e. lastIndexTo time for the associated      * asyn indexer      */
+specifier|static
+specifier|final
+name|String
+name|PROP_ASYNC_INDEXED_TO_TIME_AT_SWITCH
+init|=
+literal|"asyncIndexedToTimeAtSwitch"
+decl_stmt|;
+comment|/**      * Creation time used for entries in unique property index. Instead of      * storing the data as calendar it stores it as epoch time      */
+specifier|static
+specifier|final
+name|String
+name|PROP_CREATED
+init|=
+name|JcrConstants
+operator|.
+name|JCR_CREATED
 decl_stmt|;
 specifier|static
 specifier|final
