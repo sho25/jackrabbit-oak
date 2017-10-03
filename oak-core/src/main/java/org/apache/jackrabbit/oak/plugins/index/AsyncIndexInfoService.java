@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -94,6 +104,57 @@ name|NodeState
 name|root
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the lastIndexUpto time in millis for each indexing lane      * for current root state      *      * @return map with lane name as key and lastIndexUpto in millis as value      */
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Long
+argument_list|>
+name|getIndexedUptoPerLane
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the lastIndexUpto time in millis for each indexing lane      * for given root state      *      * @return map with lane name as key and lastIndexUpto in millis as value      */
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Long
+argument_list|>
+name|getIndexedUptoPerLane
+parameter_list|(
+name|NodeState
+name|root
+parameter_list|)
+function_decl|;
+comment|/**      * Determines if any index lane has completed any indexing cycle between given      * two repository states      *      * @param before before state of root node      * @param after after state of root node      * @return true if any indexing lane has completed any indexing cycle i.e. its      * lastIndexTo time has changed      */
+specifier|default
+name|boolean
+name|hasIndexerUpdatedForAnyLane
+parameter_list|(
+name|NodeState
+name|before
+parameter_list|,
+name|NodeState
+name|after
+parameter_list|)
+block|{
+return|return
+operator|!
+name|getIndexedUptoPerLane
+argument_list|(
+name|before
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+name|getIndexedUptoPerLane
+argument_list|(
+name|after
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 end_interface
 
