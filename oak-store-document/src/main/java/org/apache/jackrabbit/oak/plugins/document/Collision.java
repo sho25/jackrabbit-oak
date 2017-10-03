@@ -390,6 +390,10 @@ literal|"with collision marker. Our revision: "
 operator|+
 name|ourRev
 operator|+
+literal|", their revision: "
+operator|+
+name|theirRev
+operator|+
 literal|", document:\n"
 operator|+
 name|newDoc
