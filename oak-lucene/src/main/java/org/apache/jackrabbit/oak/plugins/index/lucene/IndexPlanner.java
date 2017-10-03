@@ -1714,6 +1714,14 @@ name|enableNodeNameRestriction
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|sortOrder
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|boolean
 name|uniqueIndexFound
 init|=
@@ -1733,6 +1741,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|plan
