@@ -905,10 +905,7 @@ literal|1
 argument_list|,
 name|idx
 operator|.
-name|getPrimaryReader
-argument_list|()
-operator|.
-name|getReader
+name|getPrimaryReaderForTest
 argument_list|()
 operator|.
 name|numDocs
@@ -931,10 +928,7 @@ literal|2
 argument_list|,
 name|idx
 operator|.
-name|getPrimaryReader
-argument_list|()
-operator|.
-name|getReader
+name|getPrimaryReaderForTest
 argument_list|()
 operator|.
 name|numDocs
@@ -947,10 +941,7 @@ literal|0
 argument_list|,
 name|idx
 operator|.
-name|getPrimaryReader
-argument_list|()
-operator|.
-name|getReader
+name|getPrimaryReaderForTest
 argument_list|()
 operator|.
 name|numDeletedDocs

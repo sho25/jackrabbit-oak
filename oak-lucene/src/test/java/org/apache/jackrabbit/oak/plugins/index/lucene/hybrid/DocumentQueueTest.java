@@ -1322,10 +1322,7 @@ literal|1
 argument_list|,
 name|index
 operator|.
-name|getPrimaryReader
-argument_list|()
-operator|.
-name|getReader
+name|getPrimaryReaderForTest
 argument_list|()
 operator|.
 name|numDocs
