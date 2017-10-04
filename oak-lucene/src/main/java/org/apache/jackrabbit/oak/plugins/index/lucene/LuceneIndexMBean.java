@@ -404,6 +404,23 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Fetches hybrid property index info as json for index at given path"
+argument_list|)
+name|String
+name|getHybridIndexInfo
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"indexPath"
+argument_list|)
+name|String
+name|indexPath
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

@@ -91,6 +91,30 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gson
+operator|.
+name|JsonObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gson
+operator|.
+name|JsonParser
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -401,6 +425,24 @@ name|spi
 operator|.
 name|state
 operator|.
+name|NodeStateUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
 name|NodeStore
 import|;
 end_import
@@ -418,6 +460,20 @@ operator|.
 name|stats
 operator|.
 name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|json
+operator|.
+name|simple
+operator|.
+name|parser
+operator|.
+name|ParseException
 import|;
 end_import
 
@@ -613,31 +669,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
 name|assertThat
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -1380,6 +1412,23 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|assertJsonInfo
+argument_list|(
+name|indexPath
+argument_list|,
+literal|"{\n"
+operator|+
+literal|"  \"foo\": {\n"
+operator|+
+literal|"    \"entryCount\": 1,\n"
+operator|+
+literal|"    \"unique\": true\n"
+operator|+
+literal|"  }\n"
+operator|+
+literal|"}"
+argument_list|)
+expr_stmt|;
 comment|// /a would be purged, /b would be retained as its created time 1150 is not older than 100 wrt
 comment|// indexer time of 1200
 name|assertThat
@@ -1672,6 +1721,43 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|assertJsonInfo
+argument_list|(
+name|indexPath
+argument_list|,
+literal|"{\n"
+operator|+
+literal|"  \"foo\": {\n"
+operator|+
+literal|"    \"1\": {\n"
+operator|+
+literal|"      \"type\": \"previous\",\n"
+operator|+
+literal|"      \"keyCount\": 1,\n"
+operator|+
+literal|"      \"entryCount\": 1,\n"
+operator|+
+literal|"      \"totalCount\": 3\n"
+operator|+
+literal|"    },\n"
+operator|+
+literal|"    \"2\": {\n"
+operator|+
+literal|"      \"type\": \"head\",\n"
+operator|+
+literal|"      \"keyCount\": 0,\n"
+operator|+
+literal|"      \"entryCount\": 0,\n"
+operator|+
+literal|"      \"totalCount\": 1\n"
+operator|+
+literal|"    }\n"
+operator|+
+literal|"  }\n"
+operator|+
+literal|"}"
+argument_list|)
+expr_stmt|;
 comment|//Second run should not run
 name|assertCleanUpPerformed
 argument_list|(
@@ -1706,6 +1792,96 @@ operator|.
 name|cleanupPerformed
 argument_list|)
 expr_stmt|;
+block|}
+specifier|private
+name|void
+name|assertJsonInfo
+parameter_list|(
+name|String
+name|indexPath
+parameter_list|,
+name|String
+name|expectedJson
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
+name|NodeState
+name|idx
+init|=
+name|NodeStateUtils
+operator|.
+name|getNode
+argument_list|(
+name|nodeStore
+operator|.
+name|getRoot
+argument_list|()
+argument_list|,
+name|indexPath
+argument_list|)
+decl_stmt|;
+name|String
+name|json
+init|=
+operator|new
+name|HybridPropertyIndexInfo
+argument_list|(
+name|idx
+argument_list|)
+operator|.
+name|getInfoAsJson
+argument_list|()
+decl_stmt|;
+name|JsonObject
+name|j1
+init|=
+operator|(
+name|JsonObject
+operator|)
+operator|new
+name|JsonParser
+argument_list|()
+operator|.
+name|parse
+argument_list|(
+name|json
+argument_list|)
+decl_stmt|;
+name|JsonObject
+name|j2
+init|=
+operator|(
+name|JsonObject
+operator|)
+operator|new
+name|JsonParser
+argument_list|()
+operator|.
+name|parse
+argument_list|(
+name|expectedJson
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|j1
+operator|.
+name|equals
+argument_list|(
+name|j2
+argument_list|)
+condition|)
+block|{
+name|assertEquals
+argument_list|(
+name|j1
+argument_list|,
+name|j2
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void
