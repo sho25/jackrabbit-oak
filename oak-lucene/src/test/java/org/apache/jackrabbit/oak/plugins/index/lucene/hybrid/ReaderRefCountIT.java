@@ -734,11 +734,6 @@ expr_stmt|;
 block|}
 comment|/**      * This test enables 1 more thread which updates the IndexTracker      * This causes the IndexNodeManager to switch to newer indexes      * and hence lead to creation and closing of older NRTIndexes      */
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6777"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
