@@ -170,6 +170,12 @@ name|INDEX_NAME_OPTION
 init|=
 literal|":indexName"
 decl_stmt|;
+comment|/**      * Boolean property on any index node indicating that such a node should not be      * removed during reindex      */
+name|String
+name|REINDEX_RETAIN
+init|=
+literal|"retainNodeInReindex"
+decl_stmt|;
 block|}
 end_interface
 
