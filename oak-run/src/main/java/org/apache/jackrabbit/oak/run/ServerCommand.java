@@ -1100,6 +1100,9 @@ argument_list|,
 literal|false
 argument_list|,
 name|cacheSize
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 block|}

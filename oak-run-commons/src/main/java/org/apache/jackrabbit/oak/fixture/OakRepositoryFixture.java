@@ -484,6 +484,9 @@ name|dropDBAfterTest
 parameter_list|,
 name|long
 name|cacheSize
+parameter_list|,
+name|int
+name|vgcMaxAge
 parameter_list|)
 block|{
 return|return
@@ -509,6 +512,8 @@ argument_list|,
 name|dropDBAfterTest
 argument_list|,
 name|cacheSize
+argument_list|,
+name|vgcMaxAge
 argument_list|)
 argument_list|)
 return|;
@@ -536,13 +541,14 @@ parameter_list|,
 name|long
 name|cacheSize
 parameter_list|,
-specifier|final
 name|File
 name|base
 parameter_list|,
-specifier|final
 name|int
 name|fdsCacheInMB
+parameter_list|,
+name|int
+name|vgcMaxAge
 parameter_list|)
 block|{
 return|return
@@ -574,6 +580,8 @@ argument_list|,
 name|base
 argument_list|,
 name|fdsCacheInMB
+argument_list|,
+name|vgcMaxAge
 argument_list|)
 argument_list|)
 return|;

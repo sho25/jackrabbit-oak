@@ -1466,6 +1466,9 @@ argument_list|,
 name|cacheSize
 operator|*
 name|MB
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 block|,
 name|OakRepositoryFixture
@@ -1524,6 +1527,9 @@ name|value
 argument_list|(
 name|options
 argument_list|)
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 block|}
 decl_stmt|;
