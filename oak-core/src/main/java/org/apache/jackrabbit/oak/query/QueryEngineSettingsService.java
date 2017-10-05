@@ -280,9 +280,13 @@ literal|"Fast result size"
 argument_list|,
 name|description
 operator|=
-literal|"Whether the query result size should return an estimation (or -1 if disabled) "
+literal|"Whether the query result size (QueryResult.getSize()) should return an estimation for queries that return many nodes. "
 operator|+
-literal|"for large queries"
+literal|"The estimate will be larger or equal the actual result size, as it includes unindexed properties and nodes that are not accessible. "
+operator|+
+literal|"If diabled, for such cases -1 is returned. "
+operator|+
+literal|"Note: even if enabled, getSize may still return -1 if the index used does not support the feature."
 argument_list|)
 name|boolean
 name|fastQuerySize
