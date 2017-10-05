@@ -2991,7 +2991,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns {@code true} if the specified {@code tree} is a read-only tree..      *      * @param tree The tree object to be tested.      * @return {@code true} if the specified tree is an immutable read-only tree.      * @see {@link ReadOnly}      */
+comment|/**      * Returns {@code true} if the specified {@code tree} is a read-only tree..      *      * @param tree The tree object to be tested.      * @return {@code true} if the specified tree is an immutable read-only tree.      * @see ReadOnly      */
 specifier|public
 specifier|static
 name|boolean
