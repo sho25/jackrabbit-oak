@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Marker interface to indicate if a {@link Tree} or {@link org.apache.jackrabbit.oak.api.Root}  * can only be read (write operations not implemented).  */
+comment|/**  * Marker interface to indicate if a {@link org.apache.jackrabbit.oak.api.Tree} or {@link org.apache.jackrabbit.oak.api.Root}  * can only be read (write operations not implemented).  */
 end_comment
 
 begin_interface
