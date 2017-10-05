@@ -449,12 +449,12 @@ name|compare
 argument_list|(
 name|o1
 operator|.
-name|getMaxTimeNanos
+name|getMaxRowsScanned
 argument_list|()
 argument_list|,
 name|o2
 operator|.
-name|getMaxTimeNanos
+name|getMaxRowsScanned
 argument_list|()
 argument_list|)
 return|;
