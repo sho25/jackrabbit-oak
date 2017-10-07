@@ -2930,6 +2930,18 @@ block|}
 name|boolean
 name|relative
 init|=
+operator|!
+name|oakPropertyName
+operator|.
+name|startsWith
+argument_list|(
+name|QueryConstants
+operator|.
+name|REP_FACET
+operator|+
+literal|"("
+argument_list|)
+operator|&&
 name|oakPropertyName
 operator|.
 name|indexOf
@@ -3182,6 +3194,8 @@ argument_list|(
 name|QueryConstants
 operator|.
 name|REP_EXCERPT
+operator|+
+literal|"("
 argument_list|)
 condition|)
 block|{
@@ -3282,6 +3296,8 @@ argument_list|(
 name|QueryConstants
 operator|.
 name|REP_FACET
+operator|+
+literal|"("
 argument_list|)
 condition|)
 block|{
