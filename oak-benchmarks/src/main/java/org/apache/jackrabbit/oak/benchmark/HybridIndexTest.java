@@ -2728,6 +2728,8 @@ argument_list|,
 name|indexPathService
 argument_list|,
 name|asyncIndexInfoService
+argument_list|,
+name|statsProvider
 argument_list|)
 decl_stmt|;
 name|regs

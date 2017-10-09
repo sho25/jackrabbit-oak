@@ -467,6 +467,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|StatisticsProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|json
 operator|.
 name|simple
@@ -815,6 +831,10 @@ name|indexPath
 argument_list|)
 argument_list|,
 name|asyncService
+argument_list|,
+name|StatisticsProvider
+operator|.
+name|NOOP
 argument_list|)
 decl_stmt|;
 comment|//As index is yet not update it would not show up in sync index paths
@@ -947,6 +967,10 @@ name|indexPath
 argument_list|)
 argument_list|,
 name|asyncService
+argument_list|,
+name|StatisticsProvider
+operator|.
+name|NOOP
 argument_list|)
 decl_stmt|;
 name|NodeBuilder
@@ -1243,6 +1267,10 @@ name|indexPath
 argument_list|)
 argument_list|,
 name|asyncService
+argument_list|,
+name|StatisticsProvider
+operator|.
+name|NOOP
 argument_list|)
 decl_stmt|;
 name|cleaner
@@ -1641,6 +1669,10 @@ name|indexPath
 argument_list|)
 argument_list|,
 name|asyncService
+argument_list|,
+name|StatisticsProvider
+operator|.
+name|NOOP
 argument_list|)
 decl_stmt|;
 name|NodeBuilder

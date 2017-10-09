@@ -4619,6 +4619,8 @@ argument_list|,
 name|indexPathService
 argument_list|,
 name|asyncIndexInfoService
+argument_list|,
+name|statisticsProvider
 argument_list|)
 expr_stmt|;
 name|oakRegs
