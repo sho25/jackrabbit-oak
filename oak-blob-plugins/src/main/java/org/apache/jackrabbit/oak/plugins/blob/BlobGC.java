@@ -815,12 +815,12 @@ operator|-
 name|t0
 argument_list|)
 operator|+
-literal|" "
+literal|". "
 operator|+
 operator|+
 name|missing
 operator|+
-literal|"missing blobs found (details in the log)."
+literal|" missing blobs found (details in the log)."
 return|;
 block|}
 block|}
