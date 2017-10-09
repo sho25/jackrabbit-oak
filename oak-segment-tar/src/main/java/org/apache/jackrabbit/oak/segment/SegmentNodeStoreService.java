@@ -4037,6 +4037,8 @@ name|getOrCreateId
 argument_list|(
 name|segmentNodeStore
 argument_list|)
+argument_list|,
+name|whiteboard
 argument_list|)
 decl_stmt|;
 name|closeables

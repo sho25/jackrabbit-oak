@@ -5487,6 +5487,8 @@ name|getOrCreateId
 argument_list|(
 name|nodeStore
 argument_list|)
+argument_list|,
+name|whiteboard
 argument_list|)
 decl_stmt|;
 name|addRegistration

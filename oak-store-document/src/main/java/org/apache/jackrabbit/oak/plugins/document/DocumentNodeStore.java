@@ -1679,6 +1679,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
+name|whiteboard
+operator|.
+name|Whiteboard
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|stats
 operator|.
 name|Clock
@@ -14163,7 +14181,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @param blobGcMaxAgeInSecs      * @param repositoryId      * @return garbage collector of the BlobStore supports GC otherwise null      */
+comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @param blobGcMaxAgeInSecs      * @param repositoryId      * @param whiteboard      * @return garbage collector of the BlobStore supports GC otherwise null      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -14175,6 +14193,9 @@ name|blobGcMaxAgeInSecs
 parameter_list|,
 name|String
 name|repositoryId
+parameter_list|,
+name|Whiteboard
+name|whiteboard
 parameter_list|)
 block|{
 name|MarkSweepGarbageCollector
@@ -14217,6 +14238,8 @@ name|blobGcMaxAgeInSecs
 argument_list|)
 argument_list|,
 name|repositoryId
+argument_list|,
+name|whiteboard
 argument_list|)
 expr_stmt|;
 block|}
