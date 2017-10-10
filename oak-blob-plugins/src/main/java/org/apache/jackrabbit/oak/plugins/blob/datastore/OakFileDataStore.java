@@ -424,6 +424,14 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MIN_RECORD_LENGTH
+init|=
+literal|4096
+decl_stmt|;
+specifier|private
 name|byte
 index|[]
 name|referenceKey
@@ -448,6 +456,12 @@ name|DataIdentifier
 argument_list|>
 argument_list|>
 argument_list|()
+expr_stmt|;
+comment|// Set default min record length overiding the 100 set for FileDataStore
+name|setMinRecordLength
+argument_list|(
+name|DEFAULT_MIN_RECORD_LENGTH
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
