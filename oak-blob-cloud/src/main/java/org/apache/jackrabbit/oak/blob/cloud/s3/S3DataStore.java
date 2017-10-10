@@ -116,22 +116,6 @@ name|S3DataStore
 extends|extends
 name|AbstractSharedCachingDataStore
 block|{
-comment|/**      * Logger instance.      */
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|S3DataStore
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|protected
 name|Properties
 name|properties
@@ -144,10 +128,6 @@ init|=
 literal|16
 operator|*
 literal|1024
-decl_stmt|;
-specifier|private
-name|String
-name|secret
 decl_stmt|;
 annotation|@
 name|Override
