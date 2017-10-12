@@ -242,9 +242,9 @@ specifier|private
 specifier|static
 specifier|final
 name|int
-name|DEFAULT_MAX_NO_OF_SEGS
+name|DEFAULT_MAX_NO_OF_SEGS_FOR_MITIGATION
 init|=
-literal|30
+literal|20
 decl_stmt|;
 specifier|private
 name|int
@@ -312,9 +312,9 @@ name|DEFAULT_MAX_COMMIT_RATE_MB
 decl_stmt|;
 specifier|private
 name|int
-name|maxNoOfSegs
+name|maxNoOfSegsForMitigation
 init|=
-name|DEFAULT_MAX_NO_OF_SEGS
+name|DEFAULT_MAX_NO_OF_SEGS_FOR_MITIGATION
 decl_stmt|;
 specifier|private
 name|double
@@ -383,6 +383,25 @@ block|}
 name|maxMergeAtOnce
 operator|=
 name|v
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Maximum number of segments allowed for mitigation to happen.      * This is supposed to avoid having too few merges due to high commit rates      * @param maxNoOfSegsForMitigation max no. of segments per mitigation      * @return this merge policy instance      */
+specifier|public
+name|CommitMitigatingTieredMergePolicy
+name|setMaxNoOfSegsForMitigation
+parameter_list|(
+name|int
+name|maxNoOfSegsForMitigation
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxNoOfSegsForMitigation
+operator|=
+name|maxNoOfSegsForMitigation
 expr_stmt|;
 return|return
 name|this
@@ -912,6 +931,14 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|int
+name|segmentSize
+init|=
+name|infos
+operator|.
+name|size
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|verbose
@@ -922,10 +949,7 @@ name|message
 argument_list|(
 literal|"findMerges: "
 operator|+
-name|infos
-operator|.
-name|size
-argument_list|()
+name|segmentSize
 operator|+
 literal|" segments"
 argument_list|)
@@ -933,10 +957,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|infos
-operator|.
-name|size
-argument_list|()
+name|segmentSize
 operator|==
 literal|0
 condition|)
@@ -1023,19 +1044,16 @@ literal|"doc/s)"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// set a maxSegmentsBarrier
+comment|// do not mitigate if there're too many segments to avoid affecting performance
 if|if
 condition|(
 name|commitRate
 operator|>
 name|maxCommitRateDocs
 operator|&&
-name|infos
-operator|.
-name|size
-argument_list|()
+name|segmentSize
 operator|<
-name|maxNoOfSegs
+name|maxNoOfSegsForMitigation
 condition|)
 block|{
 return|return
@@ -1558,10 +1576,7 @@ literal|"committing {} MBs/sec ({} segs)"
 argument_list|,
 name|mbRate
 argument_list|,
-name|infos
-operator|.
-name|size
-argument_list|()
+name|segmentSize
 argument_list|)
 expr_stmt|;
 if|if
@@ -1588,18 +1603,16 @@ name|mb
 operator|=
 name|idxBytes
 expr_stmt|;
+comment|// do not mitigate if there're too many segments to avoid affecting performance
 if|if
 condition|(
 name|mbRate
 operator|>
 name|maxCommitRateMB
 operator|&&
-name|infos
-operator|.
-name|size
-argument_list|()
+name|segmentSize
 operator|<
-name|maxNoOfSegs
+name|maxNoOfSegsForMitigation
 condition|)
 block|{
 return|return
