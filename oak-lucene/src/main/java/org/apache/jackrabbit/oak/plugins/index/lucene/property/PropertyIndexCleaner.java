@@ -1550,14 +1550,6 @@ condition|(
 name|recursiveDelete
 condition|)
 block|{
-for|for
-control|(
-name|String
-name|path
-range|:
-name|bucketPaths
-control|)
-block|{
 name|RecursiveDelete
 name|rd
 init|=
@@ -1572,14 +1564,14 @@ argument_list|,
 name|PropertyIndexCleaner
 operator|::
 name|createCommitInfo
-argument_list|,
-name|path
 argument_list|)
 decl_stmt|;
 name|rd
 operator|.
 name|run
-argument_list|()
+argument_list|(
+name|bucketPaths
+argument_list|)
 expr_stmt|;
 name|stats
 operator|.
@@ -1590,7 +1582,6 @@ operator|.
 name|getNumRemoved
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -2022,16 +2013,36 @@ name|String
 name|toString
 parameter_list|()
 block|{
+name|String
+name|nodeCountMsg
+init|=
+name|numOfNodesDeleted
+operator|>
+literal|0
+condition|?
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"(%d nodes)"
+argument_list|,
+name|numOfNodesDeleted
+argument_list|)
+else|:
+literal|""
+decl_stmt|;
 return|return
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"Removed %d index buckets, %d unique index entries "
+literal|"Removed %d index buckets %s, %d unique index entries "
 operator|+
 literal|"from indexes %s"
 argument_list|,
 name|purgedBucketCount
+argument_list|,
+name|nodeCountMsg
 argument_list|,
 name|uniqueIndexEntryRemovalCount
 argument_list|,
