@@ -1110,7 +1110,7 @@ name|xpath
 argument_list|,
 name|Query
 operator|.
-name|JCR_SQL2
+name|XPATH
 argument_list|)
 decl_stmt|;
 name|QueryResult
