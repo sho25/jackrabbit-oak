@@ -239,6 +239,14 @@ init|=
 literal|5
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MAX_NO_OF_SEGS
+init|=
+literal|30
+decl_stmt|;
+specifier|private
 name|int
 name|maxMergeAtOnce
 init|=
@@ -301,6 +309,12 @@ name|double
 name|maxCommitRateMB
 init|=
 name|DEFAULT_MAX_COMMIT_RATE_MB
+decl_stmt|;
+specifier|private
+name|int
+name|maxNoOfSegs
+init|=
+name|DEFAULT_MAX_NO_OF_SEGS
 decl_stmt|;
 specifier|private
 name|double
@@ -975,18 +989,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"committing {} docs/sec"
-argument_list|,
-name|commitRate
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"committing %s docs/sec\n"
+literal|"committing {} docs/sec ({} segs)"
 argument_list|,
 name|commitRate
 argument_list|)
@@ -1020,11 +1023,19 @@ literal|"doc/s)"
 argument_list|)
 expr_stmt|;
 block|}
+comment|// set a maxSegmentsBarrier
 if|if
 condition|(
 name|commitRate
 operator|>
 name|maxCommitRateDocs
+operator|&&
+name|infos
+operator|.
+name|size
+argument_list|()
+operator|<
+name|maxNoOfSegs
 condition|)
 block|{
 return|return
@@ -1543,20 +1554,14 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"committing {} MBs/sec"
+literal|"committing {} MBs/sec ({} segs)"
 argument_list|,
 name|mbRate
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"committing %s MBs/sec\n"
 argument_list|,
-name|mbRate
+name|infos
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -1588,6 +1593,13 @@ condition|(
 name|mbRate
 operator|>
 name|maxCommitRateMB
+operator|&&
+name|infos
+operator|.
+name|size
+argument_list|()
+operator|<
+name|maxNoOfSegs
 condition|)
 block|{
 return|return

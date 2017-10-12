@@ -777,12 +777,11 @@ begin_comment
 comment|/**  * Tests for checking impacts of Lucene writes wrt storage / configuration adjustments on the  * {@link org.apache.jackrabbit.oak.segment.SegmentNodeStore}.  */
 end_comment
 
+begin_comment
+comment|//@Ignore("this is meant to be a benchmark, it shouldn't be part of everyday builds")
+end_comment
+
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"this is meant to be a benchmark, it shouldn't be part of everyday builds"
-argument_list|)
 annotation|@
 name|RunWith
 argument_list|(
@@ -1012,132 +1011,17 @@ block|,
 literal|"mitigated"
 block|}
 block|,
-block|{
-literal|false
-block|,
-literal|"oakCodec"
-block|,
-literal|false
-block|,
-literal|4000
-block|,
-literal|"no"
+comment|//                {false, "oakCodec", false, 4000, "no"},
+comment|//                {false, "Lucene46", false, 4000, "tiered"},
+comment|//                {false, "Lucene46", false, 4000, "mitigated"},
+comment|//                {false, "Lucene46", false, 4000, "no"},
+comment|//                {false, "oakCodec", false, -1, "tiered"},
+comment|//                {false, "oakCodec", false, -1, "mitigated"},
+comment|//                {false, "oakCodec", false, -1, "no"},
+comment|//                {false, "Lucene46", false, -1, "tiered"},
+comment|//                {false, "Lucene46", false, -1, "mitigated"},
+comment|//                {false, "Lucene46", false, -1, "no"},
 block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"Lucene46"
-block|,
-literal|false
-block|,
-literal|4000
-block|,
-literal|"tiered"
-block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"Lucene46"
-block|,
-literal|false
-block|,
-literal|4000
-block|,
-literal|"mitigated"
-block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"Lucene46"
-block|,
-literal|false
-block|,
-literal|4000
-block|,
-literal|"no"
-block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"oakCodec"
-block|,
-literal|false
-block|,
-operator|-
-literal|1
-block|,
-literal|"tiered"
-block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"oakCodec"
-block|,
-literal|false
-block|,
-operator|-
-literal|1
-block|,
-literal|"mitigated"
-block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"oakCodec"
-block|,
-literal|false
-block|,
-operator|-
-literal|1
-block|,
-literal|"no"
-block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"Lucene46"
-block|,
-literal|false
-block|,
-operator|-
-literal|1
-block|,
-literal|"tiered"
-block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"Lucene46"
-block|,
-literal|false
-block|,
-operator|-
-literal|1
-block|,
-literal|"mitigated"
-block|}
-block|,
-block|{
-literal|false
-block|,
-literal|"Lucene46"
-block|,
-literal|false
-block|,
-operator|-
-literal|1
-block|,
-literal|"no"
-block|}
-block|,         }
 argument_list|)
 return|;
 block|}
