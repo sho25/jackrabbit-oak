@@ -3373,6 +3373,15 @@ return|return
 name|blobId
 return|;
 block|}
+specifier|public
+name|long
+name|getLength
+parameter_list|()
+block|{
+return|return
+name|length
+return|;
+block|}
 specifier|final
 name|String
 name|blobId
