@@ -19,24 +19,6 @@ name|security
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|security
-operator|.
-name|internal
-operator|.
-name|SecurityProviderRegistration
-import|;
-end_import
-
 begin_comment
 comment|/**  * Holds the names of well-known registration properties for security-related components  *  */
 end_comment
@@ -47,7 +29,7 @@ specifier|abstract
 class|class
 name|RegistrationConstants
 block|{
-comment|/**      * Name to be used when registering components that are required by the {@link SecurityProviderRegistration}      */
+comment|/**      * Name to be used when registering components that are required by the {@code org.apache.jackrabbit.oak.security.internal.SecurityProviderRegistration}      */
 specifier|public
 specifier|static
 specifier|final
