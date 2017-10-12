@@ -229,7 +229,7 @@ name|Component
 argument_list|(
 name|metatype
 operator|=
-literal|true
+literal|false
 argument_list|,
 name|label
 operator|=
