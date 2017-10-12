@@ -2263,7 +2263,7 @@ literal|0
 return|;
 block|}
 name|long
-name|oldestCheckopoint
+name|oldestCheckpoint
 init|=
 operator|-
 literal|1
@@ -2275,7 +2275,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|oldestCheckopoint
+name|oldestCheckpoint
 operator|=
 name|checkpointMbean
 operator|.
@@ -2291,7 +2291,7 @@ name|debug
 argument_list|(
 literal|"Oldest checkpoint data retrieved {} "
 argument_list|,
-name|oldestCheckopoint
+name|oldestCheckpoint
 argument_list|)
 expr_stmt|;
 block|}
@@ -2321,7 +2321,7 @@ name|long
 name|calculatedReferenceTime
 init|=
 operator|(
-name|oldestCheckopoint
+name|oldestCheckpoint
 operator|<=
 literal|0
 condition|?
@@ -2333,7 +2333,7 @@ name|min
 argument_list|(
 name|maxModificationReferenceTime
 argument_list|,
-name|oldestCheckopoint
+name|oldestCheckpoint
 argument_list|)
 operator|)
 decl_stmt|;
