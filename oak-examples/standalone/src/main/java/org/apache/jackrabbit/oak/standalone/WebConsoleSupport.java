@@ -211,9 +211,9 @@ name|springframework
 operator|.
 name|boot
 operator|.
-name|context
+name|web
 operator|.
-name|embedded
+name|servlet
 operator|.
 name|ServletListenerRegistrationBean
 import|;
@@ -227,9 +227,9 @@ name|springframework
 operator|.
 name|boot
 operator|.
-name|context
+name|web
 operator|.
-name|embedded
+name|servlet
 operator|.
 name|ServletRegistrationBean
 import|;
