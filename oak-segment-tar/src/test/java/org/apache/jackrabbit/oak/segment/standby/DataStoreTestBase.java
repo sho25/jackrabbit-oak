@@ -92,6 +92,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeFalse
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -220,6 +232,22 @@ operator|.
 name|api
 operator|.
 name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|CIHelper
 import|;
 end_import
 
@@ -1407,6 +1435,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// OAK-6829
+name|assumeFalse
+argument_list|(
+name|CIHelper
+operator|.
+name|windows
+argument_list|()
+argument_list|)
+expr_stmt|;
 specifier|final
 name|long
 name|blobSize
