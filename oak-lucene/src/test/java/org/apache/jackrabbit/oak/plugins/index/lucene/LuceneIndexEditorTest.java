@@ -2721,6 +2721,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// OAK-6833
+name|assumeFalse
+argument_list|(
+name|CIHelper
+operator|.
+name|windows
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|NodeBuilder
 name|index
 init|=
