@@ -1068,7 +1068,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of {@link DocumentStore} for relational databases.  *   *<h3>Supported Databases</h3>  *<p>  * The code is supposed to be sufficiently generic to run with a variety of  * database implementations. However, the tables are created when required to  * simplify testing, and<em>that</em> code specifically supports these  * databases:  *<ul>  *<li>H2DB</li>  *<li>Apache Derby</li>  *<li>IBM DB2</li>  *<li>PostgreSQL</li>  *<li>MariaDB (MySQL)</li>  *<li>Microsoft SQL Server</li>  *<li>Oracle</li>  *</ul>  *   *<h3>Table Layout</h3>  *<p>  * Data for each of the DocumentStore's {@link Collection}s is stored in its own  * database table (with a name matching the collection).  *<p>  * The tables essentially implement key/value storage, where the key usually is  * derived from an Oak path, and the value is a serialization of a  * {@link Document} (or a part of one). Additional fields are used for queries,  * debugging, and concurrency control:  *<table style="text-align: left;" summary="">  *<thead>  *<tr>  *<th>Column</th>  *<th>Type</th>  *<th>Description</th>  *</tr>  *</thead><tbody>  *<tr>  *<th>ID</th>  *<td>varchar(512) not null primary key</td>  *<td>the document's key (for databases that can not handle 512 character  * primary keys, such as MySQL, varbinary is possible as wells)</td>  *</tr>  *<tr>  *<th>MODIFIED</th>  *<td>bigint</td>  *<td>low-resolution timestamp  *</tr>  *<tr>  *<th>HASBINARY</th>  *<td>smallint</td>  *<td>flag indicating whether the document has binary properties  *</tr>  *<tr>  *<th>DELETEDONCE</th>  *<td>smallint</td>  *<td>flag indicating whether the document has been deleted once  *</tr>  *<tr>  *<th>MODCOUNT</th>  *<td>bigint</td>  *<td>modification counter, used for avoiding overlapping updates</td>  *</tr>  *<tr>  *<th>DSIZE</th>  *<td>bigint</td>  *<td>the approximate size of the document's JSON serialization (for debugging  * purposes)</td>  *</tr>  *<tr>  *<th>VERSION</th>  *<td>smallint</td>  *<td>the schema version the code writing to a row (or inserting it) was aware  * of (introduced with schema version 1). Not set for rows written by version 0  * client code.</td>  *</tr>  *<tr>  *<th>DATA</th>  *<td>varchar(16384)</td>  *<td>the document's JSON serialization (only used for small document sizes, in  * which case BDATA (below) is not set), or a sequence of JSON serialized update  * operations to be applied against the last full serialization</td>  *</tr>  *<tr>  *<th>BDATA</th>  *<td>blob</td>  *<td>the document's JSON serialization (usually GZIPped, only used for "large"  * documents)</td>  *</tr>  *</tbody>  *</table>  *<p>  * The names of database tables can be prefixed; the purpose is mainly for  * testing, as tables can also be dropped automatically when the store is  * disposed (this only happens for those tables that have been created on  * demand).  *<h4>Versioning</h4>  *<p>  * The initial database layout used in OAK 1.0 through 1.6 is version 0.  *<p>  * Version 1 introduces an additional "version" column, which records the schema  * version of the code writing to the database (upon insert and update). This is  * in preparation of future layout changes which might introduce new columns.  *<p>  * The code deals with both version 0 and version 1 table layouts. By default,  * it tries to create version 1 tables, and also tries to upgrade existing  * version 0 tables to version 1.  *<h4>DB-specific information</h4>  *<p>  *<em>Note that the database needs to be created/configured to support all  * Unicode characters in text fields, and to collate by Unicode code point (in  * DB2: "collate using identity", in Postgres: "C"). THIS IS NOT THE  * DEFAULT!</em>  *<p>  *<em>For MySQL, the database parameter "max_allowed_packet" needs to be  * increased to support ~16M blobs.</em>  *   *<h3>Caching</h3>  *<p>  * The cache borrows heavily from the {@link MongoDocumentStore} implementation.  *   *<h3>Queries</h3>  *<p>  * The implementation currently supports only three indexed properties: "_bin",  * "deletedOnce", and "_modified". Attempts to use a different indexed property  * will cause a {@link DocumentStoreException}.  */
+comment|/**  * Implementation of {@link DocumentStore} for relational databases.  *   *<h3>Supported Databases</h3>  *<p>  * The code is supposed to be sufficiently generic to run with a variety of  * database implementations. However, the tables are created when required to  * simplify testing, and<em>that</em> code specifically supports these  * databases:  *<ul>  *<li>H2DB</li>  *<li>Apache Derby</li>  *<li>IBM DB2</li>  *<li>PostgreSQL</li>  *<li>MariaDB (MySQL)</li>  *<li>Microsoft SQL Server</li>  *<li>Oracle</li>  *</ul>  *   *<h3>Table Layout</h3>  *<p>  * Data for each of the DocumentStore's {@link Collection}s is stored in its own  * database table (with a name matching the collection).  *<p>  * The tables essentially implement key/value storage, where the key usually is  * derived from an Oak path, and the value is a serialization of a  * {@link Document} (or a part of one). Additional fields are used for queries,  * debugging, and concurrency control:  *<table style="text-align: left;" summary="">  *<thead>  *<tr>  *<th>Column</th>  *<th>Type</th>  *<th>Description</th>  *</tr>  *</thead><tbody>  *<tr>  *<th>ID</th>  *<td>varchar(512) not null primary key</td>  *<td>the document's key (for databases that can not handle 512 character  * primary keys, such as MySQL, varbinary is possible as wells)</td>  *</tr>  *<tr>  *<th>MODIFIED</th>  *<td>bigint</td>  *<td>low-resolution timestamp  *</tr>  *<tr>  *<th>HASBINARY</th>  *<td>smallint</td>  *<td>flag indicating whether the document has binary properties  *</tr>  *<tr>  *<th>DELETEDONCE</th>  *<td>smallint</td>  *<td>flag indicating whether the document has been deleted once  *</tr>  *<tr>  *<th>MODCOUNT</th>  *<td>bigint</td>  *<td>modification counter, used for avoiding overlapping updates</td>  *</tr>  *<tr>  *<th>DSIZE</th>  *<td>bigint</td>  *<td>the approximate size of the document's JSON serialization (for debugging  * purposes)</td>  *</tr>  *<tr>  *<th>VERSION</th>  *<td>smallint</td>  *<td>the schema version the code writing to a row (or inserting it) was aware  * of (introduced with schema version 1). Not set for rows written by version 0  * client code.</td>  *</tr>  *<tr>  *<th>DATA</th>  *<td>varchar(16384)</td>  *<td>the document's JSON serialization (only used for small document sizes, in  * which case BDATA (below) is not set), or a sequence of JSON serialized update  * operations to be applied against the last full serialization</td>  *</tr>  *<tr>  *<th>BDATA</th>  *<td>blob</td>  *<td>the document's JSON serialization (usually GZIPped, only used for "large"  * documents)</td>  *</tr>  *</tbody>  *</table>  *<p>  * The names of database tables can be prefixed; the purpose is mainly for  * testing, as tables can also be dropped automatically when the store is  * disposed (this only happens for those tables that have been created on  * demand).  *<h4>Versioning</h4>  *<p>  * The initial database layout used in OAK 1.0 through 1.6 is version 0.  *<p>  * Version 1 introduces an additional "version" column, which records the schema  * version of the code writing to the database (upon insert and update). This is  * in preparation of future layout changes which might introduce new columns.  *<p>  * The code deals with both version 0 and version 1 table layouts. By default,  * it tries to create version 1 tables, and also tries to upgrade existing  * version 0 tables to version 1.  *<h4>DB-specific information</h4>  *<p>  *<em>Note that the database needs to be created/configured to support all  * Unicode characters in text fields, and to collate by Unicode code point (in  * DB2: "collate using identity", in Postgres: "C"). THIS IS NOT THE  * DEFAULT!</em>  *<p>  *<em>For MySQL, the database parameter "max_allowed_packet" needs to be  * increased to support ~16M blobs.</em>  *   *<h3>Table Creation</h3>  *<p>  * The code tries to create the tables when they are not present. Likewise, it  * tries to upgrade to a newer schema when needed.  *<p>  * Users/Administrators who prefer to stay in control over table generation can  * create them "manually". {@link RDBHelper} can be used to print out the DDL  * statements that would have been used for auto-creation.  *   *<h3>Caching</h3>  *<p>  * The cache borrows heavily from the {@link MongoDocumentStore} implementation.  *   *<h3>Queries</h3>  *<p>  * The implementation currently supports only three indexed properties: "_bin",  * "deletedOnce", and "_modified". Attempts to use a different indexed property  * will cause a {@link DocumentStoreException}.  */
 end_comment
 
 begin_class
@@ -4351,6 +4351,15 @@ name|USECMODCOUNT
 init|=
 literal|true
 decl_stmt|;
+comment|// Database schema supported by this version
+specifier|protected
+specifier|static
+specifier|final
+name|int
+name|SCHEMA
+init|=
+literal|1
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -6913,20 +6922,23 @@ operator|>=
 literal|1
 condition|)
 block|{
+for|for
+control|(
 name|String
 name|upStatement1
-init|=
+range|:
 name|this
 operator|.
 name|dbInfo
 operator|.
-name|getTableUpgradeStatement
+name|getTableUpgradeStatements
 argument_list|(
 name|tableName
 argument_list|,
 literal|1
 argument_list|)
-decl_stmt|;
+control|)
+block|{
 try|try
 block|{
 name|upgradeStatement
@@ -6997,6 +7009,7 @@ argument_list|,
 name|exup
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|tablesPresent
@@ -7110,20 +7123,23 @@ operator|>=
 literal|1
 condition|)
 block|{
+for|for
+control|(
 name|String
 name|upStatement1
-init|=
+range|:
 name|this
 operator|.
 name|dbInfo
 operator|.
-name|getTableUpgradeStatement
+name|getTableUpgradeStatements
 argument_list|(
 name|tableName
 argument_list|,
 literal|1
 argument_list|)
-decl_stmt|;
+control|)
+block|{
 try|try
 block|{
 name|upgradeStatement
@@ -7194,6 +7210,7 @@ argument_list|,
 name|exup
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|tablesCreated

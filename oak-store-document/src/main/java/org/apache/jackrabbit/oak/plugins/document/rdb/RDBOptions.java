@@ -62,7 +62,7 @@ name|getInteger
 argument_list|(
 literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBOptions.INITIALSCHEMA"
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 decl_stmt|;
 specifier|private

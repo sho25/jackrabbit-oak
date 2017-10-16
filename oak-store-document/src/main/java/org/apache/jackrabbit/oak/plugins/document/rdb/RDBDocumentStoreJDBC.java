@@ -725,7 +725,9 @@ specifier|final
 name|int
 name|SCHEMAVERSION
 init|=
-literal|1
+name|RDBDocumentStore
+operator|.
+name|SCHEMA
 decl_stmt|;
 specifier|private
 specifier|final

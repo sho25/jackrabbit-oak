@@ -2508,8 +2508,11 @@ return|;
 block|}
 comment|/**      * Statements needed to upgrade the DB      *      * @return the table modification string      */
 specifier|public
+name|List
+argument_list|<
 name|String
-name|getTableUpgradeStatement
+argument_list|>
+name|getTableUpgradeStatements
 parameter_list|(
 name|String
 name|tableName
@@ -2530,11 +2533,16 @@ literal|"level must be 1"
 argument_list|)
 expr_stmt|;
 return|return
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|"alter table "
 operator|+
 name|tableName
 operator|+
 literal|" add VERSION smallint"
+argument_list|)
 return|;
 block|}
 specifier|protected

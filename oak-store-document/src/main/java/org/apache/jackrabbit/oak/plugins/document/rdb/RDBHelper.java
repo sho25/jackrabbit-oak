@@ -22,7 +22,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Convenience class that dumps the table creation statements for various  * database types.  */
+comment|/**  * Convenience class that dumps the table creation statements for various  * database types.  *<p>  * Run with:  *<pre>  * java -cp oak-run-<i>version</i>.jar org.apache.jackrabbit.oak.plugins.document.rdb.RDBHelper  *</pre>  */
 end_comment
 
 begin_class
@@ -64,6 +64,53 @@ index|[]
 name|args
 parameter_list|)
 block|{
+name|RDBOptions
+name|defaultOpts
+init|=
+operator|new
+name|RDBOptions
+argument_list|()
+decl_stmt|;
+name|int
+name|initial
+init|=
+name|defaultOpts
+operator|.
+name|getInitialSchema
+argument_list|()
+decl_stmt|;
+name|int
+name|upgradeTo
+init|=
+name|defaultOpts
+operator|.
+name|getUpgradeToSchema
+argument_list|()
+decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Table Creation Statements for RDBBlobStore and RDBDocumentStore"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"RDBDocumentStore initial version: "
+operator|+
+name|initial
+operator|+
+literal|", with modifications up to version: "
+operator|+
+name|upgradeTo
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|String
@@ -133,9 +180,7 @@ name|getTableCreationStatement
 argument_list|(
 name|table
 argument_list|,
-operator|new
-name|RDBOptions
-argument_list|()
+name|defaultOpts
 operator|.
 name|getInitialSchema
 argument_list|()
@@ -166,6 +211,51 @@ operator|+
 name|s
 argument_list|)
 expr_stmt|;
+block|}
+for|for
+control|(
+name|int
+name|level
+init|=
+name|initial
+operator|+
+literal|1
+init|;
+name|level
+operator|<=
+name|upgradeTo
+condition|;
+name|level
+operator|++
+control|)
+block|{
+for|for
+control|(
+name|String
+name|statement
+range|:
+name|ddb
+operator|.
+name|getTableUpgradeStatements
+argument_list|(
+name|table
+argument_list|,
+name|level
+argument_list|)
+control|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"  "
+operator|+
+name|statement
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 name|System
