@@ -176,6 +176,24 @@ name|REINDEX_RETAIN
 init|=
 literal|"retainNodeInReindex"
 decl_stmt|;
+comment|/**      * Index type for disabled indexes      */
+name|String
+name|TYPE_DISABLED
+init|=
+literal|"disabled"
+decl_stmt|;
+comment|/**      * Multi value property referring to index paths which current index supersedes      */
+name|String
+name|SUPERSEDED_INDEX_PATHS
+init|=
+literal|"supersedes"
+decl_stmt|;
+comment|/**      * Boolean flag indicating that old indexes need to be disabled      */
+name|String
+name|DISABLE_INDEXES_ON_NEXT_CYCLE
+init|=
+literal|":disableIndexesOnNextCycle"
+decl_stmt|;
 block|}
 end_interface
 
