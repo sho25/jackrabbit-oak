@@ -2371,13 +2371,6 @@ name|query
 argument_list|(
 name|filter
 argument_list|,
-name|pd
-argument_list|(
-name|indexPath
-argument_list|,
-name|propertyName
-argument_list|)
-argument_list|,
 name|propertyName
 argument_list|,
 name|PropertyValues

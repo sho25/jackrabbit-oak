@@ -3332,8 +3332,6 @@ init|=
 operator|new
 name|PropertyIndexResult
 argument_list|(
-name|pd
-argument_list|,
 name|propertyName
 argument_list|,
 name|pr
@@ -4643,10 +4641,6 @@ class|class
 name|PropertyIndexResult
 block|{
 specifier|final
-name|PropertyDefinition
-name|pd
-decl_stmt|;
-specifier|final
 name|String
 name|propertyName
 decl_stmt|;
@@ -4657,9 +4651,6 @@ decl_stmt|;
 specifier|public
 name|PropertyIndexResult
 parameter_list|(
-name|PropertyDefinition
-name|pd
-parameter_list|,
 name|String
 name|propertyName
 parameter_list|,
@@ -4667,12 +4658,6 @@ name|PropertyRestriction
 name|pr
 parameter_list|)
 block|{
-name|this
-operator|.
-name|pd
-operator|=
-name|pd
-expr_stmt|;
 name|this
 operator|.
 name|propertyName

@@ -10554,10 +10554,6 @@ argument_list|()
 argument_list|,
 name|pir
 operator|.
-name|pd
-argument_list|,
-name|pir
-operator|.
 name|propertyName
 argument_list|,
 name|pir
