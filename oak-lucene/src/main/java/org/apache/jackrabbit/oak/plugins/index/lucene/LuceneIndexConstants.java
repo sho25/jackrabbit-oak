@@ -587,6 +587,12 @@ name|PROP_REFRESH_DEFN
 init|=
 literal|"refresh"
 decl_stmt|;
+comment|/**      * Boolean property to indicate that nodes nodetype matching indexRule name      * should be indexed      */
+name|String
+name|PROP_INDEX_NODE_TYPE
+init|=
+literal|"nodeTypeIndex"
+decl_stmt|;
 block|}
 end_interface
 
