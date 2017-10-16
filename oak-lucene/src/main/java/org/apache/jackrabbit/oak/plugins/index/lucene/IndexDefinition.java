@@ -2038,6 +2038,13 @@ name|this
 operator|.
 name|aggregates
 operator|=
+name|nodeTypeIndex
+condition|?
+name|Collections
+operator|.
+name|emptyMap
+argument_list|()
+else|:
 name|collectAggregates
 argument_list|(
 name|defn
