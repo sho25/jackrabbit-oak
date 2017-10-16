@@ -1379,12 +1379,11 @@ return|return
 name|names
 return|;
 block|}
-comment|//------------------------------------------------------------< Object>--
-annotation|@
-name|Override
-specifier|public
+name|List
+argument_list|<
 name|String
-name|toString
+argument_list|>
+name|getDirectTypeNames
 parameter_list|()
 block|{
 name|List
@@ -1424,6 +1423,19 @@ expr_stmt|;
 block|}
 return|return
 name|names
+return|;
+block|}
+comment|//------------------------------------------------------------< Object>--
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getDirectTypeNames
+argument_list|()
 operator|.
 name|toString
 argument_list|()
