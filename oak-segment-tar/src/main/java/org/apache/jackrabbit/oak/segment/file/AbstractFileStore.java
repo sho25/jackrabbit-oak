@@ -1111,6 +1111,13 @@ decl_stmt|;
 name|GCGeneration
 name|generation
 init|=
+name|SegmentId
+operator|.
+name|isDataSegmentId
+argument_list|(
+name|lsb
+argument_list|)
+condition|?
 name|Segment
 operator|.
 name|getGcGeneration
@@ -1122,6 +1129,10 @@ argument_list|)
 argument_list|,
 name|id
 argument_list|)
+else|:
+name|GCGeneration
+operator|.
+name|NULL
 decl_stmt|;
 name|w
 operator|.
