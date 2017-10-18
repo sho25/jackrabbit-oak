@@ -128,6 +128,19 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Remove the ids in the given file and deletes the file.      *      * @param recs      * @throws IOException      */
+name|void
+name|remove
+parameter_list|(
+name|File
+name|recs
+parameter_list|,
+name|Options
+name|options
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Fetches an iterator of records available.      *      * @return      * @throws IOException      */
 name|Iterator
 argument_list|<
@@ -148,6 +161,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+enum|enum
+name|Options
+block|{
+name|DEFAULT
+block|,
+name|ACTIVE_DELETION
+block|}
 block|}
 end_interface
 
