@@ -1396,7 +1396,7 @@ argument_list|)
 block|,
 name|OakRepositoryFixture
 operator|.
-name|getSegmentTarWithBlobStore
+name|getSegmentTarWithDataStore
 argument_list|(
 name|base
 operator|.
