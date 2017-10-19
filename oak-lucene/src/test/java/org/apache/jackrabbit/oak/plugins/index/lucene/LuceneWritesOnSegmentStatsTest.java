@@ -1037,7 +1037,7 @@ literal|"oakCodec"
 block|,
 literal|false
 block|,
-literal|4000
+literal|4096
 block|,
 literal|"tiered"
 block|}
@@ -1049,7 +1049,7 @@ literal|"oakCodec"
 block|,
 literal|false
 block|,
-literal|4000
+literal|4096
 block|,
 literal|"mitigated"
 block|}
@@ -1061,7 +1061,7 @@ literal|"oakCodec"
 block|,
 literal|false
 block|,
-literal|4000
+literal|4096
 block|,
 literal|"no"
 block|}
@@ -1073,7 +1073,7 @@ literal|"Lucene46"
 block|,
 literal|false
 block|,
-literal|4000
+literal|4096
 block|,
 literal|"tiered"
 block|}
@@ -1085,7 +1085,7 @@ literal|"Lucene46"
 block|,
 literal|false
 block|,
-literal|4000
+literal|4096
 block|,
 literal|"mitigated"
 block|}
@@ -1097,7 +1097,7 @@ literal|"Lucene46"
 block|,
 literal|false
 block|,
-literal|4000
+literal|4096
 block|,
 literal|"no"
 block|}
@@ -1109,8 +1109,7 @@ literal|"oakCodec"
 block|,
 literal|false
 block|,
-operator|-
-literal|1
+literal|100
 block|,
 literal|"tiered"
 block|}
@@ -1122,8 +1121,7 @@ literal|"oakCodec"
 block|,
 literal|false
 block|,
-operator|-
-literal|1
+literal|100
 block|,
 literal|"mitigated"
 block|}
@@ -1135,8 +1133,7 @@ literal|"oakCodec"
 block|,
 literal|false
 block|,
-operator|-
-literal|1
+literal|100
 block|,
 literal|"no"
 block|}
@@ -1148,8 +1145,7 @@ literal|"Lucene46"
 block|,
 literal|false
 block|,
-operator|-
-literal|1
+literal|100
 block|,
 literal|"tiered"
 block|}
@@ -1161,8 +1157,7 @@ literal|"Lucene46"
 block|,
 literal|false
 block|,
-operator|-
-literal|1
+literal|100
 block|,
 literal|"mitigated"
 block|}
@@ -1174,8 +1169,7 @@ literal|"Lucene46"
 block|,
 literal|false
 block|,
-operator|-
-literal|1
+literal|100
 block|,
 literal|"no"
 block|}

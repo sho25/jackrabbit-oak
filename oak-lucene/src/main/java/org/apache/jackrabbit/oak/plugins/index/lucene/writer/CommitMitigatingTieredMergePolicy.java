@@ -190,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  This {@link MergePolicy} extends Lucene's {@link org.apache.lucene.index.TieredMergePolicy} by providing mitigation  *  to the aggressiveness of merges in case the index is under high commit load.  *  That's because in the case of Oak we currently have that we store Lucene indexes in storage systems which require  *  themselves some garbage collection task to be executed to get rid of deleted / unused files, similarly to what Lucene's  *  merge does.  *  So the bottom line is that with this {@link MergePolicy} we should have less but bigger merges, only after commit rate  *  is under a certain threshold (in terms of added docs per sec and MBs per sec).  *  */
+comment|/**  *  This {@link MergePolicy} extends Lucene's {@link org.apache.lucene.index.TieredMergePolicy} by providing mitigation  *  to the aggressiveness of merges in case the index is under high commit load.  *  That's because in the case of Oak we currently have that we store Lucene indexes in storage systems which require  *  themselves some garbage collection task to be executed to get rid of deleted / unused files, similarly to what Lucene's  *  merge does.  *  So the bottom line is that with this {@link MergePolicy} we should have less but bigger merges, only after commit rate  *  is under a certain threshold (in terms of added docs per sec and MBs per sec).  *  *  Auto tuning params:  *  In this merge policy we would like to avoid having to adjust parameters by hand, but rather have them "auto tune".  *  This means that the no. of merges should be mitigated with respect to a max commit rate (docs, mb), but also adapt to  *  the average commit rate and anyway do not let the no. of segments explode.  *  */
 end_comment
 
 begin_class
@@ -336,6 +336,46 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+decl_stmt|;
+comment|/**      * initial values for time series      */
+specifier|private
+name|double
+name|avgCommitRateDocs
+init|=
+literal|0d
+decl_stmt|;
+specifier|private
+name|double
+name|avgCommitRateMB
+init|=
+literal|0d
+decl_stmt|;
+specifier|private
+name|double
+name|avgSegs
+init|=
+literal|0
+decl_stmt|;
+comment|/**      * length of time series analysis for commit rate and no. of segments      */
+specifier|private
+name|double
+name|timeSeriesLength
+init|=
+literal|50d
+decl_stmt|;
+comment|/**      * current step in current time series batch      */
+specifier|private
+name|double
+name|timeSeriesCount
+init|=
+literal|0d
+decl_stmt|;
+comment|/**      * single exponential smoothing ratio (0< alpha< 1)      *      * values towards 0 tend to give more weight to past inputs      * values close to 1 weigh recent values more      */
+specifier|private
+name|double
+name|alpha
+init|=
+literal|0.7
 decl_stmt|;
 comment|/** Sole constructor, setting all settings to their      *  defaults. */
 specifier|public
@@ -939,6 +979,52 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
+name|timeSeriesCount
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|timeSeriesCount
+operator|%
+name|timeSeriesLength
+operator|==
+literal|0
+condition|)
+block|{
+comment|// reset averages
+name|avgCommitRateDocs
+operator|=
+literal|0d
+expr_stmt|;
+name|avgCommitRateMB
+operator|=
+literal|0d
+expr_stmt|;
+name|avgSegs
+operator|=
+literal|0d
+expr_stmt|;
+block|}
+name|avgSegs
+operator|=
+name|singleExpSmoothing
+argument_list|(
+name|segmentSize
+argument_list|,
+name|avgSegs
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"segments: current {}, average {}"
+argument_list|,
+name|segmentSize
+argument_list|,
+name|avgSegs
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|verbose
@@ -951,7 +1037,11 @@ literal|"findMerges: "
 operator|+
 name|segmentSize
 operator|+
-literal|" segments"
+literal|" segments, "
+operator|+
+name|avgSegs
+operator|+
+literal|" average"
 argument_list|)
 expr_stmt|;
 block|}
@@ -965,6 +1055,49 @@ block|{
 return|return
 literal|null
 return|;
+block|}
+comment|// if no. of segments exceeds the maximum, adjust the maximum rates to allow more merges (less commit/rate mitigation)
+if|if
+condition|(
+name|segmentSize
+operator|>
+name|maxNoOfSegsForMitigation
+condition|)
+block|{
+if|if
+condition|(
+name|avgCommitRateDocs
+operator|>
+name|maxCommitRateDocs
+condition|)
+block|{
+name|maxCommitRateDocs
+operator|=
+name|singleExpSmoothing
+argument_list|(
+name|avgCommitRateDocs
+argument_list|,
+name|maxCommitRateDocs
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|avgCommitRateMB
+operator|>
+name|maxCommitRateMB
+condition|)
+block|{
+name|maxCommitRateMB
+operator|=
+name|singleExpSmoothing
+argument_list|(
+name|avgCommitRateMB
+argument_list|,
+name|maxCommitRateMB
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|long
 name|now
@@ -1006,13 +1139,28 @@ argument_list|)
 operator|/
 name|timeDelta
 decl_stmt|;
+name|time
+operator|=
+name|now
+expr_stmt|;
+name|avgCommitRateDocs
+operator|=
+name|singleExpSmoothing
+argument_list|(
+name|commitRate
+argument_list|,
+name|avgCommitRateDocs
+argument_list|)
+expr_stmt|;
 name|log
 operator|.
 name|debug
 argument_list|(
-literal|"committing {} docs/sec ({} segs)"
+literal|"commit rate: current {}, average {} docs/sec"
 argument_list|,
 name|commitRate
+argument_list|,
+name|avgCommitRateDocs
 argument_list|)
 expr_stmt|;
 name|docCount
@@ -1021,10 +1169,6 @@ name|infos
 operator|.
 name|totalDocCount
 argument_list|()
-expr_stmt|;
-name|time
-operator|=
-name|now
 expr_stmt|;
 if|if
 condition|(
@@ -1040,7 +1184,11 @@ literal|"doc/s (max: "
 operator|+
 name|maxCommitRateDocs
 operator|+
-literal|"doc/s)"
+literal|", avg: "
+operator|+
+name|avgCommitRateDocs
+operator|+
+literal|" doc/s)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1568,15 +1716,24 @@ name|bytes
 operator|/
 name|timeDelta
 decl_stmt|;
+name|avgCommitRateMB
+operator|=
+name|singleExpSmoothing
+argument_list|(
+name|mbRate
+argument_list|,
+name|avgCommitRateMB
+argument_list|)
+expr_stmt|;
 name|log
 operator|.
 name|debug
 argument_list|(
-literal|"committing {} MBs/sec ({} segs)"
+literal|"commit rate: current {}, average {} MB/sec"
 argument_list|,
 name|mbRate
 argument_list|,
-name|segmentSize
+name|avgCommitRateMB
 argument_list|)
 expr_stmt|;
 if|if
@@ -1593,7 +1750,11 @@ literal|"mb/s (max: "
 operator|+
 name|maxCommitRateMB
 operator|+
-literal|"mb/s)"
+literal|", avg: "
+operator|+
+name|avgCommitRateMB
+operator|+
+literal|" MB/s)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2043,6 +2204,32 @@ name|spec
 return|;
 block|}
 block|}
+block|}
+comment|/**      * single exponential smoothing      * @param input current time series value      * @param smoothedValue previous smoothed value      * @return the new smoothed value      */
+specifier|private
+name|double
+name|singleExpSmoothing
+parameter_list|(
+name|double
+name|input
+parameter_list|,
+name|double
+name|smoothedValue
+parameter_list|)
+block|{
+return|return
+name|alpha
+operator|*
+name|input
+operator|+
+operator|(
+literal|1
+operator|-
+name|alpha
+operator|)
+operator|*
+name|smoothedValue
+return|;
 block|}
 comment|/** Expert: scores one merge; subclasses can override.      * @param candidate a list of candidate segments      * @param hitTooLarge hit too large setting      * @param mergingBytes the bytes to merge      * @return a merge score      **/
 specifier|protected
