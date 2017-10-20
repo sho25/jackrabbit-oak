@@ -979,6 +979,10 @@ operator|.
 name|updateCount
 operator|>
 literal|0
+operator|||
+name|st
+operator|.
+name|reindex
 condition|)
 block|{
 name|pw
