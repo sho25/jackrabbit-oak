@@ -1801,6 +1801,16 @@ argument_list|)
 operator|||
 name|c
 operator|.
+name|getKey
+argument_list|()
+operator|.
+name|getRevision
+argument_list|()
+operator|!=
+literal|null
+operator|||
+name|c
+operator|.
 name|getValue
 argument_list|()
 operator|.
