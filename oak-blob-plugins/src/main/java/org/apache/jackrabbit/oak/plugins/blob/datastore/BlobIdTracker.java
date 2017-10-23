@@ -3692,6 +3692,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Skipping scheduled snapshot as it last executed within {} seconds"
+argument_list|,
+name|MILLISECONDS
+operator|.
+name|toSeconds
+argument_list|(
+name|interval
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|boolean
