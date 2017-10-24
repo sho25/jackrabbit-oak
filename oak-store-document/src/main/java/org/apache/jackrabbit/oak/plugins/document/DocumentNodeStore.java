@@ -1826,23 +1826,6 @@ name|FormatVersion
 operator|.
 name|V1_8
 decl_stmt|;
-comment|/**      * Do not cache more than this number of children for a document.      */
-specifier|static
-specifier|final
-name|int
-name|NUM_CHILDREN_CACHE_LIMIT
-init|=
-name|Integer
-operator|.
-name|getInteger
-argument_list|(
-literal|"oak.documentMK.childrenCacheLimit"
-argument_list|,
-literal|16
-operator|*
-literal|1024
-argument_list|)
-decl_stmt|;
 comment|/**      * List of meta properties which are created by DocumentNodeStore and which needs to be      * retained in any cloned copy of DocumentNodeState.      */
 specifier|public
 specifier|static
