@@ -4281,7 +4281,7 @@ name|warn
 argument_list|(
 literal|"TarMK GC #{}: compaction failed to force compact remaining commits. "
 operator|+
-literal|"after {} ({} ms). Most likely compaction didn't get exclusive access to the store."
+literal|"after {} ({} ms). Could not acquire exclusive access to the node store."
 argument_list|,
 name|GC_COUNT
 argument_list|,
@@ -5665,6 +5665,11 @@ decl_stmt|;
 specifier|private
 specifier|volatile
 name|long
+name|baseLine
+decl_stmt|;
+specifier|private
+specifier|volatile
+name|long
 name|deadline
 decl_stmt|;
 specifier|public
@@ -5703,10 +5708,14 @@ name|TimeUnit
 name|unit
 parameter_list|)
 block|{
-name|deadline
+name|baseLine
 operator|=
 name|currentTimeMillis
 argument_list|()
+expr_stmt|;
+name|deadline
+operator|=
+name|baseLine
 operator|+
 name|MILLISECONDS
 operator|.
@@ -5809,13 +5818,26 @@ operator|>
 name|deadline
 condition|)
 block|{
+name|long
+name|dt
+init|=
+name|SECONDS
+operator|.
+name|convert
+argument_list|(
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|baseLine
+argument_list|,
+name|MILLISECONDS
+argument_list|)
+decl_stmt|;
 name|reason
 operator|=
 literal|"Timeout after "
 operator|+
-name|deadline
-operator|/
-literal|1000
+name|dt
 operator|+
 literal|" seconds"
 expr_stmt|;
