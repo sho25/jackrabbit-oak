@@ -7718,7 +7718,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"cmmp"
+literal|"oak.lucene.cmmp"
 argument_list|)
 decl_stmt|;
 if|if
