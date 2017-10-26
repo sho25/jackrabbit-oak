@@ -1271,6 +1271,8 @@ argument_list|(
 name|indexPath
 argument_list|,
 name|definition
+argument_list|,
+name|root
 argument_list|)
 expr_stmt|;
 if|if

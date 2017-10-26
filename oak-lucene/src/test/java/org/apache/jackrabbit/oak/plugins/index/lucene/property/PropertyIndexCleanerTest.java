@@ -2229,6 +2229,11 @@ argument_list|,
 name|indexPath
 argument_list|)
 argument_list|,
+name|nodeStore
+operator|.
+name|getRoot
+argument_list|()
+argument_list|,
 name|clock
 argument_list|)
 return|;
