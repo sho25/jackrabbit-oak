@@ -333,7 +333,7 @@ name|of
 argument_list|(
 literal|"role"
 argument_list|,
-literal|"composite:global"
+literal|"composite-global"
 argument_list|,
 literal|"registerDescriptors"
 argument_list|,
@@ -363,7 +363,7 @@ name|of
 argument_list|(
 literal|"role"
 argument_list|,
-literal|"composite:mount:libs"
+literal|"composite-mount-libs"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -496,7 +496,7 @@ name|of
 argument_list|(
 literal|"role"
 argument_list|,
-literal|"composite:global"
+literal|"composite-global"
 argument_list|,
 literal|"registerDescriptors"
 argument_list|,
@@ -526,7 +526,7 @@ name|of
 argument_list|(
 literal|"role"
 argument_list|,
-literal|"composite:mount:libs"
+literal|"composite-mount-libs"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -645,7 +645,7 @@ name|of
 argument_list|(
 literal|"role"
 argument_list|,
-literal|"composite:mount:libs"
+literal|"composite-mount-libs"
 argument_list|)
 argument_list|)
 expr_stmt|;

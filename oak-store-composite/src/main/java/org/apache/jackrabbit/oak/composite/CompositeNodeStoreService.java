@@ -618,7 +618,7 @@ specifier|final
 name|String
 name|GLOBAL_ROLE
 init|=
-literal|"composite:global"
+literal|"composite-global"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -626,7 +626,7 @@ specifier|final
 name|String
 name|MOUNT_ROLE_PREFIX
 init|=
-literal|"composite:mount:"
+literal|"composite-mount-"
 decl_stmt|;
 annotation|@
 name|Reference
