@@ -498,13 +498,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
-operator|.
-name|debug
+throw|throw
+operator|new
+name|Exception
 argument_list|(
 literal|"Connection to remote host timed out"
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 name|remote
 operator|=

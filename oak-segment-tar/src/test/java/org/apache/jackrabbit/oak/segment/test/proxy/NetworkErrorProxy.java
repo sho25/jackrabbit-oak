@@ -39,18 +39,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ThreadFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|TimeUnit
 import|;
 end_import
@@ -561,15 +549,20 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
-operator|.
-name|debug
+throw|throw
+operator|new
+name|Exception
 argument_list|(
-literal|"Binding on port {} timed out"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Binding on port %d timed out"
 argument_list|,
 name|inboundPort
 argument_list|)
-expr_stmt|;
+argument_list|)
+throw|;
 block|}
 name|server
 operator|=
@@ -632,13 +625,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
-operator|.
-name|debug
+throw|throw
+operator|new
+name|Exception
 argument_list|(
 literal|"Channel disconnect timed out"
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 block|}
 name|connect
