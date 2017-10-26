@@ -314,9 +314,8 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|channelRegistered
+name|channelActive
 parameter_list|(
-specifier|final
 name|ChannelHandlerContext
 name|ctx
 parameter_list|)
@@ -518,7 +517,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|channelUnregistered
+name|channelInactive
 parameter_list|(
 name|ChannelHandlerContext
 name|ctx
