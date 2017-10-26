@@ -1210,8 +1210,10 @@ argument_list|,
 name|statsProvider
 argument_list|)
 expr_stmt|;
-name|blobStore
-operator|=
+name|builder
+operator|.
+name|withBlobStore
+argument_list|(
 name|blobStoreFixtures
 index|[
 name|n
@@ -1221,6 +1223,7 @@ index|]
 operator|.
 name|setUp
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
