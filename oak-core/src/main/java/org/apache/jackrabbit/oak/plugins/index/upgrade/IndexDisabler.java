@@ -664,11 +664,16 @@ argument_list|()
 return|;
 block|}
 comment|//Skip disabling for the cycle where reindexing just got completed
+comment|//i.e. baseState should not have DISABLE_INDEXES_ON_NEXT_CYCLE set to false
 if|if
 condition|(
+operator|!
 name|idxBuilder
 operator|.
-name|isReplaced
+name|getBaseState
+argument_list|()
+operator|.
+name|getBoolean
 argument_list|(
 name|DISABLE_INDEXES_ON_NEXT_CYCLE
 argument_list|)
