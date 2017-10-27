@@ -91,7 +91,6 @@ specifier|final
 name|String
 name|clientId
 decl_stmt|;
-specifier|public
 name|ExceptionHandler
 parameter_list|(
 name|String
@@ -135,6 +134,11 @@ argument_list|)
 argument_list|,
 name|cause
 argument_list|)
+expr_stmt|;
+name|ctx
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 block|}
