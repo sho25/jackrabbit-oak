@@ -480,6 +480,15 @@ name|long
 name|nanos
 parameter_list|)
 block|{
+name|QueryRecorder
+operator|.
+name|record
+argument_list|(
+name|query
+argument_list|,
+name|internal
+argument_list|)
+expr_stmt|;
 name|executeCount
 operator|++
 expr_stmt|;
