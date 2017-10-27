@@ -57,6 +57,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -214,6 +224,16 @@ operator|.
 name|security
 operator|.
 name|OpenSecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
 import|;
 end_import
 
@@ -1264,6 +1284,182 @@ name|of
 argument_list|(
 literal|"/test/a"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|containsNot
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// see also OAK-3371
+comment|// "if we have only NOT CLAUSES we have to add a match all docs (*.*) for the
+comment|// query to work"
+name|executeQuery
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(@a,'-test*')]"
+argument_list|,
+literal|"xpath"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|String
+name|planPrefix
+init|=
+literal|"[nt:base] as [a] /* lucene:test-index(/oak:index/test-index) "
+decl_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[@a]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"a:[* TO *]"
+argument_list|)
+expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(., '*')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|":fulltext:* ft:(\"*\")"
+argument_list|)
+expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(@a,'*')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"full:a:* ft:(a:\"*\")"
+argument_list|)
+expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(@a,'hello -world')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"+full:a:hello -full:a:world ft:(a:\"hello\" -a:\"world\")"
+argument_list|)
+expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(@a,'test*')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"full:a:test* ft:(a:\"test*\")"
+argument_list|)
+expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(@a,'-test')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"-full:a:test *:* ft:(-a:\"test\")"
+argument_list|)
+expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(@a,'-test*')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"-full:a:test* *:* ft:(-a:\"test*\")"
+argument_list|)
+expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(., '-*')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"-:fulltext:* *:* ft:(-\"*\")"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|assertXPathPlan
+parameter_list|(
+name|String
+name|xpathQuery
+parameter_list|,
+name|String
+name|expectedPlan
+parameter_list|)
+block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|result
+init|=
+name|executeQuery
+argument_list|(
+literal|"explain "
+operator|+
+name|xpathQuery
+argument_list|,
+literal|"xpath"
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
+name|String
+name|plan
+init|=
+name|result
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+name|int
+name|newline
+init|=
+name|plan
+operator|.
+name|indexOf
+argument_list|(
+literal|'\n'
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|newline
+operator|>=
+literal|0
+condition|)
+block|{
+name|plan
+operator|=
+name|plan
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|newline
+argument_list|)
+expr_stmt|;
+block|}
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|expectedPlan
+argument_list|,
+name|plan
 argument_list|)
 expr_stmt|;
 block|}
