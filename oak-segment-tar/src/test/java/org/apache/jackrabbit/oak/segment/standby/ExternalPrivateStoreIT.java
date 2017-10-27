@@ -356,11 +356,11 @@ block|}
 annotation|@
 name|Override
 name|boolean
-name|storesShouldBeEqual
+name|storesShouldBeDifferent
 parameter_list|()
 block|{
 return|return
-literal|false
+literal|true
 return|;
 block|}
 annotation|@
