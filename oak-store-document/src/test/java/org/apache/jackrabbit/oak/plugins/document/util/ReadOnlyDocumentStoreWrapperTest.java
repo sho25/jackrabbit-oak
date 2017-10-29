@@ -330,16 +330,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -727,16 +717,7 @@ operator|.
 expr|<
 name|String
 argument_list|,
-name|Map
-argument_list|<
-name|UpdateOp
-operator|.
-name|Key
-argument_list|,
-name|UpdateOp
-operator|.
-name|Condition
-argument_list|>
+name|Long
 operator|>
 name|newHashMap
 argument_list|()

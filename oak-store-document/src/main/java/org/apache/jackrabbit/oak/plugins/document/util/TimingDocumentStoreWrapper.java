@@ -1213,16 +1213,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Map
-argument_list|<
-name|UpdateOp
-operator|.
-name|Key
-argument_list|,
-name|UpdateOp
-operator|.
-name|Condition
-argument_list|>
+name|Long
 argument_list|>
 name|toRemove
 parameter_list|)

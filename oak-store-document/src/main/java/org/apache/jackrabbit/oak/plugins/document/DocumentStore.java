@@ -288,7 +288,7 @@ parameter_list|)
 throws|throws
 name|DocumentStoreException
 function_decl|;
-comment|/**      * Batch remove documents with given keys and corresponding conditions. Keys      * for documents that do not exist are simply ignored. A document is only      * removed if the corresponding conditions are met.      *<p>      * In case of a {@code DocumentStoreException}, the documents with the given      * keys may or may not have been removed from the store. It may also be      * possible that only some have been removed from the store. It is the      * responsibility of the caller to check which documents still exist. The      * implementation however ensures that the result of the operation is      * properly reflected in the document cache. That is, an implementation      * could simply evict documents with the given keys from the cache.      *      * @param<T> the document type      * @param collection the collection.      * @param toRemove the keys of the documents to remove with the      *                 corresponding conditions.      * @return the number of removed documents.      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
+comment|/**      * Batch remove documents with given keys and corresponding equal conditions      * on {@link NodeDocument#MODIFIED_IN_SECS} values. Keys for documents that      * do not exist are simply ignored. A document is only removed if the      * corresponding condition is met.      *<p>      * In case of a {@code DocumentStoreException}, the documents with the given      * keys may or may not have been removed from the store. It may also be      * possible that only some have been removed from the store. It is the      * responsibility of the caller to check which documents still exist. The      * implementation however ensures that the result of the operation is      * properly reflected in the document cache. That is, an implementation      * could simply evict documents with the given keys from the cache.      *      * @param<T>      *            the document type      * @param collection      *            the collection.      * @param toRemove      *            the keys of the documents to remove with the corresponding      *            timestamps.      * @return the number of removed documents.      * @throws DocumentStoreException      *             if the operation failed. E.g. because of an I/O error.      */
 parameter_list|<
 name|T
 extends|extends
@@ -307,16 +307,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Map
-argument_list|<
-name|UpdateOp
-operator|.
-name|Key
-argument_list|,
-name|UpdateOp
-operator|.
-name|Condition
-argument_list|>
+name|Long
 argument_list|>
 name|toRemove
 parameter_list|)
