@@ -647,9 +647,13 @@ name|name
 argument_list|)
 operator|&&
 operator|(
+operator|!
 name|base
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|before
+argument_list|)
 operator|||
 name|properties
 operator|.
