@@ -460,6 +460,7 @@ name|directory
 decl_stmt|;
 comment|/**      * The journal file. It is protected by {@link #journalFileLock}. It becomes      * {@code null} after it's closed.      */
 specifier|private
+specifier|volatile
 name|RandomAccessFile
 name|journalFile
 decl_stmt|;

@@ -1229,6 +1229,7 @@ name|FileLock
 name|lock
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|TarRevisions
 name|revisions
 decl_stmt|;
