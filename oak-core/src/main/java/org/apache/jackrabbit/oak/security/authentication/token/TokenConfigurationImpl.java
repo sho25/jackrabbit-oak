@@ -782,10 +782,14 @@ literal|"UnusedDeclaration"
 argument_list|)
 annotation|@
 name|Activate
+comment|// reference to @Configuration class needed for correct DS xml generation
 specifier|private
 name|void
 name|activate
 parameter_list|(
+name|Configuration
+name|configuration
+parameter_list|,
 name|Map
 argument_list|<
 name|String

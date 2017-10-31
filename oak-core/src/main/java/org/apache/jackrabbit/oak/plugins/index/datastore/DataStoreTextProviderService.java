@@ -243,7 +243,7 @@ name|service
 operator|=
 block|{}
 argument_list|,
-name|configurationPid
+name|name
 operator|=
 literal|"org.apache.jackrabbit.oak.plugins.blob.datastore.DataStoreTextProviderService"
 argument_list|)
