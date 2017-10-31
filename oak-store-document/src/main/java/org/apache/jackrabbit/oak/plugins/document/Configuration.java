@@ -620,19 +620,60 @@ name|AttributeDefinition
 argument_list|(
 name|name
 operator|=
-literal|"Continuous Version GC Mode"
+literal|"Version GC scheduler expression"
 argument_list|,
 name|description
 operator|=
-literal|"Run Version GC continuously as a background task."
+literal|"A cron expression that defines when the Version GC is scheduled. "
+operator|+
+literal|"If this configuration entry is left empty, the default value depends on "
+operator|+
+literal|"the 'documentStoreType'. For 'MONGO' the default is to schedule a "
+operator|+
+literal|"run every five seconds (also known as Continuous Revision Garbage "
+operator|+
+literal|"collection). For 'RDB' the default is to schedule a run once a day "
+operator|+
+literal|"starting at 2 AM. The corresponding cron expression is '"
+operator|+
+name|DocumentNodeStoreService
+operator|.
+name|CLASSIC_RGC_EXPR
+operator|+
+literal|"'."
 argument_list|)
-name|boolean
-name|versionGCContinuous
+name|String
+name|versionGCExpression
+parameter_list|()
+default|default
+literal|""
+function_decl|;
+annotation|@
+name|AttributeDefinition
+argument_list|(
+name|name
+operator|=
+literal|"Time limit for a Version GC run (in sec)"
+argument_list|,
+name|description
+operator|=
+literal|"A Version GC run is canceled after this number of seconds. "
+operator|+
+literal|"The default value is "
+operator|+
+name|DocumentNodeStoreService
+operator|.
+name|DEFAULT_RGC_TIME_LIMIT_SECS
+operator|+
+literal|" seconds."
+argument_list|)
+name|long
+name|versionGCTimeLimitInSecs
 parameter_list|()
 default|default
 name|DocumentNodeStoreService
 operator|.
-name|DEFAULT_CONTINUOUS_RGC
+name|DEFAULT_RGC_TIME_LIMIT_SECS
 function_decl|;
 annotation|@
 name|AttributeDefinition
