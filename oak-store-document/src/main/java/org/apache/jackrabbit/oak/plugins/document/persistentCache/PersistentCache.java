@@ -609,7 +609,7 @@ specifier|private
 name|int
 name|autoCompact
 init|=
-literal|50
+literal|0
 decl_stmt|;
 specifier|private
 name|boolean
