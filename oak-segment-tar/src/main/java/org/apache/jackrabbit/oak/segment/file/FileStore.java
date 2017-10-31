@@ -2051,6 +2051,13 @@ operator|==
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"No TarRevisions available, skipping flush"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|revisions

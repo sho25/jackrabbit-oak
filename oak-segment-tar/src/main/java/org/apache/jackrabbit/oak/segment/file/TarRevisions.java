@@ -844,6 +844,13 @@ operator|==
 literal|null
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"No head available, skipping flush"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 if|if
@@ -863,6 +870,13 @@ operator|==
 literal|null
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"No journal file available, skipping flush"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|doFlush
@@ -879,6 +893,16 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unable to lock the journal, skipping flush"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|private
@@ -912,7 +936,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|after
 operator|.
 name|equals
@@ -920,6 +943,16 @@ argument_list|(
 name|before
 argument_list|)
 condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Head state did not change, skipping flush"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|persisted
 operator|.
