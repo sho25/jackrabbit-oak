@@ -127,6 +127,28 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|FieldNames
+operator|.
+name|isPropertyField
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class would populate some statistics from a reader. We want to be careful here such that  * we only collect statistics which don't incur reads from the index i.e. we would only collect  * stats that lucene would already have read into memory when the reader was opened.  */
 end_comment
@@ -136,6 +158,7 @@ specifier|public
 class|class
 name|IndexStatistics
 block|{
+specifier|private
 specifier|static
 specifier|final
 name|Logger
@@ -165,8 +188,26 @@ name|Integer
 argument_list|>
 name|numDocsForField
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|safelyInitialized
+decl_stmt|;
+comment|// For ease of tests as there didn't seem an easy way to make an IndexReader delegator
+comment|// that would fail calls to reader on-demand.
+specifier|static
+name|boolean
+name|failReadingFields
+init|=
+literal|false
+decl_stmt|;
+specifier|static
+name|boolean
+name|failReadingFieldJcrTitle
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * @param reader {@link IndexReader} for which statistics need to be collected.      */
-specifier|public
 name|IndexStatistics
 parameter_list|(
 name|IndexReader
@@ -200,6 +241,19 @@ literal|null
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|failReadingFields
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Synthetically fail to read fields"
+argument_list|)
+throw|;
+block|}
 name|fields
 operator|=
 name|MultiFields
@@ -256,10 +310,31 @@ block|{
 name|int
 name|docCntForField
 init|=
-name|numDocs
+operator|-
+literal|1
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|failReadingFieldJcrTitle
+operator|&&
+literal|"jcr:title"
+operator|.
+name|equals
+argument_list|(
+name|f
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Synthetically fail to read count for field jcr:title"
+argument_list|)
+throw|;
+block|}
 name|docCntForField
 operator|=
 name|reader
@@ -280,7 +355,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Couldn't read doc count for field {} via reader ({}). Would use numDocs for this field"
+literal|"Couldn't read doc count for field {} via reader ({})."
 argument_list|)
 expr_stmt|;
 block|}
@@ -314,6 +389,12 @@ argument_list|(
 name|numDocsForField
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|safelyInitialized
+operator|=
+literal|true
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -321,7 +402,16 @@ name|this
 operator|.
 name|numDocsForField
 operator|=
-literal|null
+name|Collections
+operator|.
+name|emptyMap
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|safelyInitialized
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}
@@ -335,7 +425,7 @@ return|return
 name|numDocs
 return|;
 block|}
-comment|/**      * @param field Index field for which number of indexed documents are to be return      * @return number of indexed documents (without subtracting potentially deleted ones)      *         for the given {@code field}.      */
+comment|/**      * @param field Index field for which number of indexed documents are to be return      * @return number of indexed documents (without subtracting potentially deleted ones)      *         for the given {@code field}.<br/>      *         -1: if index codec doesn't store doc-count-for-field statistics, OR<br/>      *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reader threw an exception while reading fields, OR<br/>      *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exception thrown while reading count for the field, OR<br/>      *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc-count is asked for a non-property field.      */
 specifier|public
 name|int
 name|getDocCountFor
@@ -344,6 +434,17 @@ name|String
 name|field
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|safelyInitialized
+condition|)
+block|{
+return|return
+operator|-
+literal|1
+return|;
+block|}
 name|int
 name|docCntForField
 init|=
@@ -379,52 +480,6 @@ expr_stmt|;
 block|}
 return|return
 name|docCntForField
-return|;
-block|}
-specifier|private
-name|boolean
-name|isPropertyField
-parameter_list|(
-name|String
-name|field
-parameter_list|)
-block|{
-return|return
-operator|!
-name|field
-operator|.
-name|startsWith
-argument_list|(
-name|FieldNames
-operator|.
-name|ANALYZED_FIELD_PREFIX
-argument_list|)
-operator|&&
-operator|!
-name|field
-operator|.
-name|startsWith
-argument_list|(
-name|FieldNames
-operator|.
-name|FULLTEXT_RELATIVE_NODE
-argument_list|)
-operator|&&
-operator|!
-name|field
-operator|.
-name|startsWith
-argument_list|(
-literal|":"
-argument_list|)
-operator|&&
-operator|!
-name|field
-operator|.
-name|endsWith
-argument_list|(
-literal|"_facet"
-argument_list|)
 return|;
 block|}
 block|}
