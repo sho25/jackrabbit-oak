@@ -284,7 +284,7 @@ literal|"Whether the query result size (QueryResult.getSize()) should return an 
 operator|+
 literal|"The estimate will be larger or equal the actual result size, as it includes unindexed properties and nodes that are not accessible. "
 operator|+
-literal|"If diabled, for such cases -1 is returned. "
+literal|"If disabled, for such cases -1 is returned. "
 operator|+
 literal|"Note: even if enabled, getSize may still return -1 if the index used does not support the feature."
 argument_list|)
