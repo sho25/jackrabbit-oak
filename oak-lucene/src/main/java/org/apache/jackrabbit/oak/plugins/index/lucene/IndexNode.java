@@ -154,6 +154,10 @@ name|IndexSearcher
 name|getSearcher
 parameter_list|()
 function_decl|;
+name|IndexStatistics
+name|getIndexStatistics
+parameter_list|()
+function_decl|;
 name|IndexDefinition
 name|getDefinition
 parameter_list|()

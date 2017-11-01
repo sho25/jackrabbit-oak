@@ -1744,10 +1744,7 @@ name|getFulltextEntryCount
 argument_list|(
 name|node
 operator|.
-name|getSearcher
-argument_list|()
-operator|.
-name|getIndexReader
+name|getIndexStatistics
 argument_list|()
 operator|.
 name|numDocs
