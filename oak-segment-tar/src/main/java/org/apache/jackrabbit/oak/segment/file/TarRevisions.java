@@ -145,18 +145,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|Callable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|TimeUnit
 import|;
 end_import
@@ -364,7 +352,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link #JOURNAL_FILE_NAME journal} file where the current head is persisted  * by calling {@link #maybeFlush(Callable)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, SegmentIdProvider, Supplier)} bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
+comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link #JOURNAL_FILE_NAME journal} file where the current head is persisted  * by calling {@link #maybeFlush(Flusher)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, SegmentIdProvider, Supplier)} bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
 end_comment
 
 begin_class
