@@ -4042,6 +4042,10 @@ name|PersistentCacheTest
 argument_list|(
 name|statsProvider
 argument_list|)
+block|,
+operator|new
+name|BasicWriteTest
+argument_list|()
 block|}
 decl_stmt|;
 name|Set
