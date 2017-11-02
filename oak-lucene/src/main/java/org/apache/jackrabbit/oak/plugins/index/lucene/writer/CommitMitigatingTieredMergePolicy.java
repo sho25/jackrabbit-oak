@@ -1085,7 +1085,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"adjusted maxCommitRateDocs from {} to {}"
+literal|"adjusting maxCommitRateDocs from {} to {}"
 argument_list|,
 name|maxCommitRateDocs
 argument_list|,
@@ -1118,7 +1118,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"adjusted maxCommitRateMB from {} to {}"
+literal|"adjusting maxCommitRateMB from {} to {}"
 argument_list|,
 name|maxCommitRateMB
 argument_list|,
