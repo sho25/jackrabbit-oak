@@ -352,7 +352,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link #JOURNAL_FILE_NAME journal} file where the current head is persisted  * by calling {@link #maybeFlush(Flusher)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, SegmentIdProvider, Supplier)} bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
+comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link #JOURNAL_FILE_NAME journal} file where the current head is persisted  * by calling {@link #tryFlush(Flusher)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, SegmentIdProvider, Supplier)} bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
 end_comment
 
 begin_class
@@ -774,7 +774,7 @@ literal|"Revisions not bound to a store"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Flush the id of the current head to the journal after a call to {@code      * persisted}. Differently from {@link #maybeFlush(Flusher)}, this method      * does not return early if a concurrent call is in progress. Instead, it      * blocks the caller until the requested flush operation is performed.      *      * @param flusher call back for upstream dependencies to ensure the current      *                head state is actually persisted before its id is written      *                to the head state.      */
+comment|/**      * Flush the id of the current head to the journal after a call to {@code      * persisted}. Differently from {@link #tryFlush(Flusher)}, this method      * does not return early if a concurrent call is in progress. Instead, it      * blocks the caller until the requested flush operation is performed.      *      * @param flusher call back for upstream dependencies to ensure the current      *                head state is actually persisted before its id is written      *                to the head state.      */
 name|void
 name|flush
 parameter_list|(
@@ -827,7 +827,7 @@ block|}
 block|}
 comment|/**      * Flush the id of the current head to the journal after a call to {@code      * persisted}. This method does nothing and returns immediately if called      * concurrently and a call is already in progress.      *      * @param flusher call back for upstream dependencies to ensure the current      *                head state is actually persisted before its id is written      *                to the head state.      */
 name|void
-name|maybeFlush
+name|tryFlush
 parameter_list|(
 name|Flusher
 name|flusher

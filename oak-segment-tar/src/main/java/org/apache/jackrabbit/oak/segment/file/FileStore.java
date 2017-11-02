@@ -1589,7 +1589,7 @@ return|return;
 block|}
 try|try
 block|{
-name|maybeFlush
+name|tryFlush
 argument_list|()
 expr_stmt|;
 block|}
@@ -2039,7 +2039,7 @@ return|;
 block|}
 specifier|private
 name|void
-name|doMaybeFlush
+name|doTryFlush
 parameter_list|()
 throws|throws
 name|IOException
@@ -2062,7 +2062,7 @@ return|return;
 block|}
 name|revisions
 operator|.
-name|maybeFlush
+name|tryFlush
 argument_list|(
 parameter_list|()
 lambda|->
@@ -2088,7 +2088,7 @@ expr_stmt|;
 block|}
 specifier|private
 name|void
-name|maybeFlush
+name|tryFlush
 parameter_list|()
 throws|throws
 name|IOException
@@ -2104,7 +2104,7 @@ name|keepAlive
 argument_list|()
 init|)
 block|{
-name|doMaybeFlush
+name|doTryFlush
 argument_list|()
 expr_stmt|;
 block|}
