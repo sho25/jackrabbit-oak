@@ -1571,7 +1571,11 @@ operator|.
 name|getPort
 argument_list|()
 argument_list|,
-literal|60_000
+literal|2
+operator|*
+literal|60
+operator|*
+literal|1000
 argument_list|)
 init|)
 block|{
