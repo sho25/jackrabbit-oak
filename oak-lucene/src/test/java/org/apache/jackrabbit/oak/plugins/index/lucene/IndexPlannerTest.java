@@ -157,6 +157,28 @@ name|index
 operator|.
 name|lucene
 operator|.
+name|IndexStatistics
+operator|.
+name|SYNTHETICALLY_FALLIABLE_FIELD
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
 name|LuceneIndexConstants
 operator|.
 name|EVALUATE_PATH_RESTRICTION
@@ -776,28 +798,6 @@ operator|.
 name|reader
 operator|.
 name|LuceneIndexReaderFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
-name|util
-operator|.
-name|FunctionIndexProcessor
 import|;
 end_import
 
@@ -12876,7 +12876,7 @@ try|try
 block|{
 name|IndexStatistics
 operator|.
-name|failReadingFieldJcrTitle
+name|failReadingSyntheticallyFalliableField
 operator|=
 literal|true
 expr_stmt|;
@@ -12938,7 +12938,7 @@ argument_list|)
 operator|.
 name|property
 argument_list|(
-literal|"jcr:title"
+name|SYNTHETICALLY_FALLIABLE_FIELD
 argument_list|)
 operator|.
 name|propertyIndex
@@ -13018,9 +13018,9 @@ argument_list|(
 operator|new
 name|StringField
 argument_list|(
-literal|"jcr:title"
+name|SYNTHETICALLY_FALLIABLE_FIELD
 argument_list|,
-literal|"title"
+literal|"failingField"
 argument_list|,
 name|Field
 operator|.
@@ -13125,7 +13125,7 @@ name|filter
 operator|.
 name|restrictProperty
 argument_list|(
-literal|"jcr:title"
+name|SYNTHETICALLY_FALLIABLE_FIELD
 argument_list|,
 name|Operator
 operator|.
@@ -13163,7 +13163,7 @@ operator|.
 name|getPlan
 argument_list|()
 expr_stmt|;
-comment|// jcr:title's count couldn't be read - so, fallback to numDocs
+comment|// falliable field's count couldn't be read - so, fallback to numDocs
 name|assertEquals
 argument_list|(
 name|numOfDocs
@@ -13205,7 +13205,7 @@ name|filter
 operator|.
 name|restrictProperty
 argument_list|(
-literal|"jcr:title"
+name|SYNTHETICALLY_FALLIABLE_FIELD
 argument_list|,
 name|Operator
 operator|.
@@ -13283,7 +13283,7 @@ name|filter
 operator|.
 name|restrictProperty
 argument_list|(
-literal|"jcr:title"
+name|SYNTHETICALLY_FALLIABLE_FIELD
 argument_list|,
 name|Operator
 operator|.
@@ -13337,7 +13337,7 @@ finally|finally
 block|{
 name|IndexStatistics
 operator|.
-name|failReadingFieldJcrTitle
+name|failReadingSyntheticallyFalliableField
 operator|=
 literal|false
 expr_stmt|;
@@ -13354,7 +13354,7 @@ name|Exception
 block|{
 name|IndexStatistics
 operator|.
-name|failReadingFieldJcrTitle
+name|failReadingSyntheticallyFalliableField
 operator|=
 literal|true
 expr_stmt|;

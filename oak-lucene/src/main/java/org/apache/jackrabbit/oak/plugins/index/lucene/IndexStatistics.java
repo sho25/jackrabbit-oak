@@ -203,9 +203,16 @@ literal|false
 decl_stmt|;
 specifier|static
 name|boolean
-name|failReadingFieldJcrTitle
+name|failReadingSyntheticallyFalliableField
 init|=
 literal|false
+decl_stmt|;
+specifier|static
+specifier|final
+name|String
+name|SYNTHETICALLY_FALLIABLE_FIELD
+init|=
+literal|"synthetically-falliable-field"
 decl_stmt|;
 comment|/**      * @param reader {@link IndexReader} for which statistics need to be collected.      */
 name|IndexStatistics
@@ -317,9 +324,9 @@ try|try
 block|{
 if|if
 condition|(
-name|failReadingFieldJcrTitle
+name|failReadingSyntheticallyFalliableField
 operator|&&
-literal|"jcr:title"
+name|SYNTHETICALLY_FALLIABLE_FIELD
 operator|.
 name|equals
 argument_list|(
