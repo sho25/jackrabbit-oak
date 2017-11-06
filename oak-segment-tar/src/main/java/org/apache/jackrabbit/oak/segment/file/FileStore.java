@@ -4344,6 +4344,9 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+name|flush
+argument_list|()
+expr_stmt|;
 name|gcListener
 operator|.
 name|info
