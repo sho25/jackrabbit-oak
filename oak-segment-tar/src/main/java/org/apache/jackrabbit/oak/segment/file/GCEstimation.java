@@ -20,18 +20,11 @@ package|;
 end_package
 
 begin_interface
-specifier|public
 interface|interface
 name|GCEstimation
 block|{
-comment|/**      * Determines if the Gc operation needs to run or not      */
-name|boolean
-name|gcNeeded
-parameter_list|()
-function_decl|;
-comment|/**      * User friendly message explaining the value of the      * {@link GCEstimation#gcNeeded()} flag      */
-name|String
-name|gcLog
+name|GCEstimationResult
+name|estimate
 parameter_list|()
 function_decl|;
 block|}
