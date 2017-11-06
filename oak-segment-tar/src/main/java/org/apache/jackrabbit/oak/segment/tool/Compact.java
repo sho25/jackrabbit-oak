@@ -442,6 +442,7 @@ operator|.
 name|compactFull
 argument_list|()
 expr_stmt|;
+block|}
 name|System
 operator|.
 name|out
@@ -451,6 +452,15 @@ argument_list|(
 literal|"    -> cleaning up"
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|FileStore
+name|store
+init|=
+name|newFileStore
+argument_list|()
+init|)
+block|{
 name|store
 operator|.
 name|cleanup
