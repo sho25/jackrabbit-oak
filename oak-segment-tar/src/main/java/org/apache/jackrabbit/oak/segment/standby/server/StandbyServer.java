@@ -825,17 +825,6 @@ name|option
 argument_list|(
 name|ChannelOption
 operator|.
-name|TCP_NODELAY
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|b
-operator|.
-name|option
-argument_list|(
-name|ChannelOption
-operator|.
 name|SO_REUSEADDR
 argument_list|,
 literal|true
