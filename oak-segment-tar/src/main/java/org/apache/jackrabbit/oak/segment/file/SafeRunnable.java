@@ -78,11 +78,10 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code Runnable} implementation that is safe to submit to an executor  * or {@link Scheduler}.  *<p>  * When this implementation's {@link #run()} method is invoked, it will set  * the name of the current thread to the name passed to {@link SafeRunnable},  * run the wrapped runnable and finally restore the initial thread name.  * When the wrapped runnable throws any unhandled exception, this exception  * is logged at error level and the exception is re-thrown.  */
+comment|/**  * A {@code Runnable} implementation that is safe to submit to an executor or  * {@link Scheduler}.  *<p>  * When this implementation's {@link #run()} method is invoked, it will set the  * name of the current thread to the name passed to {@link SafeRunnable}, run  * the wrapped runnable and finally restore the initial thread name. When the  * wrapped runnable throws any unhandled exception, this exception is logged at  * error level and the exception is re-thrown.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|SafeRunnable
 implements|implements
@@ -92,7 +91,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|LOG
+name|log
 init|=
 name|LoggerFactory
 operator|.
@@ -117,8 +116,7 @@ specifier|final
 name|Runnable
 name|runnable
 decl_stmt|;
-comment|/**      * New instance with the given {@code name} wrapping the passed {@code runnable}.      * @param name      * @param runnable      */
-specifier|public
+comment|/**      * New instance with the given {@code name} wrapping the passed {@code      * runnable}.      *      * @param name     The name of the background operation.      * @param runnable The background operation.      */
 name|SafeRunnable
 parameter_list|(
 annotation|@
@@ -151,13 +149,14 @@ name|runnable
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * See class comment      */
 annotation|@
 name|Override
 specifier|public
 name|void
 name|run
 parameter_list|()
+block|{
+try|try
 block|{
 name|String
 name|n
@@ -184,27 +183,6 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|error
-argument_list|(
-literal|"Uncaught exception in {}"
-argument_list|,
-name|name
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-throw|throw
-name|e
-throw|;
-block|}
 finally|finally
 block|{
 name|currentThread
@@ -213,6 +191,30 @@ operator|.
 name|setName
 argument_list|(
 name|n
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Uncaught exception in %s"
+argument_list|,
+name|name
+argument_list|)
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
