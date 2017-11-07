@@ -626,15 +626,17 @@ name|description
 operator|=
 literal|"A cron expression that defines when the Version GC is scheduled. "
 operator|+
-literal|"If this configuration entry is left empty, the default value depends on "
+literal|"If this configuration entry is left empty, the default behaviour depends on "
 operator|+
 literal|"the 'documentStoreType'. For 'MONGO' the default is to schedule a "
 operator|+
 literal|"run every five seconds (also known as Continuous Revision Garbage "
 operator|+
-literal|"collection). For 'RDB' the default is to schedule a run once a day "
+literal|"Collection). For 'RDB' the default is no scheduled GC. It must be "
 operator|+
-literal|"starting at 2 AM. The corresponding cron expression is '"
+literal|"enabled explicitly with a cron expression. E.g. the following "
+operator|+
+literal|"expression triggers a GC run every night at 2 AM: '"
 operator|+
 name|DocumentNodeStoreService
 operator|.
