@@ -367,35 +367,6 @@ name|IllegalArgumentException
 throws|,
 name|DocumentStoreException
 function_decl|;
-comment|/**      * Update documents with the given keys. Only existing documents are      * updated and keys for documents that do not exist are simply ignored.      * There is no guarantee in which sequence the updates are performed.      *<p>      * If this method fails with a {@code DocumentStoreException}, then only some      * of the documents identified by {@code keys} may have been updated. The      * implementation however ensures that the result of the operation is      * properly reflected in the document cache. That is, an implementation      * could simply evict documents with the given keys from the cache.      *      * @param<T> the document type.      * @param collection the collection.      * @param keys the keys of the documents to update.      * @param updateOp the update operation to apply to each of the documents      *        (where {@link Condition}s are not allowed)      * @throws IllegalArgumentException when the {@linkplain UpdateOp} is conditional      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
-parameter_list|<
-name|T
-extends|extends
-name|Document
-parameter_list|>
-name|void
-name|update
-parameter_list|(
-name|Collection
-argument_list|<
-name|T
-argument_list|>
-name|collection
-parameter_list|,
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|keys
-parameter_list|,
-name|UpdateOp
-name|updateOp
-parameter_list|)
-throws|throws
-name|IllegalArgumentException
-throws|,
-name|DocumentStoreException
-function_decl|;
 comment|/**      * Atomically checks if the document exists and updates it, otherwise the      * document is created (aka upsert). The returned document is immutable.      *<p>      * If this method fails with a {@code DocumentStoreException}, then the      * document may or may not have been created or updated. It is the      * responsibility of the caller to check the result e.g. by calling      * {@link #find(Collection, String)}. The implementation however ensures      * that the result of the operation is properly reflected in the document      * cache. That is, an implementation could simply evict documents with the      * given keys from the cache.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation (where {@link Condition}s are not allowed)      * @return the old document or<code>null</code> if it didn't exist before.      * @throws IllegalArgumentException when the {@linkplain UpdateOp} is conditional      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
 annotation|@
 name|CheckForNull

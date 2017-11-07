@@ -156,25 +156,6 @@ argument_list|>
 name|ids
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a given updated has modified multiple documents      * @param timeTakenNanos time taken      * @param collection the collection      * @param updateCount number of updates performed      */
-name|void
-name|doneUpdate
-parameter_list|(
-name|long
-name|timeTakenNanos
-parameter_list|,
-name|Collection
-argument_list|<
-name|?
-extends|extends
-name|Document
-argument_list|>
-name|collection
-parameter_list|,
-name|int
-name|updateCount
-parameter_list|)
-function_decl|;
 comment|/**      * Called when a update operation was completed which affected single      * document.      * @param timeTakenNanos time taken      * @param collection the collection      * @param key collection which got updated or inserted      * @param newEntry true if the document was newly created due to given operation      * @param success true if the update was success      * @param retryCount number of retries done to get the update      */
 name|void
 name|doneFindAndModify
