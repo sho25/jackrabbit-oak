@@ -1188,11 +1188,13 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"commit rate: current {}, average {} docs/sec"
+literal|"commit rate: current {}, average {}, max {} docs/sec"
 argument_list|,
 name|commitRate
 argument_list|,
 name|avgCommitRateDocs
+argument_list|,
+name|maxCommitRateDocs
 argument_list|)
 expr_stmt|;
 name|docCount
@@ -1236,6 +1238,21 @@ operator|<
 name|maxNoOfSegsForMitigation
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"mitigation due to {}> {} docs/sec and segments {}< {})"
+argument_list|,
+name|commitRate
+argument_list|,
+name|maxCommitRateDocs
+argument_list|,
+name|segmentSize
+argument_list|,
+name|maxNoOfSegsForMitigation
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -1674,9 +1691,9 @@ expr_stmt|;
 block|}
 name|idxBytes
 operator|/=
-literal|1024
+literal|1024d
 operator|*
-literal|1000
+literal|1024d
 expr_stmt|;
 specifier|final
 name|boolean
@@ -1761,11 +1778,13 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"commit rate: current {}, average {} MB/sec"
+literal|"commit rate: current {}, average {}, max {} MB/sec"
 argument_list|,
 name|mbRate
 argument_list|,
 name|avgCommitRateMB
+argument_list|,
+name|maxCommitRateMB
 argument_list|)
 expr_stmt|;
 if|if
@@ -1808,6 +1827,21 @@ operator|<
 name|maxNoOfSegsForMitigation
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"mitigation due to {}> {} MB/sec and segments {}< {})"
+argument_list|,
+name|mbRate
+argument_list|,
+name|maxCommitRateMB
+argument_list|,
+name|segmentSize
+argument_list|,
+name|maxNoOfSegsForMitigation
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
