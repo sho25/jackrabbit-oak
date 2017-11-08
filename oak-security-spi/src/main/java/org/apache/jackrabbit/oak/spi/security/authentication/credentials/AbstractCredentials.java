@@ -57,6 +57,36 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -74,6 +104,11 @@ block|{
 specifier|protected
 specifier|final
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|attributes
 init|=
 operator|new
@@ -88,6 +123,8 @@ decl_stmt|;
 specifier|public
 name|AbstractCredentials
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|userId
 parameter_list|)
@@ -100,6 +137,8 @@ name|userId
 expr_stmt|;
 block|}
 comment|/**      * Returns the userId.      *      * @return the userId.      */
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getUserId
@@ -109,14 +148,18 @@ return|return
 name|userId
 return|;
 block|}
-comment|/**      * Stores an attribute in this credentials instance.      *      * @param name      *            a<code>String</code> specifying the name of the attribute      * @param value      *            the<code>Object</code> to be stored      */
+comment|/**      * Stores an attribute in this credentials instance. If the specified      * {@code value} is {@code null} the attribute will be removed.      *      * @param name      *            a {@code String} specifying the name of the attribute      * @param value      *            the {@code Object} to be stored      */
 specifier|public
 name|void
 name|setAttribute
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nullable
 name|Object
 name|value
 parameter_list|)
@@ -169,10 +212,14 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Returns the value of the named attribute as an<code>Object</code>, or      *<code>null</code> if no attribute of the given name exists.      *      * @param name      *            a<code>String</code> specifying the name of the attribute      * @return an<code>Object</code> containing the value of the attribute, or      *<code>null</code> if the attribute does not exist      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|Object
 name|getAttribute
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -199,6 +246,8 @@ specifier|public
 name|void
 name|removeAttribute
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -217,9 +266,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return the attributes available to this credentials instance      */
+comment|/**      * @return an immutable map containing the attributes available to this credentials instance      */
+annotation|@
+name|Nonnull
 specifier|public
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|getAttributes
 parameter_list|()
 block|{
@@ -237,7 +293,14 @@ specifier|public
 name|void
 name|setAttributes
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|attributes
 parameter_list|)
 block|{
