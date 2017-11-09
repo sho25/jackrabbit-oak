@@ -75,6 +75,10 @@ name|String
 name|getBytesRead
 parameter_list|()
 function_decl|;
+name|int
+name|getTimeoutCount
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
