@@ -386,7 +386,13 @@ name|accepts
 argument_list|(
 literal|"filter"
 argument_list|,
-literal|"filter the thread dumps, only keep working threads"
+literal|"filter the thread dumps, only keep working (running), interesting threads "
+operator|+
+literal|"(for example, threads that read from sockets are ignored, "
+operator|+
+literal|"as they are typically waiting for input; "
+operator|+
+literal|"system threads such as GC are also ignored)"
 argument_list|)
 decl_stmt|;
 name|OptionSpec
@@ -503,7 +509,9 @@ name|parser
 operator|.
 name|nonOptions
 argument_list|(
-literal|"file or directory containing thread dumps"
+literal|"file or directory containing thread dumps "
+operator|+
+literal|"(ensure it does not contain other files, such as binaries)"
 argument_list|)
 operator|.
 name|ofType
