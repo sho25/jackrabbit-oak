@@ -42,7 +42,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Container for the information in a RDB database column.  *<p>  * Note that the String "data" and the byte[] "bdata" may be null  * when the SQL SELECT request was conditional on "modcount" being  * unchanged.  */
+comment|/**  * Container for the information in a RDB database column.  *<p>  * Note that the String "data" and the byte[] "bdata" may be {@code null} when  * the SQL SELECT request was conditional on "modcount" being unchanged.  */
 end_comment
 
 begin_class
@@ -86,6 +86,11 @@ name|cmodcount
 decl_stmt|;
 specifier|private
 specifier|final
+name|long
+name|schemaVersion
+decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|data
 decl_stmt|;
@@ -115,6 +120,9 @@ name|modcount
 parameter_list|,
 name|Long
 name|cmodcount
+parameter_list|,
+name|Long
+name|schemaVersion
 parameter_list|,
 name|String
 name|data
@@ -181,6 +189,21 @@ operator|!=
 literal|null
 condition|?
 name|cmodcount
+operator|.
+name|longValue
+argument_list|()
+else|:
+name|LONG_UNSET
+expr_stmt|;
+name|this
+operator|.
+name|schemaVersion
+operator|=
+name|schemaVersion
+operator|!=
+literal|null
+condition|?
+name|schemaVersion
 operator|.
 name|longValue
 argument_list|()
@@ -272,6 +295,16 @@ parameter_list|()
 block|{
 return|return
 name|cmodcount
+return|;
+block|}
+comment|/**      * @return {@link #LONG_UNSET} when not set in the database      */
+specifier|public
+name|long
+name|getSchemaVersion
+parameter_list|()
+block|{
+return|return
+name|schemaVersion
 return|;
 block|}
 annotation|@

@@ -1925,6 +1925,9 @@ argument_list|(
 name|scmodcount
 argument_list|)
 argument_list|,
+operator|-
+literal|1L
+argument_list|,
 name|sdata
 argument_list|,
 name|bytes
@@ -2645,6 +2648,9 @@ argument_list|,
 name|modcount
 argument_list|,
 name|cmodcount
+argument_list|,
+operator|-
+literal|1L
 argument_list|,
 name|data
 argument_list|,

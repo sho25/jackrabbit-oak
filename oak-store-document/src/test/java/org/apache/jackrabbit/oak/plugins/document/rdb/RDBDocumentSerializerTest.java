@@ -346,6 +346,8 @@ literal|2l
 argument_list|,
 literal|3l
 argument_list|,
+literal|0L
+argument_list|,
 literal|"{}"
 argument_list|,
 literal|null
@@ -439,6 +441,8 @@ argument_list|,
 literal|2l
 argument_list|,
 literal|3l
+argument_list|,
+literal|0L
 argument_list|,
 literal|"{}"
 argument_list|,
@@ -560,6 +564,8 @@ literal|2l
 argument_list|,
 literal|3l
 argument_list|,
+literal|0L
+argument_list|,
 literal|"\"blob\""
 argument_list|,
 literal|"{}"
@@ -646,6 +652,8 @@ argument_list|,
 literal|2l
 argument_list|,
 literal|3l
+argument_list|,
+literal|0L
 argument_list|,
 literal|"\"blob\""
 argument_list|,
@@ -774,6 +782,8 @@ literal|2l
 argument_list|,
 literal|3l
 argument_list|,
+literal|0L
+argument_list|,
 literal|"{}"
 argument_list|,
 literal|"{}"
@@ -836,6 +846,8 @@ argument_list|,
 literal|2l
 argument_list|,
 literal|3l
+argument_list|,
+literal|0L
 argument_list|,
 literal|"\"blob\", [[\"=\", \"foo\", \"bar\"],[\"M\", \"m1\", 1],[\"M\", \"m2\", 3]]"
 argument_list|,
@@ -929,6 +941,8 @@ literal|2l
 argument_list|,
 literal|3l
 argument_list|,
+literal|0L
+argument_list|,
 literal|"[[\"\", \"\", \"\"]]"
 argument_list|,
 literal|"{}"
@@ -992,6 +1006,8 @@ literal|2l
 argument_list|,
 literal|3l
 argument_list|,
+literal|0L
+argument_list|,
 literal|"{}"
 argument_list|,
 literal|null
@@ -1050,6 +1066,8 @@ argument_list|,
 literal|2l
 argument_list|,
 literal|3l
+argument_list|,
+literal|0L
 argument_list|,
 literal|"{ \"x\" : 1, }"
 argument_list|,
@@ -1111,6 +1129,8 @@ literal|2l
 argument_list|,
 literal|3l
 argument_list|,
+literal|0L
+argument_list|,
 literal|"{ x : 1, }"
 argument_list|,
 literal|null
@@ -1166,6 +1186,8 @@ argument_list|,
 literal|2l
 argument_list|,
 literal|3l
+argument_list|,
+literal|0L
 argument_list|,
 literal|"{\"x\":\"\u20ac\uD834\uDD1E\"}"
 argument_list|,
