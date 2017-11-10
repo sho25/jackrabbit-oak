@@ -1385,6 +1385,24 @@ operator|+
 literal|"-:fulltext:* *:* ft:(-\"*\")"
 argument_list|)
 expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root//*[jcr:contains(., 'apple - pear')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"+:fulltext:apple -:fulltext:pear ft:(\"apple\" \"-\" \"pear\")"
+argument_list|)
+expr_stmt|;
+name|assertXPathPlan
+argument_list|(
+literal|"/jcr:root/content//*[jcr:contains(., 'apple - pear')]"
+argument_list|,
+name|planPrefix
+operator|+
+literal|"-:fulltext:pear +:fulltext:apple +:ancestors:/content ft:(\"apple\" \"-\" \"pear\")"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void
