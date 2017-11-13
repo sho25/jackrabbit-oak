@@ -18,6 +18,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|CacheWeights
+operator|.
+name|segmentWeight
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -117,7 +135,7 @@ name|common
 operator|.
 name|cache
 operator|.
-name|RemovalNotification
+name|CacheStats
 import|;
 end_import
 
@@ -131,7 +149,7 @@ name|common
 operator|.
 name|cache
 operator|.
-name|Weigher
+name|RemovalNotification
 import|;
 end_import
 
@@ -170,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A cache for {@link SegmentId#isDataSegmentId() data} {@link Segment} instances by their  * {@link SegmentId}. This cache ignores {@link SegmentId#isBulkSegmentId() bulk} segments.  *<p>  * Conceptually this cache serves as a 2nd level cache for segments. The 1st level cache is  * implemented by memoising the segment in its id (see {@link SegmentId#segment}. Every time  * an segment is evicted from this cache the memoised segment is discarded (see  * {@link SegmentId#unloaded()}) and {@link SegmentId#onAccess}.  */
+comment|/**  * A cache for {@link SegmentId#isDataSegmentId() data} {@link Segment}  * instances by their {@link SegmentId}. This cache ignores {@link  * SegmentId#isBulkSegmentId() bulk} segments.  *<p>  * Conceptually this cache serves as a 2nd level cache for segments. The 1st  * level cache is implemented by memoising the segment in its id (see {@link  * SegmentId#segment}. Every time an segment is evicted from this cache the  * memoised segment is discarded (see {@link SegmentId#onAccess}.  */
 end_comment
 
 begin_class
@@ -178,7 +196,7 @@ specifier|public
 class|class
 name|SegmentCache
 block|{
-comment|/** Default maximum weight of this cache in MB */
+comment|/**      * Default maximum weight of this cache in MB      */
 specifier|public
 specifier|static
 specifier|final
@@ -187,28 +205,13 @@ name|DEFAULT_SEGMENT_CACHE_MB
 init|=
 literal|256
 decl_stmt|;
-comment|/** Weigher to determine the current weight of all items in this cache */
-specifier|private
-specifier|final
-name|Weigher
-argument_list|<
-name|SegmentId
-argument_list|,
-name|Segment
-argument_list|>
-name|weigher
-init|=
-operator|new
-name|SegmentCacheWeigher
-argument_list|()
-decl_stmt|;
-comment|/** Maximum weight of the items in this cache */
+comment|/**      * Maximum weight of the items in this cache      */
 specifier|private
 specifier|final
 name|long
 name|maximumWeight
 decl_stmt|;
-comment|/** Cache of recently accessed segments */
+comment|/**      * Cache of recently accessed segments      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -221,7 +224,7 @@ name|Segment
 argument_list|>
 name|cache
 decl_stmt|;
-comment|/**      * Statistics of this cache. Do to the special access patter (see class comment), we cannot      * rely on {@link Cache#stats()}.      */
+comment|/**      * Statistics of this cache. Do to the special access patter (see class      * comment), we cannot rely on {@link Cache#stats()}.      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -235,7 +238,7 @@ argument_list|(
 literal|"Segment Cache"
 argument_list|)
 decl_stmt|;
-comment|/**      * Create a new segment cache of the given size.      * @param cacheSizeMB  size of the cache in megabytes.      */
+comment|/**      * Create a new segment cache of the given size.      *      * @param cacheSizeMB size of the cache in megabytes.      */
 specifier|public
 name|SegmentCache
 parameter_list|(
@@ -274,7 +277,9 @@ argument_list|)
 operator|.
 name|weigher
 argument_list|(
-name|weigher
+operator|new
+name|SegmentCacheWeigher
+argument_list|()
 argument_list|)
 operator|.
 name|removalListener
@@ -288,18 +293,7 @@ name|build
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Create a new segment cache with the {@link #DEFAULT_SEGMENT_CACHE_MB default size}.      */
-specifier|public
-name|SegmentCache
-parameter_list|()
-block|{
-name|this
-argument_list|(
-name|DEFAULT_SEGMENT_CACHE_MB
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Removal handler called whenever an item is evicted from the cache. Propagates      * to {@link SegmentId#unloaded()}.      */
+comment|/**      * Removal handler called whenever an item is evicted from the cache.      */
 specifier|private
 name|void
 name|onRemove
@@ -315,32 +309,19 @@ argument_list|>
 name|notification
 parameter_list|)
 block|{
-name|SegmentId
-name|id
-init|=
-name|notification
+name|stats
 operator|.
-name|getKey
+name|evictionCount
+operator|.
+name|incrementAndGet
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
-name|id
-operator|!=
-literal|null
-condition|)
-block|{
-name|Segment
-name|segment
-init|=
 name|notification
 operator|.
 name|getValue
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|segment
 operator|!=
 literal|null
 condition|)
@@ -352,86 +333,37 @@ operator|.
 name|addAndGet
 argument_list|(
 operator|-
-name|weigher
-operator|.
-name|weigh
+name|segmentWeight
 argument_list|(
-name|id
-argument_list|,
-name|segment
+name|notification
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|stats
+if|if
+condition|(
+name|notification
 operator|.
-name|evictionCount
-operator|.
-name|incrementAndGet
+name|getKey
 argument_list|()
-expr_stmt|;
-name|id
+operator|!=
+literal|null
+condition|)
+block|{
+name|notification
+operator|.
+name|getKey
+argument_list|()
 operator|.
 name|unloaded
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** Unconditionally put an item in the cache */
-specifier|private
-name|Segment
-name|put
-parameter_list|(
-annotation|@
-name|Nonnull
-name|SegmentId
-name|id
-parameter_list|,
-annotation|@
-name|Nonnull
-name|Segment
-name|segment
-parameter_list|)
-block|{
-comment|// Call loaded *before* putting the segment into the cache as the latter
-comment|// might cause it to get evicted right away again.
-name|id
-operator|.
-name|loaded
-argument_list|(
-name|segment
-argument_list|)
-expr_stmt|;
-name|cache
-operator|.
-name|put
-argument_list|(
-name|id
-argument_list|,
-name|segment
-argument_list|)
-expr_stmt|;
-name|stats
-operator|.
-name|currentWeight
-operator|.
-name|addAndGet
-argument_list|(
-name|weigher
-operator|.
-name|weigh
-argument_list|(
-name|id
-argument_list|,
-name|segment
-argument_list|)
-argument_list|)
-expr_stmt|;
-return|return
-name|segment
-return|;
-block|}
-comment|/**      * Retrieve an segment from the cache or load it and cache it if not yet in the cache.      * @param id        the id of the segment      * @param loader    the loader to load the segment if not yet in the cache      * @return          the segment identified by {@code id}      * @throws ExecutionException  when {@code loader} failed to load an segment      */
+comment|/**      * Retrieve an segment from the cache or load it and cache it if not yet in      * the cache.      *      * @param id     the id of the segment      * @param loader the loader to load the segment if not yet in the cache      * @return the segment identified by {@code id}      * @throws ExecutionException when {@code loader} failed to load an segment      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -456,40 +388,24 @@ parameter_list|)
 throws|throws
 name|ExecutionException
 block|{
-comment|// Load bulk segment directly without putting it in cache
-try|try
-block|{
 if|if
 condition|(
 name|id
 operator|.
-name|isBulkSegmentId
+name|isDataSegmentId
 argument_list|()
 condition|)
 block|{
 return|return
-name|loader
+name|cache
 operator|.
-name|call
-argument_list|()
-return|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|ExecutionException
+name|get
 argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-comment|// Load data segment and put it in the cache
+name|id
+argument_list|,
+parameter_list|()
+lambda|->
+block|{
 try|try
 block|{
 name|long
@@ -536,13 +452,27 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-return|return
-name|put
+name|stats
+operator|.
+name|currentWeight
+operator|.
+name|addAndGet
 argument_list|(
-name|id
-argument_list|,
+name|segmentWeight
+argument_list|(
 name|segment
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|id
+operator|.
+name|loaded
+argument_list|(
+name|segment
+argument_list|)
+expr_stmt|;
+return|return
+name|segment
 return|;
 block|}
 catch|catch
@@ -559,6 +489,31 @@ name|incrementAndGet
 argument_list|()
 expr_stmt|;
 throw|throw
+name|e
+throw|;
+block|}
+block|}
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+try|try
+block|{
+return|return
+name|loader
+operator|.
+name|call
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
 operator|new
 name|ExecutionException
 argument_list|(
@@ -567,7 +522,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Put a segment into the cache. This method does nothing for      * {@link SegmentId#isBulkSegmentId() bulk} segments.      * @param segment  the segment to cache      */
+block|}
+comment|/**      * Put a segment into the cache. This method does nothing for {@link      * SegmentId#isBulkSegmentId() bulk} segments.      *      * @param segment the segment to cache      */
 specifier|public
 name|void
 name|putSegment
@@ -588,13 +544,39 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|id
 operator|.
-name|isBulkSegmentId
+name|isDataSegmentId
 argument_list|()
 condition|)
 block|{
+comment|// Putting the segment into the cache can cause it to be evicted
+comment|// right away again. Therefore we need to call loaded and update
+comment|// the current weight *before* putting the segment into the cache.
+comment|// This ensures that the eviction call back is always called
+comment|// *after* a call to loaded and that the current weight is only
+comment|// decremented *after* it was incremented.
+name|id
+operator|.
+name|loaded
+argument_list|(
+name|segment
+argument_list|)
+expr_stmt|;
+name|stats
+operator|.
+name|currentWeight
+operator|.
+name|addAndGet
+argument_list|(
+name|segmentWeight
+argument_list|(
+name|segment
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|cache
+operator|.
 name|put
 argument_list|(
 name|id
@@ -616,7 +598,7 @@ name|invalidateAll
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @return  Statistics for this cache.      */
+comment|/**      * @return Statistics for this cache.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -628,7 +610,7 @@ return|return
 name|stats
 return|;
 block|}
-comment|/**      * Record a hit in this cache's underlying statistics.      * @see SegmentId#onAccess      */
+comment|/**      * Record a hit in this cache's underlying statistics.      *      * @see SegmentId#onAccess      */
 specifier|public
 name|void
 name|recordHit
@@ -642,7 +624,7 @@ name|incrementAndGet
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** We cannot rely on the statistics of the underlying Guava cache as all cache hits      * are taken by {@link SegmentId#getSegment()} and thus never seen by the cache.      */
+comment|/**      * We cannot rely on the statistics of the underlying Guava cache as all      * cache hits are taken by {@link SegmentId#getSegment()} and thus never      * seen by the cache.      */
 specifier|private
 class|class
 name|Stats
@@ -737,28 +719,12 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|cache
-operator|.
 name|CacheStats
 name|getCurrentStats
 parameter_list|()
 block|{
 return|return
 operator|new
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|cache
-operator|.
 name|CacheStats
 argument_list|(
 name|hitCount

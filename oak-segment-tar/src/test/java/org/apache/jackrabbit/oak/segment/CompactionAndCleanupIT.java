@@ -2284,15 +2284,8 @@ name|assertTrue
 argument_list|(
 literal|"the blob should not be collected"
 argument_list|,
-name|Math
-operator|.
-name|abs
-argument_list|(
-name|size5
-operator|-
 name|size6
-argument_list|)
-operator|<
+operator|>
 name|blobSize
 argument_list|)
 expr_stmt|;
@@ -2322,15 +2315,8 @@ name|assertTrue
 argument_list|(
 literal|"the blob should not be collected"
 argument_list|,
-name|Math
-operator|.
-name|abs
-argument_list|(
-name|size6
-operator|-
 name|size7
-argument_list|)
-operator|<
+operator|>
 name|blobSize
 argument_list|)
 expr_stmt|;

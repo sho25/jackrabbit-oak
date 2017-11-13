@@ -121,18 +121,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ExecutionException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -919,7 +907,7 @@ specifier|static
 name|SegmentNotFoundException
 name|asSegmentNotFoundException
 parameter_list|(
-name|ExecutionException
+name|Exception
 name|e
 parameter_list|,
 name|SegmentId
