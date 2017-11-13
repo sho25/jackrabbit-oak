@@ -385,7 +385,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|StringPropertyState
+name|PropertyValues
 import|;
 end_import
 
@@ -399,11 +399,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|nodetype
+name|memory
 operator|.
-name|EffectiveNodeTypeProvider
+name|StringPropertyState
 import|;
 end_import
 
@@ -437,9 +437,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|version
+name|nodetype
 operator|.
-name|VersionConstants
+name|EffectiveNodeTypeProvider
 import|;
 end_import
 
@@ -453,11 +453,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|memory
+name|version
 operator|.
-name|PropertyValues
+name|VersionConstants
 import|;
 end_import
 
