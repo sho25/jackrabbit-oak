@@ -947,6 +947,7 @@ block|}
 annotation|@
 name|CheckForNull
 specifier|public
+specifier|static
 name|String
 name|getString
 parameter_list|(
