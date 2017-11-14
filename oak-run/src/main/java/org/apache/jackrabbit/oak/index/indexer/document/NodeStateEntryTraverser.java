@@ -77,6 +77,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -292,18 +302,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|jetbrains
-operator|.
-name|annotations
-operator|.
-name|NotNull
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -474,7 +472,7 @@ name|documentStore
 expr_stmt|;
 block|}
 annotation|@
-name|NotNull
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
