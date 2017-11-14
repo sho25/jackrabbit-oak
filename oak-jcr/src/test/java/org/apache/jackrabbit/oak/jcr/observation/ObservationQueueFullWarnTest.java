@@ -1556,11 +1556,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|semaphore
-operator|.
-name|acquire
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|hasRecievedInit
@@ -1569,6 +1564,11 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|semaphore
+operator|.
+name|acquire
+argument_list|()
+expr_stmt|;
 name|long
 name|numEvents
 init|=
@@ -1694,6 +1694,17 @@ operator|.
 name|nextEvent
 argument_list|()
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|" - "
+operator|+
+name|e
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|PathUtils
@@ -1831,13 +1842,6 @@ name|session
 operator|.
 name|save
 argument_list|()
-expr_stmt|;
-name|semaphore
-operator|.
-name|release
-argument_list|(
-literal|1
-argument_list|)
 expr_stmt|;
 name|boolean
 name|initNotTimeOut
