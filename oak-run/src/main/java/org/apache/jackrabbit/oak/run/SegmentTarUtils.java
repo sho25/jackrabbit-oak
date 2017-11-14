@@ -1165,6 +1165,11 @@ argument_list|(
 name|force
 argument_list|)
 operator|.
+name|withSegmentCacheSize
+argument_list|(
+name|TAR_SEGMENT_CACHE_SIZE
+argument_list|)
+operator|.
 name|build
 argument_list|()
 operator|.
