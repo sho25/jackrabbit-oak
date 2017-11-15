@@ -39,6 +39,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|text
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -156,6 +166,34 @@ argument_list|,
 literal|"function*lower*upper*@test/data"
 argument_list|)
 expr_stmt|;
+name|checkConvert
+argument_list|(
+literal|"fn:coalesce(jcr:content/@foo2, jcr:content/@foo)"
+argument_list|,
+literal|"function*coalesce*@jcr:content/foo2*@jcr:content/foo"
+argument_list|)
+expr_stmt|;
+name|checkConvert
+argument_list|(
+literal|"fn:coalesce(jcr:content/@foo2,fn:lower-case(jcr:content/@foo))"
+argument_list|,
+literal|"function*coalesce*@jcr:content/foo2*lower*@jcr:content/foo"
+argument_list|)
+expr_stmt|;
+name|checkConvert
+argument_list|(
+literal|"fn:coalesce(jcr:content/@foo2,fn:coalesce(jcr:content/@foo, fn:lower-case(fn:name())))"
+argument_list|,
+literal|"function*coalesce*@jcr:content/foo2*coalesce*@jcr:content/foo*lower*@:name"
+argument_list|)
+expr_stmt|;
+name|checkConvert
+argument_list|(
+literal|"fn:coalesce(fn:coalesce(jcr:content/@foo2,jcr:content/@foo), fn:coalesce(@a:b, @c:d))"
+argument_list|,
+literal|"function*coalesce*coalesce*@jcr:content/foo2*@jcr:content/foo*coalesce*@a:b*@c:d"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -219,6 +257,34 @@ argument_list|(
 literal|"[strange[0]]]"
 argument_list|,
 literal|"function*@strange[0]"
+argument_list|)
+expr_stmt|;
+name|checkConvert
+argument_list|(
+literal|"coalesce([jcr:content/foo2],[jcr:content/foo])"
+argument_list|,
+literal|"function*coalesce*@jcr:content/foo2*@jcr:content/foo"
+argument_list|)
+expr_stmt|;
+name|checkConvert
+argument_list|(
+literal|"coalesce([jcr:content/foo2], lower([jcr:content/foo]))"
+argument_list|,
+literal|"function*coalesce*@jcr:content/foo2*lower*@jcr:content/foo"
+argument_list|)
+expr_stmt|;
+name|checkConvert
+argument_list|(
+literal|"coalesce([jcr:content/foo2] , coalesce([jcr:content/foo],lower(name())))"
+argument_list|,
+literal|"function*coalesce*@jcr:content/foo2*coalesce*@jcr:content/foo*lower*@:name"
+argument_list|)
+expr_stmt|;
+name|checkConvert
+argument_list|(
+literal|"coalesce(coalesce([jcr:content/foo2],[jcr:content/foo]), coalesce([a:b], [c:d]))"
+argument_list|,
+literal|"function*coalesce*coalesce*@jcr:content/foo2*@jcr:content/foo*coalesce*@a:b*@c:d"
 argument_list|)
 expr_stmt|;
 block|}

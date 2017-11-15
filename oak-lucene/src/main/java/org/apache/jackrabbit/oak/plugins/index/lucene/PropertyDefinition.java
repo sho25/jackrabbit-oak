@@ -1093,6 +1093,10 @@ literal|", notNullCheckEnabled="
 operator|+
 name|notNullCheckEnabled
 operator|+
+literal|", function="
+operator|+
+name|function
+operator|+
 literal|'}'
 return|;
 block|}
