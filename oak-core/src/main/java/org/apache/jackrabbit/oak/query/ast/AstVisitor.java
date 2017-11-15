@@ -59,6 +59,13 @@ function_decl|;
 name|boolean
 name|visit
 parameter_list|(
+name|CoalesceImpl
+name|node
+parameter_list|)
+function_decl|;
+name|boolean
+name|visit
+parameter_list|(
 name|ColumnImpl
 name|node
 parameter_list|)
