@@ -6932,9 +6932,14 @@ operator|=
 name|LIRS_CACHE
 expr_stmt|;
 block|}
+comment|// do not use LIRS cache when maxWeight is zero (OAK-6953)
 if|if
 condition|(
 name|useLirs
+operator|&&
+name|maxWeight
+operator|>
+literal|0
 condition|)
 block|{
 return|return
