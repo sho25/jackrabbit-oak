@@ -5401,6 +5401,23 @@ name|entryCount
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|sortOrder
+operator|==
+literal|null
+operator|||
+name|p
+operator|.
+name|getSortOrder
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// if the query is unordered, or
+comment|// if the query contains "order by" and the index can sort on that,
+comment|// then we don't need to read all entries from the index
 name|entryCount
 operator|=
 name|Math
@@ -5412,6 +5429,7 @@ argument_list|,
 name|entryCount
 argument_list|)
 expr_stmt|;
+block|}
 name|double
 name|c
 init|=
