@@ -1863,6 +1863,8 @@ block|{
 name|putInternal
 argument_list|(
 name|d
+argument_list|,
+name|tracker
 argument_list|)
 expr_stmt|;
 comment|// if the document hasn't been invalidated or added during the tracker lifetime,
@@ -1887,6 +1889,8 @@ block|{
 name|putInternal
 argument_list|(
 name|d
+argument_list|,
+name|tracker
 argument_list|)
 expr_stmt|;
 block|}
@@ -1928,7 +1932,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Puts a document into the cache without acquiring a lock.      *      * @param doc the document to put into the cache.      */
+comment|/**      * Puts a document into the cache without acquiring a lock. All trackers will      * be updated.      *      * @param doc the document to put into the cache.      */
 specifier|protected
 specifier|final
 name|void
@@ -1938,6 +1942,31 @@ annotation|@
 name|Nonnull
 name|NodeDocument
 name|doc
+parameter_list|)
+block|{
+name|putInternal
+argument_list|(
+name|doc
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Puts a document into the cache without acquiring a lock. All trackers will      * be updated, apart from the {@code trackerToSkip}.      *      * @param doc the document to put into the cache.      * @param trackerToSkip this tracker won't be updated. pass {@code null} to update      *                      all trackers.      */
+specifier|protected
+specifier|final
+name|void
+name|putInternal
+parameter_list|(
+annotation|@
+name|Nonnull
+name|NodeDocument
+name|doc
+parameter_list|,
+annotation|@
+name|Nullable
+name|CacheChangesTracker
+name|trackerToSkip
 parameter_list|)
 block|{
 if|if
@@ -1995,6 +2024,15 @@ range|:
 name|changeTrackers
 control|)
 block|{
+if|if
+condition|(
+name|tracker
+operator|==
+name|trackerToSkip
+condition|)
+block|{
+continue|continue;
+block|}
 name|tracker
 operator|.
 name|putDocument
