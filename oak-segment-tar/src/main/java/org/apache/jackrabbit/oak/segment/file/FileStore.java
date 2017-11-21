@@ -3531,9 +3531,9 @@ argument_list|()
 argument_list|,
 name|gcJournal
 argument_list|,
-name|stats
+name|tarFiles
 operator|.
-name|getApproximateSize
+name|size
 argument_list|()
 argument_list|,
 name|full
