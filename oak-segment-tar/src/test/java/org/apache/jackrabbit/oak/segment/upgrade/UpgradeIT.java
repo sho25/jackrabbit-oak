@@ -351,6 +351,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -652,6 +662,8 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|Compact
 operator|.
 name|builder
@@ -681,6 +693,15 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// The exception is not relevant to this test.
+block|}
 comment|// Not upgraded
 name|checkStoreVersion
 argument_list|(

@@ -1144,6 +1144,10 @@ parameter_list|,
 name|boolean
 name|force
 parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|InvalidFileStoreVersionException
 block|{
 name|Compact
 operator|.
