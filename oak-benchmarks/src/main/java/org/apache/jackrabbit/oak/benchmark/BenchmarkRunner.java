@@ -2637,6 +2637,17 @@ argument_list|)
 argument_list|)
 block|,
 operator|new
+name|LoginWithTokensTest
+argument_list|(
+name|numberOfUsers
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
+block|,
+operator|new
 name|LoginSystemTest
 argument_list|()
 block|,

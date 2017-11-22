@@ -656,6 +656,29 @@ name|AttributeDefinition
 argument_list|(
 name|name
 operator|=
+literal|"Token Cleanup Threshold"
+argument_list|,
+name|description
+operator|=
+literal|"Setting this option to a value> 0 will trigger a cleanup upon token creation: "
+operator|+
+literal|"if the number of existing token matches/exceeds the "
+operator|+
+literal|"configured value an attempt is made to removed expired tokens."
+argument_list|)
+name|long
+name|tokenCleanupThreshold
+parameter_list|()
+default|default
+name|TokenProviderImpl
+operator|.
+name|NO_TOKEN_CLEANUP
+function_decl|;
+annotation|@
+name|AttributeDefinition
+argument_list|(
+name|name
+operator|=
 literal|"Hash Algorithm"
 argument_list|,
 name|description
