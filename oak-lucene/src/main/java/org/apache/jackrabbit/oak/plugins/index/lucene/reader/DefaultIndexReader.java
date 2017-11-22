@@ -293,15 +293,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|closer
-operator|.
-name|register
-argument_list|(
-name|this
-operator|.
-name|suggestDirectory
-argument_list|)
-expr_stmt|;
+comment|//Directory is closed by AnalyzingInfixSuggester close call
 name|this
 operator|.
 name|lookup

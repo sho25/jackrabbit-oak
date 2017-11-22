@@ -109,6 +109,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -383,6 +397,15 @@ specifier|private
 specifier|final
 name|Executor
 name|executor
+decl_stmt|;
+specifier|private
+specifier|final
+name|AtomicBoolean
+name|closed
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1440,6 +1463,21 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
+name|closed
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
+return|return;
+block|}
 comment|//Always remove old index file on close as it ensures that
 comment|//no other IndexSearcher are opened with previous revision of Index due to
 comment|//way IndexTracker closes IndexNode. At max there would be only two IndexNode
