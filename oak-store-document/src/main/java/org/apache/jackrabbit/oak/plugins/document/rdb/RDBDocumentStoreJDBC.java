@@ -1878,6 +1878,11 @@ operator|.
 name|asString
 argument_list|(
 name|document
+argument_list|,
+name|tmd
+operator|.
+name|getColumnProperties
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|String
@@ -2433,6 +2438,11 @@ operator|.
 name|asString
 argument_list|(
 name|document
+argument_list|,
+name|tmd
+operator|.
+name|getColumnProperties
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Number

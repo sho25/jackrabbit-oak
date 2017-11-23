@@ -464,14 +464,6 @@ name|DocumentStore
 name|store
 decl_stmt|;
 specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|columnProperties
-decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -567,12 +559,6 @@ name|RDBDocumentSerializer
 parameter_list|(
 name|DocumentStore
 name|store
-parameter_list|,
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|columnProperties
 parameter_list|)
 block|{
 name|this
@@ -580,12 +566,6 @@ operator|.
 name|store
 operator|=
 name|store
-expr_stmt|;
-name|this
-operator|.
-name|columnProperties
-operator|=
-name|columnProperties
 expr_stmt|;
 block|}
 comment|/**      * Serializes all non-column properties of the {@link Document} into a JSON      * string.      */
@@ -597,6 +577,12 @@ annotation|@
 name|Nonnull
 name|Document
 name|doc
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|columnProperties
 parameter_list|)
 block|{
 name|StringBuilder
@@ -709,6 +695,12 @@ name|asString
 parameter_list|(
 name|UpdateOp
 name|update
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|columnProperties
 parameter_list|)
 block|{
 name|StringBuilder

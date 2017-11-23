@@ -663,13 +663,6 @@ argument_list|(
 name|super
 operator|.
 name|ds
-argument_list|,
-name|Collections
-operator|.
-name|singleton
-argument_list|(
-literal|"_id"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|jdbc
