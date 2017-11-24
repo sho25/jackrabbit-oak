@@ -1564,6 +1564,20 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Have got an event but we shall first stall. Current counter: "
+operator|+
+name|counter
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|semaphore
 operator|.
 name|acquire
