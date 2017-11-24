@@ -469,6 +469,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|sling
+operator|.
+name|testing
+operator|.
+name|mock
+operator|.
+name|osgi
+operator|.
+name|junit
+operator|.
+name|OsgiContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -485,6 +505,16 @@ name|Before
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Rule
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base test for external-authentication tests.  */
 end_comment
@@ -497,6 +527,17 @@ name|AbstractExternalAuthTest
 extends|extends
 name|AbstractSecurityTest
 block|{
+annotation|@
+name|Rule
+specifier|public
+specifier|final
+name|OsgiContext
+name|context
+init|=
+operator|new
+name|OsgiContext
+argument_list|()
+decl_stmt|;
 specifier|protected
 specifier|static
 specifier|final
@@ -849,6 +890,14 @@ argument_list|(
 name|getSecurityConfigParameters
 argument_list|()
 argument_list|,
+name|externalPrincipalConfiguration
+argument_list|)
+expr_stmt|;
+comment|// register PrincipalConfiguration with OSGi context
+name|context
+operator|.
+name|registerInjectActivateService
+argument_list|(
 name|externalPrincipalConfiguration
 argument_list|)
 expr_stmt|;

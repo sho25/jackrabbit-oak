@@ -477,16 +477,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -566,17 +556,6 @@ name|NON_EXISTING_NAME
 init|=
 literal|"nonExisting"
 decl_stmt|;
-annotation|@
-name|Rule
-specifier|public
-specifier|final
-name|OsgiContext
-name|context
-init|=
-operator|new
-name|OsgiContext
-argument_list|()
-decl_stmt|;
 specifier|private
 name|Root
 name|r
@@ -650,15 +629,6 @@ operator|.
 name|setDynamicMembership
 argument_list|(
 literal|true
-argument_list|)
-expr_stmt|;
-comment|// register the ExternalPrincipal configuration in order to have it's
-comment|// activate method invoked.
-name|context
-operator|.
-name|registerInjectActivateService
-argument_list|(
-name|externalPrincipalConfiguration
 argument_list|)
 expr_stmt|;
 comment|// first configuration based on test base-setup with

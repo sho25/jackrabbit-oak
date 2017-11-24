@@ -377,17 +377,6 @@ extends|extends
 name|ExternalLoginModuleTestBase
 block|{
 annotation|@
-name|Rule
-specifier|public
-specifier|final
-name|OsgiContext
-name|context
-init|=
-operator|new
-name|OsgiContext
-argument_list|()
-decl_stmt|;
-annotation|@
 name|Override
 specifier|protected
 name|Oak
