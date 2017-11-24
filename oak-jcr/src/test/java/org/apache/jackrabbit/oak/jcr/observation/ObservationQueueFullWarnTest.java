@@ -1537,22 +1537,19 @@ operator|new
 name|AtomicBoolean
 argument_list|()
 decl_stmt|;
+specifier|final
+name|AtomicBoolean
+name|hasReceivedTestMessage
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
+decl_stmt|;
 name|EventListener
 name|listeners
 init|=
-operator|new
-name|EventListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onEvent
-parameter_list|(
-name|EventIterator
 name|events
-parameter_list|)
+lambda|->
 block|{
 try|try
 block|{
@@ -1564,18 +1561,23 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
-literal|"Have got an event but we shall first stall. Current counter: "
+literal|"Have received an event. We shall wait for our turn to process it. Current counter: "
 operator|+
 name|counter
 operator|.
 name|get
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|hasReceivedTestMessage
+operator|.
+name|set
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 name|semaphore
@@ -1598,11 +1600,9 @@ argument_list|(
 name|numEvents
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"GOT: "
 operator|+
@@ -1632,11 +1632,9 @@ operator|.
 name|nextEvent
 argument_list|()
 decl_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|" - "
 operator|+
@@ -1708,11 +1706,9 @@ operator|.
 name|nextEvent
 argument_list|()
 decl_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|" - "
 operator|+
@@ -1775,7 +1771,6 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 decl_stmt|;
@@ -1864,25 +1859,9 @@ name|waitFor
 argument_list|(
 literal|5000
 argument_list|,
-operator|new
-name|Condition
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|evaluate
-parameter_list|()
-block|{
-return|return
 name|hasRecievedInit
-operator|.
+operator|::
 name|get
-argument_list|()
-return|;
-block|}
-block|}
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -1945,11 +1924,9 @@ argument_list|,
 name|propCounter
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"storing: /testNode/local"
 operator|+
@@ -1961,6 +1938,37 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|hasReceivedTestMessage
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+comment|// we need to wait for observation logic to send one event across
+comment|// before we continue
+name|boolean
+name|firstEventReceiptNotTimedOut
+init|=
+name|waitFor
+argument_list|(
+literal|1000
+argument_list|,
+name|hasReceivedTestMessage
+operator|::
+name|get
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"First useful event didn't get dispatched in time"
+argument_list|,
+name|firstEventReceiptNotTimedOut
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// release the listener to consume 6 events
 name|semaphore
@@ -1979,18 +1987,8 @@ name|waitFor
 argument_list|(
 literal|2000
 argument_list|,
-operator|new
-name|Condition
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|evaluate
 parameter_list|()
-block|{
-return|return
+lambda|->
 operator|(
 name|OBS_QUEUE_LENGTH
 operator|+
@@ -2001,9 +1999,6 @@ name|counter
 operator|.
 name|get
 argument_list|()
-return|;
-block|}
-block|}
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -2040,6 +2035,14 @@ operator|.
 name|set
 argument_list|(
 literal|0
+argument_list|)
+expr_stmt|;
+comment|// reset receipt of useful event
+name|hasReceivedTestMessage
+operator|.
+name|set
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 comment|// send out 7 events (or in general: queue length + 2):
@@ -2091,11 +2094,9 @@ argument_list|,
 name|propCounter
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"storing: /testNode/p"
 operator|+
@@ -2107,6 +2108,37 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|hasReceivedTestMessage
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+comment|// we need to wait for observation logic to send one event across
+comment|// before we continue
+name|boolean
+name|firstEventReceiptNotTimedOut
+init|=
+name|waitFor
+argument_list|(
+literal|1000
+argument_list|,
+name|hasReceivedTestMessage
+operator|::
+name|get
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"First useful event didn't get dispatched in time"
+argument_list|,
+name|firstEventReceiptNotTimedOut
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// release the listener
 name|semaphore
@@ -2123,18 +2155,8 @@ name|waitFor
 argument_list|(
 literal|2000
 argument_list|,
-operator|new
-name|Condition
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|evaluate
 parameter_list|()
-block|{
-return|return
+lambda|->
 operator|(
 name|OBS_QUEUE_LENGTH
 operator|+
@@ -2145,9 +2167,6 @@ name|counter
 operator|.
 name|get
 argument_list|()
-return|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -2190,11 +2209,9 @@ argument_list|,
 name|propCounter
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"storing: /testNode/p"
 operator|+
@@ -2212,18 +2229,8 @@ name|waitFor
 argument_list|(
 literal|1000
 argument_list|,
-operator|new
-name|Condition
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|evaluate
 parameter_list|()
-block|{
-return|return
+lambda|->
 operator|(
 name|OBS_QUEUE_LENGTH
 operator|+
@@ -2234,9 +2241,6 @@ name|counter
 operator|.
 name|get
 argument_list|()
-return|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|assertTrue
