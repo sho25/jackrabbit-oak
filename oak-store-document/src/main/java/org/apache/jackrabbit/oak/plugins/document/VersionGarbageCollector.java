@@ -1652,6 +1652,8 @@ name|createUnstarted
 argument_list|()
 decl_stmt|;
 name|long
+name|activeElapsed
+decl_stmt|,
 name|collectDeletedDocsElapsed
 decl_stmt|,
 name|checkDeletedDocsElapsed
@@ -1968,12 +1970,7 @@ name|df
 operator|.
 name|format
 argument_list|(
-name|active
-operator|.
-name|elapsed
-argument_list|(
-name|MICROSECONDS
-argument_list|)
+name|activeElapsed
 argument_list|,
 name|MICROSECONDS
 argument_list|)
@@ -2079,6 +2076,14 @@ block|{
 comment|// run is cumulative with times in elapsed fields
 name|this
 operator|.
+name|activeElapsed
+operator|+=
+name|run
+operator|.
+name|activeElapsed
+expr_stmt|;
+name|this
+operator|.
 name|collectDeletedDocsElapsed
 operator|+=
 name|run
@@ -2137,6 +2142,19 @@ block|}
 else|else
 block|{
 comment|// single run -> read from stop watches
+name|this
+operator|.
+name|activeElapsed
+operator|+=
+name|run
+operator|.
+name|active
+operator|.
+name|elapsed
+argument_list|(
+name|MICROSECONDS
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|collectDeletedDocsElapsed
