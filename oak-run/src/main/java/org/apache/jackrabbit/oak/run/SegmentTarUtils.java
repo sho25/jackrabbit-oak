@@ -1338,6 +1338,11 @@ name|path
 argument_list|)
 argument_list|)
 operator|.
+name|withStrictVersionCheck
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|build
 argument_list|()
 return|;
