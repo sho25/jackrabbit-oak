@@ -1086,6 +1086,11 @@ argument_list|(
 name|memoryMapping
 argument_list|)
 operator|.
+name|withStrictVersionCheck
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|build
 argument_list|()
 expr_stmt|;
