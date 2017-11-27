@@ -173,13 +173,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|commons
 operator|.
-name|index
-operator|.
-name|lucene
-operator|.
-name|IndexCopier
+name|PerfLogger
 import|;
 end_import
 
@@ -193,11 +189,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|plugins
 operator|.
-name|benchmark
+name|index
 operator|.
-name|PerfLogger
+name|lucene
+operator|.
+name|IndexCopier
 import|;
 end_import
 

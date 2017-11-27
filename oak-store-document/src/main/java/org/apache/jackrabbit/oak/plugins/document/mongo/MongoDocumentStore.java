@@ -915,8 +915,6 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|benchmark
-operator|.
 name|PerfLogger
 import|;
 end_import

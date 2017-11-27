@@ -125,7 +125,7 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|StringUtils
+name|PerfLogger
 import|;
 end_import
 
@@ -141,9 +141,7 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|benchmark
-operator|.
-name|PerfLogger
+name|StringUtils
 import|;
 end_import
 

@@ -14,8 +14,6 @@ operator|.
 name|oak
 operator|.
 name|commons
-operator|.
-name|benchmark
 package|;
 end_package
 
