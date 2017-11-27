@@ -479,6 +479,11 @@ argument_list|(
 name|destination
 argument_list|)
 operator|.
+name|withStrictVersionCheck
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|withDefaultMemoryMapping
 argument_list|()
 decl_stmt|;
@@ -696,6 +701,11 @@ operator|.
 name|withGCOptions
 argument_list|(
 name|gcOptions
+argument_list|)
+operator|.
+name|withStrictVersionCheck
+argument_list|(
+literal|true
 argument_list|)
 operator|.
 name|build
