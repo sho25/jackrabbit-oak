@@ -62,6 +62,37 @@ name|int
 name|getCorePoolSize
 parameter_list|()
 function_decl|;
+comment|/**      * Set the number of checkpoints to remove and re-create according to the      * {@link #setCheckpointInterval(int) checkpoint interval}.      * @param count  number of checkpoints      */
+name|void
+name|setMaxCheckpoints
+parameter_list|(
+name|int
+name|count
+parameter_list|)
+function_decl|;
+comment|/**      * @return  the maximal number of checkpoints.      */
+name|int
+name|getMaxCheckpoints
+parameter_list|()
+function_decl|;
+comment|/**      * @return  the actual number of checkpoints.      */
+name|int
+name|getCheckpointCount
+parameter_list|()
+function_decl|;
+comment|/**      * Set the checkpoint interval      * @param interval  number of seconds between removing and recreating a checkpoint      */
+name|void
+name|setCheckpointInterval
+parameter_list|(
+name|int
+name|interval
+parameter_list|)
+function_decl|;
+comment|/**      * @return  the checkpoint interval in seconds      */
+name|int
+name|getCheckpointInterval
+parameter_list|()
+function_decl|;
 comment|/**      * Set the compaction interval      * @param minutes  number of minutes to wait between compaction cycles.      */
 name|void
 name|setCompactionInterval
