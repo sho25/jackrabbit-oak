@@ -135,6 +135,26 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|DocumentNodeStoreServiceConfiguration
+operator|.
+name|PROP_UPDATE_LIMIT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
 name|util
 operator|.
 name|MongoConnection
@@ -1496,7 +1516,9 @@ name|getInteger
 argument_list|(
 literal|"update.limit"
 argument_list|,
-literal|100000
+name|Builder
+operator|.
+name|DEFAULT_UPDATE_LIMIT
 argument_list|)
 decl_stmt|;
 comment|/**      * The node store.      */
@@ -3975,6 +3997,14 @@ name|int
 name|DEFAULT_CACHE_STACK_MOVE_DISTANCE
 init|=
 literal|16
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_UPDATE_LIMIT
+init|=
+literal|100000
 decl_stmt|;
 specifier|private
 name|DocumentNodeStore
