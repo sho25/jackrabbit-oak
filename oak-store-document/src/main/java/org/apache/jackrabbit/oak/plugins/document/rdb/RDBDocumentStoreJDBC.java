@@ -3879,8 +3879,6 @@ name|ch
 argument_list|,
 name|tmd
 argument_list|,
-literal|"ID, MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, DATA, BDATA"
-argument_list|,
 name|minId
 argument_list|,
 name|maxId
@@ -3964,9 +3962,6 @@ name|ch
 parameter_list|,
 name|RDBTableMetaData
 name|tmd
-parameter_list|,
-name|String
-name|string
 parameter_list|,
 name|String
 name|minId
