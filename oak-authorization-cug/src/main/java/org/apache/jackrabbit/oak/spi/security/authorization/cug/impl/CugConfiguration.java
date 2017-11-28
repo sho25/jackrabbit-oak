@@ -1611,6 +1611,8 @@ name|MountInfoProvider
 name|mountInfoProvider
 parameter_list|)
 block|{
+comment|// set to null (and not default) to comply with OSGi lifecycle,
+comment|// if the reference is unset it means the service is being deactivated
 name|this
 operator|.
 name|mountInfoProvider
