@@ -37,11 +37,27 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|annotation
+operator|.
+name|versioning
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code PathMapper} instances provide methods for mapping paths from their JCR  * string representation to their Oak representation and vice versa.  *  * The Oak representation of a path consists of a forward slash followed by the  * names of the respective items in the {@link org.apache.jackrabbit.oak.api.Tree}  * separated by forward slashes.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|PathMapper
