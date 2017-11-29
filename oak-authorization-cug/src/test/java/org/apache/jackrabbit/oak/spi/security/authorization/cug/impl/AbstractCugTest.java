@@ -958,8 +958,9 @@ condition|)
 block|{
 name|securityProvider
 operator|=
-operator|new
 name|CugSecurityProvider
+operator|.
+name|newTestSecurityProvider
 argument_list|(
 name|getSecurityConfigParameters
 argument_list|()

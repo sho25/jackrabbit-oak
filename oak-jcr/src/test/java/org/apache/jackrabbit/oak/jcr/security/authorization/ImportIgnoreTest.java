@@ -211,7 +211,9 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|internal
+operator|.
+name|SecurityProviderBuilder
 import|;
 end_import
 
@@ -522,10 +524,16 @@ decl_stmt|;
 name|securityProvider
 operator|=
 operator|new
-name|SecurityProviderImpl
+name|SecurityProviderBuilder
+argument_list|()
+operator|.
+name|with
 argument_list|(
 name|config
 argument_list|)
+operator|.
+name|build
+argument_list|()
 expr_stmt|;
 block|}
 else|else
@@ -533,7 +541,10 @@ block|{
 name|securityProvider
 operator|=
 operator|new
-name|SecurityProviderImpl
+name|SecurityProviderBuilder
+argument_list|()
+operator|.
+name|build
 argument_list|()
 expr_stmt|;
 block|}

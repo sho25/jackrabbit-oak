@@ -553,7 +553,9 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|internal
+operator|.
+name|SecurityProviderBuilder
 import|;
 end_import
 
@@ -1008,11 +1010,17 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|SecurityProviderImpl
+name|SecurityProviderBuilder
+argument_list|()
+operator|.
+name|with
 argument_list|(
 name|getSecurityConfigParameters
 argument_list|()
 argument_list|)
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 specifier|protected

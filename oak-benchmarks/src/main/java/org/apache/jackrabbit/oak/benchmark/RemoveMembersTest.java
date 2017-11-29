@@ -255,7 +255,9 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|internal
+operator|.
+name|SecurityProviderBuilder
 import|;
 end_import
 
@@ -847,12 +849,9 @@ name|Oak
 name|oak
 parameter_list|)
 block|{
-name|SecurityProvider
-name|sp
+name|ConfigurationParameters
+name|conf
 init|=
-operator|new
-name|SecurityProviderImpl
-argument_list|(
 name|ConfigurationParameters
 operator|.
 name|of
@@ -874,7 +873,21 @@ operator|.
 name|NAME_BESTEFFORT
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|SecurityProvider
+name|sp
+init|=
+operator|new
+name|SecurityProviderBuilder
+argument_list|()
+operator|.
+name|with
+argument_list|(
+name|conf
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 return|return
 operator|new

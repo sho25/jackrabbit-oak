@@ -47,7 +47,9 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|internal
+operator|.
+name|SecurityProviderBuilder
 import|;
 end_import
 
@@ -263,7 +265,10 @@ operator|.
 name|setSecurityProvider
 argument_list|(
 operator|new
-name|SecurityProviderImpl
+name|SecurityProviderBuilder
+argument_list|()
+operator|.
+name|build
 argument_list|()
 argument_list|)
 expr_stmt|;

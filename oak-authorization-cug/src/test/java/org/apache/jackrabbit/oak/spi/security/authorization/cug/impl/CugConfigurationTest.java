@@ -488,8 +488,9 @@ block|{
 name|SecurityProvider
 name|sp
 init|=
-operator|new
 name|CugSecurityProvider
+operator|.
+name|newTestSecurityProvider
 argument_list|(
 name|ConfigurationParameters
 operator|.

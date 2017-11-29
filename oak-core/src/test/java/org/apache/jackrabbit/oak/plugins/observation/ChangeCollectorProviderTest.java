@@ -381,7 +381,9 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|internal
+operator|.
+name|SecurityProviderBuilder
 import|;
 end_import
 
@@ -472,24 +474,6 @@ operator|.
 name|observation
 operator|.
 name|ChangeSet
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|ConfigurationParameters
 import|;
 end_import
 
@@ -636,7 +620,7 @@ name|Recorder
 name|recorder
 decl_stmt|;
 specifier|private
-name|SecurityProviderImpl
+name|SecurityProvider
 name|securityProvider
 decl_stmt|;
 class|class
@@ -738,12 +722,11 @@ block|{
 name|securityProvider
 operator|=
 operator|new
-name|SecurityProviderImpl
-argument_list|(
-name|ConfigurationParameters
+name|SecurityProviderBuilder
+argument_list|()
 operator|.
-name|EMPTY
-argument_list|)
+name|build
+argument_list|()
 expr_stmt|;
 block|}
 return|return

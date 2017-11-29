@@ -717,8 +717,9 @@ decl_stmt|;
 name|SecurityProvider
 name|securityProvider
 init|=
-operator|new
 name|CugSecurityProvider
+operator|.
+name|newTestSecurityProvider
 argument_list|(
 name|config
 argument_list|)

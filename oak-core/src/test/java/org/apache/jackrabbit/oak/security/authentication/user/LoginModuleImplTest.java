@@ -389,7 +389,9 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|internal
+operator|.
+name|SecurityProviderBuilder
 import|;
 end_import
 
@@ -2335,10 +2337,16 @@ operator|.
 name|sp
 operator|=
 operator|new
-name|SecurityProviderImpl
+name|SecurityProviderBuilder
+argument_list|()
+operator|.
+name|with
 argument_list|(
 name|params
 argument_list|)
+operator|.
+name|build
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

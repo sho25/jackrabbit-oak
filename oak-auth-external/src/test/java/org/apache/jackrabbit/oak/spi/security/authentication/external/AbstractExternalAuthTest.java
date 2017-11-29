@@ -884,8 +884,9 @@ condition|)
 block|{
 name|securityProvider
 operator|=
-operator|new
 name|TestSecurityProvider
+operator|.
+name|newTestSecurityProvider
 argument_list|(
 name|getSecurityConfigParameters
 argument_list|()

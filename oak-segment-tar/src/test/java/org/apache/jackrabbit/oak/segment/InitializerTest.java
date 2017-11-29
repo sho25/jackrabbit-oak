@@ -123,7 +123,9 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|internal
+operator|.
+name|SecurityProviderBuilder
 import|;
 end_import
 
@@ -214,6 +216,24 @@ operator|.
 name|security
 operator|.
 name|ConfigurationParameters
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
 import|;
 end_import
 
@@ -334,11 +354,14 @@ argument_list|(
 name|builder
 argument_list|)
 expr_stmt|;
-name|SecurityProviderImpl
+name|SecurityProvider
 name|provider
 init|=
 operator|new
-name|SecurityProviderImpl
+name|SecurityProviderBuilder
+argument_list|()
+operator|.
+name|with
 argument_list|(
 name|ConfigurationParameters
 operator|.
@@ -384,6 +407,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|WorkspaceInitializer
 name|workspaceInitializer

@@ -457,8 +457,9 @@ name|Exception
 block|{
 name|securityProvider
 operator|=
-operator|new
 name|TestSecurityProvider
+operator|.
+name|newTestSecurityProvider
 argument_list|(
 name|getConfigurationParameters
 argument_list|()
