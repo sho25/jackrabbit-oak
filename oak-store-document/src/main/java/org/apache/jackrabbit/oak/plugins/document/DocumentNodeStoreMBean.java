@@ -170,6 +170,14 @@ name|CompositeData
 name|getBackgroundUpdateCountHistory
 parameter_list|()
 function_decl|;
+name|CompositeData
+name|getBranchCommitHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getMergeBranchCommitHistory
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
