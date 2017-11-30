@@ -97,6 +97,22 @@ name|client
 operator|.
 name|solrj
 operator|.
+name|SolrClient
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|solr
+operator|.
+name|client
+operator|.
+name|solrj
+operator|.
 name|SolrServer
 import|;
 end_import
@@ -117,7 +133,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|SolrServer
+name|SolrClient
 argument_list|>
 name|searchingServerRegistry
 init|=
@@ -126,7 +142,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|SolrServer
+name|SolrClient
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -137,7 +153,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|SolrServer
+name|SolrClient
 argument_list|>
 name|indexingServerRegistry
 init|=
@@ -146,7 +162,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|SolrServer
+name|SolrClient
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -162,7 +178,7 @@ name|configuration
 parameter_list|,
 annotation|@
 name|Nonnull
-name|SolrServer
+name|SolrClient
 name|solrServer
 parameter_list|,
 annotation|@
@@ -226,7 +242,7 @@ annotation|@
 name|CheckForNull
 specifier|public
 specifier|static
-name|SolrServer
+name|SolrClient
 name|get
 parameter_list|(
 annotation|@
@@ -317,7 +333,7 @@ init|(
 name|indexingServerRegistry
 init|)
 block|{
-name|SolrServer
+name|SolrClient
 name|removed
 init|=
 name|indexingServerRegistry
@@ -356,7 +372,7 @@ init|(
 name|searchingServerRegistry
 init|)
 block|{
-name|SolrServer
+name|SolrClient
 name|removed
 init|=
 name|searchingServerRegistry
