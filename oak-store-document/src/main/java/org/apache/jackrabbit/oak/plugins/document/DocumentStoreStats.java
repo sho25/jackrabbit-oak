@@ -274,9 +274,16 @@ decl_stmt|;
 specifier|static
 specifier|final
 name|String
-name|NODES_FIND_MISSING_TIMER
+name|NODES_FIND_MISSING
 init|=
 literal|"DOCUMENT_NODES_FIND_MISSING"
+decl_stmt|;
+specifier|static
+specifier|final
+name|String
+name|NODES_FIND_MISSING_TIMER
+init|=
+literal|"DOCUMENT_NODES_FIND_MISSING_TIMER"
 decl_stmt|;
 specifier|static
 specifier|final
@@ -446,6 +453,11 @@ name|findNodesCachedMeter
 decl_stmt|;
 specifier|private
 specifier|final
+name|MeterStats
+name|findNodesMissing
+decl_stmt|;
+specifier|private
+specifier|final
 name|TimerStats
 name|findNodesMissingTimer
 decl_stmt|;
@@ -605,6 +617,19 @@ operator|.
 name|getMeter
 argument_list|(
 name|NODES_FIND_CACHED
+argument_list|,
+name|StatsOptions
+operator|.
+name|DEFAULT
+argument_list|)
+expr_stmt|;
+name|findNodesMissing
+operator|=
+name|provider
+operator|.
+name|getMeter
+argument_list|(
+name|NODES_FIND_MISSING
 argument_list|,
 name|StatsOptions
 operator|.
@@ -1038,13 +1063,29 @@ block|{
 comment|//For now collect time for reads from primary/secondary in same timer
 name|TimerStats
 name|timer
-init|=
-name|docFound
-condition|?
-name|findNodesTimer
-else|:
-name|findNodesMissingTimer
 decl_stmt|;
+if|if
+condition|(
+name|docFound
+condition|)
+block|{
+name|timer
+operator|=
+name|findNodesTimer
+expr_stmt|;
+block|}
+else|else
+block|{
+name|timer
+operator|=
+name|findNodesMissingTimer
+expr_stmt|;
+name|findNodesMissing
+operator|.
+name|mark
+argument_list|()
+expr_stmt|;
+block|}
 name|timer
 operator|.
 name|update
@@ -1822,6 +1863,20 @@ annotation|@
 name|Override
 specifier|public
 name|long
+name|getNodesFindMissingCount
+parameter_list|()
+block|{
+return|return
+name|findNodesMissing
+operator|.
+name|getCount
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|long
 name|getNodesReadByQueryCount
 parameter_list|()
 block|{
@@ -1919,7 +1974,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_FIND_CACHED
 argument_list|,
-name|NODES_FIND_CACHED
+literal|"Number of find node document calls served from the cache."
 argument_list|)
 return|;
 block|}
@@ -1935,7 +1990,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_FIND_SPLIT
 argument_list|,
-name|NODES_FIND_SPLIT
+literal|"Number of un-cached find calls for split document."
 argument_list|)
 return|;
 block|}
@@ -1951,7 +2006,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_FIND_PRIMARY
 argument_list|,
-name|NODES_FIND_PRIMARY
+literal|"Number of un-cached find node document calls targeting the primary."
 argument_list|)
 return|;
 block|}
@@ -1967,7 +2022,23 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_FIND_SLAVE
 argument_list|,
-name|NODES_FIND_SLAVE
+literal|"Number of un-cached find node document calls targeting a slave/secondary."
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|CompositeData
+name|getFindNodesMissingHistory
+parameter_list|()
+block|{
+return|return
+name|getTimeSeriesData
+argument_list|(
+name|NODES_FIND_MISSING
+argument_list|,
+literal|"Number of un-cached find node document calls that returned no document."
 argument_list|)
 return|;
 block|}
@@ -1983,7 +2054,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_QUERY_SLAVE
 argument_list|,
-name|NODES_QUERY_SLAVE
+literal|"Number of queries for node documents targeting a slave/secondary."
 argument_list|)
 return|;
 block|}
@@ -1999,7 +2070,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_QUERY_PRIMARY
 argument_list|,
-name|NODES_QUERY_PRIMARY
+literal|"Number of queries for node documents targeting the primary."
 argument_list|)
 return|;
 block|}
@@ -2015,7 +2086,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_QUERY_LOCK
 argument_list|,
-name|NODES_QUERY_LOCK
+literal|"Number of queries for node documents done while holding a lock."
 argument_list|)
 return|;
 block|}
@@ -2031,7 +2102,7 @@ name|getTimeSeriesData
 argument_list|(
 name|JOURNAL_QUERY
 argument_list|,
-name|JOURNAL_QUERY
+literal|"Number of queries for journal documents."
 argument_list|)
 return|;
 block|}
@@ -2047,7 +2118,7 @@ name|getTimeSeriesData
 argument_list|(
 name|JOURNAL_CREATE
 argument_list|,
-name|JOURNAL_CREATE
+literal|"Number of journal documents created."
 argument_list|)
 return|;
 block|}
@@ -2063,7 +2134,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_CREATE
 argument_list|,
-name|NODES_CREATE
+literal|"Number of node documents created."
 argument_list|)
 return|;
 block|}
@@ -2079,7 +2150,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_UPDATE
 argument_list|,
-name|NODES_UPDATE
+literal|"Number of node documents updated."
 argument_list|)
 return|;
 block|}
@@ -2095,7 +2166,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_UPDATE_RETRY_COUNT
 argument_list|,
-name|NODES_UPDATE_RETRY_COUNT
+literal|"Number of times a node document update had to be retried."
 argument_list|)
 return|;
 block|}
@@ -2111,7 +2182,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_UPDATE_FAILURE
 argument_list|,
-name|NODES_UPDATE_FAILURE
+literal|"Number of times a node document update failed."
 argument_list|)
 return|;
 block|}
@@ -2127,7 +2198,7 @@ name|getTimeSeriesData
 argument_list|(
 name|NODES_REMOVE
 argument_list|,
-name|NODES_REMOVE
+literal|"Number of removed node documents."
 argument_list|)
 return|;
 block|}

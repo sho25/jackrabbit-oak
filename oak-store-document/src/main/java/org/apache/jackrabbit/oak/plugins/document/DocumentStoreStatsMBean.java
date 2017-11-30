@@ -66,6 +66,10 @@ name|getNodesFindQueryCount
 parameter_list|()
 function_decl|;
 name|long
+name|getNodesFindMissingCount
+parameter_list|()
+function_decl|;
+name|long
 name|getNodesReadByQueryCount
 parameter_list|()
 function_decl|;
@@ -103,6 +107,10 @@ parameter_list|()
 function_decl|;
 name|CompositeData
 name|getFindNodesFromSlaveHistory
+parameter_list|()
+function_decl|;
+name|CompositeData
+name|getFindNodesMissingHistory
 parameter_list|()
 function_decl|;
 name|CompositeData
