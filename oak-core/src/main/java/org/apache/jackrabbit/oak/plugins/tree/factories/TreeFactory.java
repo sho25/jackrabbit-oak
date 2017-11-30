@@ -140,7 +140,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory to obtain {@code Tree} objects from {@code NodeState}s  * and {@code NodeBuilder}s.  */
+comment|/**  * Factory to obtain {@code Tree} objects from {@code NodeState}s  * and {@code NodeBuilder}s.  *  * @deprecated Please use {@link TreeProvider} instead  */
 end_comment
 
 begin_class

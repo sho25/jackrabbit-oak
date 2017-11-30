@@ -264,7 +264,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory to obtain immutable {@code Root} objects.  */
+comment|/**  * Factory to obtain immutable {@code Root} objects.  *  * @deprecated Please use {@link RootProvider} instead  */
 end_comment
 
 begin_class
