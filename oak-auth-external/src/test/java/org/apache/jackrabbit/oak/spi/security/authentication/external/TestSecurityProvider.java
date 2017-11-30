@@ -155,9 +155,14 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|TestSecurityProvider
 block|{
+specifier|private
+name|TestSecurityProvider
+parameter_list|()
+block|{}
 specifier|public
 specifier|static
 name|SecurityProvider

@@ -150,6 +150,10 @@ specifier|final
 class|class
 name|CugSecurityProvider
 block|{
+specifier|private
+name|CugSecurityProvider
+parameter_list|()
+block|{}
 specifier|public
 specifier|static
 name|SecurityProvider
