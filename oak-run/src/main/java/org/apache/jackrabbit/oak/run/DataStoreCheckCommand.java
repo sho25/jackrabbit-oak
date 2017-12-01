@@ -816,7 +816,7 @@ name|helpStr
 init|=
 literal|"datastorecheck [--id] [--ref] [--consistency] [--store<path>|<mongo_uri>] "
 operator|+
-literal|"[--s3ds<s3ds_config>|--fds<fds_config>|--azureblobds<azureblobds_config>]"
+literal|"[--s3ds<s3ds_config>|--fds<fds_config>|--azureblobds<azureblobds_config>|--nods]"
 operator|+
 literal|" [--dump<path>] [--repoHome<repo_home>] [--track] [--verbose]"
 decl_stmt|;
