@@ -773,15 +773,6 @@ argument_list|(
 literal|"target"
 argument_list|)
 argument_list|)
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|delete
-parameter_list|()
-block|{}
-block|}
 decl_stmt|;
 specifier|private
 name|String
