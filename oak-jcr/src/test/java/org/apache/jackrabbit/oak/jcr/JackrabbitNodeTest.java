@@ -363,10 +363,9 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//Ignore("OAK-3658")
 specifier|public
 name|void
-name|_testRename
+name|testRename
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -547,10 +546,9 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|//Ignore("OAK-3658")
 specifier|public
 name|void
-name|_testRenameEventHandling
+name|testRenameEventHandling
 parameter_list|()
 throws|throws
 name|RepositoryException
