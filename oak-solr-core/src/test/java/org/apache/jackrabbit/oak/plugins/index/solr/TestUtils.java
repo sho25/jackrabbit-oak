@@ -205,22 +205,6 @@ name|client
 operator|.
 name|solrj
 operator|.
-name|SolrClient
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|solr
-operator|.
-name|client
-operator|.
-name|solrj
-operator|.
 name|SolrServer
 import|;
 end_import
@@ -259,7 +243,7 @@ literal|"/solr"
 decl_stmt|;
 specifier|public
 specifier|static
-name|SolrClient
+name|SolrServer
 name|createSolrServer
 parameter_list|()
 block|{
@@ -429,7 +413,7 @@ return|;
 block|}
 specifier|private
 specifier|final
-name|SolrClient
+name|SolrServer
 name|solrServer
 init|=
 name|createSolrServer
@@ -448,7 +432,7 @@ name|CheckForNull
 annotation|@
 name|Override
 specifier|public
-name|SolrClient
+name|SolrServer
 name|getSolrServer
 parameter_list|()
 block|{
@@ -461,7 +445,7 @@ name|CheckForNull
 annotation|@
 name|Override
 specifier|public
-name|SolrClient
+name|SolrServer
 name|getIndexingSolrServer
 parameter_list|()
 throws|throws
@@ -476,7 +460,7 @@ name|CheckForNull
 annotation|@
 name|Override
 specifier|public
-name|SolrClient
+name|SolrServer
 name|getSearchingSolrServer
 parameter_list|()
 throws|throws

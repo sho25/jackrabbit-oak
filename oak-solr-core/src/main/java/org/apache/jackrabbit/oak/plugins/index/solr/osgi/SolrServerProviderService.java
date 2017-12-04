@@ -301,7 +301,7 @@ name|client
 operator|.
 name|solrj
 operator|.
-name|SolrClient
+name|SolrServer
 import|;
 end_import
 
@@ -507,7 +507,7 @@ name|String
 name|serverType
 decl_stmt|;
 specifier|private
-name|SolrClient
+name|SolrServer
 name|cachedSolrServer
 decl_stmt|;
 annotation|@
@@ -798,7 +798,7 @@ name|CheckForNull
 annotation|@
 name|Override
 specifier|public
-name|SolrClient
+name|SolrServer
 name|getSolrServer
 parameter_list|()
 throws|throws
@@ -832,7 +832,7 @@ name|CheckForNull
 annotation|@
 name|Override
 specifier|public
-name|SolrClient
+name|SolrServer
 name|getIndexingSolrServer
 parameter_list|()
 throws|throws
@@ -848,7 +848,7 @@ name|CheckForNull
 annotation|@
 name|Override
 specifier|public
-name|SolrClient
+name|SolrServer
 name|getSearchingSolrServer
 parameter_list|()
 throws|throws
@@ -860,11 +860,11 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|SolrClient
+name|SolrServer
 name|getServer
 parameter_list|()
 block|{
-name|SolrClient
+name|SolrServer
 name|solrServer
 init|=
 literal|null

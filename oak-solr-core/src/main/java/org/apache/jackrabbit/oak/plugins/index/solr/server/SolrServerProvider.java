@@ -55,12 +55,12 @@ name|client
 operator|.
 name|solrj
 operator|.
-name|SolrClient
+name|SolrServer
 import|;
 end_import
 
 begin_comment
-comment|/**  * Provider of {@link org.apache.solr.client.solrj.SolrClient}s instances  */
+comment|/**  * Provider of {@link org.apache.solr.client.solrj.SolrServer}s instances  */
 end_comment
 
 begin_interface
@@ -70,28 +70,28 @@ name|SolrServerProvider
 extends|extends
 name|Closeable
 block|{
-comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrClient} to be used for either searching or      * indexing, or both.      *      * @return a {@link org.apache.solr.client.solrj.SolrClient} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrClient}      */
+comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} to be used for either searching or      * indexing, or both.      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrServer}      */
 annotation|@
 name|CheckForNull
-name|SolrClient
+name|SolrServer
 name|getSolrServer
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrClient} specifically configured to be      * used for indexing.      *      * @return a {@link org.apache.solr.client.solrj.SolrClient} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrClient}      */
+comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} specifically configured to be      * used for indexing.      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrServer}      */
 annotation|@
 name|CheckForNull
-name|SolrClient
+name|SolrServer
 name|getIndexingSolrServer
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrClient} specifically configured to be      * used for searching.      *      * @return a {@link org.apache.solr.client.solrj.SolrClient} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrClient}      */
+comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} specifically configured to be      * used for searching.      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrServer}      */
 annotation|@
 name|CheckForNull
-name|SolrClient
+name|SolrServer
 name|getSearchingSolrServer
 parameter_list|()
 throws|throws
