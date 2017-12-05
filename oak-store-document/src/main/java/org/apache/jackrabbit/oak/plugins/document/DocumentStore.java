@@ -535,6 +535,18 @@ argument_list|>
 name|getMetadata
 parameter_list|()
 function_decl|;
+comment|/**      * Returns statistics about the underlying storage. The information and      * keys returned by this method are implementation specific, may change      * between releases or may even depend on deployment aspects. E.g. depending      * on access rights, the method may return more or less information from      * the underlying store. This method should only be used for informational      * or debug purposes.      *      * @return statistics about this document store.      */
+annotation|@
+name|Nonnull
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getStats
+parameter_list|()
+function_decl|;
 comment|/**      * @return the estimated time difference in milliseconds between the local      * instance and the (typically common, shared) document server system. The      * value can be zero if the times are estimated to be equal, positive when      * the local instance is ahead of the remote server and negative when the      * local instance is behind the remote server. An invocation is not cached      * and typically requires a round-trip to the server (but that is not a      * requirement).      * @throws UnsupportedOperationException if this DocumentStore does not      *                                       support this method      * @throws DocumentStoreException if an I/O error occurs.      */
 name|long
 name|determineServerTimeDifferenceMillis

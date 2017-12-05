@@ -4218,6 +4218,28 @@ return|return
 name|metadata
 return|;
 block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getStats
+parameter_list|()
+block|{
+comment|// TODO: OAK-7029
+return|return
+name|Collections
+operator|.
+name|emptyMap
+argument_list|()
+return|;
+block|}
 comment|// implementation
 specifier|private
 specifier|static
