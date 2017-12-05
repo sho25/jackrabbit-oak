@@ -336,16 +336,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-try|try
-block|{
 name|super
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
-block|}
-finally|finally
-block|{
 if|if
 condition|(
 name|Files
@@ -386,7 +381,6 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
