@@ -655,6 +655,17 @@ name|getLength
 argument_list|()
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|InputStream
+name|is
+init|=
+name|response
+operator|.
+name|getInputStream
+argument_list|()
+init|)
+block|{
 name|byte
 index|[]
 name|receivedData
@@ -663,10 +674,7 @@ name|IOUtils
 operator|.
 name|toByteArray
 argument_list|(
-name|response
-operator|.
-name|getInputStream
-argument_list|()
+name|is
 argument_list|)
 decl_stmt|;
 name|assertArrayEquals
@@ -676,6 +684,7 @@ argument_list|,
 name|receivedData
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
