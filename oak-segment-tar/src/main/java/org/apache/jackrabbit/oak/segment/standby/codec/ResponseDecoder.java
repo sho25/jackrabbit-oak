@@ -280,6 +280,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|static
 class|class
 name|DeleteOnCloseFileInputStream
@@ -305,7 +306,6 @@ specifier|private
 name|File
 name|file
 decl_stmt|;
-specifier|public
 name|DeleteOnCloseFileInputStream
 parameter_list|(
 name|File
