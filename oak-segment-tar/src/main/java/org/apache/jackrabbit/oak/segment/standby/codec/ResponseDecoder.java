@@ -296,7 +296,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|ResponseDecoder
+name|DeleteOnCloseFileInputStream
 operator|.
 name|class
 argument_list|)
