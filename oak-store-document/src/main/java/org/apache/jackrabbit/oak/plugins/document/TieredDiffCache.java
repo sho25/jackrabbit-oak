@@ -91,9 +91,7 @@ name|memoryCache
 decl_stmt|;
 name|TieredDiffCache
 parameter_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 block|{

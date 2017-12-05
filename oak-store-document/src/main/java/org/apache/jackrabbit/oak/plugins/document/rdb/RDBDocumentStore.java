@@ -627,7 +627,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
+name|DocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -1068,16 +1068,14 @@ name|RDBDocumentStore
 implements|implements
 name|DocumentStore
 block|{
-comment|/**      * Creates a {@linkplain RDBDocumentStore} instance using the provided      * {@link DataSource}, {@link DocumentMK.Builder}, and {@link RDBOptions}.      */
+comment|/**      * Creates a {@linkplain RDBDocumentStore} instance using the provided      * {@link DataSource}, {@link DocumentNodeStoreBuilder}, and {@link RDBOptions}.      */
 specifier|public
 name|RDBDocumentStore
 parameter_list|(
 name|DataSource
 name|ds
 parameter_list|,
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|,
 name|RDBOptions
@@ -1113,16 +1111,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a {@linkplain RDBDocumentStore} instance using the provided      * {@link DataSource}, {@link DocumentMK.Builder}, and default      * {@link RDBOptions}.      */
+comment|/**      * Creates a {@linkplain RDBDocumentStore} instance using the provided      * {@link DataSource}, {@link DocumentNodeStoreBuilder}, and default      * {@link RDBOptions}.      */
 specifier|public
 name|RDBDocumentStore
 parameter_list|(
 name|DataSource
 name|ds
 parameter_list|,
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 block|{
@@ -4584,9 +4580,7 @@ parameter_list|(
 name|DataSource
 name|ds
 parameter_list|,
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|,
 name|RDBOptions

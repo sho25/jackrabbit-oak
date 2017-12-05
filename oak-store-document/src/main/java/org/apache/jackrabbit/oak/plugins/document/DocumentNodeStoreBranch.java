@@ -1910,7 +1910,7 @@ name|base
 return|;
 block|}
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch</li>      *<li>{@link Persisted} on {@link #setRoot(NodeState)} if the number of      *         changes counted from the base to the new root reaches      *         {@link DocumentMK.Builder#getUpdateLimit()}.</li>      *<li>{@link Merged} on {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch</li>      *<li>{@link Persisted} on {@link #setRoot(NodeState)} if the number of      *         changes counted from the base to the new root reaches      *         {@link DocumentNodeStoreBuilder#getUpdateLimit()}.</li>      *<li>{@link Merged} on {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
 specifier|private
 class|class
 name|InMemory

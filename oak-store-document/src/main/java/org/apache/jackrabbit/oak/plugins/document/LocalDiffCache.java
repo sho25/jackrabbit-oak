@@ -288,9 +288,7 @@ name|diffCacheStats
 decl_stmt|;
 name|LocalDiffCache
 parameter_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 block|{

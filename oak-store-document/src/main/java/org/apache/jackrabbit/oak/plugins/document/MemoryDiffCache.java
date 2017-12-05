@@ -287,9 +287,7 @@ decl_stmt|;
 specifier|protected
 name|MemoryDiffCache
 parameter_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 block|{

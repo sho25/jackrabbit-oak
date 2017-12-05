@@ -101,9 +101,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 operator|.
 name|DEFAULT_CACHE_SEGMENT_COUNT
 import|;
@@ -123,9 +121,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 operator|.
 name|DEFAULT_CACHE_STACK_MOVE_DISTANCE
 import|;
@@ -145,9 +141,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 operator|.
 name|DEFAULT_CHILDREN_CACHE_PERCENTAGE
 import|;
@@ -167,9 +161,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 operator|.
 name|DEFAULT_DIFF_CACHE_PERCENTAGE
 import|;
@@ -189,9 +181,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 operator|.
 name|DEFAULT_NODE_CACHE_PERCENTAGE
 import|;
@@ -211,9 +201,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 operator|.
 name|DEFAULT_PREV_DOC_CACHE_PERCENTAGE
 import|;
@@ -233,9 +221,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 operator|.
 name|DEFAULT_UPDATE_LIMIT
 import|;
