@@ -303,6 +303,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|File
 name|file
 decl_stmt|;
@@ -326,6 +327,8 @@ operator|=
 name|file
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -345,16 +348,22 @@ finally|finally
 block|{
 if|if
 condition|(
+name|Files
+operator|.
+name|deleteIfExists
+argument_list|(
 name|file
-operator|!=
-literal|null
+operator|.
+name|toPath
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Processing input stream finished! Deleting file {}"
+literal|"File {} was deleted"
 argument_list|,
 name|file
 operator|.
@@ -362,14 +371,20 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Could not delete {}, not found"
+argument_list|,
 name|file
 operator|.
-name|delete
+name|getAbsoluteFile
 argument_list|()
-expr_stmt|;
-name|file
-operator|=
-literal|null
+argument_list|)
 expr_stmt|;
 block|}
 block|}
