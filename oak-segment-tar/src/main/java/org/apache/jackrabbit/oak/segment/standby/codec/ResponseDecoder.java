@@ -812,29 +812,24 @@ literal|8
 expr_stmt|;
 if|if
 condition|(
+name|Files
+operator|.
+name|deleteIfExists
+argument_list|(
 name|tempFile
 operator|.
-name|exists
+name|toPath
 argument_list|()
+argument_list|)
 condition|)
 block|{
 name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Detected previous incomplete transfer for {}. Cleaning up..."
+literal|"Deleted temporary file for previous incomplete transfer of {}"
 argument_list|,
 name|blobId
-argument_list|)
-expr_stmt|;
-name|Files
-operator|.
-name|delete
-argument_list|(
-name|tempFile
-operator|.
-name|toPath
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -942,6 +937,8 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|OutputStream
 name|outStream
 init|=
@@ -952,7 +949,8 @@ name|tempFile
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|outStream
 operator|.
 name|write
@@ -960,11 +958,7 @@ argument_list|(
 name|chunkData
 argument_list|)
 expr_stmt|;
-name|outStream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 comment|// END_CHUNK flag enabled
 if|if
