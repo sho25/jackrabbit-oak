@@ -51,7 +51,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
+name|DocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -398,9 +398,7 @@ name|customize
 argument_list|(
 name|any
 argument_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 operator|.
 name|class
 argument_list|)

@@ -57,11 +57,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|run
+name|plugins
 operator|.
-name|commons
+name|document
 operator|.
-name|Command
+name|DocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -79,7 +79,27 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
+name|mongo
+operator|.
+name|MongoDocumentNodeStoreBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|run
+operator|.
+name|commons
+operator|.
+name|Command
 import|;
 end_import
 
@@ -528,9 +548,7 @@ name|getDB
 argument_list|()
 argument_list|,
 operator|new
-name|DocumentMK
-operator|.
-name|Builder
+name|MongoDocumentNodeStoreBuilder
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -579,9 +597,7 @@ argument_list|(
 name|ds
 argument_list|,
 operator|new
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 argument_list|()
 argument_list|)
 expr_stmt|;

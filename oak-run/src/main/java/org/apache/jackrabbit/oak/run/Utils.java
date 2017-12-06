@@ -48,6 +48,50 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|mongo
+operator|.
+name|MongoDocumentNodeStoreBuilder
+operator|.
+name|newMongoDocumentNodeStoreBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|rdb
+operator|.
+name|RDBDocumentNodeStoreBuilder
+operator|.
+name|newRDBDocumentNodeStoreBuilder
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -363,7 +407,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
+name|DocumentNodeStore
 import|;
 end_import
 
@@ -381,7 +425,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentNodeStore
+name|DocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -1121,9 +1165,7 @@ literal|"jdbc"
 argument_list|)
 condition|)
 block|{
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 init|=
 name|createDocumentMKBuilder
@@ -1145,7 +1187,7 @@ name|store
 init|=
 name|builder
 operator|.
-name|getNodeStore
+name|build
 argument_list|()
 decl_stmt|;
 name|closer
@@ -1177,9 +1219,7 @@ block|}
 annotation|@
 name|CheckForNull
 specifier|static
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|createDocumentMKBuilder
 parameter_list|(
 name|NodeStoreOptions
@@ -1230,16 +1270,8 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
-init|=
-operator|new
-name|DocumentMK
-operator|.
-name|Builder
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1317,6 +1349,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder
+operator|=
+name|newMongoDocumentNodeStoreBuilder
+argument_list|()
 operator|.
 name|setMongoDB
 argument_list|(
@@ -1359,6 +1394,9 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|builder
+operator|=
+name|newRDBDocumentNodeStoreBuilder
+argument_list|()
 operator|.
 name|setRDBConnection
 argument_list|(

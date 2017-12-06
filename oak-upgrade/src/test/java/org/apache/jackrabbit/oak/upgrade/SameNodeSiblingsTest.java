@@ -53,6 +53,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|DocumentNodeStoreBuilder
+operator|.
+name|newDocumentNodeStoreBuilder
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -238,24 +258,6 @@ operator|.
 name|document
 operator|.
 name|DocumentNodeStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|DocumentMK
 import|;
 end_import
 
@@ -949,13 +951,10 @@ decl_stmt|;
 name|DocumentNodeStore
 name|target
 init|=
-operator|new
-name|DocumentMK
-operator|.
-name|Builder
+name|newDocumentNodeStoreBuilder
 argument_list|()
 operator|.
-name|getNodeStore
+name|build
 argument_list|()
 decl_stmt|;
 try|try

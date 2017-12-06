@@ -283,7 +283,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
+name|DocumentNodeStore
 import|;
 end_import
 
@@ -301,7 +301,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentNodeStore
+name|DocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -558,26 +558,6 @@ operator|.
 name|DocumentNodeStoreHelper
 operator|.
 name|createVersionGC
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|DocumentNodeStoreHelper
-operator|.
-name|createVersionGCSupport
 import|;
 end_import
 
@@ -1398,9 +1378,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 init|=
 name|createDocumentMKBuilder
@@ -1438,10 +1416,10 @@ comment|// create a VersionGCSupport while builder is read-write
 name|VersionGCSupport
 name|gcSupport
 init|=
-name|createVersionGCSupport
-argument_list|(
 name|builder
-argument_list|)
+operator|.
+name|createVersionGCSupport
+argument_list|()
 decl_stmt|;
 comment|// check for matching format version
 name|FormatVersion
@@ -1510,7 +1488,7 @@ name|createVersionGC
 argument_list|(
 name|builder
 operator|.
-name|getNodeStore
+name|build
 argument_list|()
 argument_list|,
 name|gcSupport
@@ -2415,9 +2393,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 init|=
 name|createDocumentMKBuilder
@@ -2551,7 +2527,7 @@ name|ns
 init|=
 name|builder
 operator|.
-name|getNodeStore
+name|build
 argument_list|()
 decl_stmt|;
 name|closer

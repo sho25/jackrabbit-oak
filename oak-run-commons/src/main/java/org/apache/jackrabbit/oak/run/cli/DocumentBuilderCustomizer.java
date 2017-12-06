@@ -43,7 +43,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
+name|DocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -59,9 +59,7 @@ block|{
 name|void
 name|customize
 parameter_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 throws|throws

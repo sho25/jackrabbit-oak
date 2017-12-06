@@ -67,7 +67,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
+name|DocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -242,9 +242,7 @@ specifier|public
 name|void
 name|customize
 parameter_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 throws|throws
@@ -276,9 +274,7 @@ specifier|private
 name|void
 name|configurePersistentCache
 parameter_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 throws|throws
@@ -359,9 +355,7 @@ specifier|private
 name|void
 name|configureCacheForReadOnlyMode
 parameter_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 block|{
@@ -411,9 +405,7 @@ specifier|private
 name|void
 name|configureCacheSize
 parameter_list|(
-name|DocumentMK
-operator|.
-name|Builder
+name|DocumentNodeStoreBuilder
 name|builder
 parameter_list|)
 block|{
