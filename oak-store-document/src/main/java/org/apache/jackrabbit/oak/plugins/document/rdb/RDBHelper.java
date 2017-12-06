@@ -197,6 +197,11 @@ operator|.
 name|getIndexCreationStatements
 argument_list|(
 name|table
+argument_list|,
+name|defaultOpts
+operator|.
+name|getInitialSchema
+argument_list|()
 argument_list|)
 control|)
 block|{

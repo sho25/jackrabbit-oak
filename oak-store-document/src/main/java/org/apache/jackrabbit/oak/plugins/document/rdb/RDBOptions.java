@@ -62,7 +62,7 @@ name|getInteger
 argument_list|(
 literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBOptions.INITIALSCHEMA"
 argument_list|,
-literal|1
+literal|2
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -75,7 +75,7 @@ name|getInteger
 argument_list|(
 literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBOptions.UPGRADETOSCHEMA"
 argument_list|,
-literal|1
+literal|2
 argument_list|)
 decl_stmt|;
 specifier|public

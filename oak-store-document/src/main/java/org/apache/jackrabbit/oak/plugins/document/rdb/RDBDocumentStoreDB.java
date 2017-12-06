@@ -141,6 +141,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -235,9 +245,9 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
+name|collect
 operator|.
-name|Preconditions
+name|Lists
 import|;
 end_import
 
@@ -575,6 +585,16 @@ else|:
 literal|""
 operator|)
 operator|+
+operator|(
+name|schema
+operator|>=
+literal|2
+condition|?
+literal|"SDTYPE smallint, SDMAXREVTIME bigint, "
+else|:
+literal|""
+operator|)
+operator|+
 literal|"DATA varchar(16384), BDATA bytea)"
 operator|)
 return|;
@@ -827,6 +847,16 @@ else|:
 literal|""
 operator|)
 operator|+
+operator|(
+name|schema
+operator|>=
+literal|2
+condition|?
+literal|"SDTYPE smallint, SDMAXREVTIME bigint, "
+else|:
+literal|""
+operator|)
+operator|+
 literal|"DATA varchar(16384), BDATA blob("
 operator|+
 literal|1024
@@ -849,6 +879,9 @@ name|getIndexCreationStatements
 parameter_list|(
 name|String
 name|tableName
+parameter_list|,
+name|int
+name|schema
 parameter_list|)
 block|{
 name|List
@@ -910,6 +943,8 @@ operator|.
 name|getIndexCreationStatements
 argument_list|(
 name|tableName
+argument_list|,
+name|schema
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1308,6 +1343,16 @@ else|:
 literal|""
 operator|)
 operator|+
+operator|(
+name|schema
+operator|>=
+literal|2
+condition|?
+literal|"SDTYPE number, SDMAXREVTIME number, "
+else|:
+literal|""
+operator|)
+operator|+
 literal|"DATA varchar(4000), BDATA blob)"
 operator|)
 return|;
@@ -1464,6 +1509,28 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getSmallintType
+parameter_list|()
+block|{
+return|return
+literal|"number"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getBigintType
+parameter_list|()
+block|{
+return|return
+literal|"number"
+return|;
+block|}
 block|}
 block|,
 name|MYSQL
@@ -1537,6 +1604,16 @@ operator|>=
 literal|1
 condition|?
 literal|"VERSION smallint, "
+else|:
+literal|""
+operator|)
+operator|+
+operator|(
+name|schema
+operator|>=
+literal|2
+condition|?
+literal|"SDTYPE smallint, SDMAXREVTIME bigint, "
 else|:
 literal|""
 operator|)
@@ -1898,6 +1975,16 @@ operator|>=
 literal|1
 condition|?
 literal|"VERSION smallint, "
+else|:
+literal|""
+operator|)
+operator|+
+operator|(
+name|schema
+operator|>=
+literal|2
+condition|?
+literal|"SDTYPE smallint, SDMAXREVTIME bigint, "
 else|:
 literal|""
 operator|)
@@ -2376,6 +2463,16 @@ else|:
 literal|""
 operator|)
 operator|+
+operator|(
+name|schema
+operator|>=
+literal|2
+condition|?
+literal|"SDTYPE smallint, SDMAXREVTIME bigint, "
+else|:
+literal|""
+operator|)
+operator|+
 literal|"DATA varchar(16384), BDATA blob("
 operator|+
 literal|1024
@@ -2396,8 +2493,22 @@ name|getIndexCreationStatements
 parameter_list|(
 name|String
 name|tableName
+parameter_list|,
+name|int
+name|level
 parameter_list|)
 block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|result
+init|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|CREATEINDEX
@@ -2408,10 +2519,9 @@ literal|"modified-id"
 argument_list|)
 condition|)
 block|{
-return|return
-name|Collections
+name|result
 operator|.
-name|singletonList
+name|add
 argument_list|(
 literal|"create index "
 operator|+
@@ -2423,7 +2533,7 @@ name|tableName
 operator|+
 literal|" (MODIFIED, ID)"
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -2436,10 +2546,9 @@ literal|"id-modified"
 argument_list|)
 condition|)
 block|{
-return|return
-name|Collections
+name|result
 operator|.
-name|singletonList
+name|add
 argument_list|(
 literal|"create index "
 operator|+
@@ -2451,7 +2560,7 @@ name|tableName
 operator|+
 literal|" (ID, MODIFIED)"
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -2464,10 +2573,9 @@ literal|"modified"
 argument_list|)
 condition|)
 block|{
-return|return
-name|Collections
+name|result
 operator|.
-name|singletonList
+name|add
 argument_list|(
 literal|"create index "
 operator|+
@@ -2479,17 +2587,64 @@ name|tableName
 operator|+
 literal|" (MODIFIED)"
 argument_list|)
-return|;
+expr_stmt|;
 block|}
-else|else
+if|if
+condition|(
+name|level
+operator|==
+literal|2
+condition|)
 block|{
-return|return
-name|Collections
+name|result
 operator|.
-name|emptyList
-argument_list|()
-return|;
+name|add
+argument_list|(
+literal|"create index "
+operator|+
+name|tableName
+operator|+
+literal|"_VSN on "
+operator|+
+name|tableName
+operator|+
+literal|" (VERSION)"
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|add
+argument_list|(
+literal|"create index "
+operator|+
+name|tableName
+operator|+
+literal|"_SDT on "
+operator|+
+name|tableName
+operator|+
+literal|" (SDTYPE)"
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|add
+argument_list|(
+literal|"create index "
+operator|+
+name|tableName
+operator|+
+literal|"_SDM on "
+operator|+
+name|tableName
+operator|+
+literal|" (SDMAXREVTIME)"
+argument_list|)
+expr_stmt|;
 block|}
+return|return
+name|result
+return|;
 block|}
 specifier|public
 name|String
@@ -2504,6 +2659,24 @@ parameter_list|)
 block|{
 return|return
 literal|""
+return|;
+block|}
+specifier|public
+name|String
+name|getSmallintType
+parameter_list|()
+block|{
+return|return
+literal|"smallint"
+return|;
+block|}
+specifier|public
+name|String
+name|getBigintType
+parameter_list|()
+block|{
+return|return
+literal|"bigint"
 return|;
 block|}
 comment|/**      * Statements needed to upgrade the DB      *      * @return the table modification string      */
@@ -2521,17 +2694,25 @@ name|int
 name|level
 parameter_list|)
 block|{
-name|Preconditions
-operator|.
-name|checkArgument
-argument_list|(
+name|String
+name|smallint
+init|=
+name|getSmallintType
+argument_list|()
+decl_stmt|;
+name|String
+name|bigint
+init|=
+name|getBigintType
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
 name|level
 operator|==
 literal|1
-argument_list|,
-literal|"level must be 1"
-argument_list|)
-expr_stmt|;
+condition|)
+block|{
 return|return
 name|Collections
 operator|.
@@ -2541,9 +2722,84 @@ literal|"alter table "
 operator|+
 name|tableName
 operator|+
-literal|" add VERSION smallint"
+literal|" add VERSION "
+operator|+
+name|smallint
 argument_list|)
 return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|level
+operator|==
+literal|2
+condition|)
+block|{
+name|String
+index|[]
+name|statements
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"alter table "
+operator|+
+name|tableName
+operator|+
+literal|" add SDTYPE "
+operator|+
+name|smallint
+block|,
+literal|"alter table "
+operator|+
+name|tableName
+operator|+
+literal|" add SDMAXREVTIME "
+operator|+
+name|bigint
+block|,
+literal|"create index "
+operator|+
+name|tableName
+operator|+
+literal|"_SDT on "
+operator|+
+name|tableName
+operator|+
+literal|" (SDTYPE)"
+block|,
+literal|"create index "
+operator|+
+name|tableName
+operator|+
+literal|"_SDM on "
+operator|+
+name|tableName
+operator|+
+literal|" (SDMAXREVTIME)"
+block|, }
+decl_stmt|;
+return|return
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|statements
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"level must be 1 or 2"
+argument_list|)
+throw|;
+block|}
 block|}
 specifier|protected
 name|String
