@@ -27,6 +27,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStream
 import|;
 end_import
@@ -671,6 +681,11 @@ name|NioEventLoopGroup
 name|group
 decl_stmt|;
 specifier|private
+specifier|final
+name|File
+name|spoolFolder
+decl_stmt|;
+specifier|private
 name|Channel
 name|channel
 decl_stmt|;
@@ -687,6 +702,9 @@ name|secure
 parameter_list|,
 name|int
 name|readTimeoutMs
+parameter_list|,
+name|File
+name|spoolFolder
 parameter_list|)
 block|{
 name|this
@@ -712,6 +730,12 @@ operator|.
 name|readTimeoutMs
 operator|=
 name|readTimeoutMs
+expr_stmt|;
+name|this
+operator|.
+name|spoolFolder
+operator|=
+name|spoolFolder
 expr_stmt|;
 block|}
 name|void
@@ -918,7 +942,9 @@ name|addLast
 argument_list|(
 operator|new
 name|ResponseDecoder
-argument_list|()
+argument_list|(
+name|spoolFolder
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Encoders

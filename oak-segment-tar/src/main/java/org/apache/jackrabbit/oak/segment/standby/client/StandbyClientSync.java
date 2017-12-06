@@ -37,6 +37,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -203,9 +213,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|tar
-operator|.
-name|GCGeneration
+name|FileStore
 import|;
 end_import
 
@@ -223,7 +231,9 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|tar
+operator|.
+name|GCGeneration
 import|;
 end_import
 
@@ -439,6 +449,11 @@ specifier|final
 name|NioEventLoopGroup
 name|group
 decl_stmt|;
+specifier|private
+specifier|final
+name|File
+name|spoolFolder
+decl_stmt|;
 specifier|public
 name|StandbyClientSync
 parameter_list|(
@@ -459,6 +474,9 @@ name|readTimeoutMs
 parameter_list|,
 name|boolean
 name|autoClean
+parameter_list|,
+name|File
+name|spoolFolder
 parameter_list|)
 block|{
 name|this
@@ -569,6 +587,8 @@ else|:
 name|s
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|group
 operator|=
 operator|new
@@ -582,6 +602,12 @@ argument_list|(
 literal|"standby"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|spoolFolder
+operator|=
+name|spoolFolder
 expr_stmt|;
 specifier|final
 name|MBeanServer
@@ -825,6 +851,8 @@ argument_list|,
 name|secure
 argument_list|,
 name|readTimeoutMs
+argument_list|,
+name|spoolFolder
 argument_list|)
 init|)
 block|{

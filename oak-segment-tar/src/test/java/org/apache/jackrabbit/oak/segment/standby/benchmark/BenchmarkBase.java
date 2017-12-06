@@ -203,7 +203,6 @@ begin_class
 class|class
 name|BenchmarkBase
 block|{
-specifier|private
 specifier|static
 class|class
 name|TemporaryFolder
