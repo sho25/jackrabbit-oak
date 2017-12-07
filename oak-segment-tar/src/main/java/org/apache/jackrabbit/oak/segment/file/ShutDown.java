@@ -47,15 +47,22 @@ name|ReentrantReadWriteLock
 import|;
 end_import
 
+begin_comment
+comment|/**  * An instance of this class encapsulates the shutdown logic of the {@link FileStore}.  *<p>  * A shutdown is initiated by calling {@link #shutDown} and completed at the point  * where the returned {@link ShutDownCloser} has been {@link ShutDownCloser#close() closed}.  *  * Code that needs to protect itself from running after a shutdown has been initiated can  * use the {@link #keepAlive()}, {@link #tryKeepAlive()} and {@link #isShutDown}:  *  *<pre>      try (ShutDownCloser ignored = shutDown.keepAlive()) {         // protected code here      }  *</pre>  */
+end_comment
+
 begin_class
 class|class
 name|ShutDown
 block|{
+comment|/**      * An {@link AutoCloseable} whose {@link #close()} doesn't throw an exception.      */
 interface|interface
 name|ShutDownCloser
 extends|extends
 name|AutoCloseable
 block|{
+annotation|@
+name|Override
 name|void
 name|close
 parameter_list|()
@@ -64,7 +71,7 @@ block|}
 specifier|private
 specifier|volatile
 name|boolean
-name|shutDownRequested
+name|isShutDown
 decl_stmt|;
 specifier|private
 name|boolean
@@ -79,6 +86,7 @@ operator|new
 name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
+comment|/**      * Keep the store from being shut down until the returned {@link ShutDownCloser}      * is {@link ShutDownCloser#close() closed}.      * @throws IllegalStateException if the store is already {@link #isShutDown() shut down}.      */
 name|ShutDownCloser
 name|keepAlive
 parameter_list|()
@@ -124,11 +132,37 @@ name|unlock
 argument_list|()
 return|;
 block|}
+comment|/**      * Try to keep the store from being shut down until the returned {@link ShutDownCloser}      * is {@link ShutDownCloser#close() closed}. Callers of this method need to call      * {@link #isShutDown()} before proceeding.      */
+name|ShutDownCloser
+name|tryKeepAlive
+parameter_list|()
+block|{
+name|lock
+operator|.
+name|readLock
+argument_list|()
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+return|return
+parameter_list|()
+lambda|->
+name|lock
+operator|.
+name|readLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
+return|;
+block|}
+comment|/**      * Initiate a shutdown of the store. The shutdown is complete once the returned      * {@link ShutDownCloser} is {@link ShutDownCloser#close() closed}.      * @return      */
 name|ShutDownCloser
 name|shutDown
 parameter_list|()
 block|{
-name|shutDownRequested
+name|isShutDown
 operator|=
 literal|true
 expr_stmt|;
@@ -180,12 +214,13 @@ expr_stmt|;
 block|}
 return|;
 block|}
+comment|/**      * @return  {@code true} iff the store is shut down.      */
 name|boolean
-name|shutDownRequested
+name|isShutDown
 parameter_list|()
 block|{
 return|return
-name|shutDownRequested
+name|isShutDown
 return|;
 block|}
 block|}
