@@ -1955,7 +1955,9 @@ argument_list|()
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT * FROM [nt:base] WHERE [jcr:uuid] = $id"
+literal|"SELECT * FROM [nt:base] WHERE [jcr:uuid] = $id "
+operator|+
+literal|"OPTION(INDEX NAME [uuid], INDEX TAG [uuid])"
 operator|+
 name|QueryEngine
 operator|.
