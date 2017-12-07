@@ -1232,6 +1232,9 @@ comment|/**      * @return a new {@link DocumentNodeStoreBuilder}.      */
 specifier|public
 specifier|static
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|newDocumentNodeStoreBuilder
 parameter_list|()
 block|{
@@ -1260,6 +1263,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 specifier|protected
+specifier|final
 name|T
 name|thisBuilder
 parameter_list|()

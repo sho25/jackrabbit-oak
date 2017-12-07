@@ -2230,6 +2230,9 @@ throws|throws
 name|IOException
 block|{
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|mkBuilder
 decl_stmt|;
 if|if
@@ -3189,6 +3192,9 @@ name|void
 name|configureBuilder
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 block|{
@@ -4575,6 +4581,9 @@ name|DocumentNodeStore
 name|store
 parameter_list|,
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|mkBuilder
 parameter_list|)
 throws|throws

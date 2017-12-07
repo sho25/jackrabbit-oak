@@ -1379,6 +1379,9 @@ throws|throws
 name|IOException
 block|{
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 init|=
 name|createDocumentMKBuilder
@@ -2394,6 +2397,9 @@ expr_stmt|;
 return|return;
 block|}
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 init|=
 name|createDocumentMKBuilder

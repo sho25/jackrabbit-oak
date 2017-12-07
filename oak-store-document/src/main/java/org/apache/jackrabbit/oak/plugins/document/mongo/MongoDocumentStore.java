@@ -1678,7 +1678,10 @@ parameter_list|(
 name|DB
 name|db
 parameter_list|,
-name|MongoDocumentNodeStoreBuilder
+name|MongoDocumentNodeStoreBuilderBase
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 block|{

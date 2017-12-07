@@ -289,6 +289,9 @@ decl_stmt|;
 name|LocalDiffCache
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 block|{

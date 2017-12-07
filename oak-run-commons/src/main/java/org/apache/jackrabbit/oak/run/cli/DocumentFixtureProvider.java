@@ -434,6 +434,9 @@ name|class
 argument_list|)
 decl_stmt|;
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 decl_stmt|;
 if|if

@@ -1451,6 +1451,9 @@ name|jdbcpasswd
 argument_list|)
 decl_stmt|;
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 init|=
 name|newRDBDocumentNodeStoreBuilder
@@ -1594,6 +1597,9 @@ name|jdbcpasswd
 argument_list|)
 decl_stmt|;
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 init|=
 name|newRDBDocumentNodeStoreBuilder
@@ -2500,6 +2506,9 @@ expr_stmt|;
 block|}
 specifier|public
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|getBuilder
 parameter_list|(
 name|int
@@ -2518,6 +2527,9 @@ name|uri
 argument_list|)
 decl_stmt|;
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 init|=
 operator|new
@@ -2624,6 +2636,9 @@ index|[]
 name|setUpCluster
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 index|[]
 name|builders
 parameter_list|,
@@ -2700,6 +2715,9 @@ throws|throws
 name|Exception
 block|{
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 index|[]
 name|builders
 init|=
@@ -2836,6 +2854,9 @@ name|void
 name|setupBlobStore
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|,
 name|StatisticsProvider
@@ -2910,6 +2931,9 @@ name|void
 name|configurePersistentCache
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 block|{

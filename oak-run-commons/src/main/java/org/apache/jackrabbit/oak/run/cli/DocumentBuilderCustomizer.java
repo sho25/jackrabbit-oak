@@ -60,6 +60,9 @@ name|void
 name|customize
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 throws|throws

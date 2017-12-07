@@ -1076,6 +1076,9 @@ name|DataSource
 name|ds
 parameter_list|,
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|,
 name|RDBOptions
@@ -1119,6 +1122,9 @@ name|DataSource
 name|ds
 parameter_list|,
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 block|{
@@ -4731,6 +4737,9 @@ name|DataSource
 name|ds
 parameter_list|,
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|,
 name|RDBOptions

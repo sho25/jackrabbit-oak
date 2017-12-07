@@ -61,6 +61,9 @@ parameter_list|<
 name|T
 extends|extends
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 parameter_list|>
 name|T
 name|baseConfiguration

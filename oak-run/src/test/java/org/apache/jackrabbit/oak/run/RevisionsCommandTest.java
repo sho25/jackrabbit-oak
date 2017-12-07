@@ -781,6 +781,9 @@ name|getConnection
 argument_list|()
 decl_stmt|;
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 init|=
 name|builderProvider

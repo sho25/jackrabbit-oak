@@ -1162,6 +1162,9 @@ throws|throws
 name|Exception
 block|{
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|docBuilder
 init|=
 name|builderProvider

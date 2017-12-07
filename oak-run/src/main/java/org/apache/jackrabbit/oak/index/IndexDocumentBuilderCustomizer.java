@@ -243,6 +243,9 @@ name|void
 name|customize
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 throws|throws
@@ -275,6 +278,9 @@ name|void
 name|configurePersistentCache
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 throws|throws
@@ -356,6 +362,9 @@ name|void
 name|configureCacheForReadOnlyMode
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 block|{
@@ -406,6 +415,9 @@ name|void
 name|configureCacheSize
 parameter_list|(
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 parameter_list|)
 block|{

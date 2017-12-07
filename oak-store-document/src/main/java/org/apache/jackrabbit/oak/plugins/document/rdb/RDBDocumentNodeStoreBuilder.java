@@ -163,18 +163,10 @@ begin_class
 specifier|public
 class|class
 name|RDBDocumentNodeStoreBuilder
-parameter_list|<
-name|T
-extends|extends
-name|RDBDocumentNodeStoreBuilder
-parameter_list|<
-name|T
-parameter_list|>
-parameter_list|>
 extends|extends
 name|DocumentNodeStoreBuilder
 argument_list|<
-name|T
+name|RDBDocumentNodeStoreBuilder
 argument_list|>
 block|{
 comment|/**      * @return a new {@link RDBDocumentNodeStoreBuilder}.      */
@@ -190,28 +182,9 @@ name|RDBDocumentNodeStoreBuilder
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
-name|Override
-specifier|protected
-name|T
-name|thisBuilder
-parameter_list|()
-block|{
-return|return
-operator|(
-name|T
-operator|)
-name|this
-return|;
-block|}
 comment|/**      * Sets a {@link DataSource} to use for the RDB document and blob      * stores.      *      * @return this      */
 specifier|public
-name|T
+name|RDBDocumentNodeStoreBuilder
 name|setRDBConnection
 parameter_list|(
 name|DataSource
@@ -234,7 +207,7 @@ return|;
 block|}
 comment|/**      * Sets a {@link DataSource} to use for the RDB document and blob      * stores, including {@link RDBOptions}.      *      * @return this      */
 specifier|public
-name|T
+name|RDBDocumentNodeStoreBuilder
 name|setRDBConnection
 parameter_list|(
 name|DataSource
@@ -292,7 +265,7 @@ return|;
 block|}
 comment|/**      * Sets a {@link DataSource}s to use for the RDB document and blob      * stores.      *      * @return this      */
 specifier|public
-name|T
+name|RDBDocumentNodeStoreBuilder
 name|setRDBConnection
 parameter_list|(
 name|DataSource

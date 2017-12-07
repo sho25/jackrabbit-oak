@@ -1166,6 +1166,9 @@ argument_list|)
 condition|)
 block|{
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 init|=
 name|createDocumentMKBuilder
@@ -1220,6 +1223,9 @@ annotation|@
 name|CheckForNull
 specifier|static
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|createDocumentMKBuilder
 parameter_list|(
 name|NodeStoreOptions
@@ -1271,6 +1277,9 @@ argument_list|)
 expr_stmt|;
 block|}
 name|DocumentNodeStoreBuilder
+argument_list|<
+name|?
+argument_list|>
 name|builder
 decl_stmt|;
 if|if
