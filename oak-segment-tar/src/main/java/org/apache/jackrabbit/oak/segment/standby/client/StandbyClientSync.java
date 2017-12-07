@@ -862,6 +862,10 @@ init|=
 operator|new
 name|StandbyClient
 argument_list|(
+name|host
+argument_list|,
+name|port
+argument_list|,
 name|group
 argument_list|,
 name|observer
@@ -877,15 +881,6 @@ name|spoolFolder
 argument_list|)
 init|)
 block|{
-name|client
-operator|.
-name|connect
-argument_list|(
-name|host
-argument_list|,
-name|port
-argument_list|)
-expr_stmt|;
 name|execution
 operator|.
 name|execute
