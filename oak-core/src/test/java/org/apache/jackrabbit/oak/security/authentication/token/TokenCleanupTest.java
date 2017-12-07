@@ -22,6 +22,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeFalse
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -58,6 +82,22 @@ operator|.
 name|api
 operator|.
 name|Tree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|CIHelper
 import|;
 end_import
 
@@ -152,18 +192,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 
@@ -456,6 +484,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assumeFalse
+argument_list|(
+name|CIHelper
+operator|.
+name|windows
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// FIXME OAK-6982
 name|createExpiredTokens
 argument_list|(
 literal|5
