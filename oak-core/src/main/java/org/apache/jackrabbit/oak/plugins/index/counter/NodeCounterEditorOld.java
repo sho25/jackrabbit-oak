@@ -173,24 +173,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|hash
-operator|.
-name|SipHash
-import|;
-end_import
-
 begin_comment
 comment|/**  * An approximate descendant node counter mechanism.  */
 end_comment

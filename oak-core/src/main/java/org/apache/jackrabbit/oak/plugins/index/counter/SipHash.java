@@ -13,9 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|plugins
 operator|.
-name|hash
+name|index
+operator|.
+name|counter
 package|;
 end_package
 
