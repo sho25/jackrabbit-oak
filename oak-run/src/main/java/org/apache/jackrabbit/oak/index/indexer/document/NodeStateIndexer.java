@@ -43,6 +43,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -106,6 +116,17 @@ throws|throws
 name|IOException
 throws|,
 name|CommitFailedException
+function_decl|;
+name|boolean
+name|indexesRelativeNodes
+parameter_list|()
+function_decl|;
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getRelativeIndexedNodeNames
+parameter_list|()
 function_decl|;
 block|}
 end_interface
