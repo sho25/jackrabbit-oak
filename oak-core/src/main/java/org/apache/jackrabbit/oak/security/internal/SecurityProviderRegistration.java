@@ -1533,7 +1533,7 @@ specifier|public
 name|void
 name|unbindTreeProvider
 parameter_list|(
-name|RootProvider
+name|TreeProvider
 name|treeProvider
 parameter_list|)
 block|{
