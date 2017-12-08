@@ -366,7 +366,7 @@ comment|// "not (x=1 or contains(., 'x')".
 return|return
 name|constraint
 operator|.
-name|requiresFullTextIndex
+name|containsUnfilteredFullTextCondition
 argument_list|()
 operator|||
 name|constraint
