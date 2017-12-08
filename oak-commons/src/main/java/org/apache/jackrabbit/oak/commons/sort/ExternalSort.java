@@ -1428,7 +1428,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * This merges a bunch of temporary flat files      *       * @param files      *            The {@link List} of sorted {@link File}s to be merged.      * @param outputfile      *            The output {@link File} to merge the results to.      * @param cmp      *            The {@link Comparator} to use to compare {@link String}s.      * @param cs      *            The {@link Charset} to be used for the byte to character conversion.      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param append      *            Pass<code>true</code> if result should append to {@link File} instead of      *            overwrite. Default to be false for overloading methods.      * @param usegzip      *            assumes we used gzip compression for temporary files      * @param typeToString      *            function to map string to custom type. User for coverting line to custom type for the      *            purpose of sorting      * @param stringToType      *          function to map custom type to string. Used for storing sorted content back to file      * @since v0.1.4      */
+comment|/**      * This merges a bunch of temporary flat files and deletes them on success or error.      *       * @param files      *            The {@link List} of sorted {@link File}s to be merged.      * @param outputfile      *            The output {@link File} to merge the results to.      * @param cmp      *            The {@link Comparator} to use to compare {@link String}s.      * @param cs      *            The {@link Charset} to be used for the byte to character conversion.      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param append      *            Pass<code>true</code> if result should append to {@link File} instead of      *            overwrite. Default to be false for overloading methods.      * @param usegzip      *            assumes we used gzip compression for temporary files      * @param typeToString      *            function to map string to custom type. User for coverting line to custom type for the      *            purpose of sorting      * @param stringToType      *          function to map custom type to string. Used for storing sorted content back to file      * @since v0.1.4      */
 specifier|public
 specifier|static
 parameter_list|<
@@ -1498,6 +1498,8 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 for|for
 control|(
 name|File
@@ -1627,6 +1629,12 @@ argument_list|,
 name|typeToString
 argument_list|)
 decl_stmt|;
+return|return
+name|rowcounter
+return|;
+block|}
+finally|finally
+block|{
 for|for
 control|(
 name|File
@@ -1641,9 +1649,7 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-return|return
-name|rowcounter
-return|;
+block|}
 block|}
 comment|/**      * This merges several BinaryFileBuffer to an output writer.      *       * @param fbw      *            A buffer where we write the data.      * @param cmp      *            A comparator object that tells us how to sort the lines.      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param buffers      *            Where the data should be read.      * @param typeToString      *            function to map string to custom type. User for coverting line to custom type for the      *            purpose of sorting      *      */
 specifier|public

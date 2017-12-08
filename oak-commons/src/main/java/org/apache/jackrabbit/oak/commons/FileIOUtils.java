@@ -953,6 +953,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|threw
+operator|=
+literal|false
+expr_stmt|;
+block|}
+finally|finally
+block|{
 if|if
 condition|(
 name|delete
@@ -973,13 +980,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|threw
-operator|=
-literal|false
-expr_stmt|;
-block|}
-finally|finally
-block|{
 name|close
 argument_list|(
 name|appendStream
