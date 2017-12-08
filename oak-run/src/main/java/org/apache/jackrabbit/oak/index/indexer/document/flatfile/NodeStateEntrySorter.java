@@ -472,7 +472,7 @@ name|this
 operator|.
 name|maxMemory
 operator|=
-name|maxMemory
+name|maxMemoryInGb
 operator|*
 name|ONE_GB
 expr_stmt|;
@@ -495,7 +495,7 @@ name|memory
 init|=
 name|Math
 operator|.
-name|max
+name|min
 argument_list|(
 name|estimatedMemory
 argument_list|,
