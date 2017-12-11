@@ -197,9 +197,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|factories
-operator|.
-name|TreeFactory
+name|TreeLocation
 import|;
 end_import
 
@@ -217,7 +215,9 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|TreeLocation
+name|impl
+operator|.
+name|TreeProviderService
 import|;
 end_import
 
@@ -748,13 +748,20 @@ name|void
 name|testEmptyNotDefinesTree
 parameter_list|()
 block|{
+name|TreeProviderService
+name|treeProvider
+init|=
+operator|new
+name|TreeProviderService
+argument_list|()
+decl_stmt|;
 name|assertFalse
 argument_list|(
 name|ctx
 operator|.
 name|definesTree
 argument_list|(
-name|TreeFactory
+name|treeProvider
 operator|.
 name|createReadOnlyTree
 argument_list|(
