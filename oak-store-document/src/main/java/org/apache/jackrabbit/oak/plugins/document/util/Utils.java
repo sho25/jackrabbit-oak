@@ -3945,7 +3945,7 @@ name|OakVersion
 operator|.
 name|getVersion
 argument_list|(
-literal|"oak-core"
+literal|"oak-store-document"
 argument_list|,
 name|Utils
 operator|.
