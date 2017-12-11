@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The interface for the backend storage for documents.  *<p>  * In general atomicity of operations on a DocumentStore are limited to a single  * document. That is, an implementation does not have to guarantee atomicity of  * the entire effect of a method call. A method that fails with an exception may  * have modified just some documents and then abort. However, an implementation  * must not modify a document partially. Either the complete update operation is  * applied to a document or no modification is done at all.  *<p>  * The key is the id of a document. Keys are opaque strings. All characters are  * allowed. Leading and trailing whitespace is allowed. For keys, the maximum  * length is 512 bytes in the UTF-8 representation (in the latest Unicode  * version).  */
+comment|/**  * The interface for the backend storage for documents.  *<p>  * In general atomicity of operations on a DocumentStore are limited to a single  * document. That is, an implementation does not have to guarantee atomicity of  * the entire effect of a method call. A method that fails with an exception may  * have modified just some documents and then abort. However, an implementation  * must not modify a document partially. Either the complete update operation is  * applied to a document or no modification is done at all.  *<p>  * The key is the id of a document. Keys are opaque strings. All characters are  * allowed. Leading and trailing whitespace is allowed. For keys, the maximum  * length is 512 bytes in the UTF-8 representation.  */
 end_comment
 
 begin_interface
