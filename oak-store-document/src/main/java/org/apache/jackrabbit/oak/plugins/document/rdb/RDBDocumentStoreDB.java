@@ -2764,6 +2764,16 @@ literal|"create index "
 operator|+
 name|tableName
 operator|+
+literal|"_VSN on "
+operator|+
+name|tableName
+operator|+
+literal|" (VERSION)"
+block|,
+literal|"create index "
+operator|+
+name|tableName
+operator|+
 literal|"_SDT on "
 operator|+
 name|tableName

@@ -1403,7 +1403,7 @@ expr_stmt|;
 name|int
 name|statementsPerTable
 init|=
-literal|4
+literal|5
 decl_stmt|;
 name|assertEquals
 argument_list|(
