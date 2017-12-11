@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A LeaseFailureHandler can be provided to the DocumentMK.Builder   * and will be passed on to the ClusterNodeInfo for use upon  * lease failure.  *<p>  * When ClusterNodeInfo does not have such a LeaseFailureHandler,   * the only thing it does is fail every subsequent access with  * an exception - but it doesn't do fancy things like stopping  * the oak-core bundle etc. Such an operation must be provided  * in a LeaseFailureHandler.  */
+comment|/**  * A LeaseFailureHandler can be provided to the DocumentMK.Builder   * and will be passed on to the ClusterNodeInfo for use upon  * lease failure.  *<p>  * When ClusterNodeInfo does not have such a LeaseFailureHandler,   * the only thing it does is fail every subsequent access with  * an exception - but it doesn't do fancy things like stopping  * the oak-store-document bundle etc. Such an operation must be provided  * in a LeaseFailureHandler.  */
 end_comment
 
 begin_interface
@@ -28,7 +28,7 @@ specifier|public
 interface|interface
 name|LeaseFailureHandler
 block|{
-comment|/**      * Invoked by ClusterNodeInfo when it detects a lease      * failure and has started preventing any further access      * to the DocumentStore by throwing exceptions - what's      * now left is any further actions that should be taken      * such as eg stopping the oak-core bundle. This part      * however is optional from the ClusterNodeInfo's pov      * and must be done by here in this LeaseFailureHandler.      */
+comment|/**      * Invoked by ClusterNodeInfo when it detects a lease      * failure and has started preventing any further access      * to the DocumentStore by throwing exceptions - what's      * now left is any further actions that should be taken      * such as eg stopping the oak-store-document bundle. This part      * however is optional from the ClusterNodeInfo's pov      * and must be done by here in this LeaseFailureHandler.      */
 specifier|public
 name|void
 name|handleLeaseFailure

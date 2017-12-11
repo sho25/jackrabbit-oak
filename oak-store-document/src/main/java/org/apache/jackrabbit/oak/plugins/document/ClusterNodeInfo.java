@@ -748,7 +748,7 @@ specifier|private
 name|ClusterNodeState
 name|state
 decl_stmt|;
-comment|/**      * OAK-2739 / OAK-3397 : once a lease check turns out negative, this flag      * is set to prevent any further checks to succeed. Also, only the first      * one to change this flag will take the appropriate action that results      * from a failed leaseCheck (which is currently to stop oak-core bundle)      */
+comment|/**      * OAK-2739 / OAK-3397 : once a lease check turns out negative, this flag      * is set to prevent any further checks to succeed. Also, only the first      * one to change this flag will take the appropriate action that results      * from a failed leaseCheck (which is currently to stop oak-store-document bundle)      */
 specifier|private
 name|boolean
 name|leaseCheckFailed
@@ -775,7 +775,7 @@ specifier|private
 name|boolean
 name|newEntry
 decl_stmt|;
-comment|/** OAK-3397 / OAK-3400 : the LeaseFailureHandler is the one that actually stops the oak-core bundle (or does something else if necessary) **/
+comment|/**      * OAK-3397 / OAK-3400 : the LeaseFailureHandler is the one that actually      * stops the oak-store-document bundle (or does something else if necessary)      */
 specifier|private
 name|LeaseFailureHandler
 name|leaseFailureHandler
@@ -2463,7 +2463,7 @@ operator|-
 name|now
 operator|)
 operator|+
-literal|") Need to stop oak-core/DocumentNodeStoreService."
+literal|") Need to stop oak-store-document/DocumentNodeStoreService."
 decl_stmt|;
 name|LOG
 operator|.
@@ -2488,7 +2488,7 @@ name|errorMsg
 parameter_list|)
 block|{
 comment|// OAK-3397 : unlike previously, when the lease check fails we should not
-comment|// do a hard System exit here but rather stop the oak-core bundle
+comment|// do a hard System exit here but rather stop the oak-store-document bundle
 comment|// (or if that fails just deactivate DocumentNodeStore) - with the
 comment|// goals to prevent this instance to continue to operate
 comment|// give that a lease failure is a strong indicator of a faulty

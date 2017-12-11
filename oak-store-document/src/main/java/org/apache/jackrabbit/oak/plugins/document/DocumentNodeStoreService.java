@@ -3320,16 +3320,6 @@ name|void
 name|handleLeaseFailure
 parameter_list|()
 block|{
-try|try
-block|{
-comment|// plan A: try stopping oak-core
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"handleLeaseFailure: stopping oak-core..."
-argument_list|)
-expr_stmt|;
 name|Bundle
 name|bundle
 init|=
@@ -3341,6 +3331,26 @@ operator|.
 name|getBundle
 argument_list|()
 decl_stmt|;
+name|String
+name|bundleName
+init|=
+name|bundle
+operator|.
+name|getSymbolicName
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+comment|// plan A: try stopping oak-store-document
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"handleLeaseFailure: stopping {}..."
+argument_list|,
+name|bundleName
+argument_list|)
+expr_stmt|;
 name|bundle
 operator|.
 name|stop
@@ -3354,7 +3364,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"handleLeaseFailure: stopped oak-core."
+literal|"handleLeaseFailure: stopped {}."
+argument_list|,
+name|bundleName
 argument_list|)
 expr_stmt|;
 comment|// plan A worked, perfect!
@@ -3369,7 +3381,11 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"handleLeaseFailure: exception while stopping oak-core: "
+literal|"handleLeaseFailure: exception while stopping "
+operator|+
+name|bundleName
+operator|+
+literal|": "
 operator|+
 name|e
 argument_list|,
