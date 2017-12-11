@@ -781,13 +781,6 @@ operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
-name|progressReporter
-operator|.
-name|reindexingTraversalStart
-argument_list|(
-literal|"/"
-argument_list|)
-expr_stmt|;
 name|NodeStateEntryTraverser
 name|nsep
 init|=
@@ -824,6 +817,14 @@ operator|.
 name|register
 argument_list|(
 name|nsep
+argument_list|)
+expr_stmt|;
+comment|//As first traversal is for dumping change the message prefix
+name|progressReporter
+operator|.
+name|setMessagePrefix
+argument_list|(
+literal|"Dumping"
 argument_list|)
 expr_stmt|;
 comment|//TODO Use flatFileStore only if we have relative nodes to be indexed
@@ -867,6 +868,13 @@ argument_list|(
 name|flatFileStore
 argument_list|)
 expr_stmt|;
+name|progressReporter
+operator|.
+name|reindexingTraversalStart
+argument_list|(
+literal|"/"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|NodeStateEntry
@@ -875,6 +883,14 @@ range|:
 name|flatFileStore
 control|)
 block|{
+name|reportDocumentRead
+argument_list|(
+name|entry
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|indexer
 operator|.
 name|index
