@@ -447,7 +447,7 @@ name|client
 operator|.
 name|solrj
 operator|.
-name|SolrServer
+name|SolrClient
 import|;
 end_import
 
@@ -2920,12 +2920,12 @@ literal|"select [jcr:path], [jcr:score] from [nt:base] as a where"
 operator|+
 literal|" contains([jcr:content/*], 'founded')"
 decl_stmt|;
-name|SolrServer
+name|SolrClient
 name|solrServer
 init|=
 name|mock
 argument_list|(
-name|SolrServer
+name|SolrClient
 operator|.
 name|class
 argument_list|)
@@ -3243,12 +3243,12 @@ name|query
 operator|+
 literal|"'"
 decl_stmt|;
-name|SolrServer
+name|SolrClient
 name|solrServer
 init|=
 name|mock
 argument_list|(
-name|SolrServer
+name|SolrClient
 operator|.
 name|class
 argument_list|)

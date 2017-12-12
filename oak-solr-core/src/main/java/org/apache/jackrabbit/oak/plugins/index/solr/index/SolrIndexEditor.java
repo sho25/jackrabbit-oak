@@ -261,7 +261,7 @@ name|client
 operator|.
 name|solrj
 operator|.
-name|SolrServer
+name|SolrClient
 import|;
 end_import
 
@@ -507,7 +507,7 @@ name|path
 decl_stmt|;
 specifier|private
 specifier|final
-name|SolrServer
+name|SolrClient
 name|solrServer
 decl_stmt|;
 specifier|private
@@ -538,7 +538,7 @@ argument_list|()
 decl_stmt|;
 name|SolrIndexEditor
 parameter_list|(
-name|SolrServer
+name|SolrClient
 name|solrServer
 parameter_list|,
 name|OakSolrConfiguration
@@ -831,7 +831,7 @@ specifier|private
 name|void
 name|commitByPolicy
 parameter_list|(
-name|SolrServer
+name|SolrClient
 name|solrServer
 parameter_list|,
 name|OakSolrConfiguration

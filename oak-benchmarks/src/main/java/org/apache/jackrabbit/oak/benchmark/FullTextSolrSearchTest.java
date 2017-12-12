@@ -439,7 +439,7 @@ name|client
 operator|.
 name|solrj
 operator|.
-name|SolrServer
+name|SolrClient
 import|;
 end_import
 
@@ -905,7 +905,7 @@ operator|.
 name|getProvider
 argument_list|()
 decl_stmt|;
-name|SolrServer
+name|SolrClient
 name|solrServer
 init|=
 name|embeddedSolrServerProvider
@@ -1024,7 +1024,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SolrServer
+name|SolrClient
 name|solrServer
 init|=
 name|serverProvider

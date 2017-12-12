@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link org.apache.solr.client.solrj.SolrServer} configuration provider.  */
+comment|/**  * {@link org.apache.solr.client.solrj.SolrClient} configuration provider.  */
 end_comment
 
 begin_interface
@@ -69,7 +69,7 @@ extends|extends
 name|SolrServerProvider
 parameter_list|>
 block|{
-comment|/**      * Provide a {@link SolrServerConfiguration} to be used to initialize a specific      * {@link org.apache.solr.client.solrj.SolrServer} implementation.      *      * @return the {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration} holding the configuration parameters      */
+comment|/**      * Provide a {@link SolrServerConfiguration} to be used to initialize a specific      * {@link org.apache.solr.client.solrj.SolrClient} implementation.      *      * @return the {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration} holding the configuration parameters      */
 annotation|@
 name|Nonnull
 name|SolrServerConfiguration
