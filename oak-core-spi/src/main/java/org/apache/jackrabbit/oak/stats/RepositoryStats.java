@@ -418,6 +418,13 @@ name|AnnotatedStandardMBean
 implements|implements
 name|RepositoryStatsMBean
 block|{
+specifier|static
+specifier|final
+name|String
+name|OBSERVATION_QUEUE_MAX_LENGTH
+init|=
+literal|"OBSERVATION_QUEUE_MAX_LENGTH"
+decl_stmt|;
 specifier|private
 specifier|final
 name|RepositoryStatistics
