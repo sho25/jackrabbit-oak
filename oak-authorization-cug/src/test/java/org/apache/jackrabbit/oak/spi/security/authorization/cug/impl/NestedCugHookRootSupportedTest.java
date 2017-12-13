@@ -254,6 +254,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|true
@@ -300,6 +303,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|false
@@ -328,6 +334,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|false
@@ -336,6 +345,9 @@ expr_stmt|;
 name|assertNestedCugs
 argument_list|(
 name|root
+argument_list|,
+name|getRootProvider
+argument_list|()
 argument_list|,
 name|ROOT_PATH
 argument_list|,
@@ -392,6 +404,9 @@ expr_stmt|;
 name|assertNestedCugs
 argument_list|(
 name|root
+argument_list|,
+name|getRootProvider
+argument_list|()
 argument_list|,
 name|ROOT_PATH
 argument_list|,
@@ -460,6 +475,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|false
@@ -483,6 +501,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|false
@@ -503,6 +524,9 @@ expr_stmt|;
 name|assertNestedCugs
 argument_list|(
 name|root
+argument_list|,
+name|getRootProvider
+argument_list|()
 argument_list|,
 name|ROOT_PATH
 argument_list|,
@@ -564,6 +588,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|true
@@ -582,6 +609,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|false
@@ -599,6 +629,9 @@ expr_stmt|;
 name|assertNestedCugs
 argument_list|(
 name|root
+argument_list|,
+name|getRootProvider
+argument_list|()
 argument_list|,
 name|ROOT_PATH
 argument_list|,
@@ -663,6 +696,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|true
@@ -684,6 +720,9 @@ name|assertNestedCugs
 argument_list|(
 name|root
 argument_list|,
+name|getRootProvider
+argument_list|()
+argument_list|,
 name|ROOT_PATH
 argument_list|,
 literal|true
@@ -702,6 +741,9 @@ expr_stmt|;
 name|assertNestedCugs
 argument_list|(
 name|root
+argument_list|,
+name|getRootProvider
+argument_list|()
 argument_list|,
 name|ROOT_PATH
 argument_list|,
@@ -790,6 +832,9 @@ expr_stmt|;
 name|assertNestedCugs
 argument_list|(
 name|root
+argument_list|,
+name|getRootProvider
+argument_list|()
 argument_list|,
 literal|"/"
 argument_list|,
