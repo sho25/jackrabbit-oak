@@ -209,9 +209,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|factories
-operator|.
-name|TreeFactory
+name|TreeProvider
 import|;
 end_import
 
@@ -597,6 +595,11 @@ annotation|@
 name|Nonnull
 name|RestrictionProvider
 name|restrictionProvider
+parameter_list|,
+annotation|@
+name|Nonnull
+name|TreeProvider
+name|treeProvider
 parameter_list|)
 block|{
 name|this
@@ -779,7 +782,7 @@ argument_list|(
 name|accessControlledPath
 argument_list|)
 argument_list|,
-name|TreeFactory
+name|treeProvider
 operator|.
 name|createReadOnlyTree
 argument_list|(

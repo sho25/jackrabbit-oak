@@ -22,30 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|security
-operator|.
-name|authorization
-operator|.
-name|composite
-operator|.
-name|CompositeAuthorizationConfiguration
-operator|.
-name|CompositionType
-operator|.
-name|AND
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -159,9 +135,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|factories
-operator|.
-name|RootFactory
+name|RootProvider
 import|;
 end_import
 
@@ -449,6 +423,30 @@ name|PrivilegeBitsProvider
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|composite
+operator|.
+name|CompositeAuthorizationConfiguration
+operator|.
+name|CompositionType
+operator|.
+name|AND
+import|;
+end_import
+
 begin_comment
 comment|/**  * Permission provider implementation that aggregates a list of different  * provider implementations. Note, that the aggregated provider implementations  * *must* implement the  * {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.AggregatedPermissionProvider}  * interface.  */
 end_comment
@@ -479,6 +477,11 @@ specifier|private
 specifier|final
 name|CompositionType
 name|compositionType
+decl_stmt|;
+specifier|private
+specifier|final
+name|RootProvider
+name|rootProvider
 decl_stmt|;
 specifier|private
 specifier|final
@@ -521,6 +524,11 @@ annotation|@
 name|Nonnull
 name|CompositionType
 name|compositionType
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RootProvider
+name|rootProvider
 parameter_list|)
 block|{
 name|this
@@ -559,6 +567,12 @@ name|compositionType
 operator|=
 name|compositionType
 expr_stmt|;
+name|this
+operator|.
+name|rootProvider
+operator|=
+name|rootProvider
+expr_stmt|;
 name|repositoryPermission
 operator|=
 operator|new
@@ -575,7 +589,7 @@ argument_list|)
 expr_stmt|;
 name|immutableRoot
 operator|=
-name|RootFactory
+name|rootProvider
 operator|.
 name|createReadOnlyRoot
 argument_list|(
@@ -609,7 +623,7 @@ parameter_list|()
 block|{
 name|immutableRoot
 operator|=
-name|RootFactory
+name|rootProvider
 operator|.
 name|createReadOnlyRoot
 argument_list|(

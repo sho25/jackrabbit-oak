@@ -59,9 +59,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|factories
-operator|.
-name|RootFactory
+name|RootProvider
 import|;
 end_import
 
@@ -201,6 +199,26 @@ name|PrivilegeValidatorProvider
 extends|extends
 name|ValidatorProvider
 block|{
+specifier|private
+specifier|final
+name|RootProvider
+name|rootProvider
+decl_stmt|;
+name|PrivilegeValidatorProvider
+parameter_list|(
+annotation|@
+name|Nonnull
+name|RootProvider
+name|rootProvider
+parameter_list|)
+block|{
+name|this
+operator|.
+name|rootProvider
+operator|=
+name|rootProvider
+expr_stmt|;
+block|}
 annotation|@
 name|Nonnull
 annotation|@
@@ -252,7 +270,7 @@ name|nodeState
 parameter_list|)
 block|{
 return|return
-name|RootFactory
+name|rootProvider
 operator|.
 name|createReadOnlyRoot
 argument_list|(

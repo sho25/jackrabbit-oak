@@ -247,6 +247,14 @@ name|getSecurityProvider
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|tc
+operator|.
+name|setTreeProvider
+argument_list|(
+name|getTreeProvider
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

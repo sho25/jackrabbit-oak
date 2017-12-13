@@ -2067,6 +2067,9 @@ argument_list|,
 name|CompositionType
 operator|.
 name|AND
+argument_list|,
+name|getRootProvider
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -2144,6 +2147,9 @@ argument_list|,
 name|CompositionType
 operator|.
 name|OR
+argument_list|,
+name|getRootProvider
+argument_list|()
 argument_list|)
 return|;
 block|}

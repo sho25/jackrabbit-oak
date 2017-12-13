@@ -79,9 +79,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|factories
-operator|.
-name|RootFactory
+name|RootProvider
 import|;
 end_import
 
@@ -98,6 +96,24 @@ operator|.
 name|namepath
 operator|.
 name|NamePathMapper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
+name|TreeProvider
 import|;
 end_import
 
@@ -289,6 +305,16 @@ specifier|final
 name|SecurityProvider
 name|securityProvider
 decl_stmt|;
+specifier|private
+specifier|final
+name|RootProvider
+name|rootProvider
+decl_stmt|;
+specifier|private
+specifier|final
+name|TreeProvider
+name|treeProvider
+decl_stmt|;
 specifier|public
 name|AccessControlValidatorProvider
 parameter_list|(
@@ -296,6 +322,16 @@ annotation|@
 name|Nonnull
 name|SecurityProvider
 name|securityProvider
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RootProvider
+name|rootProvider
+parameter_list|,
+annotation|@
+name|Nonnull
+name|TreeProvider
+name|treeProvider
 parameter_list|)
 block|{
 name|this
@@ -303,6 +339,18 @@ operator|.
 name|securityProvider
 operator|=
 name|securityProvider
+expr_stmt|;
+name|this
+operator|.
+name|rootProvider
+operator|=
+name|rootProvider
+expr_stmt|;
+name|this
+operator|.
+name|treeProvider
+operator|=
+name|treeProvider
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< ValidatorProvider>---
@@ -340,7 +388,7 @@ decl_stmt|;
 name|Root
 name|root
 init|=
-name|RootFactory
+name|rootProvider
 operator|.
 name|createReadOnlyRoot
 argument_list|(
@@ -386,6 +434,8 @@ argument_list|,
 name|privilegeBitsProvider
 argument_list|,
 name|restrictionProvider
+argument_list|,
+name|treeProvider
 argument_list|)
 return|;
 block|}

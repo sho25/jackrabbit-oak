@@ -123,9 +123,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|factories
-operator|.
-name|RootFactory
+name|RootProvider
 import|;
 end_import
 
@@ -502,6 +500,11 @@ name|Context
 name|ctx
 decl_stmt|;
 specifier|private
+specifier|final
+name|RootProvider
+name|rootProvider
+decl_stmt|;
+specifier|private
 name|CompiledPermissions
 name|compiledPermissions
 decl_stmt|;
@@ -544,6 +547,11 @@ annotation|@
 name|Nonnull
 name|Context
 name|ctx
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RootProvider
+name|rootProvider
 parameter_list|)
 block|{
 name|this
@@ -582,9 +590,15 @@ name|ctx
 operator|=
 name|ctx
 expr_stmt|;
+name|this
+operator|.
+name|rootProvider
+operator|=
+name|rootProvider
+expr_stmt|;
 name|immutableRoot
 operator|=
-name|RootFactory
+name|rootProvider
 operator|.
 name|createReadOnlyRoot
 argument_list|(
@@ -601,7 +615,7 @@ parameter_list|()
 block|{
 name|immutableRoot
 operator|=
-name|RootFactory
+name|rootProvider
 operator|.
 name|createReadOnlyRoot
 argument_list|(

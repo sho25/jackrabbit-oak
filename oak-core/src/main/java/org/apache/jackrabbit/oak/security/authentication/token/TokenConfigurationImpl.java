@@ -780,6 +780,8 @@ block|}
 specifier|public
 name|TokenConfigurationImpl
 parameter_list|(
+annotation|@
+name|Nonnull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)
@@ -973,6 +975,9 @@ name|UserConfiguration
 operator|.
 name|NAME
 argument_list|)
+argument_list|,
+name|getTreeProvider
+argument_list|()
 argument_list|)
 decl_stmt|;
 return|return

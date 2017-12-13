@@ -169,9 +169,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|factories
-operator|.
-name|TreeFactory
+name|TreeProvider
 import|;
 end_import
 
@@ -336,6 +334,11 @@ specifier|final
 name|boolean
 name|isSystem
 decl_stmt|;
+specifier|private
+specifier|final
+name|TreeProvider
+name|treeProvider
+decl_stmt|;
 name|CacheValidatorProvider
 parameter_list|(
 annotation|@
@@ -345,6 +348,11 @@ argument_list|<
 name|Principal
 argument_list|>
 name|principals
+parameter_list|,
+annotation|@
+name|Nonnull
+name|TreeProvider
+name|treeProvider
 parameter_list|)
 block|{
 name|super
@@ -360,6 +368,12 @@ name|SystemPrincipal
 operator|.
 name|INSTANCE
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|treeProvider
+operator|=
+name|treeProvider
 expr_stmt|;
 block|}
 annotation|@
@@ -405,14 +419,14 @@ return|return
 operator|new
 name|CacheValidator
 argument_list|(
-name|TreeFactory
+name|treeProvider
 operator|.
 name|createReadOnlyTree
 argument_list|(
 name|before
 argument_list|)
 argument_list|,
-name|TreeFactory
+name|treeProvider
 operator|.
 name|createReadOnlyTree
 argument_list|(
