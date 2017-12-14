@@ -108,9 +108,7 @@ specifier|final
 name|int
 name|ROWS
 init|=
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|10
 decl_stmt|;
 specifier|public
 specifier|static
