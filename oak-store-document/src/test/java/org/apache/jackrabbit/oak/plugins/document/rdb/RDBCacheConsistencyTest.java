@@ -336,7 +336,7 @@ operator|)
 name|ds
 operator|)
 operator|.
-name|setTemporaryUpdateException
+name|setTemporaryCommitException
 argument_list|(
 name|msg
 argument_list|)

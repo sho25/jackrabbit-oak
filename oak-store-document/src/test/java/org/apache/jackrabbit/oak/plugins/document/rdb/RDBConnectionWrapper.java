@@ -475,7 +475,7 @@ name|this
 operator|.
 name|datasource
 operator|.
-name|getTemporaryUpdateException
+name|getTemporaryCommitException
 argument_list|()
 operator|!=
 literal|null
@@ -492,7 +492,7 @@ name|this
 operator|.
 name|datasource
 operator|.
-name|getTemporaryUpdateException
+name|getTemporaryCommitException
 argument_list|()
 argument_list|)
 throw|;
