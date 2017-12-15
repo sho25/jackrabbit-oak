@@ -287,6 +287,12 @@ name|BlobStore
 name|blobStore
 decl_stmt|;
 specifier|private
+name|long
+name|entryCount
+init|=
+literal|0
+decl_stmt|;
+specifier|private
 name|boolean
 name|useZip
 init|=
@@ -401,7 +407,9 @@ throws|throws
 name|IOException
 block|{
 comment|//TODO Check not null blobStore
-return|return
+name|FlatFileStore
+name|store
+init|=
 operator|new
 name|FlatFileStore
 argument_list|(
@@ -419,6 +427,24 @@ argument_list|(
 name|preferredPathElements
 argument_list|)
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|entryCount
+operator|>
+literal|0
+condition|)
+block|{
+name|store
+operator|.
+name|setEntryCount
+argument_list|(
+name|entryCount
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|store
 return|;
 block|}
 specifier|private
@@ -742,13 +768,18 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+name|entryCount
+operator|++
+expr_stmt|;
 block|}
 block|}
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Dumped nodestates in json format in {}"
+literal|"Dumped {} nodestates in json format in {}"
+argument_list|,
+name|entryCount
 argument_list|,
 name|sw
 argument_list|)
