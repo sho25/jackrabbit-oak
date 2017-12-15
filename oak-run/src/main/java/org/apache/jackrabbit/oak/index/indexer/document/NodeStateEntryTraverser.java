@@ -579,6 +579,17 @@ name|doc
 operator|.
 name|isSplitDocument
 argument_list|()
+operator|&&
+operator|!
+name|NodeStateUtils
+operator|.
+name|isHiddenPath
+argument_list|(
+name|doc
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|transformAndConcat
