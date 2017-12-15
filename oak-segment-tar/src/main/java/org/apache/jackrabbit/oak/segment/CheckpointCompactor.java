@@ -213,20 +213,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicLong
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -397,13 +383,6 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|AtomicLong
-name|gcCount
-decl_stmt|;
-annotation|@
-name|Nonnull
-specifier|private
-specifier|final
 name|Map
 argument_list|<
 name|NodeState
@@ -463,11 +442,6 @@ name|gcListener
 parameter_list|,
 annotation|@
 name|Nonnull
-name|AtomicLong
-name|gcCount
-parameter_list|,
-annotation|@
-name|Nonnull
 name|SegmentReader
 name|reader
 parameter_list|,
@@ -500,12 +474,6 @@ operator|.
 name|gcListener
 operator|=
 name|gcListener
-expr_stmt|;
-name|this
-operator|.
-name|gcCount
-operator|=
-name|gcCount
 expr_stmt|;
 name|this
 operator|.
@@ -1050,9 +1018,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: Found checkpoint {} created at {}."
-argument_list|,
-name|gcCount
+literal|"found checkpoint {} created at {}."
 argument_list|,
 name|name
 argument_list|,
@@ -1234,9 +1200,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compacting {}."
-argument_list|,
-name|gcCount
+literal|"compacting {}."
 argument_list|,
 name|path
 argument_list|)
@@ -1312,9 +1276,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: Found {} in cache."
-argument_list|,
-name|gcCount
+literal|"found {} in cache."
 argument_list|,
 name|path
 argument_list|)

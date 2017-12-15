@@ -333,6 +333,26 @@ name|segment
 operator|.
 name|file
 operator|.
+name|PrintableBytes
+operator|.
+name|newPrintableBytes
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
 name|TarRevisions
 operator|.
 name|EXPEDITE_OPTION
@@ -609,20 +629,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Stopwatch
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Supplier
 import|;
 end_import
@@ -643,22 +649,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|CheckpointCompactor
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -670,6 +660,22 @@ operator|.
 name|concurrent
 operator|.
 name|UncheckedExecutionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|CheckpointCompactor
 import|;
 end_import
 
@@ -1534,18 +1540,16 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"TarMK opened at {}, mmap={}, size={} ({} bytes)"
+literal|"TarMK opened at {}, mmap={}, size={}"
 argument_list|,
 name|directory
 argument_list|,
 name|memoryMapping
 argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|size
 argument_list|)
-argument_list|,
-name|size
 argument_list|)
 expr_stmt|;
 name|log
@@ -2841,7 +2845,7 @@ annotation|@
 name|Nonnull
 specifier|private
 specifier|final
-name|GCListener
+name|PrefixedGCListener
 name|gcListener
 decl_stmt|;
 annotation|@
@@ -2911,7 +2915,13 @@ name|this
 operator|.
 name|gcListener
 operator|=
+operator|new
+name|PrefixedGCListener
+argument_list|(
 name|gcListener
+argument_list|,
+name|GC_COUNT
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -3025,16 +3035,16 @@ name|IOException
 block|{
 try|try
 block|{
-name|gcListener
-operator|.
-name|info
-argument_list|(
-literal|"TarMK GC #{}: started"
-argument_list|,
 name|GC_COUNT
 operator|.
 name|incrementAndGet
 argument_list|()
+expr_stmt|;
+name|gcListener
+operator|.
+name|info
+argument_list|(
+literal|"started"
 argument_list|)
 expr_stmt|;
 name|long
@@ -3058,11 +3068,9 @@ name|gcListener
 operator|.
 name|skipped
 argument_list|(
-literal|"TarMK GC #{}: skipping garbage collection as it already ran "
+literal|"skipping garbage collection as it already ran "
 operator|+
 literal|"less than {} hours ago ({} s)."
-argument_list|,
-name|GC_COUNT
 argument_list|,
 name|GC_BACKOFF
 operator|/
@@ -3092,9 +3100,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: estimation skipped because it was explicitly disabled"
-argument_list|,
-name|GC_COUNT
+literal|"estimation skipped because it was explicitly disabled"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3111,9 +3117,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: estimation skipped because compaction is paused"
-argument_list|,
-name|GC_COUNT
+literal|"estimation skipped because compaction is paused"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3123,9 +3127,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: estimation started"
-argument_list|,
-name|GC_COUNT
+literal|"estimation started"
 argument_list|)
 expr_stmt|;
 name|gcListener
@@ -3138,10 +3140,10 @@ name|message
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Stopwatch
+name|PrintableStopwatch
 name|watch
 init|=
-name|Stopwatch
+name|PrintableStopwatch
 operator|.
 name|createStarted
 argument_list|()
@@ -3178,18 +3180,9 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: estimation completed in {} ({} ms). {}"
-argument_list|,
-name|GC_COUNT
+literal|"estimation completed in {}. {}"
 argument_list|,
 name|watch
-argument_list|,
-name|watch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|,
 name|gcLog
 argument_list|)
@@ -3201,18 +3194,9 @@ name|gcListener
 operator|.
 name|skipped
 argument_list|(
-literal|"TarMK GC #{}: estimation completed in {} ({} ms). {}"
-argument_list|,
-name|GC_COUNT
+literal|"estimation completed in {}. {}"
 argument_list|,
 name|watch
-argument_list|,
-name|watch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|,
 name|gcLog
 argument_list|)
@@ -3227,7 +3211,7 @@ block|{
 try|try
 init|(
 name|GCMemoryBarrier
-name|gcMemoryBarrier
+name|ignored
 init|=
 operator|new
 name|GCMemoryBarrier
@@ -3235,11 +3219,6 @@ argument_list|(
 name|sufficientMemory
 argument_list|,
 name|gcListener
-argument_list|,
-name|GC_COUNT
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|gcOptions
 argument_list|)
@@ -3257,9 +3236,7 @@ name|gcListener
 operator|.
 name|skipped
 argument_list|(
-literal|"TarMK GC #{}: compaction paused"
-argument_list|,
-name|GC_COUNT
+literal|"compaction paused"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3277,9 +3254,7 @@ name|gcListener
 operator|.
 name|skipped
 argument_list|(
-literal|"TarMK GC #{}: compaction skipped. Not enough memory"
-argument_list|,
-name|GC_COUNT
+literal|"compaction skipped. Not enough memory"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3315,9 +3290,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: cleaning up after failed compaction"
-argument_list|,
-name|GC_COUNT
+literal|"cleaning up after failed compaction"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3531,11 +3504,7 @@ name|gcListener
 operator|.
 name|error
 argument_list|(
-literal|"TarMK GC #"
-operator|+
-name|GC_COUNT
-operator|+
-literal|": Base state "
+literal|"base state "
 operator|+
 name|rootId
 operator|+
@@ -3558,9 +3527,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: running full compaction"
-argument_list|,
-name|GC_COUNT
+literal|"running full compaction"
 argument_list|)
 expr_stmt|;
 return|return
@@ -3585,9 +3552,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: running tail compaction"
-argument_list|,
-name|GC_COUNT
+literal|"running tail compaction"
 argument_list|)
 expr_stmt|;
 name|SegmentNodeState
@@ -3620,9 +3585,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: no base state available, running full compaction instead"
-argument_list|,
-name|GC_COUNT
+literal|"no base state available, running full compaction instead"
 argument_list|)
 expr_stmt|;
 return|return
@@ -3655,10 +3618,10 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|Stopwatch
+name|PrintableStopwatch
 name|watch
 init|=
-name|Stopwatch
+name|PrintableStopwatch
 operator|.
 name|createStarted
 argument_list|()
@@ -3667,9 +3630,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction started, gc options={}"
-argument_list|,
-name|GC_COUNT
+literal|"compaction started, gc options={}"
 argument_list|,
 name|gcOptions
 argument_list|)
@@ -3754,11 +3715,6 @@ name|compactionMonitor
 operator|.
 name|init
 argument_list|(
-name|GC_COUNT
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|gcEntry
 operator|.
 name|getRepoSize
@@ -3779,8 +3735,6 @@ operator|new
 name|CheckpointCompactor
 argument_list|(
 name|gcListener
-argument_list|,
-name|GC_COUNT
 argument_list|,
 name|segmentReader
 argument_list|,
@@ -3825,9 +3779,7 @@ name|gcListener
 operator|.
 name|warn
 argument_list|(
-literal|"TarMK GC #{}: compaction cancelled: {}."
-argument_list|,
-name|GC_COUNT
+literal|"compaction cancelled: {}."
 argument_list|,
 name|cancel
 argument_list|)
@@ -3843,18 +3795,9 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction cycle 0 completed in {} ({} ms). Compacted {} to {}"
-argument_list|,
-name|GC_COUNT
+literal|"compaction cycle 0 completed in {}. Compacted {} to {}"
 argument_list|,
 name|watch
-argument_list|,
-name|watch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|,
 name|head
 operator|.
@@ -3924,11 +3867,9 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction detected concurrent commits while compacting. "
+literal|"compaction detected concurrent commits while compacting. "
 operator|+
 literal|"Compacting these commits. Cycle {} of {}"
-argument_list|,
-name|GC_COUNT
 argument_list|,
 name|cycles
 argument_list|,
@@ -3950,10 +3891,10 @@ operator|+
 name|cycles
 argument_list|)
 expr_stmt|;
-name|Stopwatch
+name|PrintableStopwatch
 name|cycleWatch
 init|=
-name|Stopwatch
+name|PrintableStopwatch
 operator|.
 name|createStarted
 argument_list|()
@@ -3987,9 +3928,7 @@ name|gcListener
 operator|.
 name|warn
 argument_list|(
-literal|"TarMK GC #{}: compaction cancelled: {}."
-argument_list|,
-name|GC_COUNT
+literal|"compaction cancelled: {}."
 argument_list|,
 name|cancel
 argument_list|)
@@ -4005,20 +3944,11 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction cycle {} completed in {} ({} ms). Compacted {} against {} to {}"
-argument_list|,
-name|GC_COUNT
+literal|"compaction cycle {} completed in {}. Compacted {} against {} to {}"
 argument_list|,
 name|cycles
 argument_list|,
 name|cycleWatch
-argument_list|,
-name|cycleWatch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|,
 name|head
 operator|.
@@ -4051,9 +3981,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction gave up compacting concurrent commits after {} cycles."
-argument_list|,
-name|GC_COUNT
+literal|"compaction gave up compacting concurrent commits after {} cycles."
 argument_list|,
 name|cycles
 argument_list|)
@@ -4077,11 +4005,9 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: trying to force compact remaining commits for {} seconds. "
+literal|"trying to force compact remaining commits for {} seconds. "
 operator|+
 literal|"Concurrent commits to the store will be blocked."
-argument_list|,
-name|GC_COUNT
 argument_list|,
 name|forceTimeout
 argument_list|)
@@ -4096,10 +4022,10 @@ name|message
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Stopwatch
+name|PrintableStopwatch
 name|forceWatch
 init|=
-name|Stopwatch
+name|PrintableStopwatch
 operator|.
 name|createStarted
 argument_list|()
@@ -4142,20 +4068,11 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction succeeded to force compact remaining commits "
+literal|"compaction succeeded to force compact remaining commits "
 operator|+
-literal|"after {} ({} ms)."
-argument_list|,
-name|GC_COUNT
+literal|"after {}."
 argument_list|,
 name|forceWatch
-argument_list|,
-name|forceWatch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4173,20 +4090,11 @@ name|gcListener
 operator|.
 name|warn
 argument_list|(
-literal|"TarMK GC #{}: compaction failed to force compact remaining commits "
+literal|"compaction failed to force compact remaining commits "
 operator|+
-literal|"after {} ({} ms). Compaction was cancelled: {}."
-argument_list|,
-name|GC_COUNT
+literal|"after {}. Compaction was cancelled: {}."
 argument_list|,
 name|forceWatch
-argument_list|,
-name|forceWatch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|,
 name|cancel
 argument_list|)
@@ -4198,20 +4106,11 @@ name|gcListener
 operator|.
 name|warn
 argument_list|(
-literal|"TarMK GC #{}: compaction failed to force compact remaining commits. "
+literal|"compaction failed to force compact remaining commits. "
 operator|+
-literal|"after {} ({} ms). Could not acquire exclusive access to the node store."
-argument_list|,
-name|GC_COUNT
+literal|"after {}. Could not acquire exclusive access to the node store."
 argument_list|,
 name|forceWatch
-argument_list|,
-name|forceWatch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4235,18 +4134,9 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction succeeded in {} ({} ms), after {} cycles"
-argument_list|,
-name|GC_COUNT
+literal|"compaction succeeded in {}, after {} cycles"
 argument_list|,
 name|watch
-argument_list|,
-name|watch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|,
 name|cycles
 argument_list|)
@@ -4269,18 +4159,9 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction failed after {} ({} ms), and {} cycles"
-argument_list|,
-name|GC_COUNT
+literal|"compaction failed after {}, and {} cycles"
 argument_list|,
 name|watch
-argument_list|,
-name|watch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
 argument_list|,
 name|cycles
 argument_list|)
@@ -4303,11 +4184,7 @@ name|gcListener
 operator|.
 name|error
 argument_list|(
-literal|"TarMK GC #"
-operator|+
-name|GC_COUNT
-operator|+
-literal|": compaction interrupted"
+literal|"compaction interrupted"
 argument_list|,
 name|e
 argument_list|)
@@ -4335,11 +4212,7 @@ name|gcListener
 operator|.
 name|error
 argument_list|(
-literal|"TarMK GC #"
-operator|+
-name|GC_COUNT
-operator|+
-literal|": compaction encountered an error"
+literal|"compaction encountered an error"
 argument_list|,
 name|e
 argument_list|)
@@ -4443,9 +4316,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compaction cancelled after {} seconds"
-argument_list|,
-name|GC_COUNT
+literal|"compaction cancelled after {} seconds"
 argument_list|,
 operator|(
 name|currentTimeMillis
@@ -4481,11 +4352,7 @@ name|gcListener
 operator|.
 name|error
 argument_list|(
-literal|"TarMK GC #{"
-operator|+
-name|GC_COUNT
-operator|+
-literal|"}: Error during forced compaction."
+literal|"error during forced compaction."
 argument_list|,
 name|e
 argument_list|)
@@ -4723,10 +4590,10 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Stopwatch
+name|PrintableStopwatch
 name|watch
 init|=
-name|Stopwatch
+name|PrintableStopwatch
 operator|.
 name|createStarted
 argument_list|()
@@ -4735,9 +4602,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: cleanup started."
-argument_list|,
-name|GC_COUNT
+literal|"cleanup started."
 argument_list|)
 expr_stmt|;
 name|gcListener
@@ -4790,9 +4655,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: cleanup interrupted"
-argument_list|,
-name|GC_COUNT
+literal|"cleanup interrupted"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4815,9 +4678,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: cleanup marking files for deletion: {}"
-argument_list|,
-name|GC_COUNT
+literal|"cleanup marking files for deletion: {}"
 argument_list|,
 name|toFileNames
 argument_list|(
@@ -4887,34 +4748,19 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: cleanup completed in {} ({} ms). Post cleanup size is {} ({} bytes)"
-operator|+
-literal|" and space reclaimed {} ({} bytes)."
-argument_list|,
-name|GC_COUNT
+literal|"cleanup completed in {}. Post cleanup size is {} and space reclaimed {}."
 argument_list|,
 name|watch
 argument_list|,
-name|watch
-operator|.
-name|elapsed
-argument_list|(
-name|MILLISECONDS
-argument_list|)
-argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|finalSize
 argument_list|)
 argument_list|,
-name|finalSize
-argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|reclaimedSize
 argument_list|)
-argument_list|,
-name|reclaimedSize
 argument_list|)
 expr_stmt|;
 return|return

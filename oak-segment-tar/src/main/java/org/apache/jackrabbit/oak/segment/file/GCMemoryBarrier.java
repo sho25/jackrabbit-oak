@@ -71,11 +71,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|segment
 operator|.
-name|IOUtils
+name|file
 operator|.
-name|humanReadableByteCount
+name|PrintableBytes
+operator|.
+name|newPrintableBytes
 import|;
 end_import
 
@@ -265,11 +267,6 @@ name|gcOptions
 decl_stmt|;
 specifier|private
 specifier|final
-name|long
-name|gcCount
-decl_stmt|;
-specifier|private
-specifier|final
 name|NotificationEmitter
 name|emitter
 decl_stmt|;
@@ -290,9 +287,6 @@ annotation|@
 name|Nonnull
 name|GCListener
 name|gcListener
-parameter_list|,
-name|long
-name|gcCount
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -317,12 +311,6 @@ operator|.
 name|gcOptions
 operator|=
 name|gcOptions
-expr_stmt|;
-name|this
-operator|.
-name|gcCount
-operator|=
-name|gcCount
 expr_stmt|;
 name|MemoryPoolMXBean
 name|pool
@@ -360,9 +348,7 @@ name|gcListener
 operator|.
 name|warn
 argument_list|(
-literal|"TarMK GC #{}: Unable to setup monitoring of available memory."
-argument_list|,
-name|gcCount
+literal|"unable to setup monitoring of available memory."
 argument_list|)
 expr_stmt|;
 block|}
@@ -428,9 +414,7 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: setting up a listener to cancel compaction if available memory on pool '{}' drops below {}%, {} ({} bytes)."
-argument_list|,
-name|gcCount
+literal|"setting up a listener to cancel compaction if available memory on pool '{}' drops below {}%."
 argument_list|,
 name|pool
 operator|.
@@ -439,12 +423,10 @@ argument_list|()
 argument_list|,
 name|percentage
 argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|required
 argument_list|)
-argument_list|,
-name|required
 argument_list|)
 expr_stmt|;
 name|long
@@ -645,23 +627,17 @@ name|gcListener
 operator|.
 name|warn
 argument_list|(
-literal|"TarMK GC #{}: canceling compaction because available memory level {} ({} bytes) is too low, expecting at least {} ({} bytes)"
+literal|"canceling compaction because available memory level {} is too low, expecting at least {}"
 argument_list|,
-name|gcCount
-argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|avail
 argument_list|)
 argument_list|,
-name|avail
-argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|required
 argument_list|)
-argument_list|,
-name|required
 argument_list|)
 expr_stmt|;
 name|sufficientMemory
@@ -678,23 +654,17 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: available memory level {} ({} bytes) is good, expecting at least {} ({} bytes)"
+literal|"available memory level {} is good, expecting at least {}"
 argument_list|,
-name|gcCount
-argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|avail
 argument_list|)
 argument_list|,
-name|avail
-argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|required
 argument_list|)
-argument_list|,
-name|required
 argument_list|)
 expr_stmt|;
 name|sufficientMemory

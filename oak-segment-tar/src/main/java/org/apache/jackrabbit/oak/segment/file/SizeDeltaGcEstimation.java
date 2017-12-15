@@ -73,11 +73,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|segment
 operator|.
-name|IOUtils
+name|file
 operator|.
-name|humanReadableByteCount
+name|PrintableBytes
+operator|.
+name|newPrintableBytes
 import|;
 end_import
 
@@ -286,7 +288,7 @@ name|gcInfo
 init|=
 name|format
 argument_list|(
-literal|"Segmentstore size has increased since the last %s garbage collection from %s (%s bytes) to %s (%s bytes), an increase of %s (%s bytes) or %s%%. "
+literal|"Segmentstore size has increased since the last %s garbage collection from %s to %s, an increase of %s or %s%%. "
 argument_list|,
 name|full
 condition|?
@@ -294,26 +296,20 @@ literal|"full"
 else|:
 literal|"tail"
 argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|previousSize
 argument_list|)
 argument_list|,
-name|previousSize
-argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|currentSize
 argument_list|)
 argument_list|,
-name|currentSize
-argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|gain
 argument_list|)
-argument_list|,
-name|gain
 argument_list|,
 literal|100
 operator|*
@@ -333,14 +329,12 @@ name|gcInfo
 operator|+
 name|format
 argument_list|(
-literal|"This is greater than sizeDeltaEstimation=%s (%s bytes), so running garbage collection"
+literal|"This is greater than sizeDeltaEstimation=%s, so running garbage collection"
 argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|delta
 argument_list|)
-argument_list|,
-name|delta
 argument_list|)
 expr_stmt|;
 block|}
@@ -352,14 +346,12 @@ name|gcInfo
 operator|+
 name|format
 argument_list|(
-literal|"This is less than sizeDeltaEstimation=%s (%s bytes), so skipping garbage collection"
+literal|"This is less than sizeDeltaEstimation=%s, so skipping garbage collection"
 argument_list|,
-name|humanReadableByteCount
+name|newPrintableBytes
 argument_list|(
 name|delta
 argument_list|)
-argument_list|,
-name|delta
 argument_list|)
 expr_stmt|;
 block|}

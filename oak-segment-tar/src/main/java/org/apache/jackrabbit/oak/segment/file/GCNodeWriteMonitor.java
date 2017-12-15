@@ -120,10 +120,6 @@ name|running
 init|=
 literal|false
 decl_stmt|;
-specifier|private
-name|long
-name|gcCount
-decl_stmt|;
 specifier|public
 name|GCNodeWriteMonitor
 parameter_list|(
@@ -149,15 +145,12 @@ operator|=
 name|gcMonitor
 expr_stmt|;
 block|}
-comment|/**      * @param gcCount      *            current gc run      * @param prevSize      *            size from latest successful compaction      * @param prevCompactedNodes      *            number of nodes compacted during latest compaction operation      * @param currentSize      *            current repository size      */
+comment|/**      * @param prevSize      *            size from latest successful compaction      * @param prevCompactedNodes      *            number of nodes compacted during latest compaction operation      * @param currentSize      *            current repository size      */
 specifier|public
 specifier|synchronized
 name|void
 name|init
 parameter_list|(
-name|long
-name|gcCount
-parameter_list|,
 name|long
 name|prevSize
 parameter_list|,
@@ -168,12 +161,6 @@ name|long
 name|currentSize
 parameter_list|)
 block|{
-name|this
-operator|.
-name|gcCount
-operator|=
-name|gcCount
-expr_stmt|;
 if|if
 condition|(
 name|prevCompactedNodes
@@ -203,13 +190,9 @@ name|gcMonitor
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: estimated number of nodes to compact is {}, based on {} nodes compacted to {} bytes "
+literal|"estimated number of nodes to compact is {}, based on {} nodes compacted to {} bytes "
 operator|+
 literal|"on disk in previous compaction and current size of {} bytes on disk."
-argument_list|,
-name|this
-operator|.
-name|gcCount
 argument_list|,
 name|estimated
 argument_list|,
@@ -227,9 +210,7 @@ name|gcMonitor
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: unable to estimate number of nodes for compaction, missing gc history."
-argument_list|,
-name|gcCount
+literal|"unable to estimate number of nodes for compaction, missing gc history."
 argument_list|)
 expr_stmt|;
 block|}
@@ -275,9 +256,7 @@ name|gcMonitor
 operator|.
 name|info
 argument_list|(
-literal|"TarMK GC #{}: compacted {} nodes, {} properties, {} binaries in {} ms. {}"
-argument_list|,
-name|gcCount
+literal|"compacted {} nodes, {} properties, {} binaries in {} ms. {}"
 argument_list|,
 name|nodes
 argument_list|,

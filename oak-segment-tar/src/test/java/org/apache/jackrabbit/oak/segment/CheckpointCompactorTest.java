@@ -247,20 +247,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicLong
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -1321,10 +1307,6 @@ argument_list|(
 name|GCMonitor
 operator|.
 name|EMPTY
-argument_list|,
-operator|new
-name|AtomicLong
-argument_list|()
 argument_list|,
 name|fileStore
 operator|.
