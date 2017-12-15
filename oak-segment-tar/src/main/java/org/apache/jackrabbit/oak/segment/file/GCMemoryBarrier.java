@@ -414,19 +414,19 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"setting up a listener to cancel compaction if available memory on pool '{}' drops below {}%."
+literal|"setting up a listener to cancel compaction if available memory on pool '{}' drops below {} / {}%."
 argument_list|,
 name|pool
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|percentage
-argument_list|,
 name|newPrintableBytes
 argument_list|(
 name|required
 argument_list|)
+argument_list|,
+name|percentage
 argument_list|)
 expr_stmt|;
 name|long
