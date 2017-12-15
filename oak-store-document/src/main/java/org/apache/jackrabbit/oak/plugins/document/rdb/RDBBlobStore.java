@@ -1615,7 +1615,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|RuntimeException
+name|SQLException
 argument_list|(
 literal|"trying to update metadata"
 argument_list|,
@@ -1857,7 +1857,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|RuntimeException
+name|SQLException
 argument_list|(
 name|message
 argument_list|,
@@ -1912,7 +1912,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|RuntimeException
+name|SQLException
 argument_list|(
 name|message
 argument_list|,

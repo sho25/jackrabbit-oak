@@ -191,6 +191,12 @@ name|temporaryCommitException
 init|=
 literal|null
 decl_stmt|;
+specifier|private
+name|String
+name|temporaryUpdateException
+init|=
+literal|null
+decl_stmt|;
 comment|// Logging
 specifier|private
 name|Map
@@ -391,6 +397,32 @@ return|return
 name|this
 operator|.
 name|temporaryCommitException
+return|;
+block|}
+specifier|public
+name|void
+name|setTemporaryUpdateException
+parameter_list|(
+name|String
+name|exmsg
+parameter_list|)
+block|{
+name|this
+operator|.
+name|temporaryUpdateException
+operator|=
+name|exmsg
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getTemporaryUpdateException
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|temporaryUpdateException
 return|;
 block|}
 comment|// DataSource

@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|sql
-operator|.
-name|DataSource
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -164,6 +154,12 @@ specifier|public
 specifier|abstract
 name|RDBBlobStore
 name|createRDBBlobStore
+parameter_list|()
+function_decl|;
+specifier|public
+specifier|abstract
+name|RDBDataSourceWrapper
+name|getDataSource
 parameter_list|()
 function_decl|;
 specifier|public
@@ -487,7 +483,7 @@ name|String
 name|name
 decl_stmt|;
 specifier|private
-name|DataSource
+name|RDBDataSourceWrapper
 name|dataSource
 decl_stmt|;
 specifier|private
@@ -574,6 +570,15 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|RDBDataSourceWrapper
+name|getDataSource
+parameter_list|()
+block|{
+return|return
+name|dataSource
+return|;
 block|}
 annotation|@
 name|Override
