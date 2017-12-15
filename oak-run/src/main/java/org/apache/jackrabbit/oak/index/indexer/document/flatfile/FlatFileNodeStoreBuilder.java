@@ -406,7 +406,20 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|//TODO Check not null blobStore
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Preferred path elements are {}"
+argument_list|,
+name|Iterables
+operator|.
+name|toString
+argument_list|(
+name|preferredPathElements
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|FlatFileStore
 name|store
 init|=
