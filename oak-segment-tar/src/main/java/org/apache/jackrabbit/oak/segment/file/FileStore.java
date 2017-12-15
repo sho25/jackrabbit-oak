@@ -4230,13 +4230,13 @@ name|SegmentNodeState
 name|forceCompact
 parameter_list|(
 annotation|@
-name|Nullable
+name|Nonnull
 specifier|final
 name|NodeState
 name|base
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 specifier|final
 name|NodeState
 name|onto
