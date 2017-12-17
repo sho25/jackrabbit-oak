@@ -170,6 +170,11 @@ name|String
 name|getTemporaryCheckpoints
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the number of executions.      *      * @return the execution count      */
+name|long
+name|getTotalExecutionCount
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the number of executions as a {@code org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the execution count time series      */
 name|CompositeData
 name|getExecutionCount

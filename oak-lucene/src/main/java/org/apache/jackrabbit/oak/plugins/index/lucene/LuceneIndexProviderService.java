@@ -4450,6 +4450,12 @@ name|activeDeletedBlobCollector
 argument_list|,
 name|whiteboard
 argument_list|,
+name|nodeStore
+argument_list|,
+name|indexPathService
+argument_list|,
+name|asyncIndexInfoService
+argument_list|,
 name|blobStore
 argument_list|,
 name|executorService

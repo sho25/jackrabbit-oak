@@ -43,6 +43,16 @@ name|CompositeData
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
 comment|/**  * MBean for starting and monitoring the progress of  * collection of deleted lucene index blobs.  *  * @see org.apache.jackrabbit.oak.api.jmx.RepositoryManagementMBean  */
 end_comment
@@ -76,6 +86,25 @@ annotation|@
 name|Nonnull
 name|CompositeData
 name|getActiveCollectionStatus
+parameter_list|()
+function_decl|;
+comment|/**      * @return true: if recording deleted blob for active deletion is unsafe; false: otherwise      */
+annotation|@
+name|Nonnull
+name|boolean
+name|isActiveDeletionUnsafe
+parameter_list|()
+function_decl|;
+comment|/**      * Flag current blobs (head state) referred by all indexes so that they won't      * be marked to be collected by active deletion later. It would also set an      * in-memory flag so that new blobs also are flagged to be not marked for deletion      * by active deletion      */
+annotation|@
+name|Nonnull
+name|void
+name|flagActiveDeletionUnsafeForCurrentState
+parameter_list|()
+function_decl|;
+comment|/**      * Resets the in-memory flag so that new blobs are not flagged anymore and hence      * would get marked for active deletion when active deletion is active.      */
+name|void
+name|flagActiveDeletionSafe
 parameter_list|()
 function_decl|;
 block|}
