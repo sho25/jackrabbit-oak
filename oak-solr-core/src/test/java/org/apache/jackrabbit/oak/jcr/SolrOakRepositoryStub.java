@@ -427,7 +427,7 @@ literal|"target"
 operator|+
 name|File
 operator|.
-name|pathSeparator
+name|separatorChar
 operator|+
 literal|"queryjcrtest-"
 operator|+
