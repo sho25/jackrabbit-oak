@@ -1391,6 +1391,13 @@ name|void
 name|refresh
 parameter_list|()
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Marked tracker to refresh upon next cycle"
+argument_list|)
+expr_stmt|;
 name|refresh
 operator|=
 literal|true
