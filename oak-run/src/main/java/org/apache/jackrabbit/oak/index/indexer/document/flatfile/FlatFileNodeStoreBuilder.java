@@ -331,7 +331,7 @@ name|getInteger
 argument_list|(
 name|OAK_INDEXER_MAX_SORT_MEMORY_IN_GB
 argument_list|,
-literal|5
+literal|3
 argument_list|)
 decl_stmt|;
 specifier|public
