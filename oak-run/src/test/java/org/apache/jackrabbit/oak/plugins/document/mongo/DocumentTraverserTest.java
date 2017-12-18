@@ -375,6 +375,11 @@ operator|)
 name|ds
 argument_list|)
 decl_stmt|;
+name|traverser
+operator|.
+name|disableReadOnlyCheck
+argument_list|()
+expr_stmt|;
 name|CloseableIterable
 argument_list|<
 name|NodeDocument
