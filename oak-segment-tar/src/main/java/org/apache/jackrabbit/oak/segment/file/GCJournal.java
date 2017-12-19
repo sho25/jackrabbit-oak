@@ -320,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Persists the repository size and the reclaimed size following a cleanup  * operation in the {@link #GC_JOURNAL gc journal} file with the format:  * 'repoSize, reclaimedSize, timestamp, gc generation, gc full generation (since Oak 1.8),  * number of nodes compacted, root id'.  */
+comment|/**  * Persists the repository size and the reclaimed size following a cleanup  * operation in the {@link #GC_JOURNAL gc journal} file with the format:  * 'repoSize, reclaimedSize, timestamp, gc generation, gc full generation (since Oak 1.8),  * number of nodes compacted, root id (since Oak 1.8)'.  */
 end_comment
 
 begin_class
@@ -1064,13 +1064,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|index
+operator|>=
 name|items
 operator|.
 name|length
-operator|<
-name|index
-operator|-
-literal|1
 condition|)
 block|{
 return|return
