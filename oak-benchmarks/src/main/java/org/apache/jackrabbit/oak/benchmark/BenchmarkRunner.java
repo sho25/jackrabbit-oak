@@ -2000,7 +2000,7 @@ name|defaultsTo
 argument_list|(
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 decl_stmt|;
 name|OptionSpec
