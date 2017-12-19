@@ -143,6 +143,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|commons
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|index
 operator|.
 name|indexer
@@ -790,11 +806,21 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Dumped {} nodestates in json format in {}"
+literal|"Dumped {} nodestates in json format in {} ({})"
 argument_list|,
 name|entryCount
 argument_list|,
 name|sw
+argument_list|,
+name|IOUtils
+operator|.
+name|humanReadableByteCount
+argument_list|(
+name|file
+operator|.
+name|length
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
