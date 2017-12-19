@@ -693,6 +693,12 @@ name|syncInterval
 parameter_list|,
 name|boolean
 name|shareBlobStore
+parameter_list|,
+name|boolean
+name|secure
+parameter_list|,
+name|boolean
+name|oneShotRun
 parameter_list|)
 block|{
 return|return
@@ -718,6 +724,10 @@ argument_list|,
 name|syncInterval
 argument_list|,
 name|shareBlobStore
+argument_list|,
+name|secure
+argument_list|,
+name|oneShotRun
 argument_list|)
 argument_list|)
 return|;
