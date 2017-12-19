@@ -3194,8 +3194,6 @@ argument_list|(
 name|QueryConstants
 operator|.
 name|REP_EXCERPT
-operator|+
-literal|"("
 argument_list|)
 condition|)
 block|{
