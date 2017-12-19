@@ -16,28 +16,10 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|scalability
-operator|.
-name|suites
-operator|.
-name|ScalabilityAbstractSuite
-operator|.
-name|ExecutionContext
-import|;
-end_import
 
 begin_import
 import|import
@@ -61,16 +43,36 @@ name|QueryManager
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|suites
+operator|.
+name|ScalabilityAbstractSuite
+operator|.
+name|ExecutionContext
+import|;
+end_import
+
 begin_comment
-comment|/**  * Simulates keyset pagination over the search {@link org.apache.jackrabbit.oak.scalability.benchmarks.SplitOrderBySearcher}  */
+comment|/**  * Simulates keyset pagination over the search {@link org.apache.jackrabbit.oak.scalability.benchmarks.search.OrderBySearcher}  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|SplitOrderByKeysetPageSearcher
+name|OrderByKeysetPageSearcher
 extends|extends
-name|SplitOrderBySearcher
+name|OrderBySearcher
 block|{
 annotation|@
 name|Override
@@ -87,13 +89,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|searchCommon
-argument_list|(
-name|qm
-argument_list|,
-name|context
-argument_list|)
-expr_stmt|;
 name|processResultsKeysetPagination
 argument_list|(
 name|qm

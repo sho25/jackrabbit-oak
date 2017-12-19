@@ -16,6 +16,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 package|;
 end_package
 

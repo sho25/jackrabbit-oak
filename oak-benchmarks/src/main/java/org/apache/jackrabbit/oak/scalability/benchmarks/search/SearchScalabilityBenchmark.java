@@ -16,6 +16,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 package|;
 end_package
 
@@ -124,6 +126,24 @@ operator|.
 name|query
 operator|.
 name|RowIterator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|benchmarks
+operator|.
+name|ScalabilityBenchmark
 import|;
 end_import
 

@@ -13,11 +13,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|scalability
+operator|.
+name|benchmarks
+operator|.
 name|segment
 operator|.
 name|standby
-operator|.
-name|benchmark
 package|;
 end_package
 

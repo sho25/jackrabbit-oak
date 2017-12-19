@@ -16,6 +16,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 package|;
 end_package
 
@@ -148,13 +150,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Searches on path and orders the results by 2 properties  */
+comment|/**  * Searches on node with a filter property and orders the results by 2 properties   *  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|OrderBySearcher
+name|MultiFilterOrderBySearcher
 extends|extends
 name|PaginationEnabledSearcher
 block|{
@@ -180,8 +182,8 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// /jcr:root/LongevitySearchAssets/12345//element(*, ParentType) order by @viewed
-comment|// descending, @added descending
+comment|// /jcr:root/LongevitySearchAssets/12345//element(*, ParentType)[(@filter = 'true' or not
+comment|// (@filter)] order by @viewed descending, @added descending
 name|StringBuilder
 name|statement
 init|=
@@ -238,6 +240,52 @@ argument_list|(
 literal|")"
 argument_list|)
 expr_stmt|;
+name|statement
+operator|.
+name|append
+argument_list|(
+literal|"[(("
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"@"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|ScalabilityNodeSuite
+operator|.
+name|FILTER_PROP
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|" = 'true'"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|" or"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|" not(@"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|ScalabilityNodeSuite
+operator|.
+name|FILTER_PROP
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"))"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|context
@@ -255,12 +303,7 @@ name|statement
 operator|.
 name|append
 argument_list|(
-literal|"[("
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"@"
+literal|" and @"
 argument_list|)
 operator|.
 name|append
@@ -298,11 +341,16 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"'))]"
+literal|"')"
 argument_list|)
 expr_stmt|;
 block|}
 name|statement
+operator|.
+name|append
+argument_list|(
+literal|")]"
+argument_list|)
 operator|.
 name|append
 argument_list|(

@@ -209,6 +209,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|AggregateNodeSearcher
 import|;
 end_import
@@ -226,6 +228,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|ConcurrentReader
 import|;
@@ -245,6 +249,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|ConcurrentWriter
 import|;
 end_import
@@ -262,6 +268,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|FacetSearcher
 import|;
@@ -281,6 +289,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|FormatSearcher
 import|;
 end_import
@@ -298,6 +308,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|FullTextSearcher
 import|;
@@ -317,6 +329,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|LastModifiedSearcher
 import|;
 end_import
@@ -334,6 +348,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|MultiFilterOrderByKeysetPageSearcher
 import|;
@@ -353,6 +369,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|MultiFilterOrderByOffsetPageSearcher
 import|;
 end_import
@@ -370,6 +388,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|MultiFilterOrderBySearcher
 import|;
@@ -389,6 +409,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|MultiFilterSplitOrderByKeysetPageSearcher
 import|;
 end_import
@@ -406,6 +428,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|MultiFilterSplitOrderByOffsetPageSearcher
 import|;
@@ -425,6 +449,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|MultiFilterSplitOrderBySearcher
 import|;
 end_import
@@ -442,6 +468,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|NodeTypeSearcher
 import|;
@@ -461,6 +489,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|OrderByDate
 import|;
 end_import
@@ -478,6 +508,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|OrderByKeysetPageSearcher
 import|;
@@ -497,6 +529,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|OrderByOffsetPageSearcher
 import|;
 end_import
@@ -514,6 +548,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|OrderBySearcher
 import|;
@@ -533,6 +569,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|SplitOrderByKeysetPageSearcher
 import|;
 end_import
@@ -551,6 +589,8 @@ name|scalability
 operator|.
 name|benchmarks
 operator|.
+name|search
+operator|.
 name|SplitOrderByOffsetPageSearcher
 import|;
 end_import
@@ -568,6 +608,8 @@ operator|.
 name|scalability
 operator|.
 name|benchmarks
+operator|.
+name|search
 operator|.
 name|SplitOrderBySearcher
 import|;
