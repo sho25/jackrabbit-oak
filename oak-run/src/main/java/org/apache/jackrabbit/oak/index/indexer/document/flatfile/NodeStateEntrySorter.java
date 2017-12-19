@@ -610,7 +610,7 @@ comment|//charset
 name|workDir
 argument_list|,
 comment|//temp directory where intermediate files are created
-literal|false
+literal|true
 argument_list|,
 literal|0
 argument_list|,
@@ -688,7 +688,7 @@ name|comparator
 argument_list|,
 name|charset
 argument_list|,
-literal|false
+literal|true
 argument_list|,
 literal|false
 argument_list|,
