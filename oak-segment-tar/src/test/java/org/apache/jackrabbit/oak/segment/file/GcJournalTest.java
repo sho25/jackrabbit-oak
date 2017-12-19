@@ -237,6 +237,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Rule
 import|;
 end_import
@@ -846,6 +856,12 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-7082"
+argument_list|)
+comment|// FIXME OAK-7082
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -936,7 +952,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ddf1d9d3-d391-483d-ac96-5d7b63947d56:2657"
+name|RecordId
+operator|.
+name|NULL
+operator|.
+name|toString10
+argument_list|()
 argument_list|,
 name|entry
 operator|.
@@ -945,6 +966,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-7082"
+argument_list|)
+comment|// FIXME OAK-7082
 annotation|@
 name|Test
 specifier|public
@@ -1084,7 +1111,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ddf1d9d3-d391-483d-ac96-5d7b63947d56:2657"
+name|RecordId
+operator|.
+name|NULL
+operator|.
+name|toString10
+argument_list|()
 argument_list|,
 name|entry
 operator|.
