@@ -1169,7 +1169,7 @@ operator|.
 name|ACTIVE_DELETION
 condition|)
 block|{
-name|get
+name|globalMerge
 argument_list|()
 expr_stmt|;
 name|deleteTracker
