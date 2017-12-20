@@ -3630,9 +3630,23 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"compaction started, gc options={}"
+literal|"compaction started, gc options={}, current generation={}, new generation={}"
 argument_list|,
 name|gcOptions
+argument_list|,
+name|getHead
+argument_list|()
+operator|.
+name|getRecordId
+argument_list|()
+operator|.
+name|getSegment
+argument_list|()
+operator|.
+name|getGcGeneration
+argument_list|()
+argument_list|,
+name|newGeneration
 argument_list|)
 expr_stmt|;
 name|gcListener
