@@ -191,6 +191,18 @@ begin_import
 import|import static
 name|org
 operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|mockito
 operator|.
 name|Matchers
@@ -323,6 +335,14 @@ argument_list|,
 name|CommitInfo
 operator|.
 name|EMPTY
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|fixture
+operator|.
+name|getBlobStore
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
