@@ -1107,6 +1107,13 @@ lambda|->
 name|nodesCount
 argument_list|)
 expr_stmt|;
+name|progressReporter
+operator|.
+name|setEstimatedCount
+argument_list|(
+name|nodesCount
+argument_list|)
+expr_stmt|;
 name|log
 operator|.
 name|info
