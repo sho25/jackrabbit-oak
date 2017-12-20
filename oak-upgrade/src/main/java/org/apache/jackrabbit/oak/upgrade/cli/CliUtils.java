@@ -128,7 +128,7 @@ name|replace
 argument_list|(
 literal|"${command}"
 argument_list|,
-literal|"java -jar oak-run-*-jr2.jar upgrade"
+literal|"java -jar oak-upgrade-*.jar upgrade"
 argument_list|)
 argument_list|)
 expr_stmt|;
