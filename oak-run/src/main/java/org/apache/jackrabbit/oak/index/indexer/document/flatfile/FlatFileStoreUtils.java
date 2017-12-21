@@ -376,6 +376,23 @@ name|sum
 argument_list|()
 return|;
 block|}
+specifier|public
+specifier|static
+name|String
+name|getSortedStoreFileName
+parameter_list|(
+name|boolean
+name|compressionEnabled
+parameter_list|)
+block|{
+return|return
+name|compressionEnabled
+condition|?
+literal|"store-sorted.json.gz"
+else|:
+literal|"store-sorted.json"
+return|;
+block|}
 block|}
 end_class
 
