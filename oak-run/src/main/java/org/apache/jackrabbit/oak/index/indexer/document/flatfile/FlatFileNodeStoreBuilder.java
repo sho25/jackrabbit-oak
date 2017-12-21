@@ -536,6 +536,14 @@ argument_list|(
 name|flatFileStoreDir
 argument_list|)
 decl_stmt|;
+name|File
+name|result
+init|=
+name|strategy
+operator|.
+name|createSortedStoreFile
+argument_list|()
+decl_stmt|;
 name|entryCount
 operator|=
 name|strategy
@@ -544,10 +552,7 @@ name|getEntryCount
 argument_list|()
 expr_stmt|;
 return|return
-name|strategy
-operator|.
-name|createSortedStoreFile
-argument_list|()
+name|result
 return|;
 block|}
 block|}
