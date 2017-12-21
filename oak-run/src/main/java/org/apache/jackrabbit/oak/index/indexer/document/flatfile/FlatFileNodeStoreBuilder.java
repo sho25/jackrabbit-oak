@@ -174,7 +174,7 @@ specifier|final
 name|String
 name|OAK_INDEXER_TRAVERSE_WITH_SORT
 init|=
-literal|"oak.indexer.traverWithSortStrategy"
+literal|"oak.indexer.traverseWithSortStrategy"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -272,7 +272,6 @@ literal|"true"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//TODO Switch the default
 specifier|private
 name|boolean
 name|useTraverseWithSort
@@ -287,7 +286,7 @@ name|getProperty
 argument_list|(
 name|OAK_INDEXER_TRAVERSE_WITH_SORT
 argument_list|,
-literal|"false"
+literal|"true"
 argument_list|)
 argument_list|)
 decl_stmt|;
