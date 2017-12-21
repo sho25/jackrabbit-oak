@@ -165,22 +165,6 @@ name|checkState
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|StandardSystemProperty
-operator|.
-name|LINE_SEPARATOR
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
