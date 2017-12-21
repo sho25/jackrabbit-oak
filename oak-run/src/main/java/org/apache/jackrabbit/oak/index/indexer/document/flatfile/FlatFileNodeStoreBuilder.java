@@ -160,7 +160,7 @@ specifier|public
 class|class
 name|FlatFileNodeStoreBuilder
 block|{
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -238,9 +238,16 @@ name|useZip
 init|=
 name|Boolean
 operator|.
-name|getBoolean
+name|valueOf
+argument_list|(
+name|System
+operator|.
+name|getProperty
 argument_list|(
 name|OAK_INDEXER_USE_ZIP
+argument_list|,
+literal|"true"
+argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|public
@@ -354,7 +361,7 @@ argument_list|(
 name|preferredPathElements
 argument_list|)
 argument_list|,
-literal|false
+name|useZip
 argument_list|)
 decl_stmt|;
 if|if
