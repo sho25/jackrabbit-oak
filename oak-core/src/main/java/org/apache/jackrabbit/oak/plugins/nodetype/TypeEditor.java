@@ -2874,7 +2874,7 @@ literal|25
 argument_list|,
 literal|"Unexpected child node "
 operator|+
-name|names
+name|name
 operator|+
 literal|" found in a new node"
 argument_list|)
