@@ -1440,6 +1440,34 @@ name|minMemory
 operator|*
 name|ONE_GB
 decl_stmt|;
+if|if
+condition|(
+name|warningThreshold
+operator|>
+name|maxMemory
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Configured minimum memory {} GB more than available memory ({})."
+operator|+
+literal|"Overriding configuration accordingly."
+argument_list|,
+name|minMemory
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|maxMemory
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|warningThreshold
+operator|=
+name|maxMemory
+expr_stmt|;
+block|}
 name|log
 operator|.
 name|info
