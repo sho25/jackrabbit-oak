@@ -436,8 +436,10 @@ specifier|public
 name|DocumentStore
 name|createDocumentStore
 parameter_list|(
-name|int
-name|clusterId
+name|DocumentMK
+operator|.
+name|Builder
+name|builder
 parameter_list|)
 block|{
 return|return
