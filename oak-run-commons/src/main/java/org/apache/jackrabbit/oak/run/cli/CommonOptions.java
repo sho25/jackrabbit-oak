@@ -98,7 +98,7 @@ specifier|final
 name|String
 name|DEFAULT_CONNECTION_STRING
 init|=
-literal|"{<path-to-repository> |<mongodb-uri>} |<rdb-uri>}"
+literal|"{<path-to-repository> |<mongodb-uri>} |<rdb-uri> | memory}"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -332,6 +332,21 @@ argument_list|()
 operator|||
 name|isRDB
 argument_list|()
+return|;
+block|}
+specifier|public
+name|boolean
+name|isMemory
+parameter_list|()
+block|{
+return|return
+name|getStoreArg
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"memory"
+argument_list|)
 return|;
 block|}
 specifier|public
