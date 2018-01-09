@@ -131,6 +131,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -539,6 +549,156 @@ operator|.
 name|parse
 argument_list|(
 literal|"SELECT * FROM [nt:base] WHERE COALESCE([a], [b], [c])='a'"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-7131"
+argument_list|)
+annotation|@
+name|Test
+specifier|public
+name|void
+name|orderingWithUnionOfNodetype
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XPathToSQL2Converter
+name|c
+init|=
+operator|new
+name|XPathToSQL2Converter
+argument_list|()
+decl_stmt|;
+name|String
+name|xpath
+decl_stmt|;
+name|xpath
+operator|=
+literal|"//(element(*, type1) | element(*, type2)) order by @foo"
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Converted xpath "
+operator|+
+name|xpath
+operator|+
+literal|"doesn't end with 'order by [foo]'"
+argument_list|,
+name|c
+operator|.
+name|convert
+argument_list|(
+name|xpath
+argument_list|)
+operator|.
+name|endsWith
+argument_list|(
+literal|"order by [foo]"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|xpath
+operator|=
+literal|"//(element(*, type1) | element(*, type2) | element(*, type3)) order by @foo"
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Converted xpath "
+operator|+
+name|xpath
+operator|+
+literal|"doesn't end with 'order by [foo]'"
+argument_list|,
+name|c
+operator|.
+name|convert
+argument_list|(
+name|xpath
+argument_list|)
+operator|.
+name|endsWith
+argument_list|(
+literal|"order by [foo]"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|xpath
+operator|=
+literal|"//(element(*, type1) | element(*, type2) | element(*, type3) | element(*, type4)) order by @foo"
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Converted xpath "
+operator|+
+name|xpath
+operator|+
+literal|"doesn't end with 'order by [foo]'"
+argument_list|,
+name|c
+operator|.
+name|convert
+argument_list|(
+name|xpath
+argument_list|)
+operator|.
+name|endsWith
+argument_list|(
+literal|"order by [foo]"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|xpath
+operator|=
+literal|"//(element(*, type1) | element(*, type2))[@a='b'] order by @foo"
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Converted xpath "
+operator|+
+name|xpath
+operator|+
+literal|"doesn't end with 'order by [foo]'"
+argument_list|,
+name|c
+operator|.
+name|convert
+argument_list|(
+name|xpath
+argument_list|)
+operator|.
+name|endsWith
+argument_list|(
+literal|"order by [foo]"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|xpath
+operator|=
+literal|"//(element(*, type1) | element(*, type2))[@a='b' or @c='d'] order by @foo"
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Converted xpath "
+operator|+
+name|xpath
+operator|+
+literal|"doesn't end with 'order by [foo]'"
+argument_list|,
+name|c
+operator|.
+name|convert
+argument_list|(
+name|xpath
+argument_list|)
+operator|.
+name|endsWith
+argument_list|(
+literal|"order by [foo]"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
