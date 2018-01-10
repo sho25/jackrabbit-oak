@@ -4294,14 +4294,15 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Creates a new merge commit. The caller must acknowledge the commit either with      * {@link #done(Commit, boolean, CommitInfo)} or {@link #canceled(Commit)},      * depending on the result of the commit.      *      * @param base the base revision for the commit or<code>null</code> if the      *             commit should use the current head revision as base.      * @param numBranchCommits the number of branch commits to merge.      * @return a new merge commit.      */
+comment|/**      * Creates a new merge commit. The caller must acknowledge the commit either with      * {@link #done(Commit, boolean, CommitInfo)} or {@link #canceled(Commit)},      * depending on the result of the commit.      *      * @param base the base revision for the commit.      * @param numBranchCommits the number of branch commits to merge.      * @return a new merge commit.      */
 annotation|@
 name|Nonnull
+specifier|private
 name|MergeCommit
 name|newMergeCommit
 parameter_list|(
 annotation|@
-name|Nullable
+name|Nonnull
 name|RevisionVector
 name|base
 parameter_list|,
@@ -4309,19 +4310,11 @@ name|int
 name|numBranchCommits
 parameter_list|)
 block|{
-if|if
-condition|(
+name|checkNotNull
+argument_list|(
 name|base
-operator|==
-literal|null
-condition|)
-block|{
-name|base
-operator|=
-name|getHeadRevision
-argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
 name|backgroundOperationLock
 operator|.
 name|readLock
