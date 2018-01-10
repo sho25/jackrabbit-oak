@@ -106,6 +106,24 @@ name|int
 name|getCompactionInterval
 parameter_list|()
 function_decl|;
+comment|/**      * Set the full compaction cycle      * @param n  every n-th compaction is a full compaction.      */
+name|void
+name|setFullCompactionCycle
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+function_decl|;
+comment|/**      * @return  the full compaction cycle      */
+name|int
+name|getFullCompactionCycle
+parameter_list|()
+function_decl|;
+comment|/**      * @return  the number of successfully completed compaction runs.      */
+name|int
+name|getCompactionCount
+parameter_list|()
+function_decl|;
 comment|/**      * @return  Time stamp from when compaction last ran.      */
 name|String
 name|getLastCompaction
