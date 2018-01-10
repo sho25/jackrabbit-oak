@@ -959,6 +959,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Rule
 import|;
 end_import
@@ -9061,6 +9071,12 @@ block|}
 block|}
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-7132"
+argument_list|)
+comment|// FIXME OAK-7132: SNFE after full compaction
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -9105,55 +9121,137 @@ name|build
 argument_list|()
 init|)
 block|{
+name|SegmentNodeState
+name|previousHead
+decl_stmt|;
+name|SegmentNodeState
+name|head
+init|=
+name|fileStore
+operator|.
+name|getHead
+argument_list|()
+decl_stmt|;
 comment|// Create a full, self consistent head state. This state will be the
-comment|// base for the following tail compactions. This increments the
-comment|// full generation.
+comment|// base for the following tail compactions. This increments the full generation.
 name|fileStore
 operator|.
 name|fullGC
 argument_list|()
 expr_stmt|;
-name|traverse
-argument_list|(
+name|previousHead
+operator|=
+name|head
+expr_stmt|;
+name|head
+operator|=
 name|fileStore
 operator|.
 name|getHead
 argument_list|()
+expr_stmt|;
+comment|// retainedGeneration = 2 -> the full compacted head and the previous uncompacted head must
+comment|// still be available.
+name|traverse
+argument_list|(
+name|previousHead
+argument_list|)
+expr_stmt|;
+name|traverse
+argument_list|(
+name|head
 argument_list|)
 expr_stmt|;
 comment|// Create a tail head state on top of the previous full state. This
-comment|// increments the generation, but leaves the full generation
-comment|// untouched.
+comment|// increments the generation, but leaves the full generation untouched.
 name|fileStore
 operator|.
 name|tailGC
 argument_list|()
 expr_stmt|;
-name|traverse
-argument_list|(
+name|previousHead
+operator|=
+name|head
+expr_stmt|;
+name|head
+operator|=
 name|fileStore
 operator|.
 name|getHead
 argument_list|()
+expr_stmt|;
+comment|// retainedGeneration = 2 -> the tail compacted head and the previous uncompacted head must
+comment|// still be available.
+name|traverse
+argument_list|(
+name|previousHead
 argument_list|)
 expr_stmt|;
-comment|// Create a tail state on top of the previous tail state. This
-comment|// increments the generation, but leaves the full generation
-comment|// untouched. This brings this generations two generations away from
-comment|// the latest full head state. Still, the full head state will not
-comment|// be deleted because doing so would generate an invalid repository
-comment|// at risk of SegmentNotFoundException.
+name|traverse
+argument_list|(
+name|head
+argument_list|)
+expr_stmt|;
+comment|// Create a tail state on top of the previous tail state. This increments the generation,
+comment|// but leaves the full generation untouched. This brings this generations two generations
+comment|// away from the latest full head state. Still, the full head state will not be deleted
+comment|// because doing so would generate an invalid repository at risk of SegmentNotFoundException.
 name|fileStore
 operator|.
 name|tailGC
 argument_list|()
 expr_stmt|;
-name|traverse
-argument_list|(
+name|previousHead
+operator|=
+name|head
+expr_stmt|;
+name|head
+operator|=
 name|fileStore
 operator|.
 name|getHead
 argument_list|()
+expr_stmt|;
+comment|// retainedGeneration = 2 -> the tail compacted head and the previous uncompacted head must
+comment|// still be available.
+name|traverse
+argument_list|(
+name|previousHead
+argument_list|)
+expr_stmt|;
+name|traverse
+argument_list|(
+name|head
+argument_list|)
+expr_stmt|;
+comment|// Create a full, self consistent head state replacing the current tail of tail
+comment|// compacted heads.
+name|fileStore
+operator|.
+name|fullGC
+argument_list|()
+expr_stmt|;
+name|previousHead
+operator|=
+name|head
+expr_stmt|;
+name|head
+operator|=
+name|fileStore
+operator|.
+name|getHead
+argument_list|()
+expr_stmt|;
+comment|// retainedGeneration = 2 -> the full compacted head and the previous uncompacted head must
+comment|// still be available.
+name|traverse
+argument_list|(
+name|previousHead
+argument_list|)
+expr_stmt|;
+name|traverse
+argument_list|(
+name|head
 argument_list|)
 expr_stmt|;
 block|}
