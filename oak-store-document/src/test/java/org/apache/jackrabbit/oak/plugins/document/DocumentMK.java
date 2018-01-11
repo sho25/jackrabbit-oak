@@ -331,26 +331,6 @@ name|document
 operator|.
 name|mongo
 operator|.
-name|MongoDocumentNodeStoreBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|mongo
-operator|.
 name|MongoDocumentNodeStoreBuilderBase
 import|;
 end_import
@@ -392,26 +372,6 @@ operator|.
 name|rdb
 operator|.
 name|RDBBlobStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|rdb
-operator|.
-name|RDBDocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -532,12 +492,10 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JSON-based wrapper around the NodeStore implementation that stores the  * data in a {@link DocumentStore}. It is used for testing purpose only.  * @deprecated Use {@link DocumentNodeStore} instead.  */
+comment|/**  * A JSON-based wrapper around the NodeStore implementation that stores the  * data in a {@link DocumentStore}. It is used for testing purpose only.  */
 end_comment
 
 begin_class
-annotation|@
-name|Deprecated
 specifier|public
 class|class
 name|DocumentMK
@@ -701,42 +659,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-block|}
-specifier|public
-name|String
-name|checkpoint
-parameter_list|(
-name|long
-name|lifetime
-parameter_list|)
-throws|throws
-name|DocumentStoreException
-block|{
-try|try
-block|{
-return|return
-name|nodeStore
-operator|.
-name|checkpoint
-argument_list|(
-name|lifetime
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|DocumentStoreException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|DocumentStoreException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 specifier|public
 name|String
@@ -2987,9 +2909,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//----------------------------< Builder>-----------------------------------
-comment|/**      * A builder for a DocumentMK instance.      * @deprecated Use {@link DocumentNodeStoreBuilder} instead or one of the      *  backend implementation specific variants {@link MongoDocumentNodeStoreBuilder}      *  or {@link RDBDocumentNodeStoreBuilder}.      *      */
-annotation|@
-name|Deprecated
+comment|/**      * A builder for a DocumentMK instance.      */
 specifier|public
 specifier|static
 class|class
