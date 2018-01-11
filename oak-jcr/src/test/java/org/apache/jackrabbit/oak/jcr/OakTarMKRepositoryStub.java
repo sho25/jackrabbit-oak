@@ -134,7 +134,7 @@ specifier|public
 class|class
 name|OakTarMKRepositoryStub
 extends|extends
-name|OakRepositoryStub
+name|BaseRepositoryStub
 block|{
 specifier|private
 specifier|final

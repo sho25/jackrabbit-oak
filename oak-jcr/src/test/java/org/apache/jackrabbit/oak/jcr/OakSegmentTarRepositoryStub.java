@@ -132,7 +132,7 @@ specifier|public
 class|class
 name|OakSegmentTarRepositoryStub
 extends|extends
-name|OakRepositoryStub
+name|BaseRepositoryStub
 block|{
 specifier|private
 specifier|final

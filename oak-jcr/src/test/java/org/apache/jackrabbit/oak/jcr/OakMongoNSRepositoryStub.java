@@ -130,7 +130,7 @@ specifier|public
 class|class
 name|OakMongoNSRepositoryStub
 extends|extends
-name|OakRepositoryStub
+name|BaseRepositoryStub
 block|{
 static|static
 block|{

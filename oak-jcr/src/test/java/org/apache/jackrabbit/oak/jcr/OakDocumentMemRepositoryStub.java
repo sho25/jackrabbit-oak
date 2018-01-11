@@ -106,7 +106,7 @@ specifier|public
 class|class
 name|OakDocumentMemRepositoryStub
 extends|extends
-name|OakRepositoryStub
+name|BaseRepositoryStub
 block|{
 specifier|private
 specifier|final

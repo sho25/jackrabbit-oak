@@ -172,7 +172,7 @@ specifier|public
 class|class
 name|OakDocumentRDBRepositoryStub
 extends|extends
-name|OakRepositoryStub
+name|BaseRepositoryStub
 block|{
 specifier|protected
 specifier|static
