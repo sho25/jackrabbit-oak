@@ -219,7 +219,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|index
 parameter_list|(
 name|NodeStateEntry
@@ -230,6 +230,11 @@ name|IOException
 throws|,
 name|CommitFailedException
 block|{
+name|boolean
+name|result
+init|=
+literal|false
+decl_stmt|;
 for|for
 control|(
 name|NodeStateIndexer
@@ -238,6 +243,8 @@ range|:
 name|indexers
 control|)
 block|{
+name|result
+operator||=
 name|indexer
 operator|.
 name|index
@@ -246,6 +253,9 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|result
+return|;
 block|}
 annotation|@
 name|Override

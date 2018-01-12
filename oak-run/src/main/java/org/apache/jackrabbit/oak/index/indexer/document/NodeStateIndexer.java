@@ -106,7 +106,7 @@ name|NodeDocument
 name|doc
 parameter_list|)
 function_decl|;
-name|void
+name|boolean
 name|index
 parameter_list|(
 name|NodeStateEntry

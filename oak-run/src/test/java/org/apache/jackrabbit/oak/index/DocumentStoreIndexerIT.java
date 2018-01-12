@@ -2026,7 +2026,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|index
 parameter_list|(
 name|NodeStateEntry
@@ -2060,7 +2060,13 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 annotation|@
 name|Override
