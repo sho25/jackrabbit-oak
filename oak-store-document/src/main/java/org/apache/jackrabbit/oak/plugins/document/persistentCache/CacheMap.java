@@ -535,6 +535,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 catch|catch
 parameter_list|(
