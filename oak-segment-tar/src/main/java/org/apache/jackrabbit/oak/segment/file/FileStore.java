@@ -213,6 +213,50 @@ name|segment
 operator|.
 name|compaction
 operator|.
+name|SegmentGCOptions
+operator|.
+name|GCType
+operator|.
+name|FULL
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|compaction
+operator|.
+name|SegmentGCOptions
+operator|.
+name|GCType
+operator|.
+name|TAIL
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|compaction
+operator|.
 name|SegmentGCStatus
 operator|.
 name|CLEANUP
@@ -336,6 +380,26 @@ operator|.
 name|PrintableBytes
 operator|.
 name|newPrintableBytes
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|Reclaimers
+operator|.
+name|newOldReclaimer
 import|;
 end_import
 
@@ -822,6 +886,26 @@ operator|.
 name|compaction
 operator|.
 name|SegmentGCOptions
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|compaction
+operator|.
+name|SegmentGCOptions
+operator|.
+name|GCType
 import|;
 end_import
 
@@ -2188,24 +2272,7 @@ argument_list|(
 name|garbageCollector
 operator|.
 name|cleanup
-argument_list|(
-name|CompactionResult
-operator|.
-name|skipped
-argument_list|(
-name|getGcGeneration
 argument_list|()
-argument_list|,
-name|garbageCollector
-operator|.
-name|gcOptions
-argument_list|,
-name|revisions
-operator|.
-name|getHead
-argument_list|()
-argument_list|)
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2882,6 +2949,15 @@ specifier|private
 name|long
 name|lastSuccessfullGC
 decl_stmt|;
+comment|/**          * Last compaction type used to determine which predicate to use during          * {@link #cleanup() cleanup}. Defaults to {@link GCType#FULL FULL}, which is          * conservative and safe in case it does not match the real type (e.g. because          * of a system restart).          */
+annotation|@
+name|Nonnull
+specifier|private
+name|GCType
+name|lastCompactionType
+init|=
+name|FULL
+decl_stmt|;
 name|GarbageCollector
 parameter_list|(
 annotation|@
@@ -3397,6 +3473,11 @@ name|compactionSucceeded
 parameter_list|(
 annotation|@
 name|Nonnull
+name|GCType
+name|gcType
+parameter_list|,
+annotation|@
+name|Nonnull
 name|GCGeneration
 name|generation
 parameter_list|,
@@ -3418,6 +3499,8 @@ name|CompactionResult
 operator|.
 name|succeeded
 argument_list|(
+name|gcType
+argument_list|,
 name|generation
 argument_list|,
 name|gcOptions
@@ -3533,6 +3616,8 @@ expr_stmt|;
 return|return
 name|compact
 argument_list|(
+name|FULL
+argument_list|,
 name|EMPTY_NODE
 argument_list|,
 name|getGcGeneration
@@ -3571,6 +3656,8 @@ block|{
 return|return
 name|compact
 argument_list|(
+name|TAIL
+argument_list|,
 name|base
 argument_list|,
 name|getGcGeneration
@@ -3591,6 +3678,8 @@ expr_stmt|;
 return|return
 name|compact
 argument_list|(
+name|FULL
+argument_list|,
 name|EMPTY_NODE
 argument_list|,
 name|getGcGeneration
@@ -3605,6 +3694,11 @@ specifier|private
 name|CompactionResult
 name|compact
 parameter_list|(
+annotation|@
+name|Nonnull
+name|GCType
+name|gcType
+parameter_list|,
 annotation|@
 name|Nonnull
 name|NodeState
@@ -4136,6 +4230,11 @@ condition|(
 name|success
 condition|)
 block|{
+comment|// Update type of the last compaction before calling methods that could throw an exception.
+name|lastCompactionType
+operator|=
+name|gcType
+expr_stmt|;
 name|writer
 operator|.
 name|flush
@@ -4158,6 +4257,8 @@ expr_stmt|;
 return|return
 name|compactionSucceeded
 argument_list|(
+name|gcType
+argument_list|,
 name|newGeneration
 argument_list|,
 name|compacted
@@ -4586,6 +4687,43 @@ block|}
 block|}
 return|;
 block|}
+comment|/**          * Cleanup segments whose generation matches the reclaim predicate determined by          * the {@link #lastCompactionType last successful compaction}.          * @return list of files to be removed          * @throws IOException          */
+annotation|@
+name|Nonnull
+specifier|synchronized
+name|List
+argument_list|<
+name|File
+argument_list|>
+name|cleanup
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|cleanup
+argument_list|(
+name|CompactionResult
+operator|.
+name|skipped
+argument_list|(
+name|lastCompactionType
+argument_list|,
+name|getGcGeneration
+argument_list|()
+argument_list|,
+name|garbageCollector
+operator|.
+name|gcOptions
+argument_list|,
+name|revisions
+operator|.
+name|getHead
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/**          * Cleanup segments whose generation matches the {@link CompactionResult#reclaimer()} predicate.          * @return list of files to be removed          * @throws IOException          */
 annotation|@
 name|Nonnull
@@ -4616,7 +4754,12 @@ name|gcListener
 operator|.
 name|info
 argument_list|(
-literal|"cleanup started."
+literal|"cleanup started using reclaimer {}"
+argument_list|,
+name|compactionResult
+operator|.
+name|reclaimer
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gcListener
@@ -4851,10 +4994,10 @@ name|collectBlobReferences
 argument_list|(
 name|collector
 argument_list|,
-name|Reclaimers
-operator|.
 name|newOldReclaimer
 argument_list|(
+name|lastCompactionType
+argument_list|,
 name|getGcGeneration
 argument_list|()
 argument_list|,
@@ -5094,7 +5237,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * Instances of this class represent the result from a compaction. Either      * {@link #succeeded(GCGeneration, SegmentGCOptions, RecordId) succeeded},      * {@link #aborted(GCGeneration, GCGeneration) aborted} or {@link      * #skipped(GCGeneration, SegmentGCOptions, RecordId)}  skipped}.      */
+comment|/**      * Instances of this class represent the result from a compaction. Either      * {@link #succeeded(GCType, GCGeneration, SegmentGCOptions, RecordId) succeeded},      * {@link #aborted(GCGeneration, GCGeneration) aborted} or {@link      * #skipped(GCType, GCGeneration, SegmentGCOptions, RecordId)}  skipped}.      */
 specifier|private
 specifier|abstract
 specifier|static
@@ -5124,11 +5267,16 @@ operator|=
 name|currentGeneration
 expr_stmt|;
 block|}
-comment|/**          * Result of a succeeded compaction.          * @param newGeneration     the generation successfully created by compaction          * @param gcOptions         the current GC options used by compaction          * @param compactedRootId   the record id of the root created by compaction          */
+comment|/**          * Result of a succeeded compaction.          * @param gcType            the type of the succeeded compaction operation          * @param newGeneration     the generation successfully created by compaction          * @param gcOptions         the current GC options used by compaction          * @param compactedRootId   the record id of the root created by compaction          */
 specifier|static
 name|CompactionResult
 name|succeeded
 parameter_list|(
+annotation|@
+name|Nonnull
+name|GCType
+name|gcType
+parameter_list|,
 annotation|@
 name|Nonnull
 name|GCGeneration
@@ -5164,10 +5312,10 @@ name|reclaimer
 parameter_list|()
 block|{
 return|return
-name|Reclaimers
-operator|.
 name|newOldReclaimer
 argument_list|(
+name|gcType
+argument_list|,
 name|newGeneration
 argument_list|,
 name|gcOptions
@@ -5255,11 +5403,16 @@ block|}
 block|}
 return|;
 block|}
-comment|/**          * Result serving as a placeholder for a compaction that was skipped.          * @param currentGeneration  the current generation of the store          * @param gcOptions         the current GC options used by compaction          */
+comment|/**          * Result serving as a placeholder for a compaction that was skipped.          * @param lastGCType         type of the most recent gc operation. {@link GCType#FULL} if none.          * @param currentGeneration  the current generation of the store          * @param gcOptions          the current GC options used by compaction          */
 specifier|static
 name|CompactionResult
 name|skipped
 parameter_list|(
+annotation|@
+name|Nonnull
+name|GCType
+name|lastGCType
+parameter_list|,
 annotation|@
 name|Nonnull
 name|GCGeneration
@@ -5299,6 +5452,8 @@ name|Reclaimers
 operator|.
 name|newOldReclaimer
 argument_list|(
+name|lastGCType
+argument_list|,
 name|currentGeneration
 argument_list|,
 name|gcOptions
@@ -5340,7 +5495,7 @@ argument_list|>
 name|reclaimer
 parameter_list|()
 function_decl|;
-comment|/**          * @return  {@code true} for {@link #succeeded(GCGeneration, SegmentGCOptions, RecordId) succeeded}          *          and {@link #skipped(GCGeneration, SegmentGCOptions, RecordId) skipped}, {@code false} otherwise.          */
+comment|/**          * @return  {@code true} for {@link #succeeded(GCType, GCGeneration, SegmentGCOptions, RecordId) succeeded}          *          and {@link #skipped(GCType, GCGeneration, SegmentGCOptions, RecordId) skipped}, {@code false} otherwise.          */
 specifier|abstract
 name|boolean
 name|isSuccess

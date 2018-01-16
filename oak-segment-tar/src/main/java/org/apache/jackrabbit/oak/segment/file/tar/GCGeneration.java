@@ -254,6 +254,7 @@ literal|false
 argument_list|)
 return|;
 block|}
+comment|/**      * Compare this generation with {@code gcGeneration}      * @param gcGeneration  the generation this generation is compared against.      * @return  Number of generations between this generation and {@code gcGeneration}      */
 specifier|public
 name|int
 name|compareWith
@@ -273,6 +274,28 @@ name|gcGeneration
 argument_list|)
 operator|.
 name|generation
+return|;
+block|}
+comment|/**      * Compare this full generation the full generation of {@code gcGeneration}      * @param gcGeneration  the generation this generation is compared against.      * @return  Number of generations between the full generations of this generation      *          and {@code gcGeneration}      */
+specifier|public
+name|int
+name|compareFullGenerationWith
+parameter_list|(
+annotation|@
+name|Nonnull
+name|GCGeneration
+name|gcGeneration
+parameter_list|)
+block|{
+return|return
+name|fullGeneration
+operator|-
+name|checkNotNull
+argument_list|(
+name|gcGeneration
+argument_list|)
+operator|.
+name|fullGeneration
 return|;
 block|}
 annotation|@
