@@ -20,22 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -362,7 +346,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Number of segment generations to retain.      * @see #setRetainedGenerations(int)      * @return  number of gc generations.      */
+comment|/**      * Number of segment generations to retain.      * @return  number of gc generations.      */
 specifier|public
 name|int
 name|getRetainedGenerations
@@ -381,17 +365,6 @@ name|int
 name|retainedGenerations
 parameter_list|)
 block|{
-name|checkArgument
-argument_list|(
-name|retainedGenerations
-operator|>
-literal|1
-argument_list|,
-literal|"RetainedGenerations must not be below 2. Got %s"
-argument_list|,
-name|retainedGenerations
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|retainedGenerations
