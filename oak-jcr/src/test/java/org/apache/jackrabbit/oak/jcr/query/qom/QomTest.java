@@ -581,7 +581,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|AbstractRepositoryTest
+name|ReadOnlyRepositoryTestBase
 import|;
 end_import
 
@@ -614,7 +614,7 @@ specifier|public
 class|class
 name|QomTest
 extends|extends
-name|AbstractRepositoryTest
+name|ReadOnlyRepositoryTestBase
 block|{
 specifier|private
 name|ValueFactory
