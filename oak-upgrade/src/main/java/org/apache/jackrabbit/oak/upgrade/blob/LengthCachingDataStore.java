@@ -1772,10 +1772,12 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|itr
+name|LineIterator
 operator|.
-name|close
-argument_list|()
+name|closeQuietly
+argument_list|(
+name|itr
+argument_list|)
 expr_stmt|;
 block|}
 return|return
