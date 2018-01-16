@@ -3030,14 +3030,6 @@ name|getForceCompactionTimeout
 argument_list|()
 argument_list|)
 operator|.
-name|setRetainedGenerations
-argument_list|(
-name|configuration
-operator|.
-name|getRetainedGenerations
-argument_list|()
-argument_list|)
-operator|.
 name|setGcSizeDeltaEstimation
 argument_list|(
 name|configuration
@@ -3070,6 +3062,22 @@ name|getGCProcessLog
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|configuration
+operator|.
+name|isStandbyInstance
+argument_list|()
+condition|)
+block|{
+name|gcOptions
+operator|.
+name|setRetainedGenerations
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Build the FileStore
 name|FileStoreBuilder
 name|builder
