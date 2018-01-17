@@ -121,8 +121,6 @@ begin_class
 specifier|public
 class|class
 name|History
-implements|implements
-name|Runnable
 block|{
 comment|/**      * Create a builder for the {@link History} command.      *      * @return an instance of {@link Builder}.      */
 specifier|public
@@ -257,9 +255,9 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Create an executable version of the {@link History} command.          *          * @return an instance of {@link Runnable}.          */
+comment|/**          * Create an executable version of the {@link History} command.          *          * @return an instance of {@link History}.          */
 specifier|public
-name|Runnable
+name|History
 name|build
 parameter_list|()
 block|{
@@ -347,10 +345,8 @@ operator|.
 name|depth
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
-name|void
+name|int
 name|run
 parameter_list|()
 block|{
@@ -372,6 +368,9 @@ name|node
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -382,8 +381,15 @@ block|{
 name|e
 operator|.
 name|printStackTrace
-argument_list|()
+argument_list|(
+name|System
+operator|.
+name|err
+argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 block|}
 specifier|private
