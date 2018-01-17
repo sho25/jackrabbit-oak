@@ -3531,23 +3531,93 @@ name|String
 name|sql
 parameter_list|)
 block|{
-comment|// the "(?s)" is enabling the "dot all" flag
-comment|// keep /* xpath ... */ to ensure the xpath comment
-comment|// is really there (and at the right position)
+name|int
+name|start
+init|=
+literal|0
+decl_stmt|;
+while|while
+condition|(
+literal|true
+condition|)
+block|{
+name|int
+name|index
+init|=
+name|sql
+operator|.
+name|indexOf
+argument_list|(
+literal|"/* "
+argument_list|,
+name|start
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|index
+operator|<
+literal|0
+condition|)
+block|{
+break|break;
+block|}
+name|int
+name|end
+init|=
+name|sql
+operator|.
+name|indexOf
+argument_list|(
+literal|" */"
+argument_list|,
+name|index
+argument_list|)
+decl_stmt|;
 name|sql
 operator|=
 name|sql
 operator|.
-name|replaceAll
+name|substring
 argument_list|(
-literal|"(?s) /\\* .* \\*/"
+literal|0
 argument_list|,
-literal|"\n  /* xpath ... */"
+name|index
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+operator|+
+literal|"\n  /* xpath ... "
+operator|+
+name|sql
+operator|.
+name|substring
+argument_list|(
+name|end
 argument_list|)
 operator|.
 name|trim
 argument_list|()
 expr_stmt|;
+name|sql
+operator|=
+name|sql
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+name|start
+operator|=
+name|index
+operator|+
+literal|7
+expr_stmt|;
+block|}
+comment|// the "(?s)" is enabling the "dot all" flag
+comment|// keep /* xpath ... */ to ensure the xpath comment
+comment|// is really there (and at the right position)
+comment|//        sql = sql.replaceAll("(?s) /\\* [^\\*]* \\*/", "\n  /* xpath ... */").trim();
 name|sql
 operator|=
 name|sql
