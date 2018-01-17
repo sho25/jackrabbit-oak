@@ -399,8 +399,6 @@ begin_class
 specifier|public
 class|class
 name|DebugTars
-implements|implements
-name|Runnable
 block|{
 comment|/**      * Create a builder for the {@link DebugTars} command.      *      * @return an instance of {@link Builder}.      */
 specifier|public
@@ -514,7 +512,7 @@ return|;
 block|}
 comment|/**          * Create an executable version of the {@link DebugTars} command.          *          * @return an instance of {@link Runnable}.          */
 specifier|public
-name|Runnable
+name|DebugTars
 name|build
 parameter_list|()
 block|{
@@ -596,10 +594,8 @@ operator|.
 name|maxCharDisplay
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
-name|void
+name|int
 name|run
 parameter_list|()
 block|{
@@ -619,6 +615,9 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -629,8 +628,15 @@ block|{
 name|e
 operator|.
 name|printStackTrace
-argument_list|()
+argument_list|(
+name|System
+operator|.
+name|err
+argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 block|}
 specifier|private
@@ -956,7 +962,7 @@ parameter_list|)
 block|{
 name|System
 operator|.
-name|out
+name|err
 operator|.
 name|println
 argument_list|(
@@ -966,7 +972,11 @@ expr_stmt|;
 name|e
 operator|.
 name|printStackTrace
-argument_list|()
+argument_list|(
+name|System
+operator|.
+name|err
+argument_list|)
 expr_stmt|;
 block|}
 block|}

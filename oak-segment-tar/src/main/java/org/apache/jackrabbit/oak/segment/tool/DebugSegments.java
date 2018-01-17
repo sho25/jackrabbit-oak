@@ -295,8 +295,6 @@ begin_class
 specifier|public
 class|class
 name|DebugSegments
-implements|implements
-name|Runnable
 block|{
 specifier|private
 specifier|static
@@ -402,7 +400,7 @@ return|;
 block|}
 comment|/**          * Create an executable version of the {@link DebugSegments} command.          *          * @return an instance of {@link Runnable}.          */
 specifier|public
-name|Runnable
+name|DebugSegments
 name|build
 parameter_list|()
 block|{
@@ -471,10 +469,8 @@ name|segments
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
-name|void
+name|int
 name|run
 parameter_list|()
 block|{
@@ -494,6 +490,9 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -504,8 +503,15 @@ block|{
 name|e
 operator|.
 name|printStackTrace
-argument_list|()
+argument_list|(
+name|System
+operator|.
+name|err
+argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 block|}
 specifier|private
