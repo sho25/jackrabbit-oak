@@ -889,7 +889,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Checks if the named key exists or is absent in the MongoDB document. This      * method can be used to make a conditional update.      *      * @param property the property name      * @param revision the revision      */
+comment|/**      * Checks if the named key exists or is absent in the document. This      * method can be used to make a conditional update.      *      * @param property the property name      * @param revision the revision      */
 name|void
 name|containsMapEntry
 parameter_list|(
@@ -947,6 +947,62 @@ name|checkNotNull
 argument_list|(
 name|revision
 argument_list|)
+argument_list|)
+argument_list|,
+name|c
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Checks if the named key exists or is absent in the document. This      * method can be used to make a conditional update.      *      * @param property the property name      * @param revision the revision      */
+name|void
+name|contains
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|property
+parameter_list|,
+name|boolean
+name|exists
+parameter_list|)
+block|{
+if|if
+condition|(
+name|isNew
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot use contaons() on new document"
+argument_list|)
+throw|;
+block|}
+name|Condition
+name|c
+init|=
+name|exists
+condition|?
+name|Condition
+operator|.
+name|EXISTS
+else|:
+name|Condition
+operator|.
+name|MISSING
+decl_stmt|;
+name|getOrCreateConditions
+argument_list|()
+operator|.
+name|put
+argument_list|(
+operator|new
+name|Key
+argument_list|(
+name|property
+argument_list|,
+literal|null
 argument_list|)
 argument_list|,
 name|c
@@ -1533,7 +1589,7 @@ specifier|final
 class|class
 name|Condition
 block|{
-comment|/**          * Check if a sub-key exists in a map.          */
+comment|/**          * Check if a map entry exists in a map.          */
 specifier|public
 specifier|static
 specifier|final
@@ -1550,7 +1606,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|/**          * Check if a sub-key is missing in a map.          */
+comment|/**          * Check if a map entry is missing in a map.          */
 specifier|public
 specifier|static
 specifier|final
@@ -1571,7 +1627,7 @@ specifier|public
 enum|enum
 name|Type
 block|{
-comment|/**              * Checks if the sub-key is present in a map or not.              */
+comment|/**              * Checks if the map entry is present in a map or not.              */
 name|EXISTS
 block|,
 comment|/**              * Checks if a map entry equals a given value.              */
