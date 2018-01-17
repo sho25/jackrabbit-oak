@@ -1392,6 +1392,25 @@ return|return
 name|value
 return|;
 block|}
+comment|// do not bother the persistent cache if the
+comment|// key was excluded by configuration
+if|if
+condition|(
+operator|!
+name|type
+operator|.
+name|shouldCache
+argument_list|(
+name|nodeStore
+argument_list|,
+name|key
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|stats
 operator|.
 name|markRequest
