@@ -284,9 +284,10 @@ name|void
 name|hightlightCompleteWordOnly
 parameter_list|()
 block|{
+comment|// using 2 non-simple spaces as mentioned in http://jkorpela.fi/chars/spaces.html
 name|String
 index|[]
-name|whitespaces
+name|delimiters
 init|=
 operator|new
 name|String
@@ -295,6 +296,14 @@ block|{
 literal|" "
 block|,
 literal|"\t"
+block|,
+literal|"\n"
+block|,
+literal|":"
+block|,
+literal|"\u1680"
+block|,
+literal|"\u00A0"
 block|}
 decl_stmt|;
 name|Map
@@ -366,6 +375,14 @@ name|entrySet
 argument_list|()
 control|)
 block|{
+for|for
+control|(
+name|String
+name|delimiter
+range|:
+name|delimiters
+control|)
+block|{
 name|String
 name|text
 init|=
@@ -373,6 +390,13 @@ name|simple
 operator|.
 name|getKey
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+name|delimiter
+argument_list|)
 decl_stmt|;
 name|String
 name|expect
@@ -381,46 +405,23 @@ name|simple
 operator|.
 name|getValue
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+name|delimiter
+argument_list|)
 decl_stmt|;
-for|for
-control|(
-name|String
-name|whitespace
-range|:
-name|whitespaces
-control|)
-block|{
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|" "
-argument_list|,
-name|whitespace
-argument_list|)
-expr_stmt|;
-name|expect
-operator|=
-name|expect
-operator|.
-name|replaceAll
-argument_list|(
-literal|" "
-argument_list|,
-name|whitespace
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"highlighting '"
 operator|+
 name|text
 operator|+
-literal|"' for 'of' (whitespace - '"
+literal|"' for 'of' (delimiter - '"
 operator|+
-name|whitespace
+name|delimiter
 operator|+
 literal|"')"
 argument_list|,
@@ -501,6 +502,14 @@ name|entrySet
 argument_list|()
 control|)
 block|{
+for|for
+control|(
+name|String
+name|delimiter
+range|:
+name|delimiters
+control|)
+block|{
 name|String
 name|text
 init|=
@@ -508,6 +517,13 @@ name|wildcard
 operator|.
 name|getKey
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+name|delimiter
+argument_list|)
 decl_stmt|;
 name|String
 name|expect
@@ -516,46 +532,23 @@ name|wildcard
 operator|.
 name|getValue
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+name|delimiter
+argument_list|)
 decl_stmt|;
-for|for
-control|(
-name|String
-name|whitespace
-range|:
-name|whitespaces
-control|)
-block|{
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|" "
-argument_list|,
-name|whitespace
-argument_list|)
-expr_stmt|;
-name|expect
-operator|=
-name|expect
-operator|.
-name|replaceAll
-argument_list|(
-literal|" "
-argument_list|,
-name|whitespace
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"highlighting '"
 operator|+
 name|text
 operator|+
-literal|"' for 'of*' (whitespace - '"
+literal|"' for 'of*' (delimiter - '"
 operator|+
-name|whitespace
+name|delimiter
 operator|+
 literal|"')"
 argument_list|,
@@ -577,6 +570,88 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|multipleSearchTokens
+parameter_list|()
+block|{
+name|String
+name|text
+init|=
+literal|"To be, or not to be. That is the question!"
+decl_stmt|;
+name|String
+name|expected
+init|=
+literal|"<div><span>To<strong>be</strong>, "
+operator|+
+literal|"or not to<strong>be</strong>. "
+operator|+
+literal|"That is the<strong>question</strong>!</span></div>"
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|highlight
+argument_list|(
+name|sb
+argument_list|(
+name|text
+argument_list|)
+argument_list|,
+name|of
+argument_list|(
+literal|"question"
+argument_list|,
+literal|"be"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|highlight
+argument_list|(
+name|sb
+argument_list|(
+name|text
+argument_list|)
+argument_list|,
+name|of
+argument_list|(
+literal|"quest*"
+argument_list|,
+literal|"be"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|highlight
+argument_list|(
+name|sb
+argument_list|(
+name|text
+argument_list|)
+argument_list|,
+name|of
+argument_list|(
+literal|"quest*"
+argument_list|,
+literal|"b*"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 specifier|static

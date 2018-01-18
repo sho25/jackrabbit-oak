@@ -49,18 +49,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -283,7 +271,7 @@ name|lang
 operator|.
 name|Character
 operator|.
-name|isWhitespace
+name|isLetterOrDigit
 import|;
 end_import
 
@@ -1536,11 +1524,11 @@ name|length
 argument_list|()
 operator|&&
 operator|!
-name|isWhitespace
+name|isDelimeter
 argument_list|(
 name|text
 operator|.
-name|charAt
+name|codePointAt
 argument_list|(
 name|nextSpace
 argument_list|)
@@ -1587,11 +1575,11 @@ literal|0
 operator|)
 operator|||
 comment|//allow for highlighting for token at the beginning
-name|isWhitespace
+name|isDelimeter
 argument_list|(
 name|text
 operator|.
-name|charAt
+name|codePointAt
 argument_list|(
 name|index
 operator|-
@@ -1599,7 +1587,7 @@ literal|1
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//else token must follow a space
+comment|//else token must follow a delimeter
 name|boolean
 name|isEndOk
 init|=
@@ -1613,17 +1601,17 @@ argument_list|()
 operator|)
 operator|||
 comment|//token is at the end of string
-name|isWhitespace
+name|isDelimeter
 argument_list|(
 name|text
 operator|.
-name|charAt
+name|codePointAt
 argument_list|(
 name|endIndex
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//else token must precede a space
+comment|//else token must precede a delimeter
 if|if
 condition|(
 name|isStartOk
@@ -1656,6 +1644,22 @@ name|endIndex
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|static
+name|boolean
+name|isDelimeter
+parameter_list|(
+name|int
+name|codePoint
+parameter_list|)
+block|{
+return|return
+operator|!
+name|isLetterOrDigit
+argument_list|(
+name|codePoint
+argument_list|)
+return|;
 block|}
 specifier|static
 name|PropertyValue
