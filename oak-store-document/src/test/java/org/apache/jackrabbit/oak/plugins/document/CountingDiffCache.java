@@ -42,9 +42,9 @@ end_import
 begin_class
 specifier|public
 class|class
-name|CountingTieredDiffCache
+name|CountingDiffCache
 extends|extends
-name|TieredDiffCache
+name|MemoryDiffCache
 block|{
 class|class
 name|CountingLoader
@@ -91,7 +91,7 @@ name|int
 name|loadCount
 decl_stmt|;
 specifier|public
-name|CountingTieredDiffCache
+name|CountingDiffCache
 parameter_list|(
 name|DocumentMK
 operator|.

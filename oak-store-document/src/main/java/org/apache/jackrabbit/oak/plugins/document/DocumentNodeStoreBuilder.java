@@ -1513,25 +1513,6 @@ return|return
 name|diffCache
 return|;
 block|}
-specifier|public
-name|T
-name|setDiffCache
-parameter_list|(
-name|DiffCache
-name|diffCache
-parameter_list|)
-block|{
-name|this
-operator|.
-name|diffCache
-operator|=
-name|diffCache
-expr_stmt|;
-return|return
-name|thisBuilder
-argument_list|()
-return|;
-block|}
 comment|/**      * Set the blob store to use. By default an in-memory store is used.      *      * @param blobStore the blob store      * @return this      */
 specifier|public
 name|T

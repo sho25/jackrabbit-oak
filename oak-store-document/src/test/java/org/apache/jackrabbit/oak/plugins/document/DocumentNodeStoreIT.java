@@ -305,13 +305,13 @@ comment|// do not dispose yet
 block|}
 block|}
 decl_stmt|;
+comment|// use a builder with a no-op diff cache to simulate a
+comment|// cache miss when the diff is made later in the test
 name|DocumentNodeStore
 name|ns1
 init|=
 operator|new
-name|DocumentMK
-operator|.
-name|Builder
+name|TestBuilder
 argument_list|()
 operator|.
 name|setDocumentStore
@@ -333,17 +333,8 @@ name|clock
 argument_list|(
 name|clock
 argument_list|)
-comment|// use a no-op diff cache to simulate a cache miss
-comment|// when the diff is made later in the test
 operator|.
-name|setDiffCache
-argument_list|(
-name|AmnesiaDiffCache
-operator|.
-name|INSTANCE
-argument_list|)
-operator|.
-name|getNodeStore
+name|build
 argument_list|()
 decl_stmt|;
 name|NodeBuilder
@@ -698,6 +689,29 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
+specifier|private
+class|class
+name|TestBuilder
+extends|extends
+name|DocumentNodeStoreBuilder
+argument_list|<
+name|TestBuilder
+argument_list|>
+block|{
+annotation|@
+name|Override
+specifier|public
+name|DiffCache
+name|getDiffCache
+parameter_list|()
+block|{
+return|return
+name|AmnesiaDiffCache
+operator|.
+name|INSTANCE
+return|;
+block|}
 block|}
 block|}
 end_class

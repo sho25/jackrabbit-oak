@@ -1259,7 +1259,7 @@ name|builder
 operator|.
 name|actualStore
 decl_stmt|;
-name|CountingTieredDiffCache
+name|CountingDiffCache
 name|countingDiffCache1
 init|=
 name|builder
@@ -1291,7 +1291,7 @@ name|builder
 operator|.
 name|actualStore
 decl_stmt|;
-name|CountingTieredDiffCache
+name|CountingDiffCache
 name|countingDiffCache2
 init|=
 name|builder

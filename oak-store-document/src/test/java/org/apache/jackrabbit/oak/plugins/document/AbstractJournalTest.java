@@ -1321,7 +1321,7 @@ block|{
 name|CountingDocumentStore
 name|actualStore
 decl_stmt|;
-name|CountingTieredDiffCache
+name|CountingDiffCache
 name|actualDiffCache
 decl_stmt|;
 annotation|@
@@ -1371,7 +1371,7 @@ block|{
 name|actualDiffCache
 operator|=
 operator|new
-name|CountingTieredDiffCache
+name|CountingDiffCache
 argument_list|(
 name|this
 argument_list|)
