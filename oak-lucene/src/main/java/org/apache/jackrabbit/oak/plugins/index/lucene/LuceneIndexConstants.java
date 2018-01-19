@@ -273,6 +273,11 @@ init|=
 literal|"useInExcerpt"
 decl_stmt|;
 name|String
+name|EXCERPT_NODE_FIELD_NAME
+init|=
+literal|"."
+decl_stmt|;
+name|String
 name|PROP_NODE_SCOPE_INDEX
 init|=
 literal|"nodeScopeIndex"
