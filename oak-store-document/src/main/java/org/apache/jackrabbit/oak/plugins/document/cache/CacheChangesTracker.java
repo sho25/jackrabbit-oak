@@ -101,6 +101,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -111,6 +121,8 @@ begin_class
 specifier|public
 class|class
 name|CacheChangesTracker
+implements|implements
+name|Closeable
 block|{
 specifier|private
 specifier|static
@@ -288,6 +300,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
