@@ -3108,7 +3108,11 @@ operator|=
 name|builder
 operator|.
 name|getDiffCache
-argument_list|()
+argument_list|(
+name|this
+operator|.
+name|clusterId
+argument_list|)
 expr_stmt|;
 name|checkpoints
 operator|=

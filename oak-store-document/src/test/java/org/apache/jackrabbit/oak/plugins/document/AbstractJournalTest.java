@@ -1359,7 +1359,10 @@ name|Override
 specifier|public
 name|DiffCache
 name|getDiffCache
-parameter_list|()
+parameter_list|(
+name|int
+name|clusterId
+parameter_list|)
 block|{
 if|if
 condition|(

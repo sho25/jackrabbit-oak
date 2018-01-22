@@ -1491,7 +1491,10 @@ block|}
 specifier|public
 name|DiffCache
 name|getDiffCache
-parameter_list|()
+parameter_list|(
+name|int
+name|clusterId
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -1506,6 +1509,8 @@ operator|new
 name|TieredDiffCache
 argument_list|(
 name|this
+argument_list|,
+name|clusterId
 argument_list|)
 expr_stmt|;
 block|}
