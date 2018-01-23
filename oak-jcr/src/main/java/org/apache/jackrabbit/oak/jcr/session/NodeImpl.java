@@ -243,6 +243,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -6521,7 +6531,7 @@ name|String
 argument_list|>
 name|mixinNames
 init|=
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()

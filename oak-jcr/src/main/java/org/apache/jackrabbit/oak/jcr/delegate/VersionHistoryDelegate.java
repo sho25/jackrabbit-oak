@@ -1055,7 +1055,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
