@@ -161,6 +161,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -2426,7 +2436,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
