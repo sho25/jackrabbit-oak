@@ -39,6 +39,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -454,7 +464,7 @@ argument_list|)
 operator|.
 name|thenReturn
 argument_list|(
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
@@ -845,7 +855,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
