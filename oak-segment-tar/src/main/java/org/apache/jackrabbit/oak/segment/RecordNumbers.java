@@ -18,18 +18,12 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
+import|import
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-operator|.
-name|emptyIterator
+name|Collections
 import|;
 end_import
 
@@ -120,6 +114,8 @@ name|iterator
 parameter_list|()
 block|{
 return|return
+name|Collections
+operator|.
 name|emptyIterator
 argument_list|()
 return|;
