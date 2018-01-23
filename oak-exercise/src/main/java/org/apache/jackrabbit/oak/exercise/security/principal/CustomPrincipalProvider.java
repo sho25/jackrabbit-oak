@@ -268,7 +268,7 @@ parameter_list|)
 block|{
 comment|// EXERCISE
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
@@ -293,7 +293,7 @@ parameter_list|)
 block|{
 comment|// EXERCISE
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
