@@ -127,20 +127,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -563,7 +549,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
@@ -843,7 +829,7 @@ name|PermissionEntry
 argument_list|>
 name|nextEntries
 init|=
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()

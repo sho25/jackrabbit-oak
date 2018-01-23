@@ -27,6 +27,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -92,20 +102,6 @@ operator|.
 name|base
 operator|.
 name|Predicate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
 import|;
 end_import
 
@@ -307,7 +303,7 @@ else|else
 block|{
 name|membersIterator
 operator|=
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()

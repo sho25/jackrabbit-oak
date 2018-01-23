@@ -1321,7 +1321,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
@@ -2769,7 +2769,7 @@ operator|==
 literal|null
 operator|)
 condition|?
-name|Iterators
+name|Collections
 operator|.
 expr|<
 name|Authorizable
