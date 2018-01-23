@@ -1144,7 +1144,7 @@ return|;
 block|}
 block|}
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
@@ -1985,7 +1985,7 @@ name|Iterators
 operator|.
 name|asEnumeration
 argument_list|(
-name|Iterators
+name|Collections
 operator|.
 expr|<
 name|Principal
@@ -2045,7 +2045,7 @@ name|String
 argument_list|>
 name|propValues
 init|=
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
@@ -2132,7 +2132,7 @@ else|else
 block|{
 name|propValues
 operator|=
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
