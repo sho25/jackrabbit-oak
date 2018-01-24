@@ -2830,6 +2830,10 @@ name|withAnonymous
 argument_list|()
 block|,
 operator|new
+name|GetMixinNodeTypesTest
+argument_list|()
+block|,
+operator|new
 name|GetDeepNodeTest
 argument_list|()
 block|,
