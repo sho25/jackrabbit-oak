@@ -453,7 +453,7 @@ init|=
 name|newConcurrentMap
 argument_list|()
 decl_stmt|;
-comment|/**      * By default node names with non space whitespace chars are not allowed.      * However initial Oak release did allowed that and this flag is provided      * to revert back to old behaviour if required for some case temporarily      */
+comment|/**      * By default, item names with non space whitespace chars are not allowed.      * However initial Oak release did allowed that and this flag is provided      * to revert back to old behaviour if required for some case temporarily      */
 specifier|private
 specifier|static
 specifier|final
@@ -467,7 +467,7 @@ argument_list|(
 literal|"oak.allowOtherWhitespaceChars"
 argument_list|)
 decl_stmt|;
-comment|/**      * By default node names with control characters are not allowed.      * Oak releases prior to 1.10 allowed these (in conflict with the JCR      * specification), so if required the check can be turned off.      * See OAK-7208.      */
+comment|/**      * By default, item names with control characters are not allowed.      * Oak releases prior to 1.10 allowed these (in conflict with the JCR      * specification), so if required the check can be turned off.      * See OAK-7208.      */
 specifier|private
 specifier|static
 specifier|final
@@ -479,6 +479,20 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"oak.allowOtherControlChars"
+argument_list|)
+decl_stmt|;
+comment|/**      * By default, item names with non-ASCII whitespace characters are allowed.      * Oak releases prior to 1.10 disallowed these, so if required the check can      * be turned on again. See OAK-4857.      */
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|disallowNonASCIIWhitespaceChars
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.disallowNonASCIIWhitespaceChars"
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -1544,7 +1558,15 @@ argument_list|)
 decl_stmt|;
 name|boolean
 name|spaceChar
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|disallowNonASCIIWhitespaceChars
+condition|)
+block|{
+comment|// behavior before OAK-4857 was fixed
+name|spaceChar
+operator|=
 name|allowOtherWhitespaceChars
 condition|?
 name|Character
@@ -1560,7 +1582,30 @@ name|isWhitespace
 argument_list|(
 name|ch
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// disallow just leading and trailing ' ', plus CR, LF and TAB
+name|spaceChar
+operator|=
+name|ch
+operator|==
+literal|' '
+operator|||
+name|ch
+operator|==
+literal|0x9
+operator|||
+name|ch
+operator|==
+literal|0xa
+operator|||
+name|ch
+operator|==
+literal|0xd
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|spaceChar

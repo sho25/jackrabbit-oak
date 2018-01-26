@@ -1235,7 +1235,6 @@ literal|"foo\u00a0bar"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// OAK-4587
 annotation|@
 name|Test
 specifier|public
@@ -1243,13 +1242,9 @@ name|void
 name|testEnclosedIdeographicSpace
 parameter_list|()
 block|{
-name|unsupportedNameTest
+name|nameTest
 argument_list|(
 literal|"foo\u3000bar"
-argument_list|,
-name|RepositoryException
-operator|.
-name|class
 argument_list|)
 expr_stmt|;
 block|}
