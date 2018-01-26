@@ -467,6 +467,20 @@ argument_list|(
 literal|"oak.allowOtherWhitespaceChars"
 argument_list|)
 decl_stmt|;
+comment|/**      * By default node names with control characters are not allowed.      * Oak releases prior to 1.10 allowed these (in conflict with the JCR      * specification), so if required the check can be turned off.      * See OAK-7208.      */
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|allowOtherControlChars
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.allowOtherControlChars"
+argument_list|)
+decl_stmt|;
 specifier|private
 name|Namespaces
 parameter_list|()
@@ -1610,11 +1624,45 @@ operator|-
 literal|1
 condition|)
 block|{
-comment|// TODO: XMLChar check
+comment|// TODO: XMLChar check for unpaired surrogates
 return|return
 literal|false
 return|;
 comment|// invalid name character
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|allowOtherControlChars
+operator|&&
+name|ch
+operator|>=
+literal|0
+operator|&&
+name|ch
+operator|<
+literal|32
+operator|&&
+operator|(
+name|ch
+operator|!=
+literal|9
+operator|&&
+name|ch
+operator|!=
+literal|0xa
+operator|&&
+name|ch
+operator|!=
+literal|0xd
+operator|)
+condition|)
+block|{
+comment|// https://www.w3.org/TR/xml/#NT-Char - disallowed control chars
+return|return
+literal|false
+return|;
 block|}
 block|}
 comment|// TODO: Other name rules?
