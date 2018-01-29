@@ -175,16 +175,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -258,8 +248,6 @@ comment|/**  * Test for OAK-7195 using a DocumentNodeStore to verify there are n
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
 specifier|public
 class|class
 name|GetMixinNodeTypesTest
