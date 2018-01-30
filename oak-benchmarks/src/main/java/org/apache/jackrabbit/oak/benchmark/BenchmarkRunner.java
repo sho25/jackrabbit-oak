@@ -4140,6 +4140,10 @@ name|statsProvider
 argument_list|)
 block|,
 operator|new
+name|StringWriteTest
+argument_list|()
+block|,
+operator|new
 name|BasicWriteTest
 argument_list|()
 block|}
