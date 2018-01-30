@@ -358,7 +358,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>Tests verifying if the repository gets corrupted or not: {@code OAK-2662 SegmentOverflowException in HeavyWriteIT on Jenkins}</p>  *  *<p><b>This test will run for one hour unless it fails</b>, thus it is disabled by default. On the  * command line specify {@code -Dtest=SegmentOverflowExceptionIT} to enable it. Use {@code -Dtimeout=t}  * to specify a different timeout {@code t} in milliseconds. Use {@code -Dmax-repo-size=s} to specify  * a maximal repository size {@code s} in megabytes above which to stop the test.  *</p>  *  *<p>If you only want to run this test:<br>  * {@code mvn verify -Dsurefire.skip.ut=true -PintegrationTesting -Dit.test=SegmentOverflowExceptionIT}  *</p>  */
+comment|/**  *<p>Tests verifying if the repository gets corrupted or not: {@code OAK-2662 SegmentOverflowException in HeavyWriteIT on Jenkins}</p>  *  *<p><b>This test will run for one hour unless it fails</b>, thus it is disabled by default. On the  * command line specify {@code -Dtest=SegmentOverflowExceptionIT} to enable it. Use {@code -Dtimeout=t}  * to specify a different timeout {@code t} in milliseconds. Use {@code -Dmax-repo-size=s} to specify  * a maximal repository size {@code s} in megabytes above which to stop the test.  *</p>  *  *<p>If you only want to run this test:<br>  * {@code mvn verify -DfailIfNoTests=false -DskipTests -PintegrationTesting -Dtest=SegmentOverflowExceptionIT}  *</p>  */
 end_comment
 
 begin_class
