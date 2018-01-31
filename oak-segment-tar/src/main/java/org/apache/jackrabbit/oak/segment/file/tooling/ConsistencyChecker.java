@@ -1351,7 +1351,7 @@ condition|)
 block|{
 name|checker
 operator|.
-name|print
+name|printError
 argument_list|(
 literal|"Checkpoint {0} not found in this revision!"
 argument_list|,
