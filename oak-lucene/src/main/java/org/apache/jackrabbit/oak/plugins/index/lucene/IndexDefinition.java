@@ -7465,6 +7465,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
 comment|//Copy over the property configuration
 name|NodeState
 name|propDefNode
@@ -7501,6 +7503,7 @@ argument_list|(
 name|ps
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
