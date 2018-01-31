@@ -3616,6 +3616,16 @@ name|META_PROP_NON_BUNDLED_CHILD
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertFalse
+argument_list|(
+name|hasNodeProperty
+argument_list|(
+literal|"/test/book.jpg"
+argument_list|,
+literal|"_children"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
