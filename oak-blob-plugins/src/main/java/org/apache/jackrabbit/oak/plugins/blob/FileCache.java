@@ -413,9 +413,9 @@ name|commons
 operator|.
 name|io
 operator|.
-name|FileUtils
+name|FilenameUtils
 operator|.
-name|copyInputStreamToFile
+name|normalizeNoEndSeparator
 import|;
 end_import
 
@@ -425,13 +425,15 @@ name|org
 operator|.
 name|apache
 operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|commons
 operator|.
-name|io
+name|FileIOUtils
 operator|.
-name|FilenameUtils
-operator|.
-name|normalizeNoEndSeparator
+name|copyInputStreamToFile
 import|;
 end_import
 
@@ -885,6 +887,27 @@ name|threw
 operator|=
 literal|false
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Error reading object for id [{}] from backend"
+argument_list|,
+name|key
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
 block|}
 finally|finally
 block|{
