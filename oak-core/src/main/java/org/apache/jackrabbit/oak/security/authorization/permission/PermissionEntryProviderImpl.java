@@ -379,12 +379,10 @@ block|{
 name|long
 name|n
 init|=
-name|cache
+name|store
 operator|.
 name|getNumEntries
 argument_list|(
-name|store
-argument_list|,
 name|name
 argument_list|,
 name|maxSize
