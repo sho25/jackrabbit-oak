@@ -109,8 +109,6 @@ begin_class
 specifier|public
 class|class
 name|Check
-implements|implements
-name|Runnable
 block|{
 comment|/**      * Create a builder for the {@link Check} command.      *      * @return an instance of {@link Builder}.      */
 specifier|public
@@ -398,7 +396,7 @@ return|;
 block|}
 comment|/**          * Create an executable version of the {@link Check} command.          *          * @return an instance of {@link Runnable}.          */
 specifier|public
-name|Runnable
+name|Check
 name|build
 parameter_list|()
 block|{
@@ -565,10 +563,8 @@ operator|.
 name|errWriter
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
-name|void
+name|int
 name|run
 parameter_list|()
 block|{
@@ -599,6 +595,9 @@ argument_list|,
 name|errWriter
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -609,8 +608,13 @@ block|{
 name|e
 operator|.
 name|printStackTrace
-argument_list|()
+argument_list|(
+name|errWriter
+argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 block|}
 block|}
