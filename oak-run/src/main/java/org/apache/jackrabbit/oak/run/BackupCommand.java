@@ -185,6 +185,9 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|int
+name|statusCode
+init|=
 name|Backup
 operator|.
 name|builder
@@ -205,6 +208,13 @@ argument_list|()
 operator|.
 name|run
 argument_list|()
+decl_stmt|;
+name|System
+operator|.
+name|exit
+argument_list|(
+name|statusCode
+argument_list|)
 expr_stmt|;
 block|}
 block|}

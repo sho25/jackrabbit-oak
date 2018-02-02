@@ -173,8 +173,6 @@ begin_class
 specifier|public
 class|class
 name|Backup
-implements|implements
-name|Runnable
 block|{
 comment|/**      * Create a builder for the {@link Backup} command.      *      * @return an instance of {@link Builder}.      */
 specifier|public
@@ -291,7 +289,7 @@ return|;
 block|}
 comment|/**          * Create an executable version of the {@link Backup} command.          *          * @return an instance of {@link Runnable}.          */
 specifier|public
-name|Runnable
+name|Backup
 name|build
 parameter_list|()
 block|{
@@ -374,10 +372,8 @@ operator|.
 name|fileStoreBackup
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
-name|void
+name|int
 name|run
 parameter_list|()
 block|{
@@ -407,6 +403,9 @@ argument_list|,
 name|target
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -417,8 +416,15 @@ block|{
 name|e
 operator|.
 name|printStackTrace
-argument_list|()
+argument_list|(
+name|System
+operator|.
+name|err
+argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 block|}
 specifier|private
