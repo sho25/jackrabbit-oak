@@ -935,6 +935,9 @@ class|class
 name|AbstractExternalTest
 extends|extends
 name|AbstractTest
+argument_list|<
+name|RepositoryFixture
+argument_list|>
 block|{
 specifier|private
 specifier|static
@@ -1255,9 +1258,15 @@ name|void
 name|run
 parameter_list|(
 name|Iterable
-name|iterable
+argument_list|<
+name|RepositoryFixture
+argument_list|>
+name|fixtures
 parameter_list|,
 name|List
+argument_list|<
+name|Integer
+argument_list|>
 name|concurrencyLevels
 parameter_list|)
 block|{
@@ -1274,7 +1283,7 @@ name|super
 operator|.
 name|run
 argument_list|(
-name|iterable
+name|fixtures
 argument_list|,
 name|concurrencyLevels
 argument_list|)
@@ -1843,7 +1852,6 @@ specifier|final
 name|int
 name|membershipSize
 decl_stmt|;
-specifier|private
 name|TestIdentityProvider
 parameter_list|(
 name|int
@@ -2269,6 +2277,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|final
 class|class
 name|PrincipalResolvingProvider
 extends|extends
@@ -2276,7 +2285,6 @@ name|TestIdentityProvider
 implements|implements
 name|PrincipalNameResolver
 block|{
-specifier|private
 name|PrincipalResolvingProvider
 parameter_list|(
 name|int
