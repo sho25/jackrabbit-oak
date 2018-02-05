@@ -927,7 +927,7 @@ name|checkpointsSet
 operator|.
 name|remove
 argument_list|(
-literal|"/checkpoints"
+literal|"all"
 argument_list|)
 condition|)
 block|{

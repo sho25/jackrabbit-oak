@@ -333,7 +333,7 @@ name|accepts
 argument_list|(
 literal|"checkpoints"
 argument_list|,
-literal|"checks only specified checkpoints (comma separated); leave empty to check all"
+literal|"checks only specified checkpoints (comma separated); use --checkpoints all to check all checkpoints"
 argument_list|)
 operator|.
 name|withOptionalArg
@@ -353,7 +353,7 @@ argument_list|)
 operator|.
 name|defaultsTo
 argument_list|(
-literal|"/checkpoints"
+literal|"all"
 argument_list|)
 decl_stmt|;
 name|OptionSpec
