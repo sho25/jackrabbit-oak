@@ -209,21 +209,6 @@ argument_list|(
 literal|"journal.log"
 argument_list|)
 decl_stmt|;
-name|OptionSpec
-argument_list|<
-name|?
-argument_list|>
-name|deep
-init|=
-name|parser
-operator|.
-name|accepts
-argument_list|(
-literal|"deep"
-argument_list|,
-literal|"<deprecated> enable deep consistency checking."
-argument_list|)
-decl_stmt|;
 name|ArgumentAcceptingOptionSpec
 argument_list|<
 name|Long
@@ -530,28 +515,6 @@ name|values
 argument_list|(
 name|options
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|options
-operator|.
-name|has
-argument_list|(
-name|deep
-argument_list|)
-condition|)
-block|{
-name|printUsage
-argument_list|(
-name|parser
-argument_list|,
-name|err
-argument_list|,
-literal|"The --deep option was deprecated! Please do not use it in the future!"
-argument_list|,
-literal|"A deep scan of the content tree, traversing every node, will be performed by default."
 argument_list|)
 expr_stmt|;
 block|}
