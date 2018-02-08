@@ -3321,6 +3321,13 @@ name|value
 argument_list|(
 name|options
 argument_list|)
+argument_list|,
+name|numberOfInitialAce
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
 argument_list|)
 block|,
 operator|new
