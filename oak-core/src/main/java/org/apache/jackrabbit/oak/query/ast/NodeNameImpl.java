@@ -872,7 +872,12 @@ name|OrderEntry
 argument_list|(
 name|QueryConstants
 operator|.
-name|RESTRICTION_NAME
+name|FUNCTION_RESTRICTION_PREFIX
+operator|+
+name|getFunction
+argument_list|(
+name|s
+argument_list|)
 argument_list|,
 name|Type
 operator|.
