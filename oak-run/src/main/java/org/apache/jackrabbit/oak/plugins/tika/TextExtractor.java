@@ -1555,10 +1555,33 @@ name|LinkageError
 name|e
 parameter_list|)
 block|{
-comment|// Capture and ignore errors caused by extraction libraries
+comment|// Capture errors caused by extraction libraries
 comment|// not being present. This is equivalent to disabling
 comment|// selected media types in configuration, so we can simply
 comment|// ignore these errors.
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Failed to extract text from a binary property: {}."
+operator|+
+literal|" This often happens when some media types are disabled by configuration."
+operator|+
+literal|" The stack trace is included to flag some 'unintended' failures"
+argument_list|,
+name|path
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|parserErrorCount
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
+return|return
+name|ERROR_TEXT
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1604,6 +1627,18 @@ expr_stmt|;
 return|return
 name|ERROR_TEXT
 return|;
+block|}
+else|else
+block|{
+name|parserError
+operator|.
+name|debug
+argument_list|(
+literal|"Extracted text size exceeded configured limit({})"
+argument_list|,
+name|maxExtractedLength
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|String
