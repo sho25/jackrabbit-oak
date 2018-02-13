@@ -312,7 +312,10 @@ argument_list|)
 expr_stmt|;
 name|newManifestChecker
 argument_list|(
-name|directory
+name|builder
+operator|.
+name|getPersistence
+argument_list|()
 argument_list|,
 name|builder
 operator|.

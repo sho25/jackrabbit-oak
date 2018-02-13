@@ -20,6 +20,24 @@ package|;
 end_package
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentNodeStorePersistence
+operator|.
+name|ManifestFile
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -32,16 +50,6 @@ operator|.
 name|Preconditions
 operator|.
 name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
 import|;
 end_import
 
@@ -65,8 +73,8 @@ specifier|static
 name|ManifestChecker
 name|newManifestChecker
 parameter_list|(
-name|File
-name|path
+name|ManifestFile
+name|file
 parameter_list|,
 name|boolean
 name|shouldExist
@@ -80,11 +88,11 @@ parameter_list|)
 block|{
 name|checkArgument
 argument_list|(
-name|path
+name|file
 operator|!=
 literal|null
 argument_list|,
-literal|"path"
+literal|"file"
 argument_list|)
 expr_stmt|;
 name|checkArgument
@@ -109,7 +117,7 @@ return|return
 operator|new
 name|ManifestChecker
 argument_list|(
-name|path
+name|file
 argument_list|,
 name|shouldExist
 argument_list|,
@@ -121,7 +129,7 @@ return|;
 block|}
 specifier|private
 specifier|final
-name|File
+name|ManifestFile
 name|file
 decl_stmt|;
 specifier|private
@@ -142,7 +150,7 @@ decl_stmt|;
 specifier|private
 name|ManifestChecker
 parameter_list|(
-name|File
+name|ManifestFile
 name|file
 parameter_list|,
 name|boolean

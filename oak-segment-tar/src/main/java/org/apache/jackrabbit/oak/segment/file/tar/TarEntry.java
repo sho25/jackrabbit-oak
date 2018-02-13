@@ -36,6 +36,7 @@ comment|/**  * A file entry location in a tar file. This is used for the index w
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|TarEntry
 block|{
@@ -141,6 +142,7 @@ specifier|final
 name|GCGeneration
 name|generation
 decl_stmt|;
+specifier|public
 name|TarEntry
 parameter_list|(
 name|long
@@ -190,6 +192,7 @@ operator|=
 name|generation
 expr_stmt|;
 block|}
+specifier|public
 name|long
 name|msb
 parameter_list|()
@@ -198,6 +201,7 @@ return|return
 name|msb
 return|;
 block|}
+specifier|public
 name|long
 name|lsb
 parameter_list|()
@@ -206,6 +210,7 @@ return|return
 name|lsb
 return|;
 block|}
+specifier|public
 name|int
 name|offset
 parameter_list|()
@@ -214,6 +219,7 @@ return|return
 name|offset
 return|;
 block|}
+specifier|public
 name|int
 name|size
 parameter_list|()
