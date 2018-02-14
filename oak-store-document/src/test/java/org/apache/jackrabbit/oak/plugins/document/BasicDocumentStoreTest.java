@@ -4852,7 +4852,7 @@ name|void
 name|testInterestingInvalidIds
 parameter_list|()
 block|{
-comment|// OAK-7261
+comment|// see OAK-7261
 name|assumeTrue
 argument_list|(
 literal|"fails on MongoDocumentStore, see OAK-7271"
@@ -4989,7 +4989,8 @@ name|up
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// failing to persist is ok - otherwise proceed with consistency tests
+comment|// failing to persist is ok - otherwise proceed with consistency
+comment|// tests
 if|if
 condition|(
 name|success
@@ -5039,8 +5040,8 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// if the character does not round-trip through UTF-8, try to delete
-comment|// the remapped one and do another lookup
+comment|// if the character does not round-trip through UTF-8, try to
+comment|// delete the remapped one and do another lookup
 if|if
 condition|(
 operator|!
