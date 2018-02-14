@@ -667,9 +667,16 @@ operator|.
 name|getClass
 argument_list|()
 operator|.
-name|getMethod
+name|getDeclaredMethod
 argument_list|(
 literal|"getUrl"
+argument_list|)
+expr_stmt|;
+name|ENTRY_URL_METHOD
+operator|.
+name|setAccessible
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
