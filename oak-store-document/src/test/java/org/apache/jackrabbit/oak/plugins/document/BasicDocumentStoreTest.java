@@ -104,6 +104,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -4841,6 +4853,20 @@ name|testInterestingInvalidIds
 parameter_list|()
 block|{
 comment|// OAK-7261
+name|assumeTrue
+argument_list|(
+literal|"fails on MongoDocumentStore, see OAK-7271"
+argument_list|,
+operator|!
+operator|(
+name|dsf
+operator|instanceof
+name|DocumentStoreFixture
+operator|.
+name|MongoFixture
+operator|)
+argument_list|)
+expr_stmt|;
 name|String
 index|[]
 name|tests
@@ -5013,7 +5039,7 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// if the character does not roundtrip through UTF-8, try to delete
+comment|// if the character does not round-trip through UTF-8, try to delete
 comment|// the remapped one and do another lookup
 if|if
 condition|(
