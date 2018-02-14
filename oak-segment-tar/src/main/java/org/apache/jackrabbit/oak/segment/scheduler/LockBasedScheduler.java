@@ -255,7 +255,7 @@ name|codahale
 operator|.
 name|metrics
 operator|.
-name|SlidingWindowReservoir
+name|UniformReservoir
 import|;
 end_import
 
@@ -865,10 +865,8 @@ operator|new
 name|Histogram
 argument_list|(
 operator|new
-name|SlidingWindowReservoir
-argument_list|(
-literal|1000
-argument_list|)
+name|UniformReservoir
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
