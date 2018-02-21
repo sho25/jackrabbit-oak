@@ -482,17 +482,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Active threads: "
-operator|+
-name|activeThreadCount
-argument_list|)
-expr_stmt|;
+comment|// System.out.println("Active threads: " + activeThreadCount);
 block|}
 name|activeThreadCount
 operator|=

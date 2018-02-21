@@ -215,6 +215,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipInputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|joptsimple
 operator|.
 name|OptionParser
@@ -948,6 +960,17 @@ name|endsWith
 argument_list|(
 literal|".gz"
 argument_list|)
+operator|&&
+operator|!
+name|file
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
+literal|".zip"
+argument_list|)
 condition|)
 block|{
 return|return
@@ -1205,20 +1228,7 @@ literal|".gz"
 argument_list|)
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Extracting "
-operator|+
-name|file
-operator|.
-name|getAbsolutePath
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// System.out.println("Extracting " + file.getAbsolutePath());
 name|InputStream
 name|fileStream
 init|=
@@ -1263,6 +1273,38 @@ return|return
 literal|0
 return|;
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|file
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
+literal|".zip"
+argument_list|)
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Warning: file skipped. Please extract first: "
+operator|+
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 else|else
 block|{
@@ -1386,23 +1428,7 @@ block|{
 name|count
 operator|++
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    (contains "
-operator|+
-name|fullThreadDumps
-operator|+
-literal|" full thread dumps; "
-operator|+
-name|fileModifiedTime
-operator|+
-literal|")"
-argument_list|)
-expr_stmt|;
+comment|// System.out.println("    (contains " + fullThreadDumps + " full thread dumps; " + fileModifiedTime + ")");
 block|}
 block|}
 finally|finally
