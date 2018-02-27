@@ -12281,6 +12281,10 @@ literal|""
 decl_stmt|;
 if|if
 condition|(
+name|data
+operator|!=
+literal|null
+operator|&&
 name|RDBJDBCTools
 operator|.
 name|matchesSQLState
@@ -12952,6 +12956,8 @@ name|byte
 index|[]
 name|asBytes
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|data
 parameter_list|)
