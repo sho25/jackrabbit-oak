@@ -65,6 +65,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -183,7 +193,7 @@ name|entryReader
 decl_stmt|;
 specifier|private
 specifier|final
-name|Iterable
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -210,7 +220,7 @@ parameter_list|,
 name|NodeStateEntryReader
 name|entryReader
 parameter_list|,
-name|Iterable
+name|Set
 argument_list|<
 name|String
 argument_list|>

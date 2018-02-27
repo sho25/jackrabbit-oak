@@ -55,6 +55,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -141,17 +151,13 @@ end_import
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Collections
 operator|.
-name|collect
-operator|.
-name|Iterables
-operator|.
-name|unmodifiableIterable
+name|unmodifiableSet
 import|;
 end_import
 
@@ -225,7 +231,7 @@ name|File
 name|workDir
 decl_stmt|;
 specifier|private
-name|Iterable
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -338,7 +344,7 @@ specifier|public
 name|FlatFileNodeStoreBuilder
 name|withPreferredPathElements
 parameter_list|(
-name|Iterable
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -396,7 +402,7 @@ argument_list|(
 name|blobStore
 argument_list|)
 argument_list|,
-name|unmodifiableIterable
+name|unmodifiableSet
 argument_list|(
 name|preferredPathElements
 argument_list|)
