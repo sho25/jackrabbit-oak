@@ -151,7 +151,7 @@ name|collect
 operator|.
 name|Iterables
 operator|.
-name|size
+name|unmodifiableIterable
 import|;
 end_import
 
@@ -396,7 +396,7 @@ argument_list|(
 name|blobStore
 argument_list|)
 argument_list|,
-name|size
+name|unmodifiableIterable
 argument_list|(
 name|preferredPathElements
 argument_list|)
