@@ -585,7 +585,7 @@ name|MemoryStore
 name|store
 decl_stmt|;
 specifier|private
-name|SegmentWriter
+name|DefaultSegmentWriter
 name|writer
 decl_stmt|;
 specifier|private

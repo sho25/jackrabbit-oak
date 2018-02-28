@@ -976,10 +976,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Override
-annotation|@
 name|Nonnull
-specifier|public
 name|RecordId
 name|writeMap
 parameter_list|(
@@ -1047,10 +1044,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Override
-annotation|@
 name|Nonnull
-specifier|public
 name|RecordId
 name|writeList
 parameter_list|(
@@ -1108,10 +1102,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Override
-annotation|@
 name|Nonnull
-specifier|public
 name|RecordId
 name|writeString
 parameter_list|(
@@ -1165,8 +1156,6 @@ block|}
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -1224,10 +1213,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Override
-annotation|@
 name|Nonnull
-specifier|public
 name|RecordId
 name|writeBlock
 parameter_list|(
@@ -1353,10 +1339,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Override
-annotation|@
 name|Nonnull
-specifier|public
 name|RecordId
 name|writeProperty
 parameter_list|(

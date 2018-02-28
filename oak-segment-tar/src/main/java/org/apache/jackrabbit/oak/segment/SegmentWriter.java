@@ -49,26 +49,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -100,22 +80,6 @@ operator|.
 name|api
 operator|.
 name|Blob
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|PropertyState
 import|;
 end_import
 
@@ -152,64 +116,6 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Write a map record.      *      * @param base    base map relative to which the {@code changes} are applied      *                ot {@code null} for the empty map.      * @param changes the changed mapping to apply to the {@code base} map.      * @return the record id of the map written      * @throws IOException      */
-annotation|@
-name|Nonnull
-comment|// TODO frm this method is only used from test code, should it be removed?
-name|RecordId
-name|writeMap
-parameter_list|(
-annotation|@
-name|Nullable
-name|MapRecord
-name|base
-parameter_list|,
-annotation|@
-name|Nonnull
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|RecordId
-argument_list|>
-name|changes
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**      * Write a list record.      *      * @param list the list to write.      * @return the record id of the list written      * @throws IOException      */
-annotation|@
-name|Nonnull
-comment|// TODO frm this method is only used from test code, should it be removed?
-name|RecordId
-name|writeList
-parameter_list|(
-annotation|@
-name|Nonnull
-name|List
-argument_list|<
-name|RecordId
-argument_list|>
-name|list
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**      * Write a string record.      *      * @param string the string to write.      * @return the record id of the string written.      * @throws IOException      */
-annotation|@
-name|Nonnull
-comment|// TODO frm this method is only used from test code, should it be removed?
-name|RecordId
-name|writeString
-parameter_list|(
-annotation|@
-name|Nonnull
-name|String
-name|string
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
 comment|/**      * Write a blob (as list of block records)      *      * @param blob blob to write      * @return the record id of the blob written      * @throws IOException      */
 annotation|@
 name|Nonnull
@@ -224,28 +130,6 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Writes a block record containing the given block of bytes.      *      * @param bytes  source buffer      * @param offset offset within the source buffer      * @param length number of bytes to write      * @return the record id of the block written      */
-annotation|@
-name|Nonnull
-comment|// TODO frm this method is only used from test code, should it be removed?
-name|RecordId
-name|writeBlock
-parameter_list|(
-annotation|@
-name|Nonnull
-name|byte
-index|[]
-name|bytes
-parameter_list|,
-name|int
-name|offset
-parameter_list|,
-name|int
-name|length
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
 comment|/**      * Writes a stream value record. The given stream is consumed<em>and      * closed</em> by this method.      *      * @param stream stream to be written      * @return the record id of the stream written      * @throws IOException if the input stream could not be read or the output      *                     could not be written      */
 annotation|@
 name|Nonnull
@@ -256,21 +140,6 @@ annotation|@
 name|Nonnull
 name|InputStream
 name|stream
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**      * Write a property.      *      * @param state the property to write      * @return the record id of the property state written      * @throws IOException      */
-annotation|@
-name|Nonnull
-comment|// TODO frm this method is only used from test code, should it be removed?
-name|RecordId
-name|writeProperty
-parameter_list|(
-annotation|@
-name|Nonnull
-name|PropertyState
-name|state
 parameter_list|)
 throws|throws
 name|IOException
