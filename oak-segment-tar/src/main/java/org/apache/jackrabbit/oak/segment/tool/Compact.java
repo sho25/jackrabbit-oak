@@ -221,16 +221,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|RandomAccessFile
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Date
@@ -1166,11 +1156,33 @@ name|newFileStore
 argument_list|()
 init|)
 block|{
+if|if
+condition|(
+operator|!
 name|store
 operator|.
 name|compactFull
 argument_list|()
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|printf
+argument_list|(
+literal|"Compaction cancelled after %s.\n"
+argument_list|,
+name|printableStopwatch
+argument_list|(
+name|watch
+argument_list|)
+argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
 name|System
 operator|.
 name|out
@@ -1301,7 +1313,7 @@ name|out
 operator|.
 name|printf
 argument_list|(
-literal|"Compaction failed in %s.\n"
+literal|"Compaction failed after %s.\n"
 argument_list|,
 name|printableStopwatch
 argument_list|(
