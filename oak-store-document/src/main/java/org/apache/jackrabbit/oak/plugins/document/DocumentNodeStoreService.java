@@ -1676,7 +1676,7 @@ specifier|final
 name|String
 name|DEFAULT_PERSISTENT_CACHE
 init|=
-literal|"cache,binary=0"
+literal|"cache"
 decl_stmt|;
 specifier|static
 specifier|final
