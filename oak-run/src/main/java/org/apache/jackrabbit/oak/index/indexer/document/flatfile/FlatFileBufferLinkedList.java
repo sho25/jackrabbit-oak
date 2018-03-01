@@ -132,6 +132,12 @@ name|size
 init|=
 literal|0
 decl_stmt|;
+specifier|private
+name|long
+name|memUsage
+init|=
+literal|0
+decl_stmt|;
 comment|/**      * Add {@code item} at the tail of the list      */
 specifier|public
 name|void
@@ -172,6 +178,13 @@ name|next
 expr_stmt|;
 name|size
 operator|++
+expr_stmt|;
+name|memUsage
+operator|+=
+name|item
+operator|.
+name|estimatedMemUsage
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Remove the first item from the list      * @return {@code NodeStateEntry} data in the removed item      */
@@ -221,6 +234,13 @@ expr_stmt|;
 name|size
 operator|--
 expr_stmt|;
+name|memUsage
+operator|-=
+name|ret
+operator|.
+name|estimatedMemUsage
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|size
@@ -268,6 +288,15 @@ return|return
 name|size
 operator|==
 literal|0
+return|;
+block|}
+specifier|public
+name|long
+name|estimatedMemoryUsage
+parameter_list|()
+block|{
+return|return
+name|memUsage
 return|;
 block|}
 comment|/**      * Represents an item in the list.      */

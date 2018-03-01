@@ -271,6 +271,17 @@ name|size
 argument_list|()
 return|;
 block|}
+name|long
+name|getBufferMemoryUsage
+parameter_list|()
+block|{
+return|return
+name|buffer
+operator|.
+name|estimatedMemoryUsage
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 specifier|protected
@@ -338,9 +349,14 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Max buffer size changed {} for path {}"
+literal|"Max buffer size changed {} (estimated memory usage: {} bytes) for path {}"
 argument_list|,
 name|maxBufferSize
+argument_list|,
+name|buffer
+operator|.
+name|estimatedMemoryUsage
+argument_list|()
 argument_list|,
 name|current
 operator|.
@@ -430,6 +446,11 @@ argument_list|,
 name|baseEntry
 operator|.
 name|getPath
+argument_list|()
+argument_list|,
+name|baseEntry
+operator|.
+name|estimatedMemUsage
 argument_list|()
 argument_list|)
 return|;
