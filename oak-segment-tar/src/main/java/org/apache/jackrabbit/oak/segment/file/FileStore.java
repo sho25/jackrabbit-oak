@@ -1450,7 +1450,7 @@ argument_list|()
 expr_stmt|;
 name|fileStoreScheduler
 operator|.
-name|scheduleAtFixedRate
+name|scheduleWithFixedDelay
 argument_list|(
 name|format
 argument_list|(
@@ -1470,7 +1470,7 @@ argument_list|)
 expr_stmt|;
 name|fileStoreScheduler
 operator|.
-name|scheduleAtFixedRate
+name|scheduleWithFixedDelay
 argument_list|(
 name|format
 argument_list|(
@@ -1490,7 +1490,7 @@ argument_list|)
 expr_stmt|;
 name|fileStoreScheduler
 operator|.
-name|scheduleAtFixedRate
+name|scheduleWithFixedDelay
 argument_list|(
 name|format
 argument_list|(
