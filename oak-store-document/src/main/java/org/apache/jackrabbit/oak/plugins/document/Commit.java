@@ -1172,6 +1172,10 @@ specifier|private
 name|void
 name|applyInternal
 parameter_list|()
+throws|throws
+name|ConflictException
+throws|,
+name|DocumentStoreException
 block|{
 if|if
 condition|(
@@ -1200,6 +1204,10 @@ parameter_list|(
 name|RevisionVector
 name|baseRevision
 parameter_list|)
+throws|throws
+name|ConflictException
+throws|,
+name|DocumentStoreException
 block|{
 if|if
 condition|(
@@ -1305,6 +1313,10 @@ comment|/**      * Apply the changes to the document store.      */
 name|void
 name|applyToDocumentStore
 parameter_list|()
+throws|throws
+name|ConflictException
+throws|,
+name|DocumentStoreException
 block|{
 name|applyToDocumentStore
 argument_list|(
@@ -1312,7 +1324,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Apply the changes to the document store.      *      * @param baseBranchRevision the base revision of this commit. Currently only      *                     used for branch commits.      * @throws DocumentStoreException if an error occurs while writing to the      *          underlying store.      */
+comment|/**      * Apply the changes to the document store.      *      * @param baseBranchRevision the base revision of this commit. Currently only      *                     used for branch commits.      * @throws ConflictException if a conflict is detected with another commit.      * @throws DocumentStoreException if an error occurs while writing to the      *          underlying store.      */
 specifier|private
 name|void
 name|applyToDocumentStore
@@ -1321,6 +1333,8 @@ name|RevisionVector
 name|baseBranchRevision
 parameter_list|)
 throws|throws
+name|ConflictException
+throws|,
 name|DocumentStoreException
 block|{
 comment|// initially set the rollbackFailed flag to true
@@ -1777,9 +1791,6 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|DocumentStoreException
-name|dse
-decl_stmt|;
 if|if
 condition|(
 name|commitRootDoc
@@ -1787,19 +1798,17 @@ operator|==
 literal|null
 condition|)
 block|{
-name|dse
-operator|=
+throw|throw
 operator|new
 name|DocumentStoreException
 argument_list|(
 name|msg
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 else|else
 block|{
-name|dse
-operator|=
+throw|throw
 operator|new
 name|ConflictException
 argument_list|(
@@ -1817,11 +1826,8 @@ name|revision
 argument_list|)
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-throw|throw
-name|dse
 throw|;
+block|}
 block|}
 else|else
 block|{
@@ -1919,6 +1925,19 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|e
+operator|instanceof
+name|ConflictException
+condition|)
+block|{
+throw|throw
+name|e
+throw|;
+block|}
+else|else
+block|{
 throw|throw
 name|DocumentStoreException
 operator|.
@@ -1927,6 +1946,7 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 finally|finally
@@ -2347,7 +2367,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Try to create or update the node. If there was a conflict, this method      * throws an exception, even though the change is still applied.      *      * @param store the store      * @param op the operation      */
+comment|/**      * Try to create or update the node. If there was a conflict, this method      * throws a {@link ConflictException}, even though the change is still applied.      *      * @param store the store      * @param op the operation      * @throws ConflictException if there was a conflict introduced by the      *          given update operation.      */
 specifier|private
 name|void
 name|createOrUpdateNode
@@ -2358,6 +2378,10 @@ parameter_list|,
 name|UpdateOp
 name|op
 parameter_list|)
+throws|throws
+name|ConflictException
+throws|,
+name|DocumentStoreException
 block|{
 name|NodeDocument
 name|doc
@@ -2921,6 +2945,8 @@ name|UpdateOp
 argument_list|>
 name|updates
 parameter_list|)
+throws|throws
+name|ConflictException
 block|{
 name|int
 name|i

@@ -2569,7 +2569,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|DocumentStoreException
+name|Exception
 name|e
 parameter_list|)
 block|{

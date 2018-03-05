@@ -100,14 +100,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A document store exception with an optional conflict revision. The  * DocumentNodeStore implementation will throw this exception when a commit  * or merge fails with a conflict.  */
+comment|/**  * An exception with an optional conflict revision. The DocumentNodeStore  * implementation will throw this exception when a commit or merge fails with a  * conflict.  */
 end_comment
 
 begin_class
 class|class
 name|ConflictException
 extends|extends
-name|DocumentStoreException
+name|Exception
 block|{
 specifier|private
 specifier|static
@@ -269,7 +269,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * List of conflict revisions.      *       * @return a list of conflict revisions (may be empty)      */
+comment|/**      * List of conflict revisions.      *      * @return a list of conflict revisions (may be empty)      */
 annotation|@
 name|Nonnull
 name|Iterable
