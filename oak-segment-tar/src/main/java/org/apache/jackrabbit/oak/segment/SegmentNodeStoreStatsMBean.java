@@ -29,6 +29,30 @@ name|CompositeData
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|OpenDataException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|TabularData
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -57,6 +81,33 @@ function_decl|;
 comment|/**      * @return  time series of the queuing times      */
 name|CompositeData
 name|getQueuingTimes
+parameter_list|()
+function_decl|;
+comment|/**      * @return tabular data of the form<commits,writer>      * @throws OpenDataException if data is not available      */
+name|TabularData
+name|getCommitsCountPerWriter
+parameter_list|()
+throws|throws
+name|OpenDataException
+function_decl|;
+comment|/**      * @return tabular data of the form<writer,writerDetails> for each writer      *         currently in the queue      * @throws OpenDataException if data is not available      */
+name|TabularData
+name|getQueuedWriters
+parameter_list|()
+throws|throws
+name|OpenDataException
+function_decl|;
+comment|/**      * Turns on/off, depending on the value of {@code flag}, the collection of       * stack traces for each writer thread.      * @param flag {@code boolean} indicating whether to collect or not      */
+name|void
+name|setCollectStackTraces
+parameter_list|(
+name|boolean
+name|flag
+parameter_list|)
+function_decl|;
+comment|/**      * @return collectStackTraces status flag      */
+name|boolean
+name|isCollectStackTraces
 parameter_list|()
 function_decl|;
 block|}

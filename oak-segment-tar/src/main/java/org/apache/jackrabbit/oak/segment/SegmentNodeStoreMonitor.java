@@ -38,71 +38,65 @@ name|Override
 specifier|public
 name|void
 name|onCommit
-parameter_list|()
+parameter_list|(
+name|Thread
+name|t
+parameter_list|,
+name|long
+name|time
+parameter_list|)
 block|{          }
 annotation|@
 name|Override
 specifier|public
 name|void
 name|onCommitQueued
-parameter_list|()
+parameter_list|(
+name|Thread
+name|t
+parameter_list|)
 block|{          }
 annotation|@
 name|Override
 specifier|public
 name|void
 name|onCommitDequeued
-parameter_list|()
-block|{                      }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|committedAfter
 parameter_list|(
-name|long
-name|time
-parameter_list|)
-block|{                      }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|dequeuedAfter
-parameter_list|(
+name|Thread
+name|t
+parameter_list|,
 name|long
 name|time
 parameter_list|)
 block|{                      }
 block|}
 decl_stmt|;
-comment|/**      * Notifies the monitor when a new commit was persisted right away      */
+comment|/**      * Notifies the monitor when a new commit was persisted.      * @param t the thread which initiated the write      * @param time the time spent for persisting the commit      */
 name|void
 name|onCommit
-parameter_list|()
-function_decl|;
-comment|/**      * Notifies the monitor when a new commit couldn't be persisted, but was      * queued for later retry      */
-name|void
-name|onCommitQueued
-parameter_list|()
-function_decl|;
-comment|/**      * Notifies the monitor when a queued commit was dequeued for processing.      */
-name|void
-name|onCommitDequeued
-parameter_list|()
-function_decl|;
-comment|/**      * Notifies the monitor time spent (excluding queuing time) for a commit.      * @param time the time spent      */
-name|void
-name|committedAfter
 parameter_list|(
+name|Thread
+name|t
+parameter_list|,
 name|long
 name|time
 parameter_list|)
 function_decl|;
-comment|/**      * Notifies the monitor time spent in the queue for a commit, before being processed.      * @param time the time spent      */
+comment|/**      * Notifies the monitor when a new commit couldn't be persisted, but was      * queued for later retry.      *       * @param t the thread which initiated the write      */
 name|void
-name|dequeuedAfter
+name|onCommitQueued
 parameter_list|(
+name|Thread
+name|t
+parameter_list|)
+function_decl|;
+comment|/**      * Notifies the monitor when a queued commit was dequeued for processing.      * @param t the thread which initiated the write      * @param time the time spent in the queue      */
+name|void
+name|onCommitDequeued
+parameter_list|(
+name|Thread
+name|t
+parameter_list|,
 name|long
 name|time
 parameter_list|)
