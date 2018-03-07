@@ -127,6 +127,16 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|WriteConcernException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -572,6 +582,10 @@ condition|(
 name|t
 operator|instanceof
 name|MongoCommandException
+operator|||
+name|t
+operator|instanceof
+name|WriteConcernException
 condition|)
 block|{
 name|int
@@ -579,12 +593,12 @@ name|code
 init|=
 operator|(
 operator|(
-name|MongoCommandException
+name|MongoException
 operator|)
 name|t
 operator|)
 operator|.
-name|getErrorCode
+name|getCode
 argument_list|()
 decl_stmt|;
 if|if
