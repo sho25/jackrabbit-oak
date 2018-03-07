@@ -287,8 +287,8 @@ class|class
 name|BlobIdRecordTest
 block|{
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|IdMappingBlobStore
 implements|implements
