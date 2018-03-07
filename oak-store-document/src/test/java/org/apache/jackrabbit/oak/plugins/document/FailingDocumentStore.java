@@ -78,6 +78,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|DocumentStoreException
+operator|.
+name|Type
+import|;
+end_import
+
+begin_import
 import|import static
 name|java
 operator|.
@@ -143,6 +163,14 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+specifier|private
+name|Type
+name|exceptionType
+init|=
+name|Type
+operator|.
+name|GENERIC
+decl_stmt|;
 class|class
 name|Fail
 block|{
@@ -177,6 +205,21 @@ return|return
 name|this
 return|;
 block|}
+name|Fail
+name|withType
+parameter_list|(
+name|Type
+name|type
+parameter_list|)
+block|{
+name|exceptionType
+operator|=
+name|type
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 name|void
 name|never
 parameter_list|()
@@ -201,6 +244,12 @@ name|Long
 operator|.
 name|MAX_VALUE
 argument_list|)
+expr_stmt|;
+name|exceptionType
+operator|=
+name|Type
+operator|.
+name|GENERIC
 expr_stmt|;
 block|}
 name|void
@@ -749,6 +798,10 @@ operator|new
 name|DocumentStoreException
 argument_list|(
 literal|"write operation failed"
+argument_list|,
+literal|null
+argument_list|,
+name|exceptionType
 argument_list|)
 throw|;
 block|}
