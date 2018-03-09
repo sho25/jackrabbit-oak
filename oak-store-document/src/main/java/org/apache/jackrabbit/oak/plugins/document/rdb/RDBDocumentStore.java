@@ -9168,6 +9168,14 @@ name|getId
 argument_list|()
 operator|+
 literal|" failed, race condition?"
+argument_list|,
+literal|null
+argument_list|,
+name|DocumentStoreException
+operator|.
+name|Type
+operator|.
+name|TRANSIENT
 argument_list|)
 throw|;
 block|}
@@ -9509,6 +9517,14 @@ operator|+
 name|maxRetries
 operator|+
 literal|" retries"
+argument_list|,
+literal|null
+argument_list|,
+name|DocumentStoreException
+operator|.
+name|Type
+operator|.
+name|TRANSIENT
 argument_list|)
 throw|;
 block|}
