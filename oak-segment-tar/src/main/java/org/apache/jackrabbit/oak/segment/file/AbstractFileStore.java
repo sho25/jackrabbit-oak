@@ -31,6 +31,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|SegmentCache
+operator|.
+name|newSegmentCache
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|data
 operator|.
 name|SegmentData
@@ -795,8 +813,7 @@ name|this
 operator|.
 name|segmentCache
 operator|=
-operator|new
-name|SegmentCache
+name|newSegmentCache
 argument_list|(
 name|builder
 operator|.

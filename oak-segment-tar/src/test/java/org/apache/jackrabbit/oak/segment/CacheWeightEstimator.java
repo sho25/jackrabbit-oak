@@ -47,6 +47,24 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|SegmentCache
+operator|.
+name|newSegmentCache
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|SegmentVersion
 operator|.
 name|LATEST_VERSION
@@ -1340,8 +1358,7 @@ block|{
 name|SegmentCache
 name|cache
 init|=
-operator|new
-name|SegmentCache
+name|newSegmentCache
 argument_list|(
 name|cacheSizeMB
 argument_list|)

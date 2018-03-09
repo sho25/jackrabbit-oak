@@ -669,13 +669,20 @@ operator|==
 literal|null
 condition|)
 block|{
+return|return
 name|getSegment
 argument_list|()
-expr_stmt|;
+operator|.
+name|getGcGeneration
+argument_list|()
+return|;
 block|}
+else|else
+block|{
 return|return
 name|gcGeneration
 return|;
+block|}
 block|}
 comment|// --------------------------------------------------------< Comparable>--
 annotation|@
