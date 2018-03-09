@@ -115,6 +115,28 @@ name|rdb
 operator|.
 name|RDBJDBCTools
 operator|.
+name|asDocumentStoreException
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|rdb
+operator|.
+name|RDBJDBCTools
+operator|.
 name|closeResultSet
 import|;
 end_import
@@ -1302,8 +1324,6 @@ name|toDelete
 parameter_list|)
 throws|throws
 name|SQLException
-throws|,
-name|DocumentStoreException
 block|{
 name|PreparedStatement
 name|stmt
@@ -1794,10 +1814,11 @@ name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"Trying to determine time difference to server"
 argument_list|)
 throw|;
 block|}
@@ -7283,16 +7304,17 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"UTF-8 not supported??"
+literal|"UTF-8 not supported"
 argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"UTF-8 not supported"
 argument_list|)
 throw|;
 block|}
@@ -7404,14 +7426,13 @@ name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
+name|ex
+argument_list|,
 literal|"Invalid ID: "
 operator|+
 name|id
-argument_list|,
-name|ex
 argument_list|)
 throw|;
 block|}

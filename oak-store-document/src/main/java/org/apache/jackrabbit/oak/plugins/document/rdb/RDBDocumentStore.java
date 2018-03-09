@@ -107,6 +107,28 @@ name|rdb
 operator|.
 name|RDBJDBCTools
 operator|.
+name|asDocumentStoreException
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|rdb
+operator|.
+name|RDBJDBCTools
+operator|.
 name|closeResultSet
 import|;
 end_import
@@ -1104,12 +1126,11 @@ name|ex
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
-literal|"initializing RDB document store"
-argument_list|,
 name|ex
+argument_list|,
+literal|"initializing RDB document store"
 argument_list|)
 throw|;
 block|}
@@ -2589,10 +2610,13 @@ name|ex
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"trying to read: "
+operator|+
+name|keys
 argument_list|)
 throw|;
 block|}
@@ -3488,10 +3512,11 @@ name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"Trying to determine time difference to server"
 argument_list|)
 throw|;
 block|}
@@ -10155,10 +10180,11 @@ name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"SQL exception on query"
 argument_list|)
 throw|;
 block|}
@@ -10916,10 +10942,11 @@ name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"SQL exception on query"
 argument_list|)
 throw|;
 block|}
@@ -11185,10 +11212,13 @@ name|ex
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"exception while reading "
+operator|+
+name|id
 argument_list|)
 throw|;
 block|}
@@ -11830,9 +11860,7 @@ name|ex
 parameter_list|)
 block|{
 throw|throw
-name|DocumentStoreException
-operator|.
-name|convert
+name|asDocumentStoreException
 argument_list|(
 name|ex
 argument_list|,
@@ -12994,10 +13022,11 @@ name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"UTF-8 not supported??"
 argument_list|)
 throw|;
 block|}
@@ -13086,10 +13115,11 @@ name|ex
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|DocumentStoreException
+name|asDocumentStoreException
 argument_list|(
 name|ex
+argument_list|,
+literal|"Error while gzipping contents"
 argument_list|)
 throw|;
 block|}
@@ -13792,9 +13822,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|DocumentStoreException
-operator|.
-name|convert
+name|asDocumentStoreException
 argument_list|(
 name|ex
 argument_list|,
