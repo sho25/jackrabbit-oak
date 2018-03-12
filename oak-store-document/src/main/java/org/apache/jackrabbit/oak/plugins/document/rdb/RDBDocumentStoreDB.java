@@ -3761,7 +3761,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, "
+literal|" (ID varbinary(512) not null, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, "
 operator|+
 operator|(
 name|schema
@@ -3783,7 +3783,13 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"DATA nvarchar(4000), BDATA varbinary(max))"
+literal|"DATA nvarchar(4000), BDATA varbinary(max), "
+operator|+
+literal|"constraint "
+operator|+
+name|tableName
+operator|+
+literal|"_PK primary key clustered (ID ASC))"
 operator|)
 return|;
 block|}

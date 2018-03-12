@@ -263,7 +263,13 @@ name|RDBBlobStore
 operator|.
 name|IDSIZE
 operator|+
-literal|") not null primary key, DATA varbinary(max))"
+literal|") not null, DATA varbinary(max)"
+operator|+
+literal|"constraint "
+operator|+
+name|tableName
+operator|+
+literal|"_PK primary key clustered (ID ASC))"
 return|;
 block|}
 block|}
