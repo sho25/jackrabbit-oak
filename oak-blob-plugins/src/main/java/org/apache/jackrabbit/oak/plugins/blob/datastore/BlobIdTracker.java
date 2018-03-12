@@ -1156,6 +1156,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|globalMerge
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|options
@@ -1165,9 +1168,6 @@ operator|.
 name|ACTIVE_DELETION
 condition|)
 block|{
-name|globalMerge
-argument_list|()
-expr_stmt|;
 name|deleteTracker
 operator|.
 name|track
@@ -1201,6 +1201,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|globalMerge
+argument_list|()
+expr_stmt|;
 name|store
 operator|.
 name|removeRecords
@@ -1229,6 +1232,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|globalMerge
+argument_list|()
+expr_stmt|;
 name|store
 operator|.
 name|removeRecords
