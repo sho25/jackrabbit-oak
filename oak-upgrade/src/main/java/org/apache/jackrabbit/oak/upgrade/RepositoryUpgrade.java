@@ -6377,7 +6377,7 @@ name|Utils
 operator|.
 name|NODE_NAME_LIMIT
 operator|/
-literal|4
+literal|3
 condition|)
 block|{
 return|return
