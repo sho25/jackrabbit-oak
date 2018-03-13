@@ -2415,6 +2415,18 @@ return|return
 name|result
 return|;
 block|}
+specifier|public
+name|String
+name|makeIndexConditionalForColumn
+parameter_list|(
+name|String
+name|columnName
+parameter_list|)
+block|{
+return|return
+literal|" exclude null keys"
+return|;
+block|}
 block|}
 block|,
 name|ORACLE
@@ -4563,6 +4575,22 @@ return|return
 name|result
 return|;
 block|}
+specifier|public
+name|String
+name|makeIndexConditionalForColumn
+parameter_list|(
+name|String
+name|columnName
+parameter_list|)
+block|{
+return|return
+literal|" where "
+operator|+
+name|columnName
+operator|+
+literal|" is not null"
+return|;
+block|}
 block|}
 block|;
 specifier|private
@@ -4928,6 +4956,11 @@ operator|+
 name|tableName
 operator|+
 literal|" (SDTYPE)"
+operator|+
+name|makeIndexConditionalForColumn
+argument_list|(
+literal|"SDTYPE"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|result
@@ -4943,6 +4976,11 @@ operator|+
 name|tableName
 operator|+
 literal|" (SDMAXREVTIME)"
+operator|+
+name|makeIndexConditionalForColumn
+argument_list|(
+literal|"SDMAXREVTIME"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5008,6 +5046,18 @@ parameter_list|()
 block|{
 return|return
 literal|"bigint"
+return|;
+block|}
+specifier|public
+name|String
+name|makeIndexConditionalForColumn
+parameter_list|(
+name|String
+name|columnName
+parameter_list|)
+block|{
+return|return
+literal|""
 return|;
 block|}
 comment|/**      * Statements needed to upgrade the DB      *      * @return the table modification string      */
@@ -5110,6 +5160,11 @@ operator|+
 name|tableName
 operator|+
 literal|" (SDTYPE)"
+operator|+
+name|makeIndexConditionalForColumn
+argument_list|(
+literal|"SDTYPE"
+argument_list|)
 block|,
 literal|"create index "
 operator|+
@@ -5120,6 +5175,11 @@ operator|+
 name|tableName
 operator|+
 literal|" (SDMAXREVTIME)"
+operator|+
+name|makeIndexConditionalForColumn
+argument_list|(
+literal|"SDMAXREVTIME"
+argument_list|)
 block|, }
 decl_stmt|;
 return|return
