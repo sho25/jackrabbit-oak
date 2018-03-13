@@ -239,9 +239,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|upgrade
 operator|.
-name|migration
+name|nodestate
 operator|.
 name|NameFilteringNodeState
 import|;
@@ -3160,7 +3160,7 @@ name|wrapped
 operator|=
 name|NameFilteringNodeState
 operator|.
-name|wrap
+name|wrapRoot
 argument_list|(
 name|wrapped
 argument_list|)

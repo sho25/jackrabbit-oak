@@ -555,6 +555,7 @@ name|length
 argument_list|()
 decl_stmt|;
 comment|/**      * The length of path (in characters), whose UTF-8 representation can not      * possibly be too large to be used for the primary key for the document      * store.      */
+specifier|public
 specifier|static
 specifier|final
 name|int
@@ -570,6 +571,7 @@ literal|165
 argument_list|)
 decl_stmt|;
 comment|/**      * The maximum length of the parent path, in bytes. If the parent path is      * longer, then the id of a document is no longer the path, but the hash of      * the parent, and then the node name.      */
+specifier|public
 specifier|static
 specifier|final
 name|int
