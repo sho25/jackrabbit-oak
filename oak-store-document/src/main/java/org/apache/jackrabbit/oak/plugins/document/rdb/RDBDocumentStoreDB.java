@@ -4616,24 +4616,6 @@ name|SYSPROP_PREFIX
 init|=
 literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBDocumentStore"
 decl_stmt|;
-comment|// whether to create indices
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CREATEINDEX
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-name|SYSPROP_PREFIX
-operator|+
-literal|".CREATEINDEX"
-argument_list|,
-literal|""
-argument_list|)
-decl_stmt|;
 specifier|public
 enum|enum
 name|FETCHFIRSTSYNTAX
@@ -4841,16 +4823,6 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|CREATEINDEX
-operator|.
-name|equals
-argument_list|(
-literal|"modified-id"
-argument_list|)
-condition|)
-block|{
 name|result
 operator|.
 name|add
@@ -4859,68 +4831,13 @@ literal|"create index "
 operator|+
 name|tableName
 operator|+
-literal|"_MI on "
-operator|+
-name|tableName
-operator|+
-literal|" (MODIFIED, ID)"
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|CREATEINDEX
-operator|.
-name|equals
-argument_list|(
-literal|"id-modified"
-argument_list|)
-condition|)
-block|{
-name|result
-operator|.
-name|add
-argument_list|(
-literal|"create index "
-operator|+
-name|tableName
-operator|+
-literal|"_MI on "
-operator|+
-name|tableName
-operator|+
-literal|" (ID, MODIFIED)"
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|CREATEINDEX
-operator|.
-name|equals
-argument_list|(
-literal|"modified"
-argument_list|)
-condition|)
-block|{
-name|result
-operator|.
-name|add
-argument_list|(
-literal|"create index "
-operator|+
-name|tableName
-operator|+
-literal|"_MI on "
+literal|"_MOD on "
 operator|+
 name|tableName
 operator|+
 literal|" (MODIFIED)"
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|level
@@ -5058,6 +4975,26 @@ parameter_list|)
 block|{
 return|return
 literal|""
+return|;
+block|}
+specifier|public
+name|String
+name|getModifiedIndexStatement
+parameter_list|(
+name|String
+name|tableName
+parameter_list|)
+block|{
+return|return
+literal|"create index "
+operator|+
+name|tableName
+operator|+
+literal|"_MOD on "
+operator|+
+name|tableName
+operator|+
+literal|" (MODIFIED)"
 return|;
 block|}
 comment|/**      * Statements needed to upgrade the DB      *      * @return the table modification string      */
