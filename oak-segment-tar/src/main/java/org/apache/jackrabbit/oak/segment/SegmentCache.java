@@ -905,7 +905,16 @@ name|Nonnull
 name|Segment
 name|segment
 parameter_list|)
-block|{}
+block|{
+name|segment
+operator|.
+name|getSegmentId
+argument_list|()
+operator|.
+name|unloaded
+argument_list|()
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
