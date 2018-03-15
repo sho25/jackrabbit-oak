@@ -543,7 +543,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"Fails on missing blobstore"
+literal|"Without data store defined it always copies checkpoints"
 block|,
 operator|new
 name|SegmentNodeStoreContainer
@@ -562,7 +562,7 @@ argument_list|()
 block|,
 name|Result
 operator|.
-name|EXCEPTION
+name|CHECKPOINTS_COPIED
 block|}
 argument_list|)
 expr_stmt|;

@@ -23,6 +23,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|Closer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -40,23 +54,25 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
 operator|.
 name|common
 operator|.
-name|io
+name|base
 operator|.
-name|Closer
+name|Preconditions
+operator|.
+name|checkNotNull
 import|;
 end_import
 
 begin_class
 specifier|public
 class|class
-name|MissingBlobStoreFactory
+name|LoopbackBlobStoreFactory
 implements|implements
 name|BlobStoreFactory
 block|{
@@ -70,9 +86,16 @@ name|Closer
 name|closer
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|closer
+argument_list|,
+literal|"Closer object cannot be null"
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
-name|MissingBlobStore
+name|LoopbackBlobStore
 argument_list|()
 return|;
 block|}
@@ -84,7 +107,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"MissingBlobStore"
+literal|"LoopbackBlobStore"
 return|;
 block|}
 block|}

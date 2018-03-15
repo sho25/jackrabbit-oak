@@ -171,7 +171,7 @@ name|cli
 operator|.
 name|blob
 operator|.
-name|MissingBlobStoreFactory
+name|LoopbackBlobStoreFactory
 import|;
 end_import
 
@@ -509,7 +509,7 @@ block|{
 name|result
 operator|=
 operator|new
-name|MissingBlobStoreFactory
+name|LoopbackBlobStoreFactory
 argument_list|()
 expr_stmt|;
 block|}
@@ -608,7 +608,7 @@ block|{
 name|result
 operator|=
 operator|new
-name|MissingBlobStoreFactory
+name|LoopbackBlobStoreFactory
 argument_list|()
 expr_stmt|;
 block|}
