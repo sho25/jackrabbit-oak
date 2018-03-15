@@ -801,7 +801,10 @@ name|assertEquals
 argument_list|(
 name|expectedBufferContent
 argument_list|,
+name|encodeBufferFreeSpace
+argument_list|(
 name|actualInputStreamAsString
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1079,7 +1082,7 @@ literal|0
 block|,
 literal|4
 block|,
-literal|"\0\0\0\0"
+literal|"####"
 block|,
 literal|0
 block|}
@@ -1098,7 +1101,7 @@ literal|0
 block|,
 literal|4
 block|,
-literal|"IDX1\0"
+literal|"IDX1#"
 block|,
 literal|4
 block|}
@@ -1117,7 +1120,7 @@ literal|0
 block|,
 literal|3
 block|,
-literal|"DX1\0"
+literal|"DX1#"
 block|,
 literal|3
 block|}
@@ -1136,7 +1139,7 @@ literal|0
 block|,
 literal|4
 block|,
-literal|"DX1\0"
+literal|"DX1#"
 block|,
 literal|3
 block|}
@@ -1155,7 +1158,7 @@ literal|3
 block|,
 literal|10
 block|,
-literal|"\0\0\0XXXXYYZYZY\0\0\0\0\0\0\0"
+literal|"###XXXXYYZYZY#######"
 block|,
 literal|10
 block|}
@@ -1174,7 +1177,7 @@ literal|3
 block|,
 literal|10
 block|,
-literal|"\0\0\0XXXXYYZY\0\0\0\0\0\0\0\0\0"
+literal|"###XXXXYYZY#########"
 block|,
 literal|8
 block|}
@@ -1193,7 +1196,7 @@ literal|3
 block|,
 literal|10
 block|,
-literal|"\0\0\0XXXXYYZY\0\0\0\0\0\0\0\0\0"
+literal|"###XXXXYYZY#########"
 block|,
 literal|8
 block|}
@@ -1212,7 +1215,7 @@ literal|3
 block|,
 literal|10
 block|,
-literal|"\0\0\0XXXXYYZY"
+literal|"###XXXXYYZY"
 block|,
 literal|8
 block|}
@@ -1231,7 +1234,7 @@ literal|2
 block|,
 literal|10
 block|,
-literal|"\0\0XXXXYYZY\0"
+literal|"##XXXXYYZY#"
 block|,
 literal|8
 block|}
@@ -1250,7 +1253,7 @@ literal|1
 block|,
 literal|10
 block|,
-literal|"\0XXXXYYZY\0\0"
+literal|"#XXXXYYZY##"
 block|,
 literal|8
 block|}
@@ -1471,6 +1474,26 @@ block|{
 literal|"ABCQ"
 block|}
 block|}
+return|;
+block|}
+specifier|private
+name|String
+name|encodeBufferFreeSpace
+parameter_list|(
+specifier|final
+name|String
+name|actualInputStreamAsString
+parameter_list|)
+block|{
+return|return
+name|actualInputStreamAsString
+operator|.
+name|replace
+argument_list|(
+literal|'\0'
+argument_list|,
+literal|'#'
+argument_list|)
 return|;
 block|}
 specifier|private
