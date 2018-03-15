@@ -1069,18 +1069,8 @@ name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|child
-operator|.
-name|remove
-argument_list|()
-expr_stmt|;
 block|}
 block|}
-name|parent
-operator|.
-name|remove
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|newParent
@@ -1088,6 +1078,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// replace the 'parent', which needs to be removed
 name|principalRoot
 operator|.
 name|setChildNode
@@ -1099,6 +1090,14 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|parent
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 block|}
 block|}
