@@ -357,8 +357,9 @@ expr_stmt|;
 name|SecurityProvider
 name|provider
 init|=
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|with

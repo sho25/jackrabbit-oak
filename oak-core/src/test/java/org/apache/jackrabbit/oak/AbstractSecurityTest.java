@@ -1103,8 +1103,9 @@ name|initSecurityProvider
 parameter_list|()
 block|{
 return|return
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|with

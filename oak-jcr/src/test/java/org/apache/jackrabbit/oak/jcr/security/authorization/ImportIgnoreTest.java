@@ -523,8 +523,9 @@ argument_list|)
 decl_stmt|;
 name|securityProvider
 operator|=
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|with
@@ -540,8 +541,9 @@ else|else
 block|{
 name|securityProvider
 operator|=
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|build

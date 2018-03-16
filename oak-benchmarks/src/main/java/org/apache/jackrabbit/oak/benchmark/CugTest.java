@@ -492,8 +492,9 @@ block|{
 name|SecurityProvider
 name|delegate
 init|=
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|with

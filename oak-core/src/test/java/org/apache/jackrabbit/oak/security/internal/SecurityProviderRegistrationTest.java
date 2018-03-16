@@ -1448,7 +1448,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|3
+literal|6
 argument_list|,
 name|Iterables
 operator|.

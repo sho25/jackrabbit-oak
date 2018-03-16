@@ -1223,7 +1223,9 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|internal
+operator|.
+name|SecurityProviderBuilder
 import|;
 end_import
 
@@ -5037,8 +5039,12 @@ specifier|final
 name|SecurityProvider
 name|securityProvider
 init|=
-operator|new
-name|SecurityProviderImpl
+name|SecurityProviderBuilder
+operator|.
+name|newBuilder
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 specifier|private

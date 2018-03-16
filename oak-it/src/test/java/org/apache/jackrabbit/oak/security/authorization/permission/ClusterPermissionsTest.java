@@ -929,8 +929,9 @@ name|with
 argument_list|(
 name|securityProvider1
 operator|=
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|with
@@ -1059,8 +1060,9 @@ name|with
 argument_list|(
 name|securityProvider2
 operator|=
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|with

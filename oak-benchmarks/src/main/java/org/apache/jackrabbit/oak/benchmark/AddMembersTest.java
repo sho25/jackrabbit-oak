@@ -901,8 +901,9 @@ decl_stmt|;
 name|SecurityProvider
 name|sp
 init|=
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|with

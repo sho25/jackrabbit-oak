@@ -264,8 +264,9 @@ name|authConfiguration
 operator|.
 name|setSecurityProvider
 argument_list|(
-operator|new
 name|SecurityProviderBuilder
+operator|.
+name|newBuilder
 argument_list|()
 operator|.
 name|build
