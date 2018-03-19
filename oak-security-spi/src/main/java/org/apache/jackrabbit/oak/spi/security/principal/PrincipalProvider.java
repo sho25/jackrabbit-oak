@@ -49,6 +49,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -93,11 +103,27 @@ name|Nullable
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|annotation
+operator|.
+name|versioning
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_comment
 comment|/**  * The {@code PrincipalProvider} defines methods to provide access to sources  * of {@link Principal}s. This allows the security framework share any external  * sources for authorization and authentication, as may be used by a custom  * {@link javax.security.auth.spi.LoginModule} for example.  *  * A single {@code PrincipalProvider} implementation is expected to exposed  * principals from one single source. In contrast to the  * {@link org.apache.jackrabbit.api.security.principal.PrincipalManager}  * which will expose all known and accessible principals from possibly  * different sources. See also {@link CompositePrincipalProvider} for a  * mechanism to combine principals of different providers.  */
 end_comment
 
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|PrincipalProvider
@@ -114,9 +140,10 @@ name|String
 name|principalName
 parameter_list|)
 function_decl|;
-comment|/**      * Returns an iterator over all group principals for which the given      * principal is either direct or indirect member of. Thus for any principal      * returned in the iterator {@link java.security.acl.Group#isMember(Principal)}      * must return {@code true}.      *<p>      * Example:<br>      * If Principal is member of Group A, and Group A is member of      * Group B, this method will return Group A and Group B.      *      * @param principal the principal to return it's membership from.      * @return an iterator returning all groups the given principal is member of.      * @see java.security.acl.Group#isMember(java.security.Principal)      */
+comment|/**      * Returns an iterator over all group principals for which the given      * principal is either direct or indirect member of. Thus for any principal      * returned in the iterator {@link java.security.acl.Group#isMember(Principal)}      * must return {@code true}.      *<p>      * Example:<br>      * If Principal is member of Group A, and Group A is member of      * Group B, this method will return Group A and Group B.      *      * @deprecated use {@link #getMembershipPrincipals(Principal)}      * @param principal the principal to return it's membership from.      * @return an iterator returning all groups the given principal is member of.      * @see java.security.acl.Group#isMember(java.security.Principal)      */
 annotation|@
 name|Nonnull
+specifier|default
 name|Set
 argument_list|<
 name|Group
@@ -128,7 +155,42 @@ name|Nonnull
 name|Principal
 name|principal
 parameter_list|)
-function_decl|;
+block|{
+return|return
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns an iterator over all group principals for which the given      * principal is either direct or indirect member of. Thus for any principal      * returned in the iterator {@link GroupPrincipal#isMember(Principal)}      * must return {@code true}.      *<p>      * Example:<br>      * If Principal is member of Group A, and Group A is member of      * Group B, this method will return Group A and Group B.      *      * @param principal the principal to return it's membership from.      * @return an iterator returning all groups the given principal is member of.      * @see GroupPrincipal#isMember(java.security.Principal)      */
+annotation|@
+name|Nonnull
+specifier|default
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|getMembershipPrincipals
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Principal
+name|principal
+parameter_list|)
+block|{
+return|return
+name|GroupPrincipals
+operator|.
+name|transform
+argument_list|(
+name|getGroupMembership
+argument_list|(
+name|principal
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/**      * Tries to resolve the specified {@code userID} to a valid principal and      * it's group membership. This method returns an empty set if the      * specified ID cannot be resolved.      *      * @param userID A userID.      * @return The set of principals associated with the specified {@code userID}      * or an empty set if it cannot be resolved.      */
 annotation|@
 name|Nonnull

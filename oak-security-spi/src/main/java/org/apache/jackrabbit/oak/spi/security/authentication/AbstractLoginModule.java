@@ -1935,6 +1935,7 @@ name|principals
 init|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|principals
@@ -1950,7 +1951,7 @@ name|addAll
 argument_list|(
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|userPrincipal
 argument_list|)

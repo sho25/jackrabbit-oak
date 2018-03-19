@@ -2900,7 +2900,7 @@ name|addAll
 argument_list|(
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|principal
 argument_list|)

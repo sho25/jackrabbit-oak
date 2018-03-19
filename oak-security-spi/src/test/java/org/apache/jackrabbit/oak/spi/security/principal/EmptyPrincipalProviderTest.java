@@ -162,7 +162,7 @@ name|assertTrue
 argument_list|(
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|EveryonePrincipal
 operator|.
@@ -178,7 +178,7 @@ name|assertTrue
 argument_list|(
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 operator|new
 name|PrincipalImpl
@@ -197,7 +197,7 @@ name|assertTrue
 argument_list|(
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|testPrincipal
 argument_list|)

@@ -153,6 +153,24 @@ name|security
 operator|.
 name|principal
 operator|.
+name|GroupPrincipal
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|principal
+operator|.
 name|PrincipalManager
 import|;
 end_import
@@ -1040,13 +1058,7 @@ name|assertTrue
 argument_list|(
 name|principal
 operator|instanceof
-name|java
-operator|.
-name|security
-operator|.
-name|acl
-operator|.
-name|Group
+name|GroupPrincipal
 argument_list|)
 expr_stmt|;
 block|}
@@ -1422,7 +1434,7 @@ name|principals
 init|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|getTestUser
 argument_list|()
@@ -1465,7 +1477,7 @@ name|principals
 init|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|gr
 operator|.
@@ -1481,12 +1493,12 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// same if the principal is not marked as 'java.security.acl.Group' and not tree-based-principal
+comment|// same if the principal is not marked as 'GroupPrincipal' and not tree-based-principal
 name|principals
 operator|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 operator|new
 name|PrincipalImpl
@@ -1558,7 +1570,7 @@ name|principals
 init|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|user
 operator|.
@@ -1623,7 +1635,7 @@ name|principals
 init|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 operator|new
 name|PrincipalImpl
@@ -1686,7 +1698,7 @@ name|principals
 init|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|user
 operator|.
@@ -1744,7 +1756,7 @@ name|principals
 init|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 operator|new
 name|PrincipalImpl
@@ -1805,7 +1817,7 @@ name|principals
 init|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 name|group
 operator|.
@@ -1821,12 +1833,12 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// same if the principal is not marked as 'java.security.acl.Group' and not tree-based-principal
+comment|// same if the principal is not marked as 'GroupPrincipal' and not tree-based-principal
 name|principals
 operator|=
 name|principalProvider
 operator|.
-name|getGroupMembership
+name|getMembershipPrincipals
 argument_list|(
 operator|new
 name|PrincipalImpl
@@ -2574,6 +2586,7 @@ name|expected
 init|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|expected
