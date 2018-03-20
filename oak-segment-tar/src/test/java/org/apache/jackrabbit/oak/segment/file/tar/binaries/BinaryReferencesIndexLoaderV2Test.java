@@ -99,6 +99,30 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|binaries
+operator|.
+name|BinaryReferencesIndexLoaderV2
+operator|.
+name|parseBinaryReferencesIndex
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -220,7 +244,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-return|return
+name|ByteBuffer
+name|data
+init|=
 name|loadBinaryReferencesIndex
 argument_list|(
 parameter_list|(
@@ -269,6 +295,12 @@ name|slice
 argument_list|()
 return|;
 block|}
+argument_list|)
+decl_stmt|;
+return|return
+name|parseBinaryReferencesIndex
+argument_list|(
+name|data
 argument_list|)
 return|;
 block|}

@@ -39,16 +39,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|HashSet
@@ -100,6 +90,10 @@ operator|.
 name|oak
 operator|.
 name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
 operator|.
 name|SegmentArchiveManager
 import|;

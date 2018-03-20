@@ -15,9 +15,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
+name|spi
 operator|.
-name|tar
+name|monitor
 package|;
 end_package
 
@@ -31,16 +31,16 @@ name|File
 import|;
 end_import
 
-begin_class
+begin_comment
+comment|/**  * Callback interface that eases the collection of statistics about I/O  * operations.  */
+end_comment
+
+begin_interface
 specifier|public
-class|class
-name|IOMonitorAdapter
-implements|implements
+interface|interface
 name|IOMonitor
 block|{
-annotation|@
-name|Override
-specifier|public
+comment|/**      * Called before a segment is read from the file system.      *      * @param file   File containing the segment.      * @param msb    Most significant bits of the segment ID.      * @param lsb    Least significant bits of the segment ID.      * @param length Size of the segment.      */
 name|void
 name|beforeSegmentRead
 parameter_list|(
@@ -56,12 +56,8 @@ parameter_list|,
 name|int
 name|length
 parameter_list|)
-block|{
-comment|// Intentionally left blank
-block|}
-annotation|@
-name|Override
-specifier|public
+function_decl|;
+comment|/**      * Called after a segment is read from the file system. This is called only      * in case of successful operations.      *      * @param file    File containing the segment.      * @param msb     Most significant bits of the segment ID.      * @param lsb     Least significant bits of the segment ID.      * @param length  Size of the segment.      * @param elapsed Time spent by the read operation, in nanoseconds.      */
 name|void
 name|afterSegmentRead
 parameter_list|(
@@ -80,12 +76,8 @@ parameter_list|,
 name|long
 name|elapsed
 parameter_list|)
-block|{
-comment|// Intentionally left blank
-block|}
-annotation|@
-name|Override
-specifier|public
+function_decl|;
+comment|/**      * Called before a segment is written to the file system.      *      * @param file   File containing the segment.      * @param msb    Most significant bits of the segment ID.      * @param lsb    Least significant bits of the segment ID.      * @param length Size of the segment.      */
 name|void
 name|beforeSegmentWrite
 parameter_list|(
@@ -101,12 +93,8 @@ parameter_list|,
 name|int
 name|length
 parameter_list|)
-block|{
-comment|// Intentionally left blank
-block|}
-annotation|@
-name|Override
-specifier|public
+function_decl|;
+comment|/**      * Called after a segment is written to the file system. This is called only      * in case of successful operations.      *      * @param file    File containing the segment.      * @param msb     Most significant bits of the segment ID.      * @param lsb     Least significant bits of the segment ID.      * @param length  Size of the segment.      * @param elapsed Time spent by the write operation, in nanoseconds.      */
 name|void
 name|afterSegmentWrite
 parameter_list|(
@@ -125,11 +113,9 @@ parameter_list|,
 name|long
 name|elapsed
 parameter_list|)
-block|{
-comment|// Intentionally left blank
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

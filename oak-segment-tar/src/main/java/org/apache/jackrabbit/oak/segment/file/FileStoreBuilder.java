@@ -317,6 +317,10 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
 name|SegmentNodeStorePersistence
 import|;
 end_import
@@ -419,9 +423,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
+name|spi
 operator|.
-name|tar
+name|monitor
 operator|.
 name|IOMonitor
 import|;
@@ -439,9 +443,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
+name|spi
 operator|.
-name|tar
+name|monitor
 operator|.
 name|IOMonitorAdapter
 import|;

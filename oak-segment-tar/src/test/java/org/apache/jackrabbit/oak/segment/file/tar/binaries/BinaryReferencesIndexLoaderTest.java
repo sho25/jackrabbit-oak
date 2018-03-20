@@ -246,7 +246,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-return|return
+name|ByteBuffer
+name|data
+init|=
 name|BinaryReferencesIndexLoader
 operator|.
 name|loadBinaryReferencesIndex
@@ -297,6 +299,14 @@ name|slice
 argument_list|()
 return|;
 block|}
+argument_list|)
+decl_stmt|;
+return|return
+name|BinaryReferencesIndexLoader
+operator|.
+name|parseBinaryReferencesIndex
+argument_list|(
+name|data
 argument_list|)
 return|;
 block|}

@@ -87,6 +87,10 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
 name|SegmentNodeStorePersistence
 import|;
 end_import

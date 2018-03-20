@@ -31,7 +31,11 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStorePersistence
+name|spi
+operator|.
+name|persistence
+operator|.
+name|GCJournalFile
 import|;
 end_import
 
@@ -190,8 +194,6 @@ specifier|public
 class|class
 name|LocalGCJournalFile
 implements|implements
-name|SegmentNodeStorePersistence
-operator|.
 name|GCJournalFile
 block|{
 specifier|private

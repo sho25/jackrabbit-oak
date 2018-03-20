@@ -73,7 +73,11 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStorePersistence
+name|spi
+operator|.
+name|persistence
+operator|.
+name|JournalFile
 import|;
 end_import
 
@@ -149,8 +153,6 @@ parameter_list|,
 name|SegmentIdProvider
 name|idProvider
 parameter_list|,
-name|SegmentNodeStorePersistence
-operator|.
 name|JournalFile
 name|journalFile
 parameter_list|)

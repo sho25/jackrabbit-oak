@@ -231,7 +231,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStorePersistence
+name|spi
+operator|.
+name|persistence
 operator|.
 name|JournalFile
 import|;

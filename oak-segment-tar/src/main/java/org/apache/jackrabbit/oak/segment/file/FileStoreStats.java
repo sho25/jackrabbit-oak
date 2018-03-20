@@ -101,9 +101,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
+name|spi
 operator|.
-name|tar
+name|monitor
 operator|.
 name|FileStoreMonitor
 import|;
