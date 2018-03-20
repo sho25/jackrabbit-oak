@@ -4437,7 +4437,8 @@ name|newInstance
 argument_list|(
 name|blobCollectorWorkingDir
 argument_list|,
-name|executorService
+name|getExecutorService
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ActiveDeletedBlobCollectorMBean
@@ -4458,7 +4459,8 @@ name|asyncIndexInfoService
 argument_list|,
 name|blobStore
 argument_list|,
-name|executorService
+name|getExecutorService
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|oakRegs
