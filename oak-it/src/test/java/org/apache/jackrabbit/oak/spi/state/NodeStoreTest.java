@@ -3531,6 +3531,12 @@ operator|==
 name|NodeStoreFixtures
 operator|.
 name|COW_DOCUMENT
+operator|||
+name|fixture
+operator|==
+name|NodeStoreFixtures
+operator|.
+name|SEGMENT_AZURE
 condition|)
 block|{
 name|assertTrue

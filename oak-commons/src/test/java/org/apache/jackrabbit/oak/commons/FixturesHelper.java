@@ -100,6 +100,8 @@ name|DOCUMENT_MEM
 block|,
 name|SEGMENT_TAR
 block|,
+name|SEGMENT_AZURE
+block|,
 name|COMPOSITE_SEGMENT
 block|,
 name|COMPOSITE_MEM
