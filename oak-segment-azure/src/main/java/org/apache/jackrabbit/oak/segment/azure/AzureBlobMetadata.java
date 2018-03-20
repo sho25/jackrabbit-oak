@@ -69,7 +69,7 @@ specifier|final
 name|String
 name|METADATA_SEGMENT_UUID
 init|=
-literal|"segment-uuid"
+literal|"uuid"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -77,7 +77,7 @@ specifier|final
 name|String
 name|METADATA_SEGMENT_POSITION
 init|=
-literal|"segment-position"
+literal|"position"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -85,7 +85,7 @@ specifier|final
 name|String
 name|METADATA_SEGMENT_GENERATION
 init|=
-literal|"segment-generation"
+literal|"generation"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -93,7 +93,7 @@ specifier|final
 name|String
 name|METADATA_SEGMENT_FULL_GENERATION
 init|=
-literal|"segment-fullGeneration"
+literal|"fullGeneration"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -101,7 +101,7 @@ specifier|final
 name|String
 name|METADATA_SEGMENT_COMPACTED
 init|=
-literal|"segment-compacted"
+literal|"compacted"
 decl_stmt|;
 specifier|private
 specifier|static
