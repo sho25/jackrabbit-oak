@@ -110,6 +110,19 @@ name|boolean
 name|isCollectStackTraces
 parameter_list|()
 function_decl|;
+comment|/**      * Modifies the maximum number of writing threads to be recorded.      * Changing the default value will reset the overall collection process.      *       * @param commitsCountMapSize the new size      */
+name|void
+name|setCommitsCountMapMaxSize
+parameter_list|(
+name|int
+name|commitsCountMapMaxSize
+parameter_list|)
+function_decl|;
+comment|/**      * @return maximum number of writing threads to be recorded      */
+name|int
+name|getCommitsCountMapMaxSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
