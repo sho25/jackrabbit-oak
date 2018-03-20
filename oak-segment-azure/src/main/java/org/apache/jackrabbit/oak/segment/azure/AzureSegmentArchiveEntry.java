@@ -31,13 +31,11 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
+name|spi
 operator|.
-name|tar
+name|persistence
 operator|.
-name|index
-operator|.
-name|IndexEntry
+name|SegmentArchiveEntry
 import|;
 end_import
 
@@ -46,7 +44,7 @@ specifier|public
 class|class
 name|AzureSegmentArchiveEntry
 implements|implements
-name|IndexEntry
+name|SegmentArchiveEntry
 block|{
 specifier|private
 specifier|final
@@ -173,8 +171,6 @@ return|return
 name|lsb
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|int
 name|getPosition
