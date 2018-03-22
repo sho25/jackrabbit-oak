@@ -31,6 +31,10 @@ name|File
 import|;
 end_import
 
+begin_comment
+comment|/**  * A void implementation of the {@link IOMonitor}. Can be used for the  * testing purposes or for the extension.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

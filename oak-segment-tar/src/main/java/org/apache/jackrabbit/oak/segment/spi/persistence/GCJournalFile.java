@@ -41,11 +41,16 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * This type abstracts the {@code gc.log} file, used to save information about  * the segment garbage collection. Each record is represented by a single string.  *<br><br>  * The implementation<b>doesn't need to be</b> thread-safe.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|GCJournalFile
 block|{
+comment|/**      * Write the new line to the GC journal file.      *      * @param line the line to write. It should contain neither special characters      *             nor the newline {@code \n}.      * @throws IOException      */
 name|void
 name|writeLine
 parameter_list|(
@@ -55,6 +60,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Return the list of all written records in the same order as they were      * written.      *      * @return the list of all written lines      * @throws IOException      */
 name|List
 argument_list|<
 name|String

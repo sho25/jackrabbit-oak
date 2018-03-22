@@ -41,6 +41,10 @@ name|IOException
 import|;
 end_import
 
+begin_comment
+comment|/**  * The {@link JournalFile} writer. It allows to append a record to the journal file  * (or create a new one, if it doesn't exist).  *<p>  * The implementation doesn't need to be thread-safe (eg. the caller has to take  * care of synchronizing the {@link #writeLine(String)} method calls), but the method  * should be:  *<ul>  *<li>atomic with regards to the {@link JournalFileReader},</li>  *<li><b>flushed to the storage</b>.</li>  *</ul>  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -48,12 +52,14 @@ name|JournalFileWriter
 extends|extends
 name|Closeable
 block|{
+comment|/**      * Truncates the journal file. This is a maintenance operation, which may      * break existing {@link JournalFileReader} and shouldn't be used in the      * concurrent environment.      *      * @throws IOException      */
 name|void
 name|truncate
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Write a new line to the journal file. This operation should be atomic,      * eg. it's should be possible to open a new reader using      * {@link JournalFile#openJournalReader()} in the way that it'll have access      * to an incomplete record line.      *<p>      * If this method returns successfully it means that the line was persisted      * on the non-volatile storage. For instance, on the local disk the      * {@code flush()} should be called by the implementation.      *      * @param line the journal record to be written      * @throws IOException      */
 name|void
 name|writeLine
 parameter_list|(

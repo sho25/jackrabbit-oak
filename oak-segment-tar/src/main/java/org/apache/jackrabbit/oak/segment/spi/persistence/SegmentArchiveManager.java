@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SegmentArchiveManager provides a low-level access to the segment files (eg.  * stored in the .tar). It allows to perform a few FS-like operations (delete,  * rename, copy, etc.) and also opens the segment archives either for reading  * or reading and writing.  */
+comment|/**  * SegmentArchiveManager provides a low-level access to the segment files (eg.  * stored in the .tar). It allows to perform a few FS-like operations (delete,  * rename, copy, etc.) and also opens the segment archives either for reading  * or reading and writing.  *<p>  * The implementation doesn't need to be thread-safe.  */
 end_comment
 
 begin_interface

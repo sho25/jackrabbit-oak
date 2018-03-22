@@ -31,11 +31,16 @@ name|IOException
 import|;
 end_import
 
+begin_comment
+comment|/**  * This type represents the lock that has been already acquired on the segment  * store. The lock should prevent local and remote processes from accessing the  * same segment store.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|RepositoryLock
 block|{
+comment|/**      * Unlocks the repository, so that it can be used by another SegmentNodeStore.      *      * @throws IOException      */
 name|void
 name|unlock
 parameter_list|()

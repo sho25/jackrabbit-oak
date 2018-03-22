@@ -31,27 +31,35 @@ name|IOException
 import|;
 end_import
 
+begin_comment
+comment|/**  * The journal is a special, atomically updated file that records the state of  * the repository as a sequence of references to successive root node records.  * See<a href="https://jackrabbit.apache.org/oak/docs/nodestore/segment/overview.html">  * oak-segment-tar</a> documentation for more details.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|JournalFile
 block|{
+comment|/**      * Opens the journal file for reading. The returned object will represent      * the current state of the journal. Subsequent writes made by the      * {@link JournalFileWriter} won't be visible until a new      * {@link JournalFileReader} is opened.      *      * @return the reader representing the current state of the journal      * @throws IOException      */
 name|JournalFileReader
 name|openJournalReader
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Opens the journal file for writing.      * @return      * @throws IOException      */
 name|JournalFileWriter
 name|openJournalWriter
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Return the name representing the journal file.      * @return name (eg. file name) representing the journal      */
 name|String
 name|getName
 parameter_list|()
 function_decl|;
+comment|/**      * Check if the journal already exists.      * @return {@code true} if the journal has been already created by the      * {@link JournalFileWriter}      */
 name|boolean
 name|exists
 parameter_list|()

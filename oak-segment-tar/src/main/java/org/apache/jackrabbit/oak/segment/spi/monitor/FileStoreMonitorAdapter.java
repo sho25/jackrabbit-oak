@@ -21,6 +21,10 @@ name|monitor
 package|;
 end_package
 
+begin_comment
+comment|/**  * A void implementation of the {@link FileStoreMonitor}. Can be used for the  * testing purposes or for the extension.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

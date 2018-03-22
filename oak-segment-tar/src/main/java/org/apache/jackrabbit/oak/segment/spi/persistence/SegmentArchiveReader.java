@@ -71,12 +71,16 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * This interface represents a read-only segment archive. Since the underlying  * data structure is immutable, the implementation<b>should be</b> thread safe.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|SegmentArchiveReader
 block|{
-comment|/**      * Read the segment.      *      * @param msb      * @param lsb      * @return byte buffer containing the segment data or null if segment doesn't exist      */
+comment|/**      * Read the segment.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @return byte buffer containing the segment data or null if the segment doesn't exist      */
 annotation|@
 name|Nullable
 name|ByteBuffer
@@ -91,7 +95,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Check if the segment exists.      *      * @param msb      * @param lsb      * @return true if the segment exists      */
+comment|/**      * Check if the segment exists.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @return {@code true} if the segment exists      */
 name|boolean
 name|containsSegment
 parameter_list|(
@@ -110,7 +114,7 @@ argument_list|>
 name|listSegments
 parameter_list|()
 function_decl|;
-comment|/**      * Loads and returns the graph.      *      * @return the segment graph or null if the persisted graph doesn't exist.      */
+comment|/**      * Load the segment graph.      *      * @return byte buffer representing the graph or null if the graph hasn't been      * persisted.      */
 annotation|@
 name|Nullable
 name|ByteBuffer
@@ -119,12 +123,12 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Check if the persisted graph exists.      *      * @return true if the graph exists, false otherwise      */
+comment|/**      * Check if the segment graph has been persisted for this archive.      *      * @return {@code true} if the graph exists, false otherwise      */
 name|boolean
 name|hasGraph
 parameter_list|()
 function_decl|;
-comment|/**      * Loads and returns the binary references.      *      * @return binary references      */
+comment|/**      * Load binary references.      *      * @return byte buffer representing the binary references structure.      */
 annotation|@
 name|Nonnull
 name|ByteBuffer
@@ -152,7 +156,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Returns the size of the entry      * @param size      * @return      */
+comment|/**      * Transforms the segment size in bytes into the effective size on disk for      * the given entry (eg. by adding the number of padding bytes, header, etc.)      *      * @param size the segment size in bytes      * @return the number of bytes effectively used on the storage to save the      * segment      */
 name|int
 name|getEntrySize
 parameter_list|(

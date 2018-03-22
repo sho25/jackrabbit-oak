@@ -41,21 +41,28 @@ name|Properties
 import|;
 end_import
 
+begin_comment
+comment|/**  * Manifest is a properties files, providing the information about the segment  * store (eg. the schema version number).  *<p>  * The implementation<b>doesn't need to be</b> thread-safe.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|ManifestFile
 block|{
+comment|/**      * Check if the manifest already exists.      * @return {@code true} if the manifest exists      */
 name|boolean
 name|exists
 parameter_list|()
 function_decl|;
+comment|/**      * Load the properties from the manifest file.      * @return properties describing the segmentstore      * @throws IOException      */
 name|Properties
 name|load
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Store the properties to the manifest file.      * @param properties describing the segmentstore      * @throws IOException      */
 name|void
 name|save
 parameter_list|(

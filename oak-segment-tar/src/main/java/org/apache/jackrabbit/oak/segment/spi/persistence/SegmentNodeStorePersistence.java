@@ -71,11 +71,16 @@ name|IOException
 import|;
 end_import
 
+begin_comment
+comment|/**  * This type is a main entry point for the segment node store persistence. It's  * used every time the access to the underlying storage (eg. tar files) is required.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|SegmentNodeStorePersistence
 block|{
+comment|/**      * Opens a new archive manager. It'll be used to access the archives containing      * segments.      *      * @param memoryMapping whether the memory mapping should be used (if the given      *                      persistence supports it)      * @param ioMonitor object used to monitor segment-related IO access. The      *                  implementation should call the appropriate methods when      *                  accessing segments.      * @param fileStoreMonitor object used to monitor the general IO usage.      * @return segment archive manager      * @throws IOException      */
 name|SegmentArchiveManager
 name|createArchiveManager
 parameter_list|(
@@ -91,26 +96,31 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Check if the segment store already contains any segments      * @return {@code true} is some segments are available for reading      */
 name|boolean
 name|segmentFilesExist
 parameter_list|()
 function_decl|;
+comment|/**      * Create the {@link JournalFile}.      * @return object representing the segment journal file      */
 name|JournalFile
 name|getJournalFile
 parameter_list|()
 function_decl|;
+comment|/**      * Create the {@link GCJournalFile}.      * @return object representing the GC journal file      * @throws IOException      */
 name|GCJournalFile
 name|getGCJournalFile
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Create the {@link ManifestFile}.      * @return object representing the manifest file      * @throws IOException      */
 name|ManifestFile
 name|getManifestFile
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Acquire the lock on the repository. During the lock lifetime it shouldn't      * be possible to acquire it again, either by a local or by a remote process.      *<p>      * The lock can be released manually by calling {@link RepositoryLock#unlock()}.      * If the segment node store is shut down uncleanly (eg. the process crashes),      * it should be released automatically, so no extra maintenance tasks are      * required to run the process again.      * @return the acquired repository lock      * @throws IOException      */
 name|RepositoryLock
 name|lockRepository
 parameter_list|()

@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows to write in the new archive.  */
+comment|/**  * Represents a write-enabled, append-only archive. It allows to append segments  * and other data structures (segment graph, serialized binary references) to the  * archive and also to read the already persisted segments.<p>  * Caller will use the methods modifying the archive in the following order:  *<ol>  *<li>phase 1:  *<ul>  *<li>{@link #writeSegment(long, long, byte[], int, int, int, int, boolean)}</li>  *<li>{@link #flush()}</li>  *</ul>  *         repeated in an unspecified order</li>  *<li>{@link #writeBinaryReferences(byte[])}</li>  *<li>{@link #writeGraph(byte[])} (optionally)</li>  *<li>{@link #close()}</li>  *</ol>  * All the calls above are synchronized by the caller.  * In the first phase of the writer lifecycle, the  * write() and the flush() will be called many times, in an unspecified order. At  * the end of the writer life cycle, the rest of the methods (2-4) will be called.  *<p>  * Before the {@link #close()}, all the non-modifying methods  * (eg. {@link #readSegment(long, long)}, {@link #getLength()}} can be invoked at  * any time. They<b>should be thread safe</b>.  */
 end_comment
 
 begin_interface
@@ -70,7 +70,7 @@ specifier|public
 interface|interface
 name|SegmentArchiveWriter
 block|{
-comment|/**      * Write the new segment to the archive.      *      * @param msb      * @param lsb      * @param data      * @param offset      * @param size      * @param generation      * @param fullGeneration      * @param isCompacted      * @return the entry representing the new segment. Can be later used for the {@link #readSegment(long, long)} method.      */
+comment|/**      * Write the new segment to the archive.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @param data the data.      * @param offset the start offset in the data.      * @param size the number of bytes to write.      * @param generation the segment generation, see {@link SegmentArchiveEntry#getGeneration()}      * @param fullGeneration the segment full generation, see {@link SegmentArchiveEntry#getFullGeneration()}      * @param isCompacted the segment compaction property, see {@link SegmentArchiveEntry#isCompacted()}      * @throws IOException      */
 annotation|@
 name|Nonnull
 name|void
@@ -106,7 +106,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Read the segment.      *      * @param msb      * @param lsb      * @return byte buffer containing the segment data or null if segment doesn't exist      */
+comment|/**      * Read the segment.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @return byte buffer containing the segment data or null if segment doesn't exist      */
 annotation|@
 name|Nullable
 name|ByteBuffer
@@ -121,7 +121,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Check if the segment exists.      *      * @param msb      * @param lsb      * @return true if the segment exists      */
+comment|/**      * Check if the segment exists.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @return true if the segment exists      */
 name|boolean
 name|containsSegment
 parameter_list|(
@@ -132,7 +132,7 @@ name|long
 name|lsb
 parameter_list|)
 function_decl|;
-comment|/**      * Write the graph data.      *      * @param data      */
+comment|/**      * Write the graph data.      *      * @param data serialized segment graph data      */
 name|void
 name|writeGraph
 parameter_list|(
@@ -145,7 +145,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Write the binary references data.      *      * @param data      */
+comment|/**      * Write the binary references data.      *      * @param data serialized binary references data      */
 name|void
 name|writeBinaryReferences
 parameter_list|(
@@ -175,7 +175,7 @@ name|boolean
 name|isCreated
 parameter_list|()
 function_decl|;
-comment|/**      * Flush all the data to the storage.      */
+comment|/**      * Flush all the data to the storage. After returning from this method      * successfully, all the segments written with the {@link #writeSegment(long, long, byte[], int, int, int, int, boolean)}      * should be actually saved to the storage.      */
 name|void
 name|flush
 parameter_list|()

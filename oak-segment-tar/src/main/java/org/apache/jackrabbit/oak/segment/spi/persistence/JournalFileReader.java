@@ -41,6 +41,10 @@ name|IOException
 import|;
 end_import
 
+begin_comment
+comment|/**  * The {@link JournalFile} reader. It reads the journal file backwards, starting  * from the last written line.  *<p>  * The implementation doesn't need to be thread-safe.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -48,6 +52,7 @@ name|JournalFileReader
 extends|extends
 name|Closeable
 block|{
+comment|/**      * Read the line from the journal, using LIFO strategy (last in, first out).      * @return the journal record      * @throws IOException      */
 name|String
 name|readLine
 parameter_list|()
