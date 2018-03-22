@@ -133,22 +133,6 @@ name|scr
 operator|.
 name|annotations
 operator|.
-name|ConfigurationPolicy
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
 name|Modified
 import|;
 end_import
@@ -240,7 +224,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extension of the default {@link org.apache.jackrabbit.oak.spi.security.authorization.cug.CugExclude}  * implementation that allow to specify additional principal names to be excluded  * from CUG evaluation.  *  * Note: this component is requires a configuration (i.e. a configured list of  * principal names) in order to be activated.  */
+comment|/**  * Extension of the default {@link org.apache.jackrabbit.oak.spi.security.authorization.cug.CugExclude}  * implementation that allow to specify additional principal names to be excluded  * from CUG evaluation.  */
 end_comment
 
 begin_class
@@ -251,19 +235,21 @@ name|metatype
 operator|=
 literal|true
 argument_list|,
+name|immediate
+operator|=
+literal|true
+argument_list|,
 name|label
 operator|=
 literal|"Apache Jackrabbit Oak CUG Exclude List"
 argument_list|,
 name|description
 operator|=
-literal|"Allows to exclude principal(s) with the configured name(s) from CUG evaluation."
-argument_list|,
-name|policy
-operator|=
-name|ConfigurationPolicy
-operator|.
-name|REQUIRE
+literal|"Exclude principal(s) from CUG evaluation. In addition to the "
+operator|+
+literal|"principals defined by the default CugExclude ('AdminPrincipal', 'SystemPrincipal', 'SystemUserPrincipal' classes), "
+operator|+
+literal|"this component allows to optionally configure additional principals by name."
 argument_list|)
 annotation|@
 name|Service
@@ -291,7 +277,7 @@ literal|"Principal Names"
 argument_list|,
 name|description
 operator|=
-literal|"Name of principals that are always excluded from CUG evaluation."
+literal|"Name(s) of additional principal(s) that are excluded from CUG evaluation."
 argument_list|,
 name|cardinality
 operator|=
