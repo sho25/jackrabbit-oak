@@ -311,24 +311,6 @@ name|security
 operator|.
 name|user
 operator|.
-name|RandomAuthorizableNodeName
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|security
-operator|.
-name|user
-operator|.
 name|UserConfigurationImpl
 import|;
 end_import
@@ -701,6 +683,7 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|SecurityProviderBuilder
 block|{
