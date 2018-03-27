@@ -3488,7 +3488,10 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 name|numofDocs
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -3785,7 +3788,10 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 name|numofDocs
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -8526,10 +8532,12 @@ argument_list|(
 name|plan
 argument_list|)
 expr_stmt|;
-comment|//For non unique count is actual
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 literal|100
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -8935,7 +8943,10 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 literal|100
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -9126,7 +9137,10 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 literal|100
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -10414,7 +10428,10 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 name|numOfDocs
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -13106,7 +13123,10 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 name|numOfDocs
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -13551,7 +13571,10 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 name|numOfDocs
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -13707,7 +13730,10 @@ expr_stmt|;
 comment|//Because path transormation comes into play only when direct prop defs don't match
 name|assertEquals
 argument_list|(
+name|documentsPerValue
+argument_list|(
 name|numOfDocs
+argument_list|)
 argument_list|,
 name|plan
 operator|.
@@ -14334,6 +14360,32 @@ return|return
 name|readers
 return|;
 block|}
+block|}
+comment|/**      * The estimated number of documents per unique value.      *      * @param numofDocs the total number of documents      * @return the estimated number of documents      */
+specifier|public
+specifier|static
+name|long
+name|documentsPerValue
+parameter_list|(
+name|long
+name|numofDocs
+parameter_list|)
+block|{
+comment|// OAK-7379: divide the number of documents by the number of unique entries
+return|return
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|1
+argument_list|,
+name|numofDocs
+operator|/
+name|IndexPlanner
+operator|.
+name|DEFAULT_PROPERTY_WEIGHT
+argument_list|)
+return|;
 block|}
 block|}
 end_class

@@ -598,8 +598,9 @@ name|defn
 argument_list|,
 name|PROP_WEIGHT
 argument_list|,
-operator|-
-literal|1
+name|IndexPlanner
+operator|.
+name|DEFAULT_PROPERTY_WEIGHT
 argument_list|)
 expr_stmt|;
 comment|//By default if a property is defined it is indexed

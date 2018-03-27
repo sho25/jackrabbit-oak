@@ -1683,7 +1683,12 @@ decl_stmt|;
 comment|//Count should be sum of both readers
 name|assertEquals
 argument_list|(
+name|IndexPlannerTest
+operator|.
+name|documentsPerValue
+argument_list|(
 literal|2
+argument_list|)
 argument_list|,
 name|plan
 operator|.
