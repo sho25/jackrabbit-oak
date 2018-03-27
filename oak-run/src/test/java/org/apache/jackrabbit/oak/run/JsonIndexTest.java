@@ -508,6 +508,10 @@ operator|.
 name|openSession
 argument_list|(
 name|store
+argument_list|,
+literal|"admin"
+argument_list|,
+literal|"admin"
 argument_list|)
 expr_stmt|;
 name|assertCommand
