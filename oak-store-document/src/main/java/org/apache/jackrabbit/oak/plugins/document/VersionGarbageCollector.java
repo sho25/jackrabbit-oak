@@ -5983,6 +5983,33 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+name|scope
+operator|.
+name|getDurationMs
+argument_list|()
+operator|<=
+name|options
+operator|.
+name|precisionMs
+condition|)
+block|{
+comment|// the scope is smaller than the minimum precision
+comment|// -> no need to refine the scope
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"scope<= precision ({} ms)"
+argument_list|,
+name|options
+operator|.
+name|precisionMs
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 comment|/* Need to guess. Count the overall number of _deletedOnce documents. If those                  * are more than we want to collect in a single run, reduce the time scope so                  * that we likely see a fitting fraction of those documents.                  */
