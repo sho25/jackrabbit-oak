@@ -171,7 +171,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|DB
+name|DBObject
 import|;
 end_import
 
@@ -181,7 +181,19 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|DBObject
+name|MongoClient
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|client
+operator|.
+name|MongoDatabase
 import|;
 end_import
 
@@ -202,6 +214,18 @@ operator|.
 name|Collection
 operator|.
 name|NODES
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
 import|;
 end_import
 
@@ -250,12 +274,17 @@ operator|.
 name|getConnection
 argument_list|()
 expr_stmt|;
-name|DB
+name|assertNotNull
+argument_list|(
+name|mongoConnection
+argument_list|)
+expr_stmt|;
+name|MongoDatabase
 name|db
 init|=
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 decl_stmt|;
 name|MongoUtils
@@ -292,7 +321,15 @@ operator|=
 operator|new
 name|TestStore
 argument_list|(
+name|mongoConnection
+operator|.
+name|getMongoClient
+argument_list|()
+argument_list|,
 name|db
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|builder
 argument_list|)
@@ -577,8 +614,11 @@ argument_list|()
 decl_stmt|;
 name|TestStore
 parameter_list|(
-name|DB
-name|db
+name|MongoClient
+name|client
+parameter_list|,
+name|String
+name|dbName
 parameter_list|,
 name|DocumentMK
 operator|.
@@ -588,7 +628,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|db
+name|client
+argument_list|,
+name|dbName
 argument_list|,
 name|builder
 argument_list|)

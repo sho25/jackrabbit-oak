@@ -111,16 +111,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -153,7 +143,9 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|DB
+name|client
+operator|.
+name|MongoDatabase
 import|;
 end_import
 
@@ -206,6 +198,26 @@ operator|.
 name|memory
 operator|.
 name|MemoryDocumentStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|MongoConnection
 import|;
 end_import
 
@@ -2571,7 +2583,7 @@ condition|(
 name|MONGO_DB
 condition|)
 block|{
-name|DB
+name|MongoDatabase
 name|db
 init|=
 name|connectionFactory
@@ -2579,7 +2591,7 @@ operator|.
 name|getConnection
 argument_list|()
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 decl_stmt|;
 name|MongoUtils
@@ -2655,15 +2667,12 @@ condition|(
 name|MONGO_DB
 condition|)
 block|{
-name|DB
-name|db
+name|MongoConnection
+name|connection
 init|=
 name|connectionFactory
 operator|.
 name|getConnection
-argument_list|()
-operator|.
-name|getDB
 argument_list|()
 decl_stmt|;
 return|return
@@ -2677,7 +2686,15 @@ argument_list|()
 operator|.
 name|setMongoDB
 argument_list|(
-name|db
+name|connection
+operator|.
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|connection
+operator|.
+name|getDBName
+argument_list|()
 argument_list|)
 operator|.
 name|setClusterId

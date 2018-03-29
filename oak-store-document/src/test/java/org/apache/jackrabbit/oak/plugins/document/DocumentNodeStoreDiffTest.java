@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|DB
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache

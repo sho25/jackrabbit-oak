@@ -23,11 +23,11 @@ end_package
 
 begin_import
 import|import
-name|com
+name|javax
 operator|.
-name|mongodb
+name|annotation
 operator|.
-name|MongoClient
+name|CheckForNull
 import|;
 end_import
 
@@ -37,52 +37,28 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|client
+name|connection
 operator|.
-name|MongoDatabase
+name|ClusterDescription
 import|;
 end_import
 
-begin_class
-specifier|public
-specifier|final
-class|class
-name|MongoDocumentStoreTestHelper
+begin_comment
+comment|/**  * Provider of the current {@link ClusterDescription}.  */
+end_comment
+
+begin_interface
+interface|interface
+name|ClusterDescriptionProvider
 block|{
-specifier|public
-specifier|static
-name|MongoDatabase
-name|getDB
-parameter_list|(
-name|MongoDocumentStore
-name|store
-parameter_list|)
-block|{
-return|return
-name|store
-operator|.
-name|getDatabase
-argument_list|()
-return|;
+annotation|@
+name|CheckForNull
+name|ClusterDescription
+name|getClusterDescription
+parameter_list|()
+function_decl|;
 block|}
-specifier|public
-specifier|static
-name|MongoClient
-name|getClient
-parameter_list|(
-name|MongoDocumentStore
-name|store
-parameter_list|)
-block|{
-return|return
-name|store
-operator|.
-name|getClient
-argument_list|()
-return|;
-block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

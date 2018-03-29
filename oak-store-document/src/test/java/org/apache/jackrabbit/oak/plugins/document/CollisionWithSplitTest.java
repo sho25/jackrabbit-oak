@@ -41,11 +41,17 @@ end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|mongodb
+name|apache
 operator|.
-name|DB
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
 import|;
 end_import
 
@@ -59,9 +65,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|plugins
 operator|.
-name|CommitFailedException
+name|document
+operator|.
+name|util
+operator|.
+name|MongoConnection
 import|;
 end_import
 
@@ -325,9 +335,6 @@ operator|=
 name|newDocumentMK
 argument_list|(
 name|mongoConnection
-operator|.
-name|getDB
-argument_list|()
 argument_list|,
 literal|2
 argument_list|)
@@ -356,9 +363,6 @@ argument_list|(
 name|connectionFactory
 operator|.
 name|getConnection
-argument_list|()
-operator|.
-name|getDB
 argument_list|()
 argument_list|,
 literal|3
@@ -784,8 +788,8 @@ specifier|static
 name|DocumentMK
 name|newDocumentMK
 parameter_list|(
-name|DB
-name|db
+name|MongoConnection
+name|c
 parameter_list|,
 name|int
 name|clusterId
@@ -805,7 +809,15 @@ argument_list|)
 operator|.
 name|setMongoDB
 argument_list|(
-name|db
+name|c
+operator|.
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|getDBName
+argument_list|()
 argument_list|)
 operator|.
 name|setClusterId

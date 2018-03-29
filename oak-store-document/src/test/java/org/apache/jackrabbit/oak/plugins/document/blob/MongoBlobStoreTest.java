@@ -206,7 +206,7 @@ name|dropCollections
 argument_list|(
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -218,7 +218,7 @@ name|MongoBlobStore
 argument_list|(
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -260,7 +260,7 @@ name|dropCollections
 argument_list|(
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;

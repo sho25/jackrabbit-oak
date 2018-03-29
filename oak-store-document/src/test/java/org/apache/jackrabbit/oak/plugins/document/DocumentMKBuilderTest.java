@@ -39,7 +39,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|DB
+name|MongoClient
 import|;
 end_import
 
@@ -247,8 +247,11 @@ operator|.
 name|Builder
 name|newBuilder
 parameter_list|(
-name|DB
-name|db
+name|MongoClient
+name|client
+parameter_list|,
+name|String
+name|dbName
 parameter_list|)
 throws|throws
 name|Exception
@@ -258,7 +261,9 @@ name|super
 operator|.
 name|newBuilder
 argument_list|(
-name|db
+name|client
+argument_list|,
+name|dbName
 argument_list|)
 operator|.
 name|memoryCacheSize

@@ -245,7 +245,12 @@ name|MongoStatus
 argument_list|(
 name|c
 operator|.
-name|getDB
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|getDBName
 argument_list|()
 argument_list|)
 expr_stmt|;

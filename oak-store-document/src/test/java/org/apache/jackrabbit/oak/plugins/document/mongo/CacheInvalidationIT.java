@@ -1110,7 +1110,12 @@ name|setMongoDB
 argument_list|(
 name|mc
 operator|.
-name|getDB
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|mc
+operator|.
+name|getDBName
 argument_list|()
 argument_list|)
 operator|.

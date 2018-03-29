@@ -454,10 +454,10 @@ name|MongoDocumentStore
 argument_list|(
 name|fongo
 operator|.
-name|getDB
-argument_list|(
+name|getMongo
+argument_list|()
+argument_list|,
 literal|"oak"
-argument_list|)
 argument_list|,
 operator|new
 name|DocumentMK

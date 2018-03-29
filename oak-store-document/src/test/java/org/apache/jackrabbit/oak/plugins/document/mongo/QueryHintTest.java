@@ -336,7 +336,12 @@ name|MongoDocumentStore
 argument_list|(
 name|mongoConnection
 operator|.
-name|getDB
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|mongoConnection
+operator|.
+name|getDBName
 argument_list|()
 argument_list|,
 operator|new

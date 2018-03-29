@@ -359,7 +359,12 @@ name|MongoDocumentStore
 argument_list|(
 name|connection
 operator|.
-name|getDB
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|connection
+operator|.
+name|getDBName
 argument_list|()
 argument_list|,
 name|newMongoDocumentNodeStoreBuilder

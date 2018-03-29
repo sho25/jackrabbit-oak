@@ -387,7 +387,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|DB
+name|MongoClient
 import|;
 end_import
 
@@ -472,7 +472,7 @@ argument_list|()
 block|{
 specifier|private
 name|String
-name|clusterSuffix
+name|dbName
 init|=
 name|System
 operator|.
@@ -480,10 +480,6 @@ name|currentTimeMillis
 argument_list|()
 operator|+
 literal|"-NonLocalObservationIT"
-decl_stmt|;
-specifier|private
-name|DB
-name|db
 decl_stmt|;
 comment|/** keep a reference to the node stores so that the db only gets closed after the last nodeStore was closed */
 specifier|private
@@ -544,25 +540,14 @@ literal|null
 argument_list|)
 expr_stmt|;
 comment|// turn this one off to avoid OOME
-specifier|final
-name|String
-name|suffix
-init|=
-name|clusterSuffix
-decl_stmt|;
-name|db
-operator|=
-name|getDb
-argument_list|(
-name|suffix
-argument_list|)
-expr_stmt|;
-comment|// db will be overwritten - but that's fine
 name|builder
 operator|.
 name|setMongoDB
 argument_list|(
-name|db
+name|createClient
+argument_list|()
+argument_list|,
+name|dbName
 argument_list|)
 expr_stmt|;
 name|DocumentNodeStore
@@ -627,10 +612,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|db
-operator|!=
-literal|null
-operator|&&
 name|nodeStores
 operator|.
 name|size
@@ -640,23 +621,20 @@ literal|0
 condition|)
 block|{
 try|try
+init|(
+name|MongoClient
+name|c
+init|=
+name|createClient
+argument_list|()
+init|)
 block|{
-name|db
+name|c
 operator|.
 name|dropDatabase
-argument_list|()
-expr_stmt|;
-name|db
-operator|.
-name|getMongo
-argument_list|()
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|db
-operator|=
-literal|null
+argument_list|(
+name|dbName
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch

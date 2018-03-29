@@ -59,6 +59,18 @@ name|DB
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|client
+operator|.
+name|MongoDatabase
+import|;
+end_import
+
 begin_comment
 comment|/**  * A utility class to get a {@link MongoConnection} to a local mongo instance  * and clean a test database.  */
 end_comment
@@ -233,7 +245,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Drop all user defined collections. System collections are not dropped.      *      * @param db the connection      */
+comment|/**      * Drop all user defined collections. System collections are not dropped.      *      * @param db the connection      * @deprecated use {@link #dropCollections(MongoDatabase)} instead.      */
 specifier|public
 specifier|static
 name|void
@@ -251,6 +263,51 @@ range|:
 name|db
 operator|.
 name|getCollectionNames
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|name
+operator|.
+name|startsWith
+argument_list|(
+literal|"system."
+argument_list|)
+condition|)
+block|{
+name|db
+operator|.
+name|getCollection
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|drop
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+comment|/**      * Drop all user defined collections. System collections are not dropped.      *      * @param db the connection      */
+specifier|public
+specifier|static
+name|void
+name|dropCollections
+parameter_list|(
+name|MongoDatabase
+name|db
+parameter_list|)
+block|{
+for|for
+control|(
+name|String
+name|name
+range|:
+name|db
+operator|.
+name|listCollectionNames
 argument_list|()
 control|)
 block|{

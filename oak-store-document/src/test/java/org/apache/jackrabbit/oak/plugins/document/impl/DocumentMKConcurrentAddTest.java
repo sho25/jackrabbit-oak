@@ -187,16 +187,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|DB
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test for OAK-566.  */
 end_comment
@@ -260,14 +250,6 @@ operator|.
 name|getConnection
 argument_list|()
 decl_stmt|;
-name|DB
-name|mongoDB
-init|=
-name|connection
-operator|.
-name|getDB
-argument_list|()
-decl_stmt|;
 return|return
 operator|new
 name|DocumentMK
@@ -282,7 +264,15 @@ argument_list|)
 operator|.
 name|setMongoDB
 argument_list|(
-name|mongoDB
+name|connection
+operator|.
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|connection
+operator|.
+name|getDBName
+argument_list|()
 argument_list|)
 operator|.
 name|setClusterId

@@ -250,16 +250,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|DB
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -1262,19 +1252,19 @@ argument_list|(
 name|connection
 argument_list|)
 expr_stmt|;
-name|DB
-name|db
-init|=
-name|connection
-operator|.
-name|getDB
-argument_list|()
-decl_stmt|;
 return|return
 operator|new
 name|MongoDocumentStore
 argument_list|(
-name|db
+name|connection
+operator|.
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|connection
+operator|.
+name|getDBName
+argument_list|()
 argument_list|,
 name|builder
 argument_list|)

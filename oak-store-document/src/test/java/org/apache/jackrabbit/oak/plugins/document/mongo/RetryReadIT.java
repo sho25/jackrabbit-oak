@@ -203,7 +203,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|DB
+name|MongoClient
 import|;
 end_import
 
@@ -338,7 +338,7 @@ name|dropCollections
 argument_list|(
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -368,7 +368,12 @@ name|TestStore
 argument_list|(
 name|mongoConnection
 operator|.
-name|getDB
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|mongoConnection
+operator|.
+name|getDBName
 argument_list|()
 argument_list|,
 name|builder
@@ -627,8 +632,11 @@ decl_stmt|;
 specifier|public
 name|TestStore
 parameter_list|(
-name|DB
-name|db
+name|MongoClient
+name|client
+parameter_list|,
+name|String
+name|dbName
 parameter_list|,
 name|DocumentMK
 operator|.
@@ -638,7 +646,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|db
+name|client
+argument_list|,
+name|dbName
 argument_list|,
 name|builder
 argument_list|)

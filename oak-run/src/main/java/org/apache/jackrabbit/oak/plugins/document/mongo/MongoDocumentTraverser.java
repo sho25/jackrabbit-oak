@@ -51,13 +51,9 @@ begin_import
 import|import
 name|com
 operator|.
-name|google
+name|mongodb
 operator|.
-name|common
-operator|.
-name|io
-operator|.
-name|Closer
+name|BasicDBObject
 import|;
 end_import
 
@@ -67,17 +63,9 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|DBCollection
-import|;
-end_import
-
-begin_import
-import|import
-name|com
+name|client
 operator|.
-name|mongodb
-operator|.
-name|DBCursor
+name|MongoCollection
 import|;
 end_import
 
@@ -261,7 +249,10 @@ literal|"Traverser can only be used with readOnly store"
 argument_list|)
 expr_stmt|;
 block|}
-name|DBCollection
+name|MongoCollection
+argument_list|<
+name|BasicDBObject
+argument_list|>
 name|dbCollection
 init|=
 name|mongoStore
@@ -271,27 +262,17 @@ argument_list|(
 name|collection
 argument_list|)
 decl_stmt|;
-name|Closer
-name|closer
-init|=
-name|Closer
-operator|.
-name|create
-argument_list|()
-decl_stmt|;
-name|DBCursor
+comment|//TODO This may lead to reads being routed to secondary depending on MongoURI
+comment|//So caller must ensure that its safe to read from secondary
+name|Iterable
+argument_list|<
+name|BasicDBObject
+argument_list|>
 name|cursor
 init|=
 name|dbCollection
 operator|.
-name|find
-argument_list|()
-decl_stmt|;
-comment|//TODO This may lead to reads being routed to secondary depending on MongoURI
-comment|//So caller must ensure that its safe to read from secondary
-name|cursor
-operator|.
-name|setReadPreference
+name|withReadPreference
 argument_list|(
 name|mongoStore
 operator|.
@@ -300,13 +281,26 @@ argument_list|(
 name|collection
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|closer
 operator|.
-name|register
+name|find
+argument_list|()
+decl_stmt|;
+name|CloseableIterable
+argument_list|<
+name|BasicDBObject
+argument_list|>
+name|closeableCursor
+init|=
+name|CloseableIterable
+operator|.
+name|wrap
 argument_list|(
 name|cursor
 argument_list|)
+decl_stmt|;
+name|cursor
+operator|=
+name|closeableCursor
 expr_stmt|;
 annotation|@
 name|SuppressWarnings
@@ -341,7 +335,9 @@ name|o
 operator|.
 name|get
 argument_list|(
-literal|"_id"
+name|Document
+operator|.
+name|ID
 argument_list|)
 argument_list|)
 argument_list|)
@@ -405,7 +401,7 @@ name|wrap
 argument_list|(
 name|result
 argument_list|,
-name|closer
+name|closeableCursor
 argument_list|)
 return|;
 end_return
