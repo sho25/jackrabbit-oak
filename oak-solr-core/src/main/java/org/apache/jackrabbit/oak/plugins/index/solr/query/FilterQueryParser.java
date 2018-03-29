@@ -2233,7 +2233,7 @@ operator|.
 name|toString
 argument_list|()
 operator|.
-name|equals
+name|contains
 argument_list|(
 literal|"\"OR\""
 argument_list|)
@@ -2379,7 +2379,7 @@ operator|.
 name|toString
 argument_list|()
 operator|.
-name|equals
+name|contains
 argument_list|(
 literal|"\"AND\""
 argument_list|)
