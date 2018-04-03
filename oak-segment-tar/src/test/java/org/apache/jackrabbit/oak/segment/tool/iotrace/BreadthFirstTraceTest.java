@@ -152,7 +152,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|BreathFirstTraceTest
+name|BreadthFirstTraceTest
 block|{
 annotation|@
 name|Nonnull
@@ -232,7 +232,7 @@ name|newArrayList
 argument_list|()
 decl_stmt|;
 operator|new
-name|BreathFirstTrace
+name|BreadthFirstTrace
 argument_list|(
 literal|4
 argument_list|,
@@ -301,7 +301,7 @@ name|newArrayList
 argument_list|()
 decl_stmt|;
 operator|new
-name|BreathFirstTrace
+name|BreadthFirstTrace
 argument_list|(
 literal|4
 argument_list|,
@@ -389,7 +389,7 @@ name|newArrayList
 argument_list|()
 decl_stmt|;
 operator|new
-name|BreathFirstTrace
+name|BreadthFirstTrace
 argument_list|(
 literal|4
 argument_list|,
@@ -496,7 +496,7 @@ name|newArrayList
 argument_list|()
 decl_stmt|;
 operator|new
-name|BreathFirstTrace
+name|BreadthFirstTrace
 argument_list|(
 literal|2
 argument_list|,

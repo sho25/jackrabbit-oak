@@ -206,13 +206,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A breath first traversal trace.   *<p>  * When {@link Trace#run(NodeState) run} this trace performs a breath first traversal starting  * from the passed node up to a certain depth. It logs the current depth and the number of  * traversed nodes as additional {@link IOTracer#setContext(List) context}.  */
+comment|/**  * A breadth first traversal trace.  *<p>  * When {@link Trace#run(NodeState) run} this trace performs a breadth first traversal starting  * from the passed node up to a certain depth. It logs the current depth and the number of  * traversed nodes as additional {@link IOTracer#setContext(List) context}.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|BreathFirstTrace
+name|BreadthFirstTrace
 implements|implements
 name|Trace
 block|{
@@ -263,9 +263,9 @@ operator|new
 name|AtomicInteger
 argument_list|()
 decl_stmt|;
-comment|/**      * Create a new instance of a breath first traversal trace.      * @param depth     maximal depth of the nodes to traverse      * @param path      path of the root node where to start traversing      * @param context   consumer to pass the additional context to      */
+comment|/**      * Create a new instance of a breadth first traversal trace.      * @param depth     maximal depth of the nodes to traverse      * @param path      path of the root node where to start traversing      * @param context   consumer to pass the additional context to      */
 specifier|public
-name|BreathFirstTrace
+name|BreadthFirstTrace
 parameter_list|(
 name|int
 name|depth

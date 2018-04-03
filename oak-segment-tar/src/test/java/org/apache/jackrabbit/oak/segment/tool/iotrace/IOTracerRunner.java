@@ -507,7 +507,7 @@ name|println
 argument_list|(
 name|format
 argument_list|(
-literal|"Breath first traversing %d levels of %s starting at %s"
+literal|"Breadth first traversing %d levels of %s starting at %s"
 argument_list|,
 name|DEPTH
 argument_list|,
@@ -679,7 +679,7 @@ name|factory
 argument_list|,
 name|out
 argument_list|,
-name|BreathFirstTrace
+name|BreadthFirstTrace
 operator|.
 name|CONTEXT_SPEC
 argument_list|)
@@ -689,7 +689,7 @@ operator|.
 name|collectTrace
 argument_list|(
 operator|new
-name|BreathFirstTrace
+name|BreadthFirstTrace
 argument_list|(
 name|depth
 argument_list|,

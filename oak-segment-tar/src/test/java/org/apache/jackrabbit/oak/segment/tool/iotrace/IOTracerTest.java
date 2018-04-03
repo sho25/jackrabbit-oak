@@ -697,7 +697,7 @@ name|factory
 argument_list|,
 name|out
 argument_list|,
-name|BreathFirstTrace
+name|BreadthFirstTrace
 operator|.
 name|CONTEXT_SPEC
 argument_list|)
@@ -707,7 +707,7 @@ operator|.
 name|collectTrace
 argument_list|(
 operator|new
-name|BreathFirstTrace
+name|BreadthFirstTrace
 argument_list|(
 literal|2
 argument_list|,
