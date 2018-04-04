@@ -83,9 +83,16 @@ name|CompositeData
 name|getQueuingTimes
 parameter_list|()
 function_decl|;
-comment|/**      * @return tabular data of the form<commits,writer>      * @throws OpenDataException if data is not available      */
+comment|/**      * @return tabular data of the form<commits,writerGroup> collected       *<b>in the last minute</b>      * @throws OpenDataException if data is not available      */
 name|TabularData
-name|getCommitsCountPerWriter
+name|getCommitsCountPerWriterGroupLastMinute
+parameter_list|()
+throws|throws
+name|OpenDataException
+function_decl|;
+comment|/**      * @return tabular data of the form<commits,writer> for writers       *         not included in groups      * @throws OpenDataException if data is not available      */
+name|TabularData
+name|getCommitsCountForOtherWriters
 parameter_list|()
 throws|throws
 name|OpenDataException
@@ -97,7 +104,7 @@ parameter_list|()
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * Turns on/off, depending on the value of {@code flag}, the collection of       * stack traces for each writer thread.      * @param flag {@code boolean} indicating whether to collect or not      */
+comment|/**      * Turns on/off, depending on the value of {@code flag}, the collection of       * stack traces for each writer.      * @param flag {@code boolean} indicating whether to collect or not      */
 name|void
 name|setCollectStackTraces
 parameter_list|(
@@ -110,18 +117,33 @@ name|boolean
 name|isCollectStackTraces
 parameter_list|()
 function_decl|;
-comment|/**      * Modifies the maximum number of writing threads to be recorded.      * Changing the default value will reset the overall collection process.      *       * @param commitsCountMapSize the new size      */
+comment|/**      * Modifies the maximum number of writers outside already defined      * groups to be recorded.      * Changing the default value will reset the overall collection process.      *       * @param otherWritersLimit the new size      */
 name|void
-name|setCommitsCountMapMaxSize
+name|setNumberOfOtherWritersToDetail
 parameter_list|(
 name|int
-name|commitsCountMapMaxSize
+name|otherWritersLimit
 parameter_list|)
 function_decl|;
-comment|/**      * @return maximum number of writing threads to be recorded      */
+comment|/**      * @return maximum number of writers outside already defined      * groups to be recorded      */
 name|int
-name|getCommitsCountMapMaxSize
+name|getNumberOfOtherWritersToDetail
 parameter_list|()
+function_decl|;
+comment|/**      * @return current groups used for grouping writers.      */
+name|String
+index|[]
+name|getWriterGroupsForLastMinuteCounts
+parameter_list|()
+function_decl|;
+comment|/**      * Modifies the groups used for grouping writers.      * Changing the default value will reset the overall collection process.      * @param writerGroups groups defined by regexps      */
+name|void
+name|setWriterGroupsForLastMinuteCounts
+parameter_list|(
+name|String
+index|[]
+name|writerGroups
+parameter_list|)
 function_decl|;
 block|}
 end_interface
