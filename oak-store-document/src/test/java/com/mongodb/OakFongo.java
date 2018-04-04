@@ -219,6 +219,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|session
+operator|.
+name|ClientSession
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -940,6 +952,9 @@ name|name
 parameter_list|,
 name|boolean
 name|idIsNotUniq
+parameter_list|,
+name|boolean
+name|validateOnInsert
 parameter_list|)
 block|{
 if|if
@@ -960,6 +975,8 @@ argument_list|(
 name|name
 argument_list|,
 name|idIsNotUniq
+argument_list|,
+name|validateOnInsert
 argument_list|)
 return|;
 block|}
@@ -990,6 +1007,8 @@ argument_list|,
 name|name
 argument_list|,
 name|idIsNotUniq
+argument_list|,
+name|validateOnInsert
 argument_list|)
 expr_stmt|;
 name|collMap
@@ -1089,6 +1108,9 @@ name|name
 parameter_list|,
 name|boolean
 name|idIsNotUniq
+parameter_list|,
+name|boolean
+name|validateOnInsert
 parameter_list|)
 block|{
 name|super
@@ -1098,6 +1120,8 @@ argument_list|,
 name|name
 argument_list|,
 name|idIsNotUniq
+argument_list|,
+name|validateOnInsert
 argument_list|)
 expr_stmt|;
 block|}
@@ -1668,6 +1692,9 @@ specifier|public
 name|void
 name|insertMany
 parameter_list|(
+name|ClientSession
+name|clientSession
+parameter_list|,
 name|List
 argument_list|<
 name|?
@@ -1696,6 +1723,8 @@ name|super
 operator|.
 name|insertMany
 argument_list|(
+name|clientSession
+argument_list|,
 name|documents
 argument_list|,
 name|options
@@ -1729,6 +1758,9 @@ specifier|public
 name|DeleteResult
 name|deleteMany
 parameter_list|(
+name|ClientSession
+name|clientSession
+parameter_list|,
 name|Bson
 name|filter
 parameter_list|,
@@ -1754,6 +1786,8 @@ name|super
 operator|.
 name|deleteMany
 argument_list|(
+name|clientSession
+argument_list|,
 name|filter
 argument_list|,
 name|options
@@ -1788,6 +1822,9 @@ specifier|public
 name|UpdateResult
 name|updateMany
 parameter_list|(
+name|ClientSession
+name|clientSession
+parameter_list|,
 name|Bson
 name|filter
 parameter_list|,
@@ -1832,6 +1869,8 @@ name|super
 operator|.
 name|updateMany
 argument_list|(
+name|clientSession
+argument_list|,
 name|filter
 argument_list|,
 name|update
@@ -1877,6 +1916,9 @@ specifier|public
 name|Document
 name|findOneAndUpdate
 parameter_list|(
+name|ClientSession
+name|clientSession
+parameter_list|,
 name|Bson
 name|filter
 parameter_list|,
@@ -1927,6 +1969,8 @@ name|super
 operator|.
 name|findOneAndUpdate
 argument_list|(
+name|clientSession
+argument_list|,
 name|filter
 argument_list|,
 name|update
@@ -1955,6 +1999,9 @@ name|Document
 argument_list|>
 name|find
 parameter_list|(
+name|ClientSession
+name|clientSession
+parameter_list|,
 name|Bson
 name|filter
 parameter_list|)
@@ -1979,6 +2026,8 @@ name|super
 operator|.
 name|find
 argument_list|(
+name|clientSession
+argument_list|,
 name|filter
 argument_list|)
 decl_stmt|;
@@ -2032,6 +2081,9 @@ operator|.
 name|BulkWriteResult
 name|bulkWrite
 parameter_list|(
+name|ClientSession
+name|clientSession
+parameter_list|,
 name|List
 argument_list|<
 name|?
@@ -2080,6 +2132,8 @@ name|super
 operator|.
 name|bulkWrite
 argument_list|(
+name|clientSession
+argument_list|,
 name|requests
 argument_list|,
 name|options

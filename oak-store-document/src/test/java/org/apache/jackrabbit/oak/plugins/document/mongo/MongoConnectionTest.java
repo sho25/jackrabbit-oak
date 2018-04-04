@@ -569,7 +569,7 @@ name|options
 operator|.
 name|socketKeepAlive
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|MongoConnection
@@ -587,7 +587,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|assertTrue
+name|assertFalse
 argument_list|(
 name|c
 operator|.
@@ -610,7 +610,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|// default is without keep-alive
+comment|// default is with keep-alive (starting with 3.6 driver)
 name|c
 operator|=
 operator|new
@@ -623,7 +623,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|c
 operator|.
