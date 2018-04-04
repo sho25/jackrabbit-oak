@@ -408,8 +408,6 @@ operator|.
 name|commit
 operator|.
 name|ThreeWayConflictHandler
-operator|.
-name|Resolution
 import|;
 end_import
 
@@ -428,6 +426,8 @@ operator|.
 name|commit
 operator|.
 name|ThreeWayConflictHandler
+operator|.
+name|Resolution
 import|;
 end_import
 
@@ -790,6 +790,16 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
+if|if
+condition|(
+name|target
+operator|.
+name|hasChildNode
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
 name|merge
 argument_list|(
 name|before
@@ -798,7 +808,7 @@ name|after
 argument_list|,
 name|target
 operator|.
-name|child
+name|getChildNode
 argument_list|(
 name|name
 argument_list|)
@@ -806,6 +816,7 @@ argument_list|,
 name|conflictHandler
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|true
 return|;
