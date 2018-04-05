@@ -790,7 +790,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the {@code PrincipalConfiguration} interface that provides  * principal management for {@link Group principals} associated with  * {@link org.apache.jackrabbit.oak.spi.security.authentication.external.ExternalIdentity external identities}  * managed outside of the scope of the repository by an  * {@link org.apache.jackrabbit.oak.spi.security.authentication.external.ExternalIdentityProvider}.  *  * @since Oak 1.5.3  * @see<a href="https://issues.apache.org/jira/browse/OAK-4101">OAK-4101</a>  */
+comment|/**  * Implementation of the {@code PrincipalConfiguration} interface that provides  * principal management for {@code Group principals} associated with  * {@link org.apache.jackrabbit.oak.spi.security.authentication.external.ExternalIdentity external identities}  * managed outside of the scope of the repository by an  * {@link org.apache.jackrabbit.oak.spi.security.authentication.external.ExternalIdentityProvider}.  *  * @since Oak 1.5.3  * @see<a href="https://issues.apache.org/jira/browse/OAK-4101">OAK-4101</a>  */
 end_comment
 
 begin_class
