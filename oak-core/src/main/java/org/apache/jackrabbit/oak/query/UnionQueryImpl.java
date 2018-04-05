@@ -920,36 +920,6 @@ parameter_list|)
 block|{
 comment|// Note: for "unionAll == false", overlapping entries are counted twice
 comment|// (this can result in a larger reported size, but it is not a security problem)
-comment|// ensure the queries are both executed, otherwise the cursor is not set,
-comment|// and so the size would be -1
-name|left
-operator|.
-name|executeQuery
-argument_list|()
-operator|.
-name|getRows
-argument_list|()
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|hasNext
-argument_list|()
-expr_stmt|;
-name|right
-operator|.
-name|executeQuery
-argument_list|()
-operator|.
-name|getRows
-argument_list|()
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|hasNext
-argument_list|()
-expr_stmt|;
 name|long
 name|a
 init|=
@@ -962,6 +932,29 @@ argument_list|,
 name|max
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|a
+operator|<
+literal|0
+condition|)
+block|{
+return|return
+operator|-
+literal|1
+return|;
+block|}
+if|if
+condition|(
+name|a
+operator|>=
+name|limit
+condition|)
+block|{
+return|return
+name|limit
+return|;
+block|}
 name|long
 name|b
 init|=
@@ -976,10 +969,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|a
-operator|<
-literal|0
-operator|||
 name|b
 operator|<
 literal|0

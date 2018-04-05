@@ -311,12 +311,15 @@ name|boolean
 name|isOuterJoinRightHandSide
 parameter_list|()
 function_decl|;
-comment|/**      * Get the size if known.      *       * @param precision the required precision      * @param max the maximum nodes read (for an exact size)      * @return the size, or -1 if unknown      */
+comment|/**      * Get the size if known.      *       * @param rootState the root node state (to initialize the cursor, if needed)      * @param precision the required precision      * @param max the maximum nodes read (for an exact size)      * @return the size, or -1 if unknown      */
 specifier|public
 specifier|abstract
 name|long
 name|getSize
 parameter_list|(
+name|NodeState
+name|rootState
+parameter_list|,
 name|SizePrecision
 name|precision
 parameter_list|,

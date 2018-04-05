@@ -6563,6 +6563,11 @@ name|source
 operator|.
 name|getSize
 argument_list|(
+name|context
+operator|.
+name|getBaseState
+argument_list|()
+argument_list|,
 name|precision
 argument_list|,
 name|max

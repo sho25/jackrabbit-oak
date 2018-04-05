@@ -1272,6 +1272,9 @@ specifier|public
 name|long
 name|getSize
 parameter_list|(
+name|NodeState
+name|rootState
+parameter_list|,
 name|SizePrecision
 name|precision
 parameter_list|,

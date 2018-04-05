@@ -3937,6 +3937,9 @@ specifier|public
 name|long
 name|getSize
 parameter_list|(
+name|NodeState
+name|rootState
+parameter_list|,
 name|SizePrecision
 name|precision
 parameter_list|,
@@ -3951,10 +3954,11 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return
-operator|-
-literal|1
-return|;
+name|execute
+argument_list|(
+name|rootState
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|cursor
