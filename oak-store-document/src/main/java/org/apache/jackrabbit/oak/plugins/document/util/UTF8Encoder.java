@@ -203,7 +203,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * @see {@link CharsetEncoder#canEncode(CharSequence)      */
+comment|/**      * See {@link CharsetEncoder#canEncode(CharSequence)}.      */
 specifier|public
 specifier|static
 name|boolean
