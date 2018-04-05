@@ -374,6 +374,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|socketKeepAlive
+init|=
+literal|true
 decl_stmt|;
 specifier|private
 name|MongoStatus
@@ -695,7 +697,7 @@ literal|16
 argument_list|)
 return|;
 block|}
-comment|/**      * Enables the socket keep-alive option for MongoDB. The default is      * disabled.      *      * @param enable whether to enable it.      * @return this      */
+comment|/**      * Enables or disables the socket keep-alive option for MongoDB. The default      * is enabled.      *      * @param enable whether to enable or disable it.      * @return this      */
 specifier|public
 name|T
 name|setSocketKeepAlive
@@ -713,6 +715,16 @@ expr_stmt|;
 return|return
 name|thisBuilder
 argument_list|()
+return|;
+block|}
+comment|/**      * @return whether socket keep-alive is enabled.      */
+specifier|public
+name|boolean
+name|isSocketKeepAlive
+parameter_list|()
+block|{
+return|return
+name|socketKeepAlive
 return|;
 block|}
 specifier|public

@@ -1669,7 +1669,7 @@ specifier|final
 name|boolean
 name|DEFAULT_SO_KEEP_ALIVE
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|static
 specifier|final
