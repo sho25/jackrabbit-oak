@@ -83,21 +83,21 @@ name|CompositeData
 name|getQueuingTimes
 parameter_list|()
 function_decl|;
-comment|/**      * @return tabular data of the form<commits,writerGroup> collected       *<b>in the last minute</b>      * @throws OpenDataException if data is not available      */
+comment|/**      * @return tabular data of the form&lt;commits,writerGroup&gt; collected       *<b>in the last minute</b>      * @throws OpenDataException if data is not available      */
 name|TabularData
 name|getCommitsCountPerWriterGroupLastMinute
 parameter_list|()
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * @return tabular data of the form<commits,writer> for writers       *         not included in groups      * @throws OpenDataException if data is not available      */
+comment|/**      * @return tabular data of the form&lt;commits,writer&gt; for writers       *         not included in groups      * @throws OpenDataException if data is not available      */
 name|TabularData
 name|getCommitsCountForOtherWriters
 parameter_list|()
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * @return tabular data of the form<writer,writerDetails> for each writer      *         currently in the queue      * @throws OpenDataException if data is not available      */
+comment|/**      * @return tabular data of the form&lt;writer,writerDetails&gt; for each writer      *         currently in the queue      * @throws OpenDataException if data is not available      */
 name|TabularData
 name|getQueuedWriters
 parameter_list|()
