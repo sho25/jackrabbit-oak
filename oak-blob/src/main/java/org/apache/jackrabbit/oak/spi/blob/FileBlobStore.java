@@ -640,6 +640,13 @@ name|exists
 argument_list|()
 condition|)
 block|{
+name|FileUtils
+operator|.
+name|touch
+argument_list|(
+name|f
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|File
