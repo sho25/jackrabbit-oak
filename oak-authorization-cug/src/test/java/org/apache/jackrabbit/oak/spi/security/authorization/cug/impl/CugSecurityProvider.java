@@ -192,7 +192,7 @@ argument_list|)
 decl_stmt|;
 name|cugConfiguration
 operator|.
-name|activate
+name|setParameters
 argument_list|(
 name|params
 argument_list|)
