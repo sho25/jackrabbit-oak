@@ -49,6 +49,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -114,20 +124,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
 import|;
 end_import
 
@@ -1036,7 +1032,7 @@ name|searchType
 parameter_list|)
 block|{
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
@@ -1060,7 +1056,7 @@ name|searchType
 parameter_list|)
 block|{
 return|return
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
