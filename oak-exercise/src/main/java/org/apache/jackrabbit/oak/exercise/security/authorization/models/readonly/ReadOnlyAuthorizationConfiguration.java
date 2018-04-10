@@ -41,6 +41,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -160,20 +170,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
 import|;
 end_import
 
@@ -1020,7 +1016,7 @@ return|return
 operator|new
 name|AccessControlPolicyIteratorAdapter
 argument_list|(
-name|Iterators
+name|Collections
 operator|.
 name|emptyIterator
 argument_list|()
