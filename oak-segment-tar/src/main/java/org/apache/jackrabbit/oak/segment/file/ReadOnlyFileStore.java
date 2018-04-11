@@ -372,6 +372,14 @@ operator|.
 name|withReadOnly
 argument_list|()
 operator|.
+name|withPersistence
+argument_list|(
+name|builder
+operator|.
+name|getPersistence
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|()
 expr_stmt|;
