@@ -692,8 +692,6 @@ argument_list|(
 name|archiveDirectory
 argument_list|,
 name|ioMonitor
-argument_list|,
-name|monitor
 argument_list|)
 return|;
 block|}
