@@ -90,7 +90,7 @@ specifier|public
 interface|interface
 name|SegmentArchiveManager
 block|{
-comment|/**      * List names of the available archives.      *      * @return archive list      */
+comment|/**      * List names of the available .tar archives.      *      * @return archive list      */
 annotation|@
 name|Nonnull
 name|List
