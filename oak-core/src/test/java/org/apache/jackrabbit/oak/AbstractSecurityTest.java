@@ -1114,6 +1114,16 @@ name|getSecurityConfigParameters
 argument_list|()
 argument_list|)
 operator|.
+name|withRootProvider
+argument_list|(
+name|rootProvider
+argument_list|)
+operator|.
+name|withTreeProvider
+argument_list|(
+name|treeProvider
+argument_list|)
+operator|.
 name|build
 argument_list|()
 return|;
