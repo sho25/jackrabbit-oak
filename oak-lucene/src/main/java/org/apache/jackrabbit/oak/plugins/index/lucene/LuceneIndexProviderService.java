@@ -3129,7 +3129,15 @@ name|tracker
 operator|=
 operator|new
 name|IndexTracker
-argument_list|()
+argument_list|(
+operator|new
+name|DefaultIndexReaderFactory
+argument_list|(
+name|mountInfoProvider
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 name|tracker
