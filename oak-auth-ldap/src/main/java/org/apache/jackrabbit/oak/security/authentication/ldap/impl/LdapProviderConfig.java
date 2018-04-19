@@ -999,6 +999,39 @@ name|PARAM_GROUP_MEMBER_ATTRIBUTE
 init|=
 literal|"group.memberAttribute"
 decl_stmt|;
+comment|/**      * @see #getExtIdAttribute()      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_EXT_ID_ATTRIBUTE_DEFAULT
+init|=
+literal|""
+decl_stmt|;
+comment|/**      * @see #getExtIdAttribute()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"External identifier attribute"
+argument_list|,
+name|description
+operator|=
+literal|"The attribute that is used to create external identifiers. Leave empty to use the DN."
+argument_list|,
+name|value
+operator|=
+name|PARAM_EXT_ID_ATTRIBUTE_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_EXT_ID_ATTRIBUTE
+init|=
+literal|"extIdAttribute"
+decl_stmt|;
 comment|/**      * @see Identity#getCustomAttributes()      */
 specifier|public
 specifier|static
@@ -1806,6 +1839,18 @@ argument_list|,
 name|PARAM_CUSTOM_ATTRIBUTES_DEFAULT
 argument_list|)
 argument_list|)
+operator|.
+name|setExtIdAttribute
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_EXT_ID_ATTRIBUTE
+argument_list|,
+name|PARAM_EXT_ID_ATTRIBUTE_DEFAULT
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|ConfigurationParameters
 operator|.
@@ -2105,6 +2150,12 @@ name|String
 name|groupMemberAttribute
 init|=
 name|PARAM_GROUP_MEMBER_ATTRIBUTE
+decl_stmt|;
+specifier|private
+name|String
+name|extIdAttribute
+init|=
+name|PARAM_EXT_ID_ATTRIBUTE_DEFAULT
 decl_stmt|;
 specifier|private
 name|String
@@ -2538,6 +2589,39 @@ operator|.
 name|groupMemberAttribute
 operator|=
 name|groupMemberAttribute
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Configures the attribute that is used to create external identifiers.      * Leave empty to use the DN, which is default.      *      * @return the attribute used to create external identifiers      */
+annotation|@
+name|Nonnull
+specifier|public
+name|String
+name|getExtIdAttribute
+parameter_list|()
+block|{
+return|return
+name|extIdAttribute
+return|;
+block|}
+comment|/**      * Sets the attribute that is used to create external identifiers.      * @param extIdAttribute the attribute name      * @return {@code this}      */
+annotation|@
+name|Nonnull
+specifier|public
+name|LdapProviderConfig
+name|setExtIdAttribute
+parameter_list|(
+name|String
+name|extIdAttribute
+parameter_list|)
+block|{
+name|this
+operator|.
+name|extIdAttribute
+operator|=
+name|extIdAttribute
 expr_stmt|;
 return|return
 name|this
@@ -3182,6 +3266,23 @@ operator|.
 name|append
 argument_list|(
 name|groupMemberAttribute
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\''
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|", extIdAttribute='"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|extIdAttribute
 argument_list|)
 operator|.
 name|append
