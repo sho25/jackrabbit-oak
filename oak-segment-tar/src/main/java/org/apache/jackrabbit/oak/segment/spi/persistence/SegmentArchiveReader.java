@@ -23,21 +23,11 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|annotation
+name|io
 operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
+name|Closeable
 import|;
 end_import
 
@@ -71,6 +61,26 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * This interface represents a read-only segment archive. Since the underlying  * data structure is immutable, the implementation<b>should be</b> thread safe.  */
 end_comment
@@ -79,6 +89,8 @@ begin_interface
 specifier|public
 interface|interface
 name|SegmentArchiveReader
+extends|extends
+name|Closeable
 block|{
 comment|/**      * Read the segment.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @return byte buffer containing the segment data or null if the segment doesn't exist      */
 annotation|@
@@ -150,6 +162,8 @@ name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * Close the archive.      */
+annotation|@
+name|Override
 name|void
 name|close
 parameter_list|()

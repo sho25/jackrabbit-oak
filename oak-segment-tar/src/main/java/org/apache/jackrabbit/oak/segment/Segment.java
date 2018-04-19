@@ -1689,6 +1689,7 @@ decl_stmt|;
 comment|/**      * Returns the segment meta data of this segment or {@code null} if none is present.      *<p>      * The segment meta data is a string of the format {@code "{wid=W,sno=S,gc=G,t=T}"}      * where:      *<ul>      *<li>{@code W} is the writer id {@code wid},</li>      *<li>{@code S} is a unique, increasing sequence number corresponding to the allocation order      * of the segments in this store,</li>      *<li>{@code G} is the garbage collection generation (i.e. the number of compaction cycles      * that have been run),</li>      *<li>{@code T} is a time stamp according to {@link System#currentTimeMillis()}.</li>      *</ul>      * @return the segment meta data      */
 annotation|@
 name|CheckForNull
+specifier|public
 name|String
 name|getSegmentInfo
 parameter_list|()
@@ -2863,20 +2864,6 @@ operator|.
 name|getOffset
 argument_list|()
 decl_stmt|;
-name|int
-name|address
-init|=
-name|data
-operator|.
-name|size
-argument_list|()
-operator|-
-operator|(
-name|MAX_SEGMENT_SIZE
-operator|-
-name|offset
-operator|)
-decl_stmt|;
 name|writer
 operator|.
 name|format
@@ -2895,7 +2882,10 @@ argument_list|()
 argument_list|,
 name|offset
 argument_list|,
-name|address
+name|getAddress
+argument_list|(
+name|offset
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2971,6 +2961,28 @@ argument_list|(
 name|stream
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Convert an offset into an address.      * @param offset      * @return  the address corresponding the {@code offset}      */
+specifier|public
+name|int
+name|getAddress
+parameter_list|(
+name|int
+name|offset
+parameter_list|)
+block|{
+return|return
+name|data
+operator|.
+name|size
+argument_list|()
+operator|-
+operator|(
+name|MAX_SEGMENT_SIZE
+operator|-
+name|offset
+operator|)
+return|;
 block|}
 comment|/**      * A consumer of record data.      */
 specifier|public
