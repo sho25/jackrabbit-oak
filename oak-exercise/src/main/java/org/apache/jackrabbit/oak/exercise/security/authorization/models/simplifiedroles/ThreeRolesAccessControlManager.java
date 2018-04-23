@@ -282,7 +282,7 @@ name|supportedPath
 operator|=
 name|supportedPath
 expr_stmt|;
-comment|// TODO
+comment|// EXERCISE
 block|}
 annotation|@
 name|Override
@@ -299,7 +299,7 @@ name|PathNotFoundException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 operator|new
 name|Privilege
@@ -322,7 +322,7 @@ name|AccessControlException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 literal|null
 return|;
@@ -345,7 +345,7 @@ name|PathNotFoundException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 literal|false
 return|;
@@ -365,7 +365,7 @@ name|PathNotFoundException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 operator|new
 name|Privilege
@@ -392,7 +392,7 @@ name|AccessDeniedException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 operator|new
 name|AccessControlPolicy
@@ -418,7 +418,7 @@ name|AccessDeniedException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 operator|new
 name|AccessControlPolicy
@@ -443,7 +443,7 @@ name|AccessDeniedException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 operator|new
 name|AccessControlPolicyIteratorAdapter
@@ -480,7 +480,7 @@ name|VersionException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 block|}
 annotation|@
 name|Override
@@ -507,7 +507,7 @@ name|VersionException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// EXERCISE
 block|}
 annotation|@
 name|Override
@@ -538,7 +538,7 @@ name|absPath
 argument_list|)
 condition|)
 block|{
-comment|// TODO
+comment|// EXERCISE
 block|}
 return|return
 literal|false

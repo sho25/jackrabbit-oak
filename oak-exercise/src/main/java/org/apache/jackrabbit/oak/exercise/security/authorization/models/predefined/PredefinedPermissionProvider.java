@@ -67,6 +67,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -162,6 +176,10 @@ operator|.
 name|TreePermission
 import|;
 end_import
+
+begin_comment
+comment|/**  * EXERCISE: complete PermissionProvider implementation  */
+end_comment
 
 begin_class
 class|class
@@ -202,7 +220,7 @@ name|void
 name|refresh
 parameter_list|()
 block|{
-comment|// TODO
+comment|// EXERCISE: complete PermissionProvider implementation
 block|}
 annotation|@
 name|Nonnull
@@ -221,9 +239,12 @@ name|Tree
 name|tree
 parameter_list|)
 block|{
-comment|// TODO
+comment|// EXERCISE: complete PermissionProvider implementation
 return|return
-literal|null
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -244,7 +265,7 @@ modifier|...
 name|privilegeNames
 parameter_list|)
 block|{
-comment|// TODO
+comment|// EXERCISE: complete PermissionProvider implementation
 return|return
 literal|false
 return|;
@@ -258,9 +279,11 @@ name|RepositoryPermission
 name|getRepositoryPermission
 parameter_list|()
 block|{
-comment|// TODO
+comment|// EXERCISE: complete PermissionProvider implementation
 return|return
-literal|null
+name|RepositoryPermission
+operator|.
+name|EMPTY
 return|;
 block|}
 annotation|@
@@ -282,9 +305,11 @@ name|TreePermission
 name|parentPermission
 parameter_list|)
 block|{
-comment|// TODO
+comment|// EXERCISE: complete PermissionProvider implementation
 return|return
-literal|null
+name|TreePermission
+operator|.
+name|EMPTY
 return|;
 block|}
 annotation|@
@@ -307,7 +332,7 @@ name|long
 name|permissions
 parameter_list|)
 block|{
-comment|// TODO
+comment|// EXERCISE: complete PermissionProvider implementation
 return|return
 literal|false
 return|;
@@ -329,7 +354,7 @@ name|String
 name|jcrActions
 parameter_list|)
 block|{
-comment|// TODO
+comment|// EXERCISE: complete PermissionProvider implementation
 return|return
 literal|false
 return|;

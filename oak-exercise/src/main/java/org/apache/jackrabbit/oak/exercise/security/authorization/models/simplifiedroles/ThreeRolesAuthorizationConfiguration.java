@@ -1484,7 +1484,7 @@ name|CommitInfo
 name|info
 parameter_list|)
 block|{
-comment|// TODO: write a validator that meets the following requirements:
+comment|// EXERCISE: write a validator that meets the following requirements:
 comment|// 1. check that the item names defined with the node types are only used within the scope of the 2 node types
 comment|// 2. check that the policies are never nested.
 comment|// NOTE: having this validator allows to rely on item names in
@@ -1511,7 +1511,7 @@ argument_list|>
 name|getProtectedItemImporters
 parameter_list|()
 block|{
-comment|// TODO
+comment|// EXERCISE
 return|return
 name|ImmutableList
 operator|.

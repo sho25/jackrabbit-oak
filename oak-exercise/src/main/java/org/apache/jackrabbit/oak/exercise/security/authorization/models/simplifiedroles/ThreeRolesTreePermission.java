@@ -195,7 +195,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// TODO: respect access controlled content defined by other modules
+comment|// EXERCISE: respect access controlled content defined by other modules
 return|return
 operator|new
 name|ThreeRolesTreePermission

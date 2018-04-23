@@ -991,7 +991,7 @@ name|TreePermission
 name|parentPermission
 parameter_list|)
 block|{
-comment|// TODO : currently this implementation ignores TreeType
+comment|// EXERCISE : currently this implementation ignores TreeType -> complete implementation
 return|return
 name|getTreePermission
 argument_list|(
