@@ -103,9 +103,14 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|SecurityProviderHelper
 block|{
+specifier|private
+name|SecurityProviderHelper
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|SecurityProvider
