@@ -277,6 +277,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|TestUtils
+operator|.
+name|persistToBranch
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -593,6 +613,11 @@ literal|"prop"
 argument_list|,
 name|count
 operator|++
+argument_list|)
+expr_stmt|;
+name|persistToBranch
+argument_list|(
+name|builder
 argument_list|)
 expr_stmt|;
 block|}
@@ -1115,6 +1140,11 @@ literal|"prop"
 argument_list|,
 name|count
 operator|++
+argument_list|)
+expr_stmt|;
+name|persistToBranch
+argument_list|(
+name|builder
 argument_list|)
 expr_stmt|;
 block|}

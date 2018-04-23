@@ -857,7 +857,7 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|purge
+name|persist
 argument_list|()
 expr_stmt|;
 block|}

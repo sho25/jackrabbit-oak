@@ -262,9 +262,6 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|inc
-argument_list|()
-expr_stmt|;
 return|return
 name|after
 operator|.
