@@ -740,6 +740,11 @@ argument_list|(
 name|clusterId
 argument_list|)
 operator|.
+name|setUpdateLimit
+argument_list|(
+literal|10000
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
