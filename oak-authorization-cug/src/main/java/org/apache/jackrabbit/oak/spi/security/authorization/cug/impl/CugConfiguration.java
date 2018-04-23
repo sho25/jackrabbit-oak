@@ -1501,6 +1501,8 @@ specifier|public
 name|void
 name|setParameters
 parameter_list|(
+annotation|@
+name|Nonnull
 name|ConfigurationParameters
 name|config
 parameter_list|)
