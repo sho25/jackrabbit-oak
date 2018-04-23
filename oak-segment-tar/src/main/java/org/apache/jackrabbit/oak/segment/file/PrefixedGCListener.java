@@ -29,7 +29,7 @@ name|concurrent
 operator|.
 name|atomic
 operator|.
-name|AtomicLong
+name|AtomicInteger
 import|;
 end_import
 
@@ -80,7 +80,7 @@ name|listener
 decl_stmt|;
 specifier|private
 specifier|final
-name|AtomicLong
+name|AtomicInteger
 name|counter
 decl_stmt|;
 name|PrefixedGCListener
@@ -88,7 +88,7 @@ parameter_list|(
 name|GCListener
 name|listener
 parameter_list|,
-name|AtomicLong
+name|AtomicInteger
 name|counter
 parameter_list|)
 block|{
