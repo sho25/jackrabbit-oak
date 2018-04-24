@@ -380,6 +380,17 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
+name|IOTraceCommand
+operator|.
+name|NAME
+argument_list|,
+operator|new
+name|IOTraceCommand
+argument_list|()
+argument_list|)
+operator|.
+name|put
+argument_list|(
 literal|"server"
 argument_list|,
 operator|new
