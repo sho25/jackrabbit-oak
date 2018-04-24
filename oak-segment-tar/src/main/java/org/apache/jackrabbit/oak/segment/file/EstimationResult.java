@@ -21,7 +21,7 @@ end_package
 
 begin_class
 class|class
-name|GCEstimationResult
+name|EstimationResult
 block|{
 specifier|private
 specifier|final
@@ -33,7 +33,7 @@ specifier|final
 name|String
 name|gcLog
 decl_stmt|;
-name|GCEstimationResult
+name|EstimationResult
 parameter_list|(
 name|boolean
 name|gcNeeded
