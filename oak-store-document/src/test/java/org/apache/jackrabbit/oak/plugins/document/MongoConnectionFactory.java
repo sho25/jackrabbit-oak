@@ -193,11 +193,22 @@ range|:
 name|connections
 control|)
 block|{
+try|try
+block|{
 name|c
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalStateException
+name|e
+parameter_list|)
+block|{
+comment|// may happen when connection is already closed (OAK-7447)
+block|}
 block|}
 block|}
 block|}
