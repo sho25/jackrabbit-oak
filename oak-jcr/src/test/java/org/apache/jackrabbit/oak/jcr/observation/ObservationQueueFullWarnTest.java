@@ -1588,32 +1588,13 @@ expr_stmt|;
 name|long
 name|numEvents
 init|=
-name|events
-operator|.
-name|getSize
-argument_list|()
+literal|0
 decl_stmt|;
 name|counter
 operator|.
 name|addAndGet
 argument_list|(
 name|numEvents
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"GOT: "
-operator|+
-name|numEvents
-operator|+
-literal|" - COUNTER: "
-operator|+
-name|counter
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 while|while
@@ -1632,6 +1613,14 @@ operator|.
 name|nextEvent
 argument_list|()
 decl_stmt|;
+name|counter
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
+name|numEvents
+operator|++
+expr_stmt|;
 name|LOG
 operator|.
 name|info
@@ -1685,6 +1674,22 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"GOT: "
+operator|+
+name|numEvents
+operator|+
+literal|" - COUNTER: "
+operator|+
+name|counter
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
