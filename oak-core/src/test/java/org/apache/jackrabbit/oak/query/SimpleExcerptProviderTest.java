@@ -116,6 +116,56 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|caseInsensitiveTest
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// This will make the test fail:
+comment|// static {
+comment|//     System.setProperty("oak.query.caseSensitiveHighlight", "true");
+comment|// }
+name|assertEquals
+argument_list|(
+literal|"<div><span><strong>fox</strong> is jumping and dancing foxtrot</span></div>"
+argument_list|,
+name|highlight
+argument_list|(
+name|sb
+argument_list|(
+literal|"fox is jumping and dancing foxtrot"
+argument_list|)
+argument_list|,
+name|of
+argument_list|(
+literal|"Fox"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"<div><span>fox is<strong>jumping</strong></span></div>"
+argument_list|,
+name|highlight
+argument_list|(
+name|sb
+argument_list|(
+literal|"fox is jumping"
+argument_list|)
+argument_list|,
+name|of
+argument_list|(
+literal|"jUmP*"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|simpleTest
 parameter_list|()
 throws|throws
