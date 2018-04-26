@@ -1003,10 +1003,10 @@ comment|/**      * @see #getExtIdAttribute()      */
 specifier|public
 specifier|static
 specifier|final
-name|String
-name|PARAM_EXT_ID_ATTRIBUTE_DEFAULT
+name|boolean
+name|PARAM_USE_UID_FOR_EXT_ID_DEFAULT
 init|=
-literal|""
+literal|false
 decl_stmt|;
 comment|/**      * @see #getExtIdAttribute()      */
 annotation|@
@@ -1014,23 +1014,23 @@ name|Property
 argument_list|(
 name|label
 operator|=
-literal|"External identifier attribute"
+literal|"Use user id for external ids"
 argument_list|,
 name|description
 operator|=
-literal|"The attribute that is used to create external identifiers. Leave empty to use the DN."
+literal|"If enabled, the value of the user id (resp. group name) attribute will be used to create external identifiers. Leave disabled to use the DN instead."
 argument_list|,
-name|value
+name|boolValue
 operator|=
-name|PARAM_EXT_ID_ATTRIBUTE_DEFAULT
+name|PARAM_USE_UID_FOR_EXT_ID_DEFAULT
 argument_list|)
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|PARAM_EXT_ID_ATTRIBUTE
+name|PARAM_USE_UID_FOR_EXT_ID
 init|=
-literal|"extIdAttribute"
+literal|"useUidForExtId"
 decl_stmt|;
 comment|/**      * @see Identity#getCustomAttributes()      */
 specifier|public
@@ -1840,15 +1840,15 @@ name|PARAM_CUSTOM_ATTRIBUTES_DEFAULT
 argument_list|)
 argument_list|)
 operator|.
-name|setExtIdAttribute
+name|setUseUidForExtId
 argument_list|(
 name|params
 operator|.
 name|getConfigValue
 argument_list|(
-name|PARAM_EXT_ID_ATTRIBUTE
+name|PARAM_USE_UID_FOR_EXT_ID
 argument_list|,
-name|PARAM_EXT_ID_ATTRIBUTE_DEFAULT
+name|PARAM_USE_UID_FOR_EXT_ID_DEFAULT
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2152,10 +2152,10 @@ init|=
 name|PARAM_GROUP_MEMBER_ATTRIBUTE
 decl_stmt|;
 specifier|private
-name|String
-name|extIdAttribute
+name|boolean
+name|useUidForExtId
 init|=
-name|PARAM_EXT_ID_ATTRIBUTE_DEFAULT
+name|PARAM_USE_UID_FOR_EXT_ID_DEFAULT
 decl_stmt|;
 specifier|private
 name|String
@@ -2594,34 +2594,34 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Configures the attribute that is used to create external identifiers.      * Leave empty to use the DN, which is default.      *      * @return the attribute used to create external identifiers      */
+comment|/**      * If true, the value of the user id (resp. group name) attribute will be used to create external identifiers. Otherwise the DN will be used, which is the default.      *      * @return true iff the value of the user id (resp. group name) attribute will be used to create external identifiers      */
 annotation|@
 name|Nonnull
 specifier|public
-name|String
-name|getExtIdAttribute
+name|boolean
+name|getUseUidForExtId
 parameter_list|()
 block|{
 return|return
-name|extIdAttribute
+name|useUidForExtId
 return|;
 block|}
-comment|/**      * Sets the attribute that is used to create external identifiers.      * @param extIdAttribute the attribute name      * @return {@code this}      */
+comment|/**      * Sets the flag that controls if the user id (resp. gruop name) will be used instead of the DN to create external ids.      *      * @see #getUseUidForExtId()      * @param useUidForExtId the new value of #useUidForExtId      * @return {@code this}      */
 annotation|@
 name|Nonnull
 specifier|public
 name|LdapProviderConfig
-name|setExtIdAttribute
+name|setUseUidForExtId
 parameter_list|(
-name|String
-name|extIdAttribute
+name|boolean
+name|useUidForExtId
 parameter_list|)
 block|{
 name|this
 operator|.
-name|extIdAttribute
+name|useUidForExtId
 operator|=
-name|extIdAttribute
+name|useUidForExtId
 expr_stmt|;
 return|return
 name|this
@@ -3277,12 +3277,12 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|", extIdAttribute='"
+literal|", useUidForExtId='"
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|extIdAttribute
+name|useUidForExtId
 argument_list|)
 operator|.
 name|append

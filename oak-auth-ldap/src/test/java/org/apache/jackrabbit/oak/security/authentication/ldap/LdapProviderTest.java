@@ -1514,9 +1514,9 @@ argument_list|)
 expr_stmt|;
 name|providerConfig
 operator|.
-name|setExtIdAttribute
+name|setUseUidForExtId
 argument_list|(
-literal|"uid"
+literal|true
 argument_list|)
 expr_stmt|;
 name|idp
@@ -1706,9 +1706,9 @@ argument_list|)
 expr_stmt|;
 name|providerConfig
 operator|.
-name|setExtIdAttribute
+name|setUseUidForExtId
 argument_list|(
-literal|"uid"
+literal|true
 argument_list|)
 expr_stmt|;
 name|idp
@@ -1793,9 +1793,9 @@ argument_list|)
 expr_stmt|;
 name|providerConfig
 operator|.
-name|setExtIdAttribute
+name|setUseUidForExtId
 argument_list|(
-literal|"uid"
+literal|true
 argument_list|)
 expr_stmt|;
 name|idp
@@ -1880,9 +1880,9 @@ argument_list|)
 expr_stmt|;
 name|providerConfig
 operator|.
-name|setExtIdAttribute
+name|setUseUidForExtId
 argument_list|(
-literal|"uid"
+literal|true
 argument_list|)
 expr_stmt|;
 name|idp
@@ -1967,9 +1967,9 @@ argument_list|)
 expr_stmt|;
 name|providerConfig
 operator|.
-name|setExtIdAttribute
+name|setUseUidForExtId
 argument_list|(
-literal|"uid"
+literal|true
 argument_list|)
 expr_stmt|;
 name|idp
@@ -2076,9 +2076,9 @@ argument_list|)
 expr_stmt|;
 name|providerConfig
 operator|.
-name|setExtIdAttribute
+name|setUseUidForExtId
 argument_list|(
-literal|"uid"
+literal|true
 argument_list|)
 expr_stmt|;
 name|idp
@@ -2138,6 +2138,9 @@ argument_list|(
 literal|"User Ref"
 argument_list|,
 name|TEST_USER1_UID
+operator|.
+name|toUpperCase
+argument_list|()
 argument_list|,
 name|user
 operator|.
