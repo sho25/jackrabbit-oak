@@ -430,7 +430,6 @@ operator|.
 name|getString
 argument_list|()
 expr_stmt|;
-comment|// TODO is this expected?
 name|assertTrue
 argument_list|(
 name|path
@@ -445,7 +444,7 @@ name|s
 operator|.
 name|indexOf
 argument_list|(
-literal|"Hello World"
+literal|"<strong>Hello</strong> World"
 argument_list|)
 operator|>=
 literal|0
@@ -588,7 +587,6 @@ operator|.
 name|getString
 argument_list|()
 expr_stmt|;
-comment|// TODO is this expected?
 name|assertTrue
 argument_list|(
 name|path
@@ -603,7 +601,7 @@ name|s
 operator|.
 name|indexOf
 argument_list|(
-literal|"Hello World"
+literal|"<strong>Hello</strong> World"
 argument_list|)
 operator|>=
 literal|0

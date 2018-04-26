@@ -841,7 +841,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Seeking back on streaming index file {}. Current position {}, requested position {}."
+literal|"Seeking back on streaming index file {}. Current position {}, requested position {}. "
 operator|+
 literal|"Please make sure that CopyOnRead and prefetch of index files are enabled."
 argument_list|,
