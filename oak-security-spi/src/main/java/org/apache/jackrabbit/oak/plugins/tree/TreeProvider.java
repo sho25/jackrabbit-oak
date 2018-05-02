@@ -63,7 +63,23 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|annotation
+operator|.
+name|versioning
+operator|.
+name|ProviderType
+import|;
+end_import
+
 begin_interface
+annotation|@
+name|ProviderType
 specifier|public
 interface|interface
 name|TreeProvider
