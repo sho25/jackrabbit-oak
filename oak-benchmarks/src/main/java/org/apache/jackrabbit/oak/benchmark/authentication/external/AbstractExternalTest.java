@@ -1608,6 +1608,11 @@ expr_stmt|;
 comment|// now register the sync-handler with the dynamic membership config
 comment|// in order to enable dynamic membership with the external principal configuration
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|props
 init|=
 name|ImmutableMap
@@ -1662,6 +1667,11 @@ name|props
 argument_list|)
 expr_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|shMappingProps
 init|=
 name|ImmutableMap
