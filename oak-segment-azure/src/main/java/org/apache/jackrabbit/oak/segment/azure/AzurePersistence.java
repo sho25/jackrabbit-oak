@@ -592,16 +592,8 @@ argument_list|(
 literal|"repo.lock"
 argument_list|)
 argument_list|,
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|log
 operator|.
@@ -611,7 +603,6 @@ literal|"Lost connection to the Azure. The client will be closed."
 argument_list|)
 expr_stmt|;
 comment|// TODO close the connection
-block|}
 block|}
 argument_list|)
 operator|.
