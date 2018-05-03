@@ -167,6 +167,11 @@ name|REP_PRIVILEGE_BITS
 init|=
 literal|"rep:privileges"
 decl_stmt|;
+name|String
+name|REP_NUM_PERMISSIONS
+init|=
+literal|"rep:numPermissions"
+decl_stmt|;
 name|Set
 argument_list|<
 name|String
