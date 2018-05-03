@@ -2909,9 +2909,33 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// mark group as processed
 name|Group
 name|grp
+init|=
+name|declaredExternalGroups
+operator|.
+name|remove
+argument_list|(
+name|extGroup
+operator|.
+name|getId
+argument_list|()
+argument_list|)
 decl_stmt|;
+name|boolean
+name|exists
+init|=
+name|grp
+operator|!=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|exists
+condition|)
+block|{
 name|Authorizable
 name|a
 init|=
@@ -2999,6 +3023,7 @@ argument_list|,
 name|grp
 argument_list|)
 expr_stmt|;
+block|}
 name|syncGroup
 argument_list|(
 name|extGroup
@@ -3006,6 +3031,12 @@ argument_list|,
 name|grp
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|exists
+condition|)
+block|{
 comment|// ensure membership
 name|grp
 operator|.
@@ -3025,17 +3056,7 @@ argument_list|,
 name|grp
 argument_list|)
 expr_stmt|;
-comment|// remember the declared group
-name|declaredExternalGroups
-operator|.
-name|remove
-argument_list|(
-name|grp
-operator|.
-name|getID
-argument_list|()
-argument_list|)
-expr_stmt|;
+block|}
 comment|// recursively apply further membership
 if|if
 condition|(
