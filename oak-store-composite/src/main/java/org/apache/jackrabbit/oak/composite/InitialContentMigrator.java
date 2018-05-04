@@ -1338,6 +1338,8 @@ init|=
 name|wrapNodeState
 argument_list|(
 name|after
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|NodeState
@@ -1346,6 +1348,8 @@ init|=
 name|wrapNodeState
 argument_list|(
 name|before
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|currentRoot
@@ -1384,6 +1388,9 @@ name|wrapNodeState
 parameter_list|(
 name|NodeState
 name|nodeState
+parameter_list|,
+name|boolean
+name|logPaths
 parameter_list|)
 block|{
 name|NodeState
@@ -1410,6 +1417,11 @@ argument_list|,
 name|excludeFragments
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|logPaths
+condition|)
+block|{
 name|wrapped
 operator|=
 name|ReportingNodeState
@@ -1432,6 +1444,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|wrapped
 return|;
