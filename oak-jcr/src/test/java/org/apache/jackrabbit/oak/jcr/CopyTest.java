@@ -66,18 +66,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -104,16 +92,6 @@ operator|.
 name|jcr
 operator|.
 name|PropertyType
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Repository
 import|;
 end_import
 
@@ -1158,22 +1136,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assumeTrue
-argument_list|(
-name|getRepository
-argument_list|()
-operator|.
-name|getDescriptorValue
-argument_list|(
-name|Repository
-operator|.
-name|OPTION_LOCKING_SUPPORTED
-argument_list|)
-operator|.
-name|getBoolean
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|Session
 name|session
 init|=
