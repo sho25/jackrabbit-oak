@@ -84,6 +84,8 @@ specifier|public
 interface|interface
 name|TreeProvider
 block|{
+annotation|@
+name|Nonnull
 name|Tree
 name|createReadOnlyTree
 parameter_list|(
@@ -93,6 +95,8 @@ name|NodeState
 name|rootState
 parameter_list|)
 function_decl|;
+annotation|@
+name|Nonnull
 name|Tree
 name|createReadOnlyTree
 parameter_list|(

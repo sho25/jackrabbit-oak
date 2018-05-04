@@ -138,6 +138,8 @@ implements|implements
 name|TreeProvider
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Tree
@@ -158,6 +160,8 @@ name|rootState
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
