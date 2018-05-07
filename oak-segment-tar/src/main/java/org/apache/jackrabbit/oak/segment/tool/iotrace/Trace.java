@@ -54,6 +54,7 @@ comment|/**  * An instance of a {@code Trace} specifies a read pattern for traci
 end_comment
 
 begin_interface
+specifier|public
 interface|interface
 name|Trace
 block|{
