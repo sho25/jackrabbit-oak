@@ -999,7 +999,7 @@ name|PARAM_GROUP_MEMBER_ATTRIBUTE
 init|=
 literal|"group.memberAttribute"
 decl_stmt|;
-comment|/**      * @see #getExtIdAttribute()      */
+comment|/**      * @see #getUseUidForExtId()      */
 specifier|public
 specifier|static
 specifier|final
@@ -1008,7 +1008,7 @@ name|PARAM_USE_UID_FOR_EXT_ID_DEFAULT
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * @see #getExtIdAttribute()      */
+comment|/**      * @see #getUseUidForExtId()      */
 annotation|@
 name|Property
 argument_list|(
@@ -1595,7 +1595,7 @@ return|return
 name|maxActiveSize
 return|;
 block|}
-comment|/**          * Sets the cap on the number of objects that can be allocated by the pool.          *          * @see #getMaxActive          * @return this          */
+comment|/**          * Sets the cap on the number of objects that can be allocated by the pool.          *          * @see #getMaxActive          * @param maxActive the new upper limit of the pool size          * @return this          */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1616,7 +1616,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Defines if the lookup on validate flag is enabled. If enable a connection that taken from the          * pool are validated before used. currently this is done by performing a lookup to the ROOT DSE, which          * might not be allowed on all LDAP servers.           * @return {@code true} if the flag is enabled.          */
+comment|/**          * Defines if the lookup on validate flag is enabled. If enable a connection that taken from the          * pool are validated before used. currently this is done by performing a lookup to the ROOT DSE, which          * might not be allowed on all LDAP servers.          *          * @return {@code true} if the flag is enabled.          */
 specifier|public
 name|boolean
 name|lookupOnValidate
@@ -1626,7 +1626,7 @@ return|return
 name|lookupOnValidate
 return|;
 block|}
-comment|/**          * Sets the lookup on validate flag.          *          * @see #lookupOnValidate()          * @return this          */
+comment|/**          * Sets the lookup on validate flag.          *          * @see #lookupOnValidate()          * @param lookupOnValidate the new value of the lookup on validate flag          * @return this          */
 annotation|@
 name|Nonnull
 specifier|public
