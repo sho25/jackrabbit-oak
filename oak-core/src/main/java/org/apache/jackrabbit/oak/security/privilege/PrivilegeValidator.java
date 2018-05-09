@@ -137,27 +137,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
-name|ImmutableTree
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|namespace
-operator|.
-name|NamespaceConstants
+name|TreeProvider
 import|;
 end_import
 
@@ -194,6 +174,24 @@ operator|.
 name|commit
 operator|.
 name|Validator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|namespace
+operator|.
+name|NamespaceConstants
 import|;
 end_import
 
@@ -392,13 +390,27 @@ specifier|final
 name|PrivilegeBitsProvider
 name|bitsProvider
 decl_stmt|;
+specifier|private
+specifier|final
+name|TreeProvider
+name|treeProvider
+decl_stmt|;
 name|PrivilegeValidator
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Root
 name|before
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Root
 name|after
+parameter_list|,
+annotation|@
+name|Nonnull
+name|TreeProvider
+name|treeProvider
 parameter_list|)
 block|{
 name|rootBefore
@@ -416,6 +428,12 @@ name|PrivilegeBitsProvider
 argument_list|(
 name|rootBefore
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|treeProvider
+operator|=
+name|treeProvider
 expr_stmt|;
 block|}
 comment|//----------------------------------------------------------< Validator>---
@@ -543,11 +561,14 @@ argument_list|)
 condition|)
 block|{
 comment|// make sure privileges have been initialized before
+name|Tree
+name|parent
+init|=
 name|getPrivilegesTree
 argument_list|(
 name|rootBefore
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// the following characteristics are expected to be validated elsewhere:
 comment|// - permission to allow privilege registration -> permission validator.
 comment|// - name collisions (-> delegated to NodeTypeValidator since sms are not allowed)
@@ -593,14 +614,11 @@ comment|// validate the definition
 name|Tree
 name|tree
 init|=
-operator|new
-name|ImmutableTree
+name|treeProvider
+operator|.
+name|createReadOnlyTree
 argument_list|(
-name|ImmutableTree
-operator|.
-name|ParentProvider
-operator|.
-name|UNSUPPORTED
+name|parent
 argument_list|,
 name|name
 argument_list|,

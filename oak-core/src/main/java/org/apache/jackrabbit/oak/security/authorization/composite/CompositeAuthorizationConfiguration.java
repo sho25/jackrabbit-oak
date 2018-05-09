@@ -898,6 +898,9 @@ name|compositionType
 argument_list|,
 name|getRootProvider
 argument_list|()
+argument_list|,
+name|getTreeProvider
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

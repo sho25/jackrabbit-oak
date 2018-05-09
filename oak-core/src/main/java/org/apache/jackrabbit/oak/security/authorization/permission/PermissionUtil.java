@@ -173,9 +173,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|ReadOnly
 import|;
 end_import
 
@@ -713,7 +711,7 @@ block|}
 specifier|public
 specifier|static
 name|Tree
-name|getImmutableTree
+name|getReadOnlyTree
 parameter_list|(
 annotation|@
 name|Nullable
@@ -723,14 +721,14 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|Root
-name|immutableRoot
+name|readOnlyRoot
 parameter_list|)
 block|{
 if|if
 condition|(
 name|tree
 operator|instanceof
-name|ImmutableTree
+name|ReadOnly
 condition|)
 block|{
 return|return
@@ -748,7 +746,7 @@ operator|)
 condition|?
 literal|null
 else|:
-name|immutableRoot
+name|readOnlyRoot
 operator|.
 name|getTree
 argument_list|(
