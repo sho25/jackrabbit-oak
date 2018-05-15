@@ -137,9 +137,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|security
 operator|.
-name|version
+name|authorization
+operator|.
+name|permission
 operator|.
 name|VersionablePathHook
 import|;
@@ -1241,6 +1243,8 @@ operator|new
 name|VersionablePathHook
 argument_list|(
 name|workspaceName
+argument_list|,
+name|this
 argument_list|)
 argument_list|,
 operator|new
