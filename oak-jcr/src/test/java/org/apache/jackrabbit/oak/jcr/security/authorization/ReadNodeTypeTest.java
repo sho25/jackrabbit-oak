@@ -37,6 +37,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|RepositoryException
 import|;
 end_import
@@ -235,7 +245,7 @@ name|addMixin
 argument_list|(
 name|JcrConstants
 operator|.
-name|MIX_LOCKABLE
+name|MIX_REFERENCEABLE
 argument_list|)
 expr_stmt|;
 name|superuser
@@ -553,7 +563,7 @@ name|addMixin
 argument_list|(
 name|JcrConstants
 operator|.
-name|MIX_LOCKABLE
+name|MIX_REFERENCEABLE
 argument_list|)
 expr_stmt|;
 name|superuser
@@ -653,7 +663,7 @@ name|addMixin
 argument_list|(
 name|JcrConstants
 operator|.
-name|MIX_LOCKABLE
+name|MIX_REFERENCEABLE
 argument_list|)
 expr_stmt|;
 name|superuser
@@ -724,7 +734,7 @@ name|isNodeType
 argument_list|(
 name|JcrConstants
 operator|.
-name|MIX_LOCKABLE
+name|MIX_REFERENCEABLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -748,7 +758,7 @@ name|addMixin
 argument_list|(
 name|JcrConstants
 operator|.
-name|MIX_LOCKABLE
+name|MIX_REFERENCEABLE
 argument_list|)
 expr_stmt|;
 name|superuser
@@ -837,7 +847,7 @@ name|isNodeType
 argument_list|(
 name|JcrConstants
 operator|.
-name|MIX_LOCKABLE
+name|MIX_REFERENCEABLE
 argument_list|)
 argument_list|)
 expr_stmt|;
