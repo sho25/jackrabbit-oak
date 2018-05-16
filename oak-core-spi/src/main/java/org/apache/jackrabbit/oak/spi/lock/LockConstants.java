@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
 name|lock
 package|;
@@ -54,10 +54,6 @@ operator|.
 name|JcrConstants
 import|;
 end_import
-
-begin_comment
-comment|/**  * @deprecated Use {@link org.apache.jackrabbit.oak.spi.lock.LockConstants} instead  */
-end_comment
 
 begin_interface
 specifier|public
