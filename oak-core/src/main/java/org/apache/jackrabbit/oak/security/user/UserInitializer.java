@@ -23,6 +23,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -261,9 +271,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|factories
-operator|.
-name|RootFactory
+name|TreeUtil
 import|;
 end_import
 
@@ -281,7 +289,9 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|TreeUtil
+name|factories
+operator|.
+name|RootFactory
 import|;
 end_import
 
@@ -537,22 +547,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -630,6 +624,8 @@ argument_list|)
 decl_stmt|;
 name|UserInitializer
 parameter_list|(
+annotation|@
+name|Nonnull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)
