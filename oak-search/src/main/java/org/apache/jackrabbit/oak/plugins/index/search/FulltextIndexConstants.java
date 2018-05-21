@@ -388,7 +388,7 @@ name|SUGGEST_ANALYZED
 init|=
 literal|"suggestAnalyzed"
 decl_stmt|;
-comment|/**      * Integer property indicating that LuceneIndex should be      * used in compat mode to specific version      */
+comment|/**      * Integer property indicating that the index should be      * used in compat mode to specific version      */
 name|String
 name|COMPAT_MODE
 init|=
@@ -418,7 +418,7 @@ name|PROP_FUNCTION
 init|=
 literal|"function"
 decl_stmt|;
-comment|/**      * Boolean property which signal LuceneIndexEditor to refresh the stored index definition      */
+comment|/**      * Boolean property which signal FulltextIndexEditor to refresh the stored index definition      */
 name|String
 name|PROP_REFRESH_DEFN
 init|=

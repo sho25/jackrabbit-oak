@@ -372,6 +372,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|Aggregate
 block|{
@@ -2244,14 +2245,17 @@ specifier|static
 class|class
 name|NodeIncludeResult
 block|{
+specifier|public
 specifier|final
 name|NodeState
 name|nodeState
 decl_stmt|;
+specifier|public
 specifier|final
 name|String
 name|nodePath
 decl_stmt|;
+specifier|public
 specifier|final
 name|String
 name|rootIncludePath
@@ -2350,14 +2354,17 @@ specifier|static
 class|class
 name|PropertyIncludeResult
 block|{
+specifier|public
 specifier|final
 name|PropertyState
 name|propertyState
 decl_stmt|;
+specifier|public
 specifier|final
 name|PropertyDefinition
 name|pd
 decl_stmt|;
+specifier|public
 specifier|final
 name|String
 name|propertyPath

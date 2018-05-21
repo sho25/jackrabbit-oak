@@ -1966,9 +1966,6 @@ name|indexingMode
 condition|)
 block|{
 case|case
-name|NRT
-case|:
-case|case
 name|SYNC
 case|:
 return|return

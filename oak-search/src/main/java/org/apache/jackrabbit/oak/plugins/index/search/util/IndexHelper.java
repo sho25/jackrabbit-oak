@@ -1180,7 +1180,7 @@ operator|.
 name|isEmpty
 argument_list|()
 argument_list|,
-literal|"Lucene property index "
+literal|"Fulltext property index "
 operator|+
 literal|"requires explicit list of property names to be indexed"
 argument_list|)

@@ -377,7 +377,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Could not open the Lucene index at [{}]"
+literal|"Could not open the Fulltext index at [{}]"
 argument_list|,
 name|path
 argument_list|,
@@ -398,7 +398,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Could not open the Lucene index at [{}] . {}"
+literal|"Could not open the Fulltext index at [{}] . {}"
 argument_list|,
 name|path
 argument_list|,
@@ -462,7 +462,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Could not access the Lucene index at [{}]"
+literal|"Could not access the Fulltext index at [{}]"
 argument_list|,
 name|path
 argument_list|,
@@ -483,7 +483,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Could not access the Lucene index at [{}] . {}"
+literal|"Could not access the Fulltext index at [{}] . {}"
 argument_list|,
 name|path
 argument_list|,
