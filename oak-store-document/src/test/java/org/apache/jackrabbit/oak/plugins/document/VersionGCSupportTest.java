@@ -59,6 +59,16 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|ReadPreference
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -94,6 +104,26 @@ operator|.
 name|mongo
 operator|.
 name|MongoDocumentStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|mongo
+operator|.
+name|MongoTestUtils
 import|;
 end_import
 
@@ -437,6 +467,23 @@ operator|.
 name|createDocumentStore
 argument_list|()
 decl_stmt|;
+comment|// Enforce primary read preference, otherwise tests may fail on a
+comment|// replica set with a read preference configured to secondary.
+comment|// Revision GC usually runs with a modified range way in the past,
+comment|// which means changes made it to the secondary, but not in this
+comment|// test using a virtual clock
+name|MongoTestUtils
+operator|.
+name|setReadPreference
+argument_list|(
+name|store
+argument_list|,
+name|ReadPreference
+operator|.
+name|primary
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|fixtures
 operator|.
 name|add

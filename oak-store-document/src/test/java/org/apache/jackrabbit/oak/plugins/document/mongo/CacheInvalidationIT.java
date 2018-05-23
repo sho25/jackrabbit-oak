@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|ReadPreference
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1099,7 +1109,9 @@ operator|.
 name|getConnection
 argument_list|()
 decl_stmt|;
-return|return
+name|DocumentNodeStore
+name|ns
+init|=
 operator|new
 name|DocumentMK
 operator|.
@@ -1142,6 +1154,23 @@ argument_list|)
 operator|.
 name|getNodeStore
 argument_list|()
+decl_stmt|;
+comment|// enforce primary read preference, otherwise test fails on a replica
+comment|// set with a read preference configured to secondary.
+name|MongoTestUtils
+operator|.
+name|setReadPreference
+argument_list|(
+name|ns
+argument_list|,
+name|ReadPreference
+operator|.
+name|primary
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|ns
 return|;
 block|}
 block|}

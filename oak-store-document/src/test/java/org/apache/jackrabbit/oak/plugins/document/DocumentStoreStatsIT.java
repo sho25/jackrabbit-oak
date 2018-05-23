@@ -263,6 +263,18 @@ name|mockito
 operator|.
 name|Matchers
 operator|.
+name|anyBoolean
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Matchers
+operator|.
 name|anyInt
 import|;
 end_import
@@ -587,10 +599,8 @@ argument_list|(
 literal|true
 argument_list|)
 argument_list|,
-name|eq
-argument_list|(
-literal|false
-argument_list|)
+name|anyBoolean
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -649,10 +659,8 @@ argument_list|(
 literal|false
 argument_list|)
 argument_list|,
-name|eq
-argument_list|(
-literal|false
-argument_list|)
+name|anyBoolean
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -809,10 +817,8 @@ name|anyLong
 argument_list|()
 argument_list|,
 comment|//lockTime
-name|eq
-argument_list|(
-literal|false
-argument_list|)
+name|anyBoolean
+argument_list|()
 comment|//isSlaveOk
 argument_list|)
 expr_stmt|;

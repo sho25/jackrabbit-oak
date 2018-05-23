@@ -344,14 +344,6 @@ init|=
 name|getNodeCollection
 argument_list|()
 operator|.
-name|withReadPreference
-argument_list|(
-name|ReadPreference
-operator|.
-name|primary
-argument_list|()
-argument_list|)
-operator|.
 name|find
 argument_list|(
 name|query
@@ -462,6 +454,11 @@ operator|.
 name|getDBCollection
 argument_list|(
 name|NODES
+argument_list|,
+name|ReadPreference
+operator|.
+name|primary
+argument_list|()
 argument_list|)
 return|;
 block|}

@@ -55,6 +55,36 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|ReadPreference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|mongo
+operator|.
+name|MongoTestUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -568,6 +598,21 @@ name|DocumentStore
 name|ds
 parameter_list|)
 block|{
+comment|// Enforce primary read preference because this test assumes causal
+comment|// consistent reads across multiple document stores. Otherwise this
+comment|// test fails on a replica set with secondary read preference
+name|MongoTestUtils
+operator|.
+name|setReadPreference
+argument_list|(
+name|ds
+argument_list|,
+name|ReadPreference
+operator|.
+name|primary
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|DocumentStoreTestWrapper

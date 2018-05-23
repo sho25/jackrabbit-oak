@@ -171,6 +171,18 @@ name|mongodb
 operator|.
 name|client
 operator|.
+name|MongoCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|client
+operator|.
 name|MongoCursor
 import|;
 end_import
@@ -249,7 +261,7 @@ operator|.
 name|HAS_BINARY_VAL
 argument_list|)
 decl_stmt|;
-comment|// TODO It currently prefers secondary. Would that be Ok?
+comment|// TODO It currently uses the configured read preference. Would that be Ok?
 name|MongoCursor
 argument_list|<
 name|BasicDBObject
@@ -261,16 +273,6 @@ operator|.
 name|getDBCollection
 argument_list|(
 name|NODES
-argument_list|)
-operator|.
-name|withReadPreference
-argument_list|(
-name|documentStore
-operator|.
-name|getConfiguredReadPreference
-argument_list|(
-name|NODES
-argument_list|)
 argument_list|)
 operator|.
 name|find

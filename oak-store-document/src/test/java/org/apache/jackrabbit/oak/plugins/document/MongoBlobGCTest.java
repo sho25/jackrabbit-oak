@@ -311,6 +311,16 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|ReadPreference
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -532,6 +542,26 @@ operator|.
 name|mongo
 operator|.
 name|MongoBlobReferenceIterator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|mongo
+operator|.
+name|MongoTestUtils
 import|;
 end_import
 
@@ -806,6 +836,41 @@ literal|10
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|DocumentMK
+operator|.
+name|Builder
+name|addToBuilder
+parameter_list|(
+name|DocumentMK
+operator|.
+name|Builder
+name|mk
+parameter_list|)
+block|{
+comment|// Disable client session because this test modifies
+comment|// data directly in MongoDB.
+return|return
+name|super
+operator|.
+name|addToBuilder
+argument_list|(
+name|mk
+argument_list|)
+operator|.
+name|setClientSessionDisabled
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|setLeaseCheck
+argument_list|(
+literal|false
+argument_list|)
+return|;
+block|}
 specifier|public
 name|DataStoreState
 name|setUp
@@ -827,6 +892,20 @@ operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
+comment|// ensure primary read preference for this test because we modify data
+comment|// directly in MongoDB without going through the MongoDocumentStore
+name|MongoTestUtils
+operator|.
+name|setReadPreference
+argument_list|(
+name|s
+argument_list|,
+name|ReadPreference
+operator|.
+name|primary
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|NodeBuilder
 name|a
 init|=
@@ -2186,6 +2265,22 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"blobsAdded: "
+operator|+
+name|state
+operator|.
+name|blobsAdded
+operator|+
+literal|", blobsPresent: "
+operator|+
+name|state
+operator|.
+name|blobsPresent
+operator|+
+literal|", existingAfterGC: "
+operator|+
+name|existingAfterGC
+argument_list|,
 name|Sets
 operator|.
 name|symmetricDifference

@@ -79,6 +79,16 @@ name|com
 operator|.
 name|mongodb
 operator|.
+name|ReadPreference
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
 name|client
 operator|.
 name|model
@@ -299,18 +309,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|mongodb
-operator|.
-name|ReadPreference
-operator|.
-name|secondaryPreferred
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -420,6 +418,11 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
+name|ReadPreference
+name|defaultReadPreference
+decl_stmt|;
+specifier|private
+specifier|final
 name|MongoCollection
 argument_list|<
 name|MongoBlob
@@ -474,6 +477,13 @@ literal|1024
 operator|-
 literal|1024
 argument_list|)
+expr_stmt|;
+name|defaultReadPreference
+operator|=
+name|db
+operator|.
+name|getReadPreference
+argument_list|()
 expr_stmt|;
 name|blobCollection
 operator|=
@@ -1103,6 +1113,9 @@ name|COLLECTION_BLOBS
 argument_list|)
 expr_stmt|;
 block|}
+comment|// override the read preference configured with the MongoDB URI
+comment|// and use the primary as default. Reading a blob will still
+comment|// try a secondary first and then fallback to the primary.
 return|return
 name|db
 operator|.
@@ -1118,6 +1131,12 @@ operator|.
 name|withCodecRegistry
 argument_list|(
 name|CODEC_REGISTRY
+argument_list|)
+operator|.
+name|withReadPreference
+argument_list|(
+name|primary
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1169,8 +1188,7 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
-comment|// try the secondary first
-comment|// TODO add a configuration option for whether to try reading from secondary
+comment|// try with default read preference first, may be from secondary
 name|List
 argument_list|<
 name|MongoBlob
@@ -1189,8 +1207,7 @@ argument_list|()
 operator|.
 name|withReadPreference
 argument_list|(
-name|secondaryPreferred
-argument_list|()
+name|defaultReadPreference
 argument_list|)
 operator|.
 name|find
@@ -1478,17 +1495,6 @@ literal|1
 argument_list|)
 decl_stmt|;
 name|Bson
-name|hint
-init|=
-operator|new
-name|BasicDBObject
-argument_list|(
-literal|"$hint"
-argument_list|,
-name|fields
-argument_list|)
-decl_stmt|;
-name|Bson
 name|query
 init|=
 operator|new
@@ -1541,9 +1547,9 @@ argument_list|(
 name|fields
 argument_list|)
 operator|.
-name|modifiers
-argument_list|(
 name|hint
+argument_list|(
+name|fields
 argument_list|)
 operator|.
 name|iterator

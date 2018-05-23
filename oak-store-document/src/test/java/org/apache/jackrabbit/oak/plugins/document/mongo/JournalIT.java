@@ -43,6 +43,16 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|ReadPreference
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1275,9 +1285,9 @@ operator|=
 name|newDocumentMKBuilder
 argument_list|()
 expr_stmt|;
-return|return
-name|register
-argument_list|(
+name|DocumentMK
+name|mk
+init|=
 name|builder
 operator|.
 name|setMongoDB
@@ -1310,6 +1320,28 @@ argument_list|)
 operator|.
 name|open
 argument_list|()
+decl_stmt|;
+comment|// enforce primary read preference, otherwise test fails on a replica
+comment|// set with a read preference configured to secondary.
+name|MongoTestUtils
+operator|.
+name|setReadPreference
+argument_list|(
+name|mk
+operator|.
+name|getDocumentStore
+argument_list|()
+argument_list|,
+name|ReadPreference
+operator|.
+name|primary
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|register
+argument_list|(
+name|mk
 argument_list|)
 return|;
 block|}
