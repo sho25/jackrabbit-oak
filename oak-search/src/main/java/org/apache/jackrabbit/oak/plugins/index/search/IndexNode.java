@@ -38,8 +38,8 @@ name|int
 name|getIndexNodeId
 parameter_list|()
 function_decl|;
-name|void
-name|refreshReadersOnWriteIfRequired
+name|IndexStatistics
+name|getIndexStatistics
 parameter_list|()
 function_decl|;
 block|}

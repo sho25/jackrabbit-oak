@@ -18,67 +18,62 @@ operator|.
 name|index
 operator|.
 name|search
-operator|.
-name|spi
-operator|.
-name|editor
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_comment
-comment|/**  * A {@link FulltextIndexWriter} is responsible for writing / deleting documents of type {@code D} to the index  * implementation underlying persistence layer.  *  * @param<D>  */
-end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|FulltextIndexWriter
-parameter_list|<
-name|D
-parameter_list|>
+name|ReaderRefreshPolicy
 block|{
-comment|/**      * Updates the document having given path      *      * @param path path of the NodeState which the Document represents      * @param doc updated document      */
+name|ReaderRefreshPolicy
+name|NEVER
+init|=
+operator|new
+name|ReaderRefreshPolicy
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
 name|void
-name|updateDocument
+name|refreshOnReadIfRequired
 parameter_list|(
-name|String
-name|path
-parameter_list|,
-name|D
-name|doc
+name|Runnable
+name|refreshCallback
 parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**      * Deletes documents which are same or child of given path      *      * @param path path whose children need to be deleted      */
+block|{
+comment|//Never refresh
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
-name|deleteDocuments
+name|refreshOnWriteIfRequired
 parameter_list|(
-name|String
-name|path
+name|Runnable
+name|refreshCallback
 parameter_list|)
-throws|throws
-name|IOException
+block|{
+comment|//Never refresh
+block|}
+block|}
+decl_stmt|;
+comment|/**      * This would be invoked before any query is performed      * to provide a chance for IndexNode to refresh the readers      *      *<p>The index may or may not be updated when this method      * is invoked      *      * @param refreshCallback callback to refresh the readers      */
+name|void
+name|refreshOnReadIfRequired
+parameter_list|(
+name|Runnable
+name|refreshCallback
+parameter_list|)
 function_decl|;
-comment|/**      * Closes the underlying resources.      *      * @param timestamp timestamp to be used for recording at status in NodeBuilder      * @return true if index was updated or any write happened.      */
-name|boolean
-name|close
+comment|/**      * This would invoked after some writes have been performed      * and as a final step refresh request is being made.      *      *<p>Any time its invoked it can be assumed that index has been      * updated      *      * @param refreshCallback callback to refresh the readers      */
+name|void
+name|refreshOnWriteIfRequired
 parameter_list|(
-name|long
-name|timestamp
+name|Runnable
+name|refreshCallback
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 block|}
 end_interface

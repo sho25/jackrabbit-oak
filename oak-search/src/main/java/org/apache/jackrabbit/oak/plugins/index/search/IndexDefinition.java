@@ -1537,6 +1537,7 @@ init|=
 literal|10
 decl_stmt|;
 comment|/**      * native sort order      */
+specifier|public
 specifier|static
 specifier|final
 name|OrderEntry
@@ -1759,6 +1760,11 @@ specifier|final
 name|boolean
 name|syncPropertyIndexes
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|testMode
+decl_stmt|;
 comment|//~--------------------------------------------------------< Builder>
 specifier|public
 specifier|static
@@ -1785,6 +1791,15 @@ name|defn
 argument_list|,
 name|indexPath
 argument_list|)
+return|;
+block|}
+specifier|public
+name|boolean
+name|isTestMode
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 specifier|public
@@ -2197,6 +2212,21 @@ name|getNodeState
 argument_list|()
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|testMode
+operator|=
+name|getOptionalValue
+argument_list|(
+name|defn
+argument_list|,
+name|FulltextIndexConstants
+operator|.
+name|TEST_MODE
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|IndexingRule
@@ -4395,6 +4425,7 @@ specifier|final
 name|boolean
 name|fulltextEnabled
 decl_stmt|;
+specifier|public
 specifier|final
 name|boolean
 name|propertyIndexEnabled

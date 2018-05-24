@@ -364,7 +364,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract implementation of an {@link IndexEditor} which supports index time aggregation.  */
+comment|/**  * Generic implementation of an {@link IndexEditor} which supports index time aggregation.  */
 end_comment
 
 begin_class
@@ -1104,6 +1104,7 @@ block|{
 return|return
 operator|new
 name|FulltextIndexEditor
+argument_list|<>
 argument_list|(
 name|this
 argument_list|,
@@ -1166,6 +1167,7 @@ block|{
 return|return
 operator|new
 name|FulltextIndexEditor
+argument_list|<>
 argument_list|(
 name|this
 argument_list|,
@@ -1344,6 +1346,7 @@ block|{
 return|return
 operator|new
 name|FulltextIndexEditor
+argument_list|<>
 argument_list|(
 name|this
 argument_list|,

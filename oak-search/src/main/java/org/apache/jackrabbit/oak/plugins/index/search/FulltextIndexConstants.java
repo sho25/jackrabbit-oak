@@ -96,6 +96,11 @@ init|=
 literal|"repository"
 decl_stmt|;
 name|String
+name|TEST_MODE
+init|=
+literal|"testMode"
+decl_stmt|;
+name|String
 name|PERSISTENCE_FILE
 init|=
 literal|"file"

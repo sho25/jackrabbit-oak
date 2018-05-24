@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link DocumentMaker} is responsible for creating an instance of a document {@link D} which depends on implementor implementation.  * For Apache Lucene that would be a Lucene {@code Document}, for Apache Solr that might be a {@code SolrInputDocument}, etc.  */
+comment|/**  * A {@link DocumentMaker} is responsible for creating an instance of a document {@link D} to be indexed.  * For Apache Lucene that would be a Lucene {@code Document}, for Apache Solr that might be a {@code SolrInputDocument}, etc.  */
 end_comment
 
 begin_interface

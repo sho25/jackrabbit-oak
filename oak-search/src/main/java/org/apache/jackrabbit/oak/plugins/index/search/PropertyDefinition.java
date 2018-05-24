@@ -460,6 +460,7 @@ specifier|final
 name|boolean
 name|ordered
 decl_stmt|;
+specifier|public
 specifier|final
 name|boolean
 name|nullCheckEnabled
@@ -503,6 +504,7 @@ specifier|final
 name|boolean
 name|excludeFromAggregate
 decl_stmt|;
+specifier|public
 specifier|final
 name|int
 name|weight
