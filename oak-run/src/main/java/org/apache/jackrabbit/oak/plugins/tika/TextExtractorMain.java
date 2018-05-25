@@ -418,6 +418,14 @@ name|extract
 argument_list|()
 decl_stmt|;
 name|boolean
+name|populate
+init|=
+name|tikaOpts
+operator|.
+name|populate
+argument_list|()
+decl_stmt|;
+name|boolean
 name|generate
 init|=
 name|tikaOpts
@@ -427,6 +435,8 @@ argument_list|()
 decl_stmt|;
 name|BlobStore
 name|blobStore
+init|=
+literal|null
 decl_stmt|;
 name|NodeStore
 name|nodeStore
@@ -439,6 +449,14 @@ init|=
 name|tikaOpts
 operator|.
 name|getDataFile
+argument_list|()
+decl_stmt|;
+name|File
+name|indexDir
+init|=
+name|tikaOpts
+operator|.
+name|getIndexDir
 argument_list|()
 decl_stmt|;
 name|File
@@ -546,8 +564,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|generate
+name|report
+operator|||
+name|extract
 condition|)
 block|{
 comment|//For report and extract case we do not need NodeStore access so create BlobStore directly
@@ -579,7 +598,11 @@ name|getBlobStore
 argument_list|()
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|generate
+condition|)
 block|{
 name|NodeStoreFixture
 name|nodeStoreFixture
@@ -613,6 +636,12 @@ name|getStore
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|populate
+condition|)
+block|{
 name|checkNotNull
 argument_list|(
 name|blobStore
@@ -620,6 +649,9 @@ argument_list|,
 literal|"This command requires an external BlobStore configured"
 argument_list|)
 expr_stmt|;
+block|}
+comment|// NOTE: The order of executing generate, populate and extract is correct in case the user
+comment|// calls the tool with multiple actions in same run.
 if|if
 condition|(
 name|generate
@@ -674,6 +706,89 @@ name|getBinaries
 argument_list|(
 name|path
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|populate
+condition|)
+block|{
+name|checkArgument
+argument_list|(
+name|dataFile
+operator|.
+name|exists
+argument_list|()
+argument_list|,
+literal|"Data file %s does not exist"
+argument_list|,
+name|dataFile
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|indexDir
+argument_list|,
+literal|"Lucene index directory "
+operator|+
+literal|"must be specified via %s"
+argument_list|,
+name|tikaOpts
+operator|.
+name|getIndexDirSpecOpt
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|storeDir
+argument_list|,
+literal|"Directory to store extracted text content "
+operator|+
+literal|"must be specified via %s"
+argument_list|,
+name|tikaOpts
+operator|.
+name|getStoreDirSpecOpt
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|DataStoreTextWriter
+name|writer
+init|=
+name|closer
+operator|.
+name|register
+argument_list|(
+operator|new
+name|DataStoreTextWriter
+argument_list|(
+name|storeDir
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|TextPopulator
+name|textPopulator
+init|=
+operator|new
+name|TextPopulator
+argument_list|(
+name|writer
+argument_list|)
+decl_stmt|;
+name|textPopulator
+operator|.
+name|populate
+argument_list|(
+name|dataFile
+argument_list|,
+name|indexDir
 argument_list|)
 expr_stmt|;
 block|}
