@@ -1015,6 +1015,13 @@ operator|.
 name|getContentIdentity
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|id
+operator|!=
+literal|null
+condition|)
+block|{
 name|timeoutMap
 operator|.
 name|put
@@ -1030,6 +1037,7 @@ expr_stmt|;
 name|storeTimeoutMap
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|private
 specifier|static
