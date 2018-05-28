@@ -1286,6 +1286,19 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"{} matched restrictions for filter {} and configuration {}"
+argument_list|,
+name|match
+argument_list|,
+name|filter
+argument_list|,
+name|configuration
+argument_list|)
+expr_stmt|;
 return|return
 name|match
 return|;
@@ -4005,7 +4018,9 @@ operator|>
 literal|0
 condition|)
 block|{
-return|return
+name|IndexPlan
+name|indexPlan
+init|=
 name|planBuilder
 argument_list|(
 name|filter
@@ -4041,6 +4056,18 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"index plan {}"
+argument_list|,
+name|indexPlan
+argument_list|)
+expr_stmt|;
+return|return
+name|indexPlan
 return|;
 block|}
 else|else
@@ -5011,7 +5038,7 @@ operator|.
 name|getFilter
 argument_list|()
 argument_list|,
-literal|null
+name|plan
 argument_list|,
 name|this
 operator|.

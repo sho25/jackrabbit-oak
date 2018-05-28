@@ -573,17 +573,6 @@ name|NodeState
 name|nodeState
 parameter_list|)
 block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"checking {} in {}"
-argument_list|,
-name|name
-argument_list|,
-name|nodeState
-argument_list|)
-expr_stmt|;
 return|return
 literal|"server"
 operator|.
