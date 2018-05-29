@@ -715,6 +715,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
+specifier|protected
 specifier|abstract
 name|DocumentMaker
 argument_list|<
@@ -731,6 +732,7 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
+specifier|protected
 specifier|abstract
 name|FulltextBinaryTextExtractor
 name|createBinaryTextExtractor
