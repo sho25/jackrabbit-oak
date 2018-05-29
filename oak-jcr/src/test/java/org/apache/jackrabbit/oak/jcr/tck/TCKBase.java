@@ -611,6 +611,24 @@ operator|=
 name|stubClass
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|super
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" for "
+operator|+
+name|stubClass
+return|;
+block|}
 specifier|public
 name|void
 name|testSetup
