@@ -578,6 +578,7 @@ specifier|private
 name|PropertyUpdateCallback
 name|propertyUpdateCallback
 decl_stmt|;
+specifier|protected
 name|FulltextIndexEditorContext
 parameter_list|(
 name|NodeState
