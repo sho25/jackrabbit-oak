@@ -514,6 +514,27 @@ block|{
 comment|// do nothing
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"OakSolrServer{"
+operator|+
+literal|"solrServerConfiguration="
+operator|+
+name|solrServerConfiguration
+operator|+
+literal|", solrServerProvider="
+operator|+
+name|solrServerProvider
+operator|+
+literal|'}'
+return|;
+block|}
 block|}
 end_class
 

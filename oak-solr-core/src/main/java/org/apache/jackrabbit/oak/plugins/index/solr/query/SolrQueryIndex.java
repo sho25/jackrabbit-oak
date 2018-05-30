@@ -3779,6 +3779,15 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"looking for plans for paths : {}"
+argument_list|,
+name|indexPaths
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|String
@@ -3807,6 +3816,17 @@ argument_list|,
 name|rootState
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"building plan for server {} and configuration {}"
+argument_list|,
+name|solrServer
+argument_list|,
+name|configuration
+argument_list|)
+expr_stmt|;
 comment|// only provide the plan if both valid configuration and server exist
 if|if
 condition|(
