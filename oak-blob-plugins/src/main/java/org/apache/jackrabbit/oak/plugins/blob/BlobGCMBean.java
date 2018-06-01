@@ -172,6 +172,11 @@ name|TabularData
 name|getGlobalMarkStats
 parameter_list|()
 function_decl|;
+comment|/**      * Show details of the data Store garbage collection invocations.      *      * @return Data about all the previous gc invocations      */
+name|TabularData
+name|getOperationStats
+parameter_list|()
+function_decl|;
 comment|/**      * Data Store consistency check      *       * @return the missing blobs      */
 name|CompositeData
 name|checkConsistency

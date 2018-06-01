@@ -78,6 +78,13 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Returns operation statistics      *      * @return stats object      * @throws Exception      */
+name|OperationsStatsMBean
+name|getOperationStats
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
 block|}
 end_interface
 

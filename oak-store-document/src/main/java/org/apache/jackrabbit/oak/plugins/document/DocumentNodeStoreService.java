@@ -4844,6 +4844,8 @@ name|nodeStore
 argument_list|)
 argument_list|,
 name|whiteboard
+argument_list|,
+name|statisticsProvider
 argument_list|)
 decl_stmt|;
 name|addRegistration

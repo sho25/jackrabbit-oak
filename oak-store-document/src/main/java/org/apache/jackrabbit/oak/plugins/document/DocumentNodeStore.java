@@ -1703,6 +1703,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|StatisticsProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -14189,7 +14205,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @param blobGcMaxAgeInSecs      * @param repositoryId      * @param whiteboard      * @return garbage collector of the BlobStore supports GC otherwise null      */
+comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @param blobGcMaxAgeInSecs      * @param repositoryId      * @param whiteboard      * @param statisticsProvider      * @return garbage collector of the BlobStore supports GC otherwise null      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -14204,6 +14220,9 @@ name|repositoryId
 parameter_list|,
 name|Whiteboard
 name|whiteboard
+parameter_list|,
+name|StatisticsProvider
+name|statisticsProvider
 parameter_list|)
 block|{
 name|MarkSweepGarbageCollector
@@ -14248,6 +14267,8 @@ argument_list|,
 name|repositoryId
 argument_list|,
 name|whiteboard
+argument_list|,
+name|statisticsProvider
 argument_list|)
 expr_stmt|;
 block|}
