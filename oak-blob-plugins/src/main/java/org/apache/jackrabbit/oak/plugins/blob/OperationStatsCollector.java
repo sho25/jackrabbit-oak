@@ -47,24 +47,58 @@ operator|new
 name|OperationStatsCollector
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|finishSuccess
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|finishFailure
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateDuration
+parameter_list|(
+name|long
+name|time
+parameter_list|,
+name|TimeUnit
+name|timeUnit
+parameter_list|)
+block|{         }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|updateMarkDuration
+parameter_list|(
+name|long
+name|time
+parameter_list|,
+name|TimeUnit
+name|timeUnit
+parameter_list|)
+block|{         }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|updateSweepDuration
 parameter_list|(
 name|long
 name|time
@@ -93,6 +127,28 @@ function_decl|;
 comment|/**      * Increment the duration timer      *      * @param time time recorded for the operation      * @param timeUnit unit of time      */
 name|void
 name|updateDuration
+parameter_list|(
+name|long
+name|time
+parameter_list|,
+name|TimeUnit
+name|timeUnit
+parameter_list|)
+function_decl|;
+comment|/**      * Increment the mark phase duration timer      *      * @param time time recorded for the operation      * @param timeUnit unit of time      */
+name|void
+name|updateMarkDuration
+parameter_list|(
+name|long
+name|time
+parameter_list|,
+name|TimeUnit
+name|timeUnit
+parameter_list|)
+function_decl|;
+comment|/**      * Increment the sweep phase duration timer      *      * @param time time recorded for the operation      * @param timeUnit unit of time      */
+name|void
+name|updateSweepDuration
 parameter_list|(
 name|long
 name|time
