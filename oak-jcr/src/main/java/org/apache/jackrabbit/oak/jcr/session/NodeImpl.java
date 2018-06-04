@@ -5094,7 +5094,7 @@ condition|)
 block|{
 name|LockDeprecation
 operator|.
-name|logCall
+name|handleCall
 argument_list|(
 literal|"addMixin "
 operator|+
@@ -6220,6 +6220,19 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+operator|!
+name|LockDeprecation
+operator|.
+name|isLockingSupported
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 return|return
 name|getLockManager
 argument_list|()

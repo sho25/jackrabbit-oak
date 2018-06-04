@@ -402,7 +402,7 @@ name|RepositoryException
 block|{
 name|LockDeprecation
 operator|.
-name|logCall
+name|handleCall
 argument_list|(
 literal|"addLockToken"
 argument_list|)
@@ -520,7 +520,7 @@ name|RepositoryException
 block|{
 name|LockDeprecation
 operator|.
-name|logCall
+name|handleCall
 argument_list|(
 literal|"removeLockToken"
 argument_list|)
@@ -831,7 +831,7 @@ name|RepositoryException
 block|{
 name|LockDeprecation
 operator|.
-name|logCall
+name|handleCall
 argument_list|(
 literal|"lock"
 argument_list|)
@@ -972,7 +972,7 @@ name|RepositoryException
 block|{
 name|LockDeprecation
 operator|.
-name|logCall
+name|handleCall
 argument_list|(
 literal|"unlock"
 argument_list|)
