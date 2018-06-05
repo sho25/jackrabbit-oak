@@ -317,9 +317,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContent
+name|plugins
 operator|.
-name|INITIAL_CONTENT
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
 import|;
 end_import
 
@@ -451,7 +455,7 @@ block|{
 name|NodeState
 name|root
 init|=
-name|INITIAL_CONTENT
+name|EMPTY_NODE
 decl_stmt|;
 name|NodeBuilder
 name|builder
@@ -561,7 +565,7 @@ block|{
 name|NodeState
 name|root
 init|=
-name|INITIAL_CONTENT
+name|EMPTY_NODE
 decl_stmt|;
 name|NodeBuilder
 name|builder

@@ -170,7 +170,7 @@ comment|// pre-populated
 name|NodeState
 name|system
 init|=
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 operator|.
@@ -344,7 +344,7 @@ block|{
 name|NodeState
 name|system
 init|=
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 operator|.

@@ -287,7 +287,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 import|;
@@ -644,18 +644,6 @@ operator|.
 name|Matchers
 operator|.
 name|is
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertArrayEquals
 import|;
 end_import
 

@@ -201,7 +201,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContent
+name|InitialContentHelper
 import|;
 end_import
 
@@ -2661,7 +2661,7 @@ block|{
 name|NodeState
 name|root
 init|=
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 decl_stmt|;
@@ -2899,7 +2899,7 @@ block|{
 name|NodeState
 name|root
 init|=
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 decl_stmt|;
@@ -3156,7 +3156,7 @@ block|{
 name|NodeState
 name|root
 init|=
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 decl_stmt|;

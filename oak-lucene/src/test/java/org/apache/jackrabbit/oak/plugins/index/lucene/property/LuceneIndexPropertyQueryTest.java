@@ -209,7 +209,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 import|;

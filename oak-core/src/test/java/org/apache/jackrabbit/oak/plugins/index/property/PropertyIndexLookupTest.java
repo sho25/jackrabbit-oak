@@ -99,7 +99,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContent
+name|InitialContentHelper
 import|;
 end_import
 
@@ -535,7 +535,7 @@ name|EMPTY_NODE
 expr_stmt|;
 name|rootBuilder
 operator|=
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 operator|.

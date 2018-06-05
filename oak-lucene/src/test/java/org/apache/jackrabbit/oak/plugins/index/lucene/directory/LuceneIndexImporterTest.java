@@ -97,7 +97,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContent
+name|InitialContentHelper
 import|;
 end_import
 
@@ -400,7 +400,7 @@ specifier|private
 name|NodeState
 name|rootState
 init|=
-name|InitialContent
+name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
 decl_stmt|;
