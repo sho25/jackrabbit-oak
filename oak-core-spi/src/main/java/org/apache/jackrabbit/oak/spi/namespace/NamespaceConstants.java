@@ -131,6 +131,17 @@ name|NAMESPACE_XMLNS
 init|=
 literal|"http://www.w3.org/2000/xmlns/"
 decl_stmt|;
+comment|// additional Oak namespace
+name|String
+name|PREFIX_OAK
+init|=
+literal|"oak"
+decl_stmt|;
+name|String
+name|NAMESPACE_OAK
+init|=
+literal|"http://jackrabbit.apache.org/oak/ns/1.0"
+decl_stmt|;
 comment|/**      * Reserved namespace prefixes as defined in jackrabbit 2      */
 name|Collection
 argument_list|<
@@ -167,6 +178,8 @@ argument_list|,
 name|PREFIX_REP
 argument_list|,
 name|PREFIX_SV
+argument_list|,
+name|PREFIX_OAK
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -206,6 +219,8 @@ argument_list|,
 name|NAMESPACE_REP
 argument_list|,
 name|NAMESPACE_SV
+argument_list|,
+name|NAMESPACE_OAK
 argument_list|)
 argument_list|)
 decl_stmt|;

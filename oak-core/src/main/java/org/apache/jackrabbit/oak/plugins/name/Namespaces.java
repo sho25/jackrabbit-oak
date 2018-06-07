@@ -634,6 +634,16 @@ argument_list|,
 name|NAMESPACE_REP
 argument_list|)
 expr_stmt|;
+comment|// Oak Namespace
+name|namespaces
+operator|.
+name|setProperty
+argument_list|(
+name|PREFIX_OAK
+argument_list|,
+name|NAMESPACE_OAK
+argument_list|)
+expr_stmt|;
 return|return
 name|namespaces
 return|;
