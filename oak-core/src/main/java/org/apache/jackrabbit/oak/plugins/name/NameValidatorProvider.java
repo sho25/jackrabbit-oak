@@ -127,22 +127,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-operator|.
-name|newHashSet
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -172,46 +156,6 @@ operator|.
 name|NamespaceConstants
 operator|.
 name|REP_NAMESPACES
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|namespace
-operator|.
-name|NamespaceConstants
-operator|.
-name|REP_NSDATA
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|namespace
-operator|.
-name|NamespaceConstants
-operator|.
-name|REP_PREFIXES
 import|;
 end_import
 
@@ -255,8 +199,6 @@ return|return
 operator|new
 name|NameValidator
 argument_list|(
-name|newHashSet
-argument_list|(
 name|after
 operator|.
 name|getChildNode
@@ -267,17 +209,6 @@ operator|.
 name|getChildNode
 argument_list|(
 name|REP_NAMESPACES
-argument_list|)
-operator|.
-name|getChildNode
-argument_list|(
-name|REP_NSDATA
-argument_list|)
-operator|.
-name|getStrings
-argument_list|(
-name|REP_PREFIXES
-argument_list|)
 argument_list|)
 argument_list|)
 return|;
