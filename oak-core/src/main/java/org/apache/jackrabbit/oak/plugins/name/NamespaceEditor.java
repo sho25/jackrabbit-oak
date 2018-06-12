@@ -529,6 +529,13 @@ name|startsWith
 argument_list|(
 literal|"xml"
 argument_list|)
+operator|&&
+name|namespaces
+operator|.
+name|hasProperty
+argument_list|(
+literal|"xml"
+argument_list|)
 condition|)
 block|{
 throw|throw

@@ -21,6 +21,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+operator|.
+name|newHashSet
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -32,12 +48,60 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|NamespaceException
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
 name|jcr
 operator|.
 name|NamespaceRegistry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|InitialContent
 import|;
 end_import
 
@@ -114,20 +178,6 @@ operator|.
 name|fixture
 operator|.
 name|NodeStoreFixture
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|InitialContent
 import|;
 end_import
 
@@ -467,6 +517,48 @@ argument_list|,
 literal|"p2"
 argument_list|)
 expr_stmt|;
+comment|// xml namespace check
+name|assertTrue
+argument_list|(
+name|newHashSet
+argument_list|(
+name|r
+operator|.
+name|getPrefixes
+argument_list|()
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"xml"
+argument_list|)
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|r
+operator|.
+name|registerNamespace
+argument_list|(
+literal|"xml"
+argument_list|,
+literal|"test"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Trying to register the namespace 'xml' must throw a NamespaceException."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NamespaceException
+name|ex
+parameter_list|)
+block|{
+comment|// expected
+block|}
 block|}
 block|}
 end_class
