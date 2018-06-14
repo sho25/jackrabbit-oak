@@ -476,6 +476,11 @@ operator|.
 name|getDBCollection
 argument_list|(
 name|CLUSTER_NODES
+argument_list|,
+name|ReadPreference
+operator|.
+name|primary
+argument_list|()
 argument_list|)
 return|;
 block|}
