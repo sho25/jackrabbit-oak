@@ -276,7 +276,7 @@ expr_stmt|;
 name|resolver
 operator|=
 operator|new
-name|CommitValueResolver
+name|CachingCommitValueResolver
 argument_list|(
 literal|0
 argument_list|,
