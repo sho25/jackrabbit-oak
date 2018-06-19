@@ -243,15 +243,19 @@ end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Supplier
+name|segment
+operator|.
+name|file
+operator|.
+name|GCNodeWriteMonitor
 import|;
 end_import
 
@@ -269,7 +273,9 @@ name|segment
 operator|.
 name|file
 operator|.
-name|GCNodeWriteMonitor
+name|cancel
+operator|.
+name|Canceller
 import|;
 end_import
 
@@ -431,7 +437,7 @@ throws|throws
 name|IOException
 function_decl|;
 block|}
-comment|/**      * Create a new instance based on the passed arguments.      * @param reader     segment reader used to read from the segments      * @param writer     segment writer used to serialise to segments      * @param blobStore  the blob store or {@code null} if none      * @param cancel     a flag that can be used to cancel the compaction process      * @param compactionMonitor   notification call back for each compacted nodes,      *                            properties, and binaries      */
+comment|/**      * Create a new instance based on the passed arguments.      * @param reader     segment reader used to read from the segments      * @param writer     segment writer used to serialise to segments      * @param blobStore  the blob store or {@code null} if none      * @param compactionMonitor   notification call back for each compacted nodes,      *                            properties, and binaries      */
 specifier|public
 name|CheckpointCompactor
 parameter_list|(
@@ -457,14 +463,6 @@ name|blobStore
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Supplier
-argument_list|<
-name|Boolean
-argument_list|>
-name|cancel
-parameter_list|,
-annotation|@
-name|Nonnull
 name|GCNodeWriteMonitor
 name|compactionMonitor
 parameter_list|)
@@ -487,8 +485,6 @@ argument_list|,
 name|writer
 argument_list|,
 name|blobStore
-argument_list|,
-name|cancel
 argument_list|,
 name|compactionMonitor
 argument_list|)
@@ -553,6 +549,9 @@ annotation|@
 name|Nonnull
 name|NodeState
 name|onto
+parameter_list|,
+name|Canceller
+name|canceller
 parameter_list|)
 throws|throws
 name|IOException
@@ -594,6 +593,8 @@ name|getRoot
 argument_list|(
 name|onto
 argument_list|)
+argument_list|,
+name|canceller
 argument_list|)
 decl_stmt|;
 if|if
@@ -785,6 +786,9 @@ annotation|@
 name|Nonnull
 name|NodeState
 name|onto
+parameter_list|,
+name|Canceller
+name|canceller
 parameter_list|)
 throws|throws
 name|IOException
@@ -844,6 +848,8 @@ argument_list|,
 name|onto
 argument_list|,
 name|path
+argument_list|,
+name|canceller
 argument_list|)
 decl_stmt|;
 if|if
@@ -1192,6 +1198,9 @@ annotation|@
 name|Nonnull
 name|String
 name|path
+parameter_list|,
+name|Canceller
+name|canceller
 parameter_list|)
 throws|throws
 name|IOException
@@ -1233,6 +1242,8 @@ argument_list|,
 name|after
 argument_list|,
 name|onto
+argument_list|,
+name|canceller
 argument_list|)
 expr_stmt|;
 if|if

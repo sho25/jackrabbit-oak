@@ -431,6 +431,26 @@ name|segment
 operator|.
 name|file
 operator|.
+name|cancel
+operator|.
+name|Canceller
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
 name|tar
 operator|.
 name|GCGeneration
@@ -955,9 +975,15 @@ name|segmentWriter
 argument_list|,
 name|stats
 argument_list|,
-operator|new
-name|CancelCompactionSupplier
+name|Canceller
+operator|.
+name|newCanceller
+argument_list|()
+operator|.
+name|withCondition
 argument_list|(
+literal|"not enough disk space"
+argument_list|,
 parameter_list|()
 lambda|->
 operator|!
@@ -965,6 +991,11 @@ name|sufficientDiskSpace
 operator|.
 name|get
 argument_list|()
+argument_list|)
+operator|.
+name|withCondition
+argument_list|(
+literal|"not enough memory"
 argument_list|,
 parameter_list|()
 lambda|->
@@ -973,6 +1004,11 @@ name|sufficientMemory
 operator|.
 name|get
 argument_list|()
+argument_list|)
+operator|.
+name|withCondition
+argument_list|(
+literal|"FileStore is shutting down"
 argument_list|,
 name|shutDown
 operator|::
