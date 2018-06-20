@@ -892,7 +892,10 @@ argument_list|)
 decl_stmt|;
 name|targetBuilder
 operator|=
-name|targetRoot
+name|targetNodeStore
+operator|.
+name|getRoot
+argument_list|()
 operator|.
 name|builder
 argument_list|()
