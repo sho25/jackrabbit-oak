@@ -391,6 +391,12 @@ operator|.
 name|REP_CONFIGURATIONS
 argument_list|)
 decl_stmt|;
+comment|// flag indicating the version store has been initialized
+name|String
+name|VERSION_STORE_INIT
+init|=
+literal|":initialized"
+decl_stmt|;
 block|}
 end_interface
 

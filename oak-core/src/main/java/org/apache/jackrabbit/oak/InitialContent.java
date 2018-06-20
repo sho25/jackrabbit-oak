@@ -144,6 +144,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|version
+operator|.
+name|VersionConstants
+operator|.
+name|VERSION_STORE_INIT
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -958,6 +978,7 @@ return|;
 block|}
 comment|//--------------------------< internal>------------------------------------
 specifier|private
+specifier|static
 name|boolean
 name|isInitialized
 parameter_list|(
@@ -972,7 +993,7 @@ name|versionStorage
 operator|.
 name|getProperty
 argument_list|(
-literal|":initialized"
+name|VERSION_STORE_INIT
 argument_list|)
 decl_stmt|;
 return|return
@@ -993,6 +1014,7 @@ literal|0
 return|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|createIntermediateNodes
 parameter_list|(
@@ -1009,7 +1031,7 @@ name|versionStorage
 operator|.
 name|setProperty
 argument_list|(
-literal|":initialized"
+name|VERSION_STORE_INIT
 argument_list|,
 literal|1
 argument_list|)
@@ -1079,6 +1101,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 name|NodeBuilder
 name|storageChild
 parameter_list|(
