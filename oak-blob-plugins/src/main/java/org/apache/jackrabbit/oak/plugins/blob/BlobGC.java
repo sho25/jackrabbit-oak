@@ -1212,12 +1212,7 @@ argument_list|()
 block|,
 name|statObj
 operator|.
-name|getFinishSucessCount
-argument_list|()
-block|,
-name|statObj
-operator|.
-name|getFinishErrorCount
+name|getFailureCount
 argument_list|()
 block|,
 name|statObj
@@ -1249,11 +1244,9 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"startCount"
+literal|"count"
 block|,
-literal|"finishSuccessCount"
-block|,
-literal|"finishErrorCount"
+literal|"failureCount"
 block|,
 literal|"duration"
 block|}
@@ -1269,11 +1262,9 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"Start Count"
+literal|"Count"
 block|,
-literal|"Finish Success Count"
-block|,
-literal|"Finish Error Count"
+literal|"Failure Count"
 block|,
 literal|"Duration"
 block|}
@@ -1289,10 +1280,6 @@ operator|new
 name|OpenType
 index|[]
 block|{
-name|SimpleType
-operator|.
-name|LONG
-block|,
 name|SimpleType
 operator|.
 name|LONG

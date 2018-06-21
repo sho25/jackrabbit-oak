@@ -58,13 +58,6 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|finishSuccess
-parameter_list|()
-block|{         }
-annotation|@
-name|Override
-specifier|public
-name|void
 name|finishFailure
 parameter_list|()
 block|{         }
@@ -112,11 +105,6 @@ decl_stmt|;
 comment|/**      * Increment the start counter      */
 name|void
 name|start
-parameter_list|()
-function_decl|;
-comment|/**      * Increment the finishSuccess counter      */
-name|void
-name|finishSuccess
 parameter_list|()
 function_decl|;
 comment|/**      * Increment the finishFailure counter      */

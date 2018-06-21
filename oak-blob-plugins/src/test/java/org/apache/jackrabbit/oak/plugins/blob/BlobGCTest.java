@@ -1691,25 +1691,13 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Finish success mismatch"
-argument_list|,
-literal|1
-argument_list|,
-name|operationStats
-operator|.
-name|getFinishSucessCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|"Finish error mismatch"
 argument_list|,
 literal|0
 argument_list|,
 name|operationStats
 operator|.
-name|getFinishErrorCount
+name|getFailureCount
 argument_list|()
 argument_list|)
 expr_stmt|;

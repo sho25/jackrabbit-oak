@@ -42,14 +42,9 @@ name|long
 name|getStartCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the finish success count      *      * @return      */
-name|long
-name|getFinishSucessCount
-parameter_list|()
-function_decl|;
 comment|/**      * Returns the finish error count      *      * @return      */
 name|long
-name|getFinishErrorCount
+name|getFailureCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the duration of the operation      * @return      */
