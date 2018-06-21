@@ -1768,6 +1768,11 @@ decl_stmt|;
 name|boolean
 name|tracePaths
 decl_stmt|;
+name|boolean
+name|showDiff
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|previousRoot
@@ -1806,6 +1811,10 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|showDiff
+operator|=
+literal|true
+expr_stmt|;
 name|tracePaths
 operator|=
 literal|false
@@ -1836,6 +1845,8 @@ argument_list|,
 name|targetRoot
 argument_list|,
 name|tracePaths
+argument_list|,
+name|showDiff
 argument_list|)
 expr_stmt|;
 name|previousRoot
@@ -1911,6 +1922,11 @@ decl_stmt|;
 name|boolean
 name|tracePaths
 decl_stmt|;
+name|boolean
+name|showDiff
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|previousRoot
@@ -1943,6 +1959,10 @@ name|tracePaths
 operator|=
 literal|false
 expr_stmt|;
+name|showDiff
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|targetRoot
 operator|=
@@ -1955,6 +1975,8 @@ argument_list|,
 name|targetRoot
 argument_list|,
 name|tracePaths
+argument_list|,
+name|showDiff
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -2171,6 +2193,9 @@ name|targetRoot
 parameter_list|,
 name|boolean
 name|tracePaths
+parameter_list|,
+name|boolean
+name|showDiff
 parameter_list|)
 throws|throws
 name|IOException

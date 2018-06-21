@@ -242,6 +242,8 @@ block|{
 name|super
 argument_list|(
 name|delegate
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
