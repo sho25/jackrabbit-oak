@@ -85,6 +85,10 @@ name|deletedOnceFlagReset
 parameter_list|()
 function_decl|;
 name|void
+name|started
+parameter_list|()
+function_decl|;
+name|void
 name|finished
 parameter_list|(
 name|VersionGCStats
