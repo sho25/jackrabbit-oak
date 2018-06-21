@@ -24,21 +24,21 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Object represents an action on the cache (eg. put or invalidate).  *  * @param<K> key type  * @param<V> value type  */
+comment|/**  * Object represents an action on the cache (eg. put or invalidate).  */
 end_comment
 
 begin_interface
 interface|interface
 name|CacheAction
-parameter_list|<
-name|K
-parameter_list|,
-name|V
-parameter_list|>
 block|{
 comment|/**      * Execute the action      */
 name|void
 name|execute
+parameter_list|()
+function_decl|;
+comment|/**      * @return the size of the memory in bytes this cache action occupies.      */
+name|int
+name|getMemory
 parameter_list|()
 function_decl|;
 block|}
