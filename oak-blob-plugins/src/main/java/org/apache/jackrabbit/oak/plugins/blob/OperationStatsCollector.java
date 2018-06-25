@@ -65,6 +65,36 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|updateNumDeleted
+parameter_list|(
+name|long
+name|num
+parameter_list|)
+block|{         }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|updateNumCandidates
+parameter_list|(
+name|long
+name|num
+parameter_list|)
+block|{         }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|updateTotalSizeDeleted
+parameter_list|(
+name|long
+name|size
+parameter_list|)
+block|{         }
+annotation|@
+name|Override
+specifier|public
+name|void
 name|updateDuration
 parameter_list|(
 name|long
@@ -111,6 +141,30 @@ comment|/**      * Increment the finishFailure counter      */
 name|void
 name|finishFailure
 parameter_list|()
+function_decl|;
+comment|/**      * Update the number deleted      * @param num      */
+name|void
+name|updateNumDeleted
+parameter_list|(
+name|long
+name|num
+parameter_list|)
+function_decl|;
+comment|/**      * Update the number of candidates found      * @param num      */
+name|void
+name|updateNumCandidates
+parameter_list|(
+name|long
+name|num
+parameter_list|)
+function_decl|;
+comment|/**      * Update the size deleted      * @param size      */
+name|void
+name|updateTotalSizeDeleted
+parameter_list|(
+name|long
+name|size
+parameter_list|)
 function_decl|;
 comment|/**      * Increment the duration timer      *      * @param time time recorded for the operation      * @param timeUnit unit of time      */
 name|void
