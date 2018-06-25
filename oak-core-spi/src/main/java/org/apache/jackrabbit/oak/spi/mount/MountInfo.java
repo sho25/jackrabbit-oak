@@ -383,6 +383,7 @@ name|String
 argument_list|>
 name|includedPaths
 decl_stmt|;
+specifier|public
 name|MountInfo
 parameter_list|(
 name|String
