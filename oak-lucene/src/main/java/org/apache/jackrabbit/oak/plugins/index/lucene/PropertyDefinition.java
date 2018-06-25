@@ -413,6 +413,7 @@ init|=
 literal|1.0f
 decl_stmt|;
 comment|/**      * Property name. By default derived from the NodeState name which has the      * property definition. However in case property name is a pattern, relative      * property etc then it should be defined via 'name' property in NodeState.      * In such case NodeState name can be set to anything      */
+specifier|public
 specifier|final
 name|String
 name|name
@@ -528,6 +529,10 @@ specifier|public
 specifier|final
 name|boolean
 name|unique
+decl_stmt|;
+specifier|public
+name|boolean
+name|useInSimilarity
 decl_stmt|;
 specifier|public
 name|PropertyDefinition
@@ -759,6 +764,21 @@ argument_list|,
 name|LuceneIndexConstants
 operator|.
 name|PROP_USE_IN_SPELLCHECK
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|useInSimilarity
+operator|=
+name|getOptionalValueIfIndexed
+argument_list|(
+name|defn
+argument_list|,
+name|LuceneIndexConstants
+operator|.
+name|PROP_USE_IN_SIMILARITY
 argument_list|,
 literal|false
 argument_list|)
