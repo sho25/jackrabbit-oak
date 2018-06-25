@@ -79,21 +79,9 @@ name|CharTermAttribute
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|lucene
-operator|.
-name|analysis
-operator|.
-name|tokenattributes
-operator|.
-name|PositionIncrementAttribute
-import|;
-end_import
+begin_comment
+comment|/**  * {@link TokenFilter} which prepends the token / feature position plus underscore to the token itself  */
+end_comment
 
 begin_class
 specifier|final

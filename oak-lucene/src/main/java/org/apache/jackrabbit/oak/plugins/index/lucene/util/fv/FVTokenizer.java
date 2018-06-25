@@ -65,6 +65,10 @@ name|Version
 import|;
 end_import
 
+begin_comment
+comment|/**  * {@link CharTokenizer} which splits at whitespaces and commas  */
+end_comment
+
 begin_class
 class|class
 name|FVTokenizer

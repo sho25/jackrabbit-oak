@@ -95,6 +95,10 @@ name|KeywordAttribute
 import|;
 end_import
 
+begin_comment
+comment|/**  * {@link TokenFilter} which truncates a token bigger than {#length}.  */
+end_comment
+
 begin_class
 class|class
 name|TruncateTokenFilter
