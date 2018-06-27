@@ -1222,25 +1222,13 @@ operator|>
 literal|0
 condition|)
 block|{
-name|String
-name|fieldName
-init|=
-name|FieldNames
-operator|.
-name|createSimilarityFieldName
-argument_list|(
-name|pd
-operator|.
-name|name
-argument_list|)
-decl_stmt|;
 name|log
 operator|.
 name|trace
 argument_list|(
 literal|"generating sim query on field {} and text {}"
 argument_list|,
-name|fieldName
+name|similarityFieldName
 argument_list|,
 name|fvString
 argument_list|)
@@ -1254,7 +1242,7 @@ name|getSimQuery
 argument_list|(
 name|analyzer
 argument_list|,
-name|fieldName
+name|similarityFieldName
 argument_list|,
 name|fvString
 argument_list|)
