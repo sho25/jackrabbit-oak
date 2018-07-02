@@ -2344,6 +2344,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
 name|IndexCopier
 operator|.
 name|REMOTE_ONLY
