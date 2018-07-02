@@ -333,16 +333,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -5613,7 +5603,7 @@ operator|.
 name|size
 argument_list|()
 operator|<=
-literal|8
+literal|10
 argument_list|)
 expr_stmt|;
 block|}
@@ -5756,6 +5746,11 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
+name|long
+name|count
+init|=
+literal|1000
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -5765,7 +5760,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|1000
+name|count
 condition|;
 name|i
 operator|++
@@ -5952,6 +5947,11 @@ literal|"/test"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|doc
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|Integer
@@ -5963,12 +5963,14 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-name|long
-name|count
-init|=
-literal|0
-decl_stmt|;
 comment|// go back in time and check number of find calls
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|headRevisions
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|RevisionVector
@@ -6003,8 +6005,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+operator|--
 name|count
-operator|++
 argument_list|,
 name|s
 operator|.
@@ -6048,7 +6050,7 @@ name|everyItem
 argument_list|(
 name|lessThan
 argument_list|(
-literal|36
+literal|43
 argument_list|)
 argument_list|)
 argument_list|)
@@ -6416,11 +6418,6 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// OAK-7593
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-7593"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
