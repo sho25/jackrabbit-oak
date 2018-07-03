@@ -45,8 +45,14 @@ name|long
 name|getApproximateSize
 parameter_list|()
 function_decl|;
+comment|/**      * @return the number of tar files in the segment store      */
 name|int
 name|getTarFileCount
+parameter_list|()
+function_decl|;
+comment|/**      * @return the number of segments in the segment store      */
+name|int
+name|getSegmentCount
 parameter_list|()
 function_decl|;
 comment|/**      * @return  time series of the writes to repository      */

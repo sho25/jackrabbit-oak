@@ -23,26 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -58,6 +38,26 @@ operator|.
 name|nio
 operator|.
 name|ByteBuffer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -161,6 +161,11 @@ function_decl|;
 comment|/**      * Get the current length of the archive.      *      * @return length of the archive, in bytes      */
 name|long
 name|getLength
+parameter_list|()
+function_decl|;
+comment|/**      * Get the number of entries currently contained in the archive.      *      * @return  number of entries      */
+name|int
+name|getEntryCount
 parameter_list|()
 function_decl|;
 comment|/**      * Close the archive.      */

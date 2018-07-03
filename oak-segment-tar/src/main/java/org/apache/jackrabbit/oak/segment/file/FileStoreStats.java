@@ -415,6 +415,20 @@ return|;
 comment|//1 for the writer
 block|}
 annotation|@
+name|Override
+specifier|public
+name|int
+name|getSegmentCount
+parameter_list|()
+block|{
+return|return
+name|store
+operator|.
+name|getSegmentCount
+argument_list|()
+return|;
+block|}
+annotation|@
 name|Nonnull
 annotation|@
 name|Override

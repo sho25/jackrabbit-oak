@@ -538,6 +538,18 @@ name|lsb
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  the number of entries currently in this writer      */
+name|int
+name|getEntryCount
+parameter_list|()
+block|{
+return|return
+name|archive
+operator|.
+name|getEntryCount
+argument_list|()
+return|;
+block|}
 comment|/**      * If the given segment is in this file, get the byte buffer that allows      * reading it.      *       * @param msb the most significant bits of the segment id      * @param lsb the least significant bits of the segment id      * @return the byte buffer, or null if not in this file      */
 name|ByteBuffer
 name|readEntry
