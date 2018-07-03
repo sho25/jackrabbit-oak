@@ -253,25 +253,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|annotation
+name|util
 operator|.
-name|CheckForNull
+name|function
+operator|.
+name|Consumer
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|javax
 operator|.
-name|google
+name|annotation
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Function
+name|CheckForNull
 import|;
 end_import
 
@@ -447,29 +445,57 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|DocumentNodeStore
-name|nodeStore
+name|DocumentStore
+name|store
+decl_stmt|;
+specifier|private
+specifier|final
+name|RevisionContext
+name|revisionContext
 decl_stmt|;
 specifier|private
 specifier|final
 name|MissingLastRevSeeker
 name|missingLastRevUtil
 decl_stmt|;
+specifier|private
+specifier|final
+name|Consumer
+argument_list|<
+name|Integer
+argument_list|>
+name|afterRecovery
+decl_stmt|;
 specifier|public
 name|LastRevRecoveryAgent
 parameter_list|(
-name|DocumentNodeStore
-name|nodeStore
+name|DocumentStore
+name|store
+parameter_list|,
+name|RevisionContext
+name|revisionContext
 parameter_list|,
 name|MissingLastRevSeeker
 name|seeker
+parameter_list|,
+name|Consumer
+argument_list|<
+name|Integer
+argument_list|>
+name|afterRecovery
 parameter_list|)
 block|{
 name|this
 operator|.
-name|nodeStore
+name|store
 operator|=
-name|nodeStore
+name|store
+expr_stmt|;
+name|this
+operator|.
+name|revisionContext
+operator|=
+name|revisionContext
 expr_stmt|;
 name|this
 operator|.
@@ -477,35 +503,47 @@ name|missingLastRevUtil
 operator|=
 name|seeker
 expr_stmt|;
+name|this
+operator|.
+name|afterRecovery
+operator|=
+name|afterRecovery
+expr_stmt|;
 block|}
 specifier|public
 name|LastRevRecoveryAgent
 parameter_list|(
-name|DocumentNodeStore
-name|nodeStore
+name|DocumentStore
+name|store
+parameter_list|,
+name|RevisionContext
+name|context
 parameter_list|)
 block|{
 name|this
 argument_list|(
-name|nodeStore
+name|store
+argument_list|,
+name|context
 argument_list|,
 operator|new
 name|MissingLastRevSeeker
 argument_list|(
-name|nodeStore
-operator|.
-name|getDocumentStore
-argument_list|()
+name|store
 argument_list|,
-name|nodeStore
+name|context
 operator|.
 name|getClock
 argument_list|()
 argument_list|)
+argument_list|,
+name|i
+lambda|->
+block|{}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Recover the correct _lastRev updates for potentially missing candidate      * nodes. If another cluster node is already performing the recovery for the      * given {@code clusterId}, this method will {@code waitUntil} the given      * time in milliseconds for the recovery to finish.      *      * This method will return:      *<ul>      *<li>{@code -1} when another cluster node is busy performing recovery      *     for the given {@code clusterId} and the {@code waitUntil} time is      *     reached.</li>      *<li>{@code 0} when no recovery was needed or this thread waited      *     for another cluster node to finish the recovery within the given      *     {@code waitUntil} time.</li>      *<li>A positive value for the number of recovered documents when      *     recovery was performed by this thread / cluster node.</li>      *</ul>      *      * @param clusterId the cluster id for which the _lastRev are to be recovered      * @param waitUntil wait until this time is milliseconds for recovery of the      *                  given {@code clusterId} if another cluster node is      *                  already performing the recovery.      * @return the number of restored nodes or {@code -1} if a timeout occurred      *          while waiting for an ongoing recovery by another cluster node.      */
+comment|/**      * Recover the correct _lastRev updates for potentially missing candidate      * nodes. If another cluster node is already performing the recovery for the      * given {@code clusterId}, this method will {@code waitUntil} the given      * time in milliseconds for the recovery to finish.      *<p>      * If recovery is performed for the clusterId as exposed by the revision      * context passed to the constructor of this recovery agent, then this      * method will put a deadline on how long recovery may take. The deadline      * is the current lease end as read from the {@code clusterNodes} collection      * entry for the {@code clusterId} to recover minus the      * {@link ClusterNodeInfo#DEFAULT_LEASE_FAILURE_MARGIN_MILLIS}. This method      * will throw a {@link DocumentStoreException} if the deadline is reached.      *<p>      * This method will return:      *<ul>      *<li>{@code -1} when another cluster node is busy performing recovery      *     for the given {@code clusterId} and the {@code waitUntil} time is      *     reached.</li>      *<li>{@code 0} when no recovery was needed or this thread waited      *     for another cluster node to finish the recovery within the given      *     {@code waitUntil} time.</li>      *<li>A positive value for the number of recovered documents when      *     recovery was performed by this thread / cluster node.</li>      *</ul>      *      * @param clusterId the cluster id for which the _lastRev are to be recovered      * @param waitUntil wait until this time is milliseconds for recovery of the      *                  given {@code clusterId} if another cluster node is      *                  already performing the recovery.      * @return the number of restored nodes or {@code -1} if a timeout occurred      *          while waiting for an ongoing recovery by another cluster node.      * @throws DocumentStoreException if the deadline is reached or some other      *          error occurs while reading from the underlying document store.      */
 specifier|public
 name|int
 name|recover
@@ -529,25 +567,6 @@ argument_list|(
 name|clusterId
 argument_list|)
 decl_stmt|;
-comment|//TODO Currently leaseTime remains same per cluster node. If this
-comment|//is made configurable then it should be read from DB entry
-specifier|final
-name|long
-name|leaseTime
-init|=
-name|ClusterNodeInfo
-operator|.
-name|DEFAULT_LEASE_DURATION_MILLIS
-decl_stmt|;
-specifier|final
-name|long
-name|asyncDelay
-init|=
-name|nodeStore
-operator|.
-name|getAsyncDelay
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|nodeInfo
@@ -559,22 +578,20 @@ comment|// Check if _lastRev recovery needed for this cluster node
 comment|// state is Active&& current time past leaseEnd
 if|if
 condition|(
-name|missingLastRevUtil
+name|nodeInfo
 operator|.
 name|isRecoveryNeeded
 argument_list|(
-name|nodeInfo
+name|revisionContext
+operator|.
+name|getClock
+argument_list|()
+operator|.
+name|getTime
+argument_list|()
 argument_list|)
 condition|)
 block|{
-name|long
-name|leaseEnd
-init|=
-name|nodeInfo
-operator|.
-name|getLeaseEndTime
-argument_list|()
-decl_stmt|;
 comment|// retrieve the root document's _lastRev
 name|NodeDocument
 name|root
@@ -647,11 +664,10 @@ else|else
 block|{
 name|startTime
 operator|=
-name|leaseEnd
-operator|-
-name|leaseTime
-operator|-
-name|asyncDelay
+name|nodeInfo
+operator|.
+name|getStartTime
+argument_list|()
 expr_stmt|;
 name|reason
 operator|=
@@ -659,13 +675,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"no lastRev for root, using timestamp based on leaseEnd %d - leaseTime %d - asyncDelay %d"
+literal|"no lastRev for root, using startTime %d"
 argument_list|,
-name|leaseEnd
-argument_list|,
-name|leaseTime
-argument_list|,
-name|asyncDelay
+name|startTime
 argument_list|)
 expr_stmt|;
 block|}
@@ -727,7 +739,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/**      * Same as {@link #recover(int, long)}, but does not wait for ongoing      * recovery.      *      * @param clusterId the cluster id for which the _lastRev are to be recovered      * @return the number of restored nodes or {@code -1} if there is an ongoing      *          recovery by another cluster node.      */
+comment|/**      * Same as {@link #recover(int, long)}, but does not wait for ongoing      * recovery.      *      * @param clusterId the cluster id for which the _lastRev are to be recovered      * @return the number of restored nodes or {@code -1} if there is an ongoing      *          recovery by another cluster node.      * @throws DocumentStoreException if the deadline is reached or some other      *          error occurs while reading from the underlying document store.      */
 specifier|public
 name|int
 name|recover
@@ -735,6 +747,8 @@ parameter_list|(
 name|int
 name|clusterId
 parameter_list|)
+throws|throws
+name|DocumentStoreException
 block|{
 return|return
 name|recover
@@ -745,7 +759,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**      * Recover the correct _lastRev updates for the given candidate nodes.      *      * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @return the number of documents that required recovery.      */
+comment|/**      * Same as {@link #recover(Iterable, int, boolean)} with {@code dryRun} set      * to {@code false}.      *      * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @return the number of documents that required recovery.      * @throws DocumentStoreException if the deadline is reached or some other      *          error occurs while reading from the underlying document store.      */
 specifier|public
 name|int
 name|recover
@@ -759,6 +773,8 @@ parameter_list|,
 name|int
 name|clusterId
 parameter_list|)
+throws|throws
+name|DocumentStoreException
 block|{
 return|return
 name|recover
@@ -771,7 +787,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Recover the correct _lastRev updates for the given candidate nodes.      *      * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @param dryRun if {@code true}, this method will only perform a check      *               but not apply the changes to the _lastRev fields.      * @return the number of documents that required recovery. This method      *          returns the number of the affected documents even if      *          {@code dryRun} is set true and no document was changed.      */
+comment|/**      * Recover the correct _lastRev updates for the given candidate nodes. If      * recovery is performed for the clusterId as exposed by the revision      * context passed to the constructor of this recovery agent, then this      * method will put a deadline on how long recovery may take. The deadline      * is the current lease end as read from the {@code clusterNodes} collection      * entry for the {@code clusterId} to recover minus the      * {@link ClusterNodeInfo#DEFAULT_LEASE_FAILURE_MARGIN_MILLIS}. This method      * will throw a {@link DocumentStoreException} if the deadline is reached.      *      * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @param dryRun if {@code true}, this method will only perform a check      *               but not apply the changes to the _lastRev fields.      * @return the number of documents that required recovery. This method      *          returns the number of the affected documents even if      *          {@code dryRun} is set true and no document was changed.      * @throws DocumentStoreException if the deadline is reached or some other      *          error occurs while reading from the underlying document store.      */
 specifier|public
 name|int
 name|recover
@@ -794,15 +810,61 @@ parameter_list|)
 throws|throws
 name|DocumentStoreException
 block|{
-specifier|final
-name|DocumentStore
-name|docStore
+comment|// set a deadline if this is a self recovery. Self recovery does not
+comment|// update the lease in a background thread and must terminate before
+comment|// the lease acquired by the recovery lock expires.
+name|long
+name|deadline
 init|=
-name|nodeStore
+name|Long
 operator|.
-name|getDocumentStore
-argument_list|()
+name|MAX_VALUE
 decl_stmt|;
+if|if
+condition|(
+name|clusterId
+operator|==
+name|revisionContext
+operator|.
+name|getClusterId
+argument_list|()
+condition|)
+block|{
+name|ClusterNodeInfoDocument
+name|nodeInfo
+init|=
+name|missingLastRevUtil
+operator|.
+name|getClusterNodeInfo
+argument_list|(
+name|clusterId
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|nodeInfo
+operator|!=
+literal|null
+operator|&&
+name|nodeInfo
+operator|.
+name|isActive
+argument_list|()
+condition|)
+block|{
+name|deadline
+operator|=
+name|nodeInfo
+operator|.
+name|getLeaseEndTime
+argument_list|()
+operator|-
+name|ClusterNodeInfo
+operator|.
+name|DEFAULT_LEASE_FAILURE_MARGIN_MILLIS
+expr_stmt|;
+block|}
+block|}
 name|NodeDocument
 name|rootDoc
 init|=
@@ -810,7 +872,7 @@ name|Utils
 operator|.
 name|getRootDocument
 argument_list|(
-name|docStore
+name|store
 argument_list|)
 decl_stmt|;
 comment|// first run a sweep
@@ -853,14 +915,14 @@ name|RecoveryContext
 argument_list|(
 name|rootDoc
 argument_list|,
-name|nodeStore
+name|revisionContext
 operator|.
 name|getClock
 argument_list|()
 argument_list|,
 name|clusterId
 argument_list|,
-name|nodeStore
+name|revisionContext
 operator|::
 name|getCommitValue
 argument_list|)
@@ -940,7 +1002,7 @@ name|JOURNAL
 operator|.
 name|newDocument
 argument_list|(
-name|docStore
+name|store
 argument_list|)
 decl_stmt|;
 name|inv
@@ -982,7 +1044,7 @@ name|JOURNAL
 operator|.
 name|newDocument
 argument_list|(
-name|docStore
+name|store
 argument_list|)
 decl_stmt|;
 name|entry
@@ -1018,7 +1080,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|docStore
+name|store
 operator|.
 name|create
 argument_list|(
@@ -1067,7 +1129,7 @@ argument_list|)
 expr_stmt|;
 comment|// now that journal entry is in place, perform the actual
 comment|// updates on the documents
-name|docStore
+name|store
 operator|.
 name|createOrUpdate
 argument_list|(
@@ -1139,7 +1201,7 @@ name|JOURNAL
 operator|.
 name|newDocument
 argument_list|(
-name|docStore
+name|store
 argument_list|)
 decl_stmt|;
 name|long
@@ -1357,7 +1419,7 @@ decl_stmt|;
 name|NodeDocument
 name|doc
 init|=
-name|docStore
+name|store
 operator|.
 name|find
 argument_list|(
@@ -1531,6 +1593,53 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// check deadline before the update
+if|if
+condition|(
+name|revisionContext
+operator|.
+name|getClock
+argument_list|()
+operator|.
+name|getTime
+argument_list|()
+operator|>
+name|deadline
+condition|)
+block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cluster node %d was unable to "
+operator|+
+literal|"perform lastRev recovery for clusterId %d within "
+operator|+
+literal|"deadline: %s"
+argument_list|,
+name|clusterId
+argument_list|,
+name|clusterId
+argument_list|,
+name|Utils
+operator|.
+name|timestampToString
+argument_list|(
+name|deadline
+argument_list|)
+argument_list|)
+decl_stmt|;
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
 comment|//UnsavedModifications is designed to be used in concurrent
 comment|//access mode. For recovery case there is no concurrent access
 comment|//involve so just pass a new lock instance
@@ -1542,7 +1651,7 @@ name|unsaved
 operator|.
 name|persist
 argument_list|(
-name|docStore
+name|store
 argument_list|,
 operator|new
 name|Supplier
@@ -1615,7 +1724,7 @@ specifier|final
 name|JournalEntry
 name|existingEntry
 init|=
-name|docStore
+name|store
 operator|.
 name|find
 argument_list|(
@@ -1641,7 +1750,7 @@ comment|// hence: nothing to be done here. return.
 return|return;
 block|}
 comment|// otherwise store a new journal entry now
-name|docStore
+name|store
 operator|.
 name|create
 argument_list|(
@@ -1686,7 +1795,8 @@ return|return
 name|size
 return|;
 block|}
-comment|/**      * Retrieves possible candidates which have been modified after the given      * {@code startTime} and recovers the missing updates.      *      * @param nodeInfo the info of the cluster node to recover.      * @param startTime the start time      * @param waitUntil wait at most until this time for an ongoing recovery      *                  done by another cluster node.      * @param info a string with additional information how recovery is run.      * @return the number of restored nodes or {@code -1} if recovery is still      *      ongoing by another process even when {@code waitUntil} time was      *      reached.      */
+comment|//--------------------------< internal>------------------------------------
+comment|/**      * Retrieves possible candidates which have been modified after the given      * {@code startTime} and recovers the missing updates.      *<p>      * If recovery is performed for the clusterId as exposed by the revision      * context passed to the constructor of this recovery agent, then this      * method will put a deadline on how long recovery may take. The deadline      * is the current lease end as read from the {@code clusterNodes} collection      * entry for the {@code clusterId} to recover minus the      * {@link ClusterNodeInfo#DEFAULT_LEASE_FAILURE_MARGIN_MILLIS}. This method      * will throw a {@link DocumentStoreException} if the deadline is reached.      *      * @param nodeInfo the info of the cluster node to recover.      * @param startTime the start time      * @param waitUntil wait at most until this time for an ongoing recovery      *                  done by another cluster node.      * @param info a string with additional information how recovery is run.      * @return the number of restored nodes or {@code -1} if recovery is still      *      ongoing by another process even when {@code waitUntil} time was      *      reached.      * @throws DocumentStoreException if the deadline is reached or some other      *          error occurs while reading from the underlying document store.      */
 specifier|private
 name|int
 name|recoverCandidates
@@ -1707,6 +1817,8 @@ specifier|final
 name|String
 name|info
 parameter_list|)
+throws|throws
+name|DocumentStoreException
 block|{
 name|ClusterNodeInfoDocument
 name|infoDoc
@@ -1735,7 +1847,7 @@ name|acquireRecoveryLock
 argument_list|(
 name|clusterId
 argument_list|,
-name|nodeStore
+name|revisionContext
 operator|.
 name|getClusterId
 argument_list|()
@@ -1747,7 +1859,7 @@ block|}
 name|Clock
 name|clock
 init|=
-name|nodeStore
+name|revisionContext
 operator|.
 name|getClock
 argument_list|()
@@ -1867,12 +1979,44 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|infoDoc
+operator|==
+literal|null
+condition|)
+block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"No cluster node info document "
+operator|+
+literal|"for id %d"
+argument_list|,
+name|clusterId
+argument_list|)
+decl_stmt|;
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 operator|!
-name|missingLastRevUtil
+name|infoDoc
 operator|.
 name|isRecoveryNeeded
 argument_list|(
-name|infoDoc
+name|clock
+operator|.
+name|getTime
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1972,10 +2116,12 @@ argument_list|,
 name|success
 argument_list|)
 expr_stmt|;
-name|nodeStore
+name|afterRecovery
 operator|.
-name|signalClusterStateChange
-argument_list|()
+name|accept
+argument_list|(
+name|clusterId
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2075,7 +2221,7 @@ decl_stmt|;
 name|String
 name|cv
 init|=
-name|nodeStore
+name|revisionContext
 operator|.
 name|getCommitValue
 argument_list|(
@@ -2155,7 +2301,7 @@ name|info
 argument_list|(
 literal|"ClusterNodeId [{}] starting Last Revision Recovery for clusterNodeId(s) {}"
 argument_list|,
-name|nodeStore
+name|revisionContext
 operator|.
 name|getClusterId
 argument_list|()
@@ -2236,7 +2382,7 @@ name|input
 parameter_list|)
 block|{
 return|return
-name|nodeStore
+name|revisionContext
 operator|.
 name|getClusterId
 argument_list|()
@@ -2246,44 +2392,26 @@ operator|.
 name|getClusterId
 argument_list|()
 operator|&&
-name|missingLastRevUtil
+name|input
 operator|.
 name|isRecoveryNeeded
 argument_list|(
-name|input
-argument_list|)
-return|;
-block|}
-block|}
-argument_list|)
-argument_list|,
-operator|new
-name|Function
-argument_list|<
-name|ClusterNodeInfoDocument
-argument_list|,
-name|Integer
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Integer
-name|apply
-parameter_list|(
-name|ClusterNodeInfoDocument
-name|input
-parameter_list|)
-block|{
-return|return
-name|input
+name|revisionContext
 operator|.
-name|getClusterId
+name|getClock
 argument_list|()
+operator|.
+name|getTime
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
+argument_list|)
+argument_list|,
+name|ClusterNodeInfoDocument
+operator|::
+name|getClusterId
 argument_list|)
 return|;
 block|}

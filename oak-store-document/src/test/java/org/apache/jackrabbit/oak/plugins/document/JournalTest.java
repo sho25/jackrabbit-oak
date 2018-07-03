@@ -2204,6 +2204,8 @@ init|=
 operator|new
 name|LastRevRecoveryAgent
 argument_list|(
+name|ds
+argument_list|,
 name|ds1
 argument_list|)
 decl_stmt|;

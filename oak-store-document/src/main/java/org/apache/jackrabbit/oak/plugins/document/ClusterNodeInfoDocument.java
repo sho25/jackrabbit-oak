@@ -232,6 +232,30 @@ operator|.
 name|ACQUIRED
 return|;
 block|}
+comment|/**      * Check if _lastRev recovery is needed for cluster node info document.      * Returns {@code true} if both of the below conditions are {@code true}:      *<ul>      *<li>State is Active</li>      *<li>Current time is past the leaseEnd time or there is a recovery      *          lock on the cluster node info document</li>      *</ul>      * @param currentTimeMillis the current time in milliseconds since the start      *                          start of the epoch.      */
+specifier|public
+name|boolean
+name|isRecoveryNeeded
+parameter_list|(
+name|long
+name|currentTimeMillis
+parameter_list|)
+block|{
+return|return
+name|isActive
+argument_list|()
+operator|&&
+operator|(
+name|currentTimeMillis
+operator|>
+name|getLeaseEndTime
+argument_list|()
+operator|||
+name|isBeingRecovered
+argument_list|()
+operator|)
+return|;
+block|}
 comment|/**      * Returns {@code true} if the cluster node represented by this document      * is currently being recovered by the given {@code clusterId}.      *      * @param clusterId the id of a cluster node.      * @return {@code true} if being recovered by the given id; {@code false}      *          otherwise.      */
 specifier|public
 name|boolean

@@ -883,8 +883,6 @@ parameter_list|,
 name|String
 name|message
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|store
 operator|.

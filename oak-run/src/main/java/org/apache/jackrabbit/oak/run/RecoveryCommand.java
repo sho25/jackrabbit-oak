@@ -370,6 +370,8 @@ init|=
 operator|new
 name|LastRevRecoveryAgent
 argument_list|(
+name|docStore
+argument_list|,
 name|dns
 argument_list|)
 decl_stmt|;
