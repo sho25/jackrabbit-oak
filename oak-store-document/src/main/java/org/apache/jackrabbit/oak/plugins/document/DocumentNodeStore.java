@@ -4351,13 +4351,44 @@ init|=
 name|getHeadRevision
 argument_list|()
 decl_stmt|;
-comment|// apply changes to cache based on before revision
+comment|// update head revision
+name|Revision
+name|r
+init|=
 name|c
 operator|.
-name|applyToCache
-argument_list|(
+name|getRevision
+argument_list|()
+decl_stmt|;
+name|newHead
+index|[
+literal|0
+index|]
+operator|=
 name|before
-argument_list|,
+operator|.
+name|update
+argument_list|(
+name|r
+argument_list|)
+expr_stmt|;
+name|boolean
+name|success
+init|=
+literal|false
+decl_stmt|;
+name|boolean
+name|cacheUpdated
+init|=
+literal|false
+decl_stmt|;
+try|try
+block|{
+comment|// apply lastRev updates
+name|c
+operator|.
+name|applyLastRevUpdates
+argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
@@ -4389,26 +4420,27 @@ name|info
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// update head revision
-name|Revision
-name|r
-init|=
+comment|// if we get here all required in-memory changes
+comment|// have been applied. The following operations in
+comment|// the try block may fail and the commit can still
+comment|// be considered successful
+name|success
+operator|=
+literal|true
+expr_stmt|;
+comment|// apply changes to cache, based on before revision
 name|c
 operator|.
-name|getRevision
-argument_list|()
-decl_stmt|;
-name|newHead
-index|[
-literal|0
-index|]
-operator|=
-name|before
-operator|.
-name|update
+name|applyToCache
 argument_list|(
-name|r
+name|before
+argument_list|,
+literal|false
 argument_list|)
+expr_stmt|;
+name|cacheUpdated
+operator|=
+literal|true
 expr_stmt|;
 if|if
 condition|(
@@ -4424,7 +4456,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Pushing journal entry at {} as number of changes ({}) have reached {}"
+literal|"Pushing journal entry at {} as number of changes ({}) have reached threshold of {}"
 argument_list|,
 name|r
 argument_list|,
@@ -4442,6 +4474,67 @@ name|r
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|success
+condition|)
+block|{
+if|if
+condition|(
+name|cacheUpdated
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Pushing journal entry at {} failed"
+argument_list|,
+name|revision
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Updating caches at {} failed"
+argument_list|,
+name|revision
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Applying in-memory changes at {} failed"
+argument_list|,
+name|revision
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
 name|setRoot
 argument_list|(
 name|newHead
@@ -4465,6 +4558,7 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -4493,6 +4587,13 @@ block|{
 comment|// branch commit
 try|try
 block|{
+name|c
+operator|.
+name|applyLastRevUpdates
+argument_list|(
+name|isBranch
+argument_list|)
+expr_stmt|;
 name|c
 operator|.
 name|applyToCache
@@ -11884,6 +11985,8 @@ parameter_list|(
 name|Revision
 name|r
 parameter_list|)
+throws|throws
+name|DocumentStoreException
 block|{
 if|if
 condition|(

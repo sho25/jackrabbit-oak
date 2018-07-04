@@ -185,13 +185,9 @@ block|}
 block|}
 annotation|@
 name|Override
-specifier|public
 name|void
-name|applyToCache
+name|applyLastRevUpdates
 parameter_list|(
-name|RevisionVector
-name|before
-parameter_list|,
 name|boolean
 name|isBranchCommit
 parameter_list|)
@@ -205,6 +201,21 @@ argument_list|(
 name|branchCommits
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|applyToCache
+parameter_list|(
+name|RevisionVector
+name|before
+parameter_list|,
+name|boolean
+name|isBranchCommit
+parameter_list|)
+block|{
+comment|// do nothing for a merge commit
 block|}
 block|}
 end_class
