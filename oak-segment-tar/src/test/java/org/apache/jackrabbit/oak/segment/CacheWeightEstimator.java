@@ -19,6 +19,18 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|System
+operator|.
+name|getProperty
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -68,6 +80,28 @@ operator|.
 name|SegmentVersion
 operator|.
 name|LATEST_VERSION
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -227,8 +261,28 @@ name|MemoryStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
-comment|/**  * Test/Utility class to measure size in memory for common segment-tar objects.  *<p>  * The test is<b>disabled</b> by default, to run it you need to set the  * {@code CacheWeightsTest} system property:<br>  * {@code mv clean test -Dtest=CacheWeightsTest -DCacheWeightsTest=true -Dtest.opts.memory=-Xmx2G}  *</p>  *<p>  * To collect the results check the  * {@code org.apache.jackrabbit.oak.segment.CacheWeightsTest-output.txt} file:<br>  * {@code cat target/surefire-reports/org.apache.jackrabbit.oak.segment.CacheWeightsTest-output.txt}  *</p>  */
+comment|/**  * Test/Utility class to measure size in memory for common segment-tar objects.  *<p>  * The test is<b>disabled</b> by default, to run it you need to set the  * {@code CacheWeightsTest} system property:<br>  * {@code mvn clean test -Dtest=CacheWeightEstimator -Dtest.opts.memory=-Xmx2G}  *</p>  *<p>  * To collect the results check the  * {@code org.apache.jackrabbit.oak.segment.CacheWeightsTest-output.txt} file:<br>  * {@code cat target/surefire-reports/org.apache.jackrabbit.oak.segment.CacheWeightEstimator-output.txt}  *</p>  */
 end_comment
 
 begin_class
@@ -240,11 +294,46 @@ comment|// http://www.javaworld.com/article/2077496/testing-debugging/java-tip-1
 comment|// http://www.javaspecialists.eu/archive/Issue029.html
 comment|// http://www.slideshare.net/cnbailey/memory-efficient-java
 comment|/*-      * Open JDK's JOL report on various segment classes:      org.apache.jackrabbit.oak.segment.RecordId object internals:     OFFSET  SIZE      TYPE DESCRIPTION                    VALUE       0    12           (object header)                N/A      12     4       int RecordId.offset                N/A      16     4 SegmentId RecordId.segmentId             N/A      20     4           (loss due to the next object alignment)     Instance size: 24 bytes     Space losses: 0 bytes internal + 4 bytes external = 4 bytes total      org.apache.jackrabbit.oak.segment.SegmentId object internals:     OFFSET  SIZE         TYPE DESCRIPTION                    VALUE       0    12              (object header)                N/A      12     4          int SegmentId.gcGeneration         N/A      16     8         long SegmentId.msb                  N/A      24     8         long SegmentId.lsb                  N/A      32     8         long SegmentId.creationTime         N/A      40     4 SegmentStore SegmentId.store                N/A      44     4       String SegmentId.gcInfo               N/A      48     4      Segment SegmentId.segment              N/A      52     4              (loss due to the next object alignment)     Instance size: 56 bytes     Space losses: 0 bytes internal + 4 bytes external = 4 bytes total      org.apache.jackrabbit.oak.segment.Segment object internals:     OFFSET  SIZE              TYPE DESCRIPTION                    VALUE       0    12                   (object header)                N/A      12     4      SegmentStore Segment.store                  N/A      16     4     SegmentReader Segment.reader                 N/A      20     4         SegmentId Segment.id                     N/A      24     4        ByteBuffer Segment.data                   N/A      28     4    SegmentVersion Segment.version                N/A      32     4     RecordNumbers Segment.recordNumbers          N/A      36     4 SegmentReferences Segment.segmentReferences      N/A      40     4            String Segment.info                   N/A      44     4                   (loss due to the next object alignment)     Instance size: 48 bytes     Space losses: 0 bytes internal + 4 bytes external = 4 bytes total      org.apache.jackrabbit.oak.segment.Template object internals:     OFFSET  SIZE               TYPE DESCRIPTION                    VALUE       0    12                    (object header)                N/A      12     4      SegmentReader Template.reader                N/A      16     4      PropertyState Template.primaryType           N/A      20     4      PropertyState Template.mixinTypes            N/A      24     4 PropertyTemplate[] Template.properties            N/A      28     4             String Template.childName             N/A     Instance size: 32 bytes     Space losses: 0 bytes internal + 0 bytes external = 0 bytes total       */
+comment|/** Only run if explicitly asked to via -Dtest=SegmentCompactionIT */
 specifier|private
 specifier|static
+specifier|final
+name|boolean
+name|ENABLED
+init|=
+name|CacheWeightEstimator
+operator|.
+name|class
+operator|.
+name|getSimpleName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|getProperty
+argument_list|(
+literal|"test"
+argument_list|)
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|final
 name|MemoryStore
 name|store
 decl_stmt|;
+specifier|public
+name|CacheWeightEstimator
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|store
+operator|=
+operator|new
+name|MemoryStore
+argument_list|()
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 name|void
@@ -257,112 +346,80 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|run
-argument_list|(
 name|CacheWeightEstimator
-operator|::
-name|testObjects
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testSegmentIds
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testSegmentIdsWGc
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testRecordIds
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testRecordIdsWGc
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testStringCache
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testNodeCache
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testSegments
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testSegmentCache
-argument_list|)
-expr_stmt|;
-name|run
-argument_list|(
-name|CacheWeightEstimator
-operator|::
-name|testStrings
-argument_list|)
-expr_stmt|;
-block|}
-specifier|private
-specifier|static
-name|void
-name|run
-parameter_list|(
-name|Runnable
-name|runnable
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|store
-operator|=
+name|cwe
+init|=
 operator|new
-name|MemoryStore
+name|CacheWeightEstimator
 argument_list|()
-expr_stmt|;
-try|try
-block|{
-name|runnable
+decl_stmt|;
+name|cwe
 operator|.
-name|run
+name|testObjects
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testSegmentIds
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testSegmentIdsWGc
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testRecordIds
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testRecordIdsWGc
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testStringCache
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testNodeCache
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testSegments
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testSegmentCache
+argument_list|()
+expr_stmt|;
+name|cwe
+operator|.
+name|testStrings
 argument_list|()
 expr_stmt|;
 block|}
-finally|finally
+annotation|@
+name|Before
+specifier|public
+name|void
+name|setup
+parameter_list|()
 block|{
-name|store
-operator|=
-literal|null
+name|assumeTrue
+argument_list|(
+name|ENABLED
+argument_list|)
 expr_stmt|;
 block|}
-block|}
-specifier|private
-specifier|static
+annotation|@
+name|Test
+specifier|public
 name|void
 name|testObjects
 parameter_list|()
@@ -475,7 +532,6 @@ end_class
 
 begin_function
 specifier|private
-specifier|static
 name|void
 name|testSegmentIds
 parameter_list|()
@@ -491,8 +547,9 @@ block|}
 end_function
 
 begin_function
-specifier|private
-specifier|static
+annotation|@
+name|Test
+specifier|public
 name|void
 name|testSegmentIdsWGc
 parameter_list|()
@@ -509,7 +566,6 @@ end_function
 
 begin_function
 specifier|private
-specifier|static
 name|void
 name|runSegmentIds
 parameter_list|(
@@ -664,8 +720,9 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}      private
-specifier|static
+unit|}      @
+name|Test
+specifier|public
 name|void
 name|testRecordIds
 parameter_list|()
@@ -681,8 +738,9 @@ block|}
 end_function
 
 begin_function
-specifier|private
-specifier|static
+annotation|@
+name|Test
+specifier|public
 name|void
 name|testRecordIdsWGc
 parameter_list|()
@@ -699,7 +757,6 @@ end_function
 
 begin_function
 specifier|private
-specifier|static
 name|void
 name|runRecordIds
 parameter_list|(
@@ -854,8 +911,9 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}      private
-specifier|static
+unit|}      @
+name|Test
+specifier|public
 name|void
 name|testStringCache
 parameter_list|()
@@ -1004,8 +1062,9 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}      private
-specifier|static
+unit|}      @
+name|Test
+specifier|public
 name|void
 name|testNodeCache
 parameter_list|()
@@ -1180,8 +1239,9 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}      private
-specifier|static
+unit|}      @
+name|Test
+specifier|public
 name|void
 name|testSegments
 parameter_list|()
@@ -1314,8 +1374,9 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}      private
-specifier|static
+unit|}      @
+name|Test
+specifier|public
 name|void
 name|testSegmentCache
 parameter_list|()
@@ -1461,8 +1522,9 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}      private
-specifier|static
+unit|}      @
+name|Test
+specifier|public
 name|void
 name|testStrings
 parameter_list|()
@@ -1596,7 +1658,6 @@ end_expr_stmt
 
 begin_function
 unit|}      private
-specifier|static
 name|SegmentId
 name|randomSegmentId
 parameter_list|(
@@ -1655,7 +1716,6 @@ end_function
 
 begin_function
 specifier|private
-specifier|static
 name|RecordId
 name|randomRecordId
 parameter_list|(
@@ -1680,7 +1740,6 @@ end_function
 
 begin_function
 specifier|private
-specifier|static
 name|Segment
 name|randomSegment
 parameter_list|(
@@ -1872,7 +1931,7 @@ name|String
 name|randomString
 parameter_list|(
 name|int
-name|lenght
+name|length
 parameter_list|)
 block|{
 return|return
@@ -1880,18 +1939,13 @@ name|RandomStringUtils
 operator|.
 name|randomAlphanumeric
 argument_list|(
-name|lenght
+name|length
 argument_list|)
 return|;
 block|}
 end_function
 
 begin_function
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 specifier|private
 specifier|static
 name|void
@@ -1914,7 +1968,7 @@ name|name
 parameter_list|)
 block|{
 name|long
-name|start
+name|heapBefore
 init|=
 name|memory
 argument_list|()
@@ -1954,7 +2008,7 @@ literal|0
 index|]
 decl_stmt|;
 name|long
-name|weight
+name|heapEstimate
 init|=
 name|e
 operator|.
@@ -1965,29 +2019,29 @@ literal|1
 index|]
 decl_stmt|;
 name|long
-name|end
+name|heapAfter
 init|=
 name|memory
 argument_list|()
 decl_stmt|;
 name|long
-name|delta
+name|heapDelta
 init|=
-name|end
+name|heapAfter
 operator|-
-name|start
+name|heapBefore
 decl_stmt|;
 name|long
-name|itemH
+name|perItemHeap
 init|=
-name|delta
+name|heapDelta
 operator|/
 name|count
 decl_stmt|;
 name|long
-name|itemW
+name|perItemHeapEstimate
 init|=
-name|weight
+name|heapEstimate
 operator|/
 name|count
 decl_stmt|;
@@ -2008,15 +2062,11 @@ name|out
 operator|.
 name|printf
 argument_list|(
-literal|"heap delta is       %d, %d bytes per item (%d -> %d)\n"
+literal|"measured heap usage:  %d bytes. %d bytes per item\n"
 argument_list|,
-name|delta
+name|heapDelta
 argument_list|,
-name|itemH
-argument_list|,
-name|start
-argument_list|,
-name|end
+name|perItemHeap
 argument_list|)
 expr_stmt|;
 name|System
@@ -2025,20 +2075,37 @@ name|out
 operator|.
 name|printf
 argument_list|(
-literal|"estimated weight is %d, %d bytes per item\n"
+literal|"estimated heap usage: %d bytes. %d bytes per item\n"
 argument_list|,
-name|weight
+name|heapEstimate
 argument_list|,
-name|itemW
+name|perItemHeapEstimate
 argument_list|)
 expr_stmt|;
+name|double
+name|percentageOff
+init|=
+literal|100
+operator|*
+operator|(
+operator|(
+name|double
+operator|)
+name|heapEstimate
+operator|/
+operator|(
+name|double
+operator|)
+name|heapDelta
+operator|-
+literal|1
+operator|)
+decl_stmt|;
 if|if
 condition|(
-name|itemW
-operator|>
-name|itemH
-operator|*
-literal|1.1
+name|percentageOff
+operator|<
+literal|0
 condition|)
 block|{
 name|System
@@ -2047,18 +2114,14 @@ name|out
 operator|.
 name|printf
 argument_list|(
-literal|"*warn* estimated weight is over 10%% bigger than heap based weight\n"
+literal|"estimated heap usage is %.2f%% to low"
+argument_list|,
+operator|-
+name|percentageOff
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|itemW
-operator|*
-literal|1.1
-operator|<
-name|itemH
-condition|)
+else|else
 block|{
 name|System
 operator|.
@@ -2066,7 +2129,9 @@ name|out
 operator|.
 name|printf
 argument_list|(
-literal|"*warn* estimated weight is over 10%% smaller than heap based weight\n"
+literal|"estimated heap usage is %.2f%% to high"
+argument_list|,
+name|percentageOff
 argument_list|)
 expr_stmt|;
 block|}
