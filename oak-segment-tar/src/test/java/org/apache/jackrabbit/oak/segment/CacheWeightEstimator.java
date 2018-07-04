@@ -2114,7 +2114,7 @@ name|out
 operator|.
 name|printf
 argument_list|(
-literal|"estimated heap usage is %.2f%% to low"
+literal|"estimated heap usage is %.2f%% to low\n"
 argument_list|,
 operator|-
 name|percentageOff
@@ -2129,7 +2129,7 @@ name|out
 operator|.
 name|printf
 argument_list|(
-literal|"estimated heap usage is %.2f%% to high"
+literal|"estimated heap usage is %.2f%% to high\n"
 argument_list|,
 name|percentageOff
 argument_list|)
