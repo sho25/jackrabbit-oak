@@ -385,6 +385,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -488,6 +498,22 @@ operator|.
 name|Iterables
 operator|.
 name|transform
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterators
+operator|.
+name|any
 import|;
 end_import
 
@@ -1995,29 +2021,6 @@ if|if
 condition|(
 name|services
 operator|.
-name|size
-argument_list|()
-operator|==
-literal|1
-condition|)
-block|{
-return|return
-name|services
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-operator|.
-name|getOldestCheckpointCreationTimestamp
-argument_list|()
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|services
-operator|.
 name|isEmpty
 argument_list|()
 condition|)
@@ -2036,19 +2039,77 @@ return|;
 block|}
 else|else
 block|{
+comment|// OAK-7610: Composite node store setups have 2 instances of CheckpointMBean:
+comment|// 1. registered via CompositeNodeStore
+comment|// 2. registered via global node store
+comment|// While it is still to be decided whether it's reasonable to have multiple instances
+comment|// of checkpoint bean - we are going to iterate over the beans and return oldest
+comment|// timestamp iff each of the bean reports the same oldest timestamp value. The reason
+comment|// it'd work, at least as of now, is that CompositeNodeStore implementation of checkpoint
+comment|// bean simply delegates to global store's implementation
+name|Iterator
+argument_list|<
+name|CheckpointMBean
+argument_list|>
+name|beans
+init|=
+name|services
+operator|.
+name|iterator
+argument_list|()
+decl_stmt|;
+name|long
+name|ret
+init|=
+name|beans
+operator|.
+name|next
+argument_list|()
+operator|.
+name|getOldestCheckpointCreationTimestamp
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|any
+argument_list|(
+name|beans
+argument_list|,
+name|bean
+lambda|->
+name|ret
+operator|!=
+name|bean
+operator|.
+name|getOldestCheckpointCreationTimestamp
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to get checkpoint mbean. Multiple services of required type found."
+literal|"Unable to get checkpoint mbean. Multiple services of required type found and not"
+operator|+
+literal|" all of them returned same value of oldest timestamp ({})"
+argument_list|,
+name|ret
 argument_list|)
-expr_stmt|;
+block|;
 return|return
 operator|-
 literal|1
 return|;
 block|}
+return|return
+name|ret
+return|;
 block|}
+block|}
+end_function
+
+begin_finally
 finally|finally
 block|{
 name|tracker
@@ -2057,9 +2118,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-end_function
+end_finally
 
-unit|}
+unit|} }
 end_unit
 
