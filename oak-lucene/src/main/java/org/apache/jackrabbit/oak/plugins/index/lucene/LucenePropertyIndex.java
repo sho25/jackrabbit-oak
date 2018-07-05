@@ -5413,7 +5413,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"postings highlighting failed"
 argument_list|,
