@@ -235,6 +235,13 @@ name|BGW_TOTAL
 init|=
 literal|"DOCUMENT_NS_BGW_TOTAL_TIME"
 decl_stmt|;
+specifier|static
+specifier|final
+name|String
+name|LEASE_UPDATE
+init|=
+literal|"DOCUMENT_NS_LEASE_UPDATE"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -295,6 +302,7 @@ name|MERGE_BRANCH_COMMIT_COUNT
 init|=
 literal|"DOCUMENT_NS_MERGE_BRANCH_COMMIT_COUNT"
 decl_stmt|;
+comment|// background read
 specifier|private
 specifier|final
 name|TimerStats
@@ -335,6 +343,7 @@ specifier|final
 name|HistogramStats
 name|numChangesHisto
 decl_stmt|;
+comment|// background update
 specifier|private
 specifier|final
 name|TimerStats
@@ -370,6 +379,13 @@ specifier|final
 name|MeterStats
 name|numWritesRate
 decl_stmt|;
+comment|// lease update
+specifier|private
+specifier|final
+name|TimerStats
+name|leaseUpdate
+decl_stmt|;
+comment|// merge stats
 specifier|private
 specifier|final
 name|HistogramStats
@@ -400,6 +416,7 @@ specifier|final
 name|MeterStats
 name|mergeFailedExclusive
 decl_stmt|;
+comment|// branch stats
 specifier|private
 specifier|final
 name|MeterStats
@@ -614,6 +631,19 @@ name|DEFAULT
 argument_list|)
 expr_stmt|;
 comment|//Enable time series
+name|leaseUpdate
+operator|=
+name|sp
+operator|.
+name|getTimer
+argument_list|(
+name|LEASE_UPDATE
+argument_list|,
+name|StatsOptions
+operator|.
+name|METRICS_ONLY
+argument_list|)
+expr_stmt|;
 name|mergeSuccessRetries
 operator|=
 name|sp
@@ -928,6 +958,28 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|doneLeaseUpdate
+parameter_list|(
+name|long
+name|timeMicros
+parameter_list|)
+block|{
+name|leaseUpdate
+operator|.
+name|update
+argument_list|(
+name|timeMicros
+argument_list|,
+name|TimeUnit
+operator|.
+name|MICROSECONDS
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
 name|doneBranchCommit
 parameter_list|()
 block|{
@@ -1030,7 +1082,7 @@ name|int
 name|numRetries
 parameter_list|,
 name|long
-name|time
+name|timeMillis
 parameter_list|,
 name|boolean
 name|suspended

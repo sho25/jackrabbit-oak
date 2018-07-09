@@ -24,6 +24,7 @@ specifier|public
 interface|interface
 name|DocumentNodeStoreStatsCollector
 block|{
+comment|/**      * Report to the collector that a background read was done.      *      * @param stats the stats for the background read operation.      */
 name|void
 name|doneBackgroundRead
 parameter_list|(
@@ -31,6 +32,7 @@ name|BackgroundReadStats
 name|stats
 parameter_list|)
 function_decl|;
+comment|/**      * Report to the collector that a background update was done.      *      * @param stats the stats for the background update operation.      */
 name|void
 name|doneBackgroundUpdate
 parameter_list|(
@@ -38,10 +40,20 @@ name|BackgroundWriteStats
 name|stats
 parameter_list|)
 function_decl|;
+comment|/**      * Report to the collector that a lease update was done.      *      * @param timeMicros the time in microseconds it took to update the lease.      */
+name|void
+name|doneLeaseUpdate
+parameter_list|(
+name|long
+name|timeMicros
+parameter_list|)
+function_decl|;
+comment|/**      * Report to the collector that a branch commit was done.      */
 name|void
 name|doneBranchCommit
 parameter_list|()
 function_decl|;
+comment|/**      * Report to the collector that a branch was merged.      *      * @param numCommits the number of branch commits merged.      */
 name|void
 name|doneMergeBranch
 parameter_list|(
@@ -49,6 +61,7 @@ name|int
 name|numCommits
 parameter_list|)
 function_decl|;
+comment|/**      * Reports to the collector that a merge was done.      *      * @param numRetries the number of retries that were necessary.      * @param timeMillis the time in milliseconds it took to merge the changes.      * @param suspended whether the merge had to be suspended.      * @param exclusive whether the merge was holding an exclusive lock.      */
 name|void
 name|doneMerge
 parameter_list|(
@@ -56,7 +69,7 @@ name|int
 name|numRetries
 parameter_list|,
 name|long
-name|time
+name|timeMillis
 parameter_list|,
 name|boolean
 name|suspended
@@ -65,6 +78,7 @@ name|boolean
 name|exclusive
 parameter_list|)
 function_decl|;
+comment|/**      * Reports to the collector that a merge failed.      *      * @param numRetries the number of retries that were done.      * @param timeMillis the time in milliseconds it took to attempt the merge.      * @param suspended whether the merge had to be suspended.      * @param exclusive whether the merge was holding an exclusive lock.      */
 name|void
 name|failedMerge
 parameter_list|(
@@ -72,7 +86,7 @@ name|int
 name|numRetries
 parameter_list|,
 name|long
-name|time
+name|timeMillis
 parameter_list|,
 name|boolean
 name|suspended
