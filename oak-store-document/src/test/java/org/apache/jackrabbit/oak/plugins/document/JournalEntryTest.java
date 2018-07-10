@@ -2277,6 +2277,10 @@ name|r2
 argument_list|,
 name|store
 argument_list|,
+name|e
+lambda|->
+block|{}
+argument_list|,
 literal|null
 argument_list|,
 literal|null

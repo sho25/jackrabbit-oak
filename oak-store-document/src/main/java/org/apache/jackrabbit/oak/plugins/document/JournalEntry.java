@@ -91,6 +91,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Consumer
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -1179,13 +1191,17 @@ name|to
 argument_list|,
 name|store
 argument_list|,
+name|entry
+lambda|->
+block|{}
+argument_list|,
 literal|null
 argument_list|,
 literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Reads external changes between the two given revisions (with the same      * clusterId) from the journal and appends the paths therein to the provided      * sorter. If there is no exact match of a journal entry for the given      * {@code to} revision, this method will fill external changes from the      * next higher journal entry that contains the revision. The {@code path}      * defines the scope of the external changes that should be read and filled      * into the {@code sorter}.      *      * @param externalChanges the StringSort to which all externally changed paths      *               between the provided revisions will be added      * @param invalidate the StringSort to which paths of documents will be      *               added that must be invalidated if cached.      * @param path   a path that defines the scope of the changes to read.      * @param from   the lower bound of the revision range (exclusive).      * @param to     the upper bound of the revision range (inclusive).      * @param store  the document store to query.      * @param changeSetBuilder a nullable ChangeSetBuilder to collect changes from      *                         the JournalEntry between given revisions      * @param journalPropertyHandler a nullable JournalPropertyHandler to read      *                               stored journal properties for builders from JournalPropertyService      * @return the number of journal entries read from the store.      * @throws IOException if adding external changes to the {@code StringSort}      *          instances fails with an exception.      */
+comment|/**      * Reads external changes between the two given revisions (with the same      * clusterId) from the journal and appends the paths therein to the provided      * sorter. If there is no exact match of a journal entry for the given      * {@code to} revision, this method will fill external changes from the      * next higher journal entry that contains the revision. The {@code path}      * defines the scope of the external changes that should be read and filled      * into the {@code sorter}.      *      * @param externalChanges the StringSort to which all externally changed paths      *               between the provided revisions will be added      * @param invalidate the StringSort to which paths of documents will be      *               added that must be invalidated if cached.      * @param path   a path that defines the scope of the changes to read.      * @param from   the lower bound of the revision range (exclusive).      * @param to     the upper bound of the revision range (inclusive).      * @param store  the document store to query.      * @param journalEntryConsumer a consumer for the processed journal entries.      * @param changeSetBuilder a nullable ChangeSetBuilder to collect changes from      *                         the JournalEntry between given revisions      * @param journalPropertyHandler a nullable JournalPropertyHandler to read      *                               stored journal properties for builders from JournalPropertyService      * @return the number of journal entries read from the store.      * @throws IOException if adding external changes to the {@code StringSort}      *          instances fails with an exception.      */
 specifier|static
 name|int
 name|fillExternalChanges
@@ -1219,6 +1235,14 @@ annotation|@
 name|Nonnull
 name|DocumentStore
 name|store
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Consumer
+argument_list|<
+name|JournalEntry
+argument_list|>
+name|journalEntryConsumer
 parameter_list|,
 annotation|@
 name|Nullable
@@ -1435,6 +1459,8 @@ argument_list|,
 name|journalPropertyHandler
 argument_list|,
 name|d
+argument_list|,
+name|journalEntryConsumer
 argument_list|)
 expr_stmt|;
 block|}
@@ -1551,6 +1577,8 @@ argument_list|,
 name|journalPropertyHandler
 argument_list|,
 name|d
+argument_list|,
+name|journalEntryConsumer
 argument_list|)
 expr_stmt|;
 name|numEntries
@@ -1592,8 +1620,18 @@ name|Nullable
 name|JournalPropertyHandler
 name|journalPropertyHandler
 parameter_list|,
+annotation|@
+name|Nonnull
 name|JournalEntry
 name|d
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Consumer
+argument_list|<
+name|JournalEntry
+argument_list|>
+name|journalEntryConsumer
 parameter_list|)
 throws|throws
 name|IOException
@@ -1644,6 +1682,13 @@ name|d
 argument_list|)
 expr_stmt|;
 block|}
+name|journalEntryConsumer
+operator|.
+name|accept
+argument_list|(
+name|d
+argument_list|)
+expr_stmt|;
 block|}
 name|long
 name|getRevisionTimestamp

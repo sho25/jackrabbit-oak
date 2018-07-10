@@ -67,6 +67,9 @@ decl_stmt|;
 name|long
 name|numExternalChanges
 decl_stmt|;
+name|long
+name|externalChangesLag
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -124,6 +127,10 @@ operator|+
 literal|", numExternalChanges:"
 operator|+
 name|numExternalChanges
+operator|+
+literal|", externalChangesLag:"
+operator|+
+name|externalChangesLag
 operator|+
 literal|", totalReadTime:"
 operator|+

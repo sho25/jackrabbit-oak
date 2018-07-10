@@ -1037,6 +1037,10 @@ operator|.
 name|getDocumentStore
 argument_list|()
 argument_list|,
+name|entry
+lambda|->
+block|{}
+argument_list|,
 literal|null
 argument_list|,
 literal|null

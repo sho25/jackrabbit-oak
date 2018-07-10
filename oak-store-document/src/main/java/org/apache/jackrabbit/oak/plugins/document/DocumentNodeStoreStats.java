@@ -181,6 +181,13 @@ name|BGR_NUM_CHANGES_HISTO
 init|=
 literal|"DOCUMENT_NS_BGR_NUM_CHANGES_HISTO"
 decl_stmt|;
+specifier|static
+specifier|final
+name|String
+name|BGR_LAG
+init|=
+literal|"DOCUMENT_NS_BGR_LAG"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -342,6 +349,11 @@ specifier|private
 specifier|final
 name|HistogramStats
 name|numChangesHisto
+decl_stmt|;
+specifier|private
+specifier|final
+name|MeterStats
+name|changesLag
 decl_stmt|;
 comment|// background update
 specifier|private
@@ -533,6 +545,19 @@ operator|.
 name|getHistogram
 argument_list|(
 name|BGR_NUM_CHANGES_HISTO
+argument_list|,
+name|StatsOptions
+operator|.
+name|METRICS_ONLY
+argument_list|)
+expr_stmt|;
+name|changesLag
+operator|=
+name|sp
+operator|.
+name|getMeter
+argument_list|(
+name|BGR_LAG
 argument_list|,
 name|StatsOptions
 operator|.
@@ -856,6 +881,16 @@ argument_list|(
 name|stats
 operator|.
 name|numExternalChanges
+argument_list|)
+expr_stmt|;
+comment|// update lag of external changes
+name|changesLag
+operator|.
+name|mark
+argument_list|(
+name|stats
+operator|.
+name|externalChangesLag
 argument_list|)
 expr_stmt|;
 block|}
