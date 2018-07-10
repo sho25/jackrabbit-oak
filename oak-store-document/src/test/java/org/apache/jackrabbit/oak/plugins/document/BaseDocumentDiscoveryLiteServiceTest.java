@@ -73,9 +73,9 @@ name|org
 operator|.
 name|mockito
 operator|.
-name|Matchers
+name|ArgumentMatchers
 operator|.
-name|anyObject
+name|any
 import|;
 end_import
 
@@ -85,7 +85,7 @@ name|org
 operator|.
 name|mockito
 operator|.
-name|Matchers
+name|ArgumentMatchers
 operator|.
 name|anyString
 import|;
@@ -172,16 +172,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Properties
 import|;
 end_import
 
@@ -3307,13 +3297,10 @@ argument_list|(
 name|anyString
 argument_list|()
 argument_list|,
-name|anyObject
+name|any
 argument_list|()
 argument_list|,
-operator|(
-name|Properties
-operator|)
-name|anyObject
+name|any
 argument_list|()
 argument_list|)
 argument_list|)
