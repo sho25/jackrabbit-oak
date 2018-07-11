@@ -159,16 +159,6 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nonnegative
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
 name|Nonnull
 import|;
 end_import
@@ -630,8 +620,6 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Invalidate document with given keys iff their modification stamps are      * different as passed in the map.      *      * @param modStamps map where key is the document id and the value is the      *                  modification stamps.      * @return number of invalidated entries      */
-annotation|@
-name|Nonnegative
 specifier|public
 name|int
 name|invalidateOutdated
