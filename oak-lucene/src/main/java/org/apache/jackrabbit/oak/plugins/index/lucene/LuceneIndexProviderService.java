@@ -1460,6 +1460,10 @@ argument_list|,
 name|description
 operator|=
 literal|"Enable copying of Lucene index to local file system to improve query performance"
+argument_list|,
+name|propertyPrivate
+operator|=
+literal|true
 argument_list|)
 specifier|private
 specifier|static
@@ -1512,6 +1516,10 @@ argument_list|,
 name|description
 operator|=
 literal|"Enable copying of Lucene index to local file system to improve index writer performance"
+argument_list|,
+name|propertyPrivate
+operator|=
+literal|true
 argument_list|)
 specifier|private
 specifier|static
