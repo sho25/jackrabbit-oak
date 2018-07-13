@@ -141,9 +141,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-name|SegmentNodeStoreFactory
-operator|.
-name|ROLE
+literal|"role"
 argument_list|,
 literal|"some-role"
 argument_list|)
@@ -152,9 +150,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-name|SegmentNodeStoreFactory
-operator|.
-name|CUSTOM_BLOB_STORE
+literal|"customBlobStore"
 argument_list|,
 name|customBlobStore
 argument_list|)
@@ -163,9 +159,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-name|SegmentNodeStoreService
-operator|.
-name|REPOSITORY_HOME_DIRECTORY
+literal|"repository.home"
 argument_list|,
 name|folder
 operator|.
