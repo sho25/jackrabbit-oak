@@ -65,6 +65,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|Closer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1012,6 +1026,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+specifier|final
+name|Closer
+name|closer
+init|=
+name|Closer
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
 name|NodeBuilder
 name|suggesterStatus
 init|=
@@ -1025,6 +1048,10 @@ decl_stmt|;
 name|DirectoryReader
 name|reader
 init|=
+name|closer
+operator|.
+name|register
+argument_list|(
 name|DirectoryReader
 operator|.
 name|open
@@ -1032,6 +1059,7 @@ argument_list|(
 name|writer
 argument_list|,
 literal|false
+argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1051,6 +1079,8 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+comment|// updateSuggester would close the directory (directly or via lookup)
+comment|// closer.register(suggestDirectory);
 name|boolean
 name|updated
 init|=
@@ -1067,6 +1097,8 @@ argument_list|,
 name|analyzer
 argument_list|,
 name|reader
+argument_list|,
+name|closer
 argument_list|)
 expr_stmt|;
 name|suggesterStatus
@@ -1110,12 +1142,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|suggestDirectory
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|reader
+name|closer
 operator|.
 name|close
 argument_list|()
