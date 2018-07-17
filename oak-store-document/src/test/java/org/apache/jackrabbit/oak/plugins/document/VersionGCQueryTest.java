@@ -507,6 +507,13 @@ argument_list|(
 name|store
 argument_list|)
 operator|.
+name|setLeaseCheckMode
+argument_list|(
+name|LeaseCheckMode
+operator|.
+name|LENIENT
+argument_list|)
+operator|.
 name|setAsyncDelay
 argument_list|(
 literal|0

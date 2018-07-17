@@ -304,6 +304,13 @@ argument_list|(
 name|clock
 argument_list|)
 operator|.
+name|setLeaseCheckMode
+argument_list|(
+name|LeaseCheckMode
+operator|.
+name|LENIENT
+argument_list|)
+operator|.
 name|setDocumentStore
 argument_list|(
 name|fixture

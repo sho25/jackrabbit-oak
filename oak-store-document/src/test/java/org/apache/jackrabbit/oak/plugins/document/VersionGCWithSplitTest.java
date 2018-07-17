@@ -77,16 +77,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -505,6 +495,11 @@ annotation|@
 name|Parameterized
 operator|.
 name|Parameters
+argument_list|(
+name|name
+operator|=
+literal|"{0}"
+argument_list|)
 specifier|public
 specifier|static
 name|java
@@ -629,6 +624,13 @@ operator|.
 name|clock
 argument_list|(
 name|clock
+argument_list|)
+operator|.
+name|setLeaseCheckMode
+argument_list|(
+name|LeaseCheckMode
+operator|.
+name|LENIENT
 argument_list|)
 operator|.
 name|setDocumentStore
@@ -1232,8 +1234,6 @@ operator|=
 name|base
 expr_stmt|;
 block|}
-annotation|@
-name|Nonnull
 annotation|@
 name|Override
 specifier|public

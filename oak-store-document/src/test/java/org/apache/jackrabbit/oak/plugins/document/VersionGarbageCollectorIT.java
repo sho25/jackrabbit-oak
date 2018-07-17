@@ -4409,6 +4409,13 @@ argument_list|(
 literal|2
 argument_list|)
 operator|.
+name|setLeaseCheckMode
+argument_list|(
+name|LeaseCheckMode
+operator|.
+name|LENIENT
+argument_list|)
+operator|.
 name|clock
 argument_list|(
 name|clock

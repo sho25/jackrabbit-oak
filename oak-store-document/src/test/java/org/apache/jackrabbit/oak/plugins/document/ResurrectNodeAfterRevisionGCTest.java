@@ -471,6 +471,13 @@ argument_list|(
 name|c
 argument_list|)
 operator|.
+name|setLeaseCheckMode
+argument_list|(
+name|LeaseCheckMode
+operator|.
+name|LENIENT
+argument_list|)
+operator|.
 name|setClusterId
 argument_list|(
 literal|1
@@ -503,6 +510,13 @@ operator|.
 name|clock
 argument_list|(
 name|c
+argument_list|)
+operator|.
+name|setLeaseCheckMode
+argument_list|(
+name|LeaseCheckMode
+operator|.
+name|LENIENT
 argument_list|)
 operator|.
 name|setClusterId

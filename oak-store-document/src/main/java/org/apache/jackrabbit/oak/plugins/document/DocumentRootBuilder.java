@@ -36,6 +36,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|OAK
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -552,9 +570,44 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+try|try
+block|{
+comment|// we need to throw a CommitFailedException if purge fails
+comment|// here with a DocumentStoreException
 name|purge
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|DocumentStoreException
+name|e
+parameter_list|)
+block|{
+name|String
+name|msg
+init|=
+literal|"Merge failed to purge changes: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+decl_stmt|;
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+name|OAK
+argument_list|,
+literal|1
+argument_list|,
+name|msg
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 name|boolean
 name|success
 init|=
