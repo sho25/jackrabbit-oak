@@ -593,6 +593,16 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"STRICT"
+argument_list|,
+name|config
+operator|.
+name|leaseCheckMode
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test

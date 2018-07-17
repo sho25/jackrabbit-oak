@@ -922,6 +922,63 @@ block|{
 literal|"/"
 block|}
 expr_stmt|;
+annotation|@
+name|AttributeDefinition
+argument_list|(
+name|name
+operator|=
+literal|"Lease check mode"
+argument_list|,
+name|description
+operator|=
+literal|"The lease check mode. 'STRICT' is the default and "
+operator|+
+literal|"will stop the DocumentNodeStore as soon as the lease "
+operator|+
+literal|"expires. 'LENIENT' will give the background lease update "
+operator|+
+literal|"a chance to renew the lease even when the lease expired. "
+operator|+
+literal|"This mode is only recommended for development, e.g. when "
+operator|+
+literal|"debugging an application and the lease may expire when "
+operator|+
+literal|"the JVM is stopped at a breakpoint."
+argument_list|,
+name|options
+operator|=
+block|{
+annotation|@
+name|Option
+argument_list|(
+name|label
+operator|=
+literal|"STRICT"
+argument_list|,
+name|value
+operator|=
+literal|"STRICT"
+argument_list|)
+block|,
+annotation|@
+name|Option
+argument_list|(
+name|label
+operator|=
+literal|"LENIENT"
+argument_list|,
+name|value
+operator|=
+literal|"LENIENT"
+argument_list|)
+block|}
+argument_list|)
+name|String
+name|leaseCheckMode
+parameter_list|()
+default|default
+literal|"STRICT"
+function_decl|;
 block|}
 end_annotation_defn
 

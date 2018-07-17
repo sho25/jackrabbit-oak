@@ -1924,6 +1924,14 @@ name|setDocumentStore
 argument_list|(
 name|store
 argument_list|)
+comment|// use lenient mode because tests use a virtual clock
+operator|.
+name|setLeaseCheckMode
+argument_list|(
+name|LeaseCheckMode
+operator|.
+name|LENIENT
+argument_list|)
 operator|.
 name|setClusterId
 argument_list|(

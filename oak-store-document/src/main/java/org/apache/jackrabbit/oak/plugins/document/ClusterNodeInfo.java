@@ -281,6 +281,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -727,6 +737,22 @@ literal|"false"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|/**      * Default lease check mode is strict, unless disabled via system property.      */
+specifier|static
+specifier|final
+name|LeaseCheckMode
+name|DEFAULT_LEASE_CHECK_MODE
+init|=
+name|DEFAULT_LEASE_CHECK_DISABLED
+condition|?
+name|LeaseCheckMode
+operator|.
+name|DISABLED
+else|:
+name|LeaseCheckMode
+operator|.
+name|STRICT
+decl_stmt|;
 comment|/** OAK-3399 : max number of times we're doing a 1sec retry loop just before declaring lease failure **/
 specifier|private
 specifier|static
@@ -841,10 +867,12 @@ name|leaseCheckFailed
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * OAK-2739: for development it would be useful to be able to disable the      * lease check - hence there's a system property that does that:      * oak.documentMK.disableLeaseCheck      */
+comment|/**      * Default lease check mode is strict, unless disabled by      */
 specifier|private
-name|boolean
-name|leaseCheckDisabled
+name|LeaseCheckMode
+name|leaseCheckMode
+init|=
+name|DEFAULT_LEASE_CHECK_MODE
 decl_stmt|;
 comment|/**      * In memory flag indicating that this ClusterNode is entry is new and is being added to      * DocumentStore for the first time      *      * If false then it indicates that a previous entry for current node existed and that is being      * reused      */
 specifier|private
@@ -930,27 +958,33 @@ name|newEntry
 operator|=
 name|newEntry
 expr_stmt|;
-name|this
-operator|.
-name|leaseCheckDisabled
-operator|=
-name|DEFAULT_LEASE_CHECK_DISABLED
-expr_stmt|;
 block|}
-specifier|public
 name|void
-name|setLeaseCheckDisabled
+name|setLeaseCheckMode
 parameter_list|(
-name|boolean
-name|leaseCheckDisabled
+annotation|@
+name|Nonnull
+name|LeaseCheckMode
+name|mode
 parameter_list|)
 block|{
 name|this
 operator|.
-name|leaseCheckDisabled
+name|leaseCheckMode
 operator|=
-name|leaseCheckDisabled
+name|checkNotNull
+argument_list|(
+name|mode
+argument_list|)
 expr_stmt|;
+block|}
+name|LeaseCheckMode
+name|getLeaseCheckMode
+parameter_list|()
+block|{
+return|return
+name|leaseCheckMode
+return|;
 block|}
 specifier|public
 name|int
@@ -2450,7 +2484,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Checks if the lease for this cluster node is still valid, otherwise      * throws a {@link DocumentStoreException}. This method will not throw the      * exception immediately when the lease expires, but instead give the lease      * update thread a last chance of 5 seconds to renew it. This allows the      * DocumentNodeStore to recover from an expired lease caused by a system      * put to sleep or a JVM in debug mode.      *      * @throws DocumentStoreException if the lease expired.      */
+comment|/**      * Checks if the lease for this cluster node is still valid, otherwise      * throws a {@link DocumentStoreException}. Depending on the      * {@link LeaseCheckMode} this method will not throw the      * exception immediately when the lease expires. If the mode is set to      * {@link LeaseCheckMode#LENIENT}, then this method will give the lease      * update thread a last chance of 5 seconds to renew it. This allows the      * DocumentNodeStore to recover from an expired lease caused by a system      * put to sleep or a JVM in debug mode.      *      * @throws DocumentStoreException if the lease expired.      */
 specifier|public
 name|void
 name|performLeaseCheck
@@ -2460,7 +2494,11 @@ name|DocumentStoreException
 block|{
 if|if
 condition|(
-name|leaseCheckDisabled
+name|leaseCheckMode
+operator|==
+name|LeaseCheckMode
+operator|.
+name|DISABLED
 condition|)
 block|{
 comment|// if leaseCheckDisabled is set we never do the check, so return fast
@@ -2501,13 +2539,11 @@ comment|// OAK-3238 put the barrier 1/3 of 60sec=20sec before the end
 comment|// OAK-3398 keeps this the same but uses an explicit leaseFailureMargin for this
 if|if
 condition|(
+operator|!
+name|isLeaseExpired
+argument_list|(
 name|now
-operator|<
-operator|(
-name|leaseEndTime
-operator|-
-name|leaseFailureMargin
-operator|)
+argument_list|)
 condition|)
 block|{
 comment|// then all is good
@@ -2536,6 +2572,21 @@ literal|true
 argument_list|)
 throw|;
 block|}
+comment|// only retry in lenient mode, fail immediately in strict mode
+specifier|final
+name|int
+name|maxRetries
+init|=
+name|leaseCheckMode
+operator|==
+name|LeaseCheckMode
+operator|.
+name|STRICT
+condition|?
+literal|0
+else|:
+name|MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -2545,7 +2596,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE
+name|maxRetries
 condition|;
 name|i
 operator|++
@@ -2558,13 +2609,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|isLeaseExpired
+argument_list|(
 name|now
-operator|<
-operator|(
-name|leaseEndTime
-operator|-
-name|leaseFailureMargin
-operator|)
+argument_list|)
 condition|)
 block|{
 comment|// if lease is OK here, then there was a race
@@ -2645,7 +2694,7 @@ literal|"waiting %dms to retry (up to another %d times...)"
 argument_list|,
 name|waitForMs
 argument_list|,
-name|MAX_RETRY_SLEEPS_BEFORE_LEASE_FAILURE
+name|maxRetries
 operator|-
 literal|1
 operator|-
@@ -2769,6 +2818,25 @@ argument_list|(
 name|errorMsg
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Returns {@code true} if the lease for this cluster node info should be      * considered expired given the current {@code time}. This method takes      * {@link #leaseFailureMargin} into account and will return {@code true}      * even before the passed {@code time} is beyond the {@link #leaseEndTime}.      *      * @param time the current time to check against the lease end.      * @return {@code true} if the lease is considered expired, {@code false}      *         otherwise.      */
+specifier|private
+name|boolean
+name|isLeaseExpired
+parameter_list|(
+name|long
+name|time
+parameter_list|)
+block|{
+return|return
+name|time
+operator|>=
+operator|(
+name|leaseEndTime
+operator|-
+name|leaseFailureMargin
+operator|)
+return|;
 block|}
 specifier|private
 name|void
@@ -2958,6 +3026,120 @@ operator|+
 name|leaseTime
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|leaseCheckMode
+operator|==
+name|LeaseCheckMode
+operator|.
+name|STRICT
+condition|)
+block|{
+comment|// check whether the lease is still valid and can be renewed
+if|if
+condition|(
+name|isLeaseExpired
+argument_list|(
+name|now
+argument_list|)
+condition|)
+block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+if|if
+condition|(
+name|leaseCheckFailed
+condition|)
+block|{
+comment|// some other thread already noticed and calls failure handler
+throw|throw
+name|leaseExpired
+argument_list|(
+name|LEASE_CHECK_FAILED_MSG
+argument_list|,
+literal|true
+argument_list|)
+throw|;
+block|}
+comment|// current thread calls failure handler
+comment|// outside synchronized block
+name|leaseCheckFailed
+operator|=
+literal|true
+expr_stmt|;
+block|}
+specifier|final
+name|String
+name|errorMsg
+init|=
+name|LEASE_CHECK_FAILED_MSG
+operator|+
+literal|" (mode: "
+operator|+
+name|leaseCheckMode
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|",leaseEndTime: "
+operator|+
+name|leaseEndTime
+operator|+
+literal|", leaseTime: "
+operator|+
+name|leaseTime
+operator|+
+literal|", leaseFailureMargin: "
+operator|+
+name|leaseFailureMargin
+operator|+
+literal|", lease check end time (leaseEndTime-leaseFailureMargin): "
+operator|+
+operator|(
+name|leaseEndTime
+operator|-
+name|leaseFailureMargin
+operator|)
+operator|+
+literal|", now: "
+operator|+
+name|now
+operator|+
+literal|", remaining: "
+operator|+
+operator|(
+operator|(
+name|leaseEndTime
+operator|-
+name|leaseFailureMargin
+operator|)
+operator|-
+name|now
+operator|)
+operator|+
+literal|") Need to stop oak-store-document/DocumentNodeStoreService."
+decl_stmt|;
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|errorMsg
+argument_list|)
+expr_stmt|;
+name|handleLeaseFailure
+argument_list|(
+name|errorMsg
+argument_list|)
+expr_stmt|;
+comment|// should never be reached: handleLeaseFailure throws a DocumentStoreException
+return|return
+literal|false
+return|;
+block|}
+block|}
 name|UpdateOp
 name|update
 init|=
@@ -2982,8 +3164,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|leaseCheckDisabled
+name|leaseCheckMode
+operator|!=
+name|LeaseCheckMode
+operator|.
+name|DISABLED
 condition|)
 block|{
 comment|// if leaseCheckDisabled, then we just update the lease without
@@ -3900,6 +4085,15 @@ operator|+
 literal|"readWriteMode: "
 operator|+
 name|readWriteMode
+operator|+
+literal|",\n"
+operator|+
+literal|"leaseCheckMode: "
+operator|+
+name|leaseCheckMode
+operator|.
+name|name
+argument_list|()
 operator|+
 literal|",\n"
 operator|+
