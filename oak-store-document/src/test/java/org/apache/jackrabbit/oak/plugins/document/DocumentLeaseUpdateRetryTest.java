@@ -200,9 +200,11 @@ argument_list|(
 name|ds
 argument_list|)
 operator|.
-name|setLeaseCheck
+name|setLeaseCheckMode
 argument_list|(
-literal|true
+name|LeaseCheckMode
+operator|.
+name|LENIENT
 argument_list|)
 operator|.
 name|getNodeStore

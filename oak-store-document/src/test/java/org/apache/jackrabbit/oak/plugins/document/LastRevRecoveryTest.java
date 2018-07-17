@@ -523,10 +523,12 @@ argument_list|)
 expr_stmt|;
 comment|// disable lease check because we fiddle with the virtual clock
 specifier|final
-name|boolean
+name|LeaseCheckMode
 name|leaseCheck
 init|=
-literal|false
+name|LeaseCheckMode
+operator|.
+name|DISABLED
 decl_stmt|;
 name|sharedStore
 operator|=
@@ -546,7 +548,7 @@ argument_list|(
 name|clock
 argument_list|)
 operator|.
-name|setLeaseCheck
+name|setLeaseCheckMode
 argument_list|(
 name|leaseCheck
 argument_list|)
@@ -588,7 +590,7 @@ argument_list|(
 name|clock
 argument_list|)
 operator|.
-name|setLeaseCheck
+name|setLeaseCheckMode
 argument_list|(
 name|leaseCheck
 argument_list|)
@@ -1812,9 +1814,11 @@ argument_list|(
 name|clock
 argument_list|)
 operator|.
-name|setLeaseCheck
+name|setLeaseCheckMode
 argument_list|(
-literal|false
+name|LeaseCheckMode
+operator|.
+name|DISABLED
 argument_list|)
 operator|.
 name|setAsyncDelay

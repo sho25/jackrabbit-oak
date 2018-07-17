@@ -991,9 +991,11 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|setLeaseCheck
+name|setLeaseCheckMode
 argument_list|(
-literal|false
+name|LeaseCheckMode
+operator|.
+name|DISABLED
 argument_list|)
 operator|.
 name|getNodeStore

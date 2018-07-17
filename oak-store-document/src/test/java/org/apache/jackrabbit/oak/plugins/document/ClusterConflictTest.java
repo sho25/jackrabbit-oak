@@ -516,9 +516,11 @@ argument_list|(
 name|store
 argument_list|)
 operator|.
-name|setLeaseCheck
+name|setLeaseCheckMode
 argument_list|(
-literal|false
+name|LeaseCheckMode
+operator|.
+name|DISABLED
 argument_list|)
 comment|// disabled for debugging purposes
 operator|.

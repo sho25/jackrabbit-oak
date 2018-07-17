@@ -474,9 +474,11 @@ argument_list|)
 argument_list|)
 argument_list|)
 operator|.
-name|setLeaseCheck
+name|setLeaseCheckMode
 argument_list|(
-literal|false
+name|LeaseCheckMode
+operator|.
+name|DISABLED
 argument_list|)
 operator|.
 name|setClusterId
@@ -523,9 +525,11 @@ argument_list|)
 argument_list|)
 argument_list|)
 operator|.
-name|setLeaseCheck
+name|setLeaseCheckMode
 argument_list|(
-literal|false
+name|LeaseCheckMode
+operator|.
+name|DISABLED
 argument_list|)
 operator|.
 name|setClusterId
