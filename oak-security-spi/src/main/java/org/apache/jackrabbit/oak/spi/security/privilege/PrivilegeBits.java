@@ -53,26 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -170,6 +150,30 @@ operator|.
 name|permission
 operator|.
 name|Permissions
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -861,14 +865,14 @@ return|;
 block|}
 comment|/**      * Creates a mutable instance of privilege bits.      *      * @param base The base for this mutable instance.      * @return a new instance of privilege bits.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|PrivilegeBits
 name|getInstance
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 modifier|...
 name|base
@@ -902,7 +906,7 @@ return|;
 block|}
 comment|/**      * Get or create an instance of privilege bits for a specific property that      * stores privileges.      *      * @param property The property state storing privilege bits information.      * @return an instance of {@code PrivilegeBits}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|PrivilegeBits
@@ -1012,7 +1016,7 @@ block|}
 block|}
 comment|/**      * Get or create an instance of privilege bits for a privilege definition.      *      * @param tree A privilege definition tree or the privileges root.      * @return an instance of {@code PrivilegeBits}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|PrivilegeBits
@@ -1102,7 +1106,7 @@ block|}
 block|}
 comment|/**      * Internal method to get or create an instance of privilege bits for the      * specified long value.      *      * @param bits A long value.      * @return an instance of {@code PrivilegeBits}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|PrivilegeBits
@@ -1147,7 +1151,7 @@ block|}
 block|}
 comment|/**      * Internal method to create a new instance of {@code PrivilegeBits}.      *      * @param bits A long array.      * @return an instance of {@code PrivilegeBits}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|PrivilegeBits
@@ -1177,12 +1181,12 @@ name|long
 name|calculatePermissions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|bits
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|parentBits
 parameter_list|,
@@ -1714,7 +1718,7 @@ return|;
 block|}
 comment|/**      * Returns an unmodifiable instance.      *      * @return an unmodifiable {@code PrivilegeBits} instance.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|unmodifiable
@@ -1801,7 +1805,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|modifiable
@@ -1834,7 +1838,7 @@ name|boolean
 name|includes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|otherBits
 parameter_list|)
@@ -1852,13 +1856,13 @@ return|;
 block|}
 comment|/**      * Adds the other privilege bits to this instance.      *      * @param other The other privilege bits to be added.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|add
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|other
 parameter_list|)
@@ -1898,13 +1902,13 @@ block|}
 block|}
 comment|/**      * Subtracts the other PrivilegeBits from the this.<br>      * If the specified bits do not intersect with this, it isn't modified.<br>      * If {@code this} is included in {@code other} {@link #EMPTY empty}      * privilege bits is returned.      *      * @param other The other privilege bits to be subtracted from this instance.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|diff
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|other
 parameter_list|)
@@ -1944,18 +1948,18 @@ block|}
 block|}
 comment|/**      * Subtracts the {@code b} from {@code a} and adds the result (diff)      * to this instance.      *      * @param a An instance of privilege bits.      * @param b An instance of privilege bits.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|addDifference
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|a
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|b
 parameter_list|)
@@ -1999,13 +2003,13 @@ block|}
 block|}
 comment|/**      * Retains the elements in this {@code PrivilegeBits} that are contained in      * the specified other {@code PrivilegeBits}.      *      * @param other Other privilege bits.      * @return This modifiable instance of privilege bits modified such it contains      * only privileges that were also contained in the {@code other} instance.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|retain
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|other
 parameter_list|)
@@ -2044,7 +2048,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyState
 name|asPropertyState
@@ -2078,7 +2082,7 @@ return|;
 block|}
 comment|/**      * Method to calculate the next privilege bits associated with this instance.      *      * @return an new instance of {@code PrivilegeBits}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|nextBits
@@ -2115,7 +2119,7 @@ name|void
 name|writeTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)

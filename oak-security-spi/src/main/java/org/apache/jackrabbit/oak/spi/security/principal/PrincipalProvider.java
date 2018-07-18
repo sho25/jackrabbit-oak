@@ -75,29 +75,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -130,19 +124,19 @@ name|PrincipalProvider
 block|{
 comment|/**      * Returns the principal with the specified name or {@code null} if the      * principal does not exist.      *      * @param principalName the name of the principal to retrieve      * @return return the requested principal or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Principal
 name|getPrincipal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|principalName
 parameter_list|)
 function_decl|;
 comment|/**      * Returns an iterator over all group principals for which the given      * principal is either direct or indirect member of. Thus for any principal      * returned in the iterator {@link java.security.acl.Group#isMember(Principal)}      * must return {@code true}.      *<p>      * Example:<br>      * If Principal is member of Group A, and Group A is member of      * Group B, this method will return Group A and Group B.      *      * @deprecated use {@link #getMembershipPrincipals(Principal)}      * @param principal the principal to return it's membership from.      * @return an iterator returning all groups the given principal is member of.      * @see java.security.acl.Group#isMember(java.security.Principal)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|default
 name|Set
 argument_list|<
@@ -151,7 +145,7 @@ argument_list|>
 name|getGroupMembership
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -165,7 +159,7 @@ return|;
 block|}
 comment|/**      * Returns an iterator over all group principals for which the given      * principal is either direct or indirect member of. Thus for any principal      * returned in the iterator {@link org.apache.jackrabbit.api.security.principal.GroupPrincipal#isMember(Principal)}      * must return {@code true}.      *<p>      * Example:<br>      * If Principal is member of Group A, and Group A is member of      * Group B, this method will return Group A and Group B.      *      * @param principal the principal to return it's membership from.      * @return an iterator returning all groups the given principal is member of.      * @see org.apache.jackrabbit.api.security.principal.GroupPrincipal#isMember(java.security.Principal)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|default
 name|Set
 argument_list|<
@@ -174,7 +168,7 @@ argument_list|>
 name|getMembershipPrincipals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -193,7 +187,7 @@ return|;
 block|}
 comment|/**      * Tries to resolve the specified {@code userID} to a valid principal and      * it's group membership. This method returns an empty set if the      * specified ID cannot be resolved.      *      * @param userID A userID.      * @return The set of principals associated with the specified {@code userID}      * or an empty set if it cannot be resolved.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|?
@@ -203,14 +197,14 @@ argument_list|>
 name|getPrincipals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userID
 parameter_list|)
 function_decl|;
 comment|/**      * Find the principals that match the specified nameHint and search type.      *      * @param nameHint A name hint to use for non-exact matching.      * @param searchType Limit the search to certain types of principals. Valid      * values are any of      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_ALL}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_GROUP}</li></ul>      * @return An iterator of principals.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|?
@@ -230,7 +224,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Find all principals that match the search type.      *      * @param searchType Limit the search to certain types of principals. Valid      * values are any of      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_ALL}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_GROUP}</li></ul>      * @return An iterator of principals.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|?

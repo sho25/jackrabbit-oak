@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -99,6 +89,18 @@ name|SecurityConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface for the privilege management configuration.  */
 end_comment
@@ -117,7 +119,7 @@ literal|"org.apache.jackrabbit.oak.privilege"
 decl_stmt|;
 comment|/**      * Creates a new instance of {@link PrivilegeManager}.      *      * @param root           The root for which the privilege manager should be created.      * @param namePathMapper The name and path mapper to be used.      * @return A new {@code PrivilegeManager}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeManager
 name|getPrivilegeManager
 parameter_list|(

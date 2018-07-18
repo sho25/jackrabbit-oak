@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -63,6 +53,18 @@ name|TokenCredentials
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * The {@code TokenInfo} provides data associated with a login token and  * basic methods to verify the validity of token credentials at given  * point in time.  */
 end_comment
@@ -74,14 +76,14 @@ name|TokenInfo
 block|{
 comment|/**      * Returns the ID of the user associated with this token info object.      *      * @return the ID of the user.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getUserId
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the login token.      *      * @return the login token.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getToken
 parameter_list|()
@@ -112,14 +114,14 @@ name|boolean
 name|matches
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TokenCredentials
 name|tokenCredentials
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the private attributes stored with this info object.      *      * @return the private attributes stored with this info object.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -131,7 +133,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the public attributes stored with this info object.      *      * @return the public attributes stored with this info object.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String

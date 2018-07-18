@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -81,6 +71,18 @@ name|PropertyValues
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code RestrictionImpl}  */
 end_comment
@@ -112,12 +114,12 @@ specifier|public
 name|RestrictionImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RestrictionDefinition
 name|def
 parameter_list|)
@@ -139,7 +141,7 @@ specifier|public
 name|RestrictionImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|,
@@ -176,7 +178,7 @@ expr_stmt|;
 block|}
 comment|//--------------------------------------------------------< Restriction>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -189,7 +191,7 @@ name|definition
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

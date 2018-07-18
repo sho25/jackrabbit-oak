@@ -95,26 +95,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -140,6 +120,30 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -188,7 +192,7 @@ name|PrincipalProvider
 name|of
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|PrincipalProvider
@@ -252,7 +256,7 @@ name|Principal
 name|getPrincipal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|principalName
 parameter_list|)
@@ -304,7 +308,7 @@ name|principal
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -315,7 +319,7 @@ argument_list|>
 name|getGroupMembership
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -328,7 +332,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -339,7 +343,7 @@ argument_list|>
 name|getMembershipPrincipals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -381,7 +385,7 @@ name|groups
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -392,7 +396,7 @@ argument_list|>
 name|getPrincipals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userID
 parameter_list|)
@@ -436,7 +440,7 @@ name|principals
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -536,7 +540,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

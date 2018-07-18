@@ -53,16 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -140,6 +130,18 @@ operator|.
 name|principal
 operator|.
 name|PrincipalManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -283,7 +285,7 @@ name|void
 name|assertIterator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|?
@@ -293,7 +295,7 @@ argument_list|>
 name|expected
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|?
@@ -912,7 +914,7 @@ name|void
 name|assertMembership
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrincipalManager
 name|mgr
 parameter_list|,

@@ -27,16 +27,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|security
 operator|.
 name|auth
@@ -81,6 +71,18 @@ name|SecurityProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Callback implementation used to access the repository. It allows to set and  * get the {@code ContentRepository} and the name of the workspace for which  * the login applies. In addition it provides access to a {@link SecurityProvider}  * associated with the content repository.  */
 end_comment
@@ -105,7 +107,7 @@ name|String
 name|workspaceName
 decl_stmt|;
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getWorkspaceName
@@ -131,7 +133,7 @@ name|workspaceName
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|ContentRepository
 name|getContentRepository
@@ -157,7 +159,7 @@ name|contentRepository
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|SecurityProvider
 name|getSecurityProvider

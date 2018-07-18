@@ -23,16 +23,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -79,6 +69,18 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code ProtectedPropertyImporter} is in charge of importing single  * properties with a protected {@code PropertyDefinition}.  *  * @see ProtectedNodeImporter for an abstract class used to import protected  * nodes and the subtree below them.  */
 end_comment
@@ -95,17 +97,17 @@ name|boolean
 name|handlePropInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropInfo
 name|protectedPropInfo
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyDefinition
 name|def
 parameter_list|)
@@ -117,7 +119,7 @@ name|void
 name|propertiesCompleted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|protectedParent
 parameter_list|)

@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -61,6 +51,18 @@ name|SecurityProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code AuthorizableActionProvider} is used to provide {@code AuthorizableAction}s  * for each instance of {@code UserManager}.  *  * @since OAK 1.0  */
 end_comment
@@ -71,7 +73,7 @@ interface|interface
 name|AuthorizableActionProvider
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|?
@@ -81,7 +83,7 @@ argument_list|>
 name|getAuthorizableActions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)

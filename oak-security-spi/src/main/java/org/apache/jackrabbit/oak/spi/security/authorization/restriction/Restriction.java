@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -49,6 +39,18 @@ name|PropertyState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A {@code Restriction} object represents a "live" restriction object that  * has been created using the Jackrabbit specific extensions of the  * {@link javax.jcr.security.AccessControlEntry AccessControlEntry} interface.  *  * @see org.apache.jackrabbit.api.security.JackrabbitAccessControlList#addEntry(java.security.Principal, javax.jcr.security.Privilege[], boolean, java.util.Map)  */
 end_comment
@@ -60,14 +62,14 @@ name|Restriction
 block|{
 comment|/**      * Returns the underlying restriction definition.      *      * @return the restriction definition that applies to this restriction.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RestrictionDefinition
 name|getDefinition
 parameter_list|()
 function_decl|;
 comment|/**      * The OAK property state associated with this restriction.      *      * @return An {@code PropertyState}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|getProperty
 parameter_list|()

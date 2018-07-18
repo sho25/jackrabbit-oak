@@ -85,26 +85,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -277,6 +257,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -391,7 +395,7 @@ expr_stmt|;
 block|}
 comment|/**      * Returns the root tree for all privilege definitions stored in the content      * repository.      *      * @return The privileges root.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Tree
 name|getPrivilegesTree
@@ -408,13 +412,13 @@ return|;
 block|}
 comment|/**      * Returns the bits for the given privilege names      * @param privilegeNames the names      * @return the privilege bits      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|getBits
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|privilegeNames
@@ -452,13 +456,13 @@ block|}
 block|}
 comment|/**      * Returns the bits for the given privilege names      * @param privilegeNames the names      * @return the privilege bits      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|getBits
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -606,19 +610,19 @@ return|;
 block|}
 comment|/**      * Returns the bits for the given privileges      *      * @param privileges the privileges      * @param nameMapper the name mapper      * @return the privilege bits      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|getBits
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Privilege
 index|[]
 name|privileges
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|NameMapper
 name|nameMapper
@@ -721,7 +725,7 @@ return|;
 block|}
 comment|/**      * Resolve the given privilege bits to a set of privilege names.      *      * @param privilegeBits An instance of privilege bits.      * @return The names of the registered privileges associated with the given      *         bits. Any bits that don't have a corresponding privilege definition will      *         be ignored.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<
@@ -995,7 +999,7 @@ block|}
 block|}
 comment|/**      * Return the names of the non-aggregate privileges corresponding to the      * specified {@code privilegeNames}.      *      * @param privilegeNames The privilege names to be converted.      * @return The names of the non-aggregate privileges that correspond to the      * given {@code privilegeNames}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1004,7 +1008,7 @@ argument_list|>
 name|getAggregatedPrivilegeNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|privilegeNames
@@ -1184,7 +1188,7 @@ argument_list|>
 name|extractAggregatedPrivileges
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -1216,7 +1220,7 @@ argument_list|>
 name|resolveBuiltInAggregation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|privilegeName
 parameter_list|)
@@ -1320,7 +1324,7 @@ argument_list|>
 argument_list|>
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1486,12 +1490,12 @@ name|void
 name|fillAggregation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|privTree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|ImmutableSet
 operator|.
 name|Builder

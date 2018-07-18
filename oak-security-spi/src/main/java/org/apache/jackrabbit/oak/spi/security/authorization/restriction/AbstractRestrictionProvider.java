@@ -87,26 +87,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|NamespaceRegistry
@@ -317,6 +297,30 @@ name|Text
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_class
 specifier|public
 specifier|abstract
@@ -340,7 +344,7 @@ specifier|public
 name|AbstractRestrictionProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -366,7 +370,7 @@ expr_stmt|;
 block|}
 comment|//------------------------------------------------< RestrictionProvider>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -411,7 +415,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -422,12 +426,12 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Value
 name|value
 parameter_list|)
@@ -543,7 +547,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -554,12 +558,12 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Value
 modifier|...
 name|values
@@ -706,7 +710,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -720,7 +724,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -912,7 +916,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -1125,13 +1129,13 @@ return|;
 block|}
 comment|/**      * Returns the tree that contains the restriction of the specified      * ACE tree.      *      * @param aceTree The ACE tree for which the restrictions are being read.      * @return The tree storing the restriction information.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|Tree
 name|getRestrictionsTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -1167,7 +1171,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|RestrictionDefinition
 name|getDefinition
@@ -1178,7 +1182,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|)
@@ -1235,7 +1239,7 @@ name|definition
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Restriction
 name|createRestriction
@@ -1258,7 +1262,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Map
 argument_list|<

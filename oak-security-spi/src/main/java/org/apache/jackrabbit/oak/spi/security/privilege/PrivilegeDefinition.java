@@ -33,11 +33,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -52,7 +54,7 @@ name|PrivilegeDefinition
 block|{
 comment|/**      * The internal name of this privilege.      *      * @return the internal name.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getName
 parameter_list|()
@@ -64,7 +66,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the internal names of the declared aggregated privileges or      * an empty array if the privilege defined by this definition isn't      * an aggregate.      *      * @return The internal names of the aggregated privileges or an empty array.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String

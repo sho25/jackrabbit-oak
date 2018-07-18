@@ -31,11 +31,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -156,7 +158,7 @@ return|;
 block|}
 comment|/**      * Returns the names of the mixin types of the node being imported.      *      * @return mixin type names      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<

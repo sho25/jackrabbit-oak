@@ -25,16 +25,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -87,6 +77,18 @@ name|SecurityConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * This implementation of the authentication configuration provides login  * contexts that accept any credentials and doesn't validate specified  * workspace name. Retrieving a {@code TokenProvider} is not supported.  */
 end_comment
@@ -103,7 +105,7 @@ implements|implements
 name|AuthenticationConfiguration
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -120,7 +122,7 @@ name|LoginContextProvider
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

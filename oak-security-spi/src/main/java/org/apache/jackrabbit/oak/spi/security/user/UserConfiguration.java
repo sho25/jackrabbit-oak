@@ -23,26 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -129,6 +109,30 @@ name|PrincipalProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Configuration interface for user management.  */
 end_comment
@@ -147,7 +151,7 @@ literal|"org.apache.jackrabbit.oak.user"
 decl_stmt|;
 comment|/**      * Create a new {@code UserManager} instance      *      * @param root The root associated with the user manager.      * @param namePathMapper A name path mapper used for conversion of jcr/oak names/paths.      * @return a new instance of {@code UserManager}      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|getUserManager
 parameter_list|(
@@ -165,12 +169,12 @@ name|PrincipalProvider
 name|getUserPrincipalProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)

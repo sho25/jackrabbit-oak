@@ -27,16 +27,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|security
 operator|.
 name|auth
@@ -65,6 +55,18 @@ name|SecurityProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Callback implementation to set and get the {@link SecurityProvider}.  */
 end_comment
@@ -81,7 +83,7 @@ name|SecurityProvider
 name|securityProvider
 decl_stmt|;
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|SecurityProvider
 name|getSecurityProvider

@@ -21,19 +21,23 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -66,7 +70,7 @@ name|SecurityProvider
 block|{
 comment|/**      * Allows to retrieve the configuration parameters associated with a      * given {@link org.apache.jackrabbit.oak.spi.security.SecurityConfiguration}      * accessible by this provider. If the specified name is {@code null}      * the global config parameters will be returned.      *      * @param name The {@link SecurityConfiguration#getName() name} of the security      * configuration.      * @return The configuration parameters associated with the {@code SecurityConfiguration}      * identified by the specified name. If the specified name is {@code null}      * the global config parameters will be returned.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|getParameters
 parameter_list|(
@@ -78,7 +82,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns all available {@link org.apache.jackrabbit.oak.spi.security.SecurityConfiguration}s.      *      * @return the available {@link org.apache.jackrabbit.oak.spi.security.SecurityConfiguration}s.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|?
@@ -90,7 +94,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the security configuration of the specified {@code configClass}.      *      * @param configClass The class of the configuration to retrieve.      * @param<T>      * @return The desired security configuration.      */
 annotation|@
-name|Nonnull
+name|NotNull
 argument_list|<
 name|T
 argument_list|>
@@ -98,7 +102,7 @@ name|T
 name|getConfiguration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Class
 argument_list|<
 name|T

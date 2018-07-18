@@ -21,21 +21,25 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -45,7 +49,7 @@ interface|interface
 name|TreeTypeAware
 block|{
 annotation|@
-name|CheckForNull
+name|Nullable
 name|TreeType
 name|getType
 parameter_list|()
@@ -54,7 +58,7 @@ name|void
 name|setType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeType
 name|type
 parameter_list|)

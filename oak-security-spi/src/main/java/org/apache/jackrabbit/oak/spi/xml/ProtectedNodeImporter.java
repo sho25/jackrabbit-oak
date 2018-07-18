@@ -33,16 +33,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -77,6 +67,18 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code ProtectedNodeImporter} provides means to import protected  * {@code Node}s and the subtree defined below such nodes.  *<p>  * The import of a protected tree is started by the {@code Importer} by  * calling {@link #start(Tree)}. If the {@code ProtectedNodeImporter}  * is able to deal with that type of protected node, it is in charge of dealing  * with all subsequent child {@code NodeInfo}s present below the protected  * parent until {@link #end(Tree)} is called. The latter resets this importer  * and makes it available for another protected import.  */
 end_comment
@@ -93,7 +95,7 @@ name|boolean
 name|start
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|protectedParent
 parameter_list|)
@@ -107,7 +109,7 @@ name|void
 name|end
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|protectedParent
 parameter_list|)
@@ -123,12 +125,12 @@ name|void
 name|startChildInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeInfo
 name|childInfo
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|PropInfo

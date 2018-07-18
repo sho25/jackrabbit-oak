@@ -47,26 +47,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -111,6 +91,30 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface to manage the supported restrictions present with a given access  * control and permission management implementation.  *  * @since OAK 1.0  */
 end_comment
@@ -122,7 +126,7 @@ name|RestrictionProvider
 block|{
 comment|/**      * Returns the restriction definitions supported by this provider implementation      * at the specified path.      *      * @param oakPath The path of the access controlled tree. A {@code null}      * path indicates that the supported restrictions for repository level      * policies should be returned.      * @return The set of supported restrictions at the given path.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|RestrictionDefinition
@@ -137,7 +141,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Creates a new single valued restriction for the specified parameters.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param oakName The name of the restriction.      * @param value The value of the restriction.      * @return A new restriction instance.      * @throws AccessControlException If no matching restriction definition      * exists for the specified parameters.      * @throws RepositoryException If another error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Restriction
 name|createRestriction
 parameter_list|(
@@ -147,12 +151,12 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Value
 name|value
 parameter_list|)
@@ -163,7 +167,7 @@ name|RepositoryException
 function_decl|;
 comment|/**      * Creates a new multi valued restriction for the specified parameters.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param oakName The name of the restriction.      * @param values The values of the restriction.      * @return A new restriction instance.      * @throws AccessControlException If no matching restriction definition      * exists for the specified parameters.      * @throws RepositoryException If another error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Restriction
 name|createRestriction
 parameter_list|(
@@ -173,12 +177,12 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Value
 modifier|...
 name|values
@@ -190,7 +194,7 @@ name|RepositoryException
 function_decl|;
 comment|/**      * Read the valid restrictions stored in the specified ACE tree.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param aceTree The tree corresponding to an ACE that may contain      * restrictions.      * @return The valid restrictions stored with the specified tree or an      * empty set.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Restriction
@@ -203,7 +207,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -237,7 +241,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -248,7 +252,7 @@ name|RepositoryException
 function_decl|;
 comment|/**      * Creates the {@link RestrictionPattern} for the restriction information      * stored with specified tree.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param tree The tree holding the restriction information.      * @return A new {@link RestrictionPattern} representing the restriction      * information present with the given tree.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RestrictionPattern
 name|getPattern
 parameter_list|(
@@ -258,14 +262,14 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
 function_decl|;
 comment|/**      * Creates the {@link RestrictionPattern} for the specified restrictions.      * The implementation should ignore all restrictions present in the specified      * set that it doesn't support.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param restrictions the restrictions.      * @return A new {@link RestrictionPattern} representing those restrictions      * of the specified set that are supported by this implementation.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RestrictionPattern
 name|getPattern
 parameter_list|(
@@ -275,7 +279,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Restriction
@@ -292,7 +296,7 @@ name|RestrictionProvider
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -316,7 +320,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -329,12 +333,12 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Value
 name|value
 parameter_list|)
@@ -352,7 +356,7 @@ argument_list|)
 throw|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -365,12 +369,12 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Value
 modifier|...
 name|values
@@ -389,7 +393,7 @@ argument_list|)
 throw|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -405,7 +409,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -450,7 +454,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -458,7 +462,7 @@ block|{
 comment|// nothing to do
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -471,7 +475,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -483,7 +487,7 @@ name|EMPTY
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -496,7 +500,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Restriction

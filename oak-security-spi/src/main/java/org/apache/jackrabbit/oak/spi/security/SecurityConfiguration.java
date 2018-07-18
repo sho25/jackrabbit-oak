@@ -61,11 +61,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -222,35 +224,35 @@ name|SecurityConfiguration
 block|{
 comment|/**      * Returns the name of this security configuration.      *      * @return The name of this configuration.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the configuration parameters associated with this security      * configuration instance. If no parameters are present      * {@link ConfigurationParameters#EMPTY} should be returned.      *      * @return The configuration parameters.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|getParameters
 parameter_list|()
 function_decl|;
 comment|/**      * Returns a workspace initializer for this security configuration. If this      * configuration doesn't require any specific workspace initialization      * {@link WorkspaceInitializer#DEFAULT} should be returned.      *      * @return An instance of {@code WorkspaceInitializer}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|WorkspaceInitializer
 name|getWorkspaceInitializer
 parameter_list|()
 function_decl|;
 comment|/**      * Returns a repository initializer for this security configuration. If this      * configuration doesn't require any specific repository initialization      * {@link RepositoryInitializer#DEFAULT} should be returned.      *      * @return An instance of {@code RepositoryInitializer}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RepositoryInitializer
 name|getRepositoryInitializer
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the list of commit hooks that need to be executed for the      * specified workspace name.      *      * @param workspaceName The name of the workspace.      * @return A list of commit hooks.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|?
@@ -260,14 +262,14 @@ argument_list|>
 name|getCommitHooks
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the list of validators that need to be executed for the specified      * workspace name.      *      * @param workspaceName The name of the workspace.      * @param principals The set of principals associated with the subject      * that is committing modifications.      * @param moveTracker The move tracker associated with the commit.      * @return A list of validators.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|?
@@ -277,12 +279,12 @@ argument_list|>
 name|getValidators
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -290,14 +292,14 @@ argument_list|>
 name|principals
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|MoveTracker
 name|moveTracker
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the list of conflict handlers available for this security configuration.      *      * @return A list of {@link org.apache.jackrabbit.oak.spi.commit.ThreeWayConflictHandler}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|ThreeWayConflictHandler
@@ -307,7 +309,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return The list of protected item importers defined by this configuration.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|ProtectedItemImporter
@@ -317,7 +319,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return The context defined by this configuration.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Context
 name|getContext
 parameter_list|()
@@ -329,7 +331,7 @@ implements|implements
 name|SecurityConfiguration
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -342,7 +344,7 @@ literal|"org.apache.jackrabbit.oak"
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -357,7 +359,7 @@ name|EMPTY
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -372,7 +374,7 @@ name|DEFAULT
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -387,7 +389,7 @@ name|DEFAULT
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -400,7 +402,7 @@ argument_list|>
 name|getCommitHooks
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|)
@@ -413,7 +415,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -426,12 +428,12 @@ argument_list|>
 name|getValidators
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -439,7 +441,7 @@ argument_list|>
 name|principals
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|MoveTracker
 name|moveTracker
 parameter_list|)
@@ -452,7 +454,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -471,7 +473,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -490,7 +492,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

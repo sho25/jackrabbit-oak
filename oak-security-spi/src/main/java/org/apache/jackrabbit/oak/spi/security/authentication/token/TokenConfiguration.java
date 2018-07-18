@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -67,6 +57,18 @@ name|SecurityConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Configuration for token management.  */
 end_comment
@@ -85,7 +87,7 @@ literal|"org.apache.jackrabbit.oak.authentication.token"
 decl_stmt|;
 comment|/**      * Returns a new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      *      * @param root The target root.      * @return A new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|TokenProvider
 name|getTokenProvider
 parameter_list|(

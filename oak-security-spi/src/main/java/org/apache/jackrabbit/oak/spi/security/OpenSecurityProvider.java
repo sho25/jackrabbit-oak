@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -133,6 +113,30 @@ name|OpenAuthorizationConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Rudimentary {@code SecurityProvider} implementation that allow every subject  * to authenticate and grants it full access everywhere. Note, that this  * implementation does not provide support for other security related features  * such as e.g. user or access control management.  *  * @see org.apache.jackrabbit.oak.spi.security.authentication.OpenAuthenticationConfiguration  * @see org.apache.jackrabbit.oak.spi.security.authorization.OpenAuthorizationConfiguration  */
 end_comment
@@ -145,7 +149,7 @@ implements|implements
 name|SecurityProvider
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -165,7 +169,7 @@ name|EMPTY
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -194,7 +198,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -205,7 +209,7 @@ name|T
 name|getConfiguration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Class
 argument_list|<
 name|T

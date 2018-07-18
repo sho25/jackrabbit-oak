@@ -27,16 +27,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -57,6 +47,18 @@ name|Callback
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Callback implementation to retrieve {@code Credentials}.  */
 end_comment
@@ -74,7 +76,7 @@ name|credentials
 decl_stmt|;
 comment|/**      * Returns the {@link Credentials} that have been set before using      * {@link #setCredentials(javax.jcr.Credentials)}.      *      * @return The {@link Credentials} to be used for authentication or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Credentials
 name|getCredentials

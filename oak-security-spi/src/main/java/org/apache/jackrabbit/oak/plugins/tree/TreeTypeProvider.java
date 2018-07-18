@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -93,6 +83,18 @@ name|VersionConstants
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 specifier|public
 specifier|final
@@ -108,7 +110,7 @@ specifier|public
 name|TreeTypeProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeContext
 name|authorizationContext
 parameter_list|)
@@ -125,7 +127,7 @@ name|TreeType
 name|getType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -216,12 +218,12 @@ name|TreeType
 name|getType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeType
 name|parentType
 parameter_list|)
@@ -313,7 +315,7 @@ name|TreeType
 name|internalGetType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -378,12 +380,12 @@ name|TreeType
 name|internalGetType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeType
 name|parentType
 parameter_list|)
@@ -459,12 +461,12 @@ name|TreeType
 name|internalGetType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)

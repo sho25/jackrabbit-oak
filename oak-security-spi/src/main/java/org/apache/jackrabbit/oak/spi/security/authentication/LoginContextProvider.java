@@ -25,16 +25,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -55,6 +45,18 @@ name|LoginException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Configurable provider taking care of building login contexts for  * the desired authentication mechanism.  *<p>  * This provider defines a single method {@link #getLoginContext(javax.jcr.Credentials, String)}  * that takes the {@link Credentials credentials} and the workspace name such  * as passed to {@link org.apache.jackrabbit.oak.api.ContentRepository#login(javax.jcr.Credentials, String)}.  */
 end_comment
@@ -66,7 +68,7 @@ name|LoginContextProvider
 block|{
 comment|/**      * Returns a new login context instance for handling authentication.      *      * @param credentials The {@link Credentials} such as passed to the      * {@link org.apache.jackrabbit.oak.api.ContentRepository#login(javax.jcr.Credentials, String) login}      * method of the repository.      * @param workspaceName The name of the workspace that is being accessed by      * the login called.      * @return a new login context      * @throws LoginException If an error occurs while creating a new context.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|LoginContext
 name|getLoginContext
 parameter_list|(

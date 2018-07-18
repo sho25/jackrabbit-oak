@@ -37,16 +37,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -121,6 +111,18 @@ name|NamePathMapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Authorizable action attempting to clear all group membership before removing  * the specified authorizable. If {@link Group#removeMember(Authorizable)}  * fails due to lack of permissions {@link AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)}  * throws an exception and removing the specified authorizable will be aborted.  */
 end_comment
@@ -140,17 +142,17 @@ name|void
 name|onRemove
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)

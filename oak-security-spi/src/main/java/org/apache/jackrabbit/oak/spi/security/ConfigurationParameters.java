@@ -125,36 +125,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -194,6 +164,30 @@ operator|.
 name|commons
 operator|.
 name|PropertiesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -292,7 +286,7 @@ specifier|private
 name|ConfigurationParameters
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -316,14 +310,14 @@ expr_stmt|;
 block|}
 comment|/**      * Creates a new configuration parameters instance by merging all {@code params} sequentially.      * I.e. property define in subsequent arguments overwrite the ones before.      *      * @param params source parameters to merge      * @return merged configuration parameters or {@link #EMPTY} if all source params were empty.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ConfigurationParameters
 name|of
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 modifier|...
 name|params
@@ -389,14 +383,14 @@ return|;
 block|}
 comment|/**      * Creates new a configuration parameters instance by copying the given properties.      * @param properties source properties      * @return configuration parameters or {@link #EMPTY} if the source properties were empty.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ConfigurationParameters
 name|of
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Properties
 name|properties
 parameter_list|)
@@ -480,14 +474,14 @@ return|;
 block|}
 comment|/**      * Creates new a configuration parameters instance by copying the given properties.      * @param properties source properties      * @return configuration parameters or {@link #EMPTY} if the source properties were empty.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ConfigurationParameters
 name|of
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Dictionary
 argument_list|<
 name|String
@@ -584,14 +578,14 @@ return|;
 block|}
 comment|/**      * Creates new a configuration parameters instance by copying the given map.      * @param map source map      * @return configuration parameters or {@link #EMPTY} if the source map was empty.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ConfigurationParameters
 name|of
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|?
@@ -698,19 +692,19 @@ return|;
 block|}
 comment|/**      * Creates new a single valued configuration parameters instance from the      * given key and value.      *      * @param key The key      * @param value The value      * @return a new instance of configuration parameters.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ConfigurationParameters
 name|of
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Object
 name|value
 parameter_list|)
@@ -732,29 +726,29 @@ return|;
 block|}
 comment|/**      * Creates new a configuration parameters instance from the      * given key and value pairs.      *      * @param key1 The key of the first pair.      * @param value1 The value of the first pair      * @param key2 The key of the second pair.      * @param value2 The value of the second pair.      * @return a new instance of configuration parameters.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ConfigurationParameters
 name|of
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key1
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Object
 name|value1
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key2
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Object
 name|value2
 parameter_list|)
@@ -784,7 +778,7 @@ name|boolean
 name|contains
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key
 parameter_list|)
@@ -800,7 +794,7 @@ return|;
 block|}
 comment|/**      * Returns the value of the configuration entry with the given {@code key}      * applying the following rules:      *      *<ul>      *<li>If this instance doesn't contain a configuration entry with that      *     key the specified {@code defaultValue} will be returned.</li>      *<li>If {@code defaultValue} is {@code null} the original value will      *     be returned.</li>      *<li>If the configured value is {@code null} this method will always      *     return {@code null}.</li>      *<li>If neither {@code defaultValue} nor the configured value is      *     {@code null} an attempt is made to convert the configured value to      *     match the type of the default value.</li>      *</ul>      *      * @param key The name of the configuration option.      * @param defaultValue The default value to return if no such entry exists      * or to use for conversion.      * @param targetClass The target class      * @return The original or converted configuration value or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 parameter_list|<
 name|T
@@ -809,7 +803,7 @@ name|T
 name|getConfigValue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key
 parameter_list|,
@@ -862,7 +856,7 @@ block|}
 block|}
 comment|/**      * Returns the value of the configuration entry with the given {@code key}      * applying the following rules:      *      *<ul>      *<li>If this instance doesn't contain a configuration entry with that      *     key, or if the entry is {@code null}, the specified {@code defaultValue} will be returned.</li>      *<li>If the configured value is not {@code null} an attempt is made to convert the configured value to      *     match the type of the default value.</li>      *</ul>      *      * @param key The name of the configuration option.      * @param defaultValue The default value to return if no such entry exists      * or to use for conversion.      * @return The original or converted configuration value or {@code null}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 parameter_list|<
 name|T
@@ -871,12 +865,12 @@ name|T
 name|getConfigValue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|defaultValue
 parameter_list|)
@@ -1630,7 +1624,7 @@ name|void
 name|putAll
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|?
@@ -1668,7 +1662,7 @@ expr_stmt|;
 block|}
 comment|/**      * {@inheritDoc}      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1688,7 +1682,7 @@ return|;
 block|}
 comment|/**      * {@inheritDoc}      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1708,7 +1702,7 @@ return|;
 block|}
 comment|/**      * {@inheritDoc}      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1869,7 +1863,7 @@ block|}
 block|}
 comment|/**          * Parses a value string into a duration. the String has the following format:          * {@code          *<xmp>          *     format:= (value [ unit ])+;          *     value:= float value;          *     unit: "ms" | "s" | "m" | "h" | "d";          *</xmp>          *          * Example:          *<xmp>          *     "100", "100ms" : 100 milliseconds          *     "1s 50ms": 1050 milliseconds          *     "1.5d":  1 1/2 days == 36 hours.          *</xmp>          * }          *          * @param str the string to parse          * @return the new Milliseconds object or null.          */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|Milliseconds
@@ -2065,7 +2059,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|Milliseconds
@@ -2077,7 +2071,7 @@ name|String
 name|str
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Milliseconds
 name|defaultValue
 parameter_list|)

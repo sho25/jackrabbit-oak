@@ -35,26 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -85,6 +65,30 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Aggregates of a list of {@link RestrictionPattern}s into a single pattern.  * The implementations of {@code matches} returns {@code true} if all aggregated  * patterns successfully validate the given parameters and returns {@code false}  * as soon as the first aggregated pattern returns {@code false}.  */
 end_comment
@@ -109,7 +113,7 @@ specifier|public
 name|CompositePattern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|RestrictionPattern
@@ -130,7 +134,7 @@ name|RestrictionPattern
 name|create
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|RestrictionPattern
@@ -182,7 +186,7 @@ name|boolean
 name|matches
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -229,7 +233,7 @@ name|boolean
 name|matches
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)

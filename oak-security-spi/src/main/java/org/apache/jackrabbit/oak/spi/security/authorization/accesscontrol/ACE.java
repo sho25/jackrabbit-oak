@@ -67,26 +67,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -275,6 +255,30 @@ name|PrivilegeBits
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Default implementation of the {@code JackrabbitAccessControlEntry} interface.  * It asserts that the basic contract is fulfilled but does perform any additional  * validation on the principal, the privileges or the specified restrictions.  */
 end_comment
@@ -417,7 +421,7 @@ expr_stmt|;
 block|}
 comment|//--------------------------------------------------------------------------
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PrivilegeBits
 name|getPrivilegeBits
@@ -428,7 +432,7 @@ name|privilegeBits
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<
@@ -443,7 +447,7 @@ return|;
 block|}
 comment|//-------------------------------------------------< AccessControlEntry>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -468,7 +472,7 @@ name|isAllow
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -529,7 +533,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -652,7 +656,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public

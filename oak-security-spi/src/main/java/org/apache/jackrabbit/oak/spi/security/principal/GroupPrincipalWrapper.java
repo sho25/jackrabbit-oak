@@ -55,16 +55,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -78,6 +68,18 @@ operator|.
 name|principal
 operator|.
 name|GroupPrincipal
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -99,7 +101,7 @@ decl_stmt|;
 name|GroupPrincipalWrapper
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Group
 name|group
 parameter_list|)

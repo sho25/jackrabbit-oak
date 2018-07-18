@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -49,6 +39,18 @@ name|Type
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * The {@code RestrictionDefinition} interface provides methods for  * discovering the static definition of any additional policy-internal refinements  * of the access control definitions. These restrictions are intended to be  * used wherever effects are too fine-grained to be exposed through privilege  * discovery or define a different restriction mechanism. A common case may be  * to provide finer-grained access restrictions to individual properties or  * child nodes of the node to which the policy applies e.g. by means of  * naming patterns or node type restrictions.  *  * Its subclass {@code Restriction} adds methods that are relevant only when  * a given restriction is "live" after being created and applied to a given  * policy.  *  * @see org.apache.jackrabbit.api.security.JackrabbitAccessControlList#getRestrictionNames()  * @see org.apache.jackrabbit.api.security.JackrabbitAccessControlList#getRestrictionType(String)  */
 end_comment
@@ -60,14 +62,14 @@ name|RestrictionDefinition
 block|{
 comment|/**      * The internal oak name of this restriction definition.      *      * @return The oak name.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * The required type as defined by this definition.      *      * @return The required type which must be a valid {@link javax.jcr.PropertyType}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Type
 argument_list|<
 name|?

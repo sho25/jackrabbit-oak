@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -113,6 +103,18 @@ name|TreeUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Privilege management related utility methods.  */
 end_comment
@@ -131,7 +133,7 @@ parameter_list|()
 block|{}
 comment|/**      * Returns the root tree for all privilege definitions stored in the content      * repository.      *      * @return The privileges root.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|Tree
@@ -152,14 +154,14 @@ return|;
 block|}
 comment|/**      * Reads the privilege definition stored in the specified definition tree.      * Note, that this utility does not check the existence nor the node type      * of the specified tree.      *      * @param definitionTree An existing tree storing a privilege definition.      * @return A new instance of {@code PrivilegeDefinition}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|PrivilegeDefinition
 name|readDefinition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|definitionTree
 parameter_list|)

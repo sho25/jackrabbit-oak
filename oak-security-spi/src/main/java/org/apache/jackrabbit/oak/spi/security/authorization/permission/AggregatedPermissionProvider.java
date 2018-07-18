@@ -25,26 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -131,6 +111,30 @@ name|PrivilegeBits
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Extension of the {@link PermissionProvider} interface that allows it to be  * used in combination with other provider implementations.  */
 end_comment
@@ -144,7 +148,7 @@ name|PermissionProvider
 block|{
 comment|/**      * Allows to determined the set or subset of privileges evaluated by the      * implementing permission provider for the specified tree or at the repository      * level in case the specified {@code tree} is {@code null}.      *      * If the given {@code privilegeBits} is {@code null} an implementation returns      * the complete set that is covered by the provider; otherwise the supported      * subset of the specified {@code privilegeBits} is returned.      *      * Returning {@link PrivilegeBits#EMPTY} indicates that this implementation      * is not in charge of evaluating the specified privileges and thus will      * be ignored while computing the composite result of      * {@link PermissionProvider#getPrivileges(org.apache.jackrabbit.oak.api.Tree)}      * or {@link PermissionProvider#hasPrivileges(org.apache.jackrabbit.oak.api.Tree, String...)}.      *      * @param tree The tree for which the privileges will be evaluated or {@code null}      * for repository level privileges.      * @param privilegeBits The privilege(s) to be tested or {@code null}      * @return The set of privileges or the subset of the given {@code privilegeBits}      * that are supported and evaluated by the implementation at the given {@code tree}      * represented as {@code PrivilegeBits}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrivilegeBits
 name|supportedPrivileges
 parameter_list|(
@@ -182,7 +186,7 @@ name|long
 name|supportedPermissions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeLocation
 name|location
 parameter_list|,
@@ -195,7 +199,7 @@ name|long
 name|supportedPermissions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|treePermission
 parameter_list|,
@@ -213,7 +217,7 @@ name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeLocation
 name|location
 parameter_list|,
@@ -223,22 +227,22 @@ parameter_list|)
 function_decl|;
 comment|/**      * Return the {@code TreePermission} for the set of {@code Principal}s associated      * with this provider at the specified {@code tree} with the given {@code type}.      *      * @param tree The tree for which the {@code TreePermission} object should be built.      * @param type The type of this tree.      * @param parentPermission The {@code TreePermission} object that has been      * obtained before for the parent tree.      * @return The {@code TreePermission} object for the specified {@code tree}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|getTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeType
 name|type
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|parentPermission
 parameter_list|)

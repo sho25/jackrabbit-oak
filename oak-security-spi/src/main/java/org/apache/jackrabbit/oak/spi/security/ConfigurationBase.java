@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -62,6 +52,18 @@ operator|.
 name|tree
 operator|.
 name|TreeProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -109,12 +111,12 @@ specifier|public
 name|ConfigurationBase
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|config
 parameter_list|)
@@ -133,7 +135,7 @@ name|config
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SecurityProvider
 name|getSecurityProvider
@@ -161,7 +163,7 @@ name|void
 name|setSecurityProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)
@@ -178,7 +180,7 @@ name|void
 name|setParameters
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|config
 parameter_list|)
@@ -195,7 +197,7 @@ name|void
 name|setRootProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RootProvider
 name|rootProvider
 parameter_list|)
@@ -208,7 +210,7 @@ name|rootProvider
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|RootProvider
 name|getRootProvider
@@ -238,7 +240,7 @@ name|void
 name|setTreeProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeProvider
 name|treeProvider
 parameter_list|)
@@ -251,7 +253,7 @@ name|treeProvider
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|TreeProvider
 name|getTreeProvider
@@ -278,7 +280,7 @@ return|;
 block|}
 comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

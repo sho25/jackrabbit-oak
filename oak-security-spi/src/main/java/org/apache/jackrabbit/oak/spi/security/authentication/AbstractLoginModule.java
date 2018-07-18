@@ -105,26 +105,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -549,6 +529,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -894,7 +898,7 @@ block|}
 block|}
 comment|/**      * @return A set of supported credential classes.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|abstract
 name|Set
@@ -906,7 +910,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Tries to retrieve valid (supported) Credentials:      *<ol>      *<li>using a {@link CredentialsCallback},</li>      *<li>looking for a {@link #SHARED_KEY_CREDENTIALS} entry in the      * shared state (see also {@link #getSharedCredentials()} and finally by</li>      *<li>searching for valid credentials in the subject.</li>      *</ol>      *      * @return Valid (supported) credentials or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|Credentials
 name|getCredentials
@@ -1146,7 +1150,7 @@ return|;
 block|}
 comment|/**      * @return The credentials passed to this login module with the shared state.      * @see #SHARED_KEY_CREDENTIALS      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|Credentials
 name|getSharedCredentials
@@ -1213,7 +1217,7 @@ return|;
 block|}
 comment|/**      * @return The login name passed to this login module with the shared state.      * @see #SHARED_KEY_LOGIN_NAME      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 name|getSharedLoginName
@@ -1250,7 +1254,7 @@ block|}
 block|}
 comment|/**      * @return The pre authenticated login or {@code null}      * @see #SHARED_KEY_PRE_AUTH_LOGIN      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|PreAuthenticatedLogin
 name|getSharedPreAuthLogin
@@ -1289,7 +1293,7 @@ block|}
 block|}
 comment|/**      * Tries to obtain the {@code SecurityProvider} object from the callback      * handler using a new SecurityProviderCallback and keeps the value as      * private field. If the callback handler isn't able to handle the      * SecurityProviderCallback this method returns {@code null}.      *      * @return The {@code SecurityProvider} associated with this      *         {@code LoginModule} or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|SecurityProvider
 name|getSecurityProvider
@@ -1358,7 +1362,7 @@ return|;
 block|}
 comment|/**      * Tries to obtain the {@code Whiteboard} object from the callback      * handler using a new WhiteboardCallback and keeps the value as      * private field. If the callback handler isn't able to handle the      * WhiteboardCallback this method returns {@code null}.      *      * @return The {@code Whiteboard} associated with this      *         {@code LoginModule} or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|Whiteboard
 name|getWhiteboard
@@ -1427,7 +1431,7 @@ return|;
 block|}
 comment|/**      * Tries to obtain a {@code Root} object from the callback handler using      * a new RepositoryCallback and keeps the value as private field.      * If the callback handler isn't able to handle the RepositoryCallback      * this method returns {@code null}.      *      * @return The {@code Root} associated with this {@code LoginModule} or      *         {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|Root
 name|getRoot
@@ -1574,7 +1578,7 @@ return|;
 block|}
 comment|/**      * Retrieves the {@link UserManager} that should be used to handle      * this authentication. If no user manager has been configure this      * method returns {@code null}.      *      * @return A instance of {@code UserManager} or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|UserManager
 name|getUserManager
@@ -1700,7 +1704,7 @@ return|;
 block|}
 comment|/**      * Retrieves the {@link PrincipalProvider} that should be used to handle      * this authentication. If no principal provider has been configure this      * method returns {@code null}.      *      * @return A instance of {@code PrincipalProvider} or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|PrincipalProvider
 name|getPrincipalProvider
@@ -1826,7 +1830,7 @@ return|;
 block|}
 comment|/**      * Retrieves all principals associated with the specified {@code userId} for      * the configured principal provider.      *      * @param userId The id of the user.      * @return The set of principals associated with the given {@code userId}.      * @see #getPrincipalProvider()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|Set
 argument_list|<
@@ -1837,7 +1841,7 @@ argument_list|>
 name|getPrincipals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|)
@@ -1882,7 +1886,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|Set
 argument_list|<
@@ -1893,7 +1897,7 @@ argument_list|>
 name|getPrincipals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|userPrincipal
 parameter_list|)
@@ -1968,12 +1972,12 @@ name|void
 name|setAuthInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|AuthInfo
 name|authInfo
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Subject
 name|subject
 parameter_list|)

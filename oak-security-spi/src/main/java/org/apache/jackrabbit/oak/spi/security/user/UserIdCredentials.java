@@ -25,19 +25,21 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
+name|jcr
 operator|.
-name|Nonnull
+name|Credentials
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jcr
+name|jetbrains
 operator|.
-name|Credentials
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -62,7 +64,7 @@ specifier|public
 name|UserIdCredentials
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|)
@@ -75,7 +77,7 @@ name|userId
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getUserId

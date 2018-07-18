@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -100,6 +80,30 @@ operator|.
 name|commons
 operator|.
 name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -188,7 +192,7 @@ name|TreeLocation
 name|create
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -285,7 +289,7 @@ return|;
 block|}
 comment|/**      * Navigate to the parent or an invalid location for the root of the hierarchy.      * @return a {@code TreeLocation} for the parent of this location.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|TreeLocation
@@ -301,7 +305,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * The name of this location      * @return name      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|String
@@ -310,7 +314,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * The path of this location      * @return  path      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|String
@@ -326,7 +330,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Navigate to a child of the given {@code name}.      * @param name  name of the child      * @return  this default implementation return a non existing location      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|TreeLocation
 name|getChild
@@ -347,7 +351,7 @@ return|;
 block|}
 comment|/**      * Get the underlying {@link org.apache.jackrabbit.oak.api.Tree} for this {@code TreeLocation}.      * @return  this default implementation return {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Tree
 name|getTree
@@ -359,7 +363,7 @@ return|;
 block|}
 comment|/**      * Get the underlying {@link org.apache.jackrabbit.oak.api.PropertyState} for this {@code TreeLocation}.      * @return  this default implementation return {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|PropertyState
 name|getProperty
@@ -422,7 +426,7 @@ name|tree
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -451,7 +455,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -513,7 +517,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -545,7 +549,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -620,7 +624,7 @@ name|name
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -653,7 +657,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -682,7 +686,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -793,7 +797,7 @@ literal|""
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -818,7 +822,7 @@ literal|false
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -831,7 +835,7 @@ name|name
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

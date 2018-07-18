@@ -77,36 +77,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -277,6 +247,30 @@ name|RestrictionProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base implementation of the {@code JackrabbitAccessControlList}  * interface.  */
 end_comment
@@ -308,7 +302,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
@@ -328,7 +322,7 @@ expr_stmt|;
 block|}
 comment|//------------------------------------------< AbstractAccessControlList>---
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getOakPath
@@ -339,7 +333,7 @@ name|oakPath
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NamePathMapper
 name|getNamePathMapper
@@ -350,7 +344,7 @@ name|namePathMapper
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|List
@@ -363,7 +357,7 @@ name|getEntries
 parameter_list|()
 function_decl|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|RestrictionProvider
@@ -372,7 +366,7 @@ parameter_list|()
 function_decl|;
 comment|//--------------------------------------< JackrabbitAccessControlPolicy>---
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -504,7 +498,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

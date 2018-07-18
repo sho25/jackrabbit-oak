@@ -35,26 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -85,6 +65,30 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Main entry point for permission evaluation in Oak. This provider covers  * permission validation upon read and write access on the Oak API as well as  * the various permission related methods defined by the JCR API, namely on  * {@link javax.jcr.security.AccessControlManager} and {@link javax.jcr.Session}.  *  * @see org.apache.jackrabbit.oak.spi.security.authorization.AuthorizationConfiguration#getPermissionProvider(org.apache.jackrabbit.oak.api.Root, String, java.util.Set)  */
 end_comment
@@ -101,7 +105,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the set of privilege names which are granted to the set of      * {@code Principal}s associated with this provider instance for the      * specified {@code Tree}.      *      * @param tree The {@code tree} for which the privileges should be retrieved.      * @return set of privilege names      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -124,7 +128,7 @@ name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|privilegeNames
@@ -132,24 +136,24 @@ parameter_list|)
 function_decl|;
 comment|/**      * Return the {@code RepositoryPermission} for the set of {@code Principal}s      * associated with this provider instance.      *      * @return The {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.RepositoryPermission}      * for the set of {@code Principal}s this provider instance has been created for.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RepositoryPermission
 name|getRepositoryPermission
 parameter_list|()
 function_decl|;
 comment|/**      * Return the {@code TreePermission} for the set of {@code Principal}s associated      * with this provider at the specified {@code tree}.      *      * @param tree The tree for which the {@code TreePermission} object should be built.      * @param parentPermission The {@code TreePermission} object that has been      * obtained before for the parent tree.      * @return The {@code TreePermission} object for the specified {@code tree}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|getTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|parentPermission
 parameter_list|)
@@ -159,7 +163,7 @@ name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -177,12 +181,12 @@ name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|jcrActions
 parameter_list|)

@@ -85,16 +85,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -108,6 +98,18 @@ operator|.
 name|principal
 operator|.
 name|GroupPrincipal
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -184,7 +186,7 @@ name|boolean
 name|isGroup
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -211,7 +213,7 @@ argument_list|>
 name|members
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -268,12 +270,12 @@ name|boolean
 name|isMember
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|member
 parameter_list|)
