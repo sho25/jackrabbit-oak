@@ -57,16 +57,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -115,6 +105,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Editor wrapper that passes only changes to non-hidden nodes and properties  * (i.e. ones whose names don't start with a colon) to the given delegate  * editor.  *  * @since Oak 0.7  */
 end_comment
@@ -127,14 +129,14 @@ implements|implements
 name|Editor
 block|{
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|Editor
 name|wrap
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Editor
 name|editor
 parameter_list|)
@@ -344,7 +346,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Editor
 name|childNodeAdded
@@ -391,7 +393,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Editor
 name|childNodeChanged
@@ -443,7 +445,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Editor
 name|childNodeDeleted

@@ -53,26 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -145,6 +125,30 @@ name|PathUtils
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility method for code that deals with node states.  */
 end_comment
@@ -166,7 +170,7 @@ name|boolean
 name|isHidden
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -195,7 +199,7 @@ name|boolean
 name|isHiddenPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -231,7 +235,7 @@ literal|false
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|String
@@ -274,19 +278,19 @@ return|;
 block|}
 comment|/**      * Get a possibly non existing child node of a node.      * @param node  node whose child node to get      * @param path  path of the child node      * @return  child node of {@code node} at {@code path}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|NodeState
 name|getNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|node
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)

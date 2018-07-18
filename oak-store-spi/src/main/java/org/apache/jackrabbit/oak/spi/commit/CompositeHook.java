@@ -41,16 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -83,6 +73,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Composite commit hook. Maintains a list of component hooks and takes  * care of calling them in proper sequence.  */
 end_comment
@@ -100,7 +102,7 @@ name|CommitHook
 name|compose
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|CommitHook
@@ -158,7 +160,7 @@ specifier|private
 name|CompositeHook
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|CommitHook
@@ -193,7 +195,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

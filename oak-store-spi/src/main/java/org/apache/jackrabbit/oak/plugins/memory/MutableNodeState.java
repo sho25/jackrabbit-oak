@@ -95,16 +95,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -227,6 +217,18 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A<em>mutable</em> state being built.  *  * Instances of this class are never passed beyond the containing  * {@link MemoryNodeBuilder}, so it's not a problem that we intentionally  * break the immutability assumption of the  * {@link org.apache.jackrabbit.oak.spi.state.NodeState} interface.  */
 end_comment
@@ -278,7 +280,7 @@ decl_stmt|;
 name|MutableNodeState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|base
 parameter_list|)
@@ -378,7 +380,7 @@ expr_stmt|;
 block|}
 comment|/**      * Equivalent to      *<pre>      *   MutableNodeState child = getChildNode(name, true);      *   child.reset(state);      *   return child;      *</pre>      *      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|MutableNodeState
 name|setChildNode
 parameter_list|(
@@ -995,7 +997,7 @@ name|boolean
 name|hasProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1020,7 +1022,7 @@ name|PropertyState
 name|getProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1041,7 +1043,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1100,7 +1102,7 @@ name|boolean
 name|hasChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1204,7 +1206,7 @@ name|child
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1212,7 +1214,7 @@ name|NodeState
 name|getChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1251,7 +1253,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1281,7 +1283,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1320,7 +1322,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeBuilder
 name|builder

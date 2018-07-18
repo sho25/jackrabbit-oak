@@ -41,26 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -107,6 +87,30 @@ name|Type
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Builder interface for constructing new {@link NodeState node states}.  *<p>  * A node builder can be thought of as a mutable version of a node state.  * In addition to property and child node access methods like the ones that  * are already present in the NodeState interface, the {@code NodeBuilder}  * interface contains the following key methods:  *<ul>  *<li>The {@code setProperty} and {@code removeProperty} methods for  *     modifying properties</li>  *<li>The {@code getChildNode} method for accessing or modifying an existing  *     subtree</li>  *<li>The {@code setChildNode} and {@code removeChildNode} methods for adding,  *     replacing or removing a subtree</li>  *<li>The {@code exists} method for checking whether the node represented by  *     a builder exists or is accessible</li>  *<li>The {@code getNodeState} method for getting a frozen snapshot of the  *     modified content tree</li>  *</ul>  * All the builders acquired from the same root builder instance are linked so  * that changes made through one instance automatically become visible in the other  * builders. For example:  *<pre>  *     NodeBuilder rootBuilder = root.builder();  *     NodeBuilder fooBuilder = rootBuilder.getChildNode("foo");  *     NodeBuilder barBuilder = fooBuilder.getChildNode("bar");  *  *     assert !barBuilder.getBoolean("x");  *     fooBuilder.getChildNode("bar").setProperty("x", Boolean.TRUE);  *     assert barBuilder.getBoolean("x");  *  *     assert barBuilder.exists();  *     fooBuilder.removeChildNode("bar");  *     assert !barBuilder.exists();  *</pre>  * The {@code getNodeState} method returns a frozen, immutable snapshot of the current  * state of the builder. Providing such a snapshot can be somewhat expensive especially  * if there are many changes in the builder, so the method should generally only be used  * as the last step after all intended changes have been made. Meanwhile the accessors  * in the {@code NodeBuilder} interface can be used to provide efficient read access to  * the current state of the tree being modified.  *<p>  * The node states constructed by a builder often retain an internal reference to the base  * state used by the builder. This allows common node state comparisons to perform really.  */
 end_comment
@@ -118,14 +122,14 @@ name|NodeBuilder
 block|{
 comment|/**      * Returns an immutable node state that matches the current state of      * the builder.      *      * @return immutable node state      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|getNodeState
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the original base state that this builder is modifying.      * The return value may be non-existent (i.e. its {@code exists} method      * returns {@code false}) if this builder represents a new node that      * didn't exist in the base content tree.      *      * @return base node state, possibly non-existent      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|getBaseState
 parameter_list|()
@@ -176,7 +180,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the names of current child nodes.      *      * @return child node names      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -189,19 +193,19 @@ name|boolean
 name|hasChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, a new empty child      * node is automatically created as the base state of the returned      * child builder. Otherwise the existing child node state is used      * as the base state of the returned builder.      *<p>      * All updates to the returned child builder will implicitly affect      * also this builder, as if a      * {@code setNode(name, childBuilder.getNodeState())} method call      * had been made after each update. Repeated calls to this method with      * the same name will return the same child builder instance until an      * explicit {@link #setChildNode(String, NodeState)} or      * {@link #remove()} call is made, at which point the link      * between this builder and a previously returned child builder for      * that child node name will get broken.      *      * @since Oak 0.6      * @param name name of the child node      * @return child builder      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|child
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -210,12 +214,12 @@ name|IllegalArgumentException
 function_decl|;
 comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, the returned builder      * will refer to a non-existent node and trying to modify it will cause      * {@link IllegalStateException}s to be thrown.      *      * @since Oak 0.7      * @param name name of the child node      * @return child builder, possibly non-existent      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|getChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -224,12 +228,12 @@ name|IllegalArgumentException
 function_decl|;
 comment|/**      * Adds the named child node and returns a builder for modifying it.      * Possible previous content in the named subtree is removed.      *      * @since Oak 0.7      * @param name name of the child node      * @return child builder      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|setChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -238,17 +242,17 @@ name|IllegalArgumentException
 function_decl|;
 comment|/**      * Adds or replaces a subtree.      *      * @param name name of the child node containing the new subtree      * @param nodeState subtree      * @return child builder      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|setChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|nodeState
 parameter_list|)
@@ -265,12 +269,12 @@ name|boolean
 name|moveTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|newParent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|newName
 parameter_list|)
@@ -284,7 +288,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the current properties.      *      * @return current properties      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|?
@@ -304,7 +308,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the current state of the named property, or {@code null}      * if the property is not set.      *      * @param name property name      * @return property state      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|PropertyState
 name|getProperty
 parameter_list|(
@@ -317,14 +321,14 @@ name|boolean
 name|getBoolean
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.STRING) {      *     return property.getValue(Type.STRING);      * } else {      *     return null;      * }      * }      *</pre>      *      * @param name property name      * @return string value of the named property, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getString
 parameter_list|(
@@ -334,19 +338,19 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.NAME) {      *     return property.getValue(Type.NAME);      * } else {      *     return null;      * }      * }      *</pre>      *      * @param name property name      * @return name value of the named property, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the name values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.NAMES) {      *     return property.getValue(Type.NAMES);      * } else {      *     return Collections.emptyList();      * }      * }      *</pre>      *      * @param name property name      * @return name values of the named property, or an empty collection      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -354,19 +358,19 @@ argument_list|>
 name|getNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Set a property state      * @param property  The property state to set      * @return this builder      * @throws IllegalArgumentException if the property name is empty      *                                  or contains the forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|setProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -375,7 +379,7 @@ name|IllegalArgumentException
 function_decl|;
 comment|/**      * Set a property state      * @param name  The name of this property      * @param value  The value of this property      * @param<T>  The type of this property. Must be one of {@code String, Blob, byte[], Long, Integer, Double, Boolean, BigDecimal}      * @throws IllegalArgumentException if {@code T} is not one of the above types, or if the property name is empty or contains the forward slash character      * @return this builder      */
 annotation|@
-name|Nonnull
+name|NotNull
 argument_list|<
 name|T
 argument_list|>
@@ -386,7 +390,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|value
 parameter_list|)
@@ -395,7 +399,7 @@ name|IllegalArgumentException
 function_decl|;
 comment|/**      * Set a property state      * @param name  The name of this property      * @param value  The value of this property      * @param<T>  The type of this property.      * @return this builder      * @throws IllegalArgumentException if the property name is empty      *                                  or contains the forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 argument_list|<
 name|T
 argument_list|>
@@ -406,7 +410,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|value
 parameter_list|,
@@ -421,7 +425,7 @@ name|IllegalArgumentException
 function_decl|;
 comment|/**     * Remove the named property. This method has no effect if a     * property of the given {@code name} does not exist.     * @param name  name of the property     */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|removeProperty
 parameter_list|(

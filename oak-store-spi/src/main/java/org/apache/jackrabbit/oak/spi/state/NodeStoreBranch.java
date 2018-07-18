@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -81,6 +71,18 @@ name|CommitInfo
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * An instance of this class represents a private branch of the tree in a  * {@link NodeStore} to which transient changes can be applied and later merged  * back or discarded.  */
 end_comment
@@ -92,14 +94,14 @@ name|NodeStoreBranch
 block|{
 comment|/**      * Returns the base state of this branch.      * The base state is the state of the tree as it was at the time      * this branch was created.      *      * @return root node state      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|getBase
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the head state of this branch.      * The head state is the state resulting from the      * base state by applying all subsequent modifications to this branch      * by {@link #setRoot(NodeState)}.      *      * @return root node state      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|getHead
 parameter_list|()
@@ -114,17 +116,17 @@ parameter_list|)
 function_decl|;
 comment|/**      * Merges the changes in this branch to the main content tree.      * Merging is done by rebasing the changes in this branch on top of      * the current head revision followed by a fast forward merge.      *      * @param hook the commit hook to apply while merging changes      * @param info commit info associated with this merge operation      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|merge
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitHook
 name|hook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)

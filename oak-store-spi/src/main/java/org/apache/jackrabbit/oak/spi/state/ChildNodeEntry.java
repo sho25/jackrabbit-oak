@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -50,6 +30,30 @@ operator|.
 name|base
 operator|.
 name|Function
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -64,14 +68,14 @@ name|ChildNodeEntry
 block|{
 comment|/**      * The name of the child node state wrt. to its parent state.      * @return  name of the child node      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * The child node state      * @return child node state      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|getNodeState
 parameter_list|()

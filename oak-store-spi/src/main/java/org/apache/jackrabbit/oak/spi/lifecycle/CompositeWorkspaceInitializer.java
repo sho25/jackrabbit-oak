@@ -41,16 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -64,6 +54,18 @@ operator|.
 name|state
 operator|.
 name|NodeBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -90,7 +92,7 @@ specifier|public
 name|CompositeWorkspaceInitializer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|WorkspaceInitializer
@@ -109,7 +111,7 @@ specifier|public
 name|CompositeWorkspaceInitializer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|WorkspaceInitializer
 modifier|...
 name|initializers

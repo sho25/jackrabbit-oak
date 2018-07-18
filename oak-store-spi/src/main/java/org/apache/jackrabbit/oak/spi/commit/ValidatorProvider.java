@@ -57,11 +57,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -79,7 +81,7 @@ name|EditorProvider
 block|{
 comment|/**      * Returns a validator for checking the changes between the given      * two root states.      *      * @param before original root state      * @param after  modified root state      * @param info   metadata about this commit      * @return validator for checking the modifications,      *         or {@code null} if this validator is not needed for this commit      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 specifier|abstract
 name|Validator
@@ -99,7 +101,7 @@ comment|//----------------------------------------------------< EditorProvider>-
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|final
 name|Editor

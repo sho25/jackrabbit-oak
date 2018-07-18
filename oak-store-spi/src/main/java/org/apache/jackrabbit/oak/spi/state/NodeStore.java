@@ -51,26 +51,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -134,6 +114,30 @@ operator|.
 name|commit
 operator|.
 name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -148,29 +152,29 @@ name|NodeStore
 block|{
 comment|/**      * Returns the latest state of the tree.      *      * @return root node state      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Merges the changes between the      * {@link NodeBuilder#getBaseState() base} and      * {@link NodeBuilder#getNodeState() head} states      * of the given builder to this store.      *      * @param builder the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param info commit info associated with this merge operation      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|merge
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitHook
 name|commitHook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -179,12 +183,12 @@ name|CommitFailedException
 function_decl|;
 comment|/**      * Rebases the changes between the      * {@link NodeBuilder#getBaseState() base} and      * {@link NodeBuilder#getNodeState() head} states      * of the given builder on top of the current root state.      * The base state of the given builder becomes the latest      * {@link #getRoot() root} state of the repository, and the      * head state will contain the rebased changes.      *      * @param builder the builder to rebase      * @return the node state resulting from the rebase.      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|rebase
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)
@@ -194,14 +198,14 @@ name|NodeState
 name|reset
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)
 function_decl|;
 comment|/**      * Create a {@link Blob} from the given input stream. The input stream      * is closed after this method returns.      * @param inputStream  The input stream for the {@code Blob}      * @return  The {@code Blob} representing {@code inputStream}      * @throws IOException  If an error occurs while reading from the stream      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Blob
 name|createBlob
 parameter_list|(
@@ -213,19 +217,19 @@ name|IOException
 function_decl|;
 comment|/**      * Get a blob by its reference.      * @param reference  reference to the blob      * @return  blob or {@code null} if the reference does not resolve to a blob.      * @see Blob#getReference()      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Blob
 name|getBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
 function_decl|;
 comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *<p>      * The {@code properties} passed to this methods are associated with the      * checkpoint and can be retrieved through the {@link #checkpointInfo(String)}      * method. Its semantics is entirely application specific.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @param properties properties to associate with the checkpoint      * @return string reference of this checkpoint      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|(
@@ -233,7 +237,7 @@ name|long
 name|lifetime
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -245,7 +249,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *<p>      * This method is a shortcut for {@link #checkpoint(long, Map)} passing      * an empty map for its 2nd argument.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|(
@@ -255,7 +259,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Retrieve the properties associated with a checkpoint.      *      * @param checkpoint string reference of a checkpoint      * @return the properties associated with the checkpoint referenced by      *         {@code checkpoint} or an empty map when there is no such      *         checkpoint.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -265,14 +269,14 @@ argument_list|>
 name|checkpointInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)
 function_decl|;
 comment|/**      * Returns all valid checkpoints. The returned {@code Iterable} provides a      * snapshot of valid checkpoints at the time this method is called. That      * is, the {@code Iterable} will not reflect checkpoints created after this      * method was called.      *<p>      * See {@link #checkpoint(long, Map)} for a definition of a valid      * checkpoint.      *      * @return valid checkpoints.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -282,12 +286,12 @@ parameter_list|()
 function_decl|;
 comment|/**      * Retrieves the root node from a previously created repository checkpoint.      *      * @param checkpoint string reference of a checkpoint      * @return the root node of the checkpoint,      *         or {@code null} if the checkpoint is no longer available      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|NodeState
 name|retrieve
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)
@@ -297,7 +301,7 @@ name|boolean
 name|release
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)

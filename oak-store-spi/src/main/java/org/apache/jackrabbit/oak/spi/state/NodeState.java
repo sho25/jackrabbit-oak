@@ -21,36 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -62,6 +32,30 @@ operator|.
 name|api
 operator|.
 name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -98,19 +92,19 @@ name|boolean
 name|hasProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the named property, or {@code null} if no such property exists.      *      * @param name name of the property to return      * @return named property, or {@code null} if not found      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|PropertyState
 name|getProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -120,7 +114,7 @@ name|boolean
 name|getBoolean
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -135,7 +129,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the string value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.STRING) {      *     return property.getValue(Type.STRING);      * } else {      *     return null;      * }      * }      *</pre>      *      * @param name property name      * @return string value of the named property, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getString
 parameter_list|(
@@ -145,7 +139,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the string values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.STRINGS) {      *     return property.getValue(Type.STRINGS);      * } else {      *     return Collections.emptyList();      * }      * }      *</pre>      *      * @param name property name      * @return string values of the named property, or an empty collection      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -153,26 +147,26 @@ argument_list|>
 name|getStrings
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.NAME) {      *     return property.getValue(Type.NAME);      * } else {      *     return null;      * }      * }      *</pre>      *      * @param name property name      * @return name value of the named property, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the name values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * {@code      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.NAMES) {      *     return property.getValue(Type.NAMES);      * } else {      *     return Collections.emptyList();      * }      * }      *</pre>      *      * @param name property name      * @return name values of the named property, or an empty collection      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -180,7 +174,7 @@ argument_list|>
 name|getNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -192,7 +186,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns an iterable of the properties of this node. Multiple      * iterations are guaranteed to return the properties in the same      * order, but the specific order used is implementation-dependent      * and may change across different states of the same node.      *      * @return properties in some stable order      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|?
@@ -207,19 +201,19 @@ name|boolean
 name|hasChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the named, possibly non-existent, child node. Use the      * {@link #exists()} method on the returned child node to determine      * whether the node exists or not.      *      * @param name name of the child node to return      * @return named child node      * @throws IllegalArgumentException if the given name string is is empty      *                                  or contains a forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|getChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -244,7 +238,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the<em>iterable</em> child node entries of this instance.      * Multiple iterations are guaranteed to return the child nodes in      * the same order, but the specific order used is implementation      * dependent and may change across different states of the same node.      *<p>      *<i>Note on cost and performance:</i> while it is possible to iterate over      * all child {@code NodeState}s with the two methods {@link      * #getChildNodeNames()} and {@link #getChildNode(String)}, this method is      * considered more efficient because an implementation can potentially      * perform the retrieval of the name and {@code NodeState} in one call.      * This results in O(n) vs. O(n log n) when iterating over the child node      * names and then look up the {@code NodeState} by name.      *      * @return child node entries in some stable order      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|?
@@ -256,7 +250,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns a builder for constructing a new node state based on      * this state, i.e. starting with all the properties and child nodes      * of this state.      *      * @since Oak 0.6      * @return node builder based on this state      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|()

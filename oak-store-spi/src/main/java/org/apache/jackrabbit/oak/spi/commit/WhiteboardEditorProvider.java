@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -171,6 +161,18 @@ name|AbstractServiceTracker
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dynamic {@link EditorProvider} based on the available  * whiteboard services.  */
 end_comment
@@ -203,7 +205,7 @@ comment|//----------------------------------------------------< EditorProvider>-
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Editor
 name|getRootEditor

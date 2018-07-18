@@ -73,11 +73,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -92,7 +94,7 @@ name|EditorProvider
 block|{
 comment|/**      * Returns an editor for processing changes between the given two states.      * Returns {@code null} if the changes don't require processing.      *<p>      * An implementation of this method should generally not compare the      * given before and after states, as the caller is expected to compare      * the states and invoke the respective callback methods on the      * {@link Editor} instance returned by this method. Instead the      * implementation can use the opportunity for other preparatory work.      *      * @param before  original root state      * @param after   modified root state      * @param builder node builder based on the after state      * @param info    metadata associated with this commit      * @return editor for processing the changes, or {@code null}      * @throws CommitFailedException if processing failed      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Editor
 name|getRootEditor
 parameter_list|(

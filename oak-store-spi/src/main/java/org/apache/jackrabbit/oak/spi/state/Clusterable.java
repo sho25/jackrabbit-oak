@@ -21,19 +21,23 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -50,7 +54,7 @@ name|Clusterable
 block|{
 comment|/**      *<p>      * Will return a unique number per instance across the cluster. It will only make its best      * effort to preserve the same number across restarts but it must be unique across the cluster.      *</p>      *       * @return Cannot be null or empty.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getInstanceId
 parameter_list|()
@@ -67,7 +71,7 @@ name|boolean
 name|isVisible
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|visibilityToken
 parameter_list|,

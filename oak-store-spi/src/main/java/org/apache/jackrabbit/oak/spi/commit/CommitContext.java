@@ -21,11 +21,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -57,7 +59,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the value of the named attribute as an<code>Object</code>,      * or<code>null</code> if no attribute of the given name exists.      *      * @param name<code>String</code> specifying the name of      * the attribute      *      * @return an<code>Object</code> containing the value      * of the attribute, or<code>null</code> if the attribute does not exist      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Object
 name|get
 parameter_list|(

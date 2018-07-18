@@ -107,16 +107,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -148,6 +138,18 @@ operator|.
 name|commit
 operator|.
 name|Observer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -240,7 +242,7 @@ specifier|public
 name|ObserverTracker
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Observable
 name|observable
 parameter_list|)
@@ -260,7 +262,7 @@ name|void
 name|start
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|BundleContext
 name|bundleContext
 parameter_list|)

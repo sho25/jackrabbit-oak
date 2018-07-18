@@ -43,16 +43,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Binary
@@ -82,6 +72,18 @@ operator|.
 name|api
 operator|.
 name|Blob
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -152,7 +154,7 @@ expr_stmt|;
 block|}
 comment|/**      * Delegates to {@link Binary#getStream()} and returns an input stream the always      * throws an {@code IOException} if the underlying binary failed to produce one.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

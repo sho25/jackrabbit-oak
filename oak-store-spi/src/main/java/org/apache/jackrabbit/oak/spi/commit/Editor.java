@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -94,6 +84,18 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -167,7 +169,7 @@ name|CommitFailedException
 function_decl|;
 comment|/**      * Processes an added child node.      *      * @param name name of the added node      * @param after the added child node      * @return an editor for processing the subtree below the added node,      *         or {@code null} if the subtree does not need processing      * @throws CommitFailedException if processing failed      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Editor
 name|childNodeAdded
 parameter_list|(
@@ -182,7 +184,7 @@ name|CommitFailedException
 function_decl|;
 comment|/**      * Processes a changed child node. This method gets called for all child nodes      * that may contain changes between the before and after states.      *      * @param name name of the changed node      * @param before child node before the change      * @param after child node after the change      * @return an editor for processing the subtree below the added node,      *         or {@code null} if the subtree does not need processing      * @throws CommitFailedException if processing failed      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Editor
 name|childNodeChanged
 parameter_list|(
@@ -200,7 +202,7 @@ name|CommitFailedException
 function_decl|;
 comment|/**      * Processes a deleted child node.      *      * @param name name of the deleted node      * @param before the deleted child node      * @return an editor for processing the subtree below the removed node,      *         or {@code null} if the subtree does not need processing      * @throws CommitFailedException if processing failed      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Editor
 name|childNodeDeleted
 parameter_list|(

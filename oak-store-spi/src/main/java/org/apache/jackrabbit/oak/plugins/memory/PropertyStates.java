@@ -53,16 +53,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -215,6 +205,18 @@ name|ISO8601
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility class for creating {@link PropertyState} instances.  */
 end_comment
@@ -231,7 +233,7 @@ parameter_list|()
 block|{}
 comment|/**      * Create a {@code PropertyState} based on a {@link Value}. The      * {@link Type} of the property state is determined by the      * type of the value.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state      * @throws RepositoryException forwarded from {@code value}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|PropertyState
@@ -394,7 +396,7 @@ block|}
 block|}
 comment|/**      * Create a multi valued {@code PropertyState} based on a list of      * {@link Value} instances. The {@link Type} of the property is determined      * by the type of the first value in the list or {@link Type#STRING} if the      * list is empty.      *      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state      * @throws RepositoryException forwarded from {@code value}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|PropertyState
@@ -887,7 +889,7 @@ block|}
 block|}
 comment|/**      * Create a {@code PropertyState} from a string.      * @param name  The name of the property state      * @param value  The value of the property state      * @param type  The type of the property state      * @return  The new property state      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|PropertyState
@@ -1066,7 +1068,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|PropertyState
@@ -1563,7 +1565,7 @@ block|}
 block|}
 comment|/**      * Create a {@code PropertyState} where the {@link Type} of the property state      * is inferred from the runtime type of {@code T} according to the mapping      * established through {@code Type}.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 parameter_list|<

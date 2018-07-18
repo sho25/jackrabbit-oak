@@ -75,16 +75,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -164,6 +154,18 @@ operator|.
 name|api
 operator|.
 name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -435,7 +437,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|List
 argument_list|<
@@ -526,7 +528,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyState
 name|getPropertyState
@@ -908,7 +910,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -990,7 +992,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1013,7 +1015,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1031,7 +1033,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1049,7 +1051,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1078,7 +1080,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1102,7 +1104,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1133,7 +1135,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1162,7 +1164,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1193,7 +1195,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<
@@ -1217,7 +1219,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyBuilder
 argument_list|<

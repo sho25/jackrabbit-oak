@@ -71,11 +71,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -125,7 +127,7 @@ name|CommitFailedException
 function_decl|;
 comment|/**      * Validate an added node      * @param name the name of the added node      * @param after  the added node      * @return a {@code Validator} for {@code after} or {@code null} if validation      * should not decent into the subtree rooted at {@code after}.      * @throws CommitFailedException  if validation fails.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Validator
 name|childNodeAdded
 parameter_list|(
@@ -140,7 +142,7 @@ name|CommitFailedException
 function_decl|;
 comment|/**      * Validate a changed node      * @param name the name of the changed node      * @param before the original node      * @param after  the changed node      * @return a {@code Validator} for {@code after} or {@code null} if validation      * should not decent into the subtree rooted at {@code after}.      * @throws CommitFailedException  if validation fails.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Validator
 name|childNodeChanged
 parameter_list|(
@@ -158,7 +160,7 @@ name|CommitFailedException
 function_decl|;
 comment|/**      * Validate a deleted node      * @param name The name of the deleted node.      * @param before the original node      * @return a {@code Validator} for the removed subtree or      * {@code null} if validation should not decent into the subtree      * @throws CommitFailedException  if validation fails.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Validator
 name|childNodeDeleted
 parameter_list|(

@@ -51,16 +51,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -103,6 +93,18 @@ name|Converter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base class for single valued {@code PropertyState} implementations.  */
 end_comment
@@ -122,7 +124,7 @@ specifier|protected
 name|SinglePropertyState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -394,7 +396,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -491,7 +493,7 @@ block|}
 block|}
 comment|/**      * @throws IllegalArgumentException  if {@code type.isArray} is {@code true}      * @throws IndexOutOfBoundsException  if {@code index != 0}      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

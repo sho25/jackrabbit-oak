@@ -165,26 +165,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -347,6 +327,30 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * In-memory node state builder.  *<p>  * A {@code MemoryNodeBuilder} instance tracks uncommitted changes without  * relying on weak references or requiring hard references on the entire  * accessed subtree. It does this by relying on {@code MutableNodeState}  * instances for tracking<em>uncommitted changes</em> and on {@code Head}  * instances for tracking the connectedness of the builder. A builder keeps  * a reference to the parent builder and knows its own name, which is used  * to check for relevant changes in its parent builder and update its state  * accordingly.  *<p>  * A builder is in one of three possible states, which is tracked within  * its {@code Head} instance:  *<dl>  *<dt><em>unconnected</em></dt>  *<dd>  *     A child builder with no content changes starts in this state.  *     Before each access the unconnected builder checks its parent for  *     relevant changes.  *</dd>  *<dt><em>connected</em></dt>  *<dd>  *     Once a builder is first modified, it switches to the connected state  *     and records all modification in a shared {@code MutableNodeState}  *     instance. Before each access the connected builder checks whether its  *     parents base state has been reset and if so, resets its own base state  *     accordingly.  *</dd>  *<dt><em>root</em></dt>  *<dd>  *     Same as the connected state but only the root of the builder hierarchy  *     can have this state.  *</dd>  *</dl>  */
 end_comment
@@ -383,7 +387,7 @@ name|baseRevision
 decl_stmt|;
 comment|/**      * The base state of this builder, possibly non-existent if this builder      * represents a new node that didn't yet exist in the base content tree.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|NodeState
 name|base
@@ -478,7 +482,7 @@ specifier|public
 name|MemoryNodeBuilder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|base
 parameter_list|)
@@ -561,7 +565,7 @@ return|;
 block|}
 comment|/**      * Update the base state of this builder by recursively retrieving it      * from its parent builder.      * @return  base state of this builder      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|NodeState
 name|base
@@ -666,7 +670,7 @@ name|void
 name|reset
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|newBase
 parameter_list|)
@@ -741,7 +745,7 @@ comment|//--------------------------------------------------------< NodeBuilder>
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeState
 name|getNodeState
@@ -758,7 +762,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeState
 name|getBaseState
@@ -906,7 +910,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -935,7 +939,7 @@ name|boolean
 name|hasChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -957,7 +961,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -965,7 +969,7 @@ name|NodeBuilder
 name|child
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -996,7 +1000,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1004,7 +1008,7 @@ name|NodeBuilder
 name|getChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1022,7 +1026,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1030,7 +1034,7 @@ name|NodeBuilder
 name|setChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1045,7 +1049,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1053,12 +1057,12 @@ name|NodeBuilder
 name|setChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|state
 parameter_list|)
@@ -1165,12 +1169,12 @@ name|boolean
 name|moveTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|newParent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|newName
 parameter_list|)
@@ -1511,7 +1515,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1596,7 +1600,7 @@ name|boolean
 name|getBoolean
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1620,13 +1624,13 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getString
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1650,13 +1654,13 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1680,7 +1684,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1689,7 +1693,7 @@ argument_list|>
 name|getNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1711,7 +1715,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1719,7 +1723,7 @@ name|NodeBuilder
 name|setProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -1756,7 +1760,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1770,7 +1774,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|value
 parameter_list|)
@@ -1792,7 +1796,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1806,7 +1810,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|value
 parameter_list|,
@@ -1836,7 +1840,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

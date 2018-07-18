@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -81,6 +71,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A {@code ConflictHandler} is responsible for handling conflicts which happen  * on {@link org.apache.jackrabbit.oak.api.Root#rebase()} and on the implicit rebase operation which  * takes part on {@link org.apache.jackrabbit.oak.api.Root#commit()}.  *  * This interface contains one method per type of conflict which might occur.  * Each of these methods must return a {@link Resolution} for the current conflict.  * The resolution indicates to use the changes in the current {@code Root} instance  * ({@link Resolution#OURS}) or to use the changes from the underlying persistence  * store ({@link Resolution#THEIRS}). Alternatively the resolution can also indicate  * that the changes have been successfully merged by this {@code ConflictHandler}  * instance ({@link Resolution#MERGED}).  *  * @deprecated Use {@link org.apache.jackrabbit.oak.spi.commit.ThreeWayConflictHandler} instead.  */
 end_comment
@@ -98,7 +100,7 @@ comment|/**      * The property {@code ours} has been added to {@code parent} wh
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|addExistingProperty
 parameter_list|(
@@ -116,7 +118,7 @@ comment|/**      * The property {@code ours} has been changed in {@code parent} 
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|changeDeletedProperty
 parameter_list|(
@@ -131,7 +133,7 @@ comment|/**      * The property {@code ours} has been changed in {@code parent} 
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|changeChangedProperty
 parameter_list|(
@@ -149,7 +151,7 @@ comment|/**      * The property {@code ours} has been removed in {@code parent} 
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|deleteDeletedProperty
 parameter_list|(
@@ -164,7 +166,7 @@ comment|/**      * The property {@code theirs} changed in the persistence store 
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|deleteChangedProperty
 parameter_list|(
@@ -179,7 +181,7 @@ comment|/**      * The node {@code ours} has been added to {@code parent} which 
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|addExistingNode
 parameter_list|(
@@ -200,7 +202,7 @@ comment|/**      * The node {@code ours} has been changed in {@code parent} whil
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|changeDeletedNode
 parameter_list|(
@@ -218,7 +220,7 @@ comment|/**      * The node {@code theirs} changed in the persistence store whil
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|deleteChangedNode
 parameter_list|(
@@ -236,7 +238,7 @@ comment|/**      * The node {@code name} has been removed in {@code parent} whil
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 name|Resolution
 name|deleteDeletedNode
 parameter_list|(

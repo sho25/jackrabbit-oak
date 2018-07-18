@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -60,6 +50,18 @@ operator|.
 name|commit
 operator|.
 name|Validator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -93,7 +95,7 @@ function_decl|;
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 name|MoveValidator
 name|childNodeAdded
 parameter_list|(
@@ -109,7 +111,7 @@ function_decl|;
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 name|MoveValidator
 name|childNodeChanged
 parameter_list|(
@@ -128,7 +130,7 @@ function_decl|;
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 name|MoveValidator
 name|childNodeDeleted
 parameter_list|(

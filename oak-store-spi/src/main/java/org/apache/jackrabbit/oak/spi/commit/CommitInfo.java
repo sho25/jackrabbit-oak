@@ -73,26 +73,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -118,6 +98,30 @@ operator|.
 name|api
 operator|.
 name|Root
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -221,7 +225,7 @@ specifier|public
 name|CommitInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|sessionId
 parameter_list|,
@@ -254,7 +258,7 @@ specifier|public
 name|CommitInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|sessionId
 parameter_list|,
@@ -289,7 +293,7 @@ specifier|public
 name|CommitInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|sessionId
 parameter_list|,
@@ -351,7 +355,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return  id of the committing session      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getSessionId
@@ -363,7 +367,7 @@ return|;
 block|}
 comment|/**      * @return  user id of the committing user      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getUserId

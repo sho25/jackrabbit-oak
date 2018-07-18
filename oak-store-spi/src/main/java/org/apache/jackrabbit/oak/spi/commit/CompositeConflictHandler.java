@@ -265,16 +265,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -325,6 +315,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A {@code CompositeConflictHandler} delegates conflict handling  * to multiple backing handlers. The backing handlers are invoked in  * the inverse order they have been installed until a handler returning  * a valid resolution (i.e. not {@code IGNORED)} is found. If for a certain  * conflict none of the backing handlers returns a valid resolution  * this implementation throws an {@code IllegalStateException}.  */
 end_comment
@@ -349,7 +351,7 @@ specifier|public
 name|CompositeConflictHandler
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|ThreeWayConflictHandler

@@ -23,21 +23,23 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|openmbean
 operator|.
 name|CompositeData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -57,21 +59,21 @@ literal|"RevisionGarbageCollection"
 decl_stmt|;
 comment|/**      * Initiate a revision garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|startRevisionGC
 parameter_list|()
 function_decl|;
 comment|/**      * Cancel a running revision garbage collection operation. Does nothing      * if revision garbage collection is not running.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|cancelRevisionGC
 parameter_list|()
 function_decl|;
 comment|/**      * Revision garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|getRevisionGCStatus
 parameter_list|()
