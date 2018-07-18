@@ -34,16 +34,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -220,6 +210,18 @@ operator|.
 name|commit
 operator|.
 name|Observer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -588,12 +590,12 @@ name|void
 name|contentChanged
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)
