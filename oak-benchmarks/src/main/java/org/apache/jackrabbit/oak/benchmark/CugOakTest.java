@@ -51,16 +51,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -259,6 +249,18 @@ name|TreeLocation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test the effect of multiple authorization configurations on the general read  * operations.  *  * TODO: setup configured number of cugs.  */
 end_comment
@@ -295,7 +297,7 @@ name|boolean
 name|singleSession
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String

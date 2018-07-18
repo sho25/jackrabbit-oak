@@ -35,16 +35,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|SimpleCredentials
@@ -137,6 +127,18 @@ name|ExternalLoginModule
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Login against the {@link ExternalLoginModule} with a randomly selected user.  * The first login of a given user will trigger the user-synchronization mechanism.  * Subsequent login calls will only result in an extra sync-call if the configured  * expiration time is reached.  *  * Configuration options as defined in {@link AbstractExternalTest}.  */
 end_comment
@@ -164,7 +166,7 @@ name|boolean
 name|dynamicMembership
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String

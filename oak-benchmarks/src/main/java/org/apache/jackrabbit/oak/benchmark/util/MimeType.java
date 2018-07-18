@@ -61,11 +61,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -372,7 +374,7 @@ decl_stmt|;
 name|MimeType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|value

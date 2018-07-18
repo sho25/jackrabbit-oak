@@ -107,26 +107,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -910,6 +890,30 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -1027,7 +1031,7 @@ name|boolean
 name|dynamicMembership
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String
@@ -1067,7 +1071,7 @@ name|boolean
 name|dynamicMembership
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String
@@ -1886,7 +1890,7 @@ name|membershipSize
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1899,7 +1903,7 @@ literal|"test"
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1907,7 +1911,7 @@ name|ExternalIdentity
 name|getIdentity
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentityRef
 name|ref
 parameter_list|)
@@ -1999,7 +2003,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -2007,7 +2011,7 @@ name|ExternalUser
 name|getUser
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|)
@@ -2031,7 +2035,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -2039,7 +2043,7 @@ name|ExternalUser
 name|authenticate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Credentials
 name|credentials
 parameter_list|)
@@ -2060,7 +2064,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -2068,7 +2072,7 @@ name|ExternalGroup
 name|getGroup
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -2092,7 +2096,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2149,7 +2153,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2314,7 +2318,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2322,7 +2326,7 @@ name|String
 name|fromExternalIdentityRef
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentityRef
 name|externalIdentityRef
 parameter_list|)
@@ -2362,7 +2366,7 @@ specifier|public
 name|TestIdentity
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|)
@@ -2396,7 +2400,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2409,7 +2413,7 @@ name|userId
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2422,7 +2426,7 @@ name|principalName
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2446,7 +2450,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2472,7 +2476,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2541,7 +2545,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -55,11 +55,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -198,7 +200,7 @@ name|Query
 name|getQuery
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|QueryManager
 name|qm
 parameter_list|,

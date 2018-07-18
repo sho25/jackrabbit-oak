@@ -51,16 +51,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Node
@@ -387,6 +377,18 @@ name|Text
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test the performance of removing members from groups. The  * following parameters can be used to run the benchmark:  *  * - numberOfMembers : the number of members that should be added in the test setup  *   to each group (and removed during the test-run)  * - batchSize : the size of the memberID-array to be passed to the removeMembers call  *  * Note the members to be removed are picked randomly and may or may not/no longer  * be member of the target group.  */
 end_comment
@@ -656,7 +658,7 @@ name|void
 name|createUsers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManager
 parameter_list|)
@@ -1037,17 +1039,17 @@ name|void
 name|removeMembers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManger
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Group
 name|group
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Session
 name|s
 parameter_list|)

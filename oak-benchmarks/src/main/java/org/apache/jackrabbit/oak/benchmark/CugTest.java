@@ -31,16 +31,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Repository
@@ -244,6 +234,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -293,7 +295,7 @@ name|boolean
 name|singleSession
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String
@@ -481,7 +483,7 @@ name|SecurityProvider
 name|newTestSecurityProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|params
 parameter_list|,

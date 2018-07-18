@@ -51,16 +51,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Node
@@ -387,6 +377,18 @@ name|Text
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test the performance of adding a configured number of members to groups. The  * following parameters can be used to run the benchmark:  *  * - numberOfMembers : the number of members that should be added in the test run  * - batchSize : the size of the memberID-array to be passed to the addMembers call  * - importBehavior : the {@link org.apache.jackrabbit.oak.spi.xml.ImportBehavior}; valid options are "besteffort", "ignore" and "abort"  *  * An importbehavior of "ignore" and "abort" will required the members to exist  * and will resolve each ID to the corresponding authorizble first (different test  * setup). In case of "besteffort" the member is not resolved to an authorizable.  */
 end_comment
@@ -479,7 +481,7 @@ name|int
 name|batchSize
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|importBehavior
 parameter_list|)
@@ -616,7 +618,7 @@ name|void
 name|createUsers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManager
 parameter_list|)
@@ -1061,17 +1063,17 @@ name|void
 name|addMembers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManger
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Group
 name|group
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Session
 name|s
 parameter_list|)

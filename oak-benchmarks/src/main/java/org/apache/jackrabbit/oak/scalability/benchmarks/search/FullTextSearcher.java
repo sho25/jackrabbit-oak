@@ -45,16 +45,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -123,6 +113,18 @@ name|ExecutionContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Full text query search  *  */
 end_comment
@@ -157,7 +159,7 @@ name|Query
 name|getQuery
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|QueryManager
 name|qm

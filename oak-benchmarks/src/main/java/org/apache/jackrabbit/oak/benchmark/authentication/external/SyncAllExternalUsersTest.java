@@ -35,16 +35,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|security
 operator|.
 name|auth
@@ -145,6 +135,18 @@ name|SynchronizationMBean
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Benchmark for {@link SynchronizationMBean#syncAllExternalUsers()}  */
 end_comment
@@ -176,7 +178,7 @@ name|boolean
 name|dynamicMembership
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String

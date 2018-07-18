@@ -41,16 +41,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Session
@@ -167,6 +157,18 @@ name|ImportBehavior
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test the performance of adding a configured number of members to groups. The  * following parameters can be used to run the benchmark:  *  * - numberOfMembers : the number of members that should be added in the test run  * - batchSize : the number of users to be added as members before {@link Session#save()} is called.  *  * In contrast to {@link AddMembersTest}, this benchmark will always call  * {@link Group#addMember(Authorizable)}.  */
 end_comment
@@ -226,7 +228,7 @@ name|void
 name|createUsers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManager
 parameter_list|)
@@ -294,17 +296,17 @@ name|void
 name|addMembers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManager
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Group
 name|group
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Session
 name|s
 parameter_list|)

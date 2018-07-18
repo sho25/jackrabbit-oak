@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -81,6 +71,18 @@ name|User
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Same as {@link MemberBaseTest} but testing {@link Group#isMember(Authorizable)}.  */
 end_comment
@@ -122,12 +124,12 @@ name|void
 name|testMembership
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Group
 name|g
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|User
 name|member
 parameter_list|)

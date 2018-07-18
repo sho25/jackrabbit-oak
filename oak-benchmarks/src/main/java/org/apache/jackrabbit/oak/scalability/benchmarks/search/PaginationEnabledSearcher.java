@@ -45,16 +45,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Node
@@ -167,6 +157,18 @@ name|ExecutionContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract class which defines utility methods for processing results like   * pagination and no pagination.   *  */
 end_comment
@@ -224,7 +226,7 @@ name|void
 name|processResultsOffsetPagination
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|QueryManager
 name|qm
@@ -352,7 +354,7 @@ name|void
 name|processResultsKeysetPagination
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|QueryManager
 name|qm
