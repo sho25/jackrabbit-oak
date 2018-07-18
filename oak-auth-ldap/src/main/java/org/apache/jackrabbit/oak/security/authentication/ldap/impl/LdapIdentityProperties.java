@@ -55,19 +55,11 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -398,7 +390,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|String
 name|convert

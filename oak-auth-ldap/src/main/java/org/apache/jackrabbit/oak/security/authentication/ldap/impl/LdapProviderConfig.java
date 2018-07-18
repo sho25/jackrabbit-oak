@@ -55,36 +55,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -146,6 +116,30 @@ operator|.
 name|security
 operator|.
 name|ConfigurationParameters
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -1111,7 +1105,7 @@ name|makeDnPath
 decl_stmt|;
 comment|/**          * Configures the base DN for searches of this kind of identity          * @return the base DN          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getBaseDN
@@ -1123,13 +1117,13 @@ return|;
 block|}
 comment|/**          * Sets the base DN for search of this kind of identity.          * @param baseDN the DN as string.          * @return {@code this}          * @see #getBaseDN()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Identity
 name|setBaseDN
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|baseDN
 parameter_list|)
@@ -1146,7 +1140,7 @@ return|;
 block|}
 comment|/**          * Configures the object classes of this kind of identity.          * @return an array of object classes          * @see #getSearchFilter(String) for more detail about searching and filtering          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 index|[]
@@ -1159,13 +1153,13 @@ return|;
 block|}
 comment|/**          * Sets the object classes.          * @param objectClasses the object classes          * @return {@code this}          * @see #getObjectClasses()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Identity
 name|setObjectClasses
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|objectClasses
@@ -1191,7 +1185,7 @@ return|;
 block|}
 comment|/**          * Configures the attribute that is used to identify this identity by id. For users this is the attribute that          * holds the user id, for groups this is the attribute that holds the group name.          *          * @return the id attribute name          * @see #getSearchFilter(String) for more detail about searching and filtering          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getIdAttribute
@@ -1203,13 +1197,13 @@ return|;
 block|}
 comment|/**          * Sets the id attribute.          * @param idAttribute the id attribute name          * @return {@code this}          * @see #getIdAttribute()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Identity
 name|setIdAttribute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|idAttribute
 parameter_list|)
@@ -1234,7 +1228,7 @@ return|;
 block|}
 comment|/**          * Configures the extra LDAP filter that is appended to the internally computed filter when searching for          * identities.          *          * @return the extra filter          */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getExtraFilter
@@ -1246,7 +1240,7 @@ return|;
 block|}
 comment|/**          * Sets the extra search filter.          * @param extraFilter the filter          * @return {@code this}          * @see #getExtraFilter()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Identity
 name|setExtraFilter
@@ -1287,7 +1281,7 @@ return|;
 block|}
 comment|/**          * Sets the intermediate path flag.          * @param makeDnPath {@code true} to use the DN as intermediate path          * @return {@code this}          * @see #makeDnPath()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Identity
 name|setMakeDnPath
@@ -1308,13 +1302,13 @@ return|;
 block|}
 comment|/**          * Returns the LDAP filter that is used when searching this type of identity. The filter is based on the          * configuration and has the following format:          *          *<pre>{@code          *     (&(${idAttr}=${id})(objectclass=${objectclass})${extraFilter})          * }</pre>          *          * Note that the objectclass part is repeated according to the specified objectclasses in {@link #getObjectClasses()}.          *          * @param id the id value          * @return the search filter          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getSearchFilter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|id
 parameter_list|)
@@ -1597,7 +1591,7 @@ return|;
 block|}
 comment|/**          * Sets the cap on the number of objects that can be allocated by the pool.          *          * @see #getMaxActive          * @param maxActive the new upper limit of the pool size          * @return this          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PoolConfig
 name|setMaxActive
@@ -1628,7 +1622,7 @@ return|;
 block|}
 comment|/**          * Sets the lookup on validate flag.          *          * @see #lookupOnValidate()          * @param lookupOnValidate the new value of the lookup on validate flag          * @return this          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PoolConfig
 name|setLookupOnValidate
@@ -2266,7 +2260,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Returns the name of this provider configuration.      * The default is {@value #PARAM_NAME_DEFAULT}      *      * @return the name.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getName
@@ -2278,13 +2272,13 @@ return|;
 block|}
 comment|/**      * Sets the name of this provider.      * @param name the name      * @return {@code this}      * @see #getName()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -2301,7 +2295,7 @@ return|;
 block|}
 comment|/**      * Configures the hostname of the LDAP server.      * The default is {@value #PARAM_LDAP_HOST_DEFAULT}      *      * @return the hostname      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getHostname
@@ -2313,13 +2307,13 @@ return|;
 block|}
 comment|/**      * Sets the hostname.      * @param hostname the hostname      * @return {@code this}      * @see #getHostname()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setHostname
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|hostname
 parameter_list|)
@@ -2346,7 +2340,7 @@ return|;
 block|}
 comment|/**      * Sets the port.      * @param port the port      * @return {@code this}      * @see #getPort()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setPort
@@ -2377,7 +2371,7 @@ return|;
 block|}
 comment|/**      * Enables SSL connections.      * @param useSSL {@code true} to enable SSL      * @return {@code this}      * @see #useSSL()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setUseSSL
@@ -2408,7 +2402,7 @@ return|;
 block|}
 comment|/**      * Enables TLS connections.      * @param useTLS {@code true} to enable TLS      * @return {@code this}      * @see #useTLS()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setUseTLS
@@ -2439,7 +2433,7 @@ return|;
 block|}
 comment|/**      * Disables certificate validation.      * @param noCertCheck {@code true} to disable certificate validation      * @return {@code this}      * @see #noCertCheck()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setNoCertCheck
@@ -2460,7 +2454,7 @@ return|;
 block|}
 comment|/**      * Configures the DN that is used to bind to the LDAP server. If this value is {@code null} or an empty string,      * anonymous connections are used.      * @return the bind DN or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getBindDN
@@ -2472,7 +2466,7 @@ return|;
 block|}
 comment|/**      * Sets the bind DN.      * @param bindDN the DN      * @return {@code this}      * @see #getBindDN()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setBindDN
@@ -2495,7 +2489,7 @@ return|;
 block|}
 comment|/**      * Configures the password that is used to bind to the LDAP server. This value is not used for anonymous binds.      * @return the password.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getBindPassword
@@ -2507,7 +2501,7 @@ return|;
 block|}
 comment|/**      * Sets the bind password      * @param bindPassword the password      * @return {@code this}      * @see #getBindPassword()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setBindPassword
@@ -2540,7 +2534,7 @@ return|;
 block|}
 comment|/**      * Sets the search timeout.      * @param searchTimeout the timeout in milliseconds      * @return {@code this}      * @see #getSearchTimeout()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setSearchTimeout
@@ -2561,7 +2555,7 @@ return|;
 block|}
 comment|/**      * Configures the attribute that stores the members of a group.      * Default is {@value #PARAM_GROUP_MEMBER_ATTRIBUTE_DEFAULT}      *      * @return the group member attribute      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getGroupMemberAttribute
@@ -2573,13 +2567,13 @@ return|;
 block|}
 comment|/**      * Sets the group member attribute.      * @param groupMemberAttribute the attribute name      * @return {@code this}      * @see #getGroupMemberAttribute()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setGroupMemberAttribute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|groupMemberAttribute
 parameter_list|)
@@ -2596,7 +2590,7 @@ return|;
 block|}
 comment|/**      * If true, the value of the user id (resp. group name) attribute will be used to create external identifiers. Otherwise the DN will be used, which is the default.      *      * @return true iff the value of the user id (resp. group name) attribute will be used to create external identifiers      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|boolean
 name|getUseUidForExtId
@@ -2608,7 +2602,7 @@ return|;
 block|}
 comment|/**      * Sets the flag that controls if the user id (resp. gruop name) will be used instead of the DN to create external ids.      *      * @see #getUseUidForExtId()      * @param useUidForExtId the new value of #useUidForExtId      * @return {@code this}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setUseUidForExtId
@@ -2629,7 +2623,7 @@ return|;
 block|}
 comment|/**      * Optionally configures an array of attribute names that will be retrieved when looking up LDAP entries.      * Defaults to the empty array indicating that all attributes will be retrieved.      *      * @return an array of attribute names. The empty array indicates that all attributes will be retrieved.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 index|[]
@@ -2642,13 +2636,13 @@ return|;
 block|}
 comment|/**      * Sets the attribute names to be retrieved when looking up LDAP entries. The empty array indicates that all attributes will be retrieved.      *      * @param customAttributes an array of attribute names      * @return the Identity instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LdapProviderConfig
 name|setCustomAttributes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|customAttributes
@@ -2675,7 +2669,7 @@ name|String
 name|getMemberOfSearchFilter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|dn
 parameter_list|)
@@ -2796,7 +2790,7 @@ return|;
 block|}
 comment|/**      * Returns the user specific configuration.      * @return the user config.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Identity
 name|getUserConfig
@@ -2808,7 +2802,7 @@ return|;
 block|}
 comment|/**      * Returns the group specific configuration.      * @return the groups config.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Identity
 name|getGroupConfig
@@ -2820,7 +2814,7 @@ return|;
 block|}
 comment|/**      * Returns the admin connection pool configuration.      * @return admin pool config      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PoolConfig
 name|getAdminPoolConfig
@@ -2832,7 +2826,7 @@ return|;
 block|}
 comment|/**      * Returns the user connection pool configuration.      * @return user pool config      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PoolConfig
 name|getUserPoolConfig
@@ -3028,7 +3022,7 @@ index|[]
 name|removeEmptyStrings
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|params
