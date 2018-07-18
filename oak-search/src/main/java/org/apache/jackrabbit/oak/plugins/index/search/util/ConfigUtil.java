@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -132,6 +122,18 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -471,7 +473,7 @@ return|;
 block|}
 comment|/**      * Assumes that given state is of type nt:file and then reads      * the jcr:content/@jcr:data property to get the binary content      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|Blob

@@ -117,36 +117,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -612,6 +582,30 @@ operator|.
 name|state
 operator|.
 name|ReadOnlyBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -2949,7 +2943,7 @@ name|queryPaths
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getUniqueId
@@ -3195,7 +3189,7 @@ return|;
 block|}
 comment|//~---------------------------------------------------< Aggregates>
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Aggregate
 name|getAggregate
@@ -3493,7 +3487,7 @@ name|definedRules
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|IndexingRule
 name|getApplicableIndexingRule
@@ -3587,7 +3581,7 @@ return|;
 block|}
 comment|/**      * Returns the first indexing rule that applies to the given node      *<code>state</code>.      *      * @param state a node state.      * @return the indexing rule or<code>null</code> if none applies.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|IndexingRule
 name|getApplicableIndexingRule
@@ -5168,7 +5162,7 @@ return|;
 block|}
 comment|/**          * @param propertyName name of a property.          * @return the property configuration or<code>null</code> if this          *         indexing rule does not contain a configuration for the given          *         property.          */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|PropertyDefinition
 name|getConfig
@@ -7699,7 +7693,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -8442,7 +8436,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|static
 name|String
