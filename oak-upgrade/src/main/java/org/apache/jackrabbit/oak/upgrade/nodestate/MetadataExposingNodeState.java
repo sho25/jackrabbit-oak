@@ -107,11 +107,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -289,7 +291,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -305,7 +307,7 @@ name|metadataProperties
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -313,12 +315,12 @@ name|NodeState
 name|decorateChild
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|delegateChild
 parameter_list|)
@@ -337,7 +339,7 @@ name|PropertyState
 name|decorateProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|delegatePropertyState
 parameter_list|)

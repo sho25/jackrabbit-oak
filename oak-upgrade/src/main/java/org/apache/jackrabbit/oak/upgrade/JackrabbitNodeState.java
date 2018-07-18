@@ -535,26 +535,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Binary
@@ -1010,6 +990,30 @@ operator|.
 name|spi
 operator|.
 name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -1812,7 +1816,7 @@ name|boolean
 name|hasProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1833,7 +1837,7 @@ name|PropertyState
 name|getProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1848,7 +1852,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1890,7 +1894,7 @@ name|boolean
 name|hasChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1905,7 +1909,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1913,7 +1917,7 @@ name|NodeState
 name|getChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1985,7 +1989,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2077,7 +2081,7 @@ name|entries
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2095,7 +2099,7 @@ return|;
 block|}
 comment|//-----------------------------------------------------------< private>--
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|JackrabbitNodeState
 name|createChildNodeState
@@ -2249,7 +2253,7 @@ name|handleBundleLoadingException
 parameter_list|(
 specifier|final
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
@@ -4028,7 +4032,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

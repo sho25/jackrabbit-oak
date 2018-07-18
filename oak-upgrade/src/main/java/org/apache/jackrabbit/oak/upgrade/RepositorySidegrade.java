@@ -91,16 +91,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -662,6 +652,18 @@ operator|.
 name|version
 operator|.
 name|VersionableEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1264,7 +1266,7 @@ name|void
 name|setIncludes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|includes
@@ -1289,7 +1291,7 @@ name|void
 name|setExcludes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|excludes
@@ -1314,7 +1316,7 @@ name|void
 name|setMerges
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|merges

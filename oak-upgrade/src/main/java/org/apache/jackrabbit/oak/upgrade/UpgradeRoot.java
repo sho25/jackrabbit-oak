@@ -67,16 +67,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -225,6 +215,18 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simplistic 'Root' implementation around the {@code NodeBuilder} used for the  * repository upgrade in order to be able to make use of existing functionality  * like privilege and node type registration without attempting to properly  * implement the full contract of the {@link Root} interface.  */
 end_comment
@@ -277,7 +279,7 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -285,7 +287,7 @@ name|Tree
 name|getTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -349,7 +351,7 @@ name|void
 name|commit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -386,7 +388,7 @@ literal|false
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -401,7 +403,7 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -409,7 +411,7 @@ name|Blob
 name|createBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|InputStream
 name|stream
 parameter_list|)
@@ -429,7 +431,7 @@ name|Blob
 name|getBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
@@ -441,7 +443,7 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -455,7 +457,7 @@ name|ContentSession
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -483,7 +485,7 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

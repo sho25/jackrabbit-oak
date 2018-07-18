@@ -205,9 +205,11 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
