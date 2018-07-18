@@ -39,26 +39,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|InvalidItemStateException
@@ -90,6 +70,30 @@ operator|.
 name|Tree
 operator|.
 name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -223,7 +227,7 @@ block|}
 block|}
 comment|/**      * Get the name of this item      * @return oak name of this item      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|String
@@ -232,7 +236,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Get the path of this item      * @return oak path of this item      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|String
@@ -241,7 +245,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Get the parent of this item or {@code null}.      * @return  parent of this item or {@code null} for root or if the parent      * is not accessible.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|abstract
 name|NodeDelegate
@@ -250,7 +254,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Get the status of this item.      * @return  {@link Status} of this item or {@code null} if not available.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|abstract
 name|Status

@@ -65,16 +65,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|InvalidItemStateException
@@ -275,6 +265,18 @@ name|SessionOperation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple lock manager implementation that just keeps track of a set of lock  * tokens and delegates all locking operations back to the {@link Session}  * and {@link Node} implementations.  */
 end_comment
@@ -320,7 +322,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -347,7 +349,7 @@ literal|"getLockTokens"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -433,7 +435,7 @@ name|void
 name|performVoid
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|node
 parameter_list|)
@@ -542,7 +544,7 @@ literal|"removeLockToken"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -613,7 +615,7 @@ literal|"isLocked"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -621,7 +623,7 @@ name|Boolean
 name|perform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|node
 parameter_list|)
@@ -671,7 +673,7 @@ literal|"holdsLock"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -679,7 +681,7 @@ name|Boolean
 name|perform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|node
 parameter_list|)
@@ -701,7 +703,7 @@ end_function
 
 begin_function
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -736,7 +738,7 @@ literal|"getLock"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -744,7 +746,7 @@ name|NodeDelegate
 name|perform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|node
 parameter_list|)
@@ -802,7 +804,7 @@ end_function
 
 begin_function
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -860,7 +862,7 @@ literal|"lock"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -868,7 +870,7 @@ name|NodeDelegate
 name|perform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|node
 parameter_list|)
@@ -1001,7 +1003,7 @@ name|void
 name|performVoid
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|node
 parameter_list|)

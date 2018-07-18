@@ -253,36 +253,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|ItemExistsException
@@ -725,6 +695,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -926,22 +920,22 @@ specifier|public
 name|SessionDelegate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ContentSession
 name|contentSession
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RefreshStrategy
 name|refreshStrategy
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|ThreadLocal
 argument_list|<
 name|Long
@@ -949,12 +943,12 @@ argument_list|>
 name|threadSaveCount
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|StatisticManager
 name|statisticManager
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Clock
 name|clock
 parameter_list|)
@@ -1132,7 +1126,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SessionStats
 name|getSessionStats
@@ -1204,7 +1198,7 @@ return|;
 block|}
 comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      * @see #getRoot()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 parameter_list|<
 name|T
@@ -1213,7 +1207,7 @@ name|T
 name|perform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionOperation
 argument_list|<
 name|T
@@ -1305,7 +1299,7 @@ name|T
 name|performNullable
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionOperation
 argument_list|<
 name|T
@@ -1509,7 +1503,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|ContentSession
 name|getContentSession
@@ -1769,7 +1763,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|AuthInfo
 name|getAuthInfo
@@ -1832,7 +1826,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|IdentifierManager
 name|getIdManager
@@ -1843,7 +1837,7 @@ name|idManager
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeDelegate
 name|getRootNode
@@ -1858,7 +1852,7 @@ return|;
 block|}
 comment|/**      * {@code NodeDelegate} at the given path      * @param path Oak path      * @return  The {@code NodeDelegate} at {@code path} or {@code null} if      * none exists or not accessible.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeDelegate
 name|getNode
@@ -1896,7 +1890,7 @@ return|;
 block|}
 comment|/**      * Returns the node or property delegate at the given path.      *      * @param path Oak path      * @return node or property delegate, or {@code null} if none exists      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|ItemDelegate
 name|getItem
@@ -2005,7 +1999,7 @@ block|}
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeDelegate
 name|getNodeByIdentifier
@@ -2050,7 +2044,7 @@ return|;
 block|}
 comment|/**      * {@code PropertyDelegate} at the given path      * @param path Oak path      * @return  The {@code PropertyDelegate} at {@code path} or {@code null} if      * none exists or not accessible.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|PropertyDelegate
 name|getProperty
@@ -2238,7 +2232,7 @@ block|}
 block|}
 comment|//----------------------------------------------------------< Workspace>---
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getWorkspaceName
@@ -2454,7 +2448,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|QueryEngine
 name|getQueryEngine
@@ -2468,7 +2462,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PermissionProvider
 name|getPermissionProvider
@@ -2516,7 +2510,7 @@ return|;
 block|}
 comment|/**      * The current {@code Root} instance this session delegate instance operates on.      * To ensure the returned root reflects the correct repository revision access      * should only be done from within a {@link SessionOperation} closure through      * {@link #perform(SessionOperation)}.      *      * @return  current root      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Root
 name|getRoot
@@ -2546,7 +2540,7 @@ name|void
 name|prePerform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionOperation
 argument_list|<
 name|?
@@ -2635,7 +2629,7 @@ name|void
 name|postPerform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionOperation
 argument_list|<
 name|?
@@ -3397,7 +3391,7 @@ name|long
 name|time
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TimeUnit
 name|unit
 parameter_list|)
@@ -3449,7 +3443,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

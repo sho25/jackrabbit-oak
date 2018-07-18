@@ -195,16 +195,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|AccessDeniedException
@@ -519,6 +509,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -724,7 +726,7 @@ block|}
 block|}
 comment|/**      * Perform the passed {@link SessionOperation}.      * @param op  operation to perform      * @param<U>  return type of the operation      * @return  the result of {@code op.perform()}      * @throws RepositoryException as thrown by {@code op.perform()}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|final
 parameter_list|<
@@ -734,7 +736,7 @@ name|U
 name|perform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionOperation
 argument_list|<
 name|U
@@ -758,7 +760,7 @@ comment|/**      * @see javax.jcr.Item#getName()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getName
@@ -783,7 +785,7 @@ literal|"getName"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -823,7 +825,7 @@ comment|/**      * @see javax.jcr.Property#getPath()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getPath
@@ -848,7 +850,7 @@ literal|"getPath"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -871,7 +873,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Session
 name|getSession
@@ -952,7 +954,7 @@ literal|"getAncestor"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1559,7 +1561,7 @@ return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getOakName
 parameter_list|(
@@ -1579,7 +1581,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getOakPathOrThrow
 parameter_list|(
@@ -1599,7 +1601,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getOakPathOrThrowNotFound
 parameter_list|(
@@ -1619,7 +1621,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|toJcrPath
 parameter_list|(
@@ -1638,7 +1640,7 @@ return|;
 block|}
 comment|/**      * Returns the value factory associated with the editing session.      *      * @return the value factory      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|ValueFactory
 name|getValueFactory
 parameter_list|()
@@ -1651,7 +1653,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|ReadWriteNodeTypeManager
 name|getNodeTypeManager
 parameter_list|()
@@ -1667,7 +1669,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|VersionManager
 name|getVersionManager
 parameter_list|()
@@ -1685,7 +1687,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|PropertyState
 name|createSingleState
@@ -1767,7 +1769,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|PropertyState
 name|createMultiState

@@ -281,26 +281,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|AccessDeniedException
@@ -1091,6 +1071,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1158,7 +1162,7 @@ name|class
 argument_list|)
 decl_stmt|;
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|NodeImpl
@@ -1170,12 +1174,12 @@ argument_list|>
 name|createNodeOrNull
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|NodeDelegate
 name|delegate
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionContext
 name|context
 parameter_list|)
@@ -1206,7 +1210,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|NodeImpl
@@ -1218,12 +1222,12 @@ argument_list|>
 name|createNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|delegate
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionContext
 name|context
 parameter_list|)
@@ -1386,7 +1390,7 @@ comment|/**      * @see javax.jcr.Item#getParent()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Node
 name|getParent
@@ -1409,7 +1413,7 @@ literal|"getParent"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1497,7 +1501,7 @@ literal|"isNew"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1550,7 +1554,7 @@ literal|"isModified"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1680,7 +1684,7 @@ comment|/**      * @see Node#addNode(String)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Node
 name|addNode
@@ -1703,7 +1707,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Node
 name|addNode
@@ -1771,7 +1775,7 @@ literal|"addNode"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2126,7 +2130,7 @@ comment|// a non-existing property! See internalRemoveProperty() for details.
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2171,7 +2175,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2255,7 +2259,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2309,7 +2313,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2399,7 +2403,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2470,7 +2474,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2562,7 +2566,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2618,7 +2622,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2704,7 +2708,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2765,7 +2769,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2821,7 +2825,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2860,7 +2864,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2899,7 +2903,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2955,7 +2959,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -2994,7 +2998,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -3050,7 +3054,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|setProperty
@@ -3106,7 +3110,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Node
 name|getNode
@@ -3141,7 +3145,7 @@ literal|"getNode"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3195,7 +3199,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeIterator
 name|getNodes
@@ -3218,7 +3222,7 @@ literal|"getNodes"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3330,7 +3334,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeIterator
 name|getNodes
@@ -3357,7 +3361,7 @@ literal|"getNodes"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3438,7 +3442,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeIterator
 name|getNodes
@@ -3466,7 +3470,7 @@ literal|"getNodes"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3547,7 +3551,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Property
 name|getProperty
@@ -3582,7 +3586,7 @@ literal|"getProperty"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3644,7 +3648,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyIterator
 name|getProperties
@@ -3667,7 +3671,7 @@ literal|"getProperties"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3716,7 +3720,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyIterator
 name|getProperties
@@ -3743,7 +3747,7 @@ literal|"getProperties"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3837,7 +3841,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyIterator
 name|getProperties
@@ -3865,7 +3869,7 @@ literal|"getProperties"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3960,7 +3964,7 @@ comment|/**      * @see javax.jcr.Node#getPrimaryItem()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Item
 name|getPrimaryItem
@@ -3983,7 +3987,7 @@ literal|"getPrimaryItem"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4080,7 +4084,7 @@ comment|/**      * @see javax.jcr.Node#getUUID()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getUUID
@@ -4103,7 +4107,7 @@ literal|"getUUID"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4150,7 +4154,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getIdentifier
@@ -4174,7 +4178,7 @@ literal|"getIdentifier"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4240,7 +4244,7 @@ literal|"internalGetReferences"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4363,7 +4367,7 @@ comment|/**      * @see javax.jcr.Node#getReferences()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyIterator
 name|getReferences
@@ -4383,7 +4387,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyIterator
 name|getReferences
@@ -4408,7 +4412,7 @@ comment|/**      * @see javax.jcr.Node#getWeakReferences()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyIterator
 name|getWeakReferences
@@ -4428,7 +4432,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyIterator
 name|getWeakReferences
@@ -4486,7 +4490,7 @@ literal|"hasNode"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4560,7 +4564,7 @@ literal|"hasProperty"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4637,7 +4641,7 @@ literal|"hasProperties"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4664,7 +4668,7 @@ comment|/**      * @see javax.jcr.Node#getPrimaryNodeType()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeType
 name|getPrimaryNodeType
@@ -4687,7 +4691,7 @@ literal|"getPrimaryNodeType"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4757,7 +4761,7 @@ comment|/**      * @see javax.jcr.Node#getMixinNodeTypes()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeType
 index|[]
@@ -4782,7 +4786,7 @@ literal|"getMixinNodeTypes"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -4933,7 +4937,7 @@ literal|"isNodeType"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -5381,7 +5385,7 @@ literal|"canAddMixin"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -5464,7 +5468,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeDefinition
 name|getDefinition
@@ -5487,7 +5491,7 @@ literal|"getDefinition"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -5548,7 +5552,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getCorrespondingNodePath
@@ -5577,7 +5581,7 @@ literal|"getCorrespondingNodePath"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -5740,7 +5744,7 @@ comment|/**      * @see javax.jcr.Node#checkin()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Version
 name|checkin
@@ -5833,7 +5837,7 @@ comment|/**      * @see javax.jcr.Node#merge(String, boolean)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeIterator
 name|merge
@@ -6151,7 +6155,7 @@ comment|/**      * @see javax.jcr.Node#getVersionHistory()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|VersionHistory
 name|getVersionHistory
@@ -6174,7 +6178,7 @@ comment|/**      * @see javax.jcr.Node#getBaseVersion()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Version
 name|getBaseVersion
@@ -6267,7 +6271,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Lock
 name|getLock
@@ -6289,7 +6293,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Lock
 name|lock
@@ -6346,7 +6350,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeIterator
 name|getSharedSet
@@ -6461,7 +6465,7 @@ comment|/**      * @see javax.jcr.Node#getAllowedLifecycleTransistions()      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 index|[]
@@ -6480,13 +6484,13 @@ throw|;
 block|}
 comment|//------------------------------------------------------------< internal>---
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|String
 name|getPrimaryTypeName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -6564,7 +6568,7 @@ name|primaryTypeName
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Iterator
 argument_list|<
@@ -6573,7 +6577,7 @@ argument_list|>
 name|getMixinTypeNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -7060,7 +7064,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -7264,7 +7268,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -7478,7 +7482,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -79,16 +79,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|InvalidItemStateException
@@ -486,6 +476,18 @@ operator|.
 name|write
 operator|.
 name|ReadWriteNodeTypeManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1448,7 +1450,7 @@ literal|"isCheckoutOut"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1622,7 +1624,7 @@ literal|"getVersionHistory"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1686,7 +1688,7 @@ literal|"getBaseVersion"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1993,7 +1995,7 @@ literal|true
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2189,18 +2191,18 @@ block|}
 block|}
 comment|/**      * Returns the parent for the given<code>absPath</code> or throws a      * {@link PathNotFoundException} if it doesn't exist.      *      * @param sessionDelegate session delegate.      * @param absPath an absolute path      * @return the parent for the given<code>absPath</code>.      * @throws PathNotFoundException if the node does not exist.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|NodeDelegate
 name|ensureParentExists
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionDelegate
 name|sessionDelegate
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|absPath
 parameter_list|)
@@ -2269,12 +2271,12 @@ argument_list|>
 name|getExisting
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Version
 name|version
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -2586,13 +2588,13 @@ block|}
 block|}
 comment|/**      * Returns the version history for the versionable node at the given path.      *      * @param absPathVersionable path to a versionable node.      * @return the version history.      * @throws PathNotFoundException if the given path does not reference an      *                               existing node.      * @throws UnsupportedRepositoryOperationException      *                               if the node at the given path is not      *                               mix:versionable.      * @throws RepositoryException if some other error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|VersionHistoryDelegate
 name|internalGetVersionHistory
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|absPathVersionable
 parameter_list|)

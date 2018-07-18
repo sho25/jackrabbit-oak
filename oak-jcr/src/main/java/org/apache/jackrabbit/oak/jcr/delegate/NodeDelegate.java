@@ -733,26 +733,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|InvalidItemStateException
@@ -1095,6 +1075,30 @@ name|ValueHelper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeDelegate} serve as internal representations of {@code Node}s.  * Most methods of this class throw an {@code InvalidItemStateException}  * exception if the instance is stale. An instance is stale if the underlying  * items does not exist anymore.  */
 end_comment
@@ -1137,7 +1141,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getName
@@ -1153,7 +1157,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getPath
@@ -1169,7 +1173,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeDelegate
 name|getParent
@@ -1221,7 +1225,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Status
 name|getStatus
@@ -1235,7 +1239,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getIdentifier
@@ -1723,7 +1727,7 @@ return|;
 block|}
 comment|/**      * Get a property      *      * @param relPath oak path      * @return property at the path given by {@code relPath} or {@code null} if      *         no such property exists      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|PropertyDelegate
 name|getPropertyOrNull
@@ -1827,7 +1831,7 @@ return|;
 block|}
 comment|/**      * Get a property. In contrast to {@link #getPropertyOrNull(String)} this      * method never returns {@code null}. In the case where no property exists      * at the given path, the returned property delegate throws an      * {@code InvalidItemStateException} on access. See See OAK-395.      *      * @param relPath oak path      * @return property at the path given by {@code relPath}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyDelegate
 name|getProperty
@@ -1906,7 +1910,7 @@ return|;
 block|}
 comment|/**      * Get the properties of the node      *      * @return properties of the node      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -1990,7 +1994,7 @@ return|;
 block|}
 comment|/**      * Get child node      *      * @param relPath oak path      * @return node at the path given by {@code relPath} or {@code null} if      *         no such node exists      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeDelegate
 name|getChild
@@ -2045,7 +2049,7 @@ return|;
 block|}
 comment|/**      * Returns an iterator for traversing all the children of this node.      * If the node is orderable then the iterator will return child nodes in the      * specified order. Otherwise the ordering of the iterator is undefined.      *      * @return child nodes of the node      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -2960,7 +2964,7 @@ block|}
 block|}
 comment|/**      * Set a property      *      * @return the set property      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|PropertyDelegate
 name|setProperty
@@ -3905,7 +3909,7 @@ return|;
 block|}
 comment|/**      * Add a child node      *      * @param name Oak name of the new child node      * @param typeName Oak name of the type of the new child node,      *                 or {@code null} if a default type should be used      * @return the added node or {@code null} if such a node already exists      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeDelegate
 name|addChild
@@ -4034,7 +4038,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeDelegate
 name|getLock
@@ -4116,13 +4120,13 @@ literal|null
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|Tree
 name|findLock
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -4222,13 +4226,13 @@ operator|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|Tree
 name|findDescendantLock
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -4842,7 +4846,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
 annotation|@
-name|Nonnull
+name|NotNull
 comment|// FIXME this should be package private. OAK-672
 specifier|public
 name|Tree

@@ -63,16 +63,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|InvalidSerializedDataException
@@ -196,6 +186,18 @@ operator|.
 name|xml
 operator|.
 name|PropInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1507,7 +1509,7 @@ name|boolean
 name|isSystemProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|localName
 parameter_list|)

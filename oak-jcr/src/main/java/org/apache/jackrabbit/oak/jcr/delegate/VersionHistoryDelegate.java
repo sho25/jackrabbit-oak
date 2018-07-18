@@ -93,16 +93,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|InvalidItemStateException
@@ -250,6 +240,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -293,12 +295,12 @@ block|{
 name|VersionHistoryDelegate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SessionDelegate
 name|sessionDelegate
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|vhTree
 parameter_list|)
@@ -341,7 +343,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|VersionDelegate
 name|getRootVersion
@@ -394,13 +396,13 @@ return|;
 block|}
 comment|/**      * Gets the version with the given name.      *      * @param versionName a version name.      * @return the version delegate.      * @throws VersionException if there is no version with the given name.      * @throws RepositoryException if another error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|VersionDelegate
 name|getVersion
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|versionName
 parameter_list|)
@@ -456,13 +458,13 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|VersionDelegate
 name|getVersionByLabel
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|label
 parameter_list|)
@@ -575,7 +577,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -645,7 +647,7 @@ name|labels
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -654,7 +656,7 @@ argument_list|>
 name|getVersionLabels
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|identifier
 parameter_list|)
@@ -739,7 +741,7 @@ name|labels
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -1011,7 +1013,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -1136,12 +1138,12 @@ name|void
 name|addVersionLabel
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|VersionDelegate
 name|version
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakVersionLabel
 parameter_list|,
@@ -1184,7 +1186,7 @@ name|void
 name|removeVersionLabel
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakVersionLabel
 parameter_list|)
@@ -1218,7 +1220,7 @@ name|void
 name|removeVersion
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakVersionName
 parameter_list|)
@@ -1248,7 +1250,7 @@ block|}
 comment|//-----------------------------< internal>---------------------------------
 comment|/**      * @return the jcr:versionLabels tree or throws a {@code RepositoryException}      *         if it doesn't exist.      * @throws RepositoryException if the jcr:versionLabels child does not      *                             exist.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Tree
 name|getVersionLabelsTree

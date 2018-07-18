@@ -63,16 +63,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Repository
@@ -222,6 +212,18 @@ operator|.
 name|jcr
 operator|.
 name|Jcr
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -545,7 +547,7 @@ name|Principal
 name|getTestPrincipal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|JackrabbitSession
 name|session
 parameter_list|)
@@ -572,7 +574,7 @@ name|Principal
 name|getPrincipal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|JackrabbitSession
 name|session
 parameter_list|,

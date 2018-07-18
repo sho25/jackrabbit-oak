@@ -53,16 +53,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|NodeIterator
@@ -318,6 +308,18 @@ operator|.
 name|jcr
 operator|.
 name|ValueFactoryImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -758,7 +760,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|NodeImpl
 argument_list|<
 name|?

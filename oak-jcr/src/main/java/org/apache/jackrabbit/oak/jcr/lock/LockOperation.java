@@ -23,16 +23,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PathNotFoundException
@@ -123,6 +113,18 @@ name|SessionOperation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base class for locking operations.  *  * @param<T> return type of the {@link #perform()} method  */
 end_comment
@@ -204,7 +206,7 @@ literal|true
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -315,13 +317,13 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|T
 name|perform
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|node
 parameter_list|)
@@ -339,7 +341,7 @@ name|void
 name|performVoid
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDelegate
 name|node
 parameter_list|)
