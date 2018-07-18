@@ -89,21 +89,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -294,7 +298,7 @@ return|;
 block|}
 comment|/**      * Get the parent of a path. The parent of the root path ("/") is the root      * path.      *      * @param path the path      * @return the parent path      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
@@ -315,7 +319,7 @@ return|;
 block|}
 comment|/**      * Get the nth ancestor of a path. The 1st ancestor is the parent path,      * 2nd ancestor the grandparent path, and so on...      *<p>      * If {@code nth<= 0}, the path argument is returned as is.      *      * @param path the path      * @param nth  indicates the ancestor level for which the path should be      *             calculated.      * @return the ancestor path      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
@@ -442,7 +446,7 @@ return|;
 block|}
 comment|/**      * Get the last element of the (absolute or relative) path. The name of the      * root node ("/") and the name of the empty path ("") is the empty path.      *      * @param path the complete path      * @return the last element      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
@@ -532,14 +536,14 @@ return|;
 block|}
 comment|/**      * Returns the given name without the possible SNS index suffix. If the      * name does not contain an SNS index, then it is returned as-is.      *      * @param name name with a possible SNS index suffix      * @return name without the SNS index suffix      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
 name|dropIndexFromName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -678,7 +682,7 @@ block|}
 block|}
 comment|/**      * Returns an {@code Iterable} for the path elements. The root path ("/") and the      * empty path ("") have zero elements.      *      * @param path the path      * @return an Iterable for the path elements      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|Iterable
@@ -893,7 +897,7 @@ return|;
 block|}
 comment|/**      * Concatenate path elements.      *      * @param parentPath    the parent path      * @param relativePaths the relative path elements to add      * @return the concatenated path      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
@@ -1043,7 +1047,7 @@ return|;
 block|}
 comment|/**      * Concatenate path elements.      *      * @param parentPath the parent path      * @param subPath    the subPath path to add      * @return the concatenated path      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
@@ -1184,7 +1188,7 @@ return|;
 block|}
 comment|/**      * Relative path concatenation.      *      * @param relativePaths relative paths      * @return the concatenated path or {@code null} if the resulting path is empty.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|String
@@ -1429,7 +1433,7 @@ return|;
 block|}
 comment|/**      * Relativize a path wrt. a parent path such that      * {@code relativize(parentPath, concat(parentPath, path)) == paths}      * holds.      *      * @param parentPath parent pth      * @param path       path to relativize      * @return relativized path      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String

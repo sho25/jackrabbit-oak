@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -38,6 +28,18 @@ operator|.
 name|util
 operator|.
 name|Text
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -53,14 +55,14 @@ parameter_list|()
 block|{}
 comment|/**      * Escape {@code string} for matching in jcr escaped node names      *      * @param string string to escape      * @return escaped string      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
 name|escapeNodeName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|string
 parameter_list|)
@@ -211,14 +213,14 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
 name|escapeForQuery
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|value
 parameter_list|)

@@ -51,11 +51,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -121,14 +123,14 @@ parameter_list|()
 block|{}
 comment|/**      * Convert a byte array to a hex encoded string.      *      * @param value the byte array      * @return the hex encoded string      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
 name|convertBytesToHex
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|value
@@ -230,7 +232,7 @@ return|;
 block|}
 comment|/**      * Convert a hex encoded string to a byte array.      *      * @param s the hex encoded string      * @return the byte array      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|byte
@@ -238,7 +240,7 @@ index|[]
 name|convertHexToBytes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|s
 parameter_list|)

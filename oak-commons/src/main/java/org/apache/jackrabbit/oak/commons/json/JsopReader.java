@@ -21,11 +21,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -102,7 +104,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Read a string.      *      * @return the de-escaped string (null when reading a null value)      * @throws IllegalStateException if the token type doesn't match      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|readString
 parameter_list|()
@@ -122,14 +124,14 @@ parameter_list|)
 function_decl|;
 comment|/**      * Return the row (escaped) token.      *      * @return the escaped string (null when reading a null value)      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|readRawValue
 parameter_list|()
 function_decl|;
 comment|/**      * Get the last token value if the the token type was STRING or NUMBER. For      * STRING, the text is decoded; for NUMBER, it is returned as parsed. In all      * other cases the result is undefined.      *      * @return the token      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getToken
 parameter_list|()
