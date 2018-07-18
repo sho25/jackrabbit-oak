@@ -57,11 +57,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -147,7 +149,7 @@ block|}
 decl_stmt|;
 comment|/**      * This method would get called while indexing a document.      *      * @param path path of the document being indexed      * @param document {@link NodeState} of the document being indexed      * @param indexDefinition {@link NodeState} of index definition      * @return {@link Iterable} of fields that are to be added to {@link org.apache.lucene.document.Document} being prepared      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Field
@@ -166,7 +168,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * This method is used to find which node types are supported by the implementation. Based, on the index      * definition being used to index the document, only those implementations would get callback to      * {@link IndexFieldProvider#getAugmentedFields} which declare a matching node type. Note, node types are      * exact matches and do not support inheritance.      * @return {@link Set} of types supported by the implementation      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String

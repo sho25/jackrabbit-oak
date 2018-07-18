@@ -55,16 +55,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -330,6 +320,18 @@ operator|.
 name|store
 operator|.
 name|Directory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1427,17 +1429,17 @@ name|void
 name|trackIndexSizeInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|IndexWriter
 name|writer
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|IndexDefinition
 name|definition
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Directory
 name|directory
 parameter_list|)

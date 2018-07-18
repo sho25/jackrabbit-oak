@@ -25,16 +25,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|openmbean
@@ -50,6 +40,18 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -69,35 +71,35 @@ literal|"ActiveDeletedBlobCollector"
 decl_stmt|;
 comment|/**      * Initiate collection operation of deleted lucene index blobs      *      * @return the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|startActiveCollection
 parameter_list|()
 function_decl|;
 comment|/**      * Cancel a running collection of deleted lucene index blobs operation.      * Does nothing if collection is not running.      *      * @return the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|cancelActiveCollection
 parameter_list|()
 function_decl|;
 comment|/**      * Status of collection of deleted lucene index blobs.      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|getActiveCollectionStatus
 parameter_list|()
 function_decl|;
 comment|/**      * @return true: if recording deleted blob for active deletion is unsafe; false: otherwise      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|boolean
 name|isActiveDeletionUnsafe
 parameter_list|()
 function_decl|;
 comment|/**      * Flag current blobs (head state) referred by all indexes so that they won't      * be marked to be collected by active deletion later. It would also set an      * in-memory flag so that new blobs also are flagged to be not marked for deletion      * by active deletion      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|void
 name|flagActiveDeletionUnsafeForCurrentState
 parameter_list|()

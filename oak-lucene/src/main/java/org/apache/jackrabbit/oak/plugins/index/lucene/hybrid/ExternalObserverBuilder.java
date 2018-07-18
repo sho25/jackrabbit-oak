@@ -37,16 +37,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -168,6 +158,18 @@ operator|.
 name|stats
 operator|.
 name|StatisticsProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -402,12 +404,12 @@ specifier|public
 name|WarningObserver
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Observer
 name|observer
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Executor
 name|executor
 parameter_list|,
@@ -507,12 +509,12 @@ name|void
 name|contentChanged
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)

@@ -45,16 +45,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -99,6 +89,18 @@ name|Directory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -111,13 +113,13 @@ name|getReader
 parameter_list|()
 function_decl|;
 annotation|@
-name|CheckForNull
+name|Nullable
 name|AnalyzingInfixSuggester
 name|getLookup
 parameter_list|()
 function_decl|;
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Directory
 name|getSuggestDirectory
 parameter_list|()

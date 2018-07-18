@@ -625,16 +625,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -1230,6 +1220,18 @@ operator|.
 name|store
 operator|.
 name|RAMDirectory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -14241,7 +14243,7 @@ name|long
 name|numOfDocs
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Document
 name|doc
 parameter_list|)
@@ -14416,19 +14418,19 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|NodeBuilder
 name|getNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|node
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)

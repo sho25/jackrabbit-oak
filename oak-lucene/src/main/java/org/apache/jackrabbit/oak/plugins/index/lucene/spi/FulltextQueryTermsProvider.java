@@ -71,21 +71,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -166,7 +170,7 @@ block|}
 decl_stmt|;
 comment|/**      * This method would get called while forming full text clause for full text clause not constrained on a particular      * field.      * @param text full text term      * @param analyzer {@link Analyzer} being used while forming the query. Can be used to analyze text consistently.      * @param indexDefinition {@link NodeState} of index definition      * @return {@link Query} object to be OR'ed with query being prepared. {@code null}, if nothing is to be added.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Query
 name|getQueryTerm
 parameter_list|(
@@ -182,7 +186,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * This method is used to find which node types are supported by the implementation. Based, on the index      * definition being used to query the document, only those implementations would get callback to      * {@link FulltextQueryTermsProvider#getQueryTerm} which declare a matching node type. Note, node types are      * exact matches and do not support inheritance.      * @return {@link Set} of types supported by the implementation      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String

@@ -135,6 +135,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -148,16 +160,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
 import|;
 end_import
 
@@ -379,7 +381,7 @@ name|String
 name|dirDetails
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|BlobFactory
 name|blobFactory
 parameter_list|)
@@ -1205,7 +1207,7 @@ name|int
 name|read
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|target
@@ -1375,7 +1377,7 @@ name|int
 name|read
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|b

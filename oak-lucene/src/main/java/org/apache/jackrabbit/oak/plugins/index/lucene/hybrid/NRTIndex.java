@@ -99,26 +99,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -444,6 +424,18 @@ operator|.
 name|store
 operator|.
 name|Directory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -807,7 +799,7 @@ expr_stmt|;
 block|}
 comment|/**      * Note that this method is called from a different NRTIndex instance getReaders      * call. So "dirReader" instance changed here is different      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|LuceneIndexReader
 name|getPrimaryReader
@@ -1389,7 +1381,7 @@ block|}
 block|}
 comment|/**      * If index was updated then a new reader would be returned otherwise      * existing reader would be returned      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|synchronized
 name|DirectoryReader

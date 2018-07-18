@@ -383,19 +383,21 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
+name|jetbrains
 operator|.
-name|LoggerFactory
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|slf4j
 operator|.
-name|Nonnull
+name|LoggerFactory
 import|;
 end_import
 
@@ -612,7 +614,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|IndexFieldProvider
 name|getIndexFieldProvider
@@ -646,7 +648,7 @@ name|DEFAULT
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FulltextQueryTermsProvider
 name|getFulltextQueryTermsProvider
@@ -1114,7 +1116,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1223,7 +1225,7 @@ name|fields
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1463,7 +1465,7 @@ name|ret
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

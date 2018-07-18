@@ -125,16 +125,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -158,6 +148,18 @@ operator|.
 name|io
 operator|.
 name|FileUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -403,7 +405,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getJcrNameFromFSName
@@ -465,7 +467,7 @@ return|;
 block|}
 comment|/**      * Returns the file system name for the given JCR name which      * represents a directory on the file system      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getFSNameFromJCRName

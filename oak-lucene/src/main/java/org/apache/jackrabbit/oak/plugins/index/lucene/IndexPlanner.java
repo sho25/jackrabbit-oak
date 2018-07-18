@@ -117,16 +117,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -442,6 +432,18 @@ operator|.
 name|Filter
 operator|.
 name|PropertyRestriction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -3206,7 +3208,7 @@ name|indexedProps
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|static
 name|PropertyDefinition
@@ -4302,7 +4304,7 @@ name|orderEntries
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|IndexingRule
 name|getApplicableRule
@@ -4816,7 +4818,7 @@ return|;
 block|}
 comment|/**          * Transforms the given path if the query involved relative properties and index          * is not making use of aggregated properties. If the path          *          * @param path path to transform          * @return transformed path. Returns null if the path does not confirm to relative          * path requirements          */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|transformPath
@@ -4899,7 +4901,7 @@ name|nodeNameRestriction
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|PropertyIndexResult
 name|getPropertyIndexResult
