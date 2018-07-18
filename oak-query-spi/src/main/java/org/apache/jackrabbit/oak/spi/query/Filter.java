@@ -63,26 +63,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -138,6 +118,30 @@ operator|.
 name|fulltext
 operator|.
 name|FullTextExpression
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -238,7 +242,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the names of the filter node type and all its supertypes.      *      * @return supertype name      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -248,7 +252,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the names of all matching primary node types.      *      * @return primary node type names      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -258,7 +262,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the names of all matching mixin node types.      *      * @return mixin node type names      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -1377,7 +1381,7 @@ literal|false
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1396,7 +1400,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1415,7 +1419,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -61,11 +61,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -219,7 +221,7 @@ name|NativeQueryIndex
 block|{
 comment|/**          * Returns the NodeAggregator responsible for providing the aggregation          * settings or null if aggregation is not available/desired.          *           * @return the node aggregator or null          */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|NodeAggregator
 name|getNodeAggregator
 parameter_list|()
@@ -357,7 +359,7 @@ parameter_list|()
 function_decl|;
 comment|/**          * The property restriction for this index plan or<code>null</code> if          * this index plan isn't base on a property restriction. E.g. a plan          * based on an order by clause in the query.          *          * @return the restriction this plan is based on or<code>null</code>.          */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|PropertyRestriction
 name|getPropertyRestriction
 parameter_list|()
@@ -369,7 +371,7 @@ parameter_list|()
 function_decl|;
 comment|/**          * Returns the value of the named attribute as an<code>Object</code>,          * or<code>null</code> if no attribute of the given name exists.          *          * @param name<code>String</code> specifying the name of          * the attribute          *          * @return an<code>Object</code> containing the value          * of the attribute, or<code>null</code> if the attribute does not exist          */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Object
 name|getAttribute
 parameter_list|(
@@ -379,7 +381,7 @@ parameter_list|)
 function_decl|;
 comment|/**          * Get the unique plan name.          *          * @return the plan name          */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getPlanName
 parameter_list|()
