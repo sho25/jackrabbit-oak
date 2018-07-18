@@ -627,16 +627,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|InstanceAlreadyExistsException
@@ -1290,6 +1280,18 @@ operator|.
 name|stats
 operator|.
 name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -4987,7 +4989,7 @@ specifier|private
 name|Checkpoint
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeStore
 name|nodeStore
 parameter_list|)

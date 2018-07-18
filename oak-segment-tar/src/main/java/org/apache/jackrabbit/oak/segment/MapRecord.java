@@ -161,16 +161,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -251,6 +241,18 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A map. The top level record is either a record of type "BRANCH" or "LEAF"  * (depending on the data).  */
 end_comment
@@ -287,7 +289,7 @@ init|=
 literal|0xFFFFFFFFL
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentReader
@@ -404,12 +406,12 @@ comment|// ~268e6
 name|MapRecord
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentReader
 name|reader
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|id
 parameter_list|)
@@ -1893,7 +1895,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2230,7 +2232,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -63,26 +63,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -110,6 +90,30 @@ operator|.
 name|cache
 operator|.
 name|CacheStats
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -155,7 +159,7 @@ name|T
 parameter_list|>
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Weigher
@@ -167,7 +171,7 @@ argument_list|>
 name|weigher
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|String
@@ -175,7 +179,7 @@ name|name
 decl_stmt|;
 comment|/**      * The fast (array based) cache.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|final
 name|FastCache
@@ -186,7 +190,7 @@ name|fastCache
 decl_stmt|;
 comment|/**      * The slower (LIRS) cache.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|CacheLIRS
@@ -208,12 +212,12 @@ name|int
 name|averageWeight
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Weigher
 argument_list|<
 name|CacheKey
@@ -285,7 +289,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|CacheStats
 name|getStats
@@ -363,7 +367,7 @@ return|;
 block|}
 comment|/**      * Get the value, loading it if necessary.      *      * @param msb the msb of the segment      * @param lsb the lsb of the segment      * @param offset the offset      * @param loader the loader function      * @return the value      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|T
 name|get

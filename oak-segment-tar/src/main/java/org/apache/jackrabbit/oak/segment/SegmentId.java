@@ -65,26 +65,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -116,6 +96,30 @@ operator|.
 name|tar
 operator|.
 name|GCGeneration
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -207,7 +211,7 @@ literal|0xAL
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentStore
@@ -236,14 +240,14 @@ name|onAccess
 decl_stmt|;
 comment|/**      * The gc generation of this segment or -1 if unknown.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|GCGeneration
 name|gcGeneration
 decl_stmt|;
 comment|/**      * The gc info of this segment if it has been reclaimed or {@code null} otherwise.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|String
 name|gcInfo
@@ -259,7 +263,7 @@ specifier|public
 name|SegmentId
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentStore
 name|store
 parameter_list|,
@@ -270,7 +274,7 @@ name|long
 name|lsb
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Runnable
 name|onAccess
 parameter_list|)
@@ -314,7 +318,7 @@ specifier|public
 name|SegmentId
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentStore
 name|store
 parameter_list|,
@@ -388,7 +392,7 @@ return|;
 block|}
 comment|/**      * Get the segment identified by this instance. The segment is memoised in this instance's      * {@link #segment} field.      * @return  the segment identified by this instance.      * @see #loaded(Segment)      * @see #unloaded()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Segment
 name|getSegment
@@ -457,7 +461,7 @@ return|;
 block|}
 comment|/**      * @return  garbage collection related information like the age of this segment      *          id, the generation of its segment and information about its gc status.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|gcInfo
 parameter_list|()
@@ -545,7 +549,7 @@ return|;
 block|}
 comment|/* For testing only */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getGcInfo
 parameter_list|()
@@ -560,7 +564,7 @@ name|void
 name|reclaimed
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|gcInfo
 parameter_list|)
@@ -577,7 +581,7 @@ name|void
 name|loaded
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Segment
 name|segment
 parameter_list|)
@@ -616,7 +620,7 @@ name|boolean
 name|sameStore
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentStore
 name|store
 parameter_list|)
@@ -656,7 +660,7 @@ return|;
 block|}
 comment|/**      * Get the underlying segment's gc generation. Might cause the segment to      * get loaded if the generation info is missing      * @return the segment's gc generation      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|GCGeneration
 name|getGcGeneration
@@ -692,7 +696,7 @@ name|int
 name|compareTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|that
 parameter_list|)

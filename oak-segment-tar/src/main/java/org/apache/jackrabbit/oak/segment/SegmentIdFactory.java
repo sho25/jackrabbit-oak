@@ -19,11 +19,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -38,7 +40,7 @@ name|SegmentIdFactory
 block|{
 comment|/**      * Creates a {@link SegmentId} represented by the given MSB/LSB pair.      *      * @param msb The most significant bits of the {@link SegmentId}.      * @param lsb The least significant bits of the {@link SegmentId}.      * @return An instance of {@link SegmentId}. The returned instance is never      * {@code null}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|newSegmentId
 parameter_list|(

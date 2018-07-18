@@ -39,16 +39,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -100,6 +90,18 @@ operator|.
 name|persistence
 operator|.
 name|SegmentArchiveEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -262,7 +264,7 @@ return|;
 block|}
 comment|/**      * Create a new instance with the generation and the full generation incremented by one      * and the compaction flag left unchanged.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|GCGeneration
 name|nextFull
@@ -286,7 +288,7 @@ return|;
 block|}
 comment|/**      * Create a new instance with the generation incremented by one and the full      * generation and the compaction flag left unchanged.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|GCGeneration
 name|nextTail
@@ -308,7 +310,7 @@ return|;
 block|}
 comment|/**      * Create a new instance with the compaction flag unset and the generation and the      * full generation left unchanged.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|GCGeneration
 name|nonGC
@@ -332,7 +334,7 @@ name|int
 name|compareWith
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCGeneration
 name|gcGeneration
 parameter_list|)
@@ -354,7 +356,7 @@ name|int
 name|compareFullGenerationWith
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCGeneration
 name|gcGeneration
 parameter_list|)

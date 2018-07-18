@@ -43,19 +43,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -72,7 +76,7 @@ name|SegmentArchiveWriter
 block|{
 comment|/**      * Write the new segment to the archive.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @param data the data.      * @param offset the start offset in the data.      * @param size the number of bytes to write.      * @param generation the segment generation, see {@link SegmentArchiveEntry#getGeneration()}      * @param fullGeneration the segment full generation, see {@link SegmentArchiveEntry#getFullGeneration()}      * @param isCompacted the segment compaction property, see {@link SegmentArchiveEntry#isCompacted()}      * @throws IOException      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|void
 name|writeSegment
 parameter_list|(
@@ -83,7 +87,7 @@ name|long
 name|lsb
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|data
@@ -137,7 +141,7 @@ name|void
 name|writeGraph
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|data
@@ -150,7 +154,7 @@ name|void
 name|writeBinaryReferences
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|data
@@ -189,7 +193,7 @@ name|IOException
 function_decl|;
 comment|/**      * Get the name of the archive.      *      * @return archive name      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getName
 parameter_list|()

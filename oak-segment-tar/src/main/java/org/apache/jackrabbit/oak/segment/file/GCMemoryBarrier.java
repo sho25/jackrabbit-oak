@@ -155,16 +155,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|ListenerNotFoundException
@@ -231,6 +221,18 @@ name|SegmentGCOptions
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Responsible for raising the low memory flag whenever the available memory  * falls under a specified threshold. Uses {@link MemoryPoolMXBean} to register  * for memory related notifications.  */
 end_comment
@@ -245,21 +247,21 @@ block|{
 comment|// TODO possibly add a min value to the percentage, ie. skip gc if available
 comment|// heap drops under 2GB
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|AtomicBoolean
 name|sufficientMemory
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|GCListener
 name|gcListener
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentGCOptions
@@ -279,17 +281,17 @@ specifier|public
 name|GCMemoryBarrier
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|AtomicBoolean
 name|sufficientMemory
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCListener
 name|gcListener
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentGCOptions
 name|gcOptions
 parameter_list|)

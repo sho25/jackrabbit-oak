@@ -29,11 +29,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -51,12 +53,12 @@ name|WriteOperation
 block|{
 comment|/**          * Persist any changes represented by the {@code WriteOperation} to the          * passed {@code writer}.          * @param writer  writer which must be used to persist any changes          * @return        {@code RecordId} that resulted from persisting the changes.          * @throws IOException          */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentBufferWriter
 name|writer
 parameter_list|)
@@ -66,12 +68,12 @@ function_decl|;
 block|}
 comment|/**      * Execute the passed {@code writeOperation} by passing it a {@link SegmentBufferWriter}.      * @param writeOperation  {@link WriteOperation} to execute      * @return                {@code RecordId} that resulted from persisting the changes.      * @throws IOException      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|WriteOperation
 name|writeOperation
 parameter_list|)
@@ -83,7 +85,7 @@ name|void
 name|flush
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentStore
 name|store
 parameter_list|)

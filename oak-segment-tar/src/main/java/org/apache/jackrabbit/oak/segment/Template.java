@@ -171,36 +171,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -329,6 +299,30 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * The in-memory representation of a "hidden class" of a node; inspired by the  * Chrome V8 Javascript engine).  *<p>  * Templates are always read fully in-memory.  */
 end_comment
@@ -374,7 +368,7 @@ init|=
 literal|""
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentReader
@@ -382,7 +376,7 @@ name|reader
 decl_stmt|;
 comment|/**      * The {@code jcr:primaryType} property, if present as a single-valued      * {@code NAME} property. Otherwise {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|final
 name|PropertyState
@@ -390,7 +384,7 @@ name|primaryType
 decl_stmt|;
 comment|/**      * The {@code jcr:mixinTypes} property, if present as a multi-valued      * {@code NAME} property. Otherwise {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|final
 name|PropertyState
@@ -398,7 +392,7 @@ name|mixinTypes
 decl_stmt|;
 comment|/**      * Templates of all the properties of a node, excluding the      * above-mentioned {@code NAME}-valued type properties, if any.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|PropertyTemplate
@@ -407,7 +401,7 @@ name|properties
 decl_stmt|;
 comment|/**      * Name of the single child node, if the node contains just one child.      * Otherwise {@link #ZERO_CHILD_NODES} (i.e. {@code null}) if there are      * no children, or {@link #MANY_CHILD_NODES} if there are more than one.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|final
 name|String
@@ -416,7 +410,7 @@ decl_stmt|;
 name|Template
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentReader
 name|reader
 parameter_list|,
@@ -509,12 +503,12 @@ block|}
 name|Template
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentReader
 name|reader
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|state
 parameter_list|)
@@ -747,7 +741,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|PropertyState
 name|getPrimaryType
 parameter_list|()
@@ -757,7 +751,7 @@ name|primaryType
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|PropertyState
 name|getMixinTypes
 parameter_list|()
@@ -876,7 +870,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getChildName
 parameter_list|()

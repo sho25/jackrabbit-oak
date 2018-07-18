@@ -109,11 +109,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -382,7 +384,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Segment
 name|getSegment
@@ -397,7 +399,7 @@ return|;
 block|}
 comment|/**      * Serialise this record id into an array of bytes: {@code (msb, lsb, offset>> 2)}      * @return  this record id as byte array      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|ByteBuffer
 name|getBytes
 parameter_list|()
@@ -468,7 +470,7 @@ name|int
 name|compareTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|that
 parameter_list|)

@@ -23,26 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -81,6 +61,30 @@ name|UUID
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * SegmentArchiveManager provides a low-level access to the segment files (eg.  * stored in the .tar). It allows to perform a few FS-like operations (delete,  * rename, copy, etc.) and also opens the segment archives either for reading  * or reading and writing.  *<p>  * The implementation doesn't need to be thread-safe.  */
 end_comment
@@ -92,7 +96,7 @@ name|SegmentArchiveManager
 block|{
 comment|/**      * List names of the available .tar archives.      *      * @return archive list      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String
@@ -109,7 +113,7 @@ name|SegmentArchiveReader
 name|open
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|archiveName
 parameter_list|)
@@ -118,12 +122,12 @@ name|IOException
 function_decl|;
 comment|/**      * Creates a new archive.      *      * @param archiveName      * @return the archive writer      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentArchiveWriter
 name|create
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|archiveName
 parameter_list|)
@@ -135,7 +139,7 @@ name|boolean
 name|delete
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|archiveName
 parameter_list|)
@@ -145,12 +149,12 @@ name|boolean
 name|renameTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|from
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|to
 parameter_list|)
@@ -160,12 +164,12 @@ name|void
 name|copyFile
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|from
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|to
 parameter_list|)
@@ -177,7 +181,7 @@ name|boolean
 name|exists
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|archiveName
 parameter_list|)
@@ -187,12 +191,12 @@ name|void
 name|recoverEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|archiveName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|LinkedHashMap
 argument_list|<
 name|UUID

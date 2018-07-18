@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -54,6 +34,30 @@ operator|.
 name|gc
 operator|.
 name|GCMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -189,21 +193,21 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return  last error or {@code null} if none.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getLastError
 parameter_list|()
 function_decl|;
 comment|/**      * @return  last log message or {@code null} if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getLastLogMessage
 parameter_list|()
 function_decl|;
 comment|/**      * @return  current status.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getStatus
 parameter_list|()

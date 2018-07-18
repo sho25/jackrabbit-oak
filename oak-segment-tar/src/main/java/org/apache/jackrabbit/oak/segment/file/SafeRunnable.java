@@ -49,11 +49,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -103,14 +105,14 @@ name|class
 argument_list|)
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Runnable
@@ -120,12 +122,12 @@ comment|/**      * New instance with the given {@code name} wrapping the passed 
 name|SafeRunnable
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Runnable
 name|runnable
 parameter_list|)

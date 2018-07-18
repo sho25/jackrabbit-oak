@@ -191,16 +191,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -518,6 +508,18 @@ operator|.
 name|stats
 operator|.
 name|DefaultStatisticsProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1562,7 +1564,7 @@ name|String
 name|getBlobId
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
@@ -1578,7 +1580,7 @@ name|String
 name|getReference
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|blobId
 parameter_list|)

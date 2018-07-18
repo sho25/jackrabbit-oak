@@ -91,11 +91,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -176,7 +178,7 @@ name|int
 name|newValidOffset
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Random
 name|random
 parameter_list|,

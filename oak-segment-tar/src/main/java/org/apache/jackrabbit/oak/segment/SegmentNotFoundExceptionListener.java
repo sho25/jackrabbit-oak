@@ -19,11 +19,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -71,12 +73,12 @@ name|void
 name|notify
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentNotFoundException
 name|snfe
 parameter_list|)
@@ -112,12 +114,12 @@ name|void
 name|notify
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentNotFoundException
 name|snfe
 parameter_list|)
@@ -146,13 +148,13 @@ name|void
 name|notify
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|SegmentId
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|SegmentNotFoundException
 name|snfe

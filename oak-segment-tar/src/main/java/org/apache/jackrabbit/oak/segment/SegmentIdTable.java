@@ -135,11 +135,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -227,7 +229,7 @@ name|entryCount
 decl_stmt|;
 comment|/**      * Get the segment id, and reference it in the weak references map. If the      * pair of MSB/LSB is not tracked by this table, a new instance of {@link      * SegmentId} is created using the provided {@link SegmentIdFactory} and      * tracked by this table.      *      * @param msb   The most significant bits of the {@link SegmentId}.      * @param lsb   The least significant bits of the {@link SegmentId}.      * @param maker A non-{@code null} instance of {@link SegmentIdFactory}.      * @return the segment id      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|synchronized
 name|SegmentId
 name|newSegmentId
@@ -785,7 +787,7 @@ name|void
 name|clearSegmentIdTables
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|UUID
@@ -793,7 +795,7 @@ argument_list|>
 name|reclaimed
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|gcInfo
 parameter_list|)

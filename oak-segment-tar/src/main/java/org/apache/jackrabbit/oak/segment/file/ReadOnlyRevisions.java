@@ -107,16 +107,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -233,6 +223,18 @@ name|SegmentStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -243,7 +245,7 @@ implements|,
 name|Closeable
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|AtomicReference
@@ -253,7 +255,7 @@ argument_list|>
 name|head
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|JournalFile
@@ -263,7 +265,7 @@ specifier|public
 name|ReadOnlyRevisions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentNodeStorePersistence
 name|persistence
 parameter_list|)
@@ -298,12 +300,12 @@ name|void
 name|bind
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentIdProvider
 name|idProvider
 parameter_list|)
@@ -376,7 +378,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -395,7 +397,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -415,17 +417,17 @@ name|boolean
 name|setHead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|expected
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|head
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Option
 modifier|...
 name|options
@@ -471,7 +473,7 @@ name|RecordId
 name|setHead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Function
 argument_list|<
 name|RecordId
@@ -481,7 +483,7 @@ argument_list|>
 name|newHead
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Option
 modifier|...
 name|options

@@ -151,16 +151,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -227,6 +217,18 @@ name|GCGeneration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * This {@link WriteOperationHandler} uses a pool of {@link SegmentBufferWriter}s,  * which it passes to its {@link #execute(WriteOperation) execute} method.  *<p>  * Instances of this class are thread safe.  */
 end_comment
@@ -289,21 +291,21 @@ name|newHashSet
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentIdProvider
 name|idProvider
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentReader
 name|reader
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Supplier
@@ -313,7 +315,7 @@ argument_list|>
 name|gcGeneration
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|String
@@ -330,22 +332,22 @@ specifier|public
 name|SegmentBufferWriterPool
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentIdProvider
 name|idProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentReader
 name|reader
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|wid
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|GCGeneration
@@ -391,7 +393,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -399,7 +401,7 @@ name|RecordId
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|WriteOperation
 name|writeOperation
 parameter_list|)
@@ -445,7 +447,7 @@ name|void
 name|flush
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentStore
 name|store
 parameter_list|)
@@ -581,7 +583,7 @@ block|}
 block|}
 comment|/**      * Create a {@code Guard} that is satisfied if and only if {@link #disposed}      * contains all items in {@code toReturn}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Guard
 name|allReturned

@@ -29,11 +29,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -71,7 +73,7 @@ return|;
 block|}
 comment|/**          * @throws SegmentNotFoundException always          */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -133,7 +135,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Reads the identified segment from this store.      *      * @param segmentId segment identifier      * @return identified segment, or a {@link SegmentNotFoundException} thrown if not found      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Segment
 name|readSegment
 parameter_list|(

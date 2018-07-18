@@ -449,16 +449,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -676,6 +666,18 @@ operator|.
 name|state
 operator|.
 name|NodeBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -1209,7 +1211,7 @@ name|MemoryStore
 argument_list|()
 block|{
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public

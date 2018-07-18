@@ -87,16 +87,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -110,6 +100,18 @@ operator|.
 name|whiteboard
 operator|.
 name|Registration
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -137,7 +139,7 @@ specifier|public
 name|CompositeIOMonitor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|?
@@ -174,13 +176,13 @@ expr_stmt|;
 block|}
 comment|/**      * Register a {@code IOMonitor} instance to which this {@code CompositeIOMonitor}      * will delegate all its calls until {@link Registration#unregister()} is called      * on the return {@code Registration}.      *      * @param ioMonitor  {@code IOMonitor} to delegate to      * @return  a {@code Registration} for {@code ioMonitor}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Registration
 name|registerIOMonitor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|IOMonitor
 name|ioMonitor
 parameter_list|)

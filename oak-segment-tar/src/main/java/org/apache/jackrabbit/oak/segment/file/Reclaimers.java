@@ -37,16 +37,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -99,6 +89,18 @@ name|GCGeneration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Helper class exposing static factories for reclaimers. A reclaimer  * is a predicate used during the cleanup phase of garbage collection  * to decide whether a segment of a given generation is reclaimable.  */
 end_comment
@@ -122,12 +124,12 @@ argument_list|>
 name|newOldReclaimer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCType
 name|lastGCType
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|GCGeneration
 name|referenceGeneration
@@ -187,7 +189,7 @@ argument_list|>
 name|newOldFullReclaimer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|GCGeneration
 name|referenceGeneration
@@ -312,7 +314,7 @@ argument_list|>
 name|newOldTailReclaimer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|GCGeneration
 name|referenceGeneration
@@ -436,7 +438,7 @@ argument_list|>
 name|newExactReclaimer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|GCGeneration
 name|referenceGeneration

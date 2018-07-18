@@ -63,19 +63,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -142,7 +146,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Load binary references.      *      * @return byte buffer representing the binary references structure.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|ByteBuffer
 name|getBinaryReferences
 parameter_list|()
@@ -156,7 +160,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Get the name of the archive.      *      * @return archive name      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getName
 parameter_list|()

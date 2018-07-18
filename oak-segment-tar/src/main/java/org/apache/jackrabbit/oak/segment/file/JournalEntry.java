@@ -21,11 +21,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -39,7 +41,7 @@ class|class
 name|JournalEntry
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|String
@@ -53,7 +55,7 @@ decl_stmt|;
 name|JournalEntry
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|revision
 parameter_list|,
@@ -75,7 +77,7 @@ name|timestamp
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getRevision

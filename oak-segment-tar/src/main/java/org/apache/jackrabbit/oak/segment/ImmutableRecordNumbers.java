@@ -29,16 +29,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -48,6 +38,18 @@ operator|.
 name|collect
 operator|.
 name|AbstractIterator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -62,7 +64,7 @@ implements|implements
 name|RecordNumbers
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|int
@@ -70,7 +72,7 @@ index|[]
 name|offsets
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|byte
@@ -82,13 +84,13 @@ specifier|public
 name|ImmutableRecordNumbers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|int
 index|[]
 name|offsets
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|type
@@ -142,7 +144,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

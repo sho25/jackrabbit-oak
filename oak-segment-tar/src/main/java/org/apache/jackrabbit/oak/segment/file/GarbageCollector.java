@@ -135,16 +135,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -353,6 +343,18 @@ name|BlobStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 class|class
 name|GarbageCollector
@@ -389,7 +391,7 @@ literal|1000
 argument_list|)
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentGCOptions
@@ -397,14 +399,14 @@ name|gcOptions
 decl_stmt|;
 comment|/**      * {@code GcListener} listening to this instance's gc progress      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|PrefixedGCListener
 name|gcListener
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|GCJournal

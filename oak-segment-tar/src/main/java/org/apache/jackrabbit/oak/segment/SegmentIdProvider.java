@@ -19,11 +19,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -43,7 +45,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Provide a {@code SegmentId} represented by the given MSB/LSB pair.      *      * @param msb The most significant bits of the {@code SegmentId}.      * @param lsb The least significant bits of the {@code SegmentId}.      * @return A non-{@code null} instance of {@code SegmentId}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|newSegmentId
 parameter_list|(
@@ -56,14 +58,14 @@ parameter_list|)
 function_decl|;
 comment|/**      * Provide a {@code SegmentId} for a segment of type "bulk".      *      * @return A non-{@code null} instance of {@code SegmentId}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|newDataSegmentId
 parameter_list|()
 function_decl|;
 comment|/**      * Provide a {@code SegmentId} for a segment of type "data".      *      * @return A non-{@code null} instance of {@code SegmentId}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|newBulkSegmentId
 parameter_list|()

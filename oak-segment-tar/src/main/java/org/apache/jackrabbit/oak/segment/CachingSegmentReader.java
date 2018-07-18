@@ -35,36 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -143,6 +113,30 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * This {@code SegmentReader} implementation implements caching for  * strings and templates. It can also optionally rely on a {@link BlobStore} for resolving blobs.  */
 end_comment
@@ -171,7 +165,7 @@ init|=
 literal|64
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Supplier
@@ -181,7 +175,7 @@ argument_list|>
 name|writer
 decl_stmt|;
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|final
 name|BlobStore
@@ -189,7 +183,7 @@ name|blobStore
 decl_stmt|;
 comment|/**      * Cache for string records      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|StringCache
@@ -197,7 +191,7 @@ name|stringCache
 decl_stmt|;
 comment|/**      * Cache for template records      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|TemplateCache
@@ -208,7 +202,7 @@ specifier|public
 name|CachingSegmentReader
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|SegmentWriter
@@ -269,7 +263,7 @@ expr_stmt|;
 block|}
 comment|/**      * Cached reading of a string.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -277,7 +271,7 @@ name|String
 name|readString
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|id
 parameter_list|)
@@ -331,7 +325,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -359,7 +353,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -367,7 +361,7 @@ name|MapRecord
 name|readMap
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|id
 parameter_list|)
@@ -384,7 +378,7 @@ return|;
 block|}
 comment|/**      * Cached reading of a template.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -392,7 +386,7 @@ name|Template
 name|readTemplate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|id
 parameter_list|)
@@ -446,7 +440,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -474,7 +468,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -482,7 +476,7 @@ name|SegmentNodeState
 name|readNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|id
 parameter_list|)
@@ -502,7 +496,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -510,7 +504,7 @@ name|SegmentNodeState
 name|readHeadState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revisions
 name|revisions
 parameter_list|)
@@ -526,7 +520,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -534,12 +528,12 @@ name|SegmentPropertyState
 name|readProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyTemplate
 name|template
 parameter_list|)
@@ -557,7 +551,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -565,7 +559,7 @@ name|SegmentBlob
 name|readBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|id
 parameter_list|)
@@ -581,7 +575,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|CacheStats
 name|getStringCacheStats
@@ -595,7 +589,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|CacheStats
 name|getTemplateCacheStats

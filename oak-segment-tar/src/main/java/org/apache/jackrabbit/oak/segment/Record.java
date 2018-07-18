@@ -19,11 +19,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -68,7 +70,7 @@ name|boolean
 name|fastEquals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Record
 name|a
 parameter_list|,
@@ -98,12 +100,12 @@ name|boolean
 name|fastEquals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Record
 name|a
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Record
 name|b
 parameter_list|)
@@ -152,7 +154,7 @@ specifier|protected
 name|Record
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|id
 parameter_list|)
@@ -175,7 +177,7 @@ specifier|protected
 name|Record
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|segmentId
 parameter_list|,

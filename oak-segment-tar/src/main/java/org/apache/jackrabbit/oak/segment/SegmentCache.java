@@ -117,16 +117,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -215,6 +205,18 @@ name|SegmentCacheWeigher
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A cache for {@link SegmentId#isDataSegmentId() data} {@link Segment}  * instances by their {@link SegmentId}. This cache ignores {@link  * SegmentId#isBulkSegmentId() bulk} segments.  *<p>  * Conceptually this cache serves as a 2nd level cache for segments. The 1st  * level cache is implemented by memoising the segment in its id (see {@link  * SegmentId#segment}. Every time an segment is evicted from this cache the  * memoised segment is discarded (see {@link SegmentId#onAccess}.  */
 end_comment
@@ -244,7 +246,7 @@ literal|"Segment Cache"
 decl_stmt|;
 comment|/**      * Create a new segment cache of the given size. Returns an always empty      * cache for {@code cacheSizeMB<= 0}.      *      * @param cacheSizeMB size of the cache in megabytes.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|SegmentCache
@@ -280,19 +282,19 @@ block|}
 block|}
 comment|/**      * Retrieve an segment from the cache or load it and cache it if not yet in      * the cache.      *      * @param id     the id of the segment      * @param loader the loader to load the segment if not yet in the cache      * @return the segment identified by {@code id}      * @throws ExecutionException when {@code loader} failed to load an segment      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|Segment
 name|getSegment
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Callable
 argument_list|<
 name|Segment
@@ -309,7 +311,7 @@ name|void
 name|putSegment
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Segment
 name|segment
 parameter_list|)
@@ -323,7 +325,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return Statistics for this cache.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|AbstractCacheStats
@@ -346,7 +348,7 @@ name|SegmentCache
 block|{
 comment|/**          * Cache of recently accessed segments          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Cache
@@ -359,7 +361,7 @@ name|cache
 decl_stmt|;
 comment|/**          * Statistics of this cache. Do to the special access patter (see class          * comment), we cannot rely on {@link Cache#stats()}.          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Stats
@@ -441,7 +443,7 @@ name|void
 name|onRemove
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RemovalNotification
 argument_list|<
 name|SegmentId
@@ -508,18 +510,18 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Segment
 name|getSegment
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Callable
 argument_list|<
 name|Segment
@@ -671,7 +673,7 @@ name|void
 name|putSegment
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Segment
 name|segment
 parameter_list|)
@@ -744,7 +746,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|AbstractCacheStats
 name|getCacheStats
@@ -796,7 +798,7 @@ literal|0L
 argument_list|)
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -804,12 +806,12 @@ name|Segment
 name|getSegment
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentId
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Callable
 argument_list|<
 name|Segment
@@ -901,7 +903,7 @@ name|void
 name|putSegment
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Segment
 name|segment
 parameter_list|)
@@ -923,7 +925,7 @@ name|clear
 parameter_list|()
 block|{}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -965,7 +967,7 @@ name|long
 name|maximumWeight
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Supplier
@@ -975,7 +977,7 @@ argument_list|>
 name|elementCount
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AtomicLong
 name|currentWeight
@@ -985,7 +987,7 @@ name|AtomicLong
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AtomicLong
 name|loadSuccessCount
@@ -995,7 +997,7 @@ name|AtomicLong
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AtomicInteger
 name|loadExceptionCount
@@ -1005,7 +1007,7 @@ name|AtomicInteger
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AtomicLong
 name|loadTime
@@ -1015,7 +1017,7 @@ name|AtomicLong
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AtomicLong
 name|evictionCount
@@ -1025,7 +1027,7 @@ name|AtomicLong
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AtomicLong
 name|hitCount
@@ -1035,7 +1037,7 @@ name|AtomicLong
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AtomicLong
 name|missCount
@@ -1048,7 +1050,7 @@ specifier|protected
 name|Stats
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
@@ -1056,7 +1058,7 @@ name|long
 name|maximumWeight
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|Long

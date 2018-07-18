@@ -45,16 +45,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -137,6 +127,18 @@ name|TimerStats
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * This {@code IOMonitor} implementations registers the following monitoring endpoints  * with the Metrics library if available:  *<ul>  *<li>{@link #OAK_SEGMENT_SEGMENT_READ_BYTES}:  *          a meter metrics for the number of bytes read from tar files</li>  *<li>{@link #OAK_SEGMENT_SEGMENT_WRITE_BYTES}:  *          a meter metrics for the number of bytes written to tar files</li>  *<li>{@link #OAK_SEGMENT_SEGMENT_READ_TIME}:  *          a timer metrics for the time spent reading from tar files</li>  *<li>{@link #OAK_SEGMENT_SEGMENT_WRITE_TIME}:  *          a timer metrics for the time spent writing to tar files</li>  *</ul>  */
 end_comment
@@ -204,7 +206,7 @@ specifier|public
 name|MetricsIOMonitor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|StatisticsProvider
 name|statisticsProvider
 parameter_list|)

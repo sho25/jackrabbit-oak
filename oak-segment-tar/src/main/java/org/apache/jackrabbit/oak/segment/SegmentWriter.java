@@ -49,26 +49,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -101,6 +81,30 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Converts nodes, properties, values, etc. to records and persists them.  */
 end_comment
@@ -118,12 +122,12 @@ name|IOException
 function_decl|;
 comment|/**      * Write a blob (as list of block records)      *      * @param blob blob to write      * @return the record id of the blob written      * @throws IOException      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|writeBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Blob
 name|blob
 parameter_list|)
@@ -132,12 +136,12 @@ name|IOException
 function_decl|;
 comment|/**      * Writes a stream value record. The given stream is consumed<em>and      * closed</em> by this method.      *      * @param stream stream to be written      * @return the record id of the stream written      * @throws IOException if the input stream could not be read or the output      *                     could not be written      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|writeStream
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|InputStream
 name|stream
 parameter_list|)
@@ -146,12 +150,12 @@ name|IOException
 function_decl|;
 comment|/**      * Write a node state. If non null, the passed {@code stableId} will be assigned to      * the persisted node. Otherwise the stable id will be inferred from {@code state}.      *      * @param state node state to write      * @param stableIdBytes the stableId that should be assigned to the node or {@code null}.      * @return the record id of the segment node state written      * @throws IOException      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|writeNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|state
 parameter_list|,
@@ -165,13 +169,13 @@ name|IOException
 function_decl|;
 comment|/**      * Write a node state.      *<p>      * Equivalent to {@code writeNode(state, null)}      *      * @see #writeNode(NodeState, ByteBuffer)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|default
 name|RecordId
 name|writeNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|state
 parameter_list|)

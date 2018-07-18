@@ -71,16 +71,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -128,6 +118,18 @@ operator|.
 name|stats
 operator|.
 name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -186,7 +188,7 @@ specifier|public
 name|FileStoreGCMonitor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Clock
 name|clock
 parameter_list|)
@@ -438,7 +440,7 @@ name|lastError
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getLastLogMessage
@@ -449,7 +451,7 @@ name|lastLogMessage
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getStatus

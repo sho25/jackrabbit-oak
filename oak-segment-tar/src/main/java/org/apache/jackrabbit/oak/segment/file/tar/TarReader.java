@@ -267,16 +267,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -434,6 +424,18 @@ operator|.
 name|persistence
 operator|.
 name|SegmentArchiveReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1584,7 +1586,7 @@ return|;
 block|}
 comment|/**      * Read the entries in this TAR file.      *      * @return An array of {@link IndexEntry}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentArchiveEntry
 index|[]
 name|getEntries
@@ -1619,7 +1621,7 @@ return|;
 block|}
 comment|/**      * Read the references of an entry in this TAR file.      *      * @param id    The identifier of the entry.      * @param graph The content of the graph of this TAR file.      * @return The references of the provided TAR entry.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|List
@@ -1679,7 +1681,7 @@ name|void
 name|collectBlobReferences
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Consumer
 argument_list|<
 name|String
@@ -1928,7 +1930,7 @@ name|TarReader
 name|sweep
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|UUID
@@ -1936,7 +1938,7 @@ argument_list|>
 name|reclaim
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|UUID

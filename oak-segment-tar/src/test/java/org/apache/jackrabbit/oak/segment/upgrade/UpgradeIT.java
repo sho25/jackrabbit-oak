@@ -231,16 +231,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -364,6 +354,18 @@ operator|.
 name|tool
 operator|.
 name|Compact
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -751,7 +753,7 @@ name|void
 name|checkSegmentVersion
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentVersion
 name|version
 parameter_list|)
@@ -861,7 +863,7 @@ argument_list|>
 name|getSegments
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TarFiles
 name|tarFiles
 parameter_list|)

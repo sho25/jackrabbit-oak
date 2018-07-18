@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -44,6 +34,18 @@ operator|.
 name|gc
 operator|.
 name|GCMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -127,7 +129,7 @@ name|long
 name|gcProgressLog
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCMonitor
 name|gcMonitor
 parameter_list|)
@@ -331,7 +333,7 @@ name|estimated
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|String
 name|getPercentageDone

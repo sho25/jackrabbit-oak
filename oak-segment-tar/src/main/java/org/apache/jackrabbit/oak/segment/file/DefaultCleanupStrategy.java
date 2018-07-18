@@ -145,16 +145,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -254,6 +244,18 @@ operator|.
 name|tar
 operator|.
 name|TarFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -699,7 +701,7 @@ name|String
 name|toFileNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String

@@ -53,16 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -199,6 +189,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A {@code Commit} instance represents a set of related changes, which when  * applied to a base node state result in a new node state.  */
 end_comment
@@ -234,17 +236,17 @@ specifier|public
 name|Commit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|changes
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitHook
 name|hook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)

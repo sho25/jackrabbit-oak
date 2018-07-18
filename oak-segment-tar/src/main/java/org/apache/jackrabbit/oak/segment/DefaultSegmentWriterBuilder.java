@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -163,6 +153,18 @@ name|MemoryStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Builder for building {@link DefaultSegmentWriter} instances.  * The returned instances are thread safe if {@link #withWriterPool()}  * was specified and<em>not</em> thread sage if {@link #withoutWriterPool()}  * was specified (default).  *<p>  *<em>Default:</em> calling one of the {@code build()} methods without previously  * calling one of the {@code with...()} methods returns a {@code SegmentWriter}  * as would the following chain of calls:  *<pre>      segmentWriterBuilder("name")         .with(LATEST_VERSION)         .withGeneration(0)         .withoutWriterPool()         .with(new WriterCacheManager.Default())         .build(store);  *</pre>  */
 end_comment
@@ -174,14 +176,14 @@ class|class
 name|DefaultSegmentWriterBuilder
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Supplier
 argument_list|<
@@ -205,7 +207,7 @@ init|=
 literal|false
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|WriterCacheManager
 name|cacheManager
@@ -220,7 +222,7 @@ specifier|private
 name|DefaultSegmentWriterBuilder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -237,14 +239,14 @@ expr_stmt|;
 block|}
 comment|/**      * Set the {@code name} of this builder. This name will appear in the segment's      * meta data.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|DefaultSegmentWriterBuilder
 name|defaultSegmentWriterBuilder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -259,13 +261,13 @@ return|;
 block|}
 comment|/**      * Specify the {@code generation} for the segment written by the returned      * segment writer.      *<p>      * If {@link #withoutWriterPool()} was specified all segments will be written      * at the generation that {@code generation.get()} returned at the time      * any of the {@code build()} methods is called.      * If {@link #withWriterPool()} was specified a segments will be written      * at the generation that {@code generation.get()} returns when a new segment      * is created by the returned writer.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriterBuilder
 name|withGeneration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|GCGeneration
@@ -288,13 +290,13 @@ return|;
 block|}
 comment|/**      * Specify the {@code generation} for the segment written by the returned      * segment writer.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriterBuilder
 name|withGeneration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCGeneration
 name|generation
 parameter_list|)
@@ -319,7 +321,7 @@ return|;
 block|}
 comment|/**      * Create a {@code SegmentWriter} backed by a {@link SegmentBufferWriterPool}.      * The returned instance is thread safe.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriterBuilder
 name|withWriterPool
@@ -337,7 +339,7 @@ return|;
 block|}
 comment|/**      * Create a {@code SegmentWriter} backed by a {@link SegmentBufferWriter}.      * The returned instance is<em>not</em> thread safe.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriterBuilder
 name|withoutWriterPool
@@ -355,7 +357,7 @@ return|;
 block|}
 comment|/**      * Specify the {@code cacheManager} used by the returned writer.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriterBuilder
 name|with
@@ -379,7 +381,7 @@ return|;
 block|}
 comment|/**      * Specify that the returned writer should not use a cache.      * @see #with(WriterCacheManager)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriterBuilder
 name|withoutCache
@@ -399,13 +401,13 @@ return|;
 block|}
 comment|/**      * Build a {@code SegmentWriter} for a {@code FileStore}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriter
 name|build
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|FileStore
 name|store
 parameter_list|)
@@ -447,13 +449,13 @@ return|;
 block|}
 comment|/**      * Build a {@code SegmentWriter} for a {@code ReadOnlyFileStore}.      * Attempting to write to the returned writer will cause a      * {@code UnsupportedOperationException} to be thrown.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriter
 name|build
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ReadOnlyFileStore
 name|store
 parameter_list|)
@@ -489,7 +491,7 @@ name|WriteOperationHandler
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -497,7 +499,7 @@ name|RecordId
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|WriteOperation
 name|writeOperation
 parameter_list|)
@@ -517,7 +519,7 @@ name|void
 name|flush
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentStore
 name|store
 parameter_list|)
@@ -536,13 +538,13 @@ return|;
 block|}
 comment|/**      * Build a {@code SegmentWriter} for a {@code MemoryStore}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSegmentWriter
 name|build
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|MemoryStore
 name|store
 parameter_list|)
@@ -583,13 +585,13 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|WriteOperationHandler
 name|createWriter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|FileStore
 name|store
 parameter_list|,
@@ -649,13 +651,13 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|WriteOperationHandler
 name|createWriter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|MemoryStore
 name|store
 parameter_list|,

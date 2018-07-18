@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -73,6 +63,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A {@code Scheduler} instance transforms changes to the content tree  * into a queue of {@link Commit commits}.  *<p>  * An implementation is free to employ any scheduling strategy as long  * as it guarantees all changes are applied atomically without changing  * the semantics of the changes recorded in the {@code NodeBuilder} or  * the semantics of the {@code CommitHook} contained in the actual {@code Commit}   * passed to the {@link #schedule(Commit, SchedulerOption...) schedule}  * method.  */
 end_comment
@@ -91,7 +93,7 @@ name|NodeState
 name|schedule
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Commit
 name|commit
 parameter_list|,
@@ -110,7 +112,7 @@ name|long
 name|lifetime
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String

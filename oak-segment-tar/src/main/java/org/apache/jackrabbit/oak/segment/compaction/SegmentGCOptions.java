@@ -21,11 +21,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -158,7 +160,7 @@ init|=
 name|RETAINED_GENERATIONS_DEFAULT
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|GCType
 name|gcType
@@ -377,7 +379,7 @@ return|;
 block|}
 comment|/**      * @return the currently set gc type.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|GCType
 name|getGCType
@@ -393,7 +395,7 @@ name|void
 name|setGCType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCType
 name|gcType
 parameter_list|)

@@ -41,21 +41,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -65,7 +69,7 @@ interface|interface
 name|ObservablePartnerMBean
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -103,7 +107,7 @@ name|getRemotePort
 parameter_list|()
 function_decl|;
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Description
 argument_list|(

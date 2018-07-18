@@ -129,26 +129,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -565,6 +545,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -667,13 +671,13 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|SegmentTracker
 name|tracker
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|CachingSegmentReader
 name|segmentReader
@@ -692,7 +696,7 @@ name|boolean
 name|memoryMapping
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|SegmentCache
 name|segmentCache
@@ -771,7 +775,7 @@ block|{
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SegmentId
 name|newSegmentId
@@ -910,7 +914,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|CacheStatsMBean
 name|getSegmentCacheStats
@@ -924,7 +928,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|CacheStatsMBean
 name|getStringCacheStats
@@ -938,7 +942,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|CacheStatsMBean
 name|getTemplateCacheStats
@@ -952,7 +956,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|SegmentWriter
@@ -960,7 +964,7 @@ name|getWriter
 parameter_list|()
 function_decl|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SegmentReader
 name|getReader
@@ -971,7 +975,7 @@ name|segmentReader
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SegmentIdProvider
 name|getSegmentIdProvider
@@ -990,7 +994,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Convenience method for accessing the root node for the current head.      * This is equivalent to      *<pre>      * fileStore.getReader().readHeadState(fileStore.getRevisions())      *</pre>      * @return the current head node state      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SegmentNodeState
 name|getHead
@@ -1008,7 +1012,7 @@ return|;
 block|}
 comment|/**      * @return  the external BlobStore (if configured) with this store, {@code null} otherwise.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|BlobStore
 name|getBlobStore

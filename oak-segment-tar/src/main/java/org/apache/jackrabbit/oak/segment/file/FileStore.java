@@ -215,16 +215,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -539,6 +529,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -628,14 +630,14 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentWriter
 name|segmentWriter
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|GarbageCollector
@@ -713,7 +715,7 @@ name|ShutDown
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentNotFoundExceptionListener
@@ -1239,7 +1241,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Supplier
 argument_list|<
@@ -1368,7 +1370,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|GCGeneration
 name|getGcGeneration
@@ -1946,7 +1948,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SegmentWriter
 name|getWriter
@@ -1971,7 +1973,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|TarRevisions
 name|getRevisions
@@ -2141,7 +2143,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Segment
 name|readSegment

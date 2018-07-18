@@ -99,26 +99,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -211,6 +191,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -264,7 +268,7 @@ specifier|public
 name|GCJournal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCJournalFile
 name|journalFile
 parameter_list|)
@@ -289,7 +293,7 @@ name|long
 name|repoSize
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCGeneration
 name|gcGeneration
 parameter_list|,
@@ -297,7 +301,7 @@ name|long
 name|nodes
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|root
 parameter_list|)
@@ -593,7 +597,7 @@ name|long
 name|ts
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|GCGeneration
@@ -605,7 +609,7 @@ name|long
 name|nodes
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|String
@@ -624,7 +628,7 @@ name|long
 name|ts
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCGeneration
 name|gcGeneration
 parameter_list|,
@@ -632,7 +636,7 @@ name|long
 name|nodes
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|root
 parameter_list|)
@@ -877,7 +881,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 specifier|static
 name|String
@@ -1073,7 +1077,7 @@ return|;
 block|}
 comment|/**          * Returns the gc generation          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|GCGeneration
 name|getGcGeneration
@@ -1095,7 +1099,7 @@ return|;
 block|}
 comment|/**          * Returns the record id of the root created by the compactor          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getRoot

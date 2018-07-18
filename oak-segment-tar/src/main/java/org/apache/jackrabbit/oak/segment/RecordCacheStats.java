@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -87,6 +77,18 @@ name|AbstractCacheStats
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Statistics for {@link RecordCache}.  */
 end_comment
@@ -99,7 +101,7 @@ extends|extends
 name|AbstractCacheStats
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Supplier
@@ -109,7 +111,7 @@ argument_list|>
 name|stats
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Supplier
@@ -119,7 +121,7 @@ argument_list|>
 name|elementCount
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Supplier
@@ -132,12 +134,12 @@ specifier|public
 name|RecordCacheStats
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|CacheStats
@@ -145,7 +147,7 @@ argument_list|>
 name|stats
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|Long
@@ -153,7 +155,7 @@ argument_list|>
 name|elementCount
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|Long

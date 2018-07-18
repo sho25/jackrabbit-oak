@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -38,6 +28,18 @@ operator|.
 name|base
 operator|.
 name|Function
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -56,14 +58,14 @@ name|Option
 block|{}
 comment|/**      * Returns the record id of the head state. The returned id      * is a valid id for a {@code SegmentNodeState}.      * @return  id of the head state      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|getHead
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the<b>persisted</b> to disk record id of the head state.       * The returned id is a valid id for a {@code SegmentNodeState}.      * @return  id of the head state      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|getPersistedHead
 parameter_list|()
@@ -73,17 +75,17 @@ name|boolean
 name|setHead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|expected
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|head
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Option
 modifier|...
 name|options
@@ -94,7 +96,7 @@ name|RecordId
 name|setHead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Function
 argument_list|<
 name|RecordId
@@ -104,7 +106,7 @@ argument_list|>
 name|newHead
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Option
 modifier|...
 name|options

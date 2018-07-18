@@ -89,19 +89,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -171,7 +175,7 @@ block|{
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|apply

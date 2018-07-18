@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -99,6 +89,18 @@ name|MemoryStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Static factories for creating {@link SegmentNodeBuilder} instances  * pertaining to specific {@link SegmentStore} instances.  */
 end_comment
@@ -115,14 +117,14 @@ parameter_list|()
 block|{}
 comment|/**      * Create a {@code SegmentNodeStoreBuilder} based on a {@code FileStore}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|SegmentNodeStoreBuilder
 name|builder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|FileStore
 name|store
 parameter_list|)
@@ -156,14 +158,14 @@ return|;
 block|}
 comment|/**      * Create a {@code SegmentNodeStoreBuilder} based on a {@code MemoryStore}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|SegmentNodeStoreBuilder
 name|builder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|MemoryStore
 name|store
 parameter_list|)
@@ -197,14 +199,14 @@ return|;
 block|}
 comment|/**      * Create a {@code SegmentNodeStoreBuilder} based on a {@code ReadOnlyFileStore@}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|SegmentNodeStoreBuilder
 name|builder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ReadOnlyFileStore
 name|store
 parameter_list|)

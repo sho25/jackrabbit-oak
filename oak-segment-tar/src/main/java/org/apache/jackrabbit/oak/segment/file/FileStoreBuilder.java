@@ -245,26 +245,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -671,6 +651,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -740,14 +744,14 @@ init|=
 literal|256
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|File
 name|directory
 decl_stmt|;
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|BlobStore
 name|blobStore
@@ -806,7 +810,7 @@ name|SegmentNodeStorePersistence
 name|persistence
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|StatisticsProvider
 name|statsProvider
@@ -816,7 +820,7 @@ operator|.
 name|NOOP
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|SegmentGCOptions
 name|gcOptions
@@ -825,7 +829,7 @@ name|defaultGCOptions
 argument_list|()
 decl_stmt|;
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|EvictingWriteCacheManager
 name|cacheManager
@@ -845,7 +849,7 @@ name|void
 name|compactionSucceeded
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCGeneration
 name|newGeneration
 parameter_list|)
@@ -879,7 +883,7 @@ name|void
 name|compactionFailed
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCGeneration
 name|failedGeneration
 parameter_list|)
@@ -905,7 +909,7 @@ block|}
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|FileStoreGCListener
@@ -916,7 +920,7 @@ name|FileStoreGCListener
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|SegmentNotFoundExceptionListener
 name|snfeListener
@@ -924,7 +928,7 @@ init|=
 name|LOG_SNFE
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Set
@@ -946,14 +950,14 @@ name|built
 decl_stmt|;
 comment|/**      * Create a new instance of a {@code FileStoreBuilder} for a file store.      * @param directory  directory where the tar files are stored      * @return a new {@code FileStoreBuilder} instance.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|FileStoreBuilder
 name|fileStoreBuilder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|directory
 parameter_list|)
@@ -970,7 +974,7 @@ specifier|private
 name|FileStoreBuilder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|directory
 parameter_list|)
@@ -1010,13 +1014,13 @@ expr_stmt|;
 block|}
 comment|/**      * Specify the {@link BlobStore}.      * @param blobStore      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withBlobStore
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|BlobStore
 name|blobStore
 parameter_list|)
@@ -1036,7 +1040,7 @@ return|;
 block|}
 comment|/**      * Maximal size of the generated tar files in MB.      * @param maxFileSize      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withMaxFileSize
@@ -1057,7 +1061,7 @@ return|;
 block|}
 comment|/**      * Size of the segment cache in MB.      * @param segmentCacheSize  None negative cache size      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withSegmentCacheSize
@@ -1078,7 +1082,7 @@ return|;
 block|}
 comment|/**      * Size of the string cache in MB.      * @param stringCacheSize  None negative cache size      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withStringCacheSize
@@ -1099,7 +1103,7 @@ return|;
 block|}
 comment|/**      * Size of the template cache in MB.      * @param templateCacheSize  None negative cache size      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withTemplateCacheSize
@@ -1120,7 +1124,7 @@ return|;
 block|}
 comment|/**      * Number of items to keep in the string deduplication cache      * @param stringDeduplicationCacheSize  None negative cache size      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withStringDeduplicationCacheSize
@@ -1141,7 +1145,7 @@ return|;
 block|}
 comment|/**      * Number of items to keep in the template deduplication cache      * @param templateDeduplicationCacheSize  None negative cache size      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withTemplateDeduplicationCacheSize
@@ -1162,7 +1166,7 @@ return|;
 block|}
 comment|/**      * Number of items to keep in the node deduplication cache      * @param nodeDeduplicationCacheSize  None negative cache size. Must be a power of 2.      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withNodeDeduplicationCacheSize
@@ -1183,7 +1187,7 @@ return|;
 block|}
 comment|/**      * Turn memory mapping on or off      * @param memoryMapping      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withMemoryMapping
@@ -1204,7 +1208,7 @@ return|;
 block|}
 comment|/**      * Set memory mapping to the default value based on OS properties      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withDefaultMemoryMapping
@@ -1222,13 +1226,13 @@ return|;
 block|}
 comment|/**      * {@link GCMonitor} for monitoring this files store's gc process.      * @param gcMonitor      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withGCMonitor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCMonitor
 name|gcMonitor
 parameter_list|)
@@ -1251,13 +1255,13 @@ return|;
 block|}
 comment|/**      * {@link StatisticsProvider} for collecting statistics related to FileStore      * @param statisticsProvider      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withStatisticsProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|StatisticsProvider
 name|statisticsProvider
 parameter_list|)
@@ -1277,7 +1281,7 @@ return|;
 block|}
 comment|/**      * {@link SegmentGCOptions} the garbage collection options of the store      * @param gcOptions      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withGCOptions
@@ -1301,13 +1305,13 @@ return|;
 block|}
 comment|/**      * {@link SegmentNotFoundExceptionListener} listener for  {@code SegmentNotFoundException}      * @param snfeListener, the actual listener      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withSnfeListener
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentNotFoundExceptionListener
 name|snfeListener
 parameter_list|)
@@ -1326,13 +1330,13 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withIOMonitor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|IOMonitor
 name|ioMonitor
 parameter_list|)
@@ -1353,13 +1357,13 @@ return|;
 block|}
 comment|/**      * Log IO reads at debug level to the passed logger      * @param logger  logger for logging IO reads      * @return this.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withIOLogging
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Logger
 name|logger
 parameter_list|)
@@ -1394,7 +1398,7 @@ return|;
 block|}
 comment|/**      * Enable strict version checking. With strict version checking enabled Oak      * will fail to start if the store version does not exactly match this Oak version.      * This is useful to e.g. avoid inadvertent upgrades during when running offline      * compaction accidentally against an older version of a store.      * @param strictVersionCheck  enables strict version checking iff {@code true}.      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStoreBuilder
 name|withStrictVersionCheck
@@ -1455,7 +1459,7 @@ return|;
 block|}
 comment|/**      * Create a new {@link FileStore} instance with the settings specified in this      * builder. If none of the {@code with} methods have been called before calling      * this method, a file store with the following default settings is returned:      *<ul>      *<li>blob store: inline</li>      *<li>max file size: 256MB</li>      *<li>cache size: 256MB</li>      *<li>memory mapping: on for 64 bit JVMs off otherwise</li>      *<li>whiteboard: none. No {@link GCMonitor} tracking</li>      *<li>statsProvider: {@link StatisticsProvider#NOOP}</li>      *<li>GC options: {@link SegmentGCOptions#defaultGCOptions()}</li>      *</ul>      *      * @return a new file store instance      * @throws IOException      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FileStore
 name|build
@@ -1563,7 +1567,7 @@ return|;
 block|}
 comment|/**      * Create a new {@link ReadOnlyFileStore} instance with the settings specified in this      * builder. If none of the {@code with} methods have been called before calling      * this method, a file store with the following default settings is returned:      *<ul>      *<li>blob store: inline</li>      *<li>max file size: 256MB</li>      *<li>cache size: 256MB</li>      *<li>memory mapping: on for 64 bit JVMs off otherwise</li>      *<li>whiteboard: none. No {@link GCMonitor} tracking</li>      *<li>statsProvider: {@link StatisticsProvider#NOOP}</li>      *<li>GC options: {@link SegmentGCOptions#defaultGCOptions()}</li>      *</ul>      *      * @return a new file store instance      * @throws IOException      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|ReadOnlyFileStore
 name|buildReadOnly
@@ -1682,7 +1686,7 @@ name|store
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|getDirectory
 parameter_list|()
@@ -1692,7 +1696,7 @@ name|directory
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|BlobStore
 name|getBlobStore
 parameter_list|()
@@ -1743,7 +1747,7 @@ name|memoryMapping
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|GCListener
 name|getGcListener
 parameter_list|()
@@ -1753,7 +1757,7 @@ name|gcListener
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|StatisticsProvider
 name|getStatsProvider
 parameter_list|()
@@ -1763,7 +1767,7 @@ name|statsProvider
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentGCOptions
 name|getGcOptions
 parameter_list|()
@@ -1773,7 +1777,7 @@ name|gcOptions
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentNotFoundExceptionListener
 name|getSnfeListener
 parameter_list|()
@@ -1792,7 +1796,7 @@ return|;
 block|}
 comment|/**      * @return  creates or returns the {@code WriterCacheManager} this builder passes or      *          passed to the store on {@link #build()}.      *      * @see #withNodeDeduplicationCacheSize(int)      * @see #withStringDeduplicationCacheSize(int)      * @see #withTemplateDeduplicationCacheSize(int)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|WriterCacheManager
 name|getCacheManager

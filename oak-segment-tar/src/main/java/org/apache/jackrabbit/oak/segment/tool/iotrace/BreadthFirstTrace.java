@@ -165,16 +165,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -205,6 +195,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A breadth first traversal trace.  *<p>  * When {@link Trace#run(NodeState) run} this trace performs a breadth first traversal starting  * from the passed node down to a certain depth. It logs the current depth and the number of  * traversed nodes as additional {@link IOTracer#setContext(List) context}.  */
 end_comment
@@ -218,7 +220,7 @@ name|Trace
 block|{
 comment|/**      * The context specification of this trace.      * @see IOTracer#newIOTracer(Function, Writer, String)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 specifier|final
@@ -233,14 +235,14 @@ name|int
 name|depth
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|String
 name|path
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Consumer
@@ -253,7 +255,7 @@ argument_list|>
 name|context
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|AtomicInteger
@@ -271,12 +273,12 @@ name|int
 name|depth
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Consumer
 argument_list|<
 name|List
@@ -320,7 +322,7 @@ name|void
 name|run
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|node
 parameter_list|)
@@ -357,19 +359,19 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|NodeState
 name|getNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -409,7 +411,7 @@ name|void
 name|traverse
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Queue
 argument_list|<
 name|NodeState
@@ -543,7 +545,7 @@ name|void
 name|updateContext
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Consumer
 argument_list|<
 name|List

@@ -19,21 +19,25 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -56,12 +60,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|K
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|V
 name|value
 parameter_list|)
@@ -71,12 +75,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|K
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|V
 name|value
 parameter_list|,
@@ -86,12 +90,12 @@ parameter_list|)
 function_decl|;
 comment|/**      * @return  The mapping for {@code key}, or {@code null} if none.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|V
 name|get
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|K
 name|key
 parameter_list|)

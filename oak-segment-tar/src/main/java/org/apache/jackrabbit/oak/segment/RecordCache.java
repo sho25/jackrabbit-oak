@@ -55,16 +55,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -102,6 +92,18 @@ operator|.
 name|cache
 operator|.
 name|Weigher
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -161,12 +163,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|K
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|value
 parameter_list|,
@@ -182,7 +184,7 @@ throw|;
 block|}
 comment|/**      * @return  access statistics for this cache      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|CacheStats
 name|getStats
@@ -208,7 +210,7 @@ return|;
 block|}
 comment|/**      * Factory method for creating {@code RecordCache} instances. The returned      * instances are all thread safe. They implement a simple LRU behaviour where      * the least recently accessed mapping would be replaced when inserting a      * new mapping would exceed {@code size}.      *      * @return  A new {@code RecordCache} instance of the given {@code size}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 parameter_list|<
@@ -262,7 +264,7 @@ block|}
 block|}
 comment|/**      * @param size size of the cache      * @param weigher   Needed to provide an estimation of the cache weight in memory      * @return  A factory returning {@code RecordCache} instances of the given {@code size}      *          when invoked.      * @see #newRecordCache(int)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 parameter_list|<
@@ -281,7 +283,7 @@ name|int
 name|size
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Weigher
 argument_list|<
 name|T
@@ -324,7 +326,7 @@ block|}
 block|}
 comment|/**      * @param size size of the cache      * @return  A factory returning {@code RecordCache} instances of the given {@code size}      *          when invoked.      * @see #newRecordCache(int)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 parameter_list|<
@@ -446,12 +448,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|value
 parameter_list|)
@@ -464,7 +466,7 @@ name|RecordId
 name|get
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|key
 parameter_list|)
@@ -516,7 +518,7 @@ name|K
 argument_list|>
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Map
@@ -528,7 +530,7 @@ argument_list|>
 name|records
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Weigher
@@ -564,7 +566,7 @@ name|int
 name|size
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Weigher
 argument_list|<
@@ -620,7 +622,7 @@ name|int
 name|size
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Weigher
 argument_list|<
@@ -733,12 +735,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|K
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|value
 parameter_list|)
@@ -777,7 +779,7 @@ name|RecordId
 name|get
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|K
 name|key
 parameter_list|)

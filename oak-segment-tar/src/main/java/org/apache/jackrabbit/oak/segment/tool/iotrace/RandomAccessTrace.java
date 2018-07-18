@@ -139,16 +139,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -195,6 +185,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A random access trace  *<p>  * When {@link Trace#run(NodeState) run} this trace performs random access call to  * paths passed to its constructor. It logs the current path as additional  * {@link IOTracer#setContext(List) context}.  */
 end_comment
@@ -215,7 +217,7 @@ init|=
 literal|"path"
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Random
@@ -227,7 +229,7 @@ name|int
 name|count
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|List
@@ -237,7 +239,7 @@ argument_list|>
 name|paths
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Consumer
@@ -254,7 +256,7 @@ specifier|public
 name|RandomAccessTrace
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String
@@ -268,7 +270,7 @@ name|int
 name|count
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Consumer
 argument_list|<
 name|List
@@ -315,7 +317,7 @@ name|void
 name|run
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|root
 parameter_list|)

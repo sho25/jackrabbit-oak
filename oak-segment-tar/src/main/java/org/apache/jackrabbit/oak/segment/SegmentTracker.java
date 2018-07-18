@@ -95,11 +95,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -174,7 +176,7 @@ literal|60
 decl_stmt|;
 comment|/**      * The random number source for generating new segment identifiers.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SecureRandom
@@ -186,7 +188,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Hash table of weak references to segment identifiers that are      * currently being accessed. The size of the table is always a power      * of two, which optimizes the {@code refresh()} operation. The table is      * indexed by the random identifier bits, which guarantees uniform      * distribution of entries. Each table entry is either {@code null}      * (when there are no matching identifiers) or a list of weak references      * to the matching identifiers.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentIdTable
@@ -201,7 +203,7 @@ index|]
 decl_stmt|;
 comment|/**      * Number of segment tracked since this tracker was instantiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|AtomicInteger
@@ -212,7 +214,7 @@ name|AtomicInteger
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|SegmentIdFactory
@@ -222,7 +224,7 @@ specifier|public
 name|SegmentTracker
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SegmentIdFactory
 name|segmentIdFactory
 parameter_list|)
@@ -321,7 +323,7 @@ comment|/**      * Get an existing {@code SegmentId} with the given {@code msb} 
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SegmentId
 name|newSegmentId
@@ -371,7 +373,7 @@ comment|/**      * Create and track a new segment id for data segments.      *  
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SegmentId
 name|newDataSegmentId
@@ -388,7 +390,7 @@ comment|/**      * Create and track a new segment id for bulk segments.      *  
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|SegmentId
 name|newBulkSegmentId
@@ -402,7 +404,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|SegmentId
 name|newSegmentId
@@ -459,7 +461,7 @@ name|void
 name|clearSegmentIdTables
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|UUID
@@ -467,7 +469,7 @@ argument_list|>
 name|reclaimed
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|gcInfo
 parameter_list|)

@@ -135,36 +135,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -271,6 +241,30 @@ name|StatisticsProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Instances of this class manage the deduplication caches used by the {@link  * SegmentWriter} to avoid writing multiple copies of the same record. The  * caches are striped into generations with one generation per gc cycle. This  * avoids records old generations being reused.  */
 end_comment
@@ -349,7 +343,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * @return  cache for string records of the given {@code generation} and {@code operation}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|Cache
@@ -366,7 +360,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * @param generation      * @return  cache for template records of the given {@code generation} and {@code operation}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|Cache
@@ -383,7 +377,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * @return  cache for node records of the given {@code generation} and {@code operation}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|Cache
@@ -400,18 +394,18 @@ parameter_list|)
 function_decl|;
 comment|/**      * Enable access statistics for this cache. The instance returned by from      * this method delegates back to this instance and adds access statistics      * via the passed {@code statisticsProvider}.      * @param name      * @param statisticsProvider      * @return  an instance of this cache with access statistics enabled.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|WriterCacheManager
 name|withAccessTracking
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|StatisticsProvider
 name|statisticsProvider
 parameter_list|)
@@ -436,7 +430,7 @@ return|;
 block|}
 comment|/**      * @return  statistics for the string cache or {@code null} if not available.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|CacheStatsMBean
 name|getStringCacheStats
@@ -448,7 +442,7 @@ return|;
 block|}
 comment|/**      * @return  statistics for the template cache or {@code null} if not available.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|CacheStatsMBean
 name|getTemplateCacheStats
@@ -460,7 +454,7 @@ return|;
 block|}
 comment|/**      * @return  statistics for the node cache or {@code null} if not available.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|CacheStatsMBean
 name|getNodeCacheStats
@@ -472,7 +466,7 @@ return|;
 block|}
 comment|/**      * Get occupancy information for the node deduplication cache indicating occupancy and      * evictions per priority.      * @return  occupancy information for the node deduplication cache.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getNodeCacheOccupancyInfo
@@ -533,7 +527,7 @@ parameter_list|()
 block|{}
 comment|/**          * @return  empty cache of size 0          */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -553,7 +547,7 @@ return|;
 block|}
 comment|/**          * @return  empty cache of size 0          */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -573,7 +567,7 @@ return|;
 block|}
 comment|/**          * @return  a {@code Cache} cache that is always empty          */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -606,12 +600,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|stableId
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|recordId
 parameter_list|,
@@ -626,12 +620,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|value
 parameter_list|)
@@ -643,7 +637,7 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -651,7 +645,7 @@ name|RecordId
 name|get
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|stableId
 parameter_list|)
@@ -715,7 +709,7 @@ specifier|public
 name|Default
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|RecordCache
@@ -726,7 +720,7 @@ argument_list|>
 name|stringCacheFactory
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|RecordCache
@@ -737,7 +731,7 @@ argument_list|>
 name|templateCacheFactory
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|PriorityCache
@@ -863,7 +857,7 @@ decl_stmt|;
 name|Generations
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|T
@@ -927,7 +921,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -991,7 +985,7 @@ name|void
 name|evictGenerations
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Predicate
 argument_list|<
 name|Integer
@@ -1044,7 +1038,7 @@ block|}
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1070,7 +1064,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1115,7 +1109,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Cache
 argument_list|<
@@ -1147,12 +1141,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|stableId
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|recordId
 parameter_list|,
@@ -1182,12 +1176,12 @@ name|void
 name|put
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RecordId
 name|value
 parameter_list|)
@@ -1199,7 +1193,7 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1207,7 +1201,7 @@ name|RecordId
 name|get
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|stableId
 parameter_list|)
@@ -1228,7 +1222,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1260,7 +1254,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1292,7 +1286,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 parameter_list|<
@@ -1381,7 +1375,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 parameter_list|<
@@ -1451,7 +1445,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 parameter_list|<
@@ -1521,7 +1515,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1655,21 +1649,21 @@ extends|extends
 name|WriterCacheManager
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|StatisticsProvider
 name|statisticsProvider
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|WriterCacheManager
@@ -1680,17 +1674,17 @@ specifier|public
 name|AccessTrackingCacheManager
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|StatisticsProvider
 name|statisticsProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|WriterCacheManager
 name|delegate
 parameter_list|)
@@ -1716,7 +1710,7 @@ expr_stmt|;
 block|}
 comment|/**          * @return the wrapped cache returned by the delegate's method of          * the same name exposing access statistics under          * {@code "oak.segment.string-deduplication-cache-" + name}          */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1754,7 +1748,7 @@ return|;
 block|}
 comment|/**          * @return the wrapped cache returned by the delegate's method of          * the same name exposing access statistics under          * {@code "oak.segment.template-deduplication-cache-" + name}          */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1792,7 +1786,7 @@ return|;
 block|}
 comment|/**          * @return the wrapped cache returned by the delegate's method of          * the same name exposing access statistics under          * {@code "oak.segment.node-deduplication-cache-" + name}          */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

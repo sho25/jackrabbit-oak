@@ -125,26 +125,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -329,6 +309,30 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility for tracing a node back through the revision history.  */
 end_comment
@@ -348,7 +352,7 @@ specifier|public
 name|RevisionHistory
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|directory
 parameter_list|)
@@ -424,12 +428,12 @@ argument_list|>
 name|getHistory
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|JournalFile
 name|journal
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|path
@@ -474,7 +478,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -567,7 +571,7 @@ expr_stmt|;
 block|}
 comment|/**          * Revision of the node          * @return          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getRevision
@@ -579,7 +583,7 @@ return|;
 block|}
 comment|/**          * Node at given revision          * @return          */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeState
 name|getNode

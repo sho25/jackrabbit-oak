@@ -123,26 +123,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -169,6 +149,30 @@ name|ByteStreams
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * For reading any record of type "VALUE" as binary streams.  */
 end_comment
@@ -191,7 +195,7 @@ literal|12
 decl_stmt|;
 comment|// 4kB
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|RecordId
@@ -635,7 +639,7 @@ name|int
 name|read
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|b

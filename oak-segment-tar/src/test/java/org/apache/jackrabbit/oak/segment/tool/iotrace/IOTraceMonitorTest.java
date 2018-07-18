@@ -69,11 +69,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -252,7 +254,7 @@ name|void
 name|writeHeader
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|header
 parameter_list|)
@@ -271,7 +273,7 @@ name|void
 name|writeEntry
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|entry
 parameter_list|)
