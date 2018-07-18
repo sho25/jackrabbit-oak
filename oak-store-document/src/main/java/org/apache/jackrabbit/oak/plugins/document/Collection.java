@@ -21,11 +21,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -66,7 +68,7 @@ block|{
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeDocument
 name|newDocument
@@ -107,7 +109,7 @@ block|{
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|ClusterNodeInfoDocument
 name|newDocument
@@ -146,7 +148,7 @@ block|{
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Document
 name|newDocument
@@ -183,7 +185,7 @@ literal|"journal"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -224,7 +226,7 @@ literal|"blobs"
 argument_list|)
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -275,7 +277,7 @@ return|;
 block|}
 comment|/**      * @param store the document store.      * @return a new document for this collection.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|abstract
 name|T

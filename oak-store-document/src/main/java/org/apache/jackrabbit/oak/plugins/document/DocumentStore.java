@@ -41,26 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -115,6 +95,30 @@ name|CacheInvalidationStats
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * The interface for the backend storage for documents.  *<p>  * In general atomicity of operations on a DocumentStore are limited to a single  * document. That is, an implementation does not have to guarantee atomicity of  * the entire effect of a method call. A method that fails with an exception may  * have modified just some documents and then abort. However, an implementation  * must not modify a document partially. Either the complete update operation is  * applied to a document or no modification is done at all.  *<p>  * The key is the id of a document. Keys are opaque strings. All characters are  * allowed. Leading and trailing whitespace is allowed. For keys, the maximum  * length is 512 bytes in the UTF-8 representation.  */
 end_comment
@@ -126,7 +130,7 @@ name|DocumentStore
 block|{
 comment|/**      * Get the document with the given {@code key}. This is a convenience method      * and equivalent to {@link #find(Collection, String, int)} with a      * {@code maxCacheAge} of {@code Integer.MAX_VALUE}.      *<p>      * The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      * @return the document, or null if not found      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 argument_list|<
 name|T
 extends|extends
@@ -149,7 +153,7 @@ name|DocumentStoreException
 function_decl|;
 comment|/**      * Get the document with the {@code key}. The implementation may serve the      * document from a cache, but the cached document must not be older than      * the given {@code maxCacheAge} in milliseconds. An implementation must      * invalidate a cached document when it detects it is outdated. That is, a      * subsequent call to {@link #find(Collection, String)} must return the      * newer version of the document.      *<p>      * The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document (in ms)      * @return the document, or null if not found      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 argument_list|<
 name|T
 extends|extends
@@ -175,7 +179,7 @@ name|DocumentStoreException
 function_decl|;
 comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value.      *<p>      * The returned documents are sorted by key and are immutable.      *      * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return (starting with the lowest key)      * @return the list (possibly empty)      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
 annotation|@
-name|Nonnull
+name|NotNull
 argument_list|<
 name|T
 extends|extends
@@ -207,7 +211,7 @@ name|DocumentStoreException
 function_decl|;
 comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value<em>and</em> the given "indexed property" is greater      * or equals the specified value.      *<p>      * The indexed property can either be a {@link Long} value, in which case numeric      * comparison applies, or a {@link Boolean} value, in which case "false" is mapped      * to "0" and "true" is mapped to "1".      *<p>      * The returned documents are sorted by key and are immutable.      *      * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty the name of the indexed property (optional)      * @param startValue the minimum value of the indexed property      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
 annotation|@
-name|Nonnull
+name|NotNull
 argument_list|<
 name|T
 extends|extends
@@ -369,7 +373,7 @@ name|DocumentStoreException
 function_decl|;
 comment|/**      * Atomically checks if the document exists and updates it, otherwise the      * document is created (aka upsert). The returned document is immutable.      *<p>      * If this method fails with a {@code DocumentStoreException}, then the      * document may or may not have been created or updated. It is the      * responsibility of the caller to check the result e.g. by calling      * {@link #find(Collection, String)}. The implementation however ensures      * that the result of the operation is properly reflected in the document      * cache. That is, an implementation could simply evict documents with the      * given keys from the cache.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation (where {@link Condition}s are not allowed)      * @return the old document or<code>null</code> if it didn't exist before.      * @throws IllegalArgumentException when the {@linkplain UpdateOp} is conditional      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 argument_list|<
 name|T
 extends|extends
@@ -421,7 +425,7 @@ name|DocumentStoreException
 function_decl|;
 comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Condition.Type#EXISTS} and only updates the      * document if the condition is<code>true</code>. The returned document is      * immutable.      *<p>      * In case of a {@code DocumentStoreException} (e.g. when a communication      * error occurs) the update may or may not have been applied. In this case      * it is the responsibility of the caller to check whether the update was      * applied and take appropriate action. The implementation however ensures      * that the result of the operation is properly reflected in the document      * cache. That is, an implementation could simply evict the document related      * to the given update operation from the cache.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met or      *         if the document wasn't found      * @throws DocumentStoreException if the operation failed. E.g. because of      *          an I/O error.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 argument_list|<
 name|T
 extends|extends
@@ -444,14 +448,14 @@ name|DocumentStoreException
 function_decl|;
 comment|/**      * Invalidate the document cache. Calling this method instructs the      * implementation to invalidate each document from the cache, which is not      * up to date with the underlying storage at the time this method is called.      * A document is considered in the cache if {@link #getIfCached(Collection, String)}      * returns a non-null value for a key.      *<p>      * An implementation is allowed to perform lazy invalidation and only check      * whether a document is up-to-date when it is accessed after this method      * is called. However, this also includes a call to {@link #getIfCached(Collection, String)},      * which must only return the document if it was up-to-date at the time      * this method was called. Similarly, a call to {@link #find(Collection, String)}      * must guarantee the returned document reflects all the changes done up to      * when {@code invalidateCache()} was called.      *<p>      * In some implementations this method can be a NOP because documents can      * only be modified through a single instance of a {@code DocumentStore}.      *      * @return cache invalidation statistics or {@code null} if none are      *          available.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|CacheInvalidationStats
 name|invalidateCache
 parameter_list|()
 function_decl|;
 comment|/**      * Invalidate the document cache but only with entries that match one      * of the keys provided.      *      * See {@link #invalidateCache()} for the general contract of cache      * invalidation.      *      * @param keys the keys of the documents to invalidate.      * @return cache invalidation statistics or {@code null} if none are      *          available.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|CacheInvalidationStats
 name|invalidateCache
 parameter_list|(
@@ -488,7 +492,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Fetches the cached document. If the document is not present in the cache      * {@code null} will be returned. This method is consistent with other find      * methods that may return cached documents and will return {@code null}      * even when the implementation has a negative cache for documents that      * do not exist. This method will never return {@link NodeDocument#NULL}.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      * @return cached document if present. Otherwise {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 argument_list|<
 name|T
 extends|extends
@@ -517,7 +521,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * @return status information about the cache      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Iterable
 argument_list|<
 name|CacheStats
@@ -537,7 +541,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns statistics about the underlying storage. The information and      * keys returned by this method are implementation specific, may change      * between releases or may even depend on deployment aspects. E.g. depending      * on access rights, the method may return more or less information from      * the underlying store. This method should only be used for informational      * or debug purposes.      *      * @return statistics about this document store.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String

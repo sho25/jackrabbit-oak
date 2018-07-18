@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -77,6 +67,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|rules
@@ -106,7 +108,7 @@ name|newArrayList
 argument_list|()
 decl_stmt|;
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|MongoConnection
 name|getConnection
@@ -140,7 +142,7 @@ name|c
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|MongoConnection
 name|getConnection

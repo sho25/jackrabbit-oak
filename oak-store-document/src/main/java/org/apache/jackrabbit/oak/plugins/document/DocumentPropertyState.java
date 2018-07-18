@@ -65,16 +65,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -323,6 +313,18 @@ name|Conversions
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * PropertyState implementation with lazy parsing of the JSOP encoded value.  */
 end_comment
@@ -385,7 +387,7 @@ name|value
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -431,7 +433,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -459,7 +461,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -587,7 +589,7 @@ return|;
 block|}
 comment|/**      * Returns the raw un-parsed value as passed to the constructor of this      * property state.      *      * @return the raw un-parsed value.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getValue
 parameter_list|()

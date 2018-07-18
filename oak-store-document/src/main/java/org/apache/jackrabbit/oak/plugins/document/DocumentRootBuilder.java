@@ -75,16 +75,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -191,6 +181,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -240,7 +242,7 @@ name|store
 decl_stmt|;
 comment|/**      * The base state of this builder, possibly non-existent if this builder      * represents a new node that didn't yet exist in the base content tree.      * This differs from the base state of super since the latter one reflects      * the base created by the last purge.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|NodeState
 name|base
@@ -264,17 +266,17 @@ decl_stmt|;
 name|DocumentRootBuilder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeState
 name|base
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStoreBranch
 name|branch
 parameter_list|)
@@ -325,7 +327,7 @@ comment|//--------------------------------------------------< MemoryNodeBuilder>
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeState
 name|getBaseState
@@ -342,7 +344,7 @@ name|void
 name|reset
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|newBase
 parameter_list|)
@@ -405,7 +407,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

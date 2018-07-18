@@ -87,36 +87,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -148,6 +118,30 @@ operator|.
 name|util
 operator|.
 name|Utils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -222,7 +216,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Get the id (the primary key) of this document.      *       * @return the id or<code>null</code> if none is set.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getId
@@ -240,7 +234,7 @@ return|;
 block|}
 comment|/**      * Get the modification count of this document.      *       * @return the count or<code>null</code> if      *         none is set.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Long
 name|getModCount
@@ -263,7 +257,7 @@ return|;
 block|}
 comment|/**      * Gets the data for the given<code>key</code>.      *      * @param key the key.      * @return the data or<code>null</code>.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Object
 name|get
@@ -283,7 +277,7 @@ return|;
 block|}
 comment|/**      * Sets the data for the given<code>key</code>.      *      * @param key the key.      * @param value the value to set.      * @return the previous value or<code>null</code> if there was none.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Object
 name|put
@@ -308,7 +302,7 @@ return|;
 block|}
 comment|/**      * Removes the given<code>key</code>.      *      * @param key the key.      * @return the previous value or<code>null</code> if there was none.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Object
 name|remove
@@ -546,7 +540,7 @@ return|;
 block|}
 comment|/**      * Transform and seal the data of this document. That is, the data becomes      * immutable and transformation may be performed on the data.      *      * @param map the map to transform.      * @param key the key for the given map or<code>null</code> if the map      *            is the top level data map.      * @param level the level. Zero for the top level map, one for an entry in      *              the top level map, etc.      * @return the transformed and sealed map.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|Map
 argument_list|<
@@ -557,7 +551,7 @@ argument_list|>
 name|transformAndSeal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|Object

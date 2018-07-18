@@ -167,36 +167,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -406,6 +376,30 @@ operator|.
 name|stats
 operator|.
 name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -1636,7 +1630,7 @@ return|;
 block|}
 comment|/**      * Returns the parent id for given id if possible      *      *<p>It would return null in following cases      *<ul>      *<li>If id is from long path</li>      *<li>If id is for root path</li>      *<li>If id is for an invalid path</li>      *</ul>      * @param id id for which parent id needs to be determined      * @return parent id. null if parent id cannot be determined      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|String
@@ -2469,7 +2463,7 @@ return|;
 block|}
 comment|/**      * Returns parentId extracted from the fromKey. fromKey is usually constructed      * using Utils#getKeyLowerLimit      *      * @param fromKey key used as start key in queries      * @return parentId if possible.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|String
@@ -2541,19 +2535,19 @@ return|;
 block|}
 comment|/**      * Resolve the commit revision for the given revision<code>rev</code> and      * the associated commit tag.      *      * @param rev a revision.      * @param tag the associated commit tag.      * @return the actual commit revision for<code>rev</code>.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|Revision
 name|resolveCommitRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|rev
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|tag
 parameter_list|)
@@ -2665,7 +2659,7 @@ return|;
 block|}
 comment|/**      * Returns the revision with the newer timestamp or {@code null} if both      * revisions are {@code null}. The implementation will return the first      * revision if both have the same timestamp.      *      * @param a the first revision (or {@code null}).      * @param b the second revision (or {@code null}).      * @return the revision with the newer timestamp.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|Revision
@@ -2697,7 +2691,7 @@ return|;
 block|}
 comment|/**      * Returns the revision which is considered more recent or {@code null} if      * both revisions are {@code null}. The implementation will return the first      * revision if both are considered equal. The comparison is done using the      * provided comparator.      *      * @param a the first revision (or {@code null}).      * @param b the second revision (or {@code null}).      * @param c the comparator.      * @return the revision considered more recent.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|Revision
@@ -2714,7 +2708,7 @@ name|Revision
 name|b
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Comparator
 argument_list|<
 name|Revision
@@ -2764,7 +2758,7 @@ return|;
 block|}
 comment|/**      * Returns the revision with the older timestamp or {@code null} if both      * revisions are {@code null}. The implementation will return the first      * revision if both have the same timestamp.      *      * @param a the first revision (or {@code null}).      * @param b the second revision (or {@code null}).      * @return the revision with the older timestamp.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|Revision
@@ -2796,7 +2790,7 @@ return|;
 block|}
 comment|/**      * Returns the revision which is considered older or {@code null} if      * both revisions are {@code null}. The implementation will return the first      * revision if both are considered equal. The comparison is done using the      * provided comparator.      *      * @param a the first revision (or {@code null}).      * @param b the second revision (or {@code null}).      * @param c the comparator.      * @return the revision considered more recent.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|Revision
@@ -2813,7 +2807,7 @@ name|Revision
 name|b
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Comparator
 argument_list|<
 name|Revision
@@ -2899,14 +2893,14 @@ return|;
 block|}
 comment|/**      * Returns the root node document of the given document store. The returned      * document is retrieved from the document store via      * {@link DocumentStore#find(Collection, String)}, which means the      * implementation is allowed to return a cached version of the document.      * The document is therefore not guaranteed to be up-to-date.      *      * @param store a document store.      * @return the root document.      * @throws IllegalStateException if there is no root document.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|NodeDocument
 name|getRootDocument
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentStore
 name|store
 parameter_list|)
@@ -3243,7 +3237,7 @@ name|boolean
 name|isHiddenPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -3267,7 +3261,7 @@ argument_list|>
 name|asStringValueIterable
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -3321,7 +3315,7 @@ argument_list|>
 name|pathToId
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -3481,17 +3475,17 @@ name|long
 name|getMinTimestampForDiff
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|fromRev
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|toRev
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|minRevisions
 parameter_list|)
@@ -3601,12 +3595,12 @@ name|boolean
 name|isGreaterOrEquals
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|a
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|b
 parameter_list|)
@@ -3632,12 +3626,12 @@ name|boolean
 name|isLocalChange
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|from
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|to
 parameter_list|,
@@ -3801,12 +3795,12 @@ name|void
 name|alignWithExternalRevisions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDocument
 name|rootDoc
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Clock
 name|clock
 parameter_list|,

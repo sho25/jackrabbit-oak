@@ -391,16 +391,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|sql
 operator|.
 name|DataSource
@@ -1372,6 +1362,18 @@ operator|.
 name|descriptors
 operator|.
 name|GenericDescriptors
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -5583,7 +5585,7 @@ name|void
 name|addRegistration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Registration
 name|reg
 parameter_list|)
@@ -5608,7 +5610,7 @@ name|Closeable
 name|asCloseable
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Registration
 name|reg
@@ -5651,7 +5653,7 @@ name|Closeable
 name|asCloseable
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AbstractServiceTracker
 name|t

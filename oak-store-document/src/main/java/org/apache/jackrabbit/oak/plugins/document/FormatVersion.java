@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -114,6 +104,18 @@ operator|.
 name|Collection
 operator|.
 name|SETTINGS
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -339,14 +341,14 @@ return|;
 block|}
 comment|/**      * Reads the {@link FormatVersion} from the given store. This method      * returns {@link FormatVersion#V0} if the store currently does not have a      * version set.      *      * @param store the store to read from.      * @return the format version of the store.      * @throws DocumentStoreException if an error occurs while reading from the      *          store.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|FormatVersion
 name|versionOf
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentStore
 name|store
 parameter_list|)
@@ -438,7 +440,7 @@ name|boolean
 name|writeTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentStore
 name|store
 parameter_list|)
@@ -876,7 +878,7 @@ name|int
 name|compareTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|FormatVersion
 name|other
 parameter_list|)

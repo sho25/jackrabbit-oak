@@ -53,16 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -216,6 +206,18 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -410,7 +412,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|DocumentBundlor
 name|getBundlor

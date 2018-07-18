@@ -33,26 +33,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -84,6 +64,30 @@ operator|.
 name|stats
 operator|.
 name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -248,7 +252,7 @@ expr_stmt|;
 block|}
 comment|/**      * Gets the clusters which potentially need _lastRev recovery.      *      * @return the clusters      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -268,7 +272,7 @@ return|;
 block|}
 comment|/**      * Gets the cluster node info for the given cluster node id.      *      * @param clusterId the cluster id      * @return the cluster node info      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|ClusterNodeInfoDocument
 name|getClusterNodeInfo
@@ -297,7 +301,7 @@ return|;
 block|}
 comment|/**      * Get the candidates with modified time greater than or equal the specified      * {@code startTime} in milliseconds since the start of the epoch.      *      * @param startTime the start time in milliseconds.      * @return the candidates      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -518,7 +522,7 @@ name|boolean
 name|isRecoveryNeeded
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ClusterNodeInfoDocument
 name|nodeInfo
 parameter_list|)

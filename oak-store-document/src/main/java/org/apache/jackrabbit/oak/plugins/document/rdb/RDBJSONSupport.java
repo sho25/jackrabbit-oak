@@ -73,26 +73,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -199,6 +179,30 @@ name|StableRevisionComparator
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utilities that provide JSON support on top of the existing  * {@link JsopTokenizer} support in oak-commons.  *<p>  * The result of parsing uses the simplest possible Java representation of the  * JSON values (see Section 3 of RFC 7159), thus  *<ul>  *<li>{@code null}, {@link Boolean#TRUE}, {@link Boolean#FALSE}, {@link Number}  * , or {@link String}, or  *<li>a {@link List} of representations, or  *<li>a {@link Map}, mapping member names to representations.  *</ul>  *<p>  * The boolean parameter of the constructor ({link  * {@link #RDBJSONSupport(boolean)}) allows changing the default for the maps to  * use sorted maps using {@link Revision}s as keys, as used internally be the  * {@link DocumentNodeStore}.  */
 end_comment
@@ -236,7 +240,7 @@ name|Object
 name|parse
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|json
 parameter_list|)
@@ -260,7 +264,7 @@ name|Object
 name|parse
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|JsopTokenizer
 name|json
 parameter_list|)

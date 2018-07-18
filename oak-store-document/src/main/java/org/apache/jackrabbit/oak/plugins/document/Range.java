@@ -20,16 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -61,6 +51,18 @@ name|checkNotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/** * A revision range for {@link NodeDocument#PREVIOUS} documents. */
 end_comment
@@ -86,12 +88,12 @@ comment|/**      * A range of revisions, with both inclusive bounds.      *     
 name|Range
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|high
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|low
 parameter_list|,
@@ -166,7 +168,7 @@ expr_stmt|;
 block|}
 comment|/**      * Creates a {@code Range} from a revisioned document entry.      *      * @param rev the revision of the entry corresponding to the high bound      *            of the range.      * @param value the string representation of the lower bound with the height      *              (e.g. r1-0-1/0).      * @return the range.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|static
 name|Range
 name|fromEntry
@@ -266,7 +268,7 @@ return|;
 block|}
 comment|/**      * @return the string representation of the lower bound, including the      *         height (e.g. r1-0-1/0).      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getLowValue
 parameter_list|()
@@ -284,7 +286,7 @@ name|boolean
 name|includes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|r
 parameter_list|)

@@ -169,16 +169,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -188,6 +178,18 @@ operator|.
 name|collect
 operator|.
 name|Maps
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -309,7 +311,7 @@ decl_stmt|;
 name|CommitQueue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionContext
 name|context
 parameter_list|)
@@ -325,7 +327,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|createRevision
 parameter_list|()
@@ -341,7 +343,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|SortedSet
 argument_list|<
 name|Revision
@@ -447,12 +449,12 @@ name|void
 name|done
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Callback
 name|c
 parameter_list|)
@@ -474,7 +476,7 @@ name|void
 name|canceled
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|rev
 parameter_list|)
@@ -494,7 +496,7 @@ name|boolean
 name|contains
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -522,7 +524,7 @@ name|void
 name|suspendUntilAll
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision
@@ -562,7 +564,7 @@ name|void
 name|suspendUntilAll
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision
@@ -752,7 +754,7 @@ name|void
 name|headOfQueue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -848,7 +850,7 @@ name|void
 name|notifySuspendedCommits
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -934,7 +936,7 @@ name|void
 name|removeCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|rev
 parameter_list|)
@@ -992,12 +994,12 @@ name|void
 name|waitUntilHeadOfQueue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|rev
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Callback
 name|c
 parameter_list|)

@@ -215,36 +215,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -954,6 +924,30 @@ operator|.
 name|conversions
 operator|.
 name|Bson
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -3490,7 +3484,7 @@ throw|;
 block|}
 comment|/**      * Finds a document and performs a number of retries if the read fails with      * an exception.      *      * @param collection the collection to read from.      * @param key the key of the document to find.      * @param docReadPref the read preference.      * @param<T> the document type of the given collection.      * @return the document or {@code null} if the document doesn't exist.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 parameter_list|<
 name|T
@@ -3629,7 +3623,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 parameter_list|<
 name|T
@@ -3871,7 +3865,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3920,7 +3914,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3978,7 +3972,7 @@ return|;
 block|}
 comment|/**      * Queries for documents and performs a number of retries if the read fails      * with an exception.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 parameter_list|<
 name|T
@@ -4136,7 +4130,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 parameter_list|<
 name|T
@@ -5686,7 +5680,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 parameter_list|<
 name|T
@@ -6289,7 +6283,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -6359,7 +6353,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -8608,7 +8602,7 @@ block|}
 block|}
 comment|/**      * Returns the {@link Document#MOD_COUNT} and      * {@link NodeDocument#MODIFIED_IN_SECS} values of the documents with the      * given {@code keys}. The returned map will only contain entries for      * existing documents. The default value is -1 if the document does not have      * a modCount field. The same applies to the modified field.      *      * @param keys the keys of the documents.      * @return map with key to modification stamp mapping.      * @throws MongoException if the call fails      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Map
 argument_list|<
@@ -8951,7 +8945,7 @@ name|ReadPreference
 name|getMongoReadPreference
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|T
@@ -8969,7 +8963,7 @@ name|String
 name|documentId
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentReadPreference
 name|preference
 parameter_list|)
@@ -9263,7 +9257,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 parameter_list|<
 name|T
@@ -9274,7 +9268,7 @@ name|T
 name|convertFromDBObject
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|T
@@ -9477,7 +9471,7 @@ name|copy
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Map
 argument_list|<
@@ -9488,7 +9482,7 @@ argument_list|>
 name|convertMongoMap
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|BasicDBObject
 name|obj
 parameter_list|)
@@ -9801,7 +9795,7 @@ name|metadata
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -10052,7 +10046,7 @@ name|doc
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|Bson
@@ -10244,7 +10238,7 @@ return|;
 block|}
 comment|/**      * Creates a MongoDB update object from the given UpdateOp.      *      * @param updateOp the update op.      * @param includeId whether to include the SET id operation      * @return the DBObject.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|BasicDBObject
@@ -10534,7 +10528,7 @@ name|update
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 parameter_list|<
 name|T

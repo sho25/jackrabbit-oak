@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -42,6 +32,18 @@ operator|.
 name|api
 operator|.
 name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -130,12 +132,12 @@ comment|/**      * @param message the exception / conflict message.      * @para
 name|ConflictException
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|message
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|conflictRevision
 parameter_list|)
@@ -167,12 +169,12 @@ comment|/**      * @param message the exception / conflict message.      * @para
 name|ConflictException
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|message
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision
@@ -202,7 +204,7 @@ comment|/**      * @param message the exception / conflict message.      */
 name|ConflictException
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|message
 parameter_list|)
@@ -271,7 +273,7 @@ block|}
 block|}
 comment|/**      * List of conflict revisions.      *      * @return a list of conflict revisions (may be empty)      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Revision

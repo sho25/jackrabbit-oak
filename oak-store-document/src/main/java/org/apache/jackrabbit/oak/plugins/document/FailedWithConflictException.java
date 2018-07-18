@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -42,6 +32,18 @@ operator|.
 name|api
 operator|.
 name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -100,7 +102,7 @@ decl_stmt|;
 name|FailedWithConflictException
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision
@@ -108,12 +110,12 @@ argument_list|>
 name|conflictRevisions
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|message
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Throwable
 name|cause
 parameter_list|)
@@ -149,7 +151,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the revision of another commit which caused a conflict.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision

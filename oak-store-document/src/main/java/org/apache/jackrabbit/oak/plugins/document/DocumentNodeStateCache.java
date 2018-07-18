@@ -21,19 +21,11 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -91,7 +83,7 @@ block|}
 decl_stmt|;
 comment|/**      * Get the node for the given path and revision.      *      * @param path the path of the node.      * @param rootRevision revision of root NodeState      * @param lastRev last revision of the node at given path      *      * @return nodeState at given path or null. If given revision is not present or the      * path is not cached then<code>null</code> would be returned      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|AbstractDocumentNodeState
 name|getDocumentNodeState
 parameter_list|(

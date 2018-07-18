@@ -209,16 +209,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -455,6 +445,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -620,7 +622,7 @@ name|String
 name|asString
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Document
 name|doc
 parameter_list|,
@@ -1062,7 +1064,7 @@ return|;
 block|}
 comment|/**      * Reconstructs a {@link Document} based on the persisted {@link RDBRow}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 parameter_list|<
 name|T
@@ -1073,7 +1075,7 @@ name|T
 name|fromRow
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|T
@@ -1081,7 +1083,7 @@ argument_list|>
 name|collection
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RDBRow
 name|row
 parameter_list|)
@@ -2191,12 +2193,12 @@ name|void
 name|readDocumentFromJson
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|JsopTokenizer
 name|json
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|doc
 parameter_list|)

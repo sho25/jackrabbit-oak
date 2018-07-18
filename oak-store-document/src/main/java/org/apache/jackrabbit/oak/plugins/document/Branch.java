@@ -181,36 +181,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -265,6 +235,30 @@ name|Sets
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Contains commit information about a branch and its base revision.  */
 end_comment
@@ -300,7 +294,7 @@ comment|/**      * Create a new branch instance with an initial set of commits a
 name|Branch
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SortedSet
 argument_list|<
 name|Revision
@@ -308,12 +302,12 @@ argument_list|>
 name|commits
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|base
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|ReferenceQueue
 argument_list|<
 name|Object
@@ -432,7 +426,7 @@ block|}
 block|}
 comment|/**      * @return the initial base of this branch.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|getBase
 parameter_list|()
@@ -443,12 +437,12 @@ return|;
 block|}
 comment|/**      * Returns the base revision for the given branch revision<code>r</code>.      *      * @param r revision of a commit in this branch.      * @return the base revision for<code>r</code>.      * @throws IllegalArgumentException if<code>r</code> is not a commit of      *                                  this branch.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|getBase
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|r
 parameter_list|)
@@ -500,12 +494,12 @@ name|void
 name|rebase
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|head
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|base
 parameter_list|)
@@ -584,7 +578,7 @@ name|void
 name|addCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|r
 parameter_list|)
@@ -686,7 +680,7 @@ name|boolean
 name|containsCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|r
 parameter_list|)
@@ -708,12 +702,12 @@ return|;
 block|}
 comment|/**      * Returns the branch commit with the given or {@code null} if it does not      * exist.      *      * @param r the revision of a commit.      * @return the branch commit or {@code null} if it doesn't exist.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|BranchCommit
 name|getCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|r
 parameter_list|)
@@ -735,7 +729,7 @@ return|;
 block|}
 comment|/**      * @return the branch reference or {@code null} if no guard object was      *         passed to the constructor of this branch.       */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|BranchReference
 name|getRef
 parameter_list|()
@@ -750,7 +744,7 @@ name|void
 name|removeCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|r
 parameter_list|)
@@ -784,12 +778,12 @@ name|void
 name|applyTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UnsavedModifications
 name|trunk
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|mergeCommit
 parameter_list|)
@@ -823,7 +817,7 @@ block|}
 block|}
 comment|/**      * Gets the most recent unsaved last revision at<code>readRevision</code>      * or earlier in this branch for the given<code>path</code>. Documents with      * explicit updates are not tracked and this method may return {@code null}.      *      * @param path         the path of a node.      * @param readRevision the read revision.      * @return the most recent unsaved last revision or<code>null</code> if      *         there is none in this branch.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Revision
 name|getUnsavedLastRevision
@@ -902,7 +896,7 @@ name|boolean
 name|isHead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|rev
 parameter_list|)
@@ -945,7 +939,7 @@ argument_list|>
 name|getModifiedPathsUntil
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Revision
 name|r
@@ -1706,7 +1700,7 @@ specifier|private
 name|BranchReference
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ReferenceQueue
 argument_list|<
 name|Object
@@ -1714,12 +1708,12 @@ argument_list|>
 name|queue
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Branch
 name|branch
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Object
 name|referent
 parameter_list|)

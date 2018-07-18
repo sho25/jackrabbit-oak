@@ -65,36 +65,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|sql
 operator|.
 name|DataSource
@@ -116,6 +86,30 @@ operator|.
 name|document
 operator|.
 name|DocumentStoreException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -187,7 +181,7 @@ specifier|public
 name|RDBConnectionHandler
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DataSource
 name|ds
 parameter_list|)
@@ -202,7 +196,7 @@ block|}
 comment|/**      * Obtain a {@link Connection} suitable for read-only operations.      */
 specifier|public
 annotation|@
-name|Nonnull
+name|NotNull
 name|Connection
 name|getROConnection
 parameter_list|()
@@ -236,7 +230,7 @@ block|}
 comment|/**      * Obtain a {@link Connection} suitable for read-write operations.      */
 specifier|public
 annotation|@
-name|Nonnull
+name|NotNull
 name|Connection
 name|getRWConnection
 parameter_list|()
@@ -411,7 +405,7 @@ block|}
 block|}
 comment|/**      * Return current schema name or {@code null} when unavailable      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getSchema
@@ -493,7 +487,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|DataSource
 name|getDataSource
@@ -541,7 +535,7 @@ name|result
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Connection
 name|getConnection

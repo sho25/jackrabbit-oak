@@ -41,16 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -134,6 +124,18 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -228,7 +230,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeState
 name|getBaseState
@@ -303,12 +305,12 @@ name|boolean
 name|moveTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|newParent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|newName
 parameter_list|)

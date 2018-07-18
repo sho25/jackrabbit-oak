@@ -217,16 +217,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -244,6 +234,18 @@ operator|.
 name|RDBJDBCTools
 operator|.
 name|PreparedStatementComponent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -4739,7 +4741,7 @@ block|}
 comment|/**      * Query for any required initialization of the DB.      *       * @return the DB initialization SQL string      */
 specifier|public
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getInitializationStatement
 parameter_list|()
@@ -5284,7 +5286,7 @@ name|description
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|RDBDocumentStoreDB

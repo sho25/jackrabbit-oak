@@ -179,36 +179,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -462,6 +432,30 @@ operator|.
 name|util
 operator|.
 name|Utils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -1256,7 +1250,7 @@ decl_stmt|;
 name|NodeDocument
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentStore
 name|store
 parameter_list|)
@@ -1277,7 +1271,7 @@ specifier|public
 name|NodeDocument
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentStore
 name|store
 parameter_list|,
@@ -1303,7 +1297,7 @@ expr_stmt|;
 block|}
 comment|/**      * Gets the value map for the given key. This method is similar to {@link      * #get(String)} but will always return a value map. The returned value map      * may span multiple documents if the values of the given<code>key</code>      * were split off to {@link #PREVIOUS} documents.      *      * @param key a string key.      * @return the map associated with the key.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Map
 argument_list|<
@@ -1314,7 +1308,7 @@ argument_list|>
 name|getValueMap
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key
 parameter_list|)
@@ -1342,7 +1336,7 @@ return|;
 block|}
 comment|/**      * See also {@link #MODIFIED_IN_SECS}.      *      * @return the time in seconds this document was last modified with five      *          seconds precision. Returns {@code null} if none is set.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Long
 name|getModified
@@ -1603,7 +1597,7 @@ return|;
 block|}
 comment|/**      * Returns the path of the main document if this document is part of a _prev      * history tree. Otherwise this method simply returns {@link #getPath()}.      *      * @return the path of the main document.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getMainPath
@@ -1671,7 +1665,7 @@ block|}
 block|}
 comment|/**      * @return a map of the last known revision for each clusterId.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Map
 argument_list|<
@@ -1770,7 +1764,7 @@ name|boolean
 name|containsRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -2067,7 +2061,7 @@ return|;
 block|}
 comment|/**      * Returns the conflicts on the given {@code changes} if there are any. The      * returned revisions are the commits, which created the collision markers      * for one of the {@code changes}.      *      * @param changes the changes to check.      * @return the conflict revisions.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision
@@ -2075,7 +2069,7 @@ argument_list|>
 name|getConflictsFor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Revision
@@ -2172,7 +2166,7 @@ return|;
 block|}
 comment|/**      * Returns the commit root path for the given<code>revision</code> or      *<code>null</code> if this document does not have a commit root entry for      * the given<code>revision</code>.      *      * @param revision a revision.      * @return the commit root path or<code>null</code>.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getCommitRootPath
@@ -2209,7 +2203,7 @@ return|;
 block|}
 comment|/**      * Get the revision of the latest change made to this node. At the same      * time this method collects all collisions that happened for the given      * {@code changeRev}. The reported latest change takes branches into      * account. This means, if {@code changeRev} is on a branch, the latest      * change is either a change that was done by a preceding branch commit or      * a change that happened before the base of the branch. Changes done after      * the branch base on trunk are not considered in this case. For a trunk      * commit the latest change is reported similarly. In this case, unmerged      * branch commits are not considered as latest change. Only commits to trunk      * are considered.      *      * Collisions include the following cases:      *<ul>      *<li>The other change is not yet committed</li>      *<li>The other change is a branch commit and not yet merged</li>      *<li>The {@code changeRev} is a branch commit and the other change      *       happened after the base revision of the branch</li>      *<li>The other change is from another cluster node and not yet      *       visible</li>      *</ul>      *      * @param context the revision context.      * @param baseRev the base revision of the current change.      * @param changeRev the revision of the current change.      * @param branch the branch associated with the current change or      *              {@code null} if {@code changeRev} is not a branch commit.      * @param collisions changes that happened after {@code baseRev}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Revision
 name|getNewestRevision
 parameter_list|(
@@ -2987,12 +2981,12 @@ name|boolean
 name|isValidRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionContext
 name|context
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|rev
 parameter_list|,
@@ -3002,12 +2996,12 @@ name|String
 name|commitValue
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|readRevision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|Revision
@@ -3126,18 +3120,18 @@ return|;
 block|}
 comment|/**      * Returns a {@link DocumentNodeState} as seen at the given      *<code>readRevision</code>.      *      * @param nodeStore    the node store.      * @param readRevision the read revision.      * @param lastModified the revision when this node was last modified, but      *                     the value is potentially not yet reflected in this      *                     document.      *                     See {@link RevisionContext#getPendingModifications()}.      * @return the node or<code>null</code> if the node doesn't exist at the      *         given read revision.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|DocumentNodeState
 name|getNodeAtRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|readRevision
 parameter_list|,
@@ -3737,7 +3731,7 @@ return|;
 block|}
 comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *      * @param context the revision context      * @param readRevision the read revision      * @param validRevisions the map of revisions to commit value already      *                       checked against readRevision and considered valid.      * @param lastRevs to keep track of the last modification.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Revision
 name|getLiveRevision
@@ -3842,17 +3836,17 @@ name|boolean
 name|isConflicting
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|baseRevision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|commitRevision
 parameter_list|,
@@ -4212,7 +4206,7 @@ return|;
 block|}
 comment|/**      * Returns update operations to split this document. The implementation may      * decide to not return any operations if no splitting is required. A caller      * must explicitly pass a head revision even though it is available through      * the {@link RevisionContext}. The given head revision must reflect a head      * state before {@code doc} was retrieved from the document store. This is      * important in order to maintain consistency. See OAK-3081 for details.      *      * @param context the revision context.      * @param head    the head revision before this document was retrieved from      *                the document store.      * @param binarySize a function that returns the binary size of the given      *                   JSON property value String.      * @return the split operations.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -4221,17 +4215,17 @@ argument_list|>
 name|split
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionContext
 name|context
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|head
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Function
 argument_list|<
 name|String
@@ -4260,7 +4254,7 @@ return|;
 block|}
 comment|/**      * Returns previous revision ranges for this document. The revision keys are      * sorted descending, newest first! The returned map does not include stale      * entries.      * This method is equivalent to calling {@link #getPreviousRanges(boolean)}      * with {@code includeStale} set to false.      *      * @return the previous ranges for this document.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NavigableMap
 argument_list|<
 name|Revision
@@ -4279,7 +4273,7 @@ return|;
 block|}
 comment|/**      * Returns previous revision ranges for this document. The revision keys are      * sorted descending, newest first!      *      * @param includeStale whether stale revision ranges are included or not.      * @return the previous ranges for this document.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NavigableMap
 argument_list|<
 name|Revision
@@ -4328,7 +4322,7 @@ block|}
 block|}
 comment|/**      * Creates a map with previous revision ranges for this document. The      * revision keys are sorted descending, newest first!      *      * @param includeStale whether stale revision ranges are included or not.      * @return the previous ranges for this document.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|NavigableMap
 argument_list|<
@@ -4514,7 +4508,7 @@ return|;
 block|}
 comment|/**      * Returns previous {@link NodeDocument}, which include entries for the      * property in the given revision.      * If the<code>revision</code> is<code>null</code>, then all previous      * documents with changes for the given property are returned. The returned      * documents are returned in descending revision order (newest first).      *      * @param property the name of a property.      * @param revision the revision to match or<code>null</code>.      * @return previous documents.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|NodeDocument
@@ -4522,7 +4516,7 @@ argument_list|>
 name|getPreviousDocs
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|property
@@ -4875,7 +4869,7 @@ name|doc
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|NodeDocument
@@ -5017,7 +5011,7 @@ return|;
 block|}
 comment|/**      * Returns previous leaf documents. Those are the previous documents with      * a type {@code !=} {@link SplitDocType#INTERMEDIATE}. The documents are      * returned in descending order based on the most recent change recorded      * in the previous document. A change is defined as an entry in either the      * {@link #REVISIONS} or {@link #COMMIT_ROOT} map.      *      * @return the leaf documents in descending order.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|NodeDocument
@@ -5182,7 +5176,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|NodeDocument
 name|getPreviousDoc
@@ -5442,7 +5436,7 @@ return|;
 block|}
 comment|/**      * Returns all changes for the given property back to {@code min} revision      * (exclusive). The revisions include committed as well as uncommitted      * changes. The returned revisions are sorted in reverse order (newest      * first).      *      * @param property the name of the property.      * @param min the lower bound revision (exclusive).      * @return changes back to {@code min} revision.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Revision
@@ -5450,13 +5444,13 @@ argument_list|>
 name|getChanges
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|property
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|RevisionVector
 name|min
@@ -5644,7 +5638,7 @@ block|}
 block|}
 comment|/**      * Returns all changes for the given property that are visible from the      * {@code readRevision} vector. The revisions include committed as well as      * uncommitted changes. The returned revisions are sorted in reverse order      * (newest first).      *      * @param property the name of the property.      * @param readRevision the read revision vector.      * @return property changes visible from the given read revision vector.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Map
@@ -5659,13 +5653,13 @@ argument_list|>
 name|getVisibleChanges
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|property
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|RevisionVector
 name|readRevision
@@ -5847,19 +5841,19 @@ name|void
 name|collectVisiblePreviousChanges
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|property
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Revision
 name|readRevision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|List
 argument_list|<
@@ -6425,7 +6419,7 @@ return|;
 block|}
 comment|/**      * Returns the local value map for the given key.      *      * @param key the key.      * @return local value map.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SortedMap
 argument_list|<
 name|Revision
@@ -6486,7 +6480,7 @@ return|;
 block|}
 comment|/**      * @return the {@link #REVISIONS} stored on this document.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SortedMap
 argument_list|<
 name|Revision
@@ -6504,7 +6498,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|SortedMap
 argument_list|<
 name|Revision
@@ -6522,7 +6516,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|SortedMap
 argument_list|<
 name|Revision
@@ -6540,7 +6534,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|SortedMap
 argument_list|<
 name|Revision
@@ -6559,7 +6553,7 @@ return|;
 block|}
 comment|/**      * Returns the branch commit entries on this document      * ({@link #BRANCH_COMMITS}). This method does not consider previous      * documents, but only returns the entries on this document.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<
@@ -6580,7 +6574,7 @@ return|;
 block|}
 comment|/**      * Resolves the commit value for the change with the given revision on this      * document. If necessary, this method will lookup the commit value on the      * referenced commit root document.      *      * @param revision the revision of a change on this document.      * @return the commit value associated with the change.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|resolveCommitValue
 parameter_list|(
@@ -6618,7 +6612,7 @@ return|;
 block|}
 comment|/**      * Returns the sweep revisions on this document as a {@link RevisionVector}.      * This method will return an empty {@link RevisionVector} if this document      * doesn't have any sweep revisions set.      *      * @return the sweep revisions as a {@link RevisionVector}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|getSweepRevisions
 parameter_list|()
@@ -6677,7 +6671,7 @@ name|void
 name|setChildrenFlag
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
@@ -6704,12 +6698,12 @@ name|void
 name|setModified
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -6742,17 +6736,17 @@ name|void
 name|setRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|commitValue
 parameter_list|)
@@ -6784,12 +6778,12 @@ name|void
 name|unsetRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -6888,12 +6882,12 @@ name|void
 name|removeRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -6921,17 +6915,17 @@ name|void
 name|addCollision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|other
 parameter_list|)
@@ -6963,12 +6957,12 @@ name|void
 name|removeCollision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -6995,12 +6989,12 @@ name|void
 name|setLastRev
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7040,12 +7034,12 @@ name|void
 name|setCommitRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,
@@ -7082,12 +7076,12 @@ name|void
 name|removeCommitRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7111,12 +7105,12 @@ name|void
 name|unsetCommitRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7140,12 +7134,12 @@ name|void
 name|setDeleted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,
@@ -7195,7 +7189,7 @@ name|void
 name|setDeletedOnce
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|)
@@ -7221,12 +7215,12 @@ name|void
 name|removeDeleted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7250,12 +7244,12 @@ name|void
 name|setPrevious
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Range
 name|range
 parameter_list|)
@@ -7289,12 +7283,12 @@ name|void
 name|removePrevious
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Range
 name|range
 parameter_list|)
@@ -7318,12 +7312,12 @@ name|void
 name|removePrevious
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7350,12 +7344,12 @@ name|void
 name|setStalePrevious
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,
@@ -7392,12 +7386,12 @@ name|void
 name|removeStalePrevious
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7424,7 +7418,7 @@ name|void
 name|setHasBinary
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|)
@@ -7448,12 +7442,12 @@ name|void
 name|setBranchCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7484,12 +7478,12 @@ name|void
 name|removeBranchCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7513,12 +7507,12 @@ name|void
 name|setSweepRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -7728,12 +7722,12 @@ name|LastRevs
 name|createLastRevs
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|readRevision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionContext
 name|context
 parameter_list|,
@@ -8118,13 +8112,13 @@ return|;
 block|}
 comment|/**      * Returns the commit root document for the given revision. This may either      * be this document or another one.      *      * @param rev a revision.      * @return the commit root or<code>null</code> if there is none.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|NodeDocument
 name|getCommitRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|rev
 parameter_list|)
@@ -8231,13 +8225,13 @@ return|;
 block|}
 comment|/**      * Returns the path at the given {@code depth} based on the path of this      * document.      *      * @param depth the depth as a string.      * @return the path.      * @throws NumberFormatException if {@code depth} cannot be parsed as an      *              integer.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|String
 name|getPathAtDepth
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|depth
 parameter_list|)
@@ -8290,13 +8284,13 @@ return|;
 block|}
 comment|/**      * Returns the commit root depth for the given revision. This method also      * takes previous documents into account.      *      * @param revision get the commit root depth for this revision.      * @return the depth or<code>null</code> if there is no commit root entry      *         for the given revision on this document or previous documents.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|String
 name|getCommitRootDepth
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -8374,12 +8368,12 @@ name|boolean
 name|isVisible
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionContext
 name|context
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,
@@ -8389,7 +8383,7 @@ name|String
 name|commitValue
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|readRevision
 parameter_list|)
@@ -8577,7 +8571,7 @@ return|;
 block|}
 comment|/**      * Returns the commit value for the given<code>revision</code>.      *      * @param revision a revision.      * @return the commit value or<code>null</code> if the revision is unknown.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|String
 name|getCommitValue
@@ -8797,18 +8791,18 @@ return|;
 block|}
 comment|/**      * Get the latest property value smaller or equal the readRevision revision.      *      * @param valueMap the sorted revision-value map      * @param readRevision the maximum revision      * @param validRevisions map of revision to commit value considered valid      *                       against the given readRevision.      * @param lastRevs to keep track of the most recent modification.      * @return the latest value from the {@code readRevision} point of view.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|Value
 name|getLatestValue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionContext
 name|context
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Map
@@ -8823,12 +8817,12 @@ argument_list|>
 name|valueMap
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|readRevision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|Revision
@@ -8838,7 +8832,7 @@ argument_list|>
 name|validRevisions
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|LastRevs
 name|lastRevs
 parameter_list|)
@@ -9019,7 +9013,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|Revision
@@ -9956,7 +9950,7 @@ decl_stmt|;
 name|Value
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,

@@ -71,26 +71,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -192,6 +172,30 @@ operator|.
 name|util
 operator|.
 name|Utils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -353,7 +357,7 @@ specifier|private
 name|RevisionVector
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 index|[]
 name|revisions
@@ -407,7 +411,7 @@ specifier|public
 name|RevisionVector
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 modifier|...
 name|revisions
@@ -436,7 +440,7 @@ specifier|public
 name|RevisionVector
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Revision
@@ -465,7 +469,7 @@ specifier|public
 name|RevisionVector
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision
@@ -496,7 +500,7 @@ name|RevisionVector
 name|update
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -811,7 +815,7 @@ name|RevisionVector
 name|pmin
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|vector
 parameter_list|)
@@ -1015,7 +1019,7 @@ name|RevisionVector
 name|pmax
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|vector
 parameter_list|)
@@ -1379,7 +1383,7 @@ name|boolean
 name|isRevisionNewer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -1476,7 +1480,7 @@ return|;
 block|}
 comment|/**      * @return the first branch revision in this vector.      * @throws IllegalStateException if this vector does not contain a branch      *          revision.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Revision
 name|getBranchRevision
@@ -2031,7 +2035,7 @@ name|int
 name|compareTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|other
 parameter_list|)
@@ -2302,7 +2306,7 @@ return|;
 block|}
 comment|//-------------------------< internal>-------------------------------------
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|Revision
 name|peekRevision

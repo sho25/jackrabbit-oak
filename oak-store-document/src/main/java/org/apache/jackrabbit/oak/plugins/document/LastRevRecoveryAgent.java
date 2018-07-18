@@ -265,16 +265,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -398,6 +388,18 @@ operator|.
 name|stats
 operator|.
 name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -2127,7 +2129,7 @@ block|}
 block|}
 comment|/**      * Determines the last committed modification to the given document by      * a {@code clusterId}.      *      * @param doc a document.      * @param clusterId clusterId for which the last committed modification is      *                  looked up.      * @return the commit revision of the last modification by {@code clusterId}      *          to the given document.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|Revision
 name|determineLastModification

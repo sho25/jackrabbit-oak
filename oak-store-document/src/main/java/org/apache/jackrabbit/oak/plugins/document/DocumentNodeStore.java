@@ -699,36 +699,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -1727,6 +1697,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -2042,7 +2036,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * The cluster instance info.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|ClusterNodeInfo
@@ -2144,14 +2138,14 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Background thread performing the clusterId lease renew.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Thread
 name|leaseUpdateThread
 decl_stmt|;
 comment|/**      * Background thread performing the cluster update      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Thread
 name|clusterUpdateThread
@@ -3832,7 +3826,7 @@ name|void
 name|headOfQueue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -4118,7 +4112,7 @@ name|void
 name|setRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|newHead
 parameter_list|)
@@ -4141,7 +4135,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DocumentStore
 name|getDocumentStore
@@ -4153,7 +4147,7 @@ return|;
 block|}
 comment|/**      * Creates a new commit. The caller must acknowledge the commit either with      * {@link #done(Commit, boolean, CommitInfo)} or {@link #canceled(Commit)},      * depending on the result of the commit.      *      * @param base the base revision for the commit or<code>null</code> if the      *             commit should use the current head revision as base.      * @param branch the branch instance if this is a branch commit. The life      *               time of this branch commit is controlled by the      *               reachability of this parameter. Once {@code branch} is      *               weakly reachable, the document store implementation is      *               free to remove the commits associated with the branch.      * @return a new commit.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Commit
 name|newCommit
 parameter_list|(
@@ -4210,13 +4204,13 @@ block|}
 block|}
 comment|/**      * Creates a new merge commit. The caller must acknowledge the commit either with      * {@link #done(Commit, boolean, CommitInfo)} or {@link #canceled(Commit)},      * depending on the result of the commit.      *      * @param base the base revision for the commit.      * @param numBranchCommits the number of branch commits to merge.      * @return a new merge commit.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|MergeCommit
 name|newMergeCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|base
 parameter_list|,
@@ -4299,7 +4293,7 @@ name|done
 parameter_list|(
 specifier|final
 annotation|@
-name|Nonnull
+name|NotNull
 name|Commit
 name|c
 parameter_list|,
@@ -4308,7 +4302,7 @@ name|isBranch
 parameter_list|,
 specifier|final
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -4371,7 +4365,7 @@ name|void
 name|headOfQueue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -4942,7 +4936,7 @@ name|journalPushThreshold
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|ClusterNodeInfo
 name|getClusterInfo
@@ -4971,7 +4965,7 @@ name|nodeChildrenCacheStats
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -5115,24 +5109,24 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|AbstractDocumentNodeState
 name|getSecondaryNodeState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|path
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|RevisionVector
 name|rootRevision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|RevisionVector
 name|rev
@@ -5179,19 +5173,19 @@ return|;
 block|}
 comment|/**      * Get the node for the given path and revision. The returned object might      * not be modified directly.      *      * @param path the path of the node.      * @param rev the read revision.      * @return the node or<code>null</code> if the node does not exist at the      *          given revision.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|DocumentNodeState
 name|getNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|path
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|RevisionVector
 name|rev
@@ -5378,14 +5372,14 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeState
 operator|.
 name|Children
 name|getChildren
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AbstractDocumentNodeState
 name|parent
@@ -5839,7 +5833,7 @@ block|}
 block|}
 comment|/**      * Returns the child documents at the given {@code path} and returns up to      * {@code limit} documents. The returned child documents are sorted in      * ascending child node name order. If a {@code name} is passed, the first      * child document returned is after the given name. That is, the name is the      * lower exclusive bound.      *      * @param path the path of the parent document.      * @param name the lower exclusive bound or {@code null}.      * @param limit the maximum number of child documents to return.      * @return the child documents.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Iterable
 argument_list|<
@@ -5848,7 +5842,7 @@ argument_list|>
 name|readChildDocs
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|path
@@ -5934,7 +5928,7 @@ return|;
 block|}
 comment|/**      * Returns up to {@code limit} child nodes, starting at the given      * {@code name} (exclusive).      *      * @param parent the parent node.      * @param name the name of the lower bound child node (exclusive) or      *             {@code null}, if the method should start with the first known      *             child node.      * @param limit the maximum number of child nodes to return.      * @return the child nodes.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|DocumentNodeState
@@ -5942,7 +5936,7 @@ argument_list|>
 name|getChildNodes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|DocumentNodeState
 name|parent
@@ -6252,7 +6246,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|DocumentNodeState
 name|readNode
 parameter_list|(
@@ -7130,7 +7124,7 @@ name|void
 name|revisionsMerged
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Revision
@@ -7148,7 +7142,7 @@ expr_stmt|;
 block|}
 comment|/**      * Updates a commit root document.      *      * @param commit the updates to apply on the commit root document.      * @param commitRev the commit revision.      * @return the document before the update was applied or<code>null</code>      *          if the update failed because of a collision.      * @throws DocumentStoreException if the update fails with an error.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|NodeDocument
 name|updateCommitRoot
 parameter_list|(
@@ -7524,12 +7518,12 @@ block|}
 block|}
 comment|/**      * Returns the root node state at the given revision.      *      * @param revision a revision.      * @return the root node state at the given revision.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeState
 name|getRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|revision
 parameter_list|)
@@ -7566,7 +7560,7 @@ name|root
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStoreBranch
 name|createBranch
 parameter_list|(
@@ -7587,17 +7581,17 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|rebase
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|branchHead
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|base
 parameter_list|)
@@ -7703,17 +7697,17 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|reset
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|branchHead
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|ancestor
 parameter_list|)
@@ -8084,17 +8078,17 @@ name|ancestor
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|merge
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|branchHead
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -8425,19 +8419,19 @@ name|boolean
 name|compare
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AbstractDocumentNodeState
 name|node
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AbstractDocumentNodeState
 name|base
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeStateDiff
 name|diff
 parameter_list|)
@@ -8546,7 +8540,7 @@ name|createTracker
 parameter_list|(
 specifier|final
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|r
 parameter_list|,
@@ -8616,7 +8610,7 @@ name|void
 name|suspendUntilAll
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision
@@ -8721,7 +8715,7 @@ return|;
 block|}
 comment|//-------------------------< NodeStore>------------------------------------
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -8734,7 +8728,7 @@ name|root
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -8742,17 +8736,17 @@ name|NodeState
 name|merge
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitHook
 name|commitHook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -8774,7 +8768,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -8782,7 +8776,7 @@ name|NodeState
 name|rebase
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)
@@ -8804,7 +8798,7 @@ name|NodeState
 name|reset
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)
@@ -8822,7 +8816,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|BlobStoreBlob
 name|createBlob
@@ -8856,7 +8850,7 @@ name|Blob
 name|getBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
@@ -8921,7 +8915,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -8932,7 +8926,7 @@ name|long
 name|lifetime
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -8957,7 +8951,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -8991,7 +8985,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -9004,7 +8998,7 @@ argument_list|>
 name|checkpointInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)
@@ -9060,7 +9054,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -9199,7 +9193,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -9207,7 +9201,7 @@ name|NodeState
 name|retrieve
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)
@@ -9259,7 +9253,7 @@ name|boolean
 name|release
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)
@@ -9312,7 +9306,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|RevisionVector
 name|getHeadRevision
@@ -9328,7 +9322,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Revision
 name|newRevision
@@ -9434,7 +9428,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Clock
 name|getClock
@@ -9451,12 +9445,12 @@ name|String
 name|getCommitValue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|changeRevision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDocument
 name|doc
 parameter_list|)
@@ -10151,7 +10145,7 @@ return|;
 block|}
 comment|/**      * @return the minimum revisions of foreign cluster nodes since they were      *          started. The revision is derived from the start time of the      *          cluster node.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|RevisionVector
 name|getMinExternalRevisions
@@ -10261,7 +10255,7 @@ name|void
 name|invalidateCache
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -10306,7 +10300,7 @@ name|void
 name|updateHead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Revision
@@ -10314,7 +10308,7 @@ argument_list|>
 name|externalChanges
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|sweepRevs
 parameter_list|,
@@ -10552,7 +10546,7 @@ name|CommitInfo
 name|newCommitInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ChangeSet
 name|changeSet
 parameter_list|,
@@ -11168,7 +11162,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -11189,7 +11183,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|getSweepRevisions
 parameter_list|()
@@ -11669,7 +11663,7 @@ name|void
 name|headOfQueue
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -12400,13 +12394,13 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Commit
 name|newTrunkCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|base
 parameter_list|)
@@ -12501,13 +12495,13 @@ name|c
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Commit
 name|newBranchCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|base
 parameter_list|,
@@ -14082,12 +14076,12 @@ name|PathRev
 name|childNodeCacheKey
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|readRevision
 parameter_list|,
@@ -14282,7 +14276,7 @@ block|}
 block|}
 comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @param blobGcMaxAgeInSecs      * @param repositoryId      * @param whiteboard      * @param statisticsProvider      * @return garbage collector of the BlobStore supports GC otherwise null      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|MarkSweepGarbageCollector
 name|createBlobGarbageCollector
@@ -14610,7 +14604,7 @@ name|void
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
@@ -14785,7 +14779,7 @@ name|void
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
@@ -14828,7 +14822,7 @@ name|void
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
@@ -14877,7 +14871,7 @@ name|void
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
@@ -15006,7 +15000,7 @@ name|void
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
@@ -15144,7 +15138,7 @@ name|void
 name|execute
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
@@ -15217,7 +15211,7 @@ name|checkpoints
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|VersionGarbageCollector
 name|getVersionGarbageCollector
@@ -15228,7 +15222,7 @@ name|versionGarbageCollector
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|JournalGarbageCollector
 name|getJournalGarbageCollector
@@ -15239,7 +15233,7 @@ name|journalGarbageCollector
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|LastRevRecoveryAgent
 name|getLastRevRecoveryAgent
@@ -15349,7 +15343,7 @@ name|boolean
 name|isVisible
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|visibilityToken
 parameter_list|,

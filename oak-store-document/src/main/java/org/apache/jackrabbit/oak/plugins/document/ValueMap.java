@@ -131,16 +131,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -156,6 +146,18 @@ operator|.
 name|util
 operator|.
 name|MergeSortedIterators
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -224,7 +226,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|static
 name|Map
 argument_list|<
@@ -235,13 +237,13 @@ argument_list|>
 name|create
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|NodeDocument
 name|doc
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|property
@@ -309,7 +311,7 @@ block|{
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -832,7 +834,7 @@ decl_stmt|;
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<

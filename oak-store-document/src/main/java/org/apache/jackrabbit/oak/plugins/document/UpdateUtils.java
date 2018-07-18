@@ -69,16 +69,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -151,6 +141,18 @@ name|Operation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Provides convenience methods for applying {@link UpdateOp}s to  * {@link Document}s.  */
 end_comment
@@ -167,12 +169,12 @@ name|void
 name|applyChanges
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Document
 name|doc
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|update
 parameter_list|)
@@ -578,12 +580,12 @@ name|boolean
 name|checkConditions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Document
 name|doc
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|Key
@@ -927,7 +929,7 @@ name|void
 name|assertUnconditional
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|up
 parameter_list|)

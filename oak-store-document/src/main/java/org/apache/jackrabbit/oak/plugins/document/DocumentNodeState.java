@@ -113,36 +113,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -525,6 +495,30 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -761,17 +755,17 @@ decl_stmt|;
 name|DocumentNodeState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|rootRevision
 parameter_list|)
@@ -801,17 +795,17 @@ block|}
 name|DocumentNodeState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|rootRevision
 parameter_list|,
@@ -857,22 +851,22 @@ specifier|private
 name|DocumentNodeState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|rootRevision
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -921,12 +915,12 @@ specifier|protected
 name|DocumentNodeState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|,
@@ -1019,7 +1013,7 @@ name|DocumentNodeState
 name|withRootRevision
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|RevisionVector
 name|root
 parameter_list|,
@@ -1068,7 +1062,7 @@ block|}
 block|}
 comment|/**      * @return a copy of this {@code DocumentNodeState} with the      *          {@link #fromExternalChange} flag set to {@code true}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DocumentNodeState
 name|fromExternalChange
@@ -1094,12 +1088,12 @@ return|;
 block|}
 comment|/**      * Returns this state as a branch root state connected to the given      * {@code branch}.      *      * @param branch the branch instance.      * @return a {@link DocumentBranchRootNodeState} connected to the given      *      {@code branch}.      * @throws IllegalStateException if this is not a root node state or does      *      not represent a branch state.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeState
 name|asBranchRootState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStoreBranch
 name|branch
 parameter_list|)
@@ -1156,7 +1150,7 @@ block|}
 comment|//--------------------------< AbstractDocumentNodeState>-----------------------------------
 comment|/**      * Returns the root revision for this node state. This is the root revision      * passed from the parent node state. This revision therefore reflects the      * revision of the root node state where the traversal down the tree      * started.      *      * @return the revision of the root node state.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|RevisionVector
 name|getRootRevision
@@ -1207,7 +1201,7 @@ name|PropertyState
 name|getProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1228,7 +1222,7 @@ name|boolean
 name|hasProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1243,7 +1237,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1296,7 +1290,7 @@ name|boolean
 name|hasChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1330,7 +1324,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1338,7 +1332,7 @@ name|NodeState
 name|getChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1614,7 +1608,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1724,7 +1718,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2052,7 +2046,7 @@ name|UpdateOp
 name|asOperation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|)
@@ -2453,7 +2447,7 @@ comment|//Exclude this
 block|}
 comment|//------------------------------< internal>--------------------------------
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|AbstractDocumentNodeState
 name|getChildNodeDoc
@@ -2586,7 +2580,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|AbstractDocumentNodeState
 name|getSecondaryNodeState
@@ -2620,7 +2614,7 @@ return|;
 block|}
 comment|/**      * Returns up to {@code limit} child node entries, starting after the given      * {@code name}.      *      * @param name the name of the lower bound child node entry (exclusive) or      *             {@code null}, if the method should start with the first known      *             child node.      * @param limit the maximum number of child node entries to return.      * @return the child node entries.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Iterable
 argument_list|<
@@ -2689,7 +2683,7 @@ name|AbstractChildNodeEntry
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2710,7 +2704,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3976,7 +3970,7 @@ name|AbstractChildNodeEntry
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -3989,7 +3983,7 @@ name|childNodeName
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

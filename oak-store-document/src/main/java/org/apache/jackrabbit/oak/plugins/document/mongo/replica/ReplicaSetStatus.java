@@ -137,16 +137,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|mongodb
@@ -196,6 +186,18 @@ operator|.
 name|bson
 operator|.
 name|BsonDocument
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -760,7 +762,7 @@ name|localTime
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Date
 name|getLastWrite
 parameter_list|()

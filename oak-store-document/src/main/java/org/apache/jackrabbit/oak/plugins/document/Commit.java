@@ -101,36 +101,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -288,6 +258,30 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -660,12 +654,12 @@ comment|/**      * Create a new Commit.      *        * @param nodeStore the nod
 name|Commit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DocumentNodeStore
 name|nodeStore
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|revision
 parameter_list|,
@@ -817,7 +811,7 @@ return|;
 block|}
 comment|/**      * The revision for this new commit. That is, the changes within this commit      * will be visible with this revision.      *      * @return the revision for this new commit.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Revision
 name|getRevision
 parameter_list|()
@@ -828,7 +822,7 @@ return|;
 block|}
 comment|/**      * Returns the base revision for this commit. That is, the revision passed      * to {@link DocumentNodeStore#newCommit}. The base revision may be      *<code>null</code>, e.g. for the initial commit of the root node, when      * there is no base revision.      *      * @return the base revision of this commit or<code>null</code>.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|RevisionVector
 name|getBaseRevision
 parameter_list|()
@@ -839,7 +833,7 @@ return|;
 block|}
 comment|/**      * @return all modified paths, including ancestors without explicit      *          modifications.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|String
@@ -2486,7 +2480,7 @@ name|void
 name|checkConflicts
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|,
@@ -3147,7 +3141,7 @@ name|NodeDocument
 name|doc
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|)
@@ -3198,7 +3192,7 @@ name|NodeDocument
 name|before
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|UpdateOp
 name|op
 parameter_list|)
@@ -3220,7 +3214,7 @@ return|;
 block|}
 comment|/**      * @return the branch if this is a branch commit, otherwise {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|Branch
 name|getBranch

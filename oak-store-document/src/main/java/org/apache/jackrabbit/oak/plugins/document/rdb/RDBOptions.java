@@ -23,11 +23,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -118,7 +120,7 @@ name|RDBOptions
 name|tablePrefix
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|tablePrefix
 parameter_list|)
@@ -135,7 +137,7 @@ return|;
 block|}
 specifier|public
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getTablePrefix
 parameter_list|()

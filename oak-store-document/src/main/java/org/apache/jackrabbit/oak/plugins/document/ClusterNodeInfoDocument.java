@@ -30,16 +30,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -92,6 +82,18 @@ operator|.
 name|ClusterNodeInfo
 operator|.
 name|RecoverLockState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -282,7 +284,7 @@ return|;
 block|}
 comment|/**      * @return the id of the cluster node performing recovery or {@code null} if      *          currently not set.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Long
 name|getRecoveryBy

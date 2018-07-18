@@ -45,16 +45,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -196,6 +186,18 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -427,7 +429,7 @@ name|DB
 name|getDB
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -447,7 +449,7 @@ name|MongoDatabase
 name|getDatabase
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -645,7 +647,7 @@ name|boolean
 name|hasWriteConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|uri
 parameter_list|)
@@ -704,7 +706,7 @@ name|boolean
 name|hasReadConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|uri
 parameter_list|)
@@ -743,7 +745,7 @@ name|WriteConcern
 name|getDefaultWriteConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DB
 name|db
 parameter_list|)
@@ -765,7 +767,7 @@ name|WriteConcern
 name|getDefaultWriteConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Mongo
 name|client
 parameter_list|)
@@ -810,7 +812,7 @@ name|ReadConcern
 name|getDefaultReadConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DB
 name|db
 parameter_list|)
@@ -866,12 +868,12 @@ name|ReadConcern
 name|getDefaultReadConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Mongo
 name|client
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|MongoDatabase
 name|db
 parameter_list|)
@@ -924,7 +926,7 @@ name|boolean
 name|isMajorityWriteConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DB
 name|db
 parameter_list|)
@@ -956,7 +958,7 @@ name|boolean
 name|isMajorityWriteConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|MongoDatabase
 name|db
 parameter_list|)
@@ -988,7 +990,7 @@ name|boolean
 name|hasSufficientWriteConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DB
 name|db
 parameter_list|)
@@ -1018,12 +1020,12 @@ name|boolean
 name|isSufficientWriteConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Mongo
 name|client
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|WriteConcern
 name|wc
 parameter_list|)
@@ -1142,7 +1144,7 @@ name|boolean
 name|hasSufficientReadConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DB
 name|db
 parameter_list|)
@@ -1172,12 +1174,12 @@ name|boolean
 name|isSufficientReadConcern
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Mongo
 name|client
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|ReadConcern
 name|rc
 parameter_list|)

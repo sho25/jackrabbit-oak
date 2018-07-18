@@ -41,26 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -104,6 +84,30 @@ operator|.
 name|util
 operator|.
 name|Utils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -431,12 +435,12 @@ expr_stmt|;
 block|}
 comment|/**      * Performs a sweep and reports the required updates to the given sweep      * listener. The returned revision is the new sweep revision for the      * clusterId associated with the revision context used to create this      * sweeper. The caller is responsible for storing the returned sweep      * revision on the root document. This method returns {@code null} if no      * update was possible.      *      * @param documents the documents to sweep      * @param listener the listener to receive required sweep update operations.      * @return the new sweep revision or {@code null} if no updates were done.      * @throws DocumentStoreException if reading from the store or writing to      *          the store failed.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Revision
 name|sweep
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|NodeDocument
@@ -444,7 +448,7 @@ argument_list|>
 name|documents
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDocumentSweepListener
 name|listener
 parameter_list|)
@@ -474,7 +478,7 @@ return|;
 block|}
 comment|//----------------------------< internal>----------------------------------
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|Revision
 name|performSweep
@@ -1328,7 +1332,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|Revision
 name|getCommitRevision
