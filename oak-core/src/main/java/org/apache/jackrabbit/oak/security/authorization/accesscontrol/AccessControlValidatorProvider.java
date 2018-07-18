@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -253,6 +243,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code AccessControlValidatorProvider} aimed to provide a root validator  * that makes sure access control related content modifications (adding, modifying  * and removing access control policies) are valid according to the  * constraints defined by this access control implementation.  */
 end_comment
@@ -273,7 +275,7 @@ specifier|public
 name|AccessControlValidatorProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ProviderCtx
 name|providerCtx
 parameter_list|)
@@ -287,7 +289,7 @@ expr_stmt|;
 block|}
 comment|//--------------------------------------------------< ValidatorProvider>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -41,26 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -142,6 +122,30 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -548,7 +552,7 @@ decl_stmt|;
 name|EffectiveType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|NodeState
@@ -571,7 +575,7 @@ name|boolean
 name|isNodeType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -624,7 +628,7 @@ name|boolean
 name|isMandatoryProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -639,7 +643,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -658,7 +662,7 @@ name|boolean
 name|isMandatoryChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -673,7 +677,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -690,12 +694,12 @@ return|;
 block|}
 comment|/**      * Finds a matching definition for a property with the given name and type.      *      * @param property modified property      * @return matching property definition, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|NodeState
 name|getDefinition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -995,12 +999,12 @@ name|boolean
 name|isValidChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|nameWithIndex
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|EffectiveType
 name|effective
 parameter_list|)
@@ -1201,12 +1205,12 @@ return|;
 block|}
 comment|/**      * Finds the default node type for a child node with the given name.      *      * @param nameWithIndex child node name, possibly with an SNS index      * @return default type, or {@code null} if not found      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getDefaultType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|nameWithIndex
 parameter_list|)
@@ -1325,7 +1329,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -1451,7 +1455,7 @@ name|boolean
 name|sns
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|definition
 parameter_list|)
@@ -1473,12 +1477,12 @@ name|boolean
 name|nameSetContains
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|set
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1516,7 +1520,7 @@ literal|false
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Set
 argument_list|<
@@ -1525,7 +1529,7 @@ argument_list|>
 name|getNameSet
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|set
 parameter_list|)

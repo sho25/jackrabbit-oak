@@ -93,16 +93,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -152,6 +142,18 @@ operator|.
 name|accesscontrol
 operator|.
 name|AccessControlConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -214,7 +216,7 @@ decl_stmt|;
 name|PermissionCacheBuilder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionStore
 name|store
 parameter_list|)
@@ -238,7 +240,7 @@ name|boolean
 name|init
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -639,12 +641,12 @@ decl_stmt|;
 name|DefaultPermissionCache
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionEntryCache
 name|cache
 parameter_list|,
@@ -684,7 +686,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -735,7 +737,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|accessControlledTree
 parameter_list|)
@@ -823,7 +825,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -869,7 +871,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|accessControlledTree
 parameter_list|)
@@ -938,7 +940,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -963,7 +965,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|accessControlledTree
 parameter_list|)

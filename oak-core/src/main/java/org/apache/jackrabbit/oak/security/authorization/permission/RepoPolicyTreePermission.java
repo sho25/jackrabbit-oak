@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -131,6 +121,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code TreePermission} implementation for the access control policy coverying  * repository level permissions. In this implementation these permissions are  * managed in the policy tree defined at /rep:repoPolicy, which is considered  * protected access control content.  *  * This implementation relies on the precondition that the subtree defined by the  * /rep:repoPolicy node only consists of trees of type access control. Consequently,  * read access to trees and properties is granted if and only if {@link Permissions#READ_ACCESS_CONTROL}  * is granted at the repo-level.  *  * For the same reason any other permissions are evaluated by checking the  * {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.RepositoryPermission},  * which apply for all items defined by this special subtree.  */
 end_comment
@@ -173,7 +175,7 @@ return|;
 block|}
 comment|//-----------------------------------------------------< TreePermission>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -181,12 +183,12 @@ name|TreePermission
 name|getChildPermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|childName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|childState
 parameter_list|)
@@ -218,7 +220,7 @@ name|boolean
 name|canRead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -290,7 +292,7 @@ name|long
 name|permissions
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)

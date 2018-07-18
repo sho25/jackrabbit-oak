@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -114,6 +104,18 @@ operator|.
 name|nodetype
 operator|.
 name|NodeTypeConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -219,12 +221,12 @@ name|void
 name|assertEqualPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|expected
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|result
 parameter_list|)

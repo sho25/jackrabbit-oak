@@ -27,21 +27,23 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|openmbean
 operator|.
 name|CompositeData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -61,14 +63,14 @@ literal|"PropertyIndexAsyncReindex"
 decl_stmt|;
 comment|/**      * Initiate a reindex operation for the property indexes marked for      * reindexing      *       * @return the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|startPropertyIndexAsyncReindex
 parameter_list|()
 function_decl|;
 comment|/**      * Asynchronous Property Index reindexing status      *       * @return the status of the ongoing operation or if none the terminal      *         status of the last operation or<em>Status not available</em> if      *         none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|getPropertyIndexAsyncReindexStatus
 parameter_list|()

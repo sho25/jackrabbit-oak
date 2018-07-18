@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -200,6 +190,18 @@ operator|.
 name|whiteboard
 operator|.
 name|WhiteboardAware
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -484,7 +486,7 @@ expr_stmt|;
 block|}
 comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -499,7 +501,7 @@ block|}
 comment|//----------------------------------------< AuthenticationConfiguration>---
 comment|/**      * Create a {@code LoginContextProvider} using standard      * {@link javax.security.auth.login.Configuration#getConfiguration() JAAS}      * functionality. In case no login configuration for the specified app name      * can be retrieve this implementation uses the default as defined by      * {@link org.apache.jackrabbit.oak.spi.security.authentication.ConfigurationUtil#getDefaultConfiguration(org.apache.jackrabbit.oak.spi.security.ConfigurationParameters)}.      *<p>      * The {@link LoginContextProvider} implementation is intended to be used with      *<ul>      *<li>Regular login using JAAS {@link javax.security.auth.spi.LoginModule} or</li>      *<li>Pre-authenticated subjects in which case any authentication      *     related validation is omitted</li>      *</ul>      *      *<h3>Configuration Options</h3>      *<ul>      *<li>{@link #PARAM_APP_NAME}: The appName passed to      *     {@code Configuration#getAppConfigurationEntry(String)}. The default      *     value is {@link #DEFAULT_APP_NAME}.</li>      *</ul>      *      * @param contentRepository The content repository.      * @return An new instance of {@link LoginContextProvider}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

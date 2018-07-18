@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -67,6 +57,18 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code PermissionEntryProvider} provides permission entries for a given set of principals.  * It may internally hold a cache to improve performance and usually operates on the permission store.  */
 end_comment
@@ -76,7 +78,7 @@ interface|interface
 name|PermissionEntryProvider
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|PermissionEntry
@@ -84,13 +86,13 @@ argument_list|>
 name|getEntryIterator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|EntryPredicate
 name|predicate
 parameter_list|)
 function_decl|;
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|PermissionEntry
@@ -98,7 +100,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|accessControlledTree
 parameter_list|)

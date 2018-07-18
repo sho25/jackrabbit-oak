@@ -83,16 +83,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -175,6 +165,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code Utils} provide some utility methods.  */
 end_comment
@@ -190,13 +192,13 @@ parameter_list|()
 block|{     }
 comment|/**      * Returns the jcr:uuid value of given {@code node}.      *      * @param node a referenceable node.      * @return the value of the jcr:uuid property.      * @throws IllegalArgumentException if the node is not referenceable.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|static
 name|String
 name|uuidFromNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|node
 parameter_list|)
@@ -214,13 +216,13 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|static
 name|String
 name|uuidFromNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|node
 parameter_list|)
@@ -266,13 +268,13 @@ return|;
 block|}
 comment|/**      * Returns the {@code jcr:primaryType} value of the given      * {@code node}.      *      * @param node a node.      * @return the {@code jcr:primaryType} value.      * @throws IllegalStateException if the node does not have a {@code jcr:primaryType}      *                               property.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|static
 name|String
 name|primaryTypeOf
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|node
 parameter_list|)

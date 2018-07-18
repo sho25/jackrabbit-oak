@@ -75,16 +75,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -398,6 +388,18 @@ operator|.
 name|util
 operator|.
 name|PasswordUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -781,7 +783,7 @@ specifier|public
 name|TokenConfigurationImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)
@@ -916,7 +918,7 @@ expr_stmt|;
 block|}
 comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -929,7 +931,7 @@ name|NAME
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -942,12 +944,12 @@ argument_list|>
 name|getValidators
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -955,7 +957,7 @@ argument_list|>
 name|principals
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|MoveTracker
 name|moveTracker
 parameter_list|)
@@ -992,7 +994,7 @@ block|}
 comment|//-------------------------------------------------< TokenConfiguration>---
 comment|/**      * Returns a new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      *      * @param root The target root.      * @return A new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

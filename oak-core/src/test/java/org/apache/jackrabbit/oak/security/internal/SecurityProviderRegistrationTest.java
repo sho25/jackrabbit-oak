@@ -65,16 +65,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -653,6 +643,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Rule
@@ -832,7 +834,7 @@ name|void
 name|assertContext
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Context
 name|context
 parameter_list|,
@@ -840,7 +842,7 @@ name|int
 name|expectedSize
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -1064,7 +1066,7 @@ name|Configuration
 name|configWithRequiredServiceIds
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|ids
@@ -4410,12 +4412,12 @@ name|boolean
 name|definesProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -4431,7 +4433,7 @@ name|boolean
 name|definesContextRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -4447,7 +4449,7 @@ name|boolean
 name|definesTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -4463,7 +4465,7 @@ name|boolean
 name|definesLocation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeLocation
 name|location
 parameter_list|)
@@ -4479,7 +4481,7 @@ name|boolean
 name|definesInternal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)

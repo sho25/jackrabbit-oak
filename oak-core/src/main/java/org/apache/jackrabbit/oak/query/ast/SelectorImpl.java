@@ -161,16 +161,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -579,6 +569,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -951,7 +953,7 @@ return|;
 block|}
 comment|/**      * @return all of the matching supertypes, or empty if the      *         {@link #matchesAllTypes} flag is set      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<
@@ -966,7 +968,7 @@ return|;
 block|}
 comment|/**      * @return all of the matching primary subtypes, or empty if the      *         {@link #matchesAllTypes} flag is set      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<
@@ -981,7 +983,7 @@ return|;
 block|}
 comment|/**      * @return all of the matching mixin types, or empty if the      *         {@link #matchesAllTypes} flag is set      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<

@@ -75,16 +75,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -133,6 +123,18 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Conflict Handler that merges concurrent updates to  * {@code org.apache.jackrabbit.JcrConstants.JCR_LASTMODIFIED} by picking the  * older of the 2 conflicting dates and  * {@code org.apache.jackrabbit.JcrConstants.JCR_CREATED} by picking the newer  * of the 2 conflicting dates.  */
 end_comment
@@ -157,7 +159,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -207,7 +209,7 @@ name|IGNORED
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

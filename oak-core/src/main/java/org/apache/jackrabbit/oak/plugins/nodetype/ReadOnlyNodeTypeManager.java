@@ -179,26 +179,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Node
@@ -583,6 +563,30 @@ name|NodeTypeConstants
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Base implementation of a {@link NodeTypeManager} with support for reading  * node types from the {@link Tree} returned by {@link #getTypes()}. Methods  * related to node type modifications throw  * {@link UnsupportedRepositoryOperationException}.  */
 end_comment
@@ -601,7 +605,7 @@ name|DefinitionProvider
 block|{
 comment|/**      * Returns the internal name for the specified JCR name.      *      * @param jcrName JCR node type name.      * @return the internal representation of the given JCR name.      * @throws javax.jcr.RepositoryException If there is no valid internal representation      * of the specified JCR name.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|final
 name|String
@@ -625,7 +629,7 @@ return|;
 block|}
 comment|/**      * @return  {@link org.apache.jackrabbit.oak.api.Tree} instance where the node types      * are stored or {@code null} if none.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 specifier|abstract
 name|Tree
@@ -634,7 +638,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * The value factory to be used by {@link org.apache.jackrabbit.oak.plugins.nodetype.PropertyDefinitionImpl#getDefaultValues()}.      * If {@code null} the former returns {@code null}.      * @return  {@code ValueFactory} instance or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|ValueFactory
 name|getValueFactory
@@ -646,7 +650,7 @@ return|;
 block|}
 comment|/**      * Returns a {@link NameMapper} to be used by this node type manager. This      * implementation returns the {@link NamePathMapperImpl#DEFAULT} instance. A      * subclass may override this method and provide a different      * implementation.      *      * @return {@link NameMapper} instance.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|NamePathMapper
 name|getNamePathMapper
@@ -661,7 +665,7 @@ block|}
 comment|//--------------------------------------------------------------------------
 comment|/**      * Return a new instance of {@code ReadOnlyNodeTypeManager} that reads node      * type information from the tree at {@link NodeTypeConstants#NODE_TYPES_PATH}.      *      * @param root The root to read node types from.      * @param namePathMapper The {@code NamePathMapper} to use.      * @return a new instance of {@code ReadOnlyNodeTypeManager}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ReadOnlyNodeTypeManager
@@ -698,7 +702,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -1345,12 +1349,12 @@ name|boolean
 name|isNodeType
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|primaryTypeName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|String
@@ -1358,7 +1362,7 @@ argument_list|>
 name|mixinTypes
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|nodeTypeName
 parameter_list|)
@@ -1800,7 +1804,7 @@ block|}
 block|}
 comment|//-------------------------------------------------< DefinitionProvider>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1819,7 +1823,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1827,12 +1831,12 @@ name|NodeDefinition
 name|getDefinition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|nodeName
 parameter_list|)
@@ -1869,7 +1873,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1877,12 +1881,12 @@ name|NodeDefinition
 name|getDefinition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|targetNode
 parameter_list|)
@@ -1933,7 +1937,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

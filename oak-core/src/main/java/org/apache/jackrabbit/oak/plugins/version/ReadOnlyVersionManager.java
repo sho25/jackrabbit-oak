@@ -23,26 +23,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -281,6 +261,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -340,7 +344,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * @return the read-only {@link Tree} for the jcr:versionStorage node. The      *         returned {@code Tree} instance must be up-to-date with the      *         {@code Root} returned by {@link #getWorkspaceRoot()}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|abstract
 name|Tree
@@ -349,7 +353,7 @@ parameter_list|()
 function_decl|;
 comment|/**      /**      * @return the {@code Root} of the workspace.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|abstract
 name|Root
@@ -358,7 +362,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return the node type manager of this repository.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|abstract
 name|ReadOnlyNodeTypeManager
@@ -368,7 +372,7 @@ function_decl|;
 comment|//--------------------------------------------------------------------------
 comment|/**      * Return a new instance of {@code ReadOnlyVersionManager} that reads version      * information from the tree at {@link VersionConstants#VERSION_STORE_PATH}.      *      * @param root The root to read version information from.      * @param namePathMapper The {@code NamePathMapper} to use.      * @return a new instance of {@code ReadOnlyVersionManager}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ReadOnlyVersionManager
@@ -389,7 +393,7 @@ name|ReadOnlyVersionManager
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -409,7 +413,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -422,7 +426,7 @@ name|root
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -450,7 +454,7 @@ name|boolean
 name|isCheckedOut
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -534,13 +538,13 @@ block|}
 block|}
 comment|/**      * Returns the tree representing the version history of the given      * versionable tree or {@code null} if none exists yet.      *      * @param versionable the versionable tree.      * @return the version history or {@code null} if none exists yet.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree is not actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Tree
 name|getVersionHistory
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|versionable
 parameter_list|)
@@ -590,13 +594,13 @@ return|;
 block|}
 comment|/**      * Returns the version tree with the given uuid.      *      * @param uuid the uuid of the version tree.      * @return the version tree or {@code null} if there is none.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Tree
 name|getVersion
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|uuid
 parameter_list|)
@@ -613,13 +617,13 @@ return|;
 block|}
 comment|/**      * Returns the path of the version history for the given {@code uuid}.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorage()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getVersionHistoryPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|uuid
 parameter_list|)
@@ -687,13 +691,13 @@ return|;
 block|}
 comment|/**      * Returns the tree representing the base version of the given versionable      * tree or {@code null} if none exists yet. This is the case when a      * versionable node is created, but is not yet saved.      *      * @param versionable the versionable tree.      * @return the tree representing the base version or {@code null}.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree is not actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Tree
 name|getBaseVersion
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|versionable
 parameter_list|)
@@ -755,7 +759,7 @@ name|boolean
 name|isVersionStoreTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -778,18 +782,18 @@ return|;
 block|}
 comment|/**      * Tries to retrieve the tree corresponding to specified {@code versionTree}      * outside of the version storage based on versionable path information      * stored with the version history. The following cases are distinguished:      *      *<ul>      *<li>Version History: If the given tree is a version history the      *     associated versionable tree in the specified workspace is being returned      *     based on the information stored in the versionable path property. If      *     no versionable path property is present {@code null} is returned.</li>      *<li>Version: Same as for version history.</li>      *<li>Version Labels: Same as for version history.</li>      *<li>Frozen Node: If the given tree forms part of a frozen node the      *     path of the target node is computed from the versionable path and      *     the relative path of the frozen node.</li>      *<li>Other Nodes: If the specified tree is not part of the tree structure      *     defined by a version history, {@code null} will be returned.</li>      *</ul>      *      * Please note that this method will not verify if the tree at the versionable      * path or the computed subtree actually exists. This must be asserted by      * the caller before operating on the tree.      *      * @param versionTree The tree from within the version storage for which      *                    that versionable correspondent should be retrieved.      * @param workspaceName The name of the workspace for which the target should be retrieved.      * @return A existing or non-existing tree pointing to the location of the      * correspondent tree outside of the version storage or {@code null} if the      * versionable path property for the specified workspace is missing or if      * the given tree is not located within the tree structure defined by a version history.      *      * @see VersionConstants#MIX_REP_VERSIONABLE_PATHS      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Tree
 name|getVersionable
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|versionTree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|)
@@ -977,13 +981,13 @@ return|;
 block|}
 comment|/**      * Checks if the given {@code tree} is versionable and throws a {@link      * UnsupportedRepositoryOperationException} if it is not.      *      * @param tree the tree to check.      * @return the passed tree.      * @throws UnsupportedRepositoryOperationException      *                             if the tree is not versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|Tree
 name|checkVersionable
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -1029,7 +1033,7 @@ name|boolean
 name|isVersionable
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)

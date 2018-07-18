@@ -31,11 +31,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -70,7 +72,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns {@code IndexInfo} for index at given path      *      * @param indexPath path repository      *      * @return indexInfo for the index or null if there is no index node      * found at given path      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|IndexInfo
 name|getInfo
 parameter_list|(

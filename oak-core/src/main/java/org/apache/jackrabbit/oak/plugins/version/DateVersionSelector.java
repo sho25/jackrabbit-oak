@@ -23,16 +23,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -99,6 +89,18 @@ name|ISO8601
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  *<i>Inspired by Jackrabbit 2.x</i>  *<p>  * This Class implements a version selector that selects a version by creation  * date. The selected version is the latest that is older or equal than the  * given date. If no version could be found {@code null} is returned  * unless the {@code returnLatest} flag is set to {@code true}, where  * the latest version is returned.  *<pre>  * V1.0 - 02-Sep-2006  * V1.1 - 03-Sep-2006  * V1.2 - 05-Sep-2006  *  * new DateVersionSelector("03-Sep-2006").select() -&gt; V1.1  * new DateVersionSelector("04-Sep-2006").select() -&gt; V1.1  * new DateVersionSelector("01-Sep-2006").select() -&gt; null  * new DateVersionSelector("01-Sep-2006", true).select() -&gt; V1.2  * new DateVersionSelector(null, true).select() -&gt; V1.2  *</pre>  */
 end_comment
@@ -145,7 +147,7 @@ name|NodeBuilder
 name|select
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|history
 parameter_list|)

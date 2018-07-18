@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -54,6 +44,18 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -83,7 +85,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the info for async indexer with given name      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|AsyncIndexInfo
 name|getInfo
 parameter_list|(
@@ -93,7 +95,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the info for async indexer with given name      * and based on given root NodeState      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|AsyncIndexInfo
 name|getInfo
 parameter_list|(

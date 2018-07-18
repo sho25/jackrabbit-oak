@@ -17,11 +17,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -48,7 +50,7 @@ parameter_list|()
 block|{     }
 comment|/**      * Returns the version of oak-core.      *       * @return the version (or "SNAPSHOT" when unknown)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|synchronized
 specifier|static

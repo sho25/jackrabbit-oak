@@ -45,16 +45,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -94,6 +84,18 @@ operator|.
 name|user
 operator|.
 name|Group
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -347,7 +349,7 @@ argument_list|>
 name|addMembers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|memberIds
@@ -444,7 +446,7 @@ argument_list|>
 name|removeMembers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|memberIds

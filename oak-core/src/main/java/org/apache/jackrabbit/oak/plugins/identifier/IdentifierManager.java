@@ -63,36 +63,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -465,6 +435,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -644,7 +638,7 @@ expr_stmt|;
 block|}
 comment|/**      * @deprecated Use {@link UUIDUtils#generateUUID()}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
@@ -660,7 +654,7 @@ return|;
 block|}
 comment|/**      * @deprecated Use {@link UUIDUtils#generateUUID(String)}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
@@ -700,7 +694,7 @@ return|;
 block|}
 comment|/**      * Return the identifier of a tree.      *      * @param tree  a tree      * @return  identifier of {@code tree}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String
@@ -783,7 +777,7 @@ block|}
 block|}
 comment|/**      * The possibly non existing tree identified by the specified {@code identifier} or {@code null}.      *      * @param identifier The identifier of the tree such as exposed by {@link #getIdentifier(Tree)}      * @return The tree with the given {@code identifier} or {@code null} if no      *         such tree exists.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Tree
 name|getTree
@@ -924,7 +918,7 @@ block|}
 block|}
 comment|/**      * The path of the tree identified by the specified {@code identifier} or {@code null}.      *      * @param identifier The identifier of the tree such as exposed by {@link #getIdentifier(Tree)}      * @return The path of the tree with the given {@code identifier} or {@code null} if no      *         such tree exists or if the tree is not accessible.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getPath
@@ -961,7 +955,7 @@ return|;
 block|}
 comment|/**      * Returns the path of the tree references by the specified (weak)      * reference {@code PropertyState}.      *      * @param referenceValue A (weak) reference value.      * @return The tree with the given {@code identifier} or {@code null} if no      *         such tree exists or isn't accessible to the content session.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getPath
@@ -1016,7 +1010,7 @@ block|}
 block|}
 comment|/**      * Returns the path of the tree references by the specified (weak)      * reference {@code PropertyState}.      *      * @param referenceValue A (weak) reference value.      * @return The tree with the given {@code identifier} or {@code null} if no      *         such tree exists or isn't accessible to the content session.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getPath
@@ -1071,7 +1065,7 @@ block|}
 block|}
 comment|/**      * Searches all reference properties to the specified {@code tree} that match      * the given name and node type constraints.      *      * @param weak          if {@code true} only weak references are returned. Otherwise only      *                      hard references are returned.      * @param tree          The tree for which references should be searched.      * @param propertyName  A name constraint for the reference properties;      *                      {@code null} if no constraint should be enforced.      * @return A set of oak paths of those reference properties referring to the      *         specified {@code tree} and matching the constraints.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1083,7 +1077,7 @@ name|boolean
 name|weak
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -1251,7 +1245,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Iterable
 argument_list|<
@@ -1260,13 +1254,13 @@ argument_list|>
 name|findPaths
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Result
 name|result
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|uuid
@@ -1600,7 +1594,7 @@ return|;
 block|}
 comment|/**      * Searches all reference properties to the specified {@code tree} that match      * the given {@code propertyName} and the specified, mandatory node type      * constraint ({@code ntName}). In contrast to {@link #getReferences} this      * method requires all parameters to be specified, which eases the handling      * of the result set and doesn't require the trees associated with the      * result set to be resolved.      *      * @param tree The tree for which references should be searched.      * @param propertyName The name of the reference properties.      * @param ntName The node type name to be used for the query.      * @param weak if {@code true} only weak references are returned. Otherwise on hard references are returned.      * @return A set of oak paths of those reference properties referring to the      *         specified {@code tree} and matching the constraints.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1609,18 +1603,18 @@ argument_list|>
 name|getReferences
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|propertyName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|ntName
 parameter_list|,
@@ -1861,7 +1855,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|resolveUUID

@@ -99,16 +99,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -293,6 +283,18 @@ name|ReadOnlyNodeTypeManager
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code ReadWriteNodeTypeManager} extends the {@link ReadOnlyNodeTypeManager}  * with support for operations that modify node types.  *<ul>  *<li>{@link #registerNodeType(NodeTypeDefinition, boolean)}</li>  *<li>{@link #registerNodeTypes(NodeTypeDefinition[], boolean)}</li>  *<li>{@link #unregisterNodeType(String)}</li>  *<li>{@link #unregisterNodeTypes(String[])}</li>  *<li>plus related template factory methods</li>  *</ul>  * Calling any of the above methods will result in a {@link #refresh()} callback  * to e.g. inform an associated session that it should refresh to make the  * changes visible.  *<p>  * Subclass responsibility is to provide an implementation of  * {@link #getTypes()} for read only access to the tree where node types are  * stored in content and {@link #getWriteRoot()} for write access to the  * repository in order to modify node types stored in content. A subclass may  * also want to override the default implementation of  * {@link ReadOnlyNodeTypeManager} for the following methods:  *<ul>  *<li>{@link #getValueFactory()}</li>  *<li>{@link ReadOnlyNodeTypeManager#getNamePathMapper()}</li>  *</ul>  */
 end_comment
@@ -307,7 +309,7 @@ name|ReadOnlyNodeTypeManager
 block|{
 comment|/**      * Called by the methods {@link #registerNodeType(NodeTypeDefinition, boolean)},      * {@link #registerNodeTypes(NodeTypeDefinition[], boolean)},      * {@link #unregisterNodeType(String)} and {@link #unregisterNodeTypes(String[])}      * to acquire a fresh {@link Root} instance that can be used to persist the      * requested node type changes (and nothing else).      *<p>      * This default implementation throws an {@link UnsupportedOperationException}.      *      * @return fresh {@link Root} instance.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|Root
 name|getWriteRoot

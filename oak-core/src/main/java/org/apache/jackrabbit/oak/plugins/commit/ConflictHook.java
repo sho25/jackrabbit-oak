@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -153,6 +143,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * This commit hook implementation is responsible for resolving  * conflicts. It does so by detecting the presence of conflict  * markers added by the Microkernel and delegating to a  * {@link org.apache.jackrabbit.oak.spi.commit.ThreeWayConflictHandler}  * for resolving the conflicts.  *  * @see org.apache.jackrabbit.oak.spi.state.NodeStore#rebase(org.apache.jackrabbit.oak.spi.state.NodeBuilder)  */
 end_comment
@@ -228,7 +230,7 @@ name|conflictHandler
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

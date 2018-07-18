@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -65,6 +55,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A filter is used by the FilteringObserver to decide whether or not a content  * change should be forwarded.  */
 end_comment
@@ -79,12 +81,12 @@ name|boolean
 name|excludes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)

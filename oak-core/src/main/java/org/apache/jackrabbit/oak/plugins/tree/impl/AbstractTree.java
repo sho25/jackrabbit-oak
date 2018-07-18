@@ -263,26 +263,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -485,6 +465,30 @@ name|NodeStateUtils
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code AbstractTree} provides default implementations for most  * read methods of {@code Tree}. Furthermore it handles hides hidden  * items.  */
 end_comment
@@ -525,14 +529,14 @@ block|}
 decl_stmt|;
 comment|/**      * Factory method for creating child trees      * @param name  name of the child tree      * @return child tree of this tree with the given {@code name}      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|abstract
 name|AbstractTree
 name|createChild
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -541,7 +545,7 @@ name|IllegalArgumentException
 function_decl|;
 comment|/**      * @return  the parent of this tree or {@code null} for the root      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 specifier|abstract
 name|AbstractTree
@@ -550,7 +554,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return  The {@code NodeBuilder} for the underlying node state      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|abstract
 name|NodeBuilder
@@ -563,7 +567,7 @@ name|boolean
 name|isHidden
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -578,7 +582,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|String
 index|[]
@@ -591,7 +595,7 @@ return|;
 block|}
 comment|/**      * @return  the underlying {@code NodeState} of this tree      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeState
 name|getNodeState
@@ -623,7 +627,7 @@ return|;
 block|}
 comment|/**      * Returns the list of child names considering its ordering      * when the {@link TreeConstants#OAK_CHILD_ORDER} property is set.      *      * @return the list of child names.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|Iterable
 argument_list|<
@@ -953,7 +957,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getPath
@@ -1000,7 +1004,7 @@ name|void
 name|buildPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|StringBuilder
 name|sb
 parameter_list|)
@@ -1043,7 +1047,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Status
 name|getStatus
@@ -1117,7 +1121,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|AbstractTree
 name|getParent
@@ -1145,13 +1149,13 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Tree
 name|getChild
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1190,13 +1194,13 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|PropertyState
 name|getProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1226,7 +1230,7 @@ name|boolean
 name|hasProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1267,13 +1271,13 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Status
 name|getPropertyStatus
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1337,7 +1341,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1396,7 +1400,7 @@ name|boolean
 name|hasChild
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1520,7 +1524,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<

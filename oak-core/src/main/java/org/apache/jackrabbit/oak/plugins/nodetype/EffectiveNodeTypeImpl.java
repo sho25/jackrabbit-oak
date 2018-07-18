@@ -111,16 +111,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -284,6 +274,18 @@ operator|.
 name|nodetype
 operator|.
 name|EffectiveNodeType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1023,7 +1025,7 @@ comment|/**      * Return all node definitions that match the specified oak name
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1093,7 +1095,7 @@ comment|/**      * Return all property definitions that match the specified oak 
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1146,7 +1148,7 @@ comment|/**      * Return all residual node definitions.      *      * @return A
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -1194,7 +1196,7 @@ comment|/**      * Return all residual property definitions.      *      * @retu
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterable
 argument_list|<

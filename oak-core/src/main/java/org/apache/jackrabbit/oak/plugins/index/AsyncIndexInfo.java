@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -54,6 +34,18 @@ operator|.
 name|jmx
 operator|.
 name|IndexStatsMBean
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -199,7 +191,7 @@ return|;
 block|}
 comment|/**      * IndexStatsMBean for current indexer. The MBean would be      * returning valid values only for that cluster node where      * the async indexer is active. For other cluster nodes      * the values may not reflect the current state      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|IndexStatsMBean
 name|getStatsMBean

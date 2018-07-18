@@ -55,16 +55,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -329,6 +319,18 @@ name|PolicyOwner
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Access control manager that aggregates a list of different access control  * manager implementations. Note, that the implementations *must* implement  * the {@link org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.PolicyOwner}  * interface in order to be able to set and remove individual access control  * policies.  */
 end_comment
@@ -351,22 +353,22 @@ specifier|public
 name|CompositeAccessControlManager
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|AccessControlManager
@@ -392,7 +394,7 @@ expr_stmt|;
 block|}
 comment|//-----------------------------------------------< AccessControlManager>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -239,26 +239,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -443,6 +423,30 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Builder for {@link FilterProvider} instances.  */
 end_comment
@@ -549,30 +553,30 @@ interface|interface
 name|Condition
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 name|EventFilter
 name|createFilter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|before
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|after
 parameter_list|)
 function_decl|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FilterBuilder
 name|setChangeSetFilter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ChangeSetFilter
 name|changeSetFilter
 parameter_list|)
@@ -589,13 +593,13 @@ return|;
 block|}
 comment|/**      * Adds a path to the set of paths whose subtrees include all events of      * this filter. Does nothing if the paths is already covered by an      * path added earlier.      *<p>      * This is used for optimisation in order to restrict traversal to      * these sub trees.      *      * @param absPath  absolute path      * @return  this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FilterBuilder
 name|addSubTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|absPath
 parameter_list|)
@@ -677,7 +681,7 @@ name|FilterBuilder
 name|addPathsForMBean
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -698,7 +702,7 @@ return|;
 block|}
 comment|/**      * A set of paths whose subtrees include all events of this filter.      * @return  list of paths      * @see #addSubTree(String)      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Iterable
 argument_list|<
@@ -743,7 +747,7 @@ return|;
 block|}
 comment|/**      * Whether to include session local changes. Defaults to {@code false}.      * @param include if {@code true} session local changes are included,      *                otherwise session local changes are not included.      * @return  this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FilterBuilder
 name|includeSessionLocal
@@ -764,7 +768,7 @@ return|;
 block|}
 comment|/**      * Whether to include cluster external changes. Defaults to {@code false}.      * @param include if {@code true} cluster external changes are included,      *                otherwise cluster external changes are not included.      * @return  this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FilterBuilder
 name|includeClusterExternal
@@ -785,7 +789,7 @@ return|;
 block|}
 comment|/**      * Whether to include cluster local changes. Defaults to {@code true}.      * @param include if {@code true} cluster local changes are included,      *                otherwise cluster local changes are not included.      * @return  this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FilterBuilder
 name|includeClusterLocal
@@ -806,13 +810,13 @@ return|;
 block|}
 comment|/**      * Set the condition of this filter. Conditions are obtained from      * the various methods on this instance that return a {@code Condition}      * instance.      *      * @param condition  the conditions to apply      * @return this instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FilterBuilder
 name|condition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Condition
 name|condition
 parameter_list|)
@@ -833,7 +837,7 @@ block|}
 comment|//------------------------------------------------------------< initial conditions>---
 comment|/**      * A condition the always holds      * @return  true condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|includeAll
@@ -847,7 +851,7 @@ return|;
 block|}
 comment|/**      * A condition that never holds      * @return  false condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|excludeAll
@@ -861,13 +865,13 @@ return|;
 block|}
 comment|/**      * A condition that hold for accessible items as determined by the passed permission      * provider.      *      * @param permissionProviderFactory  permission provider for checking whether an item is accessible.      * @return  access control condition      * @see  ACFilter      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|accessControl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionProviderFactory
 name|permissionProviderFactory
 parameter_list|)
@@ -885,13 +889,13 @@ return|;
 block|}
 comment|/**      * A condition that holds on the paths matching a certain pattern.      * @param pathPattern      * @return  path condition      * @see GlobbingPathFilter      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|path
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|pathPattern
 parameter_list|)
@@ -909,7 +913,7 @@ return|;
 block|}
 comment|/**      * A condition that holds for matching event types.      * @param eventTypes      * @return event type condition      * @see EventTypeFilter      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|eventType
@@ -964,18 +968,18 @@ block|}
 block|}
 comment|/**      * A condition that holds for matching node types.      * @param selector  selector selecting the node to check the condition on      * @param ntNames node type names to match. This conditions never matches if {@code null} and      *                always matches if empty.      * @return node type condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|nodeType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Selector
 name|selector
 parameter_list|,
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 index|[]
 name|ntNames
@@ -1026,18 +1030,18 @@ block|}
 block|}
 comment|/**      * A condition that holds for matching uuids.      * @param selector  selector selecting the node to check the condition on      * @param uuids uuids to match. This conditions never matches if {@code null} and      *                always matches if empty.      * @return node type condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|uuid
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Selector
 name|selector
 parameter_list|,
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 index|[]
 name|uuids
@@ -1092,23 +1096,23 @@ block|}
 block|}
 comment|/**      * A condition that holds when the property predicate matches.      * @param selector  selector selecting the node to check the condition on      * @param name      the name of the property to check the predicate on      * @param predicate the predicate to check on the named property      * @return property condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|property
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Selector
 name|selector
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Predicate
 argument_list|<
 name|PropertyState
@@ -1143,18 +1147,18 @@ return|;
 block|}
 comment|/**      * A condition that holds when the predicate matches.      * @param selector  selector selecting the node to check the condition on      * @param predicate the predicate to check on the selected node      * @return universal condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|universal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Selector
 name|selector
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Predicate
 argument_list|<
 name|NodeState
@@ -1180,7 +1184,7 @@ return|;
 block|}
 comment|/**      * @return a condition that holds for children of added nodes.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|addSubtree
@@ -1194,7 +1198,7 @@ return|;
 block|}
 comment|/**      * @return a condition that holds for children of deleted nodes.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|deleteSubtree
@@ -1208,7 +1212,7 @@ return|;
 block|}
 comment|/**      * @return a condition that holds for children of the target of a moved node      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|moveSubtree
@@ -1223,13 +1227,13 @@ block|}
 comment|//------------------------------------------------------------< Compound conditions>---
 comment|/**      * A compound condition that holds when any of its constituents hold.      * @param conditions conditions of which any must hold in order for this condition to hold      * @return  any condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|any
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Condition
 modifier|...
 name|conditions
@@ -1251,13 +1255,13 @@ return|;
 block|}
 comment|/**      * A compound condition that holds when all of its constituents hold.      * @param conditions conditions of which all must hold in order for this condition to hold      * @return  any condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|all
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Condition
 modifier|...
 name|conditions
@@ -1279,13 +1283,13 @@ return|;
 block|}
 comment|/**      * A compound condition that holds when all of its constituents hold.      * @param conditions conditions of which all must hold in order for this condition to hold      * @return  any condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|all
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|Condition
@@ -1306,13 +1310,13 @@ return|;
 block|}
 comment|/**      * A compound condition that holds when its constituent does not hold.      * @param condition condition which must not hold in order for this condition to hold      * @return  not condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|not
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Condition
 name|condition
 parameter_list|)
@@ -1330,13 +1334,13 @@ return|;
 block|}
 comment|/**      * A compound condition that holds when any of its constituents hold.      * @param conditions conditions of which any must hold in order for this condition to hold      * @return  any condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|any
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Condition
@@ -1357,13 +1361,13 @@ return|;
 block|}
 comment|/**      * A compound condition that holds when all of its constituents hold.      * @param conditions conditions of which all must hold in order for this condition to hold      * @return  any condition      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Condition
 name|all
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Condition
@@ -1384,7 +1388,7 @@ return|;
 block|}
 comment|/**      * Create a {@code FilterProvider} reflecting the current state of this builder.      * @return  filter provider of the current state of this builder      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|FilterProvider
 name|build
@@ -1496,12 +1500,12 @@ name|boolean
 name|includeCommit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|sessionId
 parameter_list|,
 annotation|@
-name|CheckForNull
+name|Nullable
 name|CommitInfo
 name|info
 parameter_list|)
@@ -1543,7 +1547,7 @@ operator|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1551,12 +1555,12 @@ name|EventFilter
 name|getFilter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|before
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|after
 parameter_list|)
@@ -1579,7 +1583,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1688,7 +1692,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|FilterConfigMBean
 name|getConfigMBean
@@ -2146,7 +2150,7 @@ name|predicate
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2183,7 +2187,7 @@ implements|implements
 name|Condition
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2191,12 +2195,12 @@ name|EventFilter
 name|createFilter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|before
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|after
 parameter_list|)
@@ -2217,7 +2221,7 @@ implements|implements
 name|Condition
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2225,12 +2229,12 @@ name|EventFilter
 name|createFilter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|before
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|after
 parameter_list|)
@@ -2251,7 +2255,7 @@ implements|implements
 name|Condition
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -2259,12 +2263,12 @@ name|EventFilter
 name|createFilter
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|before
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|after
 parameter_list|)
@@ -2581,7 +2585,7 @@ name|condition
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

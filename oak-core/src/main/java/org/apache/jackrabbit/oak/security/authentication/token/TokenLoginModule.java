@@ -85,36 +85,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -358,6 +328,30 @@ operator|.
 name|token
 operator|.
 name|TokenProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -839,7 +833,7 @@ return|;
 block|}
 comment|//------------------------------------------------< AbstractLoginModule>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -892,7 +886,7 @@ block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      * Retrieve the token provider      * @return the token provider or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|TokenProvider
 name|getTokenProvider
@@ -1029,7 +1023,7 @@ return|;
 block|}
 comment|/**      * Create the {@code AuthInfo} for the specified {@code tokenInfo} as well as      * userId and principals, that have been set upon {@link #login}.      *      * @param tokenInfo The tokenInfo to retrieve attributes from.      * @return The {@code AuthInfo} resulting from the successful login.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|private
 name|AuthInfo
 name|getAuthInfo
@@ -1040,7 +1034,7 @@ name|TokenInfo
 name|tokenInfo
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|?
@@ -1140,7 +1134,7 @@ name|void
 name|updateSubject
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TokenCredentials
 name|tc
 parameter_list|,

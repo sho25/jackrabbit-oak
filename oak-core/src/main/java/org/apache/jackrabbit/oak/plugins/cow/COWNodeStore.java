@@ -215,11 +215,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -566,7 +568,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -583,7 +585,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -591,17 +593,17 @@ name|NodeState
 name|merge
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitHook
 name|commitHook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -625,7 +627,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -633,7 +635,7 @@ name|NodeState
 name|rebase
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)
@@ -657,7 +659,7 @@ name|NodeState
 name|reset
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)
@@ -675,7 +677,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -705,7 +707,7 @@ name|Blob
 name|getBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
@@ -721,7 +723,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -732,7 +734,7 @@ name|long
 name|lifetime
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -755,7 +757,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -777,7 +779,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -790,7 +792,7 @@ argument_list|>
 name|checkpointInfo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)
@@ -806,7 +808,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -832,7 +834,7 @@ name|NodeState
 name|retrieve
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)
@@ -854,7 +856,7 @@ name|boolean
 name|release
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|)

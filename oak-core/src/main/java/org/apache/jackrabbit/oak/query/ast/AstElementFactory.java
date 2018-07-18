@@ -47,16 +47,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -86,6 +76,18 @@ operator|.
 name|query
 operator|.
 name|QueryConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -908,14 +910,14 @@ return|;
 block|}
 comment|/**      *<p>      * as the {@link AstElement#copyOf()} can return {@code this} is the cloning is not implemented      * by the subclass, this method add some spice around it by checking for this case and tracking      * a DEBUG message in the logs.      *</p>      *       * @param e the element to be cloned. Cannot be null.      * @return same as {@link AstElement#copyOf()}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|AstElement
 name|copyElementAndCheckReference
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|AstElement
 name|e

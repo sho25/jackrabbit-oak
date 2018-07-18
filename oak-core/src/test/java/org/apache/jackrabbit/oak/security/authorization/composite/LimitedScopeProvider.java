@@ -33,26 +33,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -299,6 +279,30 @@ name|Text
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test implementation of the {@code AggregatedPermissionProvider} with following  * characteristics. It has a limited scope and supports  *  * - {@link Permissions#NAMESPACE_MANAGEMENT} and {@link Permissions#NODE_TYPE_DEFINITION_MANAGEMENT} on repository level  * - {@link Permissions#WRITE} at the tree defined by {@link AbstractCompositeProviderTest#TEST_A_PATH}  * - {@link Permissions#NO_PERMISSION} everywhere else.  *  * The permission setup defined by this provider is as follows:  *  * At the repository level  * - {@link Permissions#NAMESPACE_MANAGEMENT} is denied  * - {@link Permissions#NODE_TYPE_DEFINITION_MANAGEMENT} is allowed  *  * At {@link AbstractCompositeProviderTest#TEST_A_PATH}  * - {@link Permissions#ADD_NODE} and {@link Permissions#ADD_PROPERTY} is denied  * - all other aggregates of {@link Permissions#WRITE} are allowed.  * - any other permissions are ignored  *  * Consequently any path outside of the scope of this provider is not affected  * by the permission setup.  */
 end_comment
@@ -386,7 +390,7 @@ decl_stmt|;
 name|LimitedScopeProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|)
@@ -399,7 +403,7 @@ expr_stmt|;
 block|}
 comment|//-------------------------------------------------< PermissionProvider>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -477,7 +481,7 @@ name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|privilegeNames
@@ -583,7 +587,7 @@ literal|false
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -618,7 +622,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -626,12 +630,12 @@ name|TreePermission
 name|getTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|parentPermission
 parameter_list|)
@@ -653,7 +657,7 @@ name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -722,12 +726,12 @@ name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|jcrActions
 parameter_list|)
@@ -812,7 +816,7 @@ block|}
 block|}
 comment|//---------------------------------------< AggregatedPermissionProvider>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1004,7 +1008,7 @@ name|long
 name|supportedPermissions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeLocation
 name|location
 parameter_list|,
@@ -1047,7 +1051,7 @@ name|long
 name|supportedPermissions
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|treePermission
 parameter_list|,
@@ -1103,7 +1107,7 @@ name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeLocation
 name|location
 parameter_list|,
@@ -1168,7 +1172,7 @@ name|boolean
 name|isSupported
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -1188,7 +1192,7 @@ name|boolean
 name|isSupported
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -1212,7 +1216,7 @@ name|TreePermission
 name|createTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -1282,7 +1286,7 @@ specifier|private
 name|EmptyTestPermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -1295,7 +1299,7 @@ name|path
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1303,12 +1307,12 @@ name|TreePermission
 name|getChildPermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|childName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|childState
 parameter_list|)
@@ -1345,7 +1349,7 @@ name|boolean
 name|canRead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -1400,7 +1404,7 @@ name|long
 name|permissions
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -1427,7 +1431,7 @@ specifier|private
 name|TestTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -1440,7 +1444,7 @@ name|path
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1448,12 +1452,12 @@ name|TreePermission
 name|getChildPermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|childName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|childState
 parameter_list|)
@@ -1490,7 +1494,7 @@ name|boolean
 name|canRead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -1575,7 +1579,7 @@ name|long
 name|permissions
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)

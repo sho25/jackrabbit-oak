@@ -73,16 +73,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -285,6 +275,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple implementation of the Root interface that only supports simple read  * operations based on the {@code NodeState} (or {@code ImmutableTree})  * passed to the constructor. This root implementation provides a query engine  * with index support limited to the {@link PropertyIndexProvider}.  */
 end_comment
@@ -308,7 +310,7 @@ specifier|public
 name|ImmutableRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|rootState
 parameter_list|)
@@ -327,7 +329,7 @@ specifier|public
 name|ImmutableRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|)
@@ -399,7 +401,7 @@ specifier|public
 name|ImmutableRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ImmutableTree
 name|rootTree
 parameter_list|)
@@ -425,7 +427,7 @@ name|ImmutableRoot
 name|getInstance
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|)
@@ -457,7 +459,7 @@ block|}
 block|}
 comment|//---------------------------------------------------------------< Root>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -465,7 +467,7 @@ name|ImmutableTree
 name|getTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -562,7 +564,7 @@ name|void
 name|commit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -603,7 +605,7 @@ literal|false
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -654,13 +656,13 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Blob
 name|createBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|InputStream
 name|stream
 parameter_list|)
@@ -678,7 +680,7 @@ name|Blob
 name|getBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
@@ -688,7 +690,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

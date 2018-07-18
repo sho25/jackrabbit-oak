@@ -33,11 +33,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -80,7 +82,7 @@ name|PreExtractedTextProvider
 block|{
 comment|/**      * Get pre extracted text for given blob at given path      *      * @param propertyPath path of the binary property      * @param blob binary property value      *      * @return pre extracted text or null if no      * pre extracted text found for given blob      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|ExtractedText
 name|getText
 parameter_list|(

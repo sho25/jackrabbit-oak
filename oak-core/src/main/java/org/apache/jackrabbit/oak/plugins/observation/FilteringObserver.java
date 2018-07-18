@@ -59,16 +59,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -139,6 +129,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * An observer that implements filtering of content changes  * while at the same time supporting (wrapping) a BackgroundObserver  * underneath.  *<p>  * The FilteringObserver uses an explicit Filter to decide whether  * or not to forward a content change to the BackgroundObserver.  * If the Filter decides to include the change things happen as usual.  * If the Filter decides to exclude the change, this FilteringObserver  * does not forward the change, but remembers the fact that the last  * change was filtered. The first included change after excluded ones  * will cause a NOOP_CHANGE commitInfo to be passed along to the  * BackgroundObserver. That NOOP_CHANGE is then used by the  * FilteringDispatcher: if a CommitInfo is a NOOP_CHANGE then the  * FilteringDispatcher will not forward anything to the FilteringAwareObserver  * and only adjust the 'before' state accordingly (which it does also  * for a NOOP_CHANGE, to exactly achieve the skipping effect).  */
 end_comment
@@ -189,7 +191,7 @@ specifier|public
 name|FilteringObserver
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Executor
 name|executor
 parameter_list|,
@@ -197,12 +199,12 @@ name|int
 name|queueLength
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Filter
 name|filter
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|FilteringAwareObserver
 name|observer
 parameter_list|)
@@ -238,12 +240,12 @@ specifier|public
 name|FilteringObserver
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|BackgroundObserver
 name|backgroundObserver
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Filter
 name|filter
 parameter_list|)
@@ -281,12 +283,12 @@ name|void
 name|contentChanged
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)

@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -102,6 +92,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -132,7 +134,7 @@ parameter_list|()
 block|{}
 comment|/**      * Tests if there was any user-supplied reordering involved with the      * modification of the {@link TreeConstants#OAK_CHILD_ORDER}      * property.      *      * @param before      * @param after      * @return the name of the first reordered child if any user-supplied node      * reorder happened; {@code null} otherwise.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|static
 name|String
 name|firstReordered

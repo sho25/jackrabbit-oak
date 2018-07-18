@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -352,6 +342,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -485,27 +487,27 @@ specifier|public
 name|PermissionHook
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RestrictionProvider
 name|restrictionProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|MountInfoProvider
 name|mountInfoProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RootProvider
 name|rootProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeProvider
 name|treeProvider
 parameter_list|)
@@ -543,7 +545,7 @@ expr_stmt|;
 block|}
 comment|//---------------------------------------------------------< CommitHook>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -732,7 +734,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|NodeBuilder
@@ -758,7 +760,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|NodeBuilder
 name|getPermissionRoot
@@ -1204,12 +1206,12 @@ name|PermissionStoreEditor
 name|createPermissionStoreEditor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|nodeName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|nodeState
 parameter_list|)

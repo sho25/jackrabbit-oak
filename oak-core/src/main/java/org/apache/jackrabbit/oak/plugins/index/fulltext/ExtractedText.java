@@ -22,26 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -54,6 +34,30 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -119,7 +123,7 @@ specifier|public
 name|ExtractedText
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExtractionResult
 name|extractionResult
 parameter_list|)
@@ -136,7 +140,7 @@ specifier|public
 name|ExtractedText
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExtractionResult
 name|extractionResult
 parameter_list|,
@@ -161,7 +165,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|ExtractionResult
 name|getExtractionResult
@@ -172,7 +176,7 @@ name|extractionResult
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|CharSequence
 name|getExtractedText

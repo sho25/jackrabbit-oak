@@ -73,16 +73,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -272,6 +262,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|java
 operator|.
@@ -409,7 +411,7 @@ expr_stmt|;
 block|}
 comment|//--------------------------------------------------------------------------
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|PrivilegeBits
 name|getNext
@@ -420,7 +422,7 @@ name|next
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|PrivilegeBits
 name|next

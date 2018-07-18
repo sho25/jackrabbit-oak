@@ -225,16 +225,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|openmbean
@@ -435,6 +425,18 @@ name|Whiteboard
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Default implementation of the {@link RepositoryManagementMBean} based  * on a {@link Whiteboard} instance, which is used to look up individual  * service providers for backup ({@link FileStoreBackupRestoreMBean}), data store  * garbage collections ({@link BlobGCMBean}) and revision store garbage  * collections ({@link RevisionGCMBean}).  */
 end_comment
@@ -457,7 +459,7 @@ specifier|public
 name|RepositoryManager
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Whiteboard
 name|whiteboard
 parameter_list|)
@@ -788,7 +790,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -840,7 +842,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -892,7 +894,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -944,7 +946,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1000,7 +1002,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1054,7 +1056,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1123,7 +1125,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1159,7 +1161,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1175,7 +1177,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1203,7 +1205,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1253,7 +1255,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1281,7 +1283,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1346,7 +1348,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1415,7 +1417,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1467,7 +1469,7 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -124,6 +114,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -159,7 +161,7 @@ name|Tree
 name|createTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)
@@ -180,7 +182,7 @@ name|Tree
 name|createReadOnlyTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|rootState
 parameter_list|)
@@ -199,17 +201,17 @@ name|Tree
 name|createReadOnlyTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|readOnlyParent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|childName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|childState
 parameter_list|)

@@ -53,16 +53,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -166,6 +156,18 @@ operator|.
 name|identifier
 operator|.
 name|IdentifierManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -277,7 +279,7 @@ name|String
 name|getOakNameOrNull
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|jcrName
 parameter_list|)
@@ -292,7 +294,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -300,7 +302,7 @@ name|String
 name|getOakName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|jcrName
 parameter_list|)
@@ -317,7 +319,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -325,7 +327,7 @@ name|String
 name|getJcrName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|)
@@ -342,7 +344,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Map
 argument_list|<
@@ -733,7 +735,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getJcrPath

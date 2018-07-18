@@ -61,16 +61,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -614,6 +604,18 @@ operator|.
 name|action
 operator|.
 name|AuthorizableActionProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1806,7 +1808,7 @@ name|void
 name|bindConfiguration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeConfiguration
 argument_list|<
 name|T
@@ -1814,7 +1816,7 @@ argument_list|>
 name|composite
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|configuration
 parameter_list|,
@@ -1866,7 +1868,7 @@ name|void
 name|unbindConfiguration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeConfiguration
 argument_list|<
 name|T
@@ -1874,7 +1876,7 @@ argument_list|>
 name|composite
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|configuration
 parameter_list|,
@@ -2597,7 +2599,7 @@ name|SecurityProvider
 name|createSecurityProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|BundleContext
 name|context
 parameter_list|)

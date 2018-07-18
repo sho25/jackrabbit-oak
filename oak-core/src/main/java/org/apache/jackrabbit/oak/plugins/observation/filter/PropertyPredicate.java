@@ -39,16 +39,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -95,6 +85,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Predicate on property values. This property holds if and only if  * the node has a property of the given {@code name} and the given  * {@code propertyPredicate} holds on that property.  */
 end_comment
@@ -127,12 +129,12 @@ specifier|public
 name|PropertyPredicate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Predicate
 argument_list|<
 name|PropertyState

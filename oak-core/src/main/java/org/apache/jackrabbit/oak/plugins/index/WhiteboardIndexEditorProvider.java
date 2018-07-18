@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -117,6 +107,18 @@ name|AbstractServiceTracker
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dynamic {@link IndexEditorProvider} based on the available  * whiteboard services.  */
 end_comment
@@ -152,22 +154,22 @@ name|Editor
 name|getIndexEditor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|type
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|IndexUpdateCallback
 name|callback
 parameter_list|)

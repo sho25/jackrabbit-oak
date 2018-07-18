@@ -167,16 +167,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|security
 operator|.
 name|auth
@@ -729,6 +719,18 @@ name|NodeStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 class|class
 name|MutableRoot
@@ -1005,7 +1007,7 @@ expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Root>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1181,7 +1183,7 @@ name|success
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1189,7 +1191,7 @@ name|MutableTree
 name|getTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -1298,7 +1300,7 @@ name|void
 name|commit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -1603,7 +1605,7 @@ literal|0
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1680,13 +1682,13 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Blob
 name|createBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|InputStream
 name|inputStream
 parameter_list|)
@@ -1715,7 +1717,7 @@ name|Blob
 name|getBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
@@ -1732,7 +1734,7 @@ block|}
 comment|//-----------------------------------------------------------< internal>---
 comment|/**      * Returns the node state from the time this root was created, that      * is this root's base state.      *      * @return base node state      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|getBaseState
 parameter_list|()
@@ -1755,7 +1757,7 @@ block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      * Root node state of the tree including all transient changes at the time of      * this call.      *      * @return root node state      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|NodeState
 name|getRootState
@@ -1769,7 +1771,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|AuthorizationConfiguration
 name|getAcConfig

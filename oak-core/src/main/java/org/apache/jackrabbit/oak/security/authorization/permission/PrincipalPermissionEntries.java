@@ -53,21 +53,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -165,7 +169,7 @@ name|fullyLoaded
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -183,7 +187,7 @@ name|entries
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Collection
 argument_list|<
 name|PermissionEntry
@@ -191,7 +195,7 @@ argument_list|>
 name|getEntriesByPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -209,12 +213,12 @@ name|void
 name|putEntriesByPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|PermissionEntry
@@ -252,7 +256,7 @@ name|void
 name|putAllEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String

@@ -33,16 +33,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -97,6 +87,18 @@ name|UserUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Default implementation for a system user.  */
 end_comment
@@ -110,17 +112,17 @@ block|{
 name|SystemUserImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManagerImpl
 name|userManager
 parameter_list|)
@@ -143,7 +145,7 @@ name|void
 name|checkValidTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)

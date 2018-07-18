@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -69,6 +59,18 @@ name|PermissionProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Factory for {@link PermissionProvider} instances.  */
 end_comment
@@ -80,7 +82,7 @@ name|PermissionProviderFactory
 block|{
 comment|/**      * Create a new {@code PermissionProvider} instance.      * @return      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionProvider
 name|create
 parameter_list|(

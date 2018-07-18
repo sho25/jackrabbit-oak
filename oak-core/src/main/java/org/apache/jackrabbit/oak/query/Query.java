@@ -39,19 +39,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -356,7 +360,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Try to convert the query to an alternative form, specially a "union". To      * avoid any potential error due to state variables perform the conversion      * before the {@link #init()}.      *       * @return {@code this} if no conversions are possible or a new instance of      *         a {@link Query}. Cannot return null.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Query
 name|buildAlternativeQuery
 parameter_list|()

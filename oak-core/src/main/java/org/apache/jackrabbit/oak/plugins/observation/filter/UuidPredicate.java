@@ -53,16 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -125,6 +115,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A predicate for matching against a list of UUIDs. This predicate holds  * whenever the {@code NodeState} passed to its apply functions has a {@code jcr:uuid}  * property and the value of that property matches any of the UUIDs that  * has been passed to the predicate's constructor.  */
 end_comment
@@ -150,7 +152,7 @@ specifier|public
 name|UuidPredicate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|uuids

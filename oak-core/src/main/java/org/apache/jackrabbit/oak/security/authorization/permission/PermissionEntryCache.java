@@ -63,11 +63,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -130,17 +132,17 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 name|PrincipalPermissionEntries
 name|getFullyLoadedEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|principalName
 parameter_list|)
@@ -195,7 +197,7 @@ name|void
 name|init
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|principalName
 parameter_list|,
@@ -233,12 +235,12 @@ name|void
 name|load
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|PermissionEntry
@@ -246,12 +248,12 @@ argument_list|>
 name|ret
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|principalName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)

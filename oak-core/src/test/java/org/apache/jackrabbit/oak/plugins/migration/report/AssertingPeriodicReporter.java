@@ -59,11 +59,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -279,7 +281,7 @@ name|long
 name|count
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|nodeState
@@ -309,13 +311,13 @@ name|long
 name|count
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|propertyName

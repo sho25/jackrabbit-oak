@@ -41,26 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -169,6 +149,30 @@ name|TreeUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Reads privilege definitions from the repository content without applying  * any validation.  */
 end_comment
@@ -187,7 +191,7 @@ decl_stmt|;
 name|PrivilegeDefinitionReader
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|)
@@ -206,7 +210,7 @@ expr_stmt|;
 block|}
 comment|/**      * Read all registered privilege definitions from the content.      *      * @return All privilege definitions stored in the content.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -277,12 +281,12 @@ return|;
 block|}
 comment|/**      * Retrieve the privilege definition with the specified {@code privilegeName}.      *      * @param privilegeName The name of a registered privilege definition.      * @return The privilege definition with the specified name or {@code null}      *         if the name doesn't refer to a registered privilege.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|PrivilegeDefinition
 name|readDefinition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|privilegeName
 parameter_list|)
@@ -345,7 +349,7 @@ name|boolean
 name|isPrivilegeDefinition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)

@@ -181,16 +181,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1330,6 +1320,18 @@ operator|.
 name|state
 operator|.
 name|NodeStateUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -6871,7 +6873,7 @@ name|String
 name|recomposeStatement
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|QueryImpl
 name|query
 parameter_list|)
@@ -7020,12 +7022,12 @@ name|UnionQueryImpl
 name|newAlternativeUnionQuery
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Query
 name|left
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Query
 name|right
 parameter_list|)

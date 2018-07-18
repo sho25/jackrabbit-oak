@@ -127,16 +127,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -288,6 +278,18 @@ operator|.
 name|xpath
 operator|.
 name|XPathToSQL2Converter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1397,13 +1399,13 @@ block|}
 block|}
 comment|/**      * Prepare all the available queries and by based on the {@link QuerySelectionMode} flag return      * the appropriate.      *       * @param queries the list of queries to be executed. Cannot be null.      *      If there are multiple, the first one is the original, and the second the alternative.      * @return the query      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Query
 name|prepareAndSelect
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|Query
@@ -1754,7 +1756,7 @@ name|void
 name|setQuerySelectionMode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|QuerySelectionMode
 name|querySelectionMode
 parameter_list|)

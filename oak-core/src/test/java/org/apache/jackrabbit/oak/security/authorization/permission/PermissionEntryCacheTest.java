@@ -65,16 +65,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -126,6 +116,18 @@ operator|.
 name|privilege
 operator|.
 name|PrivilegeBits
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1184,12 +1186,12 @@ name|PrincipalPermissionEntries
 name|inspectEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionEntryCache
 name|cache
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|principalName
 parameter_list|)
@@ -1229,7 +1231,7 @@ argument_list|>
 name|inspectEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionEntryCache
 name|cache
 parameter_list|)

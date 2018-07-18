@@ -25,36 +25,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|nodetype
@@ -95,6 +65,30 @@ name|NameMapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base class for the template implementations in this package.  * Keeps track of the Oak name of this template and provides utility methods  * for mapping between JCR and Oak names.  */
 end_comment
@@ -120,7 +114,7 @@ specifier|protected
 name|NamedTemplate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NameMapper
 name|mapper
 parameter_list|)
@@ -136,7 +130,7 @@ specifier|protected
 name|NamedTemplate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NameMapper
 name|mapper
 parameter_list|,
@@ -169,7 +163,7 @@ block|}
 block|}
 comment|/**      * Returns the Oak name of this template, or {@code null} if the name      * has not yet been set.      *      * @return Oak name, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 name|getOakName
@@ -182,7 +176,7 @@ block|}
 comment|//------------------------------------------------------------< public>--
 comment|/**      * Returns the JCR name of this template, or {@code null} if the name      * has not yet been set.      *      * @return JCR name, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getName
@@ -201,7 +195,7 @@ name|void
 name|setName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|jcrName
 parameter_list|)
@@ -221,13 +215,13 @@ block|}
 comment|//-------------------------------------------< name handling utilities>--
 comment|/**      * Like {@link NameMapper#getJcrName(String)}, but allows the given Oak      * name to be {@code null}, in which case the return value is also      * {@code null}. Useful for the template implementations where      * {@code null} values are used to indicate undefined attributes.      *      * @param oakName Oak name, or {@code null}      * @return JCR name, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 name|getJcrNameAllowNull
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|oakName
 parameter_list|)
@@ -257,14 +251,14 @@ block|}
 block|}
 comment|/**      * Converts the given Oak names to corresponding JCR names. If the given      * array is {@code null} (signifying an undefined set of names), then the      * return value is also {@code null}.      *      * @param oakNames Oak names, or {@code null}      * @return JCR names, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 index|[]
 name|getJcrNamesAllowNull
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 index|[]
 name|oakNames
@@ -333,13 +327,13 @@ return|;
 block|}
 comment|/**      * Converts the given JCR name to the corresponding Oak name. Throws      * a {@link ConstraintViolationException} if the name is {@code null}      * or otherwise invalid.      *      * @param jcrName JCR name      * @return Oak name      * @throws ConstraintViolationException if name is invalid or {@code null}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|String
 name|getOakNameOrThrowConstraintViolation
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|jcrName
 parameter_list|)
@@ -402,13 +396,13 @@ return|;
 block|}
 comment|/**      * Like {@link #getOakNameOrThrowConstraintViolation(String)} but allows      * the given JCR name to be {@code null}, in which case the return value      * is also {@code null}.      *      * @param jcrName JCR name, or {@code null}      * @return Oak name, or {@code null}      * @throws ConstraintViolationException if the name is invalid      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 name|getOakNameAllowNullOrThrowConstraintViolation
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|jcrName
 parameter_list|)
@@ -438,14 +432,14 @@ block|}
 block|}
 comment|/**      * Converts the given JCR names to corresponding Oak names. Throws      * a {@link ConstraintViolationException} if the given array is      * {@code null} or one of the contained JCR names is {@code null}      * or otherwise invalid.      *      * @param jcrNames JCR names      * @return Oak names      * @throws ConstraintViolationException if names are invalid or {@code null}      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 name|String
 index|[]
 name|getOakNamesOrThrowConstraintViolation
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 index|[]
 name|jcrNames

@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -226,6 +216,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -276,7 +278,7 @@ specifier|public
 name|AuthorizationInitializer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|MountInfoProvider
 name|mountInfoProvider
 parameter_list|)

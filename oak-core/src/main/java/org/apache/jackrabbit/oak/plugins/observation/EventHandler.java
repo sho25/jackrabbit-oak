@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -60,6 +50,18 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -96,7 +98,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns a handler of events within the given child node, or      * {@code null} if changes within that child are not to be processed.      *      * @param name  name of the child node      * @param before before state of the child node, possibly non-existent      * @param after  after state of the child node, possibly non-existent      * @return handler of events within the child node, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|EventHandler
 name|getChildHandler
 parameter_list|(

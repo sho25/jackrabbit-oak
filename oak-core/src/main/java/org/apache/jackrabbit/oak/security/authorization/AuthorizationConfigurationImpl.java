@@ -63,16 +63,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|security
@@ -707,6 +697,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|service
@@ -1115,7 +1117,7 @@ specifier|public
 name|AuthorizationConfigurationImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)
@@ -1170,7 +1172,7 @@ expr_stmt|;
 block|}
 comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1183,7 +1185,7 @@ name|NAME
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1199,7 +1201,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1216,7 +1218,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1229,7 +1231,7 @@ argument_list|>
 name|getCommitHooks
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|)
@@ -1267,7 +1269,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1278,12 +1280,12 @@ argument_list|>
 name|getValidators
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -1291,7 +1293,7 @@ argument_list|>
 name|principals
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|MoveTracker
 name|moveTracker
 parameter_list|)
@@ -1326,7 +1328,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1350,7 +1352,7 @@ return|;
 block|}
 comment|//-----------------------------------------< AccessControlConfiguration>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1358,12 +1360,12 @@ name|AccessControlManager
 name|getAccessControlManager
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
@@ -1382,7 +1384,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1429,7 +1431,7 @@ name|restrictionProvider
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1437,17 +1439,17 @@ name|PermissionProvider
 name|getPermissionProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -1528,7 +1530,7 @@ block|}
 block|}
 comment|//--------------------------------------------------------< ProviderCtx>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

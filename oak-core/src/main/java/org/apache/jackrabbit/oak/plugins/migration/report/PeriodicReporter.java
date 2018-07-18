@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -42,6 +32,18 @@ operator|.
 name|atomic
 operator|.
 name|AtomicLong
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -144,7 +146,7 @@ name|long
 name|count
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|nodeState
@@ -161,13 +163,13 @@ name|long
 name|count
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|propertyName
@@ -178,7 +180,7 @@ name|boolean
 name|skipNodeState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|nodeState
@@ -196,7 +198,7 @@ name|void
 name|reportNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|nodeState
@@ -257,13 +259,13 @@ name|void
 name|reportProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|propertyName

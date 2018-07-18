@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -155,6 +145,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Provides a validator for user and group management.  */
 end_comment
@@ -187,17 +189,17 @@ decl_stmt|;
 name|UserValidatorProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|config
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|RootProvider
 name|rootProvider
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeProvider
 name|treeProvider
 parameter_list|)
@@ -225,7 +227,7 @@ comment|//--------------------------------------------------< ValidatorProvider>
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Validator
 name|getRootValidator
@@ -279,7 +281,7 @@ return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|getConfig
 parameter_list|()
@@ -289,7 +291,7 @@ name|config
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|MembershipProvider
 name|getMembershipProvider
 parameter_list|()

@@ -19,26 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -129,6 +109,30 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * An instance of this class provides the context for the execution of a query,  * which in essence captures a stable state of the content tree from the time  * the execution context was created.  */
 end_comment
@@ -216,7 +220,7 @@ expr_stmt|;
 block|}
 comment|/**      * Used to evaluate the query (ie. read the existing node types, index      * definitions), doesn't need to be a secured version of a node state      *       * @return base state of the content tree against which the query runs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeState
 name|getBaseState
@@ -242,7 +246,7 @@ return|;
 block|}
 comment|/**      * Used to create the actual query results from the indexed paths, needs to      * be a secured version of a tree to take into account ACLs      *       * @return root of the content tree against which the query runs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Root
 name|getRoot
@@ -254,7 +258,7 @@ return|;
 block|}
 comment|/**      * @return Index provider for indexes matching the state of the content tree as      * returned from {@link #getBaseState()}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|QueryIndexProvider
 name|getIndexProvider
@@ -274,7 +278,7 @@ name|settings
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|PermissionProvider
 name|getPermissionProvider

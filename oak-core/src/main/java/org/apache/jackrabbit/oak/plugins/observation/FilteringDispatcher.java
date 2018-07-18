@@ -37,16 +37,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -99,6 +89,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Part of the FilteringObserver: the FilteringDispatcher is used  * to implement the skipping (filtering) of content changes  * which the FilteringDispatcher flags as NOOP_CHANGE.  * When the FilteringDispatcher notices a NOOP_CHANGE it does  * not forward the change but only updates the before NodeState.  */
 end_comment
@@ -143,12 +145,12 @@ name|void
 name|contentChanged
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitInfo
 name|info
 parameter_list|)

@@ -55,19 +55,21 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
+name|jetbrains
 operator|.
-name|Logger
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|slf4j
 operator|.
-name|Nonnull
+name|Logger
 import|;
 end_import
 
@@ -185,7 +187,7 @@ name|long
 name|count
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|nodeState
@@ -219,13 +221,13 @@ name|long
 name|count
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|propertyName
@@ -260,7 +262,7 @@ name|boolean
 name|skipNodeState
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|ReportingNodeState
 name|nodeState

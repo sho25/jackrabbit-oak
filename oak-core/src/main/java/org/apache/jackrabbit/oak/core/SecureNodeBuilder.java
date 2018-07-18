@@ -39,36 +39,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -260,6 +230,30 @@ operator|.
 name|state
 operator|.
 name|NodeStateUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -470,12 +464,12 @@ comment|/**      * Create the {@code SecureNodeBuilder} for the root node.      
 name|SecureNodeBuilder
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|LazyValue
 argument_list|<
 name|PermissionProvider
@@ -575,7 +569,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeState
 name|getBaseState
@@ -598,7 +592,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeState
 name|getNodeState
@@ -818,12 +812,12 @@ name|boolean
 name|moveTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|newParent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|newName
 parameter_list|)
@@ -843,7 +837,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -954,7 +948,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1010,7 +1004,7 @@ name|boolean
 name|getBoolean
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1040,7 +1034,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1048,7 +1042,7 @@ name|String
 name|getString
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1088,7 +1082,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1096,7 +1090,7 @@ name|String
 name|getName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1136,7 +1130,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1147,7 +1141,7 @@ argument_list|>
 name|getNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1188,7 +1182,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1196,7 +1190,7 @@ name|NodeBuilder
 name|setProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -1213,7 +1207,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1227,7 +1221,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|value
 parameter_list|)
@@ -1246,7 +1240,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1260,7 +1254,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|value
 parameter_list|,
@@ -1287,7 +1281,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1320,7 +1314,7 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1362,7 +1356,7 @@ name|boolean
 name|hasChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1395,7 +1389,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1403,7 +1397,7 @@ name|NodeBuilder
 name|child
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1434,7 +1428,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1442,7 +1436,7 @@ name|NodeBuilder
 name|setChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1465,7 +1459,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1473,12 +1467,12 @@ name|NodeBuilder
 name|setChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|nodeState
 parameter_list|)
@@ -1503,7 +1497,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1511,7 +1505,7 @@ name|NodeBuilder
 name|getChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1589,7 +1583,7 @@ return|;
 block|}
 comment|/**      * Permissions of this tree.      *      * @return The permissions for this tree.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|TreePermission
 name|getTreePermission
@@ -1688,7 +1682,7 @@ name|boolean
 name|isType
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|PropertyState
 name|property
 parameter_list|,

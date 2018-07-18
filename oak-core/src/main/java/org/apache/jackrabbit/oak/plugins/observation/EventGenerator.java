@@ -195,16 +195,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -268,6 +258,18 @@ operator|.
 name|commons
 operator|.
 name|PerfLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -353,17 +355,17 @@ specifier|public
 name|EventGenerator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|before
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|after
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|EventHandler
 name|handler
 parameter_list|)

@@ -43,16 +43,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -263,6 +253,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -356,17 +358,17 @@ decl_stmt|;
 name|AuthorizableImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|id
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManagerImpl
 name|userManager
 parameter_list|)
@@ -402,7 +404,7 @@ name|void
 name|checkValidTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -905,7 +907,7 @@ return|;
 block|}
 comment|//--------------------------------------------------------------------------
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|getTree
 parameter_list|()
@@ -938,7 +940,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getPrincipalName
 parameter_list|()
@@ -1010,7 +1012,7 @@ return|;
 block|}
 comment|/**      * @return The user manager associated with this authorizable.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManagerImpl
 name|getUserManager
 parameter_list|()
@@ -1021,7 +1023,7 @@ return|;
 block|}
 comment|/**      * @return The membership provider associated with this authorizable      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|MembershipProvider
 name|getMembershipProvider
 parameter_list|()
@@ -1088,7 +1090,7 @@ return|;
 block|}
 comment|/**      * Retrieve the group membership of this authorizable.      *      * @param includeInherited Flag indicating whether the resulting iterator only      * contains groups this authorizable is declared member of or if inherited      * group membership is respected.      *      * @return Iterator of groups this authorizable is (declared) member of.      * @throws RepositoryException If an error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Iterator
 argument_list|<

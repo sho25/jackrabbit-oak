@@ -51,16 +51,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -346,6 +336,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -398,17 +400,17 @@ decl_stmt|;
 name|PrivilegeValidator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|before
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|after
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeProvider
 name|treeProvider
 parameter_list|)
@@ -795,7 +797,7 @@ throw|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Tree
 name|getPrivilegesTree
@@ -1463,7 +1465,7 @@ name|boolean
 name|isPrivilegeDefinition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|state
 parameter_list|)

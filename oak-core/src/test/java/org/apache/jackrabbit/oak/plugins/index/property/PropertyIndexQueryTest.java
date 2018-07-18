@@ -129,16 +129,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -321,6 +311,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Ignore
@@ -379,7 +381,7 @@ return|;
 block|}
 comment|/**      * return an instance of {@link Oak} repository ready to be built with      * {@link Oak#createContentRepository()}.      *       * @return      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Oak
 name|getOakRepositoryInstance
 parameter_list|()
@@ -500,7 +502,7 @@ name|void
 name|initialize
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)

@@ -33,26 +33,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -135,6 +115,30 @@ name|RestrictionPattern
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implementation of the {@link RestrictionPattern} interface that returns  * {@code true} if the name of the target item (property or node) is contained  * in the configured set of names. This allows to limit certain operations (e.g.  * reading or modifying properties) to a subset of items in the tree defined  * by the associated policy.  */
 end_comment
@@ -181,7 +185,7 @@ name|boolean
 name|matches
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -232,7 +236,7 @@ name|boolean
 name|matches
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)

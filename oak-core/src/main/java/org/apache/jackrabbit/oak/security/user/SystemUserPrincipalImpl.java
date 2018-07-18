@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -81,6 +71,18 @@ name|SystemUserPrincipal
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implementation of the {@code SystemUserPrincipal} for this user management  * implementation.  */
 end_comment
@@ -97,17 +99,17 @@ block|{
 name|SystemUserPrincipalImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|principalName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PathMapper
 name|pathMapper
 parameter_list|)

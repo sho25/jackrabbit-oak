@@ -233,19 +233,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -304,7 +308,7 @@ name|Whiteboard
 name|whiteboard
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -454,7 +458,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -485,7 +489,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 annotation|@
@@ -501,7 +505,7 @@ name|T
 name|getConfiguration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Class
 argument_list|<
 name|T
@@ -622,7 +626,7 @@ name|void
 name|setWhiteboard
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Whiteboard
 name|whiteboard
 parameter_list|)

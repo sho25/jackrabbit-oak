@@ -41,16 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -84,6 +74,18 @@ operator|.
 name|index
 operator|.
 name|FilterImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -274,7 +276,7 @@ return|;
 block|}
 comment|/**      * Compute a set of sub-constraints that could be used for composing UNION      * statements. For example in case of "c=1 or c=2", it will return to the      * caller {@code [c=1, c=2]}. Those can be later on used for re-composing      * conditions.      *<p>      * If it is not possible to convert to a union, it must return an empty set.      *<p>      * The default implementation in {@link ConstraintImpl#convertToUnion()}      * always return an empty set.      *       * @return the set of union constraints, if available, or an empty set if      *         conversion is not possible      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<

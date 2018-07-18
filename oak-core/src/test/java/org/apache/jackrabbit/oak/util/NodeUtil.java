@@ -41,36 +41,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|AccessDeniedException
@@ -278,6 +248,30 @@ operator|.
 name|util
 operator|.
 name|Text
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -506,7 +500,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Tree
 name|getTree
@@ -517,7 +511,7 @@ name|tree
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getName
@@ -536,7 +530,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeUtil
 name|getParent
@@ -573,7 +567,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeUtil
 name|getChild
@@ -611,7 +605,7 @@ return|;
 block|}
 comment|/**      * Adds a new child tree with the given name and primary type name.      * This method is a shortcut for calling {@link Tree#addChild(String)} and      * {@link Tree#setProperty(String, Object, org.apache.jackrabbit.oak.api.Type)}      * where the property name is {@link JcrConstants#JCR_PRIMARYTYPE}.      * Note, that this method in addition verifies if the created tree exists      * and is accessible in order to avoid {@link IllegalStateException} upon      * subsequent modification of the new child.      *      * @param name            The name of the child item.      * @param primaryTypeName The name of the primary node type.      * @return The new child node with the specified name and primary type.      * @throws AccessDeniedException If the child does not exist after creation.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeUtil
 name|addChild
@@ -678,7 +672,7 @@ return|;
 block|}
 comment|/**      * Combination of {@link #getChild(String)} and {@link #addChild(String, String)}      * in case no tree exists with the specified name.      *      * @param name            The name of the child item.      * @param primaryTypeName The name of the primary node type.      * @return The new child node with the specified name and primary type.      * @throws AccessDeniedException If the child does not exist after creation.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeUtil
 name|getOrAddChild
@@ -719,7 +713,7 @@ return|;
 block|}
 comment|/**      * TODO: clean up. workaround for OAK-426      *<p>      * Create the tree at the specified relative path including all missing      * intermediate trees using the specified {@code primaryTypeName}. This      * method treats ".." parent element and "." as current element and      * resolves them accordingly; in case of a relative path containing parent      * elements this may lead to tree creating outside the tree structure      * defined by this {@code NodeUtil}.      *      * @param relativePath    A relative OAK path that may contain parent and      *                        current elements.      * @param primaryTypeName A oak name of a primary node type that is used      *                        to create the missing trees.      * @return The node util of the tree at the specified {@code relativePath}.      * @throws AccessDeniedException If the any intermediate tree does not exist      *                               and cannot be created.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|NodeUtil
 name|getOrAddTree
@@ -964,7 +958,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getString
@@ -1053,7 +1047,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getName
@@ -1302,7 +1296,7 @@ name|void
 name|setLong
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
@@ -1372,7 +1366,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|String
 name|getOakName

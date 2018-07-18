@@ -37,26 +37,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -116,6 +96,30 @@ operator|.
 name|namepath
 operator|.
 name|NamePathMapper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -186,7 +190,7 @@ name|boolean
 name|getBoolean
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -221,13 +225,13 @@ return|;
 block|}
 comment|/**      * Returns the string value of the named property.      *      * @param oakName property name      * @return property value, or {@code null} if the property does not exist      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 name|getString
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|)
@@ -245,14 +249,14 @@ return|;
 block|}
 comment|/**      * Returns the string values of the named property.      *      * @param oakName property name      * @return property values, or {@code null} if the property does not exist      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 index|[]
 name|getStrings
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|)
@@ -270,13 +274,13 @@ return|;
 block|}
 comment|/**      * Returns the name value of the named property.      *      * @param oakName property name      * @return property value, or {@code null} if the property does not exist      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 name|getName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|)
@@ -294,14 +298,14 @@ return|;
 block|}
 comment|/**      * Returns the name values of the named property.      *      * @param oakName property name      * @return property values, or {@code null} if the property does not exist      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|protected
 name|String
 index|[]
 name|getNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|)

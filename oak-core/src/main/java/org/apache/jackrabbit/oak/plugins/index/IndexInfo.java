@@ -21,11 +21,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -66,7 +68,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns name of the async index lane to which this index is bound to      * or null if its not an async index      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getAsyncLaneName
 parameter_list|()
@@ -98,7 +100,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * If the index definition has changed without doing any reindexing      * then this method can be used to determine the diff in the index      * definition      * @return diff if the definition change otherwise null      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getIndexDefinitionDiff
 parameter_list|()

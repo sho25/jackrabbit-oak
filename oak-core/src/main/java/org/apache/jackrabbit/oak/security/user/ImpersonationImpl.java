@@ -53,26 +53,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -333,6 +313,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -407,7 +411,7 @@ decl_stmt|;
 name|ImpersonationImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserImpl
 name|user
 parameter_list|)
@@ -436,7 +440,7 @@ block|}
 comment|//------------------------------------------------------< Impersonation>---
 comment|/**      * @see org.apache.jackrabbit.api.security.user.Impersonation#getImpersonators()      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -555,7 +559,7 @@ name|boolean
 name|grantImpersonation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -681,7 +685,7 @@ name|boolean
 name|revokeImpersonation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -751,7 +755,7 @@ name|boolean
 name|allows
 parameter_list|(
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Subject
 name|subject
 parameter_list|)
@@ -855,7 +859,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Set
 argument_list|<
@@ -875,7 +879,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Set
 argument_list|<
@@ -884,7 +888,7 @@ argument_list|>
 name|getImpersonatorNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|userTree
 parameter_list|)
@@ -950,12 +954,12 @@ name|void
 name|updateImpersonatorNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|userTree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -1005,7 +1009,7 @@ name|boolean
 name|isAdmin
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -1102,7 +1106,7 @@ name|boolean
 name|isValidPrincipal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)

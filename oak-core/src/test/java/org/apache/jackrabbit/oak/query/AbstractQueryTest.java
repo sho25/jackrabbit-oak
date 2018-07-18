@@ -171,16 +171,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -564,6 +554,18 @@ operator|.
 name|query
 operator|.
 name|QueryConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -2284,7 +2286,7 @@ name|void
 name|assertResult
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String
@@ -2292,7 +2294,7 @@ argument_list|>
 name|expected
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|List
 argument_list|<
 name|String
@@ -2377,7 +2379,7 @@ name|void
 name|setQuerySelectionMode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|QuerySelectionMode
 name|querySelectionMode
 parameter_list|)

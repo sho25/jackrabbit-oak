@@ -36,16 +36,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -555,6 +545,18 @@ name|NodeStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code InitialContent} implements a {@link RepositoryInitializer} the creates  * the initial JCR/Oak repository structure. This includes creating  *  *<pre>  * - the root node  * - jcr:system node and it subtree  *      - version storage  *      - activities  *      - built-in node types  *      - built-in namespaces  * - some basic index definitions required for a functional JCR repository  *</pre>  */
 end_comment
@@ -582,7 +584,7 @@ name|void
 name|initialize
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeBuilder
 name|builder
 parameter_list|)

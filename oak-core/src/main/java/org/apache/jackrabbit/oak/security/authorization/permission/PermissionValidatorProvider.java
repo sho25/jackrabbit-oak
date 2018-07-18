@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -351,6 +341,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code ValidatorProvider} implementation for permission evaluation associated  * with write operations.  */
 end_comment
@@ -407,12 +409,12 @@ specifier|public
 name|PermissionValidatorProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -420,12 +422,12 @@ argument_list|>
 name|principals
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|MoveTracker
 name|moveTracker
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|ProviderCtx
 name|providerCtx
 parameter_list|)
@@ -510,7 +512,7 @@ comment|//--------------------------------------------------< ValidatorProvider>
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Validator
 name|getRootValidator
@@ -678,7 +680,7 @@ name|Root
 name|createReadOnlyRoot
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|nodeState
 parameter_list|)
@@ -699,7 +701,7 @@ name|Tree
 name|createReadOnlyTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|nodeState
 parameter_list|)

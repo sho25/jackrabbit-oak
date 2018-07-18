@@ -63,16 +63,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -135,6 +125,18 @@ name|ConfigurationParameters
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 class|class
 name|PermissionEntryProviderImpl
@@ -188,12 +190,12 @@ decl_stmt|;
 name|PermissionEntryProviderImpl
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PermissionStore
 name|store
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -201,7 +203,7 @@ argument_list|>
 name|principalNames
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|options
 parameter_list|)
@@ -288,7 +290,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -297,7 +299,7 @@ argument_list|>
 name|getEntryIterator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|EntryPredicate
 name|predicate
 parameter_list|)
@@ -328,7 +330,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Collection
 argument_list|<
@@ -337,7 +339,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|accessControlledTree
 parameter_list|)
@@ -353,7 +355,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|Collection
 argument_list|<
@@ -362,7 +364,7 @@ argument_list|>
 name|getEntries
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -413,7 +415,7 @@ specifier|private
 name|EntryIterator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|EntryPredicate
 name|predicate
 parameter_list|)

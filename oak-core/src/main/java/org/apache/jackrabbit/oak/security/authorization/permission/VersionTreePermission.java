@@ -33,16 +33,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -181,6 +171,18 @@ name|TreeUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@link TreePermission} implementations for those items in the version storage  * that are linked to a versionable node (i.e. the subtree spanned by every version  * history node. For those items, the effective permissions are defined by  * the corresponding versionable node (and it's ancestors).  */
 end_comment
@@ -229,17 +231,17 @@ decl_stmt|;
 name|VersionTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|versionTree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|versionablePermission
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeProvider
 name|treeProvider
 parameter_list|)
@@ -267,7 +269,7 @@ name|VersionTreePermission
 name|createChildPermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|versionTree
 parameter_list|)
@@ -341,7 +343,7 @@ return|;
 block|}
 comment|//-----------------------------------------------------< TreePermission>---
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -349,12 +351,12 @@ name|TreePermission
 name|getChildPermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|childName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|childState
 parameter_list|)
@@ -396,7 +398,7 @@ name|boolean
 name|canRead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -467,7 +469,7 @@ name|long
 name|permissions
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
