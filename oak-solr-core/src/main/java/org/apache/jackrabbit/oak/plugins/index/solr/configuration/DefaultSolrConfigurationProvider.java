@@ -25,11 +25,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -75,7 +77,7 @@ name|configuration
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -203,6 +193,18 @@ name|NamedList
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * An Oak {@link org.apache.solr.client.solrj.SolrServer}, caching a {@link org.apache.jackrabbit.oak.plugins.index.solr.server.SolrServerProvider}  * for dispatching requests to indexing or searching specialized {@link org.apache.solr.client.solrj.SolrServer}s.  */
 end_comment
@@ -228,7 +230,7 @@ specifier|public
 name|OakSolrServer
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SolrServerConfigurationProvider
 name|solrServerConfigurationProvider
 parameter_list|)

@@ -35,26 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -87,6 +67,30 @@ name|Filter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * A Solr configuration holding all the possible customizable parameters that  * can be leveraged for an Oak search index.  */
 end_comment
@@ -98,7 +102,7 @@ name|OakSolrConfiguration
 block|{
 comment|/**      * Provide a field name to be used for indexing / searching a certain {@link org.apache.jackrabbit.oak.api.Type}      *      * @param propertyType the {@link org.apache.jackrabbit.oak.api.Type} to be indexed / searched      * @return the name of the Solr field to be used for the given {@link org.apache.jackrabbit.oak.api.Type}, or {@code null}      * if no specific field has been configured to handle the given {@code Type}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getFieldNameFor
 parameter_list|(
@@ -111,14 +115,14 @@ parameter_list|)
 function_decl|;
 comment|/**      * Provide the field name for indexing / searching paths      *      * @return the name of the Solr field to be used for indexing and searching on paths (exact matching).      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getPathField
 parameter_list|()
 function_decl|;
 comment|/**      * Provide a field name to search over for the given {@link org.apache.jackrabbit.oak.spi.query.Filter.PathRestriction}      *      * @param pathRestriction the {@link org.apache.jackrabbit.oak.spi.query.Filter.PathRestriction} used for filtering      *                        search results or {@code null} if no specific field has been configured for it.      * @return the name of the Solr field to be used for the given {@code PathRestriction}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getFieldForPathRestriction
 parameter_list|(
@@ -130,7 +134,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Provide a field name to search over for the given {@link org.apache.jackrabbit.oak.spi.query.Filter.PropertyRestriction}      *      * @param propertyRestriction the {@link org.apache.jackrabbit.oak.spi.query.Filter.PropertyRestriction} used for filtering search results      * @return the name of the Solr field to be used for the given {@code PropertyRestriction} or {@code null} if no specific field      * has been configured for it.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getFieldForPropertyRestriction
 parameter_list|(
@@ -142,14 +146,14 @@ parameter_list|)
 function_decl|;
 comment|/**      * Provide the commit policy to be used by a given {@link org.apache.solr.client.solrj.SolrServer}      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration.CommitPolicy}      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CommitPolicy
 name|getCommitPolicy
 parameter_list|()
 function_decl|;
 comment|/**      * Provide a field name that is used as the default "catch all" field for searching over all the data      *      * @return the name of the Solr field to be used as "catch all" field, or {@code null} if no specific field      * has been configured for it.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getCatchAllField
 parameter_list|()
@@ -176,7 +180,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Provide the names of the properties that should be neither indexed nor searched by the Solr index      *      * @return a {@link java.util.Collection} of property names for properties to be ignored      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|String
@@ -186,7 +190,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Provide the names of the properties that should be indexed and searched by the Solr index      *      * @return a {@link java.util.Collection} of property names for properties to be ignored      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|String
@@ -201,7 +205,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Provide the name of the field to be used for indexing the collapsed path of each node when {@link #collapseJcrContentNodes()}      * is set to {@code true}.      *      * @return the name of the Solr field to be used for indexing and searching on collapsed paths.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getCollapsedPathField
 parameter_list|()

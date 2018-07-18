@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -55,6 +45,18 @@ name|SolrServerProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@link org.apache.solr.client.solrj.SolrClient} configuration provider.  */
 end_comment
@@ -71,7 +73,7 @@ parameter_list|>
 block|{
 comment|/**      * Provide a {@link SolrServerConfiguration} to be used to initialize a specific      * {@link org.apache.solr.client.solrj.SolrClient} implementation.      *      * @return the {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration} holding the configuration parameters      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SolrServerConfiguration
 argument_list|<
 name|S

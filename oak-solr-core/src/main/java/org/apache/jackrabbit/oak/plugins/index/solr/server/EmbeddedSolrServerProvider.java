@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -248,6 +238,18 @@ operator|.
 name|core
 operator|.
 name|CoreContainer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -1362,7 +1364,7 @@ block|}
 block|}
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1378,7 +1380,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1394,7 +1396,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public

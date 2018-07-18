@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -868,6 +858,18 @@ operator|.
 name|util
 operator|.
 name|SimpleOrderedMap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -5158,7 +5160,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|NodeAggregator
 name|getNodeAggregator

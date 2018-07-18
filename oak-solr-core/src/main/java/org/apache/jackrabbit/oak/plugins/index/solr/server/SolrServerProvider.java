@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -56,6 +46,18 @@ operator|.
 name|solrj
 operator|.
 name|SolrClient
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -72,7 +74,7 @@ name|Closeable
 block|{
 comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrClient} to be used for either searching or      * indexing, or both.      *      * @return a {@link org.apache.solr.client.solrj.SolrClient} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrClient}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|SolrClient
 name|getSolrServer
 parameter_list|()
@@ -81,7 +83,7 @@ name|Exception
 function_decl|;
 comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrClient} specifically configured to be      * used for indexing.      *      * @return a {@link org.apache.solr.client.solrj.SolrClient} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrClient}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|SolrClient
 name|getIndexingSolrServer
 parameter_list|()
@@ -90,7 +92,7 @@ name|Exception
 function_decl|;
 comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrClient} specifically configured to be      * used for searching.      *      * @return a {@link org.apache.solr.client.solrj.SolrClient} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrClient}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|SolrClient
 name|getSearchingSolrServer
 parameter_list|()

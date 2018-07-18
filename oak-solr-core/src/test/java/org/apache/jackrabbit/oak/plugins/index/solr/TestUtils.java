@@ -23,26 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -210,6 +190,30 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -373,7 +377,7 @@ name|DefaultSolrConfiguration
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -440,7 +444,7 @@ name|getTestConfiguration
 argument_list|()
 decl_stmt|;
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -453,7 +457,7 @@ name|solrServer
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -468,7 +472,7 @@ name|solrServer
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -483,7 +487,7 @@ name|solrServer
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -25,11 +25,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -44,7 +46,7 @@ name|OakSolrConfigurationProvider
 block|{
 comment|/**      * Provides a Solr configuration for Oak      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration}      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|OakSolrConfiguration
 name|getConfiguration
 parameter_list|()
