@@ -29,11 +29,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -50,7 +52,7 @@ name|Closeable
 block|{
 comment|/**      * This methods provides access to information related to authentication      * and authorization of this content session. Multiple calls to this method      * may return different instances which are guaranteed to be equal wrt.      * to {@link Object#equals(Object)}.      *      * @return  immutable {@link AuthInfo} instance      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|AuthInfo
 name|getAuthInfo
 parameter_list|()
@@ -62,7 +64,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * The current head root as seen by this content session. Use      * {@link Root#commit()} to atomically apply the changes made in that      * subtree the underlying Microkernel.      *<p>      * The root instance gives you a stable view of the tree at the time the      * root is acquired. In certain setups (i.e. clusters) changes committed      * through other sessions might not be immediately reflected through this      * call.<p>      * Please note this method is possibly expensive because it internally reads      * from the backend to detect if there were any changes (from any session).      *       * @return the current head root      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|getLatestRoot
 parameter_list|()

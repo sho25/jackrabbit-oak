@@ -29,21 +29,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -58,7 +62,7 @@ name|Blob
 block|{
 comment|/**      * Returns a new stream for this blob. The streams returned from      * multiple calls to this method are byte wise equals. That is,      * subsequent calls to {@link java.io.InputStream#read() read}      * return the same sequence of bytes as long as neither call throws      * an exception.      *      * @return a new stream for this blob      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|InputStream
 name|getNewStream
 parameter_list|()
@@ -70,14 +74,14 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns a secure reference to this blob, or {@code null} if such      * a reference is not available.      *      * @see<a href="https://issues.apache.org/jira/browse/OAK-834">OAK-834</a>      * @return binary reference, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getReference
 parameter_list|()
 function_decl|;
 comment|/**      * A unique identifier of the content of this value. Usually this is a      * message digest of the content (a cryptographically secure one-way hash).      * This allows to avoid processing large binary values multiple times.      *<p>      * This method returns null if the identifier is unknown. The identifier may      * not always be available, for example if the value has not yet been saved      * or processed. Once an identifier is available, it will never change      * because values are immutable.      *<p>      * If two values have the same identifier, the content of the value is      * guaranteed to be the same. However it is not guaranteed that two values      * with the same content will return the same identifier.      *<p>      * The identifier is opaque, meaning it can have any format and size.      *      * @return the unique identifier or null      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getContentIdentity
 parameter_list|()

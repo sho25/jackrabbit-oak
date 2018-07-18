@@ -51,19 +51,21 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
+name|jcr
 operator|.
-name|Nonnull
+name|PropertyType
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jcr
+name|jetbrains
 operator|.
-name|PropertyType
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -1116,7 +1118,7 @@ name|int
 name|compareTo
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Type
 argument_list|<
 name|?

@@ -33,16 +33,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|AccessDeniedException
@@ -168,6 +158,18 @@ operator|.
 name|version
 operator|.
 name|VersionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -554,7 +556,7 @@ name|RepositoryException
 name|asRepositoryException
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|message
 parameter_list|)

@@ -49,21 +49,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -95,12 +99,12 @@ parameter_list|)
 function_decl|;
 comment|/**      * Retrieve the possible non existing {@code Tree} at the given absolute {@code path}.      * The path must resolve to a tree in this root.      *      * @param path absolute path to the tree      * @return tree at the given path.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|getTree
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -120,7 +124,7 @@ name|void
 name|commit
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -146,19 +150,19 @@ parameter_list|()
 function_decl|;
 comment|/**      * Get the query engine.      *       * @return the query engine      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|QueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;
 comment|/**      * Reads (and closes) the given stream and returns a {@link Blob} that      * contains that binary. The returned blob will remain valid at least      * until the {@link ContentSession} of this root is closed, or longer      * if it has been committed as a part of a content update.      *<p>      * The implementation may decide to persist the blob at any point      * during or between this method method call and a {@link #commit()}      * that includes the blob, but the blob will become visible to other      * sessions only after such a commit.      *      * @param stream the stream for reading the binary      * @return the blob that was created      * @throws IOException if the stream could not be read      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Blob
 name|createBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|InputStream
 name|stream
 parameter_list|)
@@ -167,19 +171,19 @@ name|IOException
 function_decl|;
 comment|/**      * Get a blob by its reference.      * @param reference  reference to the blob      * @return  blob or {@code null} if the reference does not resolve to a blob.      * @see Blob#getReference()      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Blob
 name|getBlob
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
 function_decl|;
 comment|/**      * Get the {@code ContentSession} from which this root was acquired      *       * @return the associated ContentSession      *       * @throws UnsupportedOperationException      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|ContentSession
 name|getContentSession
 parameter_list|()

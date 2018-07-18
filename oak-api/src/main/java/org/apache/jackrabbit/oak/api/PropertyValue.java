@@ -19,11 +19,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -56,7 +58,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Value of this object.      * The type of the return value is determined by the target {@code type}      * argument. If {@code type.isArray()} is true, this method returns an      * {@code Iterable} of the {@link Type#getBaseType() base type} of      * {@code type} containing all values of this property.      * If the target type is not the same as the type of this property an attempt      * is made to convert the value to the target type. If the conversion fails an      * exception is thrown.      * @param type target type      * @param<T>      * @return the value of this property      * @throws IllegalStateException  if {@code type.isArray() == false} and      *         {@code this.isArray() == true}. In other words, when trying to convert      *         from an array to an atom.      * @throws IllegalArgumentException  if {@code type} refers to an unknown type.      * @throws NumberFormatException  if conversion to a number failed.      * @throws UnsupportedOperationException  if conversion to boolean failed.      */
 annotation|@
-name|Nonnull
+name|NotNull
 argument_list|<
 name|T
 argument_list|>
@@ -72,7 +74,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Value at the given {@code index}.      * The type of the return value is determined by the target {@code type}      * argument.      * If the target type is not the same as the type of this property an attempt      * is made to convert the value to the target type. If the conversion fails an      * exception is thrown.      * @param type target type      * @param index      * @param<T>      * @return the value of this object at the given {@code index}      * @throws IndexOutOfBoundsException  if {@code index} is less than {@code 0} or      *         greater or equals {@code count()}.      * @throws IllegalArgumentException  if {@code type} refers to an unknown type or if      *         {@code type.isArray()} is true.      */
 annotation|@
-name|Nonnull
+name|NotNull
 argument_list|<
 name|T
 argument_list|>

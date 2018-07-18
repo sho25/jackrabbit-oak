@@ -23,26 +23,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|openmbean
@@ -60,6 +40,30 @@ operator|.
 name|openmbean
 operator|.
 name|TabularData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -148,7 +152,7 @@ block|}
 block|}
 comment|/**      * Initiate a backup operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -160,7 +164,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Backup status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -172,7 +176,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Initiate a restore operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -184,7 +188,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Restore status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -196,7 +200,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Initiate a data store garbage collection operation      *      * @param markOnly whether to only mark references and not sweep in the mark and sweep operation.      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -225,7 +229,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Data store garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -237,7 +241,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Initiate a revision garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -249,7 +253,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Initiate a revision garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -264,7 +268,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Cancel a running revision garbage collection operation. Does nothing      * if revision garbage collection is not running.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -276,7 +280,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Cancel a running revision garbage collection operation for a given role.      * Does nothing if revision garbage collection is not running.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -291,7 +295,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Revision garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -303,7 +307,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Revision garbage collection status for a given role.      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -320,7 +324,7 @@ comment|/**      * Creates a new checkpoint of the latest root of the tree. The 
 annotation|@
 name|Deprecated
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|checkpoint
 parameter_list|(
@@ -330,7 +334,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Initiate a reindex operation for the property indexes marked for      * reindexing      *       * @return the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -342,7 +346,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Asynchronous Property Index reindexing status      *       * @return the status of the ongoing operation or if none the terminal      *         status of the last operation or<em>Status not available</em> if      *         none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(
@@ -354,7 +358,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Refresh all currently open sessions.      *<em>Warning</em>: this operation might be disruptive to the owner of the affected sessions      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Description
 argument_list|(

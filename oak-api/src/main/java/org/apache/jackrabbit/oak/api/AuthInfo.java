@@ -49,21 +49,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -95,7 +99,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -127,7 +131,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -160,14 +164,14 @@ block|}
 decl_stmt|;
 comment|/**      * Return the user ID to be exposed on the JCR Session object. It refers      * to the ID of the user associated with the Credentials passed to the      * repository login.      *      * @return the user ID such as exposed on the JCR Session object.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getUserID
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the attribute names associated with this instance.      *      * @return The attribute names with that instance or an empty array if      * no attributes are present.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|getAttributeNames
@@ -175,7 +179,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the attribute with the given name or {@code null} if no attribute      * with that {@code attributeName} exists.      *      * @param attributeName The attribute name.      * @return The attribute or {@code null}.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Object
 name|getAttribute
 parameter_list|(
@@ -185,7 +189,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the set of principals associated with this {@code AuthInfo} instance.      *      * @return A set of principals.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal

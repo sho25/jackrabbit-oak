@@ -23,21 +23,23 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|openmbean
 operator|.
 name|CompositeData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -73,28 +75,28 @@ literal|"FileStoreBackupRestore"
 decl_stmt|;
 comment|/**      * Initiate a backup operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|startBackup
 parameter_list|()
 function_decl|;
 comment|/**      * Backup status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|getBackupStatus
 parameter_list|()
 function_decl|;
 comment|/**      * Initiate a restore operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|startRestore
 parameter_list|()
 function_decl|;
 comment|/**      * Restore status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|CompositeData
 name|getRestoreStatus
 parameter_list|()
@@ -103,7 +105,7 @@ comment|/**      * Creates a new checkpoint of the latest root of the tree. The 
 annotation|@
 name|Deprecated
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|checkpoint
 parameter_list|(

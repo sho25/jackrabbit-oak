@@ -19,29 +19,23 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -71,7 +65,7 @@ name|MODIFIED
 block|}
 comment|/**      * @return the name of this {@code Tree} instance.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getName
 parameter_list|()
@@ -83,14 +77,14 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return the absolute path of this {@code Tree} instance from its {@link Root}.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getPath
 parameter_list|()
 function_decl|;
 comment|/**      * Get the {@code Status} of this tree instance.      *      * @return The status of this tree instance.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Status
 name|getStatus
 parameter_list|()
@@ -102,31 +96,31 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return the possibly non existent parent of this {@code Tree}.      * @throws IllegalStateException if called on the root tree.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|getParent
 parameter_list|()
 function_decl|;
 comment|/**      * Get a property state      *      * @param name The name of the property state.      * @return the property state with the given {@code name} or {@code null}      *         if no such property state exists or the property is not accessible.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|PropertyState
 name|getProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Get the {@code Status} of a property state or {@code null}.      *      * @param name The name of the property state.      * @return The status of the property state with the given {@code name}      *         or {@code null} in no such property state exists or if the name refers      *         to a property that is not accessible.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Status
 name|getPropertyStatus
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -136,7 +130,7 @@ name|boolean
 name|hasProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -148,7 +142,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * All accessible property states. The returned {@code Iterable} has snapshot      * semantics. That is, it reflect the state of this {@code Tree} instance at      * the time of the call. Later changes to this instance are no visible to      * iterators obtained from the returned iterable.      *      * @return An {@code Iterable} for all accessible property states.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|?
@@ -160,12 +154,12 @@ parameter_list|()
 function_decl|;
 comment|/**      * Get a possibly non existing child of this {@code Tree}.      * @param name The name of the child to retrieve.      * @return The child with the given {@code name}.      * @throws IllegalArgumentException if the given name is invalid      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|getChild
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -177,7 +171,7 @@ name|boolean
 name|hasChild
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -192,7 +186,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * All accessible children of this {@code Tree} instance. The returned      * {@code Iterable} has snapshot semantics. That is, it reflect the state of      * this {@code Tree} instance at the time of the call. Later changes to this      * instance are not visible to iterators obtained from the returned iterable.      *      * @return An {@code Iterable} for all accessible children      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|Tree
@@ -207,12 +201,12 @@ parameter_list|()
 function_decl|;
 comment|/**      * Add a child with the given {@code name}. Does nothing if such a child      * already exists.      *      * @param name name of the child. A valid name does not start with a colon,      *             is not empty and does not contain a forward slash.      * @return the {@code Tree} instance of the child with the given {@code name}.      * @throws IllegalArgumentException if {@code name} is not valid.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|addChild
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -242,7 +236,7 @@ name|void
 name|setProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -255,12 +249,12 @@ name|void
 name|setProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|value
 parameter_list|)
@@ -275,17 +269,17 @@ name|void
 name|setProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|T
 name|value
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Type
 argument_list|<
 name|T
@@ -300,7 +294,7 @@ name|void
 name|removeProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
