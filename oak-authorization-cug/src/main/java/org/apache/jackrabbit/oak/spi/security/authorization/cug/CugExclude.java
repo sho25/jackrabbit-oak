@@ -45,16 +45,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -117,6 +107,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|annotation
@@ -142,7 +144,7 @@ name|boolean
 name|isExcluded
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -163,7 +165,7 @@ name|boolean
 name|isExcluded
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal

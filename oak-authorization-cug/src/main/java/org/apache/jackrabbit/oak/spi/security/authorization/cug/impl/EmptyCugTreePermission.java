@@ -27,16 +27,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -85,6 +75,18 @@ name|TreeType
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Same as {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.TreePermission#EMPTY}  * from a permission point of view but indicating that it refers to a tree that  * potentially contains a CUG in the subtree thus forcing continued evaluation,  * where as {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.TreePermission#EMPTY}  * indicates that this permission model will never grant access in the subtree  * and thus can be ignored.  */
 end_comment
@@ -99,17 +101,17 @@ block|{
 name|EmptyCugTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreeType
 name|type
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CugPermissionProvider
 name|permissionProvider
 parameter_list|)
@@ -143,7 +145,7 @@ name|boolean
 name|canRead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -198,7 +200,7 @@ name|long
 name|permissions
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)

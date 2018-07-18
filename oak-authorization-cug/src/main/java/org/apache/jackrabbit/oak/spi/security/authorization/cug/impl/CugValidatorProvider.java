@@ -27,16 +27,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -258,6 +248,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -356,12 +358,12 @@ name|void
 name|validateCugNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|nodeState
 parameter_list|)
@@ -488,12 +490,12 @@ specifier|private
 name|CugValidator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|parentName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|parentAfter
 parameter_list|,

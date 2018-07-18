@@ -27,16 +27,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -147,6 +137,18 @@ name|AuthorizationConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 specifier|final
 class|class
@@ -162,7 +164,7 @@ name|SecurityProvider
 name|newTestSecurityProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|configuration
 parameter_list|)
@@ -236,7 +238,7 @@ name|CugConfiguration
 name|getCugConfiguration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)

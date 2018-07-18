@@ -37,16 +37,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -58,6 +48,18 @@ operator|.
 name|commons
 operator|.
 name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -85,7 +87,7 @@ decl_stmt|;
 name|SupportedPaths
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -179,7 +181,7 @@ name|boolean
 name|includes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -261,7 +263,7 @@ name|boolean
 name|mayContainCug
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)

@@ -99,16 +99,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -890,6 +880,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -1098,7 +1100,7 @@ specifier|public
 name|CugConfiguration
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)
@@ -1117,7 +1119,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1125,12 +1127,12 @@ name|AccessControlManager
 name|getAccessControlManager
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
@@ -1151,7 +1153,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1166,7 +1168,7 @@ name|EMPTY
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1174,17 +1176,17 @@ name|PermissionProvider
 name|getPermissionProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Root
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -1275,7 +1277,7 @@ return|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1290,7 +1292,7 @@ name|NAME
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1380,7 +1382,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1393,7 +1395,7 @@ argument_list|>
 name|getCommitHooks
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|)
@@ -1410,7 +1412,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1423,12 +1425,12 @@ argument_list|>
 name|getValidators
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|workspaceName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -1436,7 +1438,7 @@ argument_list|>
 name|principals
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|MoveTracker
 name|moveTracker
 parameter_list|)
@@ -1453,7 +1455,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1481,7 +1483,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1502,7 +1504,7 @@ name|void
 name|setParameters
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|config
 parameter_list|)
@@ -1648,7 +1650,7 @@ expr_stmt|;
 block|}
 comment|//--------------------------------------------------------------------------
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|CugExclude
 name|getExclude
@@ -1675,7 +1677,7 @@ name|boolean
 name|registerCugNodeTypes
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Root
 name|root

@@ -67,16 +67,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -223,6 +213,18 @@ name|CugExclude
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Extension of the default {@link org.apache.jackrabbit.oak.spi.security.authorization.cug.CugExclude}  * implementation that allow to specify additional principal names to be excluded  * from CUG evaluation.  */
 end_comment
@@ -314,7 +316,7 @@ name|boolean
 name|isExcluded
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -423,7 +425,7 @@ name|void
 name|setPrincipalNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
