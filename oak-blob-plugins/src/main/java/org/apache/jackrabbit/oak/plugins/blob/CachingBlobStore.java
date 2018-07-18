@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -92,6 +82,18 @@ operator|.
 name|blob
 operator|.
 name|AbstractBlobStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -212,12 +214,12 @@ name|int
 name|weigh
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|byte
 index|[]
 name|value

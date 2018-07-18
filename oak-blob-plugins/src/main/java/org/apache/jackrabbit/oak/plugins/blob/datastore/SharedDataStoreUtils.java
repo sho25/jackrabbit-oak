@@ -43,26 +43,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -197,6 +177,30 @@ name|BlobStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility class for {@link SharedDataStore}.  */
 end_comment
@@ -281,7 +285,7 @@ name|Long
 name|apply
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DataRecord
 name|input
 parameter_list|)
@@ -356,7 +360,7 @@ name|String
 name|apply
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DataRecord
 name|input
 parameter_list|)
@@ -411,7 +415,7 @@ name|String
 name|apply
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|DataRecord
 name|input
 parameter_list|)
