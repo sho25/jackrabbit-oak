@@ -27,16 +27,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -46,6 +36,18 @@ operator|.
 name|util
 operator|.
 name|Text
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -63,12 +65,12 @@ name|boolean
 name|isSupportedPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|configuredPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)

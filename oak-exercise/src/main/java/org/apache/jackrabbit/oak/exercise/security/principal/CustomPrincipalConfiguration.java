@@ -33,16 +33,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -319,6 +309,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -429,7 +431,7 @@ literal|0
 index|]
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -464,7 +466,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -494,7 +496,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -651,7 +653,7 @@ name|void
 name|setParameters
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ConfigurationParameters
 name|config
 parameter_list|)

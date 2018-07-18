@@ -41,16 +41,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -141,6 +131,18 @@ name|PrincipalImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 specifier|public
 specifier|final
@@ -197,7 +199,7 @@ name|String
 name|getTestId
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|hint
 parameter_list|)
@@ -220,7 +222,7 @@ name|Principal
 name|getTestPrincipal
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|hint
 parameter_list|)
@@ -252,7 +254,7 @@ name|User
 name|createTestUser
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userMgr
 parameter_list|)
@@ -286,7 +288,7 @@ name|Group
 name|createTestGroup
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userMgr
 parameter_list|)
@@ -318,7 +320,7 @@ name|SimpleCredentials
 name|getTestCredentials
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userID
 parameter_list|)

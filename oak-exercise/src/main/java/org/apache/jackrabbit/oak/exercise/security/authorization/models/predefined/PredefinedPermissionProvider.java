@@ -47,26 +47,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -177,6 +157,30 @@ name|TreePermission
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * EXERCISE: complete PermissionProvider implementation  */
 end_comment
@@ -198,7 +202,7 @@ decl_stmt|;
 name|PredefinedPermissionProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -223,7 +227,7 @@ block|{
 comment|// EXERCISE: complete PermissionProvider implementation
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -259,7 +263,7 @@ name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|privilegeNames
@@ -271,7 +275,7 @@ literal|false
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -287,7 +291,7 @@ name|EMPTY
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -295,12 +299,12 @@ name|TreePermission
 name|getTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|TreePermission
 name|parentPermission
 parameter_list|)
@@ -319,7 +323,7 @@ name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -344,12 +348,12 @@ name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|jcrActions
 parameter_list|)

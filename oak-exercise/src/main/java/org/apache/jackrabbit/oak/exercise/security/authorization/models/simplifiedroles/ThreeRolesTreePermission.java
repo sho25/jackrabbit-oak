@@ -27,16 +27,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -113,6 +103,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 class|class
 name|ThreeRolesTreePermission
@@ -134,7 +136,7 @@ decl_stmt|;
 name|ThreeRolesTreePermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Role
 name|role
 parameter_list|,
@@ -156,7 +158,7 @@ name|isAcContent
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 name|Role
 name|getRole
 parameter_list|()
@@ -166,7 +168,7 @@ name|role
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -174,12 +176,12 @@ name|TreePermission
 name|getChildPermission
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|childName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|childState
 parameter_list|)
@@ -252,7 +254,7 @@ name|boolean
 name|canRead
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -314,7 +316,7 @@ name|long
 name|permissions
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)

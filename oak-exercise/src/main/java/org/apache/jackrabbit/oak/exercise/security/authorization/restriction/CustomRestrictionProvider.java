@@ -47,26 +47,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -283,6 +263,30 @@ name|RestrictionProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * EXERCISE: complete the implementation  */
 end_comment
@@ -313,7 +317,7 @@ implements|implements
 name|RestrictionProvider
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -335,7 +339,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -348,12 +352,12 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Value
 name|value
 parameter_list|)
@@ -366,7 +370,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -379,12 +383,12 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Value
 modifier|...
 name|values
@@ -398,7 +402,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -414,7 +418,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -459,7 +463,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -469,7 +473,7 @@ block|{
 comment|// EXERCISE
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -482,7 +486,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -493,7 +497,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -506,7 +510,7 @@ name|String
 name|oakPath
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Restriction
