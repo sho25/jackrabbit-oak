@@ -23,16 +23,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -114,6 +104,18 @@ operator|.
 name|api
 operator|.
 name|Tree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -203,7 +205,7 @@ name|getMandatoryPropertyDefinitions
 parameter_list|()
 function_decl|;
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|NodeDefinition
@@ -215,7 +217,7 @@ name|oakName
 parameter_list|)
 function_decl|;
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|PropertyDefinition
@@ -227,7 +229,7 @@ name|oakName
 parameter_list|)
 function_decl|;
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|NodeDefinition
@@ -236,7 +238,7 @@ name|getResidualNodeDefinitions
 parameter_list|()
 function_decl|;
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterable
 argument_list|<
 name|PropertyDefinition

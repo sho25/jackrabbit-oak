@@ -73,16 +73,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -113,6 +103,18 @@ name|Registration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * This {@link GCMonitor} implementation simply delegates all its call  * to registered monitors.  */
 end_comment
@@ -137,7 +139,7 @@ specifier|public
 name|DelegatingGCMonitor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|?
@@ -187,7 +189,7 @@ name|Registration
 name|registerGCMonitor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|GCMonitor
 name|gcMonitor

@@ -397,16 +397,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|openmbean
@@ -547,6 +537,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -611,14 +613,14 @@ name|int
 name|id
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|protected
 specifier|final
 name|String
 name|name
 decl_stmt|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|final
 name|Supplier
@@ -640,12 +642,12 @@ argument_list|>
 name|newManagementOperation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Callable
 argument_list|<
 name|R
@@ -686,12 +688,12 @@ argument_list|>
 name|newManagementOperation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|String
@@ -699,7 +701,7 @@ argument_list|>
 name|statusMessage
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Callable
 argument_list|<
 name|R
@@ -724,7 +726,7 @@ return|;
 block|}
 comment|/**      * An operation that is already done with the given {@code value}.      *      * @param name   name of the operation      * @param result result returned by the operation      * @return  a {@code ManagementOperation} instance that is already done.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 parameter_list|<
@@ -844,12 +846,12 @@ specifier|private
 name|ManagementOperation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Supplier
 argument_list|<
 name|String
@@ -857,7 +859,7 @@ argument_list|>
 name|statusMessage
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Callable
 argument_list|<
 name|R
@@ -910,7 +912,7 @@ return|;
 block|}
 comment|/**      * Informal name      * @return  name of this operation      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getName
@@ -922,7 +924,7 @@ return|;
 block|}
 comment|/**      * The {@link ManagementOperation.Status status} of this operation:      *<ul>      *<li>{@link Status#running(String) running} if the operation is currently      *     being executed.</li>      *<li>{@link Status#succeeded(String) succeeded} if the operation has terminated      *     without errors.</li>      *<li>{@link Status#failed(String) failed} if the operation has been cancelled,      *     its thread has been interrupted during execution or the operation has failed      *     with an exception.</li>      *</ul>      *      * @return  the current status of this operation      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Status
 name|getStatus

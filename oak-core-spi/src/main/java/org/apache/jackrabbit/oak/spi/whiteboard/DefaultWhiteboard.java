@@ -20,16 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -144,6 +134,18 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -703,7 +705,7 @@ specifier|private
 name|Service
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Object
 name|service
 parameter_list|,

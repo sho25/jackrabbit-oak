@@ -31,21 +31,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -76,7 +80,7 @@ name|MountInfoProvider
 block|{
 comment|/**      * Maps a given path to logical store name.      *      * @param path node path for which backing store location is to be determined      * @return mountInfo for the given path. If no explicit mount configured then      * default mount would be returned      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Mount
 name|getMountByPath
 parameter_list|(
@@ -86,7 +90,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Set of non default mount points configured for the setup      *       * @return a collection of mounts, possibly empty      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|Mount
@@ -96,7 +100,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the mount instance for given mount name      *      * @param name name of the mount      * @return mount instance for given mount name. If no mount exists for given name      *<tt>null</tt> would be returned      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Mount
 name|getMountByName
 parameter_list|(
@@ -111,7 +115,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns all mounts placed under the specified path      *      * @param path the path under which mounts are to be found      * @return a collection of mounts, possibly empty      *       * @see Mount#isUnder(String)      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|Mount
@@ -124,7 +128,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns all mounts placed directly under the specified path      *       * @param path the path under which mounts are to be foud      * @return a collection of mounts, possibly empty      *       * @see Mount#isDirectlyUnder(String)      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Collection
 argument_list|<
 name|Mount
@@ -137,7 +141,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the default mount      *       * @return the default mount      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Mount
 name|getDefaultMount
 parameter_list|()

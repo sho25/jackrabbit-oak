@@ -19,21 +19,25 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -64,7 +68,7 @@ name|PathMapper
 block|{
 comment|/**      * Returns the Oak path for the given JCR path, or {@code null} if no      * such mapping exists because the given JCR path contains a name element      * with an unknown namespace URI or prefix, or is otherwise invalid.      *      * @param jcrPath JCR path      * @return Oak path, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getOakPath
 parameter_list|(
@@ -74,7 +78,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the JCR path for the given Oak path. The given path is      * expected to have come from a valid Oak repository that contains      * only valid paths whose name elements only use proper namespace      * mappings. If that's not the case, either a programming error or      * a repository corruption has occurred and an appropriate unchecked      * exception gets thrown.      *      * @param oakPath Oak path      * @return JCR path      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getJcrPath
 parameter_list|(

@@ -41,19 +41,21 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
+name|jcr
 operator|.
-name|Nonnull
+name|RepositoryException
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jcr
+name|jetbrains
 operator|.
-name|RepositoryException
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -106,7 +108,7 @@ name|String
 name|getOakNameOrNull
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|jcrName
 parameter_list|)
@@ -116,7 +118,7 @@ name|jcrName
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -124,7 +126,7 @@ name|String
 name|getOakName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|jcrName
 parameter_list|)
@@ -136,7 +138,7 @@ name|jcrName
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -157,7 +159,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -165,7 +167,7 @@ name|String
 name|getJcrName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|oakName
 parameter_list|)
@@ -189,7 +191,7 @@ name|jcrPath
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -21,21 +21,25 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -53,14 +57,14 @@ name|void
 name|setWhiteboard
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Whiteboard
 name|whiteboard
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the whiteboard      * @return the whiteboard      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|Whiteboard
 name|getWhiteboard
 parameter_list|()

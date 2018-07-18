@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -152,6 +142,18 @@ operator|.
 name|json
 operator|.
 name|JsopWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -451,7 +453,7 @@ name|hitsMaxPathDepth
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Set
 argument_list|<
@@ -465,7 +467,7 @@ name|parentPaths
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Set
 argument_list|<
@@ -479,7 +481,7 @@ name|parentNodeNames
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Set
 argument_list|<
@@ -493,7 +495,7 @@ name|parentNodeTypes
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Set
 argument_list|<
@@ -516,7 +518,7 @@ name|maxPathDepth
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|Set
 argument_list|<

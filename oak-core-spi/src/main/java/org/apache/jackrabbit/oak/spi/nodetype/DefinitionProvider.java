@@ -23,16 +23,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -111,6 +101,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|annotation
@@ -133,7 +135,7 @@ interface|interface
 name|DefinitionProvider
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDefinition
 name|getRootDefinition
 parameter_list|()
@@ -142,17 +144,17 @@ name|RepositoryException
 function_decl|;
 comment|/**      * Returns the node definition for a child node of {@code parent} named      * {@code nodeName} with a default primary type. First the non-residual      * child node definitions of {@code parent} are checked matching the      * given node name. Then the residual definitions are checked.      *      * @param parent   the parent node.      * @param nodeName The internal oak name of the child node.      * @return the applicable node definition.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDefinition
 name|getDefinition
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|nodeName
 parameter_list|)
@@ -163,7 +165,7 @@ name|RepositoryException
 function_decl|;
 comment|/**      * Calculates the applicable definition for the child node under the given      * parent node.      *      * @param parent The parent node.      * @param targetNode The child node for which the definition is calculated.      * @return the definition of the target node.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeDefinition
 name|getDefinition
 parameter_list|(
@@ -180,7 +182,7 @@ name|RepositoryException
 function_decl|;
 comment|/**      * Calculates the applicable definition for the property state under the      * given parent tree.      *      * @param parent The parent tree.      * @param propertyState The target property.      * @return the definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyDefinition
 name|getDefinition
 parameter_list|(

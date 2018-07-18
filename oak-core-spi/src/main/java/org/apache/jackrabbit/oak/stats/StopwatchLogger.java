@@ -81,19 +81,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
+operator|.
+name|annotations
 operator|.
 name|Nullable
 import|;
@@ -175,7 +179,7 @@ specifier|public
 name|StopwatchLogger
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|clazz
@@ -197,7 +201,7 @@ specifier|public
 name|StopwatchLogger
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Class
 argument_list|<
@@ -232,7 +236,7 @@ name|Logger
 name|customLog
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|Class
 argument_list|<
@@ -269,7 +273,7 @@ name|Logger
 name|customLog
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|String
 name|clazz
@@ -366,7 +370,7 @@ name|void
 name|track
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|final
 name|StopwatchLogger
 name|swl

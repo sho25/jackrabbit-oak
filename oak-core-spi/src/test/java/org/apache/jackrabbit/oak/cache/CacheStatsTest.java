@@ -67,16 +67,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -114,6 +104,18 @@ operator|.
 name|cache
 operator|.
 name|Weigher
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -184,12 +186,12 @@ name|int
 name|weigh
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Integer
 name|key
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|Integer
 name|value
 parameter_list|)
