@@ -49,16 +49,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -371,6 +361,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -498,7 +500,7 @@ expr_stmt|;
 block|}
 comment|/**      * {@inheritDoc}      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -515,7 +517,7 @@ return|;
 block|}
 comment|/**      * {@inheritDoc}      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -523,17 +525,17 @@ name|SyncContext
 name|createContext
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentityProvider
 name|idp
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManager
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|ValueFactory
 name|valueFactory
 parameter_list|)
@@ -590,12 +592,12 @@ name|SyncedIdentity
 name|findIdentity
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManager
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|id
 parameter_list|)
@@ -624,7 +626,7 @@ name|boolean
 name|requiresSync
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|SyncedIdentity
 name|identity
 parameter_list|)
@@ -697,7 +699,7 @@ return|;
 block|}
 comment|/**      * {@inheritDoc}      */
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -708,7 +710,7 @@ argument_list|>
 name|listIdentities
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|UserManager
 name|userManager
 parameter_list|)

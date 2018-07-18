@@ -25,21 +25,25 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -54,14 +58,14 @@ name|SyncResult
 block|{
 comment|/**      * The synchronized identity      * @return the identity      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|SyncedIdentity
 name|getIdentity
 parameter_list|()
 function_decl|;
 comment|/**      * The status of the sync operation      * @return the status      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Status
 name|getStatus
 parameter_list|()

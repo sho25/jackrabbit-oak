@@ -25,26 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -54,6 +34,30 @@ operator|.
 name|util
 operator|.
 name|Text
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -86,12 +90,12 @@ specifier|public
 name|ExternalIdentityRef
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|id
 parameter_list|,
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|providerName
 parameter_list|)
@@ -171,7 +175,7 @@ expr_stmt|;
 block|}
 comment|/**      * Returns the name of the identity provider.      * @return the name of the identity provider.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getProviderName
@@ -183,7 +187,7 @@ return|;
 block|}
 comment|/**      * Returns the id of the external identity. for example the DN of an LDAP user.      * @return the id      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getId
@@ -195,7 +199,7 @@ return|;
 block|}
 comment|/**      * Returns a string representation of this external identity reference      * @return a string representation.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getString
@@ -207,14 +211,14 @@ return|;
 block|}
 comment|/**      * Creates an external identity reference from a string representation.      * @param str the string      * @return the reference      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|ExternalIdentityRef
 name|fromString
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|str
 parameter_list|)
@@ -295,12 +299,12 @@ name|void
 name|escape
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|StringBuilder
 name|builder
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|CharSequence
 name|str
 parameter_list|)

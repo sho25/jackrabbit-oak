@@ -27,16 +27,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -167,6 +157,18 @@ name|TestIdentityProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -197,7 +199,7 @@ implements|implements
 name|PrincipalNameResolver
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -205,7 +207,7 @@ name|String
 name|fromExternalIdentityRef
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentityRef
 name|externalIdentityRef
 parameter_list|)

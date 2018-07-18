@@ -67,11 +67,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -110,7 +112,7 @@ literal|"default"
 decl_stmt|;
 comment|/**      * Configures the name of this configuration      * @return the name      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getName
@@ -122,13 +124,13 @@ return|;
 block|}
 comment|/**      * Sets the name      * @param name the name      * @return {@code this}      * @see #getName()      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|DefaultSyncConfig
 name|setName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -145,7 +147,7 @@ return|;
 block|}
 comment|/**      * Returns the sync configuration for users.      * @return the user sync configuration.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|User
 name|user
@@ -157,7 +159,7 @@ return|;
 block|}
 comment|/**      * Returns the sync configuration for groups.      * @return the group sync configuration.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Group
 name|group
@@ -214,7 +216,7 @@ return|;
 block|}
 comment|/**          * Sets the expiration time.          * @param expirationTime time in milliseconds.          * @return {@code this}          * @see #getExpirationTime()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Authorizable
 name|setExpirationTime
@@ -264,7 +266,7 @@ return|;
 block|}
 comment|/**          * Defines the set of group names that are automatically added to synced authorizable.          * @return set of group names.          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Set
 argument_list|<
@@ -291,13 +293,13 @@ return|;
 block|}
 comment|/**          * Sets the auto membership. Note that the passed group names will be trimmed          * and empty string values will be ignored (along with {@code null} values).          *          * @param autoMembership the membership          * @return {@code this}          * @see #getAutoMembership()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Authorizable
 name|setAutoMembership
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 modifier|...
 name|autoMembership
@@ -358,7 +360,7 @@ return|;
 block|}
 comment|/**          * Defines the mapping of internal property names from external values. Only the external properties defined as          * keys of this map are synced with the mapped internal properties. note that the property names can be relative          * paths. the intermediate nodes will be created accordingly.          *          * Example:          *<pre>{@code          *     {          *         "rep:fullname": "cn",          *         "country", "c",          *         "profile/email": "mail",          *         "profile/givenName": "cn"          *     }          * }</pre>          *          * The implicit properties like userid, groupname, password must not be mapped.          *          * @return the property mapping where the keys are the local property names and the values the external ones.          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Map
 argument_list|<
@@ -389,13 +391,13 @@ return|;
 block|}
 comment|/**          * Sets the property mapping.          * @param propertyMapping the mapping          * @return {@code this}          * @see #getPropertyMapping()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Authorizable
 name|setPropertyMapping
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -417,7 +419,7 @@ return|;
 block|}
 comment|/**          * Defines the authorizables intermediate path prefix that is used when creating new authorizables. This prefix          * is always prepended to the path provided by the {@link org.apache.jackrabbit.oak.spi.security.authentication.external.ExternalIdentity}.          * @return the intermediate path prefix.          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|String
 name|getPathPrefix
@@ -435,13 +437,13 @@ return|;
 block|}
 comment|/**          * Sets the path prefix.          * @param pathPrefix the path prefix.          * @return {@code this}          * @see #getPathPrefix()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|Authorizable
 name|setPathPrefix
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|pathPrefix
 parameter_list|)
@@ -493,7 +495,7 @@ return|;
 block|}
 comment|/**          * Sets the membership expiration time          * @param membershipExpirationTime the time in milliseconds.          * @return {@code this}          * @see #getMembershipExpirationTime()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|User
 name|setMembershipExpirationTime
@@ -524,7 +526,7 @@ return|;
 block|}
 comment|/**          * Sets the group nesting depth.          * @param membershipNestingDepth the depth.          * @return {@code this}          * @see #getMembershipNestingDepth()          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|User
 name|setMembershipNestingDepth
@@ -545,7 +547,7 @@ return|;
 block|}
 comment|/**          * Returns {@code true} if a dynamic group membership is enabled.          *          * Turning this option on may alter the behavior of other configuration          * options dealing with synchronization of group accounts and group membership.          * In particular it's an implementation detail if external groups may          * no longer be synchronized into the repository.          *          * @return {@code true} if dynamic group membership for external          * user identities is turn on; {@code false} otherwise.          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|boolean
 name|getDynamicMembership
@@ -557,7 +559,7 @@ return|;
 block|}
 comment|/**          * Enable or disable the dynamic group membership. If turned external          * identities and their group membership will be synchronized such that the          * membership information is generated dynamically. External groups may          * or may not be synchronized into the repository if this option is turned          * on.          *          * @param dynamicMembership Boolean flag to enable or disable a dedicated          *                      dynamic group management.          * @return {@code this}          * @see #getDynamicMembership() for details.          */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 name|User
 name|setDynamicMembership

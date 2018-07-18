@@ -59,16 +59,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -263,6 +253,18 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code ValidatorProvider} used to assure that the system maintained properties  * associated with external identities are only written by system sessions and  * are consistent.  *  * @since Oak 1.5.3  */
 end_comment
@@ -354,7 +356,7 @@ decl_stmt|;
 name|ExternalIdentityValidatorProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Set
 argument_list|<
 name|Principal
@@ -388,17 +390,17 @@ name|void
 name|checkAddModifyProperties
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|PropertyState
 name|propertyState
 parameter_list|,
@@ -617,12 +619,12 @@ name|void
 name|checkRemoveProperties
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|parent
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -787,7 +789,7 @@ specifier|private
 name|ExternalIdentityValidator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeState
 name|parent
 parameter_list|,

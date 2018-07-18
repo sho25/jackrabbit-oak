@@ -25,21 +25,25 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -54,12 +58,12 @@ name|ExternalIdentityProviderManager
 block|{
 comment|/**      * Returns the registered identity provider with the given name.      * @param name the provider name      * @return the registered provider or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|ExternalIdentityProvider
 name|getProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)

@@ -25,11 +25,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -49,7 +51,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * See {@link #isKeepMissing()}      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SyncContext
 name|setKeepMissing
 parameter_list|(
@@ -64,7 +66,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * See {@link #isForceUserSync()}      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SyncContext
 name|setForceUserSync
 parameter_list|(
@@ -79,7 +81,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * See {@link #isForceGroupSync()}      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SyncContext
 name|setForceGroupSync
 parameter_list|(
@@ -89,12 +91,12 @@ parameter_list|)
 function_decl|;
 comment|/**      * Synchronizes an external identity with the repository based on the respective configuration.      *      * @param identity the identity to sync.      * @return the result of the operation      * @throws SyncException if an error occurs      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SyncResult
 name|sync
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentity
 name|identity
 parameter_list|)
@@ -103,12 +105,12 @@ name|SyncException
 function_decl|;
 comment|/**      * Synchronizes an authorizable with the corresponding external identity with the repository based on the respective      * configuration.      *      * @param id the id of the authorizable      * @return the result of the operation      * @throws SyncException if an error occurs      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|SyncResult
 name|sync
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|id
 parameter_list|)

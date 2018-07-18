@@ -37,26 +37,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -77,6 +57,30 @@ name|LoginException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code ExternalIdentityProvider} defines an interface to an external system that provides users and groups that  * can be synced with local ones.  */
 end_comment
@@ -88,19 +92,19 @@ name|ExternalIdentityProvider
 block|{
 comment|/**      * Returns the name of this provider.      * @return the provider name.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the identity for the given reference or {@code null} if it does not exist. The provider should check if      * the {@link ExternalIdentityRef#getProviderName() provider name} matches his own name or is {@code null} and      * should not return a foreign identity.      *      * @param ref the reference      * @return an identity or {@code null}      *      * @throws ExternalIdentityException if an error occurs.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|ExternalIdentity
 name|getIdentity
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentityRef
 name|ref
 parameter_list|)
@@ -109,12 +113,12 @@ name|ExternalIdentityException
 function_decl|;
 comment|/**      * Returns the user for the given (local) id. if the user does not exist {@code null} is returned.      * @param userId the user id.      * @return the user or {@code null}      *      * @throws ExternalIdentityException if an error occurs.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|ExternalUser
 name|getUser
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|)
@@ -123,12 +127,12 @@ name|ExternalIdentityException
 function_decl|;
 comment|/**      * Authenticates the user represented by the given credentials and returns it. If the user does not exist in this      * provider, {@code null} is returned. If the authentication fails, a LoginException is thrown.      *      * @param credentials the credentials      * @return the user or {@code null}      * @throws ExternalIdentityException if an error occurs      * @throws javax.security.auth.login.LoginException if the user could not be authenticated      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|ExternalUser
 name|authenticate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Credentials
 name|credentials
 parameter_list|)
@@ -139,12 +143,12 @@ name|LoginException
 function_decl|;
 comment|/**      * Returns the group for the given (local) group name. if the group does not exist {@code null} is returned.      * @param name the group name      * @return the group or {@code null}      *      * @throws ExternalIdentityException if an error occurs.      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|ExternalGroup
 name|getGroup
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -153,7 +157,7 @@ name|ExternalIdentityException
 function_decl|;
 comment|/**      * List all external users.      * @return an iterator over all external users      * @throws ExternalIdentityException if an error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|ExternalUser
@@ -165,7 +169,7 @@ name|ExternalIdentityException
 function_decl|;
 comment|/**      * List all external groups.      * @return an iterator over all external groups      * @throws ExternalIdentityException if an error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|Iterator
 argument_list|<
 name|ExternalGroup

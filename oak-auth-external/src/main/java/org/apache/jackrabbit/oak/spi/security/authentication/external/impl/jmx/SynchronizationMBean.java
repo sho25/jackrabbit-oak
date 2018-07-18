@@ -29,11 +29,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -64,27 +66,27 @@ name|SynchronizationMBean
 block|{
 comment|/**      * Returns the name of the {@link org.apache.jackrabbit.oak.spi.security.authentication.external.SyncHandler}      * that this MBean operates on.      *      * @return the name of the sync handler.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getSyncHandlerName
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the name of the {@link org.apache.jackrabbit.oak.spi.security.authentication.external.ExternalIdentityProvider}      * that this MBean operates on.      *      * @return the name of the IDP.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getIDPName
 parameter_list|()
 function_decl|;
 comment|/**      * Synchronizes the local users with the given user ids.      * @param userIds the user ids      * @param purge if {@code true} users that don't exist in the IDP are deleted.      * @return result messages.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|syncUsers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|userIds
@@ -95,7 +97,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Synchronizes all local users with the given user ids. Note that this can be an expensive operation since all      * potential users need to be examined.      *      * @param purge if {@code true} users that don't exist in the IDP are deleted.      * @return result messages.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|syncAllUsers
@@ -106,13 +108,13 @@ parameter_list|)
 function_decl|;
 comment|/**      * Synchronizes the external users with the given external ids.      * @param externalIds the external id      * @return result messages.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|syncExternalUsers
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|externalIds
@@ -120,7 +122,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Synchronizes all the external users, i.e. basically imports the entire IDP. Note that this can be an expensive      * operation.      *      * @return result messages.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|syncAllExternalUsers
@@ -128,7 +130,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns a list of orphaned users, i.e. users that don't exist anymore on the IDP. Note that this can be an      * expensive operation since all potential users need to be examined.      * @return a list of the user ids of orphaned users.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|listOrphanedUsers
@@ -136,7 +138,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Purges all orphaned users. this is similar to invoke {@link #syncUsers(String[], boolean)} with the list of      * orphaned users. Note tha this can be an expensive operation since all potential users need to be examined.      *      * @return result messages.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 index|[]
 name|purgeOrphanedUsers

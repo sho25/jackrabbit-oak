@@ -25,21 +25,25 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -54,12 +58,12 @@ name|SyncManager
 block|{
 comment|/**      * Returns the sync handler with the given name.      * @param name the name of the sync handler or {@code null}      * @return the sync handler      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|SyncHandler
 name|getSyncHandler
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)

@@ -25,11 +25,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -44,12 +46,12 @@ name|PrincipalNameResolver
 block|{
 comment|/**      * Deduce the name of the {@link java.security.Principal} associated with the      * {@link ExternalIdentity} represented by the given {@link ExternalIdentityRef}.      *      * @param externalIdentityRef A valid {@link ExternalIdentityRef} to an existing {@link ExternalIdentity}      * @return The name of the {@link java.security.Principal} associated with the external identity referenced by the given {@code externalIdentityRef}.      * @throws ExternalIdentityException If the reference is not valid or another error occurs.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|fromExternalIdentityRef
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentityRef
 name|externalIdentityRef
 parameter_list|)

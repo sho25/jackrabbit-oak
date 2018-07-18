@@ -25,21 +25,25 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -54,14 +58,14 @@ name|SyncedIdentity
 block|{
 comment|/**      * Returns the internal id or name of the corresponding authorizable.      * @return the id.      */
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|getId
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the external reference of this identity.      * @return the reference or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|ExternalIdentityRef
 name|getExternalIdRef
 parameter_list|()

@@ -77,16 +77,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -128,6 +118,18 @@ operator|.
 name|collect
 operator|.
 name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -235,7 +237,7 @@ specifier|public
 name|TestIdentityProvider
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|idpName
 parameter_list|)
@@ -566,7 +568,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -585,7 +587,7 @@ name|ExternalIdentity
 name|getIdentity
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentityRef
 name|ref
 parameter_list|)
@@ -662,7 +664,7 @@ name|ExternalUser
 name|getUser
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|)
@@ -706,7 +708,7 @@ name|ExternalUser
 name|authenticate
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|Credentials
 name|credentials
 parameter_list|)
@@ -799,7 +801,7 @@ name|ExternalGroup
 name|getGroup
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -837,7 +839,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -861,7 +863,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -958,7 +960,7 @@ specifier|public
 name|TestIdentity
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|)
@@ -977,17 +979,17 @@ specifier|public
 name|TestIdentity
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|principalName
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|idpName
 parameter_list|)
@@ -1019,7 +1021,7 @@ specifier|public
 name|TestIdentity
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ExternalIdentity
 name|base
 parameter_list|)
@@ -1047,7 +1049,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1060,7 +1062,7 @@ name|userId
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1073,7 +1075,7 @@ name|principalName
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1097,7 +1099,7 @@ literal|null
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1113,7 +1115,7 @@ name|groups
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1209,7 +1211,7 @@ name|String
 name|userId
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|idpName
 parameter_list|)
@@ -1247,12 +1249,12 @@ specifier|public
 name|TestGroup
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|userId
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|idpName
 parameter_list|)
@@ -1268,7 +1270,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1340,7 +1342,7 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
