@@ -25,26 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -149,6 +129,30 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_class
 class|class
 name|LazyChildrenNodeState
@@ -208,7 +212,7 @@ name|boolean
 name|hasProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -223,7 +227,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -231,7 +235,7 @@ name|PropertyState
 name|getProperty
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -252,7 +256,7 @@ name|boolean
 name|getBoolean
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -286,7 +290,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -307,7 +311,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -318,7 +322,7 @@ argument_list|>
 name|getStrings
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -333,7 +337,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -341,7 +345,7 @@ name|String
 name|getName
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -356,7 +360,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -367,7 +371,7 @@ argument_list|>
 name|getNames
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -396,7 +400,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -417,7 +421,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -466,7 +470,7 @@ name|boolean
 name|hasChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -481,7 +485,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -489,7 +493,7 @@ name|NodeState
 name|getChildNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -542,7 +546,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 annotation|@
 name|Override
 specifier|public

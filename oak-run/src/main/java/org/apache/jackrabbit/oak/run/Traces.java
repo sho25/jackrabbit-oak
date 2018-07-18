@@ -171,16 +171,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -353,6 +343,18 @@ name|Trace
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility class for running the various {@link Trace} implementations.  */
 end_comment
@@ -366,7 +368,7 @@ comment|/**      * Utility for running a {@link DepthFirstTrace depth first trac
 name|DEPTH
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|String
 name|path
@@ -385,7 +387,7 @@ name|void
 name|setPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -438,7 +440,7 @@ name|void
 name|collectIOTrace
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|segmentStore
 parameter_list|,
@@ -449,7 +451,7 @@ name|int
 name|segmentCacheSize
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|output
 parameter_list|)
@@ -550,7 +552,7 @@ comment|/**      * Utility for running a {@link BreadthFirstTrace breadth first 
 name|BREADTH
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|String
 name|path
@@ -569,7 +571,7 @@ name|void
 name|setPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -622,7 +624,7 @@ name|void
 name|collectIOTrace
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|segmentStore
 parameter_list|,
@@ -633,7 +635,7 @@ name|int
 name|segmentCacheSize
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|output
 parameter_list|)
@@ -734,7 +736,7 @@ comment|/**      * Utility for running a {@link RandomAccessTrace random access 
 name|RANDOM
 block|{
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 name|List
 argument_list|<
@@ -763,7 +765,7 @@ name|void
 name|setPaths
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|paths
 parameter_list|)
@@ -845,7 +847,7 @@ name|void
 name|collectIOTrace
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|segmentStore
 parameter_list|,
@@ -856,7 +858,7 @@ name|int
 name|segmentCacheSize
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|output
 parameter_list|)
@@ -957,7 +959,7 @@ block|}
 block|;
 comment|/**      * Default path to the node from where to start tracing.      */
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|static
 specifier|final
 name|String
@@ -994,7 +996,7 @@ name|void
 name|setPath
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -1012,7 +1014,7 @@ name|void
 name|setPaths
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|paths
 parameter_list|)
@@ -1047,7 +1049,7 @@ name|void
 name|collectIOTrace
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|segmentStore
 parameter_list|,
@@ -1058,7 +1060,7 @@ name|int
 name|segmentCacheSize
 parameter_list|,
 annotation|@
-name|Nonnull
+name|NotNull
 name|File
 name|output
 parameter_list|)
@@ -1068,7 +1070,7 @@ throws|,
 name|InvalidFileStoreVersionException
 function_decl|;
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|private
 specifier|static
 name|FileStore

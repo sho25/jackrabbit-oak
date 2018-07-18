@@ -59,11 +59,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -173,7 +175,7 @@ name|void
 name|add
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeStateEntry
 name|item
 parameter_list|)
@@ -412,7 +414,7 @@ block|}
 name|ListNode
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|NodeStateEntry
 name|data
 parameter_list|)
@@ -456,7 +458,7 @@ name|NodeIterator
 name|iteratorFor
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ListNode
 name|node
 parameter_list|)
@@ -479,7 +481,7 @@ block|}
 name|NodeIterator
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|ListNode
 name|start
 parameter_list|)

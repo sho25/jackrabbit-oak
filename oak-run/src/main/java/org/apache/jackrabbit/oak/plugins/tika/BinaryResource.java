@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -66,6 +46,18 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -177,7 +169,7 @@ name|byteSource
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getMimeType
@@ -188,7 +180,7 @@ name|mimeType
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 name|String
 name|getEncoding
