@@ -31,11 +31,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
@@ -53,7 +55,7 @@ name|NodeDocumentHelper
 parameter_list|()
 block|{     }
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|SortedMap
@@ -81,7 +83,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|SortedMap
@@ -104,7 +106,7 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|Nonnull
+name|NotNull
 specifier|public
 specifier|static
 name|String

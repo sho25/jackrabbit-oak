@@ -89,16 +89,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -312,6 +302,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -433,7 +435,7 @@ expr_stmt|;
 block|}
 comment|/**      * Creates an instance of the BlobStoreFixture based on configuration      * determined from system properties      *      * @param basedir directory to be used in case of file based BlobStore      * @param fallbackToFDS if true then FileDataStore would be used in absence of      *                      any explicitly defined BlobStore      */
 annotation|@
-name|CheckForNull
+name|Nullable
 specifier|public
 specifier|static
 name|BlobStoreFixture
