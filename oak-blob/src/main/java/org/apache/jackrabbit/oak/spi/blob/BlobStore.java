@@ -41,21 +41,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|CheckForNull
+name|annotations
+operator|.
+name|NotNull
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|jetbrains
 operator|.
-name|Nonnull
+name|annotations
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -136,24 +140,24 @@ name|IOException
 function_decl|;
 comment|/**      * Returns the blobId that referred by the given binary reference.      * Returns {@code null} if the reference is invalid, for example if it      * points to a blob that does not exist.      *      * @param reference binary reference      * @return matching blobId, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getBlobId
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|reference
 parameter_list|)
 function_decl|;
 comment|/**      * Returns a secure reference to blob referred by blobid, or {@code null} if no such      * reference is available.      *      * @param blobId blobId referring the blob for which reference is required      * @return binary reference, or {@code null}      */
 annotation|@
-name|CheckForNull
+name|Nullable
 name|String
 name|getReference
 parameter_list|(
 annotation|@
-name|Nonnull
+name|NotNull
 name|String
 name|blobId
 parameter_list|)
