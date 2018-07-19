@@ -360,10 +360,6 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|String
-name|mongoUri
-decl_stmt|;
-specifier|private
 name|boolean
 name|socketKeepAlive
 init|=
@@ -411,12 +407,6 @@ name|int
 name|blobCacheSizeMB
 parameter_list|)
 block|{
-name|this
-operator|.
-name|mongoUri
-operator|=
-name|uri
-expr_stmt|;
 name|CompositeServerMonitorListener
 name|serverMonitorListener
 init|=
@@ -915,15 +905,6 @@ name|createMissingLastRevSeeker
 argument_list|()
 return|;
 block|}
-block|}
-comment|/**      * Returns the Mongo URI used in the {@link #setMongoDB(String, String, int)} method.      *      * @return the Mongo URI or null if the {@link #setMongoDB(String, String, int)} method hasn't      * been called.      */
-name|String
-name|getMongoUri
-parameter_list|()
-block|{
-return|return
-name|mongoUri
-return|;
 block|}
 comment|/**      * Returns the status of the Mongo server configured in the {@link #setMongoDB(String, String, int)} method.      *      * @return the status or null if the {@link #setMongoDB(String, String, int)} method hasn't      * been called.      */
 name|MongoStatus

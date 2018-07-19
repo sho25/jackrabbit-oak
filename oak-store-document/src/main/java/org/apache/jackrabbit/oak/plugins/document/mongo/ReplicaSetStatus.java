@@ -18,8 +18,6 @@ operator|.
 name|document
 operator|.
 name|mongo
-operator|.
-name|replica
 package|;
 end_package
 
