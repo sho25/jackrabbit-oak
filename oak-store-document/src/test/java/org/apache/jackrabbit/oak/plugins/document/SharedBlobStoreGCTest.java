@@ -133,16 +133,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -182,20 +172,6 @@ operator|.
 name|concurrent
 operator|.
 name|MoreExecutors
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|io
-operator|.
-name|FileUtils
 import|;
 end_import
 
@@ -598,6 +574,30 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -1011,12 +1011,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|true
-argument_list|,
 name|Sets
 operator|.
 name|symmetricDifference
@@ -1116,12 +1112,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|true
-argument_list|,
 name|Sets
 operator|.
 name|symmetricDifference
@@ -1314,8 +1306,6 @@ name|getRepositoryId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|stat
@@ -1344,8 +1334,6 @@ name|repoId
 argument_list|)
 condition|)
 block|{
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|stat
@@ -1356,8 +1344,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|Sets
@@ -1373,8 +1359,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|Sets
@@ -1448,8 +1432,6 @@ argument_list|,
 name|existing
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 operator|(
@@ -1476,8 +1458,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|existing
@@ -1491,8 +1471,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|existing
@@ -1561,8 +1539,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|Sets
@@ -2079,8 +2055,6 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|deletes

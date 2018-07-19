@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -86,6 +76,30 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -210,8 +224,6 @@ operator|.
 name|length
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|blob
@@ -221,8 +233,6 @@ argument_list|,
 name|totalBytes
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|Arrays
@@ -277,8 +287,6 @@ operator|/
 literal|2
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|blob
@@ -307,8 +315,6 @@ name|i
 operator|++
 control|)
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|blob
@@ -369,8 +375,6 @@ operator|/
 literal|2
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|blob
@@ -399,8 +403,6 @@ name|i
 operator|++
 control|)
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|blob
