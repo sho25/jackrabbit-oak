@@ -3066,7 +3066,9 @@ block|{
 name|hitMeter
 operator|.
 name|mark
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 expr_stmt|;
 block|}
 name|void
@@ -3076,7 +3078,9 @@ block|{
 name|requestMeter
 operator|.
 name|mark
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 expr_stmt|;
 block|}
 name|void
@@ -3086,7 +3090,9 @@ block|{
 name|loadSuccessMeter
 operator|.
 name|mark
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 expr_stmt|;
 block|}
 name|void
@@ -3096,7 +3102,9 @@ block|{
 name|loadMeter
 operator|.
 name|mark
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 expr_stmt|;
 block|}
 name|TimerStats
@@ -3121,7 +3129,9 @@ block|{
 name|countMeter
 operator|.
 name|inc
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 expr_stmt|;
 block|}
 name|void
@@ -3161,7 +3171,9 @@ block|{
 name|countMeter
 operator|.
 name|dec
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 expr_stmt|;
 block|}
 name|void
