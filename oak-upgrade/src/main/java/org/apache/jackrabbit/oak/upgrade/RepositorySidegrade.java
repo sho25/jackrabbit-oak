@@ -229,24 +229,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
-operator|.
-name|nodestate
-operator|.
-name|NameFilteringNodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|migration
@@ -579,7 +561,7 @@ name|cli
 operator|.
 name|node
 operator|.
-name|SegmentTarFactory
+name|FileStoreUtils
 import|;
 end_import
 
@@ -598,6 +580,24 @@ operator|.
 name|nodestate
 operator|.
 name|MetadataExposingNodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|upgrade
+operator|.
+name|nodestate
+operator|.
+name|NameFilteringNodeState
 import|;
 end_import
 
@@ -1201,7 +1201,7 @@ if|if
 condition|(
 name|target
 operator|instanceof
-name|SegmentTarFactory
+name|FileStoreUtils
 operator|.
 name|NodeStoreWithFileStore
 condition|)
@@ -1210,7 +1210,7 @@ name|fs
 operator|=
 operator|(
 operator|(
-name|SegmentTarFactory
+name|FileStoreUtils
 operator|.
 name|NodeStoreWithFileStore
 operator|)

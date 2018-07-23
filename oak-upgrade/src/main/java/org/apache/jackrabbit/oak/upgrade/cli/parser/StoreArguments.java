@@ -290,6 +290,14 @@ name|SEGMENT_OLD_PREFIX
 init|=
 literal|"segment-old:"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SEGMENT_AZURE_PREFIX
+init|=
+literal|"az:"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final

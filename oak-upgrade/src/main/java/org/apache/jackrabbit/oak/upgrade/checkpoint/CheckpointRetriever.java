@@ -199,7 +199,7 @@ name|cli
 operator|.
 name|node
 operator|.
-name|SegmentTarFactory
+name|FileStoreUtils
 import|;
 end_import
 
@@ -507,7 +507,7 @@ if|if
 condition|(
 name|nodeStore
 operator|instanceof
-name|SegmentTarFactory
+name|FileStoreUtils
 operator|.
 name|NodeStoreWithFileStore
 condition|)
@@ -522,7 +522,7 @@ name|getCheckpointsRoot
 argument_list|(
 operator|(
 operator|(
-name|SegmentTarFactory
+name|FileStoreUtils
 operator|.
 name|NodeStoreWithFileStore
 operator|)
