@@ -508,7 +508,7 @@ return|return
 name|config
 return|;
 block|}
-comment|/**      * Parses a standard Azure URI in the format      *<b>https</b>://<b>myaccount</b>.blob.core.windows.net/<b>container</b>/<b>repo</b>,      *      * @param uriStr      *            the Azure URI as string      * @return parsed configuration map containing<b>accountName</b>,<b>storageUri</b> and<b>dir</b>      * (key names in bold)      * @throws URISyntaxException if an invalid Azure URI is used      */
+comment|/**      * Parses a standard Azure URI in the format      *<b>https</b>://<b>myaccount</b>.blob.core.windows.net/<b>container</b>/<b>repo</b>,      *      * @param uriStr      *            the Azure URI as string      * @return parsed configuration map containing<b>accountName</b>,<b>storageUri</b> and<b>dir</b>      * (key names in bold)      */
 specifier|public
 specifier|static
 name|Map
