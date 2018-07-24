@@ -733,7 +733,12 @@ name|setMongoDB
 argument_list|(
 name|mongo
 operator|.
-name|getDB
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|mongo
+operator|.
+name|getDBName
 argument_list|()
 argument_list|)
 expr_stmt|;

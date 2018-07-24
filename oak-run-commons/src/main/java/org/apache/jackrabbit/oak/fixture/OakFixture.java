@@ -2657,8 +2657,6 @@ parameter_list|(
 name|int
 name|clusterId
 parameter_list|)
-throws|throws
-name|UnknownHostException
 block|{
 name|MongoConnection
 name|mongo
@@ -2711,7 +2709,12 @@ name|setMongoDB
 argument_list|(
 name|mongo
 operator|.
-name|getDB
+name|getMongoClient
+argument_list|()
+argument_list|,
+name|mongo
+operator|.
+name|getDBName
 argument_list|()
 argument_list|)
 operator|.
@@ -2951,10 +2954,10 @@ argument_list|)
 decl_stmt|;
 name|mongo
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 operator|.
-name|dropDatabase
+name|drop
 argument_list|()
 expr_stmt|;
 name|mongo
