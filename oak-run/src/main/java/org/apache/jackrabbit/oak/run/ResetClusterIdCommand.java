@@ -626,14 +626,11 @@ operator|.
 name|setMongoDB
 argument_list|(
 name|client
-operator|.
-name|getDB
-argument_list|(
+argument_list|,
 name|uri
 operator|.
 name|getDatabase
 argument_list|()
-argument_list|)
 argument_list|)
 operator|.
 name|build

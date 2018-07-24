@@ -1183,7 +1183,7 @@ block|{
 return|return
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 operator|.
 name|getCollection
