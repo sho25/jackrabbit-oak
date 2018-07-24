@@ -1200,7 +1200,7 @@ name|MongoFixture
 extends|extends
 name|DocumentStoreFixture
 block|{
-specifier|private
+specifier|protected
 name|List
 argument_list|<
 name|MongoConnection

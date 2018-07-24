@@ -377,6 +377,35 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Constructs a new {@code MongoConnection}.      *      * @param uri the connection URI.      * @param client the already connected client.      */
+specifier|public
+name|MongoConnection
+parameter_list|(
+name|String
+name|uri
+parameter_list|,
+name|MongoClient
+name|client
+parameter_list|)
+block|{
+name|mongoURI
+operator|=
+operator|new
+name|MongoClientURI
+argument_list|(
+name|uri
+argument_list|,
+name|MongoConnection
+operator|.
+name|getDefaultBuilder
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|mongo
+operator|=
+name|client
+expr_stmt|;
+block|}
 comment|/**      * @return the {@link MongoClient} for this connection.      */
 specifier|public
 name|MongoClient
