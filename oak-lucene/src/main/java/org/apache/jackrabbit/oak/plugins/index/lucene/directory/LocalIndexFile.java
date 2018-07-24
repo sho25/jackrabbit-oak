@@ -535,6 +535,7 @@ else|:
 literal|0
 return|;
 block|}
+specifier|public
 specifier|static
 name|File
 name|getFSDir
