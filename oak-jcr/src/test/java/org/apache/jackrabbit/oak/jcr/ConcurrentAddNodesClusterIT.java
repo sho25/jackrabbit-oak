@@ -2440,10 +2440,10 @@ try|try
 block|{
 name|con
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 operator|.
-name|dropDatabase
+name|drop
 argument_list|()
 expr_stmt|;
 block|}
