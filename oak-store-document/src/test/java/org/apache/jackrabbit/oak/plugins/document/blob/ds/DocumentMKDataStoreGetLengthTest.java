@@ -163,6 +163,18 @@ name|BeforeClass
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests for {@code DocumentMK#getLength(String)} using {@link DataStore}  */
 end_comment
@@ -181,8 +193,6 @@ specifier|static
 name|void
 name|setUpBeforeClass
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 try|try
 block|{
@@ -229,6 +239,11 @@ name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|mongoConnection
+argument_list|)
 expr_stmt|;
 name|MongoUtils
 operator|.
@@ -312,7 +327,7 @@ operator|.
 name|getConnection
 argument_list|()
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;

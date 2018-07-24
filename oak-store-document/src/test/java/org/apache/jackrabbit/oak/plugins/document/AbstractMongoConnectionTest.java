@@ -186,7 +186,7 @@ name|dropCollections
 argument_list|(
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;

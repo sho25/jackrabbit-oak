@@ -368,8 +368,6 @@ specifier|public
 name|void
 name|before
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|c
 operator|=
@@ -389,7 +387,7 @@ name|dbName
 operator|=
 name|c
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 operator|.
 name|getName
@@ -401,7 +399,7 @@ name|dropCollections
 argument_list|(
 name|c
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -450,8 +448,6 @@ specifier|public
 name|void
 name|after
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 if|if
 condition|(

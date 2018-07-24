@@ -262,7 +262,7 @@ name|dropCollections
 argument_list|(
 name|c
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -397,10 +397,10 @@ try|try
 block|{
 name|c
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 operator|.
-name|dropDatabase
+name|drop
 argument_list|()
 expr_stmt|;
 block|}
@@ -488,10 +488,10 @@ argument_list|)
 expr_stmt|;
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 operator|.
-name|command
+name|runCommand
 argument_list|(
 operator|new
 name|BasicDBObject

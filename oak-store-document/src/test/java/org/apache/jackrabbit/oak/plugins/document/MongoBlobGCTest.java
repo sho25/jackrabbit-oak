@@ -295,7 +295,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|DBCollection
+name|ReadPreference
 import|;
 end_import
 
@@ -305,7 +305,9 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|ReadPreference
+name|client
+operator|.
+name|MongoCollection
 import|;
 end_import
 
@@ -1612,17 +1614,24 @@ name|String
 name|nodeId
 parameter_list|)
 block|{
-name|DBCollection
+name|MongoCollection
+argument_list|<
+name|BasicDBObject
+argument_list|>
 name|coll
 init|=
 name|mongoConnection
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 operator|.
 name|getCollection
 argument_list|(
 literal|"nodes"
+argument_list|,
+name|BasicDBObject
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 name|BasicDBObject
@@ -1645,7 +1654,7 @@ argument_list|)
 expr_stmt|;
 name|coll
 operator|.
-name|remove
+name|deleteOne
 argument_list|(
 name|blobNodeObj
 argument_list|)

@@ -163,6 +163,22 @@ name|BeforeClass
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests for {@code DocumentMK#read(String, long, byte[], int, int)} using  * {@link DataStore}  */
 end_comment
@@ -181,8 +197,6 @@ specifier|static
 name|void
 name|setUpBeforeClass
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 try|try
 block|{
@@ -229,6 +243,11 @@ name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|mongoConnection
+argument_list|)
 expr_stmt|;
 name|MongoUtils
 operator|.
@@ -312,7 +331,7 @@ operator|.
 name|getConnection
 argument_list|()
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;

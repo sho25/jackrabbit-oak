@@ -139,6 +139,18 @@ name|BeforeClass
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests for {@code DocumentMK#write(java.io.InputStream)} with  * {@link CloudBlobStore}  */
 end_comment
@@ -157,8 +169,6 @@ specifier|static
 name|void
 name|setUpBeforeClass
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 try|try
 block|{
@@ -205,6 +215,11 @@ name|connectionFactory
 operator|.
 name|getConnection
 argument_list|()
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|mongoConnection
+argument_list|)
 expr_stmt|;
 name|MongoUtils
 operator|.
@@ -257,8 +272,6 @@ specifier|public
 name|void
 name|tearDownConnection
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 operator|(
 operator|(
@@ -290,7 +303,7 @@ operator|.
 name|getConnection
 argument_list|()
 operator|.
-name|getDB
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
