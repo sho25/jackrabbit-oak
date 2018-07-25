@@ -95,6 +95,26 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|azure
+operator|.
+name|tool
+operator|.
+name|AzureCompact
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|tool
 operator|.
 name|Compact
@@ -154,7 +174,7 @@ name|parser
 operator|.
 name|nonOptions
 argument_list|(
-literal|"Path to segment store (required)"
+literal|"Path/URI to TAR/remote segment store (required)"
 argument_list|)
 operator|.
 name|ofType
@@ -180,11 +200,11 @@ literal|"Use memory mapped access if true, use file access if false. "
 operator|+
 literal|"If not specified, memory mapped access is used on 64 bit "
 operator|+
-literal|"systems and file access is used on 32 bit systems. On "
+literal|"systems and file access is used on 32 bit systems. For "
 operator|+
-literal|"Windows, regular file access is always enforced and this "
+literal|"remote segment stores and on Windows, regular file access "
 operator|+
-literal|"option is ignored."
+literal|"is always enforced and this option is ignored."
 argument_list|)
 operator|.
 name|withOptionalArg
@@ -283,6 +303,83 @@ block|}
 name|int
 name|code
 init|=
+literal|0
+decl_stmt|;
+if|if
+condition|(
+name|path
+operator|.
+name|startsWith
+argument_list|(
+literal|"az:"
+argument_list|)
+condition|)
+block|{
+name|code
+operator|=
+name|AzureCompact
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|withPath
+argument_list|(
+name|path
+operator|.
+name|substring
+argument_list|(
+literal|3
+argument_list|)
+argument_list|)
+operator|.
+name|withForce
+argument_list|(
+name|isTrue
+argument_list|(
+name|forceArg
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
+argument_list|)
+operator|.
+name|withSegmentCacheSize
+argument_list|(
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"cache"
+argument_list|,
+literal|256
+argument_list|)
+argument_list|)
+operator|.
+name|withGCLogInterval
+argument_list|(
+name|Long
+operator|.
+name|getLong
+argument_list|(
+literal|"compaction-progress-log"
+argument_list|,
+literal|150000
+argument_list|)
+argument_list|)
+operator|.
+name|build
+argument_list|()
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|code
+operator|=
 name|Compact
 operator|.
 name|builder
@@ -359,7 +456,8 @@ argument_list|()
 operator|.
 name|run
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 name|System
 operator|.
 name|exit

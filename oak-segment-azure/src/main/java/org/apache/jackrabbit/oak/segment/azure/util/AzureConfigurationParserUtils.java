@@ -13,11 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|segment
 operator|.
-name|cli
+name|azure
 operator|.
-name|parser
+name|util
 package|;
 end_package
 
@@ -31,13 +31,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|segment
 operator|.
-name|cli
+name|azure
 operator|.
-name|parser
+name|util
 operator|.
-name|AzureParserUtils
+name|AzureConfigurationParserUtils
 operator|.
 name|AzureConnectionKey
 operator|.
@@ -92,7 +92,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|AzureParserUtils
+name|AzureConfigurationParserUtils
 block|{
 specifier|public
 enum|enum
@@ -196,7 +196,7 @@ init|=
 literal|"directory"
 decl_stmt|;
 specifier|private
-name|AzureParserUtils
+name|AzureConfigurationParserUtils
 parameter_list|()
 block|{
 comment|// prevent instantiation
