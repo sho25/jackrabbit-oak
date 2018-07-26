@@ -738,6 +738,29 @@ name|Property
 argument_list|(
 name|label
 operator|=
+literal|"Enable node store checks"
+argument_list|,
+name|description
+operator|=
+literal|"Whether the composite node store constraints should be checked before start"
+argument_list|,
+name|boolValue
+operator|=
+literal|true
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ENABLE_CHECKS
+init|=
+literal|"enableChecks"
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
 literal|"Read-only mounts"
 argument_list|,
 name|description
@@ -841,6 +864,10 @@ specifier|private
 name|boolean
 name|pathStats
 decl_stmt|;
+specifier|private
+name|boolean
+name|enableChecks
+decl_stmt|;
 annotation|@
 name|Activate
 specifier|protected
@@ -935,6 +962,22 @@ name|PATH_STATS
 argument_list|)
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+name|enableChecks
+operator|=
+name|PropertiesUtil
+operator|.
+name|toBoolean
+argument_list|(
+name|config
+operator|.
+name|get
+argument_list|(
+name|ENABLE_CHECKS
+argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|registerCompositeNodeStore
@@ -1133,6 +1176,11 @@ name|getNodeStoreProvider
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|enableChecks
+condition|)
+block|{
 name|builder
 operator|.
 name|with
@@ -1140,6 +1188,7 @@ argument_list|(
 name|checks
 argument_list|)
 expr_stmt|;
+block|}
 name|builder
 operator|.
 name|setPartialReadOnly
