@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|index
+name|run
+operator|.
+name|commons
 package|;
 end_package
 
@@ -186,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configures the logging based on logback-indexing.xml. This file  * would be copied to work directory and then logging would be  * configured based on that  *  * The log file is configured for auto scan so any change made while  * oak-run is in progress would be picked up  */
+comment|/**  * Configures the logging based on logback-{logIdentifier}.xml specified. This file  * would be copied to work directory and then logging would be  * configured based on that  *  * The log file is configured for auto scan so any change made while  * oak-run is in progress would be picked up  */
 end_comment
 
 begin_class
@@ -198,9 +200,9 @@ specifier|private
 specifier|static
 specifier|final
 name|String
-name|LOGBACK_INDEX_XML
+name|LOGBACK_XML_PREFIX
 init|=
-literal|"logback-indexing.xml"
+literal|"logback-"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -220,11 +222,24 @@ specifier|final
 name|File
 name|workDir
 decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|config
+decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|logIdentifier
+decl_stmt|;
 specifier|public
 name|LoggingInitializer
 parameter_list|(
 name|File
 name|workDir
+parameter_list|,
+name|String
+name|logIdentifier
 parameter_list|)
 block|{
 name|this
@@ -232,6 +247,22 @@ operator|.
 name|workDir
 operator|=
 name|workDir
+expr_stmt|;
+name|this
+operator|.
+name|logIdentifier
+operator|=
+name|logIdentifier
+expr_stmt|;
+name|this
+operator|.
+name|config
+operator|=
+name|LOGBACK_XML_PREFIX
+operator|+
+name|logIdentifier
+operator|+
+literal|".xml"
 expr_stmt|;
 block|}
 specifier|public
@@ -299,7 +330,9 @@ name|File
 argument_list|(
 name|workDir
 argument_list|,
-literal|"indexing.log"
+name|logIdentifier
+operator|+
+literal|".log"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -427,7 +460,7 @@ name|getResource
 argument_list|(
 literal|"/"
 operator|+
-name|LOGBACK_INDEX_XML
+name|config
 argument_list|)
 decl_stmt|;
 name|File
@@ -438,7 +471,7 @@ name|File
 argument_list|(
 name|workDir
 argument_list|,
-name|LOGBACK_INDEX_XML
+name|config
 argument_list|)
 decl_stmt|;
 try|try
