@@ -137,6 +137,14 @@ argument_list|>
 name|fakeDsPathOption
 decl_stmt|;
 specifier|private
+specifier|final
+name|OptionSpec
+argument_list|<
+name|Void
+argument_list|>
+name|readWriteOption
+decl_stmt|;
+specifier|private
 name|OptionSet
 name|options
 decl_stmt|;
@@ -271,6 +279,19 @@ argument_list|(
 name|String
 operator|.
 name|class
+argument_list|)
+expr_stmt|;
+name|readWriteOption
+operator|=
+name|parser
+operator|.
+name|accepts
+argument_list|(
+literal|"ds-read-write"
+argument_list|,
+literal|"Connect to datastore in read-write mode. Use this option if only the datastore has to be opened "
+operator|+
+literal|" in read-write mode and not the node store (i.e. --read-write not to be specified)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -498,6 +519,20 @@ return|return
 name|Type
 operator|.
 name|NONE
+return|;
+block|}
+specifier|public
+name|boolean
+name|isReadWrite
+parameter_list|()
+block|{
+return|return
+name|options
+operator|.
+name|has
+argument_list|(
+name|readWriteOption
+argument_list|)
 return|;
 block|}
 block|}

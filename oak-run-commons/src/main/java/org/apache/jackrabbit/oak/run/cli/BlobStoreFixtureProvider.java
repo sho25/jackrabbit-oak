@@ -769,6 +769,7 @@ name|blobStore
 argument_list|,
 name|closer
 argument_list|,
+operator|(
 operator|!
 name|options
 operator|.
@@ -777,6 +778,13 @@ argument_list|()
 operator|.
 name|isReadWrite
 argument_list|()
+operator|&&
+operator|!
+name|bsopts
+operator|.
+name|isReadWrite
+argument_list|()
+operator|)
 argument_list|)
 return|;
 block|}
