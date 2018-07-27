@@ -27,6 +27,22 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Lists
@@ -1030,6 +1046,10 @@ specifier|final
 name|OperationStatsCollector
 name|statsCollector
 decl_stmt|;
+specifier|private
+name|boolean
+name|traceOutput
+decl_stmt|;
 comment|/**      * Creates an instance of MarkSweepGarbageCollector      *      * @param marker BlobReferenceRetriever instanced used to fetch refereed blob entries      * @param blobStore the blob store instance      * @param executor executor      * @param root the root absolute path of directory under which temporary      *             files would be created      * @param batchCount batch sized used for saving intermediate state      * @param maxLastModifiedInterval lastModifiedTime in millis. Only files with time      *                                less than this time would be considered for GC      * @param repositoryId unique repository id for this node      * @param whiteboard whiteboard instance      * @param statisticsProvider statistics provider instance      * @throws IOException      */
 specifier|public
 name|MarkSweepGarbageCollector
@@ -1081,6 +1101,13 @@ operator|.
 name|blobStore
 operator|=
 name|blobStore
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|blobStore
+argument_list|,
+literal|"BlobStore cannot be null"
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -2014,6 +2041,9 @@ name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
+operator|&&
+operator|!
+name|traceOutput
 condition|)
 block|{
 name|Closeables
@@ -3363,6 +3393,10 @@ block|{
 if|if
 condition|(
 operator|!
+name|traceOutput
+operator|&&
+operator|(
+operator|!
 name|LOG
 operator|.
 name|isTraceEnabled
@@ -3371,6 +3405,7 @@ operator|&&
 name|candidates
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|Closeables
@@ -3387,6 +3422,19 @@ block|}
 return|return
 name|candidates
 return|;
+block|}
+specifier|public
+name|void
+name|setTraceOutput
+parameter_list|(
+name|boolean
+name|trace
+parameter_list|)
+block|{
+name|traceOutput
+operator|=
+name|trace
+expr_stmt|;
 block|}
 comment|/**      * BlobIdRetriever class to retrieve all blob ids.      */
 specifier|private
