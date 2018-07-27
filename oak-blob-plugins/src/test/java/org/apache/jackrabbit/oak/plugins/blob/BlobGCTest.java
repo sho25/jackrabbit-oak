@@ -2886,6 +2886,7 @@ argument_list|()
 decl_stmt|;
 block|}
 comment|/**      * MemoryNodeStore extension which created blobs in the in-memory blob store      */
+specifier|public
 specifier|static
 class|class
 name|MemoryBlobStoreNodeStore

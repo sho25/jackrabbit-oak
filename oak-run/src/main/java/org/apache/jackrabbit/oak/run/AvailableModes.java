@@ -398,6 +398,17 @@ name|ServerCommand
 argument_list|()
 argument_list|)
 operator|.
+name|put
+argument_list|(
+name|DataStoreCommand
+operator|.
+name|NAME
+argument_list|,
+operator|new
+name|DataStoreCommand
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|()
 argument_list|)
