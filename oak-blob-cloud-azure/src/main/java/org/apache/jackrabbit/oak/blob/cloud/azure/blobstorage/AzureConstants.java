@@ -119,6 +119,33 @@ name|PROXY_PORT
 init|=
 literal|"proxyPort"
 decl_stmt|;
+comment|/**      * TTL for presigned HTTP upload URIs - default is 0 (disabled)      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRESIGNED_HTTP_UPLOAD_URI_EXPIRY_SECONDS
+init|=
+literal|"presignedHttpUploadURIExpirySeconds"
+decl_stmt|;
+comment|/**      * TTL for presigned HTTP download URIs - default is 0 (disabled)      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRESIGNED_HTTP_DOWNLOAD_URI_EXPIRY_SECONDS
+init|=
+literal|"presignedHttpDownloadURIExpirySeconds"
+decl_stmt|;
+comment|/**      * Maximum size of presigned HTTP download URI cache - default is 0 (no cache)      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRESIGNED_HTTP_DOWNLOAD_URI_CACHE_MAX_SIZE
+init|=
+literal|"presignedHttpDownloadURICacheMaxSize"
+decl_stmt|;
 specifier|private
 name|AzureConstants
 parameter_list|()
