@@ -47,6 +47,15 @@ name|AZURE_STORAGE_ACCOUNT_KEY
 init|=
 literal|"secretKey"
 decl_stmt|;
+comment|/**      * Azure connection string (overrides {@link #AZURE_SAS} and {@link #AZURE_BLOB_ENDPOINT}).      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AZURE_CONNECTION_STRING
+init|=
+literal|"azureConnectionString"
+decl_stmt|;
 comment|/**      * Azure shared access signature token      */
 specifier|public
 specifier|static
