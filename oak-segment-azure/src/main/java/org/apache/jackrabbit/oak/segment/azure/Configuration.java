@@ -170,13 +170,13 @@ name|AttributeDefinition
 argument_list|(
 name|name
 operator|=
-literal|"Azure connection URL (optional)"
+literal|"Azure connection string (optional)"
 argument_list|,
 name|description
 operator|=
-literal|"Connection URL to be used to connect to the Azure Storage. "
+literal|"Connection string to be used to connect to the Azure Storage. "
 operator|+
-literal|"Setting it will override the accountName, containerName and accessKey properties."
+literal|"Setting it will override the accountName and accessKey properties."
 argument_list|)
 name|String
 name|connectionURL
