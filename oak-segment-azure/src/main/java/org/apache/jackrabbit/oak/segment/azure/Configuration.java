@@ -181,6 +181,8 @@ argument_list|)
 name|String
 name|connectionURL
 parameter_list|()
+default|default
+literal|""
 function_decl|;
 block|}
 end_annotation_defn
