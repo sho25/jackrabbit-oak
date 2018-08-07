@@ -255,7 +255,7 @@ name|value
 operator|.
 name|jcr
 operator|.
-name|ValueFactoryImpl
+name|PartialValueFactory
 import|;
 end_import
 
@@ -301,6 +301,11 @@ name|mapper
 decl_stmt|;
 specifier|private
 specifier|final
+name|PartialValueFactory
+name|valueFactory
+decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|userID
 decl_stmt|;
@@ -333,6 +338,16 @@ operator|.
 name|mapper
 operator|=
 name|mapper
+expr_stmt|;
+name|this
+operator|.
+name|valueFactory
+operator|=
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|mapper
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -752,13 +767,11 @@ name|Value
 argument_list|>
 name|values
 init|=
-name|ValueFactoryImpl
+name|valueFactory
 operator|.
 name|createValues
 argument_list|(
 name|property
-argument_list|,
-name|mapper
 argument_list|)
 decl_stmt|;
 return|return
@@ -780,13 +793,11 @@ block|}
 else|else
 block|{
 return|return
-name|ValueFactoryImpl
+name|valueFactory
 operator|.
 name|createValue
 argument_list|(
 name|property
-argument_list|,
-name|mapper
 argument_list|)
 return|;
 block|}

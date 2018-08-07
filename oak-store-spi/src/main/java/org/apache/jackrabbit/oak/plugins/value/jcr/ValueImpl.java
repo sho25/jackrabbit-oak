@@ -251,6 +251,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|blob
+operator|.
+name|BlobAccessProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|namepath
 operator|.
 name|NamePathMapper
@@ -394,12 +412,18 @@ name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
 specifier|private
+specifier|final
+name|BlobAccessProvider
+name|blobAccessProvider
+decl_stmt|;
+specifier|private
 name|InputStream
 name|stream
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param index  The index      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @throws IllegalArgumentException if {@code index< propertyState.count()}      * @throws RepositoryException if the underlying node state cannot be accessed      */
+comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param index  The index      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @param blobAccessProvider The blob access provider      * @throws IllegalArgumentException if {@code index< propertyState.count()}      * @throws RepositoryException if the underlying node state cannot be accessed      */
+specifier|private
 name|ValueImpl
 parameter_list|(
 annotation|@
@@ -414,6 +438,11 @@ annotation|@
 name|NotNull
 name|NamePathMapper
 name|namePathMapper
+parameter_list|,
+annotation|@
+name|NotNull
+name|BlobAccessProvider
+name|blobAccessProvider
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -461,8 +490,17 @@ argument_list|(
 name|namePathMapper
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|blobAccessProvider
+operator|=
+name|checkNotNull
+argument_list|(
+name|blobAccessProvider
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      * @throws RepositoryException if the underlying node state cannot be accessed      */
+comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @param blobAccessProvider The blob access provider      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      * @throws RepositoryException if the underlying node state cannot be accessed      */
 name|ValueImpl
 parameter_list|(
 annotation|@
@@ -474,6 +512,11 @@ annotation|@
 name|NotNull
 name|NamePathMapper
 name|namePathMapper
+parameter_list|,
+annotation|@
+name|NotNull
+name|BlobAccessProvider
+name|blobAccessProvider
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -488,6 +531,11 @@ argument_list|,
 literal|0
 argument_list|,
 name|namePathMapper
+argument_list|,
+name|checkNotNull
+argument_list|(
+name|blobAccessProvider
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -513,7 +561,7 @@ return|return
 name|property
 return|;
 block|}
-comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param index  The index      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @throws IllegalArgumentException if {@code index< propertyState.count()}      */
+comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param index  The index      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @param blobAccessProvider The blob access provider      * @throws IllegalArgumentException if {@code index< propertyState.count()}      */
 annotation|@
 name|NotNull
 specifier|static
@@ -532,6 +580,11 @@ annotation|@
 name|NotNull
 name|NamePathMapper
 name|namePathMapper
+parameter_list|,
+annotation|@
+name|NotNull
+name|BlobAccessProvider
+name|blobAccessProvider
 parameter_list|)
 block|{
 try|try
@@ -545,6 +598,8 @@ argument_list|,
 name|index
 argument_list|,
 name|namePathMapper
+argument_list|,
+name|blobAccessProvider
 argument_list|)
 return|;
 block|}
@@ -563,7 +618,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      */
+comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @param blobAccessProvider The blob access provider      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      */
 annotation|@
 name|NotNull
 specifier|static
@@ -579,6 +634,11 @@ annotation|@
 name|NotNull
 name|NamePathMapper
 name|namePathMapper
+parameter_list|,
+annotation|@
+name|NotNull
+name|BlobAccessProvider
+name|blobAccessProvider
 parameter_list|)
 block|{
 try|try
@@ -592,6 +652,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|namePathMapper
+argument_list|,
+name|blobAccessProvider
 argument_list|)
 return|;
 block|}
@@ -1603,6 +1665,7 @@ throw|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|Type
 argument_list|<
 name|?
@@ -1618,7 +1681,7 @@ block|{
 try|try
 block|{
 return|return
-name|propertyState
+name|property
 operator|.
 name|getType
 argument_list|()

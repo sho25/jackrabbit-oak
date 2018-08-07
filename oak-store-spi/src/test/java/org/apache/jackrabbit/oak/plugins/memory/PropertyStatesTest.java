@@ -123,7 +123,7 @@ name|value
 operator|.
 name|jcr
 operator|.
-name|ValueFactoryImpl
+name|PartialValueFactory
 import|;
 end_import
 
@@ -192,6 +192,17 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|final
+name|PartialValueFactory
+name|valueFactory
+init|=
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|namePathMapper
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -220,13 +231,11 @@ decl_stmt|;
 name|Value
 name|nameValue
 init|=
-name|ValueFactoryImpl
+name|valueFactory
 operator|.
 name|createValue
 argument_list|(
 name|nameProperty
-argument_list|,
-name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|PropertyState
@@ -277,13 +286,11 @@ decl_stmt|;
 name|Value
 name|nameValue
 init|=
-name|ValueFactoryImpl
+name|valueFactory
 operator|.
 name|createValue
 argument_list|(
 name|pathProperty
-argument_list|,
-name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|PropertyState

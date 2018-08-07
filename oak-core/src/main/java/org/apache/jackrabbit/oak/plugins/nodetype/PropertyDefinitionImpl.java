@@ -181,7 +181,7 @@ name|value
 operator|.
 name|jcr
 operator|.
-name|ValueFactoryImpl
+name|PartialValueFactory
 import|;
 end_import
 
@@ -425,13 +425,15 @@ name|Value
 argument_list|>
 name|values
 init|=
-name|ValueFactoryImpl
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|mapper
+argument_list|)
 operator|.
 name|createValues
 argument_list|(
 name|property
-argument_list|,
-name|mapper
 argument_list|)
 decl_stmt|;
 return|return
@@ -448,13 +450,15 @@ block|{
 name|Value
 name|value
 init|=
-name|ValueFactoryImpl
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|mapper
+argument_list|)
 operator|.
 name|createValue
 argument_list|(
 name|property
-argument_list|,
-name|mapper
 argument_list|)
 decl_stmt|;
 return|return

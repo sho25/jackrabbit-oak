@@ -249,7 +249,7 @@ name|value
 operator|.
 name|jcr
 operator|.
-name|ValueFactoryImpl
+name|PartialValueFactory
 import|;
 end_import
 
@@ -666,13 +666,15 @@ name|Value
 argument_list|>
 name|vs
 init|=
-name|ValueFactoryImpl
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|namePathMapper
+argument_list|)
 operator|.
 name|createValues
 argument_list|(
 name|property
-argument_list|,
-name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|values
@@ -700,13 +702,15 @@ operator|new
 name|Value
 index|[]
 block|{
-name|ValueFactoryImpl
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|namePathMapper
+argument_list|)
 operator|.
 name|createValue
 argument_list|(
 name|property
-argument_list|,
-name|namePathMapper
 argument_list|)
 block|}
 expr_stmt|;

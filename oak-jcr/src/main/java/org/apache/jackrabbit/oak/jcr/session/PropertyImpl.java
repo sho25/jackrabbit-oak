@@ -337,7 +337,7 @@ name|value
 operator|.
 name|jcr
 operator|.
-name|ValueFactoryImpl
+name|PartialValueFactory
 import|;
 end_import
 
@@ -1261,7 +1261,11 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|ValueFactoryImpl
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|sessionContext
+argument_list|)
 operator|.
 name|createValue
 argument_list|(
@@ -1269,8 +1273,6 @@ name|property
 operator|.
 name|getSingleState
 argument_list|()
-argument_list|,
-name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -1322,7 +1324,11 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|ValueFactoryImpl
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|sessionContext
+argument_list|)
 operator|.
 name|createValues
 argument_list|(
@@ -1330,8 +1336,6 @@ name|property
 operator|.
 name|getMultiState
 argument_list|()
-argument_list|,
-name|sessionContext
 argument_list|)
 return|;
 block|}

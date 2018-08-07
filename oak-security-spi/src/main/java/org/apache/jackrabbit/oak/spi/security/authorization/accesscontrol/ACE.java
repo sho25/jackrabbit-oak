@@ -209,7 +209,7 @@ name|value
 operator|.
 name|jcr
 operator|.
-name|ValueFactoryImpl
+name|PartialValueFactory
 import|;
 end_import
 
@@ -320,6 +320,11 @@ name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
 specifier|private
+specifier|final
+name|PartialValueFactory
+name|valueFactory
+decl_stmt|;
+specifier|private
 name|int
 name|hashCode
 decl_stmt|;
@@ -417,6 +422,16 @@ operator|.
 name|namePathMapper
 operator|=
 name|namePathMapper
+expr_stmt|;
+name|this
+operator|.
+name|valueFactory
+operator|=
+operator|new
+name|PartialValueFactory
+argument_list|(
+name|namePathMapper
+argument_list|)
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------------------------------
@@ -592,7 +607,7 @@ name|Value
 argument_list|>
 name|values
 init|=
-name|ValueFactoryImpl
+name|valueFactory
 operator|.
 name|createValues
 argument_list|(
@@ -600,8 +615,6 @@ name|restriction
 operator|.
 name|getProperty
 argument_list|()
-argument_list|,
-name|namePathMapper
 argument_list|)
 decl_stmt|;
 switch|switch
@@ -636,7 +649,7 @@ block|}
 else|else
 block|{
 return|return
-name|ValueFactoryImpl
+name|valueFactory
 operator|.
 name|createValue
 argument_list|(
@@ -644,8 +657,6 @@ name|restriction
 operator|.
 name|getProperty
 argument_list|()
-argument_list|,
-name|namePathMapper
 argument_list|)
 return|;
 block|}
@@ -702,7 +713,7 @@ name|Value
 argument_list|>
 name|values
 init|=
-name|ValueFactoryImpl
+name|valueFactory
 operator|.
 name|createValues
 argument_list|(
@@ -710,8 +721,6 @@ name|restriction
 operator|.
 name|getProperty
 argument_list|()
-argument_list|,
-name|namePathMapper
 argument_list|)
 decl_stmt|;
 return|return
