@@ -930,10 +930,6 @@ operator|=
 name|ConfigurationPolicy
 operator|.
 name|REQUIRE
-argument_list|,
-name|factory
-operator|=
-literal|"org.apache.jackrabbit.oak.segment.SegmentNodeStoreFactory"
 argument_list|)
 annotation|@
 name|Designate
