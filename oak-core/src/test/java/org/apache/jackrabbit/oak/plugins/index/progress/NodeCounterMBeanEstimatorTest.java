@@ -559,6 +559,9 @@ argument_list|)
 condition|)
 block|{
 return|return
+operator|(
+name|long
+operator|)
 name|counts
 operator|.
 name|get
