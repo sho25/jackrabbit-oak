@@ -4661,6 +4661,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|isNodeStoreProvider
+argument_list|()
+condition|)
+block|{
 name|addRegistration
 argument_list|(
 name|registerMBean
@@ -4685,6 +4692,7 @@ literal|"Document node store checkpoint management"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|addRegistration
 argument_list|(
 name|registerMBean
