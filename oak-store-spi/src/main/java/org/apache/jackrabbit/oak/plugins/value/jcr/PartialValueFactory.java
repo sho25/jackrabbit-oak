@@ -22,6 +22,44 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|value
+operator|.
+name|jcr
+operator|.
+name|ValueImpl
+operator|.
+name|newValue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -507,44 +545,6 @@ name|Nullable
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|value
-operator|.
-name|jcr
-operator|.
-name|ValueImpl
-operator|.
-name|newValue
-import|;
-end_import
-
 begin_comment
 comment|/**  * A partial value factory implementation that only deals with in-memory values  * and can wrap a {@link Value} around a {@link PropertyState}.  */
 end_comment
@@ -555,6 +555,8 @@ class|class
 name|PartialValueFactory
 block|{
 comment|/**      * This default blob access provider is a no-op implementation.      */
+annotation|@
+name|NotNull
 specifier|public
 specifier|static
 specifier|final
@@ -643,6 +645,8 @@ name|blobAccessProvider
 return|;
 block|}
 comment|/**      * Utility method for creating a {@code Value} based on a      * {@code PropertyState}.      *      * @param property The property state      * @return New {@code Value} instance      * @throws IllegalArgumentException if {@code property.isArray()} is      *         {@code true}.      */
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
@@ -665,6 +669,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Utility method for creating {@code Value}s based on a      * {@code PropertyState}.      *      * @param property The property state      * @return A list of new {@code Value} instances      */
+annotation|@
+name|NotNull
 specifier|public
 name|List
 argument_list|<
@@ -730,10 +736,14 @@ name|values
 return|;
 block|}
 comment|//-------------------------------------------------------< ValueFactory>---
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|value
 parameter_list|)
@@ -757,6 +767,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
@@ -784,6 +796,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
@@ -811,10 +825,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
 parameter_list|(
+annotation|@
+name|NotNull
 name|Calendar
 name|value
 parameter_list|)
@@ -838,6 +856,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
@@ -865,10 +885,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
 parameter_list|(
+annotation|@
+name|NotNull
 name|Node
 name|value
 parameter_list|)
@@ -884,10 +908,14 @@ literal|false
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
 parameter_list|(
+annotation|@
+name|NotNull
 name|Node
 name|value
 parameter_list|,
@@ -967,10 +995,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
 parameter_list|(
+annotation|@
+name|NotNull
 name|BigDecimal
 name|value
 parameter_list|)
@@ -994,6 +1026,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Value
 name|createValue
