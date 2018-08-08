@@ -1773,6 +1773,45 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// if this isn't an async cycle AND definition has "async" property
+comment|// (and implicitly isIncluded method allows async def in non-async cycle only for nrt/sync defs)
+comment|// then we don't need to handle missing handler
+if|if
+condition|(
+name|definition
+operator|.
+name|hasProperty
+argument_list|(
+name|ASYNC_PROPERTY_NAME
+argument_list|)
+operator|&&
+name|rootState
+operator|.
+name|async
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Missing provider for nrt/sync index: {} (rootState.async: {}). "
+operator|+
+literal|"Please note, it means that index data should be trusted only after this index "
+operator|+
+literal|"is processed in an async indexing cycle."
+argument_list|,
+name|definition
+argument_list|,
+name|rootState
+operator|.
+name|async
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|rootState
 operator|.
 name|missingProvider
@@ -1786,6 +1825,7 @@ argument_list|,
 name|indexPath
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
