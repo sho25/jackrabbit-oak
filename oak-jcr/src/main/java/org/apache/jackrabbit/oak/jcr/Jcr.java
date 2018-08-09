@@ -712,9 +712,9 @@ block|{
 name|OakDefaultComponents
 name|defs
 init|=
+operator|new
 name|OakDefaultComponents
-operator|.
-name|INSTANCE
+argument_list|()
 decl_stmt|;
 name|with
 argument_list|(

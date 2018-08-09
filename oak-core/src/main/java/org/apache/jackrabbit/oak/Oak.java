@@ -4901,6 +4901,9 @@ specifier|static
 class|class
 name|OakDefaultComponents
 block|{
+comment|/**          * @deprecated create a new instance of {@link OakDefaultComponents} instead.          */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 specifier|final
@@ -5049,7 +5052,7 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-specifier|private
+specifier|public
 name|OakDefaultComponents
 parameter_list|()
 block|{         }
