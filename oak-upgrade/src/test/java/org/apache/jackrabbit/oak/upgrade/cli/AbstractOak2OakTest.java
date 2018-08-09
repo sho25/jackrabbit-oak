@@ -33,18 +33,6 @@ end_import
 
 begin_import
 import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -1205,12 +1193,6 @@ name|verifyCheckpoint
 argument_list|()
 expr_stmt|;
 block|}
-else|else
-block|{
-name|verifyEmptyAsync
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 specifier|public
 specifier|static
@@ -1846,36 +1828,6 @@ return|return
 literal|null
 return|;
 block|}
-block|}
-comment|// OAK-2869
-specifier|protected
-name|void
-name|verifyEmptyAsync
-parameter_list|()
-block|{
-name|NodeState
-name|state
-init|=
-name|destination
-operator|.
-name|getRoot
-argument_list|()
-operator|.
-name|getChildNode
-argument_list|(
-literal|":async"
-argument_list|)
-decl_stmt|;
-name|assertFalse
-argument_list|(
-name|state
-operator|.
-name|hasProperty
-argument_list|(
-literal|"test"
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 specifier|protected
 name|boolean

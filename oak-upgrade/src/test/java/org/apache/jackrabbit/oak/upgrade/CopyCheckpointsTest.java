@@ -1014,9 +1014,6 @@ break|break;
 case|case
 name|CHECKPOINTS_MISSING
 case|:
-name|verifyEmptyAsync
-argument_list|()
-expr_stmt|;
 break|break;
 block|}
 block|}
