@@ -345,6 +345,10 @@ argument_list|(
 literal|"table alter statement rejected: "
 operator|+
 name|sql
+argument_list|,
+literal|"ABCDE"
+argument_list|,
+literal|17
 argument_list|)
 throw|;
 block|}
