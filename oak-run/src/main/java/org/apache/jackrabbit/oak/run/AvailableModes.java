@@ -409,6 +409,15 @@ name|DataStoreCommand
 argument_list|()
 argument_list|)
 operator|.
+name|put
+argument_list|(
+literal|"segment-copy"
+argument_list|,
+operator|new
+name|SegmentCopyCommand
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|()
 argument_list|)
