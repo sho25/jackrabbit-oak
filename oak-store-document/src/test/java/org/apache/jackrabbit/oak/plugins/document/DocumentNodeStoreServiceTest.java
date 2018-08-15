@@ -2276,6 +2276,17 @@ operator|.
 name|DB
 argument_list|)
 expr_stmt|;
+name|config
+operator|.
+name|put
+argument_list|(
+literal|"mongouri"
+argument_list|,
+name|MongoUtils
+operator|.
+name|URL
+argument_list|)
+expr_stmt|;
 return|return
 name|config
 return|;
