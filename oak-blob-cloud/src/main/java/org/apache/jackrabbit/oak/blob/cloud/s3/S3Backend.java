@@ -1693,7 +1693,7 @@ name|getProperty
 argument_list|(
 name|S3Constants
 operator|.
-name|PRESIGNED_PUT_EXPIRY_SEC
+name|PRESIGNED_HTTP_UPLOAD_URI_EXPIRY_SECONDS
 argument_list|)
 decl_stmt|;
 if|if
@@ -1723,7 +1723,7 @@ name|getProperty
 argument_list|(
 name|S3Constants
 operator|.
-name|PRESIGNED_GET_EXPIRY_SEC
+name|PRESIGNED_HTTP_DOWNLOAD_URI_EXPIRY_SECONDS
 argument_list|)
 decl_stmt|;
 if|if
@@ -1764,7 +1764,7 @@ name|getProperty
 argument_list|(
 name|S3Constants
 operator|.
-name|PRESIGNED_GET_URI_CACHE_MAX_SIZE
+name|PRESIGNED_HTTP_DOWNLOAD_URI_CACHE_MAX_SIZE
 argument_list|)
 decl_stmt|;
 if|if
