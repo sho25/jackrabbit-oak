@@ -1265,6 +1265,11 @@ operator|new
 name|PartialValueFactory
 argument_list|(
 name|sessionContext
+argument_list|,
+name|sessionContext
+operator|.
+name|getBlobAccessProvider
+argument_list|()
 argument_list|)
 operator|.
 name|createValue
@@ -1328,6 +1333,11 @@ operator|new
 name|PartialValueFactory
 argument_list|(
 name|sessionContext
+argument_list|,
+name|sessionContext
+operator|.
+name|getBlobAccessProvider
+argument_list|()
 argument_list|)
 operator|.
 name|createValues

@@ -443,7 +443,8 @@ name|UserManagerImpl
 argument_list|(
 name|root
 argument_list|,
-name|namePathMapper
+name|getPartialValueFactory
+argument_list|()
 argument_list|,
 name|getSecurityProvider
 argument_list|()

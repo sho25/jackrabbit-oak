@@ -569,7 +569,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|NotNull
-specifier|protected
+specifier|private
 specifier|final
 name|NamePathMapper
 name|namePathMapper
@@ -635,13 +635,24 @@ expr_stmt|;
 block|}
 annotation|@
 name|NotNull
-specifier|public
 name|BlobAccessProvider
 name|getBlobAccessProvider
 parameter_list|()
 block|{
 return|return
 name|blobAccessProvider
+return|;
+block|}
+comment|/**      * @return the {@link NamePathMapper} used by this value factory.      */
+annotation|@
+name|NotNull
+specifier|public
+name|NamePathMapper
+name|getNamePathMapper
+parameter_list|()
+block|{
+return|return
+name|namePathMapper
 return|;
 block|}
 comment|/**      * Utility method for creating a {@code Value} based on a      * {@code PropertyState}.      *      * @param property The property state      * @return New {@code Value} instance      * @throws IllegalArgumentException if {@code property.isArray()} is      *         {@code true}.      */

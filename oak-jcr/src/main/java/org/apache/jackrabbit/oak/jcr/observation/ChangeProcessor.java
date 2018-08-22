@@ -329,6 +329,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|blob
+operator|.
+name|BlobAccessProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|commons
 operator|.
 name|PerfLogger
@@ -1240,6 +1258,11 @@ specifier|final
 name|CommitRateLimiter
 name|commitRateLimiter
 decl_stmt|;
+specifier|private
+specifier|final
+name|BlobAccessProvider
+name|blobAccessProvider
+decl_stmt|;
 comment|/**      * Lazy initialization via the {@link #start(Whiteboard)} method      */
 specifier|private
 name|String
@@ -1288,6 +1311,9 @@ name|queueLength
 parameter_list|,
 name|CommitRateLimiter
 name|commitRateLimiter
+parameter_list|,
+name|BlobAccessProvider
+name|blobAccessProvider
 parameter_list|)
 block|{
 name|this
@@ -1368,6 +1394,12 @@ operator|.
 name|commitRateLimiter
 operator|=
 name|commitRateLimiter
+expr_stmt|;
+name|this
+operator|.
+name|blobAccessProvider
+operator|=
+name|blobAccessProvider
 expr_stmt|;
 block|}
 comment|/**      * Set the filter for the events this change processor will generate.      * @param filter      */
@@ -2471,6 +2503,8 @@ operator|new
 name|EventQueue
 argument_list|(
 name|namePathMapper
+argument_list|,
+name|blobAccessProvider
 argument_list|,
 name|info
 argument_list|,

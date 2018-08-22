@@ -1079,7 +1079,7 @@ name|this
 argument_list|,
 name|userManager
 operator|.
-name|getNamePathMapper
+name|getPartialValueFactory
 argument_list|()
 argument_list|)
 expr_stmt|;
