@@ -1017,11 +1017,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|logCliArgs
-argument_list|(
-name|args
-argument_list|)
-expr_stmt|;
 comment|//Clean up before setting up NodeStore as the temp
 comment|//directory might be used by NodeStore for cache stuff like persistentCache
 name|setupDirectories
@@ -1032,6 +1027,11 @@ expr_stmt|;
 name|setupLogging
 argument_list|(
 name|dataStoreOpts
+argument_list|)
+expr_stmt|;
+name|logCliArgs
+argument_list|(
+name|args
 argument_list|)
 expr_stmt|;
 name|boolean
