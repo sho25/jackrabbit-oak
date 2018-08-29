@@ -535,6 +535,18 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
 name|Assume
 operator|.
 name|assumeTrue
@@ -684,13 +696,9 @@ name|ContentRepository
 name|createRepository
 parameter_list|()
 block|{
-name|adbc
-operator|=
-operator|new
-name|ActiveDeletedBlobCollectorImpl
-argument_list|(
-name|clock
-argument_list|,
+name|File
+name|deletedBlobsDir
+init|=
 operator|new
 name|File
 argument_list|(
@@ -701,6 +709,23 @@ argument_list|()
 argument_list|,
 literal|"deleted-blobs"
 argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|deletedBlobsDir
+operator|.
+name|mkdirs
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|adbc
+operator|=
+operator|new
+name|ActiveDeletedBlobCollectorImpl
+argument_list|(
+name|clock
+argument_list|,
+name|deletedBlobsDir
 argument_list|,
 name|executorService
 argument_list|)
@@ -1167,8 +1192,6 @@ name|blobStore
 operator|.
 name|numChunks
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"First commit must create some chunks"
@@ -1178,8 +1201,6 @@ operator|>
 name|initialNumChunks
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"First commit must create some chunks"
@@ -1189,8 +1210,6 @@ operator|>
 name|firstCommitNumChunks
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"First GC should delete some chunks"
@@ -1200,8 +1219,6 @@ operator|<
 name|secondCommitNumChunks
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"Second GC should delete some chunks too"
