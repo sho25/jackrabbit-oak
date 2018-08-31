@@ -2320,9 +2320,10 @@ block|}
 block|}
 if|if
 condition|(
+operator|!
 name|cfg
 operator|.
-name|isPrimarySegmentStore
+name|isSecondarySegmentStore
 argument_list|()
 operator|&&
 name|cfg
