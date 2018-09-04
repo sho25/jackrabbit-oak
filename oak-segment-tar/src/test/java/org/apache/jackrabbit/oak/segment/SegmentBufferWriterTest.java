@@ -111,7 +111,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -481,6 +501,139 @@ argument_list|,
 name|after
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|tooBigRecord
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// See OAK-7721 to understand why this test exists.
+try|try
+init|(
+name|FileStore
+name|store
+init|=
+name|openFileStore
+argument_list|()
+init|)
+block|{
+comment|// Please don't change anything from the following statement yet.
+comment|// Read the next comment to understand why.
+name|SegmentBufferWriter
+name|writer
+init|=
+operator|new
+name|SegmentBufferWriter
+argument_list|(
+name|store
+operator|.
+name|getSegmentIdProvider
+argument_list|()
+argument_list|,
+name|store
+operator|.
+name|getReader
+argument_list|()
+argument_list|,
+literal|"t"
+argument_list|,
+name|store
+operator|.
+name|getRevisions
+argument_list|()
+operator|.
+name|getHead
+argument_list|()
+operator|.
+name|getSegment
+argument_list|()
+operator|.
+name|getGcGeneration
+argument_list|()
+argument_list|)
+decl_stmt|;
+comment|// The size of the record is chosen with the precise intention to
+comment|// fool `writer` into having enough space to write the record. In
+comment|// particular, at the end of `prepare()`, `writer` will have
+comment|// `this.length = 262144`, which is `MAX_SEGMENT_SIZE`, and
+comment|// `this.position = 0`. This result is particularly sensitive to the
+comment|// initial content of the segment, which in turn is influenced by
+comment|// the segment info. Try to change the writer ID in the constructor
+comment|// of `SegmentBufferWriter` to a longer string, and you will have
+comment|// `prepare()` throw ISEs because the writer ID is embedded in the
+comment|// segment info.
+name|Optional
+argument_list|<
+name|IllegalArgumentException
+argument_list|>
+name|error
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|writer
+operator|.
+name|prepare
+argument_list|(
+name|RecordType
+operator|.
+name|BLOCK
+argument_list|,
+literal|262101
+argument_list|,
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
+name|store
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|error
+operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+name|assertEquals
+argument_list|(
+literal|"Record too big: type=BLOCK, size=262101, recordIds=0, total=262104"
+argument_list|,
+name|error
+operator|.
+name|map
+argument_list|(
+name|Exception
+operator|::
+name|getMessage
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

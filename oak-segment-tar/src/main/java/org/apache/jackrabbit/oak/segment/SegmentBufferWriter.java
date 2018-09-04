@@ -1987,6 +1987,15 @@ literal|16
 argument_list|)
 expr_stmt|;
 block|}
+comment|// If the resulting segment buffer would be too big we need to allocate
+comment|// additional space. Allocating additional space is a recursive
+comment|// operation guarded by the `dirty` flag. The recursion can iterate at
+comment|// most two times. The base case happens when the `dirty` flag is
+comment|// `false`: the current buffer is empty, the record is too big to fit in
+comment|// an empty segment, and we fail with an `IllegalArgumentException`. The
+comment|// recursive step happens when the `dirty` flag is `true`:
+comment|// the current buffer is non-empty, we flush it, allocate a new buffer
+comment|// for an empty segment, and invoke `prepare()` once more.
 if|if
 condition|(
 name|segmentSize
@@ -1994,6 +2003,11 @@ operator|>
 name|buffer
 operator|.
 name|length
+condition|)
+block|{
+if|if
+condition|(
+name|dirty
 condition|)
 block|{
 name|LOG
@@ -2021,6 +2035,42 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
+return|return
+name|prepare
+argument_list|(
+name|type
+argument_list|,
+name|size
+argument_list|,
+name|ids
+argument_list|,
+name|store
+argument_list|)
+return|;
+block|}
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Record too big: type=%s, size=%s, recordIds=%s, total=%s"
+argument_list|,
+name|type
+argument_list|,
+name|size
+argument_list|,
+name|ids
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|recordSize
+argument_list|)
+argument_list|)
+throw|;
 block|}
 name|statistics
 operator|.
@@ -2038,13 +2088,6 @@ operator|.
 name|length
 operator|-
 name|length
-expr_stmt|;
-name|checkState
-argument_list|(
-name|position
-operator|>=
-literal|0
-argument_list|)
 expr_stmt|;
 name|int
 name|recordNumber
