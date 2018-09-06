@@ -106,7 +106,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Opens a given archive for reading.      *      * @param archiveName      * @return the archive reader or null if the archive doesn't exist      */
+comment|/**      * Opens a given archive for reading.      *      * @param archiveName      * @return the archive reader or null if the archive doesn't exist or doesn't      * have a valid index      */
 annotation|@
 name|Nullable
 name|SegmentArchiveReader
@@ -114,6 +114,18 @@ name|open
 parameter_list|(
 annotation|@
 name|NotNull
+name|String
+name|archiveName
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Opens an archive that wasn't closed correctly.      *      * @param archiveName      * @return the archive reader or null if the implementation doesn't support      * opening an unclosed archive      */
+annotation|@
+name|Nullable
+name|SegmentArchiveReader
+name|forceOpen
+parameter_list|(
 name|String
 name|archiveName
 parameter_list|)
