@@ -194,6 +194,12 @@ name|DISABLE_INDEXES_ON_NEXT_CYCLE
 init|=
 literal|":disableIndexesOnNextCycle"
 decl_stmt|;
+comment|/**      * The property of an index. If the given node or property exists, then the      * index is used for queries; otherwise, it is not used (returns infinite      * cost). The value is: nodes, the path. For properties, the path of the node, then '@' property.      */
+name|String
+name|USE_IF_EXISTS
+init|=
+literal|"useIfExists"
+decl_stmt|;
 block|}
 end_interface
 
