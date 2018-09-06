@@ -135,6 +135,12 @@ argument_list|,
 name|TOKEN_ATTRIBUTE_KEY
 argument_list|)
 decl_stmt|;
+comment|/**      * Flag set on the TokenCredentials to skip refreshing the token expiration time      */
+name|String
+name|TOKEN_SKIP_REFRESH
+init|=
+literal|"tokenSkipRefresh"
+decl_stmt|;
 block|}
 end_interface
 
