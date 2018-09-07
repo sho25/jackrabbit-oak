@@ -272,6 +272,24 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|MemoryNodeStore
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -369,7 +387,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContent
+name|InitialContentHelper
 import|;
 end_import
 
@@ -609,13 +627,14 @@ decl_stmt|;
 return|return
 operator|new
 name|Oak
-argument_list|()
-operator|.
-name|with
 argument_list|(
 operator|new
-name|InitialContent
-argument_list|()
+name|MemoryNodeStore
+argument_list|(
+name|InitialContentHelper
+operator|.
+name|INITIAL_CONTENT
+argument_list|)
 argument_list|)
 operator|.
 name|with

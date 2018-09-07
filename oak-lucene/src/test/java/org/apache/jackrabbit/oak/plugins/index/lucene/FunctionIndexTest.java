@@ -431,7 +431,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContent
+name|InitialContentHelper
 import|;
 end_import
 
@@ -600,20 +600,17 @@ name|nodeStore
 operator|=
 operator|new
 name|MemoryNodeStore
-argument_list|()
+argument_list|(
+name|InitialContentHelper
+operator|.
+name|INITIAL_CONTENT
+argument_list|)
 expr_stmt|;
 return|return
 operator|new
 name|Oak
 argument_list|(
 name|nodeStore
-argument_list|)
-operator|.
-name|with
-argument_list|(
-operator|new
-name|InitialContent
-argument_list|()
 argument_list|)
 operator|.
 name|with

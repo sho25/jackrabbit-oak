@@ -20,6 +20,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_SYSTEM
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|namespace
+operator|.
+name|NamespaceConstants
+operator|.
+name|REP_NAMESPACES
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -125,40 +159,6 @@ name|Component
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|JcrConstants
-operator|.
-name|JCR_SYSTEM
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|namespace
-operator|.
-name|NamespaceConstants
-operator|.
-name|REP_NAMESPACES
-import|;
-end_import
-
 begin_comment
 comment|/**  * Validator service that checks that all node and property names as well  * as any name values are syntactically valid and that any namespace prefixes  * are properly registered.  */
 end_comment
@@ -195,6 +195,17 @@ name|CommitInfo
 name|info
 parameter_list|)
 block|{
+name|boolean
+name|initPhase
+init|=
+operator|!
+name|before
+operator|.
+name|hasChildNode
+argument_list|(
+name|JCR_SYSTEM
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|NameValidator
@@ -210,6 +221,8 @@ name|getChildNode
 argument_list|(
 name|REP_NAMESPACES
 argument_list|)
+argument_list|,
+name|initPhase
 argument_list|)
 return|;
 block|}
