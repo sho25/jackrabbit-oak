@@ -3800,11 +3800,24 @@ argument_list|,
 name|backgroundSweepThread
 argument_list|)
 expr_stmt|;
+name|DocumentStoreException
+name|ex
+init|=
+literal|null
+decl_stmt|;
 comment|// create a tombstone commit revision after isDisposed is set to true.
 comment|// commits created earlier than this revision will be able to finish
 comment|// and we'll get a headOfQueue() callback when they are done
 comment|// after this call there are no more pending trunk commits and
 comment|// the commit queue is empty and stays empty
+if|if
+condition|(
+operator|!
+name|readOnlyMode
+condition|)
+block|{
+try|try
+block|{
 name|Revision
 name|tombstone
 init|=
@@ -3861,6 +3874,30 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|DocumentStoreException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"dispose: a DocumentStoreException happened during dispose's attempt to commit a tombstone: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|ex
+operator|=
+name|e
+expr_stmt|;
+block|}
+block|}
 try|try
 block|{
 name|bundlingConfigHandler
@@ -3887,11 +3924,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-name|DocumentStoreException
-name|ex
-init|=
-literal|null
-decl_stmt|;
 comment|// do a final round of background operations after
 comment|// the background thread stopped
 if|if
