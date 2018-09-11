@@ -943,11 +943,6 @@ block|}
 block|}
 comment|// OAK-6504
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-7205"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void

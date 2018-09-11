@@ -107,13 +107,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|concurrent
+name|common
 operator|.
-name|Executors
+name|collect
+operator|.
+name|Iterators
 import|;
 end_import
 
@@ -125,9 +127,11 @@ name|google
 operator|.
 name|common
 operator|.
-name|collect
+name|util
 operator|.
-name|Iterators
+name|concurrent
+operator|.
+name|MoreExecutors
 import|;
 end_import
 
@@ -733,12 +737,10 @@ specifier|protected
 name|ExecutorService
 name|executorService
 init|=
-name|Executors
+name|MoreExecutors
 operator|.
-name|newFixedThreadPool
-argument_list|(
-literal|2
-argument_list|)
+name|sameThreadExecutor
+argument_list|()
 decl_stmt|;
 specifier|protected
 name|CountingBlobStore
