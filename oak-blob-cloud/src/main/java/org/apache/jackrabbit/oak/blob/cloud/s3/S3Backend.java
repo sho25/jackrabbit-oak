@@ -22,34 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
-operator|.
-name|filter
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
-name|Thread
-operator|.
-name|currentThread
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -1060,6 +1032,50 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+operator|.
+name|filter
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|Thread
+operator|.
+name|currentThread
 import|;
 end_import
 
@@ -3051,6 +3067,28 @@ parameter_list|)
 throws|throws
 name|DataStoreException
 block|{
+name|checkArgument
+argument_list|(
+name|input
+operator|!=
+literal|null
+argument_list|,
+literal|"input should not be null"
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"name should not be empty"
+argument_list|)
+expr_stmt|;
 name|ClassLoader
 name|contextClassLoader
 init|=
@@ -3176,6 +3214,28 @@ parameter_list|)
 throws|throws
 name|DataStoreException
 block|{
+name|checkArgument
+argument_list|(
+name|input
+operator|!=
+literal|null
+argument_list|,
+literal|"input should not be null"
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"name should not be empty"
+argument_list|)
+expr_stmt|;
 name|ClassLoader
 name|contextClassLoader
 init|=
@@ -3299,6 +3359,19 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"name should not be empty"
+argument_list|)
+expr_stmt|;
 name|ClassLoader
 name|contextClassLoader
 init|=
@@ -3409,6 +3482,15 @@ name|String
 name|prefix
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+literal|null
+operator|!=
+name|prefix
+argument_list|,
+literal|"prefix should not be null"
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|DataRecord
@@ -3570,6 +3652,19 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"name should not be empty"
+argument_list|)
+expr_stmt|;
 name|ClassLoader
 name|contextClassLoader
 init|=
@@ -3645,6 +3740,15 @@ name|String
 name|prefix
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+literal|null
+operator|!=
+name|prefix
+argument_list|,
+literal|"prefix should not be empty"
+argument_list|)
+expr_stmt|;
 name|ClassLoader
 name|contextClassLoader
 init|=

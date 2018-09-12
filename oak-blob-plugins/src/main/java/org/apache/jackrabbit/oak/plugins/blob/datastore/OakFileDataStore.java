@@ -183,6 +183,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|io
 operator|.
 name|BaseEncoding
@@ -376,6 +390,22 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
 import|;
 end_import
 
@@ -749,6 +779,28 @@ parameter_list|)
 throws|throws
 name|DataStoreException
 block|{
+name|checkArgument
+argument_list|(
+name|input
+operator|!=
+literal|null
+argument_list|,
+literal|"input should not be null"
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"name should not be empty"
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|File
@@ -854,6 +906,28 @@ parameter_list|)
 throws|throws
 name|DataStoreException
 block|{
+name|checkArgument
+argument_list|(
+name|input
+operator|!=
+literal|null
+argument_list|,
+literal|"input should not be null"
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"name should not be empty"
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|File
@@ -923,6 +997,19 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"name should not be empty"
+argument_list|)
+expr_stmt|;
 name|File
 name|root
 init|=
@@ -1002,6 +1089,15 @@ name|String
 name|prefix
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+literal|null
+operator|!=
+name|prefix
+argument_list|,
+literal|"prefix should not be null"
+argument_list|)
+expr_stmt|;
 name|File
 name|root
 init|=
@@ -1096,6 +1192,19 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"name should not be empty"
+argument_list|)
+expr_stmt|;
 name|File
 name|root
 init|=
@@ -1188,6 +1297,15 @@ name|String
 name|prefix
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+literal|null
+operator|!=
+name|prefix
+argument_list|,
+literal|"prefix should not be empty"
+argument_list|)
+expr_stmt|;
 name|File
 name|root
 init|=
