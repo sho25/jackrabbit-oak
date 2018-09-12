@@ -1900,6 +1900,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Finds all external blob references that are currently accessible      * in this repository and adds them to the given collector. Useful      * for collecting garbage in an external data store.      *<p>      * Note that this method only collects blob references that are already      * stored in the repository (at the time when this method is called), so      * the garbage collector will need some other mechanism for tracking      * in-memory references and references stored while this method is      * running.      * @param collector  reference collector called back for each blob reference found      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|collectBlobReferences

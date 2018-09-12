@@ -129,6 +129,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Consumer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1534,6 +1546,21 @@ name|buffer
 argument_list|)
 return|;
 block|}
+comment|/**      * Finds all external blob references that are currently accessible      * in this repository and adds them to the given collector. Useful      * for collecting garbage in an external data store.      *<p>      * Note that this method only collects blob references that are already      * stored in the repository (at the time when this method is called), so      * the garbage collector will need some other mechanism for tracking      * in-memory references and references stored while this method is      * running.      * @param collector  reference collector called back for each blob reference found      */
+specifier|public
+specifier|abstract
+name|void
+name|collectBlobReferences
+parameter_list|(
+name|Consumer
+argument_list|<
+name|String
+argument_list|>
+name|collector
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_class
 

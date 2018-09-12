@@ -77,7 +77,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|AbstractFileStore
 import|;
 end_import
 
@@ -94,13 +94,13 @@ name|BlobReferenceRetriever
 block|{
 specifier|private
 specifier|final
-name|FileStore
+name|AbstractFileStore
 name|store
 decl_stmt|;
 specifier|public
 name|SegmentBlobReferenceRetriever
 parameter_list|(
-name|FileStore
+name|AbstractFileStore
 name|store
 parameter_list|)
 block|{
