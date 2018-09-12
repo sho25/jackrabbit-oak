@@ -331,6 +331,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+operator|.
+name|stream
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -1602,13 +1614,34 @@ name|String
 argument_list|>
 name|remoteFiles
 init|=
-name|ImmutableSet
-operator|.
-name|copyOf
+name|stream
 argument_list|(
 name|remote
 operator|.
 name|listAll
+argument_list|()
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|name
+lambda|->
+operator|!
+name|IndexCopier
+operator|.
+name|REMOTE_ONLY
+operator|.
+name|contains
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toSet
 argument_list|()
 argument_list|)
 decl_stmt|;
