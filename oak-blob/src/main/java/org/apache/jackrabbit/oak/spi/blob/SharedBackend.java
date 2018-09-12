@@ -261,6 +261,14 @@ name|String
 name|prefix
 parameter_list|)
 function_decl|;
+comment|/**      * Checks if the metadata record with the specified name exists.      *      * @param name the name of the record      * @return whether record exists      */
+name|boolean
+name|metadataRecordExists
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
 comment|/**      * Initialize      */
 name|void
 name|init

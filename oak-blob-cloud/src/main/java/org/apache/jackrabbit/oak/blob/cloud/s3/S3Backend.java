@@ -3447,6 +3447,24 @@ literal|true
 argument_list|)
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Error getting metadata record for {}"
+argument_list|,
+name|name
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 finally|finally
 block|{
 if|if
@@ -3468,6 +3486,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+literal|null
+return|;
 block|}
 annotation|@
 name|Override
@@ -4220,7 +4241,7 @@ decl_stmt|;
 comment|// Try reading from the metadata folder if it exists
 if|if
 condition|(
-name|metadataExists
+name|metadataRecordExists
 argument_list|(
 name|REF_KEY
 argument_list|)
@@ -4344,9 +4365,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+annotation|@
+name|Override
+specifier|public
 name|boolean
-name|metadataExists
+name|metadataRecordExists
 parameter_list|(
 name|String
 name|name

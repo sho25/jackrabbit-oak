@@ -158,6 +158,14 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Checks if the metadata record with the name exists      *      * @param name      * @return      */
+name|boolean
+name|metadataRecordExists
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
 comment|/**      * Gets the all root records.      *       * @return the all root records      */
 name|List
 argument_list|<
