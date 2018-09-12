@@ -1587,6 +1587,13 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|cluster1
+operator|!=
+literal|null
+condition|)
+block|{
 name|cluster1
 operator|.
 name|getDocumentNodeStore
@@ -1595,6 +1602,14 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|cluster2
+operator|!=
+literal|null
+condition|)
+block|{
 name|cluster2
 operator|.
 name|getDocumentNodeStore
@@ -1603,6 +1618,7 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|DataStoreBlobStore
