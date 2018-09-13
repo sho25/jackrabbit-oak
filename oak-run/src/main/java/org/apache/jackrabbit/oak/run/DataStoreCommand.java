@@ -577,7 +577,7 @@ name|segment
 operator|.
 name|file
 operator|.
-name|FileStore
+name|ReadOnlyFileStore
 import|;
 end_import
 
@@ -1485,7 +1485,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|FileStore
+name|ReadOnlyFileStore
 name|fileStore
 init|=
 name|getService
@@ -1495,7 +1495,7 @@ operator|.
 name|getWhiteboard
 argument_list|()
 argument_list|,
-name|FileStore
+name|ReadOnlyFileStore
 operator|.
 name|class
 argument_list|)
