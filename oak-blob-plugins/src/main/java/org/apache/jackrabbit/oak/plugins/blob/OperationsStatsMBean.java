@@ -52,6 +52,21 @@ name|long
 name|duration
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the duration of the mark operation      * @return      */
+name|long
+name|markDuration
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number deleted.      * @return      */
+name|long
+name|numDeleted
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the size deleted.      * @return      */
+name|long
+name|sizeDeleted
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

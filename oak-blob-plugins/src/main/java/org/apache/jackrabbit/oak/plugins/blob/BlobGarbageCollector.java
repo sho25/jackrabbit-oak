@@ -85,6 +85,11 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Returns consistency operation statistics      *      * @return stats object      * @throws Exception      */
+name|OperationsStatsMBean
+name|getConsistencyOperationStats
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
