@@ -6353,12 +6353,19 @@ argument_list|>
 name|getStoreFixtures
 parameter_list|()
 block|{
-comment|//return ImmutableList.of(StoreFixture.MONGO, StoreFixture.SEGMENT);
 return|return
 name|ImmutableList
 operator|.
 name|of
 argument_list|(
+name|StoreFixture
+operator|.
+name|MONGO
+argument_list|,
+name|StoreFixture
+operator|.
+name|SEGMENT
+argument_list|,
 name|StoreFixture
 operator|.
 name|SEGMENT_AZURE
@@ -6373,7 +6380,6 @@ argument_list|>
 name|getDataStoreFixtures
 parameter_list|()
 block|{
-comment|//return ImmutableList.of(DataStoreFixture.S3, DataStoreFixture.AZURE, DataStoreFixture.FDS);
 return|return
 name|ImmutableList
 operator|.
@@ -6381,7 +6387,15 @@ name|of
 argument_list|(
 name|DataStoreFixture
 operator|.
+name|S3
+argument_list|,
+name|DataStoreFixture
+operator|.
 name|AZURE
+argument_list|,
+name|DataStoreFixture
+operator|.
+name|FDS
 argument_list|)
 return|;
 block|}
