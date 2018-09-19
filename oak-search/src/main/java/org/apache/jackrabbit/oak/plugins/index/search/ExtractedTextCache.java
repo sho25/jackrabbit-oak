@@ -455,6 +455,10 @@ name|concat
 import|;
 end_import
 
+begin_comment
+comment|/**  * A cache to avoid extracting text of binaries that were already processed (in  * a different node that references the same binary).  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -585,6 +589,7 @@ specifier|private
 name|int
 name|preFetchedCount
 decl_stmt|;
+comment|// the actual cache. key: content id, value: extracted text
 specifier|private
 specifier|final
 name|Cache
@@ -757,11 +762,7 @@ name|timeoutMap
 operator|=
 operator|new
 name|ConcurrentHashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|this
@@ -1307,6 +1308,7 @@ return|return
 name|extractedTextProvider
 return|;
 block|}
+specifier|public
 name|void
 name|resetCache
 parameter_list|()
@@ -1325,6 +1327,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|public
 name|boolean
 name|isAlwaysUsePreExtractedCache
 parameter_list|()
@@ -1485,8 +1488,6 @@ argument_list|>
 name|callable
 parameter_list|)
 throws|throws
-name|InterruptedException
-throws|,
 name|Throwable
 block|{
 name|Callable
@@ -1614,16 +1615,7 @@ block|{
 name|timeoutCount
 operator|++
 expr_stmt|;
-throw|throw
-name|e
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
+comment|// TODO : use AtomicInteger ? this is a non-atomic operation on a volatile field
 throw|throw
 name|e
 throw|;
@@ -1719,9 +1711,7 @@ name|SECONDS
 argument_list|,
 operator|new
 name|LinkedBlockingQueue
-argument_list|<
-name|Runnable
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|,
 operator|new

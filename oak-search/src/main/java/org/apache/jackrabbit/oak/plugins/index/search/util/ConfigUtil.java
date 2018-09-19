@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class to retrieve configuration values for index definitions  */
+comment|/**  * Utility class to retrieve configuration values for index definitions.  */
 end_comment
 
 begin_class

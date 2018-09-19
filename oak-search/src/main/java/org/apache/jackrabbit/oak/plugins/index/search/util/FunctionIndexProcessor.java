@@ -272,9 +272,7 @@ name|properties
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -352,9 +350,7 @@ name|stack
 init|=
 operator|new
 name|ArrayDeque
-argument_list|<
-name|PropertyState
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -584,9 +580,7 @@ name|values
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|(
 name|ps
 operator|.

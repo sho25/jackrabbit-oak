@@ -21,6 +21,10 @@ name|search
 package|;
 end_package
 
+begin_comment
+comment|/**  * The version of an index (property "compatVersion").  *  * The default is version 2. Version 1 is supported for backward compatibility.  */
+end_comment
+
 begin_enum
 specifier|public
 enum|enum

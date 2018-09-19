@@ -21,6 +21,10 @@ name|search
 package|;
 end_package
 
+begin_comment
+comment|/**  * Represents an instance of an index.  *  * It is typically acquired when in the planning phase and execution phase of a  * query, and released afterwards. This allows an implementation to re-use  * resources (eg. keep files open).  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface

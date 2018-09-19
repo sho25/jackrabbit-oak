@@ -436,6 +436,7 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|PropertyState
@@ -485,6 +486,7 @@ operator|.
 name|Result
 name|pathFilterResult
 decl_stmt|;
+specifier|public
 name|FulltextIndexEditor
 parameter_list|(
 name|FulltextIndexEditorContext
@@ -554,7 +556,7 @@ name|ROOT_PATH
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|public
 name|FulltextIndexEditor
 parameter_list|(
 name|FulltextIndexEditor

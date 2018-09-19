@@ -179,9 +179,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|search
-operator|.
-name|FulltextIndexConstants
+name|IndexConstants
 import|;
 end_import
 
@@ -199,7 +197,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexConstants
+name|search
+operator|.
+name|FulltextIndexConstants
 import|;
 end_import
 
@@ -391,6 +391,10 @@ name|EMPTY_NODE
 import|;
 end_import
 
+begin_comment
+comment|/**  * A utility to build index definitions.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|final
@@ -528,6 +532,17 @@ operator|.
 name|createTree
 argument_list|(
 name|builder
+argument_list|)
+expr_stmt|;
+name|tree
+operator|.
+name|setProperty
+argument_list|(
+name|FulltextIndexConstants
+operator|.
+name|COMPAT_MODE
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 name|tree

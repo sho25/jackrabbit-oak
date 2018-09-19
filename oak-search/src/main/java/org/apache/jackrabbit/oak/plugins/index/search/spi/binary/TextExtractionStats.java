@@ -21,7 +21,7 @@ name|search
 operator|.
 name|spi
 operator|.
-name|editor
+name|binary
 package|;
 end_package
 

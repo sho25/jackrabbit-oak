@@ -161,6 +161,8 @@ name|index
 operator|.
 name|search
 operator|.
+name|update
+operator|.
 name|ReaderRefreshPolicy
 import|;
 end_import
@@ -270,6 +272,10 @@ operator|.
 name|getAsyncLaneName
 import|;
 end_import
+
+begin_comment
+comment|/**  * Keeps track of the open read sessions for an index.  */
+end_comment
 
 begin_class
 specifier|public

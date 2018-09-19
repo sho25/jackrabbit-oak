@@ -349,6 +349,7 @@ class|class
 name|NodeStateCopyUtilsTest
 block|{
 specifier|private
+specifier|final
 name|NodeBuilder
 name|builder
 init|=

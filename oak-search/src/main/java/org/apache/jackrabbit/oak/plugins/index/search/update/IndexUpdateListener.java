@@ -18,10 +18,13 @@ operator|.
 name|index
 operator|.
 name|search
+operator|.
+name|update
 package|;
 end_package
 
 begin_interface
+specifier|public
 interface|interface
 name|IndexUpdateListener
 extends|extends

@@ -129,6 +129,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * Track of bad (corrupt) indexes.  *  * An index can be corrupt for reads (an exception was thrown when index was  * opened for query), and persistent (an exception was thrown when index is  * reopened after an update).  *  * Indexes marked bad for reads might become good again later, if another  * cluster node fixed the corruption (eg. by reindexing).  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -550,6 +554,7 @@ name|keySet
 argument_list|()
 return|;
 block|}
+specifier|public
 name|BadIndexInfo
 name|getInfo
 parameter_list|(
@@ -566,6 +571,7 @@ name|indexPath
 argument_list|)
 return|;
 block|}
+specifier|public
 name|Set
 argument_list|<
 name|String
@@ -580,6 +586,7 @@ name|keySet
 argument_list|()
 return|;
 block|}
+specifier|public
 name|BadIndexInfo
 name|getPersistedIndexInfo
 parameter_list|(
@@ -605,6 +612,7 @@ return|return
 name|recheckIntervalMillis
 return|;
 block|}
+specifier|public
 name|void
 name|setTicker
 parameter_list|(
@@ -639,9 +647,11 @@ argument_list|()
 operator|)
 return|;
 block|}
+specifier|public
 class|class
 name|BadIndexInfo
 block|{
+specifier|public
 specifier|final
 name|String
 name|path

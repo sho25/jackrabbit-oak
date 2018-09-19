@@ -263,7 +263,12 @@ name|NAMES
 import|;
 end_import
 
+begin_comment
+comment|/**  * A utility class that allows to copy a new state (including children).  */
+end_comment
+
 begin_class
+specifier|public
 specifier|final
 class|class
 name|NodeStateCopyUtils
@@ -276,6 +281,11 @@ name|OAK_CHILD_ORDER
 init|=
 literal|":childOrder"
 decl_stmt|;
+name|NodeStateCopyUtils
+parameter_list|()
+block|{
+comment|// a utility class
+block|}
 specifier|public
 specifier|static
 name|void

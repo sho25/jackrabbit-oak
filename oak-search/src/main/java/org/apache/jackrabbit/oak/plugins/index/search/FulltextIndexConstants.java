@@ -21,6 +21,10 @@ name|search
 package|;
 end_package
 
+begin_comment
+comment|/**  * Internal constants used in index definition, and index implementations.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -298,7 +302,7 @@ name|COST_PER_EXECUTION
 init|=
 literal|"costPerExecution"
 decl_stmt|;
-comment|/**      * Config node which include Tika related configuration      */
+comment|/**      * Config node which include Tika related configuration      * Its value should match {@link FieldNames#NODE_NAME}      */
 name|String
 name|TIKA
 init|=
@@ -357,6 +361,12 @@ name|PROP_USE_IN_SPELLCHECK
 init|=
 literal|"useInSpellcheck"
 decl_stmt|;
+comment|/**    * whether use this property values for similarity    */
+name|String
+name|PROP_USE_IN_SIMILARITY
+init|=
+literal|"useInSimilarity"
+decl_stmt|;
 comment|/**      * Property definition config indicating that null check support should be      * enabled for this property      */
 name|String
 name|PROP_NULL_CHECK_ENABLED
@@ -398,6 +408,12 @@ name|String
 name|COMPAT_MODE
 init|=
 literal|"compatVersion"
+decl_stmt|;
+comment|/**      * Optional (index definition) property indicating whether facets should be ACL checked.      * Default is true      */
+name|String
+name|PROP_SECURE_FACETS
+init|=
+literal|"secure"
 decl_stmt|;
 comment|/**      * Optional (index definition) property indicating max number of facets that will be retrieved      * in query      * Default is {@link IndexDefinition#DEFAULT_FACET_COUNT}      */
 name|String

@@ -35,6 +35,10 @@ name|ProviderType
 import|;
 end_import
 
+begin_comment
+comment|/**  * An MBean for text extraction statistics.  */
+end_comment
+
 begin_interface
 annotation|@
 name|ProviderType

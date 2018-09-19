@@ -22,7 +22,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *  */
+comment|/**  * Reports index statistics (for example, how many entries does the index contain).  */
 end_comment
 
 begin_interface

@@ -731,6 +731,7 @@ init|=
 name|INITIAL_CONTENT
 decl_stmt|;
 specifier|private
+specifier|final
 name|NodeBuilder
 name|builder
 init|=
@@ -6639,6 +6640,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//~----------------------------------< nodetype>
+specifier|final
 name|String
 name|testNodeTypeDefn
 init|=
