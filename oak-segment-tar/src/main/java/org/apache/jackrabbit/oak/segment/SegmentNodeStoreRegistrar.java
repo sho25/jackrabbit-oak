@@ -2296,9 +2296,15 @@ block|}
 comment|// If a shared data store register the repo id in the data store
 if|if
 condition|(
+operator|!
 name|cfg
 operator|.
-name|isPrimarySegmentStore
+name|isSecondarySegmentStore
+argument_list|()
+operator|&&
+name|cfg
+operator|.
+name|hasCustomBlobStore
 argument_list|()
 operator|&&
 name|isShared
