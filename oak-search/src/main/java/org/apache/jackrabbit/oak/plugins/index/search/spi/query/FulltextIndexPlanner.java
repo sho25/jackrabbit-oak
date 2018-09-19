@@ -742,6 +742,21 @@ specifier|public
 class|class
 name|FulltextIndexPlanner
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_PROPERTY_WEIGHT
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.fulltext.defaultPropertyWeight"
+argument_list|,
+literal|5
+argument_list|)
+decl_stmt|;
 comment|/**      * IndexPaln Attribute name which refers to the name of the fields that should be used for facets.      */
 specifier|public
 specifier|static
@@ -805,12 +820,10 @@ specifier|private
 name|PlanResult
 name|result
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|static
 name|boolean
 name|useActualEntryCount
-init|=
-literal|false
 decl_stmt|;
 static|static
 block|{
@@ -902,6 +915,7 @@ operator|=
 name|sortOrder
 expr_stmt|;
 block|}
+specifier|public
 name|IndexPlan
 name|getPlan
 parameter_list|()
@@ -1024,7 +1038,10 @@ operator|+
 literal|'}'
 return|;
 block|}
-comment|//For tests
+comment|//For tests and since the property is anyway controllable by JVM param, so
+comment|//public isn't very bad. Though, the real need to use 'public' is because
+comment|//tests not in this package (happy to hear about other options)
+specifier|public
 specifier|static
 name|void
 name|setUseActualEntryCount
@@ -1943,9 +1960,7 @@ operator|.
 name|propertyName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
+return|return
 name|pd
 operator|.
 name|valuePattern
@@ -1954,21 +1969,13 @@ name|matchesPrefix
 argument_list|(
 name|prefix
 argument_list|)
-condition|)
-block|{
-comment|// region match which is not fully in the pattern
-return|return
-literal|false
 return|;
-block|}
 block|}
 else|else
 block|{
 comment|// we have a value pattern, for example (a|b),
 comment|// but we search (also) for 'c': can't match
-if|if
-condition|(
-operator|!
+return|return
 name|pd
 operator|.
 name|valuePattern
@@ -1977,12 +1984,7 @@ name|matchesAll
 argument_list|(
 name|values
 argument_list|)
-condition|)
-block|{
-return|return
-literal|false
 return|;
-block|}
 block|}
 block|}
 return|return
@@ -2463,15 +2465,15 @@ literal|false
 return|;
 block|}
 comment|// If jcr:score is the only sort order then opt out
-if|if
-condition|(
+return|return
 name|sortOrder
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|!=
 literal|1
-operator|&&
+operator|||
+operator|!
 name|JCR_SCORE
 operator|.
 name|equals
@@ -2486,14 +2488,6 @@ operator|.
 name|getPropertyName
 argument_list|()
 argument_list|)
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-return|return
-literal|true
 return|;
 block|}
 specifier|private
@@ -4687,14 +4681,17 @@ specifier|static
 class|class
 name|PlanResult
 block|{
+specifier|public
 specifier|final
 name|String
 name|indexPath
 decl_stmt|;
+specifier|public
 specifier|final
 name|IndexDefinition
 name|indexDefinition
 decl_stmt|;
+specifier|public
 specifier|final
 name|IndexDefinition
 operator|.
@@ -5103,10 +5100,12 @@ specifier|static
 class|class
 name|PropertyIndexResult
 block|{
+specifier|public
 specifier|final
 name|String
 name|propertyName
 decl_stmt|;
+specifier|public
 specifier|final
 name|PropertyRestriction
 name|pr
