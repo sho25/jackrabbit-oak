@@ -5507,6 +5507,9 @@ throws|throws
 name|Exception
 block|{
 name|ListAppender
+argument_list|<
+name|ILoggingEvent
+argument_list|>
 name|appender
 init|=
 name|createAndRegisterAppender
@@ -8478,6 +8481,9 @@ return|;
 block|}
 specifier|private
 name|ListAppender
+argument_list|<
+name|ILoggingEvent
+argument_list|>
 name|createAndRegisterAppender
 parameter_list|()
 block|{
@@ -8494,13 +8500,14 @@ name|start
 argument_list|()
 expr_stmt|;
 name|ListAppender
+argument_list|<
+name|ILoggingEvent
+argument_list|>
 name|appender
 init|=
 operator|new
 name|ListAppender
-argument_list|<
-name|ILoggingEvent
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|appender
