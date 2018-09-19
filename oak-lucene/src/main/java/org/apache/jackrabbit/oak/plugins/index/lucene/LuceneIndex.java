@@ -1775,6 +1775,14 @@ argument_list|,
 name|indexPath
 argument_list|)
 operator|.
+name|setDeprecated
+argument_list|(
+name|defn
+operator|.
+name|isDeprecated
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|()
 argument_list|)
