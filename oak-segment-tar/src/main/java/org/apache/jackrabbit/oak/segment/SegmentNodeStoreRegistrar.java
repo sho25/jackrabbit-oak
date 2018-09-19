@@ -2453,10 +2453,17 @@ argument_list|()
 operator|&&
 name|cfg
 operator|.
+name|hasCustomBlobStore
+argument_list|()
+operator|&&
+operator|(
+name|cfg
+operator|.
 name|getBlobStore
 argument_list|()
 operator|instanceof
 name|GarbageCollectableBlobStore
+operator|)
 condition|)
 block|{
 name|BlobGarbageCollector
