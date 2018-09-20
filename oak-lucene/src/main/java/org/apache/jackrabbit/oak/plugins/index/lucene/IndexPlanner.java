@@ -3667,6 +3667,14 @@ name|getCostPerEntry
 argument_list|()
 argument_list|)
 operator|.
+name|setDeprecated
+argument_list|(
+name|definition
+operator|.
+name|isDeprecated
+argument_list|()
+argument_list|)
+operator|.
 name|setFulltextIndex
 argument_list|(
 name|definition

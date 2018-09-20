@@ -3007,6 +3007,34 @@ name|NodeState
 name|rootState
 parameter_list|)
 block|{
+if|if
+condition|(
+name|plan
+operator|.
+name|isDeprecated
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"This index is deprecated: {}; it is used for query {}. "
+operator|+
+literal|"Please change the query or the index definitions."
+argument_list|,
+name|plan
+operator|.
+name|getPlanName
+argument_list|()
+argument_list|,
+name|plan
+operator|.
+name|getFilter
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 specifier|final
 name|Filter
 name|filter
