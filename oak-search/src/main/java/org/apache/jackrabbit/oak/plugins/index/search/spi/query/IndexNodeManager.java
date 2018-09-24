@@ -284,7 +284,7 @@ class|class
 name|IndexNodeManager
 block|{
 comment|/**      * Name of the hidden node under which information about the checkpoints      * seen and indexed by each async indexer is kept.      */
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String

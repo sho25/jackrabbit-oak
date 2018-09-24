@@ -269,7 +269,6 @@ end_comment
 
 begin_class
 specifier|public
-specifier|final
 class|class
 name|NodeStateCopyUtils
 block|{
@@ -281,11 +280,6 @@ name|OAK_CHILD_ORDER
 init|=
 literal|":childOrder"
 decl_stmt|;
-name|NodeStateCopyUtils
-parameter_list|()
-block|{
-comment|// a utility class
-block|}
 specifier|public
 specifier|static
 name|void

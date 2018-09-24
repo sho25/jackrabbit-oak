@@ -238,7 +238,7 @@ operator|.
 name|STRINGS
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 name|FunctionIndexProcessor
 parameter_list|(
 name|String
