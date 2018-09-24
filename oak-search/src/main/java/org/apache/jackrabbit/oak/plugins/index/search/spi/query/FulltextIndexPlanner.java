@@ -1998,6 +1998,19 @@ parameter_list|()
 block|{
 comment|// REMARK: similar code is used in oak-core, PropertyIndex
 comment|// skip index if "option(index ...)" doesn't match
+if|if
+condition|(
+operator|!
+name|definition
+operator|.
+name|isEnabled
+argument_list|()
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 name|PropertyRestriction
 name|indexName
 init|=
