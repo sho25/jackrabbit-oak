@@ -489,13 +489,13 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|DocumentStoreException
 argument_list|(
 literal|"ClusterNodeInfo document for "
 operator|+
 name|clusterId
 operator|+
-literal|" missing."
+literal|" does not exist."
 argument_list|)
 throw|;
 block|}

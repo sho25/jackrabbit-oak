@@ -2042,18 +2042,9 @@ name|isNew
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|DocumentStoreException
-argument_list|(
-literal|"Document does not exist: "
-operator|+
-name|update
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
 block|}
 else|else

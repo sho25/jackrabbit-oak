@@ -732,7 +732,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|DocumentStoreException
+name|ConflictException
 name|e
 parameter_list|)
 block|{
