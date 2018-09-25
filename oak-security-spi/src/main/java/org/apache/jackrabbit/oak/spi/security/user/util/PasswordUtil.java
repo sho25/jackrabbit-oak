@@ -281,7 +281,6 @@ init|=
 literal|"UTF-8"
 decl_stmt|;
 comment|/**      * @since OAK 1.0      */
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -591,6 +590,10 @@ block|{
 if|if
 condition|(
 name|hashedPassword
+operator|==
+literal|null
+operator|||
+name|password
 operator|==
 literal|null
 condition|)
@@ -1524,6 +1527,26 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|algorithm
+operator|.
+name|startsWith
+argument_list|(
+name|PBKDF2_PREFIX
+argument_list|)
+condition|)
+block|{
+name|SecretKeyFactory
+operator|.
+name|getInstance
+argument_list|(
+name|algorithm
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|MessageDigest
 operator|.
 name|getInstance
@@ -1531,6 +1554,7 @@ argument_list|(
 name|algorithm
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|algorithm
 return|;
