@@ -97,7 +97,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|IndexTracker
 import|;
 end_import
 
@@ -117,7 +117,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexTracker
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -1214,7 +1214,7 @@ return|;
 block|}
 specifier|private
 specifier|static
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|createNRTIndex
 parameter_list|(
 name|String
@@ -1254,7 +1254,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|INITIAL_CONTENT
 argument_list|,

@@ -397,6 +397,26 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|FulltextIndexConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|memory
 operator|.
 name|MemoryNodeStore
@@ -950,7 +970,7 @@ name|luceneIndex
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INDEX_RULES
 argument_list|)
@@ -962,7 +982,7 @@ argument_list|)
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_NODE
 argument_list|)
@@ -976,7 +996,7 @@ name|func
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_FUNCTION
 argument_list|,
@@ -1267,7 +1287,7 @@ name|luceneIndex
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INDEX_RULES
 argument_list|)
@@ -1279,7 +1299,7 @@ argument_list|)
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_NODE
 argument_list|)
@@ -1293,7 +1313,7 @@ name|func
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_ORDERED
 argument_list|,
@@ -1304,7 +1324,7 @@ name|func
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_TYPE
 argument_list|,
@@ -1317,7 +1337,7 @@ name|func
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_FUNCTION
 argument_list|,
@@ -1538,7 +1558,7 @@ name|luceneIndex
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INDEX_RULES
 argument_list|)
@@ -1550,7 +1570,7 @@ argument_list|)
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_NODE
 argument_list|)
@@ -1564,7 +1584,7 @@ name|func
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_FUNCTION
 argument_list|,
@@ -1741,7 +1761,7 @@ name|luceneIndex
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INDEX_RULES
 argument_list|)
@@ -1753,7 +1773,7 @@ argument_list|)
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_NODE
 argument_list|)
@@ -1767,7 +1787,7 @@ name|func
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_FUNCTION
 argument_list|,
@@ -1959,7 +1979,7 @@ name|luceneIndex
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INDEX_RULES
 argument_list|)
@@ -1971,7 +1991,7 @@ argument_list|)
 operator|.
 name|addChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_NODE
 argument_list|)
@@ -1985,7 +2005,7 @@ name|func
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_FUNCTION
 argument_list|,
@@ -2927,7 +2947,7 @@ name|def
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|FULL_TEXT_ENABLED
 argument_list|,
@@ -2942,7 +2962,7 @@ name|PropertyStates
 operator|.
 name|createProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INCLUDE_PROPERTY_NAMES
 argument_list|,

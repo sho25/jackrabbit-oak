@@ -147,53 +147,9 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|hybrid
-operator|.
-name|ReaderRefreshPolicy
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
 name|reader
 operator|.
 name|DefaultIndexReaderFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
-name|reader
-operator|.
-name|LuceneIndexReader
 import|;
 end_import
 
@@ -235,9 +191,9 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|util
+name|writer
 operator|.
-name|IndexDefinitionBuilder
+name|IndexWriterUtils
 import|;
 end_import
 
@@ -255,11 +211,57 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|writer
+name|spi
 operator|.
-name|IndexWriterUtils
+name|query
+operator|.
+name|IndexNodeManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|update
+operator|.
+name|ReaderRefreshPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|util
+operator|.
+name|IndexDefinitionBuilder
 import|;
 end_import
 
@@ -507,28 +509,6 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|FieldNames
-operator|.
-name|PATH
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
 name|TestUtil
 operator|.
 name|newDoc
@@ -548,6 +528,28 @@ operator|.
 name|InitialContentHelper
 operator|.
 name|INITIAL_CONTENT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|FieldNames
+operator|.
+name|PATH
 import|;
 end_import
 
@@ -782,7 +784,7 @@ name|Exception
 block|{
 name|assertNull
 argument_list|(
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -803,7 +805,7 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -832,10 +834,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 name|nodeManager
 init|=
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -851,7 +853,7 @@ argument_list|,
 name|nrtFactory
 argument_list|)
 decl_stmt|;
-name|IndexNode
+name|LuceneIndexNode
 name|node
 init|=
 name|nodeManager
@@ -1011,7 +1013,7 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1049,11 +1051,11 @@ init|=
 name|createNRTIndex
 argument_list|()
 decl_stmt|;
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -1095,11 +1097,11 @@ operator|.
 name|getRefreshPolicy
 argument_list|()
 expr_stmt|;
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 name|node
 init|=
 operator|new
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 argument_list|(
 literal|"/foo"
 argument_list|,
@@ -1107,9 +1109,6 @@ name|definition
 argument_list|,
 name|Collections
 operator|.
-expr|<
-name|LuceneIndexReader
-operator|>
 name|emptyList
 argument_list|()
 argument_list|,
@@ -1210,7 +1209,7 @@ name|assertNotNull
 argument_list|(
 literal|"nrtIndex; Non existing /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1230,7 +1229,7 @@ name|assertNull
 argument_list|(
 literal|"asyncIndex; Non existing /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1250,7 +1249,7 @@ name|assertNull
 argument_list|(
 literal|"nonAsyncIndex; Non existing /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1285,7 +1284,7 @@ name|assertNotNull
 argument_list|(
 literal|"nrtIndex; empty /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1305,7 +1304,7 @@ name|assertNull
 argument_list|(
 literal|"asyncIndex; empty /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1325,7 +1324,7 @@ name|assertNull
 argument_list|(
 literal|"nonAsyncIndex; empty /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1367,7 +1366,7 @@ name|assertNull
 argument_list|(
 literal|"nrtIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1387,7 +1386,7 @@ name|assertNull
 argument_list|(
 literal|"asyncIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1407,7 +1406,7 @@ name|assertNull
 argument_list|(
 literal|"nonAsyncIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1448,11 +1447,11 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|indexDefinition
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -1611,7 +1610,7 @@ name|assertNotNull
 argument_list|(
 literal|"nrtIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1631,7 +1630,7 @@ name|assertNotNull
 argument_list|(
 literal|"asyncIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1651,7 +1650,7 @@ name|assertNotNull
 argument_list|(
 literal|"nonAsyncIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|open
 argument_list|(
@@ -1737,7 +1736,7 @@ name|assertFalse
 argument_list|(
 literal|"nrtIndex; Non existing /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(
@@ -1753,7 +1752,7 @@ name|assertFalse
 argument_list|(
 literal|"asyncIndex; Non existing /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(
@@ -1769,7 +1768,7 @@ name|assertFalse
 argument_list|(
 literal|"nonAsyncIndex; Non existing /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(
@@ -1800,7 +1799,7 @@ name|assertFalse
 argument_list|(
 literal|"nrtIndex; Empty /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(
@@ -1816,7 +1815,7 @@ name|assertFalse
 argument_list|(
 literal|"asyncIndex; Non existing /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(
@@ -1832,7 +1831,7 @@ name|assertFalse
 argument_list|(
 literal|"nonAsyncIndex; Non existing /:async"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(
@@ -1870,7 +1869,7 @@ name|assertTrue
 argument_list|(
 literal|"nrtIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(
@@ -1886,7 +1885,7 @@ name|assertTrue
 argument_list|(
 literal|"asyncIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(
@@ -1902,7 +1901,7 @@ name|assertFalse
 argument_list|(
 literal|"nonAsyncIndex; fake async cycle run"
 argument_list|,
-name|IndexNodeManager
+name|LuceneIndexNodeManager
 operator|.
 name|hasAsyncIndexerRun
 argument_list|(

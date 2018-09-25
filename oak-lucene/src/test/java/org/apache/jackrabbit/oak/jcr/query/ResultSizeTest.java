@@ -113,9 +113,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|IndexFormatVersion
+name|FulltextIndexConstants
 import|;
 end_import
 
@@ -133,9 +133,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|IndexFormatVersion
 import|;
 end_import
 
@@ -228,7 +228,7 @@ name|luceneV1
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|COMPAT_MODE
 argument_list|,

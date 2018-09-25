@@ -181,7 +181,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexNode
+name|IndexTracker
 import|;
 end_import
 
@@ -201,7 +201,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexTracker
+name|LuceneIndexNode
 import|;
 end_import
 
@@ -372,16 +372,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -1086,7 +1076,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|IndexNode
+name|LuceneIndexNode
 name|indexNode
 init|=
 name|tracker

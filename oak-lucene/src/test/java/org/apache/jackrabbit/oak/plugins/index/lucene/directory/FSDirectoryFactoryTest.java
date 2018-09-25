@@ -97,7 +97,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -309,10 +309,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -441,10 +441,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn1
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -461,10 +461,10 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn2
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -606,10 +606,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -742,10 +742,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(

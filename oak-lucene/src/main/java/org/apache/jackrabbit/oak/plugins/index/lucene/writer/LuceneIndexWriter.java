@@ -25,11 +25,25 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|IOException
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|spi
+operator|.
+name|editor
+operator|.
+name|FulltextIndexWriter
 import|;
 end_import
 
@@ -51,46 +65,17 @@ begin_interface
 specifier|public
 interface|interface
 name|LuceneIndexWriter
-block|{
-comment|/**      * Updates the Lucene document having given path      *      * @param path path of the NodeState which the Document represents      * @param doc updated document      */
-name|void
-name|updateDocument
-parameter_list|(
-name|String
-name|path
-parameter_list|,
+extends|extends
+name|FulltextIndexWriter
+argument_list|<
 name|Iterable
 argument_list|<
 name|?
 extends|extends
 name|IndexableField
 argument_list|>
-name|doc
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**      * Deletes Lucene Documents which are same or child of given path      *      * @param path path whose children need to be deleted      */
-name|void
-name|deleteDocuments
-parameter_list|(
-name|String
-name|path
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**      * Closes the underlying writer.      *      * @param timestamp timestamp to be used for recording at status in NodeBuilder      * @return true if index was updated or any write happened.      */
-name|boolean
-name|close
-parameter_list|(
-name|long
-name|timestamp
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-block|}
+argument_list|>
+block|{ }
 end_interface
 
 end_unit

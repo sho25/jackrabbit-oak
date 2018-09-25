@@ -115,7 +115,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -1438,13 +1438,13 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|getDefn
 parameter_list|()
 block|{
 return|return
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,

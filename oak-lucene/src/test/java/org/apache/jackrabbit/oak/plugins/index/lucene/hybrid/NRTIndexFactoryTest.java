@@ -79,7 +79,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -99,9 +99,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LuceneIndexConstants
-operator|.
-name|IndexingMode
+name|TestUtil
 import|;
 end_import
 
@@ -139,9 +137,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|TestUtil
+name|FulltextIndexConstants
 import|;
 end_import
 
@@ -465,11 +463,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|idxDefn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -501,13 +499,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|idxDefn
 init|=
 name|getIndexDefinition
 argument_list|(
 literal|"/foo"
 argument_list|,
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 operator|.
 name|SYNC
@@ -553,7 +553,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|idxDefn
 init|=
 name|getNRTIndexDefinition
@@ -601,7 +601,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|idxDefn
 init|=
 name|getNRTIndexDefinition
@@ -851,7 +851,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|idxDefn
 init|=
 name|getNRTIndexDefinition
@@ -996,7 +996,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|idxDefn
 init|=
 name|getNRTIndexDefinition
@@ -1077,7 +1077,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|getNRTIndexDefinition
 parameter_list|(
 name|String
@@ -1089,6 +1089,8 @@ name|getIndexDefinition
 argument_list|(
 name|indexPath
 argument_list|,
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 operator|.
 name|NRT
@@ -1096,12 +1098,14 @@ argument_list|)
 return|;
 block|}
 specifier|private
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|getIndexDefinition
 parameter_list|(
 name|String
 name|indexPath
 parameter_list|,
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 name|indexingMode
 parameter_list|)
@@ -1124,7 +1128,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,

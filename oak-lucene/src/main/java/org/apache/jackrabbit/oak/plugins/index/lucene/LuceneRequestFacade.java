@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Facade for possible requests to be done to Lucene, like queries, spellchecking requests, etc..  *  * @param<T> the actual Lucene class representing the request / use case.  */
+comment|/**  * Facade for possible requests to be done to Lucene, like queries,  * spellchecking requests, etc..  *  * @param<T> the actual Lucene class representing the request / use case.  */
 end_comment
 
 begin_class

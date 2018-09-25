@@ -33,16 +33,18 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|mount
+name|index
 operator|.
-name|Mount
+name|search
+operator|.
+name|FulltextIndexConstants
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|apache
@@ -51,15 +53,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|index
+name|mount
 operator|.
-name|lucene
-operator|.
-name|LuceneIndexConstants
-operator|.
-name|INDEX_DATA_CHILD_NAME
+name|Mount
 import|;
 end_import
 
@@ -126,6 +124,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|FulltextIndexConstants
+operator|.
 name|INDEX_DATA_CHILD_NAME
 return|;
 block|}
@@ -167,6 +167,8 @@ name|name
 operator|.
 name|equals
 argument_list|(
+name|FulltextIndexConstants
+operator|.
 name|INDEX_DATA_CHILD_NAME
 argument_list|)
 return|;

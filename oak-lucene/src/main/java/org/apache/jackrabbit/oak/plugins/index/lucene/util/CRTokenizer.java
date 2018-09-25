@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link org.apache.lucene.analysis.util.CharTokenizer} dividing tokens at<code>\n</code>.  *  * This should be deprecated if / once LUCENE-5833 fix gets included in the Lucene version we ship.  */
+comment|/**  * A {@link CharTokenizer} dividing tokens at<code>\n</code>.  *  * This should be deprecated if / once LUCENE-5833 fix gets included in the Lucene version we ship.  */
 end_comment
 
 begin_class

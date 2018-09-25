@@ -153,9 +153,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|EXCLUDE_PROPERTY_NAMES
 import|;
@@ -175,9 +175,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INCLUDE_PROPERTY_TYPES
 import|;

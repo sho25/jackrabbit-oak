@@ -367,9 +367,11 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LuceneIndexConstants
+name|directory
 operator|.
-name|INDEX_DATA_CHILD_NAME
+name|CopyOnReadDirectory
+operator|.
+name|DELETE_MARGIN_MILLIS_NAME
 import|;
 end_import
 
@@ -387,13 +389,11 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|directory
+name|FulltextIndexConstants
 operator|.
-name|CopyOnReadDirectory
-operator|.
-name|DELETE_MARGIN_MILLIS_NAME
+name|INDEX_DATA_CHILD_NAME
 import|;
 end_import
 
@@ -570,7 +570,7 @@ name|create
 argument_list|()
 decl_stmt|;
 specifier|private
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 literal|null
@@ -626,7 +626,7 @@ expr_stmt|;
 name|defn
 operator|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -2455,7 +2455,7 @@ parameter_list|(
 name|String
 name|indexPath
 parameter_list|,
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|String
@@ -2478,7 +2478,7 @@ specifier|protected
 name|Directory
 name|createLocalDirForIndexWriter
 parameter_list|(
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|String

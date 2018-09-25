@@ -193,7 +193,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexFormatVersion
+name|LuceneIndexConstants
 import|;
 end_import
 
@@ -211,9 +211,29 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|IndexFormatVersion
 import|;
 end_import
 
@@ -444,7 +464,7 @@ name|lucene
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|EVALUATE_PATH_RESTRICTION
 argument_list|,
@@ -466,7 +486,7 @@ name|lucene
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|COMPAT_MODE
 argument_list|,
@@ -485,7 +505,7 @@ name|lucene
 operator|.
 name|addNode
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INDEX_RULES
 argument_list|,
@@ -511,7 +531,7 @@ name|ntBaseRule
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INCLUDE_PROPERTY_TYPES
 argument_list|,
@@ -536,7 +556,7 @@ name|ntBaseRule
 operator|.
 name|addNode
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_NODE
 argument_list|)
@@ -555,7 +575,7 @@ name|allPropNode
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_ANALYZED
 argument_list|,
@@ -566,7 +586,7 @@ name|allPropNode
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_NODE_SCOPE_INDEX
 argument_list|,
@@ -577,11 +597,11 @@ name|allPropNode
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_NAME
 argument_list|,
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|REGEX_ALL_PROPS
 argument_list|)
@@ -590,7 +610,7 @@ name|allPropNode
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_IS_REGEX
 argument_list|,
@@ -601,7 +621,7 @@ name|allPropNode
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_USE_IN_SPELLCHECK
 argument_list|,
@@ -616,7 +636,7 @@ name|lucene
 operator|.
 name|addNode
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGGREGATES
 argument_list|)
@@ -642,7 +662,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGG_PATH
 argument_list|,

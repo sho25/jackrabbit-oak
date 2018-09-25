@@ -87,7 +87,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -244,7 +244,7 @@ parameter_list|(
 name|NodeBuilder
 name|builder
 parameter_list|,
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|indexDefinition
 parameter_list|)
 block|{

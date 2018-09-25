@@ -131,7 +131,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -176,6 +176,26 @@ operator|.
 name|util
 operator|.
 name|SuggestHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|IndexDefinition
 import|;
 end_import
 
@@ -464,7 +484,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 decl_stmt|;
 specifier|private
@@ -521,7 +541,7 @@ decl_stmt|;
 specifier|public
 name|DefaultIndexWriter
 parameter_list|(
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|NodeBuilder

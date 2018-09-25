@@ -69,7 +69,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexNode
+name|IndexTracker
 import|;
 end_import
 
@@ -89,7 +89,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexTracker
+name|LuceneIndexNode
 import|;
 end_import
 
@@ -293,7 +293,7 @@ argument_list|(
 literal|2
 argument_list|)
 decl_stmt|;
-name|IndexNode
+name|LuceneIndexNode
 name|indexNode
 init|=
 name|tracker

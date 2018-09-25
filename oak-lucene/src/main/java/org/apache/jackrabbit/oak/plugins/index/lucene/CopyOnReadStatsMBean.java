@@ -47,6 +47,10 @@ name|ProviderType
 import|;
 end_import
 
+begin_comment
+comment|/**  * Statistics for the copy-on-read mechanism.  */
+end_comment
+
 begin_interface
 annotation|@
 name|SuppressWarnings

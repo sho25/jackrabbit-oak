@@ -277,7 +277,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexNode
+name|IndexTracker
 import|;
 end_import
 
@@ -297,7 +297,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexTracker
+name|LuceneIndexNode
 import|;
 end_import
 
@@ -1380,7 +1380,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|IndexNode
+name|LuceneIndexNode
 name|indexNode
 init|=
 name|tracker
@@ -1401,7 +1401,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"No IndexNode found for index [{}]."
+literal|"No LuceneIndexNode found for index [{}]."
 argument_list|,
 name|indexPath
 argument_list|)
@@ -1438,7 +1438,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|//IndexDefinition per IndexNode might have changed and local
+comment|//IndexDefinition per LuceneIndexNode might have changed and local
 comment|//indexing is disabled. Ignore
 name|log
 operator|.

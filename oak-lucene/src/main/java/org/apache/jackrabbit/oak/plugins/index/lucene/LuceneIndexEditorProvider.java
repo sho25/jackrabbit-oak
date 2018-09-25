@@ -431,11 +431,53 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|writer
+name|ExtractedTextCache
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|LuceneIndexWriterFactory
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|IndexDefinition
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|spi
+operator|.
+name|editor
+operator|.
+name|FulltextIndexWriterFactory
 import|;
 end_import
 
@@ -682,7 +724,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Service that provides Lucene based {@link IndexEditor}s  *   * @see LuceneIndexEditor  * @see IndexEditorProvider  *   */
+comment|/**  * Service that provides Lucene based {@link IndexEditor}s  *  * @see LuceneIndexEditor  * @see IndexEditorProvider  *  */
 end_comment
 
 begin_class
@@ -933,6 +975,8 @@ name|mountInfoProvider
 parameter_list|,
 annotation|@
 name|NotNull
+name|ActiveDeletedBlobCollectorFactory
+operator|.
 name|ActiveDeletedBlobCollector
 name|activeDeletedBlobCollector
 parameter_list|)
@@ -1069,12 +1113,12 @@ argument_list|(
 name|blobDeletionCallback
 argument_list|)
 expr_stmt|;
-name|LuceneIndexWriterFactory
+name|FulltextIndexWriterFactory
 name|writerFactory
 init|=
 literal|null
 decl_stmt|;
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|indexDefinition
 init|=
 literal|null
@@ -1241,7 +1285,7 @@ condition|)
 block|{
 name|indexDefinition
 operator|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -1413,6 +1457,7 @@ return|return
 name|indexingQueue
 return|;
 block|}
+specifier|public
 name|ExtractedTextCache
 name|getExtractedTextCache
 parameter_list|()

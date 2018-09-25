@@ -166,14 +166,12 @@ block|{
 name|String
 name|indexPath
 init|=
-operator|new
-name|LuceneIndexLookup
-argument_list|(
-name|rootState
-argument_list|)
+name|LuceneIndexLookupUtil
 operator|.
 name|getOldFullTextIndexPath
 argument_list|(
+name|rootState
+argument_list|,
 name|filter
 argument_list|,
 name|tracker

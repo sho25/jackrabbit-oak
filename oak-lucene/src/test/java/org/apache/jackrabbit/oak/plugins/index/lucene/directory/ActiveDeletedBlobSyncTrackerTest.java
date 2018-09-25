@@ -243,7 +243,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|ExtractedTextCache
+name|IndexCopier
 import|;
 end_import
 
@@ -263,7 +263,11 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexCopier
+name|directory
+operator|.
+name|ActiveDeletedBlobCollectorFactory
+operator|.
+name|ActiveDeletedBlobCollectorImpl
 import|;
 end_import
 
@@ -321,13 +325,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|directory
-operator|.
-name|ActiveDeletedBlobCollectorFactory
-operator|.
-name|ActiveDeletedBlobCollectorImpl
+name|ExtractedTextCache
 import|;
 end_import
 
@@ -479,16 +479,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -544,22 +534,6 @@ operator|.
 name|Lists
 operator|.
 name|newArrayList
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-operator|.
-name|intersection
 import|;
 end_import
 

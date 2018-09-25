@@ -145,9 +145,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 import|;
 end_import
 
@@ -309,9 +309,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGGREGATES
 import|;
@@ -1040,7 +1040,7 @@ argument_list|)
 operator|.
 name|property
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|REGEX_ALL_PROPS
 argument_list|,
@@ -1068,7 +1068,7 @@ argument_list|)
 operator|.
 name|getBoolean
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_IS_REGEX
 argument_list|)
@@ -1956,7 +1956,7 @@ name|state
 operator|.
 name|getBoolean
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_INDEX_NODE_TYPE
 argument_list|)
@@ -1968,7 +1968,7 @@ name|ntFileRule
 operator|.
 name|getBoolean
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_SYNC
 argument_list|)
@@ -2049,7 +2049,7 @@ name|state
 operator|.
 name|getBoolean
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_INDEX_NODE_TYPE
 argument_list|)
@@ -2061,7 +2061,7 @@ name|ntFileRule
 operator|.
 name|getBoolean
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|PROP_SYNC
 argument_list|)

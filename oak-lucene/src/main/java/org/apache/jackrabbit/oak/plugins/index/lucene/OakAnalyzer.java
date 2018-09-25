@@ -121,6 +121,10 @@ name|Version
 import|;
 end_import
 
+begin_comment
+comment|/**  * The default Lucene Analyzer used in Oak.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -138,7 +142,7 @@ specifier|final
 name|int
 name|INDEX_ORIGINAL_TERM
 decl_stmt|;
-comment|/**      * Creates a new {@link OakAnalyzer}      *       * @param matchVersion      *            Lucene version to match See      *            {@link #matchVersion above}      */
+comment|/**      * Creates a new {@link OakAnalyzer}      *      * @param matchVersion      *            Lucene version to match See      *            {@link #matchVersion above}      */
 specifier|public
 name|OakAnalyzer
 parameter_list|(

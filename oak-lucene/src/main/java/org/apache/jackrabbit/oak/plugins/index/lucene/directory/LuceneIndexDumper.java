@@ -73,7 +73,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -312,10 +312,10 @@ argument_list|,
 name|indexPath
 argument_list|)
 decl_stmt|;
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -435,7 +435,7 @@ parameter_list|(
 name|NodeState
 name|idx
 parameter_list|,
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 parameter_list|,
 name|IndexMeta

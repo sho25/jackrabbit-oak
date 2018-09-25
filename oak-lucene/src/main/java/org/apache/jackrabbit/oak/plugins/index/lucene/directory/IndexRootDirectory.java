@@ -287,7 +287,9 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|hybrid
+operator|.
+name|NRTIndex
 import|;
 end_import
 
@@ -305,11 +307,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|hybrid
-operator|.
-name|NRTIndex
+name|IndexDefinition
 import|;
 end_import
 

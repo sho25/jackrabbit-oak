@@ -129,7 +129,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
 name|FieldNames
 import|;
@@ -304,7 +304,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper class for getting suggest results for a given term, calling a {@link org.apache.lucene.search.suggest.Lookup}  * implementation under the hood.  */
+comment|/**  * Helper class for getting suggest results for a given term, calling a {@link Lookup}  * implementation under the hood.  */
 end_comment
 
 begin_class
@@ -340,8 +340,6 @@ block|{
 annotation|@
 name|Override
 specifier|protected
-name|Analyzer
-operator|.
 name|TokenStreamComponents
 name|createComponents
 parameter_list|(
@@ -354,8 +352,6 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Analyzer
-operator|.
 name|TokenStreamComponents
 argument_list|(
 operator|new

@@ -165,6 +165,20 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|InitialContentHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|Oak
 import|;
 end_import
@@ -283,9 +297,11 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|memory
+name|index
 operator|.
-name|MemoryNodeStore
+name|search
+operator|.
+name|FulltextIndexConstants
 import|;
 end_import
 
@@ -387,7 +403,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|InitialContentHelper
+name|plugins
+operator|.
+name|memory
+operator|.
+name|MemoryNodeStore
 import|;
 end_import
 
@@ -597,7 +617,7 @@ name|enableForFullText
 argument_list|(
 name|props
 argument_list|,
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|REGEX_ALL_PROPS
 argument_list|,
@@ -677,7 +697,7 @@ name|createContentRepository
 argument_list|()
 return|;
 block|}
-comment|/**      *<code>      *<aggregate primaryType="nt:file">       *<include>jcr:content</include>      *<include>jcr:content/*</include>      *<include-property>jcr:content/jcr:lastModified</include-property>      *</aggregate>      *<code>      *       */
+comment|/**      *<code>      *<aggregate primaryType="nt:file">      *<include>jcr:content</include>      *<include>jcr:content/*</include>      *<include-property>jcr:content/jcr:lastModified</include-property>      *</aggregate>      *<code>      *      */
 specifier|private
 specifier|static
 name|QueryIndex
@@ -718,7 +738,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * simple index aggregation from jcr:content to nt:file      *       */
+comment|/**      * simple index aggregation from jcr:content to nt:file      *      */
 annotation|@
 name|Test
 specifier|public
@@ -2859,7 +2879,7 @@ name|indexdef
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|COMPAT_MODE
 argument_list|,

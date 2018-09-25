@@ -359,28 +359,6 @@ name|lucene
 operator|.
 name|directory
 operator|.
-name|IndexSanityChecker
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
-name|directory
-operator|.
 name|DirectoryUtils
 import|;
 end_import
@@ -425,6 +403,28 @@ name|lucene
 operator|.
 name|directory
 operator|.
+name|IndexSanityChecker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|directory
+operator|.
 name|LocalIndexDir
 import|;
 end_import
@@ -448,6 +448,26 @@ operator|.
 name|directory
 operator|.
 name|LocalIndexFile
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|IndexDefinition
 import|;
 end_import
 
@@ -593,22 +613,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
-operator|.
-name|newHashMap
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -624,6 +628,10 @@ operator|.
 name|humanReadableByteCount
 import|;
 end_import
+
+begin_comment
+comment|/**  * Copies index files to/from the local disk and the datastore.  */
+end_comment
 
 begin_class
 specifier|public
@@ -1014,7 +1022,7 @@ parameter_list|(
 name|String
 name|indexPath
 parameter_list|,
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|Directory
@@ -1069,7 +1077,7 @@ specifier|public
 name|Directory
 name|wrapForWrite
 parameter_list|(
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|Directory
@@ -1174,7 +1182,7 @@ specifier|protected
 name|Directory
 name|createLocalDirForIndexWriter
 parameter_list|(
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|String
@@ -1240,7 +1248,7 @@ parameter_list|(
 name|String
 name|indexPath
 parameter_list|,
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|String

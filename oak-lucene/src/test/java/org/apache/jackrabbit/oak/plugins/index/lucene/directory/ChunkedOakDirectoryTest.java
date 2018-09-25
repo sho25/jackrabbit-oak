@@ -85,7 +85,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -103,9 +103,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 import|;
 end_import
 
@@ -457,7 +457,7 @@ name|builder
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|BLOB_SIZE
 argument_list|,
@@ -572,7 +572,7 @@ name|builder
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|BLOB_SIZE
 argument_list|,
@@ -729,7 +729,7 @@ parameter_list|(
 name|NodeBuilder
 name|builder
 parameter_list|,
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|indexDefinition
 parameter_list|)
 block|{

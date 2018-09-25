@@ -63,7 +63,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -316,10 +316,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(

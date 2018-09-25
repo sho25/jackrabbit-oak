@@ -81,9 +81,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 import|;
 end_import
 
@@ -156,7 +156,7 @@ name|nodeBuilder
 operator|.
 name|child
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|FACETS
 argument_list|)

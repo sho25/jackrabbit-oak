@@ -141,9 +141,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LuceneIndexConstants
-operator|.
-name|IndexingMode
+name|TestUtil
 import|;
 end_import
 
@@ -183,7 +181,9 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|TestUtil
+name|util
+operator|.
+name|IndexDefinitionBuilder
 import|;
 end_import
 
@@ -201,11 +201,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|util
-operator|.
-name|IndexDefinitionBuilder
+name|FulltextIndexConstants
 import|;
 end_import
 
@@ -575,6 +573,8 @@ name|createIndexDefinition
 argument_list|(
 literal|"fooIndex"
 argument_list|,
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 operator|.
 name|NRT
@@ -647,6 +647,8 @@ name|indexed
 init|=
 name|createAndPopulateAsyncIndex
 argument_list|(
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 operator|.
 name|NRT
@@ -759,6 +761,8 @@ name|indexed
 init|=
 name|createAndPopulateTwoAsyncIndex
 argument_list|(
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 operator|.
 name|NRT
@@ -887,6 +891,8 @@ name|indexed
 init|=
 name|createAndPopulateAsyncIndex
 argument_list|(
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 operator|.
 name|SYNC
@@ -989,6 +995,8 @@ name|indexed
 init|=
 name|createAndPopulateAsyncIndex
 argument_list|(
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 operator|.
 name|NRT
@@ -1105,6 +1113,8 @@ specifier|private
 name|NodeState
 name|createAndPopulateAsyncIndex
 parameter_list|(
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 name|indexingMode
 parameter_list|)
@@ -1159,6 +1169,8 @@ specifier|private
 name|NodeState
 name|createAndPopulateTwoAsyncIndex
 parameter_list|(
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 name|indexingMode
 parameter_list|)
@@ -1326,6 +1338,8 @@ parameter_list|(
 name|String
 name|idxName
 parameter_list|,
+name|FulltextIndexConstants
+operator|.
 name|IndexingMode
 name|indexingMode
 parameter_list|)

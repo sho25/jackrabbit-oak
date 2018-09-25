@@ -27,6 +27,26 @@ name|org
 operator|.
 name|apache
 operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|FieldNames
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|lucene
 operator|.
 name|analysis
@@ -65,62 +85,19 @@ name|Version
 import|;
 end_import
 
+begin_comment
+comment|/**  * Constants used internally in Lucene indexes.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|LuceneIndexConstants
 block|{
-enum|enum
-name|IndexingMode
-block|{
-name|SYNC
-block|,
-name|NRT
-block|,
-name|ASYNC
-block|;
-specifier|public
-name|String
-name|asyncValueName
-parameter_list|()
-block|{
-return|return
-name|name
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
-return|;
-block|}
-specifier|public
-specifier|static
-name|IndexingMode
-name|from
-parameter_list|(
-name|String
-name|indexingMode
-parameter_list|)
-block|{
-return|return
-name|valueOf
-argument_list|(
-name|indexingMode
-operator|.
-name|toUpperCase
-argument_list|()
-argument_list|)
-return|;
-block|}
-block|}
 name|String
 name|TYPE_LUCENE
 init|=
 literal|"lucene"
-decl_stmt|;
-name|String
-name|INDEX_DATA_CHILD_NAME
-init|=
-literal|":data"
 decl_stmt|;
 name|String
 name|SUGGEST_DATA_CHILD_NAME
@@ -148,80 +125,6 @@ argument_list|(
 name|VERSION
 argument_list|)
 decl_stmt|;
-comment|/**      * include only certain property types in the index      */
-name|String
-name|INCLUDE_PROPERTY_TYPES
-init|=
-literal|"includePropertyTypes"
-decl_stmt|;
-comment|/**      * exclude certain properties by name      */
-name|String
-name|EXCLUDE_PROPERTY_NAMES
-init|=
-literal|"excludePropertyNames"
-decl_stmt|;
-name|String
-name|PERSISTENCE_NAME
-init|=
-literal|"persistence"
-decl_stmt|;
-name|String
-name|PERSISTENCE_OAK
-init|=
-literal|"repository"
-decl_stmt|;
-name|String
-name|PERSISTENCE_FILE
-init|=
-literal|"file"
-decl_stmt|;
-name|String
-name|PERSISTENCE_PATH
-init|=
-literal|"path"
-decl_stmt|;
-comment|/**      * Experimental flag to control storage behavior: 'null' or 'true' means the content is stored      */
-name|String
-name|EXPERIMENTAL_STORAGE
-init|=
-literal|"oak.experimental.storage"
-decl_stmt|;
-comment|/**      * Determines if full text indexing is enabled for this index definition.      * Default is true      */
-name|String
-name|FULL_TEXT_ENABLED
-init|=
-literal|"fulltextEnabled"
-decl_stmt|;
-comment|/**      * Only include properties with name in this set. If this property is defined      * then {@code excludePropertyNames} would be ignored      */
-name|String
-name|INCLUDE_PROPERTY_NAMES
-init|=
-literal|"includePropertyNames"
-decl_stmt|;
-comment|/**      * Type of the property being indexed defined as part of property definition      * under the given index definition. Refer to {@link javax.jcr.PropertyType}      * contants for the possible values      */
-name|String
-name|PROP_TYPE
-init|=
-literal|"type"
-decl_stmt|;
-comment|/**      * Defines properties which would be used for ordering. If range queries are to      * be performed with same property then it must be part of include list also      */
-name|String
-name|ORDERED_PROP_NAMES
-init|=
-literal|"orderedProps"
-decl_stmt|;
-comment|/**      * Size in bytes used for splitting the index files when storing them in NodeStore      */
-name|String
-name|BLOB_SIZE
-init|=
-literal|"blobSize"
-decl_stmt|;
-comment|/**      * Native function name associated with this index definition. Any query can      * use this as the function name to ensure that this index gets used for invoking      * the index      */
-name|String
-name|FUNC_NAME
-init|=
-literal|"functionName"
-decl_stmt|;
 comment|/**      * Name of the codec to be used for indexing      */
 name|String
 name|CODEC_NAME
@@ -234,163 +137,11 @@ name|MERGE_POLICY_NAME
 init|=
 literal|"mergePolicy"
 decl_stmt|;
-comment|/**      * Child node name under which property details are provided      */
-name|String
-name|PROP_NODE
-init|=
-literal|"properties"
-decl_stmt|;
-name|String
-name|INDEX_RULES
-init|=
-literal|"indexRules"
-decl_stmt|;
-comment|/**      * Field boost factor      */
-name|String
-name|FIELD_BOOST
-init|=
-literal|"boost"
-decl_stmt|;
-comment|/**      * Property name defined explicitly. Mostly used in case of relative property names      */
-name|String
-name|PROP_NAME
-init|=
-literal|"name"
-decl_stmt|;
-name|String
-name|PROP_IS_REGEX
-init|=
-literal|"isRegexp"
-decl_stmt|;
-name|String
-name|PROP_INDEX
-init|=
-literal|"index"
-decl_stmt|;
-name|String
-name|PROP_USE_IN_EXCERPT
-init|=
-literal|"useInExcerpt"
-decl_stmt|;
-name|String
-name|EXCERPT_NODE_FIELD_NAME
-init|=
-literal|"."
-decl_stmt|;
-name|String
-name|PROP_NODE_SCOPE_INDEX
-init|=
-literal|"nodeScopeIndex"
-decl_stmt|;
-name|String
-name|PROP_PROPERTY_INDEX
-init|=
-literal|"propertyIndex"
-decl_stmt|;
-name|String
-name|PROP_ANALYZED
-init|=
-literal|"analyzed"
-decl_stmt|;
-name|String
-name|RULE_INHERITED
-init|=
-literal|"inherited"
-decl_stmt|;
-name|String
-name|PROP_ORDERED
-init|=
-literal|"ordered"
-decl_stmt|;
-name|String
-name|PROP_SCORER_PROVIDER
-init|=
-literal|"scorerProviderName"
-decl_stmt|;
-name|String
-name|PROP_WEIGHT
-init|=
-literal|"weight"
-decl_stmt|;
-comment|/**      * Boolean property in property definition to mark sync properties      */
-name|String
-name|PROP_SYNC
-init|=
-literal|"sync"
-decl_stmt|;
-comment|/**      * Boolean property in property definition to mark unique properties      */
-name|String
-name|PROP_UNIQUE
-init|=
-literal|"unique"
-decl_stmt|;
-comment|/**      * Integer property indicating that LuceneIndex should be      * used in compat mode to specific version      */
-name|String
-name|COMPAT_MODE
-init|=
-literal|"compatVersion"
-decl_stmt|;
 comment|/**      * Boolean property to indicate that LuceneIndex is being used in testMode      * and it should participate in every test      */
 name|String
 name|TEST_MODE
 init|=
 literal|"testMode"
-decl_stmt|;
-name|String
-name|EVALUATE_PATH_RESTRICTION
-init|=
-literal|"evaluatePathRestrictions"
-decl_stmt|;
-comment|/**      * Experimental config to restrict which property type gets indexed at      * property definition level. Mostly index rule level #INCLUDE_PROPERTY_TYPES      * should be sufficient      */
-name|String
-name|PROP_INCLUDED_TYPE
-init|=
-literal|"oak.experimental.includePropertyTypes"
-decl_stmt|;
-comment|/**      * Regex to allow inclusion of all immediate properties of the node      */
-name|String
-name|REGEX_ALL_PROPS
-init|=
-literal|"^[^\\/]*$"
-decl_stmt|;
-comment|/**      * Node name storing the aggregate rules      */
-name|String
-name|AGGREGATES
-init|=
-literal|"aggregates"
-decl_stmt|;
-name|String
-name|AGG_PRIMARY_TYPE
-init|=
-literal|"primaryType"
-decl_stmt|;
-comment|/**      * Name of property which stores the aggregate include pattern like<code>jcr:content/metadata</code>      */
-name|String
-name|AGG_PATH
-init|=
-literal|"path"
-decl_stmt|;
-comment|/**      * Limit for maximum number of reaggregates allowed. For example if there is an aggregate of nt:folder      * and it also includes nt:folder then aggregation would traverse down untill this limit is hit      */
-name|String
-name|AGG_RECURSIVE_LIMIT
-init|=
-literal|"reaggregateLimit"
-decl_stmt|;
-comment|/**      * Boolean property indicating that separate fulltext field should be created for      * node represented by this pattern      */
-name|String
-name|AGG_RELATIVE_NODE
-init|=
-literal|"relativeNode"
-decl_stmt|;
-name|String
-name|COST_PER_ENTRY
-init|=
-literal|"costPerEntry"
-decl_stmt|;
-name|String
-name|COST_PER_EXECUTION
-init|=
-literal|"costPerExecution"
 decl_stmt|;
 comment|/**      * Boolean property indicating if in-built analyzer should preserve original term      * (i.e. use      * {@link org.apache.lucene.analysis.miscellaneous.WordDelimiterFilter#PRESERVE_ORIGINAL}      * flag)      */
 name|String
@@ -549,60 +300,6 @@ name|String
 name|INDEX_PATH
 init|=
 literal|"indexPath"
-decl_stmt|;
-comment|/**      * Optional subnode holding configuration for facets.      */
-name|String
-name|FACETS
-init|=
-literal|"facets"
-decl_stmt|;
-comment|/**      * Optional property to set the suggest field to be analyzed and therefore allow more fine      * grained and flexible suggestions.      */
-name|String
-name|SUGGEST_ANALYZED
-init|=
-literal|"suggestAnalyzed"
-decl_stmt|;
-comment|/**      * Optional (index definition) property indicating whether facets should be ACL checked.      * Default is true      */
-name|String
-name|PROP_SECURE_FACETS
-init|=
-literal|"secure"
-decl_stmt|;
-comment|/**      * Optional (index definition) property indicating max number of facets that will be retrieved      * in query      * Default is {@link IndexDefinition#DEFAULT_FACET_COUNT}      */
-name|String
-name|PROP_FACETS_TOP_CHILDREN
-init|=
-literal|"topChildren"
-decl_stmt|;
-comment|/**      * Optional (property definition) property indicating whether facets should be created      * for this property      */
-name|String
-name|PROP_FACETS
-init|=
-literal|"facets"
-decl_stmt|;
-comment|/**      * Boolean property indicate that property should not be included in aggregation      */
-name|String
-name|PROP_EXCLUDE_FROM_AGGREGATE
-init|=
-literal|"excludeFromAggregation"
-decl_stmt|;
-comment|/**      * String property: the function to index, for function-based index      */
-name|String
-name|PROP_FUNCTION
-init|=
-literal|"function"
-decl_stmt|;
-comment|/**      * Boolean property which signal LuceneIndexEditor to refresh the stored index definition      */
-name|String
-name|PROP_REFRESH_DEFN
-init|=
-literal|"refresh"
-decl_stmt|;
-comment|/**      * Boolean property to indicate that nodes nodetype matching indexRule name      * should be indexed      */
-name|String
-name|PROP_INDEX_NODE_TYPE
-init|=
-literal|"nodeTypeIndex"
 decl_stmt|;
 block|}
 end_interface

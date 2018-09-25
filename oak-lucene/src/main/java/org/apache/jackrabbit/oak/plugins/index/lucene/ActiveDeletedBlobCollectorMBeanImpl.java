@@ -649,9 +649,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|INDEX_DATA_CHILD_NAME
 import|;
@@ -820,6 +820,7 @@ literal|null
 argument_list|)
 decl_stmt|;
 comment|/**      * @param activeDeletedBlobCollector    deleted index blobs collector      * @param whiteboard                    An instance of {@link Whiteboard}. It will be      *                                      used to get checkpoing manager mbean.      * @param store                         {@link NodeStore} instance to access repository state      * @param indexPathService              {@link IndexPathService} instance to collect indexes available in      *                                                              the repository      * @param asyncIndexInfoService         {@link AsyncIndexInfoService} instance to acess state of async      *                                                                   indexer lanes      * @param blobStore                     An instance of {@link GarbageCollectableBlobStore}. It will be      *                                      used to purge blobs which have been deleted from lucene indexes.      * @param executor                      executor for running the collection task      */
+specifier|public
 name|ActiveDeletedBlobCollectorMBeanImpl
 parameter_list|(
 annotation|@

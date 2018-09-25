@@ -57,7 +57,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
 name|IndexDefinition
 import|;

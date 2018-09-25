@@ -3780,6 +3780,14 @@ literal|true
 argument_list|)
 comment|//Lucene is always async
 operator|.
+name|setDeprecated
+argument_list|(
+name|definition
+operator|.
+name|isDeprecated
+argument_list|()
+argument_list|)
+operator|.
 name|setAttribute
 argument_list|(
 name|FulltextIndex

@@ -251,7 +251,7 @@ name|lucene
 operator|.
 name|util
 operator|.
-name|ConfigUtil
+name|TokenizerChain
 import|;
 end_import
 
@@ -269,11 +269,11 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
 name|util
 operator|.
-name|TokenizerChain
+name|ConfigUtil
 import|;
 end_import
 
@@ -588,7 +588,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Constructs the TokenizerChain based on NodeState content. Approach taken is similar  * to one taken in org.apache.solr.schema.FieldTypePluginLoader which is implemented for  * xml based config. Resource lookup are performed via binary property access  */
+comment|/**  * Constructs a Lucene Analyzer from nodes (based on NodeState content).  *  * Approach taken is similar to one taken in  * org.apache.solr.schema.FieldTypePluginLoader which is implemented for xml  * based config. Resource lookup are performed via binary property access  */
 end_comment
 
 begin_class
@@ -659,7 +659,6 @@ specifier|final
 name|Version
 name|defaultVersion
 decl_stmt|;
-specifier|public
 name|NodeStateAnalyzerFactory
 parameter_list|(
 name|Version
@@ -683,7 +682,6 @@ name|defaultVersion
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
 name|NodeStateAnalyzerFactory
 parameter_list|(
 name|ResourceLoader

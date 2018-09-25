@@ -49,20 +49,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|primitives
-operator|.
-name|Ints
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -131,7 +117,7 @@ name|property
 operator|.
 name|HybridPropertyIndexUtil
 operator|.
-name|PROP_HEAD_BUCKET
+name|PROP_ASYNC_INDEXED_TO_TIME_AT_SWITCH
 import|;
 end_import
 
@@ -155,7 +141,7 @@ name|property
 operator|.
 name|HybridPropertyIndexUtil
 operator|.
-name|PROP_ASYNC_INDEXED_TO_TIME_AT_SWITCH
+name|PROP_HEAD_BUCKET
 import|;
 end_import
 

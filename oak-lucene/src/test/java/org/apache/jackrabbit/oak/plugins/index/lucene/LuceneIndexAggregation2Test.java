@@ -543,6 +543,26 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|FulltextIndexConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|memory
 operator|.
 name|MemoryNodeStore
@@ -1257,7 +1277,7 @@ name|createContentRepository
 argument_list|()
 return|;
 block|}
-comment|/**      * convenience method for printing on logs the currently registered node types.      *       * @param builder      */
+comment|/**      * convenience method for printing on logs the currently registered node types.      *      * @param builder      */
 specifier|private
 specifier|static
 name|void
@@ -1454,7 +1474,7 @@ name|indexDefn
 operator|.
 name|getChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGGREGATES
 argument_list|)
@@ -1473,7 +1493,7 @@ name|originalInclude
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGG_RELATIVE_NODE
 argument_list|,
@@ -1484,7 +1504,7 @@ name|originalInclude
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGG_PATH
 argument_list|,
@@ -1498,7 +1518,7 @@ name|indexDefn
 operator|.
 name|getChild
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGGREGATES
 argument_list|)
@@ -1517,7 +1537,7 @@ name|includeSingleRel
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGG_RELATIVE_NODE
 argument_list|,
@@ -1528,7 +1548,7 @@ name|includeSingleRel
 operator|.
 name|setProperty
 argument_list|(
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|AGG_PATH
 argument_list|,
@@ -1563,7 +1583,7 @@ name|enableForFullText
 argument_list|(
 name|assetProps
 argument_list|,
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|REGEX_ALL_PROPS
 argument_list|,
@@ -1588,7 +1608,7 @@ name|enableForFullText
 argument_list|(
 name|pageProps
 argument_list|,
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
 name|REGEX_ALL_PROPS
 argument_list|,
@@ -2719,7 +2739,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      *<p>      * convenience method that create an "asset" structure like      *</p>      *       *<pre>      *  "parent" : {      *      "nodeName" : {      *          "jcr:primaryType" : "test:Asset",      *          "jcr:content" : {      *              "jcr:primaryType" : "test:AssetContent",      *              "metatada" : {      *                  "jcr:primaryType" : "nt:unstructured"      *              }      *          }      *      }      *  }      *</pre>      *       *<p>      *  and returns the {@code metadata} node      *</p>      *       * @param parent the parent under which creating the node      * @param nodeName the node name to be used      * @return the {@code metadata} node. See above for details      */
+comment|/**      *<p>      * convenience method that create an "asset" structure like      *</p>      *      *<pre>      *  "parent" : {      *      "nodeName" : {      *          "jcr:primaryType" : "test:Asset",      *          "jcr:content" : {      *              "jcr:primaryType" : "test:AssetContent",      *              "metatada" : {      *                  "jcr:primaryType" : "nt:unstructured"      *              }      *          }      *      }      *  }      *</pre>      *      *<p>      *  and returns the {@code metadata} node      *</p>      *      * @param parent the parent under which creating the node      * @param nodeName the node name to be used      * @return the {@code metadata} node. See above for details      */
 specifier|private
 specifier|static
 name|Tree

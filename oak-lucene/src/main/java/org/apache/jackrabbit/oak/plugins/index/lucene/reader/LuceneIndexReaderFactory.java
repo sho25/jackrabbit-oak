@@ -59,7 +59,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -92,7 +92,7 @@ name|LuceneIndexReader
 argument_list|>
 name|createReaders
 parameter_list|(
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|NodeState

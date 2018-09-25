@@ -41,22 +41,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|Type
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|index
@@ -257,54 +241,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
-operator|.
-name|newArrayList
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|EmptyNodeState
-operator|.
-name|EMPTY_NODE
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -312,18 +248,6 @@ operator|.
 name|Assert
 operator|.
 name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
 import|;
 end_import
 

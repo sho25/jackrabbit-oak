@@ -37,7 +37,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
 name|FieldNames
 import|;
@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper class for getting spellcheck results for a given term, calling a {@link org.apache.lucene.search.spell.DirectSpellChecker}  * under the hood.  */
+comment|/**  * Helper class for getting spellcheck results for a given term, calling a {@link DirectSpellChecker}  * under the hood.  */
 end_comment
 
 begin_class

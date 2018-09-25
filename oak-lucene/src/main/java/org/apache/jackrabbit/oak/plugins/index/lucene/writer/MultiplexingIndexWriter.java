@@ -73,7 +73,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -185,7 +185,7 @@ name|directoryFactory
 decl_stmt|;
 specifier|private
 specifier|final
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 decl_stmt|;
 specifier|private
@@ -227,7 +227,7 @@ parameter_list|,
 name|MountInfoProvider
 name|mountInfoProvider
 parameter_list|,
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|definition
 parameter_list|,
 name|NodeBuilder

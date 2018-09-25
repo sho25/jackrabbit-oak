@@ -163,7 +163,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -276,6 +276,26 @@ operator|.
 name|writer
 operator|.
 name|MultiplexersLucene
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|IndexDefinition
 import|;
 end_import
 
@@ -931,10 +951,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -1121,10 +1141,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -1289,10 +1309,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(

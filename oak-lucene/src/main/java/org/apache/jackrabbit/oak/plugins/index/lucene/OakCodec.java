@@ -260,7 +260,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Oak specific {@link org.apache.lucene.codecs.Codec}.  *  * It simply mimics {@link org.apache.lucene.codecs.lucene46.Lucene46Codec} but with uncompressed {@link org.apache.lucene.codecs.StoredFieldsFormat}.  */
+comment|/**  * Oak specific {@link org.apache.lucene.codecs.Codec}.  *  * It simply mimics {@link Lucene46Codec} but  * with uncompressed {@link StoredFieldsFormat}.  */
 end_comment
 
 begin_class

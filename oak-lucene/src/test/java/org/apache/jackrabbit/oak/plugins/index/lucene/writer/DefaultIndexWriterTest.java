@@ -49,7 +49,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -261,7 +261,7 @@ name|lucene
 operator|.
 name|LuceneIndexConstants
 operator|.
-name|INDEX_DATA_CHILD_NAME
+name|SUGGEST_DATA_CHILD_NAME
 import|;
 end_import
 
@@ -279,11 +279,11 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|LuceneIndexConstants
+name|FulltextIndexConstants
 operator|.
-name|SUGGEST_DATA_CHILD_NAME
+name|INDEX_DATA_CHILD_NAME
 import|;
 end_import
 
@@ -436,11 +436,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -482,11 +482,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -528,11 +528,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -600,11 +600,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -674,11 +674,11 @@ name|getRoot
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -755,11 +755,11 @@ argument_list|(
 literal|42
 argument_list|)
 expr_stmt|;
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -814,11 +814,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -894,11 +894,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
 operator|new
-name|IndexDefinition
+name|LuceneIndexDefinition
 argument_list|(
 name|root
 argument_list|,
@@ -969,7 +969,7 @@ specifier|private
 name|DefaultIndexWriter
 name|createWriter
 parameter_list|(
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 parameter_list|,
 name|boolean

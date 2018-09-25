@@ -18,6 +18,8 @@ operator|.
 name|index
 operator|.
 name|lucene
+operator|.
+name|directory
 package|;
 end_package
 

@@ -221,7 +221,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LuceneIndexEditorProvider
+name|LucenePropertyIndex
 import|;
 end_import
 
@@ -241,7 +241,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LucenePropertyIndex
+name|LuceneIndexEditorProvider
 import|;
 end_import
 
@@ -418,24 +418,6 @@ operator|.
 name|commit
 operator|.
 name|EditorHook
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|mount
-operator|.
-name|Mounts
 import|;
 end_import
 

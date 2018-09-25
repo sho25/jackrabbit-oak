@@ -211,7 +211,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LuceneIndexEditorProvider
+name|LucenePropertyIndex
 import|;
 end_import
 
@@ -231,7 +231,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LucenePropertyIndex
+name|LuceneIndexEditorProvider
 import|;
 end_import
 

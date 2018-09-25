@@ -27,6 +27,26 @@ name|org
 operator|.
 name|apache
 operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|FieldNames
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|lucene
 operator|.
 name|index
@@ -36,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code TermFactory} is a factory for<code>Term</code> instances with  * frequently used field names.  */
+comment|/**  * A factory for Lucene Term instances with frequently used field names.  */
 end_comment
 
 begin_class

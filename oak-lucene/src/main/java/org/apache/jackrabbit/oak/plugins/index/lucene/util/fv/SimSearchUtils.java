@@ -99,7 +99,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
 name|FieldNames
 import|;
@@ -119,7 +119,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
 name|PropertyDefinition
 import|;

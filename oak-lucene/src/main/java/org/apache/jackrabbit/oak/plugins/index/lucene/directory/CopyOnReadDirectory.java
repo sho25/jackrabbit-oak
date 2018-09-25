@@ -1497,7 +1497,7 @@ return|return;
 block|}
 comment|//Always remove old index file on close as it ensures that
 comment|//no other IndexSearcher are opened with previous revision of Index due to
-comment|//way IndexTracker closes IndexNode. At max there would be only two IndexNode
+comment|//way IndexTracker closes LuceneIndexNode. At max there would be only two LuceneIndexNode
 comment|//opened pinned to different revision of same Lucene index
 name|executor
 operator|.

@@ -117,7 +117,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexDefinition
+name|LuceneIndexDefinition
 import|;
 end_import
 
@@ -329,6 +329,28 @@ name|index
 operator|.
 name|lucene
 operator|.
+name|TestUtil
+operator|.
+name|createFile
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
 name|IndexDefinition
 operator|.
 name|PROP_UID
@@ -349,33 +371,11 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
 name|IndexDefinition
 operator|.
 name|STATUS_NODE
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
-name|TestUtil
-operator|.
-name|createFile
 import|;
 end_import
 
@@ -452,10 +452,10 @@ operator|.
 name|getNodeState
 argument_list|()
 decl_stmt|;
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 init|=
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|newBuilder
 argument_list|(
@@ -764,7 +764,7 @@ specifier|static
 name|void
 name|assertDirectoryEquals
 parameter_list|(
-name|IndexDefinition
+name|LuceneIndexDefinition
 name|defn
 parameter_list|,
 name|NodeState

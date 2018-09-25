@@ -277,7 +277,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|ExtractedTextCache
+name|IndexCopier
 import|;
 end_import
 
@@ -297,7 +297,11 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|IndexCopier
+name|directory
+operator|.
+name|ActiveDeletedBlobCollectorFactory
+operator|.
+name|ActiveDeletedBlobCollectorImpl
 import|;
 end_import
 
@@ -355,13 +359,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|search
 operator|.
-name|directory
-operator|.
-name|ActiveDeletedBlobCollectorFactory
-operator|.
-name|ActiveDeletedBlobCollectorImpl
+name|ExtractedTextCache
 import|;
 end_import
 
