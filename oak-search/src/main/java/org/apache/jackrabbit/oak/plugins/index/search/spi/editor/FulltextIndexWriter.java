@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link FulltextIndexWriter} is responsible for writing / deleting documents of type {@code D} to the index  * implementation underlying persistence layer.  *  * @param<D>  */
+comment|/**  * A {@link FulltextIndexWriter} is responsible for writing / deleting documents of type D to the index  * implementation underlying persistence layer.  *  *  */
 end_comment
 
 begin_interface

@@ -757,7 +757,7 @@ argument_list|,
 literal|5
 argument_list|)
 decl_stmt|;
-comment|/**      * IndexPaln Attribute name which refers to the name of the fields that should be used for facets.      */
+comment|/**      * IndexPlan Attribute name which refers to the name of the fields that should be used for facets.      */
 specifier|public
 specifier|static
 specifier|final
@@ -2344,7 +2344,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Check if there is a mismatch between QueryPaths associated with index      * and path restriction specified in query       * @return true if QueryPaths and path restrictions do not have any conflict      */
+comment|/*      * Check if there is a mismatch between QueryPaths associated with index      * and path restriction specified in query      * @return true if QueryPaths and path restrictions do not have any conflict      */
 specifier|private
 name|boolean
 name|checkForQueryPaths
@@ -3064,7 +3064,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Computes the indexedProps which can be part of query by virtue of relativizing i.e.      * if query is on jcr:content/keyword then perform search on keyword and change parent      * path to jcr:content      * @param relativePropDefns property definitions for such relative properties. The key      *                          would be actual property name as in query i.e. jcr:content/keyword      *                          while property definition would be for 'keyword'      * @return list of properties which are included in query issued to Lucene      */
+comment|/*      * Computes the indexedProps which can be part of query by virtue of relativizing i.e.      * if query is on jcr:content/keyword then perform search on keyword and change parent      * path to jcr:content      * @param relativePropDefns property definitions for such relative properties. The key      *                          would be actual property name as in query i.e. jcr:content/keyword      *                          while property definition would be for 'keyword'      * @return list of properties which are included in query issued to Lucene      */
 specifier|private
 name|List
 argument_list|<
@@ -4666,7 +4666,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Determine if the propertyName of a fulltext term indicates current node      * @param propertyName property name in the full text term clause      */
+comment|/*      * Determine if the propertyName of a fulltext term indicates current node      * @param propertyName property name in the full text term clause      */
 specifier|private
 specifier|static
 name|boolean

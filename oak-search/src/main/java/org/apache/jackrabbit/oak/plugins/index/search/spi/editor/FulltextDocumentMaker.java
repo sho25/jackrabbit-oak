@@ -432,7 +432,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract implementation of a {@link DocumentMaker}.  *  * @param<D> the type of documents to be indexed specific to subclasses implementations  */
+comment|/**  * Abstract implementation of a {@link DocumentMaker}.  *  * D is the type of entities / documents to be indexed specific to subclasses implementations.  */
 end_comment
 
 begin_class
@@ -462,7 +462,7 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|protected
+specifier|private
 specifier|final
 name|FulltextBinaryTextExtractor
 name|textExtractor
@@ -497,8 +497,6 @@ name|NotNull
 name|IndexDefinition
 name|definition
 parameter_list|,
-annotation|@
-name|NotNull
 name|IndexDefinition
 operator|.
 name|IndexingRule
@@ -556,7 +554,7 @@ name|D
 name|finalizeDoc
 parameter_list|(
 name|D
-name|fields
+name|doc
 parameter_list|,
 name|boolean
 name|dirty
@@ -2426,7 +2424,7 @@ return|return
 name|dirty
 return|;
 block|}
-comment|/**      * Determine if the property as defined by PropertyDefinition exists or not.      *      *<p>For relative property if the intermediate nodes do not exist then property is      *<bold>not</bold> considered to be null</p>      *      * @return true if the property does not exist      */
+comment|/*      * Determine if the property as defined by PropertyDefinition exists or not.      *      * For relative property if the intermediate nodes do not exist then property is      * not considered to be null      *      */
 specifier|private
 name|boolean
 name|isPropertyNull
@@ -2473,7 +2471,7 @@ name|nonRelativeName
 argument_list|)
 return|;
 block|}
-comment|/**      * Determine if the property as defined by PropertyDefinition exists or not.      *      *<p>For relative property if the intermediate nodes do not exist then property is      * considered to be null</p>      *      * @return true if the property exists      */
+comment|/*      * Determine if the property as defined by PropertyDefinition exists or not.      *      * For relative property if the intermediate nodes do not exist then property is      * considered to be null      */
 specifier|private
 name|boolean
 name|isPropertyNotNull
@@ -2572,7 +2570,7 @@ return|return
 name|node
 return|;
 block|}
-comment|/**      * index aggregates on a certain path      * @param path the path of the node      * @param fields the list of fields      * @param state the node state      * @return an array of booleans whose first element is {@code true} if any indexing has happened      * and the second element is {@code true} if facets on any (aggregate) property have been indexed      */
+comment|/*      * index aggregates on a certain path      */
 specifier|private
 name|boolean
 index|[]
@@ -2584,7 +2582,7 @@ name|path
 parameter_list|,
 specifier|final
 name|D
-name|fields
+name|document
 parameter_list|,
 specifier|final
 name|NodeState
@@ -2641,7 +2639,7 @@ name|indexAggregatedNode
 argument_list|(
 name|path
 argument_list|,
-name|fields
+name|document
 argument_list|,
 name|result
 argument_list|)
@@ -2690,7 +2688,7 @@ name|dirty
 operator||=
 name|addTypedOrderedFields
 argument_list|(
-name|fields
+name|document
 argument_list|,
 name|result
 operator|.
@@ -2712,7 +2710,7 @@ name|indexProperty
 argument_list|(
 name|path
 argument_list|,
-name|fields
+name|document
 argument_list|,
 name|state
 argument_list|,
@@ -2780,7 +2778,7 @@ argument_list|()
 block|}
 return|;
 block|}
-comment|/**      * Create the fulltext field from the aggregated nodes. If result is for aggregate for a relative node      * include then      * @param path current node path      * @param doc document      * @param result aggregate result      * @return true if a field was created for passed node result      */
+comment|/*      * Create the fulltext field from the aggregated nodes. If result is for aggregate for a relative node      * include then      */
 specifier|private
 name|boolean
 name|indexAggregatedNode
@@ -3114,7 +3112,7 @@ name|getIndexName
 argument_list|()
 return|;
 block|}
-comment|/**      * Extracts the local name of the current node ignoring any namespace prefix      *      * @param name node name      */
+comment|/*      * Extracts the local name of the current node ignoring any namespace prefix      */
 specifier|private
 name|void
 name|addNodeNameField

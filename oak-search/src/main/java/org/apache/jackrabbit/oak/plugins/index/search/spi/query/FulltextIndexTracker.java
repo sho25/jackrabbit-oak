@@ -607,7 +607,6 @@ specifier|abstract
 class|class
 name|FulltextIndexTracker
 block|{
-comment|/** Logger instance. */
 specifier|private
 specifier|static
 specifier|final

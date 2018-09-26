@@ -127,6 +127,10 @@ name|configureUniqueId
 import|;
 end_import
 
+begin_comment
+comment|/**  * Reindexing operations  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -197,6 +201,7 @@ operator|=
 name|indexDefBuilder
 expr_stmt|;
 block|}
+comment|/**      * Update index definition based on base or latest builder state      * @param useStateFromBuilder whether to use the latest builder state      * @return the up to date index definition      */
 specifier|public
 name|IndexDefinition
 name|apply

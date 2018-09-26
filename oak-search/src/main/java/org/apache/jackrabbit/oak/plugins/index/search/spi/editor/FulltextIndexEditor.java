@@ -412,19 +412,19 @@ name|D
 argument_list|>
 name|context
 decl_stmt|;
-comment|/** Name of this node, or {@code null} for the root node. */
+comment|/* Name of this node, or {@code null} for the root node. */
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
-comment|/** Parent editor or {@code null} if this is the root editor. */
+comment|/* Parent editor or {@code null} if this is the root editor. */
 specifier|private
 specifier|final
 name|FulltextIndexEditor
 name|parent
 decl_stmt|;
-comment|/** Path of this editor, built lazily in {@link #getPath()}. */
+comment|/* Path of this editor, built lazily in {@link #getPath()}. */
 specifier|private
 name|String
 name|path
@@ -448,7 +448,7 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-comment|/**    * Flag indicating if the current tree being traversed has a deleted parent.    */
+comment|/*    * Flag indicating if the current tree being traversed has a deleted parent.    */
 specifier|private
 specifier|final
 name|boolean
@@ -1732,7 +1732,7 @@ operator|.
 name|NONE
 return|;
 block|}
-comment|/**    * Determines which all matchers are affected by this property change    *    * @param name modified property name    */
+comment|/*    * Determines which all matchers are affected by this property change    *    * @param name modified property name    */
 specifier|private
 name|void
 name|checkAggregates

@@ -46,39 +46,48 @@ specifier|public
 interface|interface
 name|TextExtractionStatsMBean
 block|{
+comment|/**      * Type of this MBean      */
 name|String
 name|TYPE
 init|=
 literal|"TextExtractionStats"
 decl_stmt|;
+comment|/**      * Check whether pre extracted text provider is configured      * @return {@code true} if configured, {@code false} otherwise      */
 name|boolean
 name|isPreExtractedTextProviderConfigured
 parameter_list|()
 function_decl|;
+comment|/**      * Check whether pre extracted cache should always be used      * @return {@code true} if PEC should always be used, {@code false} otherwise      */
 name|boolean
 name|isAlwaysUsePreExtractedCache
 parameter_list|()
 function_decl|;
+comment|/**      * Number of text extraction operations performed      * @return the text extraction count      */
 name|int
 name|getTextExtractionCount
 parameter_list|()
 function_decl|;
+comment|/**      * Total time taken by text extraction      * @return total time taken      */
 name|long
 name|getTotalTime
 parameter_list|()
 function_decl|;
+comment|/**      * Pre fetch count      * @return no. of prefetch operations      */
 name|int
 name|getPreFetchedCount
 parameter_list|()
 function_decl|;
+comment|/**      * Size of extracted size      * @return extracted text size      */
 name|String
 name|getExtractedTextSize
 parameter_list|()
 function_decl|;
+comment|/**      * Bytes read by text extraction      * @return bytes read      */
 name|String
 name|getBytesRead
 parameter_list|()
 function_decl|;
+comment|/**      * Count of extractions gone timeout      * @return timeout count      */
 name|int
 name|getTimeoutCount
 parameter_list|()
