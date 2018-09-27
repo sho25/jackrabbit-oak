@@ -622,6 +622,17 @@ operator|.
 name|NAME
 argument_list|)
 expr_stmt|;
+block|}
+name|NodeBuilder
+name|system
+init|=
+name|builder
+operator|.
+name|getChildNode
+argument_list|(
+name|JCR_SYSTEM
+argument_list|)
+decl_stmt|;
 name|Namespaces
 operator|.
 name|setupNamespaces
@@ -629,7 +640,6 @@ argument_list|(
 name|system
 argument_list|)
 expr_stmt|;
-block|}
 name|NodeBuilder
 name|versionStorage
 init|=
