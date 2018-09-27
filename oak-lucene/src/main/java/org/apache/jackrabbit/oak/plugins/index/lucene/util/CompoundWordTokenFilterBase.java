@@ -659,7 +659,7 @@ name|startOffset
 decl_stmt|,
 name|endOffset
 decl_stmt|;
-comment|/** Construct the compound token based on a slice of the current {@link CompoundWordTokenFilterBase#termAtt}. */
+comment|/** Construct the compound token based on a slice of the current {@link CompoundWordTokenFilterBase#termAtt}.      *      * @param offset  the initial offset      * @param length  the token length      * */
 specifier|public
 name|CompoundToken
 parameter_list|(

@@ -590,6 +590,24 @@ operator|.
 name|query
 operator|.
 name|QueryIndex
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryIndex
 operator|.
 name|AdvanceFulltextQueryIndex
 import|;
@@ -1576,7 +1594,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to query old (compatVersion 1) Lucene indexes.  *  * Provides a QueryIndex that does lookups against a Lucene-based index  *  *<p>  * To define a lucene index on a subtree you have to add an  *<code>oak:index</code> node.  *  * Under it follows the index definition node that:  *<ul>  *<li>must be of type<code>oak:QueryIndexDefinition</code></li>  *<li>must have the<code>type</code> property set to<b><code>lucene</code></b></li>  *<li>must have the<code>async</code> property set to<b><code>async</code></b></li>  *</ul>  *<p>  * Optionally you can add  *<ul>  *<li>what subset of property types to be included in the index via the<code>includePropertyTypes</code> property</li>  *<li>a blacklist of property names: what property to be excluded from the index via the<code>excludePropertyNames</code> property</li>  *<li>the<code>reindex</code> flag which when set to<code>true</code>, triggers a full content re-index.</li>  *</ul>  *<p>  *<pre>{@code  *<pre>{@code  * {  * {  *     NodeBuilder index = root.child("oak:index");  *     index.child("lucene")  *         .setProperty("jcr:primaryType", "oak:QueryIndexDefinition", Type.NAME)  *         .setProperty("type", "lucene")  *         .setProperty("async", "async")  *         .setProperty("reindex", "true");  * }  * }</pre>  *  * @see QueryIndex  *  */
+comment|/**  * Used to query old (compatVersion 1) Lucene indexes.  *  * Provides a QueryIndex that does lookups against a Lucene-based index  *  *<p>  * To define a lucene index on a subtree you have to add an  *<code>oak:index</code> node.  *  * Under it follows the index definition node that:  *<ul>  *<li>must be of type<code>oak:QueryIndexDefinition</code></li>  *<li>must have the<code>type</code> property set to<b><code>lucene</code></b></li>  *<li>must have the<code>async</code> property set to<b><code>async</code></b></li>  *</ul>  *<p>  * Optionally you can add  *<ul>  *<li>what subset of property types to be included in the index via the<code>includePropertyTypes</code> property</li>  *<li>a blacklist of property names: what property to be excluded from the index via the<code>excludePropertyNames</code> property</li>  *<li>the<code>reindex</code> flag which when set to<code>true</code>, triggers a full content re-index.</li>  *</ul>  *<pre>{@code  * {  *     NodeBuilder index = root.child("oak:index");  *     index.child("lucene")  *         .setProperty("jcr:primaryType", "oak:QueryIndexDefinition", Type.NAME)  *         .setProperty("type", "lucene")  *         .setProperty("async", "async")  *         .setProperty("reindex", "true");  * }  * }</pre>  * @see QueryIndex  *  */
 end_comment
 
 begin_class

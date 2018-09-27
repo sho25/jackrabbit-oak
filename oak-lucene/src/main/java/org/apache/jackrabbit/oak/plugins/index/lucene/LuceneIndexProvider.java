@@ -419,7 +419,7 @@ name|augmentorFactory
 argument_list|)
 return|;
 block|}
-comment|/**      * sets the default node aggregator that will be used at query time      */
+comment|/**      * sets the default node aggregator that will be used at query time      *      * @param aggregator the node aggregator      */
 specifier|public
 name|void
 name|setAggregator

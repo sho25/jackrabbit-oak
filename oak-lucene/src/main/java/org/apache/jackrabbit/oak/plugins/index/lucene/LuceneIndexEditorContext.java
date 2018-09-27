@@ -484,7 +484,7 @@ return|return
 name|facetsConfig
 return|;
 block|}
-comment|/** Only set for testing */
+comment|/** Only set for testing      * @param c clock      * */
 specifier|public
 specifier|static
 name|void
