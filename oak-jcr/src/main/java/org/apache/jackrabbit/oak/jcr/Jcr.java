@@ -530,7 +530,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Builder class which encapsulates the details of building a JCR  *<tt>Repository</tt> backed by an Oak<tt>ContentRepository</tt> instance  *  *<p>The backing<tt>ContentRepository</tt> instance will be constructed with  * reasonable defaults and additional components can be registered by calling  * the<tt>with</tt> methods. Note that it is not possible to remove components  * once registered.</p>  *  *<p>The Jcr builder is a lazy initializer, to have a working repository make sure  * you call {@link Jcr#createContentRepository()} or  * {@link Jcr#createRepository()}.</p>  */
+comment|/**  * Builder class which encapsulates the details of building a JCR  * {@link Repository} backed by an Oak {@link ContentRepository} instance  *  *<p>The backing {@linkplain ContentRepository} instance will be constructed with  * reasonable defaults and additional components can be registered by calling  * the {@code with} methods. Note that it is not possible to remove components  * once registered.</p>  *  *<p>The Jcr builder is a lazy initializer, to have a working repository make sure  * you call {@link Jcr#createContentRepository()} or  * {@link Jcr#createRepository()}.</p>  */
 end_comment
 
 begin_class

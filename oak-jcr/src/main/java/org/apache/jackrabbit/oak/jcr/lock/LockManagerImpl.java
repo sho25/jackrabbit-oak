@@ -1079,7 +1079,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Verifies if the current<tt>sessionContext</tt> can unlock the specified<tt>node</tt>      *       * @param node the node state to check      *       * @return true if the current<tt>sessionContext</tt> can unlock the specified<tt>node</tt>      */
+comment|/**      * Verifies if the current {@link #sessionContext} can unlock the specified node      *       * @param node the node state to check      *       * @return true if the current {@linkplain #sessionContext} can unlock the specified node      */
 end_comment
 
 begin_function
