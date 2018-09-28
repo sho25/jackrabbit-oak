@@ -1352,7 +1352,7 @@ name|MODIFIED_IN_SECS
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns<tt>true</tt> if this node possibly has children.      * If false then that indicates that there are no child      *      * @return<tt>true</tt> if this node has children      */
+comment|/**      * Returns {@code true} if this node possibly has children.      * If false then that indicates that there are no child      *      * @return {@code true} if this node has children      */
 specifier|public
 name|boolean
 name|hasChildren
@@ -1377,7 +1377,7 @@ operator|&&
 name|childrenFlag
 return|;
 block|}
-comment|/**      * Returns<tt>true</tt> if this document was ever deleted in past.      */
+comment|/**      * Returns {@code true} if this document was ever deleted in past.      */
 specifier|public
 name|boolean
 name|wasDeletedOnce
@@ -1402,7 +1402,7 @@ operator|&&
 name|deletedOnceFlag
 return|;
 block|}
-comment|/**      * Checks if this document has been modified after the given lastModifiedTime      *      * @param lastModifiedTime time to compare against in millis      * @return<tt>true</tt> if this document was modified after the given      *  lastModifiedTime      */
+comment|/**      * Checks if this document has been modified after the given lastModifiedTime      *      * @param lastModifiedTime time to compare against in millis      * @return {@code true} if this document was modified after the given      *  lastModifiedTime      */
 specifier|public
 name|boolean
 name|hasBeenModifiedSince
@@ -1439,7 +1439,7 @@ name|lastModifiedTime
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks if revision time of all entries in this document is less than the passed      * time      *      * @param maxRevisionTime timemstamp (in millis) of revision to check      * @return<tt>true</tt> if timestamp of maximum revision stored in this document      * is less than than the passed revision timestamp      */
+comment|/**      * Checks if revision time of all entries in this document is less than the passed      * time      *      * @param maxRevisionTime timemstamp (in millis) of revision to check      * @return {@code true} if timestamp of maximum revision stored in this document      * is less than than the passed revision timestamp      */
 specifier|public
 name|boolean
 name|hasAllRevisionLessThan
@@ -1476,7 +1476,7 @@ name|maxRevisionTime
 argument_list|)
 return|;
 block|}
-comment|/**      * Determines if this document is a split document      *      * @return<tt>true</tt> if this document is a split document      */
+comment|/**      * Determines if this document is a split document      *      * @return {@code true} if this document is a split document      */
 specifier|public
 name|boolean
 name|isSplitDocument
