@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Refers to a set of paths from a<tt>ContentRepository</tt> that are possibly   * stored in a separate physical persistent store.  *   *<p>In a default setup all paths belong to a default Mount.</p>  */
+comment|/**  * Refers to a set of paths from a {@code ContentRepository}x that are possibly   * stored in a separate physical persistent store.  *   *<p>In a default setup all paths belong to a default Mount.</p>  */
 end_comment
 
 begin_interface
@@ -44,7 +44,7 @@ specifier|public
 interface|interface
 name|Mount
 block|{
-comment|/**      * Name of the mount. If this<code>Mount</code>      * is the default mount, an empty string is returned      */
+comment|/**      * Name of the mount. If this<code>@Mount</code>      * is the default mount, an empty string is returned      */
 name|String
 name|getName
 parameter_list|()

@@ -974,7 +974,7 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**      * Search for a given set of values, returning<tt>IndexEntry</tt> results      *       * @param filter the filter (can optionally be used for optimized query execution)      * @param indexName the name of the index (for logging)      * @param indexMeta the index metadata node (may not be null)      * @param values values to look for (null to check for property existence)      * @return an iterator of index entries      *       * @throws UnsupportedOperationException if the operation is not supported      */
+comment|/**      * Search for a given set of values, returning {@linkplain IndexEntry} results      *       * @param filter the filter (can optionally be used for optimized query execution)      * @param indexName the name of the index (for logging)      * @param indexMeta the index metadata node (may not be null)      * @param values values to look for (null to check for property existence)      * @return an iterator of index entries      *       * @throws UnsupportedOperationException if the operation is not supported      */
 specifier|public
 name|Iterable
 argument_list|<

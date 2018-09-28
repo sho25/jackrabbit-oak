@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds information related to the {@link Mount}s configured in a<tt>ContentRepository</tt>.  *   *<p>The configuration may either be trivial - only a default mount is configured, or defining at least one non-default mount.</p>  */
+comment|/**  * Holds information related to the {@link Mount}s configured in a {@code ContentRepository}.  *   *<p>The configuration may either be trivial - only a default mount is configured, or defining at least one non-default mount.</p>  */
 end_comment
 
 begin_interface
@@ -98,7 +98,7 @@ argument_list|>
 name|getNonDefaultMounts
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the mount instance for given mount name      *      * @param name name of the mount      * @return mount instance for given mount name. If no mount exists for given name      *<tt>null</tt> would be returned      */
+comment|/**      * Returns the mount instance for given mount name      *      * @param name name of the mount      * @return mount instance for given mount name. If no mount exists for given name      * {@code null} would be returned      */
 annotation|@
 name|Nullable
 name|Mount
