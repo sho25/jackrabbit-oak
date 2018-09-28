@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Applies a category of consistence checks specific to<tt>NodeStore</tt> mounts  *   *<p>Checks are only performed on non-default mounts.</p>  *   *<p>Named 'Checker' to clarify that it is not a Validator in the Oak sense.</p>   *  */
+comment|/**  * Applies a category of consistency checks specific to {@linkplain NodeStore} mounts  *   *<p>Checks are only performed on non-default mounts.</p>  *   *<p>Named 'Checker' to clarify that it is not a Validator in the Oak sense.</p>   *  */
 end_comment
 
 begin_interface
