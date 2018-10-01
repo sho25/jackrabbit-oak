@@ -220,6 +220,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|client
+operator|.
+name|MongoDatabase
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -375,7 +387,7 @@ argument_list|()
 argument_list|,
 name|mongoConnection
 operator|.
-name|getDBName
+name|getDatabase
 argument_list|()
 argument_list|,
 name|builder
@@ -637,8 +649,8 @@ parameter_list|(
 name|MongoClient
 name|client
 parameter_list|,
-name|String
-name|dbName
+name|MongoDatabase
+name|db
 parameter_list|,
 name|DocumentMK
 operator|.
@@ -650,7 +662,7 @@ name|super
 argument_list|(
 name|client
 argument_list|,
-name|dbName
+name|db
 argument_list|,
 name|builder
 argument_list|)

@@ -331,9 +331,6 @@ name|getMongoClient
 argument_list|()
 argument_list|,
 name|db
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|builder
 argument_list|)
@@ -621,8 +618,8 @@ parameter_list|(
 name|MongoClient
 name|client
 parameter_list|,
-name|String
-name|dbName
+name|MongoDatabase
+name|db
 parameter_list|,
 name|DocumentMK
 operator|.
@@ -634,7 +631,7 @@ name|super
 argument_list|(
 name|client
 argument_list|,
-name|dbName
+name|db
 argument_list|,
 name|builder
 argument_list|)

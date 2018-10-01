@@ -346,9 +346,14 @@ name|MongoDocumentStore
 argument_list|(
 name|client
 argument_list|,
+name|client
+operator|.
+name|getDatabase
+argument_list|(
 name|MongoUtils
 operator|.
 name|DB
+argument_list|)
 argument_list|,
 operator|new
 name|DocumentMK

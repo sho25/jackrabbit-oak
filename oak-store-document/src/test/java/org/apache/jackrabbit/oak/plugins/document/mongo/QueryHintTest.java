@@ -341,7 +341,7 @@ argument_list|()
 argument_list|,
 name|mongoConnection
 operator|.
-name|getDBName
+name|getDatabase
 argument_list|()
 argument_list|,
 operator|new

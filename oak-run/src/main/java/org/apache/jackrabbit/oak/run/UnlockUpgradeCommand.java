@@ -549,7 +549,7 @@ argument_list|()
 argument_list|,
 name|mongo
 operator|.
-name|getDBName
+name|getDatabase
 argument_list|()
 argument_list|,
 operator|new

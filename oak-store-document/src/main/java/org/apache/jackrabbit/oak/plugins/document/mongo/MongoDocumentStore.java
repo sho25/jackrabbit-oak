@@ -1818,8 +1818,8 @@ parameter_list|(
 name|MongoClient
 name|client
 parameter_list|,
-name|String
-name|dbName
+name|MongoDatabase
+name|db
 parameter_list|,
 name|MongoDocumentNodeStoreBuilderBase
 argument_list|<
@@ -1859,7 +1859,10 @@ name|MongoStatus
 argument_list|(
 name|client
 argument_list|,
-name|dbName
+name|db
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1926,12 +1929,7 @@ name|this
 operator|.
 name|db
 operator|=
-name|client
-operator|.
-name|getDatabase
-argument_list|(
-name|dbName
-argument_list|)
+name|db
 expr_stmt|;
 name|stats
 operator|=

@@ -1263,7 +1263,7 @@ argument_list|()
 argument_list|,
 name|connection
 operator|.
-name|getDBName
+name|getDatabase
 argument_list|()
 argument_list|,
 name|builder

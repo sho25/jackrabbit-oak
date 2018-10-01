@@ -418,7 +418,7 @@ argument_list|()
 argument_list|,
 name|c
 operator|.
-name|getDBName
+name|getDatabase
 argument_list|()
 argument_list|,
 operator|new

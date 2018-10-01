@@ -1035,9 +1035,6 @@ argument_list|(
 name|client
 argument_list|,
 name|db
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|MongoDocumentNodeStoreBuilderBase
 operator|.
