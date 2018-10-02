@@ -701,15 +701,6 @@ specifier|final
 name|ChangeDispatcher
 name|dispatcher
 decl_stmt|;
-specifier|private
-specifier|final
-name|Lock
-name|mergeLock
-init|=
-operator|new
-name|ReentrantLock
-argument_list|()
-decl_stmt|;
 comment|// visible for testing only
 name|CompositeNodeStore
 parameter_list|(
@@ -997,13 +988,6 @@ argument_list|(
 name|nodeBuilder
 argument_list|)
 expr_stmt|;
-name|mergeLock
-operator|.
-name|lock
-argument_list|()
-expr_stmt|;
-try|try
-block|{
 comment|// merge the global builder and apply the commit hooks within
 name|MountedNodeStore
 name|globalStore
@@ -1082,15 +1066,6 @@ argument_list|(
 name|globalResult
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|mergeLock
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 specifier|private
 name|void
