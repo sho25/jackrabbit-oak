@@ -663,7 +663,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|mount
+name|readOnlyMount
 argument_list|(
 literal|"libs"
 argument_list|,
@@ -912,7 +912,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|mount
+name|readOnlyMount
 argument_list|(
 literal|"libs"
 argument_list|,
