@@ -117,6 +117,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|MeterStats
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|jetbrains
 operator|.
 name|annotations
@@ -197,6 +213,11 @@ specifier|final
 name|TemplateCache
 name|templateCache
 decl_stmt|;
+specifier|private
+specifier|final
+name|MeterStats
+name|readStats
+decl_stmt|;
 comment|/**      * Create a new instance based on the supplied arguments.      * @param writer          A {@code Supplier} for a the {@code SegmentWriter} used by the segment      *                        builders returned from {@link NodeState#builder()} to write ahead changes.      *                        {@code writer.get()} must not return {@code null}.      * @param blobStore       {@code BlobStore} instance of the underlying {@link SegmentStore}, or      *                        {@code null} if none.      * @param stringCacheMB   the size of the string cache in MBs or {@code 0} for no cache.      * @param templateCacheMB the size of the template cache in MBs or {@code 0} for no cache.      */
 specifier|public
 name|CachingSegmentReader
@@ -219,6 +240,9 @@ name|stringCacheMB
 parameter_list|,
 name|long
 name|templateCacheMB
+parameter_list|,
+name|MeterStats
+name|readStats
 parameter_list|)
 block|{
 name|this
@@ -259,6 +283,12 @@ literal|1024
 operator|*
 literal|1024
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|readStats
+operator|=
+name|readStats
 expr_stmt|;
 block|}
 comment|/**      * Cached reading of a string.      */
@@ -492,6 +522,8 @@ argument_list|,
 name|blobStore
 argument_list|,
 name|id
+argument_list|,
+name|readStats
 argument_list|)
 return|;
 block|}

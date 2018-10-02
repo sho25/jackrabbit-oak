@@ -127,6 +127,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|MeterStats
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|jetbrains
 operator|.
 name|annotations
@@ -230,6 +246,11 @@ specifier|final
 name|SegmentWriter
 name|writer
 decl_stmt|;
+specifier|private
+specifier|final
+name|MeterStats
+name|readStats
+decl_stmt|;
 comment|/**      * Local update counter for the root builder.      *       * The value encodes both the counter and the type of the node builder:      *<ul>      *<li>value>= {@code 0} represents a root builder (builder keeps      * counter updates)</li>      *<li>value = {@code -1} represents a child builder (value doesn't      * change, builder doesn't keep an updated counter)</li>      *</ul>      *       */
 specifier|private
 name|long
@@ -256,6 +277,9 @@ annotation|@
 name|NotNull
 name|SegmentWriter
 name|writer
+parameter_list|,
+name|MeterStats
+name|readStats
 parameter_list|)
 block|{
 name|super
@@ -290,6 +314,12 @@ name|updateCount
 operator|=
 literal|0
 expr_stmt|;
+name|this
+operator|.
+name|readStats
+operator|=
+name|readStats
+expr_stmt|;
 block|}
 specifier|private
 name|SegmentNodeBuilder
@@ -318,6 +348,9 @@ annotation|@
 name|NotNull
 name|SegmentWriter
 name|writer
+parameter_list|,
+name|MeterStats
+name|readStats
 parameter_list|)
 block|{
 name|super
@@ -354,6 +387,12 @@ name|updateCount
 operator|=
 operator|-
 literal|1
+expr_stmt|;
+name|this
+operator|.
+name|readStats
+operator|=
+name|readStats
 expr_stmt|;
 block|}
 comment|/**      * @return  {@code true} iff this builder has been acquired from a root node state.      */
@@ -453,6 +492,8 @@ name|writeNode
 argument_list|(
 name|state
 argument_list|)
+argument_list|,
+name|readStats
 argument_list|)
 decl_stmt|;
 if|if
@@ -533,6 +574,8 @@ argument_list|,
 name|reader
 argument_list|,
 name|writer
+argument_list|,
+name|readStats
 argument_list|)
 return|;
 block|}
