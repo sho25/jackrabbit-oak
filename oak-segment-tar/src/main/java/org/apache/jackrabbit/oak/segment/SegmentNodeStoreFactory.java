@@ -1595,6 +1595,23 @@ parameter_list|()
 default|default
 literal|false
 function_decl|;
+annotation|@
+name|AttributeDefinition
+argument_list|(
+name|name
+operator|=
+literal|"Dispatch changes"
+argument_list|,
+name|description
+operator|=
+literal|"Enable support for observers on this factory instance"
+argument_list|)
+name|boolean
+name|dispatchChanges
+parameter_list|()
+default|default
+literal|false
+function_decl|;
 block|}
 annotation|@
 name|Reference
@@ -2488,6 +2505,20 @@ return|return
 name|configuration
 operator|.
 name|registerDescriptors
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|dispatchChanges
+parameter_list|()
+block|{
+return|return
+name|configuration
+operator|.
+name|dispatchChanges
 argument_list|()
 return|;
 block|}
