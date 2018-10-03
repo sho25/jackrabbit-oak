@@ -508,7 +508,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|IndexDefinition
+name|LuceneIndexDefinition
 operator|.
 name|class
 argument_list|)
