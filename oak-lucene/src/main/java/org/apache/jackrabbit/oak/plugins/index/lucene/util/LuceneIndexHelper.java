@@ -327,11 +327,9 @@ begin_class
 specifier|public
 class|class
 name|LuceneIndexHelper
+extends|extends
+name|IndexHelper
 block|{
-specifier|private
-name|LuceneIndexHelper
-parameter_list|()
-block|{     }
 specifier|public
 specifier|static
 name|NodeBuilder
