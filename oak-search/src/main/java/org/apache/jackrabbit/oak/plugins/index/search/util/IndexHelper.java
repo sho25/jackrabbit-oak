@@ -604,10 +604,6 @@ name|GROUP_PROPERTY_NAMES
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
-name|IndexHelper
-parameter_list|()
-block|{     }
 specifier|public
 specifier|static
 name|NodeBuilder
