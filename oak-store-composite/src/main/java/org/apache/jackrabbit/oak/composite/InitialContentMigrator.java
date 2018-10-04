@@ -427,26 +427,6 @@ name|CLUSTER_CONFIG_NODE
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|namespace
-operator|.
-name|NamespaceConstants
-operator|.
-name|NAMESPACES_PATH
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -498,8 +478,6 @@ argument_list|(
 literal|"/"
 operator|+
 name|CLUSTER_CONFIG_NODE
-argument_list|,
-name|NAMESPACES_PATH
 argument_list|)
 decl_stmt|;
 specifier|private
