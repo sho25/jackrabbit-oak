@@ -1020,8 +1020,6 @@ argument_list|(
 name|commitHook
 argument_list|,
 name|ctx
-argument_list|,
-name|nodeBuilder
 argument_list|)
 decl_stmt|;
 name|NodeState
@@ -1046,32 +1044,6 @@ argument_list|,
 name|info
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|hookEnhancer
-operator|.
-name|getUpdatedBuilder
-argument_list|()
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
-comment|// it means that the commit hook wasn't invoked, because there were
-comment|// no changes on the global store. we should invoke it anyway.
-name|hookEnhancer
-operator|.
-name|processCommit
-argument_list|(
-name|globalResult
-argument_list|,
-name|globalResult
-argument_list|,
-name|info
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|ctx
 operator|.
