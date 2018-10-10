@@ -798,6 +798,12 @@ decl_stmt|;
 name|StorageCredentials
 name|credentials
 init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|credentials
+operator|=
 operator|new
 name|StorageCredentialsAccountAndKey
 argument_list|(
@@ -805,7 +811,24 @@ name|accountName
 argument_list|,
 name|key
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Could not connect to the Azure Storage. Please verify if AZURE_SECRET_KEY environment variable "
+operator|+
+literal|"is correctly set!"
+argument_list|)
+throw|;
+block|}
 name|String
 name|uri
 init|=
