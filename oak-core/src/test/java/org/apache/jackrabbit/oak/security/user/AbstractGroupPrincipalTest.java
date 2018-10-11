@@ -786,6 +786,10 @@ name|getPath
 argument_list|()
 argument_list|)
 argument_list|,
+name|AbstractGroupPrincipalTest
+operator|.
+name|this
+operator|.
 name|getNamePathMapper
 argument_list|()
 argument_list|)

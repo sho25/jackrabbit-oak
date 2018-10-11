@@ -47,7 +47,7 @@ name|oak
 operator|.
 name|namepath
 operator|.
-name|PathMapper
+name|NamePathMapper
 import|;
 end_import
 
@@ -91,7 +91,7 @@ parameter_list|,
 name|Tree
 name|tree
 parameter_list|,
-name|PathMapper
+name|NamePathMapper
 name|pathMapper
 parameter_list|)
 block|{

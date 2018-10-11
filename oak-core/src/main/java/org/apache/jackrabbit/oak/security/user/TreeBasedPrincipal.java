@@ -65,7 +65,7 @@ name|oak
 operator|.
 name|namepath
 operator|.
-name|PathMapper
+name|NamePathMapper
 import|;
 end_import
 
@@ -108,7 +108,7 @@ name|path
 decl_stmt|;
 specifier|private
 specifier|final
-name|PathMapper
+name|NamePathMapper
 name|pathMapper
 decl_stmt|;
 name|TreeBasedPrincipal
@@ -119,7 +119,7 @@ parameter_list|,
 name|Tree
 name|tree
 parameter_list|,
-name|PathMapper
+name|NamePathMapper
 name|pathMapper
 parameter_list|)
 block|{
@@ -144,7 +144,7 @@ parameter_list|,
 name|String
 name|oakPath
 parameter_list|,
-name|PathMapper
+name|NamePathMapper
 name|pathMapper
 parameter_list|)
 block|{
@@ -172,6 +172,14 @@ parameter_list|()
 block|{
 return|return
 name|path
+return|;
+block|}
+name|NamePathMapper
+name|getNamePathMapper
+parameter_list|()
+block|{
+return|return
+name|pathMapper
 return|;
 block|}
 comment|//-------------------------------------------------< ItemBasedPrincipal>---
