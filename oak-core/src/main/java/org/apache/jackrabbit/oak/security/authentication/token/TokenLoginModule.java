@@ -597,6 +597,9 @@ argument_list|,
 name|principals
 argument_list|)
 expr_stmt|;
+name|clearState
+argument_list|()
+expr_stmt|;
 return|return
 literal|true
 return|;
@@ -882,6 +885,10 @@ name|userId
 operator|=
 literal|null
 expr_stmt|;
+name|tokenProvider
+operator|=
+literal|null
+expr_stmt|;
 block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      * Retrieve the token provider      * @return the token provider or {@code null}.      */
@@ -1025,6 +1032,7 @@ comment|/**      * Create the {@code AuthInfo} for the specified {@code tokenInf
 annotation|@
 name|Nullable
 specifier|private
+specifier|static
 name|AuthInfo
 name|getAuthInfo
 parameter_list|(

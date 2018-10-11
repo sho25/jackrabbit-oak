@@ -894,6 +894,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|systemSession
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 comment|/**      * @return A set of supported credential classes.      */
