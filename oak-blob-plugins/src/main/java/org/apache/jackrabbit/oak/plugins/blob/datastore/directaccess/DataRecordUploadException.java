@@ -64,6 +64,24 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|DataRecordUploadException
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

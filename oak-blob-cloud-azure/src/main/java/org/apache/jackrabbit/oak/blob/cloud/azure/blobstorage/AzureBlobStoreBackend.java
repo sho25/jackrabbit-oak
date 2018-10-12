@@ -5756,7 +5756,6 @@ name|blobId
 argument_list|)
 condition|)
 block|{
-comment|//if (! getAzureContainer().getBlockBlobReference(blobId).exists()) {
 throw|throw
 operator|new
 name|DataRecordUploadException
@@ -5793,6 +5792,8 @@ literal|"Unable to finalize direct write of binary %s"
 argument_list|,
 name|blobId
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
