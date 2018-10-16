@@ -418,6 +418,15 @@ name|SegmentCopyCommand
 argument_list|()
 argument_list|)
 operator|.
+name|put
+argument_list|(
+literal|"search"
+argument_list|,
+operator|new
+name|SearchCommand
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|()
 argument_list|)
