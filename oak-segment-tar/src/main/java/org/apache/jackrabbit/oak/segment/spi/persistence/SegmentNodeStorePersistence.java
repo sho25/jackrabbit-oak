@@ -80,12 +80,15 @@ specifier|public
 interface|interface
 name|SegmentNodeStorePersistence
 block|{
-comment|/**      * Opens a new archive manager. It'll be used to access the archives containing      * segments.      *      * @param memoryMapping whether the memory mapping should be used (if the given      *                      persistence supports it)      * @param ioMonitor object used to monitor segment-related IO access. The      *                  implementation should call the appropriate methods when      *                  accessing segments.      * @param fileStoreMonitor object used to monitor the general IO usage.      * @return segment archive manager      * @throws IOException      */
+comment|/**      * Opens a new archive manager. It'll be used to access the archives containing      * segments.      *      * @param memoryMapping whether the memory mapping should be used (if the given      *                      persistence supports it)      * @param offHeapAccess whether off heap access for segements should be used      * @param ioMonitor object used to monitor segment-related IO access. The      *                  implementation should call the appropriate methods when      *                  accessing segments.      * @param fileStoreMonitor object used to monitor the general IO usage.      * @return segment archive manager      * @throws IOException      */
 name|SegmentArchiveManager
 name|createArchiveManager
 parameter_list|(
 name|boolean
 name|memoryMapping
+parameter_list|,
+name|boolean
+name|offHeapAccess
 parameter_list|,
 name|IOMonitor
 name|ioMonitor

@@ -69,6 +69,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|Boolean
+operator|.
+name|getBoolean
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -806,6 +818,15 @@ init|=
 name|MEMORY_MAPPING_DEFAULT
 decl_stmt|;
 specifier|private
+name|boolean
+name|offHeapAccess
+init|=
+name|getBoolean
+argument_list|(
+literal|"access.off.heap"
+argument_list|)
+decl_stmt|;
+specifier|private
 name|SegmentNodeStorePersistence
 name|persistence
 decl_stmt|;
@@ -1201,6 +1222,27 @@ operator|.
 name|memoryMapping
 operator|=
 name|memoryMapping
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Turn off heap access on or off      * @param offHeapAccess      * @return this instance      */
+annotation|@
+name|NotNull
+specifier|public
+name|FileStoreBuilder
+name|withOffHeapAccess
+parameter_list|(
+name|boolean
+name|offHeapAccess
+parameter_list|)
+block|{
+name|this
+operator|.
+name|offHeapAccess
+operator|=
+name|offHeapAccess
 expr_stmt|;
 return|return
 name|this
@@ -1746,6 +1788,14 @@ return|return
 name|memoryMapping
 return|;
 block|}
+name|boolean
+name|getOffHeapAccess
+parameter_list|()
+block|{
+return|return
+name|offHeapAccess
+return|;
+block|}
 annotation|@
 name|NotNull
 name|GCListener
@@ -1915,6 +1965,10 @@ operator|+
 literal|", memoryMapping="
 operator|+
 name|memoryMapping
+operator|+
+literal|", offHeapAccess="
+operator|+
+name|offHeapAccess
 operator|+
 literal|", gcOptions="
 operator|+

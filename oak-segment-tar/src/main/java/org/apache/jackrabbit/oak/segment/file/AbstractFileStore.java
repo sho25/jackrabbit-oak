@@ -739,6 +739,10 @@ specifier|final
 name|boolean
 name|memoryMapping
 decl_stmt|;
+specifier|final
+name|boolean
+name|offHeapAccess
+decl_stmt|;
 annotation|@
 name|NotNull
 specifier|final
@@ -925,6 +929,15 @@ operator|=
 name|builder
 operator|.
 name|getMemoryMapping
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|offHeapAccess
+operator|=
+name|builder
+operator|.
+name|getOffHeapAccess
 argument_list|()
 expr_stmt|;
 name|this

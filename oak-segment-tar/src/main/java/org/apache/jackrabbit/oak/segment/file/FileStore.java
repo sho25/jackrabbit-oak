@@ -1173,11 +1173,13 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"TarMK opened at {}, mmap={}, size={}"
+literal|"TarMK opened at {}, mmap={}, offHeapAccess={}, size={}"
 argument_list|,
 name|directory
 argument_list|,
 name|memoryMapping
+argument_list|,
+name|offHeapAccess
 argument_list|,
 name|newPrintableBytes
 argument_list|(

@@ -613,6 +613,8 @@ name|createArchiveManager
 argument_list|(
 literal|false
 argument_list|,
+literal|false
+argument_list|,
 operator|new
 name|IOMonitorAdapter
 argument_list|()
@@ -686,6 +688,9 @@ parameter_list|(
 name|boolean
 name|memoryMapping
 parameter_list|,
+name|boolean
+name|offHeapAccess
+parameter_list|,
 name|IOMonitor
 name|ioMonitor
 parameter_list|,
@@ -713,6 +718,8 @@ name|createArchiveManager
 argument_list|(
 name|memoryMapping
 argument_list|,
+name|offHeapAccess
+argument_list|,
 name|ioMonitor
 argument_list|,
 name|fileStoreMonitor
@@ -723,6 +730,8 @@ operator|.
 name|createArchiveManager
 argument_list|(
 name|memoryMapping
+argument_list|,
+name|offHeapAccess
 argument_list|,
 name|ioMonitor
 argument_list|,
@@ -744,6 +753,8 @@ operator|.
 name|createArchiveManager
 argument_list|(
 name|memoryMapping
+argument_list|,
+name|offHeapAccess
 argument_list|,
 name|ioMonitor
 argument_list|,
