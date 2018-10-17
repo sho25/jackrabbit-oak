@@ -141,7 +141,7 @@ end_import
 
 begin_class
 class|class
-name|SearchCommand
+name|SearchNodesCommand
 implements|implements
 name|Command
 block|{

@@ -420,10 +420,10 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"search"
+literal|"search-nodes"
 argument_list|,
 operator|new
-name|SearchCommand
+name|SearchNodesCommand
 argument_list|()
 argument_list|)
 operator|.
