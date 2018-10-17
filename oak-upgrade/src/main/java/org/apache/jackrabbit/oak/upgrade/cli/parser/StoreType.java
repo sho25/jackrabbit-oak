@@ -1194,6 +1194,11 @@ operator|.
 name|isDisableMmap
 argument_list|()
 argument_list|,
+name|migrationOptions
+operator|.
+name|getCacheSizeInMB
+argument_list|()
+argument_list|,
 name|direction
 operator|==
 name|MigrationDirection
