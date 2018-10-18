@@ -1034,6 +1034,11 @@ argument_list|(
 name|KEY_DIR
 argument_list|)
 argument_list|,
+name|migrationOptions
+operator|.
+name|getCacheSizeInMB
+argument_list|()
+argument_list|,
 name|direction
 operator|==
 name|MigrationDirection
@@ -1097,6 +1102,11 @@ name|get
 argument_list|(
 name|KEY_DIR
 argument_list|)
+argument_list|,
+name|migrationOptions
+operator|.
+name|getCacheSizeInMB
+argument_list|()
 argument_list|,
 name|direction
 operator|==
