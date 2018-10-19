@@ -477,6 +477,22 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|SegmentNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|file
 operator|.
 name|FileStore
@@ -1421,6 +1437,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IllegalArgumentException
+decl||
+name|SegmentNotFoundException
 name|e
 parameter_list|)
 block|{
@@ -1428,9 +1446,11 @@ name|checker
 operator|.
 name|printError
 argument_list|(
-literal|"Skipping invalid record id {0}"
+literal|"Skipping invalid record id {0}: {1}"
 argument_list|,
 name|revision
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
