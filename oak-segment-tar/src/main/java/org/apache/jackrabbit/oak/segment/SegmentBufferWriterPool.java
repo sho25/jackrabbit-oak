@@ -290,6 +290,18 @@ init|=
 name|newHashSet
 argument_list|()
 decl_stmt|;
+comment|/**      * Retired writers that have not yet been flushed from a previous GC generation      */
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|SegmentBufferWriter
+argument_list|>
+name|disposedOldGen
+init|=
+name|newHashSet
+argument_list|()
+decl_stmt|;
 annotation|@
 name|NotNull
 specifier|private
@@ -492,6 +504,20 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|writers
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+comment|// Collect all writers from old GC generations that
+comment|// have been disposed
+name|toFlush
+operator|.
+name|addAll
+argument_list|(
+name|disposedOldGen
+argument_list|)
+expr_stmt|;
+name|disposedOldGen
 operator|.
 name|clear
 argument_list|()
@@ -739,7 +765,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|disposed
+name|disposedOldGen
 operator|.
 name|add
 argument_list|(
