@@ -3442,7 +3442,9 @@ name|field
 operator|++
 argument_list|)
 else|:
-literal|0
+name|RDBRow
+operator|.
+name|LONG_UNSET
 decl_stmt|;
 name|long
 name|sdMaxRevTime
@@ -4584,7 +4586,9 @@ name|field
 operator|++
 argument_list|)
 else|:
-literal|0
+name|RDBRow
+operator|.
+name|LONG_UNSET
 decl_stmt|;
 name|long
 name|sdMaxRevTime
@@ -5548,7 +5552,9 @@ name|field
 operator|++
 argument_list|)
 else|:
-literal|0
+name|RDBRow
+operator|.
+name|LONG_UNSET
 decl_stmt|;
 name|long
 name|sdMaxRevTime
@@ -6047,7 +6053,9 @@ name|field
 operator|++
 argument_list|)
 else|:
-literal|0
+name|RDBRow
+operator|.
+name|LONG_UNSET
 decl_stmt|;
 name|long
 name|sdMaxRevTime
