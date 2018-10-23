@@ -218,6 +218,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -481,7 +493,7 @@ name|stores
 expr_stmt|;
 block|}
 annotation|@
-name|NotNull
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -530,12 +542,6 @@ condition|(
 name|col
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|col
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 return|return

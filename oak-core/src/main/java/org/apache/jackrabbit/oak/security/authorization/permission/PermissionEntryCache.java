@@ -37,16 +37,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
 import|;
 end_import
@@ -346,14 +336,9 @@ comment|// nevertheless, remember the absence of any permission entries
 comment|// in the cache to avoid reading from store again.
 name|ppe
 operator|.
-name|putEntriesByPath
+name|rememberNotAccessControlled
 argument_list|(
 name|path
-argument_list|,
-name|Collections
-operator|.
-name|emptySet
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -584,17 +584,6 @@ block|}
 block|}
 return|return
 name|entries
-operator|==
-literal|null
-operator|||
-name|entries
-operator|.
-name|isEmpty
-argument_list|()
-condition|?
-literal|null
-else|:
-name|entries
 return|;
 block|}
 annotation|@
