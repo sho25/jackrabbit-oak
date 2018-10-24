@@ -184,6 +184,15 @@ name|PROXY_HOST
 init|=
 literal|"proxyHost"
 decl_stmt|;
+comment|/**      * Constant to set max list keys.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MAX_KEYS
+init|=
+literal|"maxKeys"
+decl_stmt|;
 comment|/**      *  Constant to set proxy port.      */
 specifier|public
 specifier|static

@@ -379,6 +379,17 @@ argument_list|,
 literal|"0"
 argument_list|)
 expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+name|S3Constants
+operator|.
+name|MAX_KEYS
+argument_list|,
+literal|"2"
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|DataStoreBlobStore
