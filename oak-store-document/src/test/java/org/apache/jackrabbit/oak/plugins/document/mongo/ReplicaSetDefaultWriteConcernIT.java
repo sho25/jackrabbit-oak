@@ -223,6 +223,18 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeNoException
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -268,8 +280,8 @@ specifier|public
 name|void
 name|before
 parameter_list|()
-throws|throws
-name|IOException
+block|{
+try|try
 block|{
 name|executables
 operator|.
@@ -285,6 +297,19 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|assumeNoException
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
