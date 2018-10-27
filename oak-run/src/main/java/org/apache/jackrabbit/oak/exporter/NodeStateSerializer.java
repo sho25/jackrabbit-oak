@@ -643,6 +643,8 @@ name|getFilter
 argument_list|()
 argument_list|,
 name|blobSerializer
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|NodeState
@@ -662,6 +664,8 @@ operator|.
 name|serialize
 argument_list|(
 name|state
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
 block|}
