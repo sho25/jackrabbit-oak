@@ -16,22 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
-operator|.
-name|newArrayList
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -837,6 +821,22 @@ name|Before
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|newArrayList
+import|;
+end_import
+
 begin_comment
 comment|/**  * AbstractOakTest is the base class for oak test execution.  */
 end_comment
@@ -1024,10 +1024,9 @@ argument_list|()
 expr_stmt|;
 name|adminSession
 operator|=
-name|login
+name|createAdminSession
 argument_list|(
-name|getAdminCredentials
-argument_list|()
+name|contentRepository
 argument_list|)
 expr_stmt|;
 name|root
@@ -1284,6 +1283,34 @@ name|adminId
 operator|.
 name|toCharArray
 argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|NotNull
+specifier|protected
+name|ContentSession
+name|createAdminSession
+parameter_list|(
+annotation|@
+name|NotNull
+name|ContentRepository
+name|repository
+parameter_list|)
+throws|throws
+name|LoginException
+throws|,
+name|NoSuchWorkspaceException
+block|{
+return|return
+name|repository
+operator|.
+name|login
+argument_list|(
+name|getAdminCredentials
+argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}

@@ -1090,6 +1090,23 @@ name|AttributeDefinition
 argument_list|(
 name|name
 operator|=
+literal|"Enable Password Expiry for Admin User"
+argument_list|,
+name|description
+operator|=
+literal|"When enabled, the admin user will also be subject to password expiry. The default value is false for backwards compatibility."
+argument_list|)
+name|boolean
+name|passwordExpiryForAdmin
+parameter_list|()
+default|default
+literal|false
+function_decl|;
+annotation|@
+name|AttributeDefinition
+argument_list|(
+name|name
+operator|=
 literal|"Principal Cache Expiration"
 argument_list|,
 name|description

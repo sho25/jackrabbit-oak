@@ -2638,14 +2638,13 @@ name|NEW
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|UserUtil
+name|Utils
 operator|.
-name|isAdmin
+name|canHavePasswordExpired
 argument_list|(
-name|config
-argument_list|,
 name|userId
+argument_list|,
+name|config
 argument_list|)
 comment|// only expiry is enabled, set in all cases
 operator|&&
