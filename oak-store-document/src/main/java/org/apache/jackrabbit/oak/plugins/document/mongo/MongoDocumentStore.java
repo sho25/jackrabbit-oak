@@ -993,6 +993,18 @@ name|mongodb
 operator|.
 name|client
 operator|.
+name|ClientSession
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|client
+operator|.
 name|FindIterable
 import|;
 end_import
@@ -1156,18 +1168,6 @@ operator|.
 name|result
 operator|.
 name|UpdateResult
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|session
-operator|.
-name|ClientSession
 import|;
 end_import
 
@@ -10970,7 +10970,7 @@ name|count
 operator|=
 name|c
 operator|.
-name|count
+name|countDocuments
 argument_list|(
 name|session
 argument_list|)
@@ -10982,7 +10982,7 @@ name|count
 operator|=
 name|c
 operator|.
-name|count
+name|countDocuments
 argument_list|()
 expr_stmt|;
 block|}

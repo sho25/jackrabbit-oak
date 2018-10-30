@@ -869,7 +869,7 @@ return|return
 name|getNodeCollection
 argument_list|()
 operator|.
-name|count
+name|countDocuments
 argument_list|(
 name|query
 argument_list|)
