@@ -499,11 +499,6 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|commitsTracker
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 operator|new
 name|ExecutorCloser
 argument_list|(
@@ -657,7 +652,7 @@ name|commitsCountPerGroup
 init|=
 name|commitsTracker
 operator|.
-name|getCommitsCountPerGroup
+name|getCommitsCountPerGroupLastMinute
 argument_list|()
 decl_stmt|;
 name|assertEquals
@@ -707,11 +702,6 @@ block|}
 block|}
 finally|finally
 block|{
-name|commitsTracker
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 operator|new
 name|ExecutorCloser
 argument_list|(

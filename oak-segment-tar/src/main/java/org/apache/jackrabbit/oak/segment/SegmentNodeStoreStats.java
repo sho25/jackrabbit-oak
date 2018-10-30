@@ -1132,11 +1132,6 @@ operator|=
 name|flag
 expr_stmt|;
 name|commitsTracker
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|commitsTracker
 operator|=
 operator|new
 name|CommitsTracker
@@ -1188,11 +1183,6 @@ operator|=
 name|otherWritersLimit
 expr_stmt|;
 name|commitsTracker
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|commitsTracker
 operator|=
 operator|new
 name|CommitsTracker
@@ -1233,11 +1223,6 @@ operator|.
 name|writerGroups
 operator|=
 name|writerGroups
-expr_stmt|;
-name|commitsTracker
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 name|commitsTracker
 operator|=
