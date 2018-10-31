@@ -65,6 +65,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertTrue
 import|;
 end_import
@@ -2348,6 +2360,18 @@ name|doc
 operator|.
 name|getSplitDocType
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+name|doc
+operator|.
+name|get
+argument_list|(
+name|NodeDocument
+operator|.
+name|SD_MAX_REV_TIME_IN_SECS
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
