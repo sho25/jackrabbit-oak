@@ -491,6 +491,23 @@ name|WriteOperationHandler
 argument_list|()
 block|{
 annotation|@
+name|Override
+annotation|@
+name|NotNull
+specifier|public
+name|GCGeneration
+name|getGCGeneration
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"Cannot write to read-only store"
+argument_list|)
+throw|;
+block|}
+annotation|@
 name|NotNull
 annotation|@
 name|Override
@@ -498,6 +515,11 @@ specifier|public
 name|RecordId
 name|execute
 parameter_list|(
+annotation|@
+name|NotNull
+name|GCGeneration
+name|gcGeneration
+parameter_list|,
 annotation|@
 name|NotNull
 name|WriteOperation

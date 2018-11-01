@@ -39,6 +39,26 @@ name|NotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
+import|;
+end_import
+
 begin_comment
 comment|/**  * A {@code WriteOperationHandler} executes {@link WriteOperation  * WriteOperation}s and as such serves as a bridge between a {@link  * SegmentWriter} and {@link SegmentBufferWriter}.  */
 end_comment
@@ -47,6 +67,13 @@ begin_interface
 interface|interface
 name|WriteOperationHandler
 block|{
+comment|/**      * @return the current {@code GCGeneration} of the store.      */
+annotation|@
+name|NotNull
+name|GCGeneration
+name|getGCGeneration
+parameter_list|()
+function_decl|;
 comment|/**      * A {@code WriteOperation} encapsulates an operation on a {@link      * SegmentWriter}. Executing it performs the actual act of persisting      * changes to a {@link SegmentBufferWriter}.      */
 interface|interface
 name|WriteOperation
@@ -66,12 +93,17 @@ throws|throws
 name|IOException
 function_decl|;
 block|}
-comment|/**      * Execute the passed {@code writeOperation} by passing it a {@link SegmentBufferWriter}.      * @param writeOperation  {@link WriteOperation} to execute      * @return                {@code RecordId} that resulted from persisting the changes.      * @throws IOException      */
+comment|/**      * Execute the passed {@code writeOperation} by passing it a {@link SegmentBufferWriter}.      * @param gcGeneration    the {@code GCGeneration} the changes should persisted with.      * @param writeOperation  {@link WriteOperation} to execute      * @return                {@code RecordId} that resulted from persisting the changes.      * @throws IOException      */
 annotation|@
 name|NotNull
 name|RecordId
 name|execute
 parameter_list|(
+annotation|@
+name|NotNull
+name|GCGeneration
+name|gcGeneration
+parameter_list|,
 annotation|@
 name|NotNull
 name|WriteOperation
