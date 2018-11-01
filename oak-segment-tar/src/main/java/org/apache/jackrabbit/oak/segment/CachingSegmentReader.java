@@ -35,6 +35,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -89,9 +99,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|tool
+name|util
 operator|.
-name|LoggingHook
+name|SafeEncode
 import|;
 end_import
 
@@ -555,6 +565,39 @@ block|}
 argument_list|)
 return|;
 block|}
+specifier|private
+specifier|static
+name|String
+name|safeEncode
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|SafeEncode
+operator|.
+name|safeEncode
+argument_list|(
+name|value
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|"ERROR: "
+operator|+
+name|e
+return|;
+block|}
+block|}
 annotation|@
 name|NotNull
 annotation|@
@@ -580,9 +623,7 @@ argument_list|()
 operator|+
 literal|" "
 operator|+
-name|LoggingHook
-operator|.
-name|urlEncode
+name|safeEncode
 argument_list|(
 name|Thread
 operator|.
@@ -671,9 +712,7 @@ argument_list|()
 operator|+
 literal|" "
 operator|+
-name|LoggingHook
-operator|.
-name|urlEncode
+name|safeEncode
 argument_list|(
 name|Thread
 operator|.
