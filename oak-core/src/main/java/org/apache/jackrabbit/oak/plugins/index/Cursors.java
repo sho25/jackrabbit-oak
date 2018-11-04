@@ -455,6 +455,26 @@ name|isAbsolute
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryConstants
+operator|.
+name|REP_FACET
+import|;
+end_import
+
 begin_comment
 comment|/**  * This utility class provides factory methods to create commonly used types of  * {@link Cursor}s.  */
 end_comment
@@ -1235,6 +1255,36 @@ condition|)
 block|{
 comment|// nothing can match this filter, leave nodes empty
 return|return;
+block|}
+name|Filter
+operator|.
+name|PropertyRestriction
+name|facetRestriction
+init|=
+name|filter
+operator|.
+name|getPropertyRestriction
+argument_list|(
+name|REP_FACET
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|facetRestriction
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// we don't evaluate facets by traversal
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|facetRestriction
+operator|+
+literal|" can't be evaluated by traversal"
+argument_list|)
+throw|;
 block|}
 if|if
 condition|(
