@@ -1588,10 +1588,16 @@ name|EveryonePrincipal
 operator|.
 name|getInstance
 argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|entry
 operator|.
 name|getPrincipal
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
