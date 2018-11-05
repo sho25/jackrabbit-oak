@@ -672,6 +672,11 @@ init|=
 name|createCloudBlobDirectory
 argument_list|(
 name|pathOrUri
+operator|.
+name|substring
+argument_list|(
+literal|3
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|persistence

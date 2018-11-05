@@ -325,11 +325,6 @@ operator|.
 name|withPath
 argument_list|(
 name|path
-operator|.
-name|substring
-argument_list|(
-literal|3
-argument_list|)
 argument_list|)
 operator|.
 name|withForce
