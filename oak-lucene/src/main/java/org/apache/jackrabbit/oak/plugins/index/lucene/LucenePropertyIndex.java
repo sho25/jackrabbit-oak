@@ -2432,6 +2432,12 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+specifier|private
+name|LuceneFacetProvider
+name|facetProvider
+init|=
+literal|null
+decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -2484,8 +2490,8 @@ name|String
 argument_list|>
 name|excerpts
 parameter_list|,
-name|Facets
-name|facets
+name|LuceneFacetProvider
+name|facetProvider
 parameter_list|,
 name|String
 name|explanation
@@ -2660,11 +2666,7 @@ name|score
 argument_list|,
 name|excerpts
 argument_list|,
-operator|new
-name|LuceneFacetProvider
-argument_list|(
-name|facets
-argument_list|)
+name|facetProvider
 argument_list|,
 name|explanation
 argument_list|)
@@ -2945,9 +2947,18 @@ operator|.
 name|start
 argument_list|()
 decl_stmt|;
-name|Facets
-name|facets
-init|=
+if|if
+condition|(
+name|facetProvider
+operator|==
+literal|null
+condition|)
+block|{
+name|facetProvider
+operator|=
+operator|new
+name|LuceneFacetProvider
+argument_list|(
 name|FacetHelper
 operator|.
 name|getFacets
@@ -2968,7 +2979,8 @@ operator|.
 name|isSecureFacets
 argument_list|()
 argument_list|)
-decl_stmt|;
+argument_list|)
+expr_stmt|;
 name|PERF_LOGGER
 operator|.
 name|end
@@ -2981,6 +2993,7 @@ argument_list|,
 literal|"facets retrieved"
 argument_list|)
 expr_stmt|;
+block|}
 name|Set
 argument_list|<
 name|String
@@ -3213,7 +3226,7 @@ name|searcher
 argument_list|,
 name|excerpts
 argument_list|,
-name|facets
+name|facetProvider
 argument_list|,
 name|explanation
 argument_list|)
