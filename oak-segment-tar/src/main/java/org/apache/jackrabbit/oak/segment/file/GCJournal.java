@@ -139,26 +139,6 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|spi
-operator|.
-name|persistence
-operator|.
-name|GCJournalFile
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
 name|file
 operator|.
 name|tar
@@ -179,11 +159,11 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
+name|spi
 operator|.
-name|tar
+name|persistence
 operator|.
-name|TarPersistence
+name|GCJournalFile
 import|;
 end_import
 
@@ -232,7 +212,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Persists the repository size and the reclaimed size following a cleanup  * operation in the {@link TarPersistence#GC_JOURNAL gc journal} file with the format:  * 'repoSize, reclaimedSize, timestamp, gc generation, gc full generation (since Oak 1.8),  * number of nodes compacted, root id (since Oak 1.8)'.  */
+comment|/**  * Persists the repository size and the reclaimed size following a cleanup  * operation in the {@code gc.log} file with the format:  * 'repoSize, reclaimedSize, timestamp, gc generation, gc full generation (since Oak 1.8),  * number of nodes compacted, root id (since Oak 1.8)'.  */
 end_comment
 
 begin_class

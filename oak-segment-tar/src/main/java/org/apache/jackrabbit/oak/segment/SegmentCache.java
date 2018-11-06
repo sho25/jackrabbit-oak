@@ -218,7 +218,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A cache for {@link SegmentId#isDataSegmentId() data} {@link Segment}  * instances by their {@link SegmentId}. This cache ignores {@link  * SegmentId#isBulkSegmentId() bulk} segments.  *<p>  * Conceptually this cache serves as a 2nd level cache for segments. The 1st  * level cache is implemented by memoising the segment in its id (see {@link  * SegmentId#segment}. Every time an segment is evicted from this cache the  * memoised segment is discarded (see {@link SegmentId#onAccess}.  */
+comment|/**  * A cache for {@link SegmentId#isDataSegmentId() data} {@link Segment}  * instances by their {@link SegmentId}. This cache ignores {@link  * SegmentId#isBulkSegmentId() bulk} segments.  *<p>  * Conceptually this cache serves as a 2nd level cache for segments. The 1st  * level cache is implemented by memoising the segment in its id (see {@code  * SegmentId#segment}. Every time an segment is evicted from this cache the  * memoised segment is discarded (see {@code SegmentId#onAccess}.  */
 end_comment
 
 begin_class
@@ -332,7 +332,7 @@ name|AbstractCacheStats
 name|getCacheStats
 parameter_list|()
 function_decl|;
-comment|/**      * Record a hit in this cache's underlying statistics.      *      * @see SegmentId#onAccess      */
+comment|/**      * Record a hit in this cache's underlying statistics.      *      * See {@code SegmentId#onAccess}      */
 specifier|public
 specifier|abstract
 name|void

@@ -271,6 +271,22 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|SegmentStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
 name|spi
 operator|.
 name|persistence
@@ -323,42 +339,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|SegmentStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|tar
-operator|.
-name|TarPersistence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|jetbrains
 operator|.
 name|annotations
@@ -400,7 +380,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link TarPersistence#JOURNAL_FILE_NAME journal} file where the current head is persisted  * by calling {@link #tryFlush(Flusher)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, SegmentIdProvider, Supplier)} bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
+comment|/**  * This implementation of {@code Revisions} is backed by a  * {@link JournalFile journal} file where the current head is persisted  * by calling {@link #tryFlush(Flusher)}.  *<p>  * The {@link #setHead(Function, Option...)} method supports a timeout  * {@link Option}, which can be retrieved through factory methods of this class.  *<p>  * Instance of this class must be {@link #bind(SegmentStore, SegmentIdProvider, Supplier)} bound} to  * a {@code SegmentStore} otherwise its method throw {@code IllegalStateException}s.  */
 end_comment
 
 begin_class
