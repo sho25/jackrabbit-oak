@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * /**  * A metric which calculates the distribution of a value.  */
+comment|/**  *  * A metric which calculates the distribution of a value.  */
 end_comment
 
 begin_interface
