@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -61,16 +71,6 @@ name|IOMonitor
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/**  * This type is a main entry point for the segment node store persistence. It's  * used every time the access to the underlying storage (eg. tar files) is required.  */
 end_comment
@@ -80,7 +80,7 @@ specifier|public
 interface|interface
 name|SegmentNodeStorePersistence
 block|{
-comment|/**      * Opens a new archive manager. It'll be used to access the archives containing      * segments.      *      * @param memoryMapping whether the memory mapping should be used (if the given      *                      persistence supports it)      * @param offHeapAccess whether off heap access for segements should be used      * @param ioMonitor object used to monitor segment-related IO access. The      *                  implementation should call the appropriate methods when      *                  accessing segments.      * @param fileStoreMonitor object used to monitor the general IO usage.      * @return segment archive manager      * @throws IOException      */
+comment|/**      * Opens a new archive manager. It'll be used to access the archives containing      * segments.      *      * @param memoryMapping whether the memory mapping should be used (if the given      *                      persistence supports it)      * @param offHeapAccess whether off heap access for segments should be used      * @param ioMonitor object used to monitor segment-related IO access. The      *                  implementation should call the appropriate methods when      *                  accessing segments.      * @param fileStoreMonitor object used to monitor the general IO usage.      * @return segment archive manager      * @throws IOException      */
 name|SegmentArchiveManager
 name|createArchiveManager
 parameter_list|(
