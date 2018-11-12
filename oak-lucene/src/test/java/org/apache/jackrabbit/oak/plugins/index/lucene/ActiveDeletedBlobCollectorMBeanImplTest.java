@@ -2383,6 +2383,10 @@ name|defaultMountInfoProvider
 argument_list|()
 argument_list|,
 name|deletedFileTrackingADBC
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|repository
