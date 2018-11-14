@@ -362,7 +362,9 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|log
+name|writer
+operator|.
+name|accept
 argument_list|(
 literal|"n!"
 argument_list|)
@@ -378,7 +380,9 @@ name|PropertyState
 name|after
 parameter_list|)
 block|{
-name|log
+name|writer
+operator|.
+name|accept
 argument_list|(
 literal|"p+ "
 operator|+
@@ -405,7 +409,9 @@ name|PropertyState
 name|after
 parameter_list|)
 block|{
-name|log
+name|writer
+operator|.
+name|accept
 argument_list|(
 literal|"p^ "
 operator|+
@@ -429,7 +435,9 @@ name|PropertyState
 name|before
 parameter_list|)
 block|{
-name|log
+name|writer
+operator|.
+name|accept
 argument_list|(
 literal|"p- "
 operator|+
@@ -489,7 +497,9 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|log
+name|writer
+operator|.
+name|accept
 argument_list|(
 literal|"n+ "
 operator|+
@@ -551,7 +561,9 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|log
+name|writer
+operator|.
+name|accept
 argument_list|(
 literal|"n^ "
 operator|+
@@ -608,7 +620,9 @@ name|NodeState
 name|before
 parameter_list|)
 block|{
-name|log
+name|writer
+operator|.
+name|accept
 argument_list|(
 literal|"n- "
 operator|+
@@ -922,42 +936,6 @@ name|newChar
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-specifier|private
-name|void
-name|log
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|writer
-operator|.
-name|accept
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-operator|+
-literal|" "
-operator|+
-name|safeEncode
-argument_list|(
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-operator|+
-literal|" "
-operator|+
-name|s
-argument_list|)
-expr_stmt|;
 block|}
 specifier|private
 specifier|static
