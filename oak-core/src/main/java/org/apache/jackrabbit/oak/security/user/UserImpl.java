@@ -709,6 +709,16 @@ literal|"The administrator user cannot be disabled."
 argument_list|)
 throw|;
 block|}
+name|getUserManager
+argument_list|()
+operator|.
+name|onDisable
+argument_list|(
+name|this
+argument_list|,
+name|reason
+argument_list|)
+expr_stmt|;
 name|Tree
 name|tree
 init|=
