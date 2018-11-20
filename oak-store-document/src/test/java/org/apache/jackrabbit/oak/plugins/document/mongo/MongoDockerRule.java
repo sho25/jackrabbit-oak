@@ -156,6 +156,18 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|String
+name|IMAGE
+init|=
+literal|"mongo:"
+operator|+
+name|MongoUtils
+operator|.
+name|VERSION
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|boolean
 name|DOCKER_AVAILABLE
 decl_stmt|;
@@ -202,6 +214,13 @@ operator|.
 name|ping
 argument_list|()
 expr_stmt|;
+name|client
+operator|.
+name|pull
+argument_list|(
+name|IMAGE
+argument_list|)
+expr_stmt|;
 name|available
 operator|=
 literal|true
@@ -209,17 +228,17 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
-name|e
+name|Throwable
+name|t
 parameter_list|)
 block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Cannot connect to docker"
+literal|"Cannot connect to docker or pull image"
 argument_list|,
-name|e
+name|t
 argument_list|)
 expr_stmt|;
 block|}
@@ -246,11 +265,7 @@ argument_list|)
 operator|.
 name|image
 argument_list|(
-literal|"mongo:"
-operator|+
-name|MongoUtils
-operator|.
-name|VERSION
+name|IMAGE
 argument_list|)
 operator|.
 name|ports
