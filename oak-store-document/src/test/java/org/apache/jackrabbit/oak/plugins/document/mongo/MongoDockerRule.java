@@ -67,6 +67,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|spotify
+operator|.
+name|docker
+operator|.
+name|client
+operator|.
+name|auth
+operator|.
+name|FixedRegistryAuthSupplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -168,6 +184,13 @@ operator|.
 name|readTimeoutMillis
 argument_list|(
 literal|20000L
+argument_list|)
+operator|.
+name|registryAuthSupplier
+argument_list|(
+operator|new
+name|FixedRegistryAuthSupplier
+argument_list|()
 argument_list|)
 operator|.
 name|build
