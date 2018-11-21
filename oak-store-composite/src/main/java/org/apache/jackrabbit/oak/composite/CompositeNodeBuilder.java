@@ -1251,11 +1251,17 @@ name|NodeState
 name|nodeState
 parameter_list|)
 block|{
-name|checkState
-argument_list|(
+if|if
+condition|(
+operator|!
 name|exists
 argument_list|()
-argument_list|,
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
 literal|"This builder does not exist: "
 operator|+
 name|PathUtils
@@ -1266,7 +1272,8 @@ name|getPath
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
+throw|;
+block|}
 name|String
 name|childPath
 init|=
