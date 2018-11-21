@@ -427,6 +427,15 @@ name|SearchNodesCommand
 argument_list|()
 argument_list|)
 operator|.
+name|put
+argument_list|(
+literal|"recover-journal"
+argument_list|,
+operator|new
+name|RecoverJournalCommand
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|()
 argument_list|)
