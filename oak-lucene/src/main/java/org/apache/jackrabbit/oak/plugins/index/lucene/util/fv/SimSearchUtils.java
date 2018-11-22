@@ -1811,6 +1811,13 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|binaryValue
+operator|!=
+literal|null
+condition|)
+block|{
 name|double
 index|[]
 name|inputVector
@@ -1956,6 +1963,7 @@ name|distance
 argument_list|)
 expr_stmt|;
 comment|// additive similarity boosting
+block|}
 block|}
 block|}
 if|if
