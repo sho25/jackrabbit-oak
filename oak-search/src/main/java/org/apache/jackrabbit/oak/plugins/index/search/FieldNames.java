@@ -111,6 +111,15 @@ name|SIMILARITY_PREFIX
 init|=
 literal|"sim:"
 decl_stmt|;
+comment|/**      * Prefix for all field names that contains the similarity search binary values.      */
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SIMILARITY_BINARY_PREFIX
+init|=
+literal|"simbin:"
+decl_stmt|;
 comment|/**      * Name of the field that contains the suggest index.      */
 specifier|public
 specifier|static
@@ -332,6 +341,21 @@ parameter_list|)
 block|{
 return|return
 name|SIMILARITY_PREFIX
+operator|+
+name|name
+return|;
+block|}
+specifier|public
+specifier|static
+name|String
+name|createBinSimilarityFieldName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|SIMILARITY_BINARY_PREFIX
 operator|+
 name|name
 return|;

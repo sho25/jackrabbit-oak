@@ -361,11 +361,17 @@ name|PROP_USE_IN_SPELLCHECK
 init|=
 literal|"useInSpellcheck"
 decl_stmt|;
-comment|/**    * whether use this property values for similarity    */
+comment|/**      * whether use this property values for similarity      */
 name|String
 name|PROP_USE_IN_SIMILARITY
 init|=
 literal|"useInSimilarity"
+decl_stmt|;
+comment|/**      * whether feature vector similarity search should rerank based on feature values      */
+name|String
+name|PROP_SIMILARITY_RERANK
+init|=
+literal|"similarityRerank"
 decl_stmt|;
 comment|/**      * Property definition config indicating that null check support should be      * enabled for this property      */
 name|String

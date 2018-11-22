@@ -584,6 +584,11 @@ name|boolean
 name|useInSimilarity
 decl_stmt|;
 specifier|public
+specifier|final
+name|boolean
+name|similarityRerank
+decl_stmt|;
+specifier|public
 name|PropertyDefinition
 parameter_list|(
 name|IndexingRule
@@ -826,6 +831,21 @@ argument_list|,
 name|FulltextIndexConstants
 operator|.
 name|PROP_USE_IN_SIMILARITY
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|similarityRerank
+operator|=
+name|getOptionalValueIfIndexed
+argument_list|(
+name|defn
+argument_list|,
+name|FulltextIndexConstants
+operator|.
+name|PROP_SIMILARITY_RERANK
 argument_list|,
 literal|false
 argument_list|)
@@ -1165,6 +1185,10 @@ operator|+
 literal|", useInSuggest="
 operator|+
 name|useInSuggest
+operator|+
+literal|", useInSimilarity="
+operator|+
+name|useInSimilarity
 operator|+
 literal|", nullCheckEnabled="
 operator|+
