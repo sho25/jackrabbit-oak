@@ -138,7 +138,7 @@ specifier|final
 name|int
 name|DEFAULT_SHINGLE_SIZE
 init|=
-literal|4
+literal|5
 decl_stmt|;
 specifier|private
 specifier|final
