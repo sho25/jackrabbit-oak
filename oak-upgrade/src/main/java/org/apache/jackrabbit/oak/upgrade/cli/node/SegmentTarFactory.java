@@ -59,10 +59,6 @@ name|DEFAULT_SEGMENT_CACHE_MB
 import|;
 end_import
 
-begin_empty_stmt
-empty_stmt|;
-end_empty_stmt
-
 begin_import
 import|import static
 name|org
