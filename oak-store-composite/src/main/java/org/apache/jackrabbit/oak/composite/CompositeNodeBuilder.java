@@ -169,6 +169,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -194,22 +214,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
 import|;
 end_import
 
@@ -319,6 +323,21 @@ name|CompositeNodeBuilder
 implements|implements
 name|NodeBuilder
 block|{
+specifier|private
+specifier|final
+specifier|static
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|CompositeNodeBuilder
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|CompositionContext
@@ -1285,7 +1304,6 @@ argument_list|,
 name|name
 argument_list|)
 decl_stmt|;
-specifier|final
 name|MountedNodeStore
 name|childStore
 init|=
@@ -1317,20 +1335,33 @@ name|exists
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"The mount root doesn't exist: "
-operator|+
-name|getPath
+comment|// if it doesn't exist in the read-only repository, create it in the global repository
+comment|// (needed for example for a new index)
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
 argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Creating node in the global store; will become invisible once overlayed: "
 operator|+
-literal|" for "
-operator|+
-name|childStore
+name|childPath
 argument_list|)
-throw|;
+expr_stmt|;
+block|}
+name|childStore
+operator|=
+name|ctx
+operator|.
+name|getGlobalStore
+argument_list|()
+expr_stmt|;
 block|}
 specifier|final
 name|NodeBuilder
