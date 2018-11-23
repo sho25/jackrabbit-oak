@@ -3652,18 +3652,6 @@ name|propabQuery
 init|=
 literal|"/jcr:root//element(*, nt:file)"
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|explainXpath
-argument_list|(
-name|propabQuery
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|explainXpath

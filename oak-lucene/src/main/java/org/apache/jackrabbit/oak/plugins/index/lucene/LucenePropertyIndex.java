@@ -3363,13 +3363,6 @@ argument_list|,
 literal|"fv reranking done"
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"reranking done"
-argument_list|)
-expr_stmt|;
 name|earlyStop
 operator|=
 literal|true
