@@ -390,6 +390,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 specifier|abstract
 class|class
 name|ConsistencyCheckerTemplate
@@ -566,6 +567,7 @@ argument_list|)
 return|;
 block|}
 block|}
+specifier|protected
 name|void
 name|onCheckRevision
 parameter_list|(
@@ -575,18 +577,21 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckHead
 parameter_list|()
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckChekpoints
 parameter_list|()
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckCheckpoint
 parameter_list|(
@@ -596,6 +601,7 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckpointNotFoundInRevision
 parameter_list|(
@@ -605,6 +611,7 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckRevisionError
 parameter_list|(
@@ -617,6 +624,7 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onConsistentPath
 parameter_list|(
@@ -626,6 +634,7 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onPathNotFound
 parameter_list|(
@@ -635,6 +644,7 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckTree
 parameter_list|(
@@ -644,12 +654,14 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckTreeEnd
 parameter_list|()
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckNode
 parameter_list|(
@@ -659,12 +671,14 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckProperty
 parameter_list|()
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckPropertyEnd
 parameter_list|(
@@ -677,6 +691,7 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckNodeError
 parameter_list|(
@@ -689,6 +704,7 @@ parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
+specifier|protected
 name|void
 name|onCheckTreeError
 parameter_list|(

@@ -15,9 +15,7 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|file
-operator|.
-name|tooling
+name|tool
 package|;
 end_package
 
