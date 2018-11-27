@@ -393,7 +393,7 @@ begin_class
 specifier|public
 specifier|abstract
 class|class
-name|ConsistencyCheckerTemplate
+name|ConsistencyChecker
 block|{
 specifier|private
 specifier|static
