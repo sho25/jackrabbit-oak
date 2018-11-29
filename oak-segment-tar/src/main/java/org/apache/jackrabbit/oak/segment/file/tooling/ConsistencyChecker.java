@@ -1485,7 +1485,7 @@ return|;
 block|}
 specifier|private
 name|boolean
-name|allPathsConsisten
+name|allPathsConsistent
 parameter_list|(
 name|List
 argument_list|<
@@ -1860,7 +1860,7 @@ comment|// If every PathToCheck is assigned to a JournalEntry, stop
 comment|// looping through the journal.
 if|if
 condition|(
-name|allPathsConsisten
+name|allPathsConsistent
 argument_list|(
 name|headPaths
 argument_list|,
