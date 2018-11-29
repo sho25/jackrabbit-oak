@@ -669,6 +669,10 @@ name|store
 operator|.
 name|newCommit
 argument_list|(
+name|nop
+lambda|->
+block|{}
+argument_list|,
 literal|null
 argument_list|,
 literal|null
@@ -1145,6 +1149,10 @@ name|ds
 operator|.
 name|newCommit
 argument_list|(
+name|nop
+lambda|->
+block|{}
+argument_list|,
 name|ds
 operator|.
 name|getHeadRevision

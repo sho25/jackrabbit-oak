@@ -1366,18 +1366,6 @@ return|return
 name|lock
 return|;
 block|}
-specifier|private
-interface|interface
-name|Changes
-block|{
-name|void
-name|with
-parameter_list|(
-name|Commit
-name|c
-parameter_list|)
-function_decl|;
-block|}
 comment|/**      * Persists the changes between {@code toPersist} and {@code base}      * to the underlying store.      *      * @param toPersist the state with the changes on top of {@code base}.      * @param base the base state.      * @param info the commit info.      * @return the state with the persisted changes.      * @throws ConflictException if changes cannot be persisted because a      *          conflict occurred. The exception may contain the revisions of      *          the conflicting operations.      * @throws DocumentStoreException if the persist operation failed because      *          of an exception in the underlying {@link DocumentStore}.      */
 specifier|private
 name|DocumentNodeState
@@ -1419,8 +1407,10 @@ specifier|public
 name|void
 name|with
 parameter_list|(
-name|Commit
-name|c
+annotation|@
+name|NotNull
+name|CommitBuilder
+name|commitBuilder
 parameter_list|)
 block|{
 name|toPersist
@@ -1434,7 +1424,7 @@ name|CommitDiff
 argument_list|(
 name|store
 argument_list|,
-name|c
+name|commitBuilder
 argument_list|,
 name|store
 operator|.
@@ -1489,6 +1479,8 @@ name|store
 operator|.
 name|newCommit
 argument_list|(
+name|op
+argument_list|,
 name|base
 operator|.
 name|getRootRevision
@@ -1502,13 +1494,6 @@ name|rev
 decl_stmt|;
 try|try
 block|{
-name|op
-operator|.
-name|with
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|c
