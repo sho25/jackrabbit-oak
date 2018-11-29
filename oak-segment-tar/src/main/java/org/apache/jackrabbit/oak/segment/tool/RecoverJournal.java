@@ -1163,7 +1163,7 @@ return|return
 name|segmentIdComparison
 return|;
 block|}
-comment|// Records from the same segments are sorted in decreasing order
+comment|// Records from the same segments are sorted in increasing order
 comment|// of their record number. This builds on the assumption that a
 comment|// record with a higher record number was added after a record
 comment|// with a lower one, and therefor is more recent.
@@ -1192,9 +1192,9 @@ name|Integer
 operator|.
 name|compare
 argument_list|(
-name|rightRecordNumber
-argument_list|,
 name|leftRecordNumber
+argument_list|,
+name|rightRecordNumber
 argument_list|)
 return|;
 block|}
