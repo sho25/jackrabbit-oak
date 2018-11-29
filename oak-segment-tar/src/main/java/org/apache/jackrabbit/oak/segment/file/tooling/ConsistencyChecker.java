@@ -381,7 +381,6 @@ end_import
 
 begin_class
 specifier|public
-specifier|abstract
 class|class
 name|ConsistencyChecker
 block|{
@@ -1512,6 +1511,37 @@ operator|.
 name|journalEntry
 operator|==
 literal|null
+argument_list|)
+return|;
+block|}
+comment|/**      * Check the consistency of a given subtree and returns the first      * inconsistent path. If provided, this method probes a set of inconsistent      * paths before performing a full traversal of the subtree.      *      * @param root           The root node of the subtree.      * @param corruptedPaths A set of possibly inconsistent paths.      * @param binaries       Whether to check binaries for consistency.      * @return The first inconsistent path or {@code null}. The path might be      * either one of the provided inconsistent paths or a new one discovered      * during a full traversal of the tree.      */
+specifier|public
+name|String
+name|checkTreeConsistency
+parameter_list|(
+name|NodeState
+name|root
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|corruptedPaths
+parameter_list|,
+name|boolean
+name|binaries
+parameter_list|)
+block|{
+return|return
+name|checkTreeConsistency
+argument_list|(
+name|root
+argument_list|,
+literal|"/"
+argument_list|,
+name|corruptedPaths
+argument_list|,
+name|binaries
 argument_list|)
 return|;
 block|}
