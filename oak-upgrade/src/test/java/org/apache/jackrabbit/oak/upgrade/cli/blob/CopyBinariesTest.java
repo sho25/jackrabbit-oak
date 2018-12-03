@@ -704,11 +704,13 @@ argument_list|(
 name|blob
 argument_list|)
 block|,
+comment|// user name and password are not used, as no login is attepted
+comment|// for unsupported migration use cases
 name|asList
 argument_list|(
-literal|"--user=abc"
+literal|"--user=unused"
 argument_list|,
-literal|"--password=abc"
+literal|"--password=unused"
 argument_list|)
 block|,
 name|DatastoreArguments
