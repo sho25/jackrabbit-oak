@@ -659,7 +659,7 @@ name|getOption
 argument_list|(
 name|OptionParserFactory
 operator|.
-name|SRC_USER
+name|SRC_PASSWORD
 argument_list|)
 expr_stmt|;
 name|this

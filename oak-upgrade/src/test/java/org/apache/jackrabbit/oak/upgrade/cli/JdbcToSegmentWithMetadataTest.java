@@ -196,7 +196,7 @@ literal|"sa"
 block|,
 literal|"--src-password"
 block|,
-literal|"sa"
+literal|"pwd"
 block|,
 name|source
 operator|.

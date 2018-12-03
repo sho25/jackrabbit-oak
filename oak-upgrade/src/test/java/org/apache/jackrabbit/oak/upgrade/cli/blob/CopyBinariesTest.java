@@ -671,7 +671,7 @@ name|asList
 argument_list|(
 literal|"--src-user=sa"
 argument_list|,
-literal|"--src-password=sa"
+literal|"--src-password=pwd"
 argument_list|)
 block|,
 name|DatastoreArguments
@@ -706,9 +706,9 @@ argument_list|)
 block|,
 name|asList
 argument_list|(
-literal|"--user=sa"
+literal|"--user=abc"
 argument_list|,
-literal|"--password=sa"
+literal|"--password=abc"
 argument_list|)
 block|,
 name|DatastoreArguments

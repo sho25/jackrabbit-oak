@@ -300,7 +300,7 @@ literal|2
 argument_list|,
 literal|"sa"
 argument_list|,
-literal|"sa"
+literal|"pwd"
 argument_list|,
 literal|false
 argument_list|)
