@@ -189,6 +189,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|NoopStats
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -316,6 +332,10 @@ argument_list|(
 name|archiveManager
 argument_list|,
 name|counter
+argument_list|,
+name|NoopStats
+operator|.
+name|INSTANCE
 argument_list|)
 decl_stmt|;
 comment|// not dirty, will not create a new writer
@@ -508,6 +528,10 @@ argument_list|(
 name|archiveManager
 argument_list|,
 literal|0
+argument_list|,
+name|NoopStats
+operator|.
+name|INSTANCE
 argument_list|)
 init|)
 block|{

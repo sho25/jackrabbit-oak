@@ -704,6 +704,15 @@ name|TAR_READER_COUNT
 init|=
 literal|"TAR_READER_COUNT"
 decl_stmt|;
+comment|/**      * Name of the {@link CounterStats counter} exposing the number of segments.      */
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SEGMENT_COUNT
+init|=
+literal|"SEGMENT_COUNT"
+decl_stmt|;
 specifier|private
 specifier|static
 name|GarbageCollectionStrategy
@@ -961,6 +970,18 @@ argument_list|,
 name|DEFAULT
 argument_list|)
 decl_stmt|;
+name|CounterStats
+name|segmentCountStats
+init|=
+name|statsProvider
+operator|.
+name|getCounterStats
+argument_list|(
+name|SEGMENT_COUNT
+argument_list|,
+name|DEFAULT
+argument_list|)
+decl_stmt|;
 name|TarFiles
 operator|.
 name|Builder
@@ -1017,6 +1038,11 @@ operator|.
 name|withReaderCountStats
 argument_list|(
 name|readerCountStats
+argument_list|)
+operator|.
+name|withSegmentCountStats
+argument_list|(
+name|segmentCountStats
 argument_list|)
 decl_stmt|;
 name|this
