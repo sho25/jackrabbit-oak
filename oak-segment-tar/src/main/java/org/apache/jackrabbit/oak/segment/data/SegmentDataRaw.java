@@ -41,11 +41,21 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|ByteBuffer
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -57,12 +67,12 @@ name|SegmentData
 block|{
 specifier|private
 specifier|final
-name|ByteBuffer
+name|Buffer
 name|buffer
 decl_stmt|;
 name|SegmentDataRaw
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|)
 block|{
@@ -95,7 +105,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ByteBuffer
+name|Buffer
 name|readBytes
 parameter_list|(
 name|int

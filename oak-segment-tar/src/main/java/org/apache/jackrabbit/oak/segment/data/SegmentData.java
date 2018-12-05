@@ -41,11 +41,21 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|ByteBuffer
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -62,7 +72,7 @@ specifier|static
 name|SegmentData
 name|newSegmentData
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|)
 block|{
@@ -79,7 +89,7 @@ specifier|static
 name|SegmentData
 name|newRawSegmentData
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|)
 block|{
@@ -204,7 +214,7 @@ name|int
 name|recordReferenceOffset
 parameter_list|)
 function_decl|;
-name|ByteBuffer
+name|Buffer
 name|readBytes
 parameter_list|(
 name|int

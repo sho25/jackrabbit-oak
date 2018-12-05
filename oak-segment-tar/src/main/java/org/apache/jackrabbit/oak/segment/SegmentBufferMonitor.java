@@ -79,19 +79,29 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|util
 operator|.
-name|ByteBuffer
+name|Set
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Set
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -140,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class exposes {@link CounterStats} for allocations and de-allocations  * of {@link ByteBuffer} instances:  *<ul>  *<li>{@link #DIRECT_BUFFER_COUNT}: number of allocated direct byte  *          buffers.</li>  *<li>{@link #DIRECT_BUFFER_CAPACITY}: total capacity of the allocated  *          direct byte buffers.</li>  *<li>{@link #HEAP_BUFFER_COUNT}: number of allocated heap byte  *          buffers.</li>  *<li>{@link #HEAP_BUFFER_CAPACITY}: total capacity of the allocated  *          heap byte buffers.</li>  *</ul>  *<p>  * Users of this class call {@link #trackAllocation(ByteBuffer)} to update above statistics.  */
+comment|/**  * This class exposes {@link CounterStats} for allocations and de-allocations  * of {@link Buffer} instances:  *<ul>  *<li>{@link #DIRECT_BUFFER_COUNT}: number of allocated direct byte  *          buffers.</li>  *<li>{@link #DIRECT_BUFFER_CAPACITY}: total capacity of the allocated  *          direct byte buffers.</li>  *<li>{@link #HEAP_BUFFER_COUNT}: number of allocated heap byte  *          buffers.</li>  *<li>{@link #HEAP_BUFFER_CAPACITY}: total capacity of the allocated  *          heap byte buffers.</li>  *</ul>  *<p>  * Users of this class call {@link #trackAllocation(Buffer)} to update above statistics.  */
 end_comment
 
 begin_class
@@ -203,7 +213,7 @@ specifier|private
 specifier|final
 name|ReferenceQueue
 argument_list|<
-name|ByteBuffer
+name|Buffer
 argument_list|>
 name|referenceQueue
 init|=
@@ -302,7 +312,7 @@ name|BufferReference
 extends|extends
 name|WeakReference
 argument_list|<
-name|ByteBuffer
+name|Buffer
 argument_list|>
 block|{
 specifier|private
@@ -320,14 +330,14 @@ name|BufferReference
 parameter_list|(
 annotation|@
 name|NotNull
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|,
 annotation|@
 name|NotNull
 name|ReferenceQueue
 argument_list|<
-name|ByteBuffer
+name|Buffer
 argument_list|>
 name|queue
 parameter_list|)
@@ -366,7 +376,7 @@ name|trackAllocation
 parameter_list|(
 annotation|@
 name|NotNull
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|)
 block|{

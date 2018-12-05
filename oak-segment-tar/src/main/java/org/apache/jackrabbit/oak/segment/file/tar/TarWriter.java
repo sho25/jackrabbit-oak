@@ -205,16 +205,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Map
@@ -284,6 +274,26 @@ operator|.
 name|binaries
 operator|.
 name|BinaryReferencesIndexWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -606,7 +616,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * If the given segment is in this file, get the byte buffer that allows      * reading it.      *       * @param msb the most significant bits of the segment id      * @param lsb the least significant bits of the segment id      * @return the byte buffer, or null if not in this file      */
-name|ByteBuffer
+name|Buffer
 name|readEntry
 parameter_list|(
 name|long
@@ -1081,10 +1091,10 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
-name|ByteBuffer
+name|Buffer
 name|buffer
 init|=
-name|ByteBuffer
+name|Buffer
 operator|.
 name|allocate
 argument_list|(

@@ -67,16 +67,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|UUID
@@ -104,6 +94,26 @@ operator|.
 name|regex
 operator|.
 name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -400,7 +410,7 @@ block|}
 comment|/**      * Serialise this record id into an array of bytes: {@code (msb, lsb, offset>> 2)}      * @return  this record id as byte array      */
 annotation|@
 name|NotNull
-name|ByteBuffer
+name|Buffer
 name|getBytes
 parameter_list|()
 block|{
@@ -454,7 +464,7 @@ name|offset
 argument_list|)
 expr_stmt|;
 return|return
-name|ByteBuffer
+name|Buffer
 operator|.
 name|wrap
 argument_list|(

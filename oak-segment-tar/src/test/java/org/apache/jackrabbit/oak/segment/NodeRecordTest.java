@@ -107,16 +107,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -200,6 +190,26 @@ operator|.
 name|tar
 operator|.
 name|GCGeneration
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -560,7 +570,7 @@ name|byte
 index|[]
 name|asByteArray
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|bytes
 parameter_list|)
 block|{

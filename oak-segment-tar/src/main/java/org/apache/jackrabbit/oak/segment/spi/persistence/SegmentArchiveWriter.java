@@ -33,16 +33,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jetbrains
@@ -113,7 +103,7 @@ function_decl|;
 comment|/**      * Read the segment.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @return byte buffer containing the segment data or null if segment doesn't exist      */
 annotation|@
 name|Nullable
-name|ByteBuffer
+name|Buffer
 name|readSegment
 parameter_list|(
 name|long

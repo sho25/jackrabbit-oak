@@ -63,24 +63,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
-name|IOUtils
-operator|.
-name|readFully
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|segment
 operator|.
 name|file
@@ -130,16 +112,6 @@ operator|.
 name|io
 operator|.
 name|RandomAccessFile
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
 import|;
 end_import
 
@@ -356,6 +328,26 @@ operator|.
 name|persistence
 operator|.
 name|SegmentArchiveWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -791,7 +783,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ByteBuffer
+name|Buffer
 name|readSegment
 parameter_list|(
 name|long
@@ -838,10 +830,10 @@ literal|null
 argument_list|)
 expr_stmt|;
 comment|// implied by entry != null
-name|ByteBuffer
+name|Buffer
 name|data
 init|=
-name|ByteBuffer
+name|Buffer
 operator|.
 name|allocate
 argument_list|(
@@ -853,6 +845,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|data
+operator|.
 name|readFully
 argument_list|(
 name|channel
@@ -861,8 +855,6 @@ name|indexEntry
 operator|.
 name|getPosition
 argument_list|()
-argument_list|,
-name|data
 argument_list|)
 operator|<
 name|indexEntry

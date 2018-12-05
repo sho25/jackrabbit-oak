@@ -39,11 +39,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|ByteBuffer
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Blob
 import|;
 end_import
 
@@ -57,9 +63,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|segment
 operator|.
-name|Blob
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -161,13 +171,13 @@ name|state
 parameter_list|,
 annotation|@
 name|Nullable
-name|ByteBuffer
+name|Buffer
 name|stableIdBytes
 parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Write a node state.      *<p>      * Equivalent to {@code writeNode(state, null)}      *      * @see #writeNode(NodeState, ByteBuffer)      */
+comment|/**      * Write a node state.      *<p>      * Equivalent to {@code writeNode(state, null)}      *      * @see #writeNode(NodeState, Buffer)      */
 annotation|@
 name|NotNull
 specifier|default

@@ -73,24 +73,6 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|SegmentStream
-operator|.
-name|BLOCK_SIZE
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
 name|Segment
 operator|.
 name|MEDIUM_LIMIT
@@ -112,6 +94,24 @@ operator|.
 name|Segment
 operator|.
 name|SMALL_LIMIT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|SegmentStream
+operator|.
+name|BLOCK_SIZE
 import|;
 end_import
 
@@ -1162,10 +1162,6 @@ literal|0xff
 operator|)
 decl_stmt|;
 return|return
-name|UTF_8
-operator|.
-name|decode
-argument_list|(
 name|segment
 operator|.
 name|readBytes
@@ -1176,6 +1172,10 @@ literal|2
 argument_list|,
 name|length
 argument_list|)
+operator|.
+name|decode
+argument_list|(
+name|UTF_8
 argument_list|)
 operator|.
 name|toString

@@ -305,16 +305,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collections
@@ -434,6 +424,26 @@ operator|.
 name|memory
 operator|.
 name|MemoryChildNodeEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -896,11 +906,11 @@ name|getStableId
 parameter_list|(
 annotation|@
 name|NotNull
-name|ByteBuffer
+name|Buffer
 name|stableId
 parameter_list|)
 block|{
-name|ByteBuffer
+name|Buffer
 name|buffer
 init|=
 name|stableId
@@ -962,7 +972,7 @@ return|;
 block|}
 comment|/**      * Returns the stable ID of this node, non parsed. In contrast to the node's      * record id (which is technically the node's address) the stable id doesn't      * change after an online gc cycle. It might though change after an offline      * gc cycle.      *      * @return the stable ID of this node.      */
 specifier|public
-name|ByteBuffer
+name|Buffer
 name|getStableIdBytes
 parameter_list|()
 block|{

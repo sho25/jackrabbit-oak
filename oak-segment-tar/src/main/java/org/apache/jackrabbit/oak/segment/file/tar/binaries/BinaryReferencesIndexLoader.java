@@ -35,11 +35,21 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|ByteBuffer
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -75,7 +85,7 @@ block|}
 comment|/**      * Load and validate a binary references index. The binary references index      * is read backward. The medium the index is read from is represented by an      * instance of {@link ReaderAtEnd}. The {@link ReaderAtEnd} should behave as      * it is positioned at the end of the binary references index.      *      * @param reader An instance of {@link ReaderAtEnd}.      * @return The binary references index.      * @throws IOException                           if an error occurs while      *                                               reading the index.      * @throws InvalidBinaryReferencesIndexException if the index is invalid or      *                                               malformed.      */
 specifier|public
 specifier|static
-name|ByteBuffer
+name|Buffer
 name|loadBinaryReferencesIndex
 parameter_list|(
 name|ReaderAtEnd
@@ -135,7 +145,7 @@ specifier|static
 name|BinaryReferencesIndex
 name|parseBinaryReferencesIndex
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|)
 throws|throws
@@ -219,7 +229,7 @@ specifier|static
 name|int
 name|readMagic
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|)
 block|{

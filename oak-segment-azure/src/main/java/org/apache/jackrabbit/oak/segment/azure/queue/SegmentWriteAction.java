@@ -41,11 +41,21 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|IOException
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -53,9 +63,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|io
 operator|.
-name|ByteBuffer
+name|IOException
 import|;
 end_import
 
@@ -193,12 +203,12 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|ByteBuffer
-name|toByteBuffer
+name|Buffer
+name|toBuffer
 parameter_list|()
 block|{
 return|return
-name|ByteBuffer
+name|Buffer
 operator|.
 name|wrap
 argument_list|(

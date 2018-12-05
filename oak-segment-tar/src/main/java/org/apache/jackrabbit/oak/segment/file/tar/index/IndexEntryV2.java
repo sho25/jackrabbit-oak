@@ -25,11 +25,21 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|ByteBuffer
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -48,7 +58,7 @@ literal|33
 decl_stmt|;
 specifier|private
 specifier|final
-name|ByteBuffer
+name|Buffer
 name|index
 decl_stmt|;
 specifier|private
@@ -58,7 +68,7 @@ name|position
 decl_stmt|;
 name|IndexEntryV2
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|index
 parameter_list|,
 name|int

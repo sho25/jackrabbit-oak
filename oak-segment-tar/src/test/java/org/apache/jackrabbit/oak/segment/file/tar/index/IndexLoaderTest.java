@@ -73,11 +73,21 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|ByteBuffer
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -101,7 +111,7 @@ specifier|static
 name|Index
 name|loadIndex
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|)
 throws|throws
@@ -122,7 +132,7 @@ name|length
 parameter_list|)
 lambda|->
 block|{
-name|ByteBuffer
+name|Buffer
 name|slice
 init|=
 name|buffer
@@ -281,10 +291,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ByteBuffer
+name|Buffer
 name|buffer
 init|=
-name|ByteBuffer
+name|Buffer
 operator|.
 name|allocate
 argument_list|(
@@ -341,10 +351,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ByteBuffer
+name|Buffer
 name|buffer
 init|=
-name|ByteBuffer
+name|Buffer
 operator|.
 name|allocate
 argument_list|(
@@ -525,10 +535,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ByteBuffer
+name|Buffer
 name|buffer
 init|=
-name|ByteBuffer
+name|Buffer
 operator|.
 name|allocate
 argument_list|(

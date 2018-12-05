@@ -21,11 +21,21 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|ByteBuffer
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -45,7 +55,7 @@ literal|4
 decl_stmt|;
 name|SegmentDataV13
 parameter_list|(
-name|ByteBuffer
+name|Buffer
 name|buffer
 parameter_list|)
 block|{

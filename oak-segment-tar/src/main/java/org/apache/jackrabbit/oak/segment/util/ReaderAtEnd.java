@@ -31,11 +31,21 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|ByteBuffer
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -48,8 +58,8 @@ specifier|public
 interface|interface
 name|ReaderAtEnd
 block|{
-comment|/**      * Read {@code amount} bytes from the underlying data source, starting at      * {@code whence} bytes from the end of the data source.      *      * @param whence The offset from the end of the data source.      * @param amount The amount of data to read, in bytes.      * @return An instance of {@link ByteBuffer}.      * @throws IOException if an error occurs while reading from the underlying      *                     data source.      */
-name|ByteBuffer
+comment|/**      * Read {@code amount} bytes from the underlying data source, starting at      * {@code whence} bytes from the end of the data source.      *      * @param whence The offset from the end of the data source.      * @param amount The amount of data to read, in bytes.      * @return An instance of {@link Buffer}.      * @throws IOException if an error occurs while reading from the underlying      *                     data source.      */
+name|Buffer
 name|readAtEnd
 parameter_list|(
 name|int

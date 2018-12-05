@@ -525,6 +525,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
+name|Buffer
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -540,16 +560,6 @@ operator|.
 name|io
 operator|.
 name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
 import|;
 end_import
 
@@ -1505,7 +1515,7 @@ name|archiveWriter
 argument_list|)
 expr_stmt|;
 block|}
-name|ByteBuffer
+name|Buffer
 name|binRefBuffer
 init|=
 name|archiveReader
@@ -1529,7 +1539,7 @@ argument_list|(
 name|binRefData
 argument_list|)
 expr_stmt|;
-name|ByteBuffer
+name|Buffer
 name|graphBuffer
 init|=
 name|archiveReader
@@ -1650,7 +1660,7 @@ operator|.
 name|isCompacted
 argument_list|()
 decl_stmt|;
-name|ByteBuffer
+name|Buffer
 name|byteBuffer
 init|=
 name|archiveReader

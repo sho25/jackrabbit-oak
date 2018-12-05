@@ -45,16 +45,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -99,7 +89,7 @@ block|{
 comment|/**      * Read the segment.      *      * @param msb the most significant bits of the identifier of the segment      * @param lsb the least significant bits of the identifier of the segment      * @return byte buffer containing the segment data or null if the segment doesn't exist      */
 annotation|@
 name|Nullable
-name|ByteBuffer
+name|Buffer
 name|readSegment
 parameter_list|(
 name|long
@@ -133,7 +123,7 @@ function_decl|;
 comment|/**      * Load the segment graph.      *      * @return byte buffer representing the graph or null if the graph hasn't been      * persisted.      */
 annotation|@
 name|Nullable
-name|ByteBuffer
+name|Buffer
 name|getGraph
 parameter_list|()
 throws|throws
@@ -147,7 +137,7 @@ function_decl|;
 comment|/**      * Load binary references.      *      * @return byte buffer representing the binary references structure.      */
 annotation|@
 name|NotNull
-name|ByteBuffer
+name|Buffer
 name|getBinaryReferences
 parameter_list|()
 throws|throws
