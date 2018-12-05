@@ -1392,6 +1392,19 @@ name|boolean
 name|asyncIndexing
 parameter_list|)
 block|{
+name|NodeState
+name|defnState
+init|=
+name|definition
+operator|.
+name|getBaseState
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|asyncIndexing
+condition|)
+block|{
 comment|// A good time to check and see if we want to inject our random
 comment|// seed - required due to OAK-7929 but could be useful otherwise too.
 name|Long
@@ -1439,18 +1452,8 @@ operator|=
 name|seed
 expr_stmt|;
 block|}
-name|NodeState
-name|defnState
-init|=
-name|definition
-operator|.
-name|getBaseState
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-name|asyncIndexing
-operator|&&
 operator|!
 name|IndexDefinition
 operator|.
@@ -1625,6 +1628,7 @@ argument_list|,
 name|defRandom
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
