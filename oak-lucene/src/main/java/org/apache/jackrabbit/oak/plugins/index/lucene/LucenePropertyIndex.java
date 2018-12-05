@@ -1663,20 +1663,6 @@ name|lucene
 operator|.
 name|util
 operator|.
-name|BytesRef
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|lucene
-operator|.
-name|util
-operator|.
 name|Version
 import|;
 end_import
@@ -1754,22 +1740,6 @@ operator|.
 name|Preconditions
 operator|.
 name|checkState
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Predicates
-operator|.
-name|in
 import|;
 end_import
 
@@ -2997,8 +2967,6 @@ name|searcher
 argument_list|,
 name|query
 argument_list|,
-name|docs
-argument_list|,
 name|plan
 argument_list|,
 name|indexNode
@@ -3006,7 +2974,7 @@ operator|.
 name|getDefinition
 argument_list|()
 operator|.
-name|isSecureFacets
+name|getSecureFacetConfiguration
 argument_list|()
 argument_list|)
 argument_list|)

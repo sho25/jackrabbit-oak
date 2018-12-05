@@ -421,6 +421,41 @@ name|PROP_SECURE_FACETS
 init|=
 literal|"secure"
 decl_stmt|;
+name|String
+name|PROP_SECURE_FACETS_VALUE_INSECURE
+init|=
+literal|"insecure"
+decl_stmt|;
+name|String
+name|PROP_SECURE_FACETS_VALUE_STATISTICAL
+init|=
+literal|"statistical"
+decl_stmt|;
+name|String
+name|PROP_SECURE_FACETS_VALUE_SECURE
+init|=
+literal|"secure"
+decl_stmt|;
+name|String
+name|PROP_SECURE_FACETS_VALUE_JVM_PARAM
+init|=
+literal|"oak.facets.secure"
+decl_stmt|;
+name|String
+name|STATISTICAL_FACET_SAMPLE_SIZE_JVM_PARAM
+init|=
+literal|"oak.facet.statistical.sampleSize"
+decl_stmt|;
+name|String
+name|PROP_STATISTICAL_FACET_SAMPLE_SIZE
+init|=
+literal|"sampleSize"
+decl_stmt|;
+name|int
+name|STATISTICAL_FACET_SAMPLE_SIZE_DEFAULT
+init|=
+literal|1000
+decl_stmt|;
 comment|/**      * Optional (index definition) property indicating max number of facets that will be retrieved      * in query      * Default is {@link IndexDefinition#DEFAULT_FACET_COUNT}      */
 name|String
 name|PROP_FACETS_TOP_CHILDREN
@@ -450,6 +485,12 @@ name|String
 name|PROP_REFRESH_DEFN
 init|=
 literal|"refresh"
+decl_stmt|;
+comment|/**      * Long property that keep seed for random number generation. One example usage of this is      * to randomly sample query results to statistically check for ACLs to extrapolate facet      * counts      */
+name|String
+name|PROP_RANDOM_SEED
+init|=
+literal|"seed"
 decl_stmt|;
 comment|/**      * Boolean property to indicate that nodes nodetype matching indexRule name      * should be indexed      */
 name|String
