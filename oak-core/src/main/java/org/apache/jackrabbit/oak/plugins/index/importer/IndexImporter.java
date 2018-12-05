@@ -736,6 +736,25 @@ name|IOException
 throws|,
 name|CommitFailedException
 block|{
+if|if
+condition|(
+name|indexes
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"No indexes to import (possibly index definitions outside of a oak:index node?)"
+argument_list|)
+expr_stmt|;
+block|}
 name|log
 operator|.
 name|info
