@@ -1092,10 +1092,6 @@ decl_stmt|;
 name|long
 name|count
 init|=
-name|Math
-operator|.
-name|floorDiv
-argument_list|(
 name|lv
 operator|.
 name|value
@@ -1104,9 +1100,8 @@ name|longValue
 argument_list|()
 operator|*
 name|accessibleCount
-argument_list|,
+operator|/
 name|sampleSize
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
