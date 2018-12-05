@@ -70,7 +70,7 @@ name|UnboundConnectionValidator
 implements|implements
 name|LdapConnectionValidator
 block|{
-comment|/**      * Returns true if<code>connection</code> is connected      *      * @param connection The connection to validate      * @return True, if the connection is still valid      */
+comment|/**      * Returns true if {@code connection} is connected      *      * @param connection The connection to validate      * @return True, if the connection is still valid      */
 annotation|@
 name|Override
 specifier|public

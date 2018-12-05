@@ -760,7 +760,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the {@code PrincipalProvider} interface that exposes  * 'external' principals of type {@link org.apache.jackrabbit.oak.spi.security.principal.GroupPrincipal}. 'External'  * refers to the fact that these principals are defined and managed by an  * {@link org.apache.jackrabbit.oak.spi.security.authentication.external.ExternalIdentityProvider}.  *  * For performance reasons this implementation doesn't lookup principals on the IDP  * but relies on a persisted cache inside the repository where the names of these  * external principals are synchronized to based on a configurable expiration time.  *  * Currently, the implementation respects the {@code rep:externalPrincipalNames}  * properties, where group membership of external users gets synchronized if  * {@link DefaultSyncConfig.User#getDynamicMembership() dynamic membership} has  * been enabled.  *  * Please note that in contrast to the default principal provider implementation  * shipped with Oak the group principals known and exposed by this provider are  * not backed by an authorizable group and thus cannot be retrieved using  * Jackrabbit user management API.  *  * @since Oak 1.5.3  * @see org.apache.jackrabbit.oak.spi.security.authentication.external.impl.DynamicSyncContext  */
+comment|/**  * Implementation of the {@code PrincipalProvider} interface that exposes  * 'external' principals of type {@link org.apache.jackrabbit.api.security.principal.GroupPrincipal}. 'External'  * refers to the fact that these principals are defined and managed by an  * {@link org.apache.jackrabbit.oak.spi.security.authentication.external.ExternalIdentityProvider}.  *  * For performance reasons this implementation doesn't lookup principals on the IDP  * but relies on a persisted cache inside the repository where the names of these  * external principals are synchronized to based on a configurable expiration time.  *  * Currently, the implementation respects the {@code rep:externalPrincipalNames}  * properties, where group membership of external users gets synchronized if  * {@link DefaultSyncConfig.User#getDynamicMembership() dynamic membership} has  * been enabled.  *  * Please note that in contrast to the default principal provider implementation  * shipped with Oak the group principals known and exposed by this provider are  * not backed by an authorizable group and thus cannot be retrieved using  * Jackrabbit user management API.  *  * @since Oak 1.5.3  * @see org.apache.jackrabbit.oak.spi.security.authentication.external.impl.DynamicSyncContext  */
 end_comment
 
 begin_class
@@ -1663,7 +1663,7 @@ argument_list|)
 return|;
 block|}
 comment|//------------------------------------------------------< inner classes>---
-comment|/**      * Implementation of the {@link Group} interface representing external group      * identities that are<strong>not</strong> represented as authorizable group      * in the repository's user management.      */
+comment|/**      * Implementation of the {@link org.apache.jackrabbit.api.security.principal.GroupPrincipal} interface representing external group      * identities that are<strong>not</strong> represented as authorizable group      * in the repository's user management.      */
 specifier|private
 specifier|final
 class|class
@@ -2023,7 +2023,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * {@link Group} principal iterator converting the query results of      * {@link #findPrincipals(String, int)} and {@link #findPrincipals(int)}.      * Since each result row provides the values of the {@code PropertyState},      * which matched the query, this iterator needs to filter the individual      * property values.      *      * Additional the iterator keeps track of principal names that have already      * been served and will not return duplicates.      *      * @see #findPrincipals(String, int)      * @see #findPrincipals(int)      */
+comment|/**      * Principal iterator converting the query results of      * {@link #findPrincipals(String, int)} and {@link #findPrincipals(int)}.      * Since each result row provides the values of the {@code PropertyState},      * which matched the query, this iterator needs to filter the individual      * property values.      *      * Additional the iterator keeps track of principal names that have already      * been served and will not return duplicates.      *      * @see #findPrincipals(String, int)      * @see #findPrincipals(int)      */
 specifier|private
 specifier|final
 class|class

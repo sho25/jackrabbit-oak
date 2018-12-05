@@ -1662,7 +1662,7 @@ return|return
 name|group
 return|;
 block|}
-comment|/**      * Always returns {@code false}. Any modifications made to this user      * manager instance require a subsequent call to {@link javax.jcr.Session#save()}      * in order to have the changes persisted.      *      * @see org.apache.jackrabbit.api.security.user.UserManager#isAutoSave()      */
+comment|/**      * Always returns {@code false}. Any modifications made to this user      * manager instance require a subsequent call to {@link javax.jcr.Session#save()}      * in order to have the changes persisted.      */
 annotation|@
 name|Override
 specifier|public
@@ -1674,7 +1674,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Changing the auto-save behavior is not supported by this implementation      * and this method always throws {@code UnsupportedRepositoryOperationException}      *      * @see UserManager#autoSave(boolean)      */
+comment|/**      * Changing the auto-save behavior is not supported by this implementation      * and this method always throws {@code UnsupportedRepositoryOperationException}      */
 annotation|@
 name|Override
 specifier|public

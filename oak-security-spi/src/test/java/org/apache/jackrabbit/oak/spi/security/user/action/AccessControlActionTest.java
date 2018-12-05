@@ -334,7 +334,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Unit tests for {@code AccessControlAction}.  *  * @see {@link org.apache.jackrabbit.oak.security.user.action.AccessControlActionTest} for integration tests include complete setup.  */
+comment|/**  * Unit tests for {@code AccessControlAction}.  *  * @see {@code org.apache.jackrabbit.oak.security.user.action.AccessControlActionTest} for integration tests include complete setup.  */
 end_comment
 
 begin_class

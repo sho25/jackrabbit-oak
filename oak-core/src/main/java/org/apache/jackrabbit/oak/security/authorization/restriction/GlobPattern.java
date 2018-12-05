@@ -540,7 +540,6 @@ literal|false
 return|;
 block|}
 comment|//-------------------------------------------------------------< Object>---
-comment|/**      * @see Object#hashCode()      */
 annotation|@
 name|Override
 specifier|public
@@ -559,7 +558,6 @@ name|restriction
 argument_list|)
 return|;
 block|}
-comment|/**      * @see Object#toString()      */
 annotation|@
 name|Override
 specifier|public
@@ -575,7 +573,6 @@ operator|+
 name|restriction
 return|;
 block|}
-comment|/**      * @see Object#equals(Object)      */
 annotation|@
 name|Override
 specifier|public

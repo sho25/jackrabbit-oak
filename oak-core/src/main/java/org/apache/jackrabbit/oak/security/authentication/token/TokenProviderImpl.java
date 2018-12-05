@@ -2640,7 +2640,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Method that determines if the cleanup should run or not based on the      * randomly generated token's first char, this decreases the chances to 1/8.      *      * @param tkn      * @return true if the cleanup should run      */
+comment|/**      * Method that determines if the cleanup should run or not based on the      * randomly generated token's first char, this decreases the chances to 1/8.      *      * @param token The target token      * @return true if the cleanup should run      */
 specifier|static
 name|boolean
 name|shouldRunCleanup

@@ -438,7 +438,6 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|//------------------------------------------------------< Impersonation>---
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Impersonation#getImpersonators()      */
 annotation|@
 name|NotNull
 annotation|@
@@ -551,7 +550,6 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Impersonation#grantImpersonation(Principal)      */
 annotation|@
 name|Override
 specifier|public
@@ -691,7 +689,6 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * @see Impersonation#revokeImpersonation(java.security.Principal)      */
 annotation|@
 name|Override
 specifier|public
@@ -775,7 +772,6 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * @see Impersonation#allows(javax.security.auth.Subject)      */
 annotation|@
 name|Override
 specifier|public

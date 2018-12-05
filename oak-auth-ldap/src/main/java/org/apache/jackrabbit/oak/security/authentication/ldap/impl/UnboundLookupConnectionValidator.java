@@ -166,7 +166,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Returns true if<code>connection</code> is connected, authenticated, and      * a lookup on the rootDSE returns a non-null response.      *      * @param connection The connection to validate      * @return True, if the connection is still valid      */
+comment|/**      * Returns true if {@code connection} is connected, authenticated, and      * a lookup on the rootDSE returns a non-null response.      *      * @param connection The connection to validate      * @return True, if the connection is still valid      */
 specifier|public
 name|boolean
 name|validate

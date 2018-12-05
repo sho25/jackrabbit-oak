@@ -72,7 +72,7 @@ specifier|public
 interface|interface
 name|TreeContext
 block|{
-comment|/**      * Reveals if the specified {@code PropertyState} is defined by the      * module that exposes this {@link TreeContext} instance.      *      * @param parent The parent tree of the property state.      * @param property The {@code PropertyState} to be tested.      * @return {@code true} if the specified property state is related to or      * defined by the security module.      */
+comment|/**      * Reveals if the specified {@code PropertyState} is defined by the      * module that exposes this instance.      *      * @param parent The parent tree of the property state.      * @param property The {@code PropertyState} to be tested.      * @return {@code true} if the specified property state is related to or      * defined by the security module.      */
 name|boolean
 name|definesProperty
 parameter_list|(
@@ -87,7 +87,7 @@ name|PropertyState
 name|property
 parameter_list|)
 function_decl|;
-comment|/**      * Reveals if the specified {@code Tree} is the root of a subtree defined by      * the module that exposes this {@link TreeContext} instance. Note,      * that in contrast to {@link #definesTree(Tree)}      * this method will return {@code false} for any tree located in the      * subtree.      *      * @param tree The tree to be tested.      * @return {@code true} if the specified tree is the root of a subtree of items      * that are defined by the security module.      */
+comment|/**      * Reveals if the specified {@code Tree} is the root of a subtree defined by      * the module that exposes this instance. Note,      * that in contrast to {@link #definesTree(Tree)}      * this method will return {@code false} for any tree located in the      * subtree.      *      * @param tree The tree to be tested.      * @return {@code true} if the specified tree is the root of a subtree of items      * that are defined by the security module.      */
 name|boolean
 name|definesContextRoot
 parameter_list|(
@@ -97,7 +97,7 @@ name|Tree
 name|tree
 parameter_list|)
 function_decl|;
-comment|/**      * Reveals if the specified {@code Tree} is defined by the      * module that exposes this {@link TreeContext} instance.      *      * @param tree The tree to be tested.      * @return {@code true} if the specified tree is related to or defined by the      * security module.      */
+comment|/**      * Reveals if the specified {@code Tree} is defined by the      * module that exposes this instance.      *      * @param tree The tree to be tested.      * @return {@code true} if the specified tree is related to or defined by the      * security module.      */
 name|boolean
 name|definesTree
 parameter_list|(
@@ -107,7 +107,7 @@ name|Tree
 name|tree
 parameter_list|)
 function_decl|;
-comment|/**      * Reveals if the specified {@code TreeLocation} is defined by the      * module that exposes this {@link TreeContext} instance.      *      * @param location The tree location to be tested.      * @return {@code true} if the specified tree location is related to or      * defined by the security module.      */
+comment|/**      * Reveals if the specified {@code TreeLocation} is defined by the      * module that exposes this instance.      *      * @param location The tree location to be tested.      * @return {@code true} if the specified tree location is related to or      * defined by the security module.      */
 name|boolean
 name|definesLocation
 parameter_list|(

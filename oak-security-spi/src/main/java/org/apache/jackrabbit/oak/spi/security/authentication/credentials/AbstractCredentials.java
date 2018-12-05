@@ -205,7 +205,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Returns the value of the named attribute as an<code>Object</code>, or      *<code>null</code> if no attribute of the given name exists.      *      * @param name      *            a<code>String</code> specifying the name of the attribute      * @return an<code>Object</code> containing the value of the attribute, or      *<code>null</code> if the attribute does not exist      */
+comment|/**      * Returns the value of the named attribute as an {@code Object}, or      * {@code null} if no attribute of the given name exists.      *      * @param name      *            a {@code String} specifying the name of the attribute      * @return an {@code Object} containing the value of the attribute, or      *         {@code null} if the attribute does not exist      */
 annotation|@
 name|Nullable
 specifier|public
@@ -235,7 +235,7 @@ operator|)
 return|;
 block|}
 block|}
-comment|/**      * Removes an attribute from this credentials instance.      *      * @param name      *            a<code>String</code> specifying the name of the attribute to      *            remove      */
+comment|/**      * Removes an attribute from this credentials instance.      *      * @param name      *            a {@code String} specifying the name of the attribute to      *            remove      */
 specifier|public
 name|void
 name|removeAttribute

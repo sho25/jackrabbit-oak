@@ -101,7 +101,7 @@ name|name
 return|;
 block|}
 comment|//-------------------------------------------------------------< Object>---
-comment|/**      * Two principals are equal, if their names are.      * @see Object#equals(Object)      */
+comment|/**      * Two principals are equal, if their names are.      */
 annotation|@
 name|Override
 specifier|public
@@ -151,7 +151,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @return the hash code of the principals name.      * @see Object#hashCode()      */
+comment|/**      * @return the hash code of the principals name.      */
 annotation|@
 name|Override
 specifier|public
@@ -166,7 +166,6 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-comment|/**      * @see Object#toString()      */
 annotation|@
 name|Override
 specifier|public

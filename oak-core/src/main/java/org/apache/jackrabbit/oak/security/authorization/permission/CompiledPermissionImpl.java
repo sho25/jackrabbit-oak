@@ -1480,7 +1480,7 @@ return|;
 block|}
 else|else
 block|{
-comment|/**                          * NOTE: may return wrong results in case of restrictions                          * that would match the path of the versionable node                          * (or item in the subtree) but that item no longer exists                          * -> evaluation by path might be more accurate (-> see #isGranted)                          */
+comment|/*                          * NOTE: may return wrong results in case of restrictions                          * that would match the path of the versionable node                          * (or item in the subtree) but that item no longer exists                          * -> evaluation by path might be more accurate (-> see #isGranted)                          */
 while|while
 condition|(
 operator|!

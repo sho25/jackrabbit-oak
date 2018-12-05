@@ -279,7 +279,6 @@ literal|false
 return|;
 block|}
 comment|//-------------------------------------------------------------< Object>---
-comment|/**      * @see Object#hashCode()      */
 annotation|@
 name|Override
 specifier|public
@@ -294,7 +293,6 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-comment|/**      * @see Object#toString()      */
 annotation|@
 name|Override
 specifier|public
@@ -309,7 +307,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * @see Object#equals(Object)      */
 annotation|@
 name|Override
 specifier|public
