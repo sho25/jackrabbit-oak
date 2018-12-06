@@ -1855,8 +1855,6 @@ argument_list|)
 return|;
 block|}
 block|}
-annotation|@
-name|Nullable
 specifier|private
 specifier|static
 name|boolean

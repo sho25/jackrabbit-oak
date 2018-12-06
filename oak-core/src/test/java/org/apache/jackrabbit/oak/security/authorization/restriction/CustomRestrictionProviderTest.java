@@ -1790,6 +1790,8 @@ return|;
 block|}
 comment|//------------------------------------------------< RestrictionProvider>---
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|RestrictionPattern
@@ -1798,6 +1800,8 @@ parameter_list|(
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)

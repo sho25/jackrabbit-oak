@@ -1715,6 +1715,8 @@ specifier|public
 name|long
 name|supportedPermissions
 parameter_list|(
+annotation|@
+name|NotNull
 name|TreeLocation
 name|location
 parameter_list|,
@@ -1746,9 +1748,13 @@ specifier|public
 name|long
 name|supportedPermissions
 parameter_list|(
+annotation|@
+name|NotNull
 name|TreePermission
 name|treePermission
 parameter_list|,
+annotation|@
+name|Nullable
 name|PropertyState
 name|property
 parameter_list|,

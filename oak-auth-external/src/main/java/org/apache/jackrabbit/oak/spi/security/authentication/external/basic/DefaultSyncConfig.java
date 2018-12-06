@@ -546,8 +546,6 @@ name|this
 return|;
 block|}
 comment|/**          * Returns {@code true} if a dynamic group membership is enabled.          *          * Turning this option on may alter the behavior of other configuration          * options dealing with synchronization of group accounts and group membership.          * In particular it's an implementation detail if external groups may          * no longer be synchronized into the repository.          *          * @return {@code true} if dynamic group membership for external          * user identities is turn on; {@code false} otherwise.          */
-annotation|@
-name|NotNull
 specifier|public
 name|boolean
 name|getDynamicMembership

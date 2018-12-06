@@ -281,6 +281,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -743,6 +755,8 @@ name|String
 argument_list|>
 name|addMembers
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 modifier|...
 name|strings
@@ -786,6 +800,8 @@ name|String
 argument_list|>
 name|removeMembers
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 modifier|...
 name|strings

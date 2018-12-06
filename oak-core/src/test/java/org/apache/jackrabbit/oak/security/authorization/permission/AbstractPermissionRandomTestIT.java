@@ -1732,6 +1732,8 @@ name|refresh
 parameter_list|()
 block|{         }
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -1783,6 +1785,8 @@ parameter_list|(
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 modifier|...
 name|privilegeNames
@@ -1820,6 +1824,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|RepositoryPermission
@@ -1835,14 +1841,20 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|TreePermission
 name|getTreePermission
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|NotNull
 name|TreePermission
 name|parentPermission
 parameter_list|)
@@ -1861,6 +1873,8 @@ specifier|public
 name|boolean
 name|isGranted
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
@@ -1902,9 +1916,13 @@ specifier|public
 name|boolean
 name|isGranted
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|jcrActions
 parameter_list|)
