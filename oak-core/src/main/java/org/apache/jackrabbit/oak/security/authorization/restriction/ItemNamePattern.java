@@ -243,15 +243,14 @@ parameter_list|)
 block|{
 return|return
 operator|(
+operator|!
 name|PathUtils
 operator|.
 name|denotesRoot
 argument_list|(
 name|path
 argument_list|)
-condition|?
-literal|false
-else|:
+operator|&&
 name|names
 operator|.
 name|contains
