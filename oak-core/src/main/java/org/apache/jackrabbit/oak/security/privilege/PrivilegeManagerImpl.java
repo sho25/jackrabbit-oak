@@ -312,8 +312,6 @@ name|Privilege
 index|[]
 name|getRegisteredPrivileges
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|Set
 argument_list|<

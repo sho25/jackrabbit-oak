@@ -1510,8 +1510,6 @@ parameter_list|(
 name|Principal
 name|principal
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 comment|// editing by 'principal' is not supported
 return|return
@@ -1532,8 +1530,6 @@ parameter_list|(
 name|Principal
 name|principal
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 comment|// editing by 'principal' is not supported
 return|return
@@ -1557,8 +1553,6 @@ name|Principal
 argument_list|>
 name|principals
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 comment|// editing by 'principal' is not supported
 return|return

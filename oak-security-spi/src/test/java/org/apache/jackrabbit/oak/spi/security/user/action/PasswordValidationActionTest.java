@@ -271,8 +271,6 @@ specifier|public
 name|void
 name|before
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|user
 operator|=

@@ -490,8 +490,6 @@ specifier|public
 name|void
 name|testAddExternalPrincipalNames
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Tree
 name|userTree
@@ -1740,8 +1738,6 @@ specifier|public
 name|void
 name|testRemoveRepExternalId
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 try|try
 block|{

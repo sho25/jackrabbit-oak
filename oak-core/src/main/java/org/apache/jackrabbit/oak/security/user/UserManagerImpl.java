@@ -2298,8 +2298,6 @@ name|NotNull
 name|PrincipalManager
 name|getPrincipalManager
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|securityProvider

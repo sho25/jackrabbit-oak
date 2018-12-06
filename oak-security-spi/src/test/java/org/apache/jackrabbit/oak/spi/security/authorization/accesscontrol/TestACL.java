@@ -69,16 +69,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Value
 import|;
 end_import
@@ -92,18 +82,6 @@ operator|.
 name|security
 operator|.
 name|AccessControlEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|security
-operator|.
-name|AccessControlException
 import|;
 end_import
 
@@ -440,10 +418,6 @@ index|[]
 argument_list|>
 name|mvRestrictions
 parameter_list|)
-throws|throws
-name|AccessControlException
-throws|,
-name|RepositoryException
 block|{
 throw|throw
 operator|new

@@ -399,8 +399,6 @@ name|AccessControlEntry
 index|[]
 name|getAccessControlEntries
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|List
 argument_list|<
@@ -506,8 +504,6 @@ name|String
 index|[]
 name|getRestrictionNames
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|Collection
 argument_list|<
@@ -587,8 +583,6 @@ parameter_list|(
 name|String
 name|restrictionName
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 for|for
 control|(
@@ -656,8 +650,6 @@ parameter_list|(
 name|String
 name|restrictionName
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 for|for
 control|(

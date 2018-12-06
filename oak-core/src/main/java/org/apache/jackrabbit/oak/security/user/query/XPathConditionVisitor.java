@@ -221,8 +221,6 @@ operator|.
 name|Node
 name|condition
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|statement
 operator|.

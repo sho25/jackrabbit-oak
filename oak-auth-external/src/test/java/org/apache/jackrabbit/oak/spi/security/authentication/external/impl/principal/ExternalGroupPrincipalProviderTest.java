@@ -2152,8 +2152,6 @@ specifier|public
 name|void
 name|testFindPrincipalsByHintTypeGroup
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Set
 argument_list|<
@@ -2212,8 +2210,6 @@ specifier|public
 name|void
 name|testFindPrincipalsByHintTypeAll
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Set
 argument_list|<

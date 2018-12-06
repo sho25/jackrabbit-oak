@@ -792,8 +792,6 @@ specifier|public
 name|void
 name|testLogout
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 name|AbstractLoginModule
 name|loginModule
@@ -825,8 +823,6 @@ specifier|public
 name|void
 name|testLogoutSuccess
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 name|Subject
 name|subject
@@ -934,8 +930,6 @@ specifier|public
 name|void
 name|testLogoutSuccess2
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 name|Subject
 name|subject

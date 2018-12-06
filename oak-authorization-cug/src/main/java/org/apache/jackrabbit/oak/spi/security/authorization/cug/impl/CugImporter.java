@@ -639,8 +639,6 @@ specifier|public
 name|void
 name|processReferences
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
@@ -666,8 +664,6 @@ name|NotNull
 name|PropertyDefinition
 name|def
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 if|if
 condition|(
@@ -867,8 +863,6 @@ name|protectedParent
 parameter_list|)
 throws|throws
 name|IllegalStateException
-throws|,
-name|RepositoryException
 block|{
 if|if
 condition|(

@@ -495,8 +495,6 @@ name|String
 index|[]
 name|getRestrictionNames
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|Collections2
@@ -678,8 +676,6 @@ parameter_list|(
 name|String
 name|restrictionName
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 for|for
 control|(

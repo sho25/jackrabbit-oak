@@ -656,8 +656,6 @@ name|Restriction
 modifier|...
 name|restrictions
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|Tree
 name|restrictionsTree
@@ -877,8 +875,6 @@ specifier|public
 name|void
 name|testGetSupportedRestrictions
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Set
 argument_list|<
@@ -940,8 +936,6 @@ specifier|public
 name|void
 name|testGetSupportedRestrictionsForUnsupportedPath
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Set
 argument_list|<
@@ -1971,8 +1965,6 @@ specifier|public
 name|void
 name|testReadRestrictionsForUnsupportedPath
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Set
 argument_list|<

@@ -2614,8 +2614,6 @@ specifier|public
 name|void
 name|testGetApplicablePoliciesByPrincipal
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|AccessControlPolicy
 index|[]
@@ -2652,8 +2650,6 @@ specifier|public
 name|void
 name|testGetPoliciesByPrincipal
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|AccessControlPolicy
 index|[]
@@ -2690,8 +2686,6 @@ specifier|public
 name|void
 name|testGetEffectivePoliciesByPrincipal
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|AccessControlPolicy
 index|[]

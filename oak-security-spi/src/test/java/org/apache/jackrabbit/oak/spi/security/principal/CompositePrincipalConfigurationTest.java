@@ -472,8 +472,6 @@ specifier|public
 name|void
 name|testEmptyGetProvider
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|PrincipalProvider
 name|pp
@@ -555,8 +553,6 @@ specifier|public
 name|void
 name|testSingleGetProvider
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|PrincipalConfiguration
 name|testConfig

@@ -1142,8 +1142,6 @@ name|NotNull
 name|Tree
 name|newMemberTree
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|writer
@@ -1181,8 +1179,6 @@ name|String
 argument_list|>
 name|memberIds
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|writer

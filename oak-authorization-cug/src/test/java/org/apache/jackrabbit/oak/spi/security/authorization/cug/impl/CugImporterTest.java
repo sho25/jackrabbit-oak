@@ -295,8 +295,6 @@ specifier|public
 name|void
 name|testInitTwice
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Session
 name|session

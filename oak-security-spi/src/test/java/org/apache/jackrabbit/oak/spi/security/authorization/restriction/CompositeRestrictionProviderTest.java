@@ -806,8 +806,6 @@ name|Restriction
 modifier|...
 name|restrictions
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|Tree
 name|restrictionsTree
@@ -1691,8 +1689,6 @@ specifier|public
 name|void
 name|testReadRestrictions
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Tree
 name|aceTree
@@ -2193,8 +2189,6 @@ specifier|public
 name|void
 name|testGetRestrictionPatternEmptyComposite
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(
@@ -2227,8 +2221,6 @@ specifier|public
 name|void
 name|testGetRestrictionPatternSingleEmpty
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(
@@ -2325,8 +2317,6 @@ specifier|public
 name|void
 name|testGetRestrictionPatternAllEmpty
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(

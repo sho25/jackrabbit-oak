@@ -125,8 +125,6 @@ parameter_list|(
 name|ConditionVisitor
 name|visitor
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|visitor
 operator|.

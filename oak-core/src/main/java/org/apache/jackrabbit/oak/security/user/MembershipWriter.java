@@ -288,8 +288,6 @@ parameter_list|,
 name|String
 name|memberContentId
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|Map
 argument_list|<
@@ -349,8 +347,6 @@ name|String
 argument_list|>
 name|memberIds
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 comment|// check all possible rep:members properties for the new member and also find the one with the least values
 name|Tree

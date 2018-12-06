@@ -448,8 +448,6 @@ parameter_list|(
 name|PropertyState
 name|after
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 comment|// no-op
 block|}

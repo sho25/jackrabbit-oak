@@ -250,8 +250,6 @@ specifier|public
 name|void
 name|testGetType
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(
@@ -315,8 +313,6 @@ specifier|public
 name|void
 name|testGetTypeIllegalSearchType
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|AuthorizableType
 operator|.
@@ -332,8 +328,6 @@ specifier|public
 name|void
 name|testIsTypeUser
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertFalse
 argument_list|(
@@ -378,8 +372,6 @@ specifier|public
 name|void
 name|testIsTypeGroup
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertFalse
 argument_list|(
@@ -424,8 +416,6 @@ specifier|public
 name|void
 name|testIsTypeAuthorizable
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertFalse
 argument_list|(

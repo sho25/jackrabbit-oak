@@ -132,8 +132,6 @@ name|NotNull
 name|ValueFactory
 name|valueFactory
 parameter_list|)
-throws|throws
-name|SyncException
 function_decl|;
 comment|/**      * Tries to find the identity with the given authorizable id or name.      * @param userManager the user manager      * @param id the id or name of the authorizable      * @return a synced identity object or {@code null}      * @throws RepositoryException if an error occurs      */
 annotation|@

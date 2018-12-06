@@ -877,8 +877,6 @@ parameter_list|(
 name|PropertyState
 name|before
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 comment|// nothing to do: mandatory properties will be enforced by node type validator
 block|}
@@ -989,8 +987,6 @@ parameter_list|,
 name|NodeState
 name|before
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 comment|// nothing to do
 return|return

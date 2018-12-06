@@ -734,8 +734,6 @@ specifier|public
 name|void
 name|testCreateContext
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|SyncContext
 name|ctx
@@ -1335,8 +1333,6 @@ specifier|public
 name|void
 name|testRequiresSyncMissingExternalIDRef
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertTrue
 argument_list|(

@@ -1027,8 +1027,6 @@ specifier|public
 name|void
 name|testReadVersionContentNoAccess
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|IdentifierManager
 name|idMgr

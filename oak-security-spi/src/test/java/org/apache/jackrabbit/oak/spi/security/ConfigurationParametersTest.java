@@ -1521,8 +1521,6 @@ specifier|public
 name|void
 name|testCollectionAsArray
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 index|[]

@@ -3007,8 +3007,6 @@ specifier|public
 name|void
 name|testIsGrantedByLocation
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 for|for
 control|(

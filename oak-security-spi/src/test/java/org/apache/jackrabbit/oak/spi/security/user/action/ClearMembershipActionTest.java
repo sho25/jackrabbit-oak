@@ -79,26 +79,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|UnsupportedRepositoryOperationException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Value
 import|;
 end_import
@@ -442,8 +422,6 @@ specifier|public
 name|void
 name|before
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|action
 operator|.
@@ -665,8 +643,6 @@ name|Authorizable
 argument_list|>
 name|getDeclaredMembers
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -683,8 +659,6 @@ name|Authorizable
 argument_list|>
 name|getMembers
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -701,8 +675,6 @@ parameter_list|(
 name|Authorizable
 name|authorizable
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -719,8 +691,6 @@ parameter_list|(
 name|Authorizable
 name|authorizable
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -737,8 +707,6 @@ parameter_list|(
 name|Authorizable
 name|authorizable
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -761,8 +729,6 @@ name|String
 modifier|...
 name|strings
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -779,8 +745,6 @@ parameter_list|(
 name|Authorizable
 name|authorizable
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|removed
@@ -806,8 +770,6 @@ name|String
 modifier|...
 name|strings
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -821,8 +783,6 @@ specifier|public
 name|String
 name|getID
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -849,8 +809,6 @@ specifier|public
 name|Principal
 name|getPrincipal
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -867,8 +825,6 @@ name|Group
 argument_list|>
 name|declaredMemberOf
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|Collections
@@ -886,8 +842,6 @@ name|Group
 argument_list|>
 name|memberOf
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -901,8 +855,6 @@ specifier|public
 name|void
 name|remove
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -919,8 +871,6 @@ name|String
 argument_list|>
 name|getPropertyNames
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -940,8 +890,6 @@ parameter_list|(
 name|String
 name|s
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -958,8 +906,6 @@ parameter_list|(
 name|String
 name|s
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -979,8 +925,6 @@ parameter_list|,
 name|Value
 name|value
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -1001,8 +945,6 @@ name|Value
 index|[]
 name|values
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -1020,8 +962,6 @@ parameter_list|(
 name|String
 name|s
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -1038,8 +978,6 @@ parameter_list|(
 name|String
 name|s
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 throw|throw
 operator|new
@@ -1053,10 +991,6 @@ specifier|public
 name|String
 name|getPath
 parameter_list|()
-throws|throws
-name|UnsupportedRepositoryOperationException
-throws|,
-name|RepositoryException
 block|{
 throw|throw
 operator|new

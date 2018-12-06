@@ -415,8 +415,6 @@ name|NotNull
 name|UserImpl
 name|user
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|this
 operator|.
@@ -446,8 +444,6 @@ specifier|public
 name|PrincipalIterator
 name|getImpersonators
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|Set
 argument_list|<
@@ -783,8 +779,6 @@ name|Nullable
 name|Subject
 name|subject
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 if|if
 condition|(

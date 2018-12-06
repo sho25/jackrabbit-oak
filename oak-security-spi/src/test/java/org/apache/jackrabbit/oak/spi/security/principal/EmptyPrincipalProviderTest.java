@@ -213,8 +213,6 @@ specifier|public
 name|void
 name|testGetPrincipals
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertTrue
 argument_list|(

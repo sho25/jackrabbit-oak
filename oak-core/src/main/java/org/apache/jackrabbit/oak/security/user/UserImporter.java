@@ -2224,8 +2224,6 @@ name|PropInfo
 argument_list|>
 name|propInfos
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|checkState
 argument_list|(
@@ -2359,8 +2357,6 @@ specifier|public
 name|void
 name|endChildInfo
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
@@ -2375,8 +2371,6 @@ name|NotNull
 name|Tree
 name|protectedParent
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|currentMembership
 operator|=
@@ -2417,8 +2411,6 @@ specifier|private
 name|PrincipalManager
 name|getPrincipalManager
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|userManager

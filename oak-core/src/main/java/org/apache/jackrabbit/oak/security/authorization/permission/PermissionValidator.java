@@ -1082,8 +1082,6 @@ parameter_list|,
 name|NodeState
 name|after
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|Tree
 name|childBefore

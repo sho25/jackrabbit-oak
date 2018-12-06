@@ -794,8 +794,6 @@ specifier|public
 name|void
 name|testIsPlainTextPassword
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 for|for
 control|(
@@ -827,8 +825,6 @@ specifier|public
 name|void
 name|testIsPlainTextForNull
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertTrue
 argument_list|(
@@ -847,8 +843,6 @@ specifier|public
 name|void
 name|testIsPlainTextForPwHash
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 for|for
 control|(
@@ -1117,8 +1111,6 @@ specifier|public
 name|void
 name|testIsNotSame
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|previous

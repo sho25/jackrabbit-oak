@@ -1496,8 +1496,6 @@ specifier|public
 name|boolean
 name|commit
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 if|if
 condition|(
@@ -1621,8 +1619,6 @@ specifier|public
 name|boolean
 name|abort
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 name|clearState
 argument_list|()

@@ -1404,8 +1404,6 @@ specifier|public
 name|void
 name|testGetRoot
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(
@@ -1430,8 +1428,6 @@ specifier|public
 name|void
 name|testGetLatestRoot
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertNotSame
 argument_list|(
@@ -1456,8 +1452,6 @@ specifier|public
 name|void
 name|testGetNamePathMapper
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(
@@ -1483,8 +1477,6 @@ specifier|public
 name|void
 name|testGetPrivilegeManager
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(
@@ -1932,8 +1924,6 @@ specifier|public
 name|void
 name|testGetSupportedPrivilegesInvalidPath
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 for|for
 control|(
@@ -2204,8 +2194,6 @@ specifier|public
 name|void
 name|testHasPrivilegesInvalidPaths
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 for|for
 control|(
@@ -2295,8 +2283,6 @@ specifier|public
 name|void
 name|testHasPrivilegesInvalidPathsEveryoneSet
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 for|for
 control|(
@@ -2487,8 +2473,6 @@ specifier|public
 name|void
 name|testGetPrivilegesInvalidPaths
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 for|for
 control|(

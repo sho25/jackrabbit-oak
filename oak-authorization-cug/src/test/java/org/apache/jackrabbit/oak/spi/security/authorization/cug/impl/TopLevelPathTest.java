@@ -439,8 +439,6 @@ specifier|public
 name|void
 name|testContainsNoCug
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|TopLevelPaths
 name|tlp

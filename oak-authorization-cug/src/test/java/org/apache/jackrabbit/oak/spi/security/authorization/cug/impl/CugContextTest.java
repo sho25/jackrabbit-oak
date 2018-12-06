@@ -41,16 +41,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|AccessDeniedException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|security
 operator|.
 name|AccessControlList
@@ -728,8 +718,6 @@ specifier|public
 name|void
 name|testDefinesLocation
 parameter_list|()
-throws|throws
-name|AccessDeniedException
 block|{
 name|assertTrue
 argument_list|(

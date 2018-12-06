@@ -553,8 +553,6 @@ specifier|public
 name|Impersonation
 name|getImpersonation
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 operator|new
@@ -772,8 +770,6 @@ specifier|public
 name|boolean
 name|isDisabled
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|getTree
@@ -791,8 +787,6 @@ specifier|public
 name|String
 name|getDisabledReason
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|PropertyState
 name|disabled

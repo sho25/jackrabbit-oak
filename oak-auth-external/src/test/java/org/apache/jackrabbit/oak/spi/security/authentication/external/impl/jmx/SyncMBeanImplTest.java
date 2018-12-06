@@ -2897,8 +2897,6 @@ specifier|public
 name|void
 name|testSyncExternalNonExisting
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|ExternalIdentityRef
 name|ref
@@ -2950,8 +2948,6 @@ specifier|public
 name|void
 name|testSyncExternalLocal
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|ExternalIdentityRef
 name|ref
@@ -3004,8 +3000,6 @@ specifier|public
 name|void
 name|testSyncExternalForeign
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|ExternalIdentityRef
 name|ref
@@ -3085,8 +3079,6 @@ specifier|public
 name|void
 name|testSyncExternalUserException
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|ExternalIdentityRef
 name|ref
@@ -3141,8 +3133,6 @@ specifier|public
 name|void
 name|testSyncExternalUserThrowingHandler
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|ExternalIdentityRef
 name|ref
@@ -3201,8 +3191,6 @@ specifier|public
 name|void
 name|testSyncAllUsersBefore
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 index|[]
@@ -3945,8 +3933,6 @@ specifier|public
 name|void
 name|testSyncAllUsersThrowingHandler
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 index|[]
@@ -5134,8 +5120,6 @@ name|NotNull
 name|ValueFactory
 name|valueFactory
 parameter_list|)
-throws|throws
-name|SyncException
 block|{
 return|return
 operator|new

@@ -667,8 +667,6 @@ specifier|public
 name|void
 name|testRead
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|List
 argument_list|<
@@ -770,8 +768,6 @@ specifier|public
 name|void
 name|testReadAcl
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertFalse
 argument_list|(
@@ -841,8 +837,6 @@ specifier|public
 name|void
 name|testReadCug
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|List
 argument_list|<
@@ -1392,8 +1386,6 @@ specifier|public
 name|void
 name|testIsGrantedTestGroup
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// testGroup
 name|PermissionProvider
@@ -1507,8 +1499,6 @@ specifier|public
 name|void
 name|testIsGrantedEveryone
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// everyone
 name|PermissionProvider
@@ -1657,8 +1647,6 @@ specifier|public
 name|void
 name|testIsGrantedTestGroupEveryone
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// testGroup + everyone
 name|PermissionProvider
@@ -1901,8 +1889,6 @@ specifier|public
 name|void
 name|testHasPrivilegesTestGroup
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// testGroup
 name|PermissionProvider
@@ -2016,8 +2002,6 @@ specifier|public
 name|void
 name|testHasPrivilegesEveryone
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// everyone
 name|PermissionProvider
@@ -2166,8 +2150,6 @@ specifier|public
 name|void
 name|testHasPrivilegesTestGroupEveryone
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// testGroup + everyone
 name|PermissionProvider
@@ -2410,8 +2392,6 @@ specifier|public
 name|void
 name|testHasAllPrivileges
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// testGroup
 name|PermissionProvider
@@ -2614,8 +2594,6 @@ specifier|public
 name|void
 name|testHasAllPrivilegesAdmin
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|PermissionProvider
 name|pp
@@ -2674,8 +2652,6 @@ specifier|public
 name|void
 name|testGetPrivilegesTestGroup
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Set
 argument_list|<
@@ -2784,8 +2760,6 @@ specifier|public
 name|void
 name|testGetPrivilegesEveryone
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|// everyone
 name|PermissionProvider
@@ -2858,8 +2832,6 @@ specifier|public
 name|void
 name|testGetPrivilegesTestGroupEveryone
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Set
 argument_list|<

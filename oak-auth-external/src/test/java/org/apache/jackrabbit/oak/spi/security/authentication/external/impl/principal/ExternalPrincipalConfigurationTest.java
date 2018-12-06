@@ -93,16 +93,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|ValueFactory
 import|;
 end_import
@@ -324,28 +314,6 @@ operator|.
 name|external
 operator|.
 name|SyncContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authentication
-operator|.
-name|external
-operator|.
-name|SyncException
 import|;
 end_import
 
@@ -739,8 +707,6 @@ parameter_list|,
 name|boolean
 name|expected
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|PrincipalProvider
 name|pp
@@ -818,8 +784,6 @@ specifier|public
 name|void
 name|testGetPrincipalProvider
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|PrincipalProvider
 name|pp
@@ -1214,8 +1178,6 @@ specifier|public
 name|void
 name|testGetValidatorsOmitIdProtection
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|externalPrincipalConfiguration
 operator|.
@@ -1456,8 +1418,6 @@ specifier|public
 name|void
 name|testAddingSyncHandler
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Map
 argument_list|<
@@ -1611,8 +1571,6 @@ specifier|public
 name|void
 name|testAddingCustomSyncHandler
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Map
 argument_list|<
@@ -1705,8 +1663,6 @@ specifier|public
 name|void
 name|testModifySyncHandler
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Dictionary
 argument_list|<
@@ -1840,8 +1796,6 @@ specifier|public
 name|void
 name|testRemoveSyncHandler
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Dictionary
 argument_list|<
@@ -2059,8 +2013,6 @@ name|NotNull
 name|ValueFactory
 name|valueFactory
 parameter_list|)
-throws|throws
-name|SyncException
 block|{
 return|return
 operator|new
@@ -2094,8 +2046,6 @@ name|NotNull
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 return|return
 literal|null
@@ -2133,8 +2083,6 @@ name|NotNull
 name|UserManager
 name|userManager
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|Collections

@@ -930,8 +930,6 @@ specifier|public
 name|void
 name|testGetNamePathMapper
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(
@@ -1415,8 +1413,6 @@ specifier|public
 name|void
 name|testEmptyAcl
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|AbstractAccessControlList
 name|acl
@@ -1656,8 +1652,6 @@ specifier|public
 name|void
 name|testGetRestrictionNames
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|AbstractAccessControlList
 name|acl
@@ -1742,8 +1736,6 @@ specifier|public
 name|void
 name|testGetRestrictionType
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|AbstractAccessControlList
 name|acl
@@ -1815,8 +1807,6 @@ specifier|public
 name|void
 name|testGetRestrictionTypeForUnknownName
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|AbstractAccessControlList
 name|acl
@@ -1847,8 +1837,6 @@ specifier|public
 name|void
 name|testIsMultiValueRestriction
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|AbstractAccessControlList
 name|acl
@@ -1911,8 +1899,6 @@ specifier|public
 name|void
 name|testIsMultiValueRestrictionForUnknownName
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|assertFalse
 argument_list|(

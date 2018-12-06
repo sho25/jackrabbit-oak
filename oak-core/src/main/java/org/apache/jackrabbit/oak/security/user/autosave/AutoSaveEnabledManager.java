@@ -786,8 +786,6 @@ parameter_list|(
 name|boolean
 name|enable
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|autosave
 operator|=

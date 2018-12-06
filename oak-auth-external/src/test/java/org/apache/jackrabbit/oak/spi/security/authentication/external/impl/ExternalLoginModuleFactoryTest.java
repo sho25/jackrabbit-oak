@@ -589,8 +589,6 @@ specifier|private
 name|void
 name|setUpJaasFactoryWithInjection
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|context
 operator|.

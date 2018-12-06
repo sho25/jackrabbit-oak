@@ -1353,8 +1353,6 @@ specifier|public
 name|void
 name|testActivate
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|CugConfiguration
 name|cugConfiguration
@@ -1411,8 +1409,6 @@ specifier|public
 name|void
 name|testModified
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|CugConfiguration
 name|cugConfiguration
@@ -1469,8 +1465,6 @@ name|String
 modifier|...
 name|paths
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|Set
 argument_list|<

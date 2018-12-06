@@ -762,8 +762,6 @@ specifier|public
 name|boolean
 name|logout
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 name|boolean
 name|success

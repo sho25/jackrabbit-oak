@@ -43,8 +43,6 @@ operator|.
 name|Node
 name|node
 parameter_list|)
-throws|throws
-name|RepositoryException
 function_decl|;
 name|void
 name|visit

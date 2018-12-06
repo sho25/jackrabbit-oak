@@ -873,8 +873,6 @@ name|ExternalGroup
 argument_list|>
 name|listGroups
 parameter_list|()
-throws|throws
-name|ExternalIdentityException
 block|{
 return|return
 name|externalGroups
@@ -1280,8 +1278,6 @@ name|ExternalIdentityRef
 argument_list|>
 name|getDeclaredMembers
 parameter_list|()
-throws|throws
-name|ExternalIdentityException
 block|{
 return|return
 literal|null

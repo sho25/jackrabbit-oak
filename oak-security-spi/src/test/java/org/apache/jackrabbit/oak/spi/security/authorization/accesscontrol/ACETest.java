@@ -582,8 +582,6 @@ parameter_list|,
 name|String
 name|value
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 return|return
 operator|new
@@ -1012,8 +1010,6 @@ specifier|public
 name|void
 name|testNullPrivileges
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 try|try
 block|{
@@ -1044,8 +1040,6 @@ specifier|public
 name|void
 name|testEmptyPrivileges
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 try|try
 block|{

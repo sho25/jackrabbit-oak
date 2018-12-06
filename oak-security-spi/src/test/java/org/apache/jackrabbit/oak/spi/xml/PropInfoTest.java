@@ -1066,8 +1066,6 @@ specifier|public
 name|void
 name|testIsUnknownMultipleEmpty
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|PropInfo
 name|propInfo

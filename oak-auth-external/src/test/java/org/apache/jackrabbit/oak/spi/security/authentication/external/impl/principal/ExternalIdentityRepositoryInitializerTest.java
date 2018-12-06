@@ -210,8 +210,6 @@ specifier|public
 name|void
 name|testExternalIdIndexDefinition
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Tree
 name|oakIndex
@@ -263,8 +261,6 @@ specifier|public
 name|void
 name|testPrincipalNamesIndexDefinition
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Tree
 name|oakIndex

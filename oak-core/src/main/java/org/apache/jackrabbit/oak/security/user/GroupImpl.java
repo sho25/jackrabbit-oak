@@ -403,8 +403,6 @@ name|NotNull
 name|Tree
 name|tree
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 if|if
 condition|(

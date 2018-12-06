@@ -695,8 +695,6 @@ specifier|public
 name|String
 name|getPath
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|userManager

@@ -406,8 +406,6 @@ specifier|private
 name|Repository
 name|createRepo
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|SecurityProvider
 name|securityProvider
@@ -475,8 +473,6 @@ parameter_list|(
 name|Repository
 name|repo
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 if|if
 condition|(

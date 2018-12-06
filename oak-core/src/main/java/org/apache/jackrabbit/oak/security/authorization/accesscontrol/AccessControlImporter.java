@@ -844,8 +844,6 @@ specifier|public
 name|void
 name|processReferences
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 comment|// nothing to do.
 block|}
