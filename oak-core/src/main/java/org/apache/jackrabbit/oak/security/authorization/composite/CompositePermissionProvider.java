@@ -560,10 +560,7 @@ argument_list|(
 operator|new
 name|AggregatedPermissionProvider
 index|[
-name|pps
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 expr_stmt|;
@@ -959,10 +956,7 @@ argument_list|(
 operator|new
 name|String
 index|[
-name|supportedNames
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 argument_list|)

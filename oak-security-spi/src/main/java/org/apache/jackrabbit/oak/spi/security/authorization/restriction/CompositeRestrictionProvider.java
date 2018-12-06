@@ -264,10 +264,7 @@ argument_list|(
 operator|new
 name|RestrictionProvider
 index|[
-name|providers
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 expr_stmt|;

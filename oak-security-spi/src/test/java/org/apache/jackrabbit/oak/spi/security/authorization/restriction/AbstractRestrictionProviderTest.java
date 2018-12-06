@@ -1480,10 +1480,7 @@ argument_list|(
 operator|new
 name|Value
 index|[
-name|vs
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 argument_list|)
@@ -1597,10 +1594,7 @@ argument_list|(
 operator|new
 name|Value
 index|[
-name|vs
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 argument_list|)
@@ -1720,10 +1714,7 @@ argument_list|(
 operator|new
 name|Value
 index|[
-name|vs
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 argument_list|)

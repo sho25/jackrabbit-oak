@@ -200,10 +200,7 @@ argument_list|(
 operator|new
 name|String
 index|[
-name|POLICY_NODE_NAMES
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 decl_stmt|;
@@ -221,10 +218,7 @@ argument_list|(
 operator|new
 name|String
 index|[
-name|ACE_PROPERTY_NAMES
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 decl_stmt|;

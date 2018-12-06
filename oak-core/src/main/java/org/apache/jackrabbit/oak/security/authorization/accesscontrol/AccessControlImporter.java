@@ -1717,10 +1717,7 @@ argument_list|(
 operator|new
 name|Value
 index|[
-name|values
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 argument_list|)
@@ -1789,10 +1786,7 @@ argument_list|(
 operator|new
 name|Privilege
 index|[
-name|privileges
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 argument_list|,

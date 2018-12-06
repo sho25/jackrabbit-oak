@@ -1028,10 +1028,7 @@ argument_list|(
 operator|new
 name|AccessControlPolicy
 index|[
-name|effective
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 return|;

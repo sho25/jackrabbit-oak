@@ -351,10 +351,7 @@ argument_list|(
 operator|new
 name|Privilege
 index|[
-name|privileges
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 return|;
@@ -732,10 +729,7 @@ argument_list|(
 operator|new
 name|PrivilegeDefinition
 index|[
-name|definitions
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 return|;
@@ -975,10 +969,7 @@ argument_list|(
 operator|new
 name|Privilege
 index|[
-name|declaredAggregates
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 return|;
@@ -1050,10 +1041,7 @@ argument_list|(
 operator|new
 name|Privilege
 index|[
-name|aggr
-operator|.
-name|size
-argument_list|()
+literal|0
 index|]
 argument_list|)
 return|;
