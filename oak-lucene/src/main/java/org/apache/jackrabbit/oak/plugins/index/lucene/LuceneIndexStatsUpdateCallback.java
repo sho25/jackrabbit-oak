@@ -422,7 +422,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"could not update no_docs/index_size stats for index at {}"
 argument_list|,
