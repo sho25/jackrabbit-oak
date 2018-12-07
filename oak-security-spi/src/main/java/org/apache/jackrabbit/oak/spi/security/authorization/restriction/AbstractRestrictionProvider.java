@@ -754,9 +754,7 @@ name|restrictions
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Restriction
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1294,11 +1292,7 @@ name|restrictionProperties
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|PropertyState
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

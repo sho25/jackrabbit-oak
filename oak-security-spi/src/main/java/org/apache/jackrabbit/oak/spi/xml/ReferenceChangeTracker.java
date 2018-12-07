@@ -91,11 +91,7 @@ name|uuidMap
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/**      * list of processed reference properties that might need correcting      */
@@ -109,9 +105,7 @@ name|references
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/**      * Returns the new node id to which {@code oldUUID} has been mapped      * or {@code null} if no such mapping exists.      *      * @param oldUUID old node id      * @return mapped new id or {@code null} if no such mapping exists      * @see #put(String, String)      */

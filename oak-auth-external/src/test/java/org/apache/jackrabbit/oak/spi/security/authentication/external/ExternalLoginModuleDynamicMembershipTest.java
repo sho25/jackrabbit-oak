@@ -696,9 +696,7 @@ name|expectedExternal
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|calcExpectedPrincipalNames
@@ -729,9 +727,7 @@ name|principals
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Principal
-argument_list|>
+argument_list|<>
 argument_list|(
 name|cs
 operator|.

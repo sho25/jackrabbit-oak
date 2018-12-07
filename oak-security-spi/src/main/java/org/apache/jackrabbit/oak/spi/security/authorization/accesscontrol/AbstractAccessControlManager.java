@@ -1268,9 +1268,7 @@ name|privileges
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Privilege
-argument_list|>
+argument_list|<>
 argument_list|(
 name|pNames
 operator|.
@@ -1431,9 +1429,7 @@ name|privilegeNames
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|privileges
 operator|.

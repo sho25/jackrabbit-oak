@@ -645,9 +645,7 @@ name|rps
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|RestrictionProvider
-argument_list|>
+argument_list|<>
 argument_list|(
 name|configurations
 operator|.

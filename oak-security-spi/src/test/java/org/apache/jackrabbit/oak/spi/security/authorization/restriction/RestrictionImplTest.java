@@ -810,9 +810,7 @@ name|rs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Restriction
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// - different type

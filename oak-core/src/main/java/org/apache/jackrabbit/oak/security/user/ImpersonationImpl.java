@@ -478,9 +478,7 @@ name|s
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Principal
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -799,9 +797,7 @@ name|principalNames
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -919,9 +915,7 @@ name|princNames
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|PropertyState

@@ -647,9 +647,7 @@ name|rNames
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -883,9 +881,7 @@ name|patterns
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|RestrictionPattern
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1034,11 +1030,7 @@ name|supported
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|RestrictionDefinition
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

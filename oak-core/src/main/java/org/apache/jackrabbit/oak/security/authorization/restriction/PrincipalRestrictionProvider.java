@@ -386,9 +386,7 @@ name|definitions
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|RestrictionDefinition
-argument_list|>
+argument_list|<>
 argument_list|(
 name|base
 operator|.
@@ -567,9 +565,7 @@ name|restrictions
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Restriction
-argument_list|>
+argument_list|<>
 argument_list|(
 name|base
 operator|.

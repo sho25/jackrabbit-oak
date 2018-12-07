@@ -383,9 +383,7 @@ name|includeInherited
 argument_list|,
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 return|;
@@ -709,9 +707,7 @@ name|includeInherited
 argument_list|,
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 return|;
@@ -1698,9 +1694,7 @@ name|groupTrees
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Tree
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

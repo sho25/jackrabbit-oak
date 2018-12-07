@@ -2938,9 +2938,7 @@ name|pbs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PrivilegeBits
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|pbs
@@ -4153,11 +4151,7 @@ name|simple
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|PrivilegeBits
-argument_list|,
-name|Long
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|simple

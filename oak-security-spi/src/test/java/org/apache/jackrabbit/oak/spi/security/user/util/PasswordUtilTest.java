@@ -279,11 +279,7 @@ name|hashedPasswords
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for
@@ -357,10 +353,7 @@ name|l
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Integer
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|l
@@ -516,9 +509,7 @@ name|invalidAlgorithms
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|invalidAlgorithms

@@ -576,9 +576,7 @@ name|patterns
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|RestrictionPattern
-argument_list|>
+argument_list|<>
 argument_list|(
 name|NUMBER_OF_DEFINITIONS
 argument_list|)
@@ -790,9 +788,7 @@ name|patterns
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|RestrictionPattern
-argument_list|>
+argument_list|<>
 argument_list|(
 name|NUMBER_OF_DEFINITIONS
 argument_list|)

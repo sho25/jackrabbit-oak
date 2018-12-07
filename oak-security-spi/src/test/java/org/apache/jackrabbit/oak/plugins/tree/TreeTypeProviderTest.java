@@ -352,9 +352,7 @@ name|tests
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|TypeTest
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|tests

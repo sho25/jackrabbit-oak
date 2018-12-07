@@ -341,9 +341,7 @@ name|defs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|RestrictionDefinition
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// - different type

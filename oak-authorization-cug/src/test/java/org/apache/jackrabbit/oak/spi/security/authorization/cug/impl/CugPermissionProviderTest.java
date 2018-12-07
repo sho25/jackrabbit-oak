@@ -541,11 +541,7 @@ name|PATH_INCUG_MAP
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 static|static
@@ -2493,11 +2489,7 @@ name|tpMap
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|TreePermission
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|TreePermission

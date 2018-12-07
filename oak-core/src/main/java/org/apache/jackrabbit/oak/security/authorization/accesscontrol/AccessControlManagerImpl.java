@@ -1385,9 +1385,7 @@ name|policies
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccessControlPolicy
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|2
 argument_list|)
@@ -1511,9 +1509,7 @@ name|effective
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccessControlPolicy
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|AccessControlPolicy
@@ -3768,9 +3764,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ACE
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -3932,9 +3926,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ACE
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -5190,9 +5182,7 @@ name|privileges
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Privilege
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

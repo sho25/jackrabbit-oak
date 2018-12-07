@@ -799,9 +799,7 @@ name|principalsNames
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|collectPrincipalNames

@@ -499,9 +499,7 @@ name|SUPPORTED_CREDENTIALS
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Class
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|3
 argument_list|)
@@ -1281,11 +1279,7 @@ name|attributes
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Object

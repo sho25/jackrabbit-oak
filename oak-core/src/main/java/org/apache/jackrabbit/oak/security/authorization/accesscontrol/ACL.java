@@ -407,9 +407,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ACE
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|ACL
@@ -773,9 +771,7 @@ name|rs
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|Restriction
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 if|if

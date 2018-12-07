@@ -2738,11 +2738,7 @@ name|declaredExternalGroups
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Group
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Iterator
@@ -4118,9 +4114,7 @@ name|values
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Value
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

@@ -921,9 +921,7 @@ name|userNames
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|principals
 operator|.
@@ -939,9 +937,7 @@ name|groupNames
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|principals
 operator|.
@@ -1686,9 +1682,7 @@ name|trees
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Tree
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
