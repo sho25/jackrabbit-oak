@@ -296,6 +296,14 @@ literal|"force-checkpoints"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|String
+name|ADD_SECONDARY_METADATA
+init|=
+literal|"add-secondary-metadata"
+decl_stmt|;
+specifier|public
+specifier|static
 name|OptionParser
 name|create
 parameter_list|()
@@ -886,6 +894,15 @@ argument_list|(
 name|FORCE_CHECKPOINTS
 argument_list|,
 literal|"Copy checkpoints even if the --include,exclude,merge-paths option is specified"
+argument_list|)
+expr_stmt|;
+name|op
+operator|.
+name|accepts
+argument_list|(
+name|ADD_SECONDARY_METADATA
+argument_list|,
+literal|"Adds the metadata required by secondary store"
 argument_list|)
 expr_stmt|;
 block|}
