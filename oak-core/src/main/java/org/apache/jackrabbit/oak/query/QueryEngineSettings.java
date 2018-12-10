@@ -107,6 +107,22 @@ name|QueryLimits
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|StatisticsProvider
+import|;
+end_import
+
 begin_comment
 comment|/**  * Settings of the query engine.  */
 end_comment
@@ -318,10 +334,37 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
+comment|/**      * StatisticsProvider used to record query side metrics.      */
+specifier|private
+specifier|final
+name|StatisticsProvider
+name|statisticsProvider
+decl_stmt|;
 specifier|public
 name|QueryEngineSettings
 parameter_list|()
-block|{     }
+block|{
+name|statisticsProvider
+operator|=
+name|StatisticsProvider
+operator|.
+name|NOOP
+expr_stmt|;
+block|}
+specifier|public
+name|QueryEngineSettings
+parameter_list|(
+name|StatisticsProvider
+name|statisticsProvider
+parameter_list|)
+block|{
+name|this
+operator|.
+name|statisticsProvider
+operator|=
+name|statisticsProvider
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -497,6 +540,14 @@ parameter_list|()
 block|{
 return|return
 name|queryStats
+return|;
+block|}
+name|StatisticsProvider
+name|getStatisticsProvider
+parameter_list|()
+block|{
+return|return
+name|statisticsProvider
 return|;
 block|}
 annotation|@
