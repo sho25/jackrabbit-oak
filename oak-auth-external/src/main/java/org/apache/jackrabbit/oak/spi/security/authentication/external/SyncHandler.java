@@ -111,7 +111,7 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * Initializes a sync context which is used to start the sync operations.      *      * @param idp the external identity provider used for syncing      * @param userManager user manager for managing authorizables      * @param valueFactory the value factory to create values      * @return the sync context      * @throws SyncException if an error occurs      */
+comment|/**      * Initializes a sync context which is used to start the sync operations.      *      * @param idp the external identity provider used for syncing      * @param userManager user manager for managing authorizables      * @param valueFactory the value factory to create values      * @return the sync context      */
 annotation|@
 name|NotNull
 name|SyncContext
