@@ -475,7 +475,6 @@ name|PermissionStoreImpl
 argument_list|>
 name|stores
 decl_stmt|;
-specifier|public
 name|MountPermissionStore
 parameter_list|(
 name|List

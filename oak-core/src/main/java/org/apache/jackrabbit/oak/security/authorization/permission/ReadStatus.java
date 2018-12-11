@@ -156,6 +156,7 @@ name|PROPERTIES
 operator||
 name|CHILD_NODES
 decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 name|ReadStatus
@@ -169,6 +170,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 name|ReadStatus
@@ -208,6 +210,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 name|ReadStatus

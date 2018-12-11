@@ -1434,7 +1434,6 @@ specifier|final
 name|CompositionType
 name|compositionType
 decl_stmt|;
-specifier|public
 name|CompositeRepositoryPermission
 parameter_list|(
 annotation|@

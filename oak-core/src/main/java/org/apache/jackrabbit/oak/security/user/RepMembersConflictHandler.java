@@ -184,7 +184,6 @@ comment|/**  * The {@code RepMembersConflictHandler} takes care of merging the {
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|RepMembersConflictHandler
 implements|implements

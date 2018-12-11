@@ -143,7 +143,7 @@ name|PermissionEntryProviderImpl
 implements|implements
 name|PermissionEntryProvider
 block|{
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

@@ -187,6 +187,7 @@ argument_list|<
 name|Authorizable
 argument_list|>
 block|{
+specifier|private
 specifier|static
 specifier|final
 name|Logger

@@ -1673,7 +1673,6 @@ name|next
 return|;
 block|}
 comment|/**          * Remember a group that needs to be search for references ('parent')          * once all 'references' have been processed.          *          * @param groupTree A tree associated with a group          * @see #getNextIterator(Tree)          */
-specifier|protected
 name|void
 name|remember
 parameter_list|(

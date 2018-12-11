@@ -371,7 +371,6 @@ comment|/**          * Check all aggregated permission providers for one that co
 name|OR
 block|;
 comment|/**          * Returns the corresponding composition type.          * @param type          *            String representation of the composition type, or          *            {@code null}          * @return corresponding composition type, or {@code AND} if the          *         provided type is {@code null}          */
-specifier|public
 specifier|static
 name|CompositionType
 name|fromString

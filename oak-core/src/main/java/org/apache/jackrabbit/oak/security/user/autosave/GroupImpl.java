@@ -124,6 +124,7 @@ name|mgr
 argument_list|)
 expr_stmt|;
 block|}
+specifier|private
 name|Group
 name|getDelegate
 parameter_list|()

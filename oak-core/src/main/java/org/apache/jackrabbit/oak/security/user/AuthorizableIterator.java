@@ -401,7 +401,6 @@ specifier|final
 name|Predicate
 name|predicate
 decl_stmt|;
-specifier|public
 name|PathToAuthorizable
 parameter_list|(
 name|UserManagerImpl

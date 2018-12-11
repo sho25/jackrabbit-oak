@@ -890,6 +890,7 @@ block|}
 block|}
 annotation|@
 name|NotNull
+specifier|private
 name|User
 name|wrap
 parameter_list|(
@@ -911,6 +912,7 @@ return|;
 block|}
 annotation|@
 name|NotNull
+specifier|private
 name|Group
 name|wrap
 parameter_list|(

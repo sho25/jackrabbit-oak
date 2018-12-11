@@ -334,6 +334,7 @@ return|;
 block|}
 annotation|@
 name|Nullable
+specifier|private
 name|Tree
 name|getByContentID
 parameter_list|(

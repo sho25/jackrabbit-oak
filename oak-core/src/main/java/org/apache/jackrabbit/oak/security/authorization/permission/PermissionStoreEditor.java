@@ -1962,7 +1962,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|protected
 name|PropertyState
 name|getPrivilegeBitsProperty
 parameter_list|()

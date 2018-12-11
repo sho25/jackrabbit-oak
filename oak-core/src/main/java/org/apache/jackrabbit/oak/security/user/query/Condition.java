@@ -522,7 +522,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-specifier|public
 name|Compound
 parameter_list|(
 name|Condition
