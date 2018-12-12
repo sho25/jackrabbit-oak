@@ -1939,6 +1939,20 @@ argument_list|,
 literal|100000
 argument_list|)
 decl_stmt|;
+comment|/**      * How many collision entries to collect in a single call.      */
+specifier|private
+name|int
+name|collisionGarbageBatchSize
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.documentMK.collisionGarbageBatchSize"
+argument_list|,
+literal|1000
+argument_list|)
+decl_stmt|;
 comment|/**      * The document store without potentially lease checking wrapper.      */
 specifier|private
 specifier|final
@@ -9602,7 +9616,7 @@ comment|// clean orphaned branches and collisions
 name|cleanOrphanedBranches
 argument_list|()
 expr_stmt|;
-name|cleanCollisions
+name|cleanRootCollisions
 argument_list|()
 expr_stmt|;
 name|long
@@ -10822,7 +10836,7 @@ block|}
 block|}
 specifier|private
 name|void
-name|cleanCollisions
+name|cleanRootCollisions
 parameter_list|()
 block|{
 name|String
@@ -10850,12 +10864,32 @@ decl_stmt|;
 if|if
 condition|(
 name|root
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-return|return;
+name|cleanCollisions
+argument_list|(
+name|root
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
 block|}
+block|}
+specifier|private
+name|void
+name|cleanCollisions
+parameter_list|(
+name|NodeDocument
+name|doc
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+block|{
 name|RevisionVector
 name|head
 init|=
@@ -10870,7 +10904,7 @@ name|String
 argument_list|>
 name|map
 init|=
-name|root
+name|doc
 operator|.
 name|getLocalMap
 argument_list|(
@@ -10885,7 +10919,10 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-name|id
+name|doc
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 literal|false
 argument_list|)
@@ -10944,6 +10981,16 @@ argument_list|,
 name|r
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|--
+name|limit
+operator|<=
+literal|0
+condition|)
+block|{
+break|break;
+block|}
 block|}
 block|}
 block|}
@@ -10959,7 +11006,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Removing collisions {}"
+literal|"Removing collisions {} on {}"
 argument_list|,
 name|op
 operator|.
@@ -10967,6 +11014,11 @@ name|getChanges
 argument_list|()
 operator|.
 name|keySet
+argument_list|()
+argument_list|,
+name|doc
+operator|.
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -11046,6 +11098,13 @@ condition|)
 block|{
 continue|continue;
 block|}
+name|cleanCollisions
+argument_list|(
+name|doc
+argument_list|,
+name|collisionGarbageBatchSize
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|UpdateOp
