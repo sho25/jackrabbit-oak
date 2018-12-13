@@ -926,7 +926,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Mark and sweep garbage collector.  *   * Uses the file system to store internal state while in process to account for huge data.  * This class is not thread safe.  *   */
+comment|/**  * Mark and sweep garbage collector.  *  * Uses the file system to store internal state while in process to account for huge data.  * This class is not thread safe.  *  */
 end_comment
 
 begin_class
@@ -1439,7 +1439,7 @@ name|forceBlobRetrieve
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the stats related to GC for all repos      *       * @return a list of GarbageCollectionRepoStats objects      * @throws Exception      */
+comment|/**      * Returns the stats related to GC for all repos      *      * @return a list of GarbageCollectionRepoStats objects      * @throws Exception      */
 annotation|@
 name|Override
 specifier|public
@@ -2056,39 +2056,6 @@ argument_list|,
 name|forceBlobRetrieve
 argument_list|)
 expr_stmt|;
-name|threw
-operator|=
-literal|false
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|sw
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|statsCollector
-operator|.
-name|updateSweepDuration
-argument_list|(
-name|sw
-operator|.
-name|elapsed
-argument_list|(
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-argument_list|)
-operator|-
-name|markFinish
-argument_list|,
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-argument_list|)
-expr_stmt|;
-block|}
 name|long
 name|maxTime
 init|=
@@ -2134,6 +2101,51 @@ name|maxTime
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|threw
+operator|=
+literal|false
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NotAllRepositoryMarkedException
+name|rm
+parameter_list|)
+block|{
+name|statsCollector
+operator|.
+name|finishFailure
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|sw
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|statsCollector
+operator|.
+name|updateSweepDuration
+argument_list|(
+name|sw
+operator|.
+name|elapsed
+argument_list|(
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+operator|-
+name|markFinish
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
@@ -2287,7 +2299,7 @@ literal|"Ending mark phase of the garbage collector"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Difference phase where the GC candidates are identified.      *       * @param fs the garbage collector file state      * @throws IOException      *             Signals that an I/O exception has occurred.      */
+comment|/**      * Difference phase where the GC candidates are identified.      *      * @param fs the garbage collector file state      * @throws IOException      *             Signals that an I/O exception has occurred.      */
 specifier|private
 name|void
 name|difference
@@ -2380,8 +2392,6 @@ name|earliestRefAvailTime
 decl_stmt|;
 comment|// Merge all the blob references available from all the reference files in the data store meta store
 comment|// Only go ahead if merge succeeded
-try|try
-block|{
 name|earliestRefAvailTime
 operator|=
 name|GarbageCollectionType
@@ -2419,17 +2429,6 @@ else|:
 name|markStart
 operator|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-return|return
-literal|0
-return|;
-block|}
 comment|// Find all blob references after iterating over the whole repository
 operator|(
 operator|new
@@ -3360,7 +3359,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Checks for the DataStore consistency and reports the number of missing blobs still referenced.      *       * @return the missing blobs      * @throws Exception      */
+comment|/**      * Checks for the DataStore consistency and reports the number of missing blobs still referenced.      *      * @return the missing blobs      * @throws Exception      */
 annotation|@
 name|Override
 specifier|public
@@ -3853,7 +3852,7 @@ name|GarbageCollectionType
 block|{
 name|SHARED
 block|{
-comment|/**              * Remove the maked references and the marked markers from the blob store root. Default NOOP.              *               * @param blobStore the blobStore instance              */
+comment|/**              * Remove the maked references and the marked markers from the blob store root. Default NOOP.              *              * @param blobStore the blobStore instance              */
 annotation|@
 name|Override
 name|void
@@ -3898,7 +3897,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**              * Merge all marked references available from all repositories and return the earliest time of the references.              *               * @param blobStore the blob store              * @param fs the fs              * @return the long the earliest time of the available references              * @throws IOException Signals that an I/O exception has occurred.              * @throws DataStoreException the data store exception              */
+comment|/**              * Merge all marked references available from all repositories and return the earliest time of the references.              *              * @param blobStore the blob store              * @param fs the fs              * @return the long the earliest time of the available references              * @throws IOException Signals that an I/O exception has occurred.              * @throws DataStoreException the data store exception              */
 annotation|@
 name|Override
 name|long
@@ -4126,14 +4125,14 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|IOException
+name|NotAllRepositoryMarkedException
 argument_list|(
 literal|"Not all repositories have marked references available"
 argument_list|)
 throw|;
 block|}
 block|}
-comment|/**              * Adds the marked references to the blob store root. Default NOOP              *               * @param blobStore the blob store              * @param fs the fs              * @param repoId the repo id              * @param uniqueSuffix the unique session suffix              * @throws DataStoreException the data store exception              * @throws IOException Signals that an I/O exception has occurred.              */
+comment|/**              * Adds the marked references to the blob store root. Default NOOP              *              * @param blobStore the blob store              * @param fs the fs              * @param repoId the repo id              * @param uniqueSuffix the unique session suffix              * @throws DataStoreException the data store exception              * @throws IOException Signals that an I/O exception has occurred.              */
 annotation|@
 name|Override
 name|void
@@ -5668,6 +5667,27 @@ operator|.
 name|getCount
 argument_list|()
 return|;
+block|}
+block|}
+comment|/**      * Marker IOException to identify sweep phase failure because of some      * repositories not having finished Mark phase.      */
+specifier|static
+class|class
+name|NotAllRepositoryMarkedException
+extends|extends
+name|IOException
+block|{
+specifier|public
+name|NotAllRepositoryMarkedException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}

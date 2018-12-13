@@ -1967,7 +1967,7 @@ name|statsProvider
 argument_list|,
 literal|1
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 literal|0
 argument_list|,
