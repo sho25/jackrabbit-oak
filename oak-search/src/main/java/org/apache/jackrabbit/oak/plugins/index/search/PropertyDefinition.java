@@ -847,7 +847,7 @@ name|FulltextIndexConstants
 operator|.
 name|PROP_SIMILARITY_RERANK
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|this
