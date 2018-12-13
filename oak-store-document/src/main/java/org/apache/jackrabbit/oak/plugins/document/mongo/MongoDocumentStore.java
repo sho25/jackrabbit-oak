@@ -2039,21 +2039,30 @@ literal|"true"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// counting the number of documents in the nodes collection and
-comment|// checking existing indexes is performed against the MongoDB primary
-comment|// this ensure the information is up-to-date and accurate
-name|long
-name|initialDocsCount
+comment|// reading documents in the nodes collection and checking
+comment|// existing indexes is performed against the MongoDB primary
+comment|// this ensures the information is up-to-date and accurate
+name|boolean
+name|emptyNodesCollection
 init|=
-name|getNodesCount
-argument_list|()
+name|execute
+argument_list|(
+name|session
+lambda|->
+name|MongoUtils
+operator|.
+name|isCollectionEmpty
+argument_list|(
+name|nodes
+argument_list|,
+name|session
+argument_list|)
+argument_list|)
 decl_stmt|;
 comment|// compound index on _modified and _id
 if|if
 condition|(
-name|initialDocsCount
-operator|==
-literal|0
+name|emptyNodesCollection
 condition|)
 block|{
 comment|// this is an empty store, create a compound index
@@ -2162,9 +2171,7 @@ comment|// index on _deleted for fast lookup of potentially garbage
 comment|// depending on the MongoDB version, create a partial index
 if|if
 condition|(
-name|initialDocsCount
-operator|==
-literal|0
+name|emptyNodesCollection
 condition|)
 block|{
 if|if
@@ -2281,9 +2288,7 @@ block|}
 comment|// compound index on _sdType and _sdMaxRevTime
 if|if
 condition|(
-name|initialDocsCount
-operator|==
-literal|0
+name|emptyNodesCollection
 condition|)
 block|{
 comment|// this is an empty store, create compound index
@@ -10927,71 +10932,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-comment|/**      * Returns the number of documents in the {@link #nodes} collection. The read      * always happens on the MongoDB primary.      *      * @return the number of documents in the {@link #nodes} collection.      */
-specifier|private
-name|long
-name|getNodesCount
-parameter_list|()
-block|{
-return|return
-name|execute
-argument_list|(
-name|session
-lambda|->
-block|{
-name|MongoCollection
-argument_list|<
-name|?
-argument_list|>
-name|c
-init|=
-name|nodes
-operator|.
-name|withReadPreference
-argument_list|(
-name|ReadPreference
-operator|.
-name|primary
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|long
-name|count
-decl_stmt|;
-if|if
-condition|(
-name|session
-operator|!=
-literal|null
-condition|)
-block|{
-name|count
-operator|=
-name|c
-operator|.
-name|countDocuments
-argument_list|(
-name|session
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|count
-operator|=
-name|c
-operator|.
-name|countDocuments
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-name|count
-return|;
-block|}
-argument_list|)
-return|;
 block|}
 specifier|private
 name|boolean
