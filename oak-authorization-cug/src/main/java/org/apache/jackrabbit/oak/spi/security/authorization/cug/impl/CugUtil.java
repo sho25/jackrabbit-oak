@@ -331,7 +331,6 @@ specifier|private
 name|CugUtil
 parameter_list|()
 block|{}
-specifier|public
 specifier|static
 name|boolean
 name|hasCug
@@ -356,7 +355,6 @@ name|REP_CUG_POLICY
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|hasCug
@@ -380,7 +378,6 @@ name|REP_CUG_POLICY
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|hasCug
@@ -406,7 +403,6 @@ return|;
 block|}
 annotation|@
 name|Nullable
-specifier|public
 specifier|static
 name|Tree
 name|getCug
@@ -468,7 +464,6 @@ literal|null
 return|;
 block|}
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|definesCug
@@ -508,7 +503,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|definesCug
@@ -545,7 +539,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|definesCug
@@ -578,7 +571,6 @@ name|tree
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|hasNestedCug
@@ -600,7 +592,6 @@ name|HIDDEN_NESTED_CUGS
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|isSupportedPath
@@ -662,7 +653,6 @@ return|return
 literal|false
 return|;
 block|}
-specifier|public
 specifier|static
 name|Set
 argument_list|<
@@ -802,7 +792,6 @@ return|return
 name|supportedPaths
 return|;
 block|}
-specifier|public
 specifier|static
 name|int
 name|getImportBehavior

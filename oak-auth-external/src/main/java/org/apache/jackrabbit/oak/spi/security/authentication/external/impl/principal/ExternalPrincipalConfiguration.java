@@ -1301,7 +1301,7 @@ name|isEnabled
 init|=
 literal|false
 decl_stmt|;
-specifier|public
+specifier|private
 name|SyncConfigTracker
 parameter_list|(
 annotation|@
@@ -1732,7 +1732,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-specifier|public
+specifier|private
 name|SyncHandlerMappingTracker
 parameter_list|(
 annotation|@

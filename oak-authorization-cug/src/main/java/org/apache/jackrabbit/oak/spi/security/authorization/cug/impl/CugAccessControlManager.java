@@ -682,7 +682,6 @@ specifier|final
 name|PrincipalManager
 name|principalManager
 decl_stmt|;
-specifier|public
 name|CugAccessControlManager
 parameter_list|(
 annotation|@

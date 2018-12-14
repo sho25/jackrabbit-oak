@@ -155,6 +155,7 @@ name|TopLevelPaths
 implements|implements
 name|CugConstants
 block|{
+specifier|private
 specifier|static
 specifier|final
 name|long

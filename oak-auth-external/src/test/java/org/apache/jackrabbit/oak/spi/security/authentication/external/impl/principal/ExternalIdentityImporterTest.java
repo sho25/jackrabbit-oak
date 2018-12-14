@@ -477,10 +477,6 @@ block|{
 if|if
 condition|(
 name|repo
-operator|!=
-literal|null
-operator|&&
-name|repo
 operator|instanceof
 name|JackrabbitRepository
 condition|)

@@ -1019,10 +1019,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|tree
-operator|!=
-literal|null
-operator|&&
 name|UserUtil
 operator|.
 name|isType
@@ -1755,10 +1751,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|groupTree
-operator|!=
-literal|null
-operator|&&
 name|UserUtil
 operator|.
 name|isType
