@@ -552,6 +552,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|NotNull
+specifier|private
 name|PrincipalProvider
 name|createPrincipalProvider
 parameter_list|()

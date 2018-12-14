@@ -2098,6 +2098,7 @@ name|restrictions
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Map
@@ -2111,6 +2112,7 @@ name|mvRestrictions
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -3584,6 +3586,9 @@ block|}
 else|else
 block|{
 name|PropertyBuilder
+argument_list|<
+name|String
+argument_list|>
 name|pb
 init|=
 name|PropertyBuilder

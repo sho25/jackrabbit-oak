@@ -173,6 +173,9 @@ class|class
 name|AuthorizableIterator
 implements|implements
 name|Iterator
+argument_list|<
+name|Authorizable
+argument_list|>
 block|{
 specifier|private
 specifier|static
@@ -220,6 +223,9 @@ name|authorizableType
 parameter_list|)
 block|{
 name|Iterator
+argument_list|<
+name|Authorizable
+argument_list|>
 name|it
 init|=
 name|Iterators
@@ -349,6 +355,9 @@ name|long
 name|getSize
 parameter_list|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 parameter_list|)
 block|{
@@ -399,6 +408,9 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Predicate
+argument_list|<
+name|Authorizable
+argument_list|>
 name|predicate
 decl_stmt|;
 name|PathToAuthorizable

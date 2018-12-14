@@ -955,6 +955,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|?
+argument_list|>
 name|l
 init|=
 name|getConfigurations
@@ -1108,6 +1111,9 @@ name|def
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|?
+argument_list|>
 name|configurations
 init|=
 name|getConfigurations

@@ -538,6 +538,7 @@ name|pathEntries
 operator|=
 operator|new
 name|TreeSet
+argument_list|<>
 argument_list|(
 name|e
 operator|.
@@ -699,6 +700,7 @@ name|ret
 init|=
 operator|new
 name|TreeSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

@@ -358,21 +358,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Login: Failed to retrieve Credentials from CallbackHandler"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|UnsupportedCallbackException
 name|e
 parameter_list|)

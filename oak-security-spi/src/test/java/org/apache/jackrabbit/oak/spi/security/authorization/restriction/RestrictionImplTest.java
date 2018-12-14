@@ -211,6 +211,9 @@ block|{
 specifier|private
 specifier|final
 name|Type
+argument_list|<
+name|String
+argument_list|>
 name|type
 init|=
 name|Type
@@ -284,6 +287,9 @@ name|String
 name|value
 parameter_list|,
 name|Type
+argument_list|<
+name|String
+argument_list|>
 name|type
 parameter_list|)
 block|{
@@ -566,6 +572,7 @@ name|rs
 init|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// - different type

@@ -193,6 +193,9 @@ name|dlgs
 argument_list|,
 operator|new
 name|AuthorizableWrapper
+argument_list|<
+name|Authorizable
+argument_list|>
 argument_list|(
 name|mgr
 argument_list|)
@@ -225,6 +228,9 @@ name|dlgs
 argument_list|,
 operator|new
 name|AuthorizableWrapper
+argument_list|<
+name|Group
+argument_list|>
 argument_list|(
 name|mgr
 argument_list|)

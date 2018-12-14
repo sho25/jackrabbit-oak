@@ -1674,6 +1674,7 @@ name|enableProps
 init|=
 operator|new
 name|Hashtable
+argument_list|<>
 argument_list|(
 name|ImmutableMap
 operator|.
@@ -1702,6 +1703,7 @@ name|disableProps
 init|=
 operator|new
 name|Hashtable
+argument_list|<>
 argument_list|(
 name|ImmutableMap
 operator|.
@@ -1807,6 +1809,7 @@ name|enableProps
 init|=
 operator|new
 name|Hashtable
+argument_list|<>
 argument_list|(
 name|ImmutableMap
 operator|.
@@ -1835,6 +1838,7 @@ name|disableProps
 init|=
 operator|new
 name|Hashtable
+argument_list|<>
 argument_list|(
 name|ImmutableMap
 operator|.

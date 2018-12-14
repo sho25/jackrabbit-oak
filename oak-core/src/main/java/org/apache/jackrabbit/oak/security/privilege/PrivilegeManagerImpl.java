@@ -321,6 +321,7 @@ name|privileges
 init|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -581,6 +582,7 @@ name|oakNames
 operator|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|(
 name|jcrNames
 operator|.
@@ -880,6 +882,7 @@ name|declaredAggregates
 init|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|(
 name|declaredAggregateNames
 operator|.
@@ -990,6 +993,7 @@ name|aggr
 init|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

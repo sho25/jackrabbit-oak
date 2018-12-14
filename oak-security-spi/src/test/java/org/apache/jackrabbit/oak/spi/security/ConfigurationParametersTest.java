@@ -2588,6 +2588,9 @@ argument_list|<
 name|Object
 argument_list|,
 name|Set
+argument_list|<
+name|?
+argument_list|>
 argument_list|>
 name|configValues
 init|=
@@ -2671,6 +2674,7 @@ name|put
 argument_list|(
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 argument_list|,
 name|Collections
@@ -2700,6 +2704,7 @@ name|put
 argument_list|(
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|()
 argument_list|,
 name|Collections
@@ -2814,6 +2819,9 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|expected
 init|=
 name|configValues
@@ -4037,6 +4045,7 @@ name|put
 argument_list|(
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 argument_list|,
 operator|new
@@ -4068,6 +4077,7 @@ name|put
 argument_list|(
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|()
 argument_list|,
 operator|new

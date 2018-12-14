@@ -1275,6 +1275,9 @@ condition|(
 name|configProperty
 operator|instanceof
 name|Collection
+argument_list|<
+name|?
+argument_list|>
 condition|)
 block|{
 return|return
@@ -1287,6 +1290,9 @@ name|copyOf
 argument_list|(
 operator|(
 name|Collection
+argument_list|<
+name|?
+argument_list|>
 operator|)
 name|configProperty
 argument_list|)

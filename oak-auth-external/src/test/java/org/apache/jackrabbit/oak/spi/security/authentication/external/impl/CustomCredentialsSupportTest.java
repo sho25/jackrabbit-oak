@@ -663,7 +663,6 @@ name|USER_ID
 argument_list|)
 return|;
 block|}
-specifier|protected
 name|CredentialsSupport
 name|getCredentialsSupport
 parameter_list|()
@@ -717,6 +716,11 @@ block|{
 specifier|private
 specifier|final
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|attributes
 init|=
 name|Maps

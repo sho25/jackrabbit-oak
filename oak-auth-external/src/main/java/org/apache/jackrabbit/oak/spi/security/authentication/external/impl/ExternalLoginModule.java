@@ -2327,6 +2327,11 @@ control|(
 name|Map
 operator|.
 name|Entry
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 name|entry
 range|:
 operator|(

@@ -969,6 +969,11 @@ name|getName
 argument_list|()
 decl_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|props
 init|=
 name|ImmutableMap
@@ -1026,6 +1031,11 @@ name|props
 argument_list|)
 expr_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|mappingProps
 init|=
 name|ImmutableMap

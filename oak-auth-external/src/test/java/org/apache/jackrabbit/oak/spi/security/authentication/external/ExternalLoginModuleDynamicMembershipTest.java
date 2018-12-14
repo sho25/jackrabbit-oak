@@ -431,6 +431,11 @@ expr_stmt|;
 comment|// now register the sync-handler with the dynamic membership config
 comment|// in order to enable dynamic membership with the external principal configuration
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Boolean
+argument_list|>
 name|props
 init|=
 name|ImmutableMap
@@ -513,6 +518,7 @@ name|expected
 init|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|calcExpectedPrincipalNames
@@ -543,6 +549,7 @@ name|extPrincNames
 init|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

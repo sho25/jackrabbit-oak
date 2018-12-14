@@ -704,9 +704,17 @@ name|AbstractLoginModule
 name|initLoginModule
 parameter_list|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|supportedCredentials
 parameter_list|,
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|?
+argument_list|>
 name|sharedState
 parameter_list|)
 block|{
@@ -744,6 +752,9 @@ name|AbstractLoginModule
 name|initLoginModule
 parameter_list|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|supportedCredentials
 parameter_list|,
 name|CallbackHandler
@@ -1140,6 +1151,7 @@ name|sharedState
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|sharedState
@@ -1217,6 +1229,7 @@ name|sharedState
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|sharedState
@@ -1388,6 +1401,7 @@ name|sharedState
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|sharedState
@@ -1883,6 +1897,7 @@ name|sharedState
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|AbstractLoginModule
@@ -1936,10 +1951,16 @@ name|testGetSharedPreAuthLoginWrongEntry
 parameter_list|()
 block|{
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|sharedState
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|AbstractLoginModule

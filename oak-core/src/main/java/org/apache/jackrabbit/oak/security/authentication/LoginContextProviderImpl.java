@@ -709,23 +709,7 @@ block|}
 catch|catch
 parameter_list|(
 name|NoSuchAlgorithmException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Error fetching JAAS config from SPI {}"
-argument_list|,
-name|configSpiName
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|NoSuchProviderException
 name|e
 parameter_list|)

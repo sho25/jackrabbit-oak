@@ -1441,6 +1441,7 @@ name|privileges
 init|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1454,6 +1455,7 @@ name|restrictions
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1468,6 +1470,7 @@ name|mvRestrictions
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private

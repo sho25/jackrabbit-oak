@@ -559,6 +559,7 @@ name|rDefs
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|rDefs
@@ -871,6 +872,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|(
 literal|3
 argument_list|)

@@ -250,6 +250,9 @@ throws|throws
 name|Exception
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|cls
 init|=
 name|Class

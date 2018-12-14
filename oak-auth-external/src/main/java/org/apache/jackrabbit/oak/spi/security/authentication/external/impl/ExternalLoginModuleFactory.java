@@ -1032,6 +1032,7 @@ name|table
 init|=
 operator|new
 name|Hashtable
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|table

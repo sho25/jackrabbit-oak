@@ -1292,6 +1292,7 @@ name|enablingRefs
 init|=
 operator|new
 name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1524,6 +1525,7 @@ name|autoMembership
 init|=
 operator|new
 name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
