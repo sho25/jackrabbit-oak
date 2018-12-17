@@ -1348,25 +1348,6 @@ argument_list|(
 name|tree
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|ns
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|CommitFailedException
-argument_list|(
-name|ACCESS
-argument_list|,
-literal|0
-argument_list|,
-literal|"Access denied"
-argument_list|)
-throw|;
-block|}
 name|TreePermission
 name|tp
 init|=

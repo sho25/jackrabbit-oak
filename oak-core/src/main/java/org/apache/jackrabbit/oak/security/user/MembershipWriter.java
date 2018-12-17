@@ -263,7 +263,6 @@ name|membershipSizeThreshold
 init|=
 name|DEFAULT_MEMBERSHIP_THRESHOLD
 decl_stmt|;
-specifier|public
 name|void
 name|setMembershipSizeThreshold
 parameter_list|(

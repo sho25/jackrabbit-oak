@@ -1601,6 +1601,22 @@ argument_list|(
 name|REP_NUM_PERMISSIONS
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ps
+operator|==
+literal|null
+operator|&&
+operator|!
+name|principalRoot
+operator|.
+name|isNew
+argument_list|()
+condition|)
+block|{
+comment|// existing principal root that doesn't have the rep:numEntries set
+return|return;
+block|}
 name|long
 name|numEntries
 init|=
@@ -1625,23 +1641,6 @@ operator|)
 operator|+
 name|cnt
 decl_stmt|;
-if|if
-condition|(
-name|ps
-operator|==
-literal|null
-operator|&&
-operator|!
-name|principalRoot
-operator|.
-name|isNew
-argument_list|()
-condition|)
-block|{
-comment|// existing principal root that doesn't have the rep:numEntries set
-return|return;
-block|}
-elseif|else
 if|if
 condition|(
 name|numEntries

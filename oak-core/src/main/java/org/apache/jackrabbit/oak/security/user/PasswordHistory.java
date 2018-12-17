@@ -256,7 +256,6 @@ specifier|final
 name|boolean
 name|isEnabled
 decl_stmt|;
-specifier|public
 name|PasswordHistory
 parameter_list|(
 annotation|@

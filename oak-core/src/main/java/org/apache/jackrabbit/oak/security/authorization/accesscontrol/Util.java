@@ -277,7 +277,6 @@ specifier|private
 name|Util
 parameter_list|()
 block|{}
-specifier|public
 specifier|static
 name|void
 name|checkValidPrincipal
@@ -307,7 +306,6 @@ name|ABORT
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|checkValidPrincipal
@@ -443,7 +441,6 @@ literal|true
 return|;
 block|}
 block|}
-specifier|public
 specifier|static
 name|void
 name|checkValidPrincipals
@@ -496,7 +493,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|isValidPolicy
@@ -565,7 +561,6 @@ return|return
 literal|false
 return|;
 block|}
-specifier|public
 specifier|static
 name|void
 name|checkValidPolicy
@@ -605,7 +600,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|isAccessControlled
@@ -645,7 +639,6 @@ name|mixinName
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|boolean
 name|isACE
@@ -679,7 +672,6 @@ return|;
 block|}
 annotation|@
 name|NotNull
-specifier|public
 specifier|static
 name|String
 name|getMixinName
@@ -704,7 +696,6 @@ return|;
 block|}
 annotation|@
 name|NotNull
-specifier|public
 specifier|static
 name|String
 name|getAclName
@@ -730,7 +721,6 @@ block|}
 comment|/**      * Create a valid name for the ACE node based on the entry and it's index.      *      * @param ace The access control entry.      * @param index The index of the entry in the list      * @return the name of the ACE node.      */
 annotation|@
 name|NotNull
-specifier|public
 specifier|static
 name|String
 name|generateAceName
@@ -778,7 +768,6 @@ name|index
 return|;
 block|}
 block|}
-specifier|public
 specifier|static
 name|int
 name|getImportBehavior

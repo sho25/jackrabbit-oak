@@ -274,7 +274,6 @@ specifier|final
 name|MountInfoProvider
 name|mountInfoProvider
 decl_stmt|;
-specifier|public
 name|AuthorizationInitializer
 parameter_list|(
 annotation|@
