@@ -1852,12 +1852,6 @@ argument_list|(
 name|testPath
 argument_list|,
 name|REP_NT_NAMES
-argument_list|,
-operator|new
-name|Value
-index|[
-literal|0
-index|]
 argument_list|)
 decl_stmt|;
 name|assertNotNull
