@@ -1071,8 +1071,6 @@ operator|)
 name|session
 argument_list|,
 name|isWorkspaceImport
-argument_list|,
-name|securityProvider
 argument_list|)
 condition|)
 block|{
@@ -1116,11 +1114,6 @@ name|session
 parameter_list|,
 name|boolean
 name|isWorkspaceImport
-parameter_list|,
-annotation|@
-name|NotNull
-name|SecurityProvider
-name|securityProvider
 parameter_list|)
 block|{
 try|try

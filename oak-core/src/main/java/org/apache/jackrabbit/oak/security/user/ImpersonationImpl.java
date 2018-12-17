@@ -982,10 +982,6 @@ block|{
 if|if
 condition|(
 name|principalNames
-operator|==
-literal|null
-operator|||
-name|principalNames
 operator|.
 name|isEmpty
 argument_list|()
