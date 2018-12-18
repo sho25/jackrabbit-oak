@@ -604,6 +604,9 @@ name|copyOf
 argument_list|(
 name|SUPPORTED_PATHS
 argument_list|)
+argument_list|,
+name|getExclude
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -635,6 +638,9 @@ argument_list|,
 name|ImportBehavior
 operator|.
 name|ABORT
+argument_list|,
+name|getExclude
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1554,6 +1560,9 @@ name|copyOf
 argument_list|(
 name|SUPPORTED_PATHS
 argument_list|)
+argument_list|,
+name|getExclude
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|AccessControlPolicy
@@ -2130,6 +2139,9 @@ argument_list|,
 name|ImportBehavior
 operator|.
 name|BESTEFFORT
+argument_list|,
+name|getExclude
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2515,6 +2527,9 @@ argument_list|,
 name|ImportBehavior
 operator|.
 name|BESTEFFORT
+argument_list|,
+name|getExclude
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
