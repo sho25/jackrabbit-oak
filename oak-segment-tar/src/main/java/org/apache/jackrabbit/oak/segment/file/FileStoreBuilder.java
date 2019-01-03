@@ -1466,8 +1466,6 @@ parameter_list|(
 name|SegmentNodeStorePersistence
 name|persistence
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|this
 operator|.
