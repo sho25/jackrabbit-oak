@@ -2080,6 +2080,9 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|runAsyncIndex
+argument_list|()
+expr_stmt|;
 name|createPath
 argument_list|(
 literal|"/a"
@@ -2139,8 +2142,8 @@ literal|"/b"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Do multiple runs which lead to path being returned from both property and lucene
-comment|//index. But the actual result should only contain unique paths
+comment|// Do multiple runs which lead to path being returned from both property and lucene
+comment|// index. But the actual result should only contain unique paths
 name|runAsyncIndex
 argument_list|()
 expr_stmt|;
@@ -2391,6 +2394,9 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|runAsyncIndex
+argument_list|()
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|explain
@@ -2461,6 +2467,9 @@ expr_stmt|;
 name|root
 operator|.
 name|commit
+argument_list|()
+expr_stmt|;
+name|runAsyncIndex
 argument_list|()
 expr_stmt|;
 name|createPath
@@ -2560,6 +2569,9 @@ expr_stmt|;
 name|root
 operator|.
 name|commit
+argument_list|()
+expr_stmt|;
+name|runAsyncIndex
 argument_list|()
 expr_stmt|;
 name|createPath
@@ -2858,7 +2870,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|registerTestNodTypes
+name|registerTestNodeTypes
 argument_list|()
 expr_stmt|;
 name|defnb
@@ -2895,6 +2907,9 @@ expr_stmt|;
 name|root
 operator|.
 name|commit
+argument_list|()
+expr_stmt|;
+name|runAsyncIndex
 argument_list|()
 expr_stmt|;
 name|createPath
@@ -2951,7 +2966,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|registerTestNodTypes
+name|registerTestNodeTypes
 argument_list|()
 expr_stmt|;
 name|defnb
@@ -2988,6 +3003,9 @@ expr_stmt|;
 name|root
 operator|.
 name|commit
+argument_list|()
+expr_stmt|;
+name|runAsyncIndex
 argument_list|()
 expr_stmt|;
 name|createPath
@@ -3049,7 +3067,7 @@ expr_stmt|;
 block|}
 specifier|private
 name|void
-name|registerTestNodTypes
+name|registerTestNodeTypes
 parameter_list|()
 throws|throws
 name|IOException
@@ -3082,7 +3100,7 @@ argument_list|,
 literal|"test nodeType"
 argument_list|)
 expr_stmt|;
-comment|//Flush the changes to nodetypes
+comment|// Flush the changes to nodetypes
 name|root
 operator|.
 name|commit
