@@ -874,6 +874,7 @@ name|TreeProviderService
 argument_list|()
 decl_stmt|;
 comment|/**      * Default constructor used in OSGi environments.      */
+specifier|public
 name|SecurityProviderImpl
 parameter_list|()
 block|{
@@ -886,7 +887,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Create a new {@code SecurityProvider} instance with the given configuration      * parameters.      *      * @param configuration security configuration      */
-specifier|private
+specifier|public
 name|SecurityProviderImpl
 parameter_list|(
 annotation|@
