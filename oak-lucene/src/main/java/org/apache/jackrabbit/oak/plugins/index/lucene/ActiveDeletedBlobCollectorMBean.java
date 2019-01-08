@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jetbrains
@@ -107,6 +97,11 @@ function_decl|;
 comment|/**      * Resets the in-memory flag so that new blobs are not flagged anymore and hence      * would get marked for active deletion when active deletion is active.      */
 name|void
 name|flagActiveDeletionSafe
+parameter_list|()
+function_decl|;
+comment|/**      * Whether active deletion is disabled.      *      * @return true if disabled      */
+name|boolean
+name|isDisabled
 parameter_list|()
 function_decl|;
 block|}
