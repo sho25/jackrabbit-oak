@@ -920,6 +920,26 @@ name|IndexPlan
 name|getPlan
 parameter_list|()
 block|{
+if|if
+condition|(
+name|definition
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Index {} not loaded"
+argument_list|,
+name|indexPath
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 name|IndexPlan
 operator|.
 name|Builder
