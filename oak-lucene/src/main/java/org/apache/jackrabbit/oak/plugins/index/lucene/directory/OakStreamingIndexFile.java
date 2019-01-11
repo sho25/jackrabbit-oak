@@ -847,10 +847,6 @@ literal|"Seeking back on streaming index file {}. Current position {}, requested
 operator|+
 literal|"Please make sure that CopyOnRead and prefetch of index files are enabled."
 argument_list|,
-name|dirDetails
-operator|+
-literal|"/"
-operator|+
 name|getName
 argument_list|()
 argument_list|,

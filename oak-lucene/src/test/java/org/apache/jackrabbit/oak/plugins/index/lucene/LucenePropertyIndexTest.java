@@ -18627,10 +18627,10 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|// force CoR
+comment|//force CoR
 name|executeQuery
 argument_list|(
-literal|"select * from [mix:title] where [jcr:title] = 'x'"
+literal|"SELECT * FROM [mix:title]"
 argument_list|,
 name|SQL2
 argument_list|)
@@ -18645,7 +18645,7 @@ name|localPathBeforeReindex
 init|=
 name|corDir
 decl_stmt|;
-comment|// CoW with re-indexing
+comment|//CoW with re-indexing
 name|idx
 operator|.
 name|setProperty
