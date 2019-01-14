@@ -2691,7 +2691,9 @@ comment|// allow writer to continue
 name|s
 operator|.
 name|release
-argument_list|()
+argument_list|(
+literal|10
+argument_list|)
 expr_stmt|;
 name|writer
 operator|.
