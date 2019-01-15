@@ -2557,8 +2557,9 @@ name|void
 name|run
 parameter_list|()
 block|{
-try|try
-block|{
+name|Commit
+name|c
+init|=
 operator|new
 name|CommitBuilder
 argument_list|(
@@ -2593,6 +2594,10 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|c
 operator|.
 name|apply
 argument_list|()
@@ -2604,6 +2609,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|c
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
 name|exceptions
 operator|.
 name|add

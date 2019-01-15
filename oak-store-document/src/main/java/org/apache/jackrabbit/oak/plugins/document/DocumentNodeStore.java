@@ -2563,7 +2563,7 @@ specifier|final
 name|int
 name|updateLimit
 decl_stmt|;
-comment|/**      * A set of non-branch commit revisions that are currently in progress. A      * revision is added to this set when {@link #newTrunkCommit(Changes, RevisionVector)}      * is called and removed when the commit either:      *<ul>      *<li>Succeeds with {@link #done(Commit, boolean, CommitInfo)}</li>      *<li>Fails with {@link #canceled(Commit)} and the commit does *not*      *      have the {@link Commit#rollbackFailed()} flag set.</li>      *</ul>      * The {@link NodeDocumentSweeper} periodically goes through this set and      * reverts changes done by commits in the set that are older than the      * current head revision.      */
+comment|/**      * A set of non-branch commit revisions that are currently in progress. A      * revision is added to this set when {@link #newTrunkCommit(Changes, RevisionVector)}      * is called and removed when the commit either:      *<ul>      *<li>Succeeds with {@link #done(Commit, boolean, CommitInfo)}</li>      *<li>Fails with {@link #canceled(Commit)} and the commit was      *      successfully rolled back.</li>      *</ul>      * The {@link NodeDocumentSweeper} periodically goes through this set and      * reverts changes done by commits in the set that are older than the      * current head revision.      */
 specifier|private
 specifier|final
 name|Set
@@ -3278,6 +3278,11 @@ name|ConflictException
 name|e
 parameter_list|)
 block|{
+name|commit
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|IllegalStateException
@@ -4737,20 +4742,25 @@ condition|)
 block|{
 try|try
 block|{
+name|commitQueue
+operator|.
+name|canceled
+argument_list|(
+name|c
+operator|.
+name|getRevision
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
-operator|!
 name|c
 operator|.
-name|rollbackFailed
-argument_list|()
-operator|||
-name|c
-operator|.
-name|isEmpty
+name|rollback
 argument_list|()
 condition|)
 block|{
+comment|// rollback was successful
 name|inDoubtTrunkCommits
 operator|.
 name|remove
@@ -4762,16 +4772,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|commitQueue
-operator|.
-name|canceled
-argument_list|(
-name|c
-operator|.
-name|getRevision
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -4789,6 +4789,11 @@ else|else
 block|{
 try|try
 block|{
+name|c
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
 name|Branch
 name|b
 init|=
