@@ -3511,6 +3511,13 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|commitQueue
+operator|.
+name|setStatisticsCollector
+argument_list|(
+name|nodeStoreStatsCollector
+argument_list|)
+expr_stmt|;
 name|batchCommitQueue
 operator|=
 operator|new
@@ -8655,8 +8662,8 @@ block|}
 return|;
 block|}
 block|}
-comment|/**      * Suspends until all given revisions are either visible from the current      * headRevision or canceled from the commit queue.      *      * Only revisions from the local cluster node will be considered if the async      * delay is set to 0.      *      * @param conflictRevisions the revision to become visible.      */
-name|void
+comment|/**      * Suspends until all given revisions are either visible from the current      * headRevision or canceled from the commit queue.      *      * Only revisions from the local cluster node will be considered if the async      * delay is set to 0.      *      * @param conflictRevisions the revision to become visible.      * @return the suspend time in milliseconds.      */
+name|long
 name|suspendUntilAll
 parameter_list|(
 annotation|@
@@ -8668,6 +8675,14 @@ argument_list|>
 name|conflictRevisions
 parameter_list|)
 block|{
+name|long
+name|time
+init|=
+name|clock
+operator|.
+name|getTime
+argument_list|()
+decl_stmt|;
 comment|// do not suspend if revision is from another cluster node
 comment|// and background read is disabled
 if|if
@@ -8742,6 +8757,14 @@ name|conflictRevisions
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|clock
+operator|.
+name|getTime
+argument_list|()
+operator|-
+name|time
+return|;
 block|}
 comment|//------------------------< Observable>------------------------------------
 annotation|@

@@ -61,7 +61,7 @@ name|int
 name|numCommits
 parameter_list|)
 function_decl|;
-comment|/**      * Reports to the collector that a merge was done.      *      * @param numRetries the number of retries that were necessary.      * @param timeMillis the time in milliseconds it took to merge the changes.      * @param suspended whether the merge had to be suspended.      * @param exclusive whether the merge was holding an exclusive lock.      */
+comment|/**      * Reports to the collector that a merge was done.      *      * @param numRetries the number of retries that were necessary.      * @param timeMillis the time in milliseconds it took to merge the changes.      * @param suspendMillis the time in milliseconds the merge was suspended.      * @param exclusive whether the merge was holding an exclusive lock.      */
 name|void
 name|doneMerge
 parameter_list|(
@@ -71,14 +71,14 @@ parameter_list|,
 name|long
 name|timeMillis
 parameter_list|,
-name|boolean
-name|suspended
+name|long
+name|suspendMillis
 parameter_list|,
 name|boolean
 name|exclusive
 parameter_list|)
 function_decl|;
-comment|/**      * Reports to the collector that a merge failed.      *      * @param numRetries the number of retries that were done.      * @param timeMillis the time in milliseconds it took to attempt the merge.      * @param suspended whether the merge had to be suspended.      * @param exclusive whether the merge was holding an exclusive lock.      */
+comment|/**      * Reports to the collector that a merge failed.      *      * @param numRetries the number of retries that were done.      * @param timeMillis the time in milliseconds it took to attempt the merge.      * @param suspendMillis the time in milliseconds the merge was suspended.      * @param exclusive whether the merge was holding an exclusive lock.      */
 name|void
 name|failedMerge
 parameter_list|(
@@ -88,11 +88,43 @@ parameter_list|,
 name|long
 name|timeMillis
 parameter_list|,
-name|boolean
-name|suspended
+name|long
+name|suspendMillis
 parameter_list|,
 name|boolean
 name|exclusive
+parameter_list|)
+function_decl|;
+comment|/**      * Reports to the collector that a commit finished waiting to become the      * head of the commit queue.      *      * @param waitMicros the time it waited in microseconds to be come      *         the head of the queue.      */
+name|void
+name|doneWaitUntilHead
+parameter_list|(
+name|long
+name|waitMicros
+parameter_list|)
+function_decl|;
+comment|/**      * Reports to the collector that the commit acquired the merge lock in the      * given time.      *      * @param timeMicros the time in microseconds.      */
+name|void
+name|doneMergeLockAcquired
+parameter_list|(
+name|long
+name|timeMicros
+parameter_list|)
+function_decl|;
+comment|/**      * Reports to the collector that the commit hook processed a commit in the      * given time.      *      * @param timeMicros the time in microseconds.      */
+name|void
+name|doneCommitHookProcessed
+parameter_list|(
+name|long
+name|timeMicros
+parameter_list|)
+function_decl|;
+comment|/**      * Reports to the collector that the commit applied the changes to the      * {@code DocumentStore} in the given time.      *      * @param timeMicros the time in microseconds.      */
+name|void
+name|doneChangesApplied
+parameter_list|(
+name|long
+name|timeMicros
 parameter_list|)
 function_decl|;
 block|}
