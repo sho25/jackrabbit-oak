@@ -1621,7 +1621,9 @@ name|statsProvider
 operator|.
 name|getMeter
 argument_list|(
-literal|"corrupt-index"
+name|TrackingCorruptIndexHandler
+operator|.
+name|CORRUPT_INDEX_METER_NAME
 argument_list|,
 name|StatsOptions
 operator|.

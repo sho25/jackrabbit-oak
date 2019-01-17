@@ -298,6 +298,13 @@ name|TrackingCorruptIndexHandler
 implements|implements
 name|CorruptIndexHandler
 block|{
+specifier|static
+specifier|final
+name|String
+name|CORRUPT_INDEX_METER_NAME
+init|=
+literal|"corrupt-index"
+decl_stmt|;
 specifier|private
 specifier|final
 name|Logger
