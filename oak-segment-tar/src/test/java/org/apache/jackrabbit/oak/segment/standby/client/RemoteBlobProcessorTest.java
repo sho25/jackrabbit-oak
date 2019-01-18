@@ -233,16 +233,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -372,11 +362,6 @@ decl_stmt|;
 comment|/**      * The test relies on a particular interaction between the BlobStore and the      * FileStore.      *      *<ul>      *<li>The FileStore passes every binary whose length is grater than or      * equal to MEDIUM_LIMIT bytes to the BlobStore.</li>      *      *<li>The BlobStore creates in-memory IDs (where the binary content is      * embedded in the ID itself) if the binary's length is smaller than or      * equal to minRecordLength bytes.</li>      *      *<li>It follows that if minRecordLength is set to at least MEDIUM_LIMIT,      * the FileStore will delegate the handling of the binary to the BlobStore,      * which will create an in-memory ID embedding the content of the      * binary.</li>      *</ul>      *      *<p>      * With this configuration in place, a binary long exactly MEDIUM_LIMIT      * bytes will be passed from the File Store to the Blob Store, which will      * create an in-memory ID. The File Store will persist the in-memory ID,      * which contains the binary data itself. This binary should never be      * downloaded.      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-6749"
-argument_list|)
 specifier|public
 name|void
 name|inMemoryBinaryShouldNotBeDownloaded
