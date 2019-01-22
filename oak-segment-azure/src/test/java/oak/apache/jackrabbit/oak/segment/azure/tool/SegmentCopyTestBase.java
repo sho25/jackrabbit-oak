@@ -991,11 +991,6 @@ argument_list|(
 name|errWriter
 argument_list|)
 operator|.
-name|withVerbose
-argument_list|(
-literal|true
-argument_list|)
-operator|.
 name|build
 argument_list|()
 decl_stmt|;

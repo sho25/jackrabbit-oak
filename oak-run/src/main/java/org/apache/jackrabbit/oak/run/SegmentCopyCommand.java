@@ -91,14 +91,6 @@ name|OptionSet
 import|;
 end_import
 
-begin_import
-import|import
-name|joptsimple
-operator|.
-name|OptionSpec
-import|;
-end_import
-
 begin_class
 class|class
 name|SegmentCopyCommand
@@ -124,21 +116,6 @@ init|=
 operator|new
 name|OptionParser
 argument_list|()
-decl_stmt|;
-name|OptionSpec
-argument_list|<
-name|?
-argument_list|>
-name|verbose
-init|=
-name|parser
-operator|.
-name|accepts
-argument_list|(
-literal|"verbose"
-argument_list|,
-literal|"print detailed output about individual segments transfered"
-argument_list|)
 decl_stmt|;
 name|OptionSet
 name|options
@@ -245,16 +222,6 @@ operator|.
 name|withDestination
 argument_list|(
 name|destination
-argument_list|)
-operator|.
-name|withVerbose
-argument_list|(
-name|options
-operator|.
-name|has
-argument_list|(
-name|verbose
-argument_list|)
 argument_list|)
 operator|.
 name|withOutWriter
