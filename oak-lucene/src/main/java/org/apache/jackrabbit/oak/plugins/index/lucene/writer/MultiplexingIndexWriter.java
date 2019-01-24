@@ -167,6 +167,48 @@ name|IndexableField
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+operator|.
+name|concat
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|singleton
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|StreamSupport
+operator|.
+name|stream
+import|;
+end_import
+
 begin_class
 class|class
 name|MultiplexingIndexWriter
@@ -389,6 +431,59 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// explicitly get writers for mounts which haven't got writers even at close.
+comment|// This essentially ensures we respect DefaultIndexWriters#close's intent to
+comment|// create empty index even if nothing has been written during re-index.
+name|stream
+argument_list|(
+name|concat
+argument_list|(
+name|singleton
+argument_list|(
+name|mountInfoProvider
+operator|.
+name|getDefaultMount
+argument_list|()
+argument_list|)
+argument_list|,
+name|mountInfoProvider
+operator|.
+name|getNonDefaultMounts
+argument_list|()
+argument_list|)
+operator|.
+name|spliterator
+argument_list|()
+argument_list|,
+literal|false
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|m
+lambda|->
+name|reindex
+operator|&&
+operator|!
+name|m
+operator|.
+name|isReadOnly
+argument_list|()
+argument_list|)
+comment|// only needed when re-indexing for read-write mounts.
+comment|// reindex for ro-mount doesn't make sense in this case anyway.
+operator|.
+name|forEach
+argument_list|(
+name|m
+lambda|->
+name|getWriter
+argument_list|(
+name|m
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// open default writers for mounts that passed all our tests
 name|boolean
 name|indexUpdated
 init|=
