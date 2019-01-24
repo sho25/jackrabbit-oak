@@ -21,6 +21,18 @@ name|search
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents an instance of an index.  *  * It is typically acquired when in the planning phase and execution phase of a  * query, and released afterwards. This allows an implementation to re-use  * resources (eg. keep files open).  */
 end_comment
@@ -42,6 +54,8 @@ name|int
 name|getIndexNodeId
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nullable
 name|IndexStatistics
 name|getIndexStatistics
 parameter_list|()

@@ -180,6 +180,8 @@ name|IndexSearcher
 name|getSearcher
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nullable
 name|LuceneIndexStatistics
 name|getIndexStatistics
 parameter_list|()

@@ -1898,6 +1898,21 @@ operator|.
 name|getDefinition
 argument_list|()
 decl_stmt|;
+name|LuceneIndexStatistics
+name|stats
+init|=
+name|node
+operator|.
+name|getIndexStatistics
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|stats
+operator|!=
+literal|null
+condition|)
+block|{
 return|return
 name|Collections
 operator|.
@@ -1914,10 +1929,7 @@ name|defn
 operator|.
 name|getFulltextEntryCount
 argument_list|(
-name|node
-operator|.
-name|getIndexStatistics
-argument_list|()
+name|stats
 operator|.
 name|numDocs
 argument_list|()
@@ -1967,6 +1979,7 @@ name|build
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 comment|//No index node then no plan possible
 return|return
