@@ -2412,7 +2412,9 @@ literal|"Connected to MongoDB {} with maxReplicationLagMillis {}, "
 operator|+
 literal|"maxDeltaForModTimeIdxSecs {}, disableIndexHint {}, "
 operator|+
-literal|"clientSessionSupported {}, clientSessionInUse {}, serverStatus {}"
+literal|"clientSessionSupported {}, clientSessionInUse {}, {}, "
+operator|+
+literal|"serverStatus {}"
 argument_list|,
 name|mongoStatus
 operator|.
