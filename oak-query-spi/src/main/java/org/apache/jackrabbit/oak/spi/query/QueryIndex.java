@@ -200,11 +200,28 @@ name|NodeState
 name|rootState
 parameter_list|)
 function_decl|;
-comment|/**      * Get the unique index name.      *      * @return the index name      */
+comment|/**      * Get the generic index name (normally the index type).      *      * @return the index name      */
 name|String
 name|getIndexName
 parameter_list|()
 function_decl|;
+comment|/**      * Get the specific index name (the path of the index definition, or the      * index type if that one is unique).      *      * @return the index name      */
+specifier|default
+name|String
+name|getIndexName
+parameter_list|(
+name|Filter
+name|filter
+parameter_list|,
+name|NodeState
+name|rootState
+parameter_list|)
+block|{
+return|return
+name|getIndexName
+argument_list|()
+return|;
+block|}
 comment|/**      *  A marker interface which means this index supports executing native queries      */
 interface|interface
 name|NativeQueryIndex

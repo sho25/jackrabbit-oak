@@ -542,6 +542,7 @@ return|return
 name|queryStats
 return|;
 block|}
+specifier|public
 name|StatisticsProvider
 name|getStatisticsProvider
 parameter_list|()
