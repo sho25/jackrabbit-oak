@@ -8387,8 +8387,9 @@ name|commitValue
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
+name|Branch
+name|b
+init|=
 name|context
 operator|.
 name|getBranches
@@ -8398,16 +8399,19 @@ name|getBranch
 argument_list|(
 name|readRevision
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|b
 operator|==
 literal|null
-operator|&&
-operator|!
-name|readRevision
-operator|.
-name|isBranch
-argument_list|()
 condition|)
 block|{
+comment|// readRevision is not from a branch commit, though it may
+comment|// still be a branch revision when it references the base
+comment|// of a new branch that has not yet been created. In that
+comment|// case the branch revision is equivalent with the trunk
+comment|// revision.
 comment|// resolve commit revision
 name|revision
 operator|=
@@ -8418,7 +8422,6 @@ argument_list|,
 name|commitValue
 argument_list|)
 expr_stmt|;
-comment|// readRevision is not from a branch
 comment|// compare resolved revision as is
 return|return
 operator|!
@@ -8432,46 +8435,40 @@ return|;
 block|}
 else|else
 block|{
-comment|// on same merged branch?
-name|Revision
-name|tr
+comment|// read revision is on a branch and the change is committed
+comment|// get the base revision of the branch and check
+comment|// if change is visible from there
+name|RevisionVector
+name|baseRev
 init|=
+name|b
+operator|.
+name|getBase
+argument_list|(
 name|readRevision
 operator|.
 name|getBranchRevision
 argument_list|()
-operator|.
-name|asTrunkRevision
-argument_list|()
+argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|commitValue
-operator|.
-name|equals
+name|revision
+operator|=
+name|resolveCommitRevision
 argument_list|(
-name|context
-operator|.
-name|getCommitValue
-argument_list|(
-name|tr
+name|revision
 argument_list|,
-name|this
+name|commitValue
 argument_list|)
-argument_list|)
-condition|)
-block|{
-comment|// compare unresolved revision
+expr_stmt|;
 return|return
 operator|!
-name|readRevision
+name|baseRev
 operator|.
 name|isRevisionNewer
 argument_list|(
 name|revision
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 else|else
@@ -8511,22 +8508,67 @@ return|return
 literal|false
 return|;
 block|}
-block|}
-return|return
-name|includeRevision
-argument_list|(
+else|else
+block|{
+comment|// unmerged branch change with local clusterId
+name|Branch
+name|b
+init|=
 name|context
-argument_list|,
-name|resolveCommitRevision
+operator|.
+name|getBranches
+argument_list|()
+operator|.
+name|getBranch
 argument_list|(
-name|revision
-argument_list|,
-name|commitValue
-argument_list|)
-argument_list|,
 name|readRevision
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|b
+operator|==
+literal|null
+condition|)
+block|{
+comment|// reading on trunk never sees changes on an unmerged branch
+return|return
+literal|false
 return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|b
+operator|.
+name|containsCommit
+argument_list|(
+name|revision
+argument_list|)
+condition|)
+block|{
+comment|// read revision is on the same branch as the
+comment|// unmerged branch changes -> compare revisions as is
+return|return
+operator|!
+name|readRevision
+operator|.
+name|isRevisionNewer
+argument_list|(
+name|revision
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+comment|// read revision is on a different branch than the
+comment|// unmerged branch changes -> never visible
+return|return
+literal|false
+return|;
+block|}
+block|}
+block|}
 block|}
 comment|/**      * Returns the commit value for the given<code>revision</code>.      *      * @param revision a revision.      * @return the commit value or<code>null</code> if the revision is unknown.      */
 annotation|@
@@ -8593,159 +8635,6 @@ block|}
 block|}
 return|return
 name|value
-return|;
-block|}
-specifier|private
-specifier|static
-name|boolean
-name|includeRevision
-parameter_list|(
-name|RevisionContext
-name|context
-parameter_list|,
-name|Revision
-name|x
-parameter_list|,
-name|RevisionVector
-name|readRevision
-parameter_list|)
-block|{
-name|Branch
-name|b
-init|=
-literal|null
-decl_stmt|;
-if|if
-condition|(
-name|x
-operator|.
-name|getClusterId
-argument_list|()
-operator|==
-name|context
-operator|.
-name|getClusterId
-argument_list|()
-condition|)
-block|{
-name|RevisionVector
-name|branchRev
-init|=
-operator|new
-name|RevisionVector
-argument_list|(
-name|x
-argument_list|)
-operator|.
-name|asBranchRevision
-argument_list|(
-name|context
-operator|.
-name|getClusterId
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|b
-operator|=
-name|context
-operator|.
-name|getBranches
-argument_list|()
-operator|.
-name|getBranch
-argument_list|(
-name|branchRev
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|b
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// only include if read revision is also a branch revision
-comment|// with a history including x
-if|if
-condition|(
-name|readRevision
-operator|.
-name|isBranch
-argument_list|()
-operator|&&
-name|b
-operator|.
-name|containsCommit
-argument_list|(
-name|readRevision
-operator|.
-name|getBranchRevision
-argument_list|()
-argument_list|)
-condition|)
-block|{
-comment|// in same branch, include if the same revision or
-comment|// readRevision is newer
-return|return
-operator|!
-name|readRevision
-operator|.
-name|isRevisionNewer
-argument_list|(
-name|x
-argument_list|)
-return|;
-block|}
-comment|// not part of branch identified by requestedRevision
-return|return
-literal|false
-return|;
-block|}
-comment|// assert: x is not a branch commit
-name|b
-operator|=
-name|context
-operator|.
-name|getBranches
-argument_list|()
-operator|.
-name|getBranch
-argument_list|(
-name|readRevision
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|b
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// reset readRevision to branch base revision to make
-comment|// sure we don't include revisions committed after branch
-comment|// was created
-name|readRevision
-operator|=
-name|b
-operator|.
-name|getBase
-argument_list|(
-name|readRevision
-operator|.
-name|getBranchRevision
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-operator|!
-name|readRevision
-operator|.
-name|isRevisionNewer
-argument_list|(
-name|x
-argument_list|)
 return|;
 block|}
 comment|/**      * Get the latest property value smaller or equal the readRevision revision.      *      * @param valueMap the sorted revision-value map      * @param readRevision the maximum revision      * @param validRevisions map of revision to commit value considered valid      *                       against the given readRevision.      * @param lastRevs to keep track of the most recent modification.      * @return the latest value from the {@code readRevision} point of view.      */
