@@ -967,6 +967,10 @@ name|strictVersionCheck
 decl_stmt|;
 specifier|private
 name|boolean
+name|eagerSegmentCaching
+decl_stmt|;
+specifier|private
+name|boolean
 name|built
 decl_stmt|;
 comment|/**      * Create a new instance of a {@code FileStoreBuilder} for a file store.      * @param directory  directory where the tar files are stored      * @return a new {@code FileStoreBuilder} instance.      */
@@ -1477,6 +1481,25 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Enable eager segment caching. This proves useful when segments need to      * be cached as soon as they are created, right before persisting them to disk.      * One such scenario is the cold standby, see OAK-8006.      *      * @param eagerSegmentCaching enables eager segment caching iff {@code true}.      * @return this instance      */
+specifier|public
+name|FileStoreBuilder
+name|withEagerSegmentCaching
+parameter_list|(
+name|boolean
+name|eagerSegmentCaching
+parameter_list|)
+block|{
+name|this
+operator|.
+name|eagerSegmentCaching
+operator|=
+name|eagerSegmentCaching
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 specifier|public
 name|Backend
 name|buildProcBackend
@@ -1901,6 +1924,14 @@ parameter_list|()
 block|{
 return|return
 name|strictVersionCheck
+return|;
+block|}
+name|boolean
+name|getEagerSegmentCaching
+parameter_list|()
+block|{
+return|return
+name|eagerSegmentCaching
 return|;
 block|}
 annotation|@

@@ -1731,6 +1731,13 @@ argument_list|(
 name|IGNORE_SNFE
 argument_list|)
 expr_stmt|;
+name|builder
+operator|.
+name|withEagerSegmentCaching
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 name|FileStore
 name|store

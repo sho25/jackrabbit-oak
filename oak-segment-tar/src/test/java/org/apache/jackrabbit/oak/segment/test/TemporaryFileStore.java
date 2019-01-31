@@ -326,7 +326,7 @@ argument_list|)
 operator|.
 name|withSegmentCacheSize
 argument_list|(
-literal|0
+literal|256
 argument_list|)
 operator|.
 name|withStringCacheSize
@@ -378,6 +378,11 @@ argument_list|(
 name|SegmentNotFoundExceptionListener
 operator|.
 name|IGNORE_SNFE
+argument_list|)
+operator|.
+name|withEagerSegmentCaching
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

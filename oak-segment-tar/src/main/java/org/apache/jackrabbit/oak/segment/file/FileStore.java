@@ -859,6 +859,11 @@ init|=
 name|newGarbageCollectionStrategy
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|eagerSegmentCaching
+decl_stmt|;
 name|FileStore
 parameter_list|(
 specifier|final
@@ -1230,6 +1235,15 @@ operator|=
 name|builder
 operator|.
 name|getSnfeListener
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|eagerSegmentCaching
+operator|=
+name|builder
+operator|.
+name|getEagerSegmentCaching
 argument_list|()
 expr_stmt|;
 name|TimerStats
@@ -2554,6 +2568,19 @@ argument_list|,
 name|data
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|eagerSegmentCaching
+condition|)
+block|{
+name|segmentCache
+operator|.
+name|putSegment
+argument_list|(
+name|segment
+argument_list|)
+expr_stmt|;
+block|}
 name|generation
 operator|=
 name|segment
@@ -2601,6 +2628,9 @@ expr_stmt|;
 comment|// Keep this data segment in memory as it's likely to be accessed soon.
 if|if
 condition|(
+operator|!
+name|eagerSegmentCaching
+operator|&&
 name|segment
 operator|!=
 literal|null

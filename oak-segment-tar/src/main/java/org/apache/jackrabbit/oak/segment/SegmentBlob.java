@@ -1206,38 +1206,6 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
-comment|// if the blob id lives in the same segment, avoid reading again
-comment|// the segment, as it will trigger an SNFE on standby, see OAK-8006
-if|if
-condition|(
-name|blobId
-operator|.
-name|getSegmentId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|segment
-operator|.
-name|getSegmentId
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-name|segment
-operator|.
-name|readString
-argument_list|(
-name|blobId
-operator|.
-name|getRecordNumber
-argument_list|()
-argument_list|)
-return|;
-block|}
-else|else
-block|{
 return|return
 name|blobId
 operator|.
@@ -1252,7 +1220,6 @@ name|getRecordNumber
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 specifier|private
 name|List
