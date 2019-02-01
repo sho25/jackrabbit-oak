@@ -154,6 +154,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 specifier|public
 name|Principal
