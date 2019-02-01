@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|commons
 package|;
 end_package
 
@@ -22,6 +22,7 @@ comment|/**  * An instances of this class represents a lazy value of type {@code
 end_comment
 
 begin_class
+specifier|public
 specifier|abstract
 class|class
 name|LazyValue
