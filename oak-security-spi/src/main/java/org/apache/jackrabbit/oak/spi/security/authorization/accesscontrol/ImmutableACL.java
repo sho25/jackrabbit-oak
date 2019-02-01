@@ -233,7 +233,7 @@ specifier|private
 name|int
 name|hashCode
 decl_stmt|;
-comment|/**      * Construct a new {@code UnmodifiableAccessControlList}      *      * @param oakPath             The Oak path of this policy or {@code null}.      * @param entries             The access control entries contained in this policy.      * @param restrictionProvider The restriction provider.      * @param namePathMapper      The {@link NamePathMapper} used for conversion.      */
+comment|/**      * Construct a new {@code ImmutableACL}      *      * @param oakPath             The Oak path of this policy or {@code null}.      * @param entries             The access control entries contained in this policy.      * @param restrictionProvider The restriction provider.      * @param namePathMapper      The {@link NamePathMapper} used for conversion.      */
 specifier|public
 name|ImmutableACL
 parameter_list|(
@@ -286,6 +286,40 @@ operator|.
 name|restrictionProvider
 operator|=
 name|restrictionProvider
+expr_stmt|;
+block|}
+comment|/**      * Construct a new {@code ImmutableACL} from the given {@code AbstractAccessControlList}.      *      * @param accessControlList The base list      */
+specifier|public
+name|ImmutableACL
+parameter_list|(
+annotation|@
+name|NotNull
+name|AbstractAccessControlList
+name|accessControlList
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|accessControlList
+operator|.
+name|getOakPath
+argument_list|()
+argument_list|,
+name|accessControlList
+operator|.
+name|getEntries
+argument_list|()
+argument_list|,
+name|accessControlList
+operator|.
+name|getRestrictionProvider
+argument_list|()
+argument_list|,
+name|accessControlList
+operator|.
+name|getNamePathMapper
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< AccessControlList>---
