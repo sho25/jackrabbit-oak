@@ -17052,6 +17052,13 @@ argument_list|(
 name|clock
 argument_list|)
 expr_stmt|;
+name|ClusterNodeInfo
+operator|.
+name|setClock
+argument_list|(
+name|clock
+argument_list|)
+expr_stmt|;
 name|DocumentNodeStore
 name|ns
 init|=

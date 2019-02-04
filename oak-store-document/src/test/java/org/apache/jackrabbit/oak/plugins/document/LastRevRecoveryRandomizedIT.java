@@ -814,6 +814,17 @@ name|out
 operator|.
 name|println
 argument_list|(
+literal|"Seed: "
+operator|+
+name|SEED
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
 name|num
 operator|++
 operator|+
