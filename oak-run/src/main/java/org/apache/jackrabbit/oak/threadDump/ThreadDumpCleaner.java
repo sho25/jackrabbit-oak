@@ -489,6 +489,13 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+name|line
+operator|=
+name|removeModuleName
+argument_list|(
+name|line
+argument_list|)
+expr_stmt|;
 name|buff
 operator|.
 name|append
@@ -570,6 +577,122 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|String
+name|removeModuleName
+parameter_list|(
+name|String
+name|line
+parameter_list|)
+block|{
+comment|// remove the module name, for example in:
+comment|// at java.base@11.0.1/sun.nio.ch.ServerSocketChannelImpl.accept
+comment|// at java.management@11.0.1/sun.management.
+comment|// at platform/java.scripting@11.0.1/javax.script.SimpleBindings
+name|int
+name|atChar
+init|=
+name|line
+operator|.
+name|indexOf
+argument_list|(
+literal|'@'
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|atChar
+operator|<
+literal|0
+condition|)
+block|{
+return|return
+name|line
+return|;
+block|}
+name|int
+name|slash
+init|=
+name|line
+operator|.
+name|indexOf
+argument_list|(
+literal|'/'
+argument_list|,
+name|atChar
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|slash
+operator|<
+literal|0
+condition|)
+block|{
+return|return
+name|line
+return|;
+block|}
+name|int
+name|at
+init|=
+name|line
+operator|.
+name|indexOf
+argument_list|(
+literal|"at "
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|at
+argument_list|<
+literal|0
+operator|||
+name|at
+argument_list|>
+name|atChar
+condition|)
+block|{
+return|return
+name|line
+return|;
+block|}
+comment|// String moduleName = line.substring(at + 3, slash);
+comment|// module names seen so far:
+comment|// java.base@11.0.1
+comment|// java.desktop@11.0.1
+comment|// java.management@11.0.1
+comment|// java.xml@11.0.1
+comment|// platform/java.scripting@11.0.1
+comment|// removing the module name
+name|line
+operator|=
+name|line
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|at
+operator|+
+literal|2
+argument_list|)
+operator|+
+name|line
+operator|.
+name|substring
+argument_list|(
+name|slash
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+return|return
+name|line
+return|;
 block|}
 specifier|private
 specifier|static
