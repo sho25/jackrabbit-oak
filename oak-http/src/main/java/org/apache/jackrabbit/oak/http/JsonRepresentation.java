@@ -422,7 +422,7 @@ expr_stmt|;
 return|return
 name|factory
 operator|.
-name|createJsonGenerator
+name|createGenerator
 argument_list|(
 name|response
 operator|.
