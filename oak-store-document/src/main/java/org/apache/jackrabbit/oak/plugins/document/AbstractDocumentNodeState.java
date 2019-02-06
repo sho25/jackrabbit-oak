@@ -579,7 +579,7 @@ argument_list|)
 return|;
 block|}
 comment|//------------------------------< internal>--------------------------------
-comment|/**      * Returns {@code true} if this state has the same last revision as the      * {@code other} state.      *      * @param other the other state to compare with.      * @return {@code true} if the last revisions are equal, {@code false} otherwise.      */
+comment|/**      * Returns {@code true} if this state is equal to the {@code other} state      * by inspecting the root and last revision. Two node states are guaranteed      * to be equal if their root revisions are equal (even if the two revisions      * have different branch flags) or their last revisions are equal. This      * method may return {@code false} even if the actual states are in fact      * equal!      *      * @param other the other state to compare with.      * @return {@code true} if this state is equal to the {@code other} state      *      based on the root and last revisions.      */
 specifier|private
 name|boolean
 name|revisionEquals
@@ -588,6 +588,32 @@ name|AbstractDocumentNodeState
 name|other
 parameter_list|)
 block|{
+if|if
+condition|(
+name|this
+operator|.
+name|getRootRevision
+argument_list|()
+operator|.
+name|asTrunkRevision
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|other
+operator|.
+name|getRootRevision
+argument_list|()
+operator|.
+name|asTrunkRevision
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 return|return
 name|this
 operator|.
