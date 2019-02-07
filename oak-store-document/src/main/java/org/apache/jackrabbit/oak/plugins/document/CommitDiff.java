@@ -681,6 +681,18 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * The number of changes recorded by this commit diff. A change is defined      * as a set of updates on a document. This also includes updates for a new      * document.      *      * @return the number of changes.      */
+name|int
+name|getNumChanges
+parameter_list|()
+block|{
+return|return
+name|commit
+operator|.
+name|getNumOperations
+argument_list|()
+return|;
+block|}
 comment|//----------------------------< internal>----------------------------------
 specifier|private
 name|void

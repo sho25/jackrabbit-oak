@@ -883,6 +883,18 @@ name|bundledNodes
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the number of operations currently recorded by this commit      * builder.      *      * @return the number of operations.      */
+name|int
+name|getNumOperations
+parameter_list|()
+block|{
+return|return
+name|operations
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 comment|//-------------------------< internal>-------------------------------------
 specifier|private
 name|UpdateOp

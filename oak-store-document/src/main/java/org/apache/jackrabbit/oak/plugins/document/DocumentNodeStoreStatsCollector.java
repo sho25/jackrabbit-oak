@@ -53,18 +53,24 @@ name|void
 name|doneBranchCommit
 parameter_list|()
 function_decl|;
-comment|/**      * Report to the collector that a branch was merged.      *      * @param numCommits the number of branch commits merged.      */
+comment|/**      * Report to the collector that a branch was merged.      *      * @param numCommits the number of branch commits merged.      * @param numChanges the number of changes merged.      */
 name|void
 name|doneMergeBranch
 parameter_list|(
 name|int
 name|numCommits
+parameter_list|,
+name|int
+name|numChanges
 parameter_list|)
 function_decl|;
-comment|/**      * Reports to the collector that a merge was done.      *      * @param numRetries the number of retries that were necessary.      * @param timeMillis the time in milliseconds it took to merge the changes.      * @param suspendMillis the time in milliseconds the merge was suspended.      * @param exclusive whether the merge was holding an exclusive lock.      */
+comment|/**      * Reports to the collector that a merge was done. The number of changes      * reported with this method is the number of documents that were modified      * with the merge.      *      * @param numChanges the number of changes in this merge.      * @param numRetries the number of retries that were necessary.      * @param timeMillis the time in milliseconds it took to merge the changes.      * @param suspendMillis the time in milliseconds the merge was suspended.      * @param exclusive whether the merge was holding an exclusive lock.      */
 name|void
 name|doneMerge
 parameter_list|(
+name|int
+name|numChanges
+parameter_list|,
 name|int
 name|numRetries
 parameter_list|,
