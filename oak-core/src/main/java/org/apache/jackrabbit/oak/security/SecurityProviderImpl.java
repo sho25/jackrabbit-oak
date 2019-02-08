@@ -747,6 +747,10 @@ name|checkNotNull
 import|;
 end_import
 
+begin_comment
+comment|/**  * @deprecated Replaced by {@code org.apache.jackrabbit.oak.security.internal.SecurityProviderBuilder}  */
+end_comment
+
 begin_class
 annotation|@
 name|Deprecated
