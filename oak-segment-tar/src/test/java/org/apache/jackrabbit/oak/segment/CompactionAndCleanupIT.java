@@ -4361,7 +4361,7 @@ decl_stmt|;
 specifier|final
 name|List
 argument_list|<
-name|String
+name|Exception
 argument_list|>
 name|failedCommits
 init|=
@@ -4513,7 +4513,15 @@ name|failedCommits
 operator|.
 name|add
 argument_list|(
+operator|new
+name|ExecutionException
+argument_list|(
+literal|"Failed commit "
+operator|+
 name|nodeName
+argument_list|,
+name|e
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4572,18 +4580,24 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertTrue
+for|for
+control|(
+name|Exception
+name|failedCommit
+range|:
+name|failedCommits
+control|)
+block|{
+throw|throw
+operator|new
+name|Exception
 argument_list|(
-literal|"Failed commits: "
-operator|+
-name|failedCommits
+literal|"A background commit failed"
 argument_list|,
-name|failedCommits
-operator|.
-name|isEmpty
-argument_list|()
+name|failedCommit
 argument_list|)
-expr_stmt|;
+throw|;
+block|}
 name|Set
 argument_list|<
 name|UUID
