@@ -111,6 +111,22 @@ operator|+
 name|upgradeTo
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"(use system properties org.apache.jackrabbit.oak.plugins.document.rdb.RDBOptions.INITIALSCHEMA and org.apache.jackrabbit.oak.plugins.document.rdb.RDBOptions.UPGRADETOSCHEMA to specify initial DB schema, and schema to upgrade to)"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|String
@@ -125,15 +141,10 @@ name|out
 operator|.
 name|println
 argument_list|(
+literal|"-- "
+operator|+
 name|database
 argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|()
 expr_stmt|;
 name|RDBDocumentStoreDB
 name|ddb
@@ -166,6 +177,31 @@ name|getTableNames
 argument_list|()
 control|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|()
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"  -- creating table "
+operator|+
+name|table
+operator|+
+literal|" for schema version "
+operator|+
+name|defaultOpts
+operator|.
+name|getInitialSchema
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|System
 operator|.
 name|out
@@ -211,7 +247,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    "
+literal|"  "
 operator|+
 name|s
 argument_list|)
@@ -234,6 +270,21 @@ name|level
 operator|++
 control|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"  -- upgrading table "
+operator|+
+name|table
+operator|+
+literal|" to schema version "
+operator|+
+name|level
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|String
@@ -269,6 +320,15 @@ name|out
 operator|.
 name|println
 argument_list|()
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"   -- creating blob store tables"
+argument_list|)
 expr_stmt|;
 name|System
 operator|.
