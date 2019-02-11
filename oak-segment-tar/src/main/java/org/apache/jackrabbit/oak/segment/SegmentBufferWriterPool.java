@@ -770,6 +770,14 @@ name|equals
 argument_list|(
 name|gcGeneration
 argument_list|)
+argument_list|,
+literal|"Mismatching GC generations "
+operator|+
+name|thisGeneration
+operator|+
+literal|" != "
+operator|+
+name|gcGeneration
 argument_list|)
 expr_stmt|;
 name|writer
