@@ -721,9 +721,13 @@ specifier|private
 name|SegmentBufferWriter
 name|borrowWriter
 parameter_list|(
+annotation|@
+name|NotNull
 name|Object
 name|key
 parameter_list|,
+annotation|@
+name|NotNull
 name|GCGeneration
 name|gcGeneration
 parameter_list|)
@@ -752,34 +756,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|GCGeneration
-name|thisGeneration
-init|=
-name|this
-operator|.
-name|gcGeneration
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
-name|checkState
-argument_list|(
-name|thisGeneration
-operator|.
-name|equals
-argument_list|(
-name|gcGeneration
-argument_list|)
-argument_list|,
-literal|"Mismatching GC generations "
-operator|+
-name|thisGeneration
-operator|+
-literal|" != "
-operator|+
-name|gcGeneration
-argument_list|)
-expr_stmt|;
 name|writer
 operator|=
 operator|new
@@ -794,7 +770,7 @@ argument_list|(
 name|wid
 argument_list|)
 argument_list|,
-name|thisGeneration
+name|gcGeneration
 argument_list|)
 expr_stmt|;
 block|}
