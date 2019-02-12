@@ -266,6 +266,15 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
+literal|"rdbddldump"
+argument_list|,
+operator|new
+name|RDBDDLDumpCommand
+argument_list|()
+argument_list|)
+operator|.
+name|put
+argument_list|(
 literal|"revisions"
 argument_list|,
 operator|new
