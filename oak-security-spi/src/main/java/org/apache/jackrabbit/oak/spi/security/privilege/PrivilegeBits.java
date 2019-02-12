@@ -2161,6 +2161,29 @@ name|d
 argument_list|)
 return|;
 block|}
+comment|/**      * @return {@code true} if this instance represents one of the built-in privilege      * @see #BUILT_IN      */
+specifier|public
+name|boolean
+name|isBuiltin
+parameter_list|()
+block|{
+return|return
+name|d
+operator|.
+name|isSimple
+argument_list|()
+operator|&&
+name|BUILT_IN_BITS
+operator|.
+name|containsKey
+argument_list|(
+name|d
+operator|.
+name|longValue
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**      * Adds the other privilege bits to this instance.      *      * @param other The other privilege bits to be added.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
 annotation|@
 name|NotNull
@@ -2360,6 +2383,8 @@ specifier|public
 name|PropertyState
 name|asPropertyState
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)

@@ -79,12 +79,6 @@ begin_interface
 interface|interface
 name|PermissionStore
 block|{
-name|long
-name|DYNAMIC_ALL_BITS
-init|=
-operator|-
-literal|1
-decl_stmt|;
 comment|/**      * Loads the permission entries for the given principal and path. If no      * entries can be found for the given principal or path, {@code null} is returned.      *      * @param principalName name of the principal      * @param path access controlled path.      * @return the given {@code entries}, a new collection or {@code null}      */
 annotation|@
 name|Nullable
