@@ -71,6 +71,18 @@ name|NotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Default implementation of the {@code PrivilegeDefinition} interface.  */
 end_comment
@@ -104,12 +116,16 @@ decl_stmt|;
 specifier|public
 name|ImmutablePrivilegeDefinition
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|,
 name|boolean
 name|isAbstract
 parameter_list|,
+annotation|@
+name|Nullable
 name|Iterable
 argument_list|<
 name|String
