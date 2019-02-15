@@ -5724,7 +5724,10 @@ name|singletonMap
 argument_list|(
 literal|"mandatory"
 argument_list|,
-name|valueFactory
+name|getValueFactory
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|createValue
 argument_list|(
@@ -5815,7 +5818,10 @@ operator|new
 name|Value
 index|[]
 block|{
-name|valueFactory
+name|getValueFactory
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|createValue
 argument_list|(
@@ -5962,7 +5968,10 @@ name|singletonMap
 argument_list|(
 literal|"mandatory"
 argument_list|,
-name|valueFactory
+name|getValueFactory
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|createValue
 argument_list|(
@@ -6046,7 +6055,10 @@ operator|new
 name|Value
 index|[]
 block|{
-name|valueFactory
+name|getValueFactory
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|createValue
 argument_list|(
