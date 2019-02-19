@@ -8895,10 +8895,12 @@ comment|//would also have not be modified. In that case we can read from seconda
 name|NodeDocument
 name|cachedDoc
 init|=
-name|nodesCache
-operator|.
-name|getIfPresent
+name|getIfCached
 argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
 name|parentId
 argument_list|)
 decl_stmt|;
