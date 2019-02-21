@@ -1451,6 +1451,8 @@ name|oldest
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+block|{
 name|readGeneration
 operator|=
 name|generations
@@ -1543,6 +1545,27 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|ex
+parameter_list|)
+block|{
+comment|// OAK-8052: cleanup stores in case of failure
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Exception during PersistentCache instantiation for {}."
+argument_list|,
+name|url
+argument_list|)
+expr_stmt|;
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void
