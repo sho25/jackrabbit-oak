@@ -1440,9 +1440,8 @@ name|getAccessControlManager
 argument_list|(
 name|root
 argument_list|,
-name|NamePathMapper
-operator|.
-name|DEFAULT
+name|getNamePathMapper
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
