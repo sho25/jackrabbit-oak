@@ -203,6 +203,11 @@ name|boolean
 name|collapseJcrContentNodes
 parameter_list|()
 function_decl|;
+comment|/**      * Make all nodes / documents matching a query having name equals to 'jcr:content' collapse into their respective      * parent.      * @return {@code true} if only the parent of 'jcr:content' nodes should be returned,      * {@code false} otherwise      */
+name|boolean
+name|collapseJcrContentParents
+parameter_list|()
+function_decl|;
 comment|/**      * Provide the name of the field to be used for indexing the collapsed path of each node when {@link #collapseJcrContentNodes()}      * is set to {@code true}.      *      * @return the name of the Solr field to be used for indexing and searching on collapsed paths.      */
 annotation|@
 name|NotNull

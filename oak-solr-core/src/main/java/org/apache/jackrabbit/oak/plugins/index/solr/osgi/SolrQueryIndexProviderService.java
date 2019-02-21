@@ -389,7 +389,7 @@ specifier|final
 name|boolean
 name|QUERY_TIME_AGGREGATION_DEFAULT
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|private
 specifier|final

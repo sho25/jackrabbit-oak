@@ -203,6 +203,14 @@ name|PATH_DEPTH_FIELD
 init|=
 literal|"path_depth"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|COLLAPSE_JCR_CONTENT_PARENTS
+init|=
+literal|true
+decl_stmt|;
 block|}
 end_class
 
