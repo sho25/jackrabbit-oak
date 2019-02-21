@@ -2584,6 +2584,14 @@ operator|.
 name|NONE
 argument_list|)
 decl_stmt|;
+name|NodeState
+name|versionStorage
+init|=
+name|getVersionStorage
+argument_list|(
+name|root
+argument_list|)
+decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -2595,6 +2603,8 @@ operator|.
 name|getVersionableNodes
 argument_list|(
 name|wrappedRoot
+argument_list|,
+name|versionStorage
 argument_list|,
 operator|new
 name|TypePredicate

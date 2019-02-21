@@ -808,6 +808,9 @@ parameter_list|(
 name|NodeState
 name|root
 parameter_list|,
+name|NodeState
+name|versionStorage
+parameter_list|,
 name|TypePredicate
 name|isVersionable
 parameter_list|,
@@ -825,14 +828,6 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-decl_stmt|;
-name|NodeState
-name|versionStorage
-init|=
-name|getVersionStorage
-argument_list|(
-name|root
-argument_list|)
 decl_stmt|;
 name|getVersionableNodes
 argument_list|(
