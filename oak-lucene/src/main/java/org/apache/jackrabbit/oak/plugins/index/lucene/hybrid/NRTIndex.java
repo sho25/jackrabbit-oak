@@ -582,6 +582,19 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|boolean
+name|RETAIN_DURING_CLOSE
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.lucene.nrt.retainDuringClose"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|AtomicInteger
 name|COUNTER
 init|=
@@ -1192,6 +1205,24 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|RETAIN_DURING_CLOSE
+condition|)
+block|{
+comment|// retain entries (old style behavior)
+block|}
+else|else
+block|{
+comment|// delete all documents before closing,
+comment|// so that closing is faster (less writes are needed)
+comment|// (we anyway delete the directory after closing)
+name|indexWriter
+operator|.
+name|deleteAll
+argument_list|()
+expr_stmt|;
+block|}
 comment|// don't merge, as anyway only keep two generations
 name|indexWriter
 operator|.
