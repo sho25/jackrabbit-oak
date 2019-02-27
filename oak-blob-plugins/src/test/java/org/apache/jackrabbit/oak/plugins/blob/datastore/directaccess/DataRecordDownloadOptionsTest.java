@@ -621,18 +621,21 @@ name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|//        This proper behavior is disabled due to https://github.com/Azure/azure-sdk-for-java/issues/2900
+comment|//        (see also https://issues.apache.org/jira/browse/OAK-8013).  We can re-enable the full test
+comment|//        once the issue is resolved.  -MR
+comment|//        return String.format("%s; filename=\"%s\"; filename*=UTF-8''%s",
+comment|//                dispositionType, fileName, fileNameStar);
 return|return
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s; filename=\"%s\"; filename*=UTF-8''%s"
+literal|"%s; filename=\"%s\""
 argument_list|,
 name|dispositionType
 argument_list|,
 name|fileName
-argument_list|,
-name|fileNameStar
 argument_list|)
 return|;
 block|}
