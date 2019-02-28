@@ -419,6 +419,8 @@ argument_list|,
 name|versionStorageNode
 argument_list|,
 name|VERSION_STORE_PATH
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -444,6 +446,9 @@ annotation|@
 name|NotNull
 name|String
 name|path
+parameter_list|,
+name|boolean
+name|initPhase
 parameter_list|)
 block|{
 name|this
@@ -481,6 +486,12 @@ name|checkNotNull
 argument_list|(
 name|path
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|initPhase
+operator|=
+name|initPhase
 expr_stmt|;
 block|}
 annotation|@
@@ -611,6 +622,8 @@ name|name
 argument_list|)
 argument_list|,
 name|p
+argument_list|,
+name|initPhase
 argument_list|)
 return|;
 block|}
