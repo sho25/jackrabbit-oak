@@ -556,7 +556,7 @@ name|Builder
 argument_list|<
 name|AccessControlPolicy
 argument_list|>
-name|privs
+name|policies
 init|=
 name|ImmutableList
 operator|.
@@ -571,7 +571,7 @@ range|:
 name|acMgrs
 control|)
 block|{
-name|privs
+name|policies
 operator|.
 name|add
 argument_list|(
@@ -590,7 +590,7 @@ name|AccessControlPolicy
 argument_list|>
 name|l
 init|=
-name|privs
+name|policies
 operator|.
 name|build
 argument_list|()
@@ -926,7 +926,7 @@ name|Builder
 argument_list|<
 name|JackrabbitAccessControlPolicy
 argument_list|>
-name|privs
+name|policies
 init|=
 name|ImmutableList
 operator|.
@@ -948,7 +948,7 @@ operator|instanceof
 name|JackrabbitAccessControlManager
 condition|)
 block|{
-name|privs
+name|policies
 operator|.
 name|add
 argument_list|(
@@ -973,7 +973,7 @@ name|JackrabbitAccessControlPolicy
 argument_list|>
 name|l
 init|=
-name|privs
+name|policies
 operator|.
 name|build
 argument_list|()
@@ -1013,7 +1013,7 @@ name|Builder
 argument_list|<
 name|AccessControlPolicy
 argument_list|>
-name|privs
+name|policies
 init|=
 name|ImmutableList
 operator|.
@@ -1035,7 +1035,7 @@ operator|instanceof
 name|JackrabbitAccessControlManager
 condition|)
 block|{
-name|privs
+name|policies
 operator|.
 name|add
 argument_list|(
@@ -1060,7 +1060,7 @@ name|AccessControlPolicy
 argument_list|>
 name|l
 init|=
-name|privs
+name|policies
 operator|.
 name|build
 argument_list|()
