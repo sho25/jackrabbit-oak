@@ -232,14 +232,6 @@ import|;
 end_import
 
 begin_comment
-comment|// *<p>The test is<b>disabled</b> by default, to run it you need to set the {@code SegmentCompactionIT} system property:<br>
-end_comment
-
-begin_comment
-comment|// * {@code mvn test -Dtest=SegmentCompactionIT -Dtest.opts.memory=-Xmx4G}
-end_comment
-
-begin_comment
 comment|/**  * This test asserts that a large number of child nodes can be added in a single  * transaction. Due to its long running time the test needs to be explicitly enabled  * via {@code -Dtest=LargeNumberOfChildNodeUpdatesIT}.  * Used {@code -DLargeNumberOfChildNodeUpdatesIT.child-count=<int>} to control the number  * of child nodes used by this test. Default is 5000000.  */
 end_comment
 
