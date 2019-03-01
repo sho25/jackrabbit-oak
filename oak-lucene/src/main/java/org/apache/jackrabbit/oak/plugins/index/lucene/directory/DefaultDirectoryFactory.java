@@ -261,6 +261,20 @@ implements|implements
 name|DirectoryFactory
 block|{
 specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|READ_BEFORE_WRITE
+init|=
+operator|!
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.lucene.readBeforeWriteDisabled"
+argument_list|)
+decl_stmt|;
+specifier|private
 specifier|final
 name|IndexCopier
 name|indexCopier
@@ -398,6 +412,36 @@ literal|null
 operator|)
 condition|)
 block|{
+if|if
+condition|(
+name|READ_BEFORE_WRITE
+condition|)
+block|{
+comment|// prefetch the index when writing to it
+comment|// (copy from the remote directory to the local directory)
+comment|// to avoid having to stream it when merging
+name|String
+name|indexPath
+init|=
+name|definition
+operator|.
+name|getIndexPath
+argument_list|()
+decl_stmt|;
+name|indexCopier
+operator|.
+name|wrapForRead
+argument_list|(
+name|indexPath
+argument_list|,
+name|definition
+argument_list|,
+name|directory
+argument_list|,
+name|dirName
+argument_list|)
+expr_stmt|;
+block|}
 name|directory
 operator|=
 name|indexCopier
