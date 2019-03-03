@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A cache map. This map supports re-opening the store if this is needed.  *  * @param<K> the key type  * @param<V> the value type  */
+comment|/**  * A cache map. This map supports re-opening the store if this is needed.  *<p>  * Note that a failure to open the underlying store will be handled gracefully,  * in that the {@code CacheMap} can be constructed, but will not actually cache  * anything. The same is true for the case where the underlying store starts to  * fail and can not be re-opened.  *   * @param<K> the key type  * @param<V> the value type  */
 end_comment
 
 begin_class
@@ -185,6 +185,42 @@ expr_stmt|;
 name|openMap
 argument_list|()
 expr_stmt|;
+comment|// OAK-8051: if opening failed, immediately try to re-open,
+comment|// until either the the map is closed, or open
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|map
+operator|==
+literal|null
+operator|&&
+operator|!
+name|closed
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|map
+operator|==
+literal|null
+condition|)
+block|{
+name|reopen
+argument_list|(
+name|i
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 specifier|private
 name|void
