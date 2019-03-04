@@ -2048,6 +2048,16 @@ operator|new
 name|AtomicBoolean
 argument_list|()
 decl_stmt|;
+comment|/**      * Whether the lease update thread shall be stopped.      */
+specifier|private
+specifier|final
+name|AtomicBoolean
+name|stopLeaseUpdateThread
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
+decl_stmt|;
 comment|/**      * The cluster instance info.      */
 annotation|@
 name|NotNull
@@ -2920,7 +2930,7 @@ name|BackgroundLeaseUpdate
 argument_list|(
 name|this
 argument_list|,
-name|isDisposed
+name|stopLeaseUpdateThread
 argument_list|)
 argument_list|,
 literal|"DocumentNodeStore lease update thread "
@@ -3989,8 +3999,47 @@ operator|.
 name|joinQuietly
 argument_list|(
 name|clusterUpdateThread
-argument_list|,
+argument_list|)
+expr_stmt|;
+comment|// Stop lease update thread once no further document store operations
+comment|// are required
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Stopping LeaseUpdate thread..."
+argument_list|)
+expr_stmt|;
+name|stopLeaseUpdateThread
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+synchronized|synchronized
+init|(
+name|stopLeaseUpdateThread
+init|)
+block|{
+name|stopLeaseUpdateThread
+operator|.
+name|notifyAll
+argument_list|()
+expr_stmt|;
+block|}
+name|Utils
+operator|.
+name|joinQuietly
+argument_list|(
 name|leaseUpdateThread
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Stopped LeaseUpdate thread"
 argument_list|)
 expr_stmt|;
 comment|// now mark this cluster node as inactive by disposing the
