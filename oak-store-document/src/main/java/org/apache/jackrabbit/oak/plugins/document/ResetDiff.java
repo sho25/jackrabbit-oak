@@ -130,6 +130,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -197,6 +209,11 @@ name|NodeStateDiff
 block|{
 specifier|private
 specifier|final
+name|ResetDiff
+name|parent
+decl_stmt|;
+specifier|private
+specifier|final
 name|Revision
 name|revision
 decl_stmt|;
@@ -239,6 +256,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+literal|null
+argument_list|,
 name|revision
 argument_list|,
 literal|"/"
@@ -250,6 +269,11 @@ block|}
 specifier|private
 name|ResetDiff
 parameter_list|(
+annotation|@
+name|Nullable
+name|ResetDiff
+name|parent
+parameter_list|,
 annotation|@
 name|NotNull
 name|Revision
@@ -271,6 +295,12 @@ argument_list|>
 name|operations
 parameter_list|)
 block|{
+name|this
+operator|.
+name|parent
+operator|=
+name|parent
+expr_stmt|;
 name|this
 operator|.
 name|revision
@@ -424,6 +454,8 @@ init|=
 operator|new
 name|ResetDiff
 argument_list|(
+name|this
+argument_list|,
 name|revision
 argument_list|,
 name|p
@@ -448,6 +480,27 @@ argument_list|,
 name|revision
 argument_list|)
 expr_stmt|;
+name|NodeDocument
+operator|.
+name|setDeletedOnce
+argument_list|(
+name|op
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|parent
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// make sure branch related entries are removed also on the parent
+name|parent
+operator|.
+name|getUpdateOp
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 name|after
 operator|.
@@ -497,6 +550,8 @@ argument_list|,
 operator|new
 name|ResetDiff
 argument_list|(
+name|this
+argument_list|,
 name|revision
 argument_list|,
 name|p
@@ -537,6 +592,8 @@ init|=
 operator|new
 name|ResetDiff
 argument_list|(
+name|this
+argument_list|,
 name|revision
 argument_list|,
 name|p
@@ -650,6 +707,15 @@ expr_stmt|;
 name|NodeDocument
 operator|.
 name|removeCommitRoot
+argument_list|(
+name|update
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
+name|NodeDocument
+operator|.
+name|removeBranchCommit
 argument_list|(
 name|update
 argument_list|,
