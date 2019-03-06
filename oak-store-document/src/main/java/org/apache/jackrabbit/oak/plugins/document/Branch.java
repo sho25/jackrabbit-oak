@@ -424,7 +424,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return the initial base of this branch.      */
+comment|/**      * @return the initial base of this branch. This is a trunk revision.      */
 annotation|@
 name|NotNull
 name|RevisionVector
@@ -1154,6 +1154,7 @@ operator|=
 name|commit
 expr_stmt|;
 block|}
+comment|/**          * @return the branch base for this branch commit.          */
 name|RevisionVector
 name|getBase
 parameter_list|()

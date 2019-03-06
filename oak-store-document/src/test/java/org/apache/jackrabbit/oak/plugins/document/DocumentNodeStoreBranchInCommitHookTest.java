@@ -874,7 +874,7 @@ name|getRoot
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// must have left behind unmerged branch commits
+comment|// must not leave behind unmerged branch commits (OAK-8106)
 name|root
 operator|=
 name|Utils
@@ -912,14 +912,13 @@ name|value
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
-block|}
 name|fail
 argument_list|(
-literal|"Must have created unmerged branch commits"
+literal|"Must not leave unmerged branch commits behind"
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 specifier|private
 name|int
