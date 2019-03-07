@@ -760,6 +760,9 @@ block|}
 else|else
 block|{
 comment|// failed to create token -> fail commit()
+name|onError
+argument_list|()
+expr_stmt|;
 name|Object
 name|logId
 init|=
@@ -780,7 +783,7 @@ argument_list|)
 decl_stmt|;
 name|log
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"TokenProvider failed to create a login token for user "
 operator|+
@@ -971,14 +974,19 @@ name|UnsupportedCallbackException
 name|e
 parameter_list|)
 block|{
+name|onError
+argument_list|()
+expr_stmt|;
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

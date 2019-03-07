@@ -1413,7 +1413,7 @@ block|{
 comment|// conflict while committing changes
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
 name|error
 argument_list|,
@@ -1429,10 +1429,10 @@ else|else
 block|{
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
-literal|"Unable to get/create token store for user "
-operator|+
+literal|"Unable to get/create token store for user {}."
+argument_list|,
 name|userId
 argument_list|)
 expr_stmt|;

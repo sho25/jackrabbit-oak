@@ -1414,6 +1414,9 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+name|onError
+argument_list|()
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -1449,13 +1452,18 @@ throw|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|SyncException
+decl||
+name|RepositoryException
 name|e
 parameter_list|)
 block|{
+name|onError
+argument_list|()
+expr_stmt|;
 name|log
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"SyncHandler {} throws sync exception for '{}'"
 argument_list|,
