@@ -1950,12 +1950,9 @@ name|j
 operator|++
 control|)
 block|{
-name|double
-index|[]
-name|currentVector
+name|BytesRef
+name|featureVectorBinary
 init|=
-name|toDoubleArray
-argument_list|(
 name|indexSearcher
 operator|.
 name|doc
@@ -1974,6 +1971,21 @@ name|getBinaryValue
 argument_list|(
 name|fieldName
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|featureVectorBinary
+operator|!=
+literal|null
+condition|)
+block|{
+name|double
+index|[]
+name|currentVector
+init|=
+name|toDoubleArray
+argument_list|(
+name|featureVectorBinary
 operator|.
 name|bytes
 argument_list|)
@@ -2056,7 +2068,7 @@ name|j
 index|]
 operator|.
 name|score
-operator|+=
+operator|=
 call|(
 name|float
 call|)
@@ -2066,7 +2078,7 @@ operator|/
 name|distance
 argument_list|)
 expr_stmt|;
-comment|// additive similarity boosting
+block|}
 block|}
 block|}
 block|}
