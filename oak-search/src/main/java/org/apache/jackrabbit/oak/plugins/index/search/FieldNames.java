@@ -120,6 +120,15 @@ name|SIMILARITY_BINARY_PREFIX
 init|=
 literal|"simbin:"
 decl_stmt|;
+comment|/**      * Prefix for all field names that contains the similarity search binary values.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SIMILARITY_TAGS
+init|=
+literal|"simtags"
+decl_stmt|;
 comment|/**      * Name of the field that contains the suggest index.      */
 specifier|public
 specifier|static

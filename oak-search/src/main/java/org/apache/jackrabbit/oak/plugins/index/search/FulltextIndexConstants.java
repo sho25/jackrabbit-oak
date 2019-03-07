@@ -373,6 +373,12 @@ name|PROP_SIMILARITY_RERANK
 init|=
 literal|"similarityRerank"
 decl_stmt|;
+comment|/**      * whether property values should be indexed as tags to boost similarity search results      */
+name|String
+name|PROP_SIMILARITY_TAGS
+init|=
+literal|"similarityTags"
+decl_stmt|;
 comment|/**      * Property definition config indicating that null check support should be      * enabled for this property      */
 name|String
 name|PROP_NULL_CHECK_ENABLED
