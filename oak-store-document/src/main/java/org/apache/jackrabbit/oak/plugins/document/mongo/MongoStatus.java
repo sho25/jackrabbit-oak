@@ -1120,6 +1120,27 @@ name|BasicDBObject
 argument_list|()
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|e
+operator|.
+name|getErrorCode
+argument_list|()
+operator|==
+literal|13
+condition|)
+block|{
+comment|// "Unauthorized"
+comment|// User is not authorized to run the
+comment|// serverStatus command (OAK-8122).
+name|serverStatus
+operator|=
+operator|new
+name|BasicDBObject
+argument_list|()
+expr_stmt|;
+block|}
 else|else
 block|{
 throw|throw
