@@ -161,7 +161,7 @@ specifier|static
 name|long
 name|DELAY_MS
 init|=
-literal|10
+literal|20
 decl_stmt|;
 annotation|@
 name|Test
@@ -224,6 +224,9 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
+comment|// lower bound for processing time is accuracy on Windows (10 ms)
+comment|// because Thread.sleep() may actually sleep less than the specified
+comment|// amount of time on Windows.
 name|assertThat
 argument_list|(
 name|processingTime
@@ -234,6 +237,8 @@ argument_list|,
 name|greaterThanOrEqualTo
 argument_list|(
 name|DELAY_MS
+operator|/
+literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
