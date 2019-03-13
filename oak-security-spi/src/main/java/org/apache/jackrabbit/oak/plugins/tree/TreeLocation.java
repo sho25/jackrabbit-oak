@@ -186,6 +186,8 @@ class|class
 name|TreeLocation
 block|{
 comment|/**      * Create a new {@code TreeLocation} instance for a {@code tree}      */
+annotation|@
+name|NotNull
 specifier|public
 specifier|static
 name|TreeLocation
@@ -206,14 +208,20 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Create a new {@code TreeLocation} instance for the item      * at the given {@code path} in {@code root}.      */
+annotation|@
+name|NotNull
 specifier|public
 specifier|static
 name|TreeLocation
 name|create
 parameter_list|(
+annotation|@
+name|NotNull
 name|Root
 name|root
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -267,11 +275,15 @@ name|location
 return|;
 block|}
 comment|/**      * Equivalent to {@code create(root, "/")}      */
+annotation|@
+name|NotNull
 specifier|public
 specifier|static
 name|TreeLocation
 name|create
 parameter_list|(
+annotation|@
+name|NotNull
 name|Root
 name|root
 parameter_list|)
@@ -533,6 +545,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 specifier|public
 name|Tree
@@ -603,9 +617,13 @@ decl_stmt|;
 specifier|public
 name|PropertyLocation
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -669,6 +687,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -759,9 +779,13 @@ decl_stmt|;
 specifier|public
 name|NullLocation
 parameter_list|(
+annotation|@
+name|NotNull
 name|TreeLocation
 name|parent
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)
