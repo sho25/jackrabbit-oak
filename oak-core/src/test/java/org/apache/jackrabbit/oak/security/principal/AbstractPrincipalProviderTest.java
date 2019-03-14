@@ -2629,6 +2629,8 @@ name|findPrincipals
 argument_list|(
 literal|"testGroup"
 argument_list|,
+literal|false
+argument_list|,
 name|PrincipalManager
 operator|.
 name|SEARCH_TYPE_ALL

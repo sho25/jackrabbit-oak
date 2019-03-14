@@ -893,6 +893,8 @@ name|findPrincipals
 argument_list|(
 name|nameHint
 argument_list|,
+literal|false
+argument_list|,
 name|searchType
 argument_list|,
 literal|0
@@ -918,6 +920,10 @@ parameter_list|(
 specifier|final
 name|String
 name|nameHint
+parameter_list|,
+specifier|final
+name|boolean
+name|fullText
 parameter_list|,
 specifier|final
 name|int
