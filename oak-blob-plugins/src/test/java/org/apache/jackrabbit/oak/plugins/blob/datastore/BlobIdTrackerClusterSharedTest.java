@@ -978,8 +978,9 @@ name|this
 operator|.
 name|tracker
 operator|=
-operator|new
 name|BlobIdTracker
+operator|.
+name|build
 argument_list|(
 name|path
 argument_list|,

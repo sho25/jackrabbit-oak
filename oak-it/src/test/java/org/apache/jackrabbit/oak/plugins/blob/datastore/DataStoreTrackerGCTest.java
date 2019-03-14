@@ -4727,8 +4727,9 @@ argument_list|()
 decl_stmt|;
 name|tracker
 operator|=
-operator|new
 name|BlobIdTracker
+operator|.
+name|build
 argument_list|(
 name|trackerRoot
 argument_list|,

@@ -2864,8 +2864,9 @@ operator|)
 operator|.
 name|addTracker
 argument_list|(
-operator|new
 name|BlobIdTracker
+operator|.
+name|build
 argument_list|(
 name|getRepositoryHome
 argument_list|()

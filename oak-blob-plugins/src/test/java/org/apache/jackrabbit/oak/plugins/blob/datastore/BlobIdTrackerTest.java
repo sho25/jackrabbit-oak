@@ -719,8 +719,9 @@ name|this
 operator|.
 name|tracker
 operator|=
-operator|new
 name|BlobIdTracker
+operator|.
+name|build
 argument_list|(
 name|root
 operator|.
@@ -1358,15 +1359,6 @@ argument_list|(
 literal|"In snapshotRetrieveIgnored"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"oak.datastore.skipTracker"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
 comment|// Close and open a new object to use the system property
 name|closer
 operator|.
@@ -1377,8 +1369,9 @@ name|this
 operator|.
 name|tracker
 operator|=
-operator|new
 name|BlobIdTracker
+operator|.
+name|build
 argument_list|(
 name|root
 operator|.
@@ -1387,9 +1380,7 @@ argument_list|()
 argument_list|,
 name|repoId
 argument_list|,
-literal|100
-operator|*
-literal|60
+literal|0
 argument_list|,
 name|dataStore
 argument_list|)
@@ -1467,23 +1458,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"References file not empty"
-argument_list|,
-literal|0
-argument_list|,
-name|tracker
-operator|.
-name|store
-operator|.
-name|getBlobRecordsFile
-argument_list|()
-operator|.
-name|length
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -1524,13 +1498,6 @@ block|}
 finally|finally
 block|{
 comment|//reset the skip tracker system prop
-name|System
-operator|.
-name|clearProperty
-argument_list|(
-literal|"oak.datastore.skipTracker"
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -1621,8 +1588,9 @@ name|this
 operator|.
 name|tracker
 operator|=
-operator|new
 name|BlobIdTracker
+operator|.
+name|build
 argument_list|(
 name|root
 operator|.

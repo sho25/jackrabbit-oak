@@ -582,8 +582,9 @@ throws|throws
 name|IOException
 block|{
 return|return
-operator|new
 name|BlobIdTracker
+operator|.
+name|build
 argument_list|(
 name|root
 operator|.
