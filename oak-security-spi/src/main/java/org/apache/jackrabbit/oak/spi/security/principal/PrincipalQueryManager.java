@@ -92,12 +92,15 @@ specifier|public
 interface|interface
 name|PrincipalQueryManager
 block|{
-comment|/**      * Gets the principals matching a simple filter expression applied against      * the {@link Principal#getName() principal name} AND the specified search      * type.      * Results are expected to be sorted by the principal name.      * An implementation may limit the number of principals returned.      * If there are no matching principals, an empty iterator is returned.      * @param simpleFilter      * @param searchType Any of the following constants:      *<ul>      *<li>{@link PrincipalManager#SEARCH_TYPE_ALL}</li>      *<li>{@link PrincipalManager#SEARCH_TYPE_GROUP}</li>      *<li>{@link PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li>      *</ul>      * @param offset Offset from where to start returning results.<code>0</code> for no offset.      * @param limit Maximal number of results to return. -1 for no limit.      * @return a<code>PrincipalIterator</code> over the<code>Principal</code>s      * matching the given filter and search type.      */
+comment|/**      * Gets the principals matching a simple filter expression applied against      * the {@link Principal#getName() principal name} AND the specified search      * type.      * Results are expected to be sorted by the principal name.      * An implementation may limit the number of principals returned.      * If there are no matching principals, an empty iterator is returned.      * @param simpleFilter      * @param fullText      * @param searchType Any of the following constants:      *<ul>      *<li>{@link PrincipalManager#SEARCH_TYPE_ALL}</li>      *<li>{@link PrincipalManager#SEARCH_TYPE_GROUP}</li>      *<li>{@link PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li>      *</ul>      * @param offset Offset from where to start returning results.<code>0</code> for no offset.      * @param limit Maximal number of results to return. -1 for no limit.      * @return a<code>PrincipalIterator</code> over the<code>Principal</code>s      * matching the given filter and search type.      */
 name|PrincipalIterator
 name|findPrincipals
 parameter_list|(
 name|String
 name|simpleFilter
+parameter_list|,
+name|boolean
+name|fullText
 parameter_list|,
 name|int
 name|searchType

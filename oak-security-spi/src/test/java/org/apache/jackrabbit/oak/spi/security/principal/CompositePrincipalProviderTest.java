@@ -1339,6 +1339,8 @@ name|findPrincipals
 argument_list|(
 literal|null
 argument_list|,
+literal|false
+argument_list|,
 name|PrincipalManager
 operator|.
 name|SEARCH_TYPE_ALL
@@ -1371,6 +1373,8 @@ operator|.
 name|findPrincipals
 argument_list|(
 literal|""
+argument_list|,
+literal|false
 argument_list|,
 name|PrincipalManager
 operator|.

@@ -328,6 +328,9 @@ parameter_list|(
 name|String
 name|simpleFilter
 parameter_list|,
+name|boolean
+name|fullText
+parameter_list|,
 name|int
 name|searchType
 parameter_list|,
@@ -347,6 +350,8 @@ operator|.
 name|findPrincipals
 argument_list|(
 name|simpleFilter
+argument_list|,
+name|fullText
 argument_list|,
 name|searchType
 argument_list|,

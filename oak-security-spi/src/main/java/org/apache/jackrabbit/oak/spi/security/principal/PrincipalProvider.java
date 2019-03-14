@@ -301,7 +301,7 @@ name|int
 name|searchType
 parameter_list|)
 function_decl|;
-comment|/**      * Find the principals that match the specified nameHint and search type.      *      * @param nameHint A name hint to use for non-exact matching.      * @param searchType Limit the search to certain types of principals. Valid      * values are any of      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_ALL}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_GROUP}</li></ul>      * @param offset Offset from where to start returning results.<code>0</code> for no offset.      * @param limit Maximal number of results to return. -1 for no limit.      * @return An iterator of principals.      * @throws IllegalArgumentException if {@code offset} is negative      */
+comment|/**      * Find the principals that match the specified nameHint and search type.      *      * @param nameHint A name hint to use for non-exact matching.      * @param fullText hint to use a full text query for search      * @param searchType Limit the search to certain types of principals. Valid      * values are any of      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_ALL}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_GROUP}</li></ul>      * @param offset Offset from where to start returning results.<code>0</code> for no offset.      * @param limit Maximal number of results to return. -1 for no limit.      * @return An iterator of principals.      * @throws IllegalArgumentException if {@code offset} is negative      */
 annotation|@
 name|NotNull
 specifier|default
@@ -317,6 +317,9 @@ annotation|@
 name|Nullable
 name|String
 name|nameHint
+parameter_list|,
+name|boolean
+name|fullText
 parameter_list|,
 name|int
 name|searchType
