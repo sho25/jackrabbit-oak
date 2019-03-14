@@ -602,12 +602,6 @@ condition|(
 name|meter
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|indexes
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 name|meter
