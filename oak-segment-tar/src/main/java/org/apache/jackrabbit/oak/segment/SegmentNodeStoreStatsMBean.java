@@ -97,14 +97,21 @@ parameter_list|()
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * @return tabular data of the form<em>&lt;writer, writerDetails, writerTimeStamp&gt;</em>      * for each writer currently in the queue      * @throws OpenDataException if data is not available      */
+comment|/**      * @return tabular data of the form<em>&lt;writer, writerDetails, queued, dequed, applied&gt;</em>      * for each writer currently in the queue      * @throws OpenDataException if data is not available      */
 name|TabularData
 name|getQueuedWriters
 parameter_list|()
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * Turns on/off, depending on the value of {@code flag}, the collection of       * stack traces for each writer.      * @param flag {@code boolean} indicating whether to collect or not      */
+comment|/**      * @return data of the form<em>&lt;writer, writerDetails, queued, dequed, applied&gt;</em>      * for the writer currently in committing. @{@code null} if none.      * @throws OpenDataException if data is not available      */
+name|CompositeData
+name|getCurrentWriter
+parameter_list|()
+throws|throws
+name|OpenDataException
+function_decl|;
+comment|/**      * Turns on/off, depending on the value of {@code flag}, the collection of      * stack traces for each writer.      * @param flag {@code boolean} indicating whether to collect or not      */
 name|void
 name|setCollectStackTraces
 parameter_list|(
@@ -117,7 +124,7 @@ name|boolean
 name|isCollectStackTraces
 parameter_list|()
 function_decl|;
-comment|/**      * Modifies the maximum number of writers outside already defined      * groups to be recorded.      * Changing the default value will reset the overall collection process.      *       * @param otherWritersLimit the new size      */
+comment|/**      * Modifies the maximum number of writers outside already defined      * groups to be recorded.      * Changing the default value will reset the overall collection process.      *      * @param otherWritersLimit the new size      */
 name|void
 name|setNumberOfOtherWritersToDetail
 parameter_list|(
