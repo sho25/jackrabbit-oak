@@ -251,8 +251,6 @@ index|[]
 block|{}
 argument_list|,
 literal|10
-argument_list|,
-literal|true
 argument_list|)
 decl_stmt|;
 name|List
@@ -475,8 +473,6 @@ argument_list|(
 name|groups
 argument_list|,
 literal|10
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 for|for

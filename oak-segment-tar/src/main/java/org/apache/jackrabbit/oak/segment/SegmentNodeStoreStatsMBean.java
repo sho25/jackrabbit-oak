@@ -97,7 +97,7 @@ parameter_list|()
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * @return tabular data of the form&lt;writer,writerDetails&gt; for each writer      *         currently in the queue      * @throws OpenDataException if data is not available      */
+comment|/**      * @return tabular data of the form<em>&lt;writer, writerDetails, writerTimeStamp&gt;</em>      * for each writer currently in the queue      * @throws OpenDataException if data is not available      */
 name|TabularData
 name|getQueuedWriters
 parameter_list|()
