@@ -17,6 +17,38 @@ name|segment
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|file
+operator|.
+name|tar
+operator|.
+name|GCGeneration
+import|;
+end_import
+
 begin_comment
 comment|/**  * SegmentNodeStoreMonitor is notified for commit related operations performed by SegmentNodeStore.  */
 end_comment
@@ -54,6 +86,12 @@ name|onCommitQueued
 parameter_list|(
 name|Thread
 name|t
+parameter_list|,
+name|Supplier
+argument_list|<
+name|GCGeneration
+argument_list|>
+name|gcGeneration
 parameter_list|)
 block|{          }
 annotation|@
@@ -82,12 +120,18 @@ name|long
 name|time
 parameter_list|)
 function_decl|;
-comment|/**      * Notifies the monitor when a new commit couldn't be persisted, but was      * queued for later retry.      *       * @param t the thread which initiated the write      */
+comment|/**      * Notifies the monitor when a new commit couldn't be persisted, but was      * queued for later retry.      *       * @param t the thread which initiated the write      * @param gcGeneration the commit's gc generation      */
 name|void
 name|onCommitQueued
 parameter_list|(
 name|Thread
 name|t
+parameter_list|,
+name|Supplier
+argument_list|<
+name|GCGeneration
+argument_list|>
+name|gcGeneration
 parameter_list|)
 function_decl|;
 comment|/**      * Notifies the monitor when a queued commit was dequeued for processing.      * @param t the thread which initiated the write      * @param time the time spent in the queue      */

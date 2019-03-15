@@ -1335,6 +1335,10 @@ name|Thread
 operator|.
 name|currentThread
 argument_list|()
+argument_list|,
+name|commit
+operator|::
+name|getGCGeneration
 argument_list|)
 expr_stmt|;
 name|commitSemaphore
