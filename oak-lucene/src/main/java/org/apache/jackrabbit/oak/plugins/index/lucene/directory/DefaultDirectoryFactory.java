@@ -428,6 +428,9 @@ operator|.
 name|getIndexPath
 argument_list|()
 decl_stmt|;
+name|Directory
+name|d
+init|=
 name|indexCopier
 operator|.
 name|wrapForRead
@@ -440,6 +443,11 @@ name|directory
 argument_list|,
 name|dirName
 argument_list|)
+decl_stmt|;
+name|d
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 name|directory
