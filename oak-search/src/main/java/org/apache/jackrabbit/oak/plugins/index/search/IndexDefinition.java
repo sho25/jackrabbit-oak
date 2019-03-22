@@ -2978,7 +2978,7 @@ return|return
 name|nodeTypeIndex
 return|;
 block|}
-comment|/**      * Check if the index definition is fresh of some index has happened      *      * @param definition nodestate for Index Definition      * @return true if index has some indexed content      */
+comment|/**      * Check if the index definition is fresh, or (some) indexing has occurred.      *      * WARNING: If there is _any_ hidden node, then it is assumed that      * no reindex is needed. Even if the hidden node is completely unrelated      * and doesn't contain index data (for example the node ":status").      * See also OAK-7991.      *      * @param definition nodestate for Index Definition      * @return true if index has some indexed content      */
 specifier|public
 specifier|static
 name|boolean

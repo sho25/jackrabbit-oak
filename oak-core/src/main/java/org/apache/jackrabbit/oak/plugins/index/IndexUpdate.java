@@ -1503,6 +1503,10 @@ comment|// reindex in the case this is a new node, even though the reindex flag
 comment|// might be set to 'false' (possible via content import).
 comment|// However if its already indexed i.e. has some hidden nodes (containing hidden data)
 comment|// then no need to reindex
+comment|// WARNING: If there is _any_ hidden node, then it is assumed that
+comment|// no reindex is needed. Even if the hidden node is completely unrelated
+comment|// and doesn't contain index data (for example the node ":status").
+comment|// See also OAK-7991.
 name|boolean
 name|result
 init|=
