@@ -697,6 +697,10 @@ name|searchType
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
+annotation|@
+name|Override
 specifier|public
 name|Iterator
 argument_list|<
