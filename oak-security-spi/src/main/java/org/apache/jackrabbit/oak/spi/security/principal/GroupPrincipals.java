@@ -202,6 +202,8 @@ name|GroupPrincipal
 return|;
 block|}
 comment|/**      * Returns an enumeration of the members in the group.      * @param principal the principal whose membership is listed.      * @return an enumeration of the group members.      */
+annotation|@
+name|NotNull
 specifier|public
 specifier|static
 name|Enumeration
@@ -326,6 +328,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 specifier|static
 name|Set
@@ -334,6 +338,8 @@ name|Principal
 argument_list|>
 name|transform
 parameter_list|(
+annotation|@
+name|NotNull
 name|Set
 argument_list|<
 name|Group
@@ -381,6 +387,8 @@ name|build
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 specifier|static
 name|Enumeration
@@ -391,6 +399,8 @@ name|Principal
 argument_list|>
 name|transform
 parameter_list|(
+annotation|@
+name|NotNull
 name|Enumeration
 argument_list|<
 name|?
