@@ -1021,7 +1021,7 @@ name|syncConfig
 argument_list|)
 decl_stmt|;
 specifier|final
-name|ExternalIdentityProvider
+name|TestIdentityProvider
 name|idp
 decl_stmt|;
 specifier|final
