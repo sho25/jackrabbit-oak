@@ -1143,6 +1143,8 @@ name|principals
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -1153,6 +1155,8 @@ name|Principal
 argument_list|>
 name|findPrincipals
 parameter_list|(
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|nameHint
@@ -1191,6 +1195,8 @@ name|Principal
 argument_list|>
 name|findPrincipals
 parameter_list|(
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|nameHint

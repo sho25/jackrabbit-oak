@@ -917,6 +917,8 @@ name|Principal
 argument_list|>
 name|findPrincipals
 parameter_list|(
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|nameHint
