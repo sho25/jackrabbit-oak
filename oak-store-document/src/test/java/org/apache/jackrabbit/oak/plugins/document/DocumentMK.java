@@ -2836,7 +2836,14 @@ name|value
 argument_list|(
 name|node
 operator|.
-name|getId
+name|getPath
+argument_list|()
+operator|+
+literal|"@"
+operator|+
+name|node
+operator|.
+name|getLastRevision
 argument_list|()
 argument_list|)
 expr_stmt|;
