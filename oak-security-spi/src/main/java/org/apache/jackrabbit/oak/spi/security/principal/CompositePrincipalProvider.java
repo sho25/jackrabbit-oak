@@ -763,6 +763,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|limit
+operator|+
+name|offset
 argument_list|)
 argument_list|)
 operator|.

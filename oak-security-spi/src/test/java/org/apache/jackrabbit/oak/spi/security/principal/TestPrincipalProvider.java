@@ -81,20 +81,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Function
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Predicate
 import|;
 end_import
@@ -261,16 +247,6 @@ name|Nullable
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|final
@@ -434,7 +410,7 @@ name|all
 init|=
 name|Sets
 operator|.
-name|newHashSet
+name|newLinkedHashSet
 argument_list|(
 name|principals
 operator|.
