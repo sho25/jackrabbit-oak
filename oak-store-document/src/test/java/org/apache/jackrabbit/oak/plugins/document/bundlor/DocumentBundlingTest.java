@@ -1741,7 +1741,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|1386
+literal|1410
 argument_list|,
 name|bundledMem
 argument_list|)
