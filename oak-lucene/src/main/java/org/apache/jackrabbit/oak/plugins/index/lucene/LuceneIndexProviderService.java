@@ -2403,6 +2403,8 @@ argument_list|(
 name|bundleContext
 argument_list|,
 name|config
+argument_list|,
+name|statisticsProvider
 argument_list|)
 expr_stmt|;
 name|tracker
@@ -4068,6 +4070,9 @@ argument_list|,
 name|?
 argument_list|>
 name|config
+parameter_list|,
+name|StatisticsProvider
+name|statisticsProvider
 parameter_list|)
 block|{
 name|int
@@ -4135,6 +4140,8 @@ argument_list|,
 name|alwaysUsePreExtractedCache
 argument_list|,
 name|indexDir
+argument_list|,
+name|statisticsProvider
 argument_list|)
 expr_stmt|;
 if|if
