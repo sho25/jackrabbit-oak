@@ -909,6 +909,37 @@ operator|+
 literal|"/* xpath: /jcr:root/lib//*[@a] */"
 argument_list|)
 expr_stmt|;
+comment|// "order by @jcr:score" is kept on xpath to sql2 conversion
+comment|// (because the default is ascending)
+name|verify
+argument_list|(
+literal|"/jcr:root/content//(element(*, nt:base) | element(*, nt:folder)) order by @jcr:score"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * from [nt:base] as a where isdescendantnode(a, '/content') "
+operator|+
+literal|"/* xpath: /jcr:root/content//element(*, nt:base)  order by @jcr:score */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * from [nt:folder] as a where isdescendantnode(a, '/content') "
+operator|+
+literal|"/* xpath: /jcr:root/content// element(*, nt:folder) order by @jcr:score */ "
+operator|+
+literal|"order by [jcr:score]"
+argument_list|)
+expr_stmt|;
+comment|// "order by @jcr:score descending" is ignored on xpath to sql2 conversion
+name|verify
+argument_list|(
+literal|"/jcr:root/content//(element(*, nt:base) | element(*, nt:folder)) order by @jcr:score descending"
+argument_list|,
+literal|"select [jcr:path], [jcr:score], * from [nt:base] as a where isdescendantnode(a, '/content') "
+operator|+
+literal|"/* xpath: /jcr:root/content//element(*, nt:base)  order by @jcr:score descending */ "
+operator|+
+literal|"union select [jcr:path], [jcr:score], * from [nt:folder] as a where isdescendantnode(a, '/content') "
+operator|+
+literal|"/* xpath: /jcr:root/content// element(*, nt:folder) order by @jcr:score descending */"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void
