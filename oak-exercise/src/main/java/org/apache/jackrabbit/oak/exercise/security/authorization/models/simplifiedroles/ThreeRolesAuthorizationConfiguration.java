@@ -1648,6 +1648,10 @@ argument_list|(
 literal|"supportedPath"
 argument_list|,
 literal|null
+argument_list|,
+name|String
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}
