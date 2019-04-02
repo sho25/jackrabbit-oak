@@ -2540,11 +2540,11 @@ block|{
 name|LoginModuleMonitor
 name|monitor
 init|=
-name|spy
+name|mock
 argument_list|(
 name|LoginModuleMonitor
 operator|.
-name|NOOP
+name|class
 argument_list|)
 decl_stmt|;
 name|AbstractLoginModule
@@ -2597,11 +2597,11 @@ block|{
 name|LoginModuleMonitor
 name|monitor
 init|=
-name|spy
+name|mock
 argument_list|(
 name|LoginModuleMonitor
 operator|.
-name|NOOP
+name|class
 argument_list|)
 decl_stmt|;
 name|AbstractLoginModule
