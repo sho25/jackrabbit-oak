@@ -1499,7 +1499,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"{} not backed by index. Opting out"
 argument_list|,
