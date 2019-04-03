@@ -365,6 +365,11 @@ name|SecureFacetConfiguration
 name|secureFacetConfiguration
 decl_stmt|;
 specifier|private
+specifier|final
+name|DefaultSortedSetDocValuesReaderState
+name|state
+decl_stmt|;
+specifier|private
 name|FacetResult
 name|facetResult
 init|=
@@ -393,6 +398,12 @@ name|state
 argument_list|,
 name|facetsCollector
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|state
+operator|=
+name|state
 expr_stmt|;
 name|this
 operator|.
@@ -552,6 +563,37 @@ operator|.
 name|getStatisticalFacetSampleSize
 argument_list|()
 decl_stmt|;
+comment|// In case the hit count is less than sample size(A very small reposiotry perhaps)
+comment|// Delegate getting FacetResults to SecureSortedSetDocValuesFacetCounts to get the exact count
+comment|// instead of statistical count.<OAK-8138>
+if|if
+condition|(
+name|hitCount
+operator|<
+name|sampleSize
+condition|)
+block|{
+return|return
+operator|new
+name|SecureSortedSetDocValuesFacetCounts
+argument_list|(
+name|state
+argument_list|,
+name|facetsCollector
+argument_list|,
+name|filter
+argument_list|)
+operator|.
+name|getTopChildren
+argument_list|(
+name|topN
+argument_list|,
+name|dim
+argument_list|,
+name|path
+argument_list|)
+return|;
+block|}
 name|long
 name|randomSeed
 init|=
