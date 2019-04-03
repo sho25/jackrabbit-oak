@@ -1662,6 +1662,10 @@ name|checkpoint
 argument_list|,
 name|checkpointDebugInfo
 argument_list|()
+argument_list|,
+operator|new
+name|Exception
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -1940,6 +1944,10 @@ argument_list|,
 name|checkpoint
 argument_list|,
 name|checkpointDebugInfo
+argument_list|()
+argument_list|,
+operator|new
+name|Exception
 argument_list|()
 argument_list|)
 expr_stmt|;

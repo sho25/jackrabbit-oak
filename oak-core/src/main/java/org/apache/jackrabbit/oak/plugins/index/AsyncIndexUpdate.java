@@ -3743,6 +3743,15 @@ operator|.
 name|tempCps
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Getting checkpoint info for {}"
+argument_list|,
+name|cp
+argument_list|)
+expr_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -3921,6 +3930,22 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Checkpoint Info : '{}' for the checkpoint - {} ; keep -- {}"
+argument_list|,
+name|info
+argument_list|,
+name|cp
+argument_list|,
+name|keep
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|protected
