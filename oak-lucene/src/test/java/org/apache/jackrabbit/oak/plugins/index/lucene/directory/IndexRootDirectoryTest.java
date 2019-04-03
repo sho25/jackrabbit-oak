@@ -723,7 +723,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+literal|4
 argument_list|,
 name|dirs
 operator|.

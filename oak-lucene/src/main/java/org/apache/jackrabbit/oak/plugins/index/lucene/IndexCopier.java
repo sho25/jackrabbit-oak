@@ -2542,7 +2542,7 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"jcrPath"
+literal|"fsPath"
 block|}
 argument_list|)
 decl_stmt|;
