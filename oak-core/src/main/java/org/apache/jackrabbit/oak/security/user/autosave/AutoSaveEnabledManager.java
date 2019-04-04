@@ -601,7 +601,7 @@ name|wrap
 argument_list|(
 name|dlg
 operator|.
-name|createUser
+name|createSystemUser
 argument_list|(
 name|userID
 argument_list|,

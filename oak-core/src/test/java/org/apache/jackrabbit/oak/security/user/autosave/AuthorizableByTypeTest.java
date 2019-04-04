@@ -168,12 +168,24 @@ argument_list|()
 expr_stmt|;
 name|user
 operator|=
+name|autosaveMgr
+operator|.
+name|getAuthorizable
+argument_list|(
 name|getTestUser
 argument_list|()
+operator|.
+name|getID
+argument_list|()
+argument_list|,
+name|User
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
 name|group
 operator|=
-name|mgr
+name|autosaveMgr
 operator|.
 name|createGroup
 argument_list|(
@@ -242,7 +254,7 @@ block|{
 name|User
 name|u
 init|=
-name|mgr
+name|autosaveMgr
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -266,7 +278,7 @@ expr_stmt|;
 name|Authorizable
 name|auth
 init|=
-name|mgr
+name|autosaveMgr
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -290,7 +302,7 @@ argument_list|)
 expr_stmt|;
 name|auth
 operator|=
-name|mgr
+name|autosaveMgr
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -324,7 +336,7 @@ block|{
 name|Group
 name|g
 init|=
-name|mgr
+name|autosaveMgr
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -348,7 +360,7 @@ expr_stmt|;
 name|Authorizable
 name|auth
 init|=
-name|mgr
+name|autosaveMgr
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -372,7 +384,7 @@ argument_list|)
 expr_stmt|;
 name|auth
 operator|=
-name|mgr
+name|autosaveMgr
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -410,7 +422,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|mgr
+name|autosaveMgr
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -446,7 +458,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|mgr
+name|autosaveMgr
 operator|.
 name|getAuthorizable
 argument_list|(
