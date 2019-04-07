@@ -325,6 +325,7 @@ init|=
 name|DEFAULT_FAST_QUERY_SIZE
 decl_stmt|;
 specifier|private
+specifier|final
 name|QueryStatsMBeanImpl
 name|queryStats
 init|=

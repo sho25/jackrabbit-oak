@@ -2451,6 +2451,11 @@ argument_list|(
 literal|1
 argument_list|,
 name|scanCount
+argument_list|,
+name|query
+operator|.
+name|getSettings
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|currentRow
