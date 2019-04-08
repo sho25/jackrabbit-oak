@@ -2039,6 +2039,91 @@ literal|"true"
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|readOnly
+condition|)
+block|{
+name|ensureIndexes
+argument_list|(
+name|mongoStatus
+argument_list|)
+expr_stmt|;
+block|}
+name|this
+operator|.
+name|nodeLocks
+operator|=
+operator|new
+name|StripedNodeDocumentLocks
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|nodesCache
+operator|=
+name|builder
+operator|.
+name|buildNodeDocumentCache
+argument_list|(
+name|this
+argument_list|,
+name|nodeLocks
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Connected to MongoDB {} with maxReplicationLagMillis {}, "
+operator|+
+literal|"maxDeltaForModTimeIdxSecs {}, disableIndexHint {}, "
+operator|+
+literal|"clientSessionSupported {}, clientSessionInUse {}, {}, "
+operator|+
+literal|"serverStatus {}"
+argument_list|,
+name|mongoStatus
+operator|.
+name|getVersion
+argument_list|()
+argument_list|,
+name|maxReplicationLagMillis
+argument_list|,
+name|maxDeltaForModTimeIdxSecs
+argument_list|,
+name|disableIndexHint
+argument_list|,
+name|status
+operator|.
+name|isClientSessionSupported
+argument_list|()
+argument_list|,
+name|useClientSession
+argument_list|,
+name|db
+operator|.
+name|getWriteConcern
+argument_list|()
+argument_list|,
+name|mongoStatus
+operator|.
+name|getServerDetails
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|ensureIndexes
+parameter_list|(
+annotation|@
+name|NotNull
+name|MongoStatus
+name|mongoStatus
+parameter_list|)
+block|{
 comment|// reading documents in the nodes collection and checking
 comment|// existing indexes is performed against the MongoDB primary
 comment|// this ensures the information is up-to-date and accurate
@@ -2129,15 +2214,6 @@ name|hasModifiedIdCompoundIndex
 operator|=
 literal|false
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|builder
-operator|.
-name|getReadOnlyMode
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|warn
@@ -2149,7 +2225,6 @@ operator|+
 literal|"for the 'nodes' collection on {_modified:1, _id:1}."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// index on the _bin flag to faster access nodes with binaries for GC
 name|createIndex
@@ -2257,15 +2332,6 @@ name|MODIFIED_IN_SECS
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|builder
-operator|.
-name|getReadOnlyMode
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|warn
@@ -2283,7 +2349,6 @@ operator|+
 literal|"or higher."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// compound index on _sdType and _sdMaxRevTime
 if|if
@@ -2343,15 +2408,6 @@ name|SD_MAX_REV_TIME_IN_SECS
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|builder
-operator|.
-name|getReadOnlyMode
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|warn
@@ -2365,7 +2421,6 @@ operator|+
 literal|"{_sdType:1, _sdMaxRevTime:1}."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// index on _modified for journal entries
 name|createIndex
@@ -2381,68 +2436,6 @@ argument_list|,
 literal|false
 argument_list|,
 literal|false
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|nodeLocks
-operator|=
-operator|new
-name|StripedNodeDocumentLocks
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|nodesCache
-operator|=
-name|builder
-operator|.
-name|buildNodeDocumentCache
-argument_list|(
-name|this
-argument_list|,
-name|nodeLocks
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Connected to MongoDB {} with maxReplicationLagMillis {}, "
-operator|+
-literal|"maxDeltaForModTimeIdxSecs {}, disableIndexHint {}, "
-operator|+
-literal|"clientSessionSupported {}, clientSessionInUse {}, {}, "
-operator|+
-literal|"serverStatus {}"
-argument_list|,
-name|mongoStatus
-operator|.
-name|getVersion
-argument_list|()
-argument_list|,
-name|maxReplicationLagMillis
-argument_list|,
-name|maxDeltaForModTimeIdxSecs
-argument_list|,
-name|disableIndexHint
-argument_list|,
-name|status
-operator|.
-name|isClientSessionSupported
-argument_list|()
-argument_list|,
-name|useClientSession
-argument_list|,
-name|db
-operator|.
-name|getWriteConcern
-argument_list|()
-argument_list|,
-name|mongoStatus
-operator|.
-name|getServerDetails
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
