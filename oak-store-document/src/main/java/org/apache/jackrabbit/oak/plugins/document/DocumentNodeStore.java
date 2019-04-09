@@ -3261,6 +3261,23 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|readOnlyMode
+condition|)
+block|{
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+literal|"Unable to initialized a "
+operator|+
+literal|"read-only DocumentNodeStore. The DocumentStore nodes "
+operator|+
+literal|"collection does not have a root document."
+argument_list|)
+throw|;
+block|}
 comment|// root node is missing: repository is not initialized
 name|Revision
 name|commitRev
