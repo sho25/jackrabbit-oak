@@ -123,7 +123,7 @@ name|to
 parameter_list|,
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -132,7 +132,7 @@ name|Loader
 name|loader
 parameter_list|)
 function_decl|;
-comment|/**      * Starts a new cache entry for the diff cache. Actual changes are added      * to the entry with the {@link Entry#append(String, String)} method.      *      * @param from the from revision.      * @param to the to revision.      * @param local true indicates that the entry results from a local change,      * false if it results from an external change      * @return the cache entry.      */
+comment|/**      * Starts a new cache entry for the diff cache. Actual changes are added      * to the entry with the {@link Entry#append(Path, String)} method.      *      * @param from the from revision.      * @param to the to revision.      * @param local true indicates that the entry results from a local change,      * false if it results from an external change      * @return the cache entry.      */
 annotation|@
 name|NotNull
 specifier|abstract
@@ -164,7 +164,7 @@ argument_list|>
 name|getStats
 parameter_list|()
 function_decl|;
-comment|/**      * Parses the jsop diff returned by      * {@link #getChanges(RevisionVector, RevisionVector, String, Loader)} and reports the      * changes by calling the appropriate methods on {@link Diff}.      *      * @param jsop the jsop diff to parse.      * @param diff the diff handler.      * @return {@code true} it the complete jsop was processed or {@code false}      *      if one of the {@code diff} callbacks requested a stop.      * @throws IllegalArgumentException if {@code jsop} is malformed.      */
+comment|/**      * Parses the jsop diff returned by      * {@link #getChanges(RevisionVector, RevisionVector, Path, Loader)} and reports the      * changes by calling the appropriate methods on {@link Diff}.      *      * @param jsop the jsop diff to parse.      * @param diff the diff handler.      * @return {@code true} it the complete jsop was processed or {@code false}      *      if one of the {@code diff} callbacks requested a stop.      * @throws IllegalArgumentException if {@code jsop} is malformed.      */
 specifier|static
 name|boolean
 name|parseJsopDiff
@@ -393,7 +393,7 @@ name|append
 parameter_list|(
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@

@@ -448,7 +448,7 @@ name|sweepUpdate
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>

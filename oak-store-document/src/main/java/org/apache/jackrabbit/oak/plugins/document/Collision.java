@@ -548,7 +548,7 @@ name|RevisionContext
 name|context
 parameter_list|)
 block|{
-name|String
+name|Path
 name|p
 init|=
 name|document
@@ -556,7 +556,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|String
+name|Path
 name|commitRootPath
 decl_stmt|;
 comment|// first check if we can mark the commit with the given revision

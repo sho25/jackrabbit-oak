@@ -2790,7 +2790,7 @@ specifier|private
 specifier|static
 name|Comparator
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|reverse
 init|=

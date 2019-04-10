@@ -173,7 +173,9 @@ name|entry
 operator|.
 name|append
 argument_list|(
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|,
 literal|"^\"foo\":{}"
 argument_list|)
@@ -182,7 +184,12 @@ name|entry
 operator|.
 name|append
 argument_list|(
+name|Path
+operator|.
+name|fromString
+argument_list|(
 literal|"/foo"
+argument_list|)
 argument_list|,
 name|changes
 argument_list|(
@@ -207,7 +214,9 @@ name|from
 argument_list|,
 name|to
 argument_list|,
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|,
 literal|null
 argument_list|)
@@ -223,7 +232,12 @@ name|from
 argument_list|,
 name|to
 argument_list|,
+name|Path
+operator|.
+name|fromString
+argument_list|(
 literal|"/foo"
+argument_list|)
 argument_list|,
 literal|null
 argument_list|)

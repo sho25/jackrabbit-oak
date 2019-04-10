@@ -482,7 +482,9 @@ name|Utils
 operator|.
 name|getIdFromPath
 argument_list|(
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|)
 decl_stmt|;
 name|NodeDocument
@@ -761,9 +763,9 @@ name|externalSort
 argument_list|,
 name|invalidate
 argument_list|,
-name|PathUtils
+name|Path
 operator|.
-name|ROOT_PATH
+name|ROOT
 argument_list|,
 name|last
 argument_list|,

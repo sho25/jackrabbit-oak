@@ -219,7 +219,7 @@ argument_list|)
 decl_stmt|;
 specifier|public
 specifier|abstract
-name|String
+name|Path
 name|getPath
 parameter_list|()
 function_decl|;

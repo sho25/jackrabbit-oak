@@ -335,7 +335,9 @@ name|Utils
 operator|.
 name|getIdFromPath
 argument_list|(
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -1578,7 +1578,9 @@ name|ns3
 operator|.
 name|getNode
 argument_list|(
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|,
 name|RevisionVector
 operator|.
@@ -1600,7 +1602,9 @@ name|ns3
 operator|.
 name|getNode
 argument_list|(
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|,
 name|RevisionVector
 operator|.

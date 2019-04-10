@@ -887,14 +887,6 @@ argument_list|(
 name|valueType
 argument_list|)
 decl_stmt|;
-name|String
-name|mapName
-init|=
-name|type
-operator|.
-name|name
-argument_list|()
-decl_stmt|;
 name|CacheMap
 argument_list|<
 name|K
@@ -909,7 +901,10 @@ name|openMap
 argument_list|(
 name|generation
 argument_list|,
-name|mapName
+name|type
+operator|.
+name|getMapName
+argument_list|()
 argument_list|,
 name|b
 argument_list|)

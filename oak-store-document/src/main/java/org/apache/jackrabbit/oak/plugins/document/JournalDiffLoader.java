@@ -398,14 +398,6 @@ name|String
 name|call
 parameter_list|()
 block|{
-name|String
-name|path
-init|=
-name|node
-operator|.
-name|getPath
-argument_list|()
-decl_stmt|;
 name|RevisionVector
 name|afterRev
 init|=
@@ -427,7 +419,10 @@ operator|=
 operator|new
 name|Stats
 argument_list|(
-name|path
+name|node
+operator|.
+name|getPath
+argument_list|()
 argument_list|,
 name|beforeRev
 argument_list|,
@@ -444,6 +439,14 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+name|Path
+name|path
+init|=
+name|node
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
 name|readTrunkChanges
 argument_list|(
 name|path
@@ -510,7 +513,10 @@ name|changes
 argument_list|,
 name|wrappedCache
 argument_list|,
-name|path
+name|node
+operator|.
+name|getPath
+argument_list|()
 argument_list|,
 name|beforeRev
 argument_list|,
@@ -556,7 +562,7 @@ specifier|private
 name|void
 name|readBranchChanges
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|RevisionVector
@@ -727,7 +733,7 @@ specifier|private
 name|void
 name|readTrunkChanges
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|RevisionVector
@@ -1254,7 +1260,7 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Path
 name|path
 decl_stmt|;
 specifier|private
@@ -1282,7 +1288,7 @@ name|valueMemory
 decl_stmt|;
 name|Stats
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|RevisionVector
@@ -1373,7 +1379,7 @@ name|DiffCache
 block|{
 specifier|private
 specifier|final
-name|String
+name|Path
 name|path
 decl_stmt|;
 specifier|private
@@ -1393,7 +1399,7 @@ name|stats
 decl_stmt|;
 name|WrappedDiffCache
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|DiffCache
@@ -1449,7 +1455,7 @@ name|to
 parameter_list|,
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -1524,7 +1530,7 @@ name|append
 parameter_list|(
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -1598,7 +1604,7 @@ specifier|private
 name|void
 name|trackStats
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|RevisionVector
@@ -1620,11 +1626,7 @@ name|stats
 operator|.
 name|keyMemory
 operator|+=
-operator|new
-name|StringValue
-argument_list|(
 name|path
-argument_list|)
 operator|.
 name|getMemory
 argument_list|()

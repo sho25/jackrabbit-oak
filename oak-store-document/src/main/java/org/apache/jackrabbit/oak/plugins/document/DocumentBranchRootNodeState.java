@@ -111,7 +111,7 @@ name|branch
 parameter_list|,
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -128,6 +128,9 @@ annotation|@
 name|NotNull
 name|BundlingContext
 name|bundlingContext
+parameter_list|,
+name|int
+name|memory
 parameter_list|)
 block|{
 name|super
@@ -143,6 +146,8 @@ argument_list|,
 literal|false
 argument_list|,
 name|bundlingContext
+argument_list|,
+name|memory
 argument_list|)
 expr_stmt|;
 name|this

@@ -1333,7 +1333,7 @@ class|class
 name|BlobReferences
 block|{
 specifier|final
-name|String
+name|Path
 name|path
 decl_stmt|;
 specifier|final
@@ -1355,7 +1355,7 @@ decl_stmt|;
 specifier|public
 name|BlobReferences
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|long

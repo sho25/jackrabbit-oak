@@ -349,7 +349,7 @@ name|to
 parameter_list|,
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -458,7 +458,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -481,7 +481,7 @@ name|append
 parameter_list|(
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -500,10 +500,10 @@ return|return;
 block|}
 name|size
 operator|+=
-name|size
-argument_list|(
 name|path
-argument_list|)
+operator|.
+name|getMemory
+argument_list|()
 operator|+
 name|size
 argument_list|(
@@ -621,7 +621,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -636,7 +636,7 @@ name|Diff
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -670,7 +670,7 @@ parameter_list|)
 block|{
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -736,7 +736,12 @@ name|map
 operator|.
 name|put
 argument_list|(
+name|Path
+operator|.
+name|fromString
+argument_list|(
 name|k
+argument_list|)
 argument_list|,
 name|v
 argument_list|)
@@ -791,7 +796,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -810,6 +815,9 @@ argument_list|(
 name|entry
 operator|.
 name|getKey
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -834,7 +842,7 @@ block|}
 specifier|public
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -875,7 +883,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -889,13 +897,13 @@ control|)
 block|{
 name|m
 operator|+=
-name|size
-argument_list|(
 name|e
 operator|.
 name|getKey
 argument_list|()
-argument_list|)
+operator|.
+name|getMemory
+argument_list|()
 operator|+
 name|size
 argument_list|(
@@ -948,7 +956,7 @@ block|}
 name|String
 name|get
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{

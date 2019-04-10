@@ -4336,7 +4336,7 @@ comment|// all previous document ids can be constructed from the
 comment|// previous ranges map. this works for first level previous
 comment|// documents only.
 specifier|final
-name|String
+name|Path
 name|path
 init|=
 name|doc

@@ -284,7 +284,7 @@ decl_stmt|;
 comment|// path of the main document
 specifier|private
 specifier|final
-name|String
+name|Path
 name|mainPath
 decl_stmt|;
 specifier|public

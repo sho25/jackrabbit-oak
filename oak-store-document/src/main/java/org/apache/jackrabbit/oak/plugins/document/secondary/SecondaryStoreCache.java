@@ -45,22 +45,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
-name|PathUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|document
@@ -102,6 +86,24 @@ operator|.
 name|document
 operator|.
 name|NodeStateDiffer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|Path
 import|;
 end_import
 
@@ -554,7 +556,7 @@ specifier|public
 name|AbstractDocumentNodeState
 name|getDocumentNodeState
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|RevisionVector
@@ -566,6 +568,14 @@ parameter_list|)
 block|{
 comment|//TODO We might need skip the calls if they occur due to SecondaryStoreObserver
 comment|//doing the diff or in the startup when we try to sync the state
+name|String
+name|p
+init|=
+name|path
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
 name|PathFilter
 operator|.
 name|Result
@@ -575,7 +585,7 @@ name|pathFilter
 operator|.
 name|filter
 argument_list|(
-name|path
+name|p
 argument_list|)
 decl_stmt|;
 if|if
@@ -704,7 +714,7 @@ name|getNode
 argument_list|(
 name|matchingRoot
 argument_list|,
-name|path
+name|p
 argument_list|)
 decl_stmt|;
 if|if
@@ -748,7 +758,7 @@ specifier|public
 name|boolean
 name|isCached
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -758,6 +768,9 @@ operator|.
 name|filter
 argument_list|(
 name|path
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 operator|==
 name|PathFilter
@@ -776,7 +789,7 @@ parameter_list|(
 name|AbstractDocumentNodeState
 name|root
 parameter_list|,
-name|String
+name|Path
 name|path
 parameter_list|,
 name|RevisionVector
@@ -793,12 +806,10 @@ control|(
 name|String
 name|name
 range|:
-name|PathUtils
+name|path
 operator|.
 name|elements
-argument_list|(
-name|path
-argument_list|)
+argument_list|()
 control|)
 block|{
 name|state

@@ -536,7 +536,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -556,7 +556,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -573,7 +573,7 @@ control|)
 block|{
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -588,7 +588,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -639,7 +639,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -670,7 +670,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -684,7 +684,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -719,7 +719,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -736,7 +736,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>

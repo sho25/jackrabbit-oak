@@ -822,7 +822,7 @@ specifier|public
 name|Revision
 name|getUnsavedLastRevision
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|Revision
@@ -934,7 +934,7 @@ block|}
 comment|/**      * Returns the modified paths since the base revision of this branch until      * the given branch revision {@code r} (inclusive).      *      * @param r a commit on this branch.      * @return modified paths until {@code r}.      * @throws IllegalArgumentException if r is not a branch revision.      */
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|getModifiedPathsUntil
 parameter_list|(
@@ -982,7 +982,7 @@ name|Iterable
 argument_list|<
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 argument_list|>
 name|paths
@@ -1067,7 +1067,7 @@ argument_list|>
 argument_list|,
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 argument_list|>
 argument_list|()
@@ -1077,7 +1077,7 @@ name|Override
 specifier|public
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|apply
 parameter_list|(
@@ -1178,14 +1178,14 @@ specifier|abstract
 name|boolean
 name|isModified
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 function_decl|;
 specifier|abstract
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|getModifiedPaths
 parameter_list|()
@@ -1209,7 +1209,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|modifications
 init|=
@@ -1249,7 +1249,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|String
+name|Path
 name|p
 range|:
 name|modifications
@@ -1271,7 +1271,7 @@ name|Override
 name|boolean
 name|isModified
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -1289,7 +1289,7 @@ annotation|@
 name|Override
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|getModifiedPaths
 parameter_list|()
@@ -1316,7 +1316,7 @@ specifier|public
 name|void
 name|track
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -1437,7 +1437,7 @@ name|Override
 name|boolean
 name|isModified
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -1486,7 +1486,7 @@ annotation|@
 name|Override
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|getModifiedPaths
 parameter_list|()
@@ -1495,7 +1495,7 @@ name|Iterable
 argument_list|<
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 argument_list|>
 name|paths
@@ -1514,7 +1514,7 @@ name|BranchCommit
 argument_list|,
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 argument_list|>
 argument_list|()
@@ -1524,7 +1524,7 @@ name|Override
 specifier|public
 name|Iterable
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|apply
 parameter_list|(
@@ -1651,7 +1651,7 @@ specifier|public
 name|void
 name|track
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{

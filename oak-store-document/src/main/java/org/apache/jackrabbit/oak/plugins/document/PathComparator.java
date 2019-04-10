@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements a comparator, which sorts path string according to 1) their  * depth (highest first) and 2) the path string itself.  */
+comment|/**  * Implements a comparator, which sorts paths according to 1) their depth  * (highest first) and 2) the paths natural ordering.  */
 end_comment
 
 begin_class
@@ -70,7 +70,7 @@ name|PathComparator
 implements|implements
 name|Comparator
 argument_list|<
-name|String
+name|Path
 argument_list|>
 implements|,
 name|Serializable
@@ -89,7 +89,7 @@ specifier|static
 specifier|final
 name|Comparator
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|INSTANCE
 init|=
@@ -107,32 +107,28 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
-name|String
-name|o1
+name|Path
+name|p1
 parameter_list|,
-name|String
-name|o2
+name|Path
+name|p2
 parameter_list|)
 block|{
 name|int
 name|d1
 init|=
-name|Utils
+name|p1
 operator|.
-name|pathDepth
-argument_list|(
-name|o1
-argument_list|)
+name|getDepth
+argument_list|()
 decl_stmt|;
 name|int
 name|d2
 init|=
-name|Utils
+name|p2
 operator|.
-name|pathDepth
-argument_list|(
-name|o2
-argument_list|)
+name|getDepth
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -153,11 +149,11 @@ argument_list|)
 return|;
 block|}
 return|return
-name|o1
+name|p1
 operator|.
 name|compareTo
 argument_list|(
-name|o2
+name|p2
 argument_list|)
 return|;
 block|}

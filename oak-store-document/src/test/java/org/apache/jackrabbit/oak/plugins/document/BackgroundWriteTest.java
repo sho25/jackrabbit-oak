@@ -346,7 +346,9 @@ name|pending
 operator|.
 name|put
 argument_list|(
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|,
 name|r
 argument_list|)
@@ -363,7 +365,12 @@ name|pending
 operator|.
 name|put
 argument_list|(
+name|Path
+operator|.
+name|fromString
+argument_list|(
 name|p
+argument_list|)
 argument_list|,
 name|r
 argument_list|)

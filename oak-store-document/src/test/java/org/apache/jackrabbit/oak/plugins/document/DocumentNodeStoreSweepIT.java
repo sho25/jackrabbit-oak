@@ -882,6 +882,9 @@ operator|.
 name|getPath
 argument_list|()
 operator|.
+name|toString
+argument_list|()
+operator|.
 name|startsWith
 argument_list|(
 literal|"/node-"
@@ -959,6 +962,9 @@ return|return
 name|doc
 operator|.
 name|getPath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 return|;
 block|}

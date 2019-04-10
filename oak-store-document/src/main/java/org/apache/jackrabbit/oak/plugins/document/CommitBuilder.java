@@ -173,6 +173,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -222,7 +238,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -237,7 +253,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|addedNodes
 init|=
@@ -250,7 +266,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|removedNodes
 init|=
@@ -264,7 +280,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|String
+name|Path
 argument_list|>
 name|nodesWithBinaries
 init|=
@@ -277,9 +293,9 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
-name|String
+name|Path
 argument_list|>
 name|bundledNodes
 init|=
@@ -386,7 +402,7 @@ name|addNode
 parameter_list|(
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -430,7 +446,7 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
-name|String
+name|Path
 name|path
 init|=
 name|node
@@ -517,12 +533,12 @@ name|addBundledNode
 parameter_list|(
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|bundlingRootPath
 parameter_list|)
 block|{
@@ -557,7 +573,7 @@ name|removeNode
 parameter_list|(
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -672,7 +688,7 @@ name|updateProperty
 parameter_list|(
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -737,7 +753,7 @@ name|markNodeHavingBinary
 parameter_list|(
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -835,7 +851,7 @@ name|revision
 decl_stmt|;
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|UpdateOp
 argument_list|>
@@ -900,7 +916,7 @@ specifier|private
 name|UpdateOp
 name|getUpdateOperationForNode
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -952,7 +968,7 @@ specifier|static
 name|UpdateOp
 name|createUpdateOp
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|Revision

@@ -155,7 +155,7 @@ name|to
 parameter_list|,
 annotation|@
 name|NotNull
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@

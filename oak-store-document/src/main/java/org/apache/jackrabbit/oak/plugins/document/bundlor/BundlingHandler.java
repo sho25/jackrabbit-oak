@@ -87,6 +87,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -108,24 +126,6 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|ROOT_PATH
 import|;
 end_import
 
@@ -181,7 +181,7 @@ name|registry
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Path
 name|path
 decl_stmt|;
 specifier|private
@@ -212,7 +212,9 @@ name|BundlingContext
 operator|.
 name|NULL
 argument_list|,
-name|ROOT_PATH
+name|Path
+operator|.
+name|ROOT
 argument_list|,
 name|EMPTY_NODE
 argument_list|)
@@ -227,7 +229,7 @@ parameter_list|,
 name|BundlingContext
 name|ctx
 parameter_list|,
-name|String
+name|Path
 name|path
 parameter_list|,
 name|NodeState
@@ -303,7 +305,7 @@ return|;
 block|}
 comment|/**      * Returns absolute path of the current node      */
 specifier|public
-name|String
+name|Path
 name|getNodeFullPath
 parameter_list|()
 block|{
@@ -350,7 +352,7 @@ name|removedProps
 return|;
 block|}
 specifier|public
-name|String
+name|Path
 name|getRootBundlePath
 parameter_list|()
 block|{
@@ -378,7 +380,7 @@ name|NodeState
 name|state
 parameter_list|)
 block|{
-name|String
+name|Path
 name|childPath
 init|=
 name|childPath
@@ -517,7 +519,7 @@ name|NodeState
 name|state
 parameter_list|)
 block|{
-name|String
+name|Path
 name|childPath
 init|=
 name|childPath
@@ -619,7 +621,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|String
+name|Path
 name|childPath
 init|=
 name|childPath
@@ -726,6 +728,9 @@ name|String
 name|result
 init|=
 name|path
+operator|.
+name|toString
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -750,7 +755,7 @@ name|result
 return|;
 block|}
 specifier|private
-name|String
+name|Path
 name|childPath
 parameter_list|(
 name|String
@@ -758,9 +763,8 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|PathUtils
-operator|.
-name|concat
+operator|new
+name|Path
 argument_list|(
 name|path
 argument_list|,
@@ -790,7 +794,7 @@ specifier|static
 name|BundlingContext
 name|getBundlorContext
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|NodeState
@@ -977,7 +981,9 @@ init|=
 operator|new
 name|BundlingContext
 argument_list|(
-literal|""
+name|Path
+operator|.
+name|ROOT
 argument_list|,
 name|Matcher
 operator|.
@@ -985,7 +991,7 @@ name|NON_MATCHING
 argument_list|)
 decl_stmt|;
 specifier|final
-name|String
+name|Path
 name|bundlingPath
 decl_stmt|;
 specifier|final
@@ -1019,7 +1025,7 @@ decl_stmt|;
 specifier|public
 name|BundlingContext
 parameter_list|(
-name|String
+name|Path
 name|bundlingPath
 parameter_list|,
 name|Matcher

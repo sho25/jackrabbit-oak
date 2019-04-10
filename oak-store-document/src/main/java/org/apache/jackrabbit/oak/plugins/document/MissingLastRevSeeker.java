@@ -210,13 +210,6 @@ specifier|public
 class|class
 name|MissingLastRevSeeker
 block|{
-specifier|protected
-specifier|final
-name|String
-name|ROOT_PATH
-init|=
-literal|"/"
-decl_stmt|;
 specifier|private
 specifier|final
 name|DocumentStore
@@ -466,7 +459,9 @@ name|Utils
 operator|.
 name|getIdFromPath
 argument_list|(
-name|ROOT_PATH
+name|Path
+operator|.
+name|ROOT
 argument_list|)
 argument_list|)
 return|;

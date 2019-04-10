@@ -219,38 +219,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
-operator|.
-name|newHashMap
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-operator|.
-name|newHashSet
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -525,7 +493,7 @@ parameter_list|()
 block|{
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -540,7 +508,9 @@ name|changes
 operator|.
 name|put
 argument_list|(
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|,
 literal|"+\"foo\":{}^\"bar\":{}-\"baz\""
 argument_list|)
@@ -549,7 +519,12 @@ name|changes
 operator|.
 name|put
 argument_list|(
+name|Path
+operator|.
+name|fromString
+argument_list|(
 literal|"/foo"
+argument_list|)
 argument_list|,
 literal|""
 argument_list|)
@@ -558,7 +533,12 @@ name|changes
 operator|.
 name|put
 argument_list|(
+name|Path
+operator|.
+name|fromString
+argument_list|(
 literal|"/bar"
+argument_list|)
 argument_list|,
 literal|"+\"qux\""
 argument_list|)
@@ -567,7 +547,12 @@ name|changes
 operator|.
 name|put
 argument_list|(
+name|Path
+operator|.
+name|fromString
+argument_list|(
 literal|"/bar/qux"
+argument_list|)
 argument_list|,
 literal|""
 argument_list|)
@@ -613,7 +598,7 @@ name|Exception
 block|{
 name|Map
 argument_list|<
-name|String
+name|Path
 argument_list|,
 name|String
 argument_list|>
@@ -621,11 +606,7 @@ name|changes
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Diff

@@ -266,6 +266,9 @@ name|doc
 operator|.
 name|getPath
 argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

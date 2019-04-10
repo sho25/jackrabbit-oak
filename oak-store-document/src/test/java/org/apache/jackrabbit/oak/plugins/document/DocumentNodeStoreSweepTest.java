@@ -275,24 +275,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|ROOT_PATH
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|document
@@ -1221,7 +1203,9 @@ name|UpdateOp
 argument_list|(
 name|getIdFromPath
 argument_list|(
-name|ROOT_PATH
+name|Path
+operator|.
+name|ROOT
 argument_list|)
 argument_list|,
 literal|false
@@ -1483,6 +1467,9 @@ condition|(
 name|d
 operator|.
 name|getPath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 operator|.
 name|startsWith
@@ -1765,6 +1752,9 @@ condition|(
 name|d
 operator|.
 name|getPath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 operator|.
 name|startsWith

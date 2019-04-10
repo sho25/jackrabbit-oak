@@ -33,7 +33,7 @@ specifier|public
 name|void
 name|track
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 function_decl|;

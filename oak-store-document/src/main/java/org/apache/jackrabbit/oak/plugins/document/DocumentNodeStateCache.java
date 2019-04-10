@@ -49,7 +49,7 @@ specifier|public
 name|AbstractDocumentNodeState
 name|getDocumentNodeState
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 annotation|@
@@ -71,7 +71,7 @@ specifier|public
 name|boolean
 name|isCached
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -87,7 +87,7 @@ name|Nullable
 name|AbstractDocumentNodeState
 name|getDocumentNodeState
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|,
 name|RevisionVector
@@ -101,7 +101,7 @@ comment|/**      * Determines if given path is cached by this implementation    
 name|boolean
 name|isCached
 parameter_list|(
-name|String
+name|Path
 name|path
 parameter_list|)
 function_decl|;
