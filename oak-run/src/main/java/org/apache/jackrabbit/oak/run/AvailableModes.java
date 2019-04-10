@@ -163,6 +163,15 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
+literal|"clusternodes"
+argument_list|,
+operator|new
+name|ClusterNodesCommand
+argument_list|()
+argument_list|)
+operator|.
+name|put
+argument_list|(
 literal|"compact"
 argument_list|,
 operator|new
