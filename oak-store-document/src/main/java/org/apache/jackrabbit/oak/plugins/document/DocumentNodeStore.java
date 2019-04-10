@@ -3270,7 +3270,7 @@ throw|throw
 operator|new
 name|DocumentStoreException
 argument_list|(
-literal|"Unable to initialized a "
+literal|"Unable to initialize a "
 operator|+
 literal|"read-only DocumentNodeStore. The DocumentStore nodes "
 operator|+
