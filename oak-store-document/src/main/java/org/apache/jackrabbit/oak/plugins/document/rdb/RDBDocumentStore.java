@@ -5045,6 +5045,10 @@ specifier|private
 name|DocumentStoreStatsCollector
 name|stats
 decl_stmt|;
+specifier|private
+name|boolean
+name|readOnly
+decl_stmt|;
 comment|// VERSION column mapping in queries used by RDBVersionGCSupport
 specifier|public
 specifier|static
@@ -5339,6 +5343,15 @@ literal|"call stack of RDBDocumentStore creation"
 argument_list|)
 else|:
 literal|null
+expr_stmt|;
+name|this
+operator|.
+name|readOnly
+operator|=
+name|builder
+operator|.
+name|getReadOnlyMode
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -8024,6 +8037,23 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
+name|this
+operator|.
+name|readOnly
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Skipping table update code because store is initialized in readOnly mode"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
 operator|!
 name|hasVersionColumn
 operator|&&
@@ -8093,6 +8123,7 @@ name|tableName
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|tablesPresent
 operator|.
 name|add
@@ -8128,6 +8159,38 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"trying to read from '"
+operator|+
+name|tableName
+operator|+
+literal|"'"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|readOnly
+condition|)
+block|{
+throw|throw
+operator|new
+name|SQLException
+argument_list|(
+literal|"Would like to create table '"
+operator|+
+name|tableName
+operator|+
+literal|"', but RDBDocumentStore has been initialized in 'readonly' mode"
+argument_list|)
+throw|;
+block|}
 try|try
 block|{
 name|creatStatement
@@ -8269,13 +8332,15 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to create table "
+literal|"Failed to create table '"
 operator|+
 name|tableName
 operator|+
-literal|" in "
+literal|"' in '"
 operator|+
 name|dbname
+operator|+
+literal|"'"
 argument_list|,
 name|ex2
 argument_list|)
@@ -8774,6 +8839,15 @@ name|checkStatement
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|boolean
+name|isReadOnly
+parameter_list|()
+block|{
+return|return
+name|readOnly
+return|;
 block|}
 annotation|@
 name|Override
