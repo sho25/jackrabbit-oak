@@ -929,26 +929,6 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Enable fast diff operations.      */
-specifier|static
-specifier|final
-name|boolean
-name|FAST_DIFF
-init|=
-name|Boolean
-operator|.
-name|parseBoolean
-argument_list|(
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"oak.documentMK.fastDiff"
-argument_list|,
-literal|"true"
-argument_list|)
-argument_list|)
-decl_stmt|;
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the private branch.      */
 specifier|static
 specifier|final
