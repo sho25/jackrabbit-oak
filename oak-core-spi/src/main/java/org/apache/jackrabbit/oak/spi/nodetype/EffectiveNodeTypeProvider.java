@@ -118,9 +118,13 @@ comment|/**      * Returns {@code true} if this tree is of the specified primary
 name|boolean
 name|isNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|nodeTypeName
 parameter_list|)
@@ -156,17 +160,25 @@ comment|/**      * Returns {@code true} if {@code typeName} is of the specified 
 name|boolean
 name|isNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|typeName
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|superName
 parameter_list|)
 function_decl|;
 comment|/**      * Calculates and returns the effective node types of the given node.      * Also see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification, Section 3.7.6.5</a>      * for the definition of the effective node type.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification, Section 3.7.6.5</a>      */
+annotation|@
+name|NotNull
 name|EffectiveNodeType
 name|getEffectiveNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|Node
 name|targetNode
 parameter_list|)
@@ -174,9 +186,13 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Calculates and returns the effective node types of the given tree.      * Also see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification, Section 3.7.6.5</a>      * for the definition of the effective node type.      *      * @param tree the tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed,      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification, Section 3.7.6.5</a>      */
+annotation|@
+name|NotNull
 name|EffectiveNodeType
 name|getEffectiveNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)

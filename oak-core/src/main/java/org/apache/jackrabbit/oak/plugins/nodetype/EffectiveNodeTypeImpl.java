@@ -293,6 +293,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -430,13 +442,19 @@ name|valueFactory
 decl_stmt|;
 name|EffectiveNodeTypeImpl
 parameter_list|(
+annotation|@
+name|NotNull
 name|NodeTypeImpl
 name|primary
 parameter_list|,
+annotation|@
+name|NotNull
 name|NodeTypeImpl
 index|[]
 name|mixins
 parameter_list|,
+annotation|@
+name|NotNull
 name|ReadOnlyNodeTypeManager
 name|ntMgr
 parameter_list|)
@@ -529,9 +547,13 @@ block|}
 block|}
 name|EffectiveNodeTypeImpl
 parameter_list|(
+annotation|@
+name|NotNull
 name|NodeTypeImpl
 name|primary
 parameter_list|,
+annotation|@
+name|NotNull
 name|ReadOnlyNodeTypeManager
 name|ntMgr
 parameter_list|)
@@ -550,6 +572,8 @@ specifier|private
 name|void
 name|addNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|NodeTypeImpl
 name|type
 parameter_list|)
@@ -618,6 +642,8 @@ specifier|public
 name|boolean
 name|includesNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|nodeTypeName
 parameter_list|)
@@ -638,6 +664,8 @@ specifier|public
 name|boolean
 name|includesNodeTypes
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 index|[]
 name|nodeTypeNames
@@ -676,6 +704,8 @@ specifier|public
 name|boolean
 name|supportsMixin
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|mixin
 parameter_list|)
@@ -748,6 +778,8 @@ literal|true
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterable
@@ -801,6 +833,8 @@ return|return
 name|definitions
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -856,6 +890,8 @@ name|definitions
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterable
@@ -901,6 +937,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -948,6 +986,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterable
@@ -993,6 +1033,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1041,9 +1083,9 @@ return|;
 block|}
 comment|/**      * Return all node definitions that match the specified oak name.      *      * @param oakName An internal oak name.      * @return All node definitions that match the given internal oak name.      */
 annotation|@
-name|Override
-annotation|@
 name|NotNull
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -1051,6 +1093,8 @@ name|NodeDefinition
 argument_list|>
 name|getNamedNodeDefinitions
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|oakName
@@ -1111,9 +1155,9 @@ return|;
 block|}
 comment|/**      * Return all property definitions that match the specified oak name.      *      * @param oakName An internal oak name.      * @return All property definitions that match the given internal oak name.      */
 annotation|@
-name|Override
-annotation|@
 name|NotNull
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -1121,6 +1165,8 @@ name|PropertyDefinition
 argument_list|>
 name|getNamedPropertyDefinitions
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|oakName
 parameter_list|)
@@ -1164,9 +1210,9 @@ return|;
 block|}
 comment|/**      * Return all residual node definitions.      *      * @return All residual node definitions.      */
 annotation|@
-name|Override
-annotation|@
 name|NotNull
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -1212,9 +1258,9 @@ return|;
 block|}
 comment|/**      * Return all residual property definitions.      *      * @return All residual property definitions.      */
 annotation|@
-name|Override
-annotation|@
 name|NotNull
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -1264,6 +1310,8 @@ specifier|public
 name|void
 name|checkSetProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -1420,6 +1468,8 @@ specifier|public
 name|void
 name|checkRemoveProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)
@@ -1483,6 +1533,8 @@ specifier|public
 name|void
 name|checkMandatoryItems
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -1666,11 +1718,15 @@ throw|;
 block|}
 comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under a parent with this effective type.      *      * @param propertyName The internal oak name of the property for which the      * definition should be retrieved.      * @param isMultiple {@code true} if the target property is multi-valued.      * @param type The target type of the property.      * @param exactTypeMatch {@code true} if the required type of the definition      * must exactly match the type of the target property.      * @return the applicable definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      */
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|PropertyDefinition
 name|getPropertyDefinition
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|propertyName
 parameter_list|,
@@ -1804,11 +1860,15 @@ throw|;
 block|}
 comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under a parent with this effective type.      *      * @param name The internal oak name of the property for which the definition should be retrieved.      * @param type The target type of the property.      * @param unknownMultiple {@code true} if the target property has an unknown type, {@code false} if it is known to be a multi-valued property.      * @return the applicable definition for the target property or {@code null} if no matching definition can be found.      */
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 specifier|public
 name|PropertyDefinition
 name|getPropertyDefinition
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|,
@@ -1990,14 +2050,20 @@ return|;
 block|}
 comment|/**      *      * @param childName The internal oak name of the target node.      * @param childEffective      * @return the node definition      * @throws ConstraintViolationException      */
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|NodeDefinition
 name|getNodeDefinition
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|childName
 parameter_list|,
+annotation|@
+name|Nullable
 name|EffectiveNodeType
 name|childEffective
 parameter_list|)
@@ -2111,10 +2177,14 @@ argument_list|)
 throw|;
 block|}
 comment|//------------------------------------------------------------< private>---
+annotation|@
+name|NotNull
 specifier|private
 name|PropertyDefinition
 name|getDefinition
 parameter_list|(
+annotation|@
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|)

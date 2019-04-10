@@ -1136,9 +1136,13 @@ specifier|public
 name|boolean
 name|isNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|oakNtName
 parameter_list|)
@@ -1366,10 +1370,6 @@ name|NotNull
 name|String
 name|nodeTypeName
 parameter_list|)
-throws|throws
-name|NoSuchNodeTypeException
-throws|,
-name|RepositoryException
 block|{
 comment|// shortcut
 if|if
@@ -1534,9 +1534,13 @@ specifier|public
 name|boolean
 name|isNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|typeName
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|superName
 parameter_list|)
@@ -1555,11 +1559,15 @@ return|;
 block|}
 comment|/**      * Returns all the node types of the given node, in a breadth-first      * traversal order of the type hierarchy.      *      * @param node node instance      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      */
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|EffectiveNodeType
 name|getEffectiveNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|Node
 name|node
 parameter_list|)
@@ -1644,11 +1652,15 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|EffectiveNodeType
 name|getEffectiveNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -1944,9 +1956,13 @@ specifier|public
 name|PropertyDefinition
 name|getDefinition
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
+annotation|@
+name|NotNull
 name|PropertyState
 name|property
 parameter_list|,
@@ -2000,9 +2016,13 @@ argument_list|)
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
+annotation|@
+name|NotNull
 name|NodeTypeImpl
 name|internalGetNodeType
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|oakName
 parameter_list|)

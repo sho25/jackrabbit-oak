@@ -169,9 +169,13 @@ name|NotNull
 name|NodeDefinition
 name|getDefinition
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
+annotation|@
+name|NotNull
 name|Tree
 name|targetNode
 parameter_list|)
@@ -186,9 +190,13 @@ name|NotNull
 name|PropertyDefinition
 name|getDefinition
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|parent
 parameter_list|,
+annotation|@
+name|NotNull
 name|PropertyState
 name|propertyState
 parameter_list|,
