@@ -135,6 +135,34 @@ name|AbstractJCRTest
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_DATA
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_PRIMARYTYPE
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -1154,6 +1182,75 @@ name|e
 parameter_list|)
 block|{
 comment|// success
+block|}
+block|}
+comment|/**      * @see<a href="https://issues.apache.org/jira/browse/OAK-8212">OAK-8212</a>      */
+specifier|public
+name|void
+name|testNoMatchingPropertyDefinition
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// jcr:data must be BINARY not BOOLEAN -> should fail
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+operator|+
+literal|"<sv:node sv:name=\"resourceName\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>oak:Resource</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:data\" sv:type=\"Boolean\"><sv:value>true</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+try|try
+block|{
+name|superuser
+operator|.
+name|importXML
+argument_list|(
+name|path
+argument_list|,
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|xml
+operator|.
+name|getBytes
+argument_list|()
+argument_list|)
+argument_list|,
+name|ImportUUIDBehavior
+operator|.
+name|IMPORT_UUID_CREATE_NEW
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"ConstraintViolationException expected"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ConstraintViolationException
+name|e
+parameter_list|)
+block|{
+comment|// success
+name|assertEquals
+argument_list|(
+literal|"No matching property definition found for jcr:data"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}

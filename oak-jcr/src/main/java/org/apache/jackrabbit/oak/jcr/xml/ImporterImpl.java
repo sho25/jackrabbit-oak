@@ -1839,6 +1839,26 @@ decl_stmt|;
 if|if
 condition|(
 name|def
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ConstraintViolationException
+argument_list|(
+literal|"No matching property definition found for "
+operator|+
+name|pi
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|def
 operator|.
 name|isProtected
 argument_list|()
