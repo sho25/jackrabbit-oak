@@ -33,7 +33,7 @@ name|base
 operator|.
 name|Suppliers
 operator|.
-name|ofInstance
+name|memoize
 import|;
 end_import
 
@@ -239,8 +239,10 @@ name|this
 operator|.
 name|documentStoreSupplier
 operator|=
-name|ofInstance
+name|memoize
 argument_list|(
+parameter_list|()
+lambda|->
 operator|new
 name|RDBDocumentStore
 argument_list|(
@@ -297,8 +299,10 @@ name|this
 operator|.
 name|documentStoreSupplier
 operator|=
-name|ofInstance
+name|memoize
 argument_list|(
+parameter_list|()
+lambda|->
 operator|new
 name|RDBDocumentStore
 argument_list|(
