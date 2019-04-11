@@ -2978,9 +2978,9 @@ name|ReadOnlyNodeTypeManager
 argument_list|()
 block|{
 annotation|@
-name|Override
+name|NotNull
 annotation|@
-name|Nullable
+name|Override
 specifier|protected
 name|Tree
 name|getTypes

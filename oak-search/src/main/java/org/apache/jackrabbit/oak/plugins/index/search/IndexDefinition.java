@@ -279,6 +279,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|Root
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Tree
 import|;
 end_import
@@ -443,7 +459,9 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|TreeUtil
+name|factories
+operator|.
+name|RootFactory
 import|;
 end_import
 
@@ -3801,9 +3819,9 @@ name|ntReg
 init|=
 name|createNodeTypeManager
 argument_list|(
-name|TreeFactory
+name|RootFactory
 operator|.
-name|createReadOnlyTree
+name|createReadOnlyRoot
 argument_list|(
 name|root
 argument_list|)
@@ -7706,7 +7724,7 @@ name|ReadOnlyNodeTypeManager
 name|createNodeTypeManager
 parameter_list|(
 specifier|final
-name|Tree
+name|Root
 name|root
 parameter_list|)
 block|{
@@ -7716,6 +7734,8 @@ name|ReadOnlyNodeTypeManager
 argument_list|()
 block|{
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|protected
 name|Tree
@@ -7723,12 +7743,10 @@ name|getTypes
 parameter_list|()
 block|{
 return|return
-name|TreeUtil
+name|root
 operator|.
 name|getTree
 argument_list|(
-name|root
-argument_list|,
 name|NODE_TYPES_PATH
 argument_list|)
 return|;

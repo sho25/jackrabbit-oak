@@ -627,9 +627,9 @@ name|jcrName
 argument_list|)
 return|;
 block|}
-comment|/**      * @return  {@link org.apache.jackrabbit.oak.api.Tree} instance where the node types      * are stored or {@code null} if none.      */
+comment|/**      * Returns the {@link Tree} instance where the node types are stored. This      * method never returns {@code null} and may return a {@code Tree} that      * does not exist (see {@link Tree#exists()} when there are no types stored.      *      * @return {@link Tree} instance where the node types are stored.      */
 annotation|@
-name|Nullable
+name|NotNull
 specifier|protected
 specifier|abstract
 name|Tree
@@ -686,6 +686,8 @@ name|ReadOnlyNodeTypeManager
 argument_list|()
 block|{
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|protected
 name|Tree
@@ -730,18 +732,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|Tree
-name|types
-init|=
+return|return
 name|getTypes
 argument_list|()
-decl_stmt|;
-return|return
-name|types
-operator|!=
-literal|null
-operator|&&
-name|types
 operator|.
 name|hasChild
 argument_list|(
@@ -800,13 +793,6 @@ init|=
 name|getTypes
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|types
-operator|!=
-literal|null
-condition|)
-block|{
 name|NamePathMapper
 name|mapper
 init|=
@@ -837,7 +823,6 @@ name|mapper
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 operator|new
@@ -2035,13 +2020,6 @@ init|=
 name|getTypes
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|types
-operator|!=
-literal|null
-condition|)
-block|{
 name|Tree
 name|type
 init|=
@@ -2070,7 +2048,6 @@ name|getNamePathMapper
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 throw|throw
 operator|new

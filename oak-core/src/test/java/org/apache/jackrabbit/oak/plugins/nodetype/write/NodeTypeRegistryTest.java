@@ -1601,6 +1601,8 @@ name|getLatestRoot
 argument_list|()
 decl_stmt|;
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|protected
 name|Tree
@@ -1625,6 +1627,8 @@ operator|new
 name|ReadWriteNodeTypeManager
 argument_list|()
 block|{
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|protected
@@ -1883,6 +1887,8 @@ operator|new
 name|ReadWriteNodeTypeManager
 argument_list|()
 block|{
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|protected

@@ -319,6 +319,8 @@ name|ReadWriteNodeTypeManager
 argument_list|()
 block|{
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|protected
 name|Tree

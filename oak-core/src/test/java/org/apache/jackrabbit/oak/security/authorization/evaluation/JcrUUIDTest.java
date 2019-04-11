@@ -368,6 +368,8 @@ name|root
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|protected
 name|Tree
