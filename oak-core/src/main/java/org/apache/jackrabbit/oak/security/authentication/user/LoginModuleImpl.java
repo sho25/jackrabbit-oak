@@ -789,6 +789,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|credentials
+operator|!=
+literal|null
+condition|)
+block|{
 name|subject
 operator|.
 name|getPublicCredentials
@@ -799,6 +806,7 @@ argument_list|(
 name|credentials
 argument_list|)
 expr_stmt|;
+block|}
 name|setAuthInfo
 argument_list|(
 name|createAuthInfo
@@ -1063,6 +1071,8 @@ return|return
 name|uid
 return|;
 block|}
+annotation|@
+name|Nullable
 specifier|private
 name|String
 name|getAnonymousId
