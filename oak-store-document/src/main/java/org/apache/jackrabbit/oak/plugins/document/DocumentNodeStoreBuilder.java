@@ -894,41 +894,21 @@ argument_list|,
 literal|50
 argument_list|)
 decl_stmt|;
-comment|/**      * Enable or disable the LIRS cache (null to use the default setting for this configuration).      */
+comment|/**      * Whether to use the CacheLIRS (default) or the Guava cache implementation.      */
 specifier|private
 specifier|static
 specifier|final
-name|Boolean
+name|boolean
 name|LIRS_CACHE
-decl_stmt|;
-static|static
-block|{
-name|String
-name|s
 init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"oak.documentMK.lirsCache"
-argument_list|)
-decl_stmt|;
-name|LIRS_CACHE
-operator|=
-name|s
-operator|==
-literal|null
-condition|?
-literal|null
-else|:
+operator|!
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
-name|s
+literal|"oak.documentMK.guavaCache"
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the private branch.      */
 specifier|static
 specifier|final
@@ -3175,32 +3155,10 @@ argument_list|>
 name|listeners
 parameter_list|)
 block|{
-comment|// by default, use the LIRS cache when using the persistent cache,
-comment|// but don't use it otherwise
-name|boolean
-name|useLirs
-init|=
-name|persistentCacheURI
-operator|!=
-literal|null
-decl_stmt|;
-comment|// allow to override this by using the system property
-if|if
-condition|(
-name|LIRS_CACHE
-operator|!=
-literal|null
-condition|)
-block|{
-name|useLirs
-operator|=
-name|LIRS_CACHE
-expr_stmt|;
-block|}
 comment|// do not use LIRS cache when maxWeight is zero (OAK-6953)
 if|if
 condition|(
-name|useLirs
+name|LIRS_CACHE
 operator|&&
 name|maxWeight
 operator|>
