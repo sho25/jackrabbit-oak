@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration parameters for starting a {@link org.apache.solr.client.solrj.SolrServer}  */
+comment|/**  * Configuration parameters for starting a {@link org.apache.solr.client.solrj.SolrClient}  */
 end_comment
 
 begin_class

@@ -85,22 +85,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|solr
-operator|.
-name|client
-operator|.
-name|solrj
-operator|.
-name|SolrServer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|jetbrains
 operator|.
 name|annotations
@@ -122,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A registry for {@link org.apache.solr.client.solrj.SolrServer}s  */
+comment|/**  * A registry for {@link org.apache.solr.client.solrj.SolrClient}s  */
 end_comment
 
 begin_class
@@ -354,7 +338,7 @@ try|try
 block|{
 name|removed
 operator|.
-name|shutdown
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -393,7 +377,7 @@ try|try
 block|{
 name|removed
 operator|.
-name|shutdown
+name|close
 argument_list|()
 expr_stmt|;
 block|}

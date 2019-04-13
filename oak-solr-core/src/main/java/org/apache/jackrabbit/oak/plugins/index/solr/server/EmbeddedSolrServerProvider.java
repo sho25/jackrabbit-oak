@@ -49,16 +49,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FilenameFilter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -223,7 +213,7 @@ name|solrj
 operator|.
 name|impl
 operator|.
-name|HttpSolrServer
+name|HttpSolrClient
 import|;
 end_import
 
@@ -458,12 +448,6 @@ argument_list|,
 name|context
 argument_list|,
 name|httpPort
-argument_list|,
-literal|"solrconfig.xml"
-argument_list|,
-literal|"schema.xml"
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 if|if
@@ -1415,7 +1399,7 @@ specifier|private
 class|class
 name|HttpWithJettySolrServer
 extends|extends
-name|HttpSolrServer
+name|HttpSolrClient
 block|{
 specifier|private
 specifier|final
@@ -1448,12 +1432,14 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|shutdown
+name|close
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|super
 operator|.
-name|shutdown
+name|close
 argument_list|()
 expr_stmt|;
 try|try

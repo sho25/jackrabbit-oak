@@ -144,7 +144,7 @@ name|PropertyRestriction
 name|propertyRestriction
 parameter_list|)
 function_decl|;
-comment|/**      * Provide the commit policy to be used by a given {@link org.apache.solr.client.solrj.SolrServer}      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration.CommitPolicy}      */
+comment|/**      * Provide the commit policy to be used by a given {@link org.apache.solr.client.solrj.SolrClient}      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration.CommitPolicy}      */
 annotation|@
 name|NotNull
 name|CommitPolicy

@@ -105,22 +105,6 @@ name|SolrClient
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|solr
-operator|.
-name|client
-operator|.
-name|solrj
-operator|.
-name|SolrServer
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@link org.apache.jackrabbit.oak.plugins.index.solr.server.SolrServerProvider} using configuration stored in a repository  * node named "server" as a child of a {@code oak:queryIndexDefinition} node (e.g. under /../a/b/solrIndex/server)  * having {@code type = solr}  */
 end_comment
@@ -274,7 +258,7 @@ block|{
 name|getSolrServer
 argument_list|()
 operator|.
-name|shutdown
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -291,7 +275,7 @@ block|{
 name|getIndexingSolrServer
 argument_list|()
 operator|.
-name|shutdown
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -308,7 +292,7 @@ block|{
 name|getSearchingSolrServer
 argument_list|()
 operator|.
-name|shutdown
+name|close
 argument_list|()
 expr_stmt|;
 block|}

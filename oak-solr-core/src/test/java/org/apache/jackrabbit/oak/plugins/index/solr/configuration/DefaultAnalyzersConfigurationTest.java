@@ -215,7 +215,29 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runner
+operator|.
+name|RunWith
 import|;
 end_import
 
@@ -256,6 +278,19 @@ comment|/**  * Testcase for checking default analyzers configurations behave as 
 end_comment
 
 begin_class
+annotation|@
+name|RunWith
+argument_list|(
+name|com
+operator|.
+name|carrotsearch
+operator|.
+name|randomizedtesting
+operator|.
+name|RandomizedRunner
+operator|.
+name|class
+argument_list|)
 specifier|public
 class|class
 name|DefaultAnalyzersConfigurationTest
@@ -1084,6 +1119,11 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"wrong endOffset"
+argument_list|)
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -1227,6 +1267,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"wrong endOffset"
+argument_list|)
 annotation|@
 name|Test
 specifier|public

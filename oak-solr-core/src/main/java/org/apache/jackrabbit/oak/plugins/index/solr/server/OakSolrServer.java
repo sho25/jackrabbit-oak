@@ -143,37 +143,7 @@ name|client
 operator|.
 name|solrj
 operator|.
-name|SolrServer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|solr
-operator|.
-name|client
-operator|.
-name|solrj
-operator|.
 name|SolrServerException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|solr
-operator|.
-name|common
-operator|.
-name|SolrException
 import|;
 end_import
 
@@ -206,7 +176,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An Oak {@link org.apache.solr.client.solrj.SolrServer}, caching a {@link org.apache.jackrabbit.oak.plugins.index.solr.server.SolrServerProvider}  * for dispatching requests to indexing or searching specialized {@link org.apache.solr.client.solrj.SolrServer}s.  */
+comment|/**  * An Oak {@link org.apache.solr.client.solrj.SolrClient}, caching a {@link org.apache.jackrabbit.oak.plugins.index.solr.server.SolrServerProvider}  * for dispatching requests to indexing or searching specialized {@link org.apache.solr.client.solrj.SolrClient}s.  */
 end_comment
 
 begin_class
@@ -214,7 +184,7 @@ specifier|public
 class|class
 name|OakSolrServer
 extends|extends
-name|SolrServer
+name|SolrClient
 block|{
 specifier|private
 specifier|final
@@ -469,9 +439,32 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
-name|shutdown
+name|String
+name|toString
 parameter_list|()
+block|{
+return|return
+literal|"OakSolrServer{"
+operator|+
+literal|"solrServerConfiguration="
+operator|+
+name|solrServerConfiguration
+operator|+
+literal|", solrServerProvider="
+operator|+
+name|solrServerProvider
+operator|+
+literal|'}'
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|IOException
 block|{
 try|try
 block|{
@@ -515,27 +508,6 @@ parameter_list|)
 block|{
 comment|// do nothing
 block|}
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-literal|"OakSolrServer{"
-operator|+
-literal|"solrServerConfiguration="
-operator|+
-name|solrServerConfiguration
-operator|+
-literal|", solrServerProvider="
-operator|+
-name|solrServerProvider
-operator|+
-literal|'}'
-return|;
 block|}
 block|}
 end_class

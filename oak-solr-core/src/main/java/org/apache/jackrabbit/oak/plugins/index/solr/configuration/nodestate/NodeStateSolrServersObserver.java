@@ -167,8 +167,18 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
-comment|/**  * An {@link org.apache.jackrabbit.oak.spi.commit.Observer} looking for changes on persisted Solr server configuration nodes.  * If any change is done there, the related {@link org.apache.solr.client.solrj.SolrServer}s are shutdown and unregistered  * from the {@link org.apache.jackrabbit.oak.plugins.index.solr.server.SolrServerRegistry}  */
+comment|/**  * An {@link org.apache.jackrabbit.oak.spi.commit.Observer} looking for changes on persisted Solr server configuration nodes.  * If any change is done there, the related {@link org.apache.solr.client.solrj.SolrClient}s are shutdown and unregistered  * from the {@link org.apache.jackrabbit.oak.plugins.index.solr.server.SolrServerRegistry}  */
 end_comment
 
 begin_class
@@ -254,11 +264,32 @@ argument_list|(
 name|nodeStateSolrServerConfigurationProvider
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|oakSolrServer
 operator|.
-name|shutdown
+name|close
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"could not close OakSolrServer {}"
+argument_list|,
+name|oakSolrServer
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 name|log
 operator|.
 name|info
