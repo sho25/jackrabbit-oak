@@ -4508,7 +4508,14 @@ argument_list|()
 block|,
 operator|new
 name|IsNodeTypeTest
-argument_list|()
+argument_list|(
+name|runAsAdmin
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
 block|,
 operator|new
 name|SetPropertyTransientTest
