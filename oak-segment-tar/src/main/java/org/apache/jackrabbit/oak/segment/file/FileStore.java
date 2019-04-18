@@ -2425,6 +2425,15 @@ argument_list|,
 name|snfe
 argument_list|)
 expr_stmt|;
+name|stats
+operator|.
+name|notify
+argument_list|(
+name|id
+argument_list|,
+name|snfe
+argument_list|)
+expr_stmt|;
 throw|throw
 name|snfe
 throw|;
