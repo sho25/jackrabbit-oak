@@ -2333,6 +2333,9 @@ name|reindexMode
 parameter_list|,
 name|String
 name|dirName
+parameter_list|,
+name|COWDirecetoryTracker
+name|cowDirecetoryTracker
 parameter_list|)
 throws|throws
 name|IOException
@@ -2351,6 +2354,8 @@ argument_list|,
 name|reindexMode
 argument_list|,
 name|dirName
+argument_list|,
+name|cowDirecetoryTracker
 argument_list|)
 decl_stmt|;
 name|cowDir

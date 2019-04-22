@@ -2483,6 +2483,12 @@ name|definition
 parameter_list|,
 name|String
 name|dirName
+parameter_list|,
+name|boolean
+name|reindexMode
+parameter_list|,
+name|COWDirecetoryTracker
+name|cowDirecetoryTracker
 parameter_list|)
 throws|throws
 name|IOException
@@ -2549,6 +2555,10 @@ argument_list|,
 literal|false
 argument_list|,
 name|INDEX_DATA_CHILD_NAME
+argument_list|,
+name|COWDirecetoryTracker
+operator|.
+name|NOOP
 argument_list|)
 return|;
 block|}

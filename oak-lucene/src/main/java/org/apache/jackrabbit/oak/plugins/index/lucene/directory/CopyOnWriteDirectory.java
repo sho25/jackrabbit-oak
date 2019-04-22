@@ -636,6 +636,10 @@ specifier|final
 name|String
 name|indexPath
 decl_stmt|;
+specifier|private
+name|boolean
+name|closed
+decl_stmt|;
 comment|/**      * Current background task      */
 specifier|private
 specifier|volatile
@@ -1212,6 +1216,15 @@ name|context
 argument_list|)
 return|;
 block|}
+specifier|public
+name|boolean
+name|isClosed
+parameter_list|()
+block|{
+return|return
+name|closed
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1221,6 +1234,14 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|isClosed
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 name|int
 name|pendingCopies
 init|=
@@ -1503,6 +1524,10 @@ name|remote
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|closed
+operator|=
+literal|true
 expr_stmt|;
 block|}
 annotation|@
