@@ -1101,8 +1101,8 @@ parameter_list|,
 name|String
 name|dirName
 parameter_list|,
-name|COWDirecetoryTracker
-name|cowDirecetoryTracker
+name|COWDirectoryTracker
+name|cowDirectoryTracker
 parameter_list|)
 throws|throws
 name|IOException
@@ -1118,7 +1118,7 @@ name|dirName
 argument_list|,
 name|reindexMode
 argument_list|,
-name|cowDirecetoryTracker
+name|cowDirectoryTracker
 argument_list|)
 decl_stmt|;
 name|String
@@ -1157,7 +1157,7 @@ argument_list|,
 name|executor
 argument_list|)
 decl_stmt|;
-name|cowDirecetoryTracker
+name|cowDirectoryTracker
 operator|.
 name|registerOpenedDirectory
 argument_list|(
@@ -1222,8 +1222,8 @@ parameter_list|,
 name|boolean
 name|reindexMode
 parameter_list|,
-name|COWDirecetoryTracker
-name|cowDirecetoryTracker
+name|COWDirectoryTracker
+name|cowDirectoryTracker
 parameter_list|)
 throws|throws
 name|IOException
@@ -1253,7 +1253,7 @@ condition|(
 name|reindexMode
 condition|)
 block|{
-name|cowDirecetoryTracker
+name|cowDirectoryTracker
 operator|.
 name|registerReindexingLocalDirectory
 argument_list|(
@@ -3262,7 +3262,7 @@ block|}
 block|}
 specifier|public
 interface|interface
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 block|{
 name|void
 name|registerOpenedDirectory
@@ -3282,11 +3282,11 @@ name|File
 name|dir
 parameter_list|)
 function_decl|;
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 name|NOOP
 init|=
 operator|new
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 argument_list|()
 block|{
 annotation|@

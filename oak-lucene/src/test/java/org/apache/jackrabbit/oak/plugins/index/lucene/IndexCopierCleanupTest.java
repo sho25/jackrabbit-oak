@@ -2487,8 +2487,8 @@ parameter_list|,
 name|boolean
 name|reindexMode
 parameter_list|,
-name|COWDirecetoryTracker
-name|cowDirecetoryTracker
+name|COWDirectoryTracker
+name|cowDirectoryTracker
 parameter_list|)
 throws|throws
 name|IOException
@@ -2556,7 +2556,7 @@ literal|false
 argument_list|,
 name|INDEX_DATA_CHILD_NAME
 argument_list|,
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 operator|.
 name|NOOP
 argument_list|)

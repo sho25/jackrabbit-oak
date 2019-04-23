@@ -101,7 +101,7 @@ name|lucene
 operator|.
 name|IndexCopier
 operator|.
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 import|;
 end_import
 
@@ -1708,7 +1708,7 @@ parameter_list|(
 name|BlobDeletionCallback
 name|blobDeletionCallback
 parameter_list|,
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 name|cowDirectoryTracker
 parameter_list|)
 block|{
@@ -1890,7 +1890,7 @@ name|COWDirectoryCleanupCallback
 implements|implements
 name|IndexCommitCallback
 implements|,
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 block|{
 specifier|private
 specifier|static

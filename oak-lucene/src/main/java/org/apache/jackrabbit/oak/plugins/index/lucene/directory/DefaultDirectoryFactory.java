@@ -57,24 +57,6 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexCommitCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
 name|lucene
 operator|.
 name|IndexCopier
@@ -99,7 +81,7 @@ name|lucene
 operator|.
 name|IndexCopier
 operator|.
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 import|;
 end_import
 
@@ -331,8 +313,8 @@ name|blobDeletionCallback
 decl_stmt|;
 specifier|private
 specifier|final
-name|COWDirecetoryTracker
-name|cowDirecetoryTracker
+name|COWDirectoryTracker
+name|cowDirectoryTracker
 decl_stmt|;
 specifier|public
 name|DefaultDirectoryFactory
@@ -358,7 +340,7 @@ name|BlobDeletionCallback
 operator|.
 name|NOOP
 argument_list|,
-name|COWDirecetoryTracker
+name|COWDirectoryTracker
 operator|.
 name|NOOP
 argument_list|)
@@ -386,7 +368,9 @@ name|blobDeletionCallback
 parameter_list|,
 annotation|@
 name|NotNull
-name|COWDirecetoryTracker
+name|IndexCopier
+operator|.
+name|COWDirectoryTracker
 name|cowDirectoryTracker
 parameter_list|)
 block|{
@@ -410,7 +394,7 @@ name|blobDeletionCallback
 expr_stmt|;
 name|this
 operator|.
-name|cowDirecetoryTracker
+name|cowDirectoryTracker
 operator|=
 name|cowDirectoryTracker
 expr_stmt|;
@@ -524,7 +508,7 @@ name|reindex
 argument_list|,
 name|dirName
 argument_list|,
-name|cowDirecetoryTracker
+name|cowDirectoryTracker
 argument_list|)
 expr_stmt|;
 block|}
