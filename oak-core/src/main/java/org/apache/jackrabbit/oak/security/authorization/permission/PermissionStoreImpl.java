@@ -338,12 +338,18 @@ name|bitsProvider
 decl_stmt|;
 name|PermissionStoreImpl
 parameter_list|(
+annotation|@
+name|NotNull
 name|Root
 name|root
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|permissionRootName
 parameter_list|,
+annotation|@
+name|NotNull
 name|RestrictionProvider
 name|restrictionProvider
 parameter_list|)
@@ -988,6 +994,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|NotNull
 specifier|private
 name|Collection
 argument_list|<

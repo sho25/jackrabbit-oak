@@ -63,6 +63,8 @@ begin_interface
 interface|interface
 name|PermissionCache
 block|{
+annotation|@
+name|NotNull
 name|Collection
 argument_list|<
 name|PermissionEntry
@@ -75,6 +77,8 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
+annotation|@
+name|NotNull
 name|Collection
 argument_list|<
 name|PermissionEntry

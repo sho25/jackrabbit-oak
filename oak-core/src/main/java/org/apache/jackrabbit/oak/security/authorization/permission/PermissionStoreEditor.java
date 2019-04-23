@@ -813,6 +813,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|NotNull
 name|String
 name|getPath
 parameter_list|()
@@ -835,6 +837,8 @@ block|}
 name|void
 name|removePermissionEntries
 parameter_list|(
+annotation|@
+name|NotNull
 name|PermissionStoreEditor
 name|otherEditor
 parameter_list|)
@@ -1451,9 +1455,13 @@ specifier|private
 name|void
 name|updateEntries
 parameter_list|(
+annotation|@
+name|NotNull
 name|NodeBuilder
 name|parent
 parameter_list|,
+annotation|@
+name|NotNull
 name|List
 argument_list|<
 name|AcEntry
@@ -1754,6 +1762,8 @@ specifier|private
 name|void
 name|writeToPermissionStore
 parameter_list|(
+annotation|@
+name|NotNull
 name|NodeBuilder
 name|parent
 parameter_list|)
@@ -1817,6 +1827,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|NotNull
 name|PropertyState
 name|getPrivilegeBitsProperty
 parameter_list|()

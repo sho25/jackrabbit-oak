@@ -154,6 +154,8 @@ name|readStatus
 decl_stmt|;
 name|RepoPolicyTreePermission
 parameter_list|(
+annotation|@
+name|NotNull
 name|RepositoryPermission
 name|repoPermission
 parameter_list|)
@@ -165,6 +167,8 @@ operator|=
 name|repoPermission
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 name|TreePermission
 name|getChildPermission
 parameter_list|()
@@ -306,6 +310,8 @@ name|permissions
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|private
 name|ReadStatus
 name|getReadStatus

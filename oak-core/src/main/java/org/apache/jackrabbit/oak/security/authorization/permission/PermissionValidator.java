@@ -2115,6 +2115,8 @@ specifier|private
 name|boolean
 name|isVersionstorageTree
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|)
@@ -2147,6 +2149,8 @@ specifier|private
 name|Tree
 name|getVersionHistoryTree
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|versionstorageTree
 parameter_list|)

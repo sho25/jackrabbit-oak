@@ -510,9 +510,9 @@ expr_stmt|;
 block|}
 comment|//--------------------------------------------------< ValidatorProvider>---
 annotation|@
-name|Override
-annotation|@
 name|NotNull
+annotation|@
+name|Override
 specifier|public
 name|Validator
 name|getRootValidator
@@ -586,6 +586,8 @@ return|;
 block|}
 block|}
 comment|//--------------------------------------------------------------------------
+annotation|@
+name|NotNull
 name|Context
 name|getAccessControlContext
 parameter_list|()
@@ -609,6 +611,8 @@ return|return
 name|acCtx
 return|;
 block|}
+annotation|@
+name|NotNull
 name|Context
 name|getUserContext
 parameter_list|()
@@ -647,6 +651,8 @@ return|return
 name|userCtx
 return|;
 block|}
+annotation|@
+name|NotNull
 name|TreeProvider
 name|getTreeProvider
 parameter_list|()
@@ -676,6 +682,8 @@ name|permission
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 name|Root
 name|createReadOnlyRoot
 parameter_list|(
@@ -697,6 +705,8 @@ name|nodeState
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 name|Tree
 name|createReadOnlyTree
 parameter_list|(

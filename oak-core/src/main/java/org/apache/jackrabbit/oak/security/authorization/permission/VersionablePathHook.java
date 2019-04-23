@@ -818,6 +818,8 @@ specifier|private
 name|boolean
 name|setVersionablePath
 parameter_list|(
+annotation|@
+name|NotNull
 name|PropertyState
 name|after
 parameter_list|)
@@ -967,6 +969,8 @@ decl_stmt|;
 specifier|private
 name|Node
 parameter_list|(
+annotation|@
+name|NotNull
 name|NodeBuilder
 name|rootBuilder
 parameter_list|)
@@ -987,9 +991,13 @@ block|}
 specifier|private
 name|Node
 parameter_list|(
+annotation|@
+name|NotNull
 name|Node
 name|parent
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -1027,6 +1035,8 @@ specifier|private
 name|boolean
 name|isVersionable
 parameter_list|(
+annotation|@
+name|NotNull
 name|ReadOnlyNodeTypeManager
 name|ntMgr
 parameter_list|)

@@ -265,6 +265,8 @@ operator|=
 name|treeProvider
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 name|VersionTreePermission
 name|createChildPermission
 parameter_list|(

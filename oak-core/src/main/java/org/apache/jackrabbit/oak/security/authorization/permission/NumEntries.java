@@ -35,6 +35,18 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_class
 specifier|final
 class|class
@@ -159,6 +171,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|NotNull
 specifier|static
 name|NumEntries
 name|valueOf

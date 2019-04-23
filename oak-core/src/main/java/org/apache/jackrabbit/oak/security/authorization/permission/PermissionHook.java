@@ -714,6 +714,8 @@ specifier|static
 name|NodeBuilder
 name|getPermissionStore
 parameter_list|(
+annotation|@
+name|NotNull
 name|NodeBuilder
 name|rootBuilder
 parameter_list|)
@@ -739,6 +741,8 @@ specifier|private
 name|NodeBuilder
 name|getPermissionRoot
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -784,6 +788,8 @@ decl_stmt|;
 specifier|private
 name|Diff
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|parentPath
 parameter_list|)
@@ -1175,6 +1181,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|private
 name|PermissionStoreEditor
 name|createPermissionStoreEditor

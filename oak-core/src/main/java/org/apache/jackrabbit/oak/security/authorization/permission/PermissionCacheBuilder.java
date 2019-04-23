@@ -415,6 +415,8 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 name|PermissionCache
 name|build
 parameter_list|()
@@ -678,6 +680,8 @@ name|existingNames
 expr_stmt|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Collection
@@ -729,6 +733,8 @@ return|return
 name|ret
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -798,6 +804,8 @@ name|pathEntryMap
 decl_stmt|;
 name|PathEntryMapCache
 parameter_list|(
+annotation|@
+name|NotNull
 name|Map
 argument_list|<
 name|String
@@ -817,6 +825,8 @@ operator|=
 name|pathEntryMap
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -863,6 +873,8 @@ name|emptyList
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -933,6 +945,8 @@ name|EmptyCache
 argument_list|()
 decl_stmt|;
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Collection
@@ -957,6 +971,8 @@ name|emptyList
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

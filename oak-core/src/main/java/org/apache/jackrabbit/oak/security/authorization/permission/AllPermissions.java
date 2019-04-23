@@ -220,6 +220,8 @@ specifier|private
 name|AllPermissions
 parameter_list|()
 block|{     }
+annotation|@
+name|NotNull
 specifier|static
 name|CompiledPermissions
 name|getInstance
