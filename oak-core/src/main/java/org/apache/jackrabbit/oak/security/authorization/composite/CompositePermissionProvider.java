@@ -690,7 +690,7 @@ name|immutableTree
 init|=
 name|PermissionUtil
 operator|.
-name|getReadOnlyTree
+name|getReadOnlyTreeOrNull
 argument_list|(
 name|tree
 argument_list|,
@@ -851,7 +851,7 @@ name|immutableTree
 init|=
 name|PermissionUtil
 operator|.
-name|getReadOnlyTree
+name|getReadOnlyTreeOrNull
 argument_list|(
 name|tree
 argument_list|,

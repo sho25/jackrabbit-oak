@@ -668,7 +668,7 @@ name|getPrivileges
 argument_list|(
 name|PermissionUtil
 operator|.
-name|getReadOnlyTree
+name|getReadOnlyTreeOrNull
 argument_list|(
 name|tree
 argument_list|,
@@ -703,7 +703,7 @@ name|hasPrivileges
 argument_list|(
 name|PermissionUtil
 operator|.
-name|getReadOnlyTree
+name|getReadOnlyTreeOrNull
 argument_list|(
 name|tree
 argument_list|,
