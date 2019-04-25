@@ -1833,10 +1833,19 @@ argument_list|>
 name|updateOps
 parameter_list|)
 block|{
+comment|// fall back to sequential mode if batches are turned off using system
+comment|// property, or the number of update operations is small
 if|if
 condition|(
 operator|!
 name|BATCHUPDATES
+operator|||
+name|updateOps
+operator|.
+name|size
+argument_list|()
+operator|<
+name|MINIMALBULKUPDATESIZE
 condition|)
 block|{
 name|List
@@ -1882,6 +1891,50 @@ return|return
 name|results
 return|;
 block|}
+else|else
+block|{
+return|return
+name|internalCreateOrUpdate
+argument_list|(
+name|collection
+argument_list|,
+name|updateOps
+argument_list|)
+return|;
+block|}
+block|}
+specifier|private
+specifier|static
+name|int
+name|MINIMALBULKUPDATESIZE
+init|=
+literal|3
+decl_stmt|;
+specifier|private
+parameter_list|<
+name|T
+extends|extends
+name|Document
+parameter_list|>
+name|List
+argument_list|<
+name|T
+argument_list|>
+name|internalCreateOrUpdate
+parameter_list|(
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|collection
+parameter_list|,
+name|List
+argument_list|<
+name|UpdateOp
+argument_list|>
+name|updateOps
+parameter_list|)
+block|{
 specifier|final
 name|Stopwatch
 name|watch
@@ -2067,16 +2120,14 @@ init|=
 literal|0
 decl_stmt|;
 comment|// iteration count
-comment|// bulk update requires two DB requests, so if we have<= 2 operations
-comment|// it's better to send them sequentially
 while|while
 condition|(
 name|operationsToCover
 operator|.
 name|size
 argument_list|()
-operator|>
-literal|2
+operator|>=
+name|MINIMALBULKUPDATESIZE
 condition|)
 block|{
 comment|// We should try to insert documents only during the first
