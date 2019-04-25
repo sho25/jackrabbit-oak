@@ -1406,7 +1406,7 @@ name|Permissions
 operator|.
 name|aggregates
 argument_list|(
-name|permissions
+name|supported
 argument_list|)
 control|)
 block|{
