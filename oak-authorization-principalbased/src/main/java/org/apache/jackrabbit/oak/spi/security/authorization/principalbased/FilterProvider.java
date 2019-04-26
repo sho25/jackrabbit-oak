@@ -110,7 +110,7 @@ specifier|public
 interface|interface
 name|FilterProvider
 block|{
-comment|/**      * Reveals if the given implementation is able to handle access control at the tree defined by the given {@code oakPath}.      *      * @param absPath The absolute oak path to be tested.      * @return {@code true} if the given path is supported by this implememntation, {@code false} otherwise.      */
+comment|/**      * Reveals if the given implementation is able to handle access control at the tree defined by the given {@code oakPath}.      *      * @param oakPath The absolute oak path to be tested.      * @return {@code true} if the given path is supported by this implememntation, {@code false} otherwise.      */
 name|boolean
 name|handlesPath
 parameter_list|(

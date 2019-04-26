@@ -406,7 +406,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the {@link org.apache.jackrabbit.spi.security.authorization.principalbased.Filter} interface that  * consists of the following two filtering conditions:  *  *<ol>  *<li>All principals in the set must be of type {@link org.apache.jackrabbit.oak.spi.security.principal.SystemUserPrincipal}</li>  *<li>All principals in the set must be located in the repository below the configured path.</li>  *</ol>  */
+comment|/**  * Implementation of the {@link org.apache.jackrabbit.oak.spi.security.authorization.principalbased.Filter} interface that  * consists of the following two filtering conditions:  *  *<ol>  *<li>All principals in the set must be of type {@link org.apache.jackrabbit.oak.spi.security.principal.SystemUserPrincipal}</li>  *<li>All principals in the set must be located in the repository below the configured path.</li>  *</ol>  */
 end_comment
 
 begin_class
