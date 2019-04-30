@@ -288,8 +288,9 @@ name|provider
 operator|.
 name|getEntryIterator
 argument_list|(
-operator|new
 name|EntryPredicate
+operator|.
+name|create
 argument_list|()
 argument_list|)
 argument_list|)
@@ -362,8 +363,9 @@ name|provider
 operator|.
 name|getEntryIterator
 argument_list|(
-operator|new
 name|EntryPredicate
+operator|.
+name|create
 argument_list|()
 argument_list|)
 argument_list|)
