@@ -2160,8 +2160,9 @@ name|a2
 argument_list|)
 decl_stmt|;
 return|return
-operator|new
 name|CompositePermissionProvider
+operator|.
+name|create
 argument_list|(
 name|root
 argument_list|,

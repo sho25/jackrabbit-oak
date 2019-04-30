@@ -895,8 +895,9 @@ break|break;
 default|default :
 name|pp
 operator|=
-operator|new
 name|CompositePermissionProvider
+operator|.
+name|create
 argument_list|(
 name|root
 argument_list|,

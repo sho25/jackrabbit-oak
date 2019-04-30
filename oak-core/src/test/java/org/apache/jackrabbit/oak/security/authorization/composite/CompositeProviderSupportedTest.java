@@ -969,8 +969,9 @@ name|aggregated
 parameter_list|)
 block|{
 return|return
-operator|new
 name|CompositePermissionProvider
+operator|.
+name|create
 argument_list|(
 name|root
 argument_list|,
