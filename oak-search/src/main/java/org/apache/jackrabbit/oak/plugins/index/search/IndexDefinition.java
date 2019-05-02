@@ -5739,7 +5739,7 @@ argument_list|(
 operator|new
 name|Aggregate
 operator|.
-name|PropertyInclude
+name|FunctionInclude
 argument_list|(
 name|pd2
 argument_list|)
