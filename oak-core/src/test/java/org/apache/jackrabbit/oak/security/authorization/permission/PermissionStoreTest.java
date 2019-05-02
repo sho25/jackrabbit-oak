@@ -662,9 +662,9 @@ argument_list|)
 decl_stmt|;
 name|assertSame
 argument_list|(
-name|TreePermission
+name|InternalTreePermission
 operator|.
-name|EMPTY
+name|INSTANCE
 argument_list|,
 name|pp
 operator|.

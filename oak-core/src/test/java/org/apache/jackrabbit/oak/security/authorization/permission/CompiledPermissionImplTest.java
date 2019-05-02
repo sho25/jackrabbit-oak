@@ -2614,11 +2614,6 @@ operator|.
 name|EMPTY
 argument_list|)
 decl_stmt|;
-comment|// FIXME: wrong TreePermission for child of internal path -> not EMPTY
-comment|//        String[] internalPaths = new String[] {
-comment|//                PERMISSIONS_STORE_PATH,
-comment|//                PathUtils.concat(PERMISSIONS_STORE_PATH, testSession.getWorkspaceName())
-comment|//        };
 name|String
 index|[]
 name|internalPaths
@@ -2628,6 +2623,18 @@ name|String
 index|[]
 block|{
 name|PERMISSIONS_STORE_PATH
+block|,
+name|PathUtils
+operator|.
+name|concat
+argument_list|(
+name|PERMISSIONS_STORE_PATH
+argument_list|,
+name|testSession
+operator|.
+name|getWorkspaceName
+argument_list|()
+argument_list|)
 block|}
 decl_stmt|;
 for|for
@@ -2711,9 +2718,9 @@ argument_list|)
 decl_stmt|;
 name|assertSame
 argument_list|(
-name|TreePermission
+name|InternalTreePermission
 operator|.
-name|EMPTY
+name|INSTANCE
 argument_list|,
 name|tp
 argument_list|)

@@ -1542,7 +1542,9 @@ case|case
 name|INTERNAL
 case|:
 return|return
-name|EMPTY
+name|InternalTreePermission
+operator|.
+name|INSTANCE
 return|;
 default|default:
 return|return
@@ -1627,7 +1629,9 @@ case|case
 name|INTERNAL
 case|:
 return|return
-name|EMPTY
+name|InternalTreePermission
+operator|.
+name|INSTANCE
 return|;
 comment|// case VERSION is never expected here
 default|default:
@@ -2970,6 +2974,22 @@ return|return
 name|TreeType
 operator|.
 name|DEFAULT
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|parentPermission
+operator|==
+name|InternalTreePermission
+operator|.
+name|INSTANCE
+condition|)
+block|{
+return|return
+name|TreeType
+operator|.
+name|INTERNAL
 return|;
 block|}
 elseif|else
