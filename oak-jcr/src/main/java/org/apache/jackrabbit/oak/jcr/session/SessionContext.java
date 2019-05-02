@@ -2129,8 +2129,6 @@ specifier|public
 name|AccessManager
 name|getAccessManager
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 if|if
 condition|(

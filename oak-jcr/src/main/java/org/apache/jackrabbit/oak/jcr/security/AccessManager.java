@@ -272,8 +272,6 @@ specifier|final
 name|long
 name|permissions
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|delegate
