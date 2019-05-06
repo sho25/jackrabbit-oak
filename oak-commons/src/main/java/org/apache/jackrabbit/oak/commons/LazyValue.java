@@ -17,6 +17,18 @@ name|commons
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Supplier
+import|;
+end_import
+
 begin_comment
 comment|/**  * An instances of this class represents a lazy value of type {@code T}.  * {@code LazyValue} implements an evaluate by need semantics:  * {@link #createValue()} is called exactly once when {@link #get()}  * is called for the first time.  *<p>  * {@code LazyValue} instances are thread safe.  */
 end_comment
@@ -29,6 +41,11 @@ name|LazyValue
 parameter_list|<
 name|T
 parameter_list|>
+implements|implements
+name|Supplier
+argument_list|<
+name|T
+argument_list|>
 block|{
 specifier|private
 specifier|volatile
@@ -55,6 +72,8 @@ literal|null
 return|;
 block|}
 comment|/**      * Get value. Calls {@link #createValue()} if called for the first time.      * @return  the value      */
+annotation|@
+name|Override
 specifier|public
 name|T
 name|get
