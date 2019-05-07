@@ -2389,7 +2389,7 @@ return|return
 name|numChangedNodes
 return|;
 block|}
-comment|/**      * @return if this entry has some changes to be pushed      */
+comment|/**      * Returns {@code true} if this entry contains any changes to be written      * to the journal. The following information is considered a change:      *<ul>      *<li>Documents that have been recorded as modified with either      *      {@link #modified(Path)} or {@link #modified(Iterable)}.</li>      *<li>Branch commit journal references added with      *      {@link #branchCommit(Iterable)}.</li>      *<li>Documents that must be invalidated and have been recorded      *      with {@link #invalidate(Iterable)}.</li>      *</ul>      *      * @return if this entry has some changes to be pushed.      */
 name|boolean
 name|hasChanges
 parameter_list|()
@@ -2400,9 +2400,40 @@ operator|>
 literal|0
 operator|||
 name|hasBranchCommits
+operator|||
+name|hasInvalidateOnlyReferences
+argument_list|()
 return|;
 block|}
 comment|//-----------------------------< internal>---------------------------------
+specifier|private
+name|boolean
+name|hasInvalidateOnlyReferences
+parameter_list|()
+block|{
+name|String
+name|value
+init|=
+operator|(
+name|String
+operator|)
+name|get
+argument_list|(
+name|INVALIDATE_ONLY
+argument_list|)
+decl_stmt|;
+return|return
+name|value
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|value
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 specifier|private
 name|void
 name|addInvalidateOnlyTo
