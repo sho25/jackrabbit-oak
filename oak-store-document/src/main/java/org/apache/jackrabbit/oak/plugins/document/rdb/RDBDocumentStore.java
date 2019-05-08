@@ -6761,8 +6761,7 @@ decl_stmt|;
 try|try
 block|{
 comment|// if the result set metadata provides a table name, use that (the
-comment|// other one
-comment|// might be inaccurate due to case insensitivity issues
+comment|// other one might be inaccurate due to case insensitivity issues)
 name|String
 name|rmetTableName
 init|=
@@ -6979,12 +6978,14 @@ name|ex
 parameter_list|)
 block|{
 comment|// well it was best-effort
-return|return
+name|String
+name|message
+init|=
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"/* exception while retrieving index information: %s, code %d, state %s */"
+literal|"exception while retrieving index information: %s, code %d, state %s"
 argument_list|,
 name|ex
 operator|.
@@ -7001,6 +7002,22 @@ operator|.
 name|getSQLState
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|message
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+return|return
+literal|"/* "
+operator|+
+name|message
+operator|+
+literal|"*/"
 return|;
 block|}
 finally|finally
