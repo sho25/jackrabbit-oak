@@ -2399,10 +2399,12 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Collections
-operator|.
-name|emptySet
-argument_list|()
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|(
+literal|1
+argument_list|)
 return|;
 block|}
 name|Set
