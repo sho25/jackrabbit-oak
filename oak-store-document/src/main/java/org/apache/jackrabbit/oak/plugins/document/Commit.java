@@ -2629,7 +2629,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|" was already added in revision\n"
+literal|" already existed in revision\n"
 operator|+
 name|formatConflictRevision
 argument_list|(
