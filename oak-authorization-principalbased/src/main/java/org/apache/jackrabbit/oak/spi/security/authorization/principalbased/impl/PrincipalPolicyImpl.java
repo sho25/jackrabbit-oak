@@ -81,6 +81,24 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|PrincipalAccessControlList
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
 name|PrivilegeManager
 import|;
 end_import
@@ -198,28 +216,6 @@ operator|.
 name|accesscontrol
 operator|.
 name|AccessControlConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authorization
-operator|.
-name|principalbased
-operator|.
-name|PrincipalPolicy
 import|;
 end_import
 
@@ -531,7 +527,7 @@ name|PrincipalPolicyImpl
 extends|extends
 name|AbstractAccessControlList
 implements|implements
-name|PrincipalPolicy
+name|PrincipalAccessControlList
 block|{
 specifier|private
 specifier|static
@@ -755,7 +751,7 @@ return|return
 name|restrictionProvider
 return|;
 block|}
-comment|//----------------------------------------------------< PrincipalPolicy>---
+comment|//-----------------------------------------< PrincipalAccessControlList>---
 annotation|@
 name|Override
 annotation|@
@@ -1628,7 +1624,7 @@ throw|throw
 operator|new
 name|AccessControlException
 argument_list|(
-literal|"Entries in principal based access control need to have a path specified. Add rep:nodePath restriction or use PrincipalPolicy.addEntry(String, Privilege[], Map, Map) instead."
+literal|"Entries in principal based access control need to have a path specified. Add rep:nodePath restriction or use PrincipalAccessControlList.addEntry(String, Privilege[], Map, Map) instead."
 argument_list|)
 throw|;
 block|}

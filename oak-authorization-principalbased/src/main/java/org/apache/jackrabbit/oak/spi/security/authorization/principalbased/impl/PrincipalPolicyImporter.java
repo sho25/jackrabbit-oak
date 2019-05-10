@@ -1129,7 +1129,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Protected parent {} does not match path of PrincipalPolicy {}."
+literal|"Protected parent {} does not match path of PrincipalAccessControlList {}."
 argument_list|,
 name|protectedParent
 operator|.
@@ -1244,7 +1244,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Protected parent {} does not match path of PrincipalPolicy {}."
+literal|"Protected parent {} does not match path of PrincipalAccessControlList {}."
 argument_list|,
 name|protectedParent
 operator|.
@@ -1795,7 +1795,7 @@ throw|throw
 operator|new
 name|ConstraintViolationException
 argument_list|(
-literal|"Entries for PrincipalPolicy must specify the privileges to be granted."
+literal|"Entries for PrincipalAccessControlList must specify the privileges to be granted."
 argument_list|)
 throw|;
 block|}
@@ -2063,7 +2063,7 @@ throw|throw
 operator|new
 name|ConstraintViolationException
 argument_list|(
-literal|"Entries for PrincipalPolicy must specify an effective path."
+literal|"Entries for PrincipalAccessControlList must specify an effective path."
 argument_list|)
 throw|;
 block|}
