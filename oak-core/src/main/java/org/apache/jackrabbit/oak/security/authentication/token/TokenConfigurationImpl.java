@@ -1001,6 +1001,8 @@ specifier|public
 name|TokenProvider
 name|getTokenProvider
 parameter_list|(
+annotation|@
+name|NotNull
 name|Root
 name|root
 parameter_list|)
@@ -1034,6 +1036,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|private
 name|CredentialsSupport
 name|newCredentialsSupport

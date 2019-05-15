@@ -1137,6 +1137,8 @@ return|;
 block|}
 comment|/**      * Create a separate token node underneath a dedicated token store within      * the user home node. That token node contains the hashed token, the      * expiration time and additional mandatory attributes that will be verified      * during login.      *      * @param userId     The identifier of the user for which a new token should      *                   be created.      * @param attributes The attributes associated with the new token.      * @return A new {@code TokenInfo} or {@code null} if the token could not      *         be created.      */
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 specifier|public
 name|TokenInfo
@@ -1442,6 +1444,8 @@ literal|null
 return|;
 block|}
 comment|/**      * Retrieves the token information associated with the specified login      * token. If no accessible {@code Tree} exists for the given token or if      * the token is not associated with a valid user this method returns {@code null}.      *      * @param token A valid login token.      * @return The {@code TokenInfo} associated with the specified token or      *         {@code null} of the corresponding information does not exist or is not      *         associated with a valid user.      */
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public

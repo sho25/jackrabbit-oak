@@ -103,6 +103,8 @@ operator|new
 name|CommitMarker
 argument_list|()
 decl_stmt|;
+annotation|@
+name|NotNull
 specifier|static
 name|Map
 argument_list|<

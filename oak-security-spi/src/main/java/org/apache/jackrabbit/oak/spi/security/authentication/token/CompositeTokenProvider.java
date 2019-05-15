@@ -89,6 +89,18 @@ name|NotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Aggregates a collection of {@link TokenProvider}s into a single  * provider.  */
 end_comment
@@ -258,6 +270,8 @@ literal|false
 return|;
 block|}
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 specifier|public
 name|TokenInfo
@@ -303,6 +317,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -361,6 +377,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -434,6 +452,8 @@ literal|false
 return|;
 block|}
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 specifier|public
 name|TokenInfo
@@ -449,6 +469,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -475,6 +497,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public

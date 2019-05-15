@@ -493,6 +493,8 @@ name|commitInfo
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|private
 specifier|static
 name|CommitFailedException

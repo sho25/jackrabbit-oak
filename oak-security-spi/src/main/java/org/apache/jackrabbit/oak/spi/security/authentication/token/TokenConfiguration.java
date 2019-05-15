@@ -91,6 +91,8 @@ name|NotNull
 name|TokenProvider
 name|getTokenProvider
 parameter_list|(
+annotation|@
+name|NotNull
 name|Root
 name|root
 parameter_list|)

@@ -251,6 +251,8 @@ name|tokenInfo
 decl_stmt|;
 name|TokenAuthentication
 parameter_list|(
+annotation|@
+name|NotNull
 name|TokenProvider
 name|tokenProvider
 parameter_list|)
@@ -279,10 +281,6 @@ name|LoginException
 block|{
 if|if
 condition|(
-name|tokenProvider
-operator|!=
-literal|null
-operator|&&
 name|credentials
 operator|instanceof
 name|TokenCredentials
@@ -320,7 +318,7 @@ literal|true
 return|;
 block|}
 block|}
-comment|// no tokenProvider or other credentials implementation -> not handled here.
+comment|// other credentials implementation -> not handled here.
 return|return
 literal|false
 return|;
@@ -441,6 +439,8 @@ specifier|private
 name|boolean
 name|validateCredentials
 parameter_list|(
+annotation|@
+name|NotNull
 name|TokenCredentials
 name|tokenCredentials
 parameter_list|)

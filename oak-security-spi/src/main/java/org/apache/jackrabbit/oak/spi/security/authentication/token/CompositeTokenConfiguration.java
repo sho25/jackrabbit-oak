@@ -180,6 +180,8 @@ specifier|public
 name|TokenProvider
 name|getTokenProvider
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|Root
 name|root
