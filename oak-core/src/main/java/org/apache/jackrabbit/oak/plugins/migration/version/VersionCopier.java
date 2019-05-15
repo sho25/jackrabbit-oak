@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
+operator|.
+name|migration
 operator|.
 name|version
 package|;
@@ -50,6 +52,24 @@ operator|.
 name|util
 operator|.
 name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|migration
+operator|.
+name|DescendantsIterator
 import|;
 end_import
 
@@ -126,22 +146,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|upgrade
-operator|.
-name|DescendantsIterator
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -171,7 +175,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
+operator|.
+name|migration
 operator|.
 name|version
 operator|.
@@ -191,7 +197,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
+operator|.
+name|migration
 operator|.
 name|version
 operator|.
@@ -211,7 +219,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
+operator|.
+name|migration
 operator|.
 name|version
 operator|.

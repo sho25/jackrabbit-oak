@@ -557,7 +557,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|plugins
+operator|.
+name|migration
 operator|.
 name|version
 operator|.
