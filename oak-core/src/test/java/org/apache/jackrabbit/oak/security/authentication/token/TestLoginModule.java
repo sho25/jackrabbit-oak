@@ -79,20 +79,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|login
-operator|.
-name|LoginException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -286,8 +272,6 @@ specifier|public
 name|boolean
 name|login
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 name|credentials
 operator|=
@@ -350,8 +334,6 @@ specifier|public
 name|boolean
 name|commit
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 if|if
 condition|(

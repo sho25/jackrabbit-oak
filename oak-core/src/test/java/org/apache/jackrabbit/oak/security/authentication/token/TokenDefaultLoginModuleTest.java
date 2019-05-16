@@ -266,20 +266,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|ContentSession
 name|cs
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|cs
-operator|=
 name|login
 argument_list|(
 literal|null
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|fail
 argument_list|(
 literal|"Null login should fail"
@@ -293,22 +290,6 @@ name|e
 parameter_list|)
 block|{
 comment|// success
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|cs
-operator|!=
-literal|null
-condition|)
-block|{
-name|cs
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 block|}

@@ -107,6 +107,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -171,6 +183,8 @@ name|getID
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 name|ConfigurationParameters

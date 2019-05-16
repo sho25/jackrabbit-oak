@@ -1639,6 +1639,7 @@ argument_list|)
 return|;
 block|}
 specifier|protected
+specifier|static
 name|long
 name|waitForSystemTimeIncrement
 parameter_list|(

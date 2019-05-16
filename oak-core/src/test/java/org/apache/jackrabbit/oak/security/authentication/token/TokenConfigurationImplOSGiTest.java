@@ -302,11 +302,6 @@ name|tokenConfiguration
 argument_list|,
 name|ImmutableMap
 operator|.
-expr|<
-name|String
-argument_list|,
-name|Object
-operator|>
 name|of
 argument_list|(
 name|TokenProvider
