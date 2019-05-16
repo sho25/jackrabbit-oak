@@ -3790,13 +3790,10 @@ name|BlobStoreBlob
 argument_list|(
 name|this
 argument_list|,
+name|getBlobId
+argument_list|(
 name|record
-operator|.
-name|getIdentifier
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
