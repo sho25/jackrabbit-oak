@@ -25,6 +25,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|annotation
@@ -45,6 +57,8 @@ block|{
 name|void
 name|setLoginModuleMonitor
 parameter_list|(
+annotation|@
+name|NotNull
 name|LoginModuleMonitor
 name|lmm
 parameter_list|)

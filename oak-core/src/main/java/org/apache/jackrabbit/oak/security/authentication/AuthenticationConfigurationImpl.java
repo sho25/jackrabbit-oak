@@ -559,6 +559,8 @@ specifier|public
 name|LoginContextProvider
 name|getLoginContextProvider
 parameter_list|(
+annotation|@
+name|NotNull
 name|ContentRepository
 name|contentRepository
 parameter_list|)
@@ -628,8 +630,7 @@ argument_list|()
 argument_list|,
 name|contentRepository
 argument_list|,
-name|getSecurityProvider
-argument_list|()
+name|provider
 argument_list|,
 name|whiteboard
 argument_list|,

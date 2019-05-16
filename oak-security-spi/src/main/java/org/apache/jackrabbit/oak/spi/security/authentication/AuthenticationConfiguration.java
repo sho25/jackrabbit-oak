@@ -103,6 +103,8 @@ name|NotNull
 name|LoginContextProvider
 name|getLoginContextProvider
 parameter_list|(
+annotation|@
+name|NotNull
 name|ContentRepository
 name|contentRepository
 parameter_list|)
