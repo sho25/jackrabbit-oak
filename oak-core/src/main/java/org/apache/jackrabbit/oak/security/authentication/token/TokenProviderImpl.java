@@ -1123,8 +1123,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Cannot set token attribute to "
-operator|+
+literal|"Cannot set token attribute to {}"
+argument_list|,
 name|creds
 argument_list|)
 expr_stmt|;
@@ -1387,32 +1387,14 @@ parameter_list|(
 name|NoSuchAlgorithmException
 decl||
 name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-comment|// error while generating login token
-name|log
-operator|.
-name|error
-argument_list|(
-name|error
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|CommitFailedException
 decl||
 name|RepositoryException
 name|e
 parameter_list|)
 block|{
-comment|// conflict while committing changes
+comment|// error while generating login token or while committing changes
 name|log
 operator|.
 name|error
@@ -2072,11 +2054,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Cannot create login token: No corresponding node for User "
-operator|+
+literal|"Cannot create login token: No corresponding node for User {}."
+argument_list|,
 name|userId
-operator|+
-literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
