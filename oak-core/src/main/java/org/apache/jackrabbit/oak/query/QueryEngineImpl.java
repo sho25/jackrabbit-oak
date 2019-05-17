@@ -656,6 +656,16 @@ operator|.
 name|getSettings
 argument_list|()
 decl_stmt|;
+name|settings
+operator|.
+name|getQueryValidator
+argument_list|()
+operator|.
+name|checkStatement
+argument_list|(
+name|statement
+argument_list|)
+expr_stmt|;
 name|QueryExecutionStats
 name|stats
 init|=

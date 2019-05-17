@@ -124,6 +124,77 @@ name|boolean
 name|fastQuerySize
 parameter_list|)
 function_decl|;
+comment|/**      * Set or remove a query validator pattern.      *      * @param key the key      * @param pattern the regular expression pattern (empty to remove the      *            pattern)      * @param comment a comment      * @param failQuery whether matching queries should fail (true) or just log      *            a warning (false)      */
+annotation|@
+name|Description
+argument_list|(
+literal|"Set or remove a query validator pattern."
+argument_list|)
+name|void
+name|setQueryValidatorPattern
+parameter_list|(
+annotation|@
+name|Description
+argument_list|(
+literal|"the key"
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"key"
+argument_list|)
+name|String
+name|key
+parameter_list|,
+annotation|@
+name|Description
+argument_list|(
+literal|"the regular expression pattern (empty to remove the pattern)"
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"pattern"
+argument_list|)
+name|String
+name|pattern
+parameter_list|,
+annotation|@
+name|Description
+argument_list|(
+literal|"a comment"
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"comment"
+argument_list|)
+name|String
+name|comment
+parameter_list|,
+annotation|@
+name|Description
+argument_list|(
+literal|"whether matching queries should fail (true) or just log a warning (false)"
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"failQuery"
+argument_list|)
+name|boolean
+name|failQuery
+parameter_list|)
+function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Get the query validator data as a JSON string."
+argument_list|)
+name|String
+name|getQueryValidatorJson
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
