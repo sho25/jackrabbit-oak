@@ -205,7 +205,7 @@ name|e
 throw|;
 block|}
 block|}
-comment|/**      * Verify the number of node read operations is below the limit.      *       * @param count the number of read operations      * @param settings the query engine settings      * @throws UnsupportedOperationException if the limit was exceeded      */
+comment|/**      * Verify the number of node read operations is below the limit.      *       * @param count the number of read operations      * @param settings the query engine settings      * @throws RuntimeNodeTraversalException if the limit was exceeded      */
 specifier|public
 specifier|static
 name|void
@@ -242,11 +242,11 @@ name|maxReadEntries
 operator|+
 literal|" nodes."
 decl_stmt|;
-name|UnsupportedOperationException
+name|RuntimeNodeTraversalException
 name|e
 init|=
 operator|new
-name|UnsupportedOperationException
+name|RuntimeNodeTraversalException
 argument_list|(
 name|message
 operator|+
