@@ -19,9 +19,21 @@ end_package
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|hamcrest
+operator|.
+name|CoreMatchers
+operator|.
+name|containsString
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -31,37 +43,13 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
 name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -83,11 +71,21 @@ name|org
 operator|.
 name|junit
 operator|.
-name|matchers
+name|Assert
 operator|.
-name|JUnitMatchers
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|containsString
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 

@@ -73,6 +73,18 @@ begin_import
 import|import static
 name|org
 operator|.
+name|hamcrest
+operator|.
+name|CoreMatchers
+operator|.
+name|containsString
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -150,20 +162,6 @@ operator|.
 name|Assume
 operator|.
 name|assumeTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|matchers
-operator|.
-name|JUnitMatchers
-operator|.
-name|containsString
 import|;
 end_import
 

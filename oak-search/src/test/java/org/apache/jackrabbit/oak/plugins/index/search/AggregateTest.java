@@ -475,6 +475,18 @@ name|org
 operator|.
 name|hamcrest
 operator|.
+name|CoreMatchers
+operator|.
+name|hasItems
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|hamcrest
+operator|.
 name|Matchers
 operator|.
 name|is
@@ -550,20 +562,6 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|matchers
-operator|.
-name|JUnitMatchers
-operator|.
-name|hasItems
 import|;
 end_import
 

@@ -165,11 +165,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|junit
+name|hamcrest
 operator|.
-name|Assert
+name|CoreMatchers
 operator|.
-name|assertFalse
+name|hasItem
 import|;
 end_import
 
@@ -179,11 +179,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|matchers
+name|Assert
 operator|.
-name|JUnitMatchers
-operator|.
-name|hasItem
+name|assertFalse
 import|;
 end_import
 
