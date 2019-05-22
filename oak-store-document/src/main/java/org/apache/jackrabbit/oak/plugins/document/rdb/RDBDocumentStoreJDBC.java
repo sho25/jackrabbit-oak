@@ -3774,6 +3774,12 @@ expr_stmt|;
 name|dataTotal
 operator|+=
 name|data
+operator|==
+literal|null
+condition|?
+literal|0
+else|:
+name|data
 operator|.
 name|length
 argument_list|()
