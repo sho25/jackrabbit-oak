@@ -4655,6 +4655,13 @@ name|doc
 operator|.
 name|getModCount
 argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|doc
+operator|.
+name|getModCount
+argument_list|()
 operator|==
 name|modCount
 condition|)
