@@ -884,7 +884,7 @@ name|accepts
 argument_list|(
 literal|"clusterId"
 argument_list|,
-literal|"MongoMK clusterId"
+literal|"DocumentMK clusterId"
 argument_list|)
 operator|.
 name|withRequiredArg
