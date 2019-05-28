@@ -70,6 +70,13 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Removes the content of the gc.log      */
+name|void
+name|truncate
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 

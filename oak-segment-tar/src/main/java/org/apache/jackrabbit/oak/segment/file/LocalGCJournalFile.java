@@ -328,6 +328,21 @@ argument_list|>
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|truncate
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|file
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
