@@ -468,6 +468,10 @@ name|File
 name|path
 decl_stmt|;
 specifier|private
+name|boolean
+name|mmap
+decl_stmt|;
+specifier|private
 name|File
 name|journal
 decl_stmt|;
@@ -536,6 +540,25 @@ name|checkNotNull
 argument_list|(
 name|path
 argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Whether to use memory mapped access or file access.          *          * @param mmap {@code true} for memory mapped access, {@code false} for          *             file access {@code null} to determine the access mode          *             from the system architecture: memory mapped on 64 bit          *             systems, file access on  32 bit systems.          * @return this builder.          */
+specifier|public
+name|Builder
+name|withMmap
+parameter_list|(
+name|boolean
+name|mmap
+parameter_list|)
+block|{
+name|this
+operator|.
+name|mmap
+operator|=
+name|mmap
 expr_stmt|;
 return|return
 name|this
@@ -627,7 +650,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Instruct the command to check specified checkpoints.          * This parameter is not required and defaults to "/checkpoints",           * i.e. will check all checkpoints when not explicitly overridden.          *           * @param checkpoints   checkpoints to be checked          * @return this builder.          */
+comment|/**          * Instruct the command to check specified checkpoints.          * This parameter is not required and defaults to "/checkpoints",          * i.e. will check all checkpoints when not explicitly overridden.          *          * @param checkpoints   checkpoints to be checked          * @return this builder.          */
 specifier|public
 name|Builder
 name|withCheckpoints
@@ -649,7 +672,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Content paths to be checked. This parameter is not required and          * defaults to "/".          *           * @param filterPaths          *            paths to be checked          * @return this builder.          */
+comment|/**          * Content paths to be checked. This parameter is not required and          * defaults to "/".          *          * @param filterPaths          *            paths to be checked          * @return this builder.          */
 specifier|public
 name|Builder
 name|withFilterPaths
@@ -832,6 +855,11 @@ name|path
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|mmap
+decl_stmt|;
+specifier|private
+specifier|final
 name|File
 name|journal
 decl_stmt|;
@@ -907,6 +935,14 @@ operator|=
 name|builder
 operator|.
 name|path
+expr_stmt|;
+name|this
+operator|.
+name|mmap
+operator|=
+name|builder
+operator|.
+name|mmap
 expr_stmt|;
 name|this
 operator|.
@@ -1039,6 +1075,11 @@ init|=
 name|fileStoreBuilder
 argument_list|(
 name|path
+argument_list|)
+operator|.
+name|withMemoryMapping
+argument_list|(
+name|mmap
 argument_list|)
 operator|.
 name|withCustomPersistence
