@@ -1180,8 +1180,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Unable to determine definition of authorizable property at "
-operator|+
+literal|"Unable to determine definition of authorizable property at {}"
+argument_list|,
 name|propertyLocation
 operator|.
 name|getPath

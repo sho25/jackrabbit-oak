@@ -511,11 +511,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Impersonator "
-operator|+
+literal|"Impersonator {} does not correspond to a known Principal."
+argument_list|,
 name|pName
-operator|+
-literal|" does not correspond to a known Principal."
 argument_list|)
 expr_stmt|;
 name|p

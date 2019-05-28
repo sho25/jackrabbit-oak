@@ -1186,11 +1186,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"User "
-operator|+
+literal|"User {}: changed user password"
+argument_list|,
 name|loginId
-operator|+
-literal|": changed user password"
 argument_list|)
 expr_stmt|;
 return|return
@@ -1203,12 +1201,10 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Aborted password change for user "
-operator|+
+literal|"Aborted password change for user {}: provided new password is of incompatible type {}"
+argument_list|,
 name|loginId
-operator|+
-literal|": provided new password is of incompatible type "
-operator|+
+argument_list|,
 name|newPasswordObject
 operator|.
 name|getClass
@@ -1249,8 +1245,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to change password for user "
-operator|+
+literal|"Failed to change password for user {}: {}"
+argument_list|,
 name|loginId
 argument_list|,
 name|e
@@ -1263,26 +1259,7 @@ block|}
 catch|catch
 parameter_list|(
 name|RepositoryException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Failed to change password for user "
-operator|+
-name|loginId
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|CommitFailedException
 name|e
 parameter_list|)
@@ -1296,8 +1273,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to change password for user "
-operator|+
+literal|"Failed to change password for user {}: {}"
+argument_list|,
 name|loginId
 argument_list|,
 name|e
@@ -1344,14 +1321,12 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"User "
-operator|+
+literal|"User {} wants to impersonate himself -> success."
+argument_list|,
 name|info
 operator|.
 name|getUserID
 argument_list|()
-operator|+
-literal|" wants to impersonate himself -> success."
 argument_list|)
 expr_stmt|;
 return|return
@@ -1364,15 +1339,13 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"User "
-operator|+
+literal|"User {} wants to impersonate {}"
+argument_list|,
 name|info
 operator|.
 name|getUserID
 argument_list|()
-operator|+
-literal|" wants to impersonate "
-operator|+
+argument_list|,
 name|user
 operator|.
 name|getID

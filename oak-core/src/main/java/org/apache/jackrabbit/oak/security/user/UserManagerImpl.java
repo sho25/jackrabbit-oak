@@ -1389,8 +1389,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"User created: "
-operator|+
+literal|"User created: {}"
+argument_list|,
 name|userID
 argument_list|)
 expr_stmt|;
@@ -1470,8 +1470,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"System user created: "
-operator|+
+literal|"System user created: {}"
+argument_list|,
 name|userID
 argument_list|)
 expr_stmt|;
@@ -1653,8 +1653,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Group created: "
-operator|+
+literal|"Group created: {}"
+argument_list|,
 name|groupID
 argument_list|)
 expr_stmt|;

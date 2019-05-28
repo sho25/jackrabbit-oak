@@ -1250,15 +1250,11 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Cannot handle protected PropInfo "
-operator|+
+literal|"Cannot handle protected PropInfo {}. Node {} doesn't represent an Authorizable."
+argument_list|,
 name|propInfo
-operator|+
-literal|". Node "
-operator|+
+argument_list|,
 name|parent
-operator|+
-literal|" doesn't represent an Authorizable."
 argument_list|)
 expr_stmt|;
 return|return
@@ -2156,11 +2152,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Cannot handle protected node "
-operator|+
+literal|"Cannot handle protected node {}. It doesn't represent a valid Group, nor does any of its parents."
+argument_list|,
 name|protectedParent
-operator|+
-literal|". It nor one of its parents represent a valid Group."
 argument_list|)
 expr_stmt|;
 return|return
@@ -3304,14 +3298,12 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"ImportBehavior.BESTEFFORT: Found "
-operator|+
+literal|"ImportBehavior.BESTEFFORT: Found {} entries of rep:members pointing to non-existing authorizables. Adding to rep:members."
+argument_list|,
 name|nonExisting
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|" entries of rep:members pointing to non-existing authorizables. Adding to rep:members."
 argument_list|)
 expr_stmt|;
 name|Tree

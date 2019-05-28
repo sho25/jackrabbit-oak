@@ -2096,8 +2096,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Omit cache creation for user without group membership at "
-operator|+
+literal|"Omit cache creation for user without group membership at {}"
+argument_list|,
 name|authorizableNode
 operator|.
 name|getPath
@@ -2112,8 +2112,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Create new group membership cache at "
-operator|+
+literal|"Create new group membership cache at {}"
+argument_list|,
 name|authorizableNode
 operator|.
 name|getPath
@@ -2242,8 +2242,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Cached group membership at "
-operator|+
+literal|"Cached group membership at {}"
+argument_list|,
 name|authorizableNode
 operator|.
 name|getPath
@@ -2254,24 +2254,7 @@ block|}
 catch|catch
 parameter_list|(
 name|AccessDeniedException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Failed to cache group membership"
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|CommitFailedException
 name|e
 parameter_list|)
@@ -2280,14 +2263,12 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to cache group membership"
+literal|"Failed to cache group membership: {}"
 argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2340,8 +2321,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"No group cache at "
-operator|+
+literal|"No group cache at {}"
+argument_list|,
 name|authorizableNode
 operator|.
 name|getPath
@@ -2364,8 +2345,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Reading group membership at "
-operator|+
+literal|"Reading group membership at {}"
+argument_list|,
 name|authorizableNode
 operator|.
 name|getPath
@@ -2472,8 +2453,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Expired group cache for "
-operator|+
+literal|"Expired group cache for {}"
+argument_list|,
 name|authorizableNode
 operator|.
 name|getPath
@@ -2807,8 +2788,8 @@ comment|//----------------------------------------------------------------------
 comment|// Group Principal implementations that retrieve member information on demand
 comment|//--------------------------------------------------------------------------
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|BaseGroupPrincipal
 extends|extends
@@ -2878,6 +2859,8 @@ operator|=
 name|config
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 name|UserManager
@@ -3251,6 +3234,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 name|String
 name|getOakPath
@@ -3281,6 +3266,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -3333,7 +3320,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to retrieve path from group principal"
+literal|"Failed to retrieve path from group principal: {}"
 argument_list|,
 name|e
 operator|.

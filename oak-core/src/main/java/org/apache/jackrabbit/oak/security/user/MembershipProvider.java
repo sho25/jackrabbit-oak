@@ -81,16 +81,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -534,8 +524,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Not a membership reference property "
-operator|+
+literal|"Not a membership reference property {}"
+argument_list|,
 name|propPath
 argument_list|)
 expr_stmt|;
@@ -804,8 +794,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Cyclic group membership detected for contentId "
-operator|+
+literal|"Cyclic group membership detected for contentId {}"
+argument_list|,
 name|groupContentId
 argument_list|)
 expr_stmt|;
@@ -1124,7 +1114,7 @@ name|hasPendingChanges
 argument_list|()
 return|;
 block|}
-comment|/**      * Adds a new member to the given {@code groupTree}.      * @param groupTree the group to add the member to      * @param newMemberTree the tree of the new member      * @return {@code true} if the member was added      * @throws RepositoryException if an error occurs      */
+comment|/**      * Adds a new member to the given {@code groupTree}.      * @param groupTree the group to add the member to      * @param newMemberTree the tree of the new member      * @return {@code true} if the member was added      */
 name|boolean
 name|addMember
 parameter_list|(

@@ -1321,8 +1321,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Existing folder node collides with user/group to be created. Expanding path by: "
-operator|+
+literal|"Existing folder node collides with user/group to be created. Expanding path by: {}"
+argument_list|,
 name|colliding
 operator|.
 name|getName
