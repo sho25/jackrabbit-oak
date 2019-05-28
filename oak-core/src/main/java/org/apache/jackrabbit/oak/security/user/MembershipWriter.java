@@ -61,16 +61,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -277,13 +267,17 @@ operator|=
 name|membershipSizeThreshold
 expr_stmt|;
 block|}
-comment|/**      * Adds a new member to the given {@code groupTree}.      *      * @param groupTree the group to add the member to      * @param memberContentId the id of the new member      * @return {@code true} if the member was added      * @throws RepositoryException if an error occurs      */
+comment|/**      * Adds a new member to the given {@code groupTree}.      *      * @param groupTree the group to add the member to      * @param memberContentId the id of the new member      * @return {@code true} if the member was added      */
 name|boolean
 name|addMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Tree
 name|groupTree
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|memberContentId
 parameter_list|)
@@ -324,7 +318,9 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Adds a new member to the given {@code groupTree}.      *      * @param groupTree the group to add the member to      * @param memberIds the ids of the new members as map of 'contentId':'memberId'      * @return the set of member IDs that was not successfully processed.      * @throws RepositoryException if an error occurs      */
+comment|/**      * Adds a new member to the given {@code groupTree}.      *      * @param groupTree the group to add the member to      * @param memberIds the ids of the new members as map of 'contentId':'memberId'      * @return the set of member IDs that was not successfully processed.      */
+annotation|@
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -807,6 +803,8 @@ return|return
 name|failed
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|private
 specifier|static
 name|Tree
@@ -891,6 +889,8 @@ return|return
 name|refTree
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|private
 specifier|static
 name|String
@@ -995,6 +995,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Removes the members from the given group.      *      * @param groupTree group to remove the member from      * @param memberIds Map of 'contentId':'memberId' of all members that need to be removed.      * @return the set of member IDs that was not successfully processed.      */
+annotation|@
+name|NotNull
 name|Set
 argument_list|<
 name|String

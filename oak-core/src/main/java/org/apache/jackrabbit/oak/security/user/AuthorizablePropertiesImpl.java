@@ -1534,7 +1534,7 @@ name|String
 name|getOakPath
 parameter_list|(
 annotation|@
-name|Nullable
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -1543,10 +1543,6 @@ name|RepositoryException
 block|{
 if|if
 condition|(
-name|relPath
-operator|==
-literal|null
-operator|||
 name|relPath
 operator|.
 name|isEmpty

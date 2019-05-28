@@ -1565,6 +1565,8 @@ argument_list|)
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
+annotation|@
+name|NotNull
 specifier|private
 name|BlobAccessProvider
 name|getBlobAccessProvider

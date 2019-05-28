@@ -89,6 +89,18 @@ name|PrincipalImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * TreeBasedPrincipal...  */
 end_comment
@@ -113,12 +125,18 @@ name|pathMapper
 decl_stmt|;
 name|TreeBasedPrincipal
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|principalName
 parameter_list|,
+annotation|@
+name|NotNull
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|NotNull
 name|NamePathMapper
 name|pathMapper
 parameter_list|)
@@ -138,12 +156,18 @@ expr_stmt|;
 block|}
 name|TreeBasedPrincipal
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|principalName
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|NotNull
 name|NamePathMapper
 name|pathMapper
 parameter_list|)
