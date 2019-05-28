@@ -1197,14 +1197,6 @@ block|{
 name|checkInitialized
 argument_list|()
 expr_stmt|;
-name|String
-name|propName
-init|=
-name|propInfo
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|isPwdNode
@@ -1261,6 +1253,14 @@ return|return
 literal|false
 return|;
 block|}
+name|String
+name|propName
+init|=
+name|propInfo
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|REP_AUTHORIZABLE_ID
@@ -1449,22 +1449,7 @@ argument_list|,
 name|principal
 argument_list|)
 expr_stmt|;
-comment|/*              Remember principal of new user/group for further processing              of impersonators              */
-if|if
-condition|(
-name|principals
-operator|==
-literal|null
-condition|)
-block|{
-name|principals
-operator|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-expr_stmt|;
-block|}
+comment|/*                  Remember principal of new user/group for further processing                  of impersonators                  */
 name|principals
 operator|.
 name|put
