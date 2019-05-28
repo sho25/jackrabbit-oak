@@ -2504,8 +2504,6 @@ name|DISABLED
 condition|)
 block|{
 comment|// if leaseCheckDisabled is set we never do the check, so return fast
-comment|// the 'renewed' flag indicates if this instance *ever* renewed the lease after startup
-comment|// until that is not set, we cannot do the lease check (otherwise startup wouldn't work)
 return|return;
 block|}
 if|if
