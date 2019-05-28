@@ -452,19 +452,19 @@ specifier|final
 name|LuceneIndexEditorContext
 name|context
 decl_stmt|;
-comment|/** Name of this node, or {@code null} for the root node. */
+comment|/**      * Name of this node, or {@code null} for the root node.      */
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
-comment|/** Parent editor or {@code null} if this is the root editor. */
+comment|/**      * Parent editor or {@code null} if this is the root editor.      */
 specifier|private
 specifier|final
 name|LuceneIndexEditor
 name|parent
 decl_stmt|;
-comment|/** Path of this editor, built lazily in {@link #getPath()}. */
+comment|/**      * Path of this editor, built lazily in {@link #getPath()}.      */
 specifier|private
 name|String
 name|path
