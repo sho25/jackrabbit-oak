@@ -479,24 +479,6 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|DocumentMK
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
 name|DocumentNodeStore
 import|;
 end_import
@@ -533,7 +515,9 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|LeaseCheckMode
+name|rdb
+operator|.
+name|RDBDataSourceFactory
 import|;
 end_import
 
@@ -553,7 +537,7 @@ name|document
 operator|.
 name|rdb
 operator|.
-name|RDBDataSourceFactory
+name|RDBDocumentNodeStoreBuilder
 import|;
 end_import
 
@@ -5384,9 +5368,7 @@ expr_stmt|;
 name|instance
 operator|=
 operator|new
-name|DocumentMK
-operator|.
-name|Builder
+name|RDBDocumentNodeStoreBuilder
 argument_list|()
 operator|.
 name|setRDBConnection
