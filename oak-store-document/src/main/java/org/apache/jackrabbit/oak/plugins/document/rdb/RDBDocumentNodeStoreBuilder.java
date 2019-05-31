@@ -315,6 +315,8 @@ name|RDBBlobStore
 argument_list|(
 name|blobStoreDataSource
 argument_list|,
+name|this
+argument_list|,
 name|options
 argument_list|)
 argument_list|)
