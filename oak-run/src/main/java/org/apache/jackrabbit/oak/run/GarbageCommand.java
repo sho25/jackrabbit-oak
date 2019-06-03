@@ -133,7 +133,7 @@ decl_stmt|;
 name|String
 name|h
 init|=
-literal|"garbage mongodb://host:port/database"
+literal|"garbage mongodb://host:port/database | jdbc:..."
 decl_stmt|;
 try|try
 block|{
