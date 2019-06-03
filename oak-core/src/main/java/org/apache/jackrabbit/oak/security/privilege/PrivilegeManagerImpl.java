@@ -915,8 +915,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Found cyclic privilege aggregation -> ignore declared aggregate "
-operator|+
+literal|"Found cyclic privilege aggregation -> ignore declared aggregate {}"
+argument_list|,
 name|oakName
 argument_list|)
 expr_stmt|;

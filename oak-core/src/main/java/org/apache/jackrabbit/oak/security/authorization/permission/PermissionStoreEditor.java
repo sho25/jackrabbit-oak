@@ -1587,11 +1587,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"NumEntries counter for principal '"
-operator|+
+literal|"NumEntries counter for principal '{}' turned negative -> removing 'rep:numPermissions' property."
+argument_list|,
 name|principalName
-operator|+
-literal|"' turned negative -> removing 'rep:numPermissions' property."
 argument_list|)
 expr_stmt|;
 name|principalRoot

@@ -1345,6 +1345,8 @@ operator|.
 name|warn
 argument_list|(
 literal|"Ignoring bound {} since no sort order is specified"
+argument_list|,
+name|bound
 argument_list|)
 expr_stmt|;
 block|}
@@ -2020,8 +2022,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to retrieve authorizable ID "
-operator|+
+literal|"Failed to retrieve authorizable ID {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage

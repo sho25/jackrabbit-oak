@@ -808,8 +808,8 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Failed to retrieve login configuration: using default. "
-operator|+
+literal|"Failed to retrieve login configuration: using default. {}"
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;

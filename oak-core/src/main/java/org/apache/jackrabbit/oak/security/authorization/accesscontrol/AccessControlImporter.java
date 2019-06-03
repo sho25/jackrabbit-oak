@@ -1539,11 +1539,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Unknown principal "
-operator|+
+literal|"Unknown principal {} -> Ignoring this ACE."
+argument_list|,
 name|principalName
-operator|+
-literal|" -> Ignoring this ACE."
 argument_list|)
 expr_stmt|;
 name|ignore

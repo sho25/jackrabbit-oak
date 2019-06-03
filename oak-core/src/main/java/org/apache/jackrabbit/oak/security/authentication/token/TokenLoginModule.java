@@ -772,8 +772,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"TokenProvider failed to create a login token for user "
-operator|+
+literal|"TokenProvider failed to create a login token for user {}"
+argument_list|,
 name|logId
 argument_list|)
 expr_stmt|;

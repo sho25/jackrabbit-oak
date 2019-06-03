@@ -369,7 +369,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to load entries for principal '%s' at path %s"
+literal|"Failed to load entries for principal '{}' at path {}"
 argument_list|,
 name|principalName
 argument_list|,

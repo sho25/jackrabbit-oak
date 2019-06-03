@@ -952,8 +952,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring unsupported restriction "
-operator|+
+literal|"Ignoring unsupported restriction {}"
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;

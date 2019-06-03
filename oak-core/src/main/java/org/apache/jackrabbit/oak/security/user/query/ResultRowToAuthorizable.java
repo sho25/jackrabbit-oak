@@ -506,8 +506,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to access authorizable "
-operator|+
+literal|"Failed to access authorizable {}"
+argument_list|,
 name|resultPath
 argument_list|)
 expr_stmt|;

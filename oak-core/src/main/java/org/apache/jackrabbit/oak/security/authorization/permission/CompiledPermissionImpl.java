@@ -1463,8 +1463,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Cannot retrieve versionable node for "
-operator|+
+literal|"Cannot retrieve versionable node for {}"
+argument_list|,
 name|tree
 operator|.
 name|getPath
