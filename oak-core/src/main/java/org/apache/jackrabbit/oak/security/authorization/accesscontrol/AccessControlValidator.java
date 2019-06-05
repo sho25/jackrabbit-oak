@@ -1589,12 +1589,6 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|parent
-operator|.
-name|exists
-argument_list|()
-operator|||
-operator|!
 name|NT_REP_ACL
 operator|.
 name|equals
