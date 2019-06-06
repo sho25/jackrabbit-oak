@@ -3171,10 +3171,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|aclName
+operator|!
+name|POLICY_NODE_NAMES
 operator|.
-name|isEmpty
-argument_list|()
+name|contains
+argument_list|(
+name|aclName
+argument_list|)
 operator|||
 operator|!
 name|accessControlledTree
