@@ -421,6 +421,11 @@ argument_list|(
 name|ioMonitor
 argument_list|)
 operator|.
+name|withRemoteStoreMonitor
+argument_list|(
+name|remoteStoreMonitor
+argument_list|)
+operator|.
 name|withMemoryMapping
 argument_list|(
 name|memoryMapping

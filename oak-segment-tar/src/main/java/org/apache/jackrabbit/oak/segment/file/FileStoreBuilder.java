@@ -467,47 +467,7 @@ name|spi
 operator|.
 name|monitor
 operator|.
-name|CompositeIOMonitor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|spi
-operator|.
-name|monitor
-operator|.
-name|IOMonitor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|segment
-operator|.
-name|spi
-operator|.
-name|monitor
-operator|.
-name|IOMonitorAdapter
+name|*
 import|;
 end_import
 
@@ -961,6 +921,12 @@ init|=
 name|newHashSet
 argument_list|()
 decl_stmt|;
+annotation|@
+name|NotNull
+specifier|private
+name|RemoteStoreMonitor
+name|remoteStoreMonitor
+decl_stmt|;
 specifier|private
 name|boolean
 name|strictVersionCheck
@@ -973,7 +939,7 @@ specifier|private
 name|boolean
 name|built
 decl_stmt|;
-comment|/**      * Create a new instance of a {@code FileStoreBuilder} for a file store.      * @param directory  directory where the tar files are stored      * @return a new {@code FileStoreBuilder} instance.      */
+comment|/**      * Create a new instance of a {@code FileStoreBuilder} for a file store.      *      * @param directory directory where the tar files are stored      * @return a new {@code FileStoreBuilder} instance.      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1037,7 +1003,7 @@ name|directory
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Specify the {@link BlobStore}.      * @param blobStore      * @return this instance      */
+comment|/**      * Specify the {@link BlobStore}.      *      * @param blobStore      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1063,7 +1029,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Maximal size of the generated tar files in MB.      * @param maxFileSize      * @return this instance      */
+comment|/**      * Maximal size of the generated tar files in MB.      *      * @param maxFileSize      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1084,7 +1050,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Size of the segment cache in MB.      * @param segmentCacheSize  None negative cache size      * @return this instance      */
+comment|/**      * Size of the segment cache in MB.      *      * @param segmentCacheSize None negative cache size      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1105,7 +1071,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Size of the string cache in MB.      * @param stringCacheSize  None negative cache size      * @return this instance      */
+comment|/**      * Size of the string cache in MB.      *      * @param stringCacheSize None negative cache size      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1126,7 +1092,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Size of the template cache in MB.      * @param templateCacheSize  None negative cache size      * @return this instance      */
+comment|/**      * Size of the template cache in MB.      *      * @param templateCacheSize None negative cache size      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1147,7 +1113,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Number of items to keep in the string deduplication cache      * @param stringDeduplicationCacheSize  None negative cache size      * @return this instance      */
+comment|/**      * Number of items to keep in the string deduplication cache      *      * @param stringDeduplicationCacheSize None negative cache size      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1168,7 +1134,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Number of items to keep in the template deduplication cache      * @param templateDeduplicationCacheSize  None negative cache size      * @return this instance      */
+comment|/**      * Number of items to keep in the template deduplication cache      *      * @param templateDeduplicationCacheSize None negative cache size      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1189,7 +1155,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Number of items to keep in the node deduplication cache      * @param nodeDeduplicationCacheSize  None negative cache size. Must be a power of 2.      * @return this instance      */
+comment|/**      * Number of items to keep in the node deduplication cache      *      * @param nodeDeduplicationCacheSize None negative cache size. Must be a power of 2.      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1210,7 +1176,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Turn memory mapping on or off      * @param memoryMapping      * @return this instance      */
+comment|/**      * Turn memory mapping on or off      *      * @param memoryMapping      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1231,7 +1197,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Turn off heap access on or off      * @param offHeapAccess      * @return this instance      */
+comment|/**      * Turn off heap access on or off      *      * @param offHeapAccess      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1252,7 +1218,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Set memory mapping to the default value based on OS properties      * @return this instance      */
+comment|/**      * Set memory mapping to the default value based on OS properties      *      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1270,7 +1236,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * {@link GCMonitor} for monitoring this files store's gc process.      * @param gcMonitor      * @return this instance      */
+comment|/**      * {@link GCMonitor} for monitoring this files store's gc process.      *      * @param gcMonitor      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1299,7 +1265,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * {@link StatisticsProvider} for collecting statistics related to FileStore      * @param statisticsProvider      * @return this instance      */
+comment|/**      * {@link StatisticsProvider} for collecting statistics related to FileStore      *      * @param statisticsProvider      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1325,7 +1291,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * {@link SegmentGCOptions} the garbage collection options of the store      * @param gcOptions      * @return this instance      */
+comment|/**      * {@link SegmentGCOptions} the garbage collection options of the store      *      * @param gcOptions      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1349,7 +1315,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * {@link SegmentNotFoundExceptionListener} listener for  {@code SegmentNotFoundException}      * @param snfeListener, the actual listener      * @return this instance      */
+comment|/**      * {@link SegmentNotFoundExceptionListener} listener for  {@code SegmentNotFoundException}      *      * @param snfeListener, the actual listener      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1401,7 +1367,29 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Log IO reads at debug level to the passed logger      * @param logger  logger for logging IO reads      * @return this.      */
+annotation|@
+name|NotNull
+specifier|public
+name|FileStoreBuilder
+name|withRemoteStoreMonitor
+parameter_list|(
+annotation|@
+name|NotNull
+name|RemoteStoreMonitor
+name|remoteStoreMonitor
+parameter_list|)
+block|{
+name|this
+operator|.
+name|remoteStoreMonitor
+operator|=
+name|remoteStoreMonitor
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Log IO reads at debug level to the passed logger      *      * @param logger logger for logging IO reads      * @return this.      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1442,7 +1430,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Enable strict version checking. With strict version checking enabled Oak      * will fail to start if the store version does not exactly match this Oak version.      * This is useful to e.g. avoid inadvertent upgrades during when running offline      * compaction accidentally against an older version of a store.      * @param strictVersionCheck  enables strict version checking iff {@code true}.      * @return this instance      */
+comment|/**      * Enable strict version checking. With strict version checking enabled Oak      * will fail to start if the store version does not exactly match this Oak version.      * This is useful to e.g. avoid inadvertent upgrades during when running offline      * compaction accidentally against an older version of a store.      *      * @param strictVersionCheck enables strict version checking iff {@code true}.      * @return this instance      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1865,7 +1853,7 @@ return|return
 name|persistence
 return|;
 block|}
-comment|/**      * @return  creates or returns the {@code WriterCacheManager} this builder passes or      *          passed to the store on {@link #build()}.      *      * @see #withNodeDeduplicationCacheSize(int)      * @see #withStringDeduplicationCacheSize(int)      * @see #withTemplateDeduplicationCacheSize(int)      */
+comment|/**      * @return creates or returns the {@code WriterCacheManager} this builder passes or      * passed to the store on {@link #build()}.      * @see #withNodeDeduplicationCacheSize(int)      * @see #withStringDeduplicationCacheSize(int)      * @see #withTemplateDeduplicationCacheSize(int)      */
 annotation|@
 name|NotNull
 specifier|public
@@ -1916,6 +1904,27 @@ name|CompositeIOMonitor
 argument_list|(
 name|ioMonitors
 argument_list|)
+return|;
+block|}
+name|RemoteStoreMonitor
+name|getRemoteStoreMonitor
+parameter_list|()
+block|{
+if|if
+condition|(
+name|remoteStoreMonitor
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+operator|new
+name|RemoteStoreMonitorAdapter
+argument_list|()
+return|;
+block|}
+return|return
+name|remoteStoreMonitor
 return|;
 block|}
 name|boolean

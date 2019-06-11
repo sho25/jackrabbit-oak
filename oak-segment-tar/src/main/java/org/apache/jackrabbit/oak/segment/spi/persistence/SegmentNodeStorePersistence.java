@@ -71,6 +71,26 @@ name|IOMonitor
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|spi
+operator|.
+name|monitor
+operator|.
+name|RemoteStoreMonitor
+import|;
+end_import
+
 begin_comment
 comment|/**  * This type is a main entry point for the segment node store persistence. It's  * used every time the access to the underlying storage (eg. tar files) is required.  */
 end_comment
@@ -95,6 +115,9 @@ name|ioMonitor
 parameter_list|,
 name|FileStoreMonitor
 name|fileStoreMonitor
+parameter_list|,
+name|RemoteStoreMonitor
+name|remoteStoreMonitor
 parameter_list|)
 throws|throws
 name|IOException

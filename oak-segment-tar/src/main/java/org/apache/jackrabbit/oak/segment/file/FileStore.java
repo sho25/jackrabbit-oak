@@ -1027,6 +1027,11 @@ argument_list|(
 name|ioMonitor
 argument_list|)
 operator|.
+name|withRemoteStoreMonitor
+argument_list|(
+name|remoteStoreMonitor
+argument_list|)
+operator|.
 name|withFileStoreMonitor
 argument_list|(
 name|stats
