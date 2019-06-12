@@ -89,6 +89,12 @@ name|REPOSITORY_PERMISSION_PATH
 init|=
 literal|""
 decl_stmt|;
+comment|/**      * Name of the optional configuration parameter to enable the {@code AggregationFilter} for this model.      */
+name|String
+name|PARAM_ENABLE_AGGREGATION_FILTER
+init|=
+literal|"enableAggregationFilter"
+decl_stmt|;
 block|}
 end_interface
 
