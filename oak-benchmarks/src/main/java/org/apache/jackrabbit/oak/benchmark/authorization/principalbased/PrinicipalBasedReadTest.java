@@ -475,6 +475,30 @@ name|principalbased
 operator|.
 name|impl
 operator|.
+name|AggregationFilterImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|principalbased
+operator|.
+name|impl
+operator|.
 name|FilterProviderImpl
 import|;
 end_import
@@ -1903,7 +1927,15 @@ condition|(
 name|useAggregationFilter
 condition|)
 block|{
-comment|// TODO: register 'AggregationFilter' if 'stop-evaluation' option is set
+name|authorizationConfiguration
+operator|.
+name|withAggregationFilter
+argument_list|(
+operator|new
+name|AggregationFilterImpl
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|// register the authorization configuration to have filterprovider bound to it.
 name|context
