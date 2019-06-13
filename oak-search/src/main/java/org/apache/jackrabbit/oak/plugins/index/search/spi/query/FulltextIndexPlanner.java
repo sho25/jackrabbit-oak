@@ -5104,11 +5104,17 @@ name|isPathTransformed
 argument_list|()
 condition|)
 block|{
-comment|// get the base path
-comment|// ensure the path ends with the given
-comment|// relative path
+comment|// get the base path ensure the path ends with the given relative path
+comment|// for fulltext constraint.
+comment|// For non-fulltext constraint where query engine can evaluate the relative path
+comment|// condition, we shall take leeway and allow other features of query engine
+comment|// (like wildcard as a path element) get supported
 if|if
 condition|(
+operator|(
+operator|!
+name|nonFullTextConstraints
+operator|&&
 operator|!
 name|path
 operator|.
@@ -5116,6 +5122,18 @@ name|endsWith
 argument_list|(
 name|parentPathSegment
 argument_list|)
+operator|)
+operator|||
+operator|(
+name|nonFullTextConstraints
+operator|&&
+name|getDepth
+argument_list|(
+name|path
+argument_list|)
+operator|<
+name|parentDepth
+operator|)
 condition|)
 block|{
 return|return
