@@ -1605,10 +1605,6 @@ operator|&&
 name|statisticsProvider
 operator|!=
 literal|null
-operator|&&
-name|indexCopier
-operator|!=
-literal|null
 condition|)
 block|{
 name|callbacks
@@ -1623,8 +1619,6 @@ argument_list|,
 name|mbean
 argument_list|,
 name|statisticsProvider
-argument_list|,
-name|indexCopier
 argument_list|)
 argument_list|)
 expr_stmt|;

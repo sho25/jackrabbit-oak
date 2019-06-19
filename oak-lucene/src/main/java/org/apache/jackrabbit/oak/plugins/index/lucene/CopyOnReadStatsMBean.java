@@ -145,10 +145,6 @@ name|String
 name|getLocalIndexSize
 parameter_list|()
 function_decl|;
-name|long
-name|getLocalIndexDirSize
-parameter_list|()
-function_decl|;
 name|String
 index|[]
 name|getGarbageDetails
