@@ -227,6 +227,28 @@ name|NotNull
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|QueryBuilder
+operator|.
+name|Direction
+operator|.
+name|ASCENDING
+import|;
+end_import
+
 begin_comment
 comment|/**  * Common utilities used for user/group queries.  */
 end_comment
@@ -539,40 +561,28 @@ operator|.
 name|Direction
 name|direction
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
-switch|switch
+if|if
 condition|(
 name|direction
+operator|==
+name|ASCENDING
 condition|)
 block|{
-case|case
-name|ASCENDING
-case|:
 return|return
 name|RelationOp
 operator|.
 name|GT
 return|;
-case|case
-name|DESCENDING
-case|:
+block|}
+else|else
+block|{
+comment|// DESCENDING
 return|return
 name|RelationOp
 operator|.
 name|LT
 return|;
-default|default:
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"Unknown sort order "
-operator|+
-name|direction
-argument_list|)
-throw|;
 block|}
 block|}
 block|}

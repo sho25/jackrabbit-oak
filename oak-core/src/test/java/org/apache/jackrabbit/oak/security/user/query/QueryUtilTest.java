@@ -1291,8 +1291,6 @@ specifier|public
 name|void
 name|testEscapeForQuery
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|NamePathMapper
 name|namePathMapper
@@ -1364,8 +1362,6 @@ specifier|public
 name|void
 name|testGetCollation
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assertSame
 argument_list|(
