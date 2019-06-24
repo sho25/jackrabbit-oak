@@ -33,6 +33,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Maps
@@ -70,6 +84,22 @@ operator|.
 name|api
 operator|.
 name|Root
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
 import|;
 end_import
 
@@ -293,6 +323,22 @@ name|component
 operator|.
 name|annotations
 operator|.
+name|ConfigurationPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|osgi
+operator|.
+name|service
+operator|.
+name|component
+operator|.
+name|annotations
+operator|.
 name|Modified
 import|;
 end_import
@@ -405,6 +451,22 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implementation of the {@link org.apache.jackrabbit.oak.spi.security.authorization.principalbased.Filter} interface that  * consists of the following two filtering conditions:  *  *<ol>  *<li>All principals in the set must be of type {@link org.apache.jackrabbit.oak.spi.security.principal.SystemUserPrincipal}</li>  *<li>All principals in the set must be located in the repository below the configured path.</li>  *</ol>  */
 end_comment
@@ -420,6 +482,12 @@ name|FilterProvider
 operator|.
 name|class
 block|}
+argument_list|,
+name|configurationPolicy
+operator|=
+name|ConfigurationPolicy
+operator|.
+name|REQUIRE
 argument_list|)
 annotation|@
 name|Designate
@@ -457,7 +525,7 @@ literal|"Path"
 argument_list|,
 name|description
 operator|=
-literal|"Required path underneath which all filtered principals must be located in the repository."
+literal|"Required path underneath which all filtered system-user-principals must be located in the repository."
 argument_list|)
 name|String
 name|path
@@ -651,8 +719,19 @@ name|Configuration
 name|configuration
 parameter_list|)
 block|{
-name|this
+name|checkState
+argument_list|(
+name|isValidPath
+argument_list|(
+name|configuration
 operator|.
+name|path
+argument_list|()
+argument_list|)
+argument_list|,
+literal|"Configured path must be a valid absolute path."
+argument_list|)
+expr_stmt|;
 name|oakPath
 operator|=
 name|configuration
@@ -660,6 +739,34 @@ operator|.
 name|path
 argument_list|()
 expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|boolean
+name|isValidPath
+parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|path
+parameter_list|)
+block|{
+return|return
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|path
+argument_list|)
+operator|&&
+name|PathUtils
+operator|.
+name|isAbsolute
+argument_list|(
+name|path
+argument_list|)
+return|;
 block|}
 comment|//-------------------------------------------------------------< Filter>---
 specifier|private
