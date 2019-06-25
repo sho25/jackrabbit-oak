@@ -1051,6 +1051,10 @@ operator|*
 literal|1024
 operator|*
 literal|1024L
+argument_list|,
+name|MongoDocumentNodeStoreBuilderBase
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
