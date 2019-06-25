@@ -1161,7 +1161,7 @@ name|accessControlViolation
 argument_list|(
 literal|31
 argument_list|,
-literal|"Attempt to change primary type of/to rep:PrincipalPolicy."
+literal|"Attempt to change primary type from/to rep:PrincipalPolicy."
 argument_list|)
 throw|;
 block|}
