@@ -1554,7 +1554,7 @@ argument_list|()
 argument_list|,
 name|pw
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|currentPw
