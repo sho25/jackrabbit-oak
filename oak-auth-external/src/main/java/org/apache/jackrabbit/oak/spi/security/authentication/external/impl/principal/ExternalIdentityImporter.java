@@ -409,11 +409,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Found reserved property "
-operator|+
+literal|"Found reserved property {} managed by the system => Removed from imported scope."
+argument_list|,
 name|REP_EXTERNAL_PRINCIPAL_NAMES
-operator|+
-literal|" managed by the system => Removed from imported scope."
 argument_list|)
 expr_stmt|;
 name|protectedParent

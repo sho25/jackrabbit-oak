@@ -844,8 +844,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to synchronize membership information for external identity "
-operator|+
+literal|"Failed to synchronize membership information for external identity {}"
+argument_list|,
 name|external
 operator|.
 name|getId

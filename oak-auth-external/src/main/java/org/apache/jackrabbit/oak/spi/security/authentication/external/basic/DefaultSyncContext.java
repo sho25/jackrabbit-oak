@@ -3634,11 +3634,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"{} of {} '{}' need sync. "
-operator|+
-name|REP_LAST_SYNCED
-operator|+
-literal|" not set."
+literal|"{} of {} '{}' need sync. {} not set."
 argument_list|,
 name|type
 argument_list|,
@@ -3655,6 +3651,8 @@ name|auth
 operator|.
 name|getID
 argument_list|()
+argument_list|,
+name|REP_LAST_SYNCED
 argument_list|)
 expr_stmt|;
 block|}
@@ -3690,11 +3688,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"{} of {} '{}' need sync. "
-operator|+
-name|REP_LAST_SYNCED
-operator|+
-literal|" expired ({}> {})"
+literal|"{} of {} '{}' need sync. {} expired ({}> {})"
 argument_list|,
 name|type
 argument_list|,
@@ -3723,6 +3717,8 @@ name|getLong
 argument_list|()
 argument_list|,
 name|expirationTime
+argument_list|,
+name|REP_LAST_SYNCED
 argument_list|)
 expr_stmt|;
 block|}
