@@ -1525,11 +1525,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Nested cug property containing "
-operator|+
+literal|"Nested cug property containing {} has also been removed; no reconnect required."
+argument_list|,
 name|path
-operator|+
-literal|" has also been removed; no reconnect required."
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1567,11 +1565,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to updated nested CUG info for path '"
-operator|+
+literal|"Failed to updated nested CUG info for path '{}'."
+argument_list|,
 name|path
-operator|+
-literal|"'."
 argument_list|)
 expr_stmt|;
 block|}

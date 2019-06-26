@@ -755,11 +755,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring unknown principal with name '"
-operator|+
+literal|"Ignoring unknown principal with name '{}'."
+argument_list|,
 name|principalName
-operator|+
-literal|"'."
 argument_list|)
 expr_stmt|;
 break|break;
@@ -788,11 +786,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Importing unknown principal '"
-operator|+
+literal|"Importing unknown principal '{}'"
+argument_list|,
 name|principalName
-operator|+
-literal|'\''
 argument_list|)
 expr_stmt|;
 name|principalNames

@@ -1318,8 +1318,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Cannot remove mixin type "
-operator|+
+literal|"Cannot remove mixin type {}"
+argument_list|,
 name|MIX_REP_CUG_MIXIN
 argument_list|)
 expr_stmt|;
@@ -1871,8 +1871,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Unknown principal "
-operator|+
+literal|"Unknown principal {}"
+argument_list|,
 name|principalName
 argument_list|)
 expr_stmt|;
