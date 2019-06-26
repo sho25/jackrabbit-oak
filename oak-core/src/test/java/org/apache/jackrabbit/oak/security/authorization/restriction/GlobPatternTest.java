@@ -115,30 +115,6 @@ name|assertNotEquals
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -162,16 +138,11 @@ block|{
 name|Boolean
 name|match
 init|=
-name|Boolean
-operator|.
-name|valueOf
-argument_list|(
 name|gp
 operator|.
 name|matches
 argument_list|(
 name|testPath
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -207,11 +178,7 @@ name|tests
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// restriction "*" matches /foo, all siblings of foo and foo's and the siblings' descendants
@@ -358,11 +325,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -450,7 +413,7 @@ name|tests
 operator|.
 name|put
 argument_list|(
-literal|"/a/b/cd/e"
+literal|"/a/b/cd/name"
 argument_list|,
 literal|true
 argument_list|)
@@ -460,7 +423,7 @@ name|tests
 operator|.
 name|put
 argument_list|(
-literal|"/a/b/cd/f/e"
+literal|"/a/b/cd/f/name"
 argument_list|,
 literal|true
 argument_list|)
@@ -617,11 +580,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -808,11 +767,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -838,7 +793,7 @@ name|tests
 operator|.
 name|put
 argument_list|(
-literal|"/a/b/c/e/d/e/f"
+literal|"/a/b/c/e/d/e/g"
 argument_list|,
 literal|true
 argument_list|)
@@ -994,11 +949,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -1174,11 +1125,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// not-matching
@@ -1325,11 +1272,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -1439,11 +1382,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -1596,11 +1535,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -1677,7 +1612,7 @@ name|tests
 operator|.
 name|put
 argument_list|(
-literal|"/a/b/c/d/e"
+literal|"/a/b/c/d/f"
 argument_list|,
 literal|false
 argument_list|)
@@ -1765,11 +1700,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -1930,11 +1861,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -2124,11 +2051,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// matching
@@ -2346,11 +2269,7 @@ name|tests
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|tests
@@ -2427,7 +2346,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|assertTrue
+name|assertEquals
 argument_list|(
 name|gp
 operator|+
@@ -2441,7 +2360,7 @@ name|get
 argument_list|(
 name|toTest
 argument_list|)
-operator|==
+argument_list|,
 name|gp
 operator|.
 name|matches
@@ -2466,11 +2385,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|tests
@@ -2547,7 +2462,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|assertTrue
+name|assertEquals
 argument_list|(
 name|gp
 operator|+
@@ -2561,7 +2476,7 @@ name|get
 argument_list|(
 name|toTest
 argument_list|)
-operator|==
+argument_list|,
 name|gp
 operator|.
 name|matches
@@ -2601,11 +2516,7 @@ name|tests
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|tests
@@ -2700,7 +2611,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|assertTrue
+name|assertEquals
 argument_list|(
 name|gp
 operator|+
@@ -2714,7 +2625,7 @@ name|get
 argument_list|(
 name|toTest
 argument_list|)
-operator|==
+argument_list|,
 name|gp
 operator|.
 name|matches
@@ -2739,11 +2650,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|tests
@@ -2838,7 +2745,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|assertTrue
+name|assertEquals
 argument_list|(
 name|gp
 operator|+
@@ -2852,7 +2759,7 @@ name|get
 argument_list|(
 name|toTest
 argument_list|)
-operator|==
+argument_list|,
 name|gp
 operator|.
 name|matches
@@ -2877,11 +2784,7 @@ name|tests
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|tests
@@ -2985,7 +2888,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|assertTrue
+name|assertEquals
 argument_list|(
 name|gp
 operator|+
@@ -2999,7 +2902,7 @@ name|get
 argument_list|(
 name|toTest
 argument_list|)
-operator|==
+argument_list|,
 name|gp
 operator|.
 name|matches
@@ -3012,6 +2915,13 @@ block|}
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|void
 name|testMaxOccurrences
@@ -3029,8 +2939,6 @@ argument_list|,
 literal|"1*/2*/3*/4*/5*/6*/7*/8*/9*/10*/11*/12*/13*/14*/15*/16*/17*/18*/19*/20*/21*"
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|gp
 operator|.
 name|matches
@@ -3038,21 +2946,33 @@ argument_list|(
 literal|"/1/2/3/4/5/6/7/8/9/10/11/12/13/14/15/16/17/18/19/20/21"
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|()
-expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
 name|IllegalArgumentException
-name|e
-parameter_list|)
+operator|.
+name|class
+argument_list|)
+specifier|public
+name|void
+name|testMaxOccurrences2
+parameter_list|()
 block|{
-comment|// success
-block|}
-empty_stmt|;
-try|try
-block|{
+name|GlobPattern
+name|gp
+init|=
+name|GlobPattern
+operator|.
+name|create
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"1*/2*/3*/4*/5*/6*/7*/8*/9*/10*/11*/12*/13*/14*/15*/16*/17*/18*/19*/20*/21*"
+argument_list|)
+decl_stmt|;
 name|gp
 operator|.
 name|matches
@@ -3060,19 +2980,6 @@ argument_list|(
 literal|"/11/22/33/44/55/66/77/88/99/100/111/122/133/144/155/166/177/188/199/200/211"
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-empty_stmt|;
 block|}
 annotation|@
 name|Test
