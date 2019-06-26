@@ -622,8 +622,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring privilege name "
-operator|+
+literal|"Ignoring privilege name {}"
+argument_list|,
 name|privilegeName
 argument_list|)
 expr_stmt|;

@@ -1578,8 +1578,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Invalid algorithm detected "
-operator|+
+literal|"Invalid algorithm detected {}"
+argument_list|,
 name|algorithm
 argument_list|,
 name|e
@@ -1715,8 +1715,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Expected number of iterations. Found: "
-operator|+
+literal|"Expected number of iterations. Found: {}"
+argument_list|,
 name|str
 argument_list|,
 name|e

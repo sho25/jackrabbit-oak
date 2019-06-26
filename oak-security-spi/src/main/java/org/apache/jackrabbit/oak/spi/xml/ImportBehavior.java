@@ -179,11 +179,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid behavior "
-operator|+
+literal|"Invalid behavior {} -> Using default: ABORT."
+argument_list|,
 name|behaviorString
-operator|+
-literal|" -> Using default: ABORT."
 argument_list|)
 expr_stmt|;
 return|return

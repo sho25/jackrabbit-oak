@@ -1203,11 +1203,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Login: Invalid value for share state entry "
-operator|+
+literal|"Login: Invalid value for share state entry {}. Credentials expected."
+argument_list|,
 name|SHARED_KEY_CREDENTIALS
-operator|+
-literal|". Credentials expected."
 argument_list|)
 expr_stmt|;
 block|}
