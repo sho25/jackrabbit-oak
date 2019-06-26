@@ -1316,9 +1316,14 @@ name|PropertiesUtil
 operator|.
 name|toBoolean
 argument_list|(
+name|properties
+operator|.
+name|getProperty
+argument_list|(
 name|AzureConstants
 operator|.
 name|AZURE_CREATE_CONTAINER
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)
