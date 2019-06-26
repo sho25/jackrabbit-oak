@@ -83,6 +83,15 @@ name|AZURE_BLOB_CONTAINER_NAME
 init|=
 literal|"container"
 decl_stmt|;
+comment|/**      * Azure create container if doesn't exist      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AZURE_CREATE_CONTAINER
+init|=
+literal|"azureCreateContainer"
+decl_stmt|;
 comment|/**      * Azure blob storage request timeout      */
 specifier|public
 specifier|static

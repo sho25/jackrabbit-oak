@@ -1095,6 +1095,12 @@ literal|0
 decl_stmt|;
 comment|// disabled by default
 specifier|private
+name|boolean
+name|createBlobContainer
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 name|Cache
 argument_list|<
 name|DataIdentifier
@@ -1304,6 +1310,19 @@ operator|.
 name|AZURE_BLOB_CONTAINER_NAME
 argument_list|)
 expr_stmt|;
+name|createBlobContainer
+operator|=
+name|PropertiesUtil
+operator|.
+name|toBoolean
+argument_list|(
+name|AzureConstants
+operator|.
+name|AZURE_CREATE_CONTAINER
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 name|connectionString
 operator|=
 name|Utils
@@ -1402,6 +1421,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|createBlobContainer
+operator|&&
 name|azureContainer
 operator|.
 name|createIfNotExists
