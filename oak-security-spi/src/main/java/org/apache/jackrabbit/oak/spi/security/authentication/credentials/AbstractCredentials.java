@@ -301,6 +301,8 @@ parameter_list|)
 block|{
 synchronized|synchronized
 init|(
+name|this
+operator|.
 name|attributes
 init|)
 block|{
