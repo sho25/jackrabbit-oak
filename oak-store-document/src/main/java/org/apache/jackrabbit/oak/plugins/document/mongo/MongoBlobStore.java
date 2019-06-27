@@ -498,7 +498,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new {@code MongoBlobStore}      *      * @param db the database      * @param cachesize the cachesize      * @param builder {@link DocumentNodeStoreBuilder}, supplying further options      */
+comment|/**      * Constructs a new {@code MongoBlobStore}      *      * @param db the database      * @param cacheSize the cache size      */
 specifier|public
 name|MongoBlobStore
 parameter_list|(
@@ -519,7 +519,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new {@code MongoBlobStore}      *      * @param db the database      * @param cachesize the cache size      * @param builder {@link DocumentNodeStoreBuilder}, supplying further options      */
+comment|/**      * Constructs a new {@code MongoBlobStore}      *      * @param db the database      * @param cacheSize the cache size      * @param builder {@link DocumentNodeStoreBuilder}, supplying further options      */
 specifier|public
 name|MongoBlobStore
 parameter_list|(
