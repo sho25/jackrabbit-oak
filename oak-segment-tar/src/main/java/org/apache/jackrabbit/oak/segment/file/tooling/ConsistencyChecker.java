@@ -544,6 +544,9 @@ name|onCheckTree
 parameter_list|(
 name|String
 name|path
+parameter_list|,
+name|boolean
+name|head
 parameter_list|)
 block|{
 comment|// Do nothing.
@@ -551,7 +554,10 @@ block|}
 specifier|protected
 name|void
 name|onCheckTreeEnd
-parameter_list|()
+parameter_list|(
+name|boolean
+name|head
+parameter_list|)
 block|{
 comment|// Do nothing.
 block|}
@@ -942,6 +948,9 @@ name|corruptedPaths
 parameter_list|,
 name|boolean
 name|binaries
+parameter_list|,
+name|boolean
+name|head
 parameter_list|)
 block|{
 name|String
@@ -970,6 +979,8 @@ block|}
 name|onCheckTree
 argument_list|(
 name|path
+argument_list|,
+name|head
 argument_list|)
 expr_stmt|;
 name|corruptedPath
@@ -984,7 +995,9 @@ name|binaries
 argument_list|)
 expr_stmt|;
 name|onCheckTreeEnd
-argument_list|()
+argument_list|(
+name|head
+argument_list|)
 expr_stmt|;
 return|return
 name|corruptedPath
@@ -1005,6 +1018,9 @@ name|entry
 parameter_list|,
 name|boolean
 name|binaries
+parameter_list|,
+name|boolean
+name|head
 parameter_list|)
 block|{
 if|if
@@ -1036,6 +1052,8 @@ operator|.
 name|corruptPaths
 argument_list|,
 name|binaries
+argument_list|,
+name|head
 argument_list|)
 decl_stmt|;
 if|if
@@ -1093,6 +1111,9 @@ name|entry
 parameter_list|,
 name|boolean
 name|binaries
+parameter_list|,
+name|boolean
+name|head
 parameter_list|)
 block|{
 name|boolean
@@ -1120,6 +1141,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|binaries
+argument_list|,
+name|head
 argument_list|)
 condition|)
 block|{
@@ -1197,6 +1220,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|binaries
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
@@ -1292,6 +1317,8 @@ argument_list|,
 name|entry
 argument_list|,
 name|binaries
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -1542,6 +1569,8 @@ argument_list|,
 name|corruptedPaths
 argument_list|,
 name|binaries
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
