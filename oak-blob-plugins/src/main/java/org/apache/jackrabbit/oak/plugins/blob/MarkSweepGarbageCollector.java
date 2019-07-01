@@ -3567,6 +3567,13 @@ name|e
 throw|;
 block|}
 comment|// Retrieve all other marked present in the datastore
+if|if
+condition|(
+name|blobStore
+operator|instanceof
+name|SharedDataStore
+condition|)
+block|{
 name|List
 argument_list|<
 name|DataRecord
@@ -3683,6 +3690,7 @@ name|getMarkedRefs
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|LOG
 operator|.
