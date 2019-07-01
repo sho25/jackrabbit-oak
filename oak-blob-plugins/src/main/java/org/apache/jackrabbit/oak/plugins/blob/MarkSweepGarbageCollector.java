@@ -3772,6 +3772,8 @@ operator|>
 literal|0
 condition|)
 block|{
+try|try
+init|(
 name|LineIterator
 name|lineIterator
 init|=
@@ -3787,7 +3789,8 @@ name|getGcCandidates
 argument_list|()
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 name|lineIterator
@@ -3808,6 +3811,7 @@ name|nextLine
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|LOG
 operator|.
