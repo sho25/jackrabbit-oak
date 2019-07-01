@@ -65,7 +65,7 @@ modifier|...
 name|arguments
 parameter_list|)
 function_decl|;
-comment|/**      * Warning about a condition that might have advert effects on the overall      * garbage collection process but does not prevent the process from running.      * @param message  The message with {} place holders for the {@code arguments}      * @param arguments      */
+comment|/**      * Warning about a condition that might have adverse effects on the overall      * garbage collection process but does not prevent the process from running.      * @param message  The message with {} place holders for the {@code arguments}      * @param arguments      */
 name|void
 name|warn
 parameter_list|(
@@ -139,7 +139,7 @@ name|String
 name|message
 parameter_list|,
 name|Object
-index|[]
+modifier|...
 name|arguments
 parameter_list|)
 block|{ }
@@ -153,7 +153,7 @@ name|String
 name|message
 parameter_list|,
 name|Object
-index|[]
+modifier|...
 name|arguments
 parameter_list|)
 block|{ }
@@ -180,7 +180,7 @@ name|String
 name|reason
 parameter_list|,
 name|Object
-index|[]
+modifier|...
 name|arguments
 parameter_list|)
 block|{ }
