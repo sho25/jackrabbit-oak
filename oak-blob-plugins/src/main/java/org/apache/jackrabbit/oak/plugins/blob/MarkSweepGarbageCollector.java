@@ -3566,14 +3566,17 @@ throw|throw
 name|e
 throw|;
 block|}
-comment|// Retrieve all other marked present in the datastore
 if|if
 condition|(
+name|SharedDataStoreUtils
+operator|.
+name|isShared
+argument_list|(
 name|blobStore
-operator|instanceof
-name|SharedDataStore
+argument_list|)
 condition|)
 block|{
+comment|// Retrieve all other marked present in the datastore
 name|List
 argument_list|<
 name|DataRecord
