@@ -5423,6 +5423,8 @@ operator|>
 literal|0
 condition|)
 block|{
+try|try
+init|(
 name|LineIterator
 name|lineIterator
 init|=
@@ -5435,7 +5437,8 @@ argument_list|(
 name|consistencyCandidatesAfterGC
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 name|lineIterator
@@ -5456,6 +5459,7 @@ name|nextLine
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|LOG
 operator|.
