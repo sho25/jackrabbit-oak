@@ -1635,6 +1635,11 @@ name|getBlobGcMaxAgeInSecs
 argument_list|()
 argument_list|)
 argument_list|,
+name|dataStoreOpts
+operator|.
+name|checkConsistencyAfterGC
+argument_list|()
+argument_list|,
 name|repositoryId
 argument_list|,
 name|fixture
