@@ -1276,7 +1276,7 @@ name|String
 name|message
 parameter_list|,
 name|Object
-index|[]
+modifier|...
 name|arguments
 parameter_list|)
 block|{
