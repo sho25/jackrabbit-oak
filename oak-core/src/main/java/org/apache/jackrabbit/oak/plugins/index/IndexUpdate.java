@@ -1759,6 +1759,12 @@ block|}
 name|Editor
 name|editor
 init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|editor
+operator|=
 name|rootState
 operator|.
 name|provider
@@ -1787,7 +1793,37 @@ name|definition
 argument_list|)
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalStateException
+name|e
+parameter_list|)
+block|{
+comment|// This will be caught here in case there is any config related error in the index definition
+comment|// where multiple values are assigned to a property that is supposed to be single valued
+comment|// We log an error message here and continue - this way the bad index defintion is ignored and doesn't block the async index update
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Unable to get Index Editor for index at {} . Please correct the index definition "
+operator|+
+literal|"and reindex after correction. Additional Info : {}"
+argument_list|,
+name|indexPath
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 if|if
 condition|(
 name|editor
