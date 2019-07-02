@@ -1470,6 +1470,14 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
+name|withStatisticsProvider
+argument_list|(
+name|cfg
+operator|.
+name|getStatisticsProvider
+argument_list|()
+argument_list|)
+operator|.
 name|withGCOptions
 argument_list|(
 name|gcOptions
