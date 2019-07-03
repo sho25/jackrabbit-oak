@@ -21,6 +21,16 @@ name|search
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/**  * Internal constants used in index definition, and index implementations.  */
 end_comment
@@ -49,7 +59,11 @@ name|name
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 return|;
 block|}
 specifier|public
@@ -67,7 +81,11 @@ argument_list|(
 name|indexingMode
 operator|.
 name|toUpperCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 argument_list|)
 return|;
 block|}

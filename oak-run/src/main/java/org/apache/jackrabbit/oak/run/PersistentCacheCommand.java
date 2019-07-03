@@ -85,6 +85,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -964,7 +974,11 @@ name|getName
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|write
@@ -1084,7 +1098,11 @@ name|getName
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 decl_stmt|;
 comment|// map key value length
 for|for
@@ -1177,7 +1195,11 @@ name|getName
 argument_list|()
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 decl_stmt|;
 comment|// map,path,revision,p2,value,length
 for|for
