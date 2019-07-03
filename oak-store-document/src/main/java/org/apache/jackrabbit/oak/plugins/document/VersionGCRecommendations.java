@@ -121,6 +121,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|Clock
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -186,15 +202,18 @@ specifier|final
 name|boolean
 name|scopeIsComplete
 decl_stmt|;
-comment|/**      * With the given maximum age of revisions to keep (earliest time in the past to collect),      * the desired precision in which times shall be sliced and the given limit on the number      * of collected documents in one run, calculate<ol>      *<li>if gc shall run at all (ignoreDueToCheckPoint)</li>      *<li>in which time interval documents shall be collected (scope)</li>      *<li>if collection should fail if it reaches maxCollect documents, maxCollect will specify      *     the limit or be 0 if no limit shall be enforced.</li>      *</ol>      * After a run, recommendations evaluate the result of the gc to update its persisted recommendations      * for future runs.      *<p>      * In the settings collection, recommendations keeps "revisionsOlderThan" from the last successful run.      * It also updates the time interval recommended for the next run.      *      * @param maxRevisionAgeMs the minimum age for revisions to be collected      * @param dns DocumentNodeStore to use      * @param vgc VersionGC support class      * @param options options for running the gc      * @param gcMonitor monitor class for messages      */
+comment|/**      * With the given maximum age of revisions to keep (earliest time in the past to collect),      * the desired precision in which times shall be sliced and the given limit on the number      * of collected documents in one run, calculate<ol>      *<li>if gc shall run at all (ignoreDueToCheckPoint)</li>      *<li>in which time interval documents shall be collected (scope)</li>      *<li>if collection should fail if it reaches maxCollect documents, maxCollect will specify      *     the limit or be 0 if no limit shall be enforced.</li>      *</ol>      * After a run, recommendations evaluate the result of the gc to update its persisted recommendations      * for future runs.      *<p>      * In the settings collection, recommendations keeps "revisionsOlderThan" from the last successful run.      * It also updates the time interval recommended for the next run.      *      * @param maxRevisionAgeMs the minimum age for revisions to be collected      * @param checkpoints checkpoints from {@link DocumentNodeStore}      * @param clock clock from {@link DocumentNodeStore}      * @param vgc VersionGC support class      * @param options options for running the gc      * @param gcMonitor monitor class for messages      */
 specifier|public
 name|VersionGCRecommendations
 parameter_list|(
 name|long
 name|maxRevisionAgeMs
 parameter_list|,
-name|DocumentNodeStore
-name|dns
+name|Checkpoints
+name|checkpoints
+parameter_list|,
+name|Clock
+name|clock
 parameter_list|,
 name|VersionGCSupport
 name|vgc
@@ -224,10 +243,7 @@ init|=
 operator|new
 name|TimeInterval
 argument_list|(
-name|dns
-operator|.
-name|getClock
-argument_list|()
+name|clock
 operator|.
 name|getTime
 argument_list|()
@@ -306,10 +322,7 @@ name|vgc
 operator|.
 name|getOldestDeletedOnceTimestamp
 argument_list|(
-name|dns
-operator|.
-name|getClock
-argument_list|()
+name|clock
 argument_list|,
 name|options
 operator|.
@@ -603,10 +616,7 @@ comment|//Check for any registered checkpoint which prevent the GC from running
 name|Revision
 name|checkpoint
 init|=
-name|dns
-operator|.
-name|getCheckpoints
-argument_list|()
+name|checkpoints
 operator|.
 name|getOldestRevisionToKeep
 argument_list|()
