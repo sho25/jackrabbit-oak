@@ -1207,11 +1207,21 @@ init|=
 name|getAddress
 argument_list|()
 decl_stmt|;
-name|assertNotNull
-argument_list|(
+if|if
+condition|(
 name|address
-argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+comment|// OAK-8459: use dummy/default address instead
+name|address
+operator|=
+operator|new
+name|ServerAddress
+argument_list|()
 expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|MongoCommandException
