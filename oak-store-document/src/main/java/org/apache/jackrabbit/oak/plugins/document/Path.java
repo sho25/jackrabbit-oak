@@ -326,6 +326,23 @@ argument_list|,
 literal|"name cannot be the empty String"
 argument_list|)
 expr_stmt|;
+name|checkArgument
+argument_list|(
+name|name
+operator|.
+name|indexOf
+argument_list|(
+literal|'/'
+argument_list|)
+operator|==
+operator|-
+literal|1
+argument_list|,
+literal|"name must not contain path separator: {}"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Returns the name of this path. The {@link #ROOT} is the only path with      * an empty name. That is a String with length zero.      *      * @return the name of this path.      */
 annotation|@
