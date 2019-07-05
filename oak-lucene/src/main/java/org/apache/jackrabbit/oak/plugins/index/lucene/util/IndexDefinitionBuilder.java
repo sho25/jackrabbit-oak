@@ -3184,6 +3184,10 @@ name|FIELD_BOOST
 argument_list|,
 name|IndexConstants
 operator|.
+name|USE_IF_EXISTS
+argument_list|,
+name|IndexConstants
+operator|.
 name|QUERY_PATHS
 argument_list|,
 name|IndexConstants
