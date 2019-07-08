@@ -178,6 +178,47 @@ name|CompositeData
 name|getMergeBranchCommitHistory
 parameter_list|()
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Triggers last revision recovery of nodes, below a given path and clusterId.\n"
+operator|+
+literal|"Returns number of records updated after performing recovery.\n"
+operator|+
+literal|"Note: Recovery can only be performed on inactive clusterIds. If the clusterNode is in ReadOnly mode,\n"
+operator|+
+literal|"it will return the no. of documents which needs update and won't perform recovery"
+argument_list|)
+name|int
+name|recover
+parameter_list|(
+annotation|@
+name|Description
+argument_list|(
+literal|"The absolute path of a node."
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"path"
+argument_list|)
+name|String
+name|path
+parameter_list|,
+annotation|@
+name|Description
+argument_list|(
+literal|"The id of an inactive cluster node."
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"clusterId"
+argument_list|)
+name|int
+name|clusterId
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

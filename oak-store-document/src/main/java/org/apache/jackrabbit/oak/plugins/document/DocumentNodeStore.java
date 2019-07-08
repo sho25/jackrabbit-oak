@@ -15954,6 +15954,14 @@ return|return
 name|updateLimit
 return|;
 block|}
+name|boolean
+name|isReadOnlyMode
+parameter_list|()
+block|{
+return|return
+name|readOnlyMode
+return|;
+block|}
 block|}
 end_class
 
