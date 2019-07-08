@@ -65,6 +65,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+operator|.
+name|comparing
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -3691,6 +3703,21 @@ name|fs
 operator|.
 name|getMarkedRefs
 argument_list|()
+argument_list|,
+name|comparing
+argument_list|(
+name|s
+lambda|->
+name|s
+operator|.
+name|split
+argument_list|(
+name|DELIM
+argument_list|)
+index|[
+literal|0
+index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
