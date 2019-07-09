@@ -733,6 +733,7 @@ name|STATUS_INITIALIZING
 init|=
 literal|"INITIALIZING"
 decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 name|Logger

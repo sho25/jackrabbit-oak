@@ -137,6 +137,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -158,6 +178,21 @@ specifier|public
 class|class
 name|VersionGCRecommendations
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|VersionGCRecommendations
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|VersionGCSupport
@@ -319,8 +354,6 @@ operator|==
 literal|0
 condition|)
 block|{
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -343,8 +376,6 @@ argument_list|)
 operator|-
 literal|1
 expr_stmt|;
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -443,8 +474,6 @@ argument_list|(
 name|suggestedIntervalMs
 argument_list|)
 expr_stmt|;
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -480,8 +509,6 @@ condition|)
 block|{
 comment|// the scope is smaller than the minimum precision
 comment|// -> no need to refine the scope
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -589,8 +616,6 @@ argument_list|(
 name|suggestedIntervalMs
 argument_list|)
 expr_stmt|;
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -613,8 +638,6 @@ name|UnsupportedOperationException
 name|ex
 parameter_list|)
 block|{
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -675,8 +698,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|warn
@@ -712,8 +733,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -753,8 +772,6 @@ name|collectLimit
 operator|=
 literal|0
 expr_stmt|;
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -996,8 +1013,6 @@ operator|*
 literal|1.5
 argument_list|)
 decl_stmt|;
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -1037,8 +1052,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
@@ -1056,8 +1069,6 @@ block|}
 block|}
 else|else
 block|{
-name|VersionGarbageCollector
-operator|.
 name|log
 operator|.
 name|debug
