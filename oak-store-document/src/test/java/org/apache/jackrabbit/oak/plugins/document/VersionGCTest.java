@@ -365,16 +365,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Rule
 import|;
 end_import
@@ -1577,11 +1567,6 @@ expr_stmt|;
 block|}
 comment|// OAK-8448: test that after shrinking the scope to the minimum and after
 comment|// successful runs, scope will be expanded again
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-8448"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
