@@ -36,6 +36,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -837,7 +853,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @throws IllegalArgumentException if {@code type} is not one of the      * values defined in {@link Type} or if {@code type.isArray()} is {@code false}.      */
+comment|/**      * @throws IllegalStateException if {@code type.isArray()} is {@code false}.      * @throws IllegalArgumentException if {@code type} is not one of the      * values defined in {@link Type}      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -861,7 +877,7 @@ argument_list|>
 name|type
 parameter_list|)
 block|{
-name|checkArgument
+name|checkState
 argument_list|(
 name|type
 operator|.

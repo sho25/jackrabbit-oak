@@ -85,7 +85,7 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkArgument
+name|checkNotNull
 import|;
 end_import
 
@@ -101,7 +101,7 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
+name|checkState
 import|;
 end_import
 
@@ -142,7 +142,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create an empty {@code PropertyState}      * @param name  The name of the property state      * @param type  The type of the property state      * @return  The new property state      */
+comment|/**      * Create an empty {@code PropertyState}      * @param name  The name of the property state      * @param type  The type of the property state      * @return  The new property state      * @throws IllegalArgumentException if @code type.isArray()} is {@code false}.      */
 specifier|public
 specifier|static
 name|PropertyState
@@ -227,7 +227,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * @return An empty list if {@code type.isArray()} is {@code true}.      * @throws IllegalArgumentException {@code type.isArray()} is {@code false}.      */
+comment|/**      * @return An empty list if {@code type.isArray()} is {@code true}.      * @throws IllegalStateException {@code type.isArray()} is {@code false}.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -251,7 +251,7 @@ argument_list|>
 name|type
 parameter_list|)
 block|{
-name|checkArgument
+name|checkState
 argument_list|(
 name|type
 operator|.
