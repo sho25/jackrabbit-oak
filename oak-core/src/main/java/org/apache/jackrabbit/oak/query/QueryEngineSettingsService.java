@@ -294,6 +294,29 @@ parameter_list|()
 default|default
 literal|false
 function_decl|;
+annotation|@
+name|AttributeDefinition
+argument_list|(
+name|name
+operator|=
+literal|"Enable Strict Path restrictions for indexes to be used"
+argument_list|,
+name|description
+operator|=
+literal|"Whether path restrictions of indexes (excludedPaths / includedPaths) are taken into"
+operator|+
+literal|"account during query execution, for Lucene indexes. When enabled, only indexes are considered if"
+operator|+
+literal|"the index path restriction is compatible with the query path restrictions. When disabled, only"
+operator|+
+literal|"the queryPaths of the index is taken into account."
+argument_list|)
+name|String
+name|getStrictPathRestrictionsForIndexes
+parameter_list|()
+default|default
+name|DISABLED_STRICT_PATH_RESTRICTION
+function_decl|;
 block|}
 comment|// should be the same as QueryEngineSettings.DEFAULT_QUERY_LIMIT_IN_MEMORY
 specifier|private
@@ -348,6 +371,13 @@ name|String
 name|QUERY_FAST_QUERY_SIZE
 init|=
 literal|"fastQuerySize"
+decl_stmt|;
+specifier|static
+specifier|final
+name|String
+name|DISABLED_STRICT_PATH_RESTRICTION
+init|=
+literal|"DISABLE"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -529,6 +559,16 @@ argument_list|(
 name|fastQuerySizeFromConfig
 operator|||
 name|fastQuerySizeSysProp
+argument_list|)
+expr_stmt|;
+name|queryEngineSettings
+operator|.
+name|setStrictPathRestriction
+argument_list|(
+name|config
+operator|.
+name|getStrictPathRestrictionsForIndexes
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|log

@@ -19,6 +19,22 @@ name|query
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|StrictPathRestriction
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -40,6 +56,20 @@ name|boolean
 name|getFailTraversal
 parameter_list|()
 function_decl|;
+specifier|default
+name|String
+name|getStrictPathRestriction
+parameter_list|()
+block|{
+return|return
+name|StrictPathRestriction
+operator|.
+name|DISABLE
+operator|.
+name|name
+argument_list|()
+return|;
+block|}
 block|}
 end_interface
 

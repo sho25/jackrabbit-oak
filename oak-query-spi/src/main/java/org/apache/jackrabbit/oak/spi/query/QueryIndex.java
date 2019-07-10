@@ -408,6 +408,15 @@ name|boolean
 name|isDeprecated
 parameter_list|()
 function_decl|;
+specifier|default
+name|boolean
+name|logWarningForPathFilterMismatch
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|/**          * A builder for index plans.          */
 class|class
 name|Builder
@@ -495,6 +504,10 @@ specifier|protected
 name|boolean
 name|deprecated
 decl_stmt|;
+specifier|protected
+name|boolean
+name|logWarningForPathFilterMismatch
+decl_stmt|;
 specifier|public
 name|Builder
 name|setCostPerExecution
@@ -580,6 +593,24 @@ operator|.
 name|isDelayed
 operator|=
 name|isDelayed
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+specifier|public
+name|Builder
+name|setLogWarningForPathFilterMismatch
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+block|{
+name|this
+operator|.
+name|logWarningForPathFilterMismatch
+operator|=
+name|value
 expr_stmt|;
 return|return
 name|this
@@ -975,6 +1006,17 @@ name|this
 operator|.
 name|deprecated
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|logWarningForPathFilterMismatch
+init|=
+name|Builder
+operator|.
+name|this
+operator|.
+name|logWarningForPathFilterMismatch
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1011,7 +1053,9 @@ literal|" pathPrefix : %s,"
 operator|+
 literal|" deprecated : %s,"
 operator|+
-literal|" supportsPathRestriction : %s }"
+literal|" supportsPathRestriction : %s,"
+operator|+
+literal|" logWarningForPathFilterMismatch : %s }"
 argument_list|,
 name|costPerExecution
 argument_list|,
@@ -1038,6 +1082,8 @@ argument_list|,
 name|deprecated
 argument_list|,
 name|supportsPathRestriction
+argument_list|,
+name|logWarningForPathFilterMismatch
 argument_list|)
 return|;
 block|}
@@ -1282,6 +1328,17 @@ parameter_list|()
 block|{
 return|return
 name|deprecated
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|logWarningForPathFilterMismatch
+parameter_list|()
+block|{
+return|return
+name|logWarningForPathFilterMismatch
 return|;
 block|}
 block|}

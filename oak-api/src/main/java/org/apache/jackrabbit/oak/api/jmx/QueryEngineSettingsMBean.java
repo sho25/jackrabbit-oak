@@ -124,6 +124,35 @@ name|boolean
 name|fastQuerySize
 parameter_list|)
 function_decl|;
+comment|/**      * Whether Path restrictions are enabled while figuring out index plan      *      * @return true if enabled      */
+name|String
+name|getStrictPathRestriction
+parameter_list|()
+function_decl|;
+comment|/**      *  Whether path restrictions of indexes (excludedPaths / includedPaths) are taken into account during query execution,      *  for Lucene indexes. When enabled, only indexes are considered if the index path restriction is compatible with the      *  query path restrictions. When disabled, only the queryPaths of the index is taken into account.      *      * @param pathRestriction Set path restriction: Expected value is either of ENABLE/DISABLE/WARN      *                        ENABLE: enable path restriction- Index won't be used if index definition path restrictions are not compatible with query's path restriction      *                        DISABLE: path restrictions are not taken into account while querying      *                        WARN: path restrictions are not taken into account but a warning will be logged if query path restrictions are not compatible with index path restrictions       */
+annotation|@
+name|Description
+argument_list|(
+literal|"Set path restriction: Expected value is either of ENABLE/DISABLE/WARN.   "
+operator|+
+literal|"ENABLE: enable path restriction- Index won't be used if index definition path restrictions are not compatible with query's path restriction.  "
+operator|+
+literal|"DISABLE: path restrictions are not taken into account while querying.  "
+operator|+
+literal|"WARN: path restrictions are not taken into account but a warning will be logged if query path restrictions are not compatible with index path restrictions."
+argument_list|)
+name|void
+name|setStrictPathRestriction
+parameter_list|(
+annotation|@
+name|Name
+argument_list|(
+literal|"pathRestriction"
+argument_list|)
+name|String
+name|pathRestriction
+parameter_list|)
+function_decl|;
 comment|/**      * Set or remove a query validator pattern.      *      * @param key the key      * @param pattern the regular expression pattern (empty to remove the      *            pattern)      * @param comment a comment      * @param failQuery whether matching queries should fail (true) or just log      *            a warning (false)      */
 annotation|@
 name|Description
