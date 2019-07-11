@@ -511,6 +511,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|MemoryBlobStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1481,6 +1499,11 @@ name|builder
 operator|.
 name|setReadOnlyMode
 argument_list|()
+expr_stmt|;
+name|useMemoryBlobStore
+argument_list|(
+name|builder
+argument_list|)
 expr_stmt|;
 comment|// create a version GC that operates on a read-only DocumentNodeStore
 comment|// and a GC support with a writable DocumentStore
@@ -2528,6 +2551,11 @@ operator|.
 name|setReadOnlyMode
 argument_list|()
 expr_stmt|;
+name|useMemoryBlobStore
+argument_list|(
+name|builder
+argument_list|)
+expr_stmt|;
 name|DocumentNodeStore
 name|ns
 init|=
@@ -2610,6 +2638,32 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 return|;
+block|}
+specifier|private
+name|void
+name|useMemoryBlobStore
+parameter_list|(
+name|DocumentNodeStoreBuilder
+name|builder
+parameter_list|)
+block|{
+comment|// The revisions command does not have options for the blob store
+comment|// and the DocumentNodeStoreBuilder by default assumes the blobs
+comment|// are stored in the same location as the documents. That is,
+comment|// either in MongoDB or RDB, which is not necessarily the case and
+comment|// can cause an exception when the blob store implementation starts
+comment|// read-only on a database that does not have the required
+comment|// collection. Use an in-memory blob store instead, because the
+comment|// revisions command does not read blobs anyway.
+name|builder
+operator|.
+name|setBlobStore
+argument_list|(
+operator|new
+name|MemoryBlobStore
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
