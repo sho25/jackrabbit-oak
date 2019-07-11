@@ -313,6 +313,24 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|MemoryBlobStore
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -409,6 +427,23 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|// The recovery command does not have options for the blob store
+comment|// and the DocumentNodeStoreBuilder by default assumes the blobs
+comment|// are stored in the same location as the documents. That is,
+comment|// either in MongoDB or RDB, which is not necessarily the case and
+comment|// can cause an exception when the blob store implementation starts
+comment|// read-only on a database that does not have the required
+comment|// collection. Use an in-memory blob store instead, because the
+comment|// recovery command does not read blobs anyway.
+name|builder
+operator|.
+name|setBlobStore
+argument_list|(
+operator|new
+name|MemoryBlobStore
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// dryRun implies readonly repo
 name|boolean
 name|dryRun
