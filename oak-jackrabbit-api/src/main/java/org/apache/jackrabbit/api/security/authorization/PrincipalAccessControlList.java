@@ -216,7 +216,7 @@ name|boolean
 name|addEntry
 parameter_list|(
 annotation|@
-name|NotNull
+name|Nullable
 name|String
 name|effectivePath
 parameter_list|,
@@ -234,7 +234,7 @@ name|boolean
 name|addEntry
 parameter_list|(
 annotation|@
-name|NotNull
+name|Nullable
 name|String
 name|effectivePath
 parameter_list|,
