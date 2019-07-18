@@ -534,6 +534,13 @@ name|void
 name|doneBackgroundUpdate
 parameter_list|()
 block|{
+name|Mockito
+operator|.
+name|clearInvocations
+argument_list|(
+name|statsCollector
+argument_list|)
+expr_stmt|;
 name|nodeStore
 operator|.
 name|runBackgroundUpdateOperations

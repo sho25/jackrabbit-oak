@@ -3651,6 +3651,16 @@ operator|!
 name|readOnlyMode
 condition|)
 block|{
+comment|// OAK-8466 - background sweep may take a long time if there is no
+comment|// sweep revision for this clusterId. When this process is suddenly
+comment|// stopped while performing the sweep, a recovery will be needed
+comment|// starting at the timestamp of _lastRev for this clusterId, which
+comment|// is potentially old and the recovery will be expensive. Hence
+comment|// triggering below function to update _lastRev, just before
+comment|// triggering sweep
+name|runBackgroundUpdateOperations
+argument_list|()
+expr_stmt|;
 comment|// perform an initial document sweep if needed
 comment|// this may be long running if there is no sweep revision
 comment|// for this clusterId (upgrade from Oak<= 1.6).
@@ -11689,13 +11699,21 @@ condition|)
 block|{
 return|return;
 block|}
+name|DocumentNodeState
+name|rootState
+init|=
+name|getRoot
+argument_list|()
+decl_stmt|;
 comment|// check if local head revision is outdated and needs an update
 comment|// this ensures the head and sweep revisions are recent and the
 comment|// revision garbage collector can remove old documents
 name|Revision
 name|head
 init|=
-name|getHeadRevision
+name|rootState
+operator|.
+name|getRootRevision
 argument_list|()
 operator|.
 name|getRevision
@@ -11703,8 +11721,32 @@ argument_list|(
 name|clusterId
 argument_list|)
 decl_stmt|;
+name|Revision
+name|lastRev
+init|=
+name|rootState
+operator|.
+name|getLastRevision
+argument_list|()
+operator|.
+name|getRevision
+argument_list|(
+name|clusterId
+argument_list|)
+decl_stmt|;
+name|long
+name|oneMinuteAgo
+init|=
+name|clock
+operator|.
+name|getTime
+argument_list|()
+operator|-
+name|ONE_MINUTE_MS
+decl_stmt|;
 if|if
 condition|(
+operator|(
 name|head
 operator|!=
 literal|null
@@ -11713,13 +11755,22 @@ name|head
 operator|.
 name|getTimestamp
 argument_list|()
-operator|+
-name|ONE_MINUTE_MS
 operator|<
-name|clock
+name|oneMinuteAgo
+operator|)
+operator|||
+operator|(
+name|lastRev
+operator|!=
+literal|null
+operator|&&
+name|lastRev
 operator|.
-name|getTime
+name|getTimestamp
 argument_list|()
+operator|<
+name|oneMinuteAgo
+operator|)
 condition|)
 block|{
 comment|// head was not updated for more than a minute
@@ -11744,6 +11795,13 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+name|c
+operator|.
+name|markChanged
+argument_list|(
+name|ROOT
+argument_list|)
+expr_stmt|;
 name|done
 argument_list|(
 name|c
