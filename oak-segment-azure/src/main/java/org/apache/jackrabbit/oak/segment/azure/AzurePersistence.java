@@ -471,7 +471,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|CloudBlobDirectory
 name|segmentstoreDirectory
