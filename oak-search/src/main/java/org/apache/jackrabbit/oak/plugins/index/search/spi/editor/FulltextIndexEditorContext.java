@@ -845,8 +845,6 @@ name|D
 argument_list|>
 name|getWriter
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(

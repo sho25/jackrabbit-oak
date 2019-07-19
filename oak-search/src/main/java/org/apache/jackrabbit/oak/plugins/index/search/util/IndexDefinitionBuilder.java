@@ -397,7 +397,6 @@ end_comment
 
 begin_class
 specifier|public
-specifier|final
 class|class
 name|IndexDefinitionBuilder
 block|{
@@ -973,10 +972,20 @@ name|IndexConstants
 operator|.
 name|TYPE_PROPERTY_NAME
 argument_list|,
-literal|"fulltext"
+name|getIndexType
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|protected
+name|String
+name|getIndexType
+parameter_list|()
+block|{
+return|return
+literal|"fulltext"
+return|;
 block|}
 comment|//~--------------------------------------< IndexRule>
 specifier|public
