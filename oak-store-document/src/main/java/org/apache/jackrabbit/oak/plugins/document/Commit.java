@@ -159,37 +159,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Maps
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Sets
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
 import|;
 end_import
 
@@ -359,6 +329,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|partition
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -366,24 +352,6 @@ operator|.
 name|Collections
 operator|.
 name|singletonList
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|denotesRoot
 import|;
 end_import
 
@@ -1526,6 +1494,11 @@ name|getIdFromPath
 argument_list|(
 name|commitRootPath
 argument_list|)
+argument_list|,
+name|nodeStore
+operator|.
+name|getCreateOrUpdateBatchSize
+argument_list|()
 argument_list|)
 expr_stmt|;
 for|for
@@ -1686,6 +1659,30 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|int
+name|batchSize
+init|=
+name|nodeStore
+operator|.
+name|getCreateOrUpdateBatchSize
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|List
+argument_list|<
+name|UpdateOp
+argument_list|>
+name|updates
+range|:
+name|partition
+argument_list|(
+name|changedNodes
+argument_list|,
+name|batchSize
+argument_list|)
+control|)
+block|{
 name|List
 argument_list|<
 name|NodeDocument
@@ -1698,14 +1695,14 @@ name|createOrUpdate
 argument_list|(
 name|NODES
 argument_list|,
-name|changedNodes
+name|updates
 argument_list|)
 decl_stmt|;
 name|checkConflicts
 argument_list|(
 name|oldDocs
 argument_list|,
-name|changedNodes
+name|updates
 argument_list|)
 expr_stmt|;
 name|checkSplitCandidate
@@ -1713,6 +1710,7 @@ argument_list|(
 name|oldDocs
 argument_list|)
 expr_stmt|;
+block|}
 comment|// finally write the commit root (the commit root might be written
 comment|// twice, first to check if there was a conflict, and only then to
 comment|// commit the revision, with the revision property set)

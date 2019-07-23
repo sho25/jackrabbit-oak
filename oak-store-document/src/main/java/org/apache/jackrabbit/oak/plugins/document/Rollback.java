@@ -79,6 +79,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|partition
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -126,6 +142,8 @@ name|emptyList
 argument_list|()
 argument_list|,
 literal|""
+argument_list|,
+literal|1
 argument_list|)
 block|{
 annotation|@
@@ -172,6 +190,8 @@ name|emptyList
 argument_list|()
 argument_list|,
 literal|""
+argument_list|,
+literal|1
 argument_list|)
 block|{
 annotation|@
@@ -207,7 +227,12 @@ specifier|final
 name|String
 name|commitRootId
 decl_stmt|;
-comment|/**      * Creates a new rollback for the given commit revision.      *      * @param revision the commit revision.      * @param changed the changes to revert.      * @param commitRootId the id of the commit root document.      */
+specifier|private
+specifier|final
+name|int
+name|batchSize
+decl_stmt|;
+comment|/**      * Creates a new rollback for the given commit revision.      *      * @param revision the commit revision.      * @param changed the changes to revert.      * @param commitRootId the id of the commit root document.      * @param batchSize the batch size for the rollback operations.      */
 name|Rollback
 parameter_list|(
 annotation|@
@@ -227,6 +252,9 @@ annotation|@
 name|NotNull
 name|String
 name|commitRootId
+parameter_list|,
+name|int
+name|batchSize
 parameter_list|)
 block|{
 name|this
@@ -252,6 +280,12 @@ name|checkNotNull
 argument_list|(
 name|commitRootId
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|batchSize
+operator|=
+name|batchSize
 expr_stmt|;
 block|}
 comment|/**      * Performs the rollback. If this operation fails with a      * {@link DocumentStoreException}, then only some of the rollback may have      * been performed.      *      * @param store the store where to apply the rollback.      * @throws DocumentStoreException if any of the operations fails.      */
@@ -330,15 +364,32 @@ name|reverse
 argument_list|)
 expr_stmt|;
 block|}
+for|for
+control|(
+name|List
+argument_list|<
+name|UpdateOp
+argument_list|>
+name|ops
+range|:
+name|partition
+argument_list|(
+name|reverseOps
+argument_list|,
+name|batchSize
+argument_list|)
+control|)
+block|{
 name|store
 operator|.
 name|createOrUpdate
 argument_list|(
 name|NODES
 argument_list|,
-name|reverseOps
+name|ops
 argument_list|)
 expr_stmt|;
+block|}
 name|removeCollisionMarker
 argument_list|(
 name|store
