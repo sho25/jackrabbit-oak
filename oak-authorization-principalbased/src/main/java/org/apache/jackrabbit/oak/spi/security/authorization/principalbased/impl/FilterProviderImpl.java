@@ -1012,13 +1012,27 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
+name|String
+name|path
+init|=
 name|validatedPrincipalNamesPathMap
 operator|.
-name|containsKey
+name|get
 argument_list|(
 name|principalName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|path
+operator|!=
+literal|null
+operator|&&
+name|isValidMapEntry
+argument_list|(
+name|principal
+argument_list|,
+name|path
 argument_list|)
 condition|)
 block|{
@@ -1063,6 +1077,51 @@ else|else
 block|{
 return|return
 literal|false
+return|;
+block|}
+block|}
+comment|/**          * Besteffort validation if the given entry in 'validatedPrincipalNamesPathMap' is points to the correct path.          * Note, that this will just be performed for instances of {@code ItemBasedPrincipal}, where obtaining the path          * doesn't require looking up the principal again.          *          * @param principal The target principal to be validated          * @param oakPath The Oak path stored in 'validatedPrincipalNamesPathMap' for the given principal.          * @return {@code true}, if the principal is an instance of {@code ItemBasedPrincipal}, whose Oak path is equal          * to the given {@code oakPath} and {@code false} if the paths are not equal. For any other types of principal          * this method will return {@code true} in order to avoid excessive principal lookup.          */
+specifier|private
+name|boolean
+name|isValidMapEntry
+parameter_list|(
+annotation|@
+name|NotNull
+name|Principal
+name|principal
+parameter_list|,
+annotation|@
+name|NotNull
+name|String
+name|oakPath
+parameter_list|)
+block|{
+if|if
+condition|(
+name|principal
+operator|instanceof
+name|ItemBasedPrincipal
+condition|)
+block|{
+return|return
+name|oakPath
+operator|.
+name|equals
+argument_list|(
+name|getOakPath
+argument_list|(
+operator|(
+name|ItemBasedPrincipal
+operator|)
+name|principal
+argument_list|)
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|true
 return|;
 block|}
 block|}
@@ -1119,8 +1178,9 @@ name|exists
 argument_list|()
 condition|)
 block|{
-comment|// given principal is not ItemBasedPrincipal or it has been obtained with a different name-path-mapper
-comment|// making the conversion to oak-path return null -> try obtaining principal by name
+comment|// the given principal is not ItemBasedPrincipal or it has been obtained with a different name-path-mapper
+comment|// (making the conversion to oak-path return null) or it has been moved and the path no longer points to
+comment|// an existing tree -> try looking up principal by name
 name|Principal
 name|p
 init|=
