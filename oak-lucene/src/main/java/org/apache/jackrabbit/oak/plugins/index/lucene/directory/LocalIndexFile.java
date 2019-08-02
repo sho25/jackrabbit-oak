@@ -491,7 +491,7 @@ operator|*
 literal|100
 return|;
 block|}
-specifier|private
+specifier|public
 name|long
 name|actualSize
 parameter_list|()

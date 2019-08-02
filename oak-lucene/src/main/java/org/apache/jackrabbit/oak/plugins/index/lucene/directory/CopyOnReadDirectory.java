@@ -475,6 +475,33 @@ operator|new
 name|AtomicBoolean
 argument_list|()
 decl_stmt|;
+comment|// exported as package private to be useful in tests
+specifier|static
+specifier|final
+name|String
+name|WAIT_OTHER_COPY_SYSPROP_NAME
+init|=
+literal|"cor.waitCopyMillis"
+decl_stmt|;
+name|long
+name|waitOtherCopyTimeoutMillis
+init|=
+name|Long
+operator|.
+name|getLong
+argument_list|(
+name|WAIT_OTHER_COPY_SYSPROP_NAME
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|ConcurrentMap
@@ -1273,16 +1300,6 @@ block|}
 else|else
 block|{
 name|long
-name|localLength
-init|=
-name|local
-operator|.
-name|fileLength
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
-name|long
 name|remoteLength
 init|=
 name|remote
@@ -1292,15 +1309,6 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|//Do a simple consistency check. Ideally Lucene index files are never
-comment|//updated but still do a check if the copy is consistent
-if|if
-condition|(
-name|localLength
-operator|!=
-name|remoteLength
-condition|)
-block|{
 name|LocalIndexFile
 name|file
 init|=
@@ -1316,6 +1324,35 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+comment|// as a local file exists, attempt a wait for completion of any potential ongoing concurrent copy
+name|indexCopier
+operator|.
+name|waitForCopyCompletion
+argument_list|(
+name|file
+argument_list|,
+name|waitOtherCopyTimeoutMillis
+argument_list|)
+expr_stmt|;
+name|long
+name|localLength
+init|=
+name|local
+operator|.
+name|fileLength
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
+comment|//Do a simple consistency check. Ideally Lucene index files are never
+comment|//updated but still do a check if the copy is consistent
+if|if
+condition|(
+name|localLength
+operator|!=
+name|remoteLength
+condition|)
+block|{
 if|if
 condition|(
 operator|!
