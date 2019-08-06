@@ -230,9 +230,6 @@ operator|.
 name|deleteFilesAfterClose
 argument_list|()
 operator|.
-name|closeOnJvmShutdown
-argument_list|()
-operator|.
 name|transactionDisable
 argument_list|()
 operator|.

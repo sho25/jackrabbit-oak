@@ -125,9 +125,9 @@ block|{
 name|Closer
 name|closer
 init|=
-name|Closer
+name|Utils
 operator|.
-name|create
+name|createCloserWithShutdownHook
 argument_list|()
 decl_stmt|;
 name|String
