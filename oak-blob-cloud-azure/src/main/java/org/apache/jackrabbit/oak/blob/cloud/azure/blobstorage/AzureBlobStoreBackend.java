@@ -5796,6 +5796,15 @@ name|key
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|exists
+argument_list|(
+name|blobId
+argument_list|)
+condition|)
+block|{
 try|try
 block|{
 if|if
@@ -5904,6 +5913,8 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+comment|// else return the already existing record for this blob ID
 return|return
 name|getRecord
 argument_list|(
