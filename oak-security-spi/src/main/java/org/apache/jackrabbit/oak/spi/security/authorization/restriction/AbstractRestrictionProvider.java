@@ -490,6 +490,10 @@ argument_list|(
 literal|"Unsupported restriction: Expected value of type "
 operator|+
 name|requiredType
+operator|+
+literal|" for "
+operator|+
+name|oakName
 argument_list|)
 throw|;
 block|}
@@ -629,6 +633,10 @@ argument_list|(
 literal|"Unsupported restriction: Expected value of type "
 operator|+
 name|requiredType
+operator|+
+literal|" for "
+operator|+
+name|oakName
 argument_list|)
 throw|;
 block|}
@@ -681,7 +689,9 @@ throw|throw
 operator|new
 name|AccessControlException
 argument_list|(
-literal|"Unsupported restriction: Expected single value."
+literal|"Unsupported restriction: Expected single value for "
+operator|+
+name|oakName
 argument_list|)
 throw|;
 block|}
@@ -1049,7 +1059,11 @@ literal|"Invalid restriction type '"
 operator|+
 name|type
 operator|+
-literal|"'. Expected "
+literal|"' for "
+operator|+
+name|restrName
+operator|+
+literal|". Expected "
 operator|+
 name|def
 operator|.
