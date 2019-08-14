@@ -568,10 +568,15 @@ name|Directory
 argument_list|>
 name|leechingCoRs
 init|=
+name|Collections
+operator|.
+name|synchronizedList
+argument_list|(
 name|Lists
 operator|.
 name|newArrayList
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|private
 name|CountDownLatch
@@ -624,15 +629,6 @@ argument_list|(
 literal|30
 argument_list|)
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|executorService
-operator|=
-name|Executors
-operator|.
-name|newFixedThreadPool
-argument_list|(
-literal|5
 argument_list|)
 expr_stmt|;
 comment|// normal remote directory
