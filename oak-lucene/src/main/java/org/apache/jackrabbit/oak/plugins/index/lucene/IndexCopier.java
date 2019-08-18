@@ -2173,7 +2173,7 @@ name|file
 argument_list|)
 return|;
 block|}
-comment|/**      * Waits for maximum of {@code timeoutMillis} while checking if {@code file} isn't being copied already.      * The method can return before {@code timeoutMillis} if it got interrupted. So, if the method reports false,      * caller should apply its own logic to see if a wait should be repeated or not.      * @param file      * @param timeoutMillis      */
+comment|/**      * Waits for maximum of {@code timeoutMillis} while checking if {@code file} isn't being copied already.      * The method can return before {@code timeoutMillis} if it got interrupted. So, if required then the      * caller should check using {@code isCopyInProgress} and wait again.      * @param file      * @param timeoutMillis      */
 specifier|public
 name|void
 name|waitForCopyCompletion
