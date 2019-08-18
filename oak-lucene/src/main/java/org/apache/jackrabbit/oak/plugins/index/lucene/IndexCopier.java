@@ -2305,7 +2305,15 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-comment|// ignore
+comment|// ignore and reset interrupt flag
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
 block|}
 name|localLength
 operator|=
