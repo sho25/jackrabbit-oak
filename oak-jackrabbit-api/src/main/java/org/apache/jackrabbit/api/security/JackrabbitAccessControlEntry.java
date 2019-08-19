@@ -63,6 +63,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|annotation
@@ -92,6 +116,8 @@ name|isAllow
 parameter_list|()
 function_decl|;
 comment|/**      * Return the names of the restrictions present with this access control entry.      *      * @return the names of the restrictions      * @throws RepositoryException if an error occurs.      */
+annotation|@
+name|NotNull
 name|String
 index|[]
 name|getRestrictionNames
@@ -100,9 +126,13 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Return the value of the restriction with the specified name or      *<code>null</code> if no such restriction exists. In case the restriction      * with the specified name contains multiple value this method will call      * {@code ValueFormatException}.      *      * @param restrictionName The of the restriction as obtained through      * {@link #getRestrictionNames()}.      * @return value of the restriction with the specified name or      *<code>null</code> if no such restriction exists.      * @throws ValueFormatException If the restriction with the specified name      * contains multiple values.      * @throws RepositoryException if an error occurs.      * @see #getRestrictions(String)      */
+annotation|@
+name|Nullable
 name|Value
 name|getRestriction
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|restrictionName
 parameter_list|)
@@ -112,10 +142,14 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Return the values of the restriction with the specified name or      *<code>null</code> if no such restriction exists. For restrictions that      * contain just a single value this method is expected to return an array      * with a single element even if the underlying implementation stored the      * restriction in single-value JCR property.      *      * @param restrictionName The of the restriction as obtained through      * {@link #getRestrictionNames()}.      * @return the values of the restriction with the specified name as an array      * or<code>null</code> if no such restriction exists. The array may contain      * zero, one or multiple values.      * @throws RepositoryException if an error occurs.      * @see #getRestriction(String)      */
+annotation|@
+name|Nullable
 name|Value
 index|[]
 name|getRestrictions
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|restrictionName
 parameter_list|)

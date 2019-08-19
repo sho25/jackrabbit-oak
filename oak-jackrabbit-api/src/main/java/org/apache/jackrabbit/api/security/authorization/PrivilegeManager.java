@@ -21,6 +21,30 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -83,6 +107,8 @@ interface|interface
 name|PrivilegeManager
 block|{
 comment|/**      * Returns all registered privileges.      *      * @return all registered privileges.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Privilege
 index|[]
 name|getRegisteredPrivileges
@@ -91,9 +117,13 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Returns the privilege with the specified<code>privilegeName</code>.      *      * @param privilegeName Name of the principal.      * @return the privilege with the specified<code>privilegeName</code>.      * @throws javax.jcr.security.AccessControlException If no privilege with the given name exists.      * @throws javax.jcr.RepositoryException If another error occurs.      */
+annotation|@
+name|NotNull
 name|Privilege
 name|getPrivilege
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|privilegeName
 parameter_list|)
@@ -103,15 +133,21 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Creates and registers a new custom privilege with the specified      * characteristics and returns the new privilege.      *<p>      * If the registration succeeds, the changes are immediately effective;      * there is no need to call<code>save</code>.      *      * @param privilegeName The name of the new custom privilege.      * @param isAbstract Boolean flag indicating if the privilege is abstract.      * @param declaredAggregateNames An array of privilege names referring to      * registered privileges being aggregated by this new custom privilege.      * In case of a non aggregate privilege an empty array should be passed.      * @return the new privilege.      * @throws AccessDeniedException If the session this manager has been created      * for is not allowed to register new privileges.      * @throws NamespaceException If any of the specified JCR names is illegal.      * @throws RepositoryException If the privilege could not be registered due      * to any implementation specific constraint violations or if persisting the      * custom privilege fails.      */
+annotation|@
+name|NotNull
 name|Privilege
 name|registerPrivilege
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|privilegeName
 parameter_list|,
 name|boolean
 name|isAbstract
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 index|[]
 name|declaredAggregateNames

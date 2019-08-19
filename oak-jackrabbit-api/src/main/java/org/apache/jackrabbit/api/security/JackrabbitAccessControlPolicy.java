@@ -33,6 +33,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|annotation
@@ -57,6 +69,8 @@ extends|extends
 name|AccessControlPolicy
 block|{
 comment|/**      * Returns the path of the node this policy has been created for.      *      * @return the path of the node this policy has been created for.      */
+annotation|@
+name|Nullable
 name|String
 name|getPath
 parameter_list|()
