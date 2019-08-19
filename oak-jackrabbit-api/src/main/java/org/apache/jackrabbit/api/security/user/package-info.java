@@ -19,7 +19,7 @@ name|versioning
 operator|.
 name|Version
 argument_list|(
-literal|"2.4.2"
+literal|"2.4.3"
 argument_list|)
 end_annotation
 

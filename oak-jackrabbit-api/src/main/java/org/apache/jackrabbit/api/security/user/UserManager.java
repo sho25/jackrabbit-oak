@@ -73,6 +73,30 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|annotation
@@ -113,9 +137,13 @@ init|=
 literal|3
 decl_stmt|;
 comment|/**      * Get the Authorizable by its id.      *      * @param id The user or group id.      * @return Authorizable or<code>null</code>, if not present.      * @throws RepositoryException If an error occurs.      * @see Authorizable#getID()      */
+annotation|@
+name|Nullable
 name|Authorizable
 name|getAuthorizable
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|id
 parameter_list|)
@@ -123,17 +151,23 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Get the Authorizable of a specific type by its id.      *      * @param id the user or group id.      * @param authorizableClass the class of the type of Authorizable required; must not be<code>null</code>.      * @param<T> the required Authorizable type.      * @return Authorizable or<code>null</code>, if not present.      * @throws AuthorizableTypeException If an authorizable exists but is not of the requested type.      * @throws RepositoryException If an error occurs      */
-parameter_list|<
+annotation|@
+name|Nullable
+argument_list|<
 name|T
 extends|extends
 name|Authorizable
-parameter_list|>
+argument_list|>
 name|T
 name|getAuthorizable
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|id
 parameter_list|,
+annotation|@
+name|NotNull
 name|Class
 argument_list|<
 name|T
@@ -146,9 +180,13 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Get the Authorizable by its Principal.      *      * @param principal The principal of the authorizable to retrieve.      * @return Authorizable or<code>null</code>, if not present.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|Nullable
 name|Authorizable
 name|getAuthorizable
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -156,9 +194,13 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * In accordance to {@link org.apache.jackrabbit.api.security.user.Authorizable#getPath()}      * this method allows to retrieve an given authorizable by it's path.      *      * @param path The path to an authorizable.      * @return Authorizable or<code>null</code>, if not present.      * @throws UnsupportedRepositoryOperationException If this implementation does      * support to retrieve authorizables by path.      * @throws RepositoryException If another error occurs.      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPath()      */
+annotation|@
+name|Nullable
 name|Authorizable
 name|getAuthorizableByPath
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|path
 parameter_list|)
@@ -168,15 +210,21 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Returns all<code>Authorizable</code>s that have a      * {@link Authorizable#getProperty(String) property} with the given relative      * path (or name) that matches the specified value.      *<p>      * If a relative path with more than one segment is specified only properties      * exactly matching that patch will be returned. If, however, a name is      * specified all properties that may be retrieved using      * {@link Authorizable#getProperty(String)} will be searched for a match.      *      * @param relPath A relative property path or name.      * @param value A string value to match.      * @return All<code>Authorizable</code>s that have a property with the given      * name exactly matching the given value.      * @throws RepositoryException If an error occurs.      * @see Authorizable#getProperty(String)      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|Authorizable
 argument_list|>
 name|findAuthorizables
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|value
 parameter_list|)
@@ -184,15 +232,21 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Returns all<code>Authorizable</code>s that have a      * {@link Authorizable#getProperty(String) property} with the given relative      * path (or name) that matches the specified value. In contrast to      * {@link #findAuthorizables(String, String)} the type of authorizable is      * respected while executing the search.      *<p>      * If a relative path with more than one segment is specified only properties      * exactly matching that path will be returned. If, however, a name is      * specified all properties that may be retrieved using      * {@link Authorizable#getProperty(String)} will be searched for a match.      *      * @param relPath A relative property path or name.      * @param value A string value to match.      * @param searchType Any of the following constants:      *<ul>      *<li>{@link #SEARCH_TYPE_AUTHORIZABLE}</li>      *<li>{@link #SEARCH_TYPE_GROUP}</li>      *<li>{@link #SEARCH_TYPE_USER}</li>      *</ul>      * @return An iterator of<code>Authorizable</code>.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|Authorizable
 argument_list|>
 name|findAuthorizables
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|value
 parameter_list|,
@@ -203,12 +257,16 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Return {@link Authorizable}s that match a specific {@link Query}.      *      * @param query  A query      * @return  Iterator of authorizables witch match the<code>query</code>.      * @throws RepositoryException  If an error occurs.      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|Authorizable
 argument_list|>
 name|findAuthorizables
 parameter_list|(
+annotation|@
+name|NotNull
 name|Query
 name|query
 parameter_list|)
@@ -216,12 +274,18 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Creates an User for the given userID / password pair; neither of the      * specified parameters can be<code>null</code>.<br>      * Same as {@link #createUser(String,String,Principal,String)} where      * the specified userID is equal to the principal name and the intermediate      * path is<code>null</code>.      *      * @param userID The ID of the new user.      * @param password The initial password of this user.      * @return The new<code>User</code>.      * @throws AuthorizableExistsException in case the given userID is already      * in use or another Authorizable with the same principal name exists.      * @throws RepositoryException If another error occurs.      */
+annotation|@
+name|NotNull
 name|User
 name|createUser
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|userID
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|password
 parameter_list|)
@@ -231,18 +295,28 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Creates an User for the given parameters. If the implementation is not      * able to deal with the<code>intermediatePath</code> that parameter should      * be ignored.      * Except for the<code>intermediatePath</code>, neither of the specified      * parameters can be<code>null</code>.      *      * @param userID The ID of the new user.      * @param password The initial password of the new user.      * @param principal The principal of the new user.      * @param intermediatePath An optional intermediate path used to create the      * new user. If the intermediate path is<code>null</code> an internal,      * implementation specific structure will be used.      * @return The new<code>User</code>.      * @throws AuthorizableExistsException in case the given userID is already      * in use or another Authorizable with the same principal name exists.      * @throws RepositoryException If the current Session is      * not allowed to create users or some another error occurs.      */
+annotation|@
+name|NotNull
 name|User
 name|createUser
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|userID
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|password
 parameter_list|,
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|intermediatePath
 parameter_list|)
@@ -252,12 +326,18 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Create a new system user for the specified {@code userID}. The new authorizable      * is required to have the following characteristics:      *      *<ul>      *<li>{@link org.apache.jackrabbit.api.security.user.User#isSystemUser()} returns {@code true}.</li>      *<li>The system user doesn't have a password set and doesn't allow change the password.</li>      *<li>The principal name is generated by the system; it may be the same as {@code userID}.</li>      *<li>A given implementation may choose to keep system users in a dedicated      *     location and thus may impose restrictions on the {@code intermediatePath}.</li>      *</ul>      *      * @param userID A valid userID.      * @param intermediatePath An optional intermediate path to create the new      * system user. The implemenation may decide to reject intermediate paths      * if they violate an implementation specific requirement with respect to      * the location where systems users are being held. If the intermediate path      * is {@code null} an internal implementation specific structure will be used.      * @return The new system user.      * @throws AuthorizableExistsException if an Authorizable with this id already exists.      * @throws RepositoryException If another error occurs.      */
+annotation|@
+name|NotNull
 name|User
 name|createSystemUser
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|userID
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|intermediatePath
 parameter_list|)
@@ -267,9 +347,13 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Creates a Group for the given groupID, which must not be<code>null</code>.      *<br>      * Same as {@link #createGroup(String, Principal,String)} where the specified      * groupID is the name of the<code>Principal</code> the intermediate path      * is<code>null</code>.      *      * @param groupID The ID of the new group; must not be<code>null</code>.      * @return The new<code>Group</code>.      * @throws AuthorizableExistsException in case the given groupID is already      * in use or another {@link Authorizable} with the same      * {@link Authorizable#getID() ID} or principal name already exists.      * @throws RepositoryException If another error occurs.      */
+annotation|@
+name|NotNull
 name|Group
 name|createGroup
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|groupID
 parameter_list|)
@@ -279,9 +363,13 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Creates a new<code>Group</code> that is based on the given principal.      * Note that the group's ID is implementation specific. The implementation      * may take the principal name as ID hint but must in any case assert that      * it is unique among the IDs known to this manager.      *      * @param principal A non-null<code>Principal</code>      * @return The new<code>Group</code>.      * @throws AuthorizableExistsException in case the given principal is      * already in use with another Authorizable.      * @throws RepositoryException If another error occurs.      */
+annotation|@
+name|NotNull
 name|Group
 name|createGroup
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -291,12 +379,18 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Same as {@link #createGroup(String, Principal, String)} where the      * name of the specified principal is used to create the group's ID.       *      * @param principal The principal associated with the new group.      * @param intermediatePath An optional intermediate path used to create the      * new group. If the intermediate path is<code>null</code> an internal,      * implementation specific structure will be used.      * @return The new<code>Group</code>.      * @throws AuthorizableExistsException in case the given principal is      * already in use with another Authorizable.      * @throws RepositoryException If another error occurs.      */
+annotation|@
+name|NotNull
 name|Group
 name|createGroup
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|intermediatePath
 parameter_list|)
@@ -306,15 +400,23 @@ throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Creates a new<code>Group</code> that is based on the given id, principal      * and the specified<code>intermediatePath</code> hint. If the implementation      * is not able to deal with the<code>intermediatePath</code> this parameter      * should be ignored.      *      * @param groupID The ID of the new group.      * @param principal The principal of the new group.      * @param intermediatePath An optional intermediate path used to create the      * new group. If the intermediate path is<code>null</code> an internal,      * implementation specific structure will be used.      * @return The new<code>Group</code>.      * @throws AuthorizableExistsException in case the given principal is already      * in use with another Authorizable.      * @throws RepositoryException If another error occurs.      */
+annotation|@
+name|NotNull
 name|Group
 name|createGroup
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|groupID
 parameter_list|,
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|intermediatePath
 parameter_list|)

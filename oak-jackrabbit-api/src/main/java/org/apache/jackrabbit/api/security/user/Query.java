@@ -19,6 +19,18 @@ name|user
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A query to match {@link Authorizable}s. Pass an instance of this interface to  * {@link UserManager#findAuthorizables(Query)}.  *  * The following query finds all users named 'Bob' which have the word  * 'engineer' in its description and returns them in ascending order wrt. to  * the name.  *  *<pre>  *  Iterator&lt;Authorizable&gt; result = userMgr.findAuthorizables(new Query() {  *      public&lt;T&gt; void build(QueryBuilder&lt;T&gt; builder) {  *          builder.setCondition(builder.  *              and(builder.  *                  property("@name", RelationOp.EQ, valueFactory.createValue("Bob")), builder.  *                  contains("@description", "engineer")));  *  *          builder.setSortOrder("@name", Direction.ASCENDING);  *          builder.setSelector(Selector.USER);  *      }  *  });  *</pre>  */
 end_comment
@@ -35,6 +47,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T

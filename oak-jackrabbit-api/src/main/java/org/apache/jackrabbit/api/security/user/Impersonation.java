@@ -39,6 +39,30 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -79,6 +103,8 @@ interface|interface
 name|Impersonation
 block|{
 comment|/**      * @return An iterator over the<code>Principal</code>s that are allowed      * to impersonate the<code>User</code> this<code>Impersonation</code>      * object has been created for.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|PrincipalIterator
 name|getImpersonators
 parameter_list|()
@@ -89,6 +115,8 @@ comment|/**      * @param principal The principal that should be allowed to impe
 name|boolean
 name|grantImpersonation
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -99,6 +127,8 @@ comment|/**      * @param principal The principal that should no longer be allow
 name|boolean
 name|revokeImpersonation
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -109,6 +139,8 @@ comment|/**      * Test if the given subject (i.e. any of the principals it cont
 name|boolean
 name|allows
 parameter_list|(
+annotation|@
+name|NotNull
 name|Subject
 name|subject
 parameter_list|)

@@ -21,6 +21,30 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|security
@@ -79,6 +103,8 @@ interface|interface
 name|Authorizable
 block|{
 comment|/**      * Return the implementation specific identifier for this      *<code>Authorizable</code>. It could e.g. be a UserID or simply the      * principal name.      *      * @return Name of this<code>Authorizable</code>.      * @throws RepositoryException if an error occurs.      */
+annotation|@
+name|NotNull
 name|String
 name|getID
 parameter_list|()
@@ -91,6 +117,8 @@ name|isGroup
 parameter_list|()
 function_decl|;
 comment|/**      * @return a representation as Principal.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Principal
 name|getPrincipal
 parameter_list|()
@@ -98,6 +126,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * @return all {@link Group}s, this Authorizable is declared member of.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|Group
@@ -108,6 +138,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * @return all {@link Group}s, this Authorizable is member of included      *         indirect group membership.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|Group
@@ -125,6 +157,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Returns the names of properties present with<code>this</code>      * Authorizable not taking possible relative paths into consideration.      * Same as {@link #getPropertyNames(String)} where the specified string      * is&quot;.&quot;.      *      * @return names of properties.      * @throws RepositoryException If an error occurs.      * @see #getProperty(String) where the specified relative path is simply an      * name.      * @see #hasProperty(String)      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|String
@@ -135,12 +169,16 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Returns the names of properties present with<code>this</code>      * Authorizable at the specified relative path.      *      * @param relPath A relative path.      * @return names of properties.      * @throws RepositoryException If an error occurs.      * @see #getProperty(String)      * @see #hasProperty(String)      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|String
 argument_list|>
 name|getPropertyNames
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -151,6 +189,8 @@ comment|/**      * Tests if a the property with specified name exists.      *   
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -161,9 +201,13 @@ comment|/**      * Set an arbitrary property to this<code>Authorizable</code>.  
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 name|Value
 name|value
 parameter_list|)
@@ -174,9 +218,13 @@ comment|/**      * Set an arbitrary property to this<code>Authorizable</code>.  
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 name|Value
 index|[]
 name|value
@@ -185,10 +233,14 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Returns the values for the properties with the specified name or      *<code>null</code>.      *      * @param relPath Relative path of the property to be retrieved.      * @return value of the property with the given name or<code>null</code>      *         if no such property exists.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|Nullable
 name|Value
 index|[]
 name|getProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -199,6 +251,8 @@ comment|/**      * Removes the property with the given name.      *      * @para
 name|boolean
 name|removeProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -206,6 +260,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Returns a JCR path if this authorizable instance is associated with an      * item that can be accessed by the editing<code>Session</code>.      *<p>      * Throws<code>UnsupportedRepositoryOperationException</code> if this      * method is not supported or if there is no item associated with this      * authorizable that is accessible by the editing<code>Session</code>.      *<p>      * Throws<code>RepositoryException</code> if another error occurs while      * retrieving the path.      *      * @return the path of the {@link javax.jcr.Item} that corresponds to this      *<code>Authorizable</code>.      * @throws UnsupportedRepositoryOperationException If this method is not      * supported or if there exists no accessible item associated with this      *<code>Authorizable</code> instance.      * @throws RepositoryException If an error occurs while retrieving the      *<code>Item</code> path.      */
+annotation|@
+name|NotNull
 name|String
 name|getPath
 parameter_list|()

@@ -83,6 +83,8 @@ extends|extends
 name|Authorizable
 block|{
 comment|/**      * @return Iterator of<code>Authorizable</code>s which are declared      * members of this Group.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|Authorizable
@@ -93,6 +95,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * @return Iterator of<code>Authorizable</code>s which are members of      * this Group. This includes both declared members and all authorizables      * that are indirect group members.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Iterator
 argument_list|<
 name|Authorizable
@@ -106,6 +110,8 @@ comment|/**      * Test whether an {@link Authorizable} is a declared member of 
 name|boolean
 name|isDeclaredMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -116,6 +122,8 @@ comment|/**      * @param authorizable The<code>Authorizable</code> to test.    
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -126,6 +134,8 @@ comment|/**      * Add a member to this Group.      *      * @param authorizable
 name|boolean
 name|addMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -133,6 +143,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Add one or more member(s) to this Group. Note, that an implementation may      * define circumstances under which this method allows to add non-existing      * {@code Authorizable}s as new members. Also an implementation may choose to      * (partially) postpone validation/verification util {@link Session#save()}.      *      * @param memberIds The {@code Id}s of the authorizables to be added as      * members to this group.      * @return a set of those {@code memberIds} that could not be added or an      * empty set of all ids have been successfully processed. The former may include      * those cases where a given id cannot be resolved to an existing authorizable,      * one that is already member or if adding the member would create a      * cyclic group membership.      * @throws RepositoryException If one of the specified memberIds is invalid or      * if some other error occurs.      */
+annotation|@
+name|NotNull
 name|Set
 argument_list|<
 name|String
@@ -152,6 +164,8 @@ comment|/**      * Remove a member from this Group.      *      * @param authori
 name|boolean
 name|removeMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -159,6 +173,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Remove one or several members from this Group. Note, that an implementation      * may define circumstances under which this method allows to remove members      * that (no longer) exist. An implementation may choose to (partially)      * postpone validation/verification util {@link Session#save()}.      *      * @param memberIds The {@code Id}s of the authorizables to be removed      * from the members of this group.      * @return a set of those {@code memberIds} that could not be removed or an      * empty set if all ids have been successfully processed. The former may include      * those cases where a given id cannot be resolved to an existing authorizable.      * @throws RepositoryException If one of the specified memberIds is invalid      * or if some other error occurs.      */
+annotation|@
+name|NotNull
 name|Set
 argument_list|<
 name|String

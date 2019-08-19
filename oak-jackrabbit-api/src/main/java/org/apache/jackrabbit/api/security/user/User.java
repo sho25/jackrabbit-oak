@@ -21,6 +21,30 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -61,6 +85,8 @@ name|isSystemUser
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the internal<code>Credentials</code> representation for this      * user. This method is expected to be used for validation during the      * login process. However, the return value should neither be usable nor      * used for {@link javax.jcr.Repository#login}.      *      * @return<code>Credentials</code> for this user.      * @throws javax.jcr.RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Credentials
 name|getCredentials
 parameter_list|()
@@ -68,6 +94,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * @return<code>Impersonation</code> for this<code>User</code>.      * @throws javax.jcr.RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 name|Impersonation
 name|getImpersonation
 parameter_list|()
@@ -78,6 +106,8 @@ comment|/**      * Change the password of this user.      *      * @param passwo
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|password
 parameter_list|)
@@ -88,9 +118,13 @@ comment|/**      * Change the password of this user.      *      * @param passwo
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|password
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|oldPassword
 parameter_list|)
@@ -101,6 +135,8 @@ comment|/**      * Disable this user thus preventing future login if the<code>re
 name|void
 name|disable
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|reason
 parameter_list|)
@@ -115,6 +151,8 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|/**      * Returns the String specified upon disabling this user or<code>null</code>      * if {@link #isDisabled()} returns<code>false</code>.      *       * @return The reason specified upon disabling this user or<code>null</code>      * if this user is not disabled.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|Nullable
 name|String
 name|getDisabledReason
 parameter_list|()
