@@ -21,6 +21,30 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|security
@@ -60,30 +84,44 @@ comment|/**      * Checks if the principal with the given name is known to this 
 name|boolean
 name|hasPrincipal
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|principalName
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the principal with the given name if is known to this manager      * (with respect to the sessions access rights).      * Please note that due to security reasons group principals will only      * reveal those members that are visible to the Session this      *<code>PrincipalManager</code> has been built for.      *      * @param principalName the name of the principal to retrieve      * @return return the requested principal or<code>null</code> if a      * principal with the given name does not exist or is not accessible      * for the editing session.      */
+annotation|@
+name|Nullable
 name|Principal
 name|getPrincipal
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|principalName
 parameter_list|)
 function_decl|;
 comment|/**      * Gets the principals matching a simple filter expression applied against      * the {@link Principal#getName() principal name}.      * TODO: define the filter expression.<br>      * An implementation may limit the number of principals returned.      * If there are no matching principals, an empty iterator is returned.      *      * @param simpleFilter      * @return a<code>PrincipalIterator</code> over the<code>Principal</code>s      * matching the given filter.      */
+annotation|@
+name|NotNull
 name|PrincipalIterator
 name|findPrincipals
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|simpleFilter
 parameter_list|)
 function_decl|;
 comment|/**      * Gets the principals matching a simple filter expression applied against      * the {@link Principal#getName() principal name} AND the specified search      * type.      * TODO: define the filter expression.<br>      * An implementation may limit the number of principals returned.      * If there are no matching principals, an empty iterator is returned.      *      * @param simpleFilter      * @param searchType Any of the following constants:      *<ul>      *<li>{@link PrincipalManager#SEARCH_TYPE_ALL}</li>      *<li>{@link PrincipalManager#SEARCH_TYPE_GROUP}</li>      *<li>{@link PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li>      *</ul>      * @return a<code>PrincipalIterator</code> over the<code>Principal</code>s      * matching the given filter and search type.      */
+annotation|@
+name|NotNull
 name|PrincipalIterator
 name|findPrincipals
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|simpleFilter
 parameter_list|,
@@ -92,6 +130,8 @@ name|searchType
 parameter_list|)
 function_decl|;
 comment|/**      * Returns all<code>Principal</code>s matching the specified search type.      *      * @param searchType Any of the following constants:      *<ul>      *<li>{@link PrincipalManager#SEARCH_TYPE_ALL}</li>      *<li>{@link PrincipalManager#SEARCH_TYPE_GROUP}</li>      *<li>{@link PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li>      *</ul>      * @return a<code>PrincipalIterator</code> over all the<code>Principal</code>s      * matching the given search type.      */
+annotation|@
+name|NotNull
 name|PrincipalIterator
 name|getPrincipals
 parameter_list|(
@@ -100,14 +140,20 @@ name|searchType
 parameter_list|)
 function_decl|;
 comment|/**      * Returns an iterator over all group principals for which the given      * principal is either direct or indirect member of.      *<p>      * Example:<br>      * If Principal P is member of Group A, and Group A is member of      * Group B, this method will return Principal A and Principal B.      *      * @param principal the principal to return it's membership from.      * @return an iterator returning all groups the given principal is member of.      */
+annotation|@
+name|NotNull
 name|PrincipalIterator
 name|getGroupMembership
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the<code>Principal</code> which is implicitly applied to      * every subject.      *      * @return the 'everyone' principal      */
+annotation|@
+name|NotNull
 name|Principal
 name|getEveryone
 parameter_list|()

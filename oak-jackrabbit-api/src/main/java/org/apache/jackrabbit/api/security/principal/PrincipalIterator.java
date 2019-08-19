@@ -21,6 +21,18 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -51,6 +63,8 @@ extends|extends
 name|RangeIterator
 block|{
 comment|/**      * Returns the next principal.      *       * @return the next principal      */
+annotation|@
+name|NotNull
 name|Principal
 name|nextPrincipal
 parameter_list|()

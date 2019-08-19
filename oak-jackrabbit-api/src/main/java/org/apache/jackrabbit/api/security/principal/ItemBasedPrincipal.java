@@ -21,6 +21,18 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -41,6 +53,8 @@ extends|extends
 name|JackrabbitPrincipal
 block|{
 comment|/**      * Returns the JCR path of the item that corresponds to this      *<code>Principal</code>.      *       * @return the path of the {@link javax.jcr.Item} that corresponds to this      *<code>Principal</code>.      * @throws RepositoryException If an error occurs while retrieving the      *<code>Item</code> path.      */
+annotation|@
+name|NotNull
 name|String
 name|getPath
 parameter_list|()

@@ -43,6 +43,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|annotation
@@ -67,16 +79,18 @@ extends|extends
 name|Principal
 block|{
 comment|/**      * Returns true if the passed principal is a member of the group.      * This method does a recursive search, so if a principal belongs to a      * group which is a member of this group, true is returned.      *      * @param member the principal whose membership is to be checked.      * @return true if the principal is a member of this group,      * false otherwise.      */
-specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|member
 parameter_list|)
 function_decl|;
 comment|/**      * Returns an enumeration of the members in the group. This includes both      * declared members and all principals that are indirect group members. The      * returned objects can be instances of either Principal or GroupPrincipal      * (which is a subclass of Principal).      *      * @return an enumeration of the group members.      */
-specifier|public
+annotation|@
+name|NotNull
 name|Enumeration
 argument_list|<
 name|?
