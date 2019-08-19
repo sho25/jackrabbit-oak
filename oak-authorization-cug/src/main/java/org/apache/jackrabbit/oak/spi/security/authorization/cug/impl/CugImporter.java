@@ -764,22 +764,6 @@ break|break;
 case|case
 name|ImportBehavior
 operator|.
-name|ABORT
-case|:
-throw|throw
-operator|new
-name|AccessControlException
-argument_list|(
-literal|"Unknown principal '"
-operator|+
-name|principalName
-operator|+
-literal|"'."
-argument_list|)
-throw|;
-case|case
-name|ImportBehavior
-operator|.
 name|BESTEFFORT
 case|:
 name|log
@@ -800,13 +784,16 @@ argument_list|)
 expr_stmt|;
 break|break;
 default|default:
+comment|// ImportBehavior.ABORT
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|AccessControlException
 argument_list|(
-literal|"Invalid import behavior "
+literal|"Unknown principal '"
 operator|+
-name|importBehavior
+name|principalName
+operator|+
+literal|"'."
 argument_list|)
 throw|;
 block|}
