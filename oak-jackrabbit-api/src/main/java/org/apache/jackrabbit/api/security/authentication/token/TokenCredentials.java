@@ -23,6 +23,30 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -81,6 +105,8 @@ comment|/**      * Create a new instance.      *      * @param token A token str
 specifier|public
 name|TokenCredentials
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|token
 parameter_list|)
@@ -121,6 +147,8 @@ name|token
 expr_stmt|;
 block|}
 comment|/**      * Returns the token this credentials are built from.      *       * @return the token.      */
+annotation|@
+name|NotNull
 specifier|public
 name|String
 name|getToken
@@ -135,9 +163,13 @@ specifier|public
 name|void
 name|setAttribute
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|value
 parameter_list|)
@@ -190,10 +222,14 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Returns the value of the named attribute as an<code>Object</code>, or      *<code>null</code> if no attribute of the given name exists.      *      * @param name a<code>String</code> specifying the name of the attribute      * @return an<code>Object</code> containing the value of the attribute, or      *<code>null</code> if the attribute does not exist      */
+annotation|@
+name|Nullable
 specifier|public
 name|String
 name|getAttribute
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -220,6 +256,8 @@ specifier|public
 name|void
 name|removeAttribute
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -239,6 +277,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Returns the names of the attributes available to this credentials      * instance. This method returns an empty array if the credentials instance      * has no attributes available to it.      *      * @return a string array containing the names of the stored attributes      */
+annotation|@
+name|NotNull
 specifier|public
 name|String
 index|[]
