@@ -802,6 +802,8 @@ name|ItemBasedPrincipal
 argument_list|()
 block|{
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -1056,7 +1058,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test that the filter can deal with principals that have been accessed with a different {@code NamePathMapper}.      * This might actually occure with {@code AbstractAccessControlManager#hasPrivilege} and {@code AbstractAccessControlManager#getPrivileges},      * when a {@link PermissionProvider} is built from the principal set passed to the Jackrabbit API methods (and not from      * principals obtained on the system level when populating the {@code Subject}.      */
+comment|/**      * Test that the filter can deal with principals that have been accessed with a different {@code NamePathMapper}.      * This might actually occure with {@code AbstractAccessControlManager#hasPrivilege} and {@code AbstractAccessControlManager#getPrivileges},      * when a {@code PermissionProvider} is built from the principal set passed to the Jackrabbit API methods (and not from      * principals obtained on the system level when populating the {@code Subject}.      */
 annotation|@
 name|Test
 specifier|public
@@ -2170,6 +2172,8 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

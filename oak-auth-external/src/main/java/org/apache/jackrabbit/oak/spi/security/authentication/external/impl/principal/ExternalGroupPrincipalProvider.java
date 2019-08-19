@@ -1974,6 +1974,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|member
 parameter_list|)
@@ -2168,6 +2170,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -320,11 +320,15 @@ name|everyone
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|PrincipalIterator
 name|findPrincipals
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|simpleFilter
 parameter_list|,

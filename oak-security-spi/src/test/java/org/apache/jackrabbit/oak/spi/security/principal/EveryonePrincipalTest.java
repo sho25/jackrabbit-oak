@@ -81,6 +81,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -573,6 +585,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -581,6 +595,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -350,7 +350,7 @@ operator|new
 name|ItemBasedPrincipal
 argument_list|()
 block|{
-block|@Override             public String getPath(
+block|@NotNull             @Override             public String getPath(
 argument_list|)
 block|{
 return|return
@@ -1004,6 +1004,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|member
 parameter_list|)
@@ -1014,6 +1016,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

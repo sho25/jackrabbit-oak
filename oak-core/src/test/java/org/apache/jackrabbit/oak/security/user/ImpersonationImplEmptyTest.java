@@ -338,6 +338,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|member
 parameter_list|)
@@ -348,6 +350,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

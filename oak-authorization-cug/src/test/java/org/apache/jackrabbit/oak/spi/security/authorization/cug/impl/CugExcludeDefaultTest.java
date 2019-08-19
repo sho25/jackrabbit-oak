@@ -193,6 +193,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -461,6 +473,8 @@ operator|new
 name|ItemBasedPrincipal
 argument_list|()
 block|{
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

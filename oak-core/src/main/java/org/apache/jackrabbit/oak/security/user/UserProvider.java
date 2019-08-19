@@ -768,6 +768,8 @@ operator|instanceof
 name|TreeBasedPrincipal
 condition|)
 block|{
+try|try
+block|{
 return|return
 name|root
 operator|.
@@ -784,6 +786,25 @@ name|getOakPath
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+comment|// getting oakpath fails -> try searching below
+name|log
+operator|.
+name|debug
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// NOTE: in contrast to JR2 the extra shortcut for ID==principalName
 comment|// can be omitted as principals names are stored in user defined

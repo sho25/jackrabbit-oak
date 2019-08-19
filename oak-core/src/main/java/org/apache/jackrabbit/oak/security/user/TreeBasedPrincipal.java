@@ -101,6 +101,16 @@ name|NotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|RepositoryException
+import|;
+end_import
+
 begin_comment
 comment|/**  * TreeBasedPrincipal...  */
 end_comment
@@ -190,14 +200,20 @@ operator|=
 name|oakPath
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 name|String
 name|getOakPath
 parameter_list|()
+throws|throws
+name|RepositoryException
 block|{
 return|return
 name|path
 return|;
 block|}
+annotation|@
+name|NotNull
 name|NamePathMapper
 name|getNamePathMapper
 parameter_list|()
@@ -208,11 +224,15 @@ return|;
 block|}
 comment|//-------------------------------------------------< ItemBasedPrincipal>---
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|String
 name|getPath
 parameter_list|()
+throws|throws
+name|RepositoryException
 block|{
 return|return
 name|pathMapper

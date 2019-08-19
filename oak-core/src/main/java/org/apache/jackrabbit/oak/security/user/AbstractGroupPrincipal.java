@@ -374,6 +374,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -463,6 +465,8 @@ return|return
 name|isMember
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

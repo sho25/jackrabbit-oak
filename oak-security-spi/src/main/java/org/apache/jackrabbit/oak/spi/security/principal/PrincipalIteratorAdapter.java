@@ -101,6 +101,18 @@ name|RangeIteratorDecorator
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Principal specific {@code RangeIteratorAdapter} implementing the  * {@code PrincipalIterator} interface.  */
 end_comment
@@ -190,6 +202,8 @@ expr_stmt|;
 block|}
 comment|//----------------------------------------< AccessControlPolicyIterator>---
 comment|/**      * Returns the next policy.      *      * @return next policy.      */
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

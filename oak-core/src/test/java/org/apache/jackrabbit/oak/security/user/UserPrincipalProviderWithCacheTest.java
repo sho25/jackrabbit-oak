@@ -499,6 +499,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|SimpleCredentials
 import|;
 end_import
@@ -2144,8 +2154,8 @@ operator|instanceof
 name|TreeBasedPrincipal
 argument_list|)
 expr_stmt|;
-name|assertNull
-argument_list|(
+try|try
+block|{
 operator|(
 operator|(
 name|TreeBasedPrincipal
@@ -2155,8 +2165,21 @@ operator|)
 operator|.
 name|getPath
 argument_list|()
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"RepositoryException expected"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+comment|// success
+block|}
 name|GroupPrincipal
 name|principalGroup
 init|=

@@ -89,6 +89,18 @@ name|JackrabbitPrincipal
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Built-in principal group that has every other principal as member.  */
 end_comment
@@ -189,6 +201,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|member
 parameter_list|)
@@ -203,6 +217,8 @@ name|this
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

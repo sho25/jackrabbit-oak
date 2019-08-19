@@ -3122,6 +3122,8 @@ argument_list|)
 argument_list|)
 block|{
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
