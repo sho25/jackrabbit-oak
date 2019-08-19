@@ -1537,12 +1537,16 @@ block|}
 block|}
 comment|//-------------------------------------< JackrabbitAccessControlManager>---
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|JackrabbitAccessControlPolicy
 index|[]
 name|getApplicablePolicies
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -1556,6 +1560,8 @@ literal|0
 index|]
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -1563,6 +1569,8 @@ name|JackrabbitAccessControlPolicy
 index|[]
 name|getPolicies
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -1577,12 +1585,16 @@ index|]
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|AccessControlPolicy
 index|[]
 name|getEffectivePolicies
 parameter_list|(
+annotation|@
+name|NotNull
 name|Set
 argument_list|<
 name|Principal

@@ -4954,9 +4954,13 @@ specifier|public
 name|void
 name|orderBefore
 parameter_list|(
+annotation|@
+name|NotNull
 name|AccessControlEntry
 name|srcEntry
 parameter_list|,
+annotation|@
+name|Nullable
 name|AccessControlEntry
 name|destEntry
 parameter_list|)

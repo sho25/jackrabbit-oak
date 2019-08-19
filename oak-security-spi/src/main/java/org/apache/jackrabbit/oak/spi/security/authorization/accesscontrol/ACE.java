@@ -553,6 +553,8 @@ specifier|public
 name|Value
 name|getRestriction
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|restrictionName
 parameter_list|)
@@ -673,6 +675,8 @@ name|Value
 index|[]
 name|getRestrictions
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|restrictionName
 parameter_list|)

@@ -123,6 +123,18 @@ name|NotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * This implementation of {@code PrivilegeManager} delegates back to a  * delegatee wrapping each call into a {@link SessionOperation} closure.  *  * @see SessionDelegate#perform(SessionOperation)  */
 end_comment
@@ -167,6 +179,8 @@ operator|=
 name|delegate
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -216,11 +230,15 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Privilege
 name|getPrivilege
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|privilegeName
@@ -269,11 +287,15 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Privilege
 name|registerPrivilege
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|privilegeName
@@ -282,6 +304,8 @@ specifier|final
 name|boolean
 name|isAbstract
 parameter_list|,
+annotation|@
+name|Nullable
 specifier|final
 name|String
 index|[]

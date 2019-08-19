@@ -577,6 +577,8 @@ specifier|public
 name|int
 name|getRestrictionType
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|restrictionName
 parameter_list|)
@@ -644,6 +646,8 @@ specifier|public
 name|boolean
 name|isMultiValueRestriction
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|restrictionName
 parameter_list|)
@@ -708,9 +712,13 @@ specifier|public
 name|boolean
 name|addEntry
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|,
+annotation|@
+name|NotNull
 name|Privilege
 index|[]
 name|privileges
@@ -748,9 +756,13 @@ specifier|public
 name|boolean
 name|addEntry
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|,
+annotation|@
+name|NotNull
 name|Privilege
 index|[]
 name|privileges
@@ -758,6 +770,8 @@ parameter_list|,
 name|boolean
 name|isAllow
 parameter_list|,
+annotation|@
+name|Nullable
 name|Map
 argument_list|<
 name|String
