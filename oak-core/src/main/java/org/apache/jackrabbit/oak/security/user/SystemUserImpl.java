@@ -99,6 +99,18 @@ name|NotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Default implementation for a system user.  */
 end_comment
@@ -253,6 +265,8 @@ specifier|public
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|password
 parameter_list|)
@@ -273,9 +287,13 @@ specifier|public
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|password
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|oldPassword
 parameter_list|)

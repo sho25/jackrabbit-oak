@@ -429,6 +429,8 @@ literal|true
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Principal
@@ -451,6 +453,8 @@ return|;
 block|}
 comment|//--------------------------------------------------------------< Group>---
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -469,6 +473,8 @@ literal|false
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -494,6 +500,8 @@ specifier|public
 name|boolean
 name|isDeclaredMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -515,6 +523,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -536,6 +546,8 @@ specifier|public
 name|boolean
 name|addMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -719,6 +731,8 @@ name|success
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -751,6 +765,8 @@ specifier|public
 name|boolean
 name|removeMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -859,6 +875,8 @@ return|;
 block|}
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -887,6 +905,8 @@ return|;
 block|}
 comment|//--------------------------------------------------------------------------
 comment|/**      * Internal implementation of {@link #getDeclaredMembers()} and {@link #getMembers()}.      *      * @param includeInherited Flag indicating if only the declared or all members      * should be returned.      * @return Iterator of authorizables being member of this group.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|NotNull
 specifier|private
 name|Iterator
 argument_list|<
@@ -1065,6 +1085,8 @@ specifier|private
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|,
@@ -1196,6 +1218,8 @@ block|}
 block|}
 block|}
 comment|/**      * Internal method to add or remove members by ID.      *      * @param isRemove Boolean flag indicating if members should be added or removed.      * @param memberIds The {@code memberIds} to be added or removed.      * @return The sub-set of {@code memberIds} that could not be added/removed.      * @throws javax.jcr.nodetype.ConstraintViolationException If any of the specified      * IDs is empty string or null or if {@link org.apache.jackrabbit.oak.spi.xml.ImportBehavior#ABORT}      * is configured and an ID cannot be resolved to an existing (or accessible)      * authorizable.      * @throws javax.jcr.RepositoryException If another error occurs.      */
+annotation|@
+name|NotNull
 specifier|private
 name|Set
 argument_list|<

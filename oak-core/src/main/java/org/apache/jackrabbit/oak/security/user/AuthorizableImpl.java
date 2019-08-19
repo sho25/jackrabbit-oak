@@ -427,6 +427,8 @@ specifier|static
 name|boolean
 name|isValidAuthorizableImpl
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -439,6 +441,8 @@ return|;
 block|}
 comment|//-------------------------------------------------------< Authorizable>---
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -449,6 +453,8 @@ return|return
 name|id
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -468,6 +474,8 @@ literal|false
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -538,6 +546,8 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -557,6 +567,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -565,6 +577,8 @@ name|String
 argument_list|>
 name|getPropertyNames
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -587,6 +601,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -604,12 +620,16 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 specifier|public
 name|Value
 index|[]
 name|getProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -632,9 +652,13 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 name|Value
 name|value
 parameter_list|)
@@ -658,9 +682,13 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 name|Value
 index|[]
 name|values
@@ -685,6 +713,8 @@ specifier|public
 name|boolean
 name|removeProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -701,6 +731,8 @@ name|relPath
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -153,6 +153,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -413,6 +425,8 @@ operator|new
 name|Authorizable
 argument_list|()
 block|{
+annotation|@
+name|NotNull
 specifier|public
 name|String
 name|getID
@@ -439,6 +453,8 @@ name|isGroup
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Principal
 name|getPrincipal
@@ -453,6 +469,8 @@ name|getPrincipal
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -470,6 +488,8 @@ name|declaredMemberOf
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -500,6 +520,8 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -517,6 +539,8 @@ name|getPropertyNames
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|Iterator
 argument_list|<
@@ -524,6 +548,8 @@ name|String
 argument_list|>
 name|getPropertyNames
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|relPath
 parameter_list|)
@@ -543,6 +569,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -562,6 +590,8 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|,
@@ -585,6 +615,8 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|,
@@ -610,6 +642,8 @@ name|Value
 index|[]
 name|getProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -629,6 +663,8 @@ specifier|public
 name|boolean
 name|removeProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|name
 parameter_list|)
@@ -644,6 +680,8 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 specifier|public
 name|String
 name|getPath

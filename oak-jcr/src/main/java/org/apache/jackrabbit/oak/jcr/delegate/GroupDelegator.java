@@ -277,6 +277,8 @@ return|;
 block|}
 comment|//--------------------------------------------------------------< Group>---
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -378,6 +380,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -486,6 +490,8 @@ specifier|public
 name|boolean
 name|isDeclaredMember
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|Authorizable
 name|authorizable
@@ -541,6 +547,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|Authorizable
 name|authorizable
@@ -596,6 +604,8 @@ specifier|public
 name|boolean
 name|addMember
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|Authorizable
 name|authorizable
@@ -647,6 +657,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -719,6 +731,8 @@ specifier|public
 name|boolean
 name|removeMember
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|Authorizable
 name|authorizable
@@ -770,6 +784,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -409,6 +409,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -454,6 +456,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Principal
@@ -498,6 +502,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -601,6 +607,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -748,6 +756,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -802,6 +812,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -810,6 +822,8 @@ name|String
 argument_list|>
 name|getPropertyNames
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|relPath
@@ -867,6 +881,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|relPath
@@ -918,10 +934,14 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 specifier|final
 name|Value
 name|value
@@ -973,10 +993,14 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 specifier|final
 name|Value
 index|[]
@@ -1023,6 +1047,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -1030,6 +1056,8 @@ name|Value
 index|[]
 name|getProperty
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|relPath
@@ -1040,7 +1068,7 @@ block|{
 return|return
 name|sessionDelegate
 operator|.
-name|perform
+name|performNullable
 argument_list|(
 operator|new
 name|SessionOperation
@@ -1053,13 +1081,11 @@ literal|"getProperty"
 argument_list|)
 block|{
 annotation|@
-name|NotNull
-annotation|@
 name|Override
 specifier|public
 name|Value
 index|[]
-name|perform
+name|performNullable
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -1083,6 +1109,8 @@ specifier|public
 name|boolean
 name|removeProperty
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|relPath
@@ -1130,6 +1158,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

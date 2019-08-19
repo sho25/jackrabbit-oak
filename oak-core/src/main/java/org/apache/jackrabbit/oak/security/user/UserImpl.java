@@ -419,6 +419,8 @@ literal|false
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Principal
@@ -505,6 +507,8 @@ literal|false
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Credentials
@@ -547,6 +551,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -639,9 +645,13 @@ specifier|public
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|password
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|oldPassword
 parameter_list|)
@@ -688,6 +698,8 @@ specifier|public
 name|void
 name|disable
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|reason
 parameter_list|)
@@ -781,6 +793,8 @@ name|REP_DISABLED
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public

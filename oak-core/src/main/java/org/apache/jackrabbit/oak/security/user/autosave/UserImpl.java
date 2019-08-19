@@ -117,6 +117,30 @@ name|User
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_class
 class|class
 name|UserImpl
@@ -186,6 +210,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Credentials
@@ -202,6 +228,8 @@ name|getCredentials
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -229,6 +257,8 @@ specifier|public
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|pw
 parameter_list|)
@@ -262,9 +292,13 @@ specifier|public
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|pw
 parameter_list|,
+annotation|@
+name|NotNull
 name|String
 name|oldPw
 parameter_list|)
@@ -300,6 +334,8 @@ specifier|public
 name|void
 name|disable
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|msg
 parameter_list|)
@@ -344,6 +380,8 @@ name|isDisabled
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public
@@ -388,6 +426,8 @@ name|dlg
 expr_stmt|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|PrincipalIterator
@@ -409,6 +449,8 @@ specifier|public
 name|boolean
 name|grantImpersonation
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -442,6 +484,8 @@ specifier|public
 name|boolean
 name|revokeImpersonation
 parameter_list|(
+annotation|@
+name|NotNull
 name|Principal
 name|principal
 parameter_list|)
@@ -475,6 +519,8 @@ specifier|public
 name|boolean
 name|allows
 parameter_list|(
+annotation|@
+name|NotNull
 name|Subject
 name|subject
 parameter_list|)

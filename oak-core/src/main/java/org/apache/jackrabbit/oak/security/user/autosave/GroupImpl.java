@@ -138,6 +138,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -165,6 +167,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -199,6 +203,8 @@ specifier|public
 name|boolean
 name|isDeclaredMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -244,6 +250,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -289,6 +297,8 @@ specifier|public
 name|boolean
 name|addMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -340,6 +350,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -386,6 +398,8 @@ specifier|public
 name|boolean
 name|removeMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -437,6 +451,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -481,6 +497,8 @@ specifier|private
 name|boolean
 name|isValid
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|a
 parameter_list|)

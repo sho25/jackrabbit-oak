@@ -635,6 +635,8 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -650,6 +652,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -672,6 +676,8 @@ specifier|public
 name|boolean
 name|isDeclaredMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -688,6 +694,8 @@ specifier|public
 name|boolean
 name|isMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -704,6 +712,8 @@ specifier|public
 name|boolean
 name|addMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -714,6 +724,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -742,6 +754,8 @@ specifier|public
 name|boolean
 name|removeMember
 parameter_list|(
+annotation|@
+name|NotNull
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -755,6 +769,8 @@ name|authorizable
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -777,6 +793,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -804,6 +822,8 @@ argument_list|()
 throw|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Principal
@@ -816,6 +836,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -833,6 +855,8 @@ name|emptyIterator
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -863,6 +887,8 @@ argument_list|()
 throw|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -879,6 +905,8 @@ argument_list|()
 throw|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -887,6 +915,8 @@ name|String
 argument_list|>
 name|getPropertyNames
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|)
@@ -903,6 +933,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|)
@@ -919,6 +951,8 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|,
@@ -938,6 +972,8 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|,
@@ -959,6 +995,8 @@ name|Value
 index|[]
 name|getProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|)
@@ -975,6 +1013,8 @@ specifier|public
 name|boolean
 name|removeProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|)
@@ -985,6 +1025,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

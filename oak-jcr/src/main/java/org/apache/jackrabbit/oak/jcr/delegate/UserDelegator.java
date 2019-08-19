@@ -107,6 +107,18 @@ name|NotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * This implementation of {@code User} delegates back to a  * delegatee wrapping each call into a {@link SessionOperation} closure.  *  * @see SessionDelegate#perform(SessionOperation)  */
 end_comment
@@ -309,6 +321,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Credentials
@@ -352,6 +366,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -414,6 +430,8 @@ specifier|public
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|password
@@ -464,10 +482,14 @@ specifier|public
 name|void
 name|changePassword
 parameter_list|(
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|password
 parameter_list|,
+annotation|@
+name|NotNull
 specifier|final
 name|String
 name|oldPassword
@@ -520,6 +542,8 @@ specifier|public
 name|void
 name|disable
 parameter_list|(
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|reason
@@ -610,6 +634,8 @@ block|}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 annotation|@
 name|Override
 specifier|public

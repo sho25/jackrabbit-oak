@@ -97,6 +97,30 @@ name|Group
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_class
 class|class
 name|AuthorizableImpl
@@ -153,6 +177,8 @@ return|;
 block|}
 comment|//-------------------------------------------------------< Authorizable>---
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -182,6 +208,8 @@ name|isGroup
 argument_list|()
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -199,6 +227,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -224,6 +254,8 @@ name|mgr
 argument_list|)
 return|;
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public
@@ -277,6 +309,8 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -296,6 +330,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -304,6 +340,8 @@ name|String
 argument_list|>
 name|getPropertyNames
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|)
@@ -325,6 +363,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|)
@@ -346,9 +386,13 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|,
+annotation|@
+name|Nullable
 name|Value
 name|value
 parameter_list|)
@@ -382,9 +426,13 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|,
+annotation|@
+name|Nullable
 name|Value
 index|[]
 name|values
@@ -414,12 +462,16 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|Nullable
+annotation|@
 name|Override
 specifier|public
 name|Value
 index|[]
 name|getProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|)
@@ -441,6 +493,8 @@ specifier|public
 name|boolean
 name|removeProperty
 parameter_list|(
+annotation|@
+name|NotNull
 name|String
 name|s
 parameter_list|)
@@ -467,6 +521,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|NotNull
 annotation|@
 name|Override
 specifier|public

@@ -325,18 +325,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jetbrains
-operator|.
-name|annotations
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -771,7 +759,7 @@ name|boolean
 name|allows
 parameter_list|(
 annotation|@
-name|Nullable
+name|NotNull
 name|Subject
 name|subject
 parameter_list|)

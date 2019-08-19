@@ -381,6 +381,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -1591,6 +1603,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -1708,6 +1722,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -1842,6 +1858,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -1957,6 +1975,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -2072,6 +2092,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -2234,6 +2256,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -2418,6 +2442,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -2514,6 +2540,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -2738,6 +2766,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -2813,6 +2843,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -2890,6 +2922,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -2982,6 +3016,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -3143,6 +3179,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -3306,6 +3344,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -3469,6 +3509,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -3615,6 +3657,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -3791,6 +3835,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -3875,6 +3921,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -3959,6 +4007,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -4043,6 +4093,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -4127,6 +4179,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -4349,6 +4403,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -4549,6 +4605,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -4631,6 +4689,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -4733,6 +4793,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -4823,6 +4885,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -4979,6 +5043,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -5135,6 +5201,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -5285,6 +5353,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -5446,6 +5516,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -5671,6 +5743,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -5725,6 +5799,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -5981,6 +6057,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -6217,6 +6295,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -6280,6 +6360,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -6380,6 +6462,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -6443,6 +6527,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -6538,6 +6624,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -6592,6 +6680,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -6689,6 +6779,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T
@@ -6752,6 +6844,8 @@ parameter_list|>
 name|void
 name|build
 parameter_list|(
+annotation|@
+name|NotNull
 name|QueryBuilder
 argument_list|<
 name|T

@@ -225,6 +225,8 @@ return|;
 block|}
 block|}
 annotation|@
+name|NotNull
+annotation|@
 name|Override
 specifier|public
 name|PrincipalIterator
@@ -275,6 +277,8 @@ specifier|public
 name|boolean
 name|grantImpersonation
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|Principal
 name|principal
@@ -328,6 +332,8 @@ specifier|public
 name|boolean
 name|revokeImpersonation
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|Principal
 name|principal
@@ -381,6 +387,8 @@ specifier|public
 name|boolean
 name|allows
 parameter_list|(
+annotation|@
+name|NotNull
 specifier|final
 name|Subject
 name|subject
