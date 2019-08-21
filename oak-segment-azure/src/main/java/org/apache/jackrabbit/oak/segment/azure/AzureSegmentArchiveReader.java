@@ -165,18 +165,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -420,14 +408,6 @@ operator|.
 name|getBlobs
 argument_list|(
 name|archiveDirectory
-argument_list|)
-operator|.
-name|collect
-argument_list|(
-name|Collectors
-operator|.
-name|toList
-argument_list|()
 argument_list|)
 control|)
 block|{
