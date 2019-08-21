@@ -265,11 +265,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segment
+name|commons
 operator|.
-name|spi
-operator|.
-name|RepositoryNotReachableException
+name|Buffer
 import|;
 end_import
 
@@ -287,9 +285,7 @@ name|segment
 operator|.
 name|spi
 operator|.
-name|persistence
-operator|.
-name|Buffer
+name|RepositoryNotReachableException
 import|;
 end_import
 

@@ -69,11 +69,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segment
-operator|.
-name|spi
-operator|.
-name|persistence
+name|commons
 operator|.
 name|Buffer
 import|;

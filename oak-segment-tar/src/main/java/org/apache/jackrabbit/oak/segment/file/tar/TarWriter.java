@@ -265,15 +265,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segment
+name|commons
 operator|.
-name|file
-operator|.
-name|tar
-operator|.
-name|binaries
-operator|.
-name|BinaryReferencesIndexWriter
+name|Buffer
 import|;
 end_import
 
@@ -289,11 +283,13 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|spi
+name|file
 operator|.
-name|persistence
+name|tar
 operator|.
-name|Buffer
+name|binaries
+operator|.
+name|BinaryReferencesIndexWriter
 import|;
 end_import
 

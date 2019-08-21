@@ -31,11 +31,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segment
+name|commons
 operator|.
-name|azure
-operator|.
-name|AzureSegmentArchiveEntry
+name|Buffer
 import|;
 end_import
 
@@ -51,11 +49,9 @@ name|oak
 operator|.
 name|segment
 operator|.
-name|spi
+name|azure
 operator|.
-name|persistence
-operator|.
-name|Buffer
+name|AzureSegmentArchiveEntry
 import|;
 end_import
 
