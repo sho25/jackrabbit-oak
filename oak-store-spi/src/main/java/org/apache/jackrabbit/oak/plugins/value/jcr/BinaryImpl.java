@@ -433,9 +433,12 @@ name|RepositoryException
 block|{
 if|if
 condition|(
-literal|null
-operator|==
-name|getReference
+name|value
+operator|.
+name|getBlob
+argument_list|()
+operator|.
+name|isInlined
 argument_list|()
 condition|)
 block|{

@@ -68,6 +68,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -733,6 +745,14 @@ operator|.
 name|BLOB_ID
 argument_list|)
 expr_stmt|;
+name|assertFalse
+argument_list|(
+name|sb
+operator|.
+name|isInlined
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -814,6 +834,14 @@ argument_list|,
 name|RecordType
 operator|.
 name|BLOB_ID
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|sb
+operator|.
+name|isInlined
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
