@@ -5752,15 +5752,31 @@ name|key
 argument_list|)
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|exists
+name|DataRecord
+name|record
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|record
+operator|=
+name|getRecord
 argument_list|(
 name|blobId
 argument_list|)
-condition|)
+expr_stmt|;
+comment|// If this succeeds this means either it was a "single put" upload
+comment|// (we don't need to do anything in this case - blob is already uploaded)
+comment|// or it was completed before with the same token.
+block|}
+catch|catch
+parameter_list|(
+name|DataStoreException
+name|e
+parameter_list|)
 block|{
+comment|// record doesn't exist - so this means we are safe to do the complete request
 try|try
 block|{
 if|if
@@ -5774,7 +5790,6 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// An existing upload ID means this is a multi-part upload
 name|CloudBlockBlob
 name|blob
 init|=
@@ -5786,6 +5801,7 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
+comment|// An existing upload ID means this is a multi-part upload
 name|List
 argument_list|<
 name|BlockEntry
@@ -5817,17 +5833,59 @@ argument_list|(
 name|blocks
 argument_list|)
 expr_stmt|;
-block|}
-comment|// else do nothing - single put is already complete
-if|if
-condition|(
-operator|!
-name|exists
-argument_list|(
-name|blobId
-argument_list|)
-condition|)
+name|long
+name|size
+init|=
+literal|0L
+decl_stmt|;
+for|for
+control|(
+name|BlockEntry
+name|block
+range|:
+name|blocks
+control|)
 block|{
+name|size
+operator|+=
+name|block
+operator|.
+name|getSize
+argument_list|()
+expr_stmt|;
+block|}
+name|record
+operator|=
+operator|new
+name|AzureBlobStoreDataRecord
+argument_list|(
+name|this
+argument_list|,
+name|connectionString
+argument_list|,
+name|containerName
+argument_list|,
+name|blobId
+argument_list|,
+name|blob
+operator|.
+name|getProperties
+argument_list|()
+operator|.
+name|getLastModified
+argument_list|()
+operator|.
+name|getTime
+argument_list|()
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Something is wrong - upload ID missing from upload token
+comment|// but record doesn't exist already, so this is invalid
 throw|throw
 operator|new
 name|DataRecordUploadException
@@ -5836,7 +5894,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Unable to finalize direct write of binary %s"
+literal|"Unable to finalize direct write of binary %s - upload ID missing from upload token"
 argument_list|,
 name|blobId
 argument_list|)
@@ -5849,7 +5907,7 @@ parameter_list|(
 name|URISyntaxException
 decl||
 name|StorageException
-name|e
+name|e2
 parameter_list|)
 block|{
 throw|throw
@@ -5870,12 +5928,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|// else return the already existing record for this blob ID
 return|return
-name|getRecord
-argument_list|(
-name|blobId
-argument_list|)
+name|record
 return|;
 block|}
 specifier|private
