@@ -86,6 +86,16 @@ name|String
 name|getContentIdentity
 parameter_list|()
 function_decl|;
+comment|/**      * Checks if the external blob is inlined in the id itself      * @return      */
+specifier|default
+name|boolean
+name|isInlined
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_interface
 
