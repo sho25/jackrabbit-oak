@@ -4777,6 +4777,10 @@ block|,
 operator|new
 name|SetPropertyTransientTest
 argument_list|()
+block|,
+operator|new
+name|GetURITest
+argument_list|()
 block|}
 decl_stmt|;
 name|Set
