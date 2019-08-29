@@ -2456,6 +2456,11 @@ name|newestRev
 init|=
 literal|null
 decl_stmt|;
+name|Branch
+name|branch
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|before
@@ -2484,6 +2489,11 @@ name|asTrunkRevision
 argument_list|()
 expr_stmt|;
 block|}
+name|branch
+operator|=
+name|getBranch
+argument_list|()
+expr_stmt|;
 name|newestRev
 operator|=
 name|before
@@ -2496,8 +2506,7 @@ name|base
 argument_list|,
 name|revision
 argument_list|,
-name|getBranch
-argument_list|()
+name|branch
 argument_list|,
 name|collisions
 argument_list|)
@@ -2559,7 +2568,15 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|" does not exist or is already deleted"
+literal|" does not exist or is already deleted "
+operator|+
+literal|"at base revision "
+operator|+
+name|baseRevision
+operator|+
+literal|", branch: "
+operator|+
+name|branch
 expr_stmt|;
 if|if
 condition|(
@@ -2815,7 +2832,7 @@ condition|)
 block|{
 name|conflictMessage
 operator|+=
-literal|", before\n"
+literal|", commit revision: "
 operator|+
 name|revision
 expr_stmt|;
