@@ -944,6 +944,32 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|Logger
+name|LOG_STREAMS_DOWNLOAD
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+literal|"oak.datastore.download.streams"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG_STREAMS_UPLOAD
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+literal|"oak.datastore.upload.streams"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|String
 name|META_DIR_NAME
 init|=
@@ -1764,6 +1790,29 @@ name|start
 operator|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG_STREAMS_DOWNLOAD
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+comment|// Log message, with exception so we can get a trace to see where the call came from
+name|LOG_STREAMS_DOWNLOAD
+operator|.
+name|debug
+argument_list|(
+literal|"Binary downloaded from Azure Blob Storage - identifier={}"
+argument_list|,
+name|key
+argument_list|,
+operator|new
+name|Exception
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|is
 return|;
@@ -2063,6 +2112,29 @@ argument_list|,
 name|useBufferedStream
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG_STREAMS_UPLOAD
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+comment|// Log message, with exception so we can get a trace to see where the call came from
+name|LOG_STREAMS_UPLOAD
+operator|.
+name|debug
+argument_list|(
+literal|"Binary uploaded to Azure Blob Storage - identifier={}"
+argument_list|,
+name|key
+argument_list|,
+operator|new
+name|Exception
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -7080,30 +7152,32 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// Don't worry about stream logging for metadata records
 if|if
 condition|(
-name|LOG
+name|LOG_STREAMS_DOWNLOAD
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-comment|// Log message, with exception so we can get a trace to see where the call
-comment|// came from
-name|LOG
+comment|// Log message, with exception so we can get a trace to see where the call came from
+name|LOG_STREAMS_DOWNLOAD
 operator|.
 name|debug
 argument_list|(
-literal|"binary downloaded from Azure Blob Storage: "
-operator|+
-name|getIdentifier
-argument_list|()
+literal|"Binary downloaded from Azure Blob Storage - identifier={} "
+argument_list|,
+name|id
 argument_list|,
 operator|new
 name|Exception
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 try|try
 block|{
