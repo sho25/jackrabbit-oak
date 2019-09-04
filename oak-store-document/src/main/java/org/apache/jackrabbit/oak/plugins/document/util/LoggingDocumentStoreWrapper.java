@@ -1198,8 +1198,6 @@ throw|;
 block|}
 block|}
 annotation|@
-name|NotNull
-annotation|@
 name|Override
 specifier|public
 parameter_list|<
