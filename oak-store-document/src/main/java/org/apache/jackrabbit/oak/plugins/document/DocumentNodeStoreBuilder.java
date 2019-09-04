@@ -977,6 +977,10 @@ name|boolean
 name|logging
 decl_stmt|;
 specifier|private
+name|String
+name|loggingPrefix
+decl_stmt|;
+specifier|private
 name|LeaseCheckMode
 name|leaseCheck
 init|=
@@ -1331,6 +1335,36 @@ parameter_list|()
 block|{
 return|return
 name|logging
+return|;
+block|}
+comment|/**      * Sets a custom prefix for the logger.      *       * @param prefix to be used in the logs output.      * @return this      */
+specifier|public
+name|T
+name|setLoggingPrefix
+parameter_list|(
+name|String
+name|prefix
+parameter_list|)
+block|{
+name|this
+operator|.
+name|loggingPrefix
+operator|=
+name|prefix
+expr_stmt|;
+return|return
+name|thisBuilder
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Nullable
+name|String
+name|getLoggingPrefix
+parameter_list|()
+block|{
+return|return
+name|loggingPrefix
 return|;
 block|}
 comment|/**      * If {@code true}, sets lease check mode to {@link LeaseCheckMode#LENIENT},      * otherwise sets the mode to {@link LeaseCheckMode#DISABLED}. This method      * is only kept for backward compatibility with the behaviour before      * OAK-7626. The new default lease check mode is {@link LeaseCheckMode#STRICT},      * but existing code may rely on the previous behaviour, when enabling the      * lease check corresponded with a {@link LeaseCheckMode#LENIENT} behaviour.      *      * @deprecated use {@link #setLeaseCheckMode(LeaseCheckMode)} instead.      */
