@@ -437,6 +437,24 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|invalidateAll
+parameter_list|()
+block|{
+name|localCache
+operator|.
+name|invalidateAll
+argument_list|()
+expr_stmt|;
+name|memoryCache
+operator|.
+name|invalidateAll
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

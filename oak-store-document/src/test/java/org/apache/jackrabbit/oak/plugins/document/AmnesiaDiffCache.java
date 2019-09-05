@@ -218,6 +218,15 @@ name|emptyList
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|invalidateAll
+parameter_list|()
+block|{
+comment|// Nothing to do
+block|}
 block|}
 end_class
 

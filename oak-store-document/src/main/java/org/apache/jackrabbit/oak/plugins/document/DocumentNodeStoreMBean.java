@@ -219,6 +219,39 @@ name|int
 name|clusterId
 parameter_list|)
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Invalidates all the caches used by the DocumentNodeStore: DiffCache, NodeCache and NodeChildrenCache."
+argument_list|)
+name|String
+name|cleanAllCaches
+parameter_list|()
+function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Invalidates the specified cache: DiffCache, NodeCache or NodeChildrenCache.\n"
+operator|+
+literal|"Note: The values are case insensitive."
+argument_list|)
+name|String
+name|cleanIndividualCache
+parameter_list|(
+annotation|@
+name|Description
+argument_list|(
+literal|"Possible values are: DIFF, NODE, NODECHILDREN"
+argument_list|)
+annotation|@
+name|Name
+argument_list|(
+literal|"name"
+argument_list|)
+name|String
+name|name
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

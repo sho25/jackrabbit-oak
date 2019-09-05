@@ -164,6 +164,12 @@ argument_list|>
 name|getStats
 parameter_list|()
 function_decl|;
+comment|/**      * Invalidates all the entries in the cache.      */
+specifier|abstract
+name|void
+name|invalidateAll
+parameter_list|()
+function_decl|;
 comment|/**      * Parses the jsop diff returned by      * {@link #getChanges(RevisionVector, RevisionVector, Path, Loader)} and reports the      * changes by calling the appropriate methods on {@link Diff}.      *      * @param jsop the jsop diff to parse.      * @param diff the diff handler.      * @return {@code true} it the complete jsop was processed or {@code false}      *      if one of the {@code diff} callbacks requested a stop.      * @throws IllegalArgumentException if {@code jsop} is malformed.      */
 specifier|static
 name|boolean

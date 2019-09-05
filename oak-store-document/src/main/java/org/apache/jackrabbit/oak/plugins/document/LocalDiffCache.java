@@ -608,6 +608,19 @@ name|diffCacheStats
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|invalidateAll
+parameter_list|()
+block|{
+name|diffCache
+operator|.
+name|invalidateAll
+argument_list|()
+expr_stmt|;
+block|}
 comment|//-----------------------------< internal>---------------------------------
 specifier|public
 specifier|static
