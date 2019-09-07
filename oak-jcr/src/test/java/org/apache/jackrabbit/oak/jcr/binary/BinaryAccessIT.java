@@ -2313,17 +2313,26 @@ name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// This proper behavior is disabled due to
+comment|// https://github.com/Azure/azure-sdk-for-java/issues/2900
+comment|// (see also https://issues.apache.org/jira/browse/OAK-8013,
+comment|// https://issues.apache.org/jira/browse/OAK-8104, and
+comment|// https://issues.apache.org/jira/browse/OAK-8105).  We can re-enable
+comment|// the full test once the issue is resolved.  -MR
+comment|//        assertEquals(
+comment|//                String.format("inline; filename=\"%s\"; filename*=UTF-8''%s",
+comment|//                        expectedName, encodedName),
+comment|//                contentDisposition
+comment|//        );
 name|assertEquals
 argument_list|(
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"inline; filename=\"%s\"; filename*=UTF-8''%s"
+literal|"inline; filename=\"%s\""
 argument_list|,
 name|expectedName
-argument_list|,
-name|encodedName
 argument_list|)
 argument_list|,
 name|contentDisposition
@@ -2479,17 +2488,26 @@ name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// This proper behavior is disabled due to
+comment|// https://github.com/Azure/azure-sdk-for-java/issues/2900
+comment|// (see also https://issues.apache.org/jira/browse/OAK-8013,
+comment|// https://issues.apache.org/jira/browse/OAK-8104, and
+comment|// https://issues.apache.org/jira/browse/OAK-8105).  We can re-enable
+comment|// the full test once the issue is resolved.  -MR
+comment|//        assertEquals(
+comment|//                String.format("attachment; filename=\"%s\"; filename*=UTF-8''%s",
+comment|//                        expectedName, encodedName),
+comment|//                contentDisposition
+comment|//        );
 name|assertEquals
 argument_list|(
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"attachment; filename=\"%s\"; filename*=UTF-8''%s"
+literal|"attachment; filename=\"%s\""
 argument_list|,
 name|expectedName
-argument_list|,
-name|encodedName
 argument_list|)
 argument_list|,
 name|contentDisposition
@@ -2886,17 +2904,26 @@ name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// This proper behavior is disabled due to
+comment|// https://github.com/Azure/azure-sdk-for-java/issues/2900
+comment|// (see also https://issues.apache.org/jira/browse/OAK-8013,
+comment|// https://issues.apache.org/jira/browse/OAK-8104, and
+comment|// https://issues.apache.org/jira/browse/OAK-8105).  We can re-enable
+comment|// the full test once the issue is resolved.  -MR
+comment|//        assertEquals(
+comment|//                String.format("attachment; filename=\"%s\"; filename*=UTF-8''%s",
+comment|//                        expectedName, encodedName),
+comment|//                contentDisposition
+comment|//        );
 name|assertEquals
 argument_list|(
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"attachment; filename=\"%s\"; filename*=UTF-8''%s"
+literal|"attachment; filename=\"%s\""
 argument_list|,
 name|expectedName
-argument_list|,
-name|encodedName
 argument_list|)
 argument_list|,
 name|contentDisposition
