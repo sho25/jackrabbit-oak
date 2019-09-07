@@ -2814,6 +2814,28 @@ name|StorageException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+literal|404
+operator|==
+name|e
+operator|.
+name|getHttpStatusCode
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unable to get record for blob; blob does not exist. identifier={}"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|LOG
 operator|.
 name|info
@@ -2825,6 +2847,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|DataStoreException

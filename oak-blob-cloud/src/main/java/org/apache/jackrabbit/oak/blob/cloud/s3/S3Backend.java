@@ -4246,7 +4246,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"getRecord:Identifier [{}] not found. Took [{}] ms."
 argument_list|,
