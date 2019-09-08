@@ -5710,7 +5710,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 try|try
 block|{
 name|byte
@@ -5808,6 +5807,7 @@ argument_list|(
 literal|"Unable to obtain data store key"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|null
