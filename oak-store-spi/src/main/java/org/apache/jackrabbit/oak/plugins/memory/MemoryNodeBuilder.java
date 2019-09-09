@@ -551,7 +551,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return  {@code true} iff this is the root builder      */
-specifier|protected
+specifier|public
 specifier|final
 name|boolean
 name|isRoot
