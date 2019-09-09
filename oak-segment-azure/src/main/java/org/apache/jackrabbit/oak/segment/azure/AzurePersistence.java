@@ -1120,6 +1120,15 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|CloudBlobDirectory
+name|getSegmentstoreDirectory
+parameter_list|()
+block|{
+return|return
+name|segmentstoreDirectory
+return|;
+block|}
 block|}
 end_class
 
