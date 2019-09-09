@@ -593,6 +593,10 @@ name|oak
 operator|.
 name|segment
 operator|.
+name|spi
+operator|.
+name|persistence
+operator|.
 name|split
 operator|.
 name|SplitPersistence
