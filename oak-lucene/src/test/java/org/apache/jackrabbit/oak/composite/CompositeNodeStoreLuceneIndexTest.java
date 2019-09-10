@@ -405,18 +405,6 @@ name|assertThat
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_class
 annotation|@
 name|SuppressWarnings
@@ -636,15 +624,15 @@ name|cleanup
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Given a composite node store , trying to create an index in read-write part      * with the same index node already existing in the read only part already      * we should get OakConstraint001 . This is the current behaviour,      * but can be worked upon (improved) in the future .      */
+comment|/**      * Given a composite node store , create an index in read-write part      * with the same index node already existing in the read-only part already.      */
 annotation|@
 name|Test
 specifier|public
 name|void
-name|tryAddIndexInReadWriteWithIndexExistinginReadOnly
+name|addIndexInReadWriteWithIndexExistinginReadOnly
 parameter_list|()
-block|{
-try|try
+throws|throws
+name|Exception
 block|{
 name|repoV1
 operator|.
@@ -659,32 +647,11 @@ argument_list|,
 name|VERSION_1
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-assert|assert
-operator|(
-name|e
+name|repoV1
 operator|.
-name|getLocalizedMessage
+name|cleanup
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"OakConstraint0001: /oak:index/luceneTest/:oak:mount-readOnlyV1-index-data[[]]: The primary type null does not exist"
-argument_list|)
-operator|)
-assert|;
-block|}
+expr_stmt|;
 block|}
 comment|/**      * Given a composite jcr repo with a lucene index with indexed data from both read only and read write parts      * We create a V2 of this repo which will have the lucene index removed -      * Expected behaviour - The same query that returned resutls from both readonly      * and readwrite in V1 should now return      * results - but it would be a traversal query and not use the index .      */
 annotation|@
