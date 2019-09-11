@@ -984,6 +984,8 @@ throws|throws
 name|IOException
 block|{
 comment|// TODO : not implemented
+comment|// see https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch
+comment|// see https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html
 block|}
 annotation|@
 name|Override

@@ -555,12 +555,6 @@ name|Pattern
 operator|.
 name|quote
 argument_list|(
-name|String
-operator|.
-name|join
-argument_list|(
-literal|""
-argument_list|,
 name|INVALID_FILENAME_CHARS
 operator|.
 name|stream
@@ -577,8 +571,9 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
-argument_list|()
+name|joining
+argument_list|(
+literal|""
 argument_list|)
 argument_list|)
 argument_list|)

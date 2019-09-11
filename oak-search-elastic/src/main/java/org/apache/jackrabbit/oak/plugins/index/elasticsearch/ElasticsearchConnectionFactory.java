@@ -174,6 +174,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|ConcurrentMap
 argument_list|<
 name|ElasticsearchCoordinate
@@ -197,6 +198,7 @@ name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|isClosed
 init|=

@@ -305,7 +305,7 @@ name|Predicate
 argument_list|<
 name|NodeState
 argument_list|>
-name|ELASTICSEARH_INDEX_DEFINITION_PREDICATE
+name|ELASTICSEARCH_INDEX_DEFINITION_PREDICATE
 init|=
 name|state
 lambda|->
@@ -324,6 +324,7 @@ decl_stmt|;
 comment|// higher than some threshold below which the query should rather be answered by something else if possible
 specifier|private
 specifier|static
+specifier|final
 name|double
 name|MIN_COST
 init|=
@@ -413,7 +414,7 @@ name|getIndexDefinitionPredicate
 parameter_list|()
 block|{
 return|return
-name|ELASTICSEARH_INDEX_DEFINITION_PREDICATE
+name|ELASTICSEARCH_INDEX_DEFINITION_PREDICATE
 return|;
 block|}
 annotation|@

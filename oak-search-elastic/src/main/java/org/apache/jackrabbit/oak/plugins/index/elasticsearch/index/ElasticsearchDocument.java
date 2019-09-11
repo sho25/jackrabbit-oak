@@ -206,6 +206,7 @@ name|ElasticsearchDocument
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|LOG
 init|=
