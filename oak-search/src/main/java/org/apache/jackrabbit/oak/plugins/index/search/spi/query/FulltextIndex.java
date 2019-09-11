@@ -1553,7 +1553,7 @@ name|indexPath
 argument_list|)
 return|;
 block|}
-specifier|protected
+specifier|public
 specifier|static
 name|int
 name|determinePropertyType
@@ -1971,7 +1971,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-specifier|protected
+specifier|public
 specifier|static
 name|String
 name|getPathRestriction
