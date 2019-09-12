@@ -173,6 +173,24 @@ name|PRESIGNED_HTTP_DOWNLOAD_URI_VERIFY_EXISTS
 init|=
 literal|"presignedHttpDownloadURIVerifyExists"
 decl_stmt|;
+comment|/**      * Domain name to use for direct downloads instead of the default Azure blob storage domain.      * This is usually used when an installation has configured a CDN domain for binary downloads.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRESIGNED_HTTP_DOWNLOAD_URI_DOMAIN_OVERRIDE
+init|=
+literal|"presignedHttpDownloadURIDomainOverride"
+decl_stmt|;
+comment|/**      * Domain name to use for direct uploads instead of the default Azure blob storage domain.      * This is usually used when an installation has configured a CDN domain for binary uploads.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRESIGNED_HTTP_UPLOAD_URI_DOMAIN_OVERRIDE
+init|=
+literal|"presignedHttpUploadURIDomainOverride"
+decl_stmt|;
 specifier|private
 name|AzureConstants
 parameter_list|()
