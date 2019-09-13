@@ -139,6 +139,18 @@ name|jcr
 operator|.
 name|query
 operator|.
+name|Row
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|query
+operator|.
 name|RowIterator
 import|;
 end_import
@@ -436,13 +448,18 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|String
-name|plan
+name|Row
+name|row
 init|=
 name|it
 operator|.
 name|nextRow
 argument_list|()
+decl_stmt|;
+name|String
+name|plan
+init|=
+name|row
 operator|.
 name|getValue
 argument_list|(
@@ -469,6 +486,32 @@ operator|+
 literal|", path=//*) where isdescendantnode([a], [/]) */"
 argument_list|,
 name|plan
+argument_list|)
+expr_stmt|;
+name|String
+name|sql2
+init|=
+name|row
+operator|.
+name|getValue
+argument_list|(
+literal|"statement"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"select [jcr:path], [jcr:score], * "
+operator|+
+literal|"from [oak:Unstructured] as a "
+operator|+
+literal|"where isdescendantnode(a, '/') "
+operator|+
+literal|"/* xpath: /jcr:root//element(*, oak:Unstructured) */"
+argument_list|,
+name|sql2
 argument_list|)
 expr_stmt|;
 name|String
