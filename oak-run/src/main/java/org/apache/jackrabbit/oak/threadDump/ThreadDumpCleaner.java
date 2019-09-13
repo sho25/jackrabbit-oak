@@ -136,6 +136,14 @@ index|[]
 name|PATTERN_ARRAY
 init|=
 block|{
+literal|"Threads class SMR info:(?s).*?\n\n"
+block|,
+literal|"JNI global refs.*\n\n"
+block|,
+literal|"\"Reference Handler\"(?s).*?\n\n"
+block|,
+literal|"\"C1 CompilerThread(?s).*?\n\n"
+block|,
 literal|"\"Concurrent Mark-Sweep GC Thread\".*\n"
 block|,
 literal|"\"Exception Catcher Thread\".*\n"
@@ -177,6 +185,10 @@ block|,
 literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
 operator|+
 literal|"at sun.nio.ch.EPollArrayWrapper.epollWait(?s).*?\n\n"
+block|,
+literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
+operator|+
+literal|"at sun.nio.ch.EPoll.wait(?s).*?\n\n"
 block|,
 literal|"\".*?\".*?\n   java.lang.Thread.State:.*\n\t"
 operator|+
@@ -636,7 +648,7 @@ name|line
 return|;
 block|}
 name|int
-name|at
+name|start
 init|=
 name|line
 operator|.
@@ -647,11 +659,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|at
+name|start
 argument_list|<
 literal|0
 operator|||
-name|at
+name|start
 argument_list|>
 name|atChar
 condition|)
@@ -659,6 +671,40 @@ block|{
 return|return
 name|line
 return|;
+block|}
+name|start
+operator|+=
+literal|2
+expr_stmt|;
+comment|// at java.lang.Object.wait(java.base@11.0.3/Native Method) ->
+comment|// at java.lang.Object.wait(Native Method) ->
+name|int
+name|open
+init|=
+name|line
+operator|.
+name|indexOf
+argument_list|(
+literal|'('
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|open
+operator|>
+name|start
+operator|&&
+name|open
+operator|<
+name|atChar
+condition|)
+block|{
+name|start
+operator|=
+name|open
+operator|+
+literal|1
+expr_stmt|;
 block|}
 comment|// String moduleName = line.substring(at + 3, slash);
 comment|// module names seen so far:
@@ -676,9 +722,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|at
-operator|+
-literal|2
+name|start
 argument_list|)
 operator|+
 name|line
