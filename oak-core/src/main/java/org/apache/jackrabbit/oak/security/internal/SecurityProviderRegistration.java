@@ -1782,6 +1782,11 @@ name|unregister
 argument_list|()
 expr_stmt|;
 block|}
+name|closeQuietly
+argument_list|(
+name|closer
+argument_list|)
+expr_stmt|;
 block|}
 comment|//--------------------------------------< unary security configurations>---
 annotation|@
