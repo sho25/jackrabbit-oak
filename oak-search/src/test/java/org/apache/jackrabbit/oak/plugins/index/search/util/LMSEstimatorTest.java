@@ -17,11 +17,33 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|solr
+name|search
 operator|.
-name|query
+name|util
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|search
+operator|.
+name|util
+operator|.
+name|LMSEstimator
+import|;
+end_import
 
 begin_import
 import|import
@@ -78,20 +100,6 @@ operator|.
 name|query
 operator|.
 name|Filter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|solr
-operator|.
-name|common
-operator|.
-name|SolrDocumentList
 import|;
 end_import
 
@@ -154,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@link org.apache.jackrabbit.oak.plugins.index.solr.query.LMSEstimator}  */
+comment|/**  * Tests for {@link LMSEstimator}  */
 end_comment
 
 begin_class
@@ -188,15 +196,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|SolrDocumentList
-name|docs
+name|long
+name|numDocs
 init|=
-name|mock
-argument_list|(
-name|SolrDocumentList
-operator|.
-name|class
-argument_list|)
+literal|100L
 decl_stmt|;
 name|lmsEstimator
 operator|.
@@ -204,7 +207,7 @@ name|update
 argument_list|(
 name|filter
 argument_list|,
-name|docs
+name|numDocs
 argument_list|)
 expr_stmt|;
 block|}
@@ -264,20 +267,13 @@ argument_list|(
 name|fte
 argument_list|)
 expr_stmt|;
-name|SolrDocumentList
-name|docs
-init|=
-operator|new
-name|SolrDocumentList
-argument_list|()
-decl_stmt|;
 name|lmsEstimator
 operator|.
 name|update
 argument_list|(
 name|filter
 argument_list|,
-name|docs
+literal|0
 argument_list|)
 expr_stmt|;
 name|long
@@ -285,13 +281,6 @@ name|actualCount
 init|=
 literal|10
 decl_stmt|;
-name|docs
-operator|.
-name|setNumFound
-argument_list|(
-name|actualCount
-argument_list|)
-expr_stmt|;
 name|long
 name|estimate
 init|=
@@ -328,7 +317,7 @@ name|update
 argument_list|(
 name|filter
 argument_list|,
-name|docs
+name|actualCount
 argument_list|)
 expr_stmt|;
 name|long
@@ -375,7 +364,7 @@ name|update
 argument_list|(
 name|filter
 argument_list|,
-name|docs
+name|actualCount
 argument_list|)
 expr_stmt|;
 name|long
