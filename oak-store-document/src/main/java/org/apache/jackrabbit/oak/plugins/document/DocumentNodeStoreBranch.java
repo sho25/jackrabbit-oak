@@ -1477,6 +1477,12 @@ operator|new
 name|CommitDiff
 argument_list|(
 name|store
+operator|.
+name|getBundlingConfigHandler
+argument_list|()
+operator|.
+name|newBundlingHandler
+argument_list|()
 argument_list|,
 name|commitBuilder
 argument_list|,
