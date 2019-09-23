@@ -156,6 +156,11 @@ name|Principal
 name|principal
 parameter_list|)
 block|{
+name|AclGroupDeprecation
+operator|.
+name|handleCall
+argument_list|()
+expr_stmt|;
 return|return
 name|Collections
 operator|.

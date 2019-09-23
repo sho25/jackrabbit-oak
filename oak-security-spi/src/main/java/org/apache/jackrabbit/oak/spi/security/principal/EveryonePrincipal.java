@@ -172,6 +172,11 @@ name|Principal
 name|user
 parameter_list|)
 block|{
+name|AclGroupDeprecation
+operator|.
+name|handleCall
+argument_list|()
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -186,6 +191,11 @@ name|Principal
 name|user
 parameter_list|)
 block|{
+name|AclGroupDeprecation
+operator|.
+name|handleCall
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|UnsupportedOperationException
