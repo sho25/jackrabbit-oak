@@ -627,11 +627,6 @@ name|before
 argument_list|)
 expr_stmt|;
 block|}
-name|setOrTouchChildrenFlag
-argument_list|(
-name|child
-argument_list|)
-expr_stmt|;
 return|return
 name|MISSING_NODE
 operator|.
