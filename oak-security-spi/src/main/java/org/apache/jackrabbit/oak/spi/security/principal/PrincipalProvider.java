@@ -253,15 +253,10 @@ name|principal
 parameter_list|)
 block|{
 return|return
-name|GroupPrincipals
+name|Collections
 operator|.
-name|transform
-argument_list|(
-name|getGroupMembership
-argument_list|(
-name|principal
-argument_list|)
-argument_list|)
+name|emptySet
+argument_list|()
 return|;
 block|}
 comment|/**      * Tries to resolve the specified {@code userID} to a valid principal and      * it's group membership. This method returns an empty set if the      * specified ID cannot be resolved.      *      * @param userID A userID.      * @return The set of principals associated with the specified {@code userID}      * or an empty set if it cannot be resolved.      */
