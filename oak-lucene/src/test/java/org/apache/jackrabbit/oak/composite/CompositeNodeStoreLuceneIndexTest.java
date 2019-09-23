@@ -511,6 +511,21 @@ name|initCompositeRepo
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|closeRepositories
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|repoV1
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
+block|}
 comment|/**      * Steps overview -      * Add a new index to composite repo and reindex      * Add the index def in global read write part of composite repo (read write part)      * Add the index def in read only repo      * Add content served by this index in both parts      * Query using composite repo session to see if index is used and results from both parts are returned correctly      * Reindex on composite session      */
 annotation|@
 name|Test
@@ -618,11 +633,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-name|repoV1
-operator|.
-name|cleanup
-argument_list|()
-expr_stmt|;
 block|}
 comment|/**      * Given a composite node store , create an index in read-write part      * with the same index node already existing in the read-only part already.      */
 annotation|@
@@ -647,13 +657,8 @@ argument_list|,
 name|VERSION_1
 argument_list|)
 expr_stmt|;
-name|repoV1
-operator|.
-name|cleanup
-argument_list|()
-expr_stmt|;
 block|}
-comment|/**      * Given a composite jcr repo with a lucene index with indexed data from both read only and read write parts      * We create a V2 of this repo which will have the lucene index removed -      * Expected behaviour - The same query that returned resutls from both readonly      * and readwrite in V1 should now return      * results - but it would be a traversal query and not use the index .      */
+comment|/**      * Given a composite jcr repo with a lucene index with indexed data from both read only and read write parts      * We create a V2 of this repo which will have the lucene index removed -      * Expected behaviour - The same query that returned results from both readonly      * and readwrite in V1 should now return      * results - but it would be a traversal query and not use the index .      */
 annotation|@
 name|Test
 specifier|public
@@ -1675,6 +1680,10 @@ specifier|private
 name|String
 name|readOnlyMountName
 decl_stmt|;
+specifier|private
+name|boolean
+name|cleanedUp
+decl_stmt|;
 specifier|public
 name|Node
 name|getReadOnlyRoot
@@ -2558,6 +2567,12 @@ name|void
 name|cleanup
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|cleanedUp
+condition|)
+block|{
 name|compositeSession
 operator|.
 name|logout
@@ -2577,6 +2592,11 @@ name|shutdown
 argument_list|(
 name|readOnlyRepository
 argument_list|)
+expr_stmt|;
+block|}
+name|cleanedUp
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}
