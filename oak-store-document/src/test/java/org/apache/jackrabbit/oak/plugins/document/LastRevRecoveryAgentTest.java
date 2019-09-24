@@ -167,6 +167,26 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|TestUtils
+operator|.
+name|disposeQuietly
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
 name|util
 operator|.
 name|Utils
@@ -560,6 +580,12 @@ name|get
 argument_list|(
 name|c2Id
 argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// dispose ds2 quietly because it may now throw an exception
+name|disposeQuietly
+argument_list|(
+name|ds2
 argument_list|)
 expr_stmt|;
 block|}
@@ -1033,6 +1059,12 @@ name|isRecoveryNeeded
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// dispose ds2 quietly because it may now throw an exception
+name|disposeQuietly
+argument_list|(
+name|ds2
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1272,6 +1304,12 @@ argument_list|(
 name|ds1
 argument_list|,
 name|b1
+argument_list|)
+expr_stmt|;
+comment|// dispose ds2 quietly because it may now throw an exception
+name|disposeQuietly
+argument_list|(
+name|ds2
 argument_list|)
 expr_stmt|;
 block|}

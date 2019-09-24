@@ -727,6 +727,32 @@ return|return
 name|finalUpdate
 return|;
 block|}
+specifier|public
+specifier|static
+name|void
+name|disposeQuietly
+parameter_list|(
+name|DocumentNodeStore
+name|ns
+parameter_list|)
+block|{
+try|try
+block|{
+name|ns
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// ignore
+block|}
+block|}
 block|}
 end_class
 
