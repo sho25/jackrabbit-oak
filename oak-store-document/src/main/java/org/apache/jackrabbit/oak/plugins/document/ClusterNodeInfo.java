@@ -590,6 +590,15 @@ name|READ_WRITE_MODE_KEY
 init|=
 literal|"readWriteMode"
 decl_stmt|;
+comment|/**      * Key for invisible flag      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|INVISIBLE
+init|=
+literal|"invisible"
+decl_stmt|;
 comment|/**      * The unique machine id (the MAC address if available).      */
 specifier|private
 specifier|static
@@ -886,6 +895,11 @@ specifier|private
 name|LeaseFailureHandler
 name|leaseFailureHandler
 decl_stmt|;
+comment|/**      * Flag to indicate this node is invisible to cluster view and thus recovery.      */
+specifier|private
+name|boolean
+name|invisible
+decl_stmt|;
 specifier|private
 name|ClusterNodeInfo
 parameter_list|(
@@ -903,6 +917,9 @@ name|instanceId
 parameter_list|,
 name|boolean
 name|newEntry
+parameter_list|,
+name|boolean
+name|invisible
 parameter_list|)
 block|{
 name|this
@@ -960,6 +977,12 @@ name|newEntry
 operator|=
 name|newEntry
 expr_stmt|;
+name|this
+operator|.
+name|invisible
+operator|=
+name|invisible
+expr_stmt|;
 block|}
 name|void
 name|setLeaseCheckMode
@@ -1013,6 +1036,14 @@ return|return
 name|instanceId
 return|;
 block|}
+name|boolean
+name|isInvisible
+parameter_list|()
+block|{
+return|return
+name|invisible
+return|;
+block|}
 comment|/**      * Create a cluster node info instance to be utilized for read only access      * to underlying store.      *      * @param store the document store.      * @return the cluster node info      */
 specifier|public
 specifier|static
@@ -1034,6 +1065,8 @@ argument_list|,
 name|MACHINE_ID
 argument_list|,
 name|WORKING_DIR
+argument_list|,
+literal|true
 argument_list|,
 literal|true
 argument_list|)
@@ -1126,6 +1159,48 @@ name|int
 name|configuredClusterId
 parameter_list|)
 block|{
+return|return
+name|getInstance
+argument_list|(
+name|store
+argument_list|,
+name|recoveryHandler
+argument_list|,
+name|machineId
+argument_list|,
+name|instanceId
+argument_list|,
+name|configuredClusterId
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/**      * Get or create a cluster node info instance for the store.      *      * @param store the document store (for the lease)      * @param recoveryHandler the recovery handler to call for a clusterId with      *                        an expired lease.      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @param configuredClusterId the configured cluster id (or 0 for dynamic assignment)      * @return the cluster node info      */
+specifier|public
+specifier|static
+name|ClusterNodeInfo
+name|getInstance
+parameter_list|(
+name|DocumentStore
+name|store
+parameter_list|,
+name|RecoveryHandler
+name|recoveryHandler
+parameter_list|,
+name|String
+name|machineId
+parameter_list|,
+name|String
+name|instanceId
+parameter_list|,
+name|int
+name|configuredClusterId
+parameter_list|,
+name|boolean
+name|invisible
+parameter_list|)
+block|{
 comment|// defaults for machineId and instanceID
 if|if
 condition|(
@@ -1196,6 +1271,8 @@ argument_list|,
 name|i
 operator|==
 literal|0
+argument_list|,
+name|invisible
 argument_list|)
 decl_stmt|;
 name|ClusterNodeInfo
@@ -1314,6 +1391,15 @@ argument_list|(
 name|OAK_VERSION_KEY
 argument_list|,
 name|OAK_VERSION
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|set
+argument_list|(
+name|INVISIBLE
+argument_list|,
+name|invisible
 argument_list|)
 expr_stmt|;
 name|ClusterNodeInfoDocument
@@ -1494,6 +1580,9 @@ name|configuredClusterId
 parameter_list|,
 name|boolean
 name|waitForLease
+parameter_list|,
+name|boolean
+name|invisible
 parameter_list|)
 block|{
 name|long
@@ -1795,6 +1884,8 @@ argument_list|,
 name|configuredClusterId
 argument_list|,
 literal|false
+argument_list|,
+name|invisible
 argument_list|)
 return|;
 block|}
@@ -1930,6 +2021,8 @@ argument_list|,
 name|iId
 argument_list|,
 literal|false
+argument_list|,
+name|invisible
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2017,6 +2110,8 @@ argument_list|,
 name|instanceId
 argument_list|,
 literal|true
+argument_list|,
+name|invisible
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2049,6 +2144,8 @@ argument_list|,
 name|info
 operator|.
 name|newEntry
+argument_list|,
+name|invisible
 argument_list|)
 expr_stmt|;
 return|return
@@ -2095,6 +2192,20 @@ literal|"new"
 else|:
 literal|"existing"
 decl_stmt|;
+name|type
+operator|=
+name|clusterNode
+operator|.
+name|invisible
+condition|?
+operator|(
+name|type
+operator|+
+literal|" (invisible)"
+operator|)
+else|:
+name|type
+expr_stmt|;
 name|String
 name|machineInfo
 init|=
@@ -2381,7 +2492,7 @@ literal|"Cluster node info "
 operator|+
 name|key
 operator|+
-literal|": gone; continueing."
+literal|": gone; continuing."
 argument_list|)
 expr_stmt|;
 return|return
@@ -4022,6 +4133,15 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|update
+operator|.
+name|set
+argument_list|(
+name|INVISIBLE
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|store
 operator|.
 name|createOrUpdate
@@ -4114,6 +4234,12 @@ operator|+
 name|DocumentNodeStore
 operator|.
 name|VERSION
+operator|+
+literal|",\n"
+operator|+
+literal|"invisible: "
+operator|+
+name|invisible
 return|;
 block|}
 comment|/**      * Specify a custom clock to be used for determining current time.      *      *<b>Only Used For Testing</b>      */

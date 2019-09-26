@@ -557,6 +557,10 @@ argument_list|,
 name|boolean
 operator|.
 name|class
+argument_list|,
+name|boolean
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 name|ctr
@@ -580,6 +584,8 @@ argument_list|,
 name|instanceId
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}

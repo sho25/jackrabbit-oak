@@ -180,6 +180,11 @@ name|doc
 operator|.
 name|isActive
 argument_list|()
+operator|||
+name|doc
+operator|.
+name|isInvisible
+argument_list|()
 condition|)
 block|{
 continue|continue;

@@ -2881,6 +2881,11 @@ argument_list|,
 literal|null
 argument_list|,
 name|cid
+argument_list|,
+name|builder
+operator|.
+name|isClusterInvisible
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|checkRevisionAge

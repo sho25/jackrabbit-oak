@@ -63,7 +63,7 @@ specifier|final
 name|int
 name|LOOP_CNT
 init|=
-literal|50
+literal|40
 decl_stmt|;
 comment|// with too many loops have also seen mongo
 comment|// connections becoming starved thus test

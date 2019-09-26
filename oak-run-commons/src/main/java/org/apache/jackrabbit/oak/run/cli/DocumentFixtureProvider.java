@@ -557,6 +557,13 @@ name|setReadOnlyMode
 argument_list|()
 expr_stmt|;
 block|}
+name|builder
+operator|.
+name|setClusterInvisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|int
 name|cacheSize
 init|=

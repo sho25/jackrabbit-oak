@@ -425,6 +425,35 @@ name|LAST_WRITTEN_ROOT_REV_KEY
 argument_list|)
 return|;
 block|}
+comment|/**      * Is the cluster node marked as invisible      * @return {@code true} if invisible; {@code false}      *         otherwise.      */
+specifier|public
+name|boolean
+name|isInvisible
+parameter_list|()
+block|{
+name|Boolean
+name|invisible
+init|=
+operator|(
+name|Boolean
+operator|)
+name|get
+argument_list|(
+name|ClusterNodeInfo
+operator|.
+name|INVISIBLE
+argument_list|)
+decl_stmt|;
+return|return
+name|invisible
+operator|!=
+literal|null
+condition|?
+name|invisible
+else|:
+literal|false
+return|;
+block|}
 block|}
 end_class
 

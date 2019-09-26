@@ -1259,6 +1259,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|clusterNode
+operator|.
+name|isInvisible
+argument_list|()
+condition|)
+block|{
 name|allNodeIds
 operator|.
 name|put
@@ -1380,6 +1389,7 @@ argument_list|,
 name|clusterNode
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// the current view should now consist of:
@@ -1853,7 +1863,7 @@ return|return
 literal|null
 return|;
 block|}
-specifier|private
+comment|/** package access only for testing **/
 name|boolean
 name|hasBacklog
 parameter_list|(
@@ -2618,7 +2628,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      *<p>      * Additionally the DocumentDiscoveryLiteService must be notified when the      * background-read has finished - as it could be waiting for a crashed      * node's recovery to finish - which it can only do by checking the      * lastKnownRevision of the crashed instance - and that check is best done      * after the background read is just finished (it could optinoally do that      * just purely time based as well, but going via a listener is more timely,      * that's why this approach has been chosen).      */
+comment|/**      *<p>      * Additionally the DocumentDiscoveryLiteService must be notified when the      * background-read has finished - as it could be waiting for a crashed      * node's recovery to finish - which it can only do by checking the      * lastKnownRevision of the crashed instance - and that check is best done      * after the background read is just finished (it could optionally do that      * just purely time based as well, but going via a listener is more timely,      * that's why this approach has been chosen).      */
 annotation|@
 name|Override
 specifier|public
