@@ -3852,6 +3852,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|anInstance
+operator|.
+name|isInvisible
+argument_list|()
+condition|)
+block|{
 specifier|final
 name|ViewExpectation
 name|e
@@ -3914,11 +3923,14 @@ literal|", with instances: "
 operator|+
 name|instances
 operator|+
-literal|", and inactiveIds: "
+literal|","
+operator|+
+literal|" and inactiveIds: "
 operator|+
 name|inactiveIds
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
@@ -4803,15 +4815,6 @@ name|getClusterId
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|instance
-operator|.
-name|isInvisible
-argument_list|()
-condition|)
-block|{
 name|inactiveIds
 operator|.
 name|put
@@ -4828,7 +4831,6 @@ operator|.
 name|workingDir
 argument_list|)
 expr_stmt|;
-block|}
 name|instance
 operator|.
 name|shutdown
