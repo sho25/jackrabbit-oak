@@ -229,6 +229,11 @@ specifier|final
 name|RevisionContext
 name|context
 decl_stmt|;
+specifier|private
+specifier|final
+name|RevisionVector
+name|startRevisions
+decl_stmt|;
 name|Collision
 parameter_list|(
 annotation|@
@@ -255,6 +260,11 @@ annotation|@
 name|NotNull
 name|RevisionContext
 name|context
+parameter_list|,
+annotation|@
+name|NotNull
+name|RevisionVector
+name|startRevisions
 parameter_list|)
 block|{
 name|this
@@ -300,6 +310,15 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|context
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|startRevisions
+operator|=
+name|checkNotNull
+argument_list|(
+name|startRevisions
 argument_list|)
 expr_stmt|;
 block|}
@@ -409,13 +428,41 @@ return|return
 name|ourRev
 return|;
 block|}
-comment|/**      * Returns {@code true} if this is a conflicting collision, {@code false}      * otherwise.      *      * @return {@code true} if this is a conflicting collision, {@code false}      *              otherwise.      * @throws DocumentStoreException      */
+comment|/**      * Returns {@code true} if this is a conflicting collision, {@code false}      * otherwise.      *      * @return {@code true} if this is a conflicting collision, {@code false}      *              otherwise.      * @throws DocumentStoreException if an operation on the document store      *          fails.      */
 name|boolean
 name|isConflicting
 parameter_list|()
 throws|throws
 name|DocumentStoreException
 block|{
+comment|// their revision is not conflicting when it is identified as branch
+comment|// commit that cannot be merged (orphaned branch commit, theirRev is
+comment|// garbage).
+if|if
+condition|(
+name|document
+operator|.
+name|getLocalBranchCommits
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|theirRev
+argument_list|)
+operator|&&
+operator|!
+name|startRevisions
+operator|.
+name|isRevisionNewer
+argument_list|(
+name|theirRev
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|// did their revision create or delete the node?
 if|if
 condition|(

@@ -491,6 +491,11 @@ name|baseRevision
 decl_stmt|;
 specifier|private
 specifier|final
+name|RevisionVector
+name|startRevisions
+decl_stmt|;
+specifier|private
+specifier|final
 name|Revision
 name|revision
 decl_stmt|;
@@ -605,7 +610,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/**      * Create a new Commit.      *        * @param nodeStore the node store.      * @param revision the revision for this commit.      * @param baseRevision the base revision for this commit or {@code null} if      *                     there is none.      */
+comment|/**      * Create a new Commit.      *        * @param nodeStore the node store.      * @param revision the revision for this commit.      * @param baseRevision the base revision for this commit or {@code null} if      *                     there is none.      * @param startRevisions the revisions for each cluster node corresponding      *          to the start time of the cluster nodes.      */
 name|Commit
 parameter_list|(
 annotation|@
@@ -622,6 +627,11 @@ annotation|@
 name|Nullable
 name|RevisionVector
 name|baseRevision
+parameter_list|,
+annotation|@
+name|NotNull
+name|RevisionVector
+name|startRevisions
 parameter_list|)
 block|{
 name|this
@@ -648,6 +658,12 @@ name|baseRevision
 operator|=
 name|baseRevision
 expr_stmt|;
+name|this
+operator|.
+name|startRevisions
+operator|=
+name|startRevisions
+expr_stmt|;
 block|}
 name|Commit
 parameter_list|(
@@ -665,6 +681,11 @@ annotation|@
 name|Nullable
 name|RevisionVector
 name|baseRevision
+parameter_list|,
+annotation|@
+name|NotNull
+name|RevisionVector
+name|startRevisions
 parameter_list|,
 annotation|@
 name|NotNull
@@ -718,6 +739,8 @@ argument_list|,
 name|revision
 argument_list|,
 name|baseRevision
+argument_list|,
+name|startRevisions
 argument_list|)
 expr_stmt|;
 name|this
@@ -2747,6 +2770,8 @@ argument_list|,
 name|revision
 argument_list|,
 name|nodeStore
+argument_list|,
+name|startRevisions
 argument_list|)
 decl_stmt|;
 if|if
@@ -3690,6 +3715,16 @@ block|{
 break|break;
 block|}
 block|}
+block|}
+annotation|@
+name|NotNull
+name|RevisionVector
+name|getStartRevisions
+parameter_list|()
+block|{
+return|return
+name|startRevisions
+return|;
 block|}
 comment|/**      * Apply the changes of a node to the cache.      *      * @param path the path      * @param added the list of added child nodes      * @param removed the list of removed child nodes      * @param changed the list of changed child nodes      * @param cacheEntry the cache entry changes are added to      */
 specifier|private

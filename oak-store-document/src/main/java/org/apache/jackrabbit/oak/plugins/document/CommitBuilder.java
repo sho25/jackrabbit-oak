@@ -173,22 +173,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkNotNull
 import|;
 end_import
@@ -233,6 +217,14 @@ specifier|private
 specifier|final
 name|RevisionVector
 name|baseRevision
+decl_stmt|;
+specifier|private
+name|RevisionVector
+name|startRevisions
+init|=
+operator|new
+name|RevisionVector
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -773,6 +765,31 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Sets the start revisions of known clusterIds on this commit builder.      *      * @param startRevisions the start revisions derived from the start time      *          in the clusterNodes entries.      * @return {@code this} builder.      */
+annotation|@
+name|NotNull
+name|CommitBuilder
+name|withStartRevisions
+parameter_list|(
+annotation|@
+name|NotNull
+name|RevisionVector
+name|startRevisions
+parameter_list|)
+block|{
+name|this
+operator|.
+name|startRevisions
+operator|=
+name|checkNotNull
+argument_list|(
+name|startRevisions
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 comment|/**      * Builds the commit with the modifications.      *      * @return {@code this} builder.      * @throws IllegalStateException if this builder was created without an      *      explicit commit revision and {@link #build(Revision)} should have      *      been called instead.      */
 annotation|@
 name|NotNull
@@ -812,6 +829,8 @@ argument_list|,
 name|revision
 argument_list|,
 name|baseRevision
+argument_list|,
+name|startRevisions
 argument_list|,
 name|operations
 argument_list|,
@@ -886,6 +905,8 @@ argument_list|,
 name|revision
 argument_list|,
 name|baseRevision
+argument_list|,
+name|startRevisions
 argument_list|,
 name|operations
 argument_list|,
