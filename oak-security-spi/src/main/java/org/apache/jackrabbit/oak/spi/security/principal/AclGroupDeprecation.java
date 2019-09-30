@@ -77,7 +77,7 @@ specifier|final
 name|String
 name|DEFAULT
 init|=
-literal|"debug"
+literal|"info"
 decl_stmt|;
 specifier|private
 specifier|static
