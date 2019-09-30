@@ -11919,6 +11919,16 @@ comment|// skip if there is no garbage and we have at least some sweep
 comment|// revision for the local clusterId. A sweep is needed even
 comment|// without garbage when an upgrade happened and no sweep revision
 comment|// exists for the local clusterId
+name|Revision
+name|sweepRev
+init|=
+name|sweepRevisions
+operator|.
+name|getRevision
+argument_list|(
+name|clusterId
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|garbage
@@ -11926,12 +11936,7 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|&&
-name|sweepRevisions
-operator|.
-name|getRevision
-argument_list|(
-name|clusterId
-argument_list|)
+name|sweepRev
 operator|!=
 literal|null
 condition|)
@@ -11975,12 +11980,66 @@ name|first
 argument_list|()
 expr_stmt|;
 block|}
+name|String
+name|reason
+init|=
+literal|""
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|garbage
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|reason
+operator|=
+name|garbage
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" garbage revision(s)"
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|sweepRev
+operator|==
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|reason
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|reason
+operator|+=
+literal|", "
+expr_stmt|;
+block|}
+name|reason
+operator|+=
+literal|"no sweepRevision for "
+operator|+
+name|clusterId
+expr_stmt|;
+block|}
 name|int
 name|num
 init|=
 name|forceBackgroundSweep
 argument_list|(
 name|startRev
+argument_list|,
+name|reason
 argument_list|)
 decl_stmt|;
 name|inDoubtTrunkCommits
@@ -12000,6 +12059,9 @@ name|forceBackgroundSweep
 parameter_list|(
 name|Revision
 name|startRev
+parameter_list|,
+name|String
+name|reason
 parameter_list|)
 throws|throws
 name|DocumentStoreException
@@ -12017,9 +12079,9 @@ argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
-literal|"Starting document sweep. Head: {}, starting at {}"
+literal|"Starting document sweep. Head: {}, starting at {} (reason: {})"
 argument_list|,
 name|sweeper
 operator|.
@@ -12027,6 +12089,8 @@ name|getHeadRevision
 argument_list|()
 argument_list|,
 name|startRev
+argument_list|,
+name|reason
 argument_list|)
 expr_stmt|;
 name|Iterable
