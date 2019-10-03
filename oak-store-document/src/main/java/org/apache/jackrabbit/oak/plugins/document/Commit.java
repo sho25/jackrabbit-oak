@@ -1502,6 +1502,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|// adjust commit root when it falls on a bundled node
+name|commitRootPath
+operator|=
+name|bundledNodes
+operator|.
+name|getOrDefault
+argument_list|(
+name|commitRootPath
+argument_list|,
+name|commitRootPath
+argument_list|)
+expr_stmt|;
 name|rollback
 operator|=
 operator|new
