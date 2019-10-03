@@ -1836,7 +1836,7 @@ literal|"Conflicting concurrent change. "
 operator|+
 literal|"Update operation failed: "
 operator|+
-name|commitRoot
+name|commit
 decl_stmt|;
 name|NodeDocument
 name|commitRootDoc
@@ -1847,7 +1847,7 @@ name|find
 argument_list|(
 name|NODES
 argument_list|,
-name|commitRoot
+name|commit
 operator|.
 name|getId
 argument_list|()
