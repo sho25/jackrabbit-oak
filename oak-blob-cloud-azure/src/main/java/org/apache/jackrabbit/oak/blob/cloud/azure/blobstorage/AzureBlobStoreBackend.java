@@ -5944,7 +5944,7 @@ block|}
 catch|catch
 parameter_list|(
 name|DataStoreException
-name|e
+name|e1
 parameter_list|)
 block|{
 comment|// record doesn't exist - so this means we are safe to do the complete request
@@ -6094,7 +6094,7 @@ argument_list|,
 name|blobId
 argument_list|)
 argument_list|,
-name|e
+name|e2
 argument_list|)
 throw|;
 block|}
