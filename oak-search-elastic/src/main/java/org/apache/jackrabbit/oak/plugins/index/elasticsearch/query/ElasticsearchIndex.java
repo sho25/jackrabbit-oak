@@ -533,7 +533,9 @@ name|String
 name|indexPath
 parameter_list|)
 block|{
-return|return
+name|ElasticsearchIndexNode
+name|elasticsearchIndexNode
+init|=
 name|ElasticsearchIndexNode
 operator|.
 name|fromIndexPath
@@ -542,6 +544,16 @@ name|root
 argument_list|,
 name|indexPath
 argument_list|)
+decl_stmt|;
+name|elasticsearchIndexNode
+operator|.
+name|setFactory
+argument_list|(
+name|esIndexCoordFactory
+argument_list|)
+expr_stmt|;
+return|return
+name|elasticsearchIndexNode
 return|;
 block|}
 annotation|@
