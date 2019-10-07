@@ -1131,11 +1131,12 @@ argument_list|(
 operator|new
 name|LazyInputStream
 argument_list|(
-operator|new
-name|BlobByteSource
-argument_list|(
+parameter_list|()
+lambda|->
 name|v
-argument_list|)
+operator|.
+name|getNewStream
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
