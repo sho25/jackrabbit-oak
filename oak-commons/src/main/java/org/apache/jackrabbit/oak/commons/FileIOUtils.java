@@ -1973,7 +1973,9 @@ name|diff
 return|;
 block|}
 block|}
-comment|/**      * Implements a {@link java.io.Closeable} wrapper over a {@link LineIterator}.      * Also has a transformer to transform the output. If the underlying file is      * provide then it deletes the file on {@link #close()}.      *      * If there is a scope for lines in the file containing line break characters it should be      * ensured that the files is written with      * {@link #writeAsLine(BufferedWriter, String, boolean)} with true to escape line break      * characters and should be properly unescaped on read.      * A custom transformer can also be provided to unescape.      *      * @param<T> the type of elements in the iterator      */
+comment|/**      * Implements a {@link java.io.Closeable} wrapper over a {@link LineIterator}.      * Also has a transformer to transform the output. If the underlying file is      * provide then it deletes the file on {@link #close()}.      *      * If there is a scope for lines in the file containing line break characters it should be      * ensured that the files is written with      * {@link #writeAsLine(BufferedWriter, String, boolean)} with true to escape line break      * characters and should be properly unescaped on read.      * A custom transformer can also be provided to unescape.      *      * @param<T> the type of elements in the iterator      * @deprecated use {@link org.apache.jackrabbit.oak.commons.io.BurnOnCloseFileIterator} instead      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
@@ -2018,6 +2020,7 @@ argument_list|>
 name|transformer
 decl_stmt|;
 specifier|private
+specifier|final
 name|File
 name|backingFile
 decl_stmt|;
@@ -2037,16 +2040,13 @@ name|transformer
 parameter_list|)
 block|{
 name|this
-operator|.
+argument_list|(
 name|iterator
-operator|=
-name|iterator
-expr_stmt|;
-name|this
-operator|.
+argument_list|,
+literal|null
+argument_list|,
 name|transformer
-operator|=
-name|transformer
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -2067,6 +2067,13 @@ argument_list|>
 name|transformer
 parameter_list|)
 block|{
+name|GuavaDeprecation
+operator|.
+name|handleCall
+argument_list|(
+literal|"OAK-8666"
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|iterator
