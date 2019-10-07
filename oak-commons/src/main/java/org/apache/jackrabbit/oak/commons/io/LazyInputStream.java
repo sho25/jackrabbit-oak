@@ -163,7 +163,7 @@ operator|=
 name|inputStreamSupplier
 expr_stmt|;
 block|}
-comment|/**      * @deprecated Use {@link #LazyInputStream(Supplier<InputStream>)} instead      */
+comment|/**      * @deprecated Use {@link #LazyInputStream(Supplier)} instead      */
 annotation|@
 name|Deprecated
 specifier|public
