@@ -709,7 +709,7 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|FileIOUtils
+name|io
 operator|.
 name|FileLineDifferenceIterator
 import|;
@@ -2846,6 +2846,12 @@ argument_list|,
 name|refs
 argument_list|,
 operator|new
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
 name|Function
 argument_list|<
 name|String
@@ -2996,6 +3002,12 @@ argument_list|,
 name|candTemp
 argument_list|,
 operator|new
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
 name|Function
 argument_list|<
 name|String

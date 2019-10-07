@@ -1683,7 +1683,9 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * FileLineDifferenceIterator class which iterates over the difference of 2 files line by line.      *      * If there is a scope for lines in the files containing line break characters it should be      * ensured that both the files are written with      * {@link #writeAsLine(BufferedWriter, String, boolean)} with true to escape line break      * characters.      */
+comment|/**      * FileLineDifferenceIterator class which iterates over the difference of 2 files line by line.      *      * If there is a scope for lines in the files containing line break characters it should be      * ensured that both the files are written with      * {@link #writeAsLine(BufferedWriter, String, boolean)} with true to escape line break      * characters.      *       * @deprecated use {@link org.apache.jackrabbit.oak.commons.io.FileLineDifferenceIterator} instead      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 class|class
@@ -1844,6 +1846,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|GuavaDeprecation
+operator|.
+name|handleCall
+argument_list|(
+literal|"OAK-8676"
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|marked

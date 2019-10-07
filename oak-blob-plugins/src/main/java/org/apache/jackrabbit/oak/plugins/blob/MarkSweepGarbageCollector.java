@@ -707,7 +707,7 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|FileIOUtils
+name|io
 operator|.
 name|FileLineDifferenceIterator
 import|;
@@ -1023,6 +1023,12 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
 name|Function
 argument_list|<
 name|String
@@ -1032,6 +1038,12 @@ argument_list|>
 name|transformer
 init|=
 operator|new
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
 name|Function
 argument_list|<
 name|String
