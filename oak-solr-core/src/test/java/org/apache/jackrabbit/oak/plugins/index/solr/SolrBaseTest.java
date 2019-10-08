@@ -558,6 +558,11 @@ name|commit
 argument_list|()
 expr_stmt|;
 name|server
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|server
 operator|=
 literal|null
 expr_stmt|;

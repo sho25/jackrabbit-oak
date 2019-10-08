@@ -362,6 +362,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -380,6 +390,10 @@ name|SolrOakRepositoryStub
 extends|extends
 name|OakSegmentTarRepositoryStub
 block|{
+specifier|private
+name|SolrServerProvider
+name|solrServerProvider
+decl_stmt|;
 specifier|public
 name|SolrOakRepositoryStub
 parameter_list|(
@@ -393,6 +407,21 @@ name|super
 argument_list|(
 name|settings
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|After
+specifier|public
+name|void
+name|tearDown
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|solrServerProvider
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -466,9 +495,8 @@ name|e
 argument_list|)
 throw|;
 block|}
-name|SolrServerProvider
 name|solrServerProvider
-init|=
+operator|=
 operator|new
 name|SolrServerProvider
 argument_list|()
@@ -481,7 +509,21 @@ name|close
 parameter_list|()
 throws|throws
 name|IOException
-block|{              }
+block|{
+if|if
+condition|(
+name|solrServer
+operator|!=
+literal|null
+condition|)
+block|{
+name|solrServer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Nullable
 annotation|@
@@ -524,7 +566,7 @@ name|solrServer
 return|;
 block|}
 block|}
-decl_stmt|;
+expr_stmt|;
 try|try
 block|{
 name|assertNotNull
