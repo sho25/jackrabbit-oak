@@ -127,6 +127,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -3128,6 +3140,12 @@ name|Runnable
 operator|.
 name|class
 argument_list|,
+operator|(
+name|Predicate
+argument_list|<
+name|Runnable
+argument_list|>
+operator|)
 name|input
 lambda|->
 name|input

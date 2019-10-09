@@ -49,6 +49,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -513,6 +525,13 @@ name|Runnable
 operator|.
 name|class
 argument_list|,
+call|(
+name|Predicate
+argument_list|<
+name|Runnable
+argument_list|>
+call|)
+argument_list|(
 parameter_list|(
 name|runnable
 parameter_list|)
@@ -534,6 +553,7 @@ operator|)
 operator|.
 name|getName
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
