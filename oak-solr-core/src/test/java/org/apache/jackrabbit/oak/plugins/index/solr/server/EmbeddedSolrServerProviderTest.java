@@ -110,6 +110,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runner
+operator|.
+name|RunWith
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -138,6 +150,19 @@ comment|/**  * Testcase for {@link EmbeddedSolrServerProvider}  */
 end_comment
 
 begin_class
+annotation|@
+name|RunWith
+argument_list|(
+name|com
+operator|.
+name|carrotsearch
+operator|.
+name|randomizedtesting
+operator|.
+name|RandomizedRunner
+operator|.
+name|class
+argument_list|)
 specifier|public
 class|class
 name|EmbeddedSolrServerProviderTest
@@ -210,6 +235,8 @@ argument_list|(
 name|solrServer
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|SolrPingResponse
 name|ping
 init|=
@@ -233,6 +260,15 @@ name|getStatus
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|solrServer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

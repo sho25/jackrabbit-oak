@@ -55,7 +55,7 @@ name|randomizedtesting
 operator|.
 name|annotations
 operator|.
-name|ThreadLeakAction
+name|ThreadLeakScope
 import|;
 end_import
 
@@ -298,13 +298,13 @@ operator|.
 name|class
 argument_list|)
 annotation|@
-name|ThreadLeakAction
+name|ThreadLeakScope
 argument_list|(
-name|ThreadLeakAction
+name|ThreadLeakScope
 operator|.
-name|Action
+name|Scope
 operator|.
-name|WARN
+name|NONE
 argument_list|)
 specifier|public
 class|class
