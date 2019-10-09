@@ -53,13 +53,11 @@ end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
-operator|.
-name|base
+name|function
 operator|.
 name|Supplier
 import|;
@@ -1254,6 +1252,9 @@ argument_list|(
 operator|(
 operator|(
 name|Supplier
+argument_list|<
+name|String
+argument_list|>
 operator|)
 name|rgcJob
 operator|)

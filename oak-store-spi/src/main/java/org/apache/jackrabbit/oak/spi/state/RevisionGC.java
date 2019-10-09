@@ -145,25 +145,11 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|management
+name|util
 operator|.
-name|openmbean
-operator|.
-name|CompositeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
+name|function
 operator|.
 name|Supplier
 import|;
@@ -171,15 +157,13 @@ end_import
 
 begin_import
 import|import
-name|com
+name|javax
 operator|.
-name|google
+name|management
 operator|.
-name|common
+name|openmbean
 operator|.
-name|base
-operator|.
-name|Suppliers
+name|CompositeData
 import|;
 end_import
 
@@ -405,12 +389,9 @@ name|runGC
 argument_list|,
 name|cancelGC
 argument_list|,
-name|Suppliers
-operator|.
-name|ofInstance
-argument_list|(
+parameter_list|()
+lambda|->
 literal|""
-argument_list|)
 argument_list|,
 name|executor
 argument_list|)
