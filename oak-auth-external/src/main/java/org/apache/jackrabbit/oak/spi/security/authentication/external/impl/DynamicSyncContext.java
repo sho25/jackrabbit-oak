@@ -77,6 +77,34 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -892,7 +920,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Recursively collect the principal names of the given declared group      * references up to the given depth.      *      * @param principalNames The set used to collect the names of the group principals.      * @param declaredGroupIdRefs The declared group references for a user or a group.      * @param depth Configured membership nesting; the recursion will be stopped once depths is< 1.      * @throws ExternalIdentityException If an error occurs while resolving the the external group references.      */
+comment|/**      * Recursively collect the principal names of the given declared group      * references up to the given depth.      *      * Note, that this method will filter out references that don't belong to the same IDP (see OAK-8665).      *      * @param principalNames The set used to collect the names of the group principals.      * @param declaredGroupIdRefs The declared group references for a user or a group.      * @param depth Configured membership nesting; the recursion will be stopped once depths is< 1.      * @throws ExternalIdentityException If an error occurs while resolving the the external group references.      */
 specifier|private
 name|void
 name|collectPrincipalNames
@@ -937,7 +965,19 @@ control|(
 name|ExternalIdentityRef
 name|ref
 range|:
+name|Iterables
+operator|.
+name|filter
+argument_list|(
 name|declaredGroupIdRefs
+argument_list|,
+name|externalIdentityRef
+lambda|->
+name|isSameIDP
+argument_list|(
+name|externalIdentityRef
+argument_list|)
+argument_list|)
 control|)
 block|{
 if|if
@@ -1032,8 +1072,8 @@ block|}
 block|}
 block|}
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 
