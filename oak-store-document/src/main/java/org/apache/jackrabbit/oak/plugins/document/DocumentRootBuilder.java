@@ -267,7 +267,7 @@ name|DocumentRootBuilder
 parameter_list|(
 annotation|@
 name|NotNull
-name|DocumentNodeState
+name|NodeState
 name|base
 parameter_list|,
 annotation|@
