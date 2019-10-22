@@ -1414,7 +1414,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
+specifier|private
 name|void
 name|createLuceneIndex
 parameter_list|(
@@ -1984,37 +1984,6 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|readOnlyStore
-operator|.
-name|merge
-argument_list|(
-name|readOnlyBuilder
-argument_list|,
-name|hook
-argument_list|,
-name|CommitInfo
-operator|.
-name|EMPTY
-argument_list|)
-expr_stmt|;
-name|globalStore
-operator|.
-name|merge
-argument_list|(
-name|globalBuilder
-argument_list|,
-name|hook
-argument_list|,
-name|CommitInfo
-operator|.
-name|EMPTY
-argument_list|)
-expr_stmt|;
-name|root
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
 name|indexTracker
 operator|.
 name|update
@@ -2035,7 +2004,6 @@ name|getRoot
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// add nodes in the read-only area
 comment|// run a query
 comment|// need to login again to see changes in the read-only area
 name|session
@@ -2114,9 +2082,7 @@ expr_stmt|;
 comment|// add nodes in the read-write area
 name|NodeBuilder
 name|builder
-decl_stmt|;
-name|builder
-operator|=
+init|=
 name|store
 operator|.
 name|getRoot
@@ -2124,7 +2090,7 @@ argument_list|()
 operator|.
 name|builder
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 for|for
 control|(
 name|int
