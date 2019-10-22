@@ -285,11 +285,6 @@ end_comment
 
 begin_class
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-8244"
-argument_list|)
-annotation|@
 name|RunWith
 argument_list|(
 name|com

@@ -45,6 +45,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|carrotsearch
+operator|.
+name|randomizedtesting
+operator|.
+name|annotations
+operator|.
+name|ThreadLeakScope
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -162,6 +176,15 @@ operator|.
 name|RandomizedRunner
 operator|.
 name|class
+argument_list|)
+annotation|@
+name|ThreadLeakScope
+argument_list|(
+name|ThreadLeakScope
+operator|.
+name|Scope
+operator|.
+name|NONE
 argument_list|)
 specifier|public
 class|class
