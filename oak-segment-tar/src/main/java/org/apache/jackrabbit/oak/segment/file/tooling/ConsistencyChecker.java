@@ -1605,6 +1605,9 @@ name|paths
 parameter_list|,
 name|boolean
 name|binaries
+parameter_list|,
+name|Integer
+name|revisionsCount
 parameter_list|)
 block|{
 name|List
@@ -1635,7 +1638,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 name|int
-name|revisionCount
+name|checkedRevisionsCount
 init|=
 literal|0
 decl_stmt|;
@@ -1741,7 +1744,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|revisionCount
+name|checkedRevisionsCount
 operator|++
 expr_stmt|;
 name|store
@@ -1824,6 +1827,16 @@ condition|)
 block|{
 break|break;
 block|}
+comment|// limit the number of revisions to be checked
+if|if
+condition|(
+name|checkedRevisionsCount
+operator|==
+name|revisionsCount
+condition|)
+block|{
+break|break;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1853,7 +1866,7 @@ name|result
 operator|.
 name|checkedRevisionsCount
 operator|=
-name|revisionCount
+name|checkedRevisionsCount
 expr_stmt|;
 name|result
 operator|.
