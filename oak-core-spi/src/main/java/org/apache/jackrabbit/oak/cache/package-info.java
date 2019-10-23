@@ -9,9 +9,19 @@ end_comment
 
 begin_annotation
 annotation|@
+name|Internal
+argument_list|(
+name|since
+operator|=
+literal|"1.1.1"
+argument_list|)
+end_annotation
+
+begin_annotation
+annotation|@
 name|Version
 argument_list|(
-literal|"1.1.0"
+literal|"1.1.1"
 argument_list|)
 end_annotation
 
@@ -28,6 +38,24 @@ operator|.
 name|cache
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|annotations
+operator|.
+name|Internal
+import|;
+end_import
 
 begin_import
 import|import
