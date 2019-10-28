@@ -1269,13 +1269,16 @@ argument_list|)
 argument_list|)
 init|)
 block|{
+name|int
+name|result
+init|=
 name|run
 argument_list|(
 name|store
 argument_list|,
 name|journal
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|ioStatistics
@@ -1349,7 +1352,7 @@ name|headPropertyCount
 expr_stmt|;
 block|}
 return|return
-literal|0
+name|result
 return|;
 block|}
 catch|catch
@@ -1371,7 +1374,7 @@ return|;
 block|}
 block|}
 specifier|private
-name|void
+name|int
 name|run
 parameter_list|(
 name|ReadOnlyFileStore
@@ -1603,6 +1606,9 @@ name|getOverallRevision
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 else|else
 block|{
@@ -1611,6 +1617,9 @@ argument_list|(
 literal|"No good revision found"
 argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 block|}
 specifier|private
