@@ -149,6 +149,28 @@ begin_import
 import|import
 name|java
 operator|.
+name|time
+operator|.
+name|Instant
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|time
+operator|.
+name|format
+operator|.
+name|DateTimeFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|AbstractMap
@@ -2635,6 +2657,15 @@ throw|throw
 name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+operator|+
+literal|" (since "
+operator|+
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+argument_list|)
+operator|+
+literal|")"
 argument_list|,
 literal|true
 argument_list|)
@@ -2678,6 +2709,15 @@ throw|throw
 name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+operator|+
+literal|" (since "
+operator|+
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+argument_list|)
+operator|+
+literal|")"
 argument_list|,
 literal|true
 argument_list|)
@@ -2862,6 +2902,15 @@ throw|throw
 name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+operator|+
+literal|" (since "
+operator|+
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+argument_list|)
+operator|+
+literal|")"
 argument_list|,
 literal|true
 argument_list|)
@@ -2873,49 +2922,68 @@ literal|true
 expr_stmt|;
 comment|// make sure only one thread 'wins', ie goes any further
 block|}
-specifier|final
+name|String
+name|template
+init|=
+literal|"%s (mode: %s, leaseEndTime: %d (%s), leaseTime: %d, leaseFailureMargin: %d, "
+operator|+
+literal|"lease check end time (leaseEndTime - leaseFailureMargin): %d (%s), now: %d (%s), remaining: %d)"
+operator|+
+literal|" Need to stop oak-store-document/DocumentNodeStoreService."
+decl_stmt|;
 name|String
 name|errorMsg
 init|=
+name|String
+operator|.
+name|format
+argument_list|(
+name|template
+argument_list|,
 name|LEASE_CHECK_FAILED_MSG
-operator|+
-literal|" (leaseEndTime: "
-operator|+
+argument_list|,
+name|leaseCheckMode
+operator|.
+name|name
+argument_list|()
+argument_list|,
 name|leaseEndTime
-operator|+
-literal|", leaseTime: "
-operator|+
+argument_list|,
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+argument_list|)
+argument_list|,
 name|leaseTime
-operator|+
-literal|", leaseFailureMargin: "
-operator|+
+argument_list|,
 name|leaseFailureMargin
-operator|+
-literal|", lease check end time (leaseEndTime-leaseFailureMargin): "
-operator|+
+argument_list|,
+name|leaseEndTime
+operator|-
+name|leaseFailureMargin
+argument_list|,
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+operator|-
+name|leaseFailureMargin
+argument_list|)
+argument_list|,
+name|now
+argument_list|,
+name|asISO8601
+argument_list|(
+name|now
+argument_list|)
+argument_list|,
 operator|(
 name|leaseEndTime
 operator|-
 name|leaseFailureMargin
 operator|)
-operator|+
-literal|", now: "
-operator|+
-name|now
-operator|+
-literal|", remaining: "
-operator|+
-operator|(
-operator|(
-name|leaseEndTime
-operator|-
-name|leaseFailureMargin
-operator|)
 operator|-
 name|now
-operator|)
-operator|+
-literal|") Need to stop oak-store-document/DocumentNodeStoreService."
+argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
@@ -3118,6 +3186,15 @@ throw|throw
 name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+operator|+
+literal|" (since "
+operator|+
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+argument_list|)
+operator|+
+literal|")"
 argument_list|,
 literal|true
 argument_list|)
@@ -3170,6 +3247,15 @@ throw|throw
 name|leaseExpired
 argument_list|(
 name|LEASE_CHECK_FAILED_MSG
+operator|+
+literal|" (since "
+operator|+
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+argument_list|)
+operator|+
+literal|")"
 argument_list|,
 literal|true
 argument_list|)
@@ -3182,56 +3268,68 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-specifier|final
+name|String
+name|template
+init|=
+literal|"%s (mode: %s, leaseEndTime: %d (%s), leaseTime: %d, leaseFailureMargin: %d, "
+operator|+
+literal|"lease check end time (leaseEndTime - leaseFailureMargin): %d (%s), now: %d (%s), remaining: %d)"
+operator|+
+literal|" Need to stop oak-store-document/DocumentNodeStoreService."
+decl_stmt|;
 name|String
 name|errorMsg
 init|=
+name|String
+operator|.
+name|format
+argument_list|(
+name|template
+argument_list|,
 name|LEASE_CHECK_FAILED_MSG
-operator|+
-literal|" (mode: "
-operator|+
+argument_list|,
 name|leaseCheckMode
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|",leaseEndTime: "
-operator|+
+argument_list|,
 name|leaseEndTime
-operator|+
-literal|", leaseTime: "
-operator|+
+argument_list|,
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+argument_list|)
+argument_list|,
 name|leaseTime
-operator|+
-literal|", leaseFailureMargin: "
-operator|+
+argument_list|,
 name|leaseFailureMargin
-operator|+
-literal|", lease check end time (leaseEndTime-leaseFailureMargin): "
-operator|+
+argument_list|,
+name|leaseEndTime
+operator|-
+name|leaseFailureMargin
+argument_list|,
+name|asISO8601
+argument_list|(
+name|leaseEndTime
+operator|-
+name|leaseFailureMargin
+argument_list|)
+argument_list|,
+name|now
+argument_list|,
+name|asISO8601
+argument_list|(
+name|now
+argument_list|)
+argument_list|,
 operator|(
 name|leaseEndTime
 operator|-
 name|leaseFailureMargin
 operator|)
-operator|+
-literal|", now: "
-operator|+
-name|now
-operator|+
-literal|", remaining: "
-operator|+
-operator|(
-operator|(
-name|leaseEndTime
-operator|-
-name|leaseFailureMargin
-operator|)
 operator|-
 name|now
-operator|)
-operator|+
-literal|") Need to stop oak-store-document/DocumentNodeStoreService."
+argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
@@ -4861,6 +4959,31 @@ operator|new
 name|DocumentStoreException
 argument_list|(
 name|msg
+argument_list|)
+return|;
+block|}
+specifier|private
+specifier|static
+name|String
+name|asISO8601
+parameter_list|(
+name|long
+name|ms
+parameter_list|)
+block|{
+return|return
+name|DateTimeFormatter
+operator|.
+name|ISO_INSTANT
+operator|.
+name|format
+argument_list|(
+name|Instant
+operator|.
+name|ofEpochMilli
+argument_list|(
+name|ms
+argument_list|)
 argument_list|)
 return|;
 block|}
