@@ -275,16 +275,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|easymock
-operator|.
-name|EasyMock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Test
@@ -336,6 +326,18 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
 import|;
 end_import
 
@@ -598,9 +600,7 @@ name|Repository
 operator|.
 name|class
 argument_list|,
-name|EasyMock
-operator|.
-name|createMock
+name|mock
 argument_list|(
 name|Repository
 operator|.
