@@ -987,15 +987,6 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"BEFORE DONE"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
