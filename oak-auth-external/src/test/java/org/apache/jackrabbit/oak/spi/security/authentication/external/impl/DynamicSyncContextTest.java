@@ -861,6 +861,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|NotNull
 specifier|protected
 name|DefaultSyncConfig
 name|createSyncConfig

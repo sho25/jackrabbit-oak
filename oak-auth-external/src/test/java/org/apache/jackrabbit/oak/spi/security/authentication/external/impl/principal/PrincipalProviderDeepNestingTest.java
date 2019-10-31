@@ -211,6 +211,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -274,6 +286,8 @@ name|ExternalGroupPrincipalProviderTest
 block|{
 annotation|@
 name|Override
+annotation|@
+name|NotNull
 specifier|protected
 name|DefaultSyncConfig
 name|createSyncConfig
