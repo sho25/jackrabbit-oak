@@ -726,6 +726,17 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|boolean
+name|filterReplacedIndexes
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

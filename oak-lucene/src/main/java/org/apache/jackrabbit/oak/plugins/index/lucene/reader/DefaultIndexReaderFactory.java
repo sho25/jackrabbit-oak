@@ -886,6 +886,17 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|MountInfoProvider
+name|getMountInfoProvider
+parameter_list|()
+block|{
+return|return
+name|mountInfoProvider
+return|;
+block|}
 block|}
 end_class
 
