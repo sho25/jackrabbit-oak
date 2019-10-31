@@ -594,6 +594,9 @@ name|int
 name|itemsToRead
 parameter_list|,
 name|int
+name|repeatedRead
+parameter_list|,
+name|int
 name|numberOfACEs
 parameter_list|,
 name|int
@@ -615,6 +618,8 @@ argument_list|,
 name|doReport
 argument_list|,
 literal|false
+argument_list|,
+name|repeatedRead
 argument_list|)
 expr_stmt|;
 name|this
