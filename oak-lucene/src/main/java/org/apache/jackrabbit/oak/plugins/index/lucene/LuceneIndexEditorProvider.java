@@ -917,6 +917,10 @@ argument_list|,
 literal|500
 argument_list|)
 decl_stmt|;
+specifier|private
+name|AsyncIndexesSizeStatsUpdate
+name|asyncIndexesSizeStatsUpdate
+decl_stmt|;
 specifier|public
 name|LuceneIndexEditorProvider
 parameter_list|()
@@ -1164,6 +1168,24 @@ name|statisticsProvider
 operator|=
 name|statisticsProvider
 expr_stmt|;
+block|}
+specifier|public
+name|LuceneIndexEditorProvider
+name|withAsyncIndexesSizeStatsUpdate
+parameter_list|(
+name|AsyncIndexesSizeStatsUpdate
+name|asyncIndexesSizeStatsUpdate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|asyncIndexesSizeStatsUpdate
+operator|=
+name|asyncIndexesSizeStatsUpdate
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Override
@@ -1607,6 +1629,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Below mentioned callback (LuceneIndexStatsUpdateCallback) is only executed
+comment|// in async indexing flow. There is a check on
+comment|// indexingContext.isAsync()
 name|callbacks
 operator|.
 name|add
@@ -1619,6 +1644,10 @@ argument_list|,
 name|mbean
 argument_list|,
 name|statisticsProvider
+argument_list|,
+name|asyncIndexesSizeStatsUpdate
+argument_list|,
+name|indexingContext
 argument_list|)
 argument_list|)
 expr_stmt|;
