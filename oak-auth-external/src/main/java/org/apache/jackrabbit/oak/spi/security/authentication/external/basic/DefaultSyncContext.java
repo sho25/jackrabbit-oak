@@ -571,6 +571,32 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|text
+operator|.
+name|Normalizer
+operator|.
+name|Form
+operator|.
+name|NFKC
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|text
+operator|.
+name|Normalizer
+operator|.
+name|normalize
+import|;
+end_import
+
 begin_comment
 comment|/**  * Internal implementation of the sync context  */
 end_comment
@@ -1290,16 +1316,6 @@ name|identity
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
 name|debug
 argument_list|(
 literal|"sync({}) -> {} {}"
@@ -1320,7 +1336,6 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|created
@@ -1607,16 +1622,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
 name|debug
 argument_list|(
 literal|"sync({}) -> {} {}"
@@ -1634,7 +1639,6 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|ret
 return|;
@@ -2025,12 +2029,6 @@ operator|.
 name|isApplyRFC7613UsernameCaseMapped
 argument_list|()
 condition|?
-name|java
-operator|.
-name|text
-operator|.
-name|Normalizer
-operator|.
 name|normalize
 argument_list|(
 name|externalUser
@@ -2041,14 +2039,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 argument_list|,
-name|java
-operator|.
-name|text
-operator|.
-name|Normalizer
-operator|.
-name|Form
-operator|.
 name|NFKC
 argument_list|)
 else|:
@@ -2633,16 +2623,6 @@ condition|)
 block|{
 return|return;
 block|}
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
 name|debug
 argument_list|(
 literal|"Syncing membership '{}' -> '{}'"
@@ -2661,7 +2641,6 @@ name|getID
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 specifier|final
 name|DebugTimer
 name|timer
@@ -3129,14 +3108,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|timer
 operator|.
 name|mark
@@ -3144,8 +3115,6 @@ argument_list|(
 literal|"removing"
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
 name|debug
 argument_list|(
 literal|"syncMembership({}) {}"
@@ -3161,7 +3130,6 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Ensures that the given authorizable is member of the specific groups. Note that it does not create groups      * if missing, nor remove memberships of groups not in the given set.      * @param member the authorizable      * @param groups set of groups.      */
 specifier|protected
@@ -3622,16 +3590,6 @@ operator|==
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
 name|debug
 argument_list|(
 literal|"{} of {} '{}' need sync. {} not set."
@@ -3655,7 +3613,6 @@ argument_list|,
 name|REP_LAST_SYNCED
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 literal|true
 return|;
@@ -3676,16 +3633,6 @@ operator|>
 name|expirationTime
 condition|)
 block|{
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
 name|debug
 argument_list|(
 literal|"{} of {} '{}' need sync. {} expired ({}> {})"
@@ -3721,23 +3668,12 @@ argument_list|,
 name|REP_LAST_SYNCED
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 literal|true
 return|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
 name|debug
 argument_list|(
 literal|"{} of {} '{}' do not need sync."
@@ -3759,7 +3695,6 @@ name|getID
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 literal|false
 return|;
@@ -4211,6 +4146,42 @@ name|getProviderName
 argument_list|()
 argument_list|)
 return|;
+block|}
+specifier|private
+specifier|static
+name|void
+name|debug
+parameter_list|(
+annotation|@
+name|NotNull
+name|String
+name|mgs
+parameter_list|,
+annotation|@
+name|NotNull
+name|Object
+modifier|...
+name|objects
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|mgs
+argument_list|,
+name|objects
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
