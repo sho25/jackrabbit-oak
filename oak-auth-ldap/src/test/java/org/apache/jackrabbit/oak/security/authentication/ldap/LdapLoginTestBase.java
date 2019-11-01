@@ -305,7 +305,7 @@ name|authentication
 operator|.
 name|external
 operator|.
-name|ExternalLoginModuleTestBase
+name|ExternalLoginTestBase
 import|;
 end_import
 
@@ -563,7 +563,7 @@ specifier|abstract
 class|class
 name|LdapLoginTestBase
 extends|extends
-name|ExternalLoginModuleTestBase
+name|ExternalLoginTestBase
 block|{
 specifier|protected
 specifier|static
