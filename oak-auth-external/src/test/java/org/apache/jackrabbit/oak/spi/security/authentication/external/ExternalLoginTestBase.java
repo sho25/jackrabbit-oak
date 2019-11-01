@@ -269,7 +269,7 @@ begin_class
 specifier|public
 specifier|abstract
 class|class
-name|ExternalLoginModuleTestBase
+name|ExternalLoginTestBase
 extends|extends
 name|AbstractExternalAuthTest
 block|{
@@ -303,10 +303,6 @@ decl_stmt|;
 specifier|protected
 name|SyncManager
 name|syncManager
-decl_stmt|;
-specifier|protected
-name|ExternalIdentityProviderManager
-name|idpManager
 decl_stmt|;
 annotation|@
 name|Before
@@ -471,14 +467,15 @@ name|emptyMap
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ExternalIdentityProviderManager
 name|idpManager
-operator|=
+init|=
 operator|new
 name|ExternalIDPManagerImpl
 argument_list|(
 name|whiteboard
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|whiteboard
 operator|.
 name|register

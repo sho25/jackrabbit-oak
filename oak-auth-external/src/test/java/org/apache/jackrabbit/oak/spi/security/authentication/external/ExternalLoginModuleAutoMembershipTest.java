@@ -550,7 +550,7 @@ specifier|public
 class|class
 name|ExternalLoginModuleAutoMembershipTest
 extends|extends
-name|ExternalLoginModuleTestBase
+name|ExternalLoginTestBase
 block|{
 specifier|private
 specifier|static

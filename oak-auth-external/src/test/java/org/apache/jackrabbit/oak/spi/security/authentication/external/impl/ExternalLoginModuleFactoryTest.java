@@ -161,7 +161,7 @@ name|authentication
 operator|.
 name|external
 operator|.
-name|ExternalLoginModuleTestBase
+name|ExternalLoginTestBase
 import|;
 end_import
 
@@ -386,7 +386,7 @@ specifier|public
 class|class
 name|ExternalLoginModuleFactoryTest
 extends|extends
-name|ExternalLoginModuleTestBase
+name|ExternalLoginTestBase
 block|{
 annotation|@
 name|Override

@@ -241,7 +241,7 @@ name|authentication
 operator|.
 name|external
 operator|.
-name|ExternalLoginModuleTestBase
+name|ExternalLoginTestBase
 import|;
 end_import
 
@@ -564,7 +564,7 @@ specifier|public
 class|class
 name|DefaultSyncHandlerTest
 extends|extends
-name|ExternalLoginModuleTestBase
+name|ExternalLoginTestBase
 block|{
 specifier|private
 name|UserManager
