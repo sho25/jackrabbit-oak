@@ -236,13 +236,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ExternalLoginModuleTest...  */
+comment|/**  * ExternalLoginTest...  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|ExternalLoginModuleTest
+name|ExternalLoginTest
 extends|extends
 name|ExternalLoginTestBase
 block|{

@@ -400,9 +400,9 @@ end_import
 begin_class
 specifier|public
 class|class
-name|ExternalLoginModuleDynamicMembershipTest
+name|ExternalLoginDynamicMembershipTest
 extends|extends
-name|ExternalLoginModuleTest
+name|ExternalLoginTest
 block|{
 annotation|@
 name|Override

@@ -340,7 +340,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|PreAuthDefaultExternalLoginModuleTest
+name|PreAuthDefaultExternalLoginTest
 extends|extends
 name|ExternalLoginTestBase
 block|{

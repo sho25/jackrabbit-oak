@@ -330,6 +330,8 @@ name|DynamicSyncContextTest
 block|{
 annotation|@
 name|Override
+annotation|@
+name|NotNull
 specifier|protected
 name|ExternalIdentityProvider
 name|createIDP
