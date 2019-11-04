@@ -2621,49 +2621,7 @@ name|NAMES
 argument_list|)
 expr_stmt|;
 block|}
-comment|// 3. deal with locked nodes
-name|boolean
-name|wasLockable
-init|=
-name|isNodeType
-argument_list|(
-name|MIX_LOCKABLE
-argument_list|)
-decl_stmt|;
-name|boolean
-name|isLockable
-init|=
-name|isNodeType
-argument_list|(
-name|MIX_LOCKABLE
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|wasLockable
-operator|&&
-operator|!
-name|isLockable
-operator|&&
-name|holdsLock
-argument_list|(
-literal|false
-argument_list|)
-condition|)
-block|{
-comment|// TODO: This should probably be done in a commit hook
-name|unlock
-argument_list|()
-expr_stmt|;
-name|sessionDelegate
-operator|.
-name|refresh
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-comment|// 4. clean up set of properties and child nodes such that all child items
+comment|// 3. clean up set of properties and child nodes such that all child items
 comment|// have a valid item definition according to the effective node type present
 comment|// after having updated the mixin property. this includes removing all
 comment|// protected properties and child nodes associated with the removed mixin
