@@ -25,11 +25,53 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|data
+operator|.
+name|DataIdentifier
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|data
+operator|.
+name|DataStore
 import|;
 end_import
 
@@ -80,26 +122,7 @@ parameter_list|,
 name|long
 name|size
 parameter_list|)
-block|{          }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|downloaded
-parameter_list|(
-name|String
-name|blobId
-parameter_list|,
-name|long
-name|timeTaken
-parameter_list|,
-name|TimeUnit
-name|unit
-parameter_list|,
-name|long
-name|size
-parameter_list|)
-block|{          }
+block|{ }
 annotation|@
 name|Override
 specifier|public
@@ -109,7 +132,33 @@ parameter_list|(
 name|String
 name|blobId
 parameter_list|)
-block|{          }
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|uploadFailed
+parameter_list|()
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|downloaded
+parameter_list|(
+name|String
+name|blobId
+parameter_list|,
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+block|{ }
 annotation|@
 name|Override
 specifier|public
@@ -119,12 +168,91 @@ parameter_list|(
 name|String
 name|blobId
 parameter_list|)
-block|{          }
-block|}
-decl_stmt|;
-comment|/**      * Called when a binary content is written to BlobStore      *      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of binary content being written      */
+block|{ }
+annotation|@
+name|Override
+specifier|public
 name|void
-name|uploaded
+name|downloadFailed
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|deleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|,
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|deleteCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|deleteFailed
+parameter_list|()
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|deletedAllOlderThan
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|min
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|deleteAllOlderThanCompleted
+parameter_list|(
+name|int
+name|deletedCount
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|deleteAllOlderThanFailed
+parameter_list|(
+name|long
+name|min
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|recordAdded
 parameter_list|(
 name|long
 name|timeTaken
@@ -135,14 +263,165 @@ parameter_list|,
 name|long
 name|size
 parameter_list|)
-function_decl|;
-comment|/**      * Called when a binary content is read from BlobStore      *      * @param blobId id of blob whose content are being read. For BlobStore      *               which break up file in chunks it would be chunkId      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of binary content being read      */
+block|{ }
+annotation|@
+name|Override
+specifier|public
 name|void
-name|downloaded
+name|addRecordCompleted
 parameter_list|(
 name|String
 name|blobId
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|addRecordFailed
+parameter_list|()
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordCalled
+parameter_list|(
+name|long
+name|timeTaken
 parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordFailed
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordIfStoredCalled
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordIfStoredCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordIfStoredFailed
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordFromReferenceCalled
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordFromReferenceCompleted
+parameter_list|(
+name|String
+name|reference
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getRecordFromReferenceFailed
+parameter_list|(
+name|String
+name|reference
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getAllIdentifiersCalled
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getAllIdentifiersCompleted
+parameter_list|()
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|getAllIdentifiersFailed
+parameter_list|()
+block|{ }
+block|}
+decl_stmt|;
+comment|/**      * Called when a binary content is written to BlobStore      *      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of binary content being written      */
+name|void
+name|uploaded
+parameter_list|(
 name|long
 name|timeTaken
 parameter_list|,
@@ -161,6 +440,28 @@ name|String
 name|blobId
 parameter_list|)
 function_decl|;
+comment|/**      * Invoked when an upload of a binary fails.      */
+name|void
+name|uploadFailed
+parameter_list|()
+function_decl|;
+comment|/**      * Called when a binary content is read from BlobStore      *      * @param blobId id of blob whose content are being read. For BlobStore      *               which break up file in chunks it would be chunkId      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of binary content being read      */
+name|void
+name|downloaded
+parameter_list|(
+name|String
+name|blobId
+parameter_list|,
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+function_decl|;
 comment|/**      * Invoked when download for a binary file get completed. In case of chunked      * BlobStore this invoked when all the chunks have been downloaded      *      * @param blobId id of the blob which got downloaded. Even in case of chunked      *               blobStores its the id of main blob      */
 name|void
 name|downloadCompleted
@@ -168,6 +469,209 @@ parameter_list|(
 name|String
 name|blobId
 parameter_list|)
+function_decl|;
+comment|/**      * Called when an attempt to download a binary file fails.      *      * @param blobId id of the blob for which the download failed      */
+name|void
+name|downloadFailed
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a binary is deleted from the BlobStore      *      * @param blobId id of blob being deleted      * @param timeTaken time taken to perform the delete      * @param unit unit of time taken      */
+name|void
+name|deleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|,
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|)
+function_decl|;
+comment|/**      * Called when deletion of a binary is completed.      *      * @param blobId id of the blob which was deleted      */
+name|void
+name|deleteCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+function_decl|;
+comment|/**      * Called when deletion of a binary fails.      */
+name|void
+name|deleteFailed
+parameter_list|()
+function_decl|;
+comment|/**      * Called when deleting binaries older than a specified date, via      * {@link org.apache.jackrabbit.core.data.DataStore#deleteAllOlderThan(long)}.      *      * @param timeTaken time taken to perform the deletion      * @param unit unit of time taken      * @param min time used for determining what to delete - older than this time gets deleted      */
+name|void
+name|deletedAllOlderThan
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|min
+parameter_list|)
+function_decl|;
+comment|/**      * Called when {@link org.apache.jackrabbit.core.data.DataStore#deleteAllOlderThan(long)} is completed.      *      * @param deletedCount count of records deleted      */
+name|void
+name|deleteAllOlderThanCompleted
+parameter_list|(
+name|int
+name|deletedCount
+parameter_list|)
+function_decl|;
+comment|/**      * Called when {@link org.apache.jackrabbit.core.data.DataStore#deleteAllOlderThan(long)} fails.      *      * @param min time used for determining what to delete      */
+name|void
+name|deleteAllOlderThanFailed
+parameter_list|(
+name|long
+name|min
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a binary is added via {@link org.apache.jackrabbit.core.data.DataStore#addRecord(InputStream)}.      *      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of binary content being read      */
+name|void
+name|recordAdded
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a call to {@link org.apache.jackrabbit.core.data.DataStore#addRecord(InputStream)} is completed.      *      * @param blobId id of the record which was added      */
+name|void
+name|addRecordCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a call to {@link org.apache.jackrabbit.core.data.DataStore#addRecord(InputStream)} fails.      */
+name|void
+name|addRecordFailed
+parameter_list|()
+function_decl|;
+comment|/**      * Called when a {@link org.apache.jackrabbit.core.data.DataRecord} is retrieved via      * {@link org.apache.jackrabbit.core.data.DataStore#getRecord(DataIdentifier)}.      *      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of the binary      */
+name|void
+name|getRecordCalled
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a call to {@link org.apache.jackrabbit.core.data.DataStore#getRecord(DataIdentifier)} is completed.      *      * @param blobId id of the record retrieved      */
+name|void
+name|getRecordCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a call to {@link org.apache.jackrabbit.core.data.DataStore#getRecord(DataIdentifier)} fails.      *      * @param blobId id of the record      */
+name|void
+name|getRecordFailed
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a {@link org.apache.jackrabbit.core.data.DataRecord} is retrieved via      * {@link org.apache.jackrabbit.core.data.DataStore#getRecordIfStored(DataIdentifier)}.      *      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of the binary      */
+name|void
+name|getRecordIfStoredCalled
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a call to {@link org.apache.jackrabbit.core.data.DataStore#getRecordIfStored(DataIdentifier)} is completed.      *      * @param blobId id of the record retrieved      */
+name|void
+name|getRecordIfStoredCompleted
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a call to {@link org.apache.jackrabbit.core.data.DataStore#getRecordIfStored(DataIdentifier)} fails.      *      * @param blobId id of the record      */
+name|void
+name|getRecordIfStoredFailed
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a {@link org.apache.jackrabbit.core.data.DataRecord} is retrieved via      * {@link org.apache.jackrabbit.core.data.DataStore#getRecordFromReference(String)}.      *      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      * @param size size of the binary      */
+name|void
+name|getRecordFromReferenceCalled
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|long
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a call to {@link org.apache.jackrabbit.core.data.DataStore#getRecordFromReference(String)} is completed.      *      * @param reference reference of the record retrieved      */
+name|void
+name|getRecordFromReferenceCompleted
+parameter_list|(
+name|String
+name|reference
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a call to {@link org.apache.jackrabbit.core.data.DataStore#getRecordFromReference(String)} fails.      *      * @param reference reference of the record      */
+name|void
+name|getRecordFromReferenceFailed
+parameter_list|(
+name|String
+name|reference
+parameter_list|)
+function_decl|;
+comment|/**      * Called when {@link DataStore#getAllIdentifiers()} is called.      *      * @param timeTaken time taken to perform the operation      * @param unit unit of time taken      */
+name|void
+name|getAllIdentifiersCalled
+parameter_list|(
+name|long
+name|timeTaken
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|)
+function_decl|;
+comment|/**      * Called when {@link DataStore#getAllIdentifiers()} is completed.      */
+name|void
+name|getAllIdentifiersCompleted
+parameter_list|()
+function_decl|;
+comment|/**      * Called when {@link DataStore#getAllIdentifiers()} fails.      */
+name|void
+name|getAllIdentifiersFailed
+parameter_list|()
 function_decl|;
 block|}
 end_interface
