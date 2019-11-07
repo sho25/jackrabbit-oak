@@ -1512,7 +1512,7 @@ return|return
 name|fileSize
 return|;
 block|}
-comment|/**      * On close file which are not present in remote are removed from local.      * CopyOnReadDir is opened at different revisions of the index state      *      * CDir1 - V1      * CDir2 - V2      *      * Its possible that two different IndexSearcher are opened at same local      * directory but pinned to different revisions. So while removing it must      * be ensured that any currently opened IndexSearcher does not get affected.      * The way IndexSearchers get created in IndexTracker it ensures that new searcher      * pinned to newer revision gets opened first and then existing ones are closed.      *      *      */
+comment|/**      * Close the files _after_ the method returns (asynchronously).      *       * On close file which are not present in remote are removed from local.      * CopyOnReadDir is opened at different revisions of the index state      *      * CDir1 - V1      * CDir2 - V2      *      * Its possible that two different IndexSearcher are opened at same local      * directory but pinned to different revisions. So while removing it must      * be ensured that any currently opened IndexSearcher does not get affected.      * The way IndexSearchers get created in IndexTracker it ensures that new searcher      * pinned to newer revision gets opened first and then existing ones are closed.      */
 annotation|@
 name|Override
 specifier|public

@@ -85,11 +85,16 @@ name|Directory
 import|;
 end_import
 
+begin_comment
+comment|/**  * A builder for Lucene directories.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|DirectoryFactory
 block|{
+comment|/**      * Open a new directory.      *       * Internally, it read the data from the index definition. It writes to the      * builder, for example when closing the directory.      *       * @param definition the index definition      * @param builder the builder pointing to the index definition (see above      *            for usage)      * @param dirName the name of the directory (in the file system)      * @param reindex whether reindex is needed      * @return the Lucene directory      */
 name|Directory
 name|newInstance
 parameter_list|(

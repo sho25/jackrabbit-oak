@@ -472,6 +472,26 @@ operator|.
 name|getIndexPath
 argument_list|()
 decl_stmt|;
+comment|// Here we create a new index directory, because
+comment|// re-using the existing directory (opened above) would
+comment|// mean that the directory returned by the method
+comment|// shares the same OakDirectory instance.
+comment|// That in turn could result in concurrently changing
+comment|// the NodeBuilder on close, as d.close() closes the directory
+comment|// _asynchronously_ (after the method returned).
+comment|// With newIndexDirectory, the internal OakDirectory is not shared
+name|Directory
+name|readerDir
+init|=
+name|newIndexDirectory
+argument_list|(
+name|definition
+argument_list|,
+name|builder
+argument_list|,
+name|dirName
+argument_list|)
+decl_stmt|;
 name|Directory
 name|d
 init|=
@@ -483,11 +503,12 @@ name|indexPath
 argument_list|,
 name|definition
 argument_list|,
-name|directory
+name|readerDir
 argument_list|,
 name|dirName
 argument_list|)
 decl_stmt|;
+comment|// closing is done asynchronously
 name|d
 operator|.
 name|close
