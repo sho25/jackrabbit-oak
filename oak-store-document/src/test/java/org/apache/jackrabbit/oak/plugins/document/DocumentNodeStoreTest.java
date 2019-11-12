@@ -7063,7 +7063,9 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"/"
+name|Path
+operator|.
+name|ROOT
 argument_list|)
 condition|)
 block|{
