@@ -1157,12 +1157,11 @@ return|return
 literal|false
 return|;
 block|}
-name|Credentials
-name|creds
-init|=
+name|credentials
+operator|=
 name|getCredentials
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 comment|// check if we have a pre authenticated login from a previous login module
 specifier|final
 name|PreAuthenticatedLogin
@@ -1179,7 +1178,7 @@ name|getUserId
 argument_list|(
 name|preAuthLogin
 argument_list|,
-name|creds
+name|credentials
 argument_list|)
 decl_stmt|;
 if|if
@@ -1188,7 +1187,7 @@ name|userId
 operator|==
 literal|null
 operator|&&
-name|creds
+name|credentials
 operator|==
 literal|null
 condition|)
@@ -1216,7 +1215,7 @@ operator|)
 condition|?
 name|userId
 else|:
-name|creds
+name|credentials
 decl_stmt|;
 try|try
 block|{
@@ -1277,7 +1276,7 @@ name|idp
 operator|.
 name|authenticate
 argument_list|(
-name|creds
+name|credentials
 argument_list|)
 expr_stmt|;
 block|}
@@ -1304,7 +1303,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|creds
+name|credentials
 operator|!=
 literal|null
 condition|)
@@ -1316,7 +1315,7 @@ name|put
 argument_list|(
 name|SHARED_KEY_CREDENTIALS
 argument_list|,
-name|creds
+name|credentials
 argument_list|)
 expr_stmt|;
 block|}
@@ -1337,11 +1336,6 @@ name|syncUser
 argument_list|(
 name|externalUser
 argument_list|)
-expr_stmt|;
-comment|// login successful -> remember credentials for commit/logout
-name|credentials
-operator|=
-name|creds
 expr_stmt|;
 return|return
 literal|true
@@ -2478,19 +2472,6 @@ name|credentialsSupport
 operator|.
 name|getCredentialClasses
 argument_list|()
-return|;
-block|}
-annotation|@
-name|Nullable
-annotation|@
-name|Override
-specifier|protected
-name|Credentials
-name|getCommittedCredentials
-parameter_list|()
-block|{
-return|return
-name|credentials
 return|;
 block|}
 comment|//----------------------------------------------< public setters (JAAS)>---
