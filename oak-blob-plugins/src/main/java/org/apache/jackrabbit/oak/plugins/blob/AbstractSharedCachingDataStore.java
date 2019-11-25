@@ -1344,6 +1344,26 @@ argument_list|,
 name|tmpFile
 argument_list|)
 expr_stmt|;
+comment|// Attempt deleting the temporary file
+name|boolean
+name|deletedTemp
+init|=
+name|FileUtils
+operator|.
+name|deleteQuietly
+argument_list|(
+name|tmpFile
+argument_list|)
+decl_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Temporary file deleted {}"
+argument_list|,
+name|deletedTemp
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|getRecordIfStored
