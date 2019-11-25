@@ -491,6 +491,8 @@ block|,
 literal|"org.apache.jackrabbit.oak.plugins.document."
 block|,
 literal|"org.apache.jackrabbit.oak.segment."
+block|,
+literal|"org.apache.jackrabbit.oak.plugins.segment."
 block|}
 argument_list|)
 argument_list|)
