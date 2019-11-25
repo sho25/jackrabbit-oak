@@ -2246,7 +2246,15 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Starting purge of uploaded files"
+literal|"Starting purge of uploaded files, current size [{}]"
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|currentSize
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Iterator
@@ -2366,9 +2374,17 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Finished removal of [{}] files"
+literal|"Finished removal of [{}] files, current size [{}]"
 argument_list|,
 name|count
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|currentSize
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
