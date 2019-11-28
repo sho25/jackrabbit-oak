@@ -2173,7 +2173,7 @@ literal|1024
 argument_list|,
 literal|0
 argument_list|,
-literal|3
+literal|2
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -2369,7 +2369,7 @@ literal|0
 argument_list|,
 literal|0
 argument_list|,
-literal|3
+literal|2
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -2719,7 +2719,7 @@ literal|1024
 argument_list|,
 literal|0
 argument_list|,
-literal|4
+literal|2
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -3073,7 +3073,7 @@ literal|1024
 argument_list|,
 literal|0
 argument_list|,
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
 name|assertEquals
