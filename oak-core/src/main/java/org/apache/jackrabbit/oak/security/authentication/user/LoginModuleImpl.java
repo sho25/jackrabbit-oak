@@ -819,10 +819,9 @@ name|subject
 argument_list|)
 expr_stmt|;
 block|}
-name|clearState
+name|closeSystemSession
 argument_list|()
 expr_stmt|;
-comment|// FIXME see OAK-8803
 return|return
 literal|true
 return|;

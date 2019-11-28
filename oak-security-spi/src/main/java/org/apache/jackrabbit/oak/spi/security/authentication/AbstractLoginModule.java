@@ -860,10 +860,16 @@ name|securityProvider
 operator|=
 literal|null
 expr_stmt|;
-name|root
-operator|=
-literal|null
+name|closeSystemSession
+argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * Close the system session acquired upon {@link #getRoot()} and reset the associated root field.      * This method should be used instead of {@link #clearState()}, if {@link #login()} and {@link #commit()} were      * successfully completed but the system session is not needed for a successful {@link #logout()}      */
+specifier|protected
+name|void
+name|closeSystemSession
+parameter_list|()
+block|{
 if|if
 condition|(
 name|systemSession
@@ -902,6 +908,10 @@ argument_list|)
 expr_stmt|;
 block|}
 name|systemSession
+operator|=
+literal|null
+expr_stmt|;
+name|root
 operator|=
 literal|null
 expr_stmt|;
