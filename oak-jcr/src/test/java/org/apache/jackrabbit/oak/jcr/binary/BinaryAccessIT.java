@@ -303,18 +303,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -368,6 +356,20 @@ operator|.
 name|jcr
 operator|.
 name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
 import|;
 end_import
 
@@ -622,20 +624,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
 import|;
 end_import
 
@@ -2235,6 +2223,11 @@ name|expectedName
 init|=
 literal|"beautiful landscape.png"
 decl_stmt|;
+name|String
+name|encodedName
+init|=
+literal|"beautiful%20landscape.png"
+decl_stmt|;
 name|BinaryDownloadOptions
 name|downloadOptions
 init|=
@@ -2297,42 +2290,17 @@ argument_list|(
 name|contentDisposition
 argument_list|)
 expr_stmt|;
-name|String
-name|encodedName
-init|=
-operator|new
-name|String
-argument_list|(
-name|expectedName
-operator|.
-name|getBytes
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-argument_list|)
-decl_stmt|;
-comment|// This proper behavior is disabled due to
-comment|// https://github.com/Azure/azure-sdk-for-java/issues/2900
-comment|// (see also https://issues.apache.org/jira/browse/OAK-8013,
-comment|// https://issues.apache.org/jira/browse/OAK-8104, and
-comment|// https://issues.apache.org/jira/browse/OAK-8105).  We can re-enable
-comment|// the full test once the issue is resolved.  -MR
-comment|//        assertEquals(
-comment|//                String.format("inline; filename=\"%s\"; filename*=UTF-8''%s",
-comment|//                        expectedName, encodedName),
-comment|//                contentDisposition
-comment|//        );
 name|assertEquals
 argument_list|(
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"inline; filename=\"%s\""
+literal|"inline; filename=\"%s\"; filename*=UTF-8''%s"
 argument_list|,
 name|expectedName
+argument_list|,
+name|encodedName
 argument_list|)
 argument_list|,
 name|contentDisposition
@@ -2407,6 +2375,11 @@ name|expectedName
 init|=
 literal|"beautiful landscape.png"
 decl_stmt|;
+name|String
+name|encodedName
+init|=
+literal|"beautiful%20landscape.png"
+decl_stmt|;
 name|BinaryDownloadOptions
 name|downloadOptions
 init|=
@@ -2472,42 +2445,17 @@ argument_list|(
 name|contentDisposition
 argument_list|)
 expr_stmt|;
-name|String
-name|encodedName
-init|=
-operator|new
-name|String
-argument_list|(
-name|expectedName
-operator|.
-name|getBytes
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-argument_list|)
-decl_stmt|;
-comment|// This proper behavior is disabled due to
-comment|// https://github.com/Azure/azure-sdk-for-java/issues/2900
-comment|// (see also https://issues.apache.org/jira/browse/OAK-8013,
-comment|// https://issues.apache.org/jira/browse/OAK-8104, and
-comment|// https://issues.apache.org/jira/browse/OAK-8105).  We can re-enable
-comment|// the full test once the issue is resolved.  -MR
-comment|//        assertEquals(
-comment|//                String.format("attachment; filename=\"%s\"; filename*=UTF-8''%s",
-comment|//                        expectedName, encodedName),
-comment|//                contentDisposition
-comment|//        );
 name|assertEquals
 argument_list|(
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"attachment; filename=\"%s\""
+literal|"attachment; filename=\"%s\"; filename*=UTF-8''%s"
 argument_list|,
 name|expectedName
+argument_list|,
+name|encodedName
 argument_list|)
 argument_list|,
 name|contentDisposition
@@ -2782,6 +2730,11 @@ name|expectedName
 init|=
 literal|"beautiful landscape.png"
 decl_stmt|;
+name|String
+name|encodedName
+init|=
+literal|"beautiful%20landscape.png"
+decl_stmt|;
 name|BinaryDownloadOptions
 name|downloadOptions
 init|=
@@ -2888,42 +2841,17 @@ argument_list|(
 name|contentDisposition
 argument_list|)
 expr_stmt|;
-name|String
-name|encodedName
-init|=
-operator|new
-name|String
-argument_list|(
-name|expectedName
-operator|.
-name|getBytes
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-argument_list|)
-decl_stmt|;
-comment|// This proper behavior is disabled due to
-comment|// https://github.com/Azure/azure-sdk-for-java/issues/2900
-comment|// (see also https://issues.apache.org/jira/browse/OAK-8013,
-comment|// https://issues.apache.org/jira/browse/OAK-8104, and
-comment|// https://issues.apache.org/jira/browse/OAK-8105).  We can re-enable
-comment|// the full test once the issue is resolved.  -MR
-comment|//        assertEquals(
-comment|//                String.format("attachment; filename=\"%s\"; filename*=UTF-8''%s",
-comment|//                        expectedName, encodedName),
-comment|//                contentDisposition
-comment|//        );
 name|assertEquals
 argument_list|(
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"attachment; filename=\"%s\""
+literal|"attachment; filename=\"%s\"; filename*=UTF-8''%s"
 argument_list|,
 name|expectedName
+argument_list|,
+name|encodedName
 argument_list|)
 argument_list|,
 name|contentDisposition

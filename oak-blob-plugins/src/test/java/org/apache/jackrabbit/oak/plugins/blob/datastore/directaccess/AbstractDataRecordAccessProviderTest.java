@@ -1256,27 +1256,19 @@ literal|"Content-Type"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//            This proper behavior is disabled due to https://github.com/Azure/azure-sdk-for-java/issues/2900
-comment|//            (see also https://issues.apache.org/jira/browse/OAK-8013).  We can re-enable the full test
-comment|//            once the issue is resolved.  -MR
-comment|//            assertEquals(
-comment|//                    String.format("%s; filename=\"%s\"; filename*=UTF-8''%s",
-comment|//                            dispositionType, fileName,
-comment|//                            new String(encodedFileName.getBytes(StandardCharsets.UTF_8))
-comment|//                    ),
-comment|//                    conn.getHeaderField("Content-Disposition")
-comment|//            );
 name|assertEquals
 argument_list|(
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s; filename=\"%s\""
+literal|"%s; filename=\"%s\"; filename*=UTF-8''%s"
 argument_list|,
 name|dispositionType
 argument_list|,
 name|fileName
+argument_list|,
+name|encodedFileName
 argument_list|)
 argument_list|,
 name|conn

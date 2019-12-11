@@ -73,18 +73,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -202,9 +190,25 @@ specifier|private
 specifier|static
 specifier|final
 name|String
+name|ENCODED_FILE_NAME_IMAGE
+init|=
+literal|"amazing%20summer%20sunset.png"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
 name|FILE_NAME_TEXT
 init|=
 literal|"journal_entry_01-01-2000.txt"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ENCODED_FILE_NAME_TEXT
+init|=
+name|FILE_NAME_TEXT
 decl_stmt|;
 specifier|private
 specifier|static
@@ -559,6 +563,9 @@ name|String
 name|fileName
 parameter_list|,
 name|String
+name|encodedFileName
+parameter_list|,
+name|String
 name|dispositionType
 parameter_list|)
 block|{
@@ -605,37 +612,18 @@ operator|=
 name|DISPOSITION_TYPE_INLINE
 expr_stmt|;
 block|}
-name|String
-name|fileNameStar
-init|=
-operator|new
-name|String
-argument_list|(
-name|fileName
-operator|.
-name|getBytes
-argument_list|(
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-argument_list|)
-decl_stmt|;
-comment|//        This proper behavior is disabled due to https://github.com/Azure/azure-sdk-for-java/issues/2900
-comment|//        (see also https://issues.apache.org/jira/browse/OAK-8013).  We can re-enable the full test
-comment|//        once the issue is resolved.  -MR
-comment|//        return String.format("%s; filename=\"%s\"; filename*=UTF-8''%s",
-comment|//                dispositionType, fileName, fileNameStar);
 return|return
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s; filename=\"%s\""
+literal|"%s; filename=\"%s\"; filename*=UTF-8''%s"
 argument_list|,
 name|dispositionType
 argument_list|,
 name|fileName
+argument_list|,
+name|encodedFileName
 argument_list|)
 return|;
 block|}
@@ -944,6 +932,17 @@ name|getContentDispositionHeader
 argument_list|(
 name|fileName
 argument_list|,
+name|fileName
+operator|.
+name|equals
+argument_list|(
+name|FILE_NAME_IMAGE
+argument_list|)
+condition|?
+name|ENCODED_FILE_NAME_IMAGE
+else|:
+name|ENCODED_FILE_NAME_TEXT
+argument_list|,
 name|dispositionType
 argument_list|)
 argument_list|)
@@ -975,6 +974,8 @@ argument_list|,
 name|getContentDispositionHeader
 argument_list|(
 name|FILE_NAME_IMAGE
+argument_list|,
+name|ENCODED_FILE_NAME_IMAGE
 argument_list|,
 name|DISPOSITION_TYPE_INLINE
 argument_list|)
