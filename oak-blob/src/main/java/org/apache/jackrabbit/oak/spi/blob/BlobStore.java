@@ -71,6 +71,8 @@ begin_interface
 specifier|public
 interface|interface
 name|BlobStore
+extends|extends
+name|AutoCloseable
 block|{
 comment|/**      * Write a blob from an input stream.      * This method closes the input stream.      *      * @param in the input stream      * @return the blob id      */
 name|String

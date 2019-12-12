@@ -426,6 +426,22 @@ name|blobId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|getSplitBlobStore
+argument_list|()
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
