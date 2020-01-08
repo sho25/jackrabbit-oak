@@ -23,26 +23,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|text
-operator|.
-name|DateFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|text
-operator|.
-name|SimpleDateFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -134,6 +114,20 @@ operator|.
 name|json
 operator|.
 name|JsopBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|util
+operator|.
+name|ISO8601
 import|;
 end_import
 
@@ -266,19 +260,6 @@ name|String
 name|CLUSTER_VIEW_HISTORY_KEY
 init|=
 literal|"clusterViewHistory"
-decl_stmt|;
-comment|/** the format used when storing date+time **/
-specifier|private
-specifier|static
-specifier|final
-name|DateFormat
-name|standardDateFormat
-init|=
-operator|new
-name|SimpleDateFormat
-argument_list|(
-literal|"yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-argument_list|)
 decl_stmt|;
 comment|/** number of elements kept in the CLUSTERVIEW_HISTORY_KEY field **/
 specifier|static
@@ -534,7 +515,7 @@ name|set
 argument_list|(
 name|CREATED_KEY
 argument_list|,
-name|standardDateFormat
+name|ISO8601
 operator|.
 name|format
 argument_list|(
@@ -1181,7 +1162,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|standardDateFormat
+name|ISO8601
 operator|.
 name|format
 argument_list|(
