@@ -3595,6 +3595,15 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Expected failed request but got "
+operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|code
+argument_list|)
+argument_list|,
 name|isFailedHttpPut
 argument_list|(
 name|code
