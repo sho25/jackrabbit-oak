@@ -1490,6 +1490,20 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to index the node [{}] due to {}"
+argument_list|,
+name|path
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|CommitFailedException
 name|ce
 init|=
