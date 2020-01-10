@@ -228,7 +228,7 @@ literal|"attachment"
 decl_stmt|;
 specifier|private
 name|void
-name|verifyOptions
+name|verifyDownloadOptions
 parameter_list|(
 name|DataRecordDownloadOptions
 name|options
@@ -659,7 +659,7 @@ argument_list|(
 name|blobDownloadOptions
 argument_list|)
 decl_stmt|;
-name|verifyOptions
+name|verifyDownloadOptions
 argument_list|(
 name|options
 argument_list|,
@@ -680,7 +680,7 @@ name|void
 name|testDefault
 parameter_list|()
 block|{
-name|verifyOptions
+name|verifyDownloadOptions
 argument_list|(
 name|DataRecordDownloadOptions
 operator|.
@@ -695,7 +695,7 @@ argument_list|,
 name|DISPOSITION_TYPE_INLINE
 argument_list|)
 expr_stmt|;
-name|verifyOptions
+name|verifyDownloadOptions
 argument_list|(
 name|DataRecordDownloadOptions
 operator|.

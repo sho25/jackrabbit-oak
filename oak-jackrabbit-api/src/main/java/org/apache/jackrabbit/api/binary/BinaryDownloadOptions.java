@@ -88,6 +88,12 @@ name|String
 name|dispositionType
 decl_stmt|;
 specifier|private
+name|boolean
+name|downloadDomainIgnored
+init|=
+literal|false
+decl_stmt|;
+specifier|private
 name|BinaryDownloadOptions
 parameter_list|(
 specifier|final
@@ -105,6 +111,9 @@ parameter_list|,
 specifier|final
 name|String
 name|dispositionType
+parameter_list|,
+name|boolean
+name|downloadDomainIgnored
 parameter_list|)
 block|{
 name|this
@@ -130,6 +139,12 @@ operator|.
 name|dispositionType
 operator|=
 name|dispositionType
+expr_stmt|;
+name|this
+operator|.
+name|downloadDomainIgnored
+operator|=
+name|downloadDomainIgnored
 expr_stmt|;
 block|}
 comment|/**      * Provides a default instance of this class.  Using the default instance      * indicates that the caller is willing to accept the service provider      * default behavior.      */
@@ -199,6 +214,16 @@ return|return
 name|dispositionType
 return|;
 block|}
+comment|/**      * Returns a boolean value that indicates whether the data store should      * ignore any provided download domain override configuration value when      * generating the signed URI.  This value can be set by calling {@link      * BinaryDownloadOptionsBuilder#withDomainOverrideIgnored(boolean)}.  The      * default value of this setting is false.      *      * @return true if the domain override should be ignored; false otherwise.      */
+specifier|public
+name|boolean
+name|isDownloadDomainIgnored
+parameter_list|()
+block|{
+return|return
+name|downloadDomainIgnored
+return|;
+block|}
 comment|/**      * Returns a {@link BinaryDownloadOptionsBuilder} instance to be used for      * creating an instance of this class.      *      * @return A builder instance.      */
 annotation|@
 name|NotNull
@@ -246,6 +271,12 @@ init|=
 name|DispositionType
 operator|.
 name|INLINE
+decl_stmt|;
+specifier|private
+name|boolean
+name|domainOverrideIgnored
+init|=
+literal|false
 decl_stmt|;
 specifier|private
 name|BinaryDownloadOptionsBuilder
@@ -356,6 +387,25 @@ return|return
 name|this
 return|;
 block|}
+comment|/**          * Sets a flag to indicate whether any configured download domain          * override value should be ignored when generating the signed download          * URI.          *<p>          *          * The default value of this flag is false.  This means that if a          * download domain override configuration value is provided, that value          * will be used in a signed download URI as the hostname, and if not          * provided the default hostname will be used instead.  However, if this          * flag is set to true, the implementation will use the default hostname          * for the signed download URI regardless of whether the download domain          * override value is configured or not.          *          * Most clients will want to accept the default behavior.  However, if a          * client understands its deployment topology it may know that ignoring          * the download domain override will provide better performance.  An          * example of this is if the client is a service running in the same          * cloud region as the blob store, in which case accessing the storage          * directly is almost always faster than going through a domain override          * (e.g. CDN domain).          *          * @param domainOverrideIgnored          * @return The calling instance.          */
+specifier|public
+name|BinaryDownloadOptionsBuilder
+name|withDomainOverrideIgnored
+parameter_list|(
+name|boolean
+name|domainOverrideIgnored
+parameter_list|)
+block|{
+name|this
+operator|.
+name|domainOverrideIgnored
+operator|=
+name|domainOverrideIgnored
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 comment|/**          * Construct a {@link BinaryDownloadOptions} instance with the          * properties specified to the builder.          *          * @return A new {@link BinaryDownloadOptions} instance built with the          *         properties specified to the builder.          */
 annotation|@
 name|NotNull
@@ -389,6 +439,8 @@ name|INLINE
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|domainOverrideIgnored
 argument_list|)
 return|;
 block|}

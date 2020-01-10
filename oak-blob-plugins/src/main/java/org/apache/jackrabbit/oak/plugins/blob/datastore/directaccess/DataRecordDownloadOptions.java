@@ -390,6 +390,11 @@ name|downloadOptions
 operator|.
 name|getDispositionType
 argument_list|()
+argument_list|,
+name|downloadOptions
+operator|.
+name|isDomainOverrideIgnored
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -409,6 +414,8 @@ argument_list|,
 literal|null
 argument_list|,
 name|DISPOSITION_TYPE_INLINE
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -430,6 +437,12 @@ specifier|private
 specifier|final
 name|String
 name|dispositionType
+decl_stmt|;
+specifier|private
+name|boolean
+name|domainOverrideIgnored
+init|=
+literal|false
 decl_stmt|;
 specifier|private
 name|String
@@ -461,6 +474,9 @@ parameter_list|,
 specifier|final
 name|String
 name|dispositionType
+parameter_list|,
+name|boolean
+name|domainOverrideIgnored
 parameter_list|)
 block|{
 name|this
@@ -495,6 +511,12 @@ condition|?
 name|DISPOSITION_TYPE_INLINE
 else|:
 name|dispositionType
+expr_stmt|;
+name|this
+operator|.
+name|domainOverrideIgnored
+operator|=
+name|domainOverrideIgnored
 expr_stmt|;
 block|}
 comment|/**      * Generate the correct HTTP {@code Content-Type} header value from the      * {@link #mediaType} and {@link #characterEncoding} in this class, if set.      *<p>      * If {@link #mediaType} has not been given a value, this method will return      * {@code null}.      *      * @return The correct value for a {@code Content-Type} header, or {@code      *         null} if the {@link #mediaType} has not been specified.      */
@@ -856,6 +878,16 @@ parameter_list|()
 block|{
 return|return
 name|dispositionType
+return|;
+block|}
+comment|/**      * Indicates whether the data store should ignore any configured download      * domain override value when generating the signed download URI.      *      * @return true if the domain override should be ignored; false otherwise.      */
+specifier|public
+name|boolean
+name|isDomainOverrideIgnored
+parameter_list|()
+block|{
+return|return
+name|domainOverrideIgnored
 return|;
 block|}
 block|}

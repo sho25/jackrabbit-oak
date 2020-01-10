@@ -4,14 +4,14 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one  * or m
 end_comment
 
 begin_comment
-comment|/**  * Package related to direct upload/download of blobs.  */
+comment|/**  * Package related to direct upload/download of data records.  */
 end_comment
 
 begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"1.1.0"
+literal|"1.0.0"
 argument_list|)
 end_annotation
 
@@ -25,9 +25,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|plugins
 operator|.
 name|blob
+operator|.
+name|datastore
+operator|.
+name|directaccess
 package|;
 end_package
 
