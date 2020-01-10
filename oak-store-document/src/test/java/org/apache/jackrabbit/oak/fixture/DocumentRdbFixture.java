@@ -63,6 +63,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|ConcurrentHashMap
@@ -76,20 +86,6 @@ operator|.
 name|sql
 operator|.
 name|DataSource
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang
-operator|.
-name|StringUtils
 import|;
 end_import
 
@@ -470,9 +466,9 @@ block|{
 return|return
 literal|"DocumentNodeStore[RDB] on "
 operator|+
-name|StringUtils
+name|Objects
 operator|.
-name|defaultString
+name|toString
 argument_list|(
 name|this
 operator|.

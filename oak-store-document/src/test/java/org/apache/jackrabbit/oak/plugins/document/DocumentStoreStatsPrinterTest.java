@@ -99,22 +99,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang
-operator|.
-name|StringUtils
-operator|.
-name|split
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|hamcrest
 operator|.
 name|Matchers
@@ -218,14 +202,14 @@ name|lines
 init|=
 name|asList
 argument_list|(
-name|split
-argument_list|(
 name|sw
 operator|.
 name|toString
 argument_list|()
-argument_list|,
-literal|"\r\n"
+operator|.
+name|split
+argument_list|(
+literal|"\\r?\\n"
 argument_list|)
 argument_list|)
 decl_stmt|;
