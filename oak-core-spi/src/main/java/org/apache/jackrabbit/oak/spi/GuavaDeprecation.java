@@ -93,7 +93,7 @@ specifier|final
 name|String
 name|DEFAULT
 init|=
-literal|"info"
+literal|"warn"
 decl_stmt|;
 specifier|private
 specifier|static
