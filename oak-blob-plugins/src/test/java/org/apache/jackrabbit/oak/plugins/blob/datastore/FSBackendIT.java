@@ -379,6 +379,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Rule
 import|;
 end_import
@@ -1482,9 +1492,6 @@ argument_list|(
 literal|"Added file to backend"
 argument_list|)
 expr_stmt|;
-return|return
-name|seed
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1501,10 +1508,10 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-throw|throw
-name|e
-throw|;
 block|}
+return|return
+name|seed
+return|;
 block|}
 argument_list|)
 decl_stmt|;
