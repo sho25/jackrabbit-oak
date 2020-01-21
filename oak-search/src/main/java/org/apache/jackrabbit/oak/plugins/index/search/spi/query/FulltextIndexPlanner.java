@@ -4649,6 +4649,10 @@ control|)
 block|{
 if|if
 condition|(
+name|functionIndex
+operator|.
+name|ordered
+operator|&&
 name|o
 operator|.
 name|getPropertyName

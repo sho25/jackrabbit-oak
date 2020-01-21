@@ -463,6 +463,20 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getOrderEntryPropertyName
+parameter_list|(
+name|SelectorImpl
+name|s
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 end_class
 
