@@ -21,6 +21,26 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|segment
+operator|.
+name|azure
+operator|.
+name|util
+operator|.
+name|CaseInsensitiveKeysMapAccess
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -49,13 +69,16 @@ name|UUID
 import|;
 end_import
 
+begin_comment
+comment|/**  * Provides access to the blob metadata.  *<p>  * In azure blob metadata keys are case-insensitive. A bug in the tool azcopy v10 make each key to start with  * an uppercase letter.  To avoid future bugs we should be tolerant in what we read.  *<p>  * Azure Blobs metadata can not store multiple entries with the same key where only the case differs. Therefore it is  * safe to use the same concept in java, see {@link CaseInsensitiveKeysMapAccess}  */
+end_comment
+
 begin_class
 specifier|public
 specifier|final
 class|class
 name|AzureBlobMetadata
 block|{
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -63,7 +86,6 @@ name|METADATA_TYPE
 init|=
 literal|"type"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -71,7 +93,6 @@ name|METADATA_SEGMENT_UUID
 init|=
 literal|"uuid"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -79,7 +100,6 @@ name|METADATA_SEGMENT_POSITION
 init|=
 literal|"position"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -87,7 +107,6 @@ name|METADATA_SEGMENT_GENERATION
 init|=
 literal|"generation"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -95,7 +114,6 @@ name|METADATA_SEGMENT_FULL_GENERATION
 init|=
 literal|"fullGeneration"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -103,7 +121,6 @@ name|METADATA_SEGMENT_COMPACTED
 init|=
 literal|"compacted"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -260,6 +277,21 @@ name|int
 name|length
 parameter_list|)
 block|{
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|caseInsensitiveMetadata
+init|=
+name|CaseInsensitiveKeysMapAccess
+operator|.
+name|convert
+argument_list|(
+name|metadata
+argument_list|)
+decl_stmt|;
 name|UUID
 name|uuid
 init|=
@@ -267,7 +299,7 @@ name|UUID
 operator|.
 name|fromString
 argument_list|(
-name|metadata
+name|caseInsensitiveMetadata
 operator|.
 name|get
 argument_list|(
@@ -298,7 +330,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|metadata
+name|caseInsensitiveMetadata
 operator|.
 name|get
 argument_list|(
@@ -313,7 +345,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|metadata
+name|caseInsensitiveMetadata
 operator|.
 name|get
 argument_list|(
@@ -328,7 +360,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|metadata
+name|caseInsensitiveMetadata
 operator|.
 name|get
 argument_list|(
@@ -343,7 +375,7 @@ name|Boolean
 operator|.
 name|parseBoolean
 argument_list|(
-name|metadata
+name|caseInsensitiveMetadata
 operator|.
 name|get
 argument_list|(
@@ -385,6 +417,21 @@ argument_list|>
 name|metadata
 parameter_list|)
 block|{
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|caseInsensitiveMetadata
+init|=
+name|CaseInsensitiveKeysMapAccess
+operator|.
+name|convert
+argument_list|(
+name|metadata
+argument_list|)
+decl_stmt|;
 return|return
 name|metadata
 operator|!=
@@ -394,7 +441,7 @@ name|TYPE_SEGMENT
 operator|.
 name|equals
 argument_list|(
-name|metadata
+name|caseInsensitiveMetadata
 operator|.
 name|get
 argument_list|(
