@@ -23,25 +23,23 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|jcr
+name|util
 operator|.
-name|Value
+name|function
+operator|.
+name|Predicate
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|javax
 operator|.
-name|google
+name|jcr
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Predicate
+name|Value
 import|;
 end_import
 
@@ -76,7 +74,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|apply
+name|test
 parameter_list|(
 name|Value
 name|value

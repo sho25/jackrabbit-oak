@@ -3886,7 +3886,7 @@ argument_list|,
 name|constraint
 argument_list|)
 operator|.
-name|apply
+name|test
 argument_list|(
 name|value
 argument_list|)

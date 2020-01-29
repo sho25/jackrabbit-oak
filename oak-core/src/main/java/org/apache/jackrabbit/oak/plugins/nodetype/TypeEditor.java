@@ -369,6 +369,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -398,20 +410,6 @@ operator|.
 name|base
 operator|.
 name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Predicate
 import|;
 end_import
 
@@ -2513,7 +2511,7 @@ if|if
 condition|(
 name|predicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|v
 argument_list|)

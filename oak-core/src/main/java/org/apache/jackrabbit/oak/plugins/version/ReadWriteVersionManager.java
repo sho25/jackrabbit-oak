@@ -3479,7 +3479,7 @@ argument_list|)
 operator|&&
 name|isVersion
 operator|.
-name|apply
+name|test
 argument_list|(
 name|node
 argument_list|)
