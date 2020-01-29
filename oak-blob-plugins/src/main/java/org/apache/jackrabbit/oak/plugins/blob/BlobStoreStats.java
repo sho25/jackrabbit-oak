@@ -1298,7 +1298,7 @@ name|BLOB_UPLOAD_SIZE
 argument_list|,
 name|StatsOptions
 operator|.
-name|TIME_SERIES_ONLY
+name|DEFAULT
 argument_list|)
 expr_stmt|;
 name|this
@@ -1313,7 +1313,7 @@ name|BLOB_UPLOAD_TIME
 argument_list|,
 name|StatsOptions
 operator|.
-name|TIME_SERIES_ONLY
+name|DEFAULT
 argument_list|)
 expr_stmt|;
 name|this
@@ -1369,7 +1369,7 @@ name|BLOB_DOWNLOAD_SIZE
 argument_list|,
 name|StatsOptions
 operator|.
-name|TIME_SERIES_ONLY
+name|DEFAULT
 argument_list|)
 expr_stmt|;
 name|this
@@ -1384,7 +1384,7 @@ name|BLOB_DOWNLOAD_TIME
 argument_list|,
 name|StatsOptions
 operator|.
-name|TIME_SERIES_ONLY
+name|DEFAULT
 argument_list|)
 expr_stmt|;
 name|this
