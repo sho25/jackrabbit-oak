@@ -709,7 +709,7 @@ if|if
 condition|(
 name|isACE
 operator|.
-name|test
+name|apply
 argument_list|(
 name|ace
 argument_list|)
@@ -720,7 +720,7 @@ name|isAllow
 init|=
 name|isGrantACE
 operator|.
-name|test
+name|apply
 argument_list|(
 name|ace
 argument_list|)

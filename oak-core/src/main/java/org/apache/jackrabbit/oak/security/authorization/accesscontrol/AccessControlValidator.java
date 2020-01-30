@@ -1526,7 +1526,7 @@ condition|(
 operator|!
 name|requiredMixin
 operator|.
-name|test
+name|apply
 argument_list|(
 name|treeProvider
 operator|.

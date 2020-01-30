@@ -883,7 +883,7 @@ if|if
 condition|(
 name|isVersionable
 operator|.
-name|test
+name|apply
 argument_list|(
 name|node
 argument_list|)
@@ -1121,7 +1121,7 @@ condition|(
 operator|!
 name|isReferenceable
 operator|.
-name|test
+name|apply
 argument_list|(
 name|versionableBuilder
 operator|.

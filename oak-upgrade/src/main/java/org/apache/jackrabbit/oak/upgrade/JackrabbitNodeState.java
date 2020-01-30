@@ -2326,7 +2326,7 @@ if|if
 condition|(
 name|isOrderable
 operator|.
-name|test
+name|apply
 argument_list|(
 name|this
 argument_list|)
@@ -2756,7 +2756,7 @@ argument_list|()
 operator|||
 name|isReferenceable
 operator|.
-name|test
+name|apply
 argument_list|(
 name|primary
 argument_list|,
@@ -2823,7 +2823,7 @@ name|STRING
 operator|&&
 name|isFrozenNode
 operator|.
-name|test
+name|apply
 argument_list|(
 name|this
 argument_list|)
@@ -2918,7 +2918,7 @@ condition|(
 operator|!
 name|isReferenceable
 operator|.
-name|test
+name|apply
 argument_list|(
 name|frozenPrimary
 argument_list|,

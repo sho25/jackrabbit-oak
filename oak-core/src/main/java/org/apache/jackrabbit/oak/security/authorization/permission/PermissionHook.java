@@ -842,7 +842,7 @@ if|if
 condition|(
 name|isACL
 operator|.
-name|test
+name|apply
 argument_list|(
 name|after
 argument_list|)
@@ -935,7 +935,7 @@ if|if
 condition|(
 name|isACL
 operator|.
-name|test
+name|apply
 argument_list|(
 name|before
 argument_list|)
@@ -945,7 +945,7 @@ if|if
 condition|(
 name|isACL
 operator|.
-name|test
+name|apply
 argument_list|(
 name|after
 argument_list|)
@@ -1042,7 +1042,7 @@ if|if
 condition|(
 name|isACL
 operator|.
-name|test
+name|apply
 argument_list|(
 name|after
 argument_list|)
@@ -1132,7 +1132,7 @@ if|if
 condition|(
 name|isACL
 operator|.
-name|test
+name|apply
 argument_list|(
 name|before
 argument_list|)

@@ -684,7 +684,7 @@ name|includeThis
 operator|&&
 name|predicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|after
 argument_list|)
@@ -708,7 +708,7 @@ name|includeThis
 operator|&&
 name|predicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|before
 argument_list|)
@@ -735,7 +735,7 @@ name|includeThis
 operator|&&
 name|predicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|moved
 argument_list|)
@@ -762,7 +762,7 @@ name|includeThis
 operator|&&
 name|predicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|reordered
 argument_list|)
@@ -801,7 +801,7 @@ name|predicateMatches
 operator|=
 name|predicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|after
 argument_list|)
@@ -813,7 +813,7 @@ name|predicateMatches
 operator|=
 name|predicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|before
 argument_list|)
@@ -1084,7 +1084,7 @@ condition|(
 operator|!
 name|nodeTypePredicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|nodeState
 argument_list|)
@@ -1230,7 +1230,7 @@ condition|(
 operator|!
 name|nodeTypePredicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|nodeState
 argument_list|)

@@ -45,6 +45,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|commons
+operator|.
+name|UUIDUtils
+operator|.
+name|generateUUID
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|plugins
 operator|.
 name|memory
@@ -162,7 +180,7 @@ name|assertFalse
 argument_list|(
 name|p
 operator|.
-name|test
+name|apply
 argument_list|(
 name|tree
 argument_list|)
@@ -210,7 +228,7 @@ name|assertTrue
 argument_list|(
 name|p
 operator|.
-name|test
+name|apply
 argument_list|(
 name|tree
 argument_list|)
@@ -256,7 +274,7 @@ name|assertFalse
 argument_list|(
 name|p
 operator|.
-name|test
+name|apply
 argument_list|(
 name|tree
 argument_list|)
@@ -314,7 +332,7 @@ name|assertTrue
 argument_list|(
 name|p
 operator|.
-name|test
+name|apply
 argument_list|(
 name|tree
 argument_list|)
@@ -370,7 +388,7 @@ name|assertFalse
 argument_list|(
 name|p
 operator|.
-name|test
+name|apply
 argument_list|(
 name|tree
 argument_list|)

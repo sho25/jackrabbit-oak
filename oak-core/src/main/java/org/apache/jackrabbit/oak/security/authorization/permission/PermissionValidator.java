@@ -2019,7 +2019,7 @@ argument_list|)
 operator|&&
 name|isReferenceable
 operator|.
-name|test
+name|apply
 argument_list|(
 name|parentNs
 argument_list|)
@@ -2050,7 +2050,7 @@ operator|)
 operator|&&
 name|isCreated
 operator|.
-name|test
+name|apply
 argument_list|(
 name|parentNs
 argument_list|)

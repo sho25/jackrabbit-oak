@@ -400,7 +400,7 @@ condition|(
 operator|!
 name|isMixCug
 operator|.
-name|test
+name|apply
 argument_list|(
 name|parent
 argument_list|)

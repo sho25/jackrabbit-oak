@@ -39,11 +39,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|function
+name|common
+operator|.
+name|base
 operator|.
 name|Predicate
 import|;
@@ -163,7 +165,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|test
+name|apply
 parameter_list|(
 name|NodeState
 name|node
@@ -186,7 +188,7 @@ literal|null
 operator|&&
 name|propertyPredicate
 operator|.
-name|test
+name|apply
 argument_list|(
 name|property
 argument_list|)

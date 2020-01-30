@@ -23,6 +23,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Predicates
+operator|.
+name|alwaysTrue
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -55,11 +71,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|function
+name|common
+operator|.
+name|base
 operator|.
 name|Predicate
 import|;
@@ -147,9 +165,8 @@ name|NodeState
 argument_list|>
 name|ALL
 init|=
-name|x
-lambda|->
-literal|true
+name|alwaysTrue
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final

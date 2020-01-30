@@ -1140,7 +1140,7 @@ literal|3
 argument_list|)
 argument_list|)
 operator|.
-name|test
+name|apply
 argument_list|(
 name|nodeState
 argument_list|)
@@ -1153,7 +1153,7 @@ name|never
 argument_list|()
 argument_list|)
 operator|.
-name|test
+name|apply
 argument_list|(
 name|nodeState
 argument_list|)
@@ -1303,7 +1303,7 @@ literal|3
 argument_list|)
 argument_list|)
 operator|.
-name|test
+name|apply
 argument_list|(
 name|ace
 argument_list|)
@@ -1318,7 +1318,7 @@ literal|3
 argument_list|)
 argument_list|)
 operator|.
-name|test
+name|apply
 argument_list|(
 name|ace
 argument_list|)

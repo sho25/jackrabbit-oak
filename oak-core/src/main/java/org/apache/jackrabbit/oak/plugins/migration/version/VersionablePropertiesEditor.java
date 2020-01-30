@@ -802,7 +802,7 @@ if|if
 condition|(
 name|isVersionable
 operator|.
-name|test
+name|apply
 argument_list|(
 name|after
 argument_list|)
@@ -819,7 +819,7 @@ if|if
 condition|(
 name|isFrozenNode
 operator|.
-name|test
+name|apply
 argument_list|(
 name|after
 argument_list|)
@@ -1221,7 +1221,7 @@ condition|(
 operator|!
 name|isNtVersion
 operator|.
-name|test
+name|apply
 argument_list|(
 name|v
 argument_list|)
