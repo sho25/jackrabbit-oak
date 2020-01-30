@@ -249,7 +249,7 @@ name|assertFalse
 argument_list|(
 name|p
 operator|.
-name|apply
+name|test
 argument_list|(
 name|node
 argument_list|)
@@ -291,7 +291,7 @@ name|assertTrue
 argument_list|(
 name|p
 operator|.
-name|apply
+name|test
 argument_list|(
 name|node
 argument_list|)
@@ -333,7 +333,7 @@ name|assertFalse
 argument_list|(
 name|p
 operator|.
-name|apply
+name|test
 argument_list|(
 name|node
 argument_list|)
@@ -379,7 +379,7 @@ name|assertTrue
 argument_list|(
 name|p
 operator|.
-name|apply
+name|test
 argument_list|(
 name|node
 argument_list|)
@@ -425,7 +425,7 @@ name|assertFalse
 argument_list|(
 name|p
 operator|.
-name|apply
+name|test
 argument_list|(
 name|node
 argument_list|)

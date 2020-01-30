@@ -176,7 +176,7 @@ literal|null
 operator|&&
 name|referenceable
 operator|.
-name|apply
+name|test
 argument_list|(
 name|root
 argument_list|)
@@ -270,7 +270,7 @@ operator|&&
 operator|!
 name|referenceable
 operator|.
-name|apply
+name|test
 argument_list|(
 name|state
 argument_list|)

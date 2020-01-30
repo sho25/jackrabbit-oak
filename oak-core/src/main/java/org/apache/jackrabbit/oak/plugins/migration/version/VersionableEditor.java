@@ -753,7 +753,7 @@ if|if
 condition|(
 name|isVersionable
 operator|.
-name|apply
+name|test
 argument_list|(
 name|after
 argument_list|)
@@ -872,7 +872,7 @@ if|if
 condition|(
 name|isVersionable
 operator|.
-name|apply
+name|test
 argument_list|(
 name|versionableBuilder
 operator|.

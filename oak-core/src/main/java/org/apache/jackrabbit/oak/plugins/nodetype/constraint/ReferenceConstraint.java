@@ -23,6 +23,18 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -33,15 +45,17 @@ end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Predicate
+name|core
+operator|.
+name|GuavaDeprecation
 import|;
 end_import
 
@@ -50,6 +64,19 @@ specifier|public
 class|class
 name|ReferenceConstraint
 implements|implements
+name|Predicate
+argument_list|<
+name|Value
+argument_list|>
+implements|,
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Predicate
 argument_list|<
 name|Value
@@ -76,7 +103,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|apply
+name|test
 parameter_list|(
 name|Value
 name|value
@@ -85,6 +112,33 @@ block|{
 comment|// TODO implement ReferenceConstraint
 return|return
 literal|true
+return|;
+block|}
+comment|/**      * @deprecated use {@link #test(Value)} instead  (see<a href="https://issues.apache.org/jira/browse/OAK-8874">OAK-8874</a>)      */
+annotation|@
+name|Deprecated
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|apply
+parameter_list|(
+name|Value
+name|value
+parameter_list|)
+block|{
+name|GuavaDeprecation
+operator|.
+name|handleCall
+argument_list|(
+literal|"OAK-8874"
+argument_list|)
+expr_stmt|;
+return|return
+name|test
+argument_list|(
+name|value
+argument_list|)
 return|;
 block|}
 annotation|@

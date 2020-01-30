@@ -1577,7 +1577,7 @@ condition|(
 operator|!
 name|isMixPrincipalBased
 operator|.
-name|apply
+name|test
 argument_list|(
 name|parent
 argument_list|)

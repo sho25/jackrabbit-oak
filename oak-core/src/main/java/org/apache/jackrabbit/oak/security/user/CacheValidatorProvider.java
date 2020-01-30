@@ -821,7 +821,7 @@ argument_list|)
 operator|||
 name|cachePredicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|tree
 argument_list|)

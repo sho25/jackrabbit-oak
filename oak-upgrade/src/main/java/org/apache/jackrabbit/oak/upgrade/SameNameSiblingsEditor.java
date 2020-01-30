@@ -1557,7 +1557,7 @@ name|result
 operator|&=
 name|parentType
 operator|.
-name|apply
+name|test
 argument_list|(
 name|parent
 argument_list|)
@@ -1583,7 +1583,7 @@ name|result
 operator|&=
 name|childType
 operator|.
-name|apply
+name|test
 argument_list|(
 name|parent
 operator|.

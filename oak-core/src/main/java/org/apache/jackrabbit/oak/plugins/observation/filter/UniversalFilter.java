@@ -59,13 +59,11 @@ end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
-operator|.
-name|base
+name|function
 operator|.
 name|Predicate
 import|;
@@ -320,7 +318,7 @@ block|{
 return|return
 name|predicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|selector
 operator|.
@@ -351,7 +349,7 @@ block|{
 return|return
 name|predicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|selector
 operator|.
@@ -379,7 +377,7 @@ block|{
 return|return
 name|predicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|selector
 operator|.
@@ -410,7 +408,7 @@ block|{
 return|return
 name|predicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|selector
 operator|.
@@ -443,7 +441,7 @@ block|{
 return|return
 name|predicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|selector
 operator|.
@@ -479,7 +477,7 @@ block|{
 return|return
 name|predicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|selector
 operator|.
@@ -515,7 +513,7 @@ block|{
 return|return
 name|predicate
 operator|.
-name|apply
+name|test
 argument_list|(
 name|selector
 operator|.

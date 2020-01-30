@@ -328,7 +328,7 @@ literal|null
 operator|&&
 name|isACE
 operator|.
-name|apply
+name|test
 argument_list|(
 name|after
 argument_list|)

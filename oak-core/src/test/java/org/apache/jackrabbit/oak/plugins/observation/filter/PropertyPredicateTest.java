@@ -85,13 +85,11 @@ end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
-operator|.
-name|base
+name|function
 operator|.
 name|Predicate
 import|;
@@ -183,7 +181,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|apply
+name|test
 parameter_list|(
 name|PropertyState
 name|property
@@ -210,7 +208,7 @@ name|assertTrue
 argument_list|(
 name|p
 operator|.
-name|apply
+name|test
 argument_list|(
 name|createWithProperty
 argument_list|(
@@ -259,7 +257,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|apply
+name|test
 parameter_list|(
 name|PropertyState
 name|property
@@ -286,7 +284,7 @@ name|assertFalse
 argument_list|(
 name|p
 operator|.
-name|apply
+name|test
 argument_list|(
 name|createWithProperty
 argument_list|(
@@ -335,7 +333,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|apply
+name|test
 parameter_list|(
 name|PropertyState
 name|property
@@ -362,7 +360,7 @@ name|assertFalse
 argument_list|(
 name|p
 operator|.
-name|apply
+name|test
 argument_list|(
 name|createWithProperty
 argument_list|(
