@@ -1035,7 +1035,7 @@ literal|false
 return|;
 block|}
 comment|// backwards compatibility, see OAK-8874
-comment|/**      * @deprecated use {@link #test(NodeState) instead (see<a href="https://issues.apache.org/jira/browse/OAK-8874">OAK-8874</a>)      */
+comment|/**      * @deprecated use {@link #test(NodeState)} instead (see<a href="https://issues.apache.org/jira/browse/OAK-8874">OAK-8874</a>)      */
 annotation|@
 name|Deprecated
 specifier|public
@@ -1062,7 +1062,7 @@ name|input
 argument_list|)
 return|;
 block|}
-comment|/**      * @deprecated use {@link #test(Tree) instead (see<a href="https://issues.apache.org/jira/browse/OAK-8874">OAK-8874</a>)      */
+comment|/**      * @deprecated use {@link #test(Tree)} instead (see<a href="https://issues.apache.org/jira/browse/OAK-8874">OAK-8874</a>)      */
 annotation|@
 name|Deprecated
 specifier|public
@@ -1089,7 +1089,7 @@ name|input
 argument_list|)
 return|;
 block|}
-comment|/**      * @deprecated use {@link #test(String, Set)) instead (see<a href="https://issues.apache.org/jira/browse/OAK-8874">OAK-8874</a>)      */
+comment|/**      * @deprecated use {@link #test(String, Set)} instead (see<a href="https://issues.apache.org/jira/browse/OAK-8874">OAK-8874</a>)      */
 annotation|@
 name|Deprecated
 specifier|public
