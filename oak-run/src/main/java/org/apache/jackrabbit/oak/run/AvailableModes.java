@@ -454,6 +454,15 @@ name|ServerCommand
 argument_list|()
 argument_list|)
 operator|.
+name|put
+argument_list|(
+literal|"purge-index-versions"
+argument_list|,
+operator|new
+name|PurgeOldIndexVersionCommand
+argument_list|()
+argument_list|)
+operator|.
 name|build
 argument_list|()
 argument_list|)

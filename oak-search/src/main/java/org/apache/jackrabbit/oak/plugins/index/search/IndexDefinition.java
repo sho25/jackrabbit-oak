@@ -1161,6 +1161,22 @@ name|STATUS_LAST_UPDATED
 init|=
 literal|"lastUpdated"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CREATION_TIMESTAMP
+init|=
+literal|"creationTimestamp"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REINDEX_COMPLETION_TIMESTAMP
+init|=
+literal|"reindexCompletionTimestamp"
+decl_stmt|;
 comment|/**      * Meta property which provides the unique id      */
 specifier|public
 specifier|static
