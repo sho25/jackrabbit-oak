@@ -185,6 +185,26 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryConstants
+operator|.
+name|REP_FACET
+import|;
+end_import
+
 begin_comment
 comment|/**  * An index that traverses over a given subtree.  */
 end_comment
@@ -367,6 +387,32 @@ argument_list|()
 condition|)
 block|{
 comment|// not an appropriate index for native search
+return|return
+name|Double
+operator|.
+name|POSITIVE_INFINITY
+return|;
+block|}
+name|Filter
+operator|.
+name|PropertyRestriction
+name|facetRestriction
+init|=
+name|filter
+operator|.
+name|getPropertyRestriction
+argument_list|(
+name|REP_FACET
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|facetRestriction
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// not an appropriate index for facets
 return|return
 name|Double
 operator|.
