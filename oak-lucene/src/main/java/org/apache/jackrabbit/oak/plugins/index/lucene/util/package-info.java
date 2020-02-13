@@ -4,14 +4,14 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_comment
-comment|/**  * This package contains facet related classes.  */
+comment|/**  * This package contains various indexing and search related helpers.  */
 end_comment
 
 begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"1.1.0"
+literal|"1.0.0"
 argument_list|)
 end_annotation
 
@@ -25,9 +25,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|plugins
 operator|.
-name|facet
+name|index
+operator|.
+name|lucene
+operator|.
+name|util
 package|;
 end_package
 

@@ -4,14 +4,14 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_comment
-comment|/**  * This package contains facet related classes.  */
+comment|/**  * This package contains classes related to lucene hybrid index v2 where the index content  * is stored using both property index (for recent enrties) and lucene indexes (for older entries). Related  * document can be found  *<a href="http://jackrabbit.apache.org/archive/wiki/JCR/attachments/115513516/115513517.pdf">here</a>.  */
 end_comment
 
 begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"1.1.0"
+literal|"1.0.0"
 argument_list|)
 end_annotation
 
@@ -25,9 +25,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|plugins
 operator|.
-name|facet
+name|index
+operator|.
+name|lucene
+operator|.
+name|property
 package|;
 end_package
 
