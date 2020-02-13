@@ -187,13 +187,7 @@ name|ConcurrentHashMap
 import|;
 end_import
 
-begin_comment
-comment|/**  * @deprecated Unused interface that exposes Lucene API directly - it will be removed in 1.28  */
-end_comment
-
 begin_class
-annotation|@
-name|Deprecated
 annotation|@
 name|Component
 argument_list|(
