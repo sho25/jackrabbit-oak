@@ -5,6 +5,11 @@ end_comment
 
 begin_annotation
 annotation|@
+name|Deprecated
+end_annotation
+
+begin_annotation
+annotation|@
 name|Version
 argument_list|(
 literal|"1.3.1"
