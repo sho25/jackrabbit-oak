@@ -3952,11 +3952,7 @@ name|result
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try
@@ -3982,7 +3978,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"SELECT collation_name FROM sys.databases WHERE name=?"
+literal|"SELECT collation_name, create_date FROM sys.databases WHERE name=?"
 argument_list|)
 expr_stmt|;
 name|stmt
@@ -4019,7 +4015,21 @@ name|rs
 operator|.
 name|getString
 argument_list|(
-literal|1
+literal|"collation_name"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|put
+argument_list|(
+literal|"create_date"
+argument_list|,
+name|rs
+operator|.
+name|getString
+argument_list|(
+literal|"create_date"
 argument_list|)
 argument_list|)
 expr_stmt|;
