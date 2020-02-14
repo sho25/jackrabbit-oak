@@ -6320,6 +6320,9 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+operator|.
+name|toString
+argument_list|()
 decl_stmt|;
 name|LOG
 operator|.
