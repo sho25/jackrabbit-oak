@@ -265,7 +265,37 @@ name|RDBBlobStore
 operator|.
 name|IDSIZE
 operator|+
-literal|") not null, DATA varbinary(max)"
+literal|") not null, DATA varbinary(max) "
+operator|+
+literal|"constraint "
+operator|+
+name|tableName
+operator|+
+literal|"_PK primary key clustered (ID ASC))"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getMetaTableCreationStatement
+parameter_list|(
+name|String
+name|tableName
+parameter_list|)
+block|{
+return|return
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID varchar("
+operator|+
+name|RDBBlobStore
+operator|.
+name|IDSIZE
+operator|+
+literal|") not null, LVL int, LASTMOD bigint "
 operator|+
 literal|"constraint "
 operator|+
