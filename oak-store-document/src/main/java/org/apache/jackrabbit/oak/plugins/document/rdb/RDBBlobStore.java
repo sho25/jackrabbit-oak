@@ -1379,7 +1379,7 @@ name|checkStatement
 operator|.
 name|executeQuery
 argument_list|(
-literal|"select ID from "
+literal|"select * from "
 operator|+
 name|tableName
 operator|+
