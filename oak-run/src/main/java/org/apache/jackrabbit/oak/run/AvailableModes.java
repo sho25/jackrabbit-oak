@@ -275,6 +275,15 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
+literal|"index-merge"
+argument_list|,
+operator|new
+name|IndexMergeCommand
+argument_list|()
+argument_list|)
+operator|.
+name|put
+argument_list|(
 name|IndexCommand
 operator|.
 name|NAME
