@@ -23,6 +23,30 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|AssumptionViolatedException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -52,13 +76,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test S3DataStore operation with SSE_S3 encryption.  * It requires to pass aws config file via system property  or system properties by prefixing with 'ds.'.  * See details @ {@link S3DataStoreUtils}.  * For e.g. -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties  */
+comment|/**  * Test S3DataStore operation with SSE_KMS encryption.  * It requires to pass aws config file via system property  or system properties by prefixing with 'ds.'.  * See details @ {@link S3DataStoreUtils}.  * For e.g. -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties  * provide kmsKeyId in above aws.properties file  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|TestS3DSWithSSES3
+name|TestS3DSWithSSEKMSwithKey
 extends|extends
 name|TestS3Ds
 block|{
@@ -93,6 +117,29 @@ operator|.
 name|setUp
 argument_list|()
 expr_stmt|;
+name|String
+name|keyid
+init|=
+name|props
+operator|.
+name|getProperty
+argument_list|(
+name|S3Constants
+operator|.
+name|S3_SSE_KMS_KEYID
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|keyid
+argument_list|)
+condition|)
+block|{
 name|props
 operator|.
 name|setProperty
@@ -103,9 +150,38 @@ name|S3_ENCRYPTION
 argument_list|,
 name|S3Constants
 operator|.
-name|S3_ENCRYPTION_SSE_S3
+name|S3_ENCRYPTION_SSE_KMS
 argument_list|)
 expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+name|S3Constants
+operator|.
+name|S3_SSE_KMS_KEYID
+argument_list|,
+name|keyid
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Key ID not configured so ignoring test"
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|AssumptionViolatedException
+argument_list|(
+literal|"KMS key Id not configured"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class

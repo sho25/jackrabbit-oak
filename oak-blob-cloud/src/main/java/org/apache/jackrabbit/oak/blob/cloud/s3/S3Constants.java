@@ -175,6 +175,33 @@ name|S3_ENCRYPTION_SSE_S3
 init|=
 literal|"SSE_S3"
 decl_stmt|;
+comment|/**      *  Constant to set SSE_KMS encryption.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|S3_ENCRYPTION_SSE_KMS
+init|=
+literal|"SSE_KMS"
+decl_stmt|;
+comment|/**      *  Constant to set keyID for SSE_KMS encryption.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|S3_SSE_KMS_KEYID
+init|=
+literal|"kmsKeyId"
+decl_stmt|;
+comment|/**      *  Constant to set S3 signature for SSE_KMS encryption.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|S3_SIG_V4
+init|=
+literal|"AWSS3V4SignerType"
+decl_stmt|;
 comment|/**      *  Constant to set proxy host.      */
 specifier|public
 specifier|static
