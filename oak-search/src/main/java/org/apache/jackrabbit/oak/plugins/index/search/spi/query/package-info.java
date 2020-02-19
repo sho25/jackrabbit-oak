@@ -4,16 +4,8 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_comment
-comment|/**  * This package contains facet related classes.  */
+comment|/**  * This package contains query index related classes.  */
 end_comment
-
-begin_annotation
-annotation|@
-name|Version
-argument_list|(
-literal|"1.1.0"
-argument_list|)
-end_annotation
 
 begin_package
 package|package
@@ -25,9 +17,15 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|plugins
 operator|.
-name|facet
+name|index
+operator|.
+name|search
+operator|.
+name|spi
+operator|.
+name|query
 package|;
 end_package
 
