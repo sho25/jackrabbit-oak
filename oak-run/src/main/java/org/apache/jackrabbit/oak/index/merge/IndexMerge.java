@@ -819,6 +819,10 @@ specifier|private
 name|ExecutorService
 name|executorService
 decl_stmt|;
+specifier|private
+name|boolean
+name|quiet
+decl_stmt|;
 specifier|public
 specifier|static
 name|void
@@ -841,10 +845,6 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
-name|boolean
-name|quiet
-decl_stmt|;
 comment|/**      * Execute the command.      *      * @param args the command line arguments      */
 specifier|public
 name|void
@@ -1152,7 +1152,7 @@ operator|.
 name|keySet
 argument_list|()
 decl_stmt|;
-name|IndexDefMerger
+name|IndexDefMergerUtils
 operator|.
 name|merge
 argument_list|(

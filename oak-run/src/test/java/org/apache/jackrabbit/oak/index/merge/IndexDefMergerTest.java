@@ -303,7 +303,7 @@ argument_list|(
 literal|"expectedNew"
 argument_list|)
 decl_stmt|;
-name|IndexDefMerger
+name|IndexDefMergerUtils
 operator|.
 name|merge
 argument_list|(
@@ -378,7 +378,7 @@ block|{
 name|JsonObject
 name|got
 init|=
-name|IndexDefMerger
+name|IndexDefMergerUtils
 operator|.
 name|merge
 argument_list|(
