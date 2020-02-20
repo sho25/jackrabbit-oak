@@ -107,6 +107,18 @@ name|DataStoreException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jetbrains
+operator|.
+name|annotations
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface to be implemented by a shared data store.  */
 end_comment
@@ -218,6 +230,29 @@ name|Type
 name|getType
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the repository id (identifier for the repository in the DataStore)      * @return repository id      */
+annotation|@
+name|Nullable
+specifier|default
+name|String
+name|getRepositoryId
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/**      * Sets the repository id to identify repository in the DataStore      * @param repositoryId      * @throws DataStoreException      */
+specifier|default
+name|void
+name|setRepositoryId
+parameter_list|(
+name|String
+name|repositoryId
+parameter_list|)
+throws|throws
+name|DataStoreException
+block|{}
 block|}
 end_interface
 
