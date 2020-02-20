@@ -1639,6 +1639,27 @@ name|tablesCreated
 argument_list|)
 expr_stmt|;
 block|}
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|diag
+init|=
+name|db
+operator|.
+name|getAdditionalDiagnostics
+argument_list|(
+name|this
+operator|.
+name|ch
+argument_list|,
+name|this
+operator|.
+name|tnData
+argument_list|)
+decl_stmt|;
 name|LOG
 operator|.
 name|info
@@ -1659,6 +1680,24 @@ operator|+
 literal|", connecting to: "
 operator|+
 name|dbUrl
+operator|+
+operator|(
+name|diag
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
+literal|""
+else|:
+operator|(
+literal|", properties: "
+operator|+
+name|diag
+operator|.
+name|toString
+argument_list|()
+operator|)
+operator|)
 operator|+
 literal|", transaction isolation level: "
 operator|+

@@ -6327,7 +6327,12 @@ literal|", "
 argument_list|)
 expr_stmt|;
 block|}
+name|Map
+argument_list|<
 name|String
+argument_list|,
+name|String
+argument_list|>
 name|diag
 init|=
 name|dbInfo
@@ -6352,9 +6357,6 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
 name|LOG
 operator|.
@@ -6389,6 +6391,9 @@ operator|(
 literal|", properties: "
 operator|+
 name|diag
+operator|.
+name|toString
+argument_list|()
 operator|)
 operator|)
 operator|+
