@@ -974,7 +974,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Command to check data store consistency and also optionally retrieve ids  * and references.  */
+comment|/**  * Command to check data store consistency and also optionally retrieve ids  * and references.  *  * NOTE - OAK-7671 plans on deprecating this command to delegate internally to use  * @see org.apache.jackrabbit.oak.run.DataStoreCommand instead. So  * any new support around Datastore should be added to @see org.apache.jackrabbit.oak.run.DataStoreCommand  */
 end_comment
 
 begin_class
