@@ -524,7 +524,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 name|resetLoggingConfig
 operator|=
 name|parser
