@@ -730,6 +730,31 @@ name|AttributeDefinition
 argument_list|(
 name|name
 operator|=
+literal|"Delay factor for a Version GC run"
+argument_list|,
+name|description
+operator|=
+literal|"A Version GC run has a gap of this delay factor to reduce continuous load on system"
+operator|+
+literal|"The default value is "
+operator|+
+name|DocumentNodeStoreService
+operator|.
+name|DEFAULT_RGC_DELAY_FACTOR
+argument_list|)
+name|double
+name|versionGCDelayFactor
+parameter_list|()
+default|default
+name|DocumentNodeStoreService
+operator|.
+name|DEFAULT_RGC_DELAY_FACTOR
+function_decl|;
+annotation|@
+name|AttributeDefinition
+argument_list|(
+name|name
+operator|=
 literal|"Blob GC Max Age (in secs)"
 argument_list|,
 name|description

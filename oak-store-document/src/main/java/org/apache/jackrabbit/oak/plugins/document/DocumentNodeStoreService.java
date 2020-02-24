@@ -1661,6 +1661,14 @@ operator|*
 literal|60
 decl_stmt|;
 comment|// default is 3 hours
+specifier|public
+specifier|static
+specifier|final
+name|double
+name|DEFAULT_RGC_DELAY_FACTOR
+init|=
+literal|0
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -4838,6 +4846,8 @@ argument_list|,
 name|versionGcMaxAgeInSecs
 argument_list|,
 literal|0
+argument_list|,
+name|DEFAULT_RGC_DELAY_FACTOR
 argument_list|)
 decl_stmt|;
 name|Runnable
@@ -5229,6 +5239,14 @@ operator|.
 name|versionGCTimeLimitInSecs
 argument_list|()
 decl_stmt|;
+name|double
+name|versionGCDelayFactor
+init|=
+name|config
+operator|.
+name|versionGCDelayFactor
+argument_list|()
+decl_stmt|;
 name|addRegistration
 argument_list|(
 name|scheduleWithFixedDelay
@@ -5243,6 +5261,8 @@ argument_list|,
 name|versionGcMaxAgeInSecs
 argument_list|,
 name|versionGCTimeLimitInSecs
+argument_list|,
+name|versionGCDelayFactor
 argument_list|)
 argument_list|,
 name|props
@@ -5688,6 +5708,11 @@ name|long
 name|versionGCTimeLimitInSecs
 decl_stmt|;
 specifier|private
+specifier|final
+name|double
+name|versionGCDelayFactor
+decl_stmt|;
+specifier|private
 specifier|volatile
 name|Object
 name|lastResult
@@ -5712,6 +5737,9 @@ name|versionGcMaxAgeInSecs
 parameter_list|,
 name|long
 name|versionGCTimeLimitInSecs
+parameter_list|,
+name|double
+name|versionGCDelayFactor
 parameter_list|)
 block|{
 name|this
@@ -5731,6 +5759,12 @@ operator|.
 name|versionGCTimeLimitInSecs
 operator|=
 name|versionGCTimeLimitInSecs
+expr_stmt|;
+name|this
+operator|.
+name|versionGCDelayFactor
+operator|=
+name|versionGCDelayFactor
 expr_stmt|;
 name|resetStats
 argument_list|()
@@ -5767,6 +5801,11 @@ operator|.
 name|SECONDS
 argument_list|,
 name|versionGCTimeLimitInSecs
+argument_list|)
+operator|.
+name|withDelayFactor
+argument_list|(
+name|versionGCDelayFactor
 argument_list|)
 argument_list|)
 expr_stmt|;
