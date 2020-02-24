@@ -1631,8 +1631,8 @@ decl_stmt|;
 if|if
 condition|(
 name|blobStore
-operator|!=
-literal|null
+operator|instanceof
+name|BlobAccessProvider
 condition|)
 block|{
 name|oak
@@ -1828,8 +1828,8 @@ expr_stmt|;
 if|if
 condition|(
 name|blobStore
-operator|!=
-literal|null
+operator|instanceof
+name|BlobAccessProvider
 condition|)
 block|{
 name|cluster
@@ -2952,8 +2952,8 @@ condition|(
 name|this
 operator|.
 name|blobStore
-operator|!=
-literal|null
+operator|instanceof
+name|BlobAccessProvider
 condition|)
 block|{
 name|oak
@@ -3052,8 +3052,8 @@ condition|(
 name|this
 operator|.
 name|blobStore
-operator|!=
-literal|null
+operator|instanceof
+name|BlobAccessProvider
 condition|)
 block|{
 name|cluster
