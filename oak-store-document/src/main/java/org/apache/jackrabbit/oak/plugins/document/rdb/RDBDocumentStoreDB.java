@@ -3410,15 +3410,15 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"SELECT i.[name] AS name, SUM(s.[row_count]) as rows, SUM(s.[used_page_count] * 8) as usedKB, SUM(s.[reserved_page_count] * 8) as reservedKB "
+literal|"SELECT i.[name] AS name, i.[fill_factor] as fill_factor, i.[type_desc] as type_desc, SUM(s.[row_count]) as rows, SUM(s.[used_page_count] * 8) as usedKB, SUM(s.[reserved_page_count] * 8) as reservedKB "
 operator|+
 literal|"FROM sys.dm_db_partition_stats AS s "
 operator|+
 literal|"INNER JOIN sys.indexes AS i ON s.[object_id] = i.[object_id] "
 operator|+
-literal|"    AND s.[index_id] = i.[index_id] WHERE i.[object_id]=OBJECT_ID(?) "
+literal|"AND s.[index_id] = i.[index_id] WHERE i.[object_id]=OBJECT_ID(?) "
 operator|+
-literal|"GROUP BY i.[name]"
+literal|"GROUP BY i.[name], i.[fill_factor], i.[type_desc]"
 argument_list|)
 init|)
 block|{
@@ -3474,7 +3474,7 @@ name|extractFields
 argument_list|(
 name|rs
 argument_list|,
-literal|"rows usedKB reservedKB"
+literal|"rows usedKB reservedKB type_desc fill_factor"
 argument_list|)
 decl_stmt|;
 name|result
