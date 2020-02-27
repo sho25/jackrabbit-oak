@@ -4511,10 +4511,6 @@ specifier|private
 name|long
 name|pstart
 decl_stmt|;
-specifier|private
-name|int
-name|prevIsolationLevel
-decl_stmt|;
 specifier|public
 name|ResultSetIterator
 parameter_list|(
@@ -4576,8 +4572,6 @@ operator|.
 name|getROConnection
 argument_list|()
 expr_stmt|;
-comment|//                this.prevIsolationLevel = this.connection.getTransactionIsolation();
-comment|//                this.connection.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
 name|this
 operator|.
 name|tmd
@@ -5300,13 +5294,6 @@ operator|.
 name|stmt
 argument_list|)
 expr_stmt|;
-comment|//            try {
-comment|//                if (this.prevIsolationLevel != this.connection.getTransactionIsolation()) {
-comment|//                    this.connection.setTransactionIsolation(this.prevIsolationLevel);
-comment|//                }
-comment|//            } catch (SQLException ex) {
-comment|//                LOG.debug("failed to restore isolation level", ex);
-comment|//            }
 name|this
 operator|.
 name|ch
