@@ -517,11 +517,11 @@ return|return
 name|result
 return|;
 block|}
-specifier|private
+specifier|protected
 name|RDBBlobStore
 name|blobStore
 decl_stmt|;
-specifier|private
+specifier|protected
 name|String
 name|blobStoreName
 decl_stmt|;
@@ -1701,7 +1701,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|protected
 name|byte
 index|[]
 name|getDigest
