@@ -1730,6 +1730,11 @@ name|downloadOptions
 operator|.
 name|getDispositionType
 argument_list|()
+argument_list|,
+name|downloadOptions
+operator|.
+name|isDownloadDomainIgnored
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
