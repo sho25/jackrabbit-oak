@@ -269,6 +269,12 @@ name|EVALUATE_PATH_RESTRICTION
 init|=
 literal|"evaluatePathRestrictions"
 decl_stmt|;
+comment|/**      * The property name to specify a regular expression for property value in index definition. If this property is present      * in index definition, then only those properties would be added to index whose value matches the regex defined by      * this property.      */
+name|String
+name|PROP_VALUE_REGEX
+init|=
+literal|"valueRegex"
+decl_stmt|;
 comment|/**      * Experimental config to restrict which property type gets indexed at      * property definition level. Mostly index rule level #INCLUDE_PROPERTY_TYPES      * should be sufficient      */
 name|String
 name|PROP_INCLUDED_TYPE
@@ -337,7 +343,7 @@ name|TIKA_MAX_EXTRACT_LENGTH
 init|=
 literal|"maxExtractLength"
 decl_stmt|;
-comment|/**      *  Config node under tika which defines mime type mappings      */
+comment|/**      * Config node under tika which defines mime type mappings      */
 name|String
 name|TIKA_MIME_TYPES
 init|=
