@@ -143,16 +143,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -357,8 +347,6 @@ return|return
 name|fds
 return|;
 block|}
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 specifier|public

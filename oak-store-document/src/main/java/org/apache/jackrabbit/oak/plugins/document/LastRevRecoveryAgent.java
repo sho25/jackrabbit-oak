@@ -1263,6 +1263,41 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|sweepRev
+operator|.
+name|get
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// One or more journal entries were created by the sweeper.
+comment|// Make sure the sweep revision is different / newer than the
+comment|// last journal entry written so far. UnsavedModification
+comment|// further down needs a new revision for its journal entry.
+name|sweepRev
+operator|.
+name|set
+argument_list|(
+name|Utils
+operator|.
+name|max
+argument_list|(
+name|sweepRev
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|context
+operator|.
+name|newRevision
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// now deal with missing _lastRev updates
 name|UnsavedModifications
@@ -2020,9 +2055,20 @@ comment|// someone else (or the original instance itself) wrote the
 comment|// journal entry, then died.
 comment|// in this case, don't write it again.
 comment|// hence: nothing to be done here. return.
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Journal entry {} already exists"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 comment|// otherwise store a new journal entry now
+if|if
+condition|(
 name|store
 operator|.
 name|create
@@ -2039,7 +2085,30 @@ name|lastRootRev
 argument_list|)
 argument_list|)
 argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Recovery created journal entry {}"
+argument_list|,
+name|id
+argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Unable to create journal entry {} (already exists)."
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|,
