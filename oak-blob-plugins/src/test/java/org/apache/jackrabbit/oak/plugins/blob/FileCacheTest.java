@@ -1322,6 +1322,31 @@ argument_list|(
 literal|"Started getDifferentConcurrent"
 argument_list|)
 expr_stmt|;
+name|cache
+operator|=
+name|FileCache
+operator|.
+name|build
+argument_list|(
+literal|4
+operator|*
+literal|1024
+comment|/* KB */
+argument_list|,
+name|root
+argument_list|,
+name|loader
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|closer
+operator|.
+name|register
+argument_list|(
+name|cache
+argument_list|)
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -1830,6 +1855,31 @@ argument_list|(
 literal|"Started evictImplicit"
 argument_list|)
 expr_stmt|;
+name|cache
+operator|=
+name|FileCache
+operator|.
+name|build
+argument_list|(
+literal|60
+operator|*
+literal|1024
+comment|/* KB */
+argument_list|,
+name|root
+argument_list|,
+name|loader
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|closer
+operator|.
+name|register
+argument_list|(
+name|cache
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -1892,9 +1942,11 @@ argument_list|,
 name|f
 argument_list|)
 expr_stmt|;
-comment|// One of the entries should have been evicted
-name|assertTrue
+comment|// Some entries should have been evicted
+name|assertEquals
 argument_list|(
+literal|15
+argument_list|,
 name|cache
 operator|.
 name|getStats
@@ -1902,8 +1954,14 @@ argument_list|()
 operator|.
 name|getElementCount
 argument_list|()
-operator|==
-literal|15
+argument_list|,
+name|cache
+operator|.
+name|getStats
+argument_list|()
+operator|.
+name|getElementCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertCacheStats

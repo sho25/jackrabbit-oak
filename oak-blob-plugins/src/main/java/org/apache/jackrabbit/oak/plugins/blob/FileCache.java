@@ -475,6 +475,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|SEGMENT_COUNT
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.blob.fileCache.segmentCount"
+argument_list|,
+literal|1
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|static
 specifier|final
@@ -553,6 +568,7 @@ name|File
 name|value
 parameter_list|)
 block|{
+comment|// convert to number of 4 KB blocks
 return|return
 name|Math
 operator|.
@@ -570,7 +586,6 @@ literal|1024
 operator|)
 argument_list|)
 return|;
-comment|// convert to KB
 block|}
 block|}
 decl_stmt|;
@@ -677,7 +692,7 @@ argument_list|,
 name|DOWNLOAD_DIR
 argument_list|)
 expr_stmt|;
-comment|/* convert to 4 KB block */
+comment|// convert to number of 4 KB blocks
 name|long
 name|size
 init|=
@@ -841,6 +856,11 @@ operator|.
 name|weigher
 argument_list|(
 name|weigher
+argument_list|)
+operator|.
+name|segmentCount
+argument_list|(
+name|SEGMENT_COUNT
 argument_list|)
 operator|.
 name|evictionCallback
